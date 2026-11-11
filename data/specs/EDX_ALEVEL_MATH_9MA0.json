@@ -1,0 +1,268 @@
+{
+  "subject_id": "EDX_ALEVEL_MATH_9MA0",
+  "sections": [
+    {
+      "id": "EDX_MATH_SEC_PURE",
+      "title": "Pure Mathematics",
+      "note": "Papers 1 & 2",
+      "topics": [
+        {
+          "id": "EDX_MATH_PURE_PROOF",
+          "code": "1",
+          "title": "Proof",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_PROOF_1.1","code":"1.1","title":"Proof by deduction, proof by exhaustion and disproof by counter-example"},
+            {"id":"EDX_MATH_PURE_PROOF_1.2","code":"1.2","title":"Proof by contradiction"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_ALG",
+          "code": "2",
+          "title": "Algebra and functions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_ALG_2.1","code":"2.1","title":"Laws of indices for rational exponents"},
+            {"id":"EDX_MATH_PURE_ALG_2.2","code":"2.2","title":"Surds and rationalising denominators"},
+            {"id":"EDX_MATH_PURE_ALG_2.3","code":"2.3","title":"Quadratic functions: discriminant and completing the square"},
+            {"id":"EDX_MATH_PURE_ALG_2.4","code":"2.4","title":"Simultaneous equations (linear and quadratic)"},
+            {"id":"EDX_MATH_PURE_ALG_2.5","code":"2.5","title":"Linear and quadratic inequalities"},
+            {"id":"EDX_MATH_PURE_ALG_2.6","code":"2.6","title":"Polynomials: factor theorem, algebraic division and rational expressions"},
+            {"id":"EDX_MATH_PURE_ALG_2.7","code":"2.7","title":"Graphs of functions: sketching curves, modulus graphs and proportion"},
+            {"id":"EDX_MATH_PURE_ALG_2.8","code":"2.8","title":"Composite and inverse functions"},
+            {"id":"EDX_MATH_PURE_ALG_2.9","code":"2.9","title":"Transformations of graphs"},
+            {"id":"EDX_MATH_PURE_ALG_2.10","code":"2.10","title":"Partial fractions"},
+            {"id":"EDX_MATH_PURE_ALG_2.11","code":"2.11","title":"Functions in modelling"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_COORD",
+          "code": "3",
+          "title": "Coordinate geometry in the (x, y) plane",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_COORD_3.1","code":"3.1","title":"Straight lines: equations, parallel and perpendicular lines"},
+            {"id":"EDX_MATH_PURE_COORD_3.2","code":"3.2","title":"Circles: equation, tangents and chord properties"},
+            {"id":"EDX_MATH_PURE_COORD_3.3","code":"3.3","title":"Parametric equations of curves"},
+            {"id":"EDX_MATH_PURE_COORD_3.4","code":"3.4","title":"Parametric equations in modelling"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_SEQ",
+          "code": "4",
+          "title": "Sequences and series",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_SEQ_4.1","code":"4.1","title":"Binomial expansion (positive integer and rational n)"},
+            {"id":"EDX_MATH_PURE_SEQ_4.2","code":"4.2","title":"Sequences: nth term, recurrence relations, increasing, decreasing and periodic"},
+            {"id":"EDX_MATH_PURE_SEQ_4.3","code":"4.3","title":"Sigma notation"},
+            {"id":"EDX_MATH_PURE_SEQ_4.4","code":"4.4","title":"Arithmetic sequences and series"},
+            {"id":"EDX_MATH_PURE_SEQ_4.5","code":"4.5","title":"Geometric sequences and series, including sum to infinity"},
+            {"id":"EDX_MATH_PURE_SEQ_4.6","code":"4.6","title":"Sequences and series in modelling"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_TRIG",
+          "code": "5",
+          "title": "Trigonometry",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_TRIG_5.1","code":"5.1","title":"Sine and cosine rules, area of a triangle, radians, arc length and sector area"},
+            {"id":"EDX_MATH_PURE_TRIG_5.2","code":"5.2","title":"Small angle approximations"},
+            {"id":"EDX_MATH_PURE_TRIG_5.3","code":"5.3","title":"Graphs of sin, cos and tan; exact values"},
+            {"id":"EDX_MATH_PURE_TRIG_5.4","code":"5.4","title":"Secant, cosecant, cotangent and the inverse trigonometric functions"},
+            {"id":"EDX_MATH_PURE_TRIG_5.5","code":"5.5","title":"Trigonometric identities (including Pythagorean identities)"},
+            {"id":"EDX_MATH_PURE_TRIG_5.6","code":"5.6","title":"Addition and double angle formulae; R cos(θ ± α) form"},
+            {"id":"EDX_MATH_PURE_TRIG_5.7","code":"5.7","title":"Solving trigonometric equations"},
+            {"id":"EDX_MATH_PURE_TRIG_5.8","code":"5.8","title":"Proofs involving trigonometric functions and identities"},
+            {"id":"EDX_MATH_PURE_TRIG_5.9","code":"5.9","title":"Trigonometry in context (vectors, kinematics and forces)"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_EXP",
+          "code": "6",
+          "title": "Exponentials and logarithms",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_EXP_6.1","code":"6.1","title":"The functions a^x and e^x and their graphs"},
+            {"id":"EDX_MATH_PURE_EXP_6.2","code":"6.2","title":"Gradient of e^(kx)"},
+            {"id":"EDX_MATH_PURE_EXP_6.3","code":"6.3","title":"Logarithms as the inverse of exponentials; ln x"},
+            {"id":"EDX_MATH_PURE_EXP_6.4","code":"6.4","title":"Laws of logarithms"},
+            {"id":"EDX_MATH_PURE_EXP_6.5","code":"6.5","title":"Solving equations of the form a^x = b"},
+            {"id":"EDX_MATH_PURE_EXP_6.6","code":"6.6","title":"Logarithmic graphs to estimate parameters"},
+            {"id":"EDX_MATH_PURE_EXP_6.7","code":"6.7","title":"Exponential growth and decay in modelling"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_DIFF",
+          "code": "7",
+          "title": "Differentiation",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_DIFF_7.1","code":"7.1","title":"Derivative as gradient and rate of change; first principles; second derivatives"},
+            {"id":"EDX_MATH_PURE_DIFF_7.2","code":"7.2","title":"Differentiating x^n, e^(kx), a^(kx), sin kx, cos kx, tan kx and ln x"},
+            {"id":"EDX_MATH_PURE_DIFF_7.3","code":"7.3","title":"Tangents, normals, stationary points, increasing and decreasing functions"},
+            {"id":"EDX_MATH_PURE_DIFF_7.4","code":"7.4","title":"Product, quotient and chain rules; connected rates of change"},
+            {"id":"EDX_MATH_PURE_DIFF_7.5","code":"7.5","title":"Implicit and parametric differentiation"},
+            {"id":"EDX_MATH_PURE_DIFF_7.6","code":"7.6","title":"Constructing simple differential equations"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_INT",
+          "code": "8",
+          "title": "Integration",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_INT_8.1","code":"8.1","title":"Fundamental theorem of calculus"},
+            {"id":"EDX_MATH_PURE_INT_8.2","code":"8.2","title":"Integrating x^n, e^(kx), 1/x, sin kx and cos kx"},
+            {"id":"EDX_MATH_PURE_INT_8.3","code":"8.3","title":"Definite integrals; area under a curve and between two curves"},
+            {"id":"EDX_MATH_PURE_INT_8.4","code":"8.4","title":"Integration as the limit of a sum"},
+            {"id":"EDX_MATH_PURE_INT_8.5","code":"8.5","title":"Integration by substitution and by parts"},
+            {"id":"EDX_MATH_PURE_INT_8.6","code":"8.6","title":"Integration using partial fractions"},
+            {"id":"EDX_MATH_PURE_INT_8.7","code":"8.7","title":"Separable first order differential equations"},
+            {"id":"EDX_MATH_PURE_INT_8.8","code":"8.8","title":"Interpreting solutions of differential equations in context"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_NUM",
+          "code": "9",
+          "title": "Numerical methods",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_NUM_9.1","code":"9.1","title":"Locating roots by change of sign"},
+            {"id":"EDX_MATH_PURE_NUM_9.2","code":"9.2","title":"Iterative methods; cobweb and staircase diagrams"},
+            {"id":"EDX_MATH_PURE_NUM_9.3","code":"9.3","title":"The Newton–Raphson method"},
+            {"id":"EDX_MATH_PURE_NUM_9.4","code":"9.4","title":"Numerical integration: the trapezium rule"},
+            {"id":"EDX_MATH_PURE_NUM_9.5","code":"9.5","title":"Numerical methods in context"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_PURE_VEC",
+          "code": "10",
+          "title": "Vectors",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_PURE_VEC_10.1","code":"10.1","title":"Vectors in two and three dimensions"},
+            {"id":"EDX_MATH_PURE_VEC_10.2","code":"10.2","title":"Magnitude and direction of a vector"},
+            {"id":"EDX_MATH_PURE_VEC_10.3","code":"10.3","title":"Vector addition and multiplication by scalars"},
+            {"id":"EDX_MATH_PURE_VEC_10.4","code":"10.4","title":"Position vectors and the distance between two points"},
+            {"id":"EDX_MATH_PURE_VEC_10.5","code":"10.5","title":"Vectors in pure mathematics and in context (forces, kinematics)"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_MATH_SEC_STATS",
+      "title": "Statistics",
+      "note": "Paper 3, Section A",
+      "topics": [
+        {
+          "id": "EDX_MATH_STATS_SAMP",
+          "code": "1",
+          "title": "Statistical sampling",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_STATS_SAMP_1.1","code":"1.1","title":"Populations, samples and sampling techniques"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_STATS_DATA",
+          "code": "2",
+          "title": "Data presentation and interpretation",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_STATS_DATA_2.1","code":"2.1","title":"Histograms, box plots, cumulative frequency and frequency polygons"},
+            {"id":"EDX_MATH_STATS_DATA_2.2","code":"2.2","title":"Scatter diagrams, regression lines and correlation"},
+            {"id":"EDX_MATH_STATS_DATA_2.3","code":"2.3","title":"Measures of central tendency and variation"},
+            {"id":"EDX_MATH_STATS_DATA_2.4","code":"2.4","title":"Outliers, cleaning data and the large data set"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_STATS_PROB",
+          "code": "3",
+          "title": "Probability",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_STATS_PROB_3.1","code":"3.1","title":"Mutually exclusive and independent events; Venn and tree diagrams"},
+            {"id":"EDX_MATH_STATS_PROB_3.2","code":"3.2","title":"Conditional probability"},
+            {"id":"EDX_MATH_STATS_PROB_3.3","code":"3.3","title":"Modelling with probability"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_STATS_DIST",
+          "code": "4",
+          "title": "Statistical distributions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_STATS_DIST_4.1","code":"4.1","title":"Discrete distributions and the binomial distribution"},
+            {"id":"EDX_MATH_STATS_DIST_4.2","code":"4.2","title":"The normal distribution"},
+            {"id":"EDX_MATH_STATS_DIST_4.3","code":"4.3","title":"Selecting a distribution; normal approximation to the binomial"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_STATS_HYP",
+          "code": "5",
+          "title": "Statistical hypothesis testing",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_STATS_HYP_5.1","code":"5.1","title":"Language of hypothesis testing; testing correlation coefficients"},
+            {"id":"EDX_MATH_STATS_HYP_5.2","code":"5.2","title":"Hypothesis tests for the binomial distribution"},
+            {"id":"EDX_MATH_STATS_HYP_5.3","code":"5.3","title":"Hypothesis tests for the mean of a normal distribution"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_MATH_SEC_MECH",
+      "title": "Mechanics",
+      "note": "Paper 3, Section B",
+      "topics": [
+        {
+          "id": "EDX_MATH_MECH_UNITS",
+          "code": "6",
+          "title": "Quantities and units in mechanics",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_MECH_UNITS_6.1","code":"6.1","title":"SI units and derived quantities"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_MECH_KIN",
+          "code": "7",
+          "title": "Kinematics",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_MECH_KIN_7.1","code":"7.1","title":"Language of kinematics: position, displacement, velocity, acceleration"},
+            {"id":"EDX_MATH_MECH_KIN_7.2","code":"7.2","title":"Kinematics graphs"},
+            {"id":"EDX_MATH_MECH_KIN_7.3","code":"7.3","title":"Constant acceleration (suvat) in one and two dimensions"},
+            {"id":"EDX_MATH_MECH_KIN_7.4","code":"7.4","title":"Calculus in kinematics (variable acceleration)"},
+            {"id":"EDX_MATH_MECH_KIN_7.5","code":"7.5","title":"Projectiles"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_MECH_FORCES",
+          "code": "8",
+          "title": "Forces and Newton's laws",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_MECH_FORCES_8.1","code":"8.1","title":"The concept of a force; Newton's first law"},
+            {"id":"EDX_MATH_MECH_FORCES_8.2","code":"8.2","title":"Newton's second law; resolving forces in two dimensions"},
+            {"id":"EDX_MATH_MECH_FORCES_8.3","code":"8.3","title":"Weight and motion under gravity"},
+            {"id":"EDX_MATH_MECH_FORCES_8.4","code":"8.4","title":"Newton's third law; connected particles and pulleys"},
+            {"id":"EDX_MATH_MECH_FORCES_8.5","code":"8.5","title":"Resultant forces and dynamics for motion in a plane"},
+            {"id":"EDX_MATH_MECH_FORCES_8.6","code":"8.6","title":"Friction and the coefficient of friction; statics"}
+          ]
+        },
+        {
+          "id": "EDX_MATH_MECH_MOM",
+          "code": "9",
+          "title": "Moments",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_MATH_MECH_MOM_9.1","code":"9.1","title":"Moments in simple static contexts"}
+          ]
+        }
+      ]
+    }
+  ]
+}

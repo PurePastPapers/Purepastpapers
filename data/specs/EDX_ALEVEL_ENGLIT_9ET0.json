@@ -1,0 +1,74 @@
+{
+  "subject_id": "EDX_ALEVEL_ENGLIT_9ET0",
+  "sections": [
+    {
+      "id": "EDX_ENGLIT_SEC_P1",
+      "title": "Paper 1: Drama",
+      "topics": [
+        {
+          "id": "EDX_ENGLIT_SHAKES",
+          "code": "A",
+          "title": "Section A: Shakespeare",
+          "kind": "set_text",
+          "points": [
+            {"id":"EDX_ENGLIT_SHAKES_A.1","code":"A.1","title":"Othello"},
+            {"id":"EDX_ENGLIT_SHAKES_A.2","code":"A.2","title":"Critical anthology: Shakespearean tragedy"}
+          ]
+        },
+        {
+          "id": "EDX_ENGLIT_DRAMA",
+          "code": "B",
+          "title": "Section B: Other drama",
+          "kind": "set_text",
+          "points": [
+            {"id":"EDX_ENGLIT_DRAMA_B.1","code":"B.1","title":"A Streetcar Named Desire"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_ENGLIT_SEC_P2",
+      "title": "Paper 2: Prose",
+      "note": "Theme: Science and Society",
+      "topics": [
+        {
+          "id": "EDX_ENGLIT_PROSE",
+          "code": "P",
+          "title": "Comparative prose study",
+          "kind": "set_text",
+          "points": [
+            {"id":"EDX_ENGLIT_PROSE_P.1","code":"P.1","title":"The Handmaid's Tale"},
+            {"id":"EDX_ENGLIT_PROSE_P.2","code":"P.2","title":"Frankenstein"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_ENGLIT_SEC_P3",
+      "title": "Paper 3: Poetry",
+      "topics": [
+        {
+          "id": "EDX_ENGLIT_MODERN",
+          "code": "A",
+          "title": "Section A: Post-2000 specified poetry",
+          "kind": "set_text",
+          "points": [
+            {"id":"EDX_ENGLIT_MODERN_A.1","code":"A.1","title":"Poems of the Decade (comparison with an unseen poem)"}
+          ]
+        },
+        {
+          "id": "EDX_ENGLIT_POET",
+          "code": "B",
+          "title": "Section B: Specified poetry pre- or post-1900",
+          "kind": "set_text",
+          "points": [
+            {"id":"EDX_ENGLIT_POET_B.1","code":"B.1","title":"The Romantics"},
+            {"id":"EDX_ENGLIT_POET_B.2","code":"B.2","title":"John Keats"},
+            {"id":"EDX_ENGLIT_POET_B.3","code":"B.3","title":"Christina Rossetti"},
+            {"id":"EDX_ENGLIT_POET_B.4","code":"B.4","title":"Philip Larkin"}
+          ]
+        }
+      ]
+    }
+  ]
+}

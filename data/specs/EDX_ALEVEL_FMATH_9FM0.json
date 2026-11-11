@@ -1,0 +1,587 @@
+{
+  "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+  "sections": [
+    {
+      "id": "EDX_FMATH_SEC_CP",
+      "title": "Core Pure Mathematics",
+      "note": "Papers 1 & 2",
+      "topics": [
+        {
+          "id": "EDX_FMATH_CP_PROOF",
+          "code": "1",
+          "title": "Proof",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_PROOF_1.1","code":"1.1","title":"Proof by mathematical induction (series, divisibility, matrices)"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_COMPLEX",
+          "code": "2",
+          "title": "Complex numbers",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_COMPLEX_2.1","code":"2.1","title":"Solving polynomial equations with real coefficients; conjugate pairs"},
+            {"id":"EDX_FMATH_CP_COMPLEX_2.2","code":"2.2","title":"Arithmetic of complex numbers in the form x + iy"},
+            {"id":"EDX_FMATH_CP_COMPLEX_2.3","code":"2.3","title":"Argand diagrams; modulus–argument form"},
+            {"id":"EDX_FMATH_CP_COMPLEX_2.4","code":"2.4","title":"Loci and regions in the Argand diagram"},
+            {"id":"EDX_FMATH_CP_COMPLEX_2.5","code":"2.5","title":"De Moivre's theorem and its applications"},
+            {"id":"EDX_FMATH_CP_COMPLEX_2.6","code":"2.6","title":"Exponential form; nth roots and roots of unity"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_MATRICES",
+          "code": "3",
+          "title": "Matrices",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_MATRICES_3.1","code":"3.1","title":"Matrix arithmetic; zero and identity matrices"},
+            {"id":"EDX_FMATH_CP_MATRICES_3.2","code":"3.2","title":"Linear transformations in 2D and 3D; invariant points and lines"},
+            {"id":"EDX_FMATH_CP_MATRICES_3.3","code":"3.3","title":"Determinants and inverses of 2×2 and 3×3 matrices"},
+            {"id":"EDX_FMATH_CP_MATRICES_3.4","code":"3.4","title":"Solving simultaneous equations; intersections of three planes"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_ALG",
+          "code": "4",
+          "title": "Further algebra and functions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_ALG_4.1","code":"4.1","title":"Roots and coefficients of polynomial equations"},
+            {"id":"EDX_FMATH_CP_ALG_4.2","code":"4.2","title":"Transforming the roots of an equation"},
+            {"id":"EDX_FMATH_CP_ALG_4.3","code":"4.3","title":"Summation of series: Σr, Σr² and Σr³"},
+            {"id":"EDX_FMATH_CP_ALG_4.4","code":"4.4","title":"Method of differences"},
+            {"id":"EDX_FMATH_CP_ALG_4.5","code":"4.5","title":"Maclaurin series"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_CALC",
+          "code": "5",
+          "title": "Further calculus",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_CALC_5.1","code":"5.1","title":"Improper integrals"},
+            {"id":"EDX_FMATH_CP_CALC_5.2","code":"5.2","title":"Volumes of revolution"},
+            {"id":"EDX_FMATH_CP_CALC_5.3","code":"5.3","title":"Mean value of a function"},
+            {"id":"EDX_FMATH_CP_CALC_5.4","code":"5.4","title":"Integration using partial fractions with quadratic factors"},
+            {"id":"EDX_FMATH_CP_CALC_5.5","code":"5.5","title":"Differentiating and integrating with inverse trigonometric functions"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_VECTORS",
+          "code": "6",
+          "title": "Further vectors",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_VECTORS_6.1","code":"6.1","title":"Vector and Cartesian equations of a line in 3D"},
+            {"id":"EDX_FMATH_CP_VECTORS_6.2","code":"6.2","title":"Vector and Cartesian equations of a plane"},
+            {"id":"EDX_FMATH_CP_VECTORS_6.3","code":"6.3","title":"Scalar product; angles between lines and planes"},
+            {"id":"EDX_FMATH_CP_VECTORS_6.4","code":"6.4","title":"Intersections and shortest distances"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_POLAR",
+          "code": "7",
+          "title": "Polar coordinates",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_POLAR_7.1","code":"7.1","title":"Polar coordinates and converting to and from Cartesian form"},
+            {"id":"EDX_FMATH_CP_POLAR_7.2","code":"7.2","title":"Sketching polar curves"},
+            {"id":"EDX_FMATH_CP_POLAR_7.3","code":"7.3","title":"Area enclosed by a polar curve"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_HYP",
+          "code": "8",
+          "title": "Hyperbolic functions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_HYP_8.1","code":"8.1","title":"Definitions and graphs of sinh, cosh and tanh"},
+            {"id":"EDX_FMATH_CP_HYP_8.2","code":"8.2","title":"Differentiating and integrating hyperbolic functions"},
+            {"id":"EDX_FMATH_CP_HYP_8.3","code":"8.3","title":"Inverse hyperbolic functions and their logarithmic forms"},
+            {"id":"EDX_FMATH_CP_HYP_8.4","code":"8.4","title":"Integration using hyperbolic substitutions"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_CP_DE",
+          "code": "9",
+          "title": "Differential equations",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_CP_DE_9.1","code":"9.1","title":"First order equations: integrating factor"},
+            {"id":"EDX_FMATH_CP_DE_9.2","code":"9.2","title":"Second order homogeneous equations"},
+            {"id":"EDX_FMATH_CP_DE_9.3","code":"9.3","title":"Second order non-homogeneous equations"},
+            {"id":"EDX_FMATH_CP_DE_9.4","code":"9.4","title":"Simple and damped harmonic motion"},
+            {"id":"EDX_FMATH_CP_DE_9.5","code":"9.5","title":"Coupled first order differential equations"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_FP1",
+      "title": "Further Pure Mathematics 1",
+      "note": "Option paper 3A",
+      "topics": [
+        {
+          "id": "EDX_FMATH_FP1_TRIG",
+          "code": "1",
+          "title": "Further trigonometry",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP1_TRIG_1.1","code":"1.1","title":"The t-formulae and their applications"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP1_CALC",
+          "code": "2",
+          "title": "Further calculus",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP1_CALC_2.1","code":"2.1","title":"Taylor series"},
+            {"id":"EDX_FMATH_FP1_CALC_2.2","code":"2.2","title":"Limits and L'Hospital's rule"},
+            {"id":"EDX_FMATH_FP1_CALC_2.3","code":"2.3","title":"Leibnitz's theorem"},
+            {"id":"EDX_FMATH_FP1_CALC_2.4","code":"2.4","title":"The Weierstrass substitution"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP1_DE",
+          "code": "3",
+          "title": "Further differential equations",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP1_DE_3.1","code":"3.1","title":"Taylor series solutions"},
+            {"id":"EDX_FMATH_FP1_DE_3.2","code":"3.2","title":"Reducible differential equations"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP1_CONICS",
+          "code": "4",
+          "title": "Coordinate systems",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP1_CONICS_4.1","code":"4.1","title":"Parabola and rectangular hyperbola"},
+            {"id":"EDX_FMATH_FP1_CONICS_4.2","code":"4.2","title":"Ellipse and hyperbola"},
+            {"id":"EDX_FMATH_FP1_CONICS_4.3","code":"4.3","title":"Tangents, normals and loci"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP1_VEC",
+          "code": "5",
+          "title": "Further vectors",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP1_VEC_5.1","code":"5.1","title":"Vector product"},
+            {"id":"EDX_FMATH_FP1_VEC_5.2","code":"5.2","title":"Scalar triple product"},
+            {"id":"EDX_FMATH_FP1_VEC_5.3","code":"5.3","title":"Applications to lines and planes"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP1_NUM",
+          "code": "6",
+          "title": "Further numerical methods",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP1_NUM_6.1","code":"6.1","title":"Euler's method and the midpoint method"},
+            {"id":"EDX_FMATH_FP1_NUM_6.2","code":"6.2","title":"Simpson's rule"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP1_INEQ",
+          "code": "7",
+          "title": "Inequalities",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP1_INEQ_7.1","code":"7.1","title":"Algebraic and modulus inequalities"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_FS1",
+      "title": "Further Statistics 1",
+      "note": "Option paper 3B",
+      "topics": [
+        {
+          "id": "EDX_FMATH_FS1_DRV",
+          "code": "1",
+          "title": "Discrete probability distributions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_DRV_1.1","code":"1.1","title":"Mean and variance of discrete random variables"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS1_POISSON",
+          "code": "2",
+          "title": "Poisson and binomial distributions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_POISSON_2.1","code":"2.1","title":"The Poisson distribution"},
+            {"id":"EDX_FMATH_FS1_POISSON_2.2","code":"2.2","title":"Poisson approximation to the binomial"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS1_GEO",
+          "code": "3",
+          "title": "Geometric and negative binomial distributions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_GEO_3.1","code":"3.1","title":"Geometric and negative binomial models"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS1_HYP",
+          "code": "4",
+          "title": "Hypothesis testing",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_HYP_4.1","code":"4.1","title":"Tests for the Poisson and geometric distributions"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS1_CLT",
+          "code": "5",
+          "title": "Central limit theorem",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_CLT_5.1","code":"5.1","title":"Applying the central limit theorem"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS1_CHI",
+          "code": "6",
+          "title": "Chi-squared tests",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_CHI_6.1","code":"6.1","title":"Goodness of fit"},
+            {"id":"EDX_FMATH_FS1_CHI_6.2","code":"6.2","title":"Contingency tables"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS1_PGF",
+          "code": "7",
+          "title": "Probability generating functions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_PGF_7.1","code":"7.1","title":"Definition, mean and variance from a p.g.f."}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS1_QUAL",
+          "code": "8",
+          "title": "Quality of tests",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS1_QUAL_8.1","code":"8.1","title":"Type I and Type II errors; size and power"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_FM1",
+      "title": "Further Mechanics 1",
+      "note": "Option paper 3C",
+      "topics": [
+        {
+          "id": "EDX_FMATH_FM1_MOM",
+          "code": "1",
+          "title": "Momentum and impulse",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM1_MOM_1.1","code":"1.1","title":"Momentum and impulse in one and two dimensions"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FM1_WEP",
+          "code": "2",
+          "title": "Work, energy and power",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM1_WEP_2.1","code":"2.1","title":"Kinetic and potential energy; work–energy principle"},
+            {"id":"EDX_FMATH_FM1_WEP_2.2","code":"2.2","title":"Power"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FM1_ELASTIC",
+          "code": "3",
+          "title": "Elastic strings and springs",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM1_ELASTIC_3.1","code":"3.1","title":"Hooke's law and elastic potential energy"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FM1_COLL1",
+          "code": "4",
+          "title": "Elastic collisions in one dimension",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM1_COLL1_4.1","code":"4.1","title":"Newton's law of restitution and successive impacts"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FM1_COLL2",
+          "code": "5",
+          "title": "Elastic collisions in two dimensions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM1_COLL2_5.1","code":"5.1","title":"Oblique impacts"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_D1",
+      "title": "Decision Mathematics 1",
+      "note": "Option paper 3D",
+      "topics": [
+        {
+          "id": "EDX_FMATH_D1_ALG",
+          "code": "1",
+          "title": "Algorithms and graph theory",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D1_ALG_1.1","code":"1.1","title":"Sorting and bin packing algorithms"},
+            {"id":"EDX_FMATH_D1_ALG_1.2","code":"1.2","title":"Graphs and networks"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_D1_GRAPHS",
+          "code": "2",
+          "title": "Algorithms on graphs",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D1_GRAPHS_2.1","code":"2.1","title":"Minimum spanning trees (Kruskal's and Prim's)"},
+            {"id":"EDX_FMATH_D1_GRAPHS_2.2","code":"2.2","title":"Shortest paths (Dijkstra's and Floyd's)"},
+            {"id":"EDX_FMATH_D1_GRAPHS_2.3","code":"2.3","title":"Route inspection and the travelling salesman problem"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_D1_CPA",
+          "code": "3",
+          "title": "Critical path analysis",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D1_CPA_3.1","code":"3.1","title":"Activity networks, float and scheduling"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_D1_LP",
+          "code": "4",
+          "title": "Linear programming",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D1_LP_4.1","code":"4.1","title":"Formulation and graphical solution"},
+            {"id":"EDX_FMATH_D1_LP_4.2","code":"4.2","title":"The Simplex algorithm"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_FP2",
+      "title": "Further Pure Mathematics 2",
+      "note": "Option paper 4A",
+      "topics": [
+        {
+          "id": "EDX_FMATH_FP2_GROUPS",
+          "code": "1",
+          "title": "Groups",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP2_GROUPS_1.1","code":"1.1","title":"Group axioms, Cayley tables and Lagrange's theorem"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP2_CALC",
+          "code": "2",
+          "title": "Further calculus",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP2_CALC_2.1","code":"2.1","title":"Reduction formulae"},
+            {"id":"EDX_FMATH_FP2_CALC_2.2","code":"2.2","title":"Arc length and area of a surface of revolution"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP2_MATRIX",
+          "code": "3",
+          "title": "Further matrix algebra",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP2_MATRIX_3.1","code":"3.1","title":"Eigenvalues, eigenvectors and diagonalisation"},
+            {"id":"EDX_FMATH_FP2_MATRIX_3.2","code":"3.2","title":"The Cayley–Hamilton theorem"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP2_COMPLEX",
+          "code": "4",
+          "title": "Further complex numbers",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP2_COMPLEX_4.1","code":"4.1","title":"Loci and transformations of the complex plane"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP2_NUMBER",
+          "code": "5",
+          "title": "Number theory",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP2_NUMBER_5.1","code":"5.1","title":"Euclid's algorithm and modular arithmetic"},
+            {"id":"EDX_FMATH_FP2_NUMBER_5.2","code":"5.2","title":"Fermat's little theorem and combinatorics"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FP2_RECUR",
+          "code": "6",
+          "title": "Further sequences and series",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FP2_RECUR_6.1","code":"6.1","title":"First and second order recurrence relations"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_FS2",
+      "title": "Further Statistics 2",
+      "note": "Option paper 4B",
+      "topics": [
+        {
+          "id": "EDX_FMATH_FS2_REG",
+          "code": "1",
+          "title": "Linear regression",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS2_REG_1.1","code":"1.1","title":"Least squares regression and residuals"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS2_CONT",
+          "code": "2",
+          "title": "Continuous probability distributions",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS2_CONT_2.1","code":"2.1","title":"Probability density and cumulative distribution functions"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS2_CORR",
+          "code": "3",
+          "title": "Correlation",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS2_CORR_3.1","code":"3.1","title":"Product moment and Spearman's rank correlation"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS2_COMB",
+          "code": "4",
+          "title": "Combinations of random variables",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS2_COMB_4.1","code":"4.1","title":"Linear combinations of independent normal variables"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FS2_EST",
+          "code": "5",
+          "title": "Estimation, confidence intervals and tests",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FS2_EST_5.1","code":"5.1","title":"Normal, t, chi-squared and F distributions in inference"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_FM2",
+      "title": "Further Mechanics 2",
+      "note": "Option paper 4C",
+      "topics": [
+        {
+          "id": "EDX_FMATH_FM2_CIRC",
+          "code": "1",
+          "title": "Motion in a circle",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM2_CIRC_1.1","code":"1.1","title":"Horizontal and vertical circular motion"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FM2_COM",
+          "code": "2",
+          "title": "Centres of mass",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM2_COM_2.1","code":"2.1","title":"Plane figures and frameworks"},
+            {"id":"EDX_FMATH_FM2_COM_2.2","code":"2.2","title":"Solids by calculus; toppling and sliding"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FM2_DYN",
+          "code": "3",
+          "title": "Further dynamics",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM2_DYN_3.1","code":"3.1","title":"Variable forces and simple harmonic motion"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_FM2_KIN",
+          "code": "4",
+          "title": "Further kinematics",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_FM2_KIN_4.1","code":"4.1","title":"Acceleration as a function of time, displacement or velocity"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_FMATH_SEC_D2",
+      "title": "Decision Mathematics 2",
+      "note": "Option paper 4D",
+      "topics": [
+        {
+          "id": "EDX_FMATH_D2_TRANS",
+          "code": "1",
+          "title": "Transportation and allocation problems",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D2_TRANS_1.1","code":"1.1","title":"Transportation problems"},
+            {"id":"EDX_FMATH_D2_TRANS_1.2","code":"1.2","title":"The Hungarian algorithm"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_D2_FLOWS",
+          "code": "2",
+          "title": "Flows in networks",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D2_FLOWS_2.1","code":"2.1","title":"Maximum flow – minimum cut"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_D2_DP",
+          "code": "3",
+          "title": "Dynamic programming and game theory",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D2_DP_3.1","code":"3.1","title":"Dynamic programming"},
+            {"id":"EDX_FMATH_D2_DP_3.2","code":"3.2","title":"Game theory"}
+          ]
+        },
+        {
+          "id": "EDX_FMATH_D2_REC",
+          "code": "4",
+          "title": "Recurrence relations and decision analysis",
+          "kind": "topic",
+          "points": [
+            {"id":"EDX_FMATH_D2_REC_4.1","code":"4.1","title":"Recurrence relations"},
+            {"id":"EDX_FMATH_D2_REC_4.2","code":"4.2","title":"Decision trees"}
+          ]
+        }
+      ]
+    }
+  ]
+}
