@@ -123,24 +123,29 @@ tests/      engine.test.mjs
 assets/     pdfs/ · papers/ · ms/   (your files)
 ```
 
-## Decisions to review
+## Decisions
 
-- **GCSE sciences are Edexcel** (1SC0, 1BI0, 1CH0, 1PH0), as confirmed by the project owner.
-  The PRD table still shows AQA's codes (8464, 8461–8463) and topic splits for those four
-  rows and should be corrected.
-- **Grades are indicative.** `GRADE_SCHEMES` in `app.config.js` uses fixed percentage bands.
-  A paper record can carry real boundaries in `grade_boundaries`.
+Reviewed by the project owner in November 2026.
+
+- **Grades are indicative for now.** `GRADE_SCHEMES` in `app.config.js` uses fixed percentage
+  bands. A paper record can carry real boundaries in `grade_boundaries`. Whenever past papers
+  are sourced (by an AI agent or by hand), also find that paper's official grade boundaries
+  and add them to `grade_boundaries`.
 - **Catalogue details come from each specification's paper structure** (marks, durations,
-  series). A few durations changed over the years, so check against the board where it matters.
-  The catalogue runs to June 2025 (and November 2024); raise `LAST_SUMMER` / `LAST_NOVEMBER`
-  in `tools/seed/subjects.mjs` as papers are released.
-- **Level 3 subjects** have no generated catalogue, and the two new OCR Advanced Nationals
-  (IT, Applied Science) have placeholder topic trees and no questions yet.
-- **Fields added beyond the PRD schemas:** `subject_id` and `is_sample` on papers and
-  questions; `subject_id`, `session_id` and `grade` on attempts; `sessions`, `custom_tests`
-  and `preferences` in user progress.
-- **Extra hard** questions are original stretch questions in the MadAsMaths style. Real ones
-  can be added like any other question with `"difficulty": "extra_hard"`.
+  series). Keep this approach, and check durations and marks against the board as each real
+  paper is added. The catalogue runs to June 2025 (and November 2024); raise `LAST_SUMMER` /
+  `LAST_NOVEMBER` in `tools/seed/subjects.mjs` as papers are released.
+- **Level 3 subjects** have no generated catalogue yet, and the two new OCR Advanced Nationals
+  (IT, Applied Science) have placeholder topic trees and no questions. Add their real papers,
+  topic trees and questions at the same time as the real GCSE papers.
+- **Demo content is temporary.** Remove the demo papers and questions (`"is_sample": true`)
+  when real papers and questions are added.
+- **Real and AI content are tagged.** From Phase 2 onwards every question and paper must
+  carry a tag showing whether it is real or AI-written (`source_type` / `paper_type`:
+  `real_past_paper` vs `ai_past_paper`, `ai_spec_question`, `predicted_paper`), and the UI
+  should show that tag.
+- **Extra hard questions arrive with the AI questions in Phase 2.** They are AI-written stretch
+  questions in the MadAsMaths style, tagged `"difficulty": "extra_hard"`.
 
 ## Notes for AI agents working on this repo
 
