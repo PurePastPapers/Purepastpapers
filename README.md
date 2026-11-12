@@ -78,6 +78,29 @@ Spec point ids follow the PRD: `EDX_PHYS_M2_2.2` (point), `EDX_MATH_PURE_TRIG` (
 A topic id used as a tag means "the whole topic": it is satisfied only when every spec
 point in that topic is learned.
 
+## Specification filters and question parts
+
+Practice supports exact specification points and inclusive ranges (for example 2.1–2.5),
+any/every point matching, primary/crossover scope, exam year, series, tier, paper,
+difficulty, marks, attempt status, text/spec-code search, demo visibility and sorting.
+Results are paginated in groups of 30. Topic selection and learned-topic filtering are
+separate; timed tests still respect the learned-topic gate.
+
+Specification codes are strings, not decimal numbers. Ranges and specification sorting
+use stored tree order, or an optional `point_order` containing every leaf ID exactly once.
+Use `point_order` for a verified syllabus sequence when the display tree is grouped by
+paper. Existing trees are provisional until checked against their official specification.
+
+An imported part can have its own `question_id`, `parent_question_id`, `part_label`,
+marks and spec tags. Optional `context.shared_stem_html` supplies required information;
+`context.full_question_html` / `full_question_image_url` provide collapsed context.
+Only the selected part is assessed. Dependency references are validated, and a dependent
+part must include its required earlier information in the visible shared stem.
+Existing combined demo questions remain unchanged; they have not been automatically split.
+
+See [Question imports and specification filtering](docs/question-import-and-filtering-plan.md)
+for the bulk-import proposal, model, evidence limits and rollout acceptance checks.
+
 ## Preparing for later phases
 
 Everything is gated by `FEATURES` in `js/config/phases.js`. To switch a phase on, add its

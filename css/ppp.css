@@ -199,3 +199,23 @@
   .reveal-ready:not(.is-revealed) { opacity: 1; transform: none; }
   .reveal-ready, .paper-art__sheet, .paper-art__seal, .practice-art__line::after { transition: none; }
 }
+
+/* Specification discovery and independent question parts. */
+.filter-details { border-top: 1px solid var(--line); padding-top: 14px; min-width: 0; }
+.filter-details > summary { cursor: pointer; font-size: 13px; font-weight: 600; }
+.filter-details[open] > summary { margin-bottom: 14px; }
+.filter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.filter-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.filter-grid .field { min-width: 0; }
+.filter-grid .select, .filter-details .select { min-width: 0; max-width: 100%; text-overflow: ellipsis; }
+.filter-pagination { padding-top: 16px; border-top: 1px solid var(--line); }
+.filter-pagination > span { text-align: center; }
+.question-stem { border-left: 2px solid var(--line-strong); padding-left: 18px; color: var(--ink-2); }
+.question-context { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); }
+.question-context > summary { cursor: pointer; font-size: 13px; font-weight: 600; }
+.question-context .qcontent { padding-top: 12px; }
+@media (max-width: 640px) {
+  .filter-grid { grid-template-columns: 1fr; }
+  .filter-pagination { justify-content: center; }
+  .filter-pagination > span { order: -1; flex-basis: 100%; }
+}

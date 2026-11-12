@@ -46,6 +46,39 @@ export function validateQuestion(question, { specIndex, paperIds, subjectId }) {
   const content = question.content || {};
   if (!content.question_html && !content.question_image_url) error('content needs question_html or question_image_url.');
   if (!content.mark_scheme_html && !content.mark_scheme_image_url) warning('no mark scheme (mark_scheme_html or mark_scheme_image_url).');
+
+  // A part is an independently marked leaf record. Its parent is a grouping id,
+  // not necessarily another assessable question in the bank.
+  for (const field of ['parent_question_id', 'part_label']) {
+    if (question[field] !== undefined && (typeof question[field] !== 'string' || !question[field].trim())) {
+      error(`${field} must be a non-empty string when supplied.`);
+    }
+  }
+  if (question.parent_question_id !== undefined && question.parent_question_id === question.question_id) error('parent_question_id cannot be the question itself.');
+  if (question.part_label && !question.parent_question_id) error('part_label needs a parent_question_id to group its original question.');
+
+  if (question.context !== undefined) {
+    if (!question.context || typeof question.context !== 'object' || Array.isArray(question.context)) {
+      error('context must be an object when supplied.');
+    } else {
+      for (const field of ['shared_stem_html', 'full_question_html', 'full_question_image_url']) {
+        if (question.context[field] !== undefined && typeof question.context[field] !== 'string') error(`context.${field} must be a string.`);
+      }
+    }
+  }
+  if (question.depends_on_question_ids !== undefined) {
+    const dependencies = question.depends_on_question_ids;
+    if (!Array.isArray(dependencies)) {
+      error('depends_on_question_ids must be an array.');
+    } else {
+      if (dependencies.some((dependency) => typeof dependency !== 'string' || !dependency.trim())) error('depends_on_question_ids must contain non-empty string ids.');
+      if (new Set(dependencies).size !== dependencies.length) error('depends_on_question_ids contains duplicate ids.');
+      if (dependencies.includes(question.question_id)) error('depends_on_question_ids cannot include the question itself.');
+      if (dependencies.length && !(typeof question.context?.shared_stem_html === 'string' && question.context.shared_stem_html.trim())) {
+        error('A question with dependencies needs context.shared_stem_html supplying the earlier information needed to answer this part.');
+      }
+    }
+  }
   return issues;
 }
 
@@ -90,6 +123,47 @@ export function validateBundle(bundle, specIndex) {
     seen.add(question.question_id);
     issues.push(...validateQuestion(question, { specIndex, paperIds, subjectId }));
   }
+  const byId = new Map(bundle.questions.map((question) => [question.question_id, question]));
+  const dependenciesOf = (question) => Array.isArray(question.depends_on_question_ids) ? question.depends_on_question_ids : [];
+  for (const question of bundle.questions) {
+    for (const dependencyId of dependenciesOf(question)) {
+      const dependency = byId.get(dependencyId);
+      if (!dependency) issues.push(issue('error', question.question_id, `Dependency "${dependencyId}" is not a question in this subject bundle.`));
+      else if (dependency.paper_id !== question.paper_id) issues.push(issue('error', question.question_id, `Dependency "${dependencyId}" belongs to a different paper.`));
+      else if (question.parent_question_id && dependency.parent_question_id && dependency.parent_question_id !== question.parent_question_id) {
+        issues.push(issue('error', question.question_id, `Dependency "${dependencyId}" belongs to a different parent question.`));
+      }
+    }
+  }
+  // Mark actual cycle participants rather than every record which reaches a
+  // cycle, so an editor gets the ids whose relationship needs correction.
+  const state = new Map(); // 1 = on the active path, 2 = fully visited
+  const cyclic = new Set();
+  for (const id of byId.keys()) {
+    if (state.has(id)) continue;
+    // Iterative traversal also handles large imports without a recursive call
+    // stack proportional to the length of the dependency chain.
+    const path = [{ id, next: 0, dependencies: dependenciesOf(byId.get(id)) }];
+    state.set(id, 1);
+    while (path.length) {
+      const frame = path[path.length - 1];
+      if (frame.next === frame.dependencies.length) {
+        state.set(frame.id, 2);
+        path.pop();
+        continue;
+      }
+      const dependencyId = frame.dependencies[frame.next++];
+      if (!byId.has(dependencyId)) continue;
+      if (state.get(dependencyId) === 1) {
+        const start = path.findIndex((entry) => entry.id === dependencyId);
+        for (const member of path.slice(start)) cyclic.add(member.id);
+      } else if (!state.has(dependencyId)) {
+        state.set(dependencyId, 1);
+        path.push({ id: dependencyId, next: 0, dependencies: dependenciesOf(byId.get(dependencyId)) });
+      }
+    }
+  }
+  for (const id of cyclic) issues.push(issue('error', id, 'depends_on_question_ids contains a dependency cycle.'));
   for (const paper of bundle.papers) issues.push(...validatePaper(paper, { questionsById: bundle.questionsById, subjectId }));
   return issues;
 }
