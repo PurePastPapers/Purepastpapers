@@ -2,10 +2,10 @@
 // or in phases.js — UI code reads these values and never hard-codes them.
 
 export const APP = {
-  name: 'OnSpec', // working title — change it here and it updates everywhere
+  name: 'PPP', // PurePastPapers.com — shared across the interface
   tagline: 'Past papers, filtered to what you have actually learned.',
   version: '0.1.0',
-  storageNamespace: 'onspec', // prefix for everything kept in the browser
+  storageNamespace: 'onspec', // retained so existing accounts and progress stay available
 };
 
 export const CONTENT = {

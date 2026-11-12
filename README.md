@@ -1,11 +1,11 @@
-# OnSpec — GCSE & A-Level revision and exam platform
+# PPP — PurePastPapers.com
 
 Phase 1 of the four-phase PRD (v2.1): official past papers, topic and crossover filtering,
 difficulty selection, customisable practice, user accounts and the Data Hub. Phases 2–4 are
 wired in behind feature flags and show as "Coming soon".
 
 Plain HTML5, CSS3 and vanilla JavaScript modules. No build step and no dependencies.
-"OnSpec" is a working title: change `APP.name` in `js/config/app.config.js`.
+PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.config.js`.
 
 ## Run it
 

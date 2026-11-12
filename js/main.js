@@ -7,6 +7,7 @@ import { isEnabled } from './config/phases.js';
 import { $, html, setHtml } from './core/dom.js';
 import * as api from './data/api.js';
 import * as shell from './ui/shell.js';
+import { revealOnScroll } from './ui/motion.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 
 const papersView = () => import('./ui/views/papers.js');
@@ -134,8 +135,18 @@ async function handleRoute() {
     const module = await load();
     if (ticket !== navigation) return;
     const dispose = await module.mount(view, context);
-    if (ticket !== navigation) return void dispose?.();
-    cleanup = typeof dispose === 'function' ? dispose : null;
+    if (ticket !== navigation) {
+      if (typeof dispose === 'function') dispose();
+      return;
+    }
+    const stopReveals = revealOnScroll(view);
+    cleanup = () => {
+      try {
+        if (typeof dispose === 'function') dispose();
+      } finally {
+        stopReveals();
+      }
+    };
     $('h1', view)?.focus({ preventScroll: true });
   } catch (error) {
     console.error(error);

@@ -10,7 +10,7 @@ import { activeTheme, toggleTheme } from './theme.js';
 
 let root = null;
 
-export const brand = () => html`<a class="brand" href="#/" aria-label="${APP.name} home">On<mark>Spec</mark></a>`;
+export const brand = () => html`<a class="brand" href="#/" aria-label="${APP.name} — PurePastPapers.com home"><span class="brand__letters">PPP<span class="brand__period">.</span></span><span class="brand__domain">PurePastPapers.com</span></a>`;
 
 function navigation() {
   return navGroups().map(
@@ -70,12 +70,14 @@ function frame() {
         : html`<header class="pubbar">
             ${brand()}
             <span class="spacer"></span>
+            <span class="pubbar__note">Less noise. More marks.</span>
             ${themeButton(false)}
             <a class="btn btn--ghost" href="#/login">Log in</a>
             <a class="btn btn--primary" href="#/signup">Sign up</a>
           </header>`}
       <main id="outlet"></main>
       <footer class="site-foot">
+        <div class="site-foot__brand"><span>PPP<span class="brand__period">.</span></span><span>PurePastPapers.com</span><a href="#/">Back to home ${icon('external', { size: 14 })}</a></div>
         <p>
           ${APP.name} is an independent revision project. It is not affiliated with AQA, Pearson Edexcel, OCR or WJEC Eduqas. Past papers and mark
           schemes remain the copyright of their exam boards.
@@ -121,6 +123,7 @@ function setActive(path) {
 export function setRoute(path, layout = null) {
   const app = $('.app', root);
   app.dataset.layout = layout || (api.isSignedIn() ? 'app' : 'public');
+  app.dataset.page = path === '/' && !api.isSignedIn() ? 'landing' : 'inner';
   app.classList.remove('is-nav-open');
   setActive(path);
 }

@@ -42,18 +42,11 @@ export async function mount(element, context) {
   }
   weakest.sort((a, b) => a.entry.percentage - b.entry.percentage);
 
-  const steps = [
-    { done: enrolled.length > 0, label: 'Choose your subjects', href: '#/subjects' },
-    { done: progress.learned_spec_points.length > 0, label: 'Tick the topics you have learned', href: enrolled[0] ? `#/subject/${enrolled[0].subject.subject_id}` : '#/subjects' },
-    { done: progress.question_attempts.length > 0, label: 'Answer your first questions', href: '#/practice' },
-  ];
-  const settingUp = steps.some((step) => !step.done);
-
   setHtml(
     element,
     html`${pageHead({
         title: `${greeting()}, ${user.display_name}`,
-        sub: settingUp ? 'Three quick steps and your practice will be tailored to what you know.' : 'Here is where you stand and what to do next.',
+        sub: 'Your papers. Your practice. Your progress.',
         actions: html`<a class="btn btn--primary" href="#/practice">${icon('sliders')} Start practising</a><a class="btn" href="#/papers">Past papers</a>`,
       })}
       <div class="stack stack--lg">
@@ -67,21 +60,6 @@ export async function mount(element, context) {
                 { type: 'info' },
               )}
             </div>`
-          : ''}
-        ${settingUp
-          ? html`<section class="card">
-              <h2 class="h2">Get set up</h2>
-              <ol class="steps">
-                ${steps.map(
-                  (step, index) =>
-                    html`<li class="steps__item ${step.done ? 'is-done' : ''}">
-                      <span class="steps__mark" aria-hidden="true">${step.done ? icon('check', { size: 16 }) : index + 1}</span>
-                      <a href="${step.href}">${step.label}</a>
-                      ${step.done ? html`<span class="small muted">Done</span>` : ''}
-                    </li>`,
-                )}
-              </ol>
-            </section>`
           : ''}
         ${resumable.length
           ? html`<section>

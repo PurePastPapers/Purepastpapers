@@ -8,8 +8,8 @@
   color-scheme: light;
 
   /* surfaces & ink (warm paper neutrals) */
-  --plane: #f6f5f1;
-  --surface: #fcfcfb;
+  --plane: #f7f6f2;
+  --surface: #ffffff;
   --surface-2: #f1f0ea;
   --surface-3: #e7e5dd;
   --ink: #0b0b0b;
@@ -19,10 +19,10 @@
   --line-strong: #c3c2b7;
 
   /* accent & highlighter */
-  --accent: #2a78d6;
-  --accent-strong: #1c5cab;
-  --accent-wash: #e8f1fc;
-  --highlight: #ffe36e;
+  --accent: #d82b26;
+  --accent-strong: #b5221e;
+  --accent-wash: #fff0ed;
+  --highlight: #ffd7d0;
   --demo-bg: #ffe36e;
   --demo-ink: #3d3000;
 
@@ -49,13 +49,13 @@
   --grid: #e1e0d9;
   --axis: #c3c2b7;
 
-  --radius: 12px;
-  --radius-sm: 8px;
+  --radius: 6px;
+  --radius-sm: 4px;
   --shadow: 0 1px 2px rgba(11, 11, 11, 0.04), 0 10px 28px rgba(11, 11, 11, 0.07);
   --sidebar: 256px;
 
   --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --font-display: var(--font);
   --font-mono: ui-monospace, 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
 }
 
@@ -70,10 +70,10 @@
   --ink-3: #96948d;
   --line: #2c2c2a;
   --line-strong: #46463f;
-  --accent: #3987e5;
-  --accent-strong: #86b6ef;
-  --accent-wash: #15263c;
-  --highlight: #7a6a14;
+  --accent: #ff635a;
+  --accent-strong: #ff8c84;
+  --accent-wash: #321817;
+  --highlight: #6a2824;
   --demo-bg: #3f360b;
   --demo-ink: #ffe36e;
   --good-ink: #3fbf3f;

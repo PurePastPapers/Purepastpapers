@@ -122,39 +122,6 @@
 }
 
 /* ── dashboard ── */
-.steps {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 12px;
-}
-.steps__item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  font-weight: 550;
-}
-.steps__mark {
-  flex: none;
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 1.5px solid var(--line-strong);
-  font-size: 13px;
-  font-weight: 650;
-  color: var(--ink-2);
-}
-.steps__item.is-done .steps__mark {
-  background: var(--good-wash);
-  border-color: transparent;
-  color: var(--good-ink);
-}
-.steps__item.is-done a {
-  color: var(--ink-2);
-}
 .resume {
   display: flex;
   flex-wrap: wrap;

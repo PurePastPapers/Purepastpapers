@@ -231,7 +231,7 @@ export function exportData() {
 export async function importData(data) {
   const incoming = data?.progress ?? data;
   if (!incoming || !Array.isArray(incoming.question_attempts) || !Array.isArray(incoming.learned_spec_points)) {
-    throw new Error('That file is not an OnSpec progress export.');
+    throw new Error('That file is not a PPP progress export.');
   }
   progress = normalise(incoming, user.user_id);
   learnedCache = null;
