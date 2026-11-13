@@ -35,3 +35,25 @@ export const toggleTheme = () => setThemePreference(activeTheme() === 'dark' ? '
 systemDark.addEventListener('change', () => {
   if (getThemePreference() === 'system') apply('system');
 });
+
+// ── other display settings (per device, like the theme) ──
+// 'flat'  → cards sit straight instead of tilted
+// 'large' → larger text for questions and mark schemes
+const DISPLAY_KEYS = { flat: `${APP.storageNamespace}:flat`, large: `${APP.storageNamespace}:large` };
+
+export function getDisplayPref(name) {
+  try {
+    return localStorage.getItem(DISPLAY_KEYS[name]) === '1';
+  } catch {
+    return false;
+  }
+}
+
+export function setDisplayPref(name, on) {
+  try {
+    localStorage.setItem(DISPLAY_KEYS[name], on ? '1' : '0');
+  } catch {
+    /* still applies for this visit */
+  }
+  document.documentElement.toggleAttribute(`data-${name}`, on);
+}

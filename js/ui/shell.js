@@ -6,6 +6,7 @@ import { isEnabled, navGroups } from '../config/phases.js';
 import { $, $$, html, on, setHtml } from '../core/dom.js';
 import * as api from '../data/api.js';
 import { icon } from './icons.js';
+import { SUBJECT_SWATCHES } from './subject-colours.js';
 import { activeTheme, toggleTheme } from './theme.js';
 
 let root = null;
@@ -26,6 +27,15 @@ function answeredCount() {
   }
 }
 
+function avatarHex() {
+  try {
+    const id = api.getProgress().preferences.avatarColour || 'yellow';
+    return SUBJECT_SWATCHES.find((swatch) => swatch.id === id)?.hex || SUBJECT_SWATCHES[4].hex;
+  } catch {
+    return SUBJECT_SWATCHES[4].hex;
+  }
+}
+
 function frame() {
   const user = api.currentUser();
   const initials = user ? user.display_name.trim().slice(0, 1).toUpperCase() : '';
@@ -38,7 +48,7 @@ function frame() {
             <div class="topnav__right">
               <a class="tag topnav__count" href="#/hub" data-answered>${answeredCount()} answered</a>
               <details class="menu" data-menu>
-                <summary class="avatar" aria-label="Account menu for ${user.display_name}">${initials}</summary>
+                <summary class="avatar" style="--sc:${avatarHex()}" aria-label="Account menu for ${user.display_name}">${initials}</summary>
                 <div class="menu__panel card">
                   <p class="menu__who"><strong>${user.display_name}</strong><span class="small muted">${user.is_demo ? 'Demo account' : user.email || 'Your account'}</span></p>
                   <nav class="menu__links" aria-label="More">
