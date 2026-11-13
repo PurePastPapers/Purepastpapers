@@ -511,6 +511,10 @@ a.tag {
 }
 .btn--icon {
   width: 42px;
+  padding: 0;
+}
+.btn--icon.btn--sm {
+  width: 34px;
 }
 .btn:disabled,
 .btn[aria-disabled='true'] {
@@ -641,8 +645,7 @@ a.tag {
 /* ── forms ── */
 .input,
 .select,
-.textarea,
-.searchbox {
+.textarea {
   border: 2px solid var(--ink);
   border-radius: 6px;
   background: var(--surface);

@@ -132,6 +132,34 @@ export function gradeFor(percentage, schemeKey, boundaries = null) {
   return scheme?.fail || 'U';
 }
 
+/** Grades in a scheme, best first (the fail grade last). */
+export function gradesIn(schemeKey) {
+  const scheme = GRADE_SCHEMES[schemeKey];
+  return scheme ? [...scheme.bands.map(([grade]) => grade), scheme.fail] : [];
+}
+
+/**
+ * A paper grade judged against the student's target grade (owner request, 2026-11-13):
+ * above target → 'exceeding', at target → 'secure', one grade below → 'developing',
+ * two or more below → 'needs_work'. Null when either grade is missing or unknown.
+ */
+export function targetBand(grade, target, schemeKey) {
+  const order = gradesIn(schemeKey);
+  const got = order.indexOf(grade);
+  const want = order.indexOf(target);
+  if (got < 0 || want < 0) return null;
+  if (got < want) return 'exceeding';
+  if (got === want) return 'secure';
+  return got - want === 1 ? 'developing' : 'needs_work';
+}
+
+export const TARGET_BANDS = {
+  exceeding: { label: 'Exceeding target', rag: 'blue' },
+  secure: { label: 'Secure', rag: 'green' },
+  developing: { label: 'Developing', rag: 'amber' },
+  needs_work: { label: 'Needs work', rag: 'red' },
+};
+
 /** Paper / test attempts, newest first, optionally limited to a subject and paper types. */
 export function paperHistory(paperAttempts, { subjectId = null, paperTypes = null } = {}) {
   return (paperAttempts || [])

@@ -68,3 +68,22 @@ export function tintPage(subject) {
   root.dataset.tint = '';
   root.style.setProperty('--page-sc', subjectColour(subject));
 }
+
+// ── target grades (owner request 2026-11-13: papers are judged against a target grade) ──
+
+/** The student's target grade for a subject, or null when not set ("Not sure yet"). */
+export function targetGrade(subject) {
+  const id = typeof subject === 'string' ? subject : subject?.subject_id;
+  return progressOrNull()?.preferences?.targetGrades?.[id] || null;
+}
+
+/** Saves a subject's colour and target grade together. `target` null clears it. */
+export async function saveSubjectSettings(subjectId, { swatch = null, target } = {}) {
+  if (swatch) await setSubjectColour(subjectId, swatch);
+  if (target !== undefined) {
+    const current = { ...(api.getProgress().preferences.targetGrades || {}) };
+    if (target) current[subjectId] = target;
+    else delete current[subjectId];
+    await api.setPreference('targetGrades', current);
+  }
+}

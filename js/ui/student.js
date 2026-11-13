@@ -6,10 +6,10 @@ import { html, on, setHtml } from '../core/dom.js';
 import * as api from '../data/api.js';
 import { getBundles, specIndex } from '../data/content-repository.js';
 import { createSession } from '../data/sessions.js';
-import { latestByQuestion, masteryByNode, ragFor, totals } from '../engine/analytics.js';
+import { TARGET_BANDS, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../engine/analytics.js';
 import { filterQuestions } from '../engine/filter-engine.js';
 import { icon } from './icons.js';
-import { SUBJECT_SWATCHES, scStyle, setSubjectColour, subjectColour, subjectSwatchId } from './subject-colours.js';
+import { SUBJECT_SWATCHES, scStyle, setSubjectColour, subjectColour, subjectSwatchId, targetGrade } from './subject-colours.js';
 import { fmtPercent, groupDot } from './ui.js';
 
 /**
@@ -82,6 +82,46 @@ export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) 
                 </footer>`
               : ''}`
         : html`<p class="small muted">${subject.no_written_exam}</p>`}
+    </div>
+  </article>`;
+}
+
+/** Target grade box with the last paper's grade judged against it. */
+export function targetLine(subject, progress) {
+  const target = targetGrade(subject);
+  const last = paperHistory(progress.paper_attempts, { subjectId: subject.subject_id }).find((attempt) => attempt.grade);
+  const band = last && target ? targetBand(last.grade, target, subject.grade_scheme) : null;
+  return html`<div class="target">
+    <span class="target__grade" title="Target grade">${target || '–'}</span>
+    <span>
+      <span class="target__label">Target grade${target ? '' : ': not set'}</span>
+      Last paper: <b>${last ? last.grade : 'none yet'}</b>
+      ${band ? html`<span class="band" data-band="${band}">${TARGET_BANDS[band].label}</span>` : ''}
+    </span>
+  </div>`;
+}
+
+/** The card used on My subjects: colour band, target grade, topic segments and manage buttons. */
+export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
+  const { subject } = bundle;
+  const id = subject.subject_id;
+  return html`<article class="card subject-card ${tilt ? `tilt-${tilt}` : ''}" style="${scStyle(subject)}" data-subject-card="${id}">
+    <header class="subject-card__band">
+      <h3><a href="#/subject/${id}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
+      <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
+    </header>
+    <div class="subject-card__body">
+      <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}</p>
+      ${targetLine(subject, progress)}
+      ${subject.has_written_exam
+        ? html`<span class="segbar" role="img" aria-label="Topic scores">${summary.segments.map((segment) => html`<i data-rag="${segment.rag}" title="${segment.title}"></i>`)}</span>
+            <p class="subject-card__meta">${summary.learned}/${summary.leaves} spec points learned</p>`
+        : html`<p class="small muted">${subject.no_written_exam}</p>`}
+      <footer class="row row--tight">
+        ${subject.has_written_exam ? html`<a class="btn btn--sm btn--primary" href="#/subject/${id}">Topics learned</a>` : ''}
+        <button type="button" class="btn btn--sm" data-edit="${id}">Edit</button>
+        <button type="button" class="linkbtn small subject-card__remove" data-unenrol="${id}">Remove</button>
+      </footer>
     </div>
   </article>`;
 }

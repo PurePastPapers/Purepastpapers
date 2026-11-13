@@ -385,3 +385,285 @@
 .activity li:first-child {
   border-top: 0;
 }
+
+/* ── My subjects ── */
+.target {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+}
+.target__grade {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: 2px 2px 0 var(--ink);
+  font: 400 24px/1 var(--font-display);
+}
+.target__label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.band {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 20px;
+  font: 800 12.5px/1.5 var(--font);
+  white-space: nowrap;
+  background: var(--surface);
+}
+.band[data-band='exceeding'] {
+  background: #cfe0f3;
+}
+.band[data-band='secure'] {
+  background: var(--good-wash);
+}
+.band[data-band='developing'] {
+  background: var(--warn-wash);
+}
+.band[data-band='needs_work'] {
+  background: var(--crit-wash);
+}
+:root[data-theme='dark'] .band[data-band='exceeding'] {
+  background: #4a5c70;
+}
+.subject-card__remove {
+  margin-left: auto;
+  color: var(--ink-2);
+  text-decoration: underline;
+  font-weight: 600;
+}
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  margin-bottom: 34px;
+}
+.suggestion {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  align-items: start;
+  padding: 18px 22px 16px;
+}
+.suggestion h3 {
+  font-size: 21px;
+}
+.suggestion .hand {
+  grid-column: 1 / -1;
+  font-size: 20px;
+  line-height: 1.15;
+  margin-top: 6px;
+}
+.catalogue-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-bottom: 30px;
+}
+.catalogue-bar__search {
+  flex: 0 1 360px;
+}
+.catalogue-bar .chips {
+  margin-left: auto;
+}
+.catalogue {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px 28px;
+}
+.catalogue-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 26px 24px 20px;
+}
+.catalogue-card__cat {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.catalogue-card h3 {
+  font-size: 23px;
+  line-height: 1.2;
+}
+.catalogue-card footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+.warn-note {
+  border: 1.5px dashed var(--ink);
+  border-radius: 5px;
+  padding: 7px 10px;
+  background: color-mix(in srgb, var(--warn-wash) 55%, var(--surface));
+}
+.btn.is-added {
+  background: var(--good-wash);
+  cursor: default;
+  opacity: 1;
+}
+
+/* subject dialog */
+.modal--subject {
+  width: min(1000px, calc(100vw - 24px));
+}
+.modal--subject .modal__title {
+  font-size: 34px;
+}
+.subject-dialog {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 36px;
+}
+.subject-dialog__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.step {
+  border: 0;
+  margin: 0;
+  padding: 0 0 18px;
+  border-bottom: 1.5px dashed var(--line-strong);
+}
+.step:last-child {
+  border-bottom: 0;
+}
+.step legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 400 21px/1.2 var(--font-display);
+  padding: 0;
+}
+.step legend i {
+  font-style: normal;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  font-size: 14px;
+}
+.step__hint {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin: 4px 0 12px 38px;
+}
+.step > :not(legend):not(.step__hint) {
+  margin-left: 38px;
+}
+.swatches--row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.swatch-pick input,
+.grade-pick input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.swatch-pick .swatch {
+  display: block;
+  cursor: pointer;
+}
+.swatch-pick input:checked + .swatch {
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5.5px var(--ink);
+}
+.swatch-pick input:focus-visible + .swatch,
+.grade-pick input:focus-visible + span {
+  outline: 2.5px solid var(--ink);
+  outline-offset: 4px;
+}
+.grade-picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.grade-pick span {
+  min-width: 52px;
+  height: 48px;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  font: 400 21px/1 var(--font-display);
+  cursor: pointer;
+}
+.grade-pick--unsure span {
+  border-style: dashed;
+  font: 600 15px/1 var(--font);
+  color: var(--ink-2);
+}
+.grade-pick input:checked + span {
+  background: var(--ink);
+  color: var(--surface);
+  box-shadow: 3px 3px 0 rgba(42, 39, 35, 0.3);
+}
+.band-key {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.band-key li {
+  display: contents;
+}
+.band-key .band {
+  justify-content: center;
+  min-width: 140px;
+}
+.opts {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.opt:has(input:checked) {
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.opt small {
+  margin-left: auto;
+  color: var(--ink-2);
+}
+.subject-dialog__how {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+@media (max-width: 860px) {
+  .subject-dialog {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .step > :not(legend):not(.step__hint),
+  .step__hint {
+    margin-left: 0;
+  }
+}
