@@ -7,6 +7,7 @@ import { isEnabled } from './config/phases.js';
 import { $, html, setHtml } from './core/dom.js';
 import * as api from './data/api.js';
 import * as shell from './ui/shell.js';
+import { tintPage } from './ui/subject-colours.js';
 import { revealOnScroll } from './ui/motion.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 
@@ -96,6 +97,7 @@ async function handleRoute() {
   cleanup = null;
 
   shell.setRoute(path, route?.layout || null);
+  tintPage(null); // subject pages set their own tint once they know the subject
   // Each navigation renders into its own element, so a slow view can never paint over a newer one.
   const view = document.createElement('div');
   view.className = 'view';

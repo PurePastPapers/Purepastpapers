@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PPP — PurePastPapers.com</title>
-    <meta name="description" content="PurePastPapers.com. Official past papers and focused practice for GCSE and A-Level. Less noise. More progress." />
+    <title>PurePastPapers</title>
+    <meta name="description" content="Official past papers for your subjects, practice that only uses topics you have learned, and a Data Hub that shows how you are doing. GCSE, A-Level and Level 3." />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2710%27%20fill%3D%27%23080808%27%2F%3E%3Ctext%20x%3D%2732%27%20y%3D%2743%27%20text-anchor%3D%27middle%27%20fill%3D%27%23f23131%27%20font-family%3D%27Arial%2Csans-serif%27%20font-weight%3D%27900%27%20font-size%3D%2728%27%20letter-spacing%3D%27-2%27%3EPPP%3C%2Ftext%3E%3C%2Fsvg%3E" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20x%3D%276%27%20y%3D%276%27%20width%3D%2754%27%20height%3D%2754%27%20rx%3D%278%27%20fill%3D%27%232a2723%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%272%27%20width%3D%2754%27%20height%3D%2754%27%20rx%3D%278%27%20fill%3D%27%23fffdf8%27%20stroke%3D%27%232a2723%27%20stroke-width%3D%274%27%2F%3E%3Ctext%20x%3D%2729%27%20y%3D%2741%27%20text-anchor%3D%27middle%27%20fill%3D%27%232a2723%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2730%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E" />
     <script>
       // Stamp the theme before first paint (no flash). Preference: 'light' | 'dark' | 'system'.
       (function () {
@@ -16,12 +16,17 @@
         } catch (error) {}
         var dark = preference === 'dark' || (preference === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
         document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        try {
+          if (localStorage.getItem('onspec:flat') === '1') document.documentElement.setAttribute('data-flat', '');
+          if (localStorage.getItem('onspec:large') === '1') document.documentElement.setAttribute('data-large', '');
+        } catch (error) {}
       })();
     </script>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/views.css" />
-    <link rel="stylesheet" href="css/ppp.css" />
+    <link rel="stylesheet" href="css/paper.css" />
+    <link rel="stylesheet" href="css/pages.css" />
   </head>
   <body>
     <div id="app">

@@ -132,7 +132,9 @@ question database server-side.
 
 ```
 index.html
-css/        base.css (tokens, shell) · components.css · views.css
+css/        base.css (tokens, light/dark) · paper.css (index-card frame and parts) · pages.css (page layouts) · components.css · views.css
+fonts/      Young Serif, Nunito, Caveat (SIL Open Font Licence 1.1)
+designs/    to-be-used/: approved designs with AI features, not built yet (see its README)
 js/
   main.js   router and start-up
   config/   app.config.js (names, difficulty, RAG, grade bands) · phases.js (roadmap, flags, nav)
@@ -145,6 +147,22 @@ tools/      serve.mjs · validate-data.mjs · seed/ (sources for /data)
 tests/      engine.test.mjs
 assets/     pdfs/ · papers/ · ms/   (your files)
 ```
+
+## Design
+
+The look follows the designs the owner approved in November 2026: tilted, ruled index cards
+held on with plain masking tape, on a squared-paper background. Headings are Young Serif,
+body text Nunito and the handwritten notes Caveat (all three self-hosted in `fonts/`).
+
+- **Light or dark mode** is set in Account and in the menu. Dark mode uses warm browns with
+  cream text and mutes the subject colours; there is no neon.
+- **Subject colours** come from a fixed set of swatches (`js/ui/subject-colours.js`), saved
+  in the student's preferences. Pages about one subject tint the background with its colour.
+- **Target grades.** Each subject can have a target grade. Papers are rated against it:
+  above target is *Exceeding target*, at target *Secure*, one grade below *Developing* and
+  two or more below *Needs work* (`targetBand` in `js/engine/analytics.js`).
+- **Designs with AI features** are in `designs/to-be-used/`. They are not final: if the owner
+  or someone working with them asks for something different, follow that instead.
 
 ## Decisions
 

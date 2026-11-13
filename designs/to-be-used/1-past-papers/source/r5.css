@@ -1,0 +1,25 @@
+:root{--bg:#f6f3ec;--card:#fffdf8;--ink:#2a2723;--mut:#6d675d;--line:rgba(60,50,40,.07);--tape:rgba(214,196,160,.72);--hf:'Young Serif',serif}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;font-family:'Nunito',sans-serif;font-weight:600;color:var(--ink);background-color:var(--bg);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px}
+.px{font-family:var(--hf);font-weight:400;letter-spacing:-.3px}
+.hand{font-family:'Caveat',cursive;color:var(--mut)}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:4px;box-shadow:4px 5px 0 rgba(42,39,35,.14);position:relative}
+/* tape */
+.t{position:absolute;height:26px;width:96px;background:var(--tc,var(--tape));opacity:.9;z-index:2;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.t::before,.t::after{content:'';position:absolute;top:0;bottom:0;width:6px;background:inherit;-webkit-mask:linear-gradient(transparent 0 0);}
+.t{clip-path:polygon(3% 0,0 18%,4% 38%,0 58%,3% 80%,0 100%,97% 100%,100% 82%,96% 62%,100% 40%,97% 20%,100% 0)}
+.tl{top:-11px;left:-26px;transform:rotate(-38deg)}.tr{top:-11px;right:-26px;transform:rotate(38deg)}
+.tc{top:-14px;left:50%;margin-left:-48px;transform:rotate(-2.5deg)}
+.bl{bottom:-11px;left:-26px;transform:rotate(38deg)}.br{bottom:-11px;right:-26px;transform:rotate(-38deg)}
+/* variant b: washi tape stripes */
+.vb .t{background:repeating-linear-gradient(135deg,var(--tc,#d9c9a6) 0 7px,color-mix(in srgb,var(--tc,#d9c9a6) 55%,#fff) 7px 14px);opacity:.88;width:110px}
+.vb .tc{margin-left:-55px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--hf);font-size:18px;padding:12px 22px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);background:var(--card);color:var(--ink)}
+.btn.d{background:var(--ink);color:var(--card)}
+.tag{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:5px;padding:5px 11px;font-size:14px;background:var(--card)}
+.dot{width:12px;height:12px;border-radius:3px;border:2px solid var(--ink);display:inline-block}
+.ic{width:46px;height:46px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:19px;background:var(--bg)}
+.r1{transform:rotate(-1.2deg)}.r2{transform:rotate(.9deg)}.r3{transform:rotate(-.5deg)}.r4{transform:rotate(1.4deg)}
+.va .r1,.va .r2,.va .r3,.va .r4{transform:none}
+/* ruled index card lines in variant a */
+.va .ruled,.vd .ruled{background-image:linear-gradient(transparent 39px,rgba(200,90,80,.35) 39px,rgba(200,90,80,.35) 41px,transparent 41px),repeating-linear-gradient(transparent 0 27px,rgba(90,120,160,.16) 27px 28px);background-position:0 0,0 13px}

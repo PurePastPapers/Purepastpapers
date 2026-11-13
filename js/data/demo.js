@@ -127,6 +127,8 @@ async function buildDemoProgress() {
     learned_spec_points: [...learned],
     question_attempts: questionAttempts,
     paper_attempts: paperAttempts,
+    // Sample target grades so the My subjects page shows how papers are judged against them.
+    preferences: { targetGrades: { EDX_ALEVEL_MATH_9MA0: 'A', EDX_ALEVEL_FMATH_9FM0: 'B', EDX_ALEVEL_PHYS_9PH0: 'A*', AQA_ALEVEL_GEOG_7037: 'B' } },
   };
 }
 

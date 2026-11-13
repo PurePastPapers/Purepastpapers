@@ -6,6 +6,7 @@ import { FEATURES } from '../config/phases.js';
 import { $, html, raw, setHtml } from '../core/dom.js';
 import { clamp } from '../core/utils.js';
 import { icon } from './icons.js';
+import { subjectColour } from './subject-colours.js';
 
 const clampPercent = (value) => clamp(Number(value) || 0, 0, 100);
 
@@ -109,10 +110,10 @@ export function openModal({ title, body, actions = [{ label: 'Close', cancel: tr
   });
 }
 
-export async function confirmDialog({ title, message, confirmLabel = 'Confirm', cancelLabel = 'Cancel', danger = false }) {
+export async function confirmDialog({ title, message, extra = '', confirmLabel = 'Confirm', cancelLabel = 'Cancel', danger = false }) {
   const answer = await openModal({
     title,
-    body: html`<p>${message}</p>`,
+    body: html`<p>${message}</p>${extra}`,
     actions: [
       { label: cancelLabel, cancel: true },
       { label: confirmLabel, value: true, variant: danger ? 'danger' : 'primary' },
@@ -158,7 +159,9 @@ export const soonBadge = (feature) =>
 
 export const liveBadge = () => html`<span class="badge badge--live">Live</span>`;
 
-export const groupDot = (subject) => html`<span class="dot" data-group="${subject.category_group}" aria-hidden="true"></span>`;
+/** A small square in the subject's chosen colour. */
+export const groupDot = (subject) =>
+  html`<span class="dot" data-subject-id="${subject.subject_id}" style="--sc:${subjectColour(subject)}" aria-hidden="true"></span>`;
 
 // ───────────────────────────────── building blocks ─────────────────────────────────
 

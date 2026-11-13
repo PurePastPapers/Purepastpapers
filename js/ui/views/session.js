@@ -5,17 +5,17 @@
 // Marking goes through the provider in engine/marking.js, so AI marking (Phase 4) slots in
 // without changing this view.
 
-import { GRADE_SCHEMES } from '../../config/app.config.js';
 import { isEnabled } from '../../config/phases.js';
 import { $, $$, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
-import { clamp, debounce, fmtClock, fmtDuration, fmtMinutes, percent, plural, sum } from '../../core/utils.js';
+import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, plural, sum } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
-import { byDifficulty, ragFor } from '../../engine/analytics.js';
+import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
+import { targetGrade } from '../subject-colours.js';
 import { icon } from '../icons.js';
 import { markSchemeBody, marksPill, questionBody } from '../question-view.js';
-import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, meter, ragBadge, soonBadge, sourceBadge, toast } from '../ui.js';
+import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, sourceBadge, toast } from '../ui.js';
 
 const KIND_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Single question' };
 
@@ -89,8 +89,8 @@ export async function mount(element, context) {
   function bar({ stage }) {
     const running = isRunning(session);
     const timed = session.timer.mode !== 'off';
-    return html`<header class="runner__bar">
-      <a class="btn btn--ghost btn--sm" href="${backHref}">${icon('chevronLeft', { size: 16 })} ${stage === 'run' ? 'Save and exit' : 'Back'}</a>
+    return html`<header class="card runner__bar">
+      <a class="btn btn--sm" href="${backHref}">${icon('chevronLeft', { size: 16 })} ${stage === 'run' ? 'Save and exit' : stage === 'result' && session.kind === 'full_paper' ? 'Back to the paper' : 'Back'}</a>
       <div class="runner__title">
         <p class="h3">${session.title}</p>
         <p class="small muted">${subject.level} ${subject.subject} · ${KIND_LABELS[session.kind]}</p>
@@ -100,6 +100,7 @@ export async function mount(element, context) {
         ? html`<div class="timer ${running ? '' : 'is-paused'}">
             ${icon(session.timer.mode === 'countdown' ? 'clock' : 'stopwatch')}
             <span class="timer__value" data-timer aria-label="${session.timer.mode === 'countdown' ? 'Time remaining' : 'Time elapsed'}">${timerText()}</span>
+            ${session.timer.mode === 'countdown' || !running ? html`<span class="timer__left">${running ? 'left' : 'paused'}</span>` : ''}
             <button type="button" class="btn btn--icon btn--sm btn--ghost" data-pause aria-label="${running ? 'Pause the clock' : 'Resume the clock'}">
               ${icon(running ? 'pause' : 'play', { size: 16 })}
             </button>
@@ -157,6 +158,19 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── stage: answering ─────────────────────────────────
 
+  const paused = () => session.timer.mode !== 'off' && !isRunning(session);
+  const pausedPanel = () => {
+    const remaining = remainingSeconds(session);
+    const at = remaining !== null ? `${fmtClock(Math.max(remaining, 0))} left` : `${fmtClock(elapsedMs(session) / 1000)} in`;
+    return html`<section class="paused-panel">
+      <p class="hand">take a breather</p>
+      <h1 tabindex="-1">Paused</h1>
+      <p>The clock stopped at ${at}. The questions are hidden while you’re paused, so the timing stays fair.</p>
+      <button type="button" class="btn btn--primary btn--lg" data-pause>${icon('play', { size: 18 })} Resume</button>
+      <p class="small muted">Your answers are saved in this browser.</p>
+    </section>`;
+  };
+
   function drawRun() {
     if (wholePaper) return drawWholePaper();
     const index = clamp(session.current_index, 0, questions.length - 1);
@@ -169,9 +183,6 @@ export async function mount(element, context) {
       element,
       html`<div class="runner">
         ${bar({ stage: 'run' })}
-        ${session.timer.mode !== 'off' && !isRunning(session)
-          ? banner(html`<strong>Paused.</strong> The clock is stopped. <button type="button" class="linkbtn" data-pause>Resume</button>`, { type: 'warn' })
-          : ''}
         ${questions.length > 1
           ? html`<nav class="palette" aria-label="Questions">
               ${questions.map((item, position) => {
@@ -186,9 +197,14 @@ export async function mount(element, context) {
                   ${position + 1}
                 </button>`;
               })}
+              <span class="hand palette__key">blue = answered, red dot = flagged</span>
             </nav>`
           : ''}
-        <article class="card qview">
+        ${paused()
+          ? pausedPanel()
+          : html`<div class="runner__grid">
+        <article class="card ruled tilt-1 qview">
+          <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
             <h1 class="qview__num" tabindex="-1">
               ${questions.length > 1
@@ -199,10 +215,13 @@ export async function mount(element, context) {
           </header>
           ${questionBody(question)}
         </article>
-        <section class="card stack">
+        <div class="stack">
+        <section class="card ruled tilt-3 answer-card">
+          <i class="tape tape--c" aria-hidden="true"></i>
           <label class="field">
-            <span class="field__label">Your answer <span class="small muted">(optional)</span></span>
-            <textarea class="textarea" data-answer="${id}" placeholder="Type your working or essay here, or answer on paper.">${session.answers[id] || ''}</textarea>
+            <span class="card__title">Your answer</span>
+            <span class="hand">optional: type here, it saves as you go, or answer on paper</span>
+            <textarea class="textarea" data-answer="${id}" placeholder="Type your working or essay here.">${session.answers[id] || ''}</textarea>
           </label>
         </section>
         ${each
@@ -219,6 +238,8 @@ export async function mount(element, context) {
                   </div>`}
             </section>`
           : ''}
+        </div>
+        </div>
         <footer class="runner__nav">
           <button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
             ${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag for review'}
@@ -230,7 +251,7 @@ export async function mount(element, context) {
           ${last
             ? html`<button type="button" class="btn btn--primary" data-finish>${each ? 'Finish' : 'Finish and mark'}</button>`
             : html`<button type="button" class="btn btn--primary" data-go="${index + 1}">Next ${icon('chevronRight', { size: 16 })}</button>`}
-        </footer>
+        </footer>`}
       </div>`,
     );
     return undefined;
@@ -279,18 +300,18 @@ export async function mount(element, context) {
       element,
       html`<div class="runner">
         ${bar({ stage: 'mark' })}
-        <section class="card stack">
-          <h1 class="h2" tabindex="-1">Mark your work</h1>
-          <p class="muted">
-            ${wholePaper
-              ? 'Mark your paper with the official mark scheme, then enter your total.'
-              : 'Compare each answer with its mark scheme and enter the marks you earned. Be strict: award a mark only where the mark scheme allows it.'}
-            You took ${fmtDuration(elapsedMs(session) / 1000)}${session.time_limit_minutes ? ` of ${fmtMinutes(session.time_limit_minutes)}` : ''}.
-          </p>
-          ${aiMarkingNote()}
-        </section>
+        <header class="mark-head">
+          <h1 tabindex="-1">${wholePaper ? 'Mark your paper' : 'Mark your answers'}</h1>
+          <span class="hand">you took ${fmtDuration(elapsedMs(session) / 1000)}${session.time_limit_minutes ? ` of ${fmtMinutes(session.time_limit_minutes)}` : ''}</span>
+          ${wholePaper
+            ? ''
+            : html`<p class="muted">Compare each answer with its mark scheme and enter the marks you earned. Be strict: only give a mark where the mark scheme allows it.</p>`}
+        </header>
         ${wholePaper
-          ? html`<section class="card stack">
+          ? html`<section class="card ruled stack mark-step">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <h2 class="card__title">1. Open the mark scheme</h2>
+              <p>Mark your script with ${subject.board}’s official mark scheme. Be strict: only give a mark where the mark scheme allows it.</p>
               <div class="row">
                 ${markScheme
                   ? html`<a class="btn" href="${markScheme}" target="_blank" rel="noopener">${icon('checkCircle')} Open the mark scheme</a>`
@@ -298,14 +319,18 @@ export async function mount(element, context) {
                     ? html`<a class="btn" href="${paper.official_source_url}" target="_blank" rel="noopener">Find the mark scheme on the ${subject.board} site ${icon('external', { size: 15 })}</a>`
                     : ''}
               </div>
+            </section>
+            <section class="card ruled stack mark-step">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <h2 class="card__title">2. Enter your total</h2>
               <label class="field" style="max-width:260px">
-                <span class="field__label">Total marks out of ${session.total_marks}</span>
+                <span class="field__label">Marks out of ${session.total_marks}</span>
                 <input class="input" type="number" min="0" max="${session.total_marks}" step="1" inputmode="numeric" value="${session.total_awarded ?? ''}" data-total />
               </label>
             </section>`
           : questions.map(
               (question, index) =>
-                html`<article class="card stack markcard">
+                html`<article class="card ruled stack markcard">
                   <header class="row row--between">
                     <h2 class="h2">Question ${index + 1}</h2>
                     <div class="row row--tight">${session.flagged[question.question_id] ? html`<span class="tag">${icon('flag', { size: 13 })} Flagged</span>` : ''} ${marksPill(question.marks)}</div>
@@ -340,6 +365,11 @@ export async function mount(element, context) {
       entry.max += question.marks;
       topics.set(topicOf(question), entry);
     }
+    const target = targetGrade(subject);
+    const band = target && result.grade ? targetBand(result.grade, target, subject.grade_scheme) : null;
+    const history = session.paper_id
+      ? paperHistory(api.getProgress().paper_attempts).filter((attempt) => attempt.paper_id === session.paper_id).reverse().slice(-5)
+      : [];
     const levels = byDifficulty(
       scored.map((question) => ({ difficulty: question.difficulty, marks_awarded: session.marks[question.question_id], max_marks: question.marks })),
     ).filter((level) => level.count);
@@ -348,56 +378,86 @@ export async function mount(element, context) {
       element,
       html`<div class="runner">
         ${bar({ stage: 'result' })}
-        <section class="card result-hero">
-          <p class="label">${KIND_LABELS[session.kind]} complete</p>
-          <h1 class="result-hero__score" tabindex="-1">
-            <span class="result-hero__value">${result.marks_awarded}</span><span class="result-hero__max"> / ${result.max_marks}</span>
-          </h1>
-          <div class="row">
-            ${ragBadge(rag, result.percentage)}
-            ${result.grade ? html`<span class="tag">Indicative grade ${result.grade}</span>` : ''}
-            <span class="small muted">
-              ${result.duration_seconds ? `${fmtDuration(result.duration_seconds)} taken` : ''}${result.duration_seconds && session.time_limit_minutes ? ` of ${fmtMinutes(session.time_limit_minutes)}` : ''}
-            </span>
+        <section class="card ruled result-hero">
+          <i class="tape tape--c" aria-hidden="true"></i>
+          <div class="result-hero__left">
+            <p class="hand">${KIND_LABELS[session.kind].toLowerCase()} complete</p>
+            <h1 class="result-hero__score" tabindex="-1">
+              <span class="result-hero__value">${result.marks_awarded}</span><span class="result-hero__max"> / ${result.max_marks}</span>
+            </h1>
           </div>
-          ${meter(result.percentage, rag, `Score ${fmtPercent(result.percentage)}`)}
-          <div class="row">
-            <a class="btn btn--primary" href="${backHref}">${session.kind === 'full_paper' ? 'Back to the paper' : 'More practice'}</a>
-            <a class="btn" href="#/hub">Open the Data Hub</a>
-            ${questions.length ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} Try these again</button>` : ''}
+          <div class="result-hero__right">
+            <div class="row" style="gap:16px;flex-wrap:nowrap">
+              ${result.grade ? html`<span class="grade-stamp grade-stamp--lg" data-band="${band || ''}" data-rag="${band ? '' : rag}">${result.grade}</span>` : ''}
+              <div>
+                <p class="result-hero__pct">${fmtPercent(result.percentage)}</p>
+                <p class="muted">
+                  ${[
+                    result.grade ? `grade ${result.grade} on ${paper?.grade_boundaries?.length ? 'this paper’s boundaries' : 'indicative boundaries'}` : '',
+                    band ? TARGET_BANDS[band].label.toLowerCase() + ` (target ${target})` : '',
+                    result.duration_seconds ? `${fmtDuration(result.duration_seconds)}${session.time_limit_minutes ? ` of ${fmtMinutes(session.time_limit_minutes)}` : ''}` : '',
+                  ].filter(Boolean).join(' · ')}
+                </p>
+              </div>
+            </div>
+            ${meter(result.percentage, rag, `Score ${fmtPercent(result.percentage)}`)}
+            <div class="row">
+              <a class="btn btn--primary" href="${backHref}">${session.kind === 'full_paper' ? 'Back to the paper' : 'More practice'}</a>
+              <a class="btn" href="#/hub">Open the Data Hub</a>
+              ${questions.length ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} ${session.kind === 'full_paper' ? 'Sit it again' : 'Try these again'}</button>` : ''}
+            </div>
+            <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> Saved in this browser and added to your Data Hub.</p>
           </div>
-          <p class="small muted">
-            Saved to your Data Hub.
-            ${result.grade ? `The grade is indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}): real boundaries change with every paper and series.` : ''}
-          </p>
         </section>
-        ${scored.length > 1
-          ? html`<div class="grid grid--2">
-              <section class="card">
-                <div class="card__head"><h2 class="card__title">By topic</h2></div>
-                <div class="meterlist">
-                  ${[...topics].map(([name, entry]) => {
-                    const share = percent(entry.awarded, entry.max);
-                    return html`<span class="meterlist__name">${name}</span>${meter(share, ragFor(share), `${name}: ${fmtPercent(share)}`)}
-                      <span class="meterlist__value">${entry.awarded}/${entry.max}</span>`;
-                  })}
-                </div>
-              </section>
-              <section class="card">
-                <div class="card__head"><h2 class="card__title">By difficulty</h2></div>
-                <div class="meterlist">
-                  ${levels.map(
-                    (level) =>
-                      html`<span class="meterlist__name">${level.label}</span>${meter(level.percentage, level.rag, `${level.label}: ${fmtPercent(level.percentage)}`)}
-                        <span class="meterlist__value">${level.awarded}/${level.max}</span>`,
-                  )}
-                </div>
-              </section>
+        ${scored.length > 1 || history.length > 1
+          ? html`<div class="result-cards">
+              ${scored.length > 1
+                ? html`<section class="card ruled tilt-2">
+                    <i class="tape tape--l" aria-hidden="true"></i>
+                    <h2 class="card__title">By topic</h2>
+                    <div class="meterlist">
+                      ${[...topics].map(([name, entry]) => {
+                        const share = percent(entry.awarded, entry.max);
+                        return html`<span class="meterlist__name">${name}</span>${meter(share, ragFor(share), `${name}: ${fmtPercent(share)}`)}
+                          <span class="meterlist__value">${entry.awarded}/${entry.max}</span>`;
+                      })}
+                    </div>
+                  </section>
+                  <section class="card ruled tilt-3">
+                    <i class="tape tape--r" aria-hidden="true"></i>
+                    <h2 class="card__title">By difficulty</h2>
+                    <div class="meterlist">
+                      ${levels.map(
+                        (level) =>
+                          html`<span class="meterlist__name">${level.label}</span>${meter(level.percentage, level.rag, `${level.label}: ${fmtPercent(level.percentage)}`)}
+                            <span class="meterlist__value">${level.awarded}/${level.max}</span>`,
+                      )}
+                    </div>
+                  </section>`
+                : ''}
+              ${history.length > 1
+                ? html`<section class="card ruled tilt-1">
+                    <i class="tape tape--c" aria-hidden="true"></i>
+                    <h2 class="card__title">This paper over time</h2>
+                    <div class="minibars" role="img" aria-label="${history.map((attempt) => `${fmtDate(attempt.timestamp)}: ${fmtPercent(attempt.percentage)}`).join(', ')}">
+                      ${history.map(
+                        (attempt, index) =>
+                          html`<span class="minibars__col ${index === history.length - 1 ? 'is-now' : ''}">
+                            <b>${fmtPercent(attempt.percentage)}</b>
+                            <i style="height:${Math.max(4, attempt.percentage)}%"></i>
+                            <small>${index === history.length - 1 ? 'This time' : fmtDate(attempt.timestamp).replace(/ \d{4}$/, '')}</small>
+                          </span>`,
+                      )}
+                    </div>
+                  </section>`
+                : ''}
             </div>`
           : ''}
         ${questions.length
-          ? html`<section class="card">
-              <div class="card__head"><h2 class="card__title">Review</h2><span class="small muted">Open a question to see it with your answer and the mark scheme.</span></div>
+          ? html`<section class="card ruled review-card">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <h2 class="card__title">Review</h2>
+              <p class="hand">open a question to see your answer next to the mark scheme</p>
               ${questions.map((question, index) => {
                 const marks = session.marks[question.question_id];
                 const share = marks == null ? null : percent(marks, question.marks);
@@ -405,8 +465,9 @@ export async function mount(element, context) {
                   <summary>
                     <span class="fold__title">Question ${index + 1}</span>
                     <span class="tag">${topicOf(question)}</span>
+                    ${session.answers[question.question_id] ? '' : html`<span class="small muted">not typed</span>`}
                     <span class="spacer"></span>
-                    ${marks == null ? html`<span class="small muted">Not marked</span>` : html`${ragBadge(ragFor(share), null, { label: false })}<span class="num">${marks}/${question.marks}</span>`}
+                    ${marks == null ? html`<span class="small muted">Not marked</span>` : html`<span class="rag-dot" data-rag="${ragFor(share)}"></span><span class="review-card__marks">${marks}/${question.marks}</span>`}
                   </summary>
                   <div class="stack" style="padding-top:12px">
                     ${questionBody(question)} ${answerBlock(question)}
@@ -461,11 +522,24 @@ export async function mount(element, context) {
       }
       return complete();
     }
+    const remaining = remainingSeconds(session);
+    const clockLine = remaining !== null && remaining > 0 ? `The clock stops with ${fmtClock(remaining)} left` : 'The clock stops';
+    const numbers = (list) => list.map((question) => `Q${questions.indexOf(question) + 1}`).join(', ');
+    const unanswered = questions.filter((question) => !session.answers[question.question_id]);
+    const flagged = questions.filter((question) => session.flagged[question.question_id]);
     const proceed = await confirmDialog({
       title: wholePaper ? 'Finish the paper?' : 'Finish and mark?',
       message: wholePaper
-        ? 'The clock will stop and you can enter your marks.'
-        : 'The clock will stop and you will mark each answer against its mark scheme. You cannot go back to answering.',
+        ? `${clockLine} and you can enter your marks.`
+        : `${clockLine} and you’ll mark each answer against its mark scheme. You can’t go back to answering.`,
+      extra: wholePaper
+        ? ''
+        : html`<p class="row row--tight" style="margin-top:14px">
+            <span class="tag">${questions.length - unanswered.length} typed</span>
+            ${unanswered.length ? html`<span class="tag">${unanswered.length} not typed${unanswered.length <= 6 ? `: ${numbers(unanswered)}` : ''}</span>` : ''}
+            ${flagged.length ? html`<span class="tag">${flagged.length} flagged: ${numbers(flagged)}</span>` : ''}
+          </p>`,
+      cancelLabel: 'Keep going',
       confirmLabel: 'Finish',
     });
     if (!proceed) return;
@@ -536,6 +610,8 @@ export async function mount(element, context) {
   on(element, 'change', '[data-marks]', (event, input) => setMarks(input, input.value));
   on(element, 'input', '[data-total]', (event, input) => {
     session.total_awarded = input.value === '' ? null : clamp(Math.round(Number(input.value) || 0), 0, session.total_marks);
+    const line = $('[data-markbar]', element);
+    if (line) line.textContent = session.total_awarded == null ? 'Enter your total to finish' : `${session.total_awarded} out of ${session.total_marks}`;
     persist();
   });
   on(element, 'click', '[data-finish]', finishAnswering);

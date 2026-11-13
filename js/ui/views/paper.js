@@ -7,12 +7,13 @@ import { fmtDate, fmtMinutes, localDayKey, percent, plural, round1 } from '../..
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { createSession } from '../../data/sessions.js';
-import { gradeFor, latestByQuestion, paperHistory, ragFor } from '../../engine/analytics.js';
+import { gradeFor, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js';
 import { icon } from '../icons.js';
 import { marksPill, questionSnippet } from '../question-view.js';
 import { startSingle } from '../student.js';
-import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, openModal, pageHead, ragBadge, sourceBadge, toast } from '../ui.js';
+import { targetGrade } from '../subject-colours.js';
+import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, openModal, pageHead, sourceBadge, toast } from '../ui.js';
 
 const ROUTES = { real_past_paper: '/papers', ai_past_paper: '/ai-papers', predicted_paper: '/predicted' };
 
@@ -35,120 +36,149 @@ export async function mount(element, context) {
   const pdf = isSafeUrl(paper.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
   const markScheme = isSafeUrl(paper.full_mark_scheme_pdf_url) ? paper.full_mark_scheme_pdf_url : null;
 
+  const target = targetGrade(subject);
+  const schemeBands = GRADE_SCHEMES[subject.grade_scheme]?.bands || [];
+  const bounds = paper.grade_boundaries?.length
+    ? [...paper.grade_boundaries].sort((a, b) => b.min_percentage - a.min_percentage).map((b) => [b.grade, b.min_percentage])
+    : schemeBands;
+  const officialBounds = Boolean(paper.grade_boundaries?.length);
+  const SHOW_FIRST = 7;
+  let showAll = false;
+
   function attemptsCard() {
     const attempts = paperHistory(progress.paper_attempts).filter((attempt) => attempt.paper_id === paper.paper_id);
-    return html`<section class="card">
-      <div class="card__head"><h2 class="card__title">Your attempts</h2></div>
+    return html`<section class="card ruled tilt-2 paper-attempts">
+      <i class="tape tape--c" aria-hidden="true"></i>
+      <h2 class="card__title">Your attempts</h2>
       ${attempts.length
-        ? html`<div class="table-wrap">
-              <table class="table table--compact">
-                <thead>
-                  <tr><th>Date</th><th class="num">Score</th><th>Result</th><th><span class="sr-only">Actions</span></th></tr>
-                </thead>
-                <tbody>
-                  ${attempts.map(
-                    (attempt, index) =>
-                      html`<tr>
-                        <td>${fmtDate(attempt.timestamp)}</td>
-                        <td class="num">${attempt.marks_awarded}/${attempt.max_marks}</td>
-                        <td>
-                          ${ragBadge(ragFor(attempt.percentage), attempt.percentage, { label: false })}
-                          ${attempt.grade ? html`<span class="tag">Grade ${attempt.grade}</span>` : ''}
-                        </td>
-                        <td class="right">
-                          ${attempt.session_id && api.getSession(attempt.session_id)
-                            ? html`<a class="btn btn--sm btn--ghost" href="#/session/${attempt.session_id}">Review</a>`
-                            : ''}
-                          <button type="button" class="btn btn--sm btn--ghost btn--icon" data-delete-attempt="${index}" aria-label="Delete this attempt">
-                            ${icon('trash', { size: 15 })}
-                          </button>
-                        </td>
-                      </tr>`,
-                  )}
-                </tbody>
-              </table>
-            </div>
-            <p class="small muted" style="margin-top:10px">
-              Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}): real boundaries change with every paper and series.
-            </p>`
-        : html`<p class="muted small">No attempts yet. Sit the paper, or log a score if you have already done it on paper.</p>`}
+        ? html`<ul class="attempt-list">
+              ${attempts.map((attempt, index) => {
+                const band = target && attempt.grade ? targetBand(attempt.grade, target, subject.grade_scheme) : null;
+                const session = attempt.session_id && api.getSession(attempt.session_id);
+                return html`<li>
+                  <span>${fmtDate(attempt.timestamp)}</span>
+                  <b class="attempt-list__score">${attempt.marks_awarded}/${attempt.max_marks}</b>
+                  <span class="rag-dot" data-rag="${ragFor(attempt.percentage)}" title="${fmtPercent(attempt.percentage)}"></span>
+                  ${attempt.grade ? html`<span class="grade-stamp grade-stamp--sm" data-band="${band || ''}" title="${band ? TARGET_BANDS[band].label : `Grade ${attempt.grade}`}">${attempt.grade}</span>` : html`<span></span>`}
+                  <span class="attempt-list__act">
+                    ${session ? html`<a class="btn btn--sm" href="#/session/${attempt.session_id}">Review</a>` : html`<span class="muted small">${attempt.session_kind === 'logged' ? 'logged' : ''}</span>`}
+                    <button type="button" class="btn btn--sm btn--ghost btn--icon" data-delete-attempt="${index}" aria-label="Delete the attempt from ${fmtDate(attempt.timestamp)}">${icon('trash', { size: 15 })}</button>
+                  </span>
+                </li>`;
+              })}
+            </ul>
+            <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
+        : html`<p class="muted small">No attempts yet. Sit the paper here, or log a score if you have already done it on paper.</p>`}
     </section>`;
   }
+
+  function questionRows() {
+    const shown = showAll ? questions : questions.slice(0, SHOW_FIRST);
+    return html`<ol class="paper-questions">
+        ${shown.map((question) => {
+          const missing = missingSpecPoints(question, learned, specIndex);
+          const status = questionStatus(question, latest);
+          const attempt = latest.get(question.question_id);
+          return html`<li>
+            <span class="paper-questions__num">Q${question.question_number}</span>
+            <div style="min-width:0">
+              <p class="paper-questions__text">${questionSnippet(question, 120)}</p>
+              <p class="row row--tight small">
+                ${difficultyBadge(question.difficulty)}
+                ${[...new Set(question.primary_spec_points.map((id) => specIndex.topicOf(id)?.title || specIndex.label(id)))].map((topic) => html`<span class="tag">${topic}</span>`)}
+                ${missing.length ? html`<span class="tag tag--locked" title="${missing.map((id) => specIndex.label(id)).join('; ')}">${icon('lock', { size: 13 })} needs ${plural(missing.length, 'topic')} you have not learned yet</span>` : ''}
+                ${attempt ? html`<span class="lasttime"><span class="rag-dot" data-rag="${status}"></span>last time ${attempt.marks_awarded}/${attempt.max_marks}</span>` : ''}
+              </p>
+            </div>
+            <span class="row row--tight row--nowrap">${marksPill(question.marks)}<button type="button" class="btn btn--sm" data-open="${question.question_id}">Practise</button></span>
+          </li>`;
+        })}
+      </ol>
+      ${questions.length > SHOW_FIRST
+        ? html`<p class="center" style="margin-top:14px"><button type="button" class="btn btn--sm" data-more>${showAll ? 'Show fewer questions' : `Show ${questions.length - SHOW_FIRST} more questions`}</button></p>`
+        : ''}`;
+  }
+
+  const facts = [subject.board, `${subject.spec_code}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.year ? `${paper.series} ${paper.year}` : null, `${paper.total_marks} marks`, fmtMinutes(paper.duration_minutes), paper.tier ? `${paper.tier} tier` : null]
+    .filter(Boolean)
+    .join(' · ');
 
   setHtml(
     element,
     html`${pageHead({
-        crumbs: [{ label: PAPER_TYPES[paper.paper_type]?.plural || 'Papers', href: `#${listRoute}?subject=${subject.subject_id}` }, { label: subject.subject }],
-        title: paper.title,
-        badge: sourceBadge(paper),
-        sub: html`<span class="mono">${subject.board} · ${subject.spec_code}</span> · ${paper.total_marks} marks · ${fmtMinutes(paper.duration_minutes)}${paper.tier ? ` · ${paper.tier} tier` : ''}`,
+        crumbs: [
+          { label: 'Home', href: '#/' },
+          { label: PAPER_TYPES[paper.paper_type]?.plural === 'Official past papers' ? 'Past papers' : PAPER_TYPES[paper.paper_type]?.plural || 'Papers', href: `#${listRoute}` },
+          { label: subject.subject, href: `#${listRoute}?subject=${subject.subject_id}` },
+          ...(paper.year ? [{ label: `${paper.series} ${paper.year}` }] : []),
+        ],
+        title: paper.title.replace(paper.year ? `${paper.series} ${paper.year} ` : '', ''),
         actions: openSession
           ? html`<a class="btn btn--primary" href="#/session/${openSession.session_id}">${icon('play', { size: 16 })} Resume paper</a>`
           : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${fmtMinutes(paper.duration_minutes)})</button>
               <button type="button" class="btn" data-start="untimed">Sit untimed</button>
               <button type="button" class="btn" data-log>Log a score</button>`,
       })}
-      <div class="split">
-        <div class="stack">
-          ${paper.is_sample ? banner(paper.sample_note || 'Demo content.', { type: 'demo' }) : ''}
-          <section class="card">
-            <div class="card__head"><h2 class="card__title">Get the paper</h2></div>
+      <p class="row row--tight paper-facts">
+        <span class="tag">${groupDot(subject)} ${subject.level} ${subject.subject}</span>
+        ${sourceBadge(paper)}
+        <span class="muted">${facts}</span>
+      </p>
+      ${paper.is_sample ? banner(paper.sample_note || 'Demo content.', { type: 'demo' }) : ''}
+      <div class="split paper-layout">
+        <section class="card ruled tilt-1 paper-qs">
+          <i class="tape tape--c" aria-hidden="true"></i>
+          <div class="section-title">
+            <h2 class="card__title">Questions</h2>
+            ${questions.length ? html`<span class="hand">practise any one on its own</span><span class="small muted paper-qs__count">${plural(questions.length, 'question')} · ${paper.total_marks} marks</span>` : ''}
+          </div>
+          ${questions.length
+            ? html`${locked.length
+                  ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs a topic' : 'need topics'} you have not marked as learned. <a href="#/subject/${subject.subject_id}">Update learned topics</a>`, { type: 'warn' })
+                  : ''}
+                <div data-questions>${questionRows()}</div>`
+            : html`<div class="empty paper-qs__whole">
+                <h3 class="empty__title">Sat as a whole paper</h3>
+                <p class="empty__text">This paper’s questions have not been split out yet, so you sit it from the PDF and score it as one total. Once its questions are added they appear here with topic tags and feed Practice.</p>
+              </div>`}
+        </section>
+        <aside class="stack">
+          <section class="card ruled tilt-3">
+            <i class="tape tape--c" aria-hidden="true"></i>
+            <h2 class="card__title">Get the paper</h2>
             ${pdf || markScheme
-              ? html`<div class="row">
-                  ${pdf ? html`<a class="btn" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
-                  ${markScheme ? html`<a class="btn" href="${markScheme}" target="_blank" rel="noopener">${icon('checkCircle')} Mark scheme (PDF)</a>` : ''}
+              ? html`<div class="stack stack--sm">
+                  ${pdf ? html`<a class="btn btn--block btn--left" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
+                  ${markScheme ? html`<a class="btn btn--block btn--left" href="${markScheme}" target="_blank" rel="noopener">${icon('check')} Mark scheme (PDF)</a>` : ''}
                 </div>`
               : questions.length
-                ? html`<p class="muted">This paper is available here question by question, with its mark scheme.</p>`
+                ? html`<p class="muted">This paper is here question by question, with its mark scheme.</p>`
                 : html`<p class="muted">
-                      The PDF for this paper is not hosted here. Open ${subject.board}'s past papers page and look for the
-                      <strong>${paper.series} ${paper.year}</strong> series, <strong>${paper.title.replace(`${paper.series} ${paper.year} `, '')}</strong>. Then sit it here
-                      against the clock and log your marks.
+                      The PDF is not hosted here. Open ${subject.board}’s past papers page and look for the <strong>${paper.series} ${paper.year}</strong> series,
+                      <strong>${paper.title.replace(`${paper.series} ${paper.year} `, '')}</strong>.
                     </p>
                     ${paper.official_source_url
-                      ? html`<p style="margin-top:12px">
-                          <a class="btn" href="${paper.official_source_url}" target="_blank" rel="noopener">Open ${subject.board} past papers ${icon('external', { size: 15 })}</a>
-                        </p>`
+                      ? html`<p style="margin-top:12px"><a class="btn btn--block" href="${paper.official_source_url}" target="_blank" rel="noopener">Open ${subject.board} past papers ${icon('external', { size: 15 })}</a></p>`
                       : ''}`}
+            ${bounds.length
+              ? html`<p class="field__label" style="margin-top:20px">${officialBounds ? `Grade boundaries${paper.year ? ` · ${paper.series} ${paper.year}` : ''}` : 'Indicative grade boundaries'}</p>
+                  <div class="boundaries">
+                    ${bounds.map(([grade, minimum]) => html`<span>${grade}<b>${Math.ceil((minimum / 100) * paper.total_marks)}</b></span>`)}
+                  </div>
+                  <p class="small muted" style="margin-top:8px">
+                    Out of ${paper.total_marks}. ${officialBounds ? `From ${subject.board}, used for your grade on this paper.` : 'Typical boundaries for the level, not this paper’s official ones.'}
+                  </p>`
+              : ''}
           </section>
-          <section class="card">
-            <div class="card__head">
-              <h2 class="card__title">Questions</h2>
-              ${questions.length ? html`<span class="small muted">${plural(questions.length, 'question')} · ${paper.total_marks} marks</span>` : ''}
-            </div>
-            ${questions.length
-              ? html`${locked.length
-                    ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs' : 'need'} topics you have not marked as learned. <a href="#/subject/${subject.subject_id}">Update learned topics</a>`, { type: 'warn' })
-                    : ''}
-                  <ol class="paper-questions">
-                    ${questions.map((question) => {
-                      const missing = missingSpecPoints(question, learned, specIndex);
-                      const status = questionStatus(question, latest);
-                      const attempt = latest.get(question.question_id);
-                      return html`<li>
-                        <span class="paper-questions__num">Q${question.question_number}</span>
-                        <div style="min-width:0">
-                          <p class="paper-questions__text">${questionSnippet(question, 110)}</p>
-                          <p class="row row--tight small muted">
-                            ${difficultyBadge(question.difficulty)}
-                            ${[...new Set(question.primary_spec_points.map((id) => specIndex.topicOf(id)?.title || specIndex.label(id)))].map((topic) => html`<span class="tag">${topic}</span>`)}
-                            ${missing.length ? html`<span class="tag" title="${missing.map((id) => specIndex.label(id)).join('; ')}">${icon('lock', { size: 13 })} needs ${plural(missing.length, 'more spec point')}</span>` : ''}
-                            ${attempt ? ragBadge(status, percent(attempt.marks_awarded, attempt.max_marks), { label: false }) : ''}
-                          </p>
-                        </div>
-                        <span class="row row--tight row--nowrap">${marksPill(question.marks)}<button type="button" class="btn btn--sm" data-open="${question.question_id}">Practise</button></span>
-                      </li>`;
-                    })}
-                  </ol>`
-              : html`<p class="muted">
-                  Individual questions from this paper have not been extracted yet, so it is sat as a whole paper and scored as one total. Once its questions
-                  are added they appear here with topic tags, and feed the customisable practice pool.
-                </p>`}
-          </section>
-        </div>
-        <aside class="stack" data-attempts>${attemptsCard()}</aside>
+          <div data-attempts>${attemptsCard()}</div>
+        </aside>
       </div>`,
   );
+
+  on(element, 'click', '[data-more]', () => {
+    showAll = !showAll;
+    setHtml($('[data-questions]', element), questionRows());
+  });
 
   async function start(timed) {
     const session = createSession({

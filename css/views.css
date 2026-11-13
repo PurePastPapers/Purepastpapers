@@ -293,7 +293,7 @@
   font-weight: 650;
 }
 .paper-questions__text {
-  font: 15px/1.5 var(--font-display);
+  font: 15px/1.5 var(--font);
   margin-bottom: 6px;
 }
 @media (max-width: 620px) {
@@ -505,7 +505,7 @@
   border-bottom: 1px solid var(--line);
 }
 .qview__num {
-  font: 600 22px/1.2 var(--font-display);
+  font: 400 24px/1.2 var(--font-display);
 }
 .runner__nav {
   display: flex;
@@ -663,7 +663,7 @@
   display: block;
 }
 .qcell__text {
-  font: 14.5px/1.4 var(--font-display);
+  font: 14.5px/1.4 var(--font);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

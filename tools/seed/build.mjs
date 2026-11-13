@@ -317,6 +317,12 @@ if ((await readFile(packsIndex, 'utf8').catch(() => null)) === null) {
   await writeFile(packsIndex, `${format({ packs: [] })}\n`);
 }
 await writeFile(manifestPath, `${format(nextManifest)}\n`);
+// Headline numbers for the landing page, so it does not have to load every subject's files.
+const sum = (key) => summary.reduce((n, row) => n + row[key], 0);
+await writeFile(
+  join(DATA, 'stats.json'),
+  `${format({ subjects: summary.length, spec_points: sum('spec_points'), catalogue_papers: sum('catalogue_papers') })}\n`,
+);
 
 console.table(summary);
 const total = (key) => summary.reduce((n, row) => n + row[key], 0);

@@ -1,0 +1,306 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 80px;position:relative}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+.av.on{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--ink)}
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0}.lede{font-size:27px}
+.hrow{display:flex;align-items:flex-end;gap:20px}.hrow .acts{margin-left:auto;display:flex;gap:14px;padding-bottom:8px;align-items:center}
+.sbtn{font-family:var(--hf);font-size:15px;border:2px solid var(--ink);border-radius:5px;padding:7px 14px;background:var(--card);box-shadow:2px 2px 0 var(--ink);white-space:nowrap;display:inline-flex;gap:8px;align-items:center}
+.sbtn.d{background:var(--ink);color:var(--card)}.sbtn.red{background:#f4c2b8}.sbtn.off{opacity:.45;box-shadow:none}
+.st{color:var(--ink);font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);display:inline-block;background:var(--card);white-space:nowrap;font-family:'Nunito';vertical-align:middle}
+.sug{font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px solid #b08a2e;color:#7a5a12;border-radius:3px;padding:2px 6px;transform:rotate(-2deg);display:inline-block;background:#fbe9a8;white-space:nowrap;font-family:'Nunito';vertical-align:middle}
+.mono{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500}
+/* tabs */
+.tabs{display:flex;gap:0;margin-top:26px;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink)}
+.tabs>span{font-family:var(--hf);font-size:17px;padding:10px 20px;border-right:2px solid var(--ink);display:flex;gap:8px;align-items:center}.tabs>span:last-child{border-right:0}.tabs .on{background:var(--ink);color:var(--card)}
+.tabs em{font-style:normal;font-family:'Nunito';font-size:12px;font-weight:800;border:1.5px solid currentColor;border-radius:20px;padding:0 7px}
+/* forms */
+.f{display:flex;flex-direction:column;gap:6px;margin-top:16px}.f>label{font-size:14px;font-weight:800;display:flex;justify-content:space-between;gap:8px;align-items:center}.f>label small{font-weight:600;color:var(--mut);font-size:12.5px}
+.in{border:2px solid var(--ink);border-radius:6px;background:#fff;padding:10px 14px;font-size:16px;font-weight:600;display:flex;align-items:center;gap:10px;min-height:46px}
+.in.pl{color:#a39b8e}.in.foc{box-shadow:0 0 0 3px var(--card),0 0 0 5px #9cc3e6}.in .cv{margin-left:auto;font-size:12px;color:var(--mut)}
+.in.bad{border-color:#b9483a;box-shadow:0 0 0 3px var(--card),0 0 0 5px #f0b5aa}
+.hint{font-size:13px;color:var(--mut)}.hint.bad{color:#9a3b2f;font-weight:800}
+.ta{border:2px solid var(--ink);border-radius:6px;background:#fff;padding:12px 14px;min-height:150px;line-height:1.55;white-space:pre-wrap}
+.g4{display:grid;grid-template-columns:1.7fr 1.25fr .75fr .6fr;gap:16px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mode{display:flex;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink);flex-wrap:wrap}
+.mode>span{font-family:var(--hf);font-size:15px;padding:8px 14px;border-right:2px solid var(--ink);display:flex;gap:6px;align-items:center}.mode>span:last-child{border-right:0}.mode .on{background:var(--ink);color:var(--card)}.mode .na{color:#b0a898}
+.chk{width:20px;height:20px;border:2px solid var(--ink);border-radius:4px;flex:none;display:grid;place-items:center;font-size:13px;background:var(--card)}
+.conf{display:flex;gap:12px;align-items:center;margin-top:16px;font-size:15px}
+.tog{width:44px;height:24px;border:2px solid var(--ink);border-radius:20px;background:#cfe8d5;position:relative;flex:none}.tog::after{content:'';position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--ink)}
+.tog.off{background:var(--card)}.tog.off::after{right:auto;left:2px;background:#bdb5a8;border:0}
+/* spec checklist */
+.spec{border:2px solid var(--ink);border-radius:6px;background:#fff;overflow:hidden}
+.spec .srch{display:flex;gap:10px;align-items:center;padding:9px 12px;border-bottom:2px solid var(--ink);color:#a39b8e;font-size:15px}
+.spec .grp{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);padding:8px 12px 2px}
+.spec .pt{display:flex;gap:10px;align-items:center;padding:5px 12px;font-size:14.5px}.spec .pt .chk{width:18px;height:18px;font-size:11px}.spec .pt.on{background:#eef5fb}.spec .pt .mono{color:var(--mut);font-size:12px;width:34px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{display:inline-flex;gap:6px;align-items:center;border:2px solid var(--ink);border-radius:20px;padding:3px 10px;font-size:13.5px;background:var(--card)}.chip i{font-style:normal;color:var(--mut)}
+/* cards */
+.ac{padding:26px 30px 26px}.ac h2{font-size:27px;display:flex;align-items:center;gap:12px}.ac .sub{font-size:14.5px;color:var(--mut);margin-top:4px}
+.row{display:flex;gap:12px;margin-top:20px;align-items:center;flex-wrap:wrap}
+.cols{display:grid;grid-template-columns:1fr 470px;gap:38px;margin-top:34px;align-items:start}
+.col{display:flex;flex-direction:column;gap:38px}
+.home{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-top:34px;align-items:start}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.fact{border:2px solid var(--ink);border-radius:6px;padding:12px 14px;background:var(--card)}.fact .v{font-family:var(--hf);font-size:32px;line-height:1.1;display:block}.fact .l{font-size:13px;color:var(--mut)}
+.fact .s{font-size:12px;color:var(--mut);margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.store{margin-top:16px;font-size:14.5px;border:1.5px dashed var(--ink);border-radius:5px;padding:9px 12px;background:#f7efd9;line-height:1.45}
+.store.err{background:#f9dcd5;border-color:#b9483a}.store.ok{background:#dcefe0}
+.store ul{margin:6px 0 0 18px;padding:0}.store li{margin-top:3px}
+.acts3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.act{border:2px solid var(--ink);border-radius:6px;background:var(--card);padding:16px 16px 14px;box-shadow:3px 3px 0 rgba(42,39,35,.18)}.act b{font-family:var(--hf);font-weight:400;font-size:19px;display:block;margin-top:10px}.act span{font-size:13.5px;color:var(--mut)}
+.act .ic{width:40px;height:40px;font-size:18px;font-family:var(--hf)}
+.li{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1.5px dashed rgba(42,39,35,.2);font-size:14.5px}.li:first-of-type{border-top:0}.li .tx{flex:1}.li small{display:block;color:var(--mut);font-size:13px}
+.bar{height:12px;border:2px solid var(--ink);border-radius:3px;background:var(--card);width:180px;overflow:hidden;display:flex}.bar i{display:block;height:100%}
+.pill{font-size:12.5px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 10px;white-space:nowrap;background:var(--card)}.pill.ok{background:#cfe8d5}.pill.warn{background:#f7e3a8}.pill.bad{background:#f4c2b8}
+.cdot{width:16px;height:16px;border-radius:50%;border:2px solid var(--ink);display:inline-block;flex:none}
+/* table */
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14.5px}
+th{text-align:left;font-size:12.5px;font-weight:800;color:var(--mut);padding:8px 10px;border-bottom:2px solid var(--ink)}td{padding:10px;border-bottom:1.5px dashed rgba(42,39,35,.2);vertical-align:middle}
+.num{text-align:right}th.num{text-align:right}tr.aiR td{background:rgba(246,243,236,.6)}
+/* preview */
+.pv{padding:22px 24px 22px}.pv .hd{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pv .q{font-size:15.5px;line-height:1.55;margin-top:14px}
+.diag{margin-top:12px;border:2px dashed rgba(42,39,35,.35);border-radius:6px;height:118px;display:grid;place-items:center;color:var(--mut);font-size:13px;background:rgba(246,243,236,.5)}
+.abox{margin-top:14px;border:2px solid var(--ink);border-radius:6px;background:#fff;padding:12px 14px;color:#a39b8e;font-size:15px;min-height:70px}
+.msh{margin-top:12px;border:1.5px dashed var(--ink);border-radius:5px;padding:9px 12px;font-size:13.5px;color:var(--mut);background:var(--card)}
+.aic{border:2.5px dashed rgba(42,39,35,.55);box-shadow:none;background:rgba(255,253,248,.82)}
+.shelf{border:2.5px dashed rgba(42,39,35,.5);border-radius:8px;padding:18px 22px 20px;background:rgba(255,253,248,.55)}
+.drop{border:2px dashed rgba(42,39,35,.45);border-radius:6px;padding:14px;display:flex;gap:12px;align-items:center;font-size:14px;color:var(--mut);background:rgba(255,255,255,.6)}
+.drop b{color:var(--ink);font-weight:800}.thumb{width:54px;height:40px;border:2px solid var(--ink);border-radius:4px;background:repeating-linear-gradient(0deg,#fff 0 6px,#e8e2d6 6px 7px);flex:none}
+.gb{display:grid;grid-template-columns:repeat(7,1fr);gap:0;border:2px solid var(--ink);border-radius:6px;overflow:hidden;background:#fff;margin-top:6px}
+.gb div{text-align:center;padding:7px 4px;border-right:1.5px solid rgba(42,39,35,.25);font-size:15px}.gb div:last-child{border-right:0}.gb .h{font-family:var(--hf);background:var(--bg);border-bottom:1.5px solid rgba(42,39,35,.25)}
+.hand.n{font-size:22px;line-height:1.15}
+.arrow{position:absolute;font-size:23px;line-height:1.1;z-index:3}
+.steps .li .k{width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:15px;flex:none;background:var(--card)}
+/* modal */
+.veil{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(42,39,35,.38);z-index:5}
+.modal{position:absolute;z-index:6;left:50%;top:180px;width:700px;margin-left:-350px;padding:36px 42px 32px}
+.modal h2{font-size:34px}.modal p{font-size:16px;margin-top:8px;line-height:1.5}
+.lose{margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}.lose div{border:2px solid var(--ink);border-radius:6px;padding:10px 14px;background:var(--card);font-size:14.5px}.lose b{font-family:var(--hf);font-weight:400;font-size:24px;margin-right:6px}
+.exp{margin-top:18px;display:flex;gap:14px;align-items:center;border:1.5px dashed var(--ink);border-radius:6px;padding:12px 14px;background:#f7efd9;font-size:14.5px}.exp .tx{flex:1}
+.mfoot{display:flex;gap:14px;justify-content:flex-end;margin-top:24px}
+.lock{width:760px;margin:90px auto 0;text-align:center;padding:44px 48px 40px}.lock h2{font-size:38px}.lock p{font-size:16.5px;line-height:1.5;color:var(--mut);margin-top:10px}
+.big{font-size:58px;font-family:var(--hf);display:grid;place-items:center;width:96px;height:96px;border:2.5px solid var(--ink);border-radius:50%;margin:0 auto 18px;background:var(--bg)}
+
+html.dim{--bg:#3d3832;--card:#4a443d;--ink:#eee5d4;--mut:#bdb2a1;--line:rgba(255,240,220,.05);--tape:rgba(190,170,130,.55)}
+.dim .card{box-shadow:4px 5px 0 rgba(0,0,0,.28)}.dim .btn,.dim .sbtn,.dim .mode,.dim .tabs,.dim .logo b,.dim .act{box-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.dim .in,.dim .ta,.dim .spec,.dim .abox,.dim .gb{background:#3f3a34}.dim .gb .h{background:#4a443d}.dim .spec .pt.on{background:#5a5045}.dim .in.pl,.dim .abox,.dim .spec .srch{color:#8f8576}
+.dim .store{background:#544b3c}.dim .store.err{background:#6a3f37;border-color:#c77a6e}.dim .store.ok{background:#45594a}
+.dim .pill.ok,.dim .tog{background:#5e7a63}.dim .tog.off{background:var(--card)}.dim .pill.warn{background:#7a6738}.dim .pill.bad,.dim .sbtn.red{background:#8a4a40}
+.dim .ruled{background-image:linear-gradient(transparent 39px,rgba(220,120,110,.3) 39px,rgba(220,120,110,.3) 41px,transparent 41px),repeating-linear-gradient(transparent 0 27px,rgba(200,215,235,.08) 27px 28px)}
+.dim .aic{background:rgba(74,68,61,.85);border-color:rgba(238,229,212,.5)}.dim .shelf,.dim .diag,.dim .drop{border-color:rgba(238,229,212,.45);background:rgba(74,68,61,.6)}.dim .cdot,.dim .bar i{filter:saturate(.75) brightness(.85)}
+.dim .sug{background:#6b5a2e;color:#f3e2b0;border-color:#c9a956}.dim th,.dim td{border-color:rgba(238,229,212,.18)}.dim th{border-bottom-color:var(--ink)}.dim .thumb{background:repeating-linear-gradient(0deg,#5a534b 0 6px,#4a443d 6px 7px)}
+.dim .li{border-color:rgba(238,229,212,.15)}
+</style></head><body>
+<div id="app"></div>
+<script>
+const P=new URLSearchParams(location.search),S=P.get('s')||'home',AI=!!P.get('ai'),DIM=!!P.get('dim');if(DIM)document.documentElement.classList.add('dim');
+const st=t=>`<span class="st">${t}</span>`, sg=`<span class="sug">SUGGESTION</span>`;
+const C={ma:'#9cc3e6',fm:'#c7b5ea',ph:'#f3a37f',bi:'#8fcaa0',ch:'#c7b5ea',en:'#f2a7c3',hi:'#d9c2a0',ge:'#b5cf8a'};
+const topBar=`<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Past papers</span><span>Practice</span><span>Data Hub</span></div><div class="r"><span class="tag">Owner account</span><div class="av on" style="background:${DIM?'#7f93a8':'#9cc3e6'}">O</div></div></div>`;
+const head=(tab,title,lede,acts='')=>topBar+`<div class="crumb">Home / Account / Content Studio${title!=='Content Studio'?' / '+title:''}</div>
+ <div class="hrow"><div><h1 class="px">${title}</h1><div class="hand lede">${lede}</div></div><div class="acts">${acts}</div></div>
+ <div class="tabs">${[['home','Overview'],['add','Add a question'],['paper','Add a paper'],['pack','Content pack',AI?'14':'8'],['check','Database check']].map(([k,l,n])=>`<span class="${k===tab?'on':''}">${l}${n?`<em>${n}</em>`:''}</span>`).join('')}</div>`;
+const saved=`<span class="hint" style="font-size:14px">Draft saved to your account · synced just now</span>`;
+let h='';
+
+/* ---------- OVERVIEW ---------- */
+if(S==='home'){
+ h=head('home','Content Studio','for the site owner · check the database and add new questions and papers',saved)+`
+ <div class="home"><div class="col">
+  <div class="card ruled ac r1"><i class="t tl"></i><h2 class="px">Add content</h2><div class="sub">New items go into your content pack first, so you can try them before anyone else sees them.</div>
+   <div class="acts3">
+    <div class="act"><span class="ic">+</span><b>Add a question</b><span>One question, its marks, spec points and mark scheme.</span></div>
+    <div class="act"><span class="ic">P</span><b>Add a paper ${sg}</b><span>A whole paper: PDF links, timing and grade boundaries.</span></div>
+    <div class="act"><span class="ic">&#8595;</span><b>Import a pack</b><span>Load a content pack file someone sent you.</span></div>
+   </div></div>
+  <div class="card ruled ac r2"><i class="t tc"></i><h2 class="px">Your content pack</h2><div class="sub">Not on the site yet. Only you can see these in Practice and Past papers.</div>
+   <div class="facts">
+    <div class="fact"><span class="v">${AI?11:7}</span><span class="l">questions</span>${AI?`<div class="s">incl. 4 AI ${st('AI MADE')}</div>`:''}</div>
+    <div class="fact"><span class="v">${AI?3:1}</span><span class="l">paper${AI?'s':''}</span>${AI?'<div class="s">incl. 2 AI</div>':''}</div>
+    <div class="fact"><span class="v">0</span><span class="l">errors</span></div>
+    <div class="fact"><span class="v">${AI?3:2}</span><span class="l">notes to check</span></div>
+   </div>
+   <div class="store">Saved to your owner account and synced across your devices. <b>Last change 20 minutes ago.</b></div>
+   <div class="row"><span class="sbtn d">Open the pack</span><span class="sbtn">Export pack</span><span class="sbtn">Import pack</span></div></div>
+  ${AI?`<div class="card ac aic r3"><h2 class="px">Waiting for your review ${st('AI MADE')} ${sg}</h2><div class="sub">AI content is only published after you've read it through and checked the answer.</div>
+   ${[['Physics','ph','AI question','Projectile from a cliff, 5 marks','4 to review'],['Mathematics','ma','AI past paper','Paper 1 Pure, 100 marks','1 to review'],['Biology','bi','Predicted paper','June 2027 Paper 2','1 to review']].map(([n,c,t,d,p])=>`<div class="li"><i class="cdot" style="background:${C[c]}"></i><div class="tx">${n} · ${t}<small>${d}</small></div><span class="pill warn">${p}</span><span class="sbtn">Review</span></div>`).join('')}
+  </div>`:''}
+ </div><div class="col">
+  <div class="card ruled ac r2"><i class="t tr"></i><h2 class="px">Database health</h2><div class="sub">Last checked today at 17:42, across all 38 subjects.</div>
+   <div class="facts">
+    <div class="fact"><span class="v">926</span><span class="l">papers</span></div>
+    <div class="fact"><span class="v">249</span><span class="l">demo questions</span></div>
+    <div class="fact"><span class="v" style="color:${DIM?'#a8cfae':'#3c7a4a'}">0</span><span class="l">errors</span></div>
+    <div class="fact"><span class="v">12</span><span class="l">warnings</span></div>
+   </div>
+   ${AI?`<div class="store" style="background:var(--card)">${st('AI MADE')}&nbsp; 3,410 AI questions, 76 AI papers and 38 predicted papers checked. All tagged as AI.</div>`:''}
+   <div class="row"><span class="sbtn d">Check all subjects again</span><span class="sbtn">See the warnings</span></div></div>
+  <div class="card ruled ac r4"><i class="t tc"></i><h2 class="px">Real content so far ${sg}</h2><div class="sub">How much of each subject has official questions, not just demo ones.</div>
+   ${[['Physics','ph',62,'186 official · 20 demo'],['Mathematics','ma',48,'140 official · 31 demo'],['Chemistry','ch',21,'54 official · 28 demo'],['Biology','bi',9,'22 official · 30 demo'],['History','hi',0,'demo only']].map(([n,c,p,d])=>`<div class="li"><i class="cdot" style="background:${C[c]}"></i><div class="tx">${n}<small>${d}</small></div><div class="bar"><i style="width:${p}%;background:${C[c]}"></i></div><span style="width:40px;text-align:right">${p}%</span></div>`).join('')}
+   <div class="hint" style="margin-top:8px">Demo questions are removed from a subject once its real content is in.</div></div>
+  <div class="store" style="margin-top:-14px;font-size:14px">Question papers are the copyright of their exam boards. Only add material you are allowed to use.</div>
+ </div></div>`;
+}
+
+/* ---------- ADD A QUESTION ---------- */
+if(S==='add'||S==='bad'){
+ const B=S==='bad';
+ const pts=[['Topic 6: Further mechanics',[['6.79','Impulse is the change of momentum',1],['6.80','Momentum is conserved in collisions',1],['6.81','Elastic and inelastic collisions',!B],['6.82','Kinetic energy of a non-relativistic particle',0]]],['Topic 2: Mechanics',[['2.15','Newton\'s second law, F = ma',0]]]];
+ h=head('add','Add a question','one question at a time, with its mark scheme',saved)+`
+ <div class="cols"><div class="col">
+  <div class="card ruled ac r3"><i class="t tl"></i><h2 class="px">Where it's from</h2>
+   <div class="g4"><div class="f"><label>Subject</label><div class="in"><i class="cdot" style="background:${C.ph}"></i>A-Level Physics · Edexcel 9PH0<span class="cv">&#9660;</span></div></div>
+    <div class="f"><label>Paper</label><div class="in">${AI?'None · AI question bank':'June 2024 · Paper 1'}<span class="cv">&#9660;</span></div></div>
+    <div class="f"><label>${AI?'Number':'Question number'}</label><div class="in ${B?'bad':''}">${AI?'412':'7'}</div>${B?'<span class="hint bad">Question 7 is already in this paper.</span>':''}</div>
+    <div class="f"><label>Marks</label><div class="in">6</div></div></div>
+   <div class="f"><label>Source</label><div class="mode">${AI?`<span>Official past paper</span><span class="on">AI question ${st('AI MADE')}</span><span>AI past paper</span><span>Predicted paper</span>`:`<span class="on">Official past paper</span><span class="na">AI question · coming later</span><span class="na">AI past paper · coming later</span>`}</div>
+    ${AI?'<span class="hint">AI questions are stamped AI MADE everywhere and never shown as official.</span>':''}</div>
+   <div class="g2"><div class="f"><label>Difficulty</label><div class="mode"><span>Easy</span><span>Medium</span><span class="on">Hard</span>${AI?'<span>Extra hard</span>':'<span class="na">Extra hard</span>'}</div>${AI?'<span class="hint">Extra hard goes beyond the specification.</span>':'<span class="hint">Extra hard arrives with AI questions.</span>'}</div>
+    <div class="f"><label>Time to allow <small>worked out from marks if left blank</small></label><div class="in pl">8 minutes (auto)</div></div></div>
+  </div>
+  <div class="card ruled ac r2"><i class="t tc"></i><h2 class="px">What it tests</h2>
+   <div class="g2"><div class="f"><label>Main spec points <small>${B?'':'3 chosen'}</small></label>
+     <div class="spec ${B?'':''}" ${B?'style="border-color:#b9483a"':''}><div class="srch">&#9906;&nbsp; Search spec points</div>${pts.map(([g,ps])=>`<div class="grp">${g}</div>`+ps.map(([c,t,o])=>`<div class="pt ${o?'on':''}"><span class="chk">${o?'&#10003;':''}</span><span class="mono">${c}</span>${t}</div>`).join('')).join('')}</div>
+     <span class="hint">${sg} Tick boxes and search, in place of Ctrl-click lists.</span></div>
+    <div><div class="f"><label>Crossover spec points</label><div class="chips"><span class="chip">2.15 Newton's second law <i>&#10005;</i></span><span class="sbtn" style="font-size:13px;padding:4px 10px">+ Add</span></div></div>
+     <div class="f" style="margin-top:22px"><label>Crossover from other subjects</label><div class="chips"><span class="chip"><i class="cdot" style="background:${C.ma};width:12px;height:12px"></i>Maths · Vectors <i>&#10005;</i></span><span class="sbtn" style="font-size:13px;padding:4px 10px">+ Add</span></div><span class="hint">Shows up when students filter by these topics.</span></div>
+     <div class="conf"><span class="chk">&#10003;</span>Include in Practice's question picker</div></div></div>
+  </div>
+  <div class="card ruled ac r1"><i class="t tr"></i><h2 class="px">Question and mark scheme</h2>
+   <div class="g2"><div class="f"><label>Question <span class="mode" style="box-shadow:none"><span class="on" style="font-size:13px;padding:3px 10px">Write</span><span style="font-size:13px;padding:3px 10px">HTML</span></span></label>
+     <div class="ta">A trolley of mass 0.80 kg moving at 1.5 m s<sup>-1</sup> collides with a stationary trolley of mass 1.2 kg. They stick together.
+
+(a) Calculate the velocity of the trolleys after the collision. <b>(3)</b>
+(b) Show that the collision is inelastic. <b>(3)</b></div></div>
+    <div class="f"><label>Mark scheme <span class="mode" style="box-shadow:none"><span class="on" style="font-size:13px;padding:3px 10px">Write</span><span style="font-size:13px;padding:3px 10px">HTML</span></span></label>
+     <div class="ta ${B?'':''}" ${B?'style="color:#a39b8e"':''}>${B?'Paste or type the mark scheme':`(a) Use of p = mv (1)
+ 0.80 × 1.5 = 2.0 × v (1)
+ v = 0.60 m s<sup>-1</sup> (1)
+(b) KE before = 0.90 J (1)
+ KE after = 0.36 J (1)
+ KE not conserved, so inelastic (1)`}</div></div></div>
+   <div class="g2" style="margin-top:16px"><div class="drop"><span class="thumb"></span><div><b>${AI?'trolleys-diagram.png':'9PH0_2024_P1_Q7.png'}</b><br>Question picture · uploaded ${sg}</div></div><div class="drop">&#8593;&nbsp;<div><b>Add a mark scheme picture</b><br>Drop a file here, or paste a link</div></div></div>
+   ${B?`<div class="store err" style="margin-top:18px"><b>Fix 2 things before adding:</b><ul><li>9PH0_2024_P1_Q07 already exists. Use a different question number.</li><li>Choose at least one main spec point.</li></ul><div style="margin-top:6px"><b>Note:</b> there's no mark scheme yet, so students can't mark this question themselves.</div></div>`:''}
+   <div class="row"><span class="btn d">+ Add to the content pack</span><span class="sbtn">Clear form</span></div>
+  </div>
+ </div><div class="col" style="position:sticky;top:0">
+  <div class="card pv r4" style="${AI?'':''}"><i class="t tc"></i><div class="hand" style="font-size:22px">how students will see it ${sg}</div>
+   <div class="hd" style="margin-top:8px"><span class="tag"><i class="dot" style="background:${C.ph}"></i>Physics</span><span class="tag">${AI?'AI question':'June 2024 · P1'}</span>${AI?st('AI MADE'):''}<span class="tag">6 marks</span><span class="tag">Hard</span></div>
+   <h3 class="px" style="font-size:24px;margin-top:14px">${AI?'AI question':'Question 7'}</h3>
+   <div class="q">A trolley of mass 0.80 kg moving at 1.5 m s<sup>-1</sup> collides with a stationary trolley of mass 1.2 kg. They stick together.</div>
+   <div class="diag">question picture</div>
+   <div class="q" style="margin-top:10px">(a) Calculate the velocity of the trolleys after the collision. <b>(3)</b></div>
+   <div class="abox">Type your answer here</div>
+   <div class="msh">${B?'No mark scheme yet':'Mark scheme appears after "Submit answer"'}</div>
+   <div class="row" style="margin-top:14px"><span class="tag">Further mechanics</span><span class="tag">Momentum</span></div>
+  </div>
+  <div class="card ac r2" style="padding:20px 24px"><div style="font-size:14px;font-weight:800">Question id</div><div class="mono" style="margin-top:4px">${AI?'9PH0_AISPEC_Q0412':'9PH0_2024_P1_Q07'}</div><div class="hint" style="margin-top:6px">${AI?'AI questions get their own numbering, kept apart from official ids.':'Made from the paper and question number.'}</div></div>
+  ${AI?`<div class="card ac aic r3" style="padding:20px 24px"><h2 class="px" style="font-size:22px">Before it's published ${sg}</h2>
+   <div class="conf"><span class="chk">&#10003;</span>I've checked the answer is right</div>
+   <div class="conf" style="margin-top:10px"><span class="chk"></span>I've checked it's on the specification</div>
+   <div class="hint" style="margin-top:10px">Unchecked AI items stay in the pack and can't be exported.</div></div>`:''}
+ </div></div>`;
+}
+
+/* ---------- ADD A PAPER ---------- */
+if(S==='paper'){
+ h=head('paper','Add a paper','a whole paper, ready for students to sit',saved)+`
+ <div class="cols"><div class="col">
+  <div class="card ruled ac r2"><i class="t tl"></i><h2 class="px">The paper ${sg}</h2>
+   <div class="f"><label>Type</label><div class="mode">${AI?`<span>Official past paper</span><span class="on">AI past paper ${st('AI MADE')}</span><span>Predicted paper</span>`:`<span class="on">Official past paper</span><span class="na">AI past paper · coming later</span><span class="na">Predicted paper · coming later</span>`}</div></div>
+   <div class="g4"><div class="f"><label>Subject</label><div class="in"><i class="cdot" style="background:${C.ma}"></i>A-Level Maths · Edexcel 9MA0<span class="cv">&#9660;</span></div></div>
+    <div class="f"><label>${AI?'Made for':'Series'}</label><div class="in">${AI?'Practice set A':'June 2024'}<span class="cv">&#9660;</span></div></div>
+    <div class="f"><label>Paper</label><div class="in">Paper 1 · Pure 1</div></div>
+    <div class="f"><label>Tier</label><div class="in pl">None<span class="cv">&#9660;</span></div></div></div>
+   <div class="g3"><div class="f"><label>Total marks</label><div class="in">100</div></div><div class="f"><label>Time allowed</label><div class="in">2 hours</div></div><div class="f"><label>Topics on this paper</label><div class="in">Pure: all topics<span class="cv">&#9660;</span></div></div></div>
+  </div>
+  <div class="card ruled ac r3"><i class="t tc"></i><h2 class="px">Files</h2><div class="sub">${AI?'Your AI paper as a PDF, for students who want to sit it on paper.':'Link to the exam board, or upload where you are allowed to.'}</div>
+   ${(AI?[['Question paper','AI_9MA0_SETA_P1.pdf · uploaded',1],['Mark scheme','AI_9MA0_SETA_P1_MS.pdf · uploaded',1],['Worked answers','Add a file or link',0]]:[['Question paper','qualifications.pearson.com/…/9MA0-01-que-20240606.pdf',1],['Mark scheme','qualifications.pearson.com/…/9MA0-01-rms-20240815.pdf',1],['Examiner report','Add a link',0]]).map(([l,v,o])=>`<div class="f"><label>${l}</label><div class="in ${o?'':'pl'}">${o?'<span class="thumb" style="width:34px;height:26px"></span>':''}<span class="${o&&!AI?'mono':''}">${v}</span>${o?'<span class="cv" style="text-decoration:underline">Replace</span>':''}</div></div>`).join('')}
+  </div>
+  <div class="card ruled ac r1"><i class="t tr"></i><h2 class="px">Grade boundaries</h2><div class="sub">${AI?'AI papers have no official boundaries, so results show as a percentage.':'Official boundaries for this series, from the exam board.'}</div>
+   ${AI?`<div class="store" style="background:var(--card)">${st('AI MADE')}&nbsp; Students see their mark and percentage only. No grade is given for AI papers.</div>`:`<div class="gb">${['A*','A','B','C','D','E','U'].map(g=>`<div class="h">${g}</div>`).join('')}${['82','67','55','43','32','21','0'].map(g=>`<div>${g}</div>`).join('')}</div><span class="hint" style="display:block;margin-top:6px">Marks out of the paper's total. Used for grades on results pages and the Data Hub.</span>`}
+   <div class="row"><span class="btn d">+ Add paper to the content pack</span></div></div>
+ </div><div class="col">
+  <div class="card ac r4" style="padding:22px 26px"><i class="t tc"></i><div class="hand" style="font-size:22px">how it will look in Past papers</div>
+   <div class="card ruled r1" style="margin-top:14px;padding:18px 20px;${AI?'border-style:dashed;box-shadow:none':''}"><div style="display:flex;gap:8px;align-items:center"><span class="tag"><i class="dot" style="background:${C.ma}"></i>Maths</span>${AI?st('AI MADE'):''}</div>
+    <h3 class="px" style="font-size:24px;margin-top:10px">${AI?'AI Paper · Pure 1':'June 2024 · Paper 1'}</h3><div class="hint" style="font-size:14px;margin-top:2px">${AI?'Practice set A':'Pure Mathematics 1'} · 100 marks · 2 hours</div>
+    <div class="row" style="margin-top:14px"><span class="sbtn d">Sit this paper</span><span class="sbtn">PDF</span><span class="sbtn">Mark scheme</span></div></div></div>
+  <div class="card ruled ac r2"><i class="t tl"></i><h2 class="px" style="font-size:23px">Questions in this paper</h2><div class="sub">Split the paper into questions so students can practise them one by one.</div>
+   <div class="facts" style="grid-template-columns:1fr 1fr"><div class="fact"><span class="v">${AI?14:9}</span><span class="l">questions added</span></div><div class="fact"><span class="v">${AI?100:62}</span><span class="l">of 100 marks</span></div></div>
+   <div class="row"><span class="sbtn">+ Add the next question</span></div>
+   <div class="hint" style="margin-top:12px">Not split yet? Students can still sit it from the PDF and log a score.</div></div>
+ </div></div>`;
+}
+
+/* ---------- CONTENT PACK ---------- */
+if(S==='pack'||S==='import'||S==='clear'){
+ const rows=[['9PH0_2024_P1_Q07','Question','ph','Physics','6','Hard','ok'],['9PH0_2024_P1_Q08','Question','ph','Physics','4','Medium','ok'],['9PH0_2024_P1_Q09','Question','ph','Physics','9','Hard','note','No mark scheme picture'],['9MA0_2024_P1','Paper','ma','Maths','100','','note','9 of ~14 questions added'],['9MA0_2024_P1_Q01','Question','ma','Maths','5','Easy','ok'],['9MA0_2024_P1_Q02','Question','ma','Maths','6','Medium','ok'],['9MA0_2024_P1_Q03','Question','ma','Maths','7','Medium','ok'],['1CH0_2023_P1_Q04','Question','ch','Chemistry','3','Easy','ok']];
+ const air=[['9PH0_AISPEC_Q0412','AI question','ph','Physics','6','Hard','rev'],['9PH0_AISPEC_Q0413','AI question','ph','Physics','5','Extra hard','rev'],['9MA0_AIPAPER_SETA_P1','AI paper','ma','Maths','100','','rev'],['8BI0_PRED_2027_P2','Predicted paper','bi','Biology','90','','rev']];
+ const pill=s=>s==='ok'?'<span class="pill ok">Ready</span>':s==='note'?'<span class="pill warn">1 note</span>':'<span class="pill warn">Needs your review</span>';
+ const tr=(r,ai)=>`<tr class="${ai?'aiR':''}"><td class="mono">${r[0]}</td><td>${r[1]} ${ai?st('AI MADE'):''}</td><td><span style="display:inline-flex;gap:8px;align-items:center"><i class="cdot" style="background:${C[r[2]]}"></i>${r[3]}</span></td><td class="num">${r[4]}</td><td>${r[5]}</td><td>${pill(r[6])}${r[7]?`<div class="hint">${r[7]}</div>`:''}</td><td class="num" style="white-space:nowrap"><span style="text-decoration:underline">Edit</span> &nbsp; <span style="color:var(--mut);text-decoration:underline">Remove</span></td></tr>`;
+ const th=`<tr><th>Id</th><th>Type</th><th>Subject</th><th class="num">Marks</th><th>Difficulty</th><th>Status</th><th></th></tr>`;
+ h=head('pack','Content pack','everything you\'ve added that isn\'t on the site yet',`<span class="btn">Import pack</span><span class="btn d">Export pack</span>`)+`
+ <div class="cols" style="grid-template-columns:1fr 400px"><div class="col">
+  <div class="card ruled ac r3"><i class="t tl"></i><i class="t tr"></i><h2 class="px">In your pack</h2><div class="sub">${AI?'11 questions, 3 papers':'7 questions, 1 paper'} · try them now in Practice and Past papers, where only you can see them.</div>
+   <div class="row" style="margin-top:14px"><div class="mode" style="box-shadow:none"><span class="on">All</span><span>Questions</span><span>Papers</span><span>With notes</span></div><span class="in pl" style="min-height:40px;padding:6px 12px;width:240px;margin-left:auto">&#9906;&nbsp; Search ids</span></div>
+   <table>${th}${rows.map(r=>tr(r)).join('')}</table>
+   ${AI?`<div class="shelf" style="margin-top:24px"><h3 class="px" style="font-size:22px;display:flex;gap:10px;align-items:center">AI items ${st('AI MADE')}</h3><div class="hint" style="font-size:14px">Kept apart from official content. Review each one before it can be exported. ${sg}</div><table>${th}${air.map(r=>tr(r,1)).join('')}</table></div>`:''}
+   <div class="row"><span class="sbtn red">Clear pack</span><span class="hint">Removes everything above from your account.</span></div>
+  </div>
+ </div><div class="col">
+  <div class="card ruled ac r2"><i class="t tc"></i><h2 class="px" style="font-size:24px">Putting it on the site</h2>
+   <div class="steps">${[['1','Export the pack','Downloads content-pack-2026-11-13.json'],['2','Save it in /data/packs','In the website\'s files'],['3','List it in /data/packs/index.json','Then everyone sees it']].map(([k,t,d])=>`<div class="li"><span class="k">${k}</span><div class="tx">${t}<small>${d}</small></div></div>`).join('')}</div>
+   <div class="row"><span class="sbtn d">Export pack</span></div></div>
+  <div class="card ac aic r1" style="padding:22px 26px"><h2 class="px" style="font-size:22px">Publish straight to the site ${sg}</h2><div class="sub">One button instead of the three steps, once the site has a server. Each publish is kept so you can undo it.</div>
+   <div class="row"><span class="sbtn off">Publish ${AI?'14':'8'} items</span></div></div>
+  <div class="store">Your pack is saved to your owner account, so it's the same on your laptop and phone. <b>Synced just now.</b></div>
+ </div></div>`;
+ if(S==='import') h+=`<div class="veil"></div><div class="card ruled modal r3"><i class="t tl"></i><i class="t tr"></i>
+  <h2 class="px">Import this pack?</h2><p><span class="mono">content-pack-2026-11-02.json</span> was checked against the database before anything changed. ${sg}</p>
+  <div class="lose"><div><b>18</b>new questions</div><div><b>2</b>new papers</div><div><b>3</b>replace items with the same id</div><div><b>1</b>has an error and will be skipped</div></div>
+  <div class="store err" style="margin-top:14px"><b>Skipped:</b> <span class="mono">1CH0_2023_P2_Q11</span> uses spec point 6.40, which isn't in the Chemistry spec.</div>
+  <div class="exp"><div class="tx">The 3 replaced items: <span class="mono" style="font-size:12px">9PH0_2024_P1_Q07, Q08, Q09</span>. Export your pack first to keep the old versions.</div><span class="sbtn">Export first</span></div>
+  <div class="mfoot"><span class="btn">Cancel</span><span class="btn d">Import 23 items</span></div></div>`;
+ if(S==='clear') h+=`<div class="veil"></div><div class="card ruled modal r3"><i class="t tl"></i><i class="t tr"></i>
+  <h2 class="px">Clear the content pack?</h2><p>Everything in your pack is removed from your account, on every device. Anything already on the site stays. This can't be undone.</p>
+  <div class="lose"><div><b>${AI?11:7}</b>questions${AI?' (incl. 4 AI)':''}</div><div><b>${AI?3:1}</b>paper${AI?'s':''}</div></div>
+  <div class="exp"><div class="tx">Want to keep them? Export the pack first. You can import it again later.</div><span class="sbtn">Export pack</span></div>
+  <div class="mfoot"><span class="btn">Keep my pack</span><span class="btn" style="background:${DIM?'#8a4a40':'#f4c2b8'}">Clear pack</span></div></div>`;
+}
+
+/* ---------- DATABASE CHECK ---------- */
+if(S==='check'){
+ const subs=[['A-Level Physics · 9PH0','ph',24,8,186,20,412,38,0],['A-Level Maths · 9MA0','ma',27,9,140,31,620,46,0],['A-Level Further Maths · 9FM0','fm',36,0,0,24,288,30,1],['GCSE Chemistry · 1CH0','ch',24,4,54,28,240,22,3],['GCSE Biology · 1BI0','bi',24,2,22,30,236,22,2],['GCSE Combined Science · 1SC0','ph',72,0,0,36,402,40,0],['GCSE History · 1HI0','hi',20,0,0,18,0,0,4],['GCSE English Language · 1EN0','en',12,0,0,12,0,0,2]];
+ h=head('check','Database check','every subject, checked against the rules for papers and questions',`<span class="hint" style="font-size:14px">Checked today at 17:42</span><span class="btn d">Check all subjects again</span>`)+`
+ <div class="home" style="grid-template-columns:1fr 420px"><div class="col">
+  <div class="card ruled ac r3"><i class="t tl"></i><h2 class="px">By subject</h2><div class="sub">Showing 8 of 38. ${AI?'AI numbers include AI questions, AI papers and predicted papers.':''}</div>
+   <table><tr><th>Subject</th><th class="num">Official papers</th><th class="num">With PDF</th><th class="num">Official questions</th><th class="num">Demo questions</th>${AI?'<th class="num">AI questions</th><th class="num">AI papers</th>':''}<th class="num">Issues</th></tr>
+   ${subs.map(s=>`<tr><td><span style="display:inline-flex;gap:8px;align-items:center"><i class="cdot" style="background:${C[s[1]]}"></i>${s[0]}</span></td><td class="num">${s[2]}</td><td class="num">${s[3]}</td><td class="num">${s[4]}</td><td class="num">${s[5]}</td>${AI?`<td class="num">${s[6]}</td><td class="num">${s[7]}</td>`:''}<td class="num">${s[8]?`<span class="pill warn">${s[8]}</span>`:'<span class="pill ok">0</span>'}</td></tr>`).join('')}</table>
+   <div class="row"><span class="sbtn">Show all 38 subjects</span><span class="sbtn">Download as a spreadsheet ${sg}</span></div></div>
+ </div><div class="col">
+  <div class="card ruled ac r2"><i class="t tc"></i><h2 class="px" style="font-size:24px">Result</h2>
+   <div class="store ok"><b>No errors.</b> Every paper and question can be shown to students.</div>
+   <div class="facts" style="grid-template-columns:1fr 1fr">
+    <div class="fact"><span class="v">0</span><span class="l">errors</span></div><div class="fact"><span class="v">12</span><span class="l">warnings</span></div>
+    <div class="fact"><span class="v">926</span><span class="l">papers checked</span></div><div class="fact"><span class="v">${AI?'4,071':'661'}</span><span class="l">questions checked</span>${AI?`<div class="s">incl. 3,410 AI</div>`:''}</div></div></div>
+  <div class="card ruled ac r4"><i class="t tr"></i><h2 class="px" style="font-size:24px">Warnings</h2><div class="sub">Worth fixing, but nothing is broken.</div>
+   ${[['GCSE History','hi','1HI0_2023_P3','No question paper link yet'],['GCSE Chemistry','ch','1CH0_2023_P1_Q06','Estimated time is over 3× the marks'],['GCSE Biology','bi','1BI0_2022_P2','Grade boundaries missing'],['A-Level Further Maths','fm','9FM0_SAMPLE_Q12','Demo question still in a subject with real papers']].concat(AI?[['GCSE Chemistry','ch','1CH0_AISPEC_Q0091','AI question has no worked answer']]:[]).map(([n,c,id,m])=>`<div class="li"><i class="cdot" style="background:${C[c]}"></i><div class="tx">${m}<small><span class="mono" style="font-size:12px">${id}</span> · ${n}</small></div>${id.includes('AISPEC')?st('AI MADE'):''}</div>`).join('')}
+   <div class="row"><span class="sbtn">Show all 12</span></div></div>
+  ${AI?`<div class="card ac aic r1" style="padding:22px 26px"><h2 class="px" style="font-size:22px">AI labelling check ${st('AI MADE')}</h2><div class="store ok" style="margin-top:12px">Every AI question and paper is tagged as AI. None are marked as official.</div></div>`:''}
+ </div></div>`;
+}
+
+/* ---------- NOT AN OWNER ---------- */
+if(S==='lock'){
+ h=topBar.replace('Owner account','214 answered').replace(/background:#9cc3e6">O/,'background:#f4cf6a">D')+`<div class="crumb">Home / Content Studio</div>
+ <div class="card ruled lock r3"><i class="t tl"></i><i class="t tr"></i><div class="big">P</div><h2 class="px">This page is for the site owner</h2>
+  <p>The Content Studio is where questions and papers are added to PurePastPapers. Your account can't open it, but everything it adds shows up for you in Past papers and Practice.</p>
+  <div class="row" style="justify-content:center;margin-top:26px"><span class="btn d">Back to home</span><span class="btn">Past papers</span></div></div>
+ <div class="hand n" style="text-align:center;margin-top:30px">spotted a mistake in a question? use "Report a problem" under any question ${sg}</div>`;
+}
+document.getElementById('app').innerHTML=h;
+</script></body></html>

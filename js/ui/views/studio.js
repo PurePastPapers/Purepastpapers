@@ -12,6 +12,13 @@ import { validateBundle, validateQuestion } from '../../data/schema.js';
 import { icon } from '../icons.js';
 import { banner, confirmDialog, loadingBlock, pageHead, subjectName, toast } from '../ui.js';
 
+const TABS = [
+  ['overview', 'Overview'],
+  ['question', 'Add a question'],
+  ['pack', 'Content pack'],
+  ['check', 'Database check'],
+];
+
 export async function mount(element, context) {
   context.setTitle('Content Studio');
   const subjects = (await getSubjects()).filter((subject) => subject.has_written_exam);
@@ -19,18 +26,48 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${pageHead({
-        crumbs: [{ label: 'Account', href: '#/account' }, { label: 'Content Studio' }],
+        crumbs: [{ label: 'Home', href: '#/' }, { label: 'Account', href: '#/account' }, { label: 'Content Studio' }],
         title: 'Content Studio',
-        sub: 'For the site owner. Check the database, add questions to a content pack, and export the pack for the site.',
+        sub: 'for the site owner · check the database and add new questions',
       })}
-      <div class="stack stack--lg">
+      <div class="seg studio-tabs" role="tablist" aria-label="Content Studio">
+        ${TABS.map(([id, label]) => html`<button type="button" role="tab" class="seg__opt" aria-selected="${id === 'overview'}" data-tab="${id}">${label}${id === 'pack' ? html` <span class="count" data-pack-count></span>` : ''}</button>`)}
+      </div>
+      <div data-panel="overview" class="studio-overview">
+        <section class="card ruled tilt-2 studio-add">
+          <i class="tape tape--l" aria-hidden="true"></i>
+          <h2 class="card__title">Add content</h2>
+          <p class="muted">New items go into the content pack in this browser first, so you can try them before anyone else sees them.</p>
+          <div class="studio-tiles">
+            <button type="button" class="card studio-tile" data-tab="question"><span class="studio-tile__icon">${icon('plus', { size: 20 })}</span><h3>Add a question</h3><p class="small muted">One question, its marks, spec points and mark scheme.</p></button>
+            <button type="button" class="card studio-tile" data-tab="pack"><span class="studio-tile__icon">${icon('upload', { size: 18 })}</span><h3>Import a pack</h3><p class="small muted">Load a content pack file someone sent you.</p></button>
+          </div>
+        </section>
+        <section class="card ruled tilt-3">
+          <i class="tape tape--r" aria-hidden="true"></i>
+          <h2 class="card__title">Database health</h2>
+          <p class="muted" data-health-when>Not checked yet in this visit. The check loads all ${subjects.length} subjects.</p>
+          <div class="studio-stats" data-health-stats>
+            <div class="stat-box"><b>–</b><span>papers</span></div>
+            <div class="stat-box"><b>–</b><span>questions</span></div>
+            <div class="stat-box"><b>–</b><span>errors</span></div>
+            <div class="stat-box"><b>–</b><span>warnings</span></div>
+          </div>
+          <div class="row"><button type="button" class="btn btn--primary" data-check>${icon('refresh', { size: 15 })} Check all subjects</button><button type="button" class="btn" data-tab="check">See the details</button></div>
+        </section>
+        <section class="card ruled tilt-1" data-pack-summary></section>
+        <div class="banner banner--warn studio-copyright">Question papers are the copyright of their exam boards. Only add material you are allowed to use.</div>
+      </div>
+      <div data-panel="pack" hidden>
+        <section class="card ruled" data-pack></section>
         ${banner(
           html`Content lives in the <span class="mono">/data</span> folder as JSON. Additions made here are saved as a <strong>content pack in this browser</strong>, so
             you can try them straight away. To publish them, export the pack, save it in <span class="mono">/data/packs</span> and list it in
-            <span class="mono">/data/packs/index.json</span>. Question papers are the copyright of their exam boards: only add material you are allowed to use.`,
+            <span class="mono">/data/packs/index.json</span>.`,
         )}
-        <section class="card" data-pack></section>
-        <section class="card">
+      </div>
+      <div data-panel="question" hidden>
+        <section class="card ruled">
           <div class="card__head"><h2 class="card__title">Add a question</h2></div>
           <form class="stack" data-question-form novalidate>
             <div class="grid">
@@ -79,7 +116,9 @@ export async function mount(element, context) {
             <div><button type="submit" class="btn btn--primary">${icon('plus', { size: 16 })} Add to the content pack</button></div>
           </form>
         </section>
-        <section class="card">
+      </div>
+      <div data-panel="check" hidden>
+        <section class="card ruled">
           <div class="card__head">
             <h2 class="card__title">Database check</h2>
             <button type="button" class="btn btn--sm" data-check>${icon('refresh', { size: 15 })} Check all subjects</button>
@@ -89,12 +128,34 @@ export async function mount(element, context) {
       </div>`,
   );
 
+  const showTab = (id) => {
+    for (const tab of element.querySelectorAll('.studio-tabs [data-tab]')) tab.setAttribute('aria-selected', String(tab.dataset.tab === id));
+    for (const panel of element.querySelectorAll('[data-panel]')) panel.hidden = panel.dataset.panel !== id;
+  };
+  on(element, 'click', '[data-tab]', (event, button) => showTab(button.dataset.tab));
+
   // ── local content pack ──
   function drawPack() {
     const pack = readLocalPack();
+    const total = pack.questions.length + pack.papers.length;
+    $('[data-pack-count]', element).textContent = total ? String(total) : '';
+    setHtml(
+      $('[data-pack-summary]', element),
+      html`<i class="tape tape--c" aria-hidden="true"></i>
+        <h2 class="card__title">Your content pack</h2>
+        <p class="muted">Not on the site yet. Only this browser sees these, in Practice and Past papers.</p>
+        <div class="studio-stats">
+          <div class="stat-box"><b>${pack.questions.length}</b><span>${pack.questions.length === 1 ? 'question' : 'questions'}</span></div>
+          <div class="stat-box"><b>${pack.papers.length}</b><span>${pack.papers.length === 1 ? 'paper' : 'papers'}</span></div>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn--primary" data-tab="pack">Open the pack</button>
+          <button type="button" class="btn" data-pack-export ${total ? '' : 'disabled'}>${icon('download')} Export pack</button>
+        </div>`,
+    );
     setHtml(
       $('[data-pack]', element),
-      html`<div class="card__head">
+      html`<i class="tape tape--c" aria-hidden="true"></i><div class="card__head">
           <h2 class="card__title">Content pack in this browser</h2>
           <span class="small muted">${plural(pack.questions.length, 'question')} · ${plural(pack.papers.length, 'paper')}</span>
         </div>
@@ -235,6 +296,16 @@ export async function mount(element, context) {
     });
     const allIssues = rows.flatMap((row) => row.issues.map((item) => ({ ...item, subject: row.bundle.subject })));
     const errorCount = allIssues.filter((item) => item.level === 'error').length;
+    const papers = rows.reduce((total, row) => total + row.bundle.papers.length, 0);
+    const questionCount = rows.reduce((total, row) => total + row.bundle.questions.length, 0);
+    setHtml(
+      $('[data-health-stats]', element),
+      html`<div class="stat-box"><b>${papers}</b><span>papers</span></div>
+        <div class="stat-box"><b>${questionCount}</b><span>questions</span></div>
+        <div class="stat-box" data-good="${errorCount === 0}"><b>${errorCount}</b><span>errors</span></div>
+        <div class="stat-box"><b>${allIssues.length - errorCount}</b><span>warnings</span></div>`,
+    );
+    $('[data-health-when]', element).textContent = `Last checked at ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}, across all ${rows.length} subjects.`;
     setHtml(
       target,
       html`${banner(

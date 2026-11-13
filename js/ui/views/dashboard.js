@@ -1,149 +1,129 @@
-// Signed-in home: what to do next, where the student stands, and the four sections.
+// Signed-in home: the four sections, the student's subjects (with their colours) and a
+// short "at a glance". Deliberately not suggestive: no "do this next" plans or nudges.
 
 import { CONTENT } from '../../config/app.config.js';
 import { FEATURES } from '../../config/phases.js';
 import { html, on, setHtml } from '../../core/dom.js';
 import { fmtDuration, fmtRelative } from '../../core/utils.js';
 import * as api from '../../data/api.js';
-import { specIndex } from '../../data/content-repository.js';
 import { elapsedMs } from '../../data/sessions.js';
-import { currentStreak, masteryByNode, totals } from '../../engine/analytics.js';
+import { currentStreak, totals } from '../../engine/analytics.js';
 import { icon } from '../icons.js';
-import { loadStudent, subjectCard, subjectSummary } from '../student.js';
-import { banner, confirmDialog, fmtPercent, liveBadge, meter, pageHead, ragBadge, soonBadge } from '../ui.js';
-
-const greeting = () => {
-  const hour = new Date().getHours();
-  return hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-};
+import { loadStudent, subjectCard, subjectSummary, wireColourPicker } from '../student.js';
+import { confirmDialog, fmtPercent } from '../ui.js';
 
 const SESSION_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Question' };
 
+const SECTIONS = [
+  { href: '#/papers', icon: 'file', title: 'Past papers', text: 'Full official papers by year and series.' },
+  { href: '#/practice', icon: 'clock', title: 'Practice', text: 'Custom tests or single questions from your topics.' },
+  { href: '#/hub', icon: 'chart', title: 'Data Hub', text: 'Scores, history and topic mastery.' },
+  { href: '#/subjects', icon: 'target', title: 'My subjects', text: "Subjects and the topics you've learned." },
+];
+
+const SOON = [
+  { href: '#/ai-papers', label: 'AI practice questions', feature: 'aiPastPapers' },
+  { href: '#/predicted', label: 'AI predicted papers', feature: 'predictedPapers' },
+  { href: '#/ai-marking', label: 'AI marking', feature: 'aiMarking' },
+];
+
 export async function mount(element, context) {
-  context.setTitle('Dashboard');
+  context.setTitle('Home');
   const user = api.currentUser();
   const student = await loadStudent();
   const { progress, bundles, latest } = student;
   const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter(Boolean);
-  const examined = enrolled.filter((bundle) => bundle.subject.has_written_exam);
   const overall = totals([...latest.values()]);
   const resumable = api.resumableSessions();
-
-  // Topics to work on next: lowest scoring topics with at least a few marks of evidence.
-  const weakest = [];
-  for (const bundle of examined) {
-    const mastery = masteryByNode(latest, bundle.questionsById, specIndex);
-    for (const section of bundle.spec.sections) {
-      for (const topic of section.topics) {
-        const entry = mastery.get(topic.id);
-        if (entry && entry.max >= 4 && entry.rag !== 'green') weakest.push({ bundle, topic, entry });
-      }
-    }
-  }
-  weakest.sort((a, b) => a.entry.percentage - b.entry.percentage);
+  const firstName = user.display_name.trim().split(/\s+/)[0];
 
   setHtml(
     element,
-    html`${pageHead({
-        title: `${greeting()}, ${user.display_name}`,
-        sub: 'Your papers. Your practice. Your progress.',
-        actions: html`<a class="btn btn--primary" href="#/practice">${icon('sliders')} Start practising</a><a class="btn" href="#/papers">Past papers</a>`,
-      })}
-      <div class="stack stack--lg">
-        ${user.is_demo ? banner(html`<strong>You are in the demo account.</strong> Its subjects, learned topics and scores are sample activity so you can see every screen with data. Log out and create your own account to start fresh.`, { type: 'demo' }) : ''}
-        ${CONTENT.showSampleContent && !progress.preferences.hideDemoNotice
-          ? html`<div data-demo-notice>
-              ${banner(
-                html`<strong>This build ships with demo questions.</strong> They are written for the platform so every feature can be tried, and are
-                  always labelled “Demo content”. Official papers are listed with links to the exam boards.
-                  <button type="button" class="linkbtn" data-hide-notice>Hide this</button>`,
-                { type: 'info' },
+    html`<header class="dash-hello">
+        <h1 tabindex="-1">Hello, ${user.is_demo ? 'Demo' : firstName}</h1>
+        <p class="hand">where would you like to go?</p>
+      </header>
+
+      ${user.is_demo || (CONTENT.showSampleContent && !progress.preferences.hideDemoNotice)
+        ? html`<p class="banner banner--info small" data-demo-notice style="margin-top:22px">
+            ${icon('info')}
+            <span class="banner__body">
+              ${user.is_demo
+                ? html`<strong>This is the demo account.</strong> Its subjects, topics and scores are sample activity. Log out and create your own account to start fresh. `
+                : ''}
+              ${CONTENT.showSampleContent ? html`Demo questions are always labelled “Demo content”; official papers link to the exam boards.` : ''}
+              ${user.is_demo ? '' : html`<button type="button" class="linkbtn" data-hide-notice>Hide this</button>`}
+            </span>
+          </p>`
+        : ''}
+
+      <nav class="dash-sections" aria-label="Sections">
+        ${SECTIONS.map(
+          (section, index) =>
+            html`<a class="card card--link ruled dash-section tilt-${[1, 3, 2, 4][index]}" href="${section.href}">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <span class="ic" aria-hidden="true">${icon(section.icon, { size: 20 })}</span>
+              <span class="dash-section__arrow" aria-hidden="true">→</span>
+              <h2>${section.title}</h2>
+              <p>${section.text}</p>
+            </a>`,
+        )}
+      </nav>
+
+      ${resumable.length
+        ? html`<section class="dash-block" aria-labelledby="resume-title">
+            <div class="section-title"><h2 id="resume-title">Pick up where you left off</h2></div>
+            <div class="resume-list">
+              ${resumable.slice(0, 3).map(
+                (session) =>
+                  html`<div class="card resume stack stack--sm">
+                    <p class="small muted">${SESSION_LABELS[session.kind]} · started ${fmtRelative(session.started_at)}</p>
+                    <p class="h3">${session.title}</p>
+                    <p class="small muted">
+                      ${session.status === 'marking' ? 'Waiting to be marked' : `${Object.keys(session.answers).length} of ${session.question_ids.length || 1} answered`}
+                      · ${fmtDuration(elapsedMs(session) / 1000)} so far
+                    </p>
+                    <div class="row row--tight">
+                      <a class="btn btn--primary btn--sm" href="#/session/${session.session_id}">Resume</a>
+                      <button type="button" class="btn btn--ghost btn--sm" data-discard="${session.session_id}">Discard</button>
+                    </div>
+                  </div>`,
               )}
-            </div>`
-          : ''}
-        ${resumable.length
-          ? html`<section>
-              <div class="section-title"><h2 class="h2">Pick up where you left off</h2></div>
-              <div class="stack stack--sm">
-                ${resumable.slice(0, 3).map(
-                  (session) =>
-                    html`<div class="card resume">
-                      <div style="min-width:0">
-                        <p class="small muted">${SESSION_LABELS[session.kind]} · started ${fmtRelative(session.started_at)}</p>
-                        <p class="h3">${session.title}</p>
-                        <p class="small muted">
-                          ${session.status === 'marking' ? 'Waiting to be marked' : `${Object.keys(session.answers).length} of ${session.question_ids.length || 1} answered`}
-                          · ${fmtDuration(elapsedMs(session) / 1000)} so far
-                        </p>
-                      </div>
-                      <div class="row row--tight">
-                        <a class="btn btn--primary btn--sm" href="#/session/${session.session_id}">Resume</a>
-                        <button type="button" class="btn btn--ghost btn--sm" data-discard="${session.session_id}">Discard</button>
-                      </div>
-                    </div>`,
-                )}
-              </div>
-            </section>`
-          : ''}
-        ${progress.question_attempts.length || progress.paper_attempts.length
-          ? html`<section class="grid grid--stats" aria-label="Your numbers">
-              <div class="stat"><span class="stat__label">Questions answered</span><span class="stat__value">${latest.size}</span></div>
-              <div class="stat">
-                <span class="stat__label">Average score</span><span class="stat__value">${fmtPercent(overall.percentage)}</span>
-                <span class="stat__note">latest attempt at each question</span>
-              </div>
-              <div class="stat"><span class="stat__label">Papers and tests</span><span class="stat__value">${progress.paper_attempts.length}</span></div>
-              <div class="stat">
-                <span class="stat__label">Day streak</span><span class="stat__value">${currentStreak(progress.question_attempts)}</span>
-                <span class="stat__note"><a href="#/hub">Open the Data Hub</a></span>
-              </div>
-            </section>`
-          : ''}
+            </div>
+          </section>`
+        : ''}
+
+      <section class="dash-block" aria-labelledby="subjects-title">
+        <div class="section-title">
+          <h2 id="subjects-title">Your subjects</h2>
+          ${enrolled.length ? html`<span class="hand">tap the dot to change a subject’s colour</span>` : ''}
+        </div>
         ${enrolled.length
-          ? html`<section>
-              <div class="section-title"><h2 class="h2">Your subjects</h2><a class="small" href="#/subjects">Manage subjects</a></div>
-              <div class="grid">${enrolled.map((bundle) => subjectCard(bundle, subjectSummary(bundle, student)))}</div>
-            </section>`
-          : ''}
-        ${weakest.length
-          ? html`<section class="card">
-              <div class="card__head"><h2 class="card__title">Focus next</h2><span class="small muted">Your lowest scoring topics</span></div>
-              <div class="meterlist meterlist--action">
-                ${weakest.slice(0, 5).map(
-                  ({ bundle, topic, entry }) =>
-                    html`<div class="meterlist__name">${topic.title}<br /><span class="small muted">${bundle.subject.subject}</span></div>
-                      ${meter(entry.percentage, entry.rag, `${topic.title}: ${fmtPercent(entry.percentage)}`)}
-                      <div class="meterlist__value row row--tight row--nowrap">
-                        ${ragBadge(entry.rag, entry.percentage, { label: false })}
-                        <a class="btn btn--sm" href="#/practice?subject=${bundle.subject.subject_id}&topic=${encodeURIComponent(topic.id)}">Practise</a>
-                      </div>`,
-                )}
-              </div>
-            </section>`
-          : ''}
-        <section>
-          <div class="section-title"><h2 class="h2">Sections</h2></div>
-          <div class="grid">
-            <a class="card card--link" href="#/papers">
-              <p class="row row--between">${icon('file', { size: 22 })} ${liveBadge()}</p>
-              <h3 class="h3 section-card__title">Official past papers</h3>
-              <p class="muted small">Real exam series from the boards. Sit them timed and log your marks.</p>
-            </a>
-            <a class="card card--link" href="#/practice">
-              <p class="row row--between">${icon('sliders', { size: 22 })} ${liveBadge()}</p>
-              <h3 class="h3 section-card__title">Customisable practice</h3>
-              <p class="muted small">Timed tests and a question picker, filtered to the topics you have learned.</p>
-            </a>
-            <a class="card card--link card--soon" href="#/ai-papers">
-              <p class="row row--between">${icon('sparkle', { size: 22 })} ${soonBadge('aiPastPapers')}</p>
-              <h3 class="h3 section-card__title">${FEATURES.aiPastPapers.title}</h3>
-              <p class="muted small">${FEATURES.aiPastPapers.lead}</p>
-            </a>
-            <a class="card card--link card--soon" href="#/predicted">
-              <p class="row row--between">${icon('target', { size: 22 })} ${soonBadge('predictedPapers')}</p>
-              <h3 class="h3 section-card__title">${FEATURES.predictedPapers.title}</h3>
-              <p class="muted small">${FEATURES.predictedPapers.lead}</p>
-            </a>
+          ? html`<div class="dash-subjects">${enrolled.map((bundle, index) => subjectCard(bundle, subjectSummary(bundle, student), { tilt: [1, 2, 3, 4][index % 4] }))}</div>`
+          : html`<div class="empty">
+              <h3 class="empty__title">No subjects yet</h3>
+              <p class="empty__text">Pick your subjects to see their papers, practice and progress here.</p>
+              <a class="btn btn--primary" href="#/subjects">Add a subject</a>
+            </div>`}
+      </section>
+
+      <div class="dash-bottom">
+        <section class="card tilt-3" aria-labelledby="glance-title">
+          <i class="tape tape--l" aria-hidden="true"></i>
+          <h2 id="glance-title">At a glance</h2>
+          <div class="glance">
+            <div><b>${latest.size}</b><span>questions</span></div>
+            <div><b>${fmtPercent(overall.percentage)}</b><span>average</span></div>
+            <div><b>${progress.paper_attempts.length}</b><span>papers &amp; tests</span></div>
+            <div><b>${currentStreak(progress.question_attempts)}</b><span>day streak</span></div>
+          </div>
+        </section>
+        <section class="card tilt-2" aria-labelledby="later-title">
+          <i class="tape tape--r" aria-hidden="true"></i>
+          <h2 id="later-title">Coming later</h2>
+          <div class="soon-list">
+            ${SOON.filter((item) => !FEATURES[item.feature]?.enabled).map((item) => html`<a class="tag tag--soon" href="${item.href}">${item.label}</a>`)}
+            <a class="tag" href="#/subjects">+ Add a subject</a>
           </div>
         </section>
       </div>`,
@@ -164,4 +144,5 @@ export async function mount(element, context) {
     await api.deleteSession(button.dataset.discard);
     context.refresh();
   });
+  return wireColourPicker(element);
 }

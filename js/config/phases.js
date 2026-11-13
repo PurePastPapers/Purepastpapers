@@ -105,29 +105,19 @@ const PHASED_NAV = [
 ];
 
 /**
- * Sidebar navigation, built from the feature flags: a section sits under "Coming soon"
- * (with a "Soon" badge) until its feature is enabled, then moves up beside the other papers.
+ * Top navigation, built from the feature flags. `main` is the row of tabs across the top
+ * (the four sections). `more` sits in the account menu: My subjects, plus each AI section,
+ * which shows a "Soon" badge until its feature is enabled.
  */
 export function navGroups() {
   const live = PHASED_NAV.filter((item) => isEnabled(item.feature) && item.page !== false);
-  const soon = PHASED_NAV.filter((item) => !isEnabled(item.feature));
-  return [
-    {
-      label: null,
-      items: [
-        { path: '/', label: 'Dashboard', icon: 'home' },
-        { path: '/subjects', label: 'My subjects', icon: 'cap', match: ['/subject'] },
-      ],
-    },
-    {
-      label: 'Practise',
-      items: [
-        { path: '/papers', label: 'Official past papers', icon: 'file', match: ['/paper'] },
-        ...live,
-        { path: '/practice', label: 'Customisable practice', icon: 'sliders' },
-      ],
-    },
-    { label: 'Track', items: [{ path: '/hub', label: 'Data Hub', icon: 'chart' }] },
-    ...(soon.length ? [{ label: 'Coming soon', items: soon }] : []),
-  ];
+  return {
+    main: [
+      { path: '/', label: 'Home', icon: 'home' },
+      { path: '/papers', label: 'Past papers', icon: 'file', match: ['/paper', ...live.map((item) => item.path)] },
+      { path: '/practice', label: 'Practice', icon: 'sliders' },
+      { path: '/hub', label: 'Data Hub', icon: 'chart' },
+    ],
+    more: [{ path: '/subjects', label: 'My subjects', icon: 'cap', match: ['/subject'] }, ...PHASED_NAV],
+  };
 }

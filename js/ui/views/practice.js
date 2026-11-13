@@ -19,7 +19,8 @@ import { icon } from '../icons.js';
 import { marksPill, questionMeta, questionRef, questionSnippet } from '../question-view.js';
 import { mountSpecTree } from '../spec-tree.js';
 import { loadStudent, practicePool, startQuestionSet, startSingle, subjectPills } from '../student.js';
-import { banner, difficultyBadge, emptyState, liveBadge, pageHead, ragBadge, soonBadge } from '../ui.js';
+import { scStyle, tintPage } from '../subject-colours.js';
+import { banner, difficultyBadge, emptyState, pageHead, ragBadge, soonBadge } from '../ui.js';
 
 const STATUS_OPTIONS = [
   { id: 'unseen', label: 'Not attempted' },
@@ -76,21 +77,22 @@ const defaults = () => ({
 const toggle = (list, value) => (list.includes(value) ? list.filter((item) => item !== value) : [...list, value]);
 
 export async function mount(element, context) {
-  context.setTitle('Customisable practice');
+  context.setTitle('Practice');
   const student = await loadStudent();
   const { progress, bundles, latest } = student;
   const user = api.currentUser();
   const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.practice_modes.length);
-  const head = pageHead({
-    title: 'Customisable practice',
-    badge: liveBadge(),
-    sub: 'Practice built around what you have learned. Choose topics, difficulty and length, and only matching questions are used.',
-  });
+  const head = (crumb) =>
+    pageHead({
+      title: 'Practice',
+      sub: 'build a test from the topics you’ve learned',
+      crumbs: [{ label: 'Home', href: '#/' }, { label: 'Practice', href: '#/practice' }, ...(crumb ? [{ label: crumb }] : [])],
+    });
 
   if (!enrolled.length) {
     setHtml(
       element,
-      html`${head}${emptyState({
+      html`${head()}${emptyState({
         iconName: 'cap',
         title: 'Add a subject first',
         text: 'Practice is built from the subjects you study and the topics you have ticked as learned.',
@@ -300,19 +302,23 @@ export async function mount(element, context) {
     const perLevel = (id) => matches.filter((question) => question.difficulty === id).length;
     const mixedCount = matches.filter((question) => question.difficulty !== 'extra_hard').length;
     const levels = [...DIFFICULTIES.filter((d) => !d.beyondSpec || subject.extra_hard || perLevel(d.id) > 0), MIXED];
-    return html`<div class="card stack">
-      <fieldset class="field">
-        <legend class="field__label">Length</legend>
+    return html`<div class="builder">
+      <fieldset class="card ruled builder__card tilt-3">
+        <i class="tape tape--c" aria-hidden="true"></i>
+        <legend class="builder__title">Length</legend>
+        <p class="hand builder__note">roughly how long you have</p>
         <div class="chips">
-          ${TEST_DURATIONS.map((minutes) => html`<button type="button" class="chip" data-minutes="${minutes}" aria-pressed="${state.minutes === minutes}">${minutes} min</button>`)}
+          ${TEST_DURATIONS.map((minutes) => html`<button type="button" class="chip" data-minutes="${minutes}" aria-pressed="${state.minutes === minutes}">${fmtMinutes(minutes)}</button>`)}
           <label class="row row--tight row--nowrap small">
             <span class="muted">Custom</span>
             <input class="input input--sm input--num" type="number" min="5" max="240" step="5" value="${state.minutes}" data-minutes-input aria-label="Custom length in minutes" />
           </label>
         </div>
       </fieldset>
-      <fieldset class="field">
-        <legend class="field__label">Difficulty</legend>
+      <fieldset class="card ruled builder__card tilt-2">
+        <i class="tape tape--c" aria-hidden="true"></i>
+        <legend class="builder__title">Difficulty</legend>
+        <p class="hand builder__note">numbers show how many questions match</p>
         <div class="chips" role="radiogroup" aria-label="Difficulty">
           ${levels.map((level) => {
             const count = level.id === 'mixed' ? mixedCount : perLevel(level.id);
@@ -323,10 +329,16 @@ export async function mount(element, context) {
         </div>
         <p class="field__hint">${(DIFFICULTIES.find((d) => d.id === state.difficulty) || MIXED).description}</p>
       </fieldset>
-      ${topicsControl()} ${metadataControls()} ${sourceControl()}
-      <fieldset class="field">
-        <legend class="field__label">Question choice</legend>
-        <label class="check"><input type="checkbox" data-flag="preferUnseen" ${state.preferUnseen ? 'checked' : ''} /><span>Prefer questions I have not done yet</span></label>
+      <div class="card ruled builder__card builder__card--wide tilt-3">
+        <i class="tape tape--l" aria-hidden="true"></i>
+        <h2 class="builder__title">Topics</h2>
+        <p class="hand builder__note">only topics you’ve ticked as learned are used, change them on the subject page</p>
+        <div class="stack">${topicsControl()} ${metadataControls()} ${sourceControl()}</div>
+      </div>
+      <fieldset class="card ruled builder__card tilt-1">
+        <i class="tape tape--c" aria-hidden="true"></i>
+        <legend class="builder__title">Question choice</legend>
+        <label class="check"><input type="checkbox" data-flag="preferUnseen" ${state.preferUnseen ? 'checked' : ''} /><span>Prefer questions I haven’t done yet</span></label>
         <label class="check"><input type="checkbox" data-flag="prioritiseWeak" ${state.prioritiseWeak ? 'checked' : ''} /><span>Bring back questions I scored below 70% on</span></label>
       </fieldset>
     </div>`;
@@ -357,25 +369,22 @@ export async function mount(element, context) {
         })}
       </div>`;
     }
-    return html`<div class="card stack testpreview">
-      <div class="card__head" style="margin-bottom:0">
-        <h2 class="card__title">Your test</h2>
-        <button type="button" class="btn btn--sm" data-shuffle>${icon('shuffle', { size: 15 })} Shuffle</button>
-      </div>
-      <div class="grid grid--3">
-        <div class="stat stat--flat"><span class="stat__label">Questions</span><span class="stat__value">${test.questions.length}</span></div>
-        <div class="stat stat--flat"><span class="stat__label">Marks</span><span class="stat__value">${test.total_marks}</span></div>
-        <div class="stat stat--flat"><span class="stat__label">Estimated time</span><span class="stat__value">${test.total_minutes}<span class="stat__of"> min</span></span></div>
-      </div>
-      ${test.short
-        ? banner(
-            html`Only <strong>${fmtMinutes(test.available_minutes)}</strong> of questions match these settings, so this test is shorter than ${state.minutes} minutes. Widen
-              the topics or difficulty for a full-length test.`,
-            { type: 'warn' },
-          )
-        : ''}
-      <div>
-        <p class="label" style="margin-bottom:6px">What is in it</p>
+    return html`<div class="card testpreview tilt-2">
+      <i class="tape tape--c" aria-hidden="true"></i>
+      <header class="testpreview__band"><h2>Your test</h2><span class="hand">ready when you are</span></header>
+      <div class="testpreview__body stack">
+        <div class="glance glance--3">
+          <div><b>${test.questions.length}</b><span>questions</span></div>
+          <div><b>${test.total_marks}</b><span>marks</span></div>
+          <div><b>${test.total_minutes}</b><span>minutes</span></div>
+        </div>
+        ${test.short
+          ? banner(
+              html`Only <strong>${fmtMinutes(test.available_minutes)}</strong> of questions match these settings, so this test is shorter than ${state.minutes} minutes. Widen
+                the topics or difficulty for a full-length test.`,
+              { type: 'warn' },
+            )
+          : ''}
         <ol class="testlist">
           ${test.questions.map(
             (question, index) =>
@@ -383,16 +392,20 @@ export async function mount(element, context) {
                 <span class="testlist__num">${index + 1}</span>
                 <span class="testlist__topic">${specIndex.topicOf(question.primary_spec_points[0])?.title || 'Topic'}</span>
                 ${difficultyBadge(question.difficulty)}
-                <span class="num small">${question.marks}</span>
+                <span class="small muted nowrap">${plural(question.marks, 'mark')}</span>
               </li>`,
           )}
         </ol>
+        <div class="testpreview__actions">
+          <button type="button" class="btn btn--lg" data-shuffle>Shuffle</button>
+          <button type="button" class="btn btn--primary btn--lg" data-start-test>Start test</button>
+        </div>
+        <p class="hand testpreview__note">the clock starts when you press start</p>
+        <p class="small muted">
+          At the end you mark your answers against the mark scheme, and the result is saved to your Data Hub.
+          ${lockedCount ? html`${plural(lockedCount, 'question')} left out because ${lockedCount === 1 ? 'it needs' : 'they need'} topics you have not ticked.` : ''}
+        </p>
       </div>
-      <button type="button" class="btn btn--primary btn--lg btn--block" data-start-test>${icon('play', { size: 16 })} Start ${fmtMinutes(state.minutes)} test</button>
-      <p class="small muted">
-        The clock starts when you begin. At the end you mark your answers against the mark scheme, and the result is saved to your Data Hub.
-        ${lockedCount ? html`<br />${plural(lockedCount, 'question')} left out because ${lockedCount === 1 ? 'it needs' : 'they need'} topics you have not ticked.` : ''}
-      </p>
     </div>`;
   }
 
@@ -400,7 +413,9 @@ export async function mount(element, context) {
 
   function browserFilters(base) {
     const count = (predicate) => base.filter(predicate).length;
-    return html`<div class="card stack">
+    return html`<div class="card ruled stack tilt-3">
+      <i class="tape tape--c" aria-hidden="true"></i>
+      <div><h2 class="builder__title">Filter questions</h2><p class="hand builder__note" style="margin:0">numbers show how many match</p></div>
       ${topicsControl()}
       <fieldset class="field">
         <legend class="field__label">Difficulty</legend>
@@ -591,22 +606,23 @@ export async function mount(element, context) {
     window.scrollTo(0, scroll);
   }
 
+  tintPage(subject);
   setHtml(
     element,
-    html`${head}
-      <div class="stack stack--lg">
+    html`${head(subject.subject)}
+      <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subjectId, (id) => `#/practice?subject=${id}`)}
         ${modes.length > 1
-          ? html`<div class="tabs" role="tablist" style="margin-bottom:0">
+          ? html`<div class="seg mode-switch" role="tablist">
               ${modes.map(
                 (mode) =>
-                  html`<button type="button" role="tab" class="tab" aria-selected="${state.mode === mode}" data-mode="${mode}" title="${PRACTICE_MODES[mode].blurb}">
+                  html`<button type="button" role="tab" class="seg__opt" aria-selected="${state.mode === mode}" data-mode="${mode}" title="${PRACTICE_MODES[mode].blurb}">
                     ${PRACTICE_MODES[mode].label}
                   </button>`,
               )}
             </div>`
           : html`<p class="muted"><strong>${PRACTICE_MODES[modes[0]].label}.</strong> ${PRACTICE_MODES[modes[0]].blurb}</p>`}
-        <div class="row row--between"><p class="small muted">Filters stay saved for this subject in this browser tab.</p><button type="button" class="btn btn--sm" data-reset-filters>Reset filters</button></div>
+        <div class="row row--between"><p class="hand" style="font-size:20px">your filters stay saved for this subject in this tab</p><button type="button" class="btn btn--sm btn--ghost" data-reset-filters>Reset filters</button></div>
         <div data-body></div>
       </div>`,
   );

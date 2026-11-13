@@ -1,0 +1,191 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 70px}
+body.tint{--bg:color-mix(in srgb,#9cc3e6 42%,#f6f3ec);--line:rgba(40,70,110,.09)}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0}.lede{font-size:27px}
+.subs{display:flex;gap:12px;margin-top:24px;align-items:center}.subs .tag{font-size:15px;padding:8px 14px}.subs .on{background:var(--ink);color:var(--card)}
+.ctl{display:flex;gap:22px;align-items:center;margin-top:24px}
+.mode{display:flex;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink)}
+.mode span{font-family:var(--hf);font-size:17px;padding:10px 20px;border-right:2px solid var(--ink)}.mode span:last-child{border-right:0}.mode .on{background:var(--ink);color:var(--card)}
+.srcsw{display:flex;gap:8px;align-items:center;margin-left:auto}.srcsw .lab{font-size:13px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-right:4px}
+.srcsw .tag{font-size:14.5px}.srcsw .on{background:var(--ink);color:var(--card)}
+.main{margin-top:36px;display:flex;flex-direction:column;gap:36px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:26px}
+.stat{padding:18px 20px 18px}.stat .l{font-size:13px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.stat .v{font-family:var(--hf);font-size:44px;line-height:1.15;margin-top:4px;display:block}.stat .v small{font-size:20px;color:var(--mut)}
+.stat .n{font-size:14px;color:var(--mut);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.pc{padding:22px 26px 24px}.pc .hd{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}.pc h3{font-size:23px;margin-right:auto}.pc .hd .s{font-size:14px;color:var(--mut)}
+.ml{display:grid;grid-template-columns:150px 1fr 150px;gap:12px 14px;align-items:center;font-size:15px}.mt{height:14px;border:2px solid var(--ink);border-radius:3px;background:var(--card);overflow:hidden;display:block}.mt i{display:block;height:100%}
+.ml b{font-weight:600;color:var(--mut);font-size:14px;white-space:nowrap}
+.rg{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 10px;white-space:nowrap}
+.G{background:#cfe8d5}.A{background:#f7e3a6}.R{background:#f4c2b8}.N{background:var(--card);color:var(--mut);border-style:dashed}
+.rag{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);display:inline-block;flex:none}
+table{width:100%;border-collapse:collapse;font-size:15px}th{text-align:left;font-size:12.5px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:8px 8px;border-bottom:2px solid var(--ink)}
+td{padding:11px 8px;border-bottom:1.5px dashed rgba(42,39,35,.18);vertical-align:middle}tr:last-child td{border-bottom:0}
+.num{text-align:right}.sm{font-size:13.5px;color:var(--mut)}.nw{white-space:nowrap}
+.sbtn{font-family:var(--hf);font-size:14.5px;border:2px solid var(--ink);border-radius:5px;padding:5px 12px;background:var(--card);box-shadow:2px 2px 0 var(--ink);white-space:nowrap;display:inline-block}
+.sbtn.d{background:var(--ink);color:var(--card)}
+.df{font-size:12px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 9px;white-space:nowrap}
+.e{background:#cfe8d5}.m{background:#f7e3a6}.h{background:#f4c2b8}.x{background:#d9cdf0}
+.st{font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);display:inline-block;background:var(--card);white-space:nowrap;font-family:'Nunito'}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips .tag{font-size:14px;padding:5px 11px}.chips .on{background:var(--ink);color:var(--card)}.chips .off{border-style:dashed;color:var(--mut)}
+.mini{white-space:nowrap;font-size:10px;font-weight:800;letter-spacing:1px;border:1.5px dashed currentColor;border-radius:3px;padding:1px 5px;margin-left:4px}
+.act{list-style:none;padding:0}.act li{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1.5px dashed rgba(42,39,35,.18);font-size:15px}.act li:last-child{border:0}
+.act .w{width:110px;color:var(--mut);font-size:13.5px}.act .q{flex:1}.act b{font-family:var(--hf);font-weight:400;width:46px;text-align:right}
+.qc .ref{font-size:13px;color:var(--mut);display:block}.qc .tx{display:block;margin-top:2px}
+.aishelf{border:2px dashed var(--ink);border-radius:6px;background:rgba(255,253,248,.6);padding:22px 26px 24px;position:relative}
+.aishelf>.st{position:absolute;top:-13px;left:22px;font-size:12px;transform:rotate(-2deg)}
+.key{display:flex;gap:18px;align-items:center;font-size:14.5px;color:var(--mut);flex-wrap:wrap}
+.tp{padding:22px 26px 10px}.tp .hd{display:flex;gap:14px;align-items:center;margin-bottom:6px}.tp h3{font-size:23px;margin-right:auto}
+.trow{display:grid;grid-template-columns:24px 64px 1fr 120px 260px 70px;gap:14px;align-items:center;padding:12px 0;border-top:1.5px dashed rgba(42,39,35,.18);font-size:15.5px}
+
+.trow .cd{font-family:var(--hf);color:var(--mut);font-size:14px}.trow .lr{font-size:13.5px;color:var(--mut)}
+.open{background:rgba(42,39,35,.03);margin:0 -26px;padding:16px 26px 18px;border-top:1.5px dashed rgba(42,39,35,.18)}
+.pts{list-style:none;padding:0;margin-top:10px}.pts li{display:grid;grid-template-columns:64px 1fr 130px 100px;gap:12px;align-items:center;padding:7px 0;font-size:14.5px}
+
+.pts .cd{font-family:var(--hf);color:var(--mut);font-size:13.5px}
+.empty{padding:44px 50px;display:grid;grid-template-columns:1fr 380px;gap:50px;align-items:center}
+.empty h2{font-size:36px;margin-bottom:8px}.empty p{font-size:17px;line-height:1.55;color:var(--mut);max-width:560px}
+.steps{display:flex;flex-direction:column;gap:14px}.steps div{display:flex;gap:14px;align-items:center;font-size:16px}.steps i{font-style:normal;width:36px;height:36px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);background:var(--bg);flex:none}
+.ghost{opacity:.5;filter:grayscale(.4)}
+.sbar{display:flex;gap:6px;align-items:center}
+.svgc text{font-family:'Nunito';font-size:12px;fill:#6d675d;font-weight:700}
+.leg{display:flex;gap:18px;font-size:14px;margin-top:8px;flex-wrap:wrap;align-items:center}.leg span{display:flex;gap:7px;align-items:center}
+.sw{width:22px;height:4px;border-radius:2px;display:inline-block}
+</style></head><body>
+<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Past papers</span><span>Practice</span><span class="on">Data Hub</span></div><div class="r"><span class="tag">214 answered</span><div class="av">D</div></div></div>
+<div id="app"></div>
+<script>
+const P=new URLSearchParams(location.search),S=P.get('s')||'overview',AI=!!P.get('ai');
+const subj=['topics-all','overview','empty'].includes(S)?'all':'maths';
+if(subj==='maths')document.body.classList.add('tint');
+const C={G:'#8fcaa0',A:'#f4cf6a',R:'#ef9a8f'};
+const rc=p=>p>=70?'G':p>=40?'A':'R', RL={G:'Secure',A:'Developing',R:'Needs work'};
+const rg=(p,lab)=>`<span class="rg ${rc(p)}"><i class="rag" style="background:${C[rc(p)]};width:10px;height:10px;border-width:1.5px"></i>${p}%${lab?' · '+RL[rc(p)]:''}</span>`;
+const mt=p=>`<span class="mt"><i style="width:${p}%;background:${C[rc(p)]}"></i></span>`;
+const st=t=>AI?`<span class="st">${t}</span>`:'';
+const tab=S.startsWith('topics')?'Topics':S==='questions'?'Questions':S==='papers'?'Papers and tests':'Overview';
+const crumb=subj==='all'?'Home &nbsp;/&nbsp; Data Hub':'Home &nbsp;/&nbsp; Data Hub &nbsp;/&nbsp; Mathematics';
+let h=`<div class="crumb">${crumb}</div><h1 class="px">Data Hub</h1><p class="lede hand">everything you've done, in one place: questions, topics, papers and tests</p>
+<div class="subs"><span class="tag ${subj==='all'?'on':''}">All subjects</span><span class="tag ${subj==='maths'?'on':''}"><i class="dot" style="background:#9cc3e6"></i>Mathematics</span><span class="tag"><i class="dot" style="background:#c7b5ea"></i>Further Maths</span><span class="tag"><i class="dot" style="background:#f3a37f"></i>Physics</span><span class="tag"><i class="dot" style="background:#8fcaa0"></i>Geography</span></div>
+<div class="ctl"><div class="mode">${['Overview','Questions','Topics','Papers and tests'].map(t=>`<span class="${t===tab?'on':''}">${t}</span>`).join('')}</div>
+${AI&&S!=='empty'?`<div class="srcsw"><span class="lab">Show</span><span class="tag on">Official and AI combined</span><span class="tag">Official only</span><span class="tag">AI only</span></div>`:''}</div><div class="main">`;
+
+/* ---------- overview ---------- */
+if(S==='overview'){
+const weeks=[[11,0],[18,4],[9,3],[24,6],[31,9],[22,8],[37,12],[29,10]],lab=['18 Sep','25 Sep','2 Oct','9 Oct','16 Oct','23 Oct','30 Oct','6 Nov'];
+let bars='';weeks.forEach((w,i)=>{const x=50+i*70,o=w[0]*3.6,a=AI?w[1]*3.6:0;bars+=`<rect x="${x}" y="${210-o-a}" width="44" height="${o}" fill="#d6cfc2" stroke="#2a2723" stroke-width="2" rx="2"/>`+(AI&&a?`<rect x="${x}" y="${210-a}" width="44" height="${a}" fill="#fffdf8" stroke="#2a2723" stroke-width="2" stroke-dasharray="4 3" rx="2"/>`:'')+`<text x="${x+22}" y="${200-o-a}" text-anchor="middle" style="fill:#2a2723">${w[0]+(AI?w[1]:0)}</text><text x="${x+22}" y="232" text-anchor="middle">${lab[i]}</text>`;});
+if(!AI){bars=bars.replace(/y="(\d+)" width="44" height="(\d+)"/g,(m,y,hh)=>`y="${+y}" width="44" height="${hh}"`)}
+h+=`<div class="stats">
+<div class="card stat ruled r1"><i class="t tc"></i><span class="l">Questions answered</span><span class="v">${AI?'214':'162'}</span><span class="n">${AI?'162 official · 52 AI made':'291 attempts in total'}</span></div>
+<div class="card stat ruled r2"><i class="t tc"></i><span class="l">Average score</span><span class="v">${AI?'69%':'68%'}</span><span class="n">${AI?rg(69,1):rg(68,1)}</span></div>
+<div class="card stat ruled r3"><i class="t tc"></i><span class="l">Marks earned</span><span class="v">${AI?'1,078':'812'}<small> / ${AI?'1,566':'1,194'}</small></span><span class="n">latest attempt at each question</span></div>
+<div class="card stat ruled r4"><i class="t tc"></i><span class="l">Papers and tests</span><span class="v">${AI?'17':'14'}</span><span class="n">${AI?'14 official and custom · 3 AI':'6 past papers · 8 timed tests'}</span></div>
+<div class="card stat ruled r1"><i class="t tc"></i><span class="l">Day streak</span><span class="v">6</span><span class="n">days in a row</span></div></div>
+<div class="g2"><div class="card pc ruled r3"><i class="t tl"></i><div class="hd"><h3 class="px">Questions answered each week</h3><span class="s">last 8 weeks</span></div>
+<svg class="svgc" width="100%" viewBox="0 0 620 240"><line x1="40" y1="210" x2="610" y2="210" stroke="#2a2723" stroke-width="2"/>${bars}</svg>
+${AI?`<div class="leg"><span><i class="dot" style="background:#d6cfc2"></i>Official</span><span><i class="dot" style="background:#fffdf8;border-style:dashed"></i>AI made</span></div>`:''}</div>
+<div class="card pc ruled r2"><i class="t tr"></i><div class="hd"><h3 class="px">Accuracy by difficulty</h3><span class="s">latest attempt at each question</span></div>
+<div class="ml">${(AI?[['Easy',89,55],['Medium',70,98],['Hard',52,50],['Extra hard',34,11]]:[['Easy',88,41],['Medium',69,74],['Hard',51,38]]).map(r=>`<span style="display:flex;gap:8px;align-items:center">${r[0]}${r[0]==='Extra hard'?st('AI'):''}</span>${mt(r[1])}<b>${r[1]}% · ${r[2]} questions</b>`).join('')}</div>
+${AI?'':'<span class="hand" style="font-size:20px;display:block;margin-top:16px">Extra hard questions arrive with the AI questions</span>'}</div></div>
+<div class="card pc r1"><i class="t tc"></i><div class="hd"><h3 class="px">By subject</h3><span class="s">open a subject to see its topics</span></div>
+<table><tr><th>Subject</th><th class="num">Questions</th><th>Average score</th><th class="num">Papers and tests</th><th></th></tr>
+${(AI?[['#9cc3e6','A-Level Mathematics',95,67,0,8],['#c7b5ea','A-Level Further Maths',51,60,0,4],['#f3a37f','A-Level Physics',44,72,0,4],['#8fcaa0','A-Level Geography',20,77,0,1]]:[['#9cc3e6','A-Level Mathematics',71,64,0,6],['#c7b5ea','A-Level Further Maths',38,59,0,3],['#f3a37f','A-Level Physics',33,72,0,4],['#8fcaa0','A-Level Geography',20,77,0,1]]).map(r=>`<tr><td><span style="display:flex;gap:10px;align-items:center"><i class="dot" style="background:${r[0]}"></i>${r[1]}</span></td><td class="num">${r[2]}</td><td>${rg(r[3],1)}</td><td class="num">${r[5]}</td><td class="num"><span class="sbtn">Topics</span></td></tr>`).join('')}</table></div>
+<div class="card pc ruled r2"><i class="t tc"></i><div class="hd"><h3 class="px">Recent activity</h3><span class="s" style="text-decoration:underline">All questions</span></div>
+<ul class="act">${[['2 hours ago','Mathematics · 2023 Paper 1 · Q6 · Differentiation',6,7,''],['2 hours ago','Mathematics · AI practice set B · Q2 · Trigonometry',4,5,'AI MADE AI MARKED'],['yesterday','Physics · 2022 Paper 2 · Q3 · Electric circuits',3,6,''],['yesterday','Physics · 2022 Paper 2 · Q4 · Waves',5,5,'AI MARKED'],['2 days ago','Further Maths · 2023 Paper 1 · Q2 · Complex numbers',2,8,''],['3 days ago','Geography · 2023 Paper 1 · Q4 · Coastal systems',7,9,'']].map(r=>`<li><span class="w">${r[0]}</span><span class="q">${r[1].replace('AI practice set B',AI?'AI practice set B':'2021 Paper 2')} ${AI&&r[4]?r[4].split(' AI').map((t,i)=>st((i?'AI':'')+t)).join(' '):''}</span><i class="rag" style="background:${C[rc(r[2]/r[3]*100)]}"></i><b>${r[2]}/${r[3]}</b></li>`).join('')}</ul></div>`;
+}
+
+/* ---------- questions ---------- */
+if(S==='questions'){
+const rows=[
+['2023 · Paper 1 · Q6','A curve C has equation y = 2x³ − 9x² + 12x + 3. Find the stationary points…','Differentiation','h',6,7,2,'2 hours ago',''],
+['AI practice set B · Q2','Solve 2 sin θ − 1 = 0 for 0° ≤ θ < 360°, showing your working…','Trigonometry','m',4,5,1,'2 hours ago','AI'],
+['2022 · Paper 2 · Q9','A particle moves in a straight line with velocity v = 3t² − 4t…','Kinematics','m',2,5,3,'yesterday',''],
+['2023 · Paper 1 · Q11','The sum of the first n terms of an arithmetic series is…','Sequences and series','m',2,4,1,'yesterday',''],
+['AI practice set C · Q7','Prove by contradiction that there is no greatest odd integer…','Algebra and functions','x',1,4,1,'2 days ago','AI'],
+['2021 · Paper 1 · Q3','Show that x − 2 is a factor of f(x) = x³ − x − 6…','Algebra and functions','e',3,3,2,'3 days ago',''],
+['2022 · Paper 3 · Q2','A random sample of 40 students is taken from a school…','Statistical sampling','e',2,2,1,'4 days ago',''],
+['2021 · Paper 2 · Q8','Find the equation of the tangent to the circle x² + y² − 6x…','Coordinate geometry','h',2,6,2,'5 days ago',''],
+['2023 · Paper 3 · Q5','A box of mass 3 kg is pulled across a rough horizontal floor…','Kinematics','h',3,8,1,'1 week ago',''],
+].filter(r=>AI||!r[8]);
+const D={e:'Easy',m:'Medium',h:'Hard',x:'Extra hard'};
+h+=`<div class="card pc ruled r3" style="padding-bottom:16px"><i class="t tc"></i><div class="hd"><h3 class="px">Every question you have answered</h3><span class="sbtn d">↻ Retry the 12 below 70%</span></div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+<div class="chips"><span class="tag on">All results</span><span class="tag"><i class="rag" style="background:${C.R};width:10px;height:10px"></i>Needs work</span><span class="tag"><i class="rag" style="background:${C.A};width:10px;height:10px"></i>Developing</span><span class="tag"><i class="rag" style="background:${C.G};width:10px;height:10px"></i>Secure</span></div>
+<div class="chips"><span class="tag on">All difficulties</span><span class="tag">Easy</span><span class="tag">Medium</span><span class="tag">Hard</span><span class="tag ${AI?'':'off'}">Extra hard${AI?'':' <span class="mini" style="color:var(--mut)">WITH AI</span>'}</span><span class="tag">Mixed</span></div>
+${AI?`<div class="chips"><span class="tag on">All sources</span><span class="tag">Official questions</span><span class="tag">AI made</span><span class="tag">AI marked</span></div>`:''}</div>
+<table><tr><th>Question</th><th>Topic</th><th>Difficulty</th><th>Latest score</th><th class="num">Tries</th><th>Last tried</th><th></th></tr>
+${rows.map(r=>`<tr ${r[8]?'style="background:rgba(42,39,35,.035)"':''}><td class="qc" style="max-width:520px"><span class="ref">${r[0]} ${r[8]?st('AI MADE'):''} ${AI&&(r[8]||r[0].includes('Q9'))?st('AI MARKED'):''}</span><span class="tx">${r[1]}</span></td><td><span class="tag" style="font-size:13px;padding:3px 9px">${r[2]}</span></td><td><span class="df ${r[3]}">${D[r[3]]}</span></td><td class="nw">${rg(Math.round(r[4]/r[5]*100))} <span class="sm">${r[4]}/${r[5]}</span></td><td class="num">${r[6]}</td><td class="sm nw">${r[7]}</td><td class="num"><span class="sbtn">Retry</span></td></tr>`).join('')}</table>
+<p class="sm" style="margin-top:12px">Showing 9 of ${AI?'93':'71'} questions in A-Level Mathematics.${AI?' AI made questions are kept on greyer rows and never count towards your official average.':''}</p></div>`;
+}
+
+/* ---------- topics (all subjects) ---------- */
+if(S==='topics-all'){
+const sub=AI?[['#9cc3e6','A-Level Mathematics',[['Kinematics',43,1],['Vectors',44,1],['Sequences and series',52,1],['Coordinate geometry',58]],0],
+['#c7b5ea','A-Level Further Maths',[['Complex numbers',34,1],['Matrices',50,1],['Proof by induction',61],['Further vectors',72]],0],
+['#f3a37f','A-Level Physics',[['Electric circuits',46,1],['Waves',65,1],['Materials',68],['Mechanics',79]],0],
+['#8fcaa0','A-Level Geography',[['Water and carbon cycles',55],['Coastal systems',71],['Hazards',78],['Global systems',82]],0]]:[['#9cc3e6','A-Level Mathematics',[['Kinematics',38],['Sequences and series',47],['Coordinate geometry',58],['Integration',66]],[['Kinematics',52],['Vectors',44]]],
+['#c7b5ea','A-Level Further Maths',[['Complex numbers',29],['Matrices',45],['Proof by induction',61],['Further vectors',72]],[['Complex numbers',41],['Matrices',58]]],
+['#f3a37f','A-Level Physics',[['Electric circuits',41],['Waves',63],['Materials',68],['Mechanics',79]],[['Electric circuits',55],['Waves',70]]],
+['#8fcaa0','A-Level Geography',[['Water and carbon cycles',55],['Coastal systems',71],['Hazards',78],['Global systems',82]],null]];
+h+=`<p class="key"><span class="rg G">70% or more · Secure</span><span class="rg A">40 to 69% · Developing</span><span class="rg R">below 40% · Needs work</span><span>Ratings use your latest attempt at each question.</span>${AI?`<span style="display:flex;gap:8px;align-items:center">${st('INCL. AI')} the score includes AI made questions</span>`:''}</p>
+<div class="g2">${sub.map((s,i)=>`<div class="card pc ruled r${i+1}" style="padding-top:0"><div style="margin:0 -26px 18px;background:${s[0]};border-bottom:2px solid var(--ink);padding:14px 26px;display:flex;align-items:center"><h3 class="px" style="font-size:22px;margin-right:auto">${s[1]}</h3><span class="sbtn">All topics</span></div><i class="t tc"></i>
+<span class="hand" style="font-size:20px;display:block;margin-bottom:10px">lowest scoring topics</span><div class="ml" style="grid-template-columns:250px 1fr 90px">${s[2].map(t=>`<span style="display:flex;gap:10px;align-items:center">${t[0]}${t[2]?st('INCL. AI'):''}</span>${mt(t[1])}<span>${rg(t[1])}</span>`).join('')}</div>
+${AI&&s[3]!==0?(s[3]?`<div style="border-top:1.5px dashed rgba(42,39,35,.25);margin-top:16px;padding-top:12px"><div style="display:flex;gap:10px;align-items:center;margin-bottom:10px"><span class="st">AI MADE</span><span class="sm">from AI questions, scored separately</span></div><div class="ml" style="grid-template-columns:190px 1fr 90px">${s[3].map(t=>`<span>${t[0]}</span>${mt(t[1])}<span>${rg(t[1])}</span>`).join('')}</div></div>`:`<p class="sm" style="margin-top:16px;border-top:1.5px dashed rgba(42,39,35,.25);padding-top:12px">No AI questions answered yet.</p>`):''}</div>`).join('')}</div>`;
+}
+
+/* ---------- topics (one subject) ---------- */
+if(S==='topics'){
+const secs=AI?[['Pure Mathematics',66,[['2','Algebra and functions','14/16',79],['3','Coordinate geometry','6/7',58],['4','Sequences and series','9/9',52,0,1],['5','Trigonometry','11/11',72],['7','Differentiation','8/8',82],['8','Integration','4/9',66],['10','Vectors','0/5',44]]],['Mechanics',54,[['8','Kinematics','6/6',43],['9','Forces and Newton’s laws','2/6',61]]]]:[['Pure Mathematics',64,[['2','Algebra and functions','14/16',78,81],['3','Coordinate geometry','6/7',58,null],['4','Sequences and series','9/9',47,62,1],['5','Trigonometry','11/11',73,70],['7','Differentiation','8/8',82,null],['8','Integration','4/9',66,null],['10','Vectors','0/5',null,null]]],
+['Mechanics',51,[['8','Kinematics','6/6',38,52],['9','Forces and Newton’s laws','2/6',61,null]]]];
+h+=`<p class="key"><span class="rg G">70% or more · Secure</span><span class="rg A">40 to 69% · Developing</span><span class="rg R">below 40% · Needs work</span><span>Ratings use your latest attempt at each question. <u>Edit what you have learned</u></span></p>`;
+secs.forEach((sec,si)=>{h+=`<div class="card tp ruled r${si?4:3}"><i class="t tc"></i><div class="hd"><h3 class="px">${sec[0]}</h3>${rg(sec[1],1)}</div>
+
+${sec[2].map(t=>`<div class="trow"><span style="color:var(--mut)">${t[5]?'▾':'▸'}</span><span class="cd">${t[0]}</span><span>${t[1]}</span><span class="lr">${t[2]} learned</span>${t[3]===null?'<span class="mt"></span>':mt(t[3])}<span>${t[3]===null?'<span class="sm">—</span>':rg(t[3])}</span></div>
+${t[5]?`<div class="open"><p class="sm">${AI?'14 questions answered · 35/67 marks · Easy 100% · Medium 51% · Hard 30% · Extra hard 25%':'9 questions answered · 21/45 marks · Easy 100% · Medium 42% · Hard 25%'}</p><p style="display:none"> · Easy 100% · Medium 42% · Hard 25%</p>
+<ul class="pts">${(AI?[['4.1','Arithmetic sequences and series','Learned',77],['4.2','Geometric sequences and series','Learned',40],['4.3','Sum to infinity','Learned',25],['4.4','Sigma notation','Learned',67],['4.5','Recurrence relations','Learned',50]]:[['4.1','Arithmetic sequences and series','Learned',75],['4.2','Geometric sequences and series','Learned',33],['4.3','Sum to infinity','Learned',25],['4.4','Sigma notation','Learned',null],['4.5','Recurrence relations','Learned',50]]).map(p=>`<li><span class="cd">${p[0]}</span><span>${p[1]}</span><span class="sm">✓ ${p[2]}</span><span>${p[3]===null?'<span class="sm">No data</span>':rg(p[3])}</span></li>`).join('')}</ul>
+<div style="display:flex;gap:12px;margin-top:12px"><span class="sbtn d">Practise this topic</span>${AI?'<span class="sbtn">Practise with AI questions <span class="mini">AI MADE</span></span>':''}</div></div>`:''}`).join('')}<div style="height:8px"></div></div>`});
+}
+
+/* ---------- papers ---------- */
+if(S==='papers'){
+const pts=[[0,58],[1,61],[2,55],[3,67],[4,64],[5,72],[6,70],[7,72]],ai=[[2.5,49],[4.5,62],[6.5,66]],pr=[[7.5,69]];
+const X=i=>60+i*76,Y=v=>230-(v-30)*3.6;
+let svg=`<line x1="50" y1="230" x2="640" y2="230" stroke="#2a2723" stroke-width="2"/>`;
+[40,50,60,70,80].forEach(v=>svg+=`<line x1="50" x2="640" y1="${Y(v)}" y2="${Y(v)}" stroke="rgba(42,39,35,.12)" stroke-dasharray="3 4"/><text x="40" y="${Y(v)+4}" text-anchor="end">${v}%</text>`);
+svg+=`<line x1="50" x2="640" y1="${Y(70)}" y2="${Y(70)}" stroke="#8fcaa0" stroke-width="2"/><text x="56" y="${Y(70)-6}" text-anchor="start" style="fill:#3c7a4f">Secure</text>`;
+svg+=`<polyline fill="none" stroke="#2a2723" stroke-width="2.5" points="${pts.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`+pts.map(p=>`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="6" fill="#9cc3e6" stroke="#2a2723" stroke-width="2"/>`).join('');
+if(AI)svg+=`<polyline fill="none" stroke="#2a2723" stroke-width="2" stroke-dasharray="6 5" points="${ai.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`+ai.map(p=>`<rect x="${X(p[0])-6}" y="${Y(p[1])-6}" width="12" height="12" fill="#fffdf8" stroke="#2a2723" stroke-width="2" transform="rotate(45 ${X(p[0])} ${Y(p[1])})"/>`).join('')+pr.map(p=>`<rect x="${X(p[0])-6}" y="${Y(p[1])-6}" width="12" height="12" fill="#fffdf8" stroke="#2a2723" stroke-width="2" stroke-dasharray="3 2"/>`).join('');
+['18 Sep','2 Oct','16 Oct','30 Oct','13 Nov'].forEach((l,i)=>svg+=`<text x="${X(i*1.75)}" y="252" text-anchor="middle">${l}</text>`);
+const rows=[['12 Nov 2026','Timed test · 30 minutes','Custom practice',26,36,'B','27 min',''],
+['10 Nov 2026','AI predicted paper · June 2027 Paper 1','AI predicted paper',69,100,'B','1 h 54 min','PR'],
+['8 Nov 2026','June 2023 · Paper 1: Pure Mathematics 1','Official past paper',72,100,'B','1 h 58 min','OFF'],
+['5 Nov 2026','AI past paper · Set 3 · Paper 2','AI past paper',66,100,'B','1 h 49 min','AI'],
+['1 Nov 2026','Timed test · 45 minutes','Custom practice',31,48,'B','43 min',''],
+['27 Oct 2026','June 2022 · Paper 2: Pure Mathematics 2','Official past paper',64,100,'B','2 h','OFF'],
+['22 Oct 2026','June 2022 · Paper 3: Statistics and Mechanics','Official past paper',55,100,'C','1 h 57 min','OFF']].filter(r=>AI||!['AI','PR'].includes(r[7]));
+h+=`<div class="card pc ruled r3"><i class="t tc"></i><div class="hd"><h3 class="px">Scores over time</h3><span class="s">each point is one paper or test</span></div>
+<svg class="svgc" width="100%" viewBox="0 0 660 262" style="max-height:330px">${svg}</svg>
+<div class="leg"><span><i class="rag" style="background:#9cc3e6"></i>Official papers and your own tests</span>${AI?`<span><i style="width:12px;height:12px;border:2px solid var(--ink);transform:rotate(45deg);display:inline-block;background:var(--card)"></i>AI past papers ${st('AI MADE')}</span><span><i style="width:12px;height:12px;border:2px dashed var(--ink);display:inline-block;background:var(--card)"></i>AI predicted papers ${st('AI MADE')}</span>`:''}</div></div>
+<div class="card pc r2"><i class="t tc"></i><div class="hd"><h3 class="px">History</h3></div>
+<div class="chips" style="margin-bottom:14px"><span class="tag on">All</span><span class="tag">Official past papers</span><span class="tag">Custom practice</span><span class="tag ${AI?'':'off'}">AI past papers${AI?'':' <span class="mini">COMING LATER</span>'}</span><span class="tag ${AI?'':'off'}">AI predicted papers${AI?'':' <span class="mini">COMING LATER</span>'}</span></div>
+<table><tr><th>Date</th><th>Paper or test</th><th>Type</th><th class="num">Score</th><th>Result</th><th>Time taken</th><th></th></tr>
+${rows.map(r=>`<tr ${['AI','PR'].includes(r[7])?'style="background:rgba(42,39,35,.035)"':''}><td class="nw">${r[0]}</td><td>${r[1]}<br><span class="sm">A-Level Mathematics</span></td><td><span class="tag" style="font-size:13px;padding:3px 9px;${r[7]==='OFF'?'background:var(--sc,#9cc3e6)':''}${['AI','PR'].includes(r[7])?'border-style:dashed':''}">${r[2]}</span> ${['AI','PR'].includes(r[7])?st('AI MADE'):''}</td><td class="num">${r[3]}/${r[4]}</td><td class="nw">${rg(Math.round(r[3]/r[4]*100))} <span class="tag" style="font-size:13px;padding:3px 9px">Grade ${r[5]}</span></td><td class="sm nw">${r[6]}</td><td class="num"><span class="sbtn">Review</span></td></tr>`).join('')}</table>
+<p class="sm" style="margin-top:14px">Grades are indicative (A-Level A* to E): real boundaries change with every paper and series.${AI?' Grades on AI papers are a rough guide only.':''}</p></div>`;
+}
+
+/* ---------- empty ---------- */
+if(S==='empty'){
+h+=`<div class="card empty ruled r3"><i class="t tl"></i><i class="t tr"></i><div><span class="hand" style="font-size:24px">nothing here yet</span><h2 class="px">Your Data Hub fills up as you practise</h2>
+<p>Answer questions, sit a past paper or build a timed test. Every mark is logged here by question, topic and paper, so you can see what's secure and what needs work.</p>
+<div style="display:flex;gap:14px;margin-top:26px"><span class="btn d">Start practising</span><span class="btn">Browse past papers</span></div></div>
+<div class="steps"><div><i>1</i>Tick the topics you've learned on each subject page</div><div><i>2</i>Practise questions or sit a paper</div><div><i>3</i>Mark your work against the mark scheme${AI?' '+st('OR AI MARKED'):''}</div><div><i>4</i>Come back here to see your topics turn green</div></div></div>
+<div class="ghost"><div class="stats">${['Questions answered','Average score','Marks earned','Papers and tests','Day streak'].map((l,i)=>`<div class="card stat r${i%4+1}"><span class="l">${l}</span><span class="v">—</span><span class="n">no data yet</span></div>`).join('')}</div></div>
+${AI?`<div class="aishelf"><span class="st">AI MADE</span><h3 class="px" style="font-size:22px;margin-bottom:6px">When the AI features arrive</h3><p style="font-size:15.5px;color:var(--mut);line-height:1.55">Scores from AI questions, AI past papers and AI predicted papers are logged here too, but always kept apart from your official scores. Anything the AI marked is stamped AI MARKED, and you can change its mark.</p></div>`:''}`;
+}
+h+='</div>';if(S==='empty')document.querySelector('.r .tag').textContent='0 answered';document.getElementById('app').innerHTML=h;
+</script></body></html>

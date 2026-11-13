@@ -1,0 +1,97 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 70px;--bg:color-mix(in srgb,#8fcaa0 40%,#f6f3ec);--line:rgba(40,90,60,.09)}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0}.lede{font-size:27px}
+.subs{display:flex;gap:12px;margin-top:24px;align-items:center}.subs .tag{font-size:15px;padding:8px 14px}.subs .on{background:var(--ink);color:var(--card)}
+.mode{display:flex;margin-top:24px;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink)}
+.mode span{font-family:var(--hf);font-size:17px;padding:10px 20px;border-right:2px solid var(--ink)}.mode span:last-child{border-right:0}.mode .on{background:var(--ink);color:var(--card)}
+.mini{white-space:nowrap;font-family:'Nunito';font-size:10.5px;font-weight:800;letter-spacing:1px;border:1.5px dashed currentColor;border-radius:3px;padding:2px 6px;margin-left:6px}
+.wrap{display:grid;grid-template-columns:1fr 470px;gap:44px;margin-top:34px;align-items:start}
+.build{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.build .card{padding:22px 24px 24px}.build .wide{grid-column:1/-1}
+.build h3{font-size:22px;margin-bottom:4px}.build .hand{font-size:21px;display:block;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips .tag{font-size:14.5px;padding:6px 12px}.chips .on{background:var(--ink);color:var(--card)}
+.chips .tag i{font-style:normal;font-size:12px;color:var(--mut);margin-left:2px}.chips .on i{color:#cfc8bb}
+.chips .off{border-style:dashed;color:var(--mut)}
+.topics{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tg h5{font-family:var(--hf);font-weight:400;font-size:17px;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.tg ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px;font-size:14.5px}
+.tg li{display:flex;align-items:center;gap:9px}
+.bx{width:18px;height:18px;border:2px solid var(--ink);border-radius:3px;display:grid;place-items:center;font-size:12px;background:var(--card);flex:none}
+.bx.y{background:var(--sc)}
+.tg li.no{color:var(--mut)}.tg li.no .bx{border-color:var(--mut)}
+.tg .n{margin-left:auto;color:var(--mut);font-size:13px}
+.chk{display:flex;gap:10px;align-items:center;font-size:15px;margin-top:10px}
+.src{display:none}.ai .src{display:block}
+.mk{display:none}.ai .mk{display:flex}
+.test{padding:0;position:sticky;top:20px}
+.test .band{background:var(--sc);border-bottom:2px solid var(--ink);padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
+.test .band b{font-family:var(--hf);font-weight:400;font-size:24px}
+.test .bd{padding:20px 22px 24px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.nums div{border:2px solid var(--ink);border-radius:4px;padding:10px 12px}.nums b{font-family:var(--hf);font-weight:400;font-size:28px;display:block}.nums span{font-size:13px;color:var(--mut)}
+.ql{list-style:none;padding:0;margin:18px 0 0;counter-reset:q}
+.ql li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1.5px dashed rgba(42,39,35,.18);font-size:14.5px;counter-increment:q}
+.ql li::before{content:counter(q);font-family:var(--hf);width:22px;color:var(--mut)}
+.ql .tp{flex:1}.ql .mm{color:var(--mut);font-size:13px;width:60px;text-align:right}
+.df{font-size:12px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 9px}
+.e{background:#cfe8d5}.m{background:#f7e3a6}.h{background:#f4c2b8}.x{background:#d9cdf0}
+.st{font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);display:none}
+.ai .st{display:inline-block}
+.go{display:flex;gap:12px;margin-top:22px}.go .btn{flex:1;justify-content:center}
+.note{font-size:20px;margin-top:14px;display:block;text-align:center}
+.alt{display:none}.ql li.alt{display:none}.ai .xh{display:inline-flex}.ai .chips .alt{display:inline-flex}.ai .ql li.alt{display:flex}.ai .nai{display:none!important}
+
+.wrap2{display:grid;grid-template-columns:340px 1fr;gap:44px;margin-top:34px;align-items:start}
+.fl{padding:22px 22px 24px}.fl h3{font-size:22px}
+.fg{margin-top:18px}.fg label{display:block;font-size:13px;color:var(--mut);margin-bottom:8px;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.fg .chips .tag{font-size:13.5px;padding:5px 10px}
+.bar2{display:flex;align-items:center;gap:14px;margin-bottom:18px}.bar2 .cnt{font-family:var(--hf);font-size:28px}.bar2 .cnt span{font-family:'Nunito';font-size:16px;color:var(--mut)}
+.search{margin-left:auto;display:flex;align-items:center;gap:8px;border:2px solid var(--ink);border-radius:6px;background:var(--card);padding:9px 14px;width:290px;color:var(--mut);font-size:15px}
+.sort{border:2px solid var(--ink);border-radius:6px;background:var(--card);padding:9px 14px;font-size:15px}
+.sel{display:flex;align-items:center;gap:14px;padding:14px 20px;margin-bottom:26px;background:var(--sc)}
+.sel b{font-family:var(--hf);font-weight:400;font-size:20px}.sel .m2{color:var(--ink);opacity:.75;font-size:15px}.sel .sp{margin-left:auto}
+.sel .btn{font-size:15px;padding:8px 16px;box-shadow:2px 2px 0 var(--ink)}
+.ql2{display:flex;flex-direction:column;gap:22px}
+.q{display:grid;grid-template-columns:30px 1fr 150px;gap:16px;padding:18px 20px 18px 18px;align-items:start}
+.q.on{box-shadow:0 0 0 4px var(--sc),4px 5px 0 rgba(42,39,35,.14)}
+.q .ref{font-size:13.5px;color:var(--mut);font-weight:700;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.q .txt{font-size:16.5px;line-height:1.5;margin:6px 0 10px;color:var(--ink);font-weight:600}
+.q .tags{display:flex;gap:8px;flex-wrap:wrap}.q .tags .tag{font-size:12.5px;padding:3px 9px}
+.q .sd{display:flex;flex-direction:column;align-items:flex-end;gap:12px;height:100%}
+.q .mks{font-family:var(--hf);font-size:22px}.q .mks span{font-family:'Nunito';font-size:13px;color:var(--mut)}
+.q .btn{font-size:15px;padding:7px 18px;box-shadow:2px 2px 0 var(--ink);margin-top:auto}
+.rag{font-size:12px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:1px 8px}
+.lock{border:2px dashed var(--mut);border-radius:6px;padding:16px 20px;color:var(--mut);font-size:15.5px;display:flex;gap:12px;align-items:center;margin-top:28px}
+.lock b{color:var(--ink)}
+.pg{display:flex;justify-content:space-between;align-items:center;margin-top:26px;color:var(--mut);font-size:14.5px}.pg .btn{font-size:15px;padding:7px 16px;box-shadow:2px 2px 0 var(--ink)}
+.q .stmp{display:none;font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);color:var(--ink);background:var(--card)}
+.ai .q .stmp{display:inline-block}
+.aiq{display:none}.ai .aiq{display:grid}.ai .nai{display:none}
+.ai .aiq{background:#fbf8f1}
+</style></head><body></head><body>
+<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Past papers</span><span class="on">Practice</span><span>Data Hub</span></div><div class="r"><span class="tag">31 answered</span><div class="av">D</div></div></div>
+<div class="crumb">Home &nbsp;/&nbsp; Practice &nbsp;/&nbsp; Geography</div>
+<h1 class="px">Practice</h1><p class="lede hand">no clock here, pick exactly the questions you want to write</p>
+<div class="subs"><span class="tag"><i class="dot" style="background:#9cc3e6"></i>Mathematics</span><span class="tag"><i class="dot" style="background:#c7b5ea"></i>Further Maths</span><span class="tag"><i class="dot" style="background:#f3a37f"></i>Physics</span><span class="tag on"><i class="dot" style="background:#8fcaa0"></i>Geography</span></div>
+<div class="mode"><span class="on">Question picker</span></div>
+<div class="wrap2" style="--sc:#8fcaa0">
+<div class="card fl ruled r2"><i class="t tc"></i><h3 class="px">Filter questions</h3><span class="hand" style="font-size:20px">numbers show how many match</span>
+<div class="fg"><label>Topics</label><div class="chips"><span class="tag on">Coastal systems <i>18</i></span><span class="tag on">Hazards <i>22</i></span><span class="tag">Changing places <i>14</i></span><span class="tag">Urban environments <i>16</i></span><span class="tag">Water and carbon <i>12</i></span><span class="tag">Choose topics</span></div></div>
+<div class="fg"><label>Marks (essay length)</label><div class="chips"><span class="tag">4 marks <i>21</i></span><span class="tag on">6 marks <i>15</i></span><span class="tag on">9 marks <i>12</i></span><span class="tag">20 marks <i>6</i></span></div></div>
+<div class="fg"><label>Command word</label><div class="chips"><span class="tag">Explain <i>14</i></span><span class="tag">Analyse <i>9</i></span><span class="tag">Assess <i>11</i></span><span class="tag">Evaluate <i>6</i></span><span class="tag">"To what extent" <i>5</i></span></div></div>
+<div class="fg"><label>My progress</label><div class="chips"><span class="tag">Not tried <i>33</i></span><span class="tag">Needs work <i>2</i></span><span class="tag">Developing <i>4</i></span><span class="tag">Secure <i>1</i></span></div></div>
+<div class="fg src"><label>Source</label><div class="chips"><span class="tag">Official only</span><span class="tag">AI only</span><span class="tag on">Both</span></div></div>
+<div class="chk" style="margin-top:20px"><span class="bx y">✓</span>Only questions I can answer with what I've learned</div>
+</div>
+<div>
+<div class="bar2"><span class="cnt">27 <span>questions match</span></span><span class="search">⌕ &nbsp;Search, e.g. "longshore drift"</span><span class="sort">Marks, low to high ▾</span></div>
+<div class="card sel r3"><b>3 chosen</b><span class="m2">21 marks · no time limit</span><span class="sp"></span><span class="chk" style="margin:0"><span class="bx"></span>Run a stopwatch anyway</span><span class="btn">Clear</span><span class="btn d">Start these</span></div>
+<div class="ql2"><div class="card ruled q r3 on"><span class="bx y">✓</span><div><div class="ref">2023 · Paper 1 · Question 03.2</div><p class="txt">Explain how longshore drift can lead to the formation of a spit.</p><div class="tags"><span class="tag">Coastal systems</span><span class="tag">Explain</span><span class="tag">3.1.3.3</span></div></div><div class="sd"><span class="mks">6 <span>marks</span></span><span class="btn">Open</span></div></div><div class="card ruled q r1 on"><span class="bx y">✓</span><div><div class="ref">2022 · Paper 1 · Question 05.3 · <span class="rag" style="background:#f7e3a6">67%</span> last tried 2 weeks ago</div><p class="txt">Analyse the data in Figure 7 showing the frequency of volcanic eruptions by type between 1900 and 2020.</p><div class="tags"><span class="tag">Hazards</span><span class="tag">Analyse</span><span class="tag">3.1.5.3</span><span class="tag">Uses a figure</span></div></div><div class="sd"><span class="mks">6 <span>marks</span></span><span class="btn">Open</span></div></div><div class="card ruled q r2 aiq"><span class="bx "></span><div><div class="ref">AI practice question · Set A<span class="stmp">AI MADE</span></div><p class="txt">Assess the extent to which human activity has increased the risk from coastal flooding in one named area.</p><div class="tags"><span class="tag">Coastal systems</span><span class="tag">Assess</span><span class="tag">3.1.3.5</span></div></div><div class="sd"><span class="mks">9 <span>marks</span></span><span class="btn">Open</span></div></div><div class="card ruled q r4 on"><span class="bx y">✓</span><div><div class="ref">2024 · Paper 1 · Question 05.4</div><p class="txt">Assess the view that the impacts of a tectonic hazard depend more on the level of development than on the size of the event.</p><div class="tags"><span class="tag">Hazards</span><span class="tag">Assess</span><span class="tag">3.1.5.5</span></div></div><div class="sd"><span class="mks">9 <span>marks</span></span><span class="btn">Open</span></div></div><div class="card ruled q r2"><span class="bx "></span><div><div class="ref">2023 · Paper 1 · Question 03.4</div><p class="txt">"Coastal management always creates winners and losers." To what extent do you agree with this view?</p><div class="tags"><span class="tag">Coastal systems</span><span class="tag">"To what extent"</span><span class="tag">3.1.3.6</span><span class="tag">Essay</span></div></div><div class="sd"><span class="mks">20 <span>marks</span></span><span class="btn">Open</span></div></div><div class="card ruled q r3 aiq"><span class="bx "></span><div><div class="ref">AI practice question · Set B<span class="stmp">AI MADE</span></div><p class="txt">Evaluate the effectiveness of one strategy used to manage the risk from wildfires.</p><div class="tags"><span class="tag">Hazards</span><span class="tag">Evaluate</span><span class="tag">3.1.5.7</span></div></div><div class="sd"><span class="mks">20 <span>marks</span></span><span class="btn">Open</span></div></div></div>
+<div class="pg"><span class="btn">Previous</span><span>Page 1 of 2 · 1–20 of 27</span><span class="btn">Next</span></div>
+<div class="lock"><span style="font-size:18px">⌧</span><span><b>11 more questions</b> need topics you haven't ticked as learned. Update them on the subject page to unlock them.</span></div>
+</div></div>
+</body></html>
