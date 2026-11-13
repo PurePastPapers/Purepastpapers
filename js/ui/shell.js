@@ -46,6 +46,7 @@ function frame() {
       ${user
         ? html`<nav class="topnav__tabs" aria-label="Main navigation">${main.map((item) => navLink(item, 'topnav__tab'))}</nav>
             <div class="topnav__right">
+              ${user.is_demo ? html`<button type="button" class="btn btn--sm topnav__leave" data-logout>${icon('logout', { size: 15 })} Sign out of demo</button>` : ''}
               <a class="tag topnav__count" href="#/hub" data-answered>${answeredCount()} answered</a>
               <details class="menu" data-menu>
                 <summary class="avatar" style="--sc:${avatarHex()}" aria-label="Account menu for ${user.display_name}">${initials}</summary>

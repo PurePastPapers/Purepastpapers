@@ -1337,3 +1337,11 @@ body,
     display: none;
   }
 }
+.topnav__leave {
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .topnav__leave .icon {
+    display: none;
+  }
+}

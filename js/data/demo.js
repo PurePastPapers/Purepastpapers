@@ -132,12 +132,12 @@ async function buildDemoProgress() {
   };
 }
 
-/** Logs in to the demo profile, creating and filling it the first time. */
+/**
+ * Logs in to a fresh copy of the demo profile. Changes made in the demo never carry over:
+ * any old copy is discarded first, and leaving the demo deletes it (see api.signOut).
+ */
 export async function enterDemoAccount() {
-  try {
-    await api.signIn(DEMO_LOGIN);
-  } catch {
-    const initialProgress = await buildDemoProgress();
-    await api.signUp({ ...DEMO_LOGIN, isDemo: true, initialProgress });
-  }
+  const initialProgress = await buildDemoProgress();
+  await api.discardDemo(DEMO_LOGIN);
+  await api.signUp({ ...DEMO_LOGIN, isDemo: true, initialProgress });
 }

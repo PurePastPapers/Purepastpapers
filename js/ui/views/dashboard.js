@@ -49,7 +49,7 @@ export async function mount(element, context) {
             ${icon('info')}
             <span class="banner__body">
               ${user.is_demo
-                ? html`<strong>This is the demo account.</strong> Its subjects, topics and scores are sample activity. Log out and create your own account to start fresh. `
+                ? html`<strong>This is the demo account.</strong> Its subjects, topics and scores are sample activity. Try anything: when you sign out, the demo goes back to how it was. `
                 : ''}
               ${CONTENT.showSampleContent ? html`Demo questions are always labelled “Demo content”; official papers link to the exam boards.` : ''}
               ${user.is_demo ? '' : html`<button type="button" class="linkbtn" data-hide-notice>Hide this</button>`}
