@@ -15,7 +15,8 @@ import { columnChart, lineChart } from '../charts.js';
 import { icon } from '../icons.js';
 import { questionRef, questionSnippet } from '../question-view.js';
 import { attemptInSubject, loadStudent, startQuestionSet, startSingle } from '../student.js';
-import { difficultyBadge, emptyState, fmtPercent, meter, pageHead, ragBadge, soonBadge, subjectName } from '../ui.js';
+import { tintPage } from '../subject-colours.js';
+import { difficultyBadge, emptyState, fmtPercent, groupDot, meter, pageHead, ragBadge, soonBadge, subjectName } from '../ui.js';
 
 const TABS = [
   { id: 'overview', label: 'Overview' },
@@ -71,21 +72,23 @@ export async function mount(element, context) {
     const recent = [...attempts].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1)).slice(0, 8);
     return html`<div class="stack stack--lg">
       <section class="grid grid--stats" aria-label="Summary">
-        <div class="stat"><span class="stat__label">Questions answered</span><span class="stat__value">${latest.size}</span><span class="stat__note">${plural(attempts.length, 'attempt')} in total</span></div>
-        <div class="stat">
+        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Questions answered</span><span class="stat__value">${latest.size}</span><span class="stat__note">${plural(attempts.length, 'attempt')} in total</span></div>
+        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i>
           <span class="stat__label">Average score</span><span class="stat__value">${fmtPercent(score.percentage)}</span>
           <span class="stat__note">${score.count ? ragBadge(ragFor(score.percentage)) : 'latest attempt at each question'}</span>
         </div>
-        <div class="stat"><span class="stat__label">Marks earned</span><span class="stat__value">${score.awarded}<span class="stat__of"> / ${score.max}</span></span></div>
-        <div class="stat"><span class="stat__label">Papers and tests</span><span class="stat__value">${paperAttempts.length}</span></div>
-        <div class="stat"><span class="stat__label">Day streak</span><span class="stat__value">${currentStreak(attempts)}</span></div>
+        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Marks earned</span><span class="stat__value">${score.awarded}<span class="stat__of"> / ${score.max}</span></span></div>
+        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Papers and tests</span><span class="stat__value">${paperAttempts.length}</span></div>
+        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Day streak</span><span class="stat__value">${currentStreak(attempts)}</span></div>
       </section>
       <div class="grid grid--2">
-        <section class="card">
+        <section class="card ruled tilt-2">
+          <i class="tape tape--l" aria-hidden="true"></i>
           <div class="card__head"><h2 class="card__title">Questions answered each week</h2><span class="small muted">Last 8 weeks</span></div>
           <div data-chart="activity"></div>
         </section>
-        <section class="card">
+        <section class="card ruled tilt-4">
+          <i class="tape tape--c" aria-hidden="true"></i>
           <div class="card__head"><h2 class="card__title">Accuracy by difficulty</h2><span class="small muted">Latest attempt at each question</span></div>
           ${levels.length
             ? html`<div class="meterlist">
@@ -99,7 +102,8 @@ export async function mount(element, context) {
         </section>
       </div>
       ${subjectId === 'all' && scope.length > 1
-        ? html`<section class="card">
+        ? html`<section class="card ruled tilt-1">
+          <i class="tape tape--r" aria-hidden="true"></i>
             <div class="card__head"><h2 class="card__title">By subject</h2></div>
             <div class="table-wrap">
               <table class="table">
@@ -109,7 +113,7 @@ export async function mount(element, context) {
                     const mine = latestList.filter((attempt) => attemptInSubject(attempt, bundle));
                     const result = totals(mine);
                     return html`<tr>
-                      <td><a href="${href({ subject: bundle.subject.subject_id })}">${subjectName(bundle.subject)}</a></td>
+                      <td>${groupDot(bundle.subject)} <a href="${href({ subject: bundle.subject.subject_id })}">${subjectName(bundle.subject)}</a></td>
                       <td class="num">${mine.length}</td>
                       <td>${mine.length ? ragBadge(ragFor(result.percentage), result.percentage) : html`<span class="muted small">No attempts</span>`}</td>
                       <td class="num">${progress.paper_attempts.filter((attempt) => attempt.subject_id === bundle.subject.subject_id).length}</td>
@@ -121,7 +125,8 @@ export async function mount(element, context) {
             </div>
           </section>`
         : ''}
-      <section class="card">
+      <section class="card ruled tilt-3">
+          <i class="tape tape--c" aria-hidden="true"></i>
         <div class="card__head"><h2 class="card__title">Recent activity</h2><a class="small" href="${href({ tab: 'questions' })}">All questions</a></div>
         <ul class="activity">
           ${recent.map((attempt) => {
@@ -202,7 +207,8 @@ export async function mount(element, context) {
     const weak = latestList.filter((attempt) => scoreOf(attempt) < RAG.green && find(attempt.question_id));
     const chip = (group, value, label) =>
       html`<button type="button" class="chip" data-qfilter="${group}" data-value="${value}" aria-pressed="${questionFilters[group] === value}">${label}</button>`;
-    return html`<section class="card">
+    return html`<section class="card ruled tilt-2">
+          <i class="tape tape--l" aria-hidden="true"></i>
       <div class="card__head">
         <h2 class="card__title">Every question you have answered</h2>
         ${subjectId === 'all'
@@ -238,7 +244,8 @@ export async function mount(element, context) {
     const learned = api.learnedSet();
     return html`${bundle.spec.sections.map(
       (section) =>
-        html`<section class="card">
+        html`<section class="card ruled tilt-4">
+          <i class="tape tape--c" aria-hidden="true"></i>
           <div class="card__head">
             <h2 class="card__title">${section.title}</h2>
             ${mastery.get(section.id) ? ragBadge(mastery.get(section.id).rag, mastery.get(section.id).percentage) : html`<span class="small muted">No attempts yet</span>`}
@@ -295,7 +302,8 @@ export async function mount(element, context) {
           .map((topic) => ({ topic, entry: mastery.get(topic.id) }))
           .filter((item) => item.entry)
           .sort((a, b) => a.entry.percentage - b.entry.percentage);
-        return html`<section class="card">
+        return html`<section class="card ruled tilt-1">
+          <i class="tape tape--r" aria-hidden="true"></i>
           <div class="card__head">
             <h2 class="card__title">${subjectName(bundle.subject)}</h2>
             <a class="btn btn--sm" href="${href({ subject: bundle.subject.subject_id })}">All topics</a>
@@ -356,11 +364,13 @@ export async function mount(element, context) {
   function papersTab() {
     const schemes = uniq(scope.map((bundle) => GRADE_SCHEMES[bundle.subject.grade_scheme]?.label).filter(Boolean));
     return html`<div class="stack stack--lg">
-      <section class="card">
+      <section class="card ruled tilt-3">
+          <i class="tape tape--c" aria-hidden="true"></i>
         <div class="card__head"><h2 class="card__title">Scores over time</h2><span class="small muted">Each point is one paper or test</span></div>
         ${paperAttempts.length ? html`<div data-chart="trend"></div>` : html`<p class="muted small">Sit a paper or a timed test and your scores will be plotted here.</p>`}
       </section>
-      <section class="card">
+      <section class="card ruled tilt-2">
+          <i class="tape tape--l" aria-hidden="true"></i>
         <div class="card__head"><h2 class="card__title">History</h2></div>
         <div class="chips" role="group" aria-label="Filter by type" style="margin-bottom:14px">
           ${HISTORY_TYPES.map((type) => {
@@ -410,29 +420,29 @@ export async function mount(element, context) {
           ? papersTab()
           : overview();
 
+  tintPage(subjectId === 'all' ? null : bundles.get(subjectId).subject);
   setHtml(
     element,
-    html`${pageHead({ title: 'Data Hub', sub: 'Everything you have done, in one place: questions, topics, papers and tests.' })}
-      <div class="row hub-filter">
-        <label class="field field--inline">
-          <span class="field__label">Subject</span>
-          <select class="select" data-subject>
-            <option value="all" ${subjectId === 'all' ? 'selected' : ''}>All subjects</option>
-            ${[...bundles.values()].map(
-              (bundle) => html`<option value="${bundle.subject.subject_id}" ${bundle.subject.subject_id === subjectId ? 'selected' : ''}>${subjectName(bundle.subject)}</option>`,
-            )}
-          </select>
-        </label>
-      </div>
-      <nav class="tabs" aria-label="Data Hub sections">
-        ${TABS.map((item) => html`<a class="tab ${item.id === tab ? 'is-active' : ''}" href="${href({ tab: item.id })}" aria-current="${item.id === tab ? 'page' : 'false'}">${item.label}</a>`)}
+    html`${pageHead({
+        title: 'Data Hub',
+        sub: 'everything you’ve done, in one place: questions, topics, papers and tests',
+        crumbs: [{ label: 'Home', href: '#/' }, { label: 'Data Hub', href: '#/hub' }, ...(subjectId === 'all' ? [] : [{ label: bundles.get(subjectId).subject.subject }])],
+      })}
+      <nav class="chips subject-pills" aria-label="Subject">
+        <a class="chip ${subjectId === 'all' ? 'is-on' : ''}" href="${href({ subject: 'all' })}" aria-current="${subjectId === 'all' ? 'true' : 'false'}">All subjects</a>
+        ${[...bundles.values()].map(
+          (bundle) =>
+            html`<a class="chip ${bundle.subject.subject_id === subjectId ? 'is-on' : ''}" href="${href({ subject: bundle.subject.subject_id })}" aria-current="${bundle.subject.subject_id === subjectId ? 'true' : 'false'}">${groupDot(bundle.subject)}${bundle.subject.subject}</a>`,
+        )}
+      </nav>
+      <nav class="seg hub-tabs" aria-label="Data Hub sections">
+        ${TABS.map((item) => html`<a class="seg__opt ${item.id === tab ? 'is-on' : ''}" href="${href({ tab: item.id })}" aria-current="${item.id === tab ? 'page' : 'false'}">${item.label}</a>`)}
       </nav>
       ${body}`,
   );
   if (hasData && tab === 'overview') mountOverviewCharts();
   if (hasData && tab === 'papers') mountTrendChart();
 
-  on(element, 'change', '[data-subject]', (event, select) => context.navigate(href({ subject: select.value }).slice(1)));
   on(element, 'click', '[data-qfilter]', (event, button) => {
     questionFilters[button.dataset.qfilter] = button.dataset.value;
     for (const chip of element.querySelectorAll(`[data-qfilter="${button.dataset.qfilter}"]`)) chip.setAttribute('aria-pressed', String(chip === button));

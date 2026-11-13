@@ -320,3 +320,68 @@
   background: var(--scf, var(--surface-2));
   box-shadow: var(--card-shadow);
 }
+
+/* ── Data Hub ── */
+.hub-tabs {
+  width: max-content;
+  max-width: 100%;
+  margin: 18px 0 30px;
+}
+.seg__opt {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.subject-pills {
+  margin-bottom: 4px;
+}
+.grid--stats {
+  gap: 28px;
+}
+.grid--stats .stat:nth-child(2n) {
+  transform: rotate(0.6deg);
+}
+.grid--stats .stat:nth-child(3n) {
+  transform: rotate(-0.5deg);
+}
+.card .table-wrap {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.card .table th {
+  border-bottom: 2px solid var(--ink);
+}
+.card .table td {
+  border-bottom: 1.5px dashed var(--line-strong);
+}
+.stack--lg > .card,
+.grid > .card {
+  padding: 24px 26px 26px;
+}
+.rag {
+  padding: 1px 9px;
+  border: 1.5px solid var(--ink);
+  border-radius: 20px;
+  background: var(--surface);
+  font: 800 12.5px/1.5 var(--font);
+}
+.rag[data-rag='green'] {
+  background: var(--good-wash);
+}
+.rag[data-rag='amber'] {
+  background: var(--warn-wash);
+}
+.rag[data-rag='red'] {
+  background: var(--crit-wash);
+}
+.rag .icon {
+  color: var(--ink) !important;
+}
+.activity li {
+  border: 0;
+  border-top: 1.5px dashed var(--line-strong);
+}
+.activity li:first-child {
+  border-top: 0;
+}
