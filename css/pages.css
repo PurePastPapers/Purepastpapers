@@ -1572,3 +1572,14 @@
     grid-column: auto;
   }
 }
+.auth-page > * {
+  min-width: 0;
+}
+.auth .seg {
+  flex-wrap: wrap;
+}
+@media (max-width: 480px) {
+  .auth {
+    padding: 26px 20px 22px;
+  }
+}
