@@ -1,0 +1,153 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Inner pages in the index-card design (approved mockups, ui-trials/inner-pages).
+   Builds on paper.css.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── shared layouts ── */
+.with-side {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 44px;
+  align-items: start;
+}
+.with-side__side {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.with-side__side > .card {
+  padding: 22px 22px 24px;
+}
+.side-subject__band {
+  height: 12px;
+  margin: -22px -22px 16px;
+  background: var(--scf);
+  border-bottom: 2px solid var(--ink);
+  border-radius: 2px 2px 0 0;
+}
+.filter-group {
+  margin-top: 16px;
+}
+.filter-group .field__label {
+  margin-bottom: 7px;
+}
+.chips .chip--sm,
+.chip--sm {
+  min-height: 30px;
+  padding: 3px 10px;
+  font-size: 13.5px;
+}
+.side-progress__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 4px 0 8px;
+}
+.side-progress__row b {
+  font: 400 34px/1.1 var(--font-display);
+}
+.side-progress__row b span {
+  font-size: 20px;
+  color: var(--ink-2);
+}
+@media (max-width: 1000px) {
+  .with-side {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ── past papers ── */
+.paper-group {
+  margin-bottom: 44px;
+}
+.paper-group__head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.paper-group__head h2 {
+  font-size: 30px;
+}
+.paper-group__head .hand {
+  font-size: 23px;
+}
+.paper-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 28px;
+}
+.paper-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  padding: 20px 20px 18px;
+}
+.paper-card__code {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.paper-card h3 {
+  font-size: 21px;
+  line-height: 1.2;
+  margin: 12px 0 4px;
+}
+.paper-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.paper-card h3 a:hover {
+  text-decoration: underline;
+}
+.paper-card__meta {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.paper-card__foot {
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.paper-card__score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.paper-card__score b {
+  font: 400 26px/1 var(--font-display);
+}
+.paper-card__status {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.paper-card__status.is-progress {
+  color: var(--ink);
+  font-weight: 800;
+}
+.grade-stamp {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  font: 400 17px/1 var(--font-display);
+  transform: rotate(-6deg);
+  background: var(--surface);
+}
+.grade-stamp[data-rag='green'] {
+  background: var(--good-wash);
+}
+.grade-stamp[data-rag='amber'] {
+  background: var(--warn-wash);
+}
+.grade-stamp[data-rag='red'] {
+  background: var(--crit-wash);
+}

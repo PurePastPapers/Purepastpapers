@@ -161,7 +161,7 @@ export const liveBadge = () => html`<span class="badge badge--live">Live</span>`
 
 /** A small square in the subject's chosen colour. */
 export const groupDot = (subject) =>
-  html`<span class="dot" data-group="${subject.category_group}" data-subject-id="${subject.subject_id}" style="--sc:${subjectColour(subject)}" aria-hidden="true"></span>`;
+  html`<span class="dot" data-subject-id="${subject.subject_id}" style="--sc:${subjectColour(subject)}" aria-hidden="true"></span>`;
 
 // ───────────────────────────────── building blocks ─────────────────────────────────
 
