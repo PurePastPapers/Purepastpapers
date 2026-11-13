@@ -667,3 +667,34 @@
     margin-left: 0;
   }
 }
+
+/* one subject */
+.subject-settings {
+  margin-top: -14px;
+}
+.tag--btn {
+  cursor: pointer;
+  font: 600 15px/1.4 var(--font);
+  padding: 6px 13px;
+  box-shadow: 2px 2px 0 rgba(42, 39, 35, 0.2);
+}
+.tag--btn:hover {
+  background: var(--surface-2);
+}
+.tag--btn b {
+  font: 400 17px/1 var(--font-display);
+}
+.cdot--sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+  box-shadow: inset 0 0 0 2px var(--surface);
+}
+.stat__note.small {
+  font-family: var(--font);
+  font-size: 13.5px;
+}
+.split > .card,
+.split > aside > .card {
+  padding: 24px 26px 26px;
+}

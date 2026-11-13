@@ -5,12 +5,14 @@ import { $, html, on, setHtml } from '../../core/dom.js';
 import { percent, plural } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, getSubjects, specIndex } from '../../data/content-repository.js';
-import { latestByQuestion, masteryByNode, ragFor, totals } from '../../engine/analytics.js';
+import { TARGET_BANDS, gradesIn, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../../engine/analytics.js';
 import { countByNode, filterQuestions, foreignSpecPoints, unlockSuggestions } from '../../engine/filter-engine.js';
 import { icon } from '../icons.js';
 import { mountSpecTree } from '../spec-tree.js';
 import { attemptInSubject, practicePool } from '../student.js';
-import { banner, emptyState, fmtPercent, meter, pageHead, ragBadge, subjectName, toast } from '../ui.js';
+import { saveSubjectSettings, scStyle, targetGrade, tintPage } from '../subject-colours.js';
+import { subjectDialog } from '../subject-dialog.js';
+import { banner, confirmDialog, emptyState, fmtPercent, meter, pageHead, ragBadge, subjectName, toast } from '../ui.js';
 
 export async function mount(element, context) {
   const [bundle, subjects] = await Promise.all([getBundle(context.params.subjectId), getSubjects()]);
@@ -43,25 +45,28 @@ export async function mount(element, context) {
 
   const enrolled = () => progress.enrolled_subjects.includes(subjectId);
 
+  tintPage(subject);
   setHtml(
     element,
     html`${pageHead({
-        crumbs: [{ label: 'My subjects', href: '#/subjects' }, { label: subjectName(subject) }],
+        crumbs: [{ label: 'Home', href: '#/' }, { label: 'My subjects', href: '#/subjects' }, { label: subject.subject }],
         title: subject.subject,
-        sub: html`<span class="mono">${subject.board} · ${subject.spec_code}</span> · ${subject.spec_notes}`,
+        sub: `${subject.level} · ${subject.board} ${subject.spec_code} · ${subject.spec_notes}`,
         actions: subject.has_written_exam
           ? html`<a class="btn btn--primary" href="#/practice?subject=${subjectId}">${icon('sliders')} Practise</a>
               <a class="btn" href="#/papers?subject=${subjectId}">Past papers</a>
               <a class="btn btn--ghost" href="${subject.official_url}" target="_blank" rel="noopener">${subject.board} site ${icon('external', { size: 15 })}</a>`
           : '',
       })}
-      <div class="stack stack--lg">
+      <div class="stack stack--lg" style="${scStyle(subject)}">
+        <div class="row row--tight subject-settings" data-settings></div>
         <div data-enrol-banner></div>
         ${subject.board_note ? banner(subject.board_note, { type: 'warn' }) : ''}
         ${subject.has_written_exam
           ? html`<section class="grid grid--stats" data-stats aria-label="Summary"></section>
               <div class="split">
-                <section class="card">
+                <section class="card ruled tilt-4">
+          <i class="tape tape--l" aria-hidden="true"></i>
                   <div class="card__head">
                     <h2 class="card__title">What have you learned so far?</h2>
                   </div>
@@ -76,6 +81,19 @@ export async function mount(element, context) {
           : emptyState({ iconName: 'info', title: 'No written exam', text: subject.no_written_exam })}
       </div>`,
   );
+
+  function drawSettings() {
+    const holder = $('[data-settings]', element);
+    const target = targetGrade(subject);
+    setHtml(
+      holder,
+      enrolled()
+        ? html`<button type="button" class="tag tag--btn" data-settings-edit><span class="cdot cdot--sm" aria-hidden="true"></span>Colour</button>
+            <button type="button" class="tag tag--btn" data-settings-edit>Target grade <b>${target || 'not set'}</b> ▾</button>
+            <button type="button" class="tag tag--btn" data-unenrol>Remove subject</button>`
+        : '',
+    );
+  }
 
   function drawEnrolBanner() {
     setHtml(
@@ -92,26 +110,67 @@ export async function mount(element, context) {
     const learnedCount = leaves.filter((id) => derived.learned.has(id)).length;
     setHtml(
       target,
-      html`<div class="stat">
+      html`<div class="stat ruled">
           <span class="stat__label">Spec points learned</span>
           <span class="stat__value">${learnedCount}<span class="stat__of"> / ${leaves.length}</span></span>
           ${meter(percent(learnedCount, leaves.length), 'accent', 'Share of spec points learned')}
         </div>
-        <div class="stat">
+        <div class="stat ruled">
           <span class="stat__label">Questions unlocked</span>
           <span class="stat__value">${derived.unlocked}<span class="stat__of"> / ${pool.length}</span></span>
           <span class="stat__note">${derived.locked.length ? `${derived.locked.length} need topics you have not ticked` : 'Everything in the bank is available'}</span>
         </div>
-        <div class="stat">
+        <div class="stat ruled">
           <span class="stat__label">Questions answered</span>
           <span class="stat__value">${derived.score.count}</span>
         </div>
-        <div class="stat">
-          <span class="stat__label">Average score</span>
-          <span class="stat__value">${fmtPercent(derived.score.percentage)}</span>
-          <span class="stat__note">${derived.score.count ? ragBadge(ragFor(derived.score.percentage)) : 'No attempts yet'}</span>
-        </div>`,
+        ${lastVsTarget()
+          ? html`<div class="stat ruled">
+              <span class="stat__label">Last paper vs target</span>
+              <span class="stat__value">${lastVsTarget().last.grade}<span class="stat__of"> / target ${lastVsTarget().target}</span></span>
+              <span class="stat__note small">${lastVsTarget().band ? html`<span class="band" data-band="${lastVsTarget().band}">${TARGET_BANDS[lastVsTarget().band].label}</span>` : ''} ${lastVsTarget().last.title || ''}, ${fmtPercent(lastVsTarget().last.percentage)}</span>
+            </div>`
+          : html`<div class="stat ruled">
+              <span class="stat__label">Average score</span>
+              <span class="stat__value">${fmtPercent(derived.score.percentage)}</span>
+              <span class="stat__note">${derived.score.count ? ragBadge(ragFor(derived.score.percentage)) : 'No attempts yet'}</span>
+            </div>`}`,
     );
+  }
+
+  function lastVsTarget() {
+    const target = targetGrade(subject);
+    const history = paperHistory(progress.paper_attempts, { subjectId }).filter((attempt) => attempt.grade);
+    if (!target || !history.length) return null;
+    return { target, last: history[0], history: history.slice(0, 5), band: targetBand(history[0].grade, target, subject.grade_scheme) };
+  }
+
+  function targetCard() {
+    const target = targetGrade(subject);
+    const grades = gradesIn(subject.grade_scheme).filter((grade) => grade !== 'U');
+    const at = grades.indexOf(target);
+    const recent = paperHistory(progress.paper_attempts, { subjectId }).filter((attempt) => attempt.grade).slice(0, 5);
+    return html`<section class="card ruled tilt-2">
+      <i class="tape tape--r" aria-hidden="true"></i>
+      <h2 class="card__title">Your target</h2>
+      <div class="target" style="margin:12px 0 14px">
+        <span class="target__grade">${target || '–'}</span>
+        <span class="small muted">${target ? 'Papers are rated against it.' : 'No target grade yet. Set one to see how your papers compare.'}<br /><button type="button" class="linkbtn" data-settings-edit>${target ? 'Change target' : 'Set a target'}</button></span>
+      </div>
+      ${target
+        ? html`<p class="label">How papers are rated</p>
+            <ul class="band-key">
+              <li><span class="band" data-band="exceeding">Exceeding target</span>${at > 0 ? grades.slice(0, at).join(', ') : '—'}</li>
+              <li><span class="band" data-band="secure">Secure</span>${target}</li>
+              <li><span class="band" data-band="developing">Developing</span>${grades[at + 1] || '—'}</li>
+              <li><span class="band" data-band="needs_work">Needs work</span>${grades[at + 2] ? `${grades[at + 2]} or lower` : '—'}</li>
+            </ul>
+            ${recent.length
+              ? html`<p class="label" style="margin-top:14px">Your last ${recent.length === 1 ? 'paper' : `${recent.length} papers`}</p>
+                  <p class="row row--tight" style="margin-top:6px">${recent.map((attempt) => html`<span class="band" data-band="${targetBand(attempt.grade, target, subject.grade_scheme)}" title="${attempt.title || ''}">${attempt.grade}</span>`)}</p>`
+              : ''}`
+        : ''}
+    </section>`;
   }
 
   const labelWithSubject = (id) => {
@@ -133,7 +192,8 @@ export async function mount(element, context) {
 
     setHtml(
       target,
-      html`<section class="card">
+      html`${enrolled() ? targetCard() : ''}<section class="card ruled tilt-1">
+          <i class="tape tape--c" aria-hidden="true"></i>
           <h2 class="card__title">Unlock more questions</h2>
           ${pool.length === 0
             ? html`<p class="muted small" style="margin-top:8px">There are no questions for this subject yet.</p>`
@@ -158,7 +218,8 @@ export async function mount(element, context) {
                   </ul>`}
         </section>
         ${foreignGroups.size
-          ? html`<section class="card">
+          ? html`<section class="card ruled tilt-3">
+          <i class="tape tape--c" aria-hidden="true"></i>
               <h2 class="card__title">Crossover knowledge</h2>
               <p class="muted small" style="margin:8px 0 12px">
                 Some ${subject.subject} questions also draw on other subjects. Tick what you know so those questions can be unlocked.
@@ -228,12 +289,32 @@ export async function mount(element, context) {
     await api.setLearned([box.dataset.foreign], box.checked);
     refresh();
   });
+  on(element, 'click', '[data-settings-edit]', async () => {
+    const choice = await subjectDialog({ subject, mode: 'edit' });
+    if (!choice) return;
+    await saveSubjectSettings(subjectId, { swatch: choice.swatch, target: choice.target });
+    context.refresh();
+  });
+  on(element, 'click', '[data-unenrol]', async () => {
+    const confirmed = await confirmDialog({
+      title: `Remove ${subject.subject}?`,
+      message: 'It leaves your subject list. Your learned topics and scores are kept, so you can add it back later.',
+      confirmLabel: 'Remove subject',
+      danger: true,
+    });
+    if (!confirmed) return;
+    await api.setEnrolled(subjectId, false);
+    context.navigate('/subjects');
+  });
   on(element, 'click', '[data-enrol]', async () => {
     await api.setEnrolled(subjectId, true);
+    drawSettings();
+    drawSide();
     drawEnrolBanner();
     toast(`${subject.subject} added to your subjects.`, { type: 'success' });
   });
 
+  drawSettings();
   drawEnrolBanner();
   drawStats();
   drawSide();
