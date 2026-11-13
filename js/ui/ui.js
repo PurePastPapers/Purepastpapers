@@ -110,10 +110,10 @@ export function openModal({ title, body, actions = [{ label: 'Close', cancel: tr
   });
 }
 
-export async function confirmDialog({ title, message, confirmLabel = 'Confirm', cancelLabel = 'Cancel', danger = false }) {
+export async function confirmDialog({ title, message, extra = '', confirmLabel = 'Confirm', cancelLabel = 'Cancel', danger = false }) {
   const answer = await openModal({
     title,
-    body: html`<p>${message}</p>`,
+    body: html`<p>${message}</p>${extra}`,
     actions: [
       { label: cancelLabel, cancel: true },
       { label: confirmLabel, value: true, variant: danger ? 'danger' : 'primary' },
