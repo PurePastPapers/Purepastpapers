@@ -73,6 +73,17 @@ export async function signUp({ initialProgress = null, ...details }) {
   return user;
 }
 
+/** Deletes a leftover demo profile (for example from a tab closed without leaving the demo). */
+export async function discardDemo(details) {
+  try {
+    const leftover = await adapter.signIn(details);
+    if (leftover.is_demo) await adapter.deleteUser(leftover.user_id);
+    else await adapter.signOut();
+  } catch {
+    // no demo profile in this browser yet
+  }
+}
+
 export async function signIn(details) {
   user = await adapter.signIn(details);
   progress = normalise(await adapter.loadProgress(user.user_id), user.user_id);
@@ -82,7 +93,10 @@ export async function signIn(details) {
 }
 
 export async function signOut() {
-  await adapter.signOut();
+  // The demo account is thrown away when you leave it, so the next visitor gets it back
+  // exactly as it was built (owner request, 2026-11-13). enterDemoAccount() rebuilds it.
+  if (user?.is_demo) await adapter.deleteUser(user.user_id);
+  else await adapter.signOut();
   user = null;
   progress = null;
   learnedCache = null;

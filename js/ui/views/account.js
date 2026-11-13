@@ -34,7 +34,7 @@ export async function mount(element, context) {
         sub: `signed in as ${user.email} · member since ${new Date(user.created_at).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}`,
         actions: html`<button type="button" class="btn" data-logout>Log out</button>`,
       })}
-      ${user.is_demo ? html`<div style="margin-bottom:26px">${banner(html`<strong>Demo account.</strong> Anything you change here only affects the demo profile in this browser.`, { type: 'demo' })}</div>` : ''}
+      ${user.is_demo ? html`<div style="margin-bottom:26px">${banner(html`<strong>Demo account.</strong> You can try anything here. When you sign out, the demo goes back to how it was.`, { type: 'demo' })}</div>` : ''}
       <div class="account-grid">
         <div class="account-col">
           <section class="card ruled tilt-3">
