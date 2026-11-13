@@ -2,15 +2,15 @@
 // summarise progress per subject, and start practice sessions.
 
 import { enabledSourceTypes } from '../config/phases.js';
-import { html } from '../core/dom.js';
-import { percent } from '../core/utils.js';
+import { html, on, setHtml } from '../core/dom.js';
 import * as api from '../data/api.js';
 import { getBundles, specIndex } from '../data/content-repository.js';
 import { createSession } from '../data/sessions.js';
-import { latestByQuestion, ragFor, totals } from '../engine/analytics.js';
+import { latestByQuestion, masteryByNode, ragFor, totals } from '../engine/analytics.js';
 import { filterQuestions } from '../engine/filter-engine.js';
 import { icon } from './icons.js';
-import { groupDot, meter, ragBadge } from './ui.js';
+import { SUBJECT_SWATCHES, scStyle, setSubjectColour, subjectColour, subjectSwatchId } from './subject-colours.js';
+import { fmtPercent, groupDot } from './ui.js';
 
 /**
  * Progress plus content for a set of subjects (default: the enrolled ones).
@@ -38,6 +38,13 @@ export function subjectSummary(bundle, { progress, latest, learned }) {
   const { matches } = filterQuestions(pool, {}, { specIndex, learned, latestAttempts: latest });
   const answered = [...latest.values()].filter((attempt) => attemptInSubject(attempt, bundle));
   const score = totals(answered);
+  // One segment per topic (up to 8): its RAG from the latest attempts, or empty with no evidence yet.
+  const mastery = masteryByNode(latest, bundle.questionsById, specIndex);
+  const topics = (bundle.spec?.sections || []).flatMap((section) => section.topics);
+  const segments = topics.slice(0, 8).map((topic) => {
+    const entry = mastery.get(topic.id);
+    return { title: topic.title, rag: entry && entry.max > 0 ? entry.rag : 'none' };
+  });
   return {
     leaves: leaves.length,
     learned: leaves.filter((id) => learned.has(id)).length,
@@ -46,37 +53,96 @@ export function subjectSummary(bundle, { progress, latest, learned }) {
     answered: answered.length,
     percentage: score.percentage,
     rag: ragFor(score.percentage),
+    segments,
     papers: progress.paper_attempts.filter((attempt) => attempt.subject_id === bundle.subject.subject_id).length,
   };
 }
 
-export function subjectCard(bundle, summary, { actions = true } = {}) {
+/** A subject's card: a band in the student's colour (the dot changes it), learned count, topic segments and average. */
+export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) {
   const { subject } = bundle;
   const id = subject.subject_id;
-  const learnedShare = percent(summary.learned, summary.leaves);
-  return html`<article class="card subject-card">
-    <header class="row row--between row--top row--nowrap">
-      <div style="min-width:0">
-        <p class="small muted">${groupDot(subject)} ${subject.level} · ${subject.board} ${subject.spec_code}</p>
-        <h3 class="h3"><a class="subject-card__name" href="#/subject/${id}">${subject.subject}</a></h3>
-      </div>
-      ${summary.answered ? ragBadge(summary.rag, summary.percentage, { label: false }) : ''}
+  return html`<article class="card subject-card ${tilt ? `tilt-${tilt}` : ''}" style="${scStyle(subject)}" data-subject-card="${id}">
+    <header class="subject-card__band">
+      <h3><a href="#/subject/${id}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
+      <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
     </header>
-    ${subject.has_written_exam
-      ? html`<div class="stack stack--sm">
-            <p class="small muted">Learned ${summary.learned} of ${summary.leaves} spec points</p>
-            ${meter(learnedShare, 'accent', `${Math.round(learnedShare)}% of spec points learned`)}
-            <p class="small muted">${summary.unlocked} of ${summary.pool} questions unlocked · ${summary.answered} answered</p>
-          </div>
-          ${actions
-            ? html`<footer class="row row--tight">
-                <a class="btn btn--sm btn--primary" href="#/practice?subject=${id}">Practise</a>
-                <a class="btn btn--sm" href="#/subject/${id}">Topics</a>
-                <a class="btn btn--sm" href="#/papers?subject=${id}">Papers</a>
-              </footer>`
-            : ''}`
-      : html`<p class="small muted">${subject.no_written_exam}</p>`}
+    <div class="subject-card__body">
+      <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}${subject.has_written_exam ? ` · ${summary.learned}/${summary.leaves} learned` : ''}</p>
+      ${subject.has_written_exam
+        ? html`${summary.segments.length
+              ? html`<span class="segbar" role="img" aria-label="Topic scores">${summary.segments.map((segment) => html`<i data-rag="${segment.rag}" title="${segment.title}"></i>`)}</span>`
+              : ''}
+            <p class="subject-card__score"><span>${summary.answered ? 'average' : 'no answers yet'}</span><b>${summary.answered ? fmtPercent(summary.percentage) : ''}</b></p>
+            ${actions
+              ? html`<footer class="row row--tight">
+                  <a class="btn btn--sm" href="#/papers?subject=${id}">Papers</a>
+                  <a class="btn btn--sm" href="#/practice?subject=${id}">Practice</a>
+                  <a class="btn btn--sm" href="#/subject/${id}">Topics</a>
+                </footer>`
+              : ''}`
+        : html`<p class="small muted">${subject.no_written_exam}</p>`}
+    </div>
   </article>`;
+}
+
+/**
+ * Wires the colour dots on subject cards: a small card of preset swatches opens under
+ * the dot; picking one saves it and recolours the page without a reload.
+ */
+export function wireColourPicker(element, onChange = null) {
+  const close = () => element.querySelector('.colour-pop')?.remove();
+  const stop = on(element, 'click', '[data-colour-for]', (event, dot) => {
+    event.stopPropagation();
+    const open = element.querySelector('.colour-pop');
+    close();
+    if (open?.dataset.for === dot.dataset.colourFor) return;
+    const card = dot.closest('[data-subject-card]');
+    const subjectId = dot.dataset.colourFor;
+    const name = card.querySelector('h3').textContent.trim();
+    const current = subjectSwatchId(subjectId);
+    const pop = document.createElement('div');
+    pop.className = 'card colour-pop';
+    pop.dataset.for = subjectId;
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-label', `Colour for ${name}`);
+    setHtml(
+      pop,
+      html`<h4>Colour for ${name}</h4>
+        <div class="swatches" role="radiogroup" aria-label="Colour">
+          ${SUBJECT_SWATCHES.map(
+            (swatch) =>
+              html`<button type="button" class="swatch" role="radio" style="--sc:${swatch.hex}" aria-checked="${swatch.id === current}" aria-label="${swatch.label}" data-swatch="${swatch.id}"></button>`,
+          )}
+        </div>
+        <p class="hand">used for headers &amp; charts</p>`,
+    );
+    card.append(pop);
+    pop.querySelector('[aria-checked="true"]')?.focus();
+    pop.addEventListener('click', async (clickEvent) => {
+      clickEvent.stopPropagation();
+      const swatch = clickEvent.target.closest('[data-swatch]');
+      if (!swatch) return;
+      await setSubjectColour(subjectId, swatch.dataset.swatch);
+      card.style.setProperty('--sc', subjectColour(subjectId));
+      for (const dotEl of document.querySelectorAll(`[data-subject-id="${subjectId}"]`)) dotEl.style.setProperty('--sc', subjectColour(subjectId));
+      close();
+      onChange?.(subjectId);
+    });
+  });
+  const outside = (event) => {
+    if (!event.target.closest('.colour-pop')) close();
+  };
+  const escape = (event) => {
+    if (event.key === 'Escape') close();
+  };
+  document.addEventListener('click', outside);
+  document.addEventListener('keydown', escape);
+  return () => {
+    stop?.();
+    document.removeEventListener('click', outside);
+    document.removeEventListener('keydown', escape);
+  };
 }
 
 /** Row of subject pills used to switch subject on the papers, practice and hub pages. */

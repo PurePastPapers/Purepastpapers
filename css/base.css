@@ -4,95 +4,137 @@
    script in index.html (it follows the system setting unless the student chose one).
    ───────────────────────────────────────────────────────────────────────────── */
 
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('../fonts/nunito-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Young Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/young-serif-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('../fonts/caveat-latin.woff2') format('woff2');
+}
+
+/* Index-card design: cream paper on a squared grid, ink outlines, offset shadows,
+   masking tape. Neutral throughout; colour comes from each student's subject colours. */
 :root {
   color-scheme: light;
 
-  /* surfaces & ink (warm paper neutrals) */
-  --plane: #f7f6f2;
-  --surface: #ffffff;
-  --surface-2: #f1f0ea;
-  --surface-3: #e7e5dd;
-  --ink: #0b0b0b;
-  --ink-2: #52514e;
-  --ink-3: #7b7973;
-  --line: #e1e0d9;
-  --line-strong: #c3c2b7;
+  /* surfaces & ink */
+  --plane: #f6f3ec;
+  --surface: #fffdf8;
+  --surface-2: #f3eee4;
+  --surface-3: #e9e2d4;
+  --ink: #2a2723;
+  --ink-2: #6d675d;
+  --ink-3: #8b8478;
+  --line: #e0d8ca;
+  --line-strong: #b7ad9c;
+  --grid-line: rgba(60, 50, 40, 0.07);
+  --tape: rgba(214, 196, 160, 0.72);
+  --rule-red: rgba(200, 90, 80, 0.35);
+  --rule-blue: rgba(90, 120, 160, 0.16);
+  --card-shadow: 4px 5px 0 rgba(42, 39, 35, 0.14);
+  --btn-shadow: 3px 3px 0 var(--ink);
+  --pen: #b5534a;
 
-  /* accent & highlighter */
-  --accent: #d82b26;
-  --accent-strong: #b5221e;
-  --accent-wash: #fff0ed;
-  --highlight: #ffd7d0;
-  --demo-bg: #ffe36e;
-  --demo-ink: #3d3000;
+  /* accent: ink, so the page stays neutral */
+  --accent: #2a2723;
+  --accent-strong: #000000;
+  --accent-wash: #efe8da;
+  --highlight: #f7e3a6;
+  --demo-bg: #f7e3a6;
+  --demo-ink: #2a2723;
 
   /* status (fixed meanings: always paired with an icon or label) */
-  --good: #0ca30c;
-  --good-ink: #006300;
-  --good-wash: #e5f4e3;
-  --warn: #fab219;
-  --warn-ink: #7a5200;
-  --warn-wash: #fdf0cf;
-  --crit: #d03b3b;
-  --crit-ink: #a52424;
-  --crit-wash: #fae3e1;
+  --good: #6fb383;
+  --good-ink: #2f6b40;
+  --good-wash: #cfe8d5;
+  --warn: #e5b84a;
+  --warn-ink: #7a5a10;
+  --warn-wash: #f7e3a6;
+  --crit: #d9776a;
+  --crit-ink: #9a3d32;
+  --crit-wash: #f4cfc7;
 
-  /* chart series (validated categorical order — never reorder or cycle) */
-  --series-1: #2a78d6;
-  --series-2: #eb6834;
-  --series-3: #1baf7a;
-  --series-4: #eda100;
-  --series-5: #e87ba4;
-  --series-6: #008300;
-  --series-7: #6250d6;
-  --series-8: #e34948;
-  --grid: #e1e0d9;
-  --axis: #c3c2b7;
+  /* chart series: the subject swatch colours, deep enough to read on cream */
+  --series-1: #6fa3d6;
+  --series-2: #e98a5f;
+  --series-3: #5fae78;
+  --series-4: #d9ac2e;
+  --series-5: #e07c97;
+  --series-6: #8a9b5a;
+  --series-7: #9a82d6;
+  --series-8: #c96a5f;
+  --grid: #e0d8ca;
+  --axis: #b7ad9c;
 
-  --radius: 6px;
+  --radius: 4px;
   --radius-sm: 4px;
-  --shadow: 0 1px 2px rgba(11, 11, 11, 0.04), 0 10px 28px rgba(11, 11, 11, 0.07);
-  --sidebar: 256px;
+  --shadow: var(--card-shadow);
+  --sidebar: 0px;
 
-  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: var(--font);
+  --font: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Young Serif', Georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Print', cursive;
   --font-mono: ui-monospace, 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
 }
 
+/* Dark mode: warm browns, cream text, muted subject colours. No neon. */
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --plane: #0d0d0d;
-  --surface: #1a1a19;
-  --surface-2: #232321;
-  --surface-3: #2e2e2b;
-  --ink: #f0efec;
-  --ink-2: #c3c2b7;
-  --ink-3: #96948d;
-  --line: #2c2c2a;
-  --line-strong: #46463f;
-  --accent: #ff635a;
-  --accent-strong: #ff8c84;
-  --accent-wash: #321817;
-  --highlight: #6a2824;
-  --demo-bg: #3f360b;
-  --demo-ink: #ffe36e;
-  --good-ink: #3fbf3f;
-  --good-wash: #112b14;
-  --warn-ink: #fab219;
-  --warn-wash: #33270a;
-  --crit-ink: #f08a8a;
-  --crit-wash: #361616;
-  --series-1: #3987e5;
-  --series-2: #d95926;
-  --series-3: #199e70;
-  --series-4: #c98500;
-  --series-5: #d55181;
-  --series-6: #008300;
-  --series-7: #9085e9;
-  --series-8: #e66767;
-  --grid: #2c2c2a;
-  --axis: #383835;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px rgba(0, 0, 0, 0.45);
+  --plane: #3d3832;
+  --surface: #4a443d;
+  --surface-2: #443e37;
+  --surface-3: #544b3c;
+  --ink: #eee5d4;
+  --ink-2: #bdb2a1;
+  --ink-3: #a09684;
+  --line: #5c544a;
+  --line-strong: #7a7062;
+  --grid-line: rgba(255, 240, 220, 0.05);
+  --tape: rgba(190, 170, 130, 0.55);
+  --rule-red: rgba(220, 120, 110, 0.3);
+  --rule-blue: rgba(200, 215, 235, 0.08);
+  --card-shadow: 4px 5px 0 rgba(0, 0, 0, 0.28);
+  --btn-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+  --pen: #f0b0a5;
+  --accent: #eee5d4;
+  --accent-strong: #ffffff;
+  --accent-wash: #544b3c;
+  --highlight: #6b5a2f;
+  --demo-bg: #6b5a2f;
+  --demo-ink: #eee5d4;
+  --good: #5e8a68;
+  --good-ink: #b9dcc0;
+  --good-wash: #4c6552;
+  --warn: #b89a45;
+  --warn-ink: #ecd08a;
+  --warn-wash: #645534;
+  --crit: #a8655a;
+  --crit-ink: #f0b0a5;
+  --crit-wash: #6a463f;
+  --series-1: #7d9cba;
+  --series-2: #c08466;
+  --series-3: #7aa486;
+  --series-4: #bea057;
+  --series-5: #bb8493;
+  --series-6: #96a272;
+  --series-7: #a291c4;
+  --series-8: #b9766c;
+  --grid: #5c544a;
+  --axis: #7a7062;
 }
 
 /* ── reset ── */
