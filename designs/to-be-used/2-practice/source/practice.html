@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 70px;--bg:color-mix(in srgb,#9cc3e6 42%,#f6f3ec);--line:rgba(40,70,110,.09)}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0}.lede{font-size:27px}
+.subs{display:flex;gap:12px;margin-top:24px;align-items:center}.subs .tag{font-size:15px;padding:8px 14px}.subs .on{background:var(--ink);color:var(--card)}
+.mode{display:flex;margin-top:24px;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink)}
+.mode span{font-family:var(--hf);font-size:17px;padding:10px 20px;border-right:2px solid var(--ink)}.mode span:last-child{border-right:0}.mode .on{background:var(--ink);color:var(--card)}
+.mini{white-space:nowrap;font-family:'Nunito';font-size:10.5px;font-weight:800;letter-spacing:1px;border:1.5px dashed currentColor;border-radius:3px;padding:2px 6px;margin-left:6px}
+.wrap{display:grid;grid-template-columns:1fr 470px;gap:44px;margin-top:34px;align-items:start}
+.build{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.build .card{padding:22px 24px 24px}.build .wide{grid-column:1/-1}
+.build h3{font-size:22px;margin-bottom:4px}.build .hand{font-size:21px;display:block;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips .tag{font-size:14.5px;padding:6px 12px}.chips .on{background:var(--ink);color:var(--card)}
+.chips .tag i{font-style:normal;font-size:12px;color:var(--mut);margin-left:2px}.chips .on i{color:#cfc8bb}
+.chips .off{border-style:dashed;color:var(--mut)}
+.topics{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tg h5{font-family:var(--hf);font-weight:400;font-size:17px;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.tg ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px;font-size:14.5px}
+.tg li{display:flex;align-items:center;gap:9px}
+.bx{width:18px;height:18px;border:2px solid var(--ink);border-radius:3px;display:grid;place-items:center;font-size:12px;background:var(--card);flex:none}
+.bx.y{background:var(--sc)}
+.tg li.no{color:var(--mut)}.tg li.no .bx{border-color:var(--mut)}
+.tg .n{margin-left:auto;color:var(--mut);font-size:13px}
+.chk{display:flex;gap:10px;align-items:center;font-size:15px;margin-top:10px}
+.src{display:none}.ai .src{display:block}
+.mk{display:none}.ai .mk{display:flex}
+.test{padding:0;position:sticky;top:20px}
+.test .band{background:var(--sc);border-bottom:2px solid var(--ink);padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
+.test .band b{font-family:var(--hf);font-weight:400;font-size:24px}
+.test .bd{padding:20px 22px 24px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.nums div{border:2px solid var(--ink);border-radius:4px;padding:10px 12px}.nums b{font-family:var(--hf);font-weight:400;font-size:28px;display:block}.nums span{font-size:13px;color:var(--mut)}
+.ql{list-style:none;padding:0;margin:18px 0 0;counter-reset:q}
+.ql li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1.5px dashed rgba(42,39,35,.18);font-size:14.5px;counter-increment:q}
+.ql li::before{content:counter(q);font-family:var(--hf);width:22px;color:var(--mut)}
+.ql .tp{flex:1}.ql .mm{color:var(--mut);font-size:13px;width:60px;text-align:right}
+.df{font-size:12px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 9px}
+.e{background:#cfe8d5}.m{background:#f7e3a6}.h{background:#f4c2b8}.x{background:#d9cdf0}
+.st{font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);display:none}
+.ai .st{display:inline-block}
+.go{display:flex;gap:12px;margin-top:22px}.go .btn{flex:1;justify-content:center}
+.note{font-size:20px;margin-top:14px;display:block;text-align:center}
+.alt{display:none}.ql li.alt{display:none}.ai .xh{display:inline-flex}.ai .chips .alt{display:inline-flex}.ai .ql li.alt{display:flex}.ai .nai{display:none!important}
+</style></head><body>
+<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Past papers</span><span class="on">Practice</span><span>Data Hub</span></div><div class="r"><span class="tag">31 answered</span><div class="av">D</div></div></div>
+<div class="crumb">Home &nbsp;/&nbsp; Practice &nbsp;/&nbsp; Mathematics</div>
+<h1 class="px">Practice</h1><p class="lede hand">build a test from the topics you've learned</p>
+<div class="subs"><span class="tag on"><i class="dot" style="background:#9cc3e6"></i>Mathematics</span><span class="tag"><i class="dot" style="background:#c7b5ea"></i>Further Maths</span><span class="tag"><i class="dot" style="background:#f3a37f"></i>Physics</span><span class="tag"><i class="dot" style="background:#8fcaa0"></i>Geography</span></div>
+<div class="mode"><span class="on">Timed test</span><span>Individual questions</span></div>
+<div class="wrap" style="--sc:#9cc3e6">
+<div class="build">
+<div class="card ruled r3"><i class="t tc"></i><h3 class="px">Length</h3><span class="hand">roughly how long you have</span><div class="chips"><span class="tag">15 min</span><span class="tag on">30 min</span><span class="tag">45 min</span><span class="tag">1 hour</span><span class="tag">2 hours</span><span class="tag">Custom</span></div></div>
+<div class="card ruled r2"><i class="t tc"></i><h3 class="px">Difficulty</h3><span class="hand">numbers show how many questions match</span><div class="chips"><span class="tag">Easy <i>48</i></span><span class="tag">Medium <i>61</i></span><span class="tag">Hard <i>33</i></span><span class="tag nai off">Extra hard <i>with AI</i></span><span class="tag alt xh">Extra hard <i>24</i></span><span class="tag on">Mixed <i>142</i></span></div></div>
+<div class="card ruled wide r1"><i class="t tl"></i><h3 class="px">Topics</h3><span class="hand">only topics you've ticked as learned are used, change them on the subject page</span>
+<div class="topics">
+<div class="tg"><h5>Pure Mathematics</h5><ul>
+<li><span class="bx y">✓</span>Algebra and functions<span class="n">24</span></li>
+<li><span class="bx y">✓</span>Coordinate geometry<span class="n">11</span></li>
+<li><span class="bx y">✓</span>Sequences and series<span class="n">14</span></li>
+<li><span class="bx y">✓</span>Trigonometry<span class="n">19</span></li>
+<li><span class="bx y">✓</span>Differentiation<span class="n">17</span></li>
+<li><span class="bx"></span>Integration<span class="n">15</span></li>
+<li class="no"><span class="bx"></span>Vectors<span class="n">not learned</span></li></ul></div>
+<div class="tg"><h5>Statistics</h5><ul>
+<li><span class="bx y">✓</span>Statistical sampling<span class="n">6</span></li>
+<li><span class="bx y">✓</span>Data presentation<span class="n">9</span></li>
+<li><span class="bx y">✓</span>Probability<span class="n">8</span></li>
+<li><span class="bx"></span>Statistical distributions<span class="n">10</span></li>
+<li class="no"><span class="bx"></span>Hypothesis testing<span class="n">not learned</span></li></ul></div>
+<div class="tg"><h5>Mechanics</h5><ul>
+<li><span class="bx y">✓</span>Quantities and units<span class="n">3</span></li>
+<li><span class="bx y">✓</span>Kinematics<span class="n">12</span></li>
+<li><span class="bx"></span>Forces and Newton's laws<span class="n">9</span></li>
+<li class="no"><span class="bx"></span>Moments<span class="n">not learned</span></li></ul></div>
+</div></div>
+<div class="card ruled r4 src"><i class="t tc"></i><h3 class="px">Question source</h3><span class="hand">AI questions are always labelled</span><div class="chips"><span class="tag">Official only</span><span class="tag">AI only</span><span class="tag on">Both</span></div></div>
+<div class="card ruled r2"><i class="t tc"></i><h3 class="px">Question choice</h3>
+<div class="chk"><span class="bx y">✓</span>Prefer questions I haven't done yet</div>
+<div class="chk"><span class="bx"></span>Bring back questions I scored below 70% on</div>
+<div class="chk mk"><span class="bx y">✓</span>Mark my typed answers with AI <span class="mini">AI MARKED</span></div></div>
+</div>
+<div class="card test r2"><i class="t tc"></i><div class="band"><b>Your test</b><span class="hand" style="font-size:21px;color:var(--ink)">ready when you are</span></div><div class="bd">
+<div class="nums"><div><b>8</b><span>questions</span></div><div><b>36</b><span>marks</span></div><div><b>30</b><span>minutes</span></div></div>
+<ul class="ql">
+<li><span class="tp">Algebra and functions</span><span class="df e">Easy</span><span class="mm">3 marks</span></li>
+<li class="nai"><span class="tp">Trigonometry</span><span class="df m">Medium</span><span class="mm">5 marks</span></li>
+<li class="alt"><span class="tp">Trigonometry <span class="st">AI MADE</span></span><span class="df m">Medium</span><span class="mm">5 marks</span></li>
+<li><span class="tp">Sequences and series</span><span class="df m">Medium</span><span class="mm">4 marks</span></li>
+<li><span class="tp">Differentiation</span><span class="df h">Hard</span><span class="mm">7 marks</span></li>
+<li class="nai"><span class="tp">Probability</span><span class="df e">Easy</span><span class="mm">3 marks</span></li>
+<li class="alt"><span class="tp">Probability <span class="st">AI MADE</span></span><span class="df x">Extra hard</span><span class="mm">3 marks</span></li>
+<li><span class="tp">Kinematics</span><span class="df m">Medium</span><span class="mm">5 marks</span></li>
+<li><span class="tp">Coordinate geometry</span><span class="df h">Hard</span><span class="mm">6 marks</span></li>
+<li><span class="tp">Data presentation</span><span class="df m">Medium</span><span class="mm">3 marks</span></li>
+</ul>
+<div class="go"><span class="btn">Shuffle</span><span class="btn d">Start test</span></div>
+<span class="hand note">the clock starts when you press start</span>
+</div></div>
+</div>
+</body></html>

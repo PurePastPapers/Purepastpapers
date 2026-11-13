@@ -1,0 +1,255 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 70px;position:relative}
+body.tint{--bg:color-mix(in srgb,#9cc3e6 42%,#f6f3ec);--line:rgba(40,70,110,.09)}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0}.lede{font-size:27px}
+.hrow{display:flex;align-items:flex-end;gap:20px}.hrow .acts{margin-left:auto;display:flex;gap:14px;padding-bottom:8px}
+.main{margin-top:34px;display:flex;flex-direction:column;gap:40px}
+.sec{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}.sec h2{font-size:32px}.sec .hand{font-size:23px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start}
+.sc{overflow:visible}.sc .hd{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:2px solid var(--ink);border-radius:2px 2px 0 0}.sc .hd h3{font-size:22px;margin-right:auto}
+.cdot{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--ink);box-shadow:inset 0 0 0 3px var(--card);flex:none}
+.sc .bd{padding:14px 18px 18px;font-size:14.5px}.sc .meta{color:var(--mut)}
+.tgt{display:flex;align-items:center;gap:12px;margin:14px 0 4px}
+.gb{font-family:var(--hf);font-size:24px;width:46px;height:46px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;background:var(--card);box-shadow:2px 2px 0 var(--ink);flex:none}
+.tgt .l{font-size:12.5px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase;display:block}
+.seg{display:flex;gap:4px;margin:12px 0 4px}.seg i{flex:1;height:10px;border:1.5px solid var(--ink);border-radius:2px;background:var(--card)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.sbtn{font-family:var(--hf);font-size:14.5px;border:2px solid var(--ink);border-radius:5px;padding:5px 12px;background:var(--card);box-shadow:2px 2px 0 var(--ink);white-space:nowrap;display:inline-block}
+.sbtn.d{background:var(--ink);color:var(--card)}.lnk{font-size:14px;color:var(--mut);text-decoration:underline;margin-left:auto}
+.addc{border:2.5px dashed rgba(42,39,35,.45);border-radius:6px;min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--mut);background:rgba(255,253,248,.45)}
+.addc b{font-family:var(--hf);font-weight:400;font-size:40px;width:64px;height:64px;border:2px dashed rgba(42,39,35,.5);border-radius:50%;display:grid;place-items:center}
+.addc span{font-family:var(--hf);font-size:20px;color:var(--ink)}
+.ctl{display:flex;gap:22px;align-items:center;margin-bottom:24px}
+.mode{display:flex;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink)}
+.mode span{font-family:var(--hf);font-size:17px;padding:10px 20px;border-right:2px solid var(--ink)}.mode span:last-child{border-right:0}.mode .on{background:var(--ink);color:var(--card)}
+.search{flex:0 0 360px;border:2px solid var(--ink);border-radius:6px;background:var(--card);padding:11px 16px;font-size:16px;color:var(--mut);display:flex;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips .tag{font-size:14px;padding:5px 11px}.chips .on{background:var(--ink);color:var(--card)}
+.cc{padding:26px 24px 20px}.cc .cat{font-size:13px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+.cc h3{font-size:23px;margin:6px 0 4px}.cc .code{font-size:14.5px}.cc .nt{font-size:14px;color:var(--mut);margin-top:10px;line-height:1.5}
+.cc .cnt{display:flex;gap:14px;font-size:14px;margin-top:12px;flex-wrap:wrap;align-items:center}.cc .cnt b{font-family:var(--hf);font-weight:400;font-size:17px}
+.warn{margin-top:10px;font-size:13.5px;border:1.5px dashed var(--ink);border-radius:5px;padding:7px 10px;background:#f7efd9}
+.added{background:#e7f1e9}
+.st{font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);display:inline-block;background:var(--card);white-space:nowrap;font-family:'Nunito'}
+.ailine{margin-top:12px;padding-top:10px;border-top:1.5px dashed rgba(42,39,35,.25);font-size:13.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--mut)}
+.sug{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:34px}.sg{padding:18px 22px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center}.sg h3{font-size:21px}.sg .code{font-size:14px;color:var(--mut)}.sg .why{grid-column:1/-1;font-size:21px;line-height:1.15;margin-top:6px}.sg .sbtn{grid-row:1/3;grid-column:2}
+.suglab{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}.suglab h3{font-size:23px}.suglab .hand{font-size:21px}
+/* modal */
+.veil{position:absolute;top:0;left:0;right:0;background:rgba(42,39,35,.38);z-index:5}
+.modal{position:absolute;z-index:6;left:50%;top:150px;width:1080px;margin-left:-540px;padding:34px 40px 30px}
+.modal h2{font-size:34px}.modal .sub{font-size:15px;color:var(--mut);margin-top:2px}
+.mg{display:grid;grid-template-columns:1fr 330px;gap:40px;margin-top:22px}
+.fs{padding:18px 0;border-top:1.5px dashed rgba(42,39,35,.22)}.fs:first-child{border-top:0;padding-top:4px}
+.fs h4{font-family:var(--hf);font-weight:400;font-size:20px;display:flex;gap:10px;align-items:baseline}.fs h4 i{font-style:normal;width:28px;height:28px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:14px;background:var(--bg);flex:none;align-self:center}
+.fs p.h{font-size:14px;color:var(--mut);margin:4px 0 12px 38px}
+.sw{display:flex;gap:12px;margin-left:38px;flex-wrap:wrap}.sw i{width:38px;height:38px;border-radius:50%;border:2.5px solid var(--ink)}.sw .on{box-shadow:0 0 0 3px var(--card),0 0 0 5.5px var(--ink)}
+.gr{display:flex;gap:10px;margin-left:38px}.gr span{font-family:var(--hf);font-size:21px;width:52px;height:48px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;background:var(--card)}.gr .on{background:var(--ink);color:var(--card);box-shadow:3px 3px 0 rgba(42,39,35,.3)}
+.bands{margin:14px 0 0 38px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;align-items:center}
+.rg{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 10px;white-space:nowrap}
+.X{background:#cfe0f4}.G{background:#cfe8d5}.A{background:#f7e3a6}.R{background:#f4c2b8}
+.opts{display:flex;flex-direction:column;gap:9px;margin-left:38px}.opt{display:flex;gap:12px;align-items:center;font-size:15.5px;border:2px solid var(--ink);border-radius:6px;padding:10px 14px;background:var(--card)}.opt.on{box-shadow:3px 3px 0 var(--ink)}
+.rad{width:18px;height:18px;border:2px solid var(--ink);border-radius:50%;flex:none;display:grid;place-items:center}.opt.on .rad::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.opt small{color:var(--mut);font-size:13.5px;margin-left:auto}
+.tog{width:44px;height:24px;border:2px solid var(--ink);border-radius:20px;background:#cfe8d5;position:relative;flex:none}.tog::after{content:'';position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--ink)}
+.prev .hand{font-size:22px;margin-bottom:10px;display:block}
+.mfoot{display:flex;gap:14px;justify-content:flex-end;margin-top:20px;align-items:center}
+/* subject page */
+.set{display:flex;gap:12px;margin-top:18px;align-items:center}.set .tag{font-size:15px;padding:7px 13px;background:var(--card)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.stat{padding:18px 20px}.stat .l{font-size:13px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.stat .v{font-family:var(--hf);font-size:42px;line-height:1.15;margin-top:4px;display:block}.stat .v small{font-size:20px;color:var(--mut)}
+.stat .n{font-size:14px;color:var(--mut);display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.mt{height:12px;border:2px solid var(--ink);border-radius:3px;background:var(--card);overflow:hidden;display:block;margin-top:8px}.mt i{display:block;height:100%}
+.split{display:grid;grid-template-columns:1fr 420px;gap:34px;align-items:start}
+.pc{padding:24px 28px 18px}.pc .hd{display:flex;align-items:baseline;gap:14px}.pc h3{font-size:25px;margin-right:auto}
+.pc .intro{font-size:15px;color:var(--mut);margin:8px 0 10px;line-height:1.5;max-width:680px}
+.tbar{display:flex;gap:10px;margin:6px 0 4px;align-items:center;font-size:14px;color:var(--mut)}
+.cb{width:20px;height:20px;border:2px solid var(--ink);border-radius:4px;background:var(--card);display:grid;place-items:center;flex:none;font-size:13px;font-weight:800;line-height:1}
+.cb.y{background:var(--ink);color:var(--card)}.cb.p::after{content:'';width:10px;height:2.5px;background:var(--ink)}
+.trw{display:grid;grid-template-columns:18px 24px 44px 1fr 110px 100px 70px;gap:12px;align-items:center;padding:11px 0;border-top:1.5px dashed rgba(42,39,35,.18);font-size:15.5px}
+.trw .ar{color:var(--mut);font-size:12px}.cd{font-family:var(--hf);color:var(--mut);font-size:14px}.trw .lr,.trw .qn{font-size:13.5px;color:var(--mut)}
+.grp{font-family:var(--hf);font-size:19px;margin:16px 0 4px;display:flex;gap:10px;align-items:baseline}.grp small{font-family:Nunito;font-size:13.5px;color:var(--mut)}
+.open{background:rgba(42,39,35,.035);margin:0 -28px;padding:6px 28px 12px 58px;border-top:1.5px dashed rgba(42,39,35,.18)}
+.pt{display:grid;grid-template-columns:24px 44px 1fr 90px 70px;gap:12px;align-items:center;padding:6px 0;font-size:14.5px}.pt .qn{font-size:13px;color:var(--mut)}
+.pp{font-size:12.5px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:1px 9px;white-space:nowrap;justify-self:start}
+.side{display:flex;flex-direction:column;gap:30px}
+.ul{list-style:none;padding:0;margin-top:8px}.ul li{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1.5px dashed rgba(42,39,35,.18);font-size:15px}.ul li div{flex:1}.ul small{display:block;color:var(--mut);font-size:13px}
+.cx{display:flex;gap:10px;align-items:center;font-size:14.5px;padding:6px 0}
+.lab{font-size:12.5px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-top:12px;display:flex;gap:8px;align-items:center}
+.tg2{display:flex;gap:16px;align-items:center;margin:10px 0 6px}.tg2 .gb{width:62px;height:62px;font-size:34px}
+.history{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.aishelf{border:2px dashed var(--ink);border-radius:6px;background:rgba(255,253,248,.6);padding:22px 24px 20px;position:relative}
+.aishelf>.st{position:absolute;top:-13px;left:22px;font-size:12px;transform:rotate(-2deg)}
+.aishelf h3{font-size:22px}
+/* empty */
+.welcome{padding:40px 46px;display:grid;grid-template-columns:1fr 470px;gap:50px;align-items:center}
+.welcome h2{font-size:38px;margin-bottom:8px}.welcome p{font-size:17px;line-height:1.55;color:var(--mut);max-width:560px}
+.steps{display:flex;flex-direction:column;gap:14px}.steps div{display:flex;gap:14px;align-items:center;font-size:16px}.steps i{font-style:normal;width:36px;height:36px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);background:var(--bg);flex:none}
+.steps .ai{color:var(--mut)}
+.arrow{position:absolute;pointer-events:none}
+
+html:root{--bg:#3d3832;--card:#4a443d;--ink:#eee5d4;--mut:#bdb2a1;--line:rgba(255,240,220,.05);--tape:rgba(190,170,130,.55)}
+body.tint{--bg:color-mix(in srgb,#9cc3e6 24%,#33302d);--line:rgba(200,225,255,.06)}
+.card{box-shadow:4px 5px 0 rgba(0,0,0,.28)!important}.btn,.sbtn,.mode,.logo b,.gb{box-shadow:3px 3px 0 rgba(0,0,0,.4)!important}
+.ruled{background-image:linear-gradient(transparent 39px,rgba(220,120,110,.3) 39px,rgba(220,120,110,.3) 41px,transparent 41px),repeating-linear-gradient(transparent 0 27px,rgba(200,215,235,.08) 27px 28px)!important}
+.warn{background:#544b3c}.added{background:#45594a}
+.X{background:#3f5672}.G{background:#3f5e48}.A{background:#6b5a2c}.R{background:#74433b}
+.tog{background:#5e7a63}.veil{background:rgba(0,0,0,.45)}
+.addc{border-color:rgba(238,229,212,.4);background:rgba(74,68,61,.45)}.addc b{border-color:rgba(238,229,212,.45)}
+</style></head><body>
+<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Past papers</span><span>Practice</span><span>Data Hub</span></div><div class="r"><span class="tag" id="ans">214 answered</span><div class="av">D</div></div></div>
+<div id="app"></div>
+<script>
+const P=new URLSearchParams(location.search),S=P.get('s')||'list',AI=!!P.get('ai');
+if(S==='subject')document.body.classList.add('tint');
+if(S==='empty')document.getElementById('ans').textContent='0 answered';
+const st=t=>`<span class="st">${t}</span>`;
+const PAL=['#9cc3e6','#c7b5ea','#f3a37f','#8fcaa0','#f4cf6a','#f2a7c3','#9fd6cf','#d9c2a0','#b5cf8a','#e9b8e6','#c9ccd3'];
+const mine=[
+ {n:'Mathematics',c:'#9cc3e6',lv:'A-Level',b:'Edexcel 9MA0',t:'A',l:76,of:90,seg:'GGGAARWW',last:'B',lr:'A',ai:386,pp:2,r:'r1'},
+ {n:'Further Maths',c:'#c7b5ea',lv:'A-Level',b:'Edexcel 9FM0',t:'B',l:16,of:103,seg:'GAWWWWWW',last:'A',lr:'X',ai:142,pp:1,r:'r2'},
+ {n:'Physics',c:'#f3a37f',lv:'A-Level',b:'Edexcel 9PH0',t:'A*',l:48,of:121,seg:'GGAWWWWW',last:'C',lr:'R',ai:254,pp:2,r:'r3'},
+ {n:'Geography',c:'#8fcaa0',lv:'A-Level',b:'AQA 7037',t:'B',l:30,of:56,seg:'GGARWWWW',last:'B',lr:'G',ai:118,pp:1,r:'r4'}];
+const SC={G:'#8fcaa0',A:'#f4cf6a',R:'#ef9a8f',W:'var(--card)'};
+const BL={X:'Exceeding target',G:'Secure',A:'Developing',R:'Needs work'};
+const band=(k,txt)=>!k?'':`<span class="rg ${k}">${txt||BL[k]}</span>`;
+const subjCard=(s,o={})=>`<div class="card sc ${s.r}">
+ <div class="hd" style="background:${s.c}"><h3 class="px">${s.n}</h3><i class="cdot" style="background:${s.c}"></i></div>
+ <div class="bd"><div class="meta">${s.lv} · ${s.b}</div>
+ <div class="tgt"><span class="gb">${s.t}</span><div><span class="l">Target grade</span>Last paper: <b>${s.last}</b> ${band(s.lr)}</div></div>
+ <div class="seg">${[...s.seg].map(k=>`<i style="background:${SC[k]}"></i>`).join('')}</div>
+ <div class="meta">${s.l}/${s.of} spec points learned</div>
+ ${AI?`<div class="ailine">${st('AI MADE')} <span>${s.ai} questions · ${s.pp} predicted paper${s.pp>1?'s':''}</span></div>`:''}
+ <div class="row"><span class="sbtn d">Topics learned</span><span class="sbtn">Edit</span><span class="lnk">Remove</span></div></div></div>`;
+
+const catA=[
+ {cat:'Maths',n:'Mathematics',code:'Edexcel · 9MA0',nt:'Pure, Statistics and Mechanics. Three 2-hour papers.',p:42,q:180,ai:386,on:1},
+ {cat:'Maths',n:'Further Mathematics',code:'Edexcel · 9FM0',nt:'Core Pure plus two options (Further Stats and Mechanics).',p:36,q:120,ai:142,on:1},
+ {cat:'Science',n:'Biology',code:'Edexcel · 9BN0',nt:'Biology B. Three papers, including a practical skills paper.',p:30,q:96,ai:220},
+ {cat:'Science',n:'Chemistry',code:'OCR · H432',nt:'Chemistry A. Three papers: periodic table, organic, unified.',p:30,q:104,ai:240},
+ {cat:'Science',n:'Physics',code:'Edexcel · 9PH0',nt:'Three papers. Paper 3 covers general and practical principles.',p:30,q:121,ai:254,on:1},
+ {cat:'Art',n:'Art & Design: Fine Art',code:'AQA · 7202',nt:'Personal investigation and an externally set assignment.',noexam:1},
+];
+const catG=[
+ {cat:'Maths',n:'Mathematics',code:'Edexcel · 1MA1',nt:'Foundation and Higher tiers. Three papers, one non-calculator.',p:54,q:240,ai:510},
+ {cat:'Science',n:'Combined Science',code:'Edexcel · 1SC0',nt:'Double Award. Six papers: Biology, Chemistry, Physics 1 and 2.',p:72,q:260,ai:480},
+ {cat:'Science',n:'Physics',code:'Edexcel · 1PH0',nt:'Triple Science. Paper 1 Topics 1-7, Paper 2 Topics 1, 8-15.',p:24,q:130,ai:300},
+ {cat:'English',n:'English Language',code:'AQA · 8700',nt:'Two papers: creative reading and writing, viewpoints.',p:20,q:60,ai:90},
+ {cat:'Humanities',n:'History',code:'Edexcel · 1HI0',nt:'Three papers across thematic, period and modern depth studies.',p:30,q:84,ai:140},
+ {cat:'Art',n:'Art & Design',code:'AQA · 8201',nt:'Portfolio and an externally set task.',noexam:1},
+];
+const catCard=(c,i)=>`<div class="card ruled cc ${['r2','r3','r1','r4','r1','r2'][i]}"><i class="t tc"></i>
+ <div class="cat">${c.cat}</div><h3 class="px">${c.n}</h3><div class="code">${c.code}</div><div class="nt">${c.nt}</div>
+ ${c.noexam?`<div class="warn">No written exam, so there are no papers or questions to practise. You can still add it to keep your subjects together.</div>`:
+ `<div class="cnt"><span><b>${c.p}</b> past papers</span><span><b>${c.q}</b> questions</span>${AI?`<span><b>${c.ai}</b> AI questions ${st('AI MADE')}</span>`:''}</div>`}
+ <div class="row">${c.on?`<span class="sbtn added">&#10003; Added</span>`:`<span class="sbtn d">+ Add subject</span>`}<span class="sbtn">View topics</span></div></div>`;
+const SUG=[['Chemistry','OCR · H432','often taken with Maths and Physics, and shares some of their topics','r2'],['Computer Science','OCR · H446','uses a lot of the maths you already study','r3'],['Biology','Edexcel · 9BN0','its fieldwork and statistics overlap with Geography','r1']];
+const sugRow=AI=>`<div class="suglab"><h3 class="px">Suggested for you</h3><span class="hand">based on Mathematics, Further Maths, Physics and Geography</span></div><div class="sug">${SUG.map(([n,c,w,r])=>`<div class="card sg ${r}"><h3 class="px">${n}</h3><span class="sbtn d">+ Add</span><span class="code">A-Level · ${c}</span><span class="why hand">${w}</span></div>`).join('')}</div>`;
+const catalogue=(lvl,cards,hint)=>`<section><div class="sec"><h2 class="px">Add subjects</h2><span class="hand">${hint}</span></div>${S==='list'?sugRow():''}
+ <div class="ctl"><div class="mode">${['GCSE','A-Level','Level 3'].map(t=>`<span class="${t===lvl?'on':''}">${t}</span>`).join('')}</div>
+ <div class="search">&#9906;&nbsp; Search subjects or spec codes</div>
+ <div class="chips" style="margin-left:auto"><span class="tag on">All</span><span class="tag">Maths</span><span class="tag">Science</span><span class="tag">English</span><span class="tag">Humanities</span><span class="tag">Languages</span><span class="tag">Creative</span></div></div>
+ <div class="grid3">${cards.map(catCard).join('')}</div></section>`;
+
+let h='';
+/* ---------- list / setup ---------- */
+if(S==='list'||S==='setup'){
+ h=`<div class="crumb">Home &nbsp;/&nbsp; My subjects</div><div class="hrow"><div><h1 class="px">My subjects</h1><p class="lede hand">what you study, your target grades and the topics you've learned</p></div></div>
+ <div class="main"><section><div class="sec"><h2 class="px">Studying now</h2><span class="hand">tap the dot to change a subject's colour</span></div>
+ <div class="grid4">${mine.filter(s=>S!=='setup'||s.n!=='Physics').map(s=>subjCard(s)).join('')}</div></section>
+ ${catalogue('A-Level',S==='setup'?catA.map(c=>c.n==='Physics'?{...c,on:0}:c):catA,'each one is matched to its exam board and specification')}</div>`;
+ if(S==='setup'){
+  const ph={n:'Physics',c:'#f3a37f',lv:'A-Level',b:'Edexcel 9PH0',t:'A',l:0,of:121,seg:'WWWWWWWW',last:'none yet',lr:'',ai:254,pp:2,r:''};
+  h+=`<div class="veil"></div><div class="card ruled modal"><i class="t tl"></i><i class="t tr"></i>
+  <h2 class="px">Add Physics</h2><div class="sub">A-Level · Edexcel 9PH0 · three papers. You can change all of this later.</div>
+  <div class="mg"><div>
+   <div class="fs"><h4><i>1</i>Pick a colour</h4><p class="h">Used for the subject's header, its tint and its charts.</p>
+    <div class="sw">${PAL.map(c=>`<i class="${c==='#f3a37f'?'on':''}" style="background:${c}"></i>`).join('')}</div></div>
+   <div class="fs"><h4><i>2</i>Set your target grade</h4><p class="h">Your papers are rated against this instead of fixed percentages.</p>
+    <div class="gr">${['A*','A','B','C','D','E'].map(g=>`<span class="${g==='A'?'on':''}">${g}</span>`).join('')}<span style="width:auto;padding:0 14px;font-size:15px;font-family:Nunito;color:var(--mut);border-style:dashed">Not sure yet</span></div>
+    <div class="bands">${band('X')}<span>a paper at A* or above</span>${band('G')}<span>a paper at A, your target</span>${band('A')}<span>one grade below (B)</span>${band('R')}<span>two or more grades below (C or lower)</span></div></div>
+   <div class="fs"><h4><i>3</i>What have you learned so far?</h4><p class="h">Practice only gives you questions on topics you've ticked.</p>
+    <div class="opts"><div class="opt on"><span class="rad"></span>Tick topics now<small>opens the topic list next</small></div><div class="opt"><span class="rad"></span>I've learned everything<small>ticks all 121 spec points</small></div><div class="opt"><span class="rad"></span>Skip for now</div></div></div>
+   ${AI?`<div class="fs"><h4><i>4</i>AI questions ${st('AI MADE')}</h4><p class="h">AI questions are always labelled and kept apart from official ones.</p>
+    <div class="opts"><div class="opt on"><span class="tog"></span>Show AI questions and AI papers for Physics<small>254 questions · 2 predicted papers</small></div></div></div>`:''}
+  </div><div class="prev"><span class="hand">how it will look</span>${subjCard(ph)}</div></div>
+  <div class="mfoot"><span class="sbtn" style="font-size:17px;padding:9px 18px">Cancel</span><span class="btn d">Add Physics</span></div></div>`;
+ }
+}
+/* ---------- one subject ---------- */
+if(S==='subject'){
+ const tick=(s)=>`<span class="cb ${s==='y'?'y':s==='p'?'p':''}">${s==='y'?'&#10003;':''}</span>`;
+ const pc=p=>p==null?'':`<span class="pp ${p>=70?'G':p>=40?'A':'R'}">${p}%</span>`;
+ const topics=[['Pure Mathematics','14 topics · 64/72 learned',[
+  ['2','Algebra and functions','y','16/16',38,78],['3','Coordinate geometry','p','6/7',14,58],['4','Sequences and series','y','9/9',22,47,1],['5','Trigonometry','y','11/11',26,73],['7','Differentiation','y','8/8',19,82],['8','Integration','p','4/9',21,66],['10','Vectors','n','0/5',12,null]]],
+  ['Statistics','5 topics · 4/9 learned',[['1','Statistical sampling','y','2/2',6,85],['4','Probability','p','2/4',9,52],['5','Statistical distributions','n','0/3',8,null]]],
+  ['Mechanics','4 topics · 8/9 learned',[['8','Kinematics','y','6/6',15,38],['9','Forces and Newton’s laws','p','2/3',11,61]]]];
+ const pts=[['4.1','Arithmetic sequences and series',5,75],['4.2','Geometric sequences and series',4,33],['4.3','Sum to infinity',3,25],['4.4','Sigma notation',2,null],['4.5','Recurrence relations',3,50]];
+ const m=mine[0];
+ h=`<div class="crumb">Home &nbsp;/&nbsp; My subjects &nbsp;/&nbsp; Mathematics</div>
+ <div class="hrow"><div><h1 class="px">Mathematics</h1><p class="lede hand">A-Level · Edexcel 9MA0 · Pure, Statistics and Mechanics</p></div>
+ <div class="acts"><span class="btn d">Practise</span><span class="btn">Past papers</span><span class="btn">Edexcel site &#8599;</span></div></div>
+ <div class="set"><span class="tag"><i class="cdot" style="background:${m.c};width:22px;height:22px;box-shadow:inset 0 0 0 2px var(--card)"></i>Colour</span><span class="tag">Target grade <b class="px" style="font-weight:400;font-size:17px">&nbsp;A</b>&nbsp;&#9662;</span><span class="tag">Remove subject</span></div>
+ <div class="main" style="margin-top:28px">
+ <section class="stats">
+  <div class="card stat r1"><div class="l">Spec points learned</div><span class="v">76<small> / 90</small></span><span class="mt"><i style="width:84%;background:#9cc3e6"></i></span></div>
+  <div class="card stat r2"><div class="l">Questions unlocked</div><span class="v">${AI?'528':'142'}<small> / ${AI?'566':'180'}</small></span><div class="n">${AI?`142 official + 386 AI ${st('AI MADE')}`:'38 need topics you haven’t ticked'}</div></div>
+  <div class="card stat r3"><div class="l">Questions answered</div><span class="v">${AI?'121':'96'}</span><div class="n">${AI?`96 official + 25 AI`:'61% average score'}</div></div>
+  <div class="card stat r4"><div class="l">Last paper vs target</div><span class="v">B<small> / target A</small></span><div class="n">${band('A')} June 2023 Paper 1, 64%</div></div>
+ </section>
+ <div class="split"><section class="card ruled pc r3"><i class="t tc"></i>
+  <div class="hd"><h3 class="px">What have you learned so far?</h3><span class="sbtn">Tick everything</span><span class="sbtn">Clear</span></div>
+  <p class="intro">Tick each topic or spec point once you've covered it in class. You'll only get questions where every spec point they need is ticked, including crossover knowledge.</p>
+  ${topics.map(([g,sub,rows])=>`<div class="grp">${g}<small>${sub}</small></div>`+rows.map(r=>`<div class="trw"><span class="ar">${r[6]?'&#9660;':'&#9654;'}</span>${tick(r[2])}<span class="cd">${r[0]}</span><span>${r[1]}</span><span class="lr">${r[3]} learned</span><span class="qn">${r[4]} questions</span>${pc(r[5])||'<span class="qn">no data</span>'}</div>`+
+   (r[6]?`<div class="open">${pts.map(p=>`<div class="pt">${tick(p[0]==='4.4'?'n':'y')}<span class="cd">${p[0]}</span><span>${p[1]}</span><span class="qn">${p[2]} questions</span>${pc(p[3])||'<span class="qn">no data</span>'}</div>`).join('')}</div>`:'')).join('')).join('')}
+ </section>
+ <aside class="side">
+  <div class="card ruled pc r2"><i class="t tr"></i><h3 class="px">Your target</h3>
+   <div class="tg2"><span class="gb">A</span><div style="font-size:14.5px;color:var(--mut)">Set in September. Papers are rated against it.<br><span style="text-decoration:underline">Change target</span></div></div>
+   <div class="lab">How papers are rated</div>
+   <div class="bands" style="margin-left:0">${band('X')}<span>A*</span>${band('G')}<span>A</span>${band('A')}<span>B</span>${band('R')}<span>C or lower</span></div>
+   <div class="lab">Your last 5 papers</div>
+   <div class="history">${band('A','B')}${band('G','A')}${band('A','B')}${band('X','A*')}${band('R','C')}</div></div>
+  <div class="card ruled pc r1"><i class="t tc"></i><h3 class="px">Unlock more questions</h3>
+   <p class="intro" style="margin-bottom:0">${AI?'38 official and 0 AI questions are locked.':'38 questions are locked.'} Learning these opens the most:</p>
+   <ul class="ul"><li><div>10.1 Vectors in 2D and 3D<small>unlocks 9 questions on its own</small></div><span class="sbtn">Mark learned</span></li>
+   <li><div>5.2 Binomial distribution<small>unlocks 6 questions on its own</small></div><span class="sbtn">Mark learned</span></li>
+   <li><div>8.4 Integration by parts<small>needed by 5 locked questions</small></div><span class="sbtn">Mark learned</span></li>
+   <li><div>3.4 Parametric equations<small>needed by 3 locked questions</small></div><span class="sbtn">Mark learned</span></li></ul></div>
+  <div class="card ruled pc r4"><i class="t tl"></i><h3 class="px">Crossover knowledge</h3>
+   <p class="intro">Some Mathematics questions also use other subjects. Tick what you know.</p>
+   <div class="lab"><i class="dot" style="background:#f3a37f"></i>Physics</div>
+   <div class="cx"><span class="cb y">&#10003;</span>2.1 Motion graphs <span class="qn" style="color:var(--mut);font-size:13px">· 4 questions</span></div>
+   <div class="cx"><span class="cb"></span>2.6 Projectile motion <span class="qn" style="color:var(--mut);font-size:13px">· 3 questions</span></div>
+   <div class="cx"><span class="cb"></span>3.3 Newton’s second law <span class="qn" style="color:var(--mut);font-size:13px">· 2 questions</span></div></div>
+  ${AI?`<div class="aishelf">${st('AI MADE')}<h3 class="px">AI for Mathematics</h3>
+   <p class="intro">Made only from topics you've ticked, and always labelled.</p>
+   <ul class="ul"><li><div>AI practice questions<small>386 unlocked · 25 answered</small></div><span class="sbtn">Practise</span></li>
+   <li><div>AI predicted papers<small>2 ready for June 2027</small></div><span class="sbtn">Open</span></li>
+   <li><div>Show AI questions in this subject</div><span class="tog"></span></li></ul></div>`:''}
+ </aside></div></div>`;
+}
+/* ---------- empty ---------- */
+if(S==='empty'){
+ h=`<div class="crumb">Home &nbsp;/&nbsp; My subjects</div><h1 class="px">My subjects</h1><p class="lede hand">what you study, your target grades and the topics you've learned</p>
+ <div class="main"><div class="card ruled welcome r3"><i class="t tl"></i><i class="t tr"></i><div><h2 class="px">Welcome, Demo</h2>
+ <p>Start by adding the subjects you study. Each one is matched to its exam board and specification, so every paper and question fits your course.</p></div>
+ <div class="steps"><div><i>1</i>Add your subjects below</div><div><i>2</i>Pick a colour and a target grade for each</div><div><i>3</i>Tick the topics you've learned so far</div>${AI?`<div class="ai"><i style="border-style:dashed">4</i>AI questions and papers then match your topics too ${st('AI MADE')}</div>`:''}</div></div>
+ <section><div class="sec"><h2 class="px">Studying now</h2></div><div class="grid4"><div class="addc"><b>+</b><span>No subjects yet</span>pick one from the list below</div></div></section>
+ ${catalogue('GCSE',catG,'pick your level, then add each subject you take')}</div>`;
+}
+document.getElementById('app').innerHTML=h;
+if(S==='setup')document.fonts.ready.then(()=>setTimeout(()=>{document.querySelector('.veil').style.height=document.documentElement.scrollHeight+'px'},100));
+
+</script><script>
+const mix=(h,p)=>`color-mix(in srgb,${h} ${p}%,#3d3832)`;
+document.querySelectorAll('[style*="background"]').forEach(e=>{
+ const st=e.getAttribute('style');
+ const p=e.closest('.hd')&&!e.classList.contains('cdot')?58:(e.classList.contains('cdot')||e.classList.contains('dot')||e.closest('.sw')?82:70);
+ e.setAttribute('style',st.replace(/background:\s*(#[0-9a-fA-F]{6})/g,(m,h)=>'background:'+mix(h,p)));
+});
+</script></body></html>

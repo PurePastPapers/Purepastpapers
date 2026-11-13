@@ -1,0 +1,217 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 70px;position:relative;min-height:100vh;--bg:color-mix(in srgb,#9cc3e6 42%,#f6f3ec);--line:rgba(40,70,110,.09);--sc:#9cc3e6}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:#f4cf6a}
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:46px;margin:8px 0 0}
+.hrow{display:flex;align-items:flex-end;gap:20px}.hrow .acts{margin-left:auto;display:flex;gap:14px;padding-bottom:6px}
+.meta{display:flex;gap:10px;align-items:center;margin-top:12px;font-size:15.5px;color:var(--mut)}.meta .tag{color:var(--ink)}
+.split{display:grid;grid-template-columns:1fr 450px;gap:38px;margin-top:38px;align-items:start}
+.stack{display:flex;flex-direction:column;gap:38px}
+.pc{padding:24px 28px 26px}.pc h2{font-size:26px}.pc .hd{display:flex;align-items:baseline;gap:14px;margin-bottom:12px}.pc .hd .s{margin-left:auto;color:var(--mut);font-size:14.5px}
+.hand{font-size:21px}
+.q{display:grid;grid-template-columns:54px 1fr auto;gap:16px;align-items:center;padding:13px 0;border-bottom:1.5px dashed rgba(42,39,35,.18)}.q:last-child{border:0}
+.q .n{font-family:var(--hf);font-size:21px}.q .tx{font-size:15.5px;line-height:1.4}.q .tg{display:flex;gap:8px;margin-top:7px;align-items:center;flex-wrap:wrap}
+.q .tg .tag{font-size:12.5px;padding:2px 8px;border-width:1.5px}
+.df{font-size:12px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 9px;color:#2a2723}
+.e{background:#cfe8d5}.m{background:#f7e3a6}.h{background:#f4c2b8}.x{background:#d9cdf0}
+.q .rt{display:flex;gap:10px;align-items:center}
+.pill{font-size:13px;font-weight:800;border:2px solid var(--ink);border-radius:20px;padding:3px 11px;background:var(--card);white-space:nowrap}
+.sbtn{font-family:var(--hf);font-size:14.5px;border:2px solid var(--ink);border-radius:5px;padding:5px 12px;background:var(--card);box-shadow:2px 2px 0 var(--ink);white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
+.sbtn.d{background:var(--ink);color:var(--card)}
+.rag{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);display:inline-block;flex:none}
+.G{background:#8fcaa0}.A{background:#f4cf6a}.R{background:#ef9a8f}
+.lock{font-size:12.5px;border:1.5px dashed var(--ink);border-radius:5px;padding:2px 8px;color:var(--mut)}
+.warn{border:2px dashed var(--ink);border-radius:6px;padding:11px 14px;font-size:14.5px;margin-bottom:8px;background:color-mix(in srgb,#f4cf6a 25%,var(--card))}
+.warn u{font-weight:800}
+.gl{display:flex;flex-direction:column;gap:12px}.gl .btn{font-size:16px;padding:10px 16px;justify-content:flex-start}
+.gb{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px}.gb span{border:1.5px solid var(--ink);border-radius:4px;text-align:center;padding:4px 0;font-size:13px;background:var(--card)}.gb b{display:block;font-family:var(--hf);font-weight:400;font-size:17px}
+.lab{font-size:12.5px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+table.at{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}.at td{padding:10px 4px;white-space:nowrap;border-bottom:1.5px dashed rgba(42,39,35,.18)}.at tr:last-child td{border:0}
+.at .sc2{font-family:var(--hf);font-size:18px}.gr{border:2px solid var(--ink);border-radius:50%;width:30px;height:30px;display:inline-grid;place-items:center;font-family:var(--hf);font-size:15px;color:#2a2723}
+.gA{background:#cfe8d5}.gB{background:#f7e3a6}
+.tr{color:var(--mut);font-size:16px}
+.small{font-size:13.5px;color:var(--mut);line-height:1.45}
+.sync{display:inline-flex;gap:6px;align-items:center;font-size:13.5px;color:var(--mut)}.sync i{width:9px;height:9px;border-radius:50%;background:#8fcaa0;border:1.5px solid var(--ink)}
+.stp{display:inline-block;font-size:11px;letter-spacing:1.2px;font-weight:800;border:2px dashed var(--ink);border-radius:4px;padding:2px 7px;transform:rotate(3deg);background:var(--card);white-space:nowrap}
+.aishelf{border:2.5px dashed rgba(42,39,35,.5);border-radius:8px;padding:24px 26px;background:rgba(255,253,248,.45)}
+.aishelf h2{font-size:26px}.aishelf .row2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px}
+.aic{border:2px dashed var(--ink);border-radius:5px;padding:16px 18px;background:rgba(255,253,248,.85)}.aic h3{font-size:19px;margin:6px 0 4px}
+.empty{padding:18px;border:2px dashed rgba(42,39,35,.35);border-radius:6px;color:var(--mut);font-size:15px;line-height:1.5;text-align:center}
+/* dialogs */
+.scrim{position:absolute;inset:0;background:rgba(42,39,35,.42);z-index:20}
+.dlg{position:absolute;left:50%;top:170px;transform:translateX(-50%) rotate(-.4deg);width:560px;z-index:21;padding:28px 32px 28px}
+.dlg h2{font-size:30px;margin-bottom:6px}.dlg p{font-size:15.5px;line-height:1.5;color:var(--mut)}
+.fld{margin-top:18px}.fld .lab{display:block;margin-bottom:7px}
+.in{border:2px solid var(--ink);border-radius:6px;padding:11px 14px;font-size:17px;background:#fff;display:flex;align-items:center;gap:10px}
+.dacts{display:flex;justify-content:flex-end;gap:12px;margin-top:24px}.dacts .btn{font-size:16px;padding:10px 18px}
+.btn.red{background:#ef9a8f}
+/* focus mode */
+.fbar{display:flex;align-items:center;gap:18px;padding:16px 22px;margin-bottom:28px}
+.fbar .t1{font-family:var(--hf);font-size:22px}.fbar .t2{font-size:14px;color:var(--mut)}.fbar .sp{flex:1}.fbar .btn{font-size:16px;padding:9px 18px}
+.focus{font-size:12.5px;font-weight:800;border:2px solid var(--ink);border-radius:20px;padding:3px 11px;background:var(--sc)}
+.timer{display:flex;align-items:center;gap:10px;border:2px solid var(--ink);border-radius:6px;padding:7px 14px;background:var(--bg);font-family:var(--hf);font-size:24px}
+.timer small{font-family:'Nunito';font-size:13px;color:var(--mut)}
+.timer.over{background:#f4c2b8;color:#2a2723}.timer.over small{color:#5a3a33}
+.timer.paused{opacity:.75;border-style:dashed}
+.pal{display:flex;gap:9px;margin-bottom:26px;align-items:center;flex-wrap:wrap}
+.pal i{font-style:normal;width:42px;height:42px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;font-family:var(--hf);font-size:17px;background:var(--card);position:relative}
+.pal .a{background:var(--sc);color:#2a2723}.pal .c{background:var(--ink);color:var(--card)}
+.pal .f::after{content:'';position:absolute;top:-7px;right:-7px;width:13px;height:13px;border-radius:50%;background:#ef9a8f;border:2px solid var(--ink)}
+.pal .hand{font-size:20px;margin-left:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.qc{padding:26px 30px 30px}.qh{display:flex;align-items:center;gap:12px;margin-bottom:16px}.qh h2{font-size:30px;margin-right:auto}.qh h2 span{color:var(--mut);font-size:22px}
+.src{font-size:13.5px;color:var(--mut);font-weight:700;margin-bottom:8px}
+.qtext{font-size:18px;line-height:28px}.qtext p{margin-bottom:28px}.math{font-family:var(--hf);font-size:21px;display:block;text-align:center;margin:-6px 0 22px}
+.part{display:flex;gap:14px}.part b{font-family:var(--hf);font-weight:400}.part .mk{margin-left:auto;color:var(--mut);white-space:nowrap}
+.ans{padding:24px 28px 28px}.ans h3{font-size:22px;margin-bottom:2px}
+.tb{display:flex;gap:6px;margin-top:12px;align-items:center}.tb span{border:2px solid var(--ink);border-radius:5px;padding:3px 10px;font-size:14px;background:var(--card);font-family:var(--hf)}.tb .w{margin-left:auto;font-family:'Nunito';border:0;background:none;color:var(--mut);font-size:13.5px;padding:0}
+.paper{border:2px solid var(--ink);border-radius:6px;min-height:280px;margin-top:12px;padding:14px 16px;font-size:16.5px;line-height:28px;background:#fff;color:#2a2723;box-shadow:0 0 0 4px var(--sc)}
+.cur{display:inline-block;width:2px;height:20px;background:#2a2723;vertical-align:-4px;margin-left:1px}
+.alt2{display:flex;gap:12px;align-items:center;margin-top:16px;flex-wrap:wrap}.alt2 .btn{font-size:15px;padding:8px 14px;box-shadow:2px 2px 0 var(--ink)}.alt2 .or{color:var(--mut);font-size:14.5px}
+.nav2{display:flex;gap:14px;margin-top:30px;align-items:center}.nav2 .sp{flex:1}.nav2 .btn{font-size:17px}
+.banner{display:flex;gap:16px;align-items:center;padding:14px 20px;margin-bottom:24px;font-size:16px}
+.veil{border:2.5px dashed var(--mut);border-radius:8px;padding:70px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;background:repeating-linear-gradient(135deg,rgba(42,39,35,.05) 0 12px,transparent 12px 24px);text-align:center}
+.veil h2{font-size:38px}.veil p{color:var(--mut);font-size:16px;max-width:520px;line-height:1.5}
+.pdf{border:2px solid var(--ink);border-radius:6px;background:#77706a;padding:26px;display:flex;flex-direction:column;align-items:center;gap:20px;height:640px;overflow:hidden;position:relative}
+.pdfbar{position:absolute;top:0;left:0;right:0;height:38px;background:#4a4540;display:flex;align-items:center;gap:14px;padding:0 14px;color:#eee;font-size:13px}
+.pg{width:520px;min-height:700px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3);margin-top:28px;padding:40px 46px;color:#222;font-family:Georgia,serif;font-size:14px;line-height:1.6}
+.pg .ln{height:9px;background:#e4e1dc;border-radius:3px;margin:10px 0}
+.side{padding:22px 24px 24px}.side h3{font-size:21px;margin-bottom:8px}
+.ready{max-width:780px;margin:30px auto 0;padding:36px 44px 36px}
+.ready h1{font-size:42px;margin:4px 0 4px}
+.rl{list-style:none;padding:0;margin:22px 0 4px;display:flex;flex-direction:column;gap:14px;font-size:16.5px;line-height:1.45}.rl li{display:flex;gap:14px;align-items:flex-start}.rl li b{width:30px;height:30px;flex:none;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-weight:400;font-size:15px;background:var(--sc);color:#2a2723}
+.choose{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}.opt{border:2px solid var(--ink);border-radius:6px;padding:14px 16px;background:var(--card)}.opt.on{box-shadow:0 0 0 4px var(--sc)}.opt h4{font-family:var(--hf);font-weight:400;font-size:19px}.opt p{font-size:14px;color:var(--mut);margin-top:3px}
+.mk1{max-width:900px;margin:0 auto}
+.stepper{display:flex;align-items:center;border:2px solid var(--ink);border-radius:6px;background:var(--card);width:max-content}.stepper span{width:52px;height:56px;display:grid;place-items:center;font-size:24px}.stepper b{width:110px;text-align:center;font-family:var(--hf);font-weight:400;font-size:36px;border-left:2px solid var(--ink);border-right:2px solid var(--ink);height:56px;display:grid;place-items:center}
+.thumbs{display:flex;gap:12px;margin-top:12px}.thumbs i{width:76px;height:98px;border:2px solid var(--ink);border-radius:4px;background:repeating-linear-gradient(transparent 0 11px,rgba(42,39,35,.13) 11px 12px),#fff;transform:rotate(-2deg)}.thumbs i:nth-child(2){transform:rotate(1.5deg)}
+.hero{padding:30px 34px;display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center}
+.big{font-family:var(--hf);font-size:96px;line-height:1}.big span{font-size:40px;color:var(--mut)}
+.bgr{border:2px solid var(--ink);border-radius:50%;width:64px;height:64px;display:inline-grid;place-items:center;font-family:var(--hf);font-size:28px;transform:rotate(-6deg);background:#cfe8d5;color:#2a2723}
+.pbar{height:16px;border:2px solid var(--ink);border-radius:3px;margin:16px 0;background:var(--card);overflow:hidden}.pbar i{display:block;height:100%;background:#8fcaa0}
+.hero .btn{font-size:16px;padding:10px 18px;margin-right:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:34px;align-items:start}
+.mc{padding:22px 24px 24px}.mc h3{font-size:22px;margin-bottom:14px}
+.ml{display:grid;grid-template-columns:150px 1fr 54px;gap:10px 12px;align-items:center;font-size:14.5px}.ml .mt{height:14px;border:2px solid var(--ink);border-radius:3px;background:var(--card);overflow:hidden}.ml .mt i{display:block;height:100%}.ml b{text-align:right;font-family:var(--hf);font-weight:400}
+.hist{display:flex;align-items:flex-end;gap:22px;height:150px;padding:0 10px;border-bottom:2px solid var(--ink)}
+.hist div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:var(--mut)}.hist div i{width:46px;border:2px solid var(--ink);border-bottom:0;border-radius:3px 3px 0 0}
+.hist b{font-family:var(--hf);font-weight:400;font-size:16px;color:var(--ink)}
+.rv{padding:22px 26px 14px;margin-top:34px}.rv h3{font-size:22px;margin-bottom:6px}
+.rr{display:flex;gap:14px;align-items:center;padding:11px 0;border-bottom:1.5px dashed rgba(42,39,35,.18);font-size:15.5px}.rr:last-child{border:0}.rr .n{font-family:var(--hf);width:110px}.rr .sp{flex:1}.rr b{font-family:var(--hf);font-weight:400;font-size:19px;width:56px;text-align:right}
+/* dark */
+.dim body,body.dim{--bg:color-mix(in srgb,#9cc3e6 15%,#3a342e);--card:#4a443d;--ink:#eee5d4;--mut:#bdb2a1;--line:rgba(200,225,255,.06);--tape:rgba(190,170,130,.55);--sc:#56708c}
+.dim .card{box-shadow:4px 5px 0 rgba(0,0,0,.28)}
+.dim .btn,.dim .sbtn,.dim .logo b{box-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.dim .ruled{background-image:linear-gradient(transparent 39px,rgba(220,120,110,.3) 39px,rgba(220,120,110,.3) 41px,transparent 41px),repeating-linear-gradient(transparent 0 27px,rgba(200,215,235,.08) 27px 28px)}
+.dim .paper{background:#3f3a34;color:var(--ink)}.dim .cur{background:var(--ink)}
+.dim .q,.dim .at td,.dim .rr{border-color:rgba(238,229,212,.15)}
+.dim .G{background:#5e8a68}.dim .A{background:#b89a45}.dim .R{background:#a8655a}
+.dim .e{background:#5e7a63}.dim .m{background:#8a7a45}.dim .h{background:#8a5a50}.dim .df{color:var(--ink)}
+.dim .gA,.dim .bgr{background:#5e7a63;color:var(--ink)}.dim .gB{background:#8a7a45;color:var(--ink)}
+.dim .pbar i{background:#5e8a68}.dim .av{background:#b89a45}
+.dim .warn{background:color-mix(in srgb,#b89a45 22%,var(--card))}
+.dim .pal .a{color:var(--ink)}.dim .rl li b{color:var(--ink)}
+.dim .aishelf{border-color:rgba(238,229,212,.5);background:rgba(74,68,61,.6)}.dim .aic{background:rgba(74,68,61,.85);border-color:rgba(238,229,212,.5)}
+.dim .hist div i{filter:saturate(.75) brightness(.8)}
+</style></head><body><div id="app"></div><script>
+const P=new URLSearchParams(location.search),S=P.get('s')||'paper',AI=!!P.get('ai'),DIM=!!P.get('dim');
+if(DIM)document.documentElement.classList.add('dim');
+const ai=(a,b='')=>AI?a:b, stamp=t=>`<span class="stp">${t}</span>`;
+const topNav=(on='Past papers')=>`<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav">${['Home','Past papers','Practice','Data Hub'].map(n=>`<span class="${n==on?'on':''}">${n}</span>`).join('')}</div><div class="r"><span class="tag">31 answered</span><div class="av">D</div></div></div>`;
+const Qs=[
+ [1,'Given that f(x) = x³ − 3x² − 4x + 12, use the factor theorem to show that (x − 2) is a factor of f(x).','Algebra and functions','e',4,'G','4/4'],
+ [2,'Solve, for 0 ≤ θ < 360°, the equation 2 sin²θ − cos θ = 1, giving your answers to 1 decimal place.','Trigonometry','m',5,'A','3/5'],
+ [3,'The first term of a geometric series is 20 and the common ratio is 0.8. Find the sum to infinity.','Sequences and series','e',3,'',''],
+ [4,'A curve has equation y = 2x³ − 9x² + 12x + 3. Find the stationary points of the curve and determine their nature.','Differentiation','h',7,'G','6/7'],
+ [5,'Show that ∫ from 1 to 4 of (3√x − 2/x²) dx can be written in the form a + b, where a and b are integers.','Integration','m',5,'',''],
+ [6,'The vectors a and b are such that |a| = 3 and |b| = 5. Find the angle between them, given that a·b = 6.','Vectors','m',4,'R','1/4'],
+ [7,'Prove by contradiction that there is no greatest even integer.','Proof','h',4,'',''],
+];
+const qrow=(q,i)=>`<div class="q"><span class="n">Q${q[0]}</span><div><div class="tx">${q[1]}</div><div class="tg"><span class="df ${q[3]}">${{e:'Easy',m:'Medium',h:'Hard'}[q[3]]}</span><span class="tag">${q[2]}</span>${q[0]==6?'<span class="lock">🔒 needs 1 topic you have not learned yet</span>':''}${q[5]?`<span class="rag ${q[5]}"></span><span style="font-size:13.5px;color:var(--mut)">last time ${q[6]}</span>`:''}</div></div><div class="rt"><span class="pill">${q[4]} marks</span><span class="sbtn">Practise</span>${ai(q[0]==2||q[0]==6?'<span class="sbtn">Similar AI question</span>':'')}</div></div>`;
+const head=(title,code,acts,crumbYear)=>`${topNav()}<div class="crumb">Home / Past papers / Mathematics / ${crumbYear}</div>
+<div class="hrow"><div><h1 class="px">${title}</h1><div class="meta"><span class="tag"><span class="dot" style="background:var(--sc)"></span>A-Level Mathematics</span><span class="tag">Official paper</span><span>Edexcel ${code} · 100 marks · 2 hours</span></div></div><div class="acts">${acts}</div></div>`;
+const actsStd=`<span class="btn d">◷ Sit timed (2 hours)</span><span class="btn">Sit untimed</span><span class="btn">Log a score</span>`;
+const attempts=(has=true)=>`<div class="card pc ruled r2"><i class="t tc"></i><div class="hd"><h2 class="px">Your attempts</h2></div>
+${has?`<table class="at"><tr><td>12 Oct 2026</td><td class="sc2">64/100</td><td><span class="rag A"></span></td><td><span class="gr gB">B</span></td><td style="text-align:right"><span class="sbtn">Review</span> <span class="tr">🗑</span></td></tr>
+<tr><td style="white-space:normal">3 Sep 2026${ai('<br>'+stamp('AI MARKED'))}</td><td class="sc2">58/100</td><td><span class="rag A"></span></td><td><span class="gr gB">B</span></td><td style="text-align:right"><span class="sbtn">Review</span> <span class="tr">🗑</span></td></tr>
+<tr><td>21 Jun 2026</td><td class="sc2">49/100</td><td><span class="rag A"></span></td><td><span class="gr gB">C</span></td><td style="text-align:right"><span class="tr">logged</span> <span class="tr">🗑</span></td></tr></table>
+<p class="small" style="margin-top:12px">Grades use this paper's official grade boundaries.</p>`:`<div class="empty">No attempts yet. Sit the paper here, or log a score if you have already done it on paper.</div>`}
+<div style="margin-top:14px"><span class="sync"><i></i>Saved to your account</span></div></div>`;
+const getPaper=(hosted=true)=>`<div class="card pc ruled r1"><i class="t tc"></i><div class="hd"><h2 class="px">Get the paper</h2></div>
+${hosted?`<div class="gl"><span class="btn">📄 Question paper (PDF)</span><span class="btn">✓ Mark scheme (PDF)</span></div>`:`<p style="font-size:15px;line-height:1.5">Edexcel hosts this paper. Open their past papers page and look for the <b>June 2024</b> series, <b>Paper 3: Statistics and Mechanics</b>. Then sit it here against the clock and log your marks.</p><div class="gl" style="margin-top:14px"><span class="btn">Edexcel past papers ↗</span></div>`}
+<div style="margin-top:20px"><span class="lab">Grade boundaries · June ${hosted?'2023':'2024'}</span><div class="gb">${(hosted?[['A*',80],['A',67],['B',55],['C',44],['D',33],['E',22]]:[['A*',78],['A',66],['B',54],['C',43],['D',32],['E',21]]).map(g=>`<span>${g[0]}<b>${g[1]}</b></span>`).join('')}</div><p class="small" style="margin-top:8px">Out of 100. From Edexcel, used for your grade on this paper.</p></div></div>`;
+const aiShelf=()=>ai(`<div class="aishelf"><h2 class="px">AI extras for this paper <span class="hand" style="margin-left:10px">kept apart from the official paper</span></h2>
+<div class="row2"><div class="aic">${stamp('AI MADE')}<h3 class="px">AI paper in the style of this one</h3><p class="small">Same topics and mark spread as Pure Mathematics 1, with new questions. Not a real exam paper.</p><div style="margin-top:12px"><span class="sbtn">Open AI paper</span></div></div>
+<div class="aic">${stamp('AI MARKED')}<h3 class="px">Typed answers marked for you</h3><p class="small">Sit this paper typed and the AI suggests a mark for each answer. You check and change any mark before it's saved.</p></div></div></div>`);
+const paperPage=()=>`${head('Pure Mathematics 1','9MA0/01 · June 2023',actsStd,'June 2023')}
+<div class="split"><div class="stack"><div class="card pc ruled r3"><i class="t tc"></i><div class="hd"><h2 class="px">Questions</h2><span class="hand">practise any one on its own</span><span class="s">14 questions · 100 marks</span></div>
+<div class="warn">1 question on this paper needs a topic you have not marked as learned. <u>Update learned topics</u></div>
+${Qs.map(qrow).join('')}<div style="text-align:center;margin-top:14px"><span class="sbtn">Show 7 more questions</span></div></div>${aiShelf()}</div>
+<div class="stack">${getPaper()}${attempts()}</div></div>`;
+const wholePage=()=>`${head('Statistics and Mechanics','9MA0/03 · June 2024',actsStd,'June 2024')}
+<div class="split"><div class="stack"><div class="card pc ruled r3"><i class="t tc"></i><div class="hd"><h2 class="px">Questions</h2></div>
+<div class="empty" style="text-align:left">This paper's questions have not been added one by one yet, so you sit it as a whole paper from the PDF and enter one total at the end.<br><br>Once its questions are added they show up here with topic tags, and join the practice pool.</div></div>
+<div class="card pc r1"><i class="t tl"></i><div class="hd"><h2 class="px">How sitting it works</h2></div><ol style="font-size:15.5px;line-height:1.7;padding-left:22px"><li>Open the paper from Edexcel, or print it.</li><li>Press <b>Sit timed</b>. The clock runs here while you work on paper.</li><li>Mark it with the mark scheme and enter your total.</li></ol>
+${ai(`<div class="aic" style="margin-top:16px">${stamp('AI MARKED')}<h3 class="px">Or let the AI mark your script</h3><p class="small">When you finish, upload photos of your written answers. The AI suggests a mark for each question and you check them.</p></div>`)}</div>${aiShelf().replace('Pure Mathematics 1','Statistics and Mechanics')}</div>
+<div class="stack">${getPaper(false)}${attempts(false)}</div></div>`;
+const dialog=inner=>`<div class="scrim"></div><div class="card dlg ruled"><i class="t tc"></i>${inner}</div>`;
+const logDlg=()=>dialog(`<h2 class="px">Log a score</h2><p>Already sat this paper on paper? Add your mark and it goes into your Data Hub.</p>
+<div class="fld"><span class="lab">Marks out of 100</span><div class="in" style="width:200px;font-family:var(--hf);font-size:22px">64</div></div>
+<div class="fld"><span class="lab">Date sat</span><div class="in" style="width:260px">12 Oct 2026 <span style="margin-left:auto">📅</span></div></div>
+<p style="margin-top:14px;font-size:15px;color:var(--ink)">That's <b>64%</b>, grade <b>B</b> on this paper's boundaries.</p>
+${ai(`<div class="aic" style="margin-top:18px">${stamp('AI MARKED')}<h3 class="px">Not marked it yet?</h3><p class="small">Upload photos of your script instead and the AI suggests a mark for each question.</p><div style="margin-top:10px"><span class="sbtn">⇪ Upload photos</span></div></div>`)}
+<div class="dacts"><span class="btn">Cancel</span><span class="btn d">Save score</span></div>`);
+const delDlg=()=>dialog(`<h2 class="px">Delete this attempt?</h2><p>Your score of 58/100 from 3 Sep 2026 will be removed from your history and your Data Hub, on every device you use.</p><div class="dacts"><span class="btn">Keep it</span><span class="btn red">Delete</span></div>`);
+const fbar=(timer,btn='Finish and mark',sub='Past paper')=>`<div class="card fbar r3"><span class="btn">‹ Save and exit</span><div><div class="t1">Pure Mathematics 1 · June 2023</div><div class="t2">A-Level Mathematics · ${sub}</div></div><span class="focus">Focus mode</span><span class="sp"></span>${timer}${btn?`<span class="btn d">${btn}</span>`:''}</div>`;
+const tmr=(v,s='left',cls='',ic='❚❚')=>`<div class="timer ${cls}">◷ ${v} <small>${s}</small> <span style="font-size:16px;margin-left:6px">${ic}</span></div>`;
+const pal=(cur=7,extra='')=>`<div class="pal">${Array.from({length:14},(_,i)=>{const n=i+1;return `<i class="${n==cur?'c':n<cur&&n!=5?'a':n>cur&&extra=='all'&&n!=11?'a':''} ${n==3||n==12?'f':''}">${n}</i>`}).join('')}<span class="hand">blue = answered, red dot = flagged</span></div>`;
+const qcard=()=>`<div class="card ruled qc r1"><i class="t tc"></i><div class="qh"><h2 class="px">Question 7 <span>of 14</span></h2><span class="pill">6 marks</span><span class="df m">Medium</span></div>
+<div class="src">Integration 9.4 · official question</div><div class="qtext"><p>The curve C has equation</p><span class="math">y = x² − 5x + 6</span><div class="part"><b>(a)</b><span>Find the coordinates of the points where C crosses the x-axis.</span><span class="mk">(2)</span></div><p></p><div class="part"><b>(b)</b><span>Find the area of the region enclosed by C and the x-axis.</span><span class="mk">(4)</span></div></div></div>`;
+const acard=()=>`<div class="card ans r2"><i class="t tc"></i><h3 class="px">Your answer</h3><span class="hand" style="font-size:20px">type here, it saves to your account as you go</span><div class="tb"><span>x²</span><span>x₂</span><span>√</span><span>π</span><span>∫</span><span>≤</span><span>≥</span><span>÷</span><span class="w">38 words · saved</span></div>
+<div class="paper">(a) x² − 5x + 6 = 0<br>(x − 2)(x − 3) = 0 so (2, 0) and (3, 0)<br>(b) ∫ from 2 to 3 of (x² − 5x + 6) dx<br>= [x³/3 − 5x²/2 + 6x] from 2 to 3<br>= 4.5 − 4.667 = −1/6<br>area = 1/6<span class="cur"></span></div>
+<div class="alt2"><span class="or">or</span><span class="btn">✎ I answered on paper</span>${ai(`<span class="btn">⇪ Upload a photo of my working ${stamp('FOR AI MARKING')}</span>`)}</div></div>`;
+const nav2=`<div class="nav2"><span class="btn">⚑ Flag for review</span><span class="sp"></span><span class="btn">‹ Previous</span><span class="btn d">Next ›</span></div>`;
+const sitq=()=>`${fbar(tmr('1:12:40'))}${pal()}<div class="cols">${qcard()}${acard()}</div>${nav2}`;
+const S2={
+paper:paperPage,
+whole:wholePage,
+log:()=>paperPage()+logDlg(),
+del:()=>paperPage()+delDlg(),
+ready:()=>`${fbar('',null,'Past paper · not started').replace('‹ Save and exit','‹ Back')}<div class="card ready ruled r3"><i class="t tc"></i><span class="hand">before you start</span><h1 class="px">Pure Mathematics 1</h1><div class="meta" style="margin-top:4px">Edexcel 9MA0/01 · June 2023 · 14 questions · 100 marks</div>
+<div class="choose"><div class="opt on"><h4>◷ Timed, 2 hours</h4><p>Like the real exam. The clock counts down.</p></div><div class="opt"><h4>Untimed</h4><p>No limit. You can start a stopwatch if you want.</p></div></div>
+<ul class="rl"><li><b>1</b><span>The site menu is hidden while you sit the paper, so it's just you and the questions.</span></li><li><b>2</b><span>Type your answers, or work on paper and tick "I answered on paper".</span></li><li><b>3</b><span>The clock stops if you pause, leave or close the tab. Your answers are saved to your account, so you can carry on from any device.</span></li><li><b>4</b><span>When you finish, you mark each answer against the official mark scheme${ai(`, or check the marks the AI suggests ${stamp('AI MARKED')}`)}.</span></li></ul>
+<div style="display:flex;gap:14px;margin-top:28px"><span class="btn d">Start the clock</span><span class="btn">Back to the paper</span><span style="margin-left:auto" class="sync"><i></i>Saved to your account</span></div></div>`,
+sit:sitq,
+pdf:()=>`${fbar(tmr('1:31:05'),'Finish and enter marks').replace(/Pure Mathematics 1 · June 2023/,'Statistics and Mechanics · June 2024')}
+<div style="display:grid;grid-template-columns:1fr 360px;gap:34px;align-items:start"><div class="card r1" style="padding:20px"><i class="t tc"></i><div class="pdf"><div class="pdfbar">question-paper.pdf<span style="margin-left:auto">Page 3 of 32</span><span>− 100% +</span></div><div class="pg"><div style="font-weight:bold;margin-bottom:12px">Section A: Statistics</div><div>1. A random sample of 40 students...</div><div class="ln" style="width:92%"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:86%"></div><div style="margin-top:18px">(a) Find the mean and standard deviation.</div><div class="ln" style="width:60%"></div><div style="text-align:right">(3)</div><div class="ln"></div><div class="ln" style="width:75%"></div><div class="ln" style="width:88%"></div></div></div></div>
+<div class="stack" style="gap:30px"><div class="card side ruled r2"><i class="t tc"></i><h3 class="px">Sit the paper</h3><p style="font-size:15px;line-height:1.5">Work through it from the PDF or a printed copy. You have 2 hours, as in the exam. When you finish, mark it and enter your total out of 100.</p><div class="gl" style="margin-top:14px"><span class="btn">Open on the Edexcel site ↗</span></div></div>
+<div class="card side r4"><i class="t tl"></i><h3 class="px">Your progress</h3><p class="small">Tick questions off as you go, it's just for you.</p><div class="pal" style="margin:12px 0 0;gap:8px">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<i class="${n<5?'a':''}" style="width:38px;height:38px">${n}</i>`).join('')}</div></div>
+${ai(`<div class="aic">${stamp('AI MARKED')}<h3 class="px">Upload your script at the end</h3><p class="small">Take photos of your written answers when you finish. The AI suggests a mark for each question.</p></div>`)}</div></div>`,
+paused:()=>`${fbar(tmr('1:12:40','paused','paused','▶'))}${pal()}<div class="veil"><span class="hand" style="font-size:24px">take a breather</span><h2 class="px">Paused</h2><p>The clock stopped at 1:12:40 left. The questions are hidden while you're paused, so the timing stays fair.</p><span class="btn d">▶ Resume</span><span class="sync"><i></i>Answers saved to your account</span></div>`,
+timeup:()=>`${fbar(tmr('+3:12','over time','over')).replace('class="card fbar','class="card fbar')}<div class="card banner r2" style="background:color-mix(in srgb,#f4c2b8 40%,var(--card))"><b class="px" style="font-size:20px;font-weight:400">Time's up.</b><span>Finish when you're ready. The extra time is recorded with your result.</span><span style="margin-left:auto" class="btn d">Finish and mark</span></div>${pal(14,'all').replace('<i class=" ">14','<i class="c">14')}<div class="cols">${qcard().replace('Question 7 <span>of 14','Question 14 <span>of 14')}${acard()}</div>${nav2}`,
+finish:()=>`${fbar(tmr('0:08:15'))}${pal(14,'all').replace('<i class=" ">14','<i class="c">14')}<div class="cols">${qcard().replace('Question 7 <span>of 14','Question 14 <span>of 14')}${acard()}</div>${nav2}`+dialog(`<h2 class="px">Finish and mark?</h2><p>The clock stops with 8:15 left and you'll mark each answer against its mark scheme. You can't go back to answering.</p><div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap"><span class="tag">12 answered</span><span class="tag">2 not answered: Q5, Q11</span><span class="tag">2 flagged: Q3, Q12</span></div>${ai(`<p style="margin-top:14px">${stamp('AI MARKED')} &nbsp;The AI will suggest marks for your 12 typed answers. You check every one.</p>`)}<div class="dacts"><span class="btn">Keep going</span><span class="btn d">Finish</span></div>`),
+markwhole:()=>`<div class="card fbar r3"><span class="btn">‹ Back</span><div><div class="t1">Statistics and Mechanics · June 2024</div><div class="t2">A-Level Mathematics · Past paper</div></div><span class="sp"></span><span class="btn d">Save results</span></div>
+<div class="mk1"><div style="display:flex;align-items:baseline;gap:16px;margin-bottom:24px"><h1 class="px" style="font-size:40px">Mark your paper</h1><span class="hand">you took 1 hour 54 of 2 hours</span></div>
+<div class="card pc ruled r2"><i class="t tc"></i><div class="hd"><h2 class="px">1. Open the mark scheme</h2></div><p style="font-size:15.5px;line-height:1.5">Mark your script with Edexcel's official mark scheme. Be strict: only give a mark where the mark scheme allows it.</p><div class="gl" style="margin-top:14px;flex-direction:row"><span class="btn">✓ Mark scheme on the Edexcel site ↗</span></div></div>
+<div class="card pc ruled r4" style="margin-top:34px"><i class="t tc"></i><div class="hd"><h2 class="px">2. Enter your total</h2></div>
+<div style="display:flex;gap:30px;align-items:center"><div class="stepper"><span>−</span><b>71</b><span>+</span></div><span style="font-size:18px;color:var(--mut)">out of 100</span><div style="margin-left:auto;text-align:right"><span class="bgr" style="width:50px;height:50px;font-size:22px">A</span><div class="small" style="margin-top:6px">71% · grade A on June 2024 boundaries</div></div></div></div>
+${ai(`<div class="aishelf" style="margin-top:34px"><h2 class="px">Or let the AI mark it ${stamp('AI MARKED')}</h2><p class="small" style="margin-top:6px">Upload photos of your written answers. The AI marks each question against the mark scheme and suggests a total. You can change any mark before saving.</p><div class="thumbs"><i></i><i></i><i></i><i style="border-style:dashed;background:none;display:grid;place-items:center;font-size:30px;font-style:normal;transform:none">+</i></div><div style="margin-top:14px"><span class="sbtn">⇪ Upload photos</span> <span class="small">&nbsp;3 pages added</span></div></div>`)}
+<div class="card r3" style="display:flex;align-items:center;gap:16px;padding:16px 24px;background:var(--sc);margin-top:34px"><b class="px" style="font-size:22px;font-weight:400">71 out of 100</b><span class="sp" style="flex:1"></span><span class="sync" style="color:var(--ink)"><i></i>Saves to your account</span><span class="btn d">Save results</span></div></div>`,
+result:()=>`<div class="card fbar r3"><span class="btn">‹ Back to the paper</span><div><div class="t1">Pure Mathematics 1 · June 2023</div><div class="t2">A-Level Mathematics · Past paper</div></div><span class="sp"></span></div>
+<div class="card hero ruled r3"><i class="t tc"></i><div><span class="hand" style="font-size:24px">past paper complete</span><div class="big">71<span> / 100</span></div></div>
+<div><div style="display:flex;align-items:center;gap:18px"><span class="bgr">A</span><div><div style="font-family:var(--hf);font-size:26px">71%</div><div style="color:var(--mut);font-size:15px">grade A on the June 2023 boundaries · 1 hour 52 of 2 hours</div></div></div>
+<div class="pbar"><i style="width:71%"></i></div><span class="btn d">Back to the paper</span><span class="btn">Open the Data Hub</span><span class="btn">↻ Sit it again</span>
+<p style="margin-top:14px"><span class="sync"><i></i>Saved to your account and your Data Hub.</span>${ai(` &nbsp;${stamp('AI MARKED')} <span class="small">&nbsp;12 answers marked by the AI and checked by you</span>`)}</p></div></div>
+<div class="g3"><div class="card mc ruled r1"><i class="t tl"></i><h3 class="px">By topic</h3><div class="ml">
+${[['Algebra and functions',100,'4/4','G'],['Trigonometry',60,'6/10','A'],['Sequences and series',83,'10/12','G'],['Differentiation',86,'12/14','G'],['Integration',67,'8/12','A'],['Vectors',38,'3/8','R'],['Proof',75,'6/8','G']].map(t=>`<span>${t[0]}</span><span class="mt"><i class="${t[3]}" style="width:${t[1]}%"></i></span><b>${t[2]}</b>`).join('')}</div></div>
+<div class="card mc ruled r4"><i class="t tr"></i><h3 class="px">By difficulty</h3><div class="ml">
+<span>Easy</span><span class="mt"><i class="G" style="width:95%"></i></span><b>21/22</b><span>Medium</span><span class="mt"><i class="G" style="width:72%"></i></span><b>34/47</b><span>Hard</span><span class="mt"><i class="R" style="width:52%"></i></span><b>16/31</b></div></div>
+<div class="card mc ruled r2"><i class="t tc"></i><h3 class="px">This paper over time</h3><div class="hist">${[['Jun',49,'49%'],['Sep',58,'58%'],['Oct',64,'64%'],['Today',71,'71%']].map((h,i)=>`<div><b>${h[2]}</b><i style="height:${h[1]*1.3}px;background:${i==3?'var(--sc)':'color-mix(in srgb,var(--sc) 45%,var(--card))'}"></i></div>`).join('')}</div><div class="hist" style="height:auto;border:0;margin-top:6px">${['21 Jun','3 Sep','12 Oct','Today'].map(d=>`<div>${d}</div>`).join('')}</div></div></div>
+<div class="card rv" style="transform:rotate(.2deg)"><i class="t tc"></i><h3 class="px">Review</h3><span class="hand" style="font-size:20px">open a question to see your answer next to the mark scheme</span>
+${[[1,'Algebra and functions','G','4/4'],[2,'Trigonometry','A','3/5',1],[3,'Sequences and series','G','3/3'],[4,'Differentiation','G','6/7',1],[5,'Integration','R','1/5','','not answered'],[6,'Vectors','R','1/4',1]].map(r=>`<div class="rr"><span class="n">Question ${r[0]}</span><span class="tag">${r[1]}</span>${r[5]?`<span class="small">${r[5]}</span>`:''}${r[4]?ai(stamp('AI MARKED')):''}<span class="sp"></span><span class="rag ${r[2]}"></span><b>${r[3]}</b><span>›</span></div>`).join('')}<div style="text-align:center;padding:12px 0 6px"><span class="sbtn">Show 8 more questions</span></div></div>
+${ai(`<div class="aishelf" style="margin-top:34px"><h2 class="px">Keep going with AI practice <span class="hand" style="margin-left:10px">kept apart from official papers</span></h2><div class="row2"><div class="aic">${stamp('AI MADE')}<h3 class="px">AI paper in the style of this one</h3><p class="small">Same topics and mark spread, new questions.</p></div><div class="aic">${stamp('AI MADE')}<h3 class="px">AI questions on these topics</h3><p class="small">New questions on the seven topics in this paper, sorted by topic.</p></div></div></div>`)}`,
+};
+document.getElementById('app').innerHTML=S2[S]();
+</script></body></html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 80px;position:relative}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0;display:flex;align-items:center;gap:18px}.lede{font-size:27px}
+.sbtn{font-family:var(--hf);font-size:15px;border:2px solid var(--ink);border-radius:5px;padding:7px 14px;background:var(--card);box-shadow:2px 2px 0 var(--ink);white-space:nowrap;display:inline-flex;gap:8px;align-items:center}
+.sbtn.d{background:var(--ink);color:var(--card)}.sbtn.off{opacity:.45;box-shadow:none}
+.st{color:var(--ink);font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);display:inline-block;background:var(--card);white-space:nowrap;font-family:'Nunito';vertical-align:middle}
+.sug{font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px solid #b08a2e;color:#7a5a12;border-radius:3px;padding:2px 6px;transform:rotate(-2deg);display:inline-block;background:#fbe9a8;white-space:nowrap;font-family:'Nunito';vertical-align:middle}
+.soonst{font-family:'Nunito';font-size:14px;letter-spacing:1.5px;font-weight:800;border:2px dashed var(--ink);border-radius:4px;padding:5px 12px;transform:rotate(-3deg);display:inline-block;background:var(--card)}
+.livest{font-family:'Nunito';font-size:14px;letter-spacing:1.5px;font-weight:800;border:2px solid var(--ink);border-radius:4px;padding:5px 12px;transform:rotate(-3deg);display:inline-block;background:#cfe8d5}
+.ac{padding:26px 30px 26px}.ac h2{font-size:27px;display:flex;align-items:center;gap:12px}.ac .sub{font-size:14.5px;color:var(--mut);margin-top:4px;line-height:1.45}
+.row{display:flex;gap:12px;margin-top:20px;align-items:center;flex-wrap:wrap}
+.cols{display:grid;grid-template-columns:1fr 470px;gap:38px;margin-top:34px;align-items:start}
+.col{display:flex;flex-direction:column;gap:38px}
+.big{font-size:30px;font-family:var(--hf);display:grid;place-items:center;width:64px;height:64px;border:2.5px solid var(--ink);border-radius:50%;background:var(--bg);flex:none}
+.tick{list-style:none;padding:0;margin:18px 0 0}.tick li{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.5;padding:7px 0}
+.tick .k{font-family:'Caveat';font-size:28px;line-height:.9;color:#3c7a4a;width:22px;flex:none}
+.store{margin-top:16px;font-size:14.5px;border:1.5px dashed var(--ink);border-radius:5px;padding:9px 12px;background:#f7efd9;line-height:1.45}.store.ok{background:#dcefe0}
+.li{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1.5px dashed rgba(42,39,35,.2);font-size:14.5px}.li:first-of-type{border-top:0}.li .tx{flex:1}.li small{display:block;color:var(--mut);font-size:13px}
+.pill{font-size:12.5px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 10px;white-space:nowrap;background:var(--card)}.pill.ok{background:#cfe8d5}.pill.warn{background:#f7e3a8}.pill.bad{background:#f4c2b8}
+.cdot{width:16px;height:16px;border-radius:50%;border:2px solid var(--ink);display:inline-block;flex:none}
+.hint{font-size:13px;color:var(--mut)}
+.tog{width:44px;height:24px;border:2px solid var(--ink);border-radius:20px;background:#cfe8d5;position:relative;flex:none}.tog::after{content:'';position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--ink)}
+.tog.off{background:var(--card)}.tog.off::after{right:auto;left:2px;background:#bdb5a8}
+/* roadmap */
+.rm{margin-top:12px}.rm .ph{display:flex;gap:14px;padding:12px 0;border-top:1.5px dashed rgba(42,39,35,.2);align-items:flex-start}.rm .ph:first-child{border-top:0}
+.rm .n{width:34px;height:34px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:16px;flex:none;background:var(--card)}
+.rm .ph.live .n{background:#cfe8d5}.rm .ph.here{background:rgba(247,227,168,.45);margin:0 -14px;padding:12px 14px;border-radius:6px;border-top-color:transparent}
+.rm b{font-family:var(--hf);font-weight:400;font-size:17px}.rm p{font-size:13.5px;color:var(--mut);margin-top:2px;line-height:1.4}
+.rm .line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+/* sneak peek */
+.peek{margin-top:26px;border:2.5px dashed rgba(42,39,35,.5);border-radius:8px;padding:18px 22px 22px;background:rgba(255,253,248,.55);position:relative}
+.peek .lbl{font-size:24px}
+.pp{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:12px}
+.mini{border:2px dashed var(--ink);border-radius:4px;background:var(--card);padding:14px 16px;opacity:.82}.mini h4{font-family:var(--hf);font-weight:400;font-size:19px;margin-top:8px}.mini .hint{margin-top:2px}
+.tag{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:5px;padding:3px 9px;font-size:13px;background:var(--card)}
+.dot{width:11px;height:11px;border-radius:3px;border:2px solid var(--ink);display:inline-block}
+.hb{display:flex;gap:10px;align-items:center;font-size:14px;padding:6px 0}.hb .bar{flex:1;height:12px;border:2px solid var(--ink);border-radius:3px;overflow:hidden;background:var(--card)}.hb .bar i{display:block;height:100%}
+.hb span:first-child{width:220px}
+.abox{border:2px solid var(--ink);border-radius:6px;background:#fff;padding:12px 14px;font-size:15px;line-height:1.55;margin-top:10px}
+.mk{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;padding:5px 0}.mk .m{font-family:'Caveat';font-size:24px;line-height:.9;width:22px;flex:none}.mk .m.y{color:#3c7a4a}.mk .m.n{color:#b9483a}
+.score{font-family:var(--hf);font-size:38px}
+.where{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px}
+.wc{border:2px solid var(--ink);border-radius:6px;background:var(--card);padding:16px;box-shadow:3px 3px 0 rgba(42,39,35,.18)}.wc b{font-family:var(--hf);font-weight:400;font-size:19px;display:block;margin-top:10px}.wc span{font-size:13.5px;color:var(--mut)}
+.wc .ic{width:40px;height:40px;font-size:18px;font-family:var(--hf)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.fact{border:2px solid var(--ink);border-radius:6px;padding:12px 14px;background:var(--card)}.fact .v{font-family:var(--hf);font-size:30px;line-height:1.1;display:block}.fact .l{font-size:13px;color:var(--mut)}
+.arrow{position:absolute;font-size:23px;line-height:1.1;z-index:3}
+
+html.dim{--bg:#3d3832;--card:#4a443d;--ink:#eee5d4;--mut:#bdb2a1;--line:rgba(255,240,220,.05);--tape:rgba(190,170,130,.55)}
+.dim .card{box-shadow:4px 5px 0 rgba(0,0,0,.28)}.dim .btn,.dim .sbtn,.dim .logo b,.dim .wc{box-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.dim .abox{background:#3f3a34}.dim .store{background:#544b3c}.dim .store.ok{background:#45594a}
+.dim .pill.ok,.dim .tog,.dim .livest,.dim .rm .ph.live .n{background:#5e7a63}.dim .tog.off{background:var(--card)}.dim .pill.warn{background:#7a6738}.dim .pill.bad{background:#8a4a40}
+.dim .rm .ph.here{background:rgba(122,103,56,.45)}.dim .tick .k,.dim .mk .m.y{color:#a8cfae}.dim .mk .m.n{color:#e09a8e}
+.dim .ruled{background-image:linear-gradient(transparent 39px,rgba(220,120,110,.3) 39px,rgba(220,120,110,.3) 41px,transparent 41px),repeating-linear-gradient(transparent 0 27px,rgba(200,215,235,.08) 27px 28px)}
+.dim .peek{border-color:rgba(238,229,212,.45);background:rgba(74,68,61,.6)}.dim .mini{border-color:rgba(238,229,212,.6)}
+.dim .cdot,.dim .dot,.dim .hb .bar i{filter:saturate(.75) brightness(.85)}
+.dim .sug{background:#6b5a2e;color:#f3e2b0;border-color:#c9a956}.dim .li,.dim .rm .ph{border-color:rgba(238,229,212,.15)}
+</style></head><body>
+<div id="app"></div>
+<script>
+const P=new URLSearchParams(location.search),S=P.get('s')||'papers',OUT=!!P.get('out'),DIM=!!P.get('dim');if(DIM)document.documentElement.classList.add('dim');
+const st=t=>`<span class="st">${t}</span>`, sg=`<span class="sug">SUGGESTION</span>`;
+const C={ma:'#9cc3e6',fm:'#c7b5ea',ph:'#f3a37f',bi:'#8fcaa0',ge:'#8fcaa0'};
+const topBar=OUT
+ ?`<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Features</span><span>Subjects</span><span>Coming later</span></div><div class="r"><span class="sbtn">Log in</span><span class="sbtn d">Create an account</span></div></div>`
+ :`<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Past papers</span><span>Practice</span><span>Data Hub</span></div><div class="r"><span class="tag" style="font-size:14px;padding:5px 11px">31 answered</span><div class="av">D</div></div></div>`;
+const F={
+ papers:{t:'AI past papers',ph:2,ic:'?',lead:'full practice papers written by AI, modelled on how real papers are built',
+  pts:['Every paper is written in advance, checked and stored. Nothing is generated while you wait.','Papers follow real paper layouts, command words and mark schemes.','Questions carry the same topic, crossover and difficulty tags, so your learned-topics filter works on them too.','Kept on their own shelf and stamped AI MADE, so you always know a paper is not official.']},
+ predicted:{t:'AI predicted papers',ph:3,ic:'&#9671;',lead:'predicted papers for the next exam series, with mark schemes',
+  pts:['Built from how often each topic has come up on past papers.','Gives extra weight to spec points that are overdue or have never been examined.','Follows trends in question wording, assessment objectives and crossover topics.','Same timing, total marks and sections as the real paper. A prediction, never an official paper.']},
+ marking:{t:'AI marking',ph:4,ic:'&#10003;',lead:'type your answer and have it marked against the mark scheme',
+  pts:['Typed answers first: working for maths and science, essays for humanities.','Method and working marks for maths and science; level-of-response marks for essays.','Shows where you gained and lost each mark, and saves the result to your Data Hub.','Later: photo upload of handwritten work, and an on-screen maths and drawing canvas.']},
+};
+const PH=[[1,'Core platform','Official past papers, practice, accounts and the Data Hub.'],[2,'AI questions and AI past papers','AI questions for every spec point, plus full AI past papers.'],[3,'AI predicted papers','Predicted papers for upcoming exam series.'],[4,'AI marking','Automatic marking of typed answers, then photos and a maths canvas.']];
+const roadmap=(here,allLive)=>`<div class="rm">${PH.map(([n,t,d])=>{const live=n===1||allLive;return `<div class="ph ${live?'live':''} ${n===here?'here':''}"><span class="n">${n}</span><div><div class="line"><b>${t}</b>${live?'<span class="pill ok">Live</span>':`<span class="pill">Coming later</span>`}${n===here&&!allLive?'<span class="hand" style="font-size:20px">this page</span>':''}</div><p>${d}</p></div></div>`}).join('')}</div>`;
+
+let peek='';
+if(0) peek=`<div class="peek"><div class="hand lbl">a sneak peek of the AI shelf in Past papers ${sg}</div>
+ <div class="pp">${[['ma','Maths','AI Paper · Pure 1','Practice set A · 100 marks · 2 h'],['ph','Physics','AI Paper 2','Practice set A · 90 marks · 1 h 45'],['ge','Geography','AI Paper 1','Practice set A · 80 marks · 1 h 30']].map(([c,n,t,d])=>`<div class="mini"><div style="display:flex;gap:8px;align-items:center"><span class="tag"><i class="dot" style="background:${C[c]}"></i>${n}</span>${st('AI MADE')}</div><h4>${t}</h4><div class="hint">${d}</div></div>`).join('')}</div>
+ <div class="hint" style="margin-top:12px">Example only. Your real subjects will appear here when AI papers open.</div></div>`;
+if(0) peek=`<div class="peek"><div class="hand lbl">a sneak peek: why a topic is on the predicted paper ${sg}</div>
+ <div style="display:flex;gap:8px;align-items:center;margin-top:10px"><span class="tag"><i class="dot" style="background:${C.ma}"></i>Maths</span><span class="tag">June 2027 · Paper 1</span>${st('PREDICTED')}</div>
+ ${[['Integration by parts','overdue · last seen 2022',82,'#e8b04a'],['Proof by contradiction','never examined on Paper 1',74,'#e8b04a'],['Vectors in 3D','comes up most years',61,C.ma],['Binomial expansion','came up in 2026',22,'#c9c1b3']].map(([t,w,p,c])=>`<div class="hb"><span>${t}<small style="display:block;color:var(--mut);font-size:12.5px">${w}</small></span><div class="bar"><i style="width:${p}%;background:${c}"></i></div><span style="width:44px;text-align:right">${p}%</span></div>`).join('')}
+ <div class="hint" style="margin-top:8px">Example only. "Chance it comes up", worked out from past papers. A guess, not a promise.</div></div>`;
+if(S==='live') peek=`<div class="peek"><div class="hand lbl">a sneak peek of a marked answer</div>
+ <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-top:8px">
+  <div><div style="font-size:14.5px">(a) Calculate the velocity of the trolleys after the collision. <b>(3)</b></div>
+   <div class="abox">p = mv<br>0.80 × 1.5 = 1.2<br>1.2 = 2.0 × v</div></div>
+  <div><div style="display:flex;gap:10px;align-items:center"><span class="score">2/3</span>${st('AI MARKED')}</div>
+   <div class="mk"><span class="m y">&#10003;</span>Uses p = mv</div><div class="mk"><span class="m y">&#10003;</span>Sets momentum before = after</div><div class="mk"><span class="m n">&#10007;</span>No final answer: v = 0.60 m s<sup>-1</sup></div></div></div>
+ <div class="hint" style="margin-top:10px">Example only. You can always check the mark scheme yourself.</div></div>`;
+
+let h='';
+if(S!=='live'){
+ const f=F[S];
+ h=topBar+`<div class="crumb">${OUT?'PurePastPapers':'Home'} / Coming later / ${f.t}</div>
+ <h1 class="px">${f.t} <span class="soonst">COMING IN PHASE ${f.ph}</span></h1><div class="hand lede">${f.lead}</div>
+ <div class="cols"><div class="col">
+  <div class="card ruled ac r3"><i class="t tl"></i><i class="t tr"></i>
+   <div style="display:flex;gap:18px;align-items:center"><span class="big">${f.ic}</span><div><h2 class="px">What it will do</h2><div class="sub">Opens once Phase ${f.ph-1} is up and running.</div></div></div>
+   <ul class="tick">${f.pts.map(p=>`<li><span class="k">&#10003;</span><span>${p}</span></li>`).join('')}</ul>
+   ${peek}
+  </div>
+ </div><div class="col">
+  ${OUT?`<div class="card ruled ac r2"><i class="t tc"></i><h2 class="px" style="font-size:24px">Start with what's live now</h2><div class="sub">Official past papers, practice and the Data Hub are free and open today. Your progress is saved to your account, on every device.</div>
+   <div class="row"><span class="sbtn d">Create an account</span><span class="sbtn">Log in</span></div></div>`
+  :`<div class="card ruled ac r2"><i class="t tc"></i><h2 class="px" style="font-size:24px">Available now</h2><div class="sub">${S==='marking'?'Mark your own answers against the mark scheme in Practice and Past papers.':'Official past papers and customisable practice are live.'}</div>
+   <div class="row"><span class="sbtn d">Practice</span><span class="sbtn">Past papers</span></div></div>`}
+  <div class="card ruled ac r1"><i class="t tl"></i><h2 class="px" style="font-size:24px">When it's coming</h2><div class="sub">Each phase opens once the one before it is running.</div>${roadmap(f.ph)}</div>
+  <div class="hand" style="font-size:21px;text-align:center;margin-top:-14px">AI content is always labelled, and kept apart from official papers</div>
+ </div></div>`;
+}
+
+/* AI marking once switched on: it has no page of its own, so this page explains where it shows up */
+if(S==='live'){
+ h=topBar+`<div class="crumb">Home / AI tools / AI marking</div>
+ <h1 class="px">AI marking <span class="livest">LIVE</span></h1><div class="hand lede">type your answer and have it marked against the mark scheme</div>
+ <div class="cols"><div class="col">
+  <div class="card ruled ac r3"><i class="t tl"></i><i class="t tr"></i>
+   <div style="display:flex;gap:18px;align-items:center"><span class="big">&#10003;</span><div><h2 class="px">Where you'll find it</h2><div class="sub">AI marking doesn't have its own page. It appears wherever you answer questions.</div></div></div>
+   <div class="where">
+    <div class="wc"><span class="ic">1</span><b>Single questions</b><span>After "Submit answer" in Practice, choose "Mark it for me".</span><div class="row" style="margin-top:12px"><span class="sbtn d">Practice</span></div></div>
+    <div class="wc"><span class="ic">2</span><b>After a timed test</b><span>Every typed answer is marked at once when you finish.</span><div class="row" style="margin-top:12px"><span class="sbtn">Start a test</span></div></div>
+    <div class="wc"><span class="ic">3</span><b>Whole papers</b><span>Mark a paper you sat in focus mode, question by question.</span><div class="row" style="margin-top:12px"><span class="sbtn">Past papers</span></div></div>
+   </div>
+   ${peek.replace('a sneak peek of a marked answer','what a marked answer looks like').replace('Example only. ','')}
+  </div>
+ </div><div class="col">
+  <div class="card ruled ac r2"><i class="t tc"></i><h2 class="px" style="font-size:24px">Your AI marking so far</h2>
+   <div class="facts"><div class="fact"><span class="v">42</span><span class="l">answers marked</span></div><div class="fact"><span class="v">5</span><span class="l">whole papers marked</span></div><div class="fact"><span class="v">71%</span><span class="l">of marks gained</span></div></div>
+   <div class="hint" style="margin-top:10px">Saved to your account and in your Data Hub · synced just now</div>
+   <div class="row"><span class="sbtn">Open the Data Hub</span></div></div>
+  <div class="card ruled ac r4"><i class="t tr"></i><h2 class="px" style="font-size:24px">Not sure about a mark?</h2><div class="sub">Tap "I disagree" on any AI mark and give yourself the mark scheme's score instead. Your Data Hub uses your mark.</div>
+   <div class="row"><span class="sbtn">See the 3 you changed</span></div></div>
+  <div class="card ruled ac r1"><i class="t tl"></i><h2 class="px" style="font-size:24px">Coming next for AI marking</h2>
+   ${[['Photo of handwritten work','Take a picture of your working and have it marked.'],['Maths and drawing canvas','Write working and sketch graphs on screen.']].map(([t,d])=>`<div class="li"><div class="tx">${t}<small>${d}</small></div><span class="pill">Coming later</span></div>`).join('')}</div>
+ </div></div>`;
+}
+document.getElementById('app').innerHTML=h;
+</script></body></html>

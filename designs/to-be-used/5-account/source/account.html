@@ -1,0 +1,193 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 80px;position:relative}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+.av.on{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--ink)}
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0}.lede{font-size:27px}
+.hrow{display:flex;align-items:flex-end;gap:20px}.hrow .acts{margin-left:auto;display:flex;gap:14px;padding-bottom:8px}
+.sbtn{font-family:var(--hf);font-size:15px;border:2px solid var(--ink);border-radius:5px;padding:7px 14px;background:var(--card);box-shadow:2px 2px 0 var(--ink);white-space:nowrap;display:inline-flex;gap:8px;align-items:center}
+.sbtn.d{background:var(--ink);color:var(--card)}.sbtn.red{background:#f4c2b8}
+.st{font-size:10.5px;letter-spacing:1px;font-weight:800;border:1.5px dashed var(--ink);border-radius:3px;padding:2px 6px;transform:rotate(3deg);display:inline-block;background:var(--card);white-space:nowrap;font-family:'Nunito'}
+/* forms */
+.f{display:flex;flex-direction:column;gap:6px;margin-top:16px}.f label{font-size:14px;font-weight:800;display:flex;justify-content:space-between}.f label a{font-weight:700;color:var(--mut);text-decoration:underline}
+.in{border:2px solid var(--ink);border-radius:6px;background:#fff;padding:12px 15px;font-size:16.5px;font-weight:600;display:flex;align-items:center;gap:10px;min-height:50px}
+.in.pl{color:#a39b8e}.in.foc{box-shadow:0 0 0 3px var(--card),0 0 0 5px #9cc3e6}
+.in .eye{margin-left:auto;font-size:13px;color:var(--mut);text-decoration:underline}
+.hint{font-size:13.5px;color:var(--mut)}
+.meter{display:flex;gap:4px;margin-top:2px}.meter i{flex:1;height:7px;border:1.5px solid var(--ink);border-radius:2px;background:var(--card)}
+.wide{width:100%;justify-content:center;font-size:20px;padding:14px}
+.or{display:flex;align-items:center;gap:14px;color:var(--mut);font-size:14px;margin:20px 0}.or::before,.or::after{content:'';flex:1;border-top:1.5px dashed rgba(42,39,35,.3)}
+.sw{font-size:15px;text-align:center;margin-top:16px}.sw a{text-decoration:underline;font-weight:800;color:var(--ink)}
+.tog{width:44px;height:24px;border:2px solid var(--ink);border-radius:20px;background:#cfe8d5;position:relative;flex:none}.tog::after{content:'';position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--ink)}
+.tog.off{background:var(--card)}.tog.off::after{right:auto;left:2px;background:#bdb5a8;border:0}
+.chk{width:20px;height:20px;border:2px solid var(--ink);border-radius:4px;flex:none;display:grid;place-items:center;font-size:13px;background:var(--card)}
+/* auth */
+.auth{display:grid;grid-template-columns:1fr 560px;gap:80px;margin-top:46px;align-items:start}
+.pitch h1{font-size:58px;line-height:1.05}.pitch .lede{font-size:30px;margin-top:8px}
+.get{margin-top:34px;padding:30px 34px 28px;max-width:640px}
+.get h3{font-size:24px;margin-left:30px}
+.li{display:flex;gap:14px;align-items:flex-start;margin-top:16px;font-size:16px;line-height:1.4;padding-left:30px}.li b{font-family:var(--hf);font-weight:400;font-size:18px;display:block}
+.li .n{width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:15px;flex:none;background:var(--card)}
+.li span.m{color:var(--mut);font-size:15px}
+.aishelf{margin-top:28px;border:2.5px dashed rgba(42,39,35,.5);border-radius:8px;padding:20px 24px 22px;max-width:640px;background:rgba(255,253,248,.55)}
+.aishelf h3{font-size:22px;display:flex;gap:12px;align-items:center}.aishelf .li{padding-left:0}
+.subs{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;max-width:640px}
+.formc{padding:40px 44px 34px}.formc h2{font-size:36px}.formc .sub{font-size:15px;color:var(--mut);margin-top:4px}
+.note{font-size:21px;line-height:1.15;margin-top:18px;text-align:center}
+.aiopt{display:flex;gap:14px;align-items:flex-start;margin-top:18px;border:2px dashed rgba(42,39,35,.5);border-radius:6px;padding:12px 14px;font-size:14.5px;background:rgba(246,243,236,.6)}
+.aiopt b{display:flex;gap:8px;align-items:center;font-size:15px}.aiopt span{color:var(--mut)}
+.login{width:560px;margin:70px auto 0;position:relative}
+.arrow{position:absolute;font-size:24px;line-height:1.1}
+/* account */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-top:36px;align-items:start}.col{display:flex;flex-direction:column;gap:38px}
+.ac{padding:26px 30px 26px}.ac h2{font-size:27px;display:flex;align-items:center;gap:12px}.ac .sub{font-size:14.5px;color:var(--mut);margin-top:4px}
+.ac .row{display:flex;gap:12px;margin-top:20px;align-items:center;flex-wrap:wrap}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.prof{display:flex;gap:20px;align-items:center;margin-top:18px}.bigav{width:76px;height:76px;border:2.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:34px;background:#f4cf6a;flex:none}
+.avs{display:flex;gap:9px}.avs i{width:28px;height:28px;border-radius:50%;border:2px solid var(--ink)}.avs .on{box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--ink)}
+.mode{display:flex;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink)}
+.mode span{font-family:var(--hf);font-size:16px;padding:9px 18px;border-right:2px solid var(--ink)}.mode span:last-child{border-right:0}.mode .on{background:var(--ink);color:var(--card)}
+.set{display:flex;align-items:center;gap:16px;padding:14px 0;border-top:1.5px dashed rgba(42,39,35,.2);font-size:15.5px}.set:first-of-type{border-top:0}
+.set .tx{flex:1}.set .tx small{display:block;color:var(--mut);font-size:13.5px;font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.fact{border:2px solid var(--ink);border-radius:6px;padding:12px 14px;background:var(--card)}.fact .v{font-family:var(--hf);font-size:32px;line-height:1.1;display:block}.fact .l{font-size:13px;color:var(--mut)}
+.fact .s{font-size:12px;color:var(--mut);margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.store{margin-top:16px;font-size:14.5px;border:1.5px dashed var(--ink);border-radius:5px;padding:9px 12px;background:#f7efd9}
+.danger{border-color:#b9483a}.danger h2{color:#8e3328}
+.dz{display:flex;gap:16px;align-items:center;padding:14px 0;border-top:1.5px dashed rgba(42,39,35,.2);font-size:15px}.dz:first-of-type{border-top:0}.dz .tx{flex:1}.dz small{display:block;color:var(--mut);font-size:13.5px}
+.ph{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-top:1.5px dashed rgba(42,39,35,.2)}.ph:first-of-type{border-top:0}
+.ph .k{width:34px;height:34px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;font-family:var(--hf);flex:none;background:var(--card)}.ph .k.live{background:#cfe8d5}
+.ph b{font-family:var(--hf);font-weight:400;font-size:18px}.ph .tx{flex:1;font-size:14px;color:var(--mut)}.ph .tx b{color:var(--ink);display:block}
+.pill{font-size:12.5px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:2px 10px;white-space:nowrap;background:var(--card)}.pill.live{background:#cfe8d5}
+.aic{border:2.5px dashed rgba(42,39,35,.55);box-shadow:none;background:rgba(255,253,248,.82)}
+.subrow{display:flex;gap:12px;align-items:center;padding:9px 0;font-size:15px}.subrow .cdot{width:22px;height:22px;border-radius:50%;border:2px solid var(--ink)}.subrow .tx{flex:1}.subrow small{color:var(--mut)}
+.own{font-size:14px;color:var(--mut)}
+/* modal */
+.veil{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(42,39,35,.38);z-index:5}
+.modal{position:absolute;z-index:6;left:50%;top:190px;width:680px;margin-left:-340px;padding:36px 42px 32px}
+.modal h2{font-size:34px}.modal p{font-size:16px;margin-top:8px;line-height:1.5}
+.lose{margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}.lose div{border:2px solid var(--ink);border-radius:6px;padding:10px 14px;background:var(--card);font-size:14.5px}.lose b{font-family:var(--hf);font-weight:400;font-size:24px;margin-right:6px}
+.exp{margin-top:18px;display:flex;gap:14px;align-items:center;border:1.5px dashed var(--ink);border-radius:6px;padding:12px 14px;background:#f7efd9;font-size:14.5px}.exp .tx{flex:1}
+.conf{display:flex;gap:12px;align-items:center;margin-top:18px;font-size:15px}
+.mfoot{display:flex;gap:14px;justify-content:flex-end;margin-top:24px}
+
+html.dim{--bg:#3d3832;--card:#4a443d;--ink:#eee5d4;--mut:#bdb2a1;--line:rgba(255,240,220,.05);--tape:rgba(190,170,130,.55)}
+.dim .card{box-shadow:4px 5px 0 rgba(0,0,0,.28)}.dim .btn,.dim .sbtn,.dim .mode,.dim .logo b,.dim .gb{box-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.dim .in{background:#3f3a34}.dim .store{background:#544b3c}.dim .pill.live,.dim .ph .k.live,.dim .tog{background:#5e7a63}.dim .tog.off{background:var(--card)}
+.dim .sbtn.red{background:#8a4a40}.dim .danger{border-color:#c77a6e}.dim .danger h2{color:#f0b0a5}.dim .bigav{background:#b89a45}
+.dim .ruled{background-image:linear-gradient(transparent 39px,rgba(220,120,110,.3) 39px,rgba(220,120,110,.3) 41px,transparent 41px),repeating-linear-gradient(transparent 0 27px,rgba(200,215,235,.08) 27px 28px)}
+.dim .aic{background:rgba(74,68,61,.85);border-color:rgba(238,229,212,.5)}.dim .aishelf{border-color:rgba(238,229,212,.5);background:rgba(74,68,61,.6)}.dim .avs i,.dim .cdot,.dim .dot{filter:saturate(.75) brightness(.9)}
+</style></head><body>
+<div id="app"></div>
+<script>
+const P=new URLSearchParams(location.search),S=P.get('s')||'signup',AI=!!P.get('ai'),DIM=!!P.get('dim');if(DIM)document.documentElement.classList.add('dim');
+const st=t=>`<span class="st">${t}</span>`;
+const topOut=`<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Subjects</span><span>How it works</span></div><div class="r"><span class="sbtn ${S==='login'?'d':''}">Log in</span><span class="sbtn ${S==='signup'?'d':''}">Sign up</span></div></div>`;
+const topIn=`<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span>Past papers</span><span>Practice</span><span>Data Hub</span></div><div class="r"><span class="tag">214 answered</span><div class="av on" style="background:${DIM?'#b89a45':'#f4cf6a'}">D</div></div></div>`;
+let h='';
+if(S==='signup'){
+ h=topOut+`<div class="auth"><div class="pitch">
+ <h1 class="px">Make your free account</h1><div class="hand lede">so everything you practise is saved in one place</div>
+ <div class="card ruled get r1"><i class="t tl"></i><i class="t tr"></i><h3 class="px">What you get</h3>
+  <div class="li"><span class="n">1</span><div><b>Your subjects, your colours</b><span class="m">Pick GCSE, A-Level or Level 3 subjects and set a target grade for each.</span></div></div>
+  <div class="li"><span class="n">2</span><div><b>Questions only on what you've learned</b><span class="m">Tick off topics as you cover them in class. Practice skips the rest.</span></div></div>
+  <div class="li"><span class="n">3</span><div><b>Every mark in the Data Hub</b><span class="m">See your papers rated against your target, and which topics need work.</span></div></div>
+ </div>
+ ${AI?`<div class="aishelf r2"><h3 class="px">Also included ${st('AI MADE')}</h3>
+  <div class="li"><span class="n">4</span><div><b>AI questions and AI papers</b><span class="m">Extra questions for every spec point, always labelled and kept apart from official papers.</span></div></div>
+  <div class="li"><span class="n">5</span><div><b>Predicted papers</b><span class="m">Built from which topics come up most and which are overdue.</span></div></div>
+  <div class="li"><span class="n">6</span><div><b>Marking for typed answers ${st('AI MARKED')}</b><span class="m">Marked against the official mark scheme, which you always see too.</span></div></div></div>`:''}
+ <div class="subs">${[['Mathematics','#9cc3e6'],['Physics','#f3a37f'],['Biology','#8fcaa0'],['Chemistry','#c7b5ea'],['English Language','#f2a7c3'],['History','#d9c2a0'],['Geography','#b5cf8a'],['+ 31 more','']].map(([n,c])=>`<span class="tag">${c?`<i class="dot" style="background:${c}"></i>`:''}${n}</span>`).join('')}</div>
+ </div>
+ <div class="card ruled formc r3"><i class="t tc"></i>
+  <h2 class="px">Create your account</h2><div class="sub">It takes under a minute. No card or phone number.</div>
+  <div class="f"><label>Your first name</label><div class="in">Dana</div></div>
+  <div class="f"><label>Email</label><div class="in">dana.k@example.com</div></div>
+  <div class="f"><label>Password</label><div class="in foc">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;<span class="eye">Show</span></div>
+   <div class="meter"><i style="background:#8fcaa0"></i><i style="background:#8fcaa0"></i><i style="background:#8fcaa0"></i><i></i></div><span class="hint">At least 8 characters. Good so far.</span></div>
+  <div class="f"><label>I'm studying</label><div class="mode"><span>GCSE</span><span class="on">A-Level</span><span>Level 3</span><span>A mix</span></div><span class="hint">Only used to show the right subjects first. You can add any subject later.</span></div>
+  ${AI?`<div class="aiopt"><span class="tog"></span><div><b>Show AI questions and papers ${st('AI MADE')}</b><span>You can turn this off for any subject later, in Account or My subjects.</span></div></div>`:''}
+  <div style="margin-top:24px"><span class="btn d wide">Create account</span></div>
+  <div class="sw">Already have an account? <a>Log in</a></div>
+  <div class="or">or</div>
+  <span class="btn wide" style="font-size:17px">&#9654;&nbsp; Look around with the demo account</span>
+  <div class="hand note">Saved to your account, so it's there on your phone and laptop too.</div>
+ </div></div>`;
+}
+if(S==='login'){
+ h=topOut+`<div class="login"><div class="card ruled formc r1"><i class="t tl"></i><i class="t tr"></i>
+  <h2 class="px">Welcome back</h2><div class="sub">Log in to pick up where you left off.</div>
+  <div class="f"><label>Email</label><div class="in">dana.k@example.com</div></div>
+  <div class="f"><label>Password <a>Forgot password?</a></label><div class="in foc">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;<span class="eye">Show</span></div></div>
+  <div class="conf"><span class="chk">&#10003;</span>Keep me logged in</div>
+  <div style="margin-top:24px"><span class="btn d wide">Log in</span></div>
+  <div class="sw">New to PurePastPapers? <a>Create an account</a></div>
+  <div class="or">or</div>
+  <span class="btn wide" style="font-size:17px">&#9654;&nbsp; Look around with the demo account</span>
+  </div>
+  <div class="hand arrow" style="left:-300px;top:330px;width:250px;text-align:right">your subjects, ticked topics and marks are all waiting<br><svg width="200" height="60" viewBox="0 0 200 60" style="margin-top:4px"><path d="M5 10 C 70 55, 140 50, 190 30" stroke="#6d675d" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M175 22 L192 29 L178 42" stroke="#6d675d" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div>
+  <div class="hand arrow" style="right:-290px;top:520px;width:250px">works on any device: your phone, school computer or laptop</div>
+ </div>`;
+}
+if(S==='account'||S==='delete'){
+ const subs=[['Mathematics','#9cc3e6',1],['Further Maths','#c7b5ea',1],['Physics','#f3a37f',1],['Geography','#8fcaa0',0]];
+const C={dz:`  <div class="card ac danger r4"><h2 class="px">Start again</h2><div class="sub">These can't be undone. Download your data first if you might want it back.</div>
+   <div class="dz" style="margin-top:8px"><div class="tx">Reset my progress<small>Clears subjects, ticked topics, answers and history. Your account stays.</small></div><span class="sbtn">Reset progress</span></div>
+   <div class="dz"><div class="tx">Delete my account<small>Removes your account and everything in it, on every device.</small></div><span class="sbtn red">Delete account</span></div></div>
+`,own:`  <div class="card ac r3" style="box-shadow:none;border-style:dashed"><h2 class="px" style="font-size:22px">For the site owner</h2><div class="sub">Check the question and paper database and prepare new content.</div>
+   <div class="row"><span class="sbtn">Open the Content Studio</span><span class="own">Only shown on owner accounts · version 1.0</span></div></div>
+`,ai:`<div class="card ac aic r1"><h2 class="px">AI features ${st('AI MADE')}</h2><div class="sub">AI content is always labelled and kept apart from official papers.</div>
+   <div class="set" style="margin-top:10px"><div class="tx">AI questions in Practice<small>Mixed in with official questions, each one stamped AI MADE.</small></div><span class="tog"></span></div>
+   <div class="set"><div class="tx">AI and predicted papers<small>Shown on their own shelf in Past papers.</small></div><span class="tog"></span></div>
+   <div class="set"><div class="tx">Mark my typed answers ${st('AI MARKED')}<small>You always see the official mark scheme next to it, and can change the mark.</small></div><span class="tog"></span></div>
+   <div class="set"><div class="tx">Data Hub view<small>What your stats include by default.</small></div><div class="mode"><span>Official only</span><span class="on">Official and AI combined</span></div></div>
+   <div style="font-size:14px;font-weight:800;margin:14px 0 4px">AI by subject</div>
+   ${subs.map(([n,c,on])=>`<div class="subrow"><i class="cdot" style="background:${c}"></i><span class="tx">${n}</span><small>${on?'on':'off, official only'}</small><span class="tog ${on?'':'off'}"></span></div>`).join('')}
+  </div>`};
+ h=topIn+`<div class="crumb">Home / Account</div>
+ <div class="hrow"><div><h1 class="px">Account</h1><div class="hand lede">signed in as dana.k@example.com · member since September 2026</div></div><div class="acts"><span class="btn">Log out</span></div></div>
+ <div class="grid"><div class="col">
+  <div class="card ruled ac r1"><i class="t tl"></i><h2 class="px">Profile</h2>
+   <div class="prof"><div class="bigav">D</div><div><div style="font-size:14px;font-weight:800;margin-bottom:8px">Picture colour</div><div class="avs">${['#9cc3e6','#c7b5ea','#f3a37f','#8fcaa0','#f4cf6a','#f2a7c3','#9fd6cf','#d9c2a0'].map((c,i)=>`<i class="${i==4?'on':''}" style="background:${c}"></i>`).join('')}</div></div></div>
+   <div class="two"><div class="f"><label>First name</label><div class="in">Dana</div></div><div class="f"><label>Email</label><div class="in">dana.k@example.com</div></div></div>
+   <div class="f"><label>I'm studying</label><div class="mode"><span>GCSE</span><span class="on">A-Level</span><span>Level 3</span><span>A mix</span></div></div>
+   <div class="row"><span class="sbtn d">Save profile</span></div></div>
+  <div class="card ruled ac r2"><i class="t tc"></i><h2 class="px">Password</h2>
+   <div class="f"><label>Current password</label><div class="in pl">Your current password</div></div>
+   <div class="f"><label>New password</label><div class="in pl">At least 8 characters</div></div>
+   <div class="row"><span class="sbtn">Change password</span></div></div>
+  <div class="card ruled ac r3"><i class="t tr"></i><h2 class="px">How the site looks</h2>
+   <div class="set" style="margin-top:8px"><div class="tx">Light or dark mode<small>Dark mode uses warm, soft colours that are easier on your eyes in the evening.</small></div><div class="mode"><span class="${DIM?'':'on'}">Match my device</span><span>Light</span><span class="${DIM?'on':''}">Dark</span></div></div>
+   <div class="set"><div class="tx">Tilted cards<small>Turn off to keep every card straight.</small></div><span class="tog"></span></div>
+   <div class="set"><div class="tx">Larger text<small>Makes questions and mark schemes easier to read.</small></div><span class="tog off"></span></div>
+   <div class="set"><div class="tx">Subject colours and target grades<small>Set these for each subject in My subjects.</small></div><span class="sbtn">Open My subjects</span></div>
+  </div>
+  ${AI?C.dz+C.own:''}
+ </div><div class="col">
+  <div class="card ruled ac r2"><i class="t tc"></i><h2 class="px">Your data</h2><div class="sub">Everything you've saved so far.</div>
+   <div class="facts">
+    <div class="fact"><span class="v">4</span><span class="l">subjects</span></div>
+    <div class="fact"><span class="v">170</span><span class="l">spec points learned</span></div>
+    <div class="fact"><span class="v">214</span><span class="l">questions answered</span>${AI?`<div class="s">incl. 58 AI ${st('AI MADE')}</div>`:''}</div>
+    <div class="fact"><span class="v">12</span><span class="l">papers and tests</span>${AI?`<div class="s">incl. 3 AI</div>`:''}</div>
+   </div>
+   ${AI?`<div class="store" style="background:var(--card)">${st('AI MARKED')}&nbsp; 41 of your typed answers were marked by AI. 6 of those you changed by hand.</div>`:''}
+   <div class="store">Saved to your account and synced across your devices. <b>Last synced just now.</b> Download a copy any time if you want your own backup.</div>
+   <div class="row"><span class="sbtn d">Download my data</span><span class="sbtn">Import from a file</span></div></div>
+  ${AI?C.ai:C.dz}
+  <div class="card ruled ac r1"><i class="t tr"></i><h2 class="px">What's ${AI?'new':'coming'}</h2>
+   ${[['1','Past papers, practice and the Data Hub','Official papers, topic filters, timed tests and your stats.',1],['2','AI questions and AI papers','Extra questions for every spec point, kept apart from official ones.',AI],['3','Predicted papers','For the next exam series, built from topic trends.',AI],['4','Marking for typed answers','Then photo uploads and a maths canvas.',AI]].map(([k,t,d,l])=>`<div class="ph"><span class="k ${l?'live':''}">${k}</span><div class="tx"><b>${t}</b>${d}</div><span class="pill ${l?'live':''}">${l?'Live':'Coming later'}</span></div>`).join('')}
+  </div>
+  ${AI?'':C.own}
+ </div></div>`;
+ if(S==='delete') h+=`<div class="veil"></div><div class="card ruled modal r3"><i class="t tl"></i><i class="t tr"></i>
+  <h2 class="px">Delete your account?</h2><p>This permanently removes your account and everything saved in it, on every device. It can't be undone.</p>
+  <div class="lose"><div><b>4</b>subjects and target grades</div><div><b>170</b>spec points ticked</div><div><b>214</b>answers${AI?' (incl. 58 AI)':''}</div><div><b>12</b>papers and tests</div></div>
+  <div class="exp"><div class="tx">Want to keep a copy? Download your data first. You can import it into a new account later.</div><span class="sbtn">Download my data</span></div>
+  <div class="conf"><span class="chk">&#10003;</span>I understand my progress can't be brought back</div>
+  <div class="mfoot"><span class="btn">Keep my account</span><span class="btn" style="background:#f4c2b8">Delete account</span></div></div>`;
+}
+document.getElementById('app').innerHTML=h;
+</script></body></html>

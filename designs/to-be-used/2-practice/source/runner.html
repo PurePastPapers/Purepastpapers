@@ -1,0 +1,139 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><script>document.documentElement.dataset.s=new URLSearchParams(location.search).get("s")||"run";document.documentElement.dataset.ms=new URLSearchParams(location.search).get("ms")||"0"</script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 70px;--bg:color-mix(in srgb,#9cc3e6 42%,#f6f3ec);--line:rgba(40,70,110,.09)}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+
+
+.bar{display:flex;align-items:center;gap:18px;padding:16px 22px;margin-bottom:30px}
+.bar .t1{font-family:var(--hf);font-size:22px}.bar .t2{font-size:14px;color:var(--mut)}
+.bar .sp{flex:1}.bar .btn{font-size:16px;padding:9px 18px}
+.timer{display:flex;align-items:center;gap:10px;border:2px solid var(--ink);border-radius:6px;padding:7px 14px;background:var(--bg);font-family:var(--hf);font-size:24px}
+.timer small{font-family:'Nunito';font-size:13px;color:var(--mut)}
+.pal{display:flex;gap:10px;margin-bottom:26px;align-items:center}
+.pal i{font-style:normal;width:44px;height:44px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;font-family:var(--hf);font-size:18px;background:var(--card);position:relative}
+.pal .a{background:var(--sc)}.pal .c{background:var(--ink);color:var(--card);box-shadow:3px 3px 0 rgba(0,0,0,.2)}
+.pal .f::after{content:'';position:absolute;top:-7px;right:-7px;width:14px;height:14px;border-radius:50%;background:#ef9a8f;border:2px solid var(--ink)}
+.pal .hand{font-size:21px;margin-left:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.qc{padding:26px 30px 30px}
+.qh{display:flex;align-items:center;gap:12px;margin-bottom:18px}.qh h2{font-size:30px;margin-right:auto}.qh h2 span{color:var(--mut);font-size:22px}
+.pill{font-size:13px;font-weight:800;border:2px solid var(--ink);border-radius:20px;padding:3px 11px;background:var(--card)}
+.df{font-size:12.5px;font-weight:800;border:1.5px solid var(--ink);border-radius:20px;padding:3px 10px}
+.e{background:#cfe8d5}.m{background:#f7e3a6}.h{background:#f4c2b8}.x{background:#d9cdf0}
+.qtext{font-size:18px;line-height:28px}.qtext p{margin-bottom:28px}
+.qtext .math{font-family:'Young Serif',serif;font-size:21px;display:block;text-align:center;margin:-6px 0 22px}
+.part{display:flex;gap:14px}.part b{font-family:var(--hf);font-weight:400}.part .mk{margin-left:auto;color:var(--mut);white-space:nowrap}
+.src{font-size:13.5px;color:var(--mut);font-weight:700;margin-bottom:6px}
+.ans{padding:24px 28px 28px}.ans h3{font-size:22px;margin-bottom:4px}
+.paper{border:2px solid var(--ink);border-radius:6px;min-height:300px;margin-top:14px;padding:14px 16px;font-family:'Nunito';font-weight:600;font-size:16.5px;line-height:28px;color:var(--ink);background:#fff;box-shadow:inset 0 2px 0 rgba(0,0,0,.05)}
+.paper.focus{box-shadow:0 0 0 4px var(--sc)}
+.cur{display:inline-block;width:2px;height:20px;background:var(--ink);vertical-align:-4px;margin-left:1px}
+.tb{display:flex;gap:6px;margin-top:14px;align-items:center}.tb span{border:2px solid var(--ink);border-radius:5px;padding:3px 10px;font-size:14px;background:var(--card);font-family:var(--hf)}
+.tb .w{margin-left:auto;font-family:'Nunito';border:0;background:none;color:var(--mut);font-size:13.5px;padding:0}
+.alt2{display:flex;gap:12px;align-items:center;margin-top:16px;flex-wrap:wrap}.alt2 .btn{font-size:15px;padding:8px 14px;box-shadow:2px 2px 0 var(--ink)}
+.alt2 .or{color:var(--mut);font-size:14.5px}
+.mini-ans{font-family:'Nunito'!important;font-size:15px!important;line-height:24px!important;color:var(--ink)!important}
+.nav2{display:flex;gap:14px;margin-top:30px;align-items:center}.nav2 .sp{flex:1}.nav2 .btn{font-size:17px}
+.stp{display:none;font-size:11.5px;letter-spacing:1.2px;font-weight:800;border:2px dashed var(--ink);border-radius:4px;padding:3px 8px;transform:rotate(4deg);background:var(--card)}
+.ai .stp{display:inline-block}
+.hide-ai{}.ai .hide-ai{display:none!important}.only-ai{display:none!important}.ai .only-ai{display:block!important}.ai span.only-ai,.ai i.only-ai{display:inline-block!important}.ai .only-ai.fx{display:flex!important}
+.msh{display:none}[data-ms="0"] .msx{display:none}[data-ms="0"] .msh{display:block}[data-ms="0"] .alt2.msh{display:flex}
+.cover{padding:26px 28px 28px;margin-top:34px}.cover h3{font-size:22px;margin-bottom:4px}
+.veil{border:2px dashed var(--mut);border-radius:6px;margin-top:16px;padding:26px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;background:repeating-linear-gradient(135deg,rgba(42,39,35,.045) 0 10px,transparent 10px 20px)}
+.veil .lines{width:80%;display:flex;flex-direction:column;gap:9px}.veil .lines i{height:10px;border-radius:5px;background:rgba(42,39,35,.12)}
+.veil .row3{display:flex;gap:12px}.veil .btn{font-size:16px}
+.mini-veil{border:2px dashed var(--mut);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;background:repeating-linear-gradient(135deg,rgba(42,39,35,.045) 0 10px,transparent 10px 20px)}
+.mini-veil i{height:9px;border-radius:5px;background:rgba(42,39,35,.12);display:block}
+.mini-veil .btn{font-size:14.5px;padding:7px 14px;box-shadow:2px 2px 0 var(--ink);margin-top:6px}
+.hidebtn{font-size:13px;color:var(--mut);text-decoration:underline;margin-left:8px;text-transform:none;letter-spacing:0;font-weight:700}
+.scr{display:none}
+[data-s=run] .s-run,[data-s=single] .s-single,[data-s=mark] .s-mark,[data-s=result] .s-result{display:block}
+.ms{padding:24px 28px 28px;margin-top:34px}.ms h3{font-size:22px;margin-bottom:12px}
+.ms table{width:100%;border-collapse:collapse;font-size:15.5px}.ms td{padding:9px 6px;border-bottom:1.5px dashed rgba(42,39,35,.18);vertical-align:top}.ms td:first-child{font-family:var(--hf);width:44px}.ms td:last-child{text-align:right;font-weight:800;width:60px}
+.mb{display:flex;align-items:center;gap:12px;margin-top:18px;flex-wrap:wrap}.mb .lab{font-size:13px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase;width:100%}
+.stepper{display:flex;align-items:center;border:2px solid var(--ink);border-radius:6px;background:var(--card)}.stepper span{width:42px;height:42px;display:grid;place-items:center;font-size:20px}.stepper b{width:56px;text-align:center;font-family:var(--hf);font-weight:400;font-size:24px;border-left:2px solid var(--ink);border-right:2px solid var(--ink);height:42px;display:grid;place-items:center}
+.mb .tag{font-size:14px}
+.aim{border:2px dashed var(--ink);border-radius:6px;padding:16px 18px;margin-top:20px;background:#fbf8f1;position:relative}
+.aim h4{font-family:var(--hf);font-weight:400;font-size:19px;margin-bottom:6px;display:flex;gap:12px;align-items:center}
+.aim p{font-size:15px;line-height:1.5;color:var(--ink)}.aim ul{margin:6px 0 0 18px;font-size:15px;line-height:1.6}
+.aim .ok{color:#3c7a4f;font-weight:800}.aim .no{color:#b5534a;font-weight:800}
+.note{font-size:20px;margin-top:12px;display:block}
+.hero{padding:30px 34px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.big{font-family:var(--hf);font-size:96px;line-height:1}.big span{font-size:40px;color:var(--mut)}
+.gr{border:2px solid var(--ink);border-radius:50%;width:64px;height:64px;display:inline-grid;place-items:center;font-family:var(--hf);font-size:28px;transform:rotate(-6deg);background:#f7e3a6}
+.pbar{height:16px;border:2px solid var(--ink);border-radius:3px;margin:16px 0;background:var(--card);overflow:hidden}.pbar i{display:block;height:100%;background:#f4cf6a}
+.hero .btn{font-size:16px;padding:10px 18px;margin-right:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.mc{padding:22px 26px 26px}.mc h3{font-size:22px;margin-bottom:14px}
+.ml{display:grid;grid-template-columns:170px 1fr 54px;gap:10px 14px;align-items:center;font-size:15px}.ml .mt{height:14px;border:2px solid var(--ink);border-radius:3px;background:var(--card);overflow:hidden}.ml .mt i{display:block;height:100%}.ml b{text-align:right;font-family:var(--hf);font-weight:400}
+.rv{padding:22px 26px 14px;margin-top:34px}.rv h3{font-size:22px;margin-bottom:8px}
+.rr{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1.5px dashed rgba(42,39,35,.18);font-size:15.5px}.rr:last-child{border:0}.rr .n{font-family:var(--hf);width:110px}.rr .sp{flex:1}.rr b{font-family:var(--hf);font-weight:400;font-size:19px;width:50px;text-align:right}
+.rag{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink)}
+.mkc{padding:24px 28px 26px;margin-bottom:30px}
+.mkg{display:grid;grid-template-columns:1fr 1fr 300px;gap:28px;margin-top:10px;align-items:start}
+.mkg h5{font-size:13px;color:var(--mut);font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-bottom:8px}
+.mini-ans{font-family:'Caveat';font-size:23px;line-height:27px;color:#334;border-left:3px solid var(--sc);padding-left:12px}
+.mini-ms{font-size:14.5px;line-height:1.55}
+.mbar{display:flex;align-items:center;gap:16px;padding:16px 24px;background:var(--sc);margin-top:6px}.mbar b{font-family:var(--hf);font-weight:400;font-size:22px}.mbar .sp{flex:1}
+.head2{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}.head2 h1{font-size:40px}.head2 .hand{font-size:23px}
+</style></head><body style="padding:28px 56px 60px;--bg:color-mix(in srgb,#9cc3e6 42%,#f6f3ec);--line:rgba(40,70,110,.09)"><div style="--sc:#9cc3e6"><div class="scr s-run"><div class="card bar r3"><span class="btn">‹ Save and exit</span><div><div class="t1">Timed test · 30 minutes</div><div class="t2">A-Level Mathematics · Timed test</div></div><span class="sp"></span><div class="timer">◷ 18:42 <small>left</small> <span style="font-size:16px;margin-left:6px">❚❚</span></div><span class="btn d">Finish and mark</span></div><div class="pal"><i class="a">1</i><i class="a">2</i><i class="a f">3</i><i class="a">4</i><i class="c">5</i><i>6</i><i>7</i><i>8</i><span class="hand">blue = answered, red dot = flagged</span></div><div class="cols"><div class="card ruled qc r1"><i class="t tc"></i>
+<div class="qh"><h2 class="px">Question 5 <span>of 8</span></h2><span class="pill">7 marks</span><span class="df h">Hard</span><span class="stp">AI MADE</span></div>
+<div class="src"><span class="hide-ai">2023 · Paper 1 · Question 6 · Differentiation 8.3</span><span class="only-ai" style="display:none">AI practice question · Set B · Differentiation 8.3 · not from a real exam</span></div>
+<div class="qtext"><p>A curve C has equation</p><span class="math">y = 2x³ − 9x² + 12x + 3</span>
+<div class="part"><b>(a)</b><span>Find dy/dx.</span><span class="mk">(2)</span></div><p></p>
+<div class="part"><b>(b)</b><span>Hence find the coordinates of the stationary points of C and determine their nature.</span><span class="mk">(5)</span></div></div></div><div class="card ans r2"><i class="t tc"></i><h3 class="px">Your answer</h3><span class="hand" style="font-size:20px">type here, it saves as you go</span><div class="tb"><span>x²</span><span>x₂</span><span>√</span><span>π</span><span>θ</span><span>≤</span><span>≥</span><span>÷</span><span class="w">52 words · saved</span></div><div class="paper focus">(a) dy/dx = 6x² − 18x + 12<br>(b) 6x² − 18x + 12 = 0<br>x² − 3x + 2 = 0 → x = 1 or x = 2<br>when x = 1, y = 8 and when x = 2, y = 7<br>d²y/dx² = 12x − 18<br>at x = 1, d²y/dx² = −6 &lt; 0 so (1, 8) is a maximum<br>at x = 2, d²y/dx² = 6 &gt; 0 so it's a minimum<span class="cur"></span></div><div class="alt2"><span class="or">or</span><span class="btn">✎ I answered on paper</span><span class="btn only-ai" style="display:none">⇪ Upload a photo of my working <span class="stp" style="transform:none;margin-left:6px">FOR AI MARKING</span></span></div></div></div>
+<div class="nav2"><span class="btn">⚑ Flag for review</span><span class="sp"></span><span class="btn">‹ Previous</span><span class="btn d">Next ›</span></div></div><div class="scr s-single"><div class="card bar r3"><span class="btn">‹ Save and exit</span><div><div class="t1">Stationary points</div><div class="t2">A-Level Mathematics · Single question</div></div><span class="sp"></span><span class="btn">◷ Start stopwatch</span><span class="btn d">Finish</span></div><div class="cols"><div><div class="card ruled qc r1"><i class="t tc"></i>
+<div class="qh"><h2 class="px">Question 1 </h2><span class="pill">7 marks</span><span class="df h">Hard</span><span class="stp">AI MADE</span></div>
+<div class="src"><span class="hide-ai">2023 · Paper 1 · Question 6 · Differentiation 8.3</span><span class="only-ai" style="display:none">AI practice question · Set B · Differentiation 8.3 · not from a real exam</span></div>
+<div class="qtext"><p>A curve C has equation</p><span class="math">y = 2x³ − 9x² + 12x + 3</span>
+<div class="part"><b>(a)</b><span>Find dy/dx.</span><span class="mk">(2)</span></div><p></p>
+<div class="part"><b>(b)</b><span>Hence find the coordinates of the stationary points of C and determine their nature.</span><span class="mk">(5)</span></div></div></div>
+<div class="msx"><div class="card ms ruled r3"><i class="t tl"></i><h3 class="px">Mark scheme</h3><table><tr><td>(a)</td><td>Differentiates to get 6x² − 18x + 12</td><td>M1 A1</td></tr>
+<tr><td>(b)</td><td>Sets dy/dx = 0 and solves to get x = 1 and x = 2</td><td>M1 A1</td></tr>
+<tr><td></td><td>Finds y-values: (1, 8) and (2, 7)</td><td>A1</td></tr>
+<tr><td></td><td>Uses d²y/dx² or a sign test to decide the nature of a point</td><td>M1</td></tr>
+<tr><td></td><td>(1, 8) is a maximum and (2, 7) is a minimum</td><td>A1</td></tr></table></div></div><div class="card cover ruled r3 msh"><i class="t tl"></i><h3 class="px">Mark scheme</h3><span class="hand" style="font-size:20px">have a go first</span>
+<div class="veil"><div class="lines"><i style="width:92%"></i><i style="width:70%"></i><i style="width:84%"></i><i style="width:58%"></i></div><span style="font-size:15.5px;color:var(--mut);text-align:center">The mark scheme appears here when you submit your answer.</span></div></div></div>
+<div><div class="card ans r2"><i class="t tc"></i><h3 class="px">Your answer</h3><span class="hand" style="font-size:20px">type here, it saves as you go</span><div class="tb"><span>x²</span><span>x₂</span><span>√</span><span>π</span><span>θ</span><span>≤</span><span>≥</span><span>÷</span><span class="w">52 words · saved</span></div><div class="paper focus">(a) dy/dx = 6x² − 18x + 12<br>(b) 6x² − 18x + 12 = 0<br>x² − 3x + 2 = 0 → x = 1 or x = 2<br>when x = 1, y = 8 and when x = 2, y = 7<br>d²y/dx² = 12x − 18<br>at x = 1, d²y/dx² = −6 &lt; 0 so (1, 8) is a maximum<br>at x = 2, d²y/dx² = 6 &gt; 0 so it's a minimum<span class="cur"></span></div><div class="alt2 msh"><span class="btn d">Submit answer</span><span class="btn only-ai" style="display:none">Submit for AI marking <span class="stp" style="transform:none;margin-left:6px">AI MARKED</span></span></div><div class="alt2"><span class="or">or</span><span class="btn">✎ I answered on paper</span><span class="btn only-ai" style="display:none">⇪ Upload a photo of my working <span class="stp" style="transform:none;margin-left:6px">FOR AI MARKING</span></span></div></div>
+<div class="card ms r1 msx"><i class="t tr"></i><h3 class="px">Mark it</h3>
+<div class="hide-ai"><p style="color:var(--mut);font-size:15px">Compare your answer with the mark scheme and award yourself the marks. Be strict.</p>
+<div class="mb"><span class="lab">Marks awarded</span><div class="stepper"><span>−</span><b>6</b><span>+</span></div><span style="color:var(--mut)">out of 7</span><span class="tag">0</span><span class="tag">4</span><span class="tag">Full marks</span></div>
+<span class="hand note">AI marking of typed answers is coming later</span></div>
+<div class="only-ai" style="display:none"><div class="aim" style="margin-top:0"><span class="stp" style="position:absolute;right:16px;top:-14px">AI MARKED</span><h4>AI's mark: 6 out of 7</h4>
+<ul><li><span class="ok">✓</span> (a) correct derivative, M1 A1</li><li><span class="ok">✓</span> (b) solved for x = 1 and x = 2, M1 A1</li><li><span class="ok">✓</span> both y-values correct, A1</li><li><span class="ok">✓</span> used the second derivative, M1</li><li><span class="no">✗</span> found the minimum but didn't give its coordinates (2, 7), A0</li></ul></div>
+<div class="mb"><span class="lab">Your final mark (you can change the AI's)</span><div class="stepper"><span>−</span><b>6</b><span>+</span></div><span style="color:var(--mut)">out of 7</span><span class="btn d" style="font-size:15px;padding:8px 16px;margin-left:auto">Save mark</span></div></div>
+</div></div></div></div><div class="scr s-mark"><div class="card bar r3"><span class="btn">‹ Back</span><div><div class="t1">Timed test · 30 minutes</div><div class="t2">A-Level Mathematics · Timed test</div></div><span class="sp"></span><span class="btn d">Save results</span></div>
+<div class="head2"><h1 class="px">Mark your work</h1><span class="hand">you took 27 minutes of 30. be strict, only give marks the mark scheme allows</span></div>
+<div class="card fx only-ai" style="display:none;padding:14px 20px;margin-bottom:28px;align-items:center;gap:14px;background:#fbf8f1;border-style:dashed"><span class="stp">AI MARKED</span><span style="font-size:15.5px">The AI has suggested a mark for each typed answer. Check them and change any you disagree with.</span></div>
+<div class="card ruled mkc r2"><i class="t tc"></i><div class="qh" style="margin-bottom:6px"><h2 class="px" style="font-size:24px">Question 1</h2><span class="tag" style="font-size:13px">Algebra and functions</span><span class="pill">3 marks</span></div>
+<div class="mkg"><div><h5>Your answer</h5><div class="mini-ans">f(x) = (x − 2)(x² + 2x + 3)<br>so x − 2 is a factor</div></div><div><h5>Mark scheme</h5><div class="mini-ms">Shows f(2) = 0, M1<br>Correct quadratic factor, A1<br>States conclusion, A1</div></div>
+<div><h5>Marks awarded</h5><div class="stepper" style="width:max-content"><span>−</span><b>3</b><span>+</span></div><div class="only-ai" style="display:none;margin-top:14px;font-size:14px;line-height:1.45"><span class="stp" style="transform:rotate(-2deg);margin-bottom:6px">AI MARKED</span><br>Full marks. Clear factor theorem and conclusion.</div></div></div></div>
+<div class="card ruled mkc r4"><i class="t tc"></i><div class="qh" style="margin-bottom:6px"><h2 class="px" style="font-size:24px">Question 2</h2><span class="tag" style="font-size:13px">Trigonometry</span><span class="pill">5 marks</span></div>
+<div class="mkg"><div><h5>Your answer</h5><div class="mini-ans">sin θ = 0.5<br>θ = 30°, 150°</div></div><div><h5>Mark scheme</h5><div class="mini-ms">Rearranges to sin θ = ½, M1<br>θ = 30°, A1<br>θ = 150°, A1<br>No extra answers in range, B1</div></div>
+<div><h5>Marks awarded</h5><div class="stepper" style="width:max-content"><span>−</span><b>4</b><span>+</span></div><div class="only-ai" style="display:none;margin-top:14px;font-size:14px;line-height:1.45"><span class="stp" style="transform:rotate(-2deg);margin-bottom:6px">AI MARKED</span><br>4 of 5. The answer is right but the working for the rearrangement is missing, so M1 is not shown.</div></div></div></div>
+<div class="card mbar r3"><b>2 of 8 marked</b><span>· 7 out of 8 marks so far</span><span class="sp"></span><span class="btn d">Save results</span></div></div><div class="scr s-result"><div class="card bar r3"><span class="btn">‹ Back</span><div><div class="t1">Timed test · 30 minutes</div><div class="t2">A-Level Mathematics · Timed test</div></div><span class="sp"></span></div>
+<div class="card hero ruled r3" style="--sc:#9cc3e6"><i class="t tc"></i><div><span class="hand" style="font-size:24px">timed test complete</span><div class="big">26<span> / 36</span></div></div>
+<div><div style="display:flex;align-items:center;gap:18px"><span class="gr">B</span><div><div style="font-family:var(--hf);font-size:26px">72%</div><div style="color:var(--mut);font-size:15px">indicative grade · 27 min of 30</div></div></div>
+<div class="pbar"><i style="width:72%"></i></div><span class="btn d">More practice</span><span class="btn">Open the Data Hub</span><span class="btn">↻ Try these again</span>
+<p style="color:var(--mut);font-size:14px;margin-top:14px">Saved to your Data Hub. The grade is only a guide, real grade boundaries change every series.</p></div></div>
+<div class="g3"><div class="card mc ruled r1"><i class="t tl"></i><h3 class="px">By topic</h3><div class="ml">
+<span>Algebra and functions</span><span class="mt"><i style="width:100%;background:#8fcaa0"></i></span><b>3/3</b>
+<span>Trigonometry</span><span class="mt"><i style="width:80%;background:#8fcaa0"></i></span><b>8/10</b>
+<span>Sequences and series</span><span class="mt"><i style="width:50%;background:#f4cf6a"></i></span><b>2/4</b>
+<span>Differentiation</span><span class="mt"><i style="width:86%;background:#8fcaa0"></i></span><b>6/7</b>
+<span>Kinematics</span><span class="mt"><i style="width:40%;background:#ef9a8f"></i></span><b>2/5</b>
+<span>Data presentation</span><span class="mt"><i style="width:71%;background:#f4cf6a"></i></span><b>5/7</b></div></div>
+<div class="card mc ruled r4"><i class="t tr"></i><h3 class="px">By difficulty</h3><div class="ml">
+<span>Easy</span><span class="mt"><i style="width:100%;background:#8fcaa0"></i></span><b>6/6</b>
+<span>Medium</span><span class="mt"><i style="width:65%;background:#f4cf6a"></i></span><b>11/17</b>
+<span class="hide-ai">Hard</span><span class="mt hide-ai"><i style="width:69%;background:#f4cf6a"></i></span><b class="hide-ai">9/13</b><span class="only-ai" style="display:none">Hard</span><span class="mt only-ai" style="display:none"><i style="width:80%;background:#8fcaa0"></i></span><b class="only-ai" style="display:none">8/10</b>
+<span class="only-ai" style="display:none">Extra hard</span><span class="mt only-ai" style="display:none"><i style="width:33%;background:#ef9a8f"></i></span><b class="only-ai" style="display:none">1/3</b></div>
+<p class="only-ai" style="display:none;color:var(--mut);font-size:14px;margin-top:16px">Official questions: 21/28 (75%) · AI questions: 5/8 (63%), kept separate in your Data Hub.</p></div></div>
+<div class="card rv r2"><i class="t tc"></i><h3 class="px">Review</h3><span class="hand" style="font-size:20px">open a question to see your answer next to the mark scheme</span>
+<div class="rr"><span class="n">Question 1</span><span class="tag">Algebra and functions</span><span class="sp"></span><span class="rag" style="background:#8fcaa0"></span><b>3/3</b><span>›</span></div>
+<div class="rr"><span class="n">Question 2</span><span class="tag">Trigonometry</span><span class="stp">AI MADE</span><span class="stp">AI MARKED</span><span class="sp"></span><span class="rag" style="background:#8fcaa0"></span><b>4/5</b><span>›</span></div>
+<div class="rr"><span class="n">Question 3</span><span class="tag">Sequences and series</span><span class="sp"></span><span class="rag" style="background:#f4cf6a"></span><b>2/4</b><span>›</span></div>
+<div class="rr"><span class="n">Question 4</span><span class="tag">Kinematics</span><span class="stp">AI MARKED</span><span class="sp"></span><span class="rag" style="background:#ef9a8f"></span><b>2/5</b><span>›</span></div>
+<div class="rr"><span class="n">Question 5</span><span class="tag">Differentiation</span><span class="stp">AI MADE</span><span class="stp">AI MARKED</span><span class="sp"></span><span class="rag" style="background:#8fcaa0"></span><b>6/7</b><span>›</span></div>
+</div></div></div></body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><script src="sel.js"></script><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&family=Young+Serif&display=swap" rel="stylesheet"><link rel="stylesheet" href="r5.css"><style>
+body{padding:24px 56px 70px;--bg:color-mix(in srgb,#9cc3e6 42%,#f6f3ec);--line:rgba(40,70,110,.09)}
+.top{display:flex;align-items:center;gap:26px}.logo{display:flex;align-items:center;gap:10px;font-size:24px}.logo b{width:38px;height:38px;border:2px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font-size:18px;background:var(--card);font-weight:400}
+.nav{display:flex;gap:4px}.nav span{font-family:var(--hf);font-size:18px;padding:8px 16px;border-radius:6px}.nav .on{background:var(--ink);color:var(--card)}
+.r{margin-left:auto;display:flex;gap:12px;align-items:center}.av{width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--hf);font-size:19px;background:var(--card)}
+.crumb{margin-top:30px;font-size:15px;color:var(--mut)}
+h1{font-size:48px;margin:6px 0 0}.lede{font-size:27px}
+.subs{display:flex;gap:12px;margin-top:24px;align-items:center}.subs .tag{font-size:15px;padding:8px 14px}.subs .on{background:var(--ink);color:var(--card)}
+.subs .on .dot{border-color:var(--card)}
+.sect{display:flex;gap:0;margin-top:26px;border:2px solid var(--ink);border-radius:6px;width:max-content;background:var(--card);box-shadow:3px 3px 0 var(--ink);display:none}
+.ai .sect{display:flex}
+.sect span{font-family:var(--hf);font-size:17px;padding:10px 20px;border-right:2px solid var(--ink);display:flex;gap:10px;align-items:center}.sect span:last-child{border-right:0}.sect .on{background:var(--ink);color:var(--card)}
+.mini{font-family:'Nunito';font-size:10.5px;font-weight:800;letter-spacing:1px;border:1.5px dashed currentColor;border-radius:3px;padding:2px 6px}
+.wrap{display:grid;grid-template-columns:320px 1fr;gap:44px;margin-top:34px;align-items:start}
+.side{display:flex;flex-direction:column;gap:34px}
+.side .card{padding:22px 22px 24px}.side h3{font-size:21px;margin-bottom:6px}
+.band{height:12px;background:var(--sc);border-bottom:2px solid var(--ink);margin:-22px -22px 16px;border-radius:2px 2px 0 0}
+.side p{color:var(--mut);font-size:14.5px;line-height:1.5}
+.side .btn{font-size:16px;padding:9px 16px;margin-top:14px}
+.fg{margin-top:16px}.fg label{display:block;font-size:13px;color:var(--mut);margin-bottom:7px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+.fg .opts{display:flex;flex-wrap:wrap;gap:7px}.fg .tag{font-size:13.5px;padding:4px 10px}.fg .on{background:var(--ink);color:var(--card)}
+.prog{display:flex;justify-content:space-between;align-items:baseline;margin-top:4px}.prog b{font-family:var(--hf);font-weight:400;font-size:34px}
+.pbar{height:12px;border:2px solid var(--ink);border-radius:3px;margin-top:8px;overflow:hidden;background:var(--card)}.pbar i{display:block;height:100%;width:22%;background:var(--sc)}
+.yr{display:flex;align-items:baseline;gap:14px;margin:0 0 20px}.yr h2{font-size:30px}.yr .hand{font-size:23px}
+.grp{margin-bottom:44px}
+.papers{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.p{padding:20px 20px 18px;min-height:200px;display:flex;flex-direction:column}
+.p .code{font-size:13px;color:var(--mut);font-weight:700;letter-spacing:.3px}
+.p h4{font-family:var(--hf);font-weight:400;font-size:21px;margin:10px 0 4px;line-height:1.2}
+.p .m{font-size:14px;color:var(--mut)}
+.p .foot{margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.score{display:flex;align-items:center;gap:10px}.score b{font-family:var(--hf);font-weight:400;font-size:26px}
+.gr{border:2px solid var(--ink);border-radius:50%;width:38px;height:38px;display:grid;place-items:center;font-family:var(--hf);font-size:17px;transform:rotate(-6deg)}
+.g-a{background:#cfe8d5}.g-b{background:#f7e3a6}
+.st{font-size:14px;color:var(--mut)}.st.ip{color:var(--ink);font-weight:800}
+.p .btn{font-size:15px;padding:7px 14px;box-shadow:2px 2px 0 var(--ink)}
+.pen{position:absolute;right:14px;top:14px;font-family:'Caveat';font-size:22px;color:#b5534a;transform:rotate(6deg)}
+/* AI shelf */
+.shelf{display:none;border:2px dashed var(--mut);border-radius:8px;padding:28px 28px 30px;margin-top:10px;background:rgba(255,253,248,.45)}
+.ai .shelf{display:block}
+.shelf .yr{margin-bottom:6px}.shelf>p{color:var(--mut);font-size:15px;margin-bottom:24px}
+.stamp{position:absolute;right:16px;top:16px;font-size:11.5px;letter-spacing:1.2px;font-weight:800;border:2px dashed var(--ink);border-radius:4px;padding:3px 8px;transform:rotate(4deg);background:var(--card)}
+.shelf .p{background:#fbf8f1}
+.shelf .p h4{margin-top:12px}
+</style></head><body>
+<div class="top"><div class="logo px"><b>P</b>PurePastPapers</div><div class="nav"><span>Home</span><span class="on">Past papers</span><span>Practice</span><span>Data Hub</span></div><div class="r"><span class="tag">31 answered</span><div class="av">D</div></div></div>
+<div class="crumb">Home &nbsp;/&nbsp; Past papers &nbsp;/&nbsp; Mathematics</div>
+<h1 class="px">Past papers</h1><p class="lede hand">every exam series for your subjects, sit one against the clock</p>
+<div class="subs"><span class="tag on"><i class="dot" style="background:#9cc3e6"></i>Mathematics</span><span class="tag"><i class="dot" style="background:#c7b5ea"></i>Further Maths</span><span class="tag"><i class="dot" style="background:#f3a37f"></i>Physics</span><span class="tag"><i class="dot" style="background:#8fcaa0"></i>Geography</span></div>
+<div class="sect"><span class="on">Official papers</span><span>AI past papers <i class="mini">AI MADE</i></span><span>AI predicted papers <i class="mini">AI MADE</i></span></div>
+<div class="wrap" style="--sc:#9cc3e6">
+<div class="side">
+<div class="card ruled r3"><i class="t tc"></i><div class="band"></div><h3 class="px">Mathematics</h3><p>A-Level · Edexcel 9MA0</p><p style="margin-top:10px">Question papers and mark schemes are published by Edexcel. Open the paper there, sit it here against the clock, then log your marks.</p><span class="btn">Edexcel past papers ↗</span></div>
+<div class="card r2"><i class="t tl"></i><h3 class="px">Find a paper</h3>
+<div class="fg"><label>Year</label><div class="opts"><span class="tag on">All</span><span class="tag">2024</span><span class="tag">2023</span><span class="tag">2022</span><span class="tag">2021</span><span class="tag">2020</span><span class="tag">2019</span><span class="tag">2018</span></div></div>
+<div class="fg"><label>Paper</label><div class="opts"><span class="tag on">All</span><span class="tag">Paper 1</span><span class="tag">Paper 2</span><span class="tag">Paper 3</span></div></div>
+<div class="fg"><label>Status</label><div class="opts"><span class="tag on">All</span><span class="tag">Not started</span><span class="tag">In progress</span><span class="tag">Completed</span></div></div></div>
+<div class="card r1"><i class="t tr"></i><h3 class="px">Completed</h3><div class="prog"><span class="st">papers sat</span><b>5 <span style="font-size:20px;color:var(--mut)">of 24</span></b></div><div class="pbar"><i></i></div></div>
+</div>
+<div class="main">
+<div class="grp"><div class="yr"><h2 class="px">2024</h2><span class="hand">June series</span></div><div class="papers">
+<div class="card ruled p r2"><i class="t tc"></i><span class="code">9MA0/01 · PAPER 1</span><h4>Pure Mathematics 1</h4><span class="m">100 marks · 2 hours</span><div class="foot"><div class="score"><b>71%</b><span class="gr g-a">A</span></div><span class="btn">Review</span></div></div>
+<div class="card ruled p r4"><i class="t tc"></i><span class="code">9MA0/02 · PAPER 2</span><h4>Pure Mathematics 2</h4><span class="m">100 marks · 2 hours</span><div class="foot"><span class="st ip">In progress · 54 min left</span><span class="btn d">Resume</span></div></div>
+<div class="card ruled p r1"><i class="t tc"></i><span class="code">9MA0/03 · PAPER 3</span><h4>Statistics and Mechanics</h4><span class="m">100 marks · 2 hours</span><div class="foot"><span class="st">Not started</span><span class="btn">Sit paper</span></div></div>
+</div></div>
+<div class="grp"><div class="yr"><h2 class="px">2023</h2><span class="hand">June series</span></div><div class="papers">
+<div class="card ruled p r3"><i class="t tc"></i><span class="code">9MA0/01 · PAPER 1</span><h4>Pure Mathematics 1</h4><span class="m">100 marks · 2 hours</span><div class="foot"><div class="score"><b>64%</b><span class="gr g-b">B</span></div><span class="btn">Review</span></div></div>
+<div class="card ruled p r1"><i class="t tc"></i><span class="code">9MA0/02 · PAPER 2</span><h4>Pure Mathematics 2</h4><span class="m">100 marks · 2 hours</span><div class="foot"><div class="score"><b>58%</b><span class="gr g-b">B</span></div><span class="btn">Review</span></div></div>
+<div class="card ruled p r4"><i class="t tc"></i><span class="code">9MA0/03 · PAPER 3</span><h4>Statistics and Mechanics</h4><span class="m">100 marks · 2 hours</span><div class="foot"><span class="st">Not started</span><span class="btn">Sit paper</span></div></div>
+</div></div>
+<div class="grp"><div class="yr"><h2 class="px">2022</h2><span class="hand">June series</span></div><div class="papers">
+<div class="card ruled p r4"><i class="t tc"></i><span class="code">9MA0/01 · PAPER 1</span><h4>Pure Mathematics 1</h4><span class="m">100 marks · 2 hours</span><div class="foot"><span class="st">Not started</span><span class="btn">Sit paper</span></div></div>
+<div class="card ruled p r2"><i class="t tc"></i><span class="code">9MA0/02 · PAPER 2</span><h4>Pure Mathematics 2</h4><span class="m">100 marks · 2 hours</span><div class="foot"><span class="st">Not started</span><span class="btn">Sit paper</span></div></div>
+<div class="card ruled p r3"><i class="t tc"></i><span class="code">9MA0/03 · PAPER 3</span><h4>Statistics and Mechanics</h4><span class="m">100 marks · 2 hours</span><div class="foot"><div class="score"><b>67%</b><span class="gr g-b">B</span></div><span class="btn">Review</span></div></div>
+</div></div>
+<div class="shelf"><div class="yr"><h2 class="px">AI papers</h2><span class="hand">kept on their own shelf, never mixed in with official papers</span></div><p>Written by AI in the style of Edexcel 9MA0. Useful extra practice, but not real exam papers.</p><div class="papers">
+<div class="card ruled p r1"><span class="stamp">AI MADE</span><span class="code">AI PAST PAPER · SET A</span><h4>Pure Mathematics 1</h4><span class="m">100 marks · 2 hours</span><div class="foot"><span class="st">Not started</span><span class="btn">Sit paper</span></div></div>
+<div class="card ruled p r3"><span class="stamp">AI MADE</span><span class="code">AI PAST PAPER · SET A</span><h4>Statistics and Mechanics</h4><span class="m">100 marks · 2 hours</span><div class="foot"><div class="score"><b>62%</b><span class="gr g-b">B</span></div><span class="btn">Review</span></div></div>
+<div class="card ruled p r2"><span class="stamp">AI MADE</span><span class="code">PREDICTED · JUNE 2025</span><h4>Pure Mathematics 1</h4><span class="m">100 marks · 2 hours · a prediction, not an official paper</span><div class="foot"><span class="st">Not started</span><span class="btn">Sit paper</span></div></div>
+</div></div>
+</div></div>
+</body></html>
