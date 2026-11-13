@@ -900,7 +900,7 @@ legend {
 
 /* ── question content (rendered question_html / mark_scheme_html) ── */
 .qcontent {
-  font: 17px/1.62 var(--font-display);
+  font: 17px/1.62 var(--font);
   overflow-wrap: anywhere;
 }
 .qcontent > * + * {
@@ -1063,7 +1063,7 @@ legend {
   color: var(--ink-2);
 }
 .qcard__text {
-  font: 15.5px/1.5 var(--font-display);
+  font: 15.5px/1.5 var(--font);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
