@@ -1388,3 +1388,90 @@
 .result-cards .meterlist {
   margin-top: 14px;
 }
+
+/* ── coming-soon AI pages (inner-pages/8) ── */
+.stamp-soon {
+  display: inline-block;
+  vertical-align: middle;
+  border: 2px dashed var(--ink);
+  padding: 6px 14px;
+  font: 800 14px/1 var(--font);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+  background: var(--surface);
+}
+.soon-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+.soon-main,
+.soon-side > .card {
+  padding: 34px 34px 30px;
+}
+.soon-main__head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.soon-main__icon {
+  width: 62px;
+  height: 62px;
+  flex: none;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.soon-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.soon-points li {
+  display: flex;
+  gap: 14px;
+  font-size: 17px;
+  align-items: flex-start;
+}
+.soon-points .icon {
+  color: var(--good);
+  flex: none;
+  margin-top: 2px;
+}
+.soon-side .phases {
+  margin-top: 12px;
+}
+.phases li.is-here {
+  background: var(--warn-wash);
+  border-radius: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.phases__title .hand {
+  font-size: 19px;
+  color: var(--ink-2);
+  margin-left: 4px;
+}
+.soon-note {
+  text-align: right;
+  font-size: 21px;
+  color: var(--ink-2);
+}
+@media (max-width: 900px) {
+  .soon-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+:root[data-theme='dark'] .phases li.is-here {
+  background: color-mix(in srgb, var(--warn) 22%, var(--surface));
+}
+.phases__title .hand {
+  white-space: nowrap;
+}
