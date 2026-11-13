@@ -851,3 +851,94 @@
   white-space: nowrap;
   padding: 8px 14px;
 }
+
+/* ── sign up / log in ── */
+.auth-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 60px;
+  align-items: start;
+  padding-top: 20px;
+}
+.auth-page--login {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
+}
+.auth-page__intro h1 {
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.05;
+}
+.auth-page__intro > .hand {
+  font-size: 26px;
+  margin: 8px 0 40px;
+}
+.auth-page__get {
+  padding: 28px 30px 26px;
+}
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+.steps li {
+  display: flex;
+  gap: 14px;
+}
+.steps li > i {
+  flex: none;
+  font-style: normal;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  font: 400 14px/1 var(--font-display);
+}
+.steps h3 {
+  font-size: 19px;
+}
+.steps p {
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+.auth {
+  max-width: none;
+  padding: 34px 34px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.auth__title {
+  font-size: 34px;
+  line-height: 1.1;
+}
+.auth__note {
+  text-align: center;
+  font-size: 19px;
+}
+.password {
+  position: relative;
+  display: block;
+}
+.password .input {
+  width: 100%;
+  padding-right: 64px;
+}
+.password .linkbtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: underline;
+}
+.segbar--strength i[data-on] {
+  background: var(--good);
+}
+@media (max-width: 900px) {
+  .auth-page,
+  .auth-page--login {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+}
