@@ -167,7 +167,7 @@ export async function mount(element, context) {
       <h1 tabindex="-1">Paused</h1>
       <p>The clock stopped at ${at}. The questions are hidden while you’re paused, so the timing stays fair.</p>
       <button type="button" class="btn btn--primary btn--lg" data-pause>${icon('play', { size: 18 })} Resume</button>
-      <p class="small muted">Your answers are saved in this browser.</p>
+      <p class="small muted">${api.isSignedIn() ? 'Your answers are saved in this browser.' : 'Your guest answers last until you refresh or close this page.'}</p>
     </section>`;
   };
 
@@ -220,7 +220,7 @@ export async function mount(element, context) {
           <i class="tape tape--c" aria-hidden="true"></i>
           <label class="field">
             <span class="card__title">Your answer</span>
-            <span class="hand">optional: type here, it saves as you go, or answer on paper</span>
+            <span class="hand">${api.isSignedIn() ? 'optional: type here, it saves as you go, or answer on paper' : 'optional: type here or answer on paper; guest answers are temporary'}</span>
             <textarea class="textarea" data-answer="${id}" placeholder="Type your working or essay here.">${session.answers[id] || ''}</textarea>
           </label>
         </section>
@@ -378,6 +378,7 @@ export async function mount(element, context) {
       element,
       html`<div class="runner">
         ${bar({ stage: 'result' })}
+        ${!api.isSignedIn() ? banner(html`Your results are temporary. <a href="#/signup?next=%2Fhub">Create a free account</a> to save and track your marks and progress in this browser.`) : ''}
         <section class="card ruled result-hero">
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="result-hero__left">
@@ -403,10 +404,10 @@ export async function mount(element, context) {
             ${meter(result.percentage, rag, `Score ${fmtPercent(result.percentage)}`)}
             <div class="row">
               <a class="btn btn--primary" href="${backHref}">${session.kind === 'full_paper' ? 'Back to the paper' : 'More practice'}</a>
-              <a class="btn" href="#/hub">Open the Data Hub</a>
+              ${api.isSignedIn() ? html`<a class="btn" href="#/hub">Open the Data Hub</a>` : html`<a class="btn" href="#/signup?next=%2Fhub">Create a free account</a>`}
               ${questions.length ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} ${session.kind === 'full_paper' ? 'Sit it again' : 'Try these again'}</button>` : ''}
             </div>
-            <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> Saved in this browser and added to your Data Hub.</p>
+            <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? 'Saved in this browser and added to your Data Hub.' : 'Temporary guest result; create an account to save it in this browser.'}</p>
           </div>
         </section>
         ${scored.length > 1 || history.length > 1
@@ -494,7 +495,7 @@ export async function mount(element, context) {
     await finishSession(session, { questions, subject, paper, totalAwarded: session.total_awarded });
     draw();
     window.scrollTo(0, 0);
-    toast('Results saved to your Data Hub.', { type: 'success' });
+    toast(api.isSignedIn() ? 'Results saved to your Data Hub.' : 'Results are temporary. Create a free account to save them.', { type: 'success' });
   }
 
   async function finishAnswering() {

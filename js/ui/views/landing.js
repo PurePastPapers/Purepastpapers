@@ -22,17 +22,17 @@ export function roadmap() {
 }
 
 const FEATURE_CARDS = [
-  { icon: 'file', title: 'Official past papers', text: 'Every exam series for your specification, linked to the paper and mark scheme. Time yourself and log your mark.' },
-  { icon: 'check', title: 'Learned-topic filter', text: 'Tick the spec points you’ve covered. Only questions where every topic is one you know will show up.' },
+  { icon: 'file', title: 'Official past papers', text: 'Browse available exam papers and mark schemes for your specification. Time yourself and log your mark.' },
+  { icon: 'check', title: 'Filter by spec point', text: 'Choose the exact points you’ve covered, such as 2.1–2.6, and find questions tagged to them.' },
   { icon: 'clock', title: 'Customisable practice', text: 'Timed mini-papers for STEM, or pick essay questions by set text and marks for humanities.' },
   { icon: 'list', title: 'Difficulty levels', text: 'Easy, medium, hard or mixed, so practice matches where you are.' },
-  { icon: 'chart', title: 'Data Hub', text: 'Every question and paper you’ve done, scores over time, and red, amber or green for each topic.' },
+  { icon: 'chart', title: 'Data Hub', text: 'With a free account, track marks, mistakes and progress in your browser.' },
   { icon: 'target', title: 'Your subjects, your colours', text: 'Pick your subjects once, set up for your boards and specs, and give each one its own colour.' },
 ];
 
 const STEPS = [
-  { title: 'Choose subjects', text: 'Pick your level, subjects and boards.' },
-  { title: 'Tick what you’ve learned', text: 'Add topics as you cover them in class.' },
+  { title: 'Choose a subject', text: 'Pick your level, subject and exam board.' },
+  { title: 'Select what you’ve learned', text: 'Choose the exact spec points you’ve covered.' },
   { title: 'Practise your way', text: 'Full papers, single questions or a custom test.' },
 ];
 
@@ -76,42 +76,43 @@ export async function mount(element, context) {
     html`<section class="lp-hero" aria-labelledby="lp-title">
         <div>
           <span class="tag">Free for ${levelSet.join(', ').replace(/, ([^,]*)$/, ' & $1')}</span>
-          <h1 id="lp-title" tabindex="-1">Past papers that fit what you’ve learned.</h1>
+          <h1 id="lp-title" tabindex="-1">Past paper questions, down to the exact spec point.</h1>
           <p class="lp-hero__lede">
-            Every official past paper for your subjects, practice that only uses topics you’ve covered, and a Data Hub that shows how you’re doing.
+            Find questions for the topics you’ve covered. Filter by specification point, exam board, subject, year and difficulty.
           </p>
+          <p class="lp-hero__reassurance">Browse questions and use filters for free. Create a free account to track marks, mistakes and progress in this browser.</p>
           <div class="lp-hero__actions">
-            <a class="btn btn--primary btn--lg" href="#/signup">Get started →</a>
+            <a class="btn btn--primary btn--lg" href="#/subjects?welcome=1">Browse questions →</a>
             <button type="button" class="btn btn--lg" data-demo>Try the demo</button>
           </div>
         </div>
         <div class="lp-art" aria-hidden="true">
           <div class="card ruled lp-art__learned tilt-1">
             <i class="tape tape--l"></i><i class="tape tape--r"></i>
-            <h3>Physics · topics I’ve learned</h3>
+            <h3>Example · spec points I’ve learned</h3>
             <div class="row">
-              <span class="tag is-on">✓ Mechanics</span><span class="tag is-on">✓ Materials</span><span class="tag is-on">✓ Waves</span>
-              <span class="tag">Circuits</span><span class="tag">Fields</span><span class="tag is-on">✓ Further mechanics</span>
+              <span class="tag is-on">✓ 2.1</span><span class="tag is-on">✓ 2.2</span><span class="tag is-on">✓ 2.3</span>
+              <span class="tag is-on">✓ 2.4</span><span class="tag is-on">✓ 2.5</span><span class="tag is-on">✓ 2.6</span><span class="tag">2.7</span>
             </div>
           </div>
           <div class="card lp-art__qs tilt-4">
             <i class="tape tape--c"></i>
             <div class="lp-art__q">
-              <p><span>Physics · Mechanics</span><span>6 marks · Hard</span></p>
+              <p><span>Example question</span><span>6 marks · Hard</span></p>
               <p>A ball is projected at 18 m s⁻¹ at 35° above the horizontal from the edge of a cliff…</p>
             </div>
             <div class="lp-art__q">
-              <p><span>Physics · Materials</span><span>4 marks · Medium</span></p>
+              <p><span>Example question</span><span>4 marks · Medium</span></p>
               <p>Explain why the extension of the wire is not proportional to the load beyond point P.</p>
             </div>
           </div>
-          <p class="lp-art__arrow hand">${arrow()}<span>only questions you can answer</span></p>
+          <p class="lp-art__arrow hand">${arrow()}<span>find your spec points</span></p>
         </div>
       </section>
 
       <section class="lp-section" id="features" aria-labelledby="features-title">
         <h2 id="features-title">What’s inside</h2>
-        <p class="hand">Four sections, always kept separate, so you know what you’re practising.</p>
+        <p class="hand">Find the right questions and practise your way.</p>
         <div class="lp-grid">
           ${FEATURE_CARDS.map(
             (feature, index) =>
@@ -185,7 +186,7 @@ export async function mount(element, context) {
 
       <section class="lp-close" aria-labelledby="close-title">
         <h2 id="close-title">Ready when you are.</h2>
-        <p class="hand">Free to use. Just past papers, done properly.</p>
+        <p class="hand">Browse and filter for free. Save your progress with a free account.</p>
         <a class="btn btn--primary btn--lg" href="#/signup">Create a free account →</a>
       </section>`,
   );

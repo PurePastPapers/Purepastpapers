@@ -204,7 +204,7 @@ export async function mount(element, context) {
     const entry = await openModal({
       title: 'Log a score',
       body: html`<div class="stack">
-        <p class="muted">Already sat this paper on paper? Record your mark to add it to your Data Hub.</p>
+        <p class="muted">${api.isSignedIn() ? 'Already sat this paper on paper? Record your mark to add it to your Data Hub.' : 'Already sat this paper on paper? Record your mark temporarily, then create a free account to save it in this browser.'}</p>
         <label class="field">
           <span class="field__label">Marks out of ${paper.total_marks}</span>
           <input class="input" type="number" name="marks" min="0" max="${paper.total_marks}" step="1" inputmode="numeric" required />
@@ -245,7 +245,7 @@ export async function mount(element, context) {
       grade: gradeFor(percentage, subject.grade_scheme, paper.grade_boundaries),
     });
     setHtml($('[data-attempts]', element), attemptsCard());
-    toast(`Saved: ${entry.marks}/${paper.total_marks} (${fmtPercent(percentage)}).`, { type: 'success' });
+    toast(`${api.isSignedIn() ? 'Saved' : 'Recorded temporarily'}: ${entry.marks}/${paper.total_marks} (${fmtPercent(percentage)}).`, { type: 'success' });
   });
 
   on(element, 'click', '[data-delete-attempt]', async (event, button) => {

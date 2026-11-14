@@ -45,7 +45,8 @@ function requireProgress() {
 }
 
 async function persist({ silent = false } = {}) {
-  await adapter.saveProgress(user.user_id, progress);
+  // Guest selections and attempts live only in memory until an account is created.
+  if (user) await adapter.saveProgress(user.user_id, progress);
   if (!silent) events.emit('progress', progress);
 }
 
@@ -54,7 +55,7 @@ async function persist({ silent = false } = {}) {
 /** Restores the logged-in user (if any). Call once at start-up. */
 export async function init() {
   user = await adapter.currentUser();
-  progress = user ? normalise(await adapter.loadProgress(user.user_id), user.user_id) : null;
+  progress = user ? normalise(await adapter.loadProgress(user.user_id), user.user_id) : emptyProgress('guest');
   learnedCache = null;
   return user;
 }
@@ -65,8 +66,9 @@ export const backendInfo = () => ({ id: adapter.id, label: adapter.label, syncsA
 
 /** `initialProgress` (optional) pre-fills the new account — used by the demo account. */
 export async function signUp({ initialProgress = null, ...details }) {
+  const guestProgress = !user ? progress : null;
   user = await adapter.signUp(details);
-  progress = normalise(initialProgress, user.user_id);
+  progress = normalise(initialProgress || guestProgress, user.user_id);
   learnedCache = null;
   await adapter.saveProgress(user.user_id, progress);
   events.emit('auth', user);
@@ -98,7 +100,7 @@ export async function signOut() {
   if (user?.is_demo) await adapter.deleteUser(user.user_id);
   else await adapter.signOut();
   user = null;
-  progress = null;
+  progress = emptyProgress('guest');
   learnedCache = null;
   events.emit('auth', null);
 }
@@ -114,7 +116,7 @@ export const changePassword = (currentPassword, newPassword) => adapter.changePa
 export async function deleteAccount() {
   await adapter.deleteUser(user.user_id);
   user = null;
-  progress = null;
+  progress = emptyProgress('guest');
   learnedCache = null;
   events.emit('auth', null);
 }

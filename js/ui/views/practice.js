@@ -109,8 +109,8 @@ export async function mount(element, context) {
   if (progress.preferences.lastSubject !== subjectId) api.setPreference('lastSubject', subjectId);
 
   // ── state (kept for the browser tab, so filters survive opening a question and coming back) ──
-  const storageKey = `${APP.storageNamespace}:practice:${user.user_id}:${subjectId}`;
-  let state = defaults();
+  const storageKey = `${APP.storageNamespace}:practice:${user?.user_id || 'guest'}:${subjectId}`;
+  let state = { ...defaults(), ...(user ? {} : { learnedOnly: false, mode: 'individual' }) };
   try {
     state = { ...state, ...JSON.parse(sessionStorage.getItem(storageKey) || '{}') };
   } catch {
@@ -402,7 +402,7 @@ export async function mount(element, context) {
         </div>
         <p class="hand testpreview__note">the clock starts when you press start</p>
         <p class="small muted">
-          At the end you mark your answers against the mark scheme, and the result is saved to your Data Hub.
+          ${user ? 'At the end you mark your answers against the mark scheme, and the result is saved to your Data Hub.' : 'At the end you mark your answers against the mark scheme. Create a free account to save your result in this browser.'}
           ${lockedCount ? html`${plural(lockedCount, 'question')} left out because ${lockedCount === 1 ? 'it needs' : 'they need'} topics you have not ticked.` : ''}
         </p>
       </div>
@@ -610,6 +610,7 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${head(subject.subject)}
+      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="#/signup?next=%2Fpractice">Create a free account</a> to save it in this browser.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subjectId, (id) => `#/practice?subject=${id}`)}
         ${modes.length > 1
@@ -647,7 +648,7 @@ export async function mount(element, context) {
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
     const kept = { mode: state.mode, selected: state.selected };
-    state = { ...defaults(), ...kept };
+    state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept };
   }));
   on(element, 'click', '[data-page]', (event, button) => {
     state.page = Math.max(1, Number(button.dataset.page));

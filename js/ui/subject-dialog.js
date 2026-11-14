@@ -62,7 +62,7 @@ export function subjectDialog({ subject, mode, leaves = 0 }) {
       ${mode === 'add' && subject.has_written_exam
         ? html`<fieldset class="step">
             <legend><i>3</i>What have you learned so far?</legend>
-            <p class="step__hint">Practice only gives you questions on topics you’ve ticked.</p>
+            <p class="step__hint">Use the learned-topic filter in practice to limit questions to the topics you’ve ticked.</p>
             <div class="opts">
               <label class="opt"><input type="radio" name="learned" value="tick" checked /><span>Tick topics now</span><small>opens the topic list next</small></label>
               <label class="opt"><input type="radio" name="learned" value="all" /><span>I’ve learned everything</span><small>ticks all ${leaves} spec points</small></label>

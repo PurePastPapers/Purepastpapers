@@ -96,6 +96,7 @@ export async function mount(element, context) {
         ${context.query.welcome && !enrolled.length
           ? banner(html`<strong>Welcome.</strong> Start by adding your subjects below. Next you will tick the topics you have learned so far.`)
           : ''}
+        ${!api.isSignedIn() ? banner(html`Browse and filter for free. Your guest choices last until you refresh or close this page. <a href="#/signup">Create a free account</a> to save progress in this browser.`) : ''}
         <section class="dash-block" style="margin-top:10px" aria-labelledby="now-title">
           <div class="section-title">
             <h2 id="now-title">Studying now</h2>

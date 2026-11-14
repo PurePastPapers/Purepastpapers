@@ -119,6 +119,7 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
         : html`<p class="small muted">${subject.no_written_exam}</p>`}
       <footer class="row row--tight">
         ${subject.has_written_exam ? html`<a class="btn btn--sm btn--primary" href="#/subject/${id}">Topics learned</a>` : ''}
+        ${subject.has_written_exam ? html`<a class="btn btn--sm" href="#/practice?subject=${id}">Browse questions</a>` : ''}
         <button type="button" class="btn btn--sm" data-edit="${id}">Edit</button>
         <button type="button" class="linkbtn small subject-card__remove" data-unenrol="${id}">Remove</button>
       </footer>
