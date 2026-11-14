@@ -167,6 +167,42 @@ test('mark status uses latest valid explicit mark, including zero', () => {
   assert.deepEqual(matches(pool, { markStatus: 'full' }, ctx), ['both']);
 });
 
+test('progress selections form a union, including saved zero and overlapping marked states', () => {
+  const ctx = { specIndex, latestAttempts: latestByQuestion([
+    { question_id: 'nine', marks_awarded: 0, max_marks: 4, timestamp: '2026-01-01' },
+    { question_id: 'ten', marks_awarded: 3, max_marks: 4, timestamp: '2026-01-01' },
+    { question_id: 'both', marks_awarded: 4, max_marks: 4, timestamp: '2026-01-01' },
+    { question_id: 'cross', marks_awarded: null, max_marks: 4, timestamp: '2026-01-01' },
+  ]) };
+  assert.deepEqual(matches(pool, { markStatuses: ['unmarked', 'lost'] }, ctx), ['nine', 'ten', 'cross', 'topic', 'foreign']);
+  assert.deepEqual(matches(pool, { markStatuses: ['marked', 'lost'] }, ctx), ['nine', 'ten', 'both']);
+  assert.deepEqual(matches(pool, { markStatuses: new Set(['lost', 'full']) }, ctx), ['nine', 'ten', 'both']);
+  assert.deepEqual(matches(pool, { markStatuses: ['unmarked', 'marked'] }, ctx), pool.map((item) => item.question_id));
+  assert.deepEqual(matches(pool, { markStatuses: [], markStatus: 'lost' }, ctx), pool.map((item) => item.question_id));
+});
+
+test('progress unions intersect with topic, difficulty, marks and exam year filters', () => {
+  const bank = [
+    q('unmarked-match', ['A_29'], [], { difficulty: 'easy', marks: 2 }),
+    q('zero-match', ['A_210']),
+    q('full-excluded', ['A_29']),
+    q('topic-excluded', ['A_211']),
+    q('difficulty-excluded', ['A_29'], [], { difficulty: 'hard' }),
+    q('marks-excluded', ['A_29'], [], { marks: 8 }),
+    q('year-excluded', ['A_29'], [], { paper_id: 'P24' }),
+  ];
+  const ctx = { specIndex, papersById: new Map([['P25', { year: 2025 }], ['P24', { year: 2024 }]]),
+    latestAttempts: new Map([
+      ['zero-match', { marks_awarded: 0, max_marks: 4 }],
+      ['full-excluded', { marks_awarded: 4, max_marks: 4 }],
+    ]) };
+  const criteria = { focus: ['A_29', 'A_210'], selectionMode: 'strict', difficulties: ['easy', 'medium'],
+    markBands: [{ min: 2, max: 5 }], years: [2025], markStatuses: ['unmarked', 'lost'] };
+  for (const sortBy of ['newest', 'oldest', 'marks_desc', 'difficulty', 'shuffle']) {
+    assert.deepEqual(matches(bank, { ...criteria, sortBy, shuffleSeed: 42 }, ctx).sort(), ['unmarked-match', 'zero-match']);
+  }
+});
+
 test('date order uses paper metadata and stable shuffle covers the entire filtered set', () => {
   const papersById = new Map([
     ['P24', { year: 2024, series: 'June', question_ids: ['old1', 'old2'] }],

@@ -30,7 +30,25 @@ const assert = require('node:assert/strict');
   };
   await route('/practice?subject=EDX_ALEVEL_MATH_9MA0');
   await p.locator('[data-reset-filters]').click();
-  await p.locator('[data-toggle-tree]').click();
+  const layout = await p.evaluate(() => {
+    const controls = document.querySelector('[data-controls]').getBoundingClientRect();
+    const results = document.querySelector('[data-output]').getBoundingClientRect();
+    return { filterBottom: controls.bottom, resultTop: results.top,
+      filterLeft: controls.left, resultLeft: results.left,
+      filterWidth: controls.width, resultWidth: results.width };
+  });
+  assert(layout.filterBottom <= layout.resultTop, 'filters precede question results');
+  assert(Math.abs(layout.filterLeft - layout.resultLeft) <= 1 &&
+    Math.abs(layout.filterWidth - layout.resultWidth) <= 1, 'filter panel spans the result width');
+  assert.deepEqual(await p.locator('[data-multi="difficulties"]').evaluateAll(es => es.map(e => e.dataset.value)),
+    ['easy', 'medium', 'hard', 'extra_hard']);
+  assert.equal(await p.locator('[data-sort] option[value="shuffle"]').count(), 0);
+  assert.equal(await p.locator('[data-reshuffle]').count(), 0);
+  assert.equal(await p.locator('[data-shuffle-questions]').count(), 1);
+  assert.deepEqual(await p.locator('[data-progress]').evaluateAll(es => es.map(e => [e.dataset.progress, e.type])),
+    [['unmarked', 'checkbox'], ['marked', 'checkbox'], ['lost', 'checkbox'], ['full', 'checkbox']]);
+  const section = p.locator('.tree__section--filter').first();
+  if (await section.getAttribute('open') === null) await section.locator(':scope > summary').click();
   await p.locator('.tree__topic summary').first().click();
   await p.locator('[data-multi="difficulties"][data-value="easy"]').click();
   assert(await p.locator('.tree__topic').first().getAttribute('open') !== null, 'topic stayed open');
@@ -44,9 +62,15 @@ const assert = require('node:assert/strict');
   console.log('easy+medium:13, topic disclosures preserved');
   const ids = () => p.locator('.qlist [data-open]').evaluateAll(es => es.map(e => e.dataset.open));
   const before = await ids();
-  await p.locator('[data-sort]').selectOption('shuffle');
+  await p.locator('[data-shuffle-questions]').click();
   const shuffled = await ids();
   assert.deepEqual([...shuffled].sort(), [...before].sort());
+  const shuffledState = await p.evaluate(() => {
+    const key = Object.keys(localStorage).find(k => k.includes(':practice:'));
+    const { sort, shuffled } = JSON.parse(localStorage.getItem(key));
+    return { sort, shuffled };
+  });
+  assert.deepEqual(shuffledState, { sort: 'newest', shuffled: true });
   const first = p.locator('[data-open]').first();
   const id = await first.getAttribute('data-open');
   await first.click();
@@ -84,18 +108,36 @@ const assert = require('node:assert/strict');
   await p.waitForSelector('[data-reset-filters]');
   assert.equal(await p.locator(`[data-answer="${id}"]`).inputValue(), 'unsaved regression answer');
   console.log('reset preserved progress, set, open question/scheme and drafts across reload');
-  await p.locator('[data-filter="markStatus"]').selectOption('unmarked');
+  await p.locator('[data-progress="unmarked"]').check();
   const uid = await p.locator('[data-open]').first().getAttribute('data-open');
-  await p.locator(`[data-open="${uid}"]`).click();
-  await p.locator(`[data-scheme="${uid}"]`).click();
+  if (!await p.locator(`[data-answer="${uid}"]`).count()) await p.locator(`[data-open="${uid}"]`).click();
+  if (!await p.locator(`[data-mark="${uid}"]`).count()) await p.locator(`[data-scheme="${uid}"]`).click();
   await p.locator(`[data-mark="${uid}"]`).selectOption('0');
   await p.locator(`[data-save-mark="${uid}"]`).click();
   await p.locator('[data-mark-confirmation]:visible').waitFor();
   assert(await p.locator(`[data-open="${uid}"]`).count());
   await p.waitForTimeout(1400);
   assert.equal(await p.locator(`[data-open="${uid}"]`).count(), 0);
-  await p.locator('[data-filter="markStatus"]').selectOption('lost');
+  await p.locator('[data-progress="unmarked"]').uncheck();
+  await p.locator('[data-progress="lost"]').check();
   assert(await p.locator(`[data-open="${uid}"]`).count());
+  const lostOnly = await ids();
+  await p.locator('[data-progress="unmarked"]').check();
+  const progressUnion = await ids();
+  assert(progressUnion.length > lostOnly.length && lostOnly.every(value => progressUnion.includes(value)),
+    'unmarked and lost marks match either selected progress state');
+  await p.reload();
+  await p.waitForSelector('[data-reset-filters]');
+  assert(await p.locator('[data-progress="unmarked"]').isChecked());
+  assert(await p.locator('[data-progress="lost"]').isChecked());
+  assert.deepEqual(await ids(), progressUnion);
+  await p.locator('[data-clear-chip="markStatuses"][data-chip-value="lost"]').click();
+  assert(await p.locator('[data-progress="unmarked"]').isChecked());
+  assert(!await p.locator('[data-progress="lost"]').isChecked());
+  assert.equal(await p.locator(`[data-open="${uid}"]`).count(), 0);
+  await p.locator('[data-progress="lost"]').check();
+  await p.locator('[data-progress="unmarked"]').uncheck();
+  console.log('progress checkbox union persisted across reload; removing one chip preserved the other');
   await p.locator(`[data-mark="${uid}"]`).selectOption('1');
   await p.locator(`[data-save-mark="${uid}"]`).click();
   await p.waitForTimeout(1300);

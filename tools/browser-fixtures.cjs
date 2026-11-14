@@ -42,16 +42,11 @@ const assert = require('node:assert/strict');
     t: e.textContent
   }))));
   await p.locator('[data-multi="bands"]').nth(1).click();
-  await p.locator('[data-filter="markStatus"]').selectOption('unmarked');
-  await p.getByText('More filters', {
-    exact: true
-  }).click();
-  await p.getByText('Paper & content filters', {
-    exact: true
-  }).click();
+  await p.locator('[data-progress="unmarked"]').check();
   await p.locator('[data-multi="years"][data-value="2024"]').click();
   const before = await p.locator('.qlist [data-open]').evaluateAll(es => es.map(e => e.dataset.open));
-  await p.locator('[data-toggle-tree]').click();
+  const section = p.locator('.tree__section--filter').first();
+  if (await section.getAttribute('open') === null) await section.locator(':scope > summary').click();
   await p.locator('.tree__topic summary').first().click();
   const points = await p.evaluate(async () => {
     const {
@@ -79,7 +74,7 @@ const assert = require('node:assert/strict');
     .sort(), [...before].sort());
   assert.equal(await p.locator('[data-multi="years"][aria-pressed="true"]').count(), 1);
   assert.equal(await p.locator('[data-multi="difficulties"][aria-pressed="true"]').count(), 2);
-  assert.equal(await p.locator('[data-filter="markStatus"]').inputValue(), 'unmarked');
+  assert(await p.locator('[data-progress="unmarked"]').isChecked());
   console.log(
     'Synthetic dated-paper UI fixture: spec points AND easy/medium AND mark band AND 2024 AND unmarked; results',
     actual);

@@ -17,15 +17,42 @@ const KIND_TAGS = { option: 'Option', set_text: 'Set text', skill: 'Skill' };
  *   disabledHint  tooltip for disabled rows
  *   pointMeta   (pointId) → markup shown at the end of a spec point row
  *   topicMeta   (topic, { selected, total }) → markup shown at the end of a topic row
+ *   filterLayout  use collapsible section rows in the question-browser filter panel
  *   onChange    (selected: Set, changedIds: string[], checked: boolean) → void
  * @returns {{ getSelected(): Set<string>, refreshMeta(): void, setSelected(ids): void }}
  */
-export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'selected', disabledHint = '', pointMeta = null, topicMeta = null, onChange = () => {} }) {
+export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'selected', disabledHint = '', pointMeta = null, topicMeta = null, filterLayout = false, onChange = () => {} }) {
   const state = new Set(selected);
   const usable = (id) => !enabled || enabled.has(id);
   const leavesOf = (topic) => (topic.points.length ? topic.points.map((point) => point.id) : [topic.id]);
   const topics = spec.sections.flatMap((section) => section.topics);
   const usableLeaves = topics.flatMap(leavesOf).filter(usable);
+
+  const sectionTopics = (section) => section.topics.map(
+    (topic) => html`<details class="tree__topic" data-topic="${topic.id}">
+      <summary>
+        <span class="tree__caret">${icon('chevronRight', { size: 16 })}</span>
+        <input type="checkbox" class="tree__check" data-topic-check="${topic.id}" aria-label="${topic.title}: select every spec point" />
+        <span class="tree__code">${topic.code}</span>
+        <span class="tree__title">
+          ${topic.title} ${KIND_TAGS[topic.kind] ? html`<span class="tag">${KIND_TAGS[topic.kind]}</span>` : ''}
+        </span>
+        <span class="tree__meta" data-topic-meta="${topic.id}"></span>
+      </summary>
+      <ul class="tree__points">
+        ${topic.points.map((point) => html`<li class="tree__point ${usable(point.id) ? '' : 'is-disabled'}" data-point-row="${point.id}" title="${usable(point.id) ? '' : disabledHint}">
+          <label>
+            <input type="checkbox" class="tree__check" data-point="${point.id}" ${usable(point.id) ? '' : 'disabled'} />
+            <span class="tree__code">${point.code}</span>
+            <span class="tree__title">
+              ${point.title} ${point.tier ? html`<span class="tag">${point.tier}</span>` : ''}
+            </span>
+          </label>
+          <span class="tree__meta" data-point-meta="${point.id}"></span>
+        </li>`)}
+      </ul>
+    </details>`,
+  );
 
   setHtml(
     root,
@@ -41,42 +68,23 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
       </div>
       ${spec.sections.map(
         (section) =>
-          html`<section class="tree__section" data-section="${section.id}">
+          filterLayout ? html`<details class="tree__section tree__section--filter" data-section="${section.id}">
+            <summary>
+              <input type="checkbox" class="tree__check tree__section-check" data-section-check="${section.id}" aria-label="${section.title}: select every spec point" />
+              <span class="tree__section-title">${section.title}</span>
+              <span class="tree__section-count">${section.topics.length} ${section.topics.length === 1 ? 'topic' : 'topics'}</span>
+              <span class="tree__section-caret">${icon('chevronRight', { size: 16 })}</span>
+            </summary>
+            ${section.note ? html`<p class="small muted">${section.note}</p>` : ''}
+            <div class="tree__topics">${sectionTopics(section)}</div>
+          </details>` : html`<section class="tree__section" data-section="${section.id}">
             <header class="tree__section-head">
               <h3 class="h3">${section.title}</h3>
               ${section.note ? html`<span class="small muted">${section.note}</span>` : ''}
               <span class="spacer"></span>
               <button type="button" class="linkbtn small" data-section-bulk="${section.id}">Select section</button>
             </header>
-            ${section.topics.map(
-              (topic) =>
-                html`<details class="tree__topic" data-topic="${topic.id}">
-                  <summary>
-                    <span class="tree__caret">${icon('chevronRight', { size: 16 })}</span>
-                    <input type="checkbox" class="tree__check" data-topic-check="${topic.id}" aria-label="${topic.title}: select every spec point" />
-                    <span class="tree__code">${topic.code}</span>
-                    <span class="tree__title">
-                      ${topic.title} ${KIND_TAGS[topic.kind] ? html`<span class="tag">${KIND_TAGS[topic.kind]}</span>` : ''}
-                    </span>
-                    <span class="tree__meta" data-topic-meta="${topic.id}"></span>
-                  </summary>
-                  <ul class="tree__points">
-                    ${topic.points.map(
-                      (point) =>
-                        html`<li class="tree__point ${usable(point.id) ? '' : 'is-disabled'}" data-point-row="${point.id}" title="${usable(point.id) ? '' : disabledHint}">
-                          <label>
-                            <input type="checkbox" class="tree__check" data-point="${point.id}" ${usable(point.id) ? '' : 'disabled'} />
-                            <span class="tree__code">${point.code}</span>
-                            <span class="tree__title">
-                              ${point.title} ${point.tier ? html`<span class="tag">${point.tier}</span>` : ''}
-                            </span>
-                          </label>
-                          <span class="tree__meta" data-point-meta="${point.id}"></span>
-                        </li>`,
-                    )}
-                  </ul>
-                </details>`,
-            )}
+            ${sectionTopics(section)}
           </section>`,
       )}
     </div>`,
@@ -84,6 +92,14 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
 
   function sync() {
     for (const box of $$('[data-point]', root)) box.checked = state.has(box.dataset.point);
+    if (filterLayout) for (const section of spec.sections) {
+      const leaves = section.topics.flatMap(leavesOf).filter(usable);
+      const count = leaves.filter((id) => state.has(id)).length;
+      const box = $(`[data-section-check="${CSS.escape(section.id)}"]`, root);
+      box.checked = leaves.length > 0 && count === leaves.length;
+      box.indeterminate = count > 0 && count < leaves.length;
+      box.disabled = leaves.length === 0;
+    }
     for (const topic of topics) {
       const leaves = leavesOf(topic).filter(usable);
       const count = leaves.filter((id) => state.has(id)).length;
@@ -119,6 +135,10 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
     apply(leavesOf(topic), box.checked);
   });
   on(root, 'click', '[data-tree-bulk]', (event, button) => apply(usableLeaves, button.dataset.treeBulk === 'all'));
+  on(root, 'change', '[data-section-check]', (event, box) => {
+    const section = spec.sections.find((candidate) => candidate.id === box.dataset.sectionCheck);
+    apply(section.topics.flatMap(leavesOf), box.checked);
+  });
   on(root, 'click', '[data-section-bulk]', (event, button) => {
     const section = spec.sections.find((candidate) => candidate.id === button.dataset.sectionBulk);
     const leaves = section.topics.flatMap(leavesOf).filter(usable);
@@ -128,10 +148,11 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
   on(root, 'input', '[data-tree-search]', (event, input) => {
     const query = input.value.trim().toLowerCase();
     for (const section of spec.sections) {
+      const sectionHit = filterLayout && query && section.title.toLowerCase().includes(query);
       let sectionVisible = false;
       for (const topic of section.topics) {
         const element = $(`[data-topic="${CSS.escape(topic.id)}"]`, root);
-        const topicHit = !query || `${topic.code} ${topic.title}`.toLowerCase().includes(query);
+        const topicHit = !query || sectionHit || `${topic.code} ${topic.title}`.toLowerCase().includes(query);
         let anyPoint = false;
         for (const point of topic.points) {
           const hit = topicHit || `${point.code} ${point.title}`.toLowerCase().includes(query);
@@ -142,7 +163,9 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
         if (query) element.open = topicHit || anyPoint;
         sectionVisible ||= !element.hidden;
       }
-      $(`[data-section="${CSS.escape(section.id)}"]`, root).hidden = !sectionVisible;
+      const sectionElement = $(`[data-section="${CSS.escape(section.id)}"]`, root);
+      sectionElement.hidden = !sectionVisible;
+      if (filterLayout && query) sectionElement.open = sectionVisible;
     }
   });
 

@@ -147,7 +147,8 @@ function sortMatches(matches, sortBy, specIndex, papersById, shuffleSeed) {
  *                 required assessed/crossover point to be inside each active selection.
  *   curriculumPoints Iterable<string> primary assessed points covered by a verified
  *                 year/chapter view; ANDed with any explicit search selection.
- *   markStatus    'all' | 'unmarked' | 'marked' | 'lost' | 'full'
+ *   markStatuses  Iterable<string>   unmarked | marked | lost | full; any may match, empty = all
+ *   markStatus    'all' | 'unmarked' | 'marked' | 'lost' | 'full' (legacy single selection)
  *   sortBy        'newest' | 'oldest' | 'shuffle' | 'paper_order' | 'spec' | 'difficulty' | 'marks_asc' | 'marks_desc'
  *   shuffleSeed   stable seed for the shuffle order
  *   search        string             matches question text, number and paper id
@@ -160,6 +161,8 @@ export function filterQuestions(questions, criteria = {}, context) {
   const sourceTypes = nonEmpty(toSet(criteria.sourceTypes));
   const difficulties = nonEmpty(toSet(criteria.difficulties));
   const statuses = nonEmpty(toSet(criteria.statuses));
+  const markStatuses = nonEmpty(toSet(criteria.markStatuses ??
+    (criteria.markStatus && criteria.markStatus !== 'all' ? [criteria.markStatus] : null)));
   const paperIds = nonEmpty(toSet(criteria.paperIds));
   const years = nonEmpty(toSet(criteria.years));
   const series = nonEmpty(toSet(criteria.series));
@@ -207,9 +210,9 @@ export function filterQuestions(questions, criteria = {}, context) {
       }
     }
     if (statuses && !statuses.has(questionStatus(question, latestAttempts))) continue;
-    if (criteria.markStatus && criteria.markStatus !== 'all') {
+    if (markStatuses) {
       const status = markStatus(question, latestAttempts);
-      if (criteria.markStatus === 'marked' ? status === 'unmarked' : status !== criteria.markStatus) continue;
+      if (!markStatuses.has(status) && !(markStatuses.has('marked') && status !== 'unmarked')) continue;
     }
     if (search) {
       const specText = [...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]
