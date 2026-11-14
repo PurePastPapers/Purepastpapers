@@ -217,7 +217,7 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (search) {
       const specText = [...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]
         .map((id) => specIndex.label(id)).join(' ');
-      const haystack = `${question.question_number} ${question.part_label || ''} ${question.paper_id || ''} ${question.content?.question_html || ''} ${specText}`
+      const haystack = `${question.question_number} ${question.part_label || ''} ${question.paper_id || ''} ${question.content?.question_html || ''} ${question.content?.preview_text || ''} ${question.content?.search_text || ''} ${question.section_label || ''} ${specText}`
         .replace(/<[^>]+>/g, ' ')
         .toLowerCase();
       if (!haystack.includes(search)) continue;

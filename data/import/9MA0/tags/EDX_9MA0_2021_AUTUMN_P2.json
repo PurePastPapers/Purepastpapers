@@ -1,0 +1,667 @@
+{
+ "paper_id": "EDX_9MA0_2021_AUTUMN_P2",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "nth term formula",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the common difference of an arithmetic series from first and 21st terms.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "sum formula",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the sum of the first 500 terms of the arithmetic series.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "range of quadratic",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the range of a quadratic function.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "composite evaluation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Evaluate a composite function at a given value.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "invert rational function",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the inverse of a rational function.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "combine logs then solve linear equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use laws of logarithms to solve a log equation in y.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "approximate sin and cos 2theta, expand",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use small angle approximations to write 4 sin(theta/2) + 3 cos 2theta as a quadratic in theta.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.2",
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "differentiate polynomial twice",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the first and second derivatives of a quartic.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "verify stationary and justify inflection",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Verify a stationary point and show it is a point of inflection.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "angle in terms of straight line",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write the angle of a sector in terms of theta.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sector area combination",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show the area of a composite sector logo equals r^2(3theta+pi)/2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "arc lengths and radii",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the perimeter of the composite sector logo.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "tangent equation from derivative",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use differentiation to find the equation of the tangent to a cubic at a given point.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute x=0",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Verify the tangent meets the curve again on the y-axis.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "area between curve and line",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact area enclosed between a cubic and its tangent by integration.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "implicit differentiation with product",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Differentiate implicitly to find dy/dx for a curve containing an xy term.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "combine normal gradient and point conditions",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use a point and the normal at that point to find two unknown constants.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5",
+      "EDX_MATH_PURE_SEQ_4.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "recognise alternating geometric series from cos(180n)",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that an infinite sum of (3/4)^n cos(180n) deg from n=2 equals 9/28.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4",
+      "EDX_MATH_PURE_EXP_6.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "take logs of power law",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that T = a l^b can be written in log form.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "gradient and intercept from line then antilog",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use a log graph of two points to find the constants of a power-law model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "interpret constant",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Interpret the constant a in the pendulum model.",
+     "confidence": "medium",
+     "note": "Interpretation: a is the period for a pendulum of length 1 m"
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_ALG_2.9"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sketch modulus graph with transformation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Sketch y = k - |2x - 3k| marking the maximum point and axis intercepts.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.5",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "modulus inequality in terms of k",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the inequality k - |2x - 3k| > x - k in terms of k using set notation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "stretch and reflect minimum point",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the minimum point of a transformed graph of f(x/2) in terms of k.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "substitution with change of limits",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the substitution u = 1 + sqrt x to rewrite an integral in terms of u.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.2",
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "integrate in u and evaluate with logs",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Hence evaluate the integral exactly in the form A - B ln 5.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5",
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.4",
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "parametric differentiation with cosec",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find dy/dx for parametric equations x = sin 2theta, y = cosec^3 theta.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3",
+      "EDX_MATH_PURE_TRIG_5.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "solve for theta then evaluate exact gradient",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact gradient at the point where y = 8.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "construct differential equation from rates",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show a differential equation for depth of water in a tank given inflow and outflow rates.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "separate variables, integrate, rearrange to exponential",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the differential equation with an initial condition to show h = A + B e^(-kt).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret limiting value",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Determine from the model whether the tank ever becomes full.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "key": "q15",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "R cos(theta+alpha) form",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express 2cos theta - sin theta in the form R cos(theta + alpha).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6",
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "use R form to find maximum and time",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the maximum height and first time it occurs in a model of a water wheel.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "solve model equation inside a revolution, find duration",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the total time the paddle point is below the water level in one revolution.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.9",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "model refinement",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain how the model should be refined to allow for a changing water level.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

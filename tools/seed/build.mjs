@@ -26,6 +26,16 @@ import gcseHumanities from './specs/gcse-humanities.mjs';
 import questionSets from './questions/index.mjs';
 import { toHtml } from './markup.mjs';
 
+// Specifications whose printed codes and order were checked against the board's document.
+const SPEC_META = {
+  EDX_ALEVEL_MATH_9MA0: {
+    specification_version: '9MA0-issue-4-2020',
+    official_source_url: 'https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/a-level-l3-mathematics-specification-issue4.pdf',
+    order_status: 'verified',
+    order_verified_at: '2026-11-14',
+  },
+};
+
 const DATA = join(fileURLToPath(new URL('../..', import.meta.url)), 'data');
 const FORCE = process.argv.includes('--force');
 const SPEC_SOURCES = { ...alevelStem, ...alevelHumanities, ...gcseStem, ...gcseHumanities };
@@ -108,7 +118,11 @@ function expandSpec(subject) {
     }
     return section;
   });
-  return { subject_id: subject.subject_id, sections };
+  const meta = SPEC_META[subject.subject_id];
+  if (!meta) return { subject_id: subject.subject_id, sections };
+  // Verified specifications carry their source and an explicit canonical leaf order.
+  const point_order = sections.flatMap((s) => s.topics.flatMap((t) => (t.points.length ? t.points.map((p) => p.id) : [t.id])));
+  return { subject_id: subject.subject_id, ...meta, point_order, sections };
 }
 
 // ───────────────────────────────── official paper catalogue ─────────────────────────────────

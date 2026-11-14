@@ -1,0 +1,700 @@
+{
+ "paper_id": "EDX_9MA0_2022_JUNE_P1",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single vertical translation of a point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the image of a given point under the transformation y = f(x) + 2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "modulus transformation of one point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the image of a given point under the transformation y = |f(x)|.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "combined stretch and translation of a point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the image of a given point under y = 3f(x - 2) + 2.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "routine factor theorem",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the factor theorem on a cubic with an unknown constant to find k.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "complete the square on a circle equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the centre and radius of a circle from its general equation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "needs line through origin and centre, exact length",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact distance from the origin to the furthest point on a circle.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "recognise limit of a sum as an integral",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express the limit of a sum as a definite integral.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.4",
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate to a log then simplify with log laws",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Hence show that the limit of the sum equals ln k, finding the constant k.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.4",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "form two simultaneous equations from a model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use two data points to find constants a and b in the model h^2 = at + b.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "evaluate model against given data and justify",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Evaluate a tree height model against a further data point, giving reasons.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read decreasing interval from sketch",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write down the values of x for which f'(x) < 0 from a sketch of a cubic.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret sketch and give set notation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the set of k for which y = k meets the cubic at only one point.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "build cubic from turning point information",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the equation of a cubic from its turning points and intercepts.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(i)",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "algebraic proof by contradiction",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove by contradiction that if pq is even then at least one of p, q is even.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "algebraic deduction using inequality",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that y > 4x given x < 0 and (x + y)^2 < 9x^2 + y^2.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "solve v = 0 in a model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the time T at which the modelled car speed returns to zero.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "product and chain rule then rearrange to given iteration form",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that the maximum speed occurs when t = 26/(1 + ln(t+1)) - 1.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.2",
+      "EDX_MATH_PURE_NUM_9.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "apply iteration formula and interpret",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use a given iteration formula to find t3 and the time to maximum speed.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "compare magnitudes of adjacent sides",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a parallelogram given by two vectors is a rhombus.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1",
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "find an angle or height from vectors then area, exact",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact area of a rhombus given its side vectors.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute t = 0",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the initial number of bees from an exponential model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.2",
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "differentiate model and evaluate rate",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the number of bees was increasing at about 18 thousand per year at t = 10.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.5",
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "hidden quadratic in e^(0.05t) then logs",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the time at which two exponential population models are equal.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute and compare values",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Verify that two curves intersect at x = 1/2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6",
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "cubic with fractional index, divide out known root, solve",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact x coordinate of the second intersection of two curves, showing all working.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integration by parts with limits, exact",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a definite integral of x^3 ln x equals a e^8 + b by showing all working.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(i)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4",
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "standard derivation of the sum formula",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove the formula for the sum of the first n terms of an arithmetic series.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4",
+      "EDX_MATH_PURE_SEQ_4.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "form equation from context",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that saving a total of 64 pounds leads to n^2 - 26n + 160 = 0.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "solve quadratic",
+     "depends_on": [
+      "(ii)(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the quadratic n^2 - 26n + 160 = 0.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)(c)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret roots in context",
+     "depends_on": [
+      "(ii)(a)",
+      "(ii)(b)"
+     ],
+     "standalone": false,
+     "preview": "State the number of weeks to save for the printer, with a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "expand compound angles then form tan x",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that tan x = 3 sqrt(3) given 2 sin(x - 60) = cos(x - 30).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "recognise substitution x = 2 theta then solve",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve 2 sin 2theta = cos(2theta + 30) for 0 <= theta < 180 degrees.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "key": "q15",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "combine sector area, arc length and volume constraint",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the surface area of a sector-based prism toy is S = 0.8r^2 + 1680/r.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "differentiate and set to zero",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use differentiation to find r giving a stationary value of the surface area.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "second derivative test with proof",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Prove by differentiation that the stationary value gives the minimum surface area.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 16,
+   "key": "q16",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_COORD_3.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.6",
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "parametric area, change variable and double angle",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the area under parametric curve R is an integral in t, finding the upper limit.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5",
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "integrate cos^4 and sin^2 terms exactly",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use algebraic integration to find the exact area of region R.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

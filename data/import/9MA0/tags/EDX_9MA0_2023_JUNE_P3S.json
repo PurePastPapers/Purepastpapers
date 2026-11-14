@@ -1,0 +1,394 @@
+{
+ "paper_id": "EDX_9MA0_2023_JUNE_P3S",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "add Venn regions",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P(A) from a Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "use independence and total probability to find p and q",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use independence of B and C to find p and q.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "conditional probability from Venn",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find P(A given not B).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "binomial conditions",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State a condition needed for T to be modelled by a binomial distribution.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "binomial calculator probabilities",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P(T = 6) and P(T < 3) using the binomial model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "second-stage binomial using earlier probability",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability exactly 2 of 5 boxes have fewer than 3 prize packets.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "one-tailed binomial test",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test Kamil's claim that the proportion of prize packets is less than 1/7 at the 5% level.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "large data set cleaning",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain how the rainfall data needs cleaning before calculating statistics.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "mean and standard deviation from sums",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Calculate the mean and standard deviation of daily rainfall from given sums.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "large data set knowledge of sample bias",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Using the large data set, say why the data are unsuitable and how the estimate differs from the annual mean.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "normal probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the proportion of men taller than 180 cm.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "two-tailed test for normal mean",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test the claim that the mean height in region B differs from region A at 5%.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "compute p-value for two-tailed test",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the p-value for the test in part (b).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.3",
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "use conditional model assumption to relate probabilities",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use Tisam's model to show c = 8b/5.",
+     "confidence": "medium",
+     "note": "Probability modelling with conditional probabilities; tag choice between 3.2 and 3.3."
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.3",
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "find all probabilities using proportionality and total probability",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the full probability distribution of X under Tisam's model.",
+     "confidence": "medium",
+     "note": "Dependency on (a) inferred."
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "criticise model using given data",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain why Tisam's model is not suitable for Nav at 100 cm.",
+     "confidence": "medium",
+     "note": "Judgement answer."
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "read frequency density histogram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the histogram to estimate P(10 < T < 30).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DATA_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "judge normality from histogram shape",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State whether a normal model is suitable with reference to the histogram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "integration by parts with general limit",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use algebraic integration to show integral of xe^-x from 0 to n equals 1 - (n+1)e^-n.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_STATS_DATA_2.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "link area under curve to total frequency, unfamiliar setting",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Show that for the model y = kxe^-x, k = 99 to the nearest integer.",
+     "confidence": "medium",
+     "note": "Pure integration tags applied in a stats context; dependency on (c) inferred."
+    },
+    {
+     "label": "(e)(i)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "normal probability calculation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Estimate P(10 < T < 30) using the normal model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)(ii)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DATA_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "definite integral using earlier result and scaling",
+     "depends_on": [
+      "(c)",
+      "(d)"
+     ],
+     "standalone": false,
+     "preview": "Estimate P(10 < T < 30) using the curve y = 99xe^-x and the result of (c).",
+     "confidence": "medium",
+     "note": "Scaling by total frequency and use of tens-of-hours units."
+    },
+    {
+     "label": "(f)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "evaluate limitation of continuous model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State one limitation of Xiang's model.",
+     "confidence": "low",
+     "note": "Unclear which stats point applies; modelling comment judged 3.3."
+    }
+   ]
+  }
+ ]
+}

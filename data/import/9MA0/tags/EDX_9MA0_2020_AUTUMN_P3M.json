@@ -1,0 +1,298 @@
+{
+ "paper_id": "EDX_9MA0_2020_AUTUMN_P3M",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "resolve perpendicular to slope",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the normal reaction on a brick in equilibrium on a rough plane in terms of m and g.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "limiting friction on a slope, show-that",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that the coefficient of friction is 3/4 when the brick is on the point of sliding down.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "reasoning about friction independent of mass",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Explain why a much heavier brick with the same coefficient of friction stays at rest on the plane.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.1",
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "qualitative motion with limiting friction, Newton's first law",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Describe the motion of a brick projected down the slope at 0.5 m/s, giving a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "constant acceleration with vectors",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the velocity of a particle with constant vector acceleration after 2 seconds.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "use j-component to form and solve a quadratic in T",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the time T at which the particle reaches a point with j-coordinate -4.5.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute time into i-component",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the value of lambda, the i-coordinate of the particle at time T.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(i)(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate vector acceleration with initial velocity",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the velocity of a particle at t = 4 given its acceleration and initial velocity.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(i)(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "zero i-component of velocity, solve quadratic",
+     "depends_on": [
+      "(i)(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the time when the particle is moving perpendicular to i.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.2",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "differentiate position, form speed equation, solve",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the time at which a particle with given position vector has speed 5 m/s.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "moments about base of a ladder against a rail",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the force from the rail on a ladder resting on a smooth rail has magnitude 9Mg/25.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1",
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "resolve forces in limiting equilibrium to find friction coefficient",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the coefficient of friction between the ladder and the ground in limiting equilibrium.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "projectile from a cliff, eliminate t and solve for speed",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a ball projected at 45 degrees from the top of a cliff and landing 100 m away has initial speed 28 m/s.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "greatest height of projectile",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the greatest height of the ball above the horizontal ground.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "qualitative effect of air resistance on projection speed",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Compare the new projection speed with 28 when air resistance is included.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "state a further model refinement",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State one further refinement to the projectile model to make it more realistic.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

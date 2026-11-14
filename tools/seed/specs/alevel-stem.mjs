@@ -12,8 +12,7 @@ export default {
   EDX_ALEVEL_MATH_9MA0: [
     { key: 'PURE', title: 'Pure Mathematics', note: 'Papers 1 & 2', topics: [
       ['PURE_PROOF', '1', 'Proof', [
-        '1.1|Proof by deduction, proof by exhaustion and disproof by counter-example',
-        '1.2|Proof by contradiction',
+        '1.1|Proof by deduction, exhaustion, counter-example and contradiction',
       ]],
       ['PURE_ALG', '2', 'Algebra and functions', [
         '2.1|Laws of indices for rational exponents',

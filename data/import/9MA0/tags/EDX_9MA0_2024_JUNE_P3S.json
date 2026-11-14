@@ -1,0 +1,398 @@
+{
+ "paper_id": "EDX_9MA0_2024_JUNE_P3S",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "binomial point and cumulative probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Model sixes in 10 rolls as binomial and find P(X = 3) and P(X < 3).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "second binomial using derived probability",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability of at least 12 days out of 60 with exactly three sixes.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "expected value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Estimate the total number of sixes over 60 days.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "normal approximation with continuity correction",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a normal approximation to estimate P(more than 95 sixes in 60 days).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "interpret gradient",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Interpret the gradient of a regression line for bird height against time.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "one-tail correlation test with critical value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test for negative correlation at 5% significance, stating hypotheses and critical value.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read scatter diagram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Say whether a linear regression line is appropriate given a scatter diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "choose k from curved scatter pattern",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Choose a value of k so the improved model is written in terms of t only.",
+     "confidence": "low",
+     "note": "Unsure of intended spec point; value of k read from the scatter diagram minimum, which I could not verify."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "large data set recall",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Suggest which Large Data Set variable gave the given mean and standard deviation.",
+     "confidence": "medium",
+     "note": "Large data set knowledge; could be 2.3 or 2.4."
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "mean and sd from summary statistics",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Calculate the mean and standard deviation from summary statistics.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "large data set context judgement",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Suggest a month for given mean and low standard deviation of daily temperature, with reason.",
+     "confidence": "medium",
+     "note": "Large data set knowledge tag choice uncertain."
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2",
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "two-tail binomial critical region",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the critical region for a two-tailed binomial test at 5% significance.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read actual significance",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "State the actual significance level of the test.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "compare with critical region",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Comment on the belief given 7 left-handed adults in the sample.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single normal probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the proportion of students jumping above 1.6 m.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "independence assumption",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the assumption needed about H and T to estimate the joint proportion.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2",
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "two normal probabilities multiplied",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Estimate the proportion who jump over 1.6 m and run 1500 m in under 5 minutes.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "inverse normal twice, simultaneous equations",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find mu and sigma from two given normal probabilities.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read Venn diagram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State a pair of mutually exclusive events from a Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "independence equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use independence of B and C to find p.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "conditional probability with maximisation",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the greatest possible value of P(A | B').",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "conditional probability to form equations",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use a given conditional probability to find q and r.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read region from Venn",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P((A union B)' intersect C) from the Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(f)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "set notation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write set notation for the event with probability p.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

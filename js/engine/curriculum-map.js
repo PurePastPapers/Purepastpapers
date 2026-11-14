@@ -43,7 +43,8 @@ export function createCurriculumMap(document, specIndex) {
   const mappedYears = new Set();
   for (const mapping of document.mappings || []) {
     // Provisional records may be kept for review, but cannot appear as verified choices.
-    if (mapping.status !== 'verified') continue;
+    // 'model_reviewed' mappings are sourced and AI-reviewed; they are exposed with that label.
+    if (!['verified', 'model_reviewed'].includes(mapping.status)) continue;
     if (!publicHttpsUrl(mapping.source_url) || !present(mapping.reviewed_at) || !present(mapping.specification_version)) {
       throw new TypeError('Verified mappings require a source, review date and specification version.');
     }
@@ -57,7 +58,7 @@ export function createCurriculumMap(document, specIndex) {
         if (![12, 13].includes(year.year) || mappedYears.has(year.year)) throw new TypeError('Invalid or ambiguous content year.');
         mappedYears.add(year.year);
         validateEntry(year, 'year');
-        years.push({ ...year, source_url: mapping.source_url, specification_version: mapping.specification_version });
+        years.push({ ...year, source_url: mapping.source_url, specification_version: mapping.specification_version, review_status: mapping.status });
       }
     } else if (mapping.type === 'textbook') {
       if (![mapping.id, mapping.publisher, mapping.book, mapping.edition].every(present) || ids.has(mapping.id) || !Array.isArray(mapping.chapters) || !mapping.chapters.length) {
@@ -91,5 +92,6 @@ export function createCurriculumMap(document, specIndex) {
     return { full, partial, visible: new Set([...full, ...partial.keys()]) };
   }
 
-  return { subjectId, years, books, coverage };
+  const modelReviewed = (document.mappings || []).some((mapping) => mapping.status === 'model_reviewed');
+  return { subjectId, years, books, coverage, modelReviewed };
 }

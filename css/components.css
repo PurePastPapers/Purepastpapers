@@ -1206,3 +1206,29 @@ legend {
 .chart-table .table {
   margin-top: 8px;
 }
+
+/* ── source-image slices (imported past-paper parts) ── */
+.qslice {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.qslice + .qslice {
+  margin-top: 8px;
+}
+.qslice img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+}
+.ms .qslice {
+  max-width: 940px !important;
+}
+.question-stem .qslice {
+  border-style: dashed;
+}

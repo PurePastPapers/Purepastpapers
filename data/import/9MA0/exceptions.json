@@ -1,0 +1,510 @@
+{
+ "generated": "2026-11-14",
+ "skipped": [],
+ "exceptions": [
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P1",
+   "question": 5,
+   "part": "",
+   "type": "medium_confidence_tag",
+   "detail": "Equation text scrambled in extraction; read as 3sin(theta)/(2sin(theta)+2cos(theta))."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P1",
+   "question": 11,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Expression scrambled; read as a quotient of binomial powers."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P1",
+   "question": 11,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Substituted value scrambled in extraction; reason presumed to be validity range."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P1",
+   "question": 13,
+   "part": "",
+   "type": "medium_confidence_tag",
+   "detail": "Integrand scrambled; method presumed substitution or parts."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P1",
+   "question": 14,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Long unstructured problem; marks 5 for a range in set notation."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P2",
+   "question": 3,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Parts (i) and (ii) combined into one unit."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P2",
+   "question": 4,
+   "part": "(i)",
+   "type": "medium_confidence_tag",
+   "detail": "Summation expression scrambled in extraction."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P2",
+   "question": 5,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Assumes reason is zero gradient at the start value."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P2",
+   "question": 6,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency on (a) and (b) inferred."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P2",
+   "question": 14,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency on (b) assumed since the result simplifies maximisation."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 1,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Assumes cloud cover recorded in oktas (0 to 8)."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 1,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency inferred."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 3,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Inequality symbol lost in extraction."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 3,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Geometric-type probability is not named in the specification."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 3,
+   "part": "(f)",
+   "type": "medium_confidence_tag",
+   "detail": "Expected answer relates to constant versus increasing probability."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 4,
+   "part": "(g)",
+   "type": "medium_confidence_tag",
+   "detail": "Depends on box plot details in image."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 5,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Conditional approach inferred from the context."
+  },
+  {
+   "paper": "EDX_9MA0_2018_JUNE_P3",
+   "question": 5,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency inferred."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P1",
+   "question": 4,
+   "part": "(b)(ii)",
+   "type": "medium_confidence_tag",
+   "detail": "Reasoning is about smallest |x| for fastest convergence; wording of reason is subtle."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P1",
+   "question": 5,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Unit merges parts (i) and (ii); range of 21/f(x) uses the minimum of f from (a)."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P1",
+   "question": 10,
+   "part": "(ii)",
+   "type": "medium_confidence_tag",
+   "detail": "Could also be tagged to inequalities 2.5."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P1",
+   "question": 13,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Unit merges (i) and (ii)."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P2",
+   "question": 14,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Interpretation of the model; could be framed as 8.7."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P3M",
+   "question": 4,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Smooth contact reasoning; no precise spec point."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P3M",
+   "question": 5,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Combines unit parts (i) and (ii) with (a)"
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P3S",
+   "question": 3,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Pure logarithm content in a statistics question; tagged to pure ids."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P3S",
+   "question": 4,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Basic probability from frequencies; closest point is 3.2."
+  },
+  {
+   "paper": "EDX_9MA0_2019_JUNE_P3S",
+   "question": 4,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "Conditional proportion from table; 3.2 chosen."
+  },
+  {
+   "paper": "EDX_9MA0_2020_AUTUMN_P1",
+   "question": 9,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Domain notation scrambled in extraction; domains not confirmed from image."
+  },
+  {
+   "paper": "EDX_9MA0_2020_AUTUMN_P3S",
+   "question": 2,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "Unsure whether the mark scheme expects reliance on the (c) conclusion or the data set; tag between 2.2 and 2.4."
+  },
+  {
+   "paper": "EDX_9MA0_2021_AUTUMN_P1",
+   "question": 15,
+   "part": "(i)",
+   "type": "medium_confidence_tag",
+   "detail": "Inequality range garbled in extraction; checked against mark scheme cases n=1 to 4"
+  },
+  {
+   "paper": "EDX_9MA0_2021_AUTUMN_P2",
+   "question": 10,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Interpretation: a is the period for a pendulum of length 1 m"
+  },
+  {
+   "paper": "EDX_9MA0_2021_AUTUMN_P3S",
+   "question": 3,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "Depends on knowledge of locations geography and wind circulation; reasoning from image text not checked in detail"
+  },
+  {
+   "paper": "EDX_9MA0_2022_JUNE_P2",
+   "question": 5,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Needs log laws and integral properties, unusual linking; checked wording from scrambled text."
+  },
+  {
+   "paper": "EDX_9MA0_2022_JUNE_P2",
+   "question": 7,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Mark scheme not available; depends on sign of next term."
+  },
+  {
+   "paper": "EDX_9MA0_2022_JUNE_P2",
+   "question": 16,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Possible restriction on x from parameter domain affecting the answer; not verified."
+  },
+  {
+   "paper": "EDX_9MA0_2022_JUNE_P3M",
+   "question": 4,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Could rely on horizontal resolution; tag 8.6 less certain."
+  },
+  {
+   "paper": "EDX_9MA0_2022_JUNE_P3M",
+   "question": 5,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Reason expected: air resistance reduces speed so V must be larger; tag 6.1 only a loose fit."
+  },
+  {
+   "paper": "EDX_9MA0_2022_JUNE_P3S",
+   "question": 2,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "Intended method (binomial B(200,0.015) P(X<6)) inferred; could involve approximation."
+  },
+  {
+   "paper": "EDX_9MA0_2022_JUNE_P3S",
+   "question": 6,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Mark scheme text absent; intended route via log laws assumed."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P1",
+   "question": 4,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Text of f'(x) is scrambled (cos of x/2 assumed); tag unaffected."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P1",
+   "question": 8,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency on (b) assumed from the angle value being reused."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P1",
+   "question": 13,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Could also be tagged 5.9 (trig in context); chose 5.3 with modelling."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P1",
+   "question": 13,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "Reasoning relies on quadratic model of (a) giving negative heights; dependency inferred."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P2",
+   "question": 6,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Tagged with vectors in context; kinematics speed/unit conversion is a prerequisite."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P2",
+   "question": 8,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency on (a) via R cos form inferred; sequence setup is unsignposted."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P2",
+   "question": 9,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Unclear whether parametric (7.5) or Cartesian (7.2) route intended; both valid."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P2",
+   "question": 11,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Q text for form is scrambled; exponent assumed 3/2."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P2",
+   "question": 12,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Answer is judgement-based from the model/graph."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P2",
+   "question": 15,
+   "part": "",
+   "type": "medium_confidence_tag",
+   "detail": "Task is to continue a given partial proof; tags inferred."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P3S",
+   "question": 5,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Probability modelling with conditional probabilities; tag choice between 3.2 and 3.3."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P3S",
+   "question": 5,
+   "part": "(b)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency on (a) inferred."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P3S",
+   "question": 5,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Judgement answer."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P3S",
+   "question": 6,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "Pure integration tags applied in a stats context; dependency on (c) inferred."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P3S",
+   "question": 6,
+   "part": "(e)(ii)",
+   "type": "medium_confidence_tag",
+   "detail": "Scaling by total frequency and use of tens-of-hours units."
+  },
+  {
+   "paper": "EDX_9MA0_2023_JUNE_P3S",
+   "question": 6,
+   "part": "(f)",
+   "type": "low_confidence_tag",
+   "detail": "Unclear which stats point applies; modelling comment judged 3.3."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P1",
+   "question": 6,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency on (a) is for the vertex/sketch only; could be argued standalone."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P1",
+   "question": 15,
+   "part": "(ii)",
+   "type": "medium_confidence_tag",
+   "detail": "Exact product/cases scrambled in text; marks suggest checking the remaining factor pairs."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P2",
+   "question": 8,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Printed identity scrambled; target appears to be 2tan theta sec theta form."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P2",
+   "question": 11,
+   "part": "",
+   "type": "medium_confidence_tag",
+   "detail": "Curve equation scrambled; assumed 8x^2 e^(-3x) from the mark scheme form A + Be^-3."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P2",
+   "question": 12,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Fraction scrambled; assumed 1/(V(25-V))."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P3M",
+   "question": 3,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Condition garbled; assumed mu >= 5/12."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P3M",
+   "question": 5,
+   "part": "(e)",
+   "type": "medium_confidence_tag",
+   "detail": "Modelling point mapped to 7.5 as the nearest topic."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P3S",
+   "question": 2,
+   "part": "(d)",
+   "type": "low_confidence_tag",
+   "detail": "Unsure of intended spec point; value of k read from the scatter diagram minimum, which I could not verify."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P3S",
+   "question": 3,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Large data set knowledge; could be 2.3 or 2.4."
+  },
+  {
+   "paper": "EDX_9MA0_2024_JUNE_P3S",
+   "question": 3,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Large data set knowledge tag choice uncertain."
+  },
+  {
+   "paper": "EDX_9MA0_2025_JUNE_P2",
+   "question": 2,
+   "part": "",
+   "type": "medium_confidence_tag",
+   "detail": "Question text is scrambled by extraction; exact integrand not verified from the image, but clearly a power-term integral."
+  },
+  {
+   "paper": "EDX_9MA0_2025_JUNE_P2",
+   "question": 8,
+   "part": "(c)",
+   "type": "medium_confidence_tag",
+   "detail": "Needs the other minimum values found by solving f'(x)=0 algebraically; exact depends on mark scheme not fully read."
+  },
+  {
+   "paper": "EDX_9MA0_2025_JUNE_P3M",
+   "question": 2,
+   "part": "(e)",
+   "type": "medium_confidence_tag",
+   "detail": "Modelling-assumption comments have no dedicated point; tagged to the mechanics modelling point 6.1."
+  },
+  {
+   "paper": "EDX_9MA0_2025_JUNE_P3M",
+   "question": 4,
+   "part": "(a)",
+   "type": "medium_confidence_tag",
+   "detail": "Exponents in r are scrambled in the extracted text."
+  },
+  {
+   "paper": "EDX_9MA0_2025_JUNE_P3M",
+   "question": 6,
+   "part": "(d)",
+   "type": "medium_confidence_tag",
+   "detail": "The final lines of the question were cut off in the extracted text; preview kept general."
+  },
+  {
+   "paper": "EDX_9MA0_2025_JUNE_P3S",
+   "question": 4,
+   "part": "(f)",
+   "type": "medium_confidence_tag",
+   "detail": "Dependency on (e) is contextual (the same test); could be standalone."
+  }
+ ]
+}

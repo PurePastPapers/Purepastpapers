@@ -1,3 +1,1592 @@
 {
-  "mappings": []
+ "mappings": [
+  {
+   "subject_id": "EDX_ALEVEL_MATH_9MA0",
+   "status": "model_reviewed",
+   "reviewed_at": "2026-11-14",
+   "specification_version": "9MA0-issue-4-2020",
+   "review_note": "Chapter titles from the public PMT solution-bank listing of the Pearson textbooks. Point coverage assigned by AI subject review, not checked page by page against the books.",
+   "id": "9ma0-teaching-years",
+   "type": "year",
+   "source_url": "https://www.physicsandmathstutor.com/maths-revision/solutionbanks/edexcel-pure-maths-year-1/",
+   "years": [
+    {
+     "id": "9ma0-year-12",
+     "title": "Year 12",
+     "year": 12,
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.6",
+       "extent": "partial",
+       "note": "Expanding brackets and factorising only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.11",
+       "extent": "partial",
+       "note": "Modelling with quadratic functions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.7",
+       "extent": "partial",
+       "note": "Cubic, quartic and reciprocal graphs and points of intersection; the modulus function is Year 2"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.9",
+       "extent": "partial",
+       "note": "Single translations, stretches and reflections; combined transformations are Year 2"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_PROOF_1.1",
+       "extent": "partial",
+       "note": "Proof by deduction, exhaustion and counter-example; contradiction is Year 2"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.1",
+       "extent": "partial",
+       "note": "Positive integer powers only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.1",
+       "extent": "partial",
+       "note": "Sine rule, cosine rule and area of a triangle, in degrees"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.3",
+       "extent": "partial",
+       "note": "Graphs and exact values in degrees"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.5",
+       "extent": "partial",
+       "note": "tan = sin/cos and sin^2 + cos^2 = 1 only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.7",
+       "extent": "partial",
+       "note": "Equations in degrees using the Year 1 identities"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.1",
+       "extent": "partial",
+       "note": "Two dimensions only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.4",
+       "extent": "partial",
+       "note": "Two dimensions only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.5",
+       "extent": "partial",
+       "note": "Two-dimensional problems"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.1",
+       "extent": "partial",
+       "note": "Gradient as a limit and first principles for powers of x; second derivative"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.2",
+       "extent": "partial",
+       "note": "Powers of x only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.3",
+       "extent": "partial",
+       "note": "Tangents, normals, stationary points, increasing and decreasing functions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.2",
+       "extent": "partial",
+       "note": "Powers of x only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.3",
+       "extent": "partial",
+       "note": "Definite integrals and areas for polynomial-type curves"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.7",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_SAMP_1.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.2",
+       "extent": "partial",
+       "note": "Scatter diagrams, correlation and interpreting a regression line; change of variable is Year 2"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.2",
+       "extent": "partial",
+       "note": "Venn and tree diagrams without the conditional probability formula"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DIST_4.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.1",
+       "extent": "partial",
+       "note": "Language of testing through the binomial model"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_UNITS_6.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.3",
+       "extent": "partial",
+       "note": "Straight-line motion; vector form is Year 2"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.2",
+       "extent": "partial",
+       "note": "Straight-line motion without resolving forces"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.4",
+       "extent": "partial",
+       "note": "Connected particles and pulleys without resolving"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.5",
+       "extent": "partial",
+       "note": "Forces as vectors and resultants"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.4",
+       "extent": "partial",
+       "note": "Straight-line motion with polynomial functions of time"
+      }
+     ]
+    },
+    {
+     "id": "9ma0-year-13",
+     "title": "Year 13",
+     "year": 13,
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_PROOF_1.1",
+       "extent": "partial",
+       "note": "Proof by contradiction"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.6",
+       "extent": "partial",
+       "note": "Operations with algebraic fractions and improper fractions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.10",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.7",
+       "extent": "partial",
+       "note": "The modulus function and its graphs"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.8",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.9",
+       "extent": "partial",
+       "note": "Combined transformations"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.11",
+       "extent": "partial",
+       "note": "Problems using modulus and composite functions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.1",
+       "extent": "partial",
+       "note": "Rational powers, validity and use with partial fractions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.1",
+       "extent": "partial",
+       "note": "Radian measure, arc length and sector area"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.3",
+       "extent": "partial",
+       "note": "Exact values and graphs in radians"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.7",
+       "extent": "partial",
+       "note": "Equations in radians"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.5",
+       "extent": "partial",
+       "note": "sec^2 and cosec^2 identities"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.8",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.9",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.1",
+       "extent": "partial",
+       "note": "Derivatives of sin and cos from first principles; convex and concave curves"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.2",
+       "extent": "partial",
+       "note": "Exponentials, logarithms and trigonometric functions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.3",
+       "extent": "partial",
+       "note": "Points of inflection and concavity"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.2",
+       "extent": "partial",
+       "note": "Exponential, reciprocal and trigonometric integrals"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.3",
+       "extent": "partial",
+       "note": "Areas between curves and harder definite integrals"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.7",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.8",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.1",
+       "extent": "partial",
+       "note": "Three dimensions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.4",
+       "extent": "partial",
+       "note": "Three dimensions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.5",
+       "extent": "partial",
+       "note": "Three-dimensional geometric problems"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.2",
+       "extent": "partial",
+       "note": "Exponential models, coding and change of variable"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.1",
+       "extent": "partial",
+       "note": "Hypothesis tests for the product moment correlation coefficient"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.2",
+       "extent": "partial",
+       "note": "Set notation and the conditional probability formula"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DIST_4.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DIST_4.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_MOM_9.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.2",
+       "extent": "partial",
+       "note": "Resolving forces, including on inclined planes"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.4",
+       "extent": "partial",
+       "note": "Static particles and rigid bodies, connected particles on inclined planes"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.5",
+       "extent": "partial",
+       "note": "Dynamics in a plane"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.3",
+       "extent": "partial",
+       "note": "Constant acceleration with vectors in two dimensions"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.4",
+       "extent": "partial",
+       "note": "Calculus with vectors and non-polynomial functions"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "subject_id": "EDX_ALEVEL_MATH_9MA0",
+   "status": "model_reviewed",
+   "reviewed_at": "2026-11-14",
+   "specification_version": "9MA0-issue-4-2020",
+   "review_note": "Chapter titles from the public PMT solution-bank listing of the Pearson textbooks. Point coverage assigned by AI subject review, not checked page by page against the books.",
+   "id": "pearson-9ma0-pure-year-1",
+   "type": "textbook",
+   "publisher": "Pearson",
+   "book": "Edexcel A level Mathematics Pure Mathematics Year 1/AS",
+   "edition": "2017 specification edition",
+   "source_url": "https://www.physicsandmathstutor.com/maths-revision/solutionbanks/edexcel-pure-maths-year-1/",
+   "chapters": [
+    {
+     "id": "pearson-9ma0-pure-year-1-ch1",
+     "position": 1,
+     "title": "1. Algebraic expressions",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.6",
+       "extent": "partial",
+       "note": "Expanding brackets and factorising only"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch2",
+     "position": 2,
+     "title": "2. Quadratics",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.11",
+       "extent": "partial",
+       "note": "Modelling with quadratic functions"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch3",
+     "position": 3,
+     "title": "3. Equations and inequalities",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.5",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch4",
+     "position": 4,
+     "title": "4. Graphs and transformations",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.7",
+       "extent": "partial",
+       "note": "Cubic, quartic and reciprocal graphs and points of intersection; the modulus function is Year 2"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.9",
+       "extent": "partial",
+       "note": "Single translations, stretches and reflections; combined transformations are Year 2"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch5",
+     "position": 5,
+     "title": "5. Straight line graphs",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.1",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch6",
+     "position": 6,
+     "title": "6. Circles",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.2",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch7",
+     "position": 7,
+     "title": "7. Algebraic methods",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.6",
+       "extent": "partial",
+       "note": "Algebraic fractions, polynomial division and the factor theorem"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_PROOF_1.1",
+       "extent": "partial",
+       "note": "Proof by deduction, exhaustion and counter-example; contradiction is Year 2"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch8",
+     "position": 8,
+     "title": "8. The binomial expansion",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.1",
+       "extent": "partial",
+       "note": "Positive integer powers only"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch9",
+     "position": 9,
+     "title": "9. Trigonometric ratios",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.1",
+       "extent": "partial",
+       "note": "Sine rule, cosine rule and area of a triangle, in degrees"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.3",
+       "extent": "partial",
+       "note": "Graphs and exact values in degrees"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch10",
+     "position": 10,
+     "title": "10. Trigonometric identities and equations",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.5",
+       "extent": "partial",
+       "note": "tan = sin/cos and sin^2 + cos^2 = 1 only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.7",
+       "extent": "partial",
+       "note": "Equations in degrees using the Year 1 identities"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch11",
+     "position": 11,
+     "title": "11. Vectors",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.1",
+       "extent": "partial",
+       "note": "Two dimensions only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.4",
+       "extent": "partial",
+       "note": "Two dimensions only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.5",
+       "extent": "partial",
+       "note": "Two-dimensional problems"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch12",
+     "position": 12,
+     "title": "12. Differentiation",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.1",
+       "extent": "partial",
+       "note": "Gradient as a limit and first principles for powers of x; second derivative"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.2",
+       "extent": "partial",
+       "note": "Powers of x only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.3",
+       "extent": "partial",
+       "note": "Tangents, normals, stationary points, increasing and decreasing functions"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch13",
+     "position": 13,
+     "title": "13. Integration",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.2",
+       "extent": "partial",
+       "note": "Powers of x only"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.3",
+       "extent": "partial",
+       "note": "Definite integrals and areas for polynomial-type curves"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-1-ch14",
+     "position": 14,
+     "title": "14. Exponentials and logarithms",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_EXP_6.7",
+       "extent": "full"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "subject_id": "EDX_ALEVEL_MATH_9MA0",
+   "status": "model_reviewed",
+   "reviewed_at": "2026-11-14",
+   "specification_version": "9MA0-issue-4-2020",
+   "review_note": "Chapter titles from the public PMT solution-bank listing of the Pearson textbooks. Point coverage assigned by AI subject review, not checked page by page against the books.",
+   "id": "pearson-9ma0-pure-year-2",
+   "type": "textbook",
+   "publisher": "Pearson",
+   "book": "Edexcel A level Mathematics Pure Mathematics Year 2",
+   "edition": "2017 specification edition",
+   "source_url": "https://www.physicsandmathstutor.com/maths-revision/solutionbanks/edexcel-pure-maths-year-2/",
+   "chapters": [
+    {
+     "id": "pearson-9ma0-pure-year-2-ch1",
+     "position": 1,
+     "title": "1. Algebraic methods",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_PROOF_1.1",
+       "extent": "partial",
+       "note": "Proof by contradiction"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.6",
+       "extent": "partial",
+       "note": "Operations with algebraic fractions and improper fractions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.10",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch2",
+     "position": 2,
+     "title": "2. Functions and graphs",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.7",
+       "extent": "partial",
+       "note": "The modulus function and its graphs"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.8",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.9",
+       "extent": "partial",
+       "note": "Combined transformations"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_ALG_2.11",
+       "extent": "partial",
+       "note": "Problems using modulus and composite functions"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch3",
+     "position": 3,
+     "title": "3. Sequences and series",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.6",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch4",
+     "position": 4,
+     "title": "4. Binomial expansion",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_SEQ_4.1",
+       "extent": "partial",
+       "note": "Rational powers, validity and use with partial fractions"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch5",
+     "position": 5,
+     "title": "5. Radians",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.1",
+       "extent": "partial",
+       "note": "Radian measure, arc length and sector area"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.3",
+       "extent": "partial",
+       "note": "Exact values and graphs in radians"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.7",
+       "extent": "partial",
+       "note": "Equations in radians"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch6",
+     "position": 6,
+     "title": "6. Trigonometric functions",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.5",
+       "extent": "partial",
+       "note": "sec^2 and cosec^2 identities"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.8",
+       "extent": "partial",
+       "note": "Proofs using reciprocal functions"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch7",
+     "position": 7,
+     "title": "7. Trigonometry and modelling",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.7",
+       "extent": "partial",
+       "note": "Equations using addition and double angle formulae"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.8",
+       "extent": "partial",
+       "note": "Proofs using addition and double angle formulae"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_TRIG_5.9",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch8",
+     "position": 8,
+     "title": "8. Parametric equations",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_COORD_3.4",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch9",
+     "position": 9,
+     "title": "9. Differentiation",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.1",
+       "extent": "partial",
+       "note": "Derivatives of sin and cos from first principles; convex and concave curves"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.2",
+       "extent": "partial",
+       "note": "Exponentials, logarithms and trigonometric functions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.3",
+       "extent": "partial",
+       "note": "Points of inflection and concavity"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.6",
+       "extent": "partial",
+       "note": "Connected rates of change and forming differential equations"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch10",
+     "position": 10,
+     "title": "10. Numerical methods",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.5",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch11",
+     "position": 11,
+     "title": "11. Integration",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.2",
+       "extent": "partial",
+       "note": "Exponential, reciprocal and trigonometric integrals"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.3",
+       "extent": "partial",
+       "note": "Areas between curves and harder definite integrals"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.5",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.6",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.7",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_INT_8.8",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_NUM_9.4",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_DIFF_7.6",
+       "extent": "partial",
+       "note": "Modelling with differential equations"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-pure-year-2-ch12",
+     "position": 12,
+     "title": "12. Vectors",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.1",
+       "extent": "partial",
+       "note": "Three dimensions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.4",
+       "extent": "partial",
+       "note": "Three dimensions"
+      },
+      {
+       "point_id": "EDX_MATH_PURE_VEC_10.5",
+       "extent": "partial",
+       "note": "Three-dimensional geometric problems"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "subject_id": "EDX_ALEVEL_MATH_9MA0",
+   "status": "model_reviewed",
+   "reviewed_at": "2026-11-14",
+   "specification_version": "9MA0-issue-4-2020",
+   "review_note": "Chapter titles from the public PMT solution-bank listing of the Pearson textbooks. Point coverage assigned by AI subject review, not checked page by page against the books.",
+   "id": "pearson-9ma0-stats-mech-year-1",
+   "type": "textbook",
+   "publisher": "Pearson",
+   "book": "Edexcel A level Mathematics Statistics and Mechanics Year 1/AS",
+   "edition": "2017 specification edition",
+   "source_url": "https://www.physicsandmathstutor.com/maths-revision/solutionbanks/edexcel-statistics-mechanics-year-1/",
+   "chapters": [
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch1",
+     "position": 1,
+     "title": "1. Data collection",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_SAMP_1.1",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch2",
+     "position": 2,
+     "title": "2. Measures of location and spread",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.3",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch3",
+     "position": 3,
+     "title": "3. Representations of data",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.4",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch4",
+     "position": 4,
+     "title": "4. Correlation",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.2",
+       "extent": "partial",
+       "note": "Scatter diagrams, correlation and interpreting a regression line; change of variable is Year 2"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch5",
+     "position": 5,
+     "title": "5. Probability",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.2",
+       "extent": "partial",
+       "note": "Venn and tree diagrams without the conditional probability formula"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch6",
+     "position": 6,
+     "title": "6. Statistical distributions",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_DIST_4.1",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch7",
+     "position": 7,
+     "title": "7. Hypothesis testing",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.1",
+       "extent": "partial",
+       "note": "Language of testing through the binomial model"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.2",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch8",
+     "position": 8,
+     "title": "8. Modelling in mechanics",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_UNITS_6.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.1",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch9",
+     "position": 9,
+     "title": "9. Constant acceleration",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.3",
+       "extent": "partial",
+       "note": "Straight-line motion; vector form is Year 2"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.3",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch10",
+     "position": 10,
+     "title": "10. Forces and motion",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.1",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.2",
+       "extent": "partial",
+       "note": "Straight-line motion without resolving forces"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.4",
+       "extent": "partial",
+       "note": "Connected particles and pulleys without resolving"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.5",
+       "extent": "partial",
+       "note": "Forces as vectors and resultants"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-1-ch11",
+     "position": 11,
+     "title": "11. Variable acceleration",
+     "teaching_years": [
+      12
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.4",
+       "extent": "partial",
+       "note": "Straight-line motion with polynomial functions of time"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "subject_id": "EDX_ALEVEL_MATH_9MA0",
+   "status": "model_reviewed",
+   "reviewed_at": "2026-11-14",
+   "specification_version": "9MA0-issue-4-2020",
+   "review_note": "Chapter titles from the public PMT solution-bank listing of the Pearson textbooks. Point coverage assigned by AI subject review, not checked page by page against the books.",
+   "id": "pearson-9ma0-stats-mech-year-2",
+   "type": "textbook",
+   "publisher": "Pearson",
+   "book": "Edexcel A level Mathematics Statistics and Mechanics Year 2",
+   "edition": "2017 specification edition",
+   "source_url": "https://www.physicsandmathstutor.com/maths-revision/solutionbanks/edexcel-statistics-mechanics-year-2/",
+   "chapters": [
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch1",
+     "position": 1,
+     "title": "1. Regression, correlation and hypothesis testing",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_DATA_2.2",
+       "extent": "partial",
+       "note": "Exponential models, coding and change of variable"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.1",
+       "extent": "partial",
+       "note": "Hypothesis tests for the product moment correlation coefficient"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch2",
+     "position": 2,
+     "title": "2. Conditional probability",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.2",
+       "extent": "partial",
+       "note": "Set notation and the conditional probability formula"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_PROB_3.3",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch3",
+     "position": 3,
+     "title": "3. The normal distribution",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_STATS_DIST_4.2",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_DIST_4.3",
+       "extent": "full"
+      },
+      {
+       "point_id": "EDX_MATH_STATS_HYP_5.3",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch4",
+     "position": 4,
+     "title": "4. Moments",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_MOM_9.1",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch5",
+     "position": 5,
+     "title": "5. Forces and friction",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.2",
+       "extent": "partial",
+       "note": "Resolving forces, including on inclined planes"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.6",
+       "extent": "partial",
+       "note": "Friction on a body in motion or about to move"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch6",
+     "position": 6,
+     "title": "6. Projectiles",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.5",
+       "extent": "full"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch7",
+     "position": 7,
+     "title": "7. Applications of forces",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.4",
+       "extent": "partial",
+       "note": "Static particles and rigid bodies, connected particles on inclined planes"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.5",
+       "extent": "partial",
+       "note": "Dynamics in a plane"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_FORCES_8.6",
+       "extent": "partial",
+       "note": "Limiting equilibrium and statics"
+      }
+     ]
+    },
+    {
+     "id": "pearson-9ma0-stats-mech-year-2-ch8",
+     "position": 8,
+     "title": "8. Further kinematics",
+     "teaching_years": [
+      13
+     ],
+     "coverage": [
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.3",
+       "extent": "partial",
+       "note": "Constant acceleration with vectors in two dimensions"
+      },
+      {
+       "point_id": "EDX_MATH_MECH_KIN_7.4",
+       "extent": "partial",
+       "note": "Calculus with vectors and non-polynomial functions"
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

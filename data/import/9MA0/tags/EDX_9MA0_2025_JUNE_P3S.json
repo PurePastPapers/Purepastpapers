@@ -1,0 +1,363 @@
+{
+ "paper_id": "EDX_9MA0_2025_JUNE_P3S",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)(i)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "use independence to find unknown probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the probability of a yellow bead from bag B given P(both yellow) = 3/16.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(a)(ii)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "complete tree diagram",
+     "depends_on": [
+      "(a)(i)"
+     ],
+     "standalone": false,
+     "preview": "Complete the tree diagram by finding the probability on each branch.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "at least one yellow via tree",
+     "depends_on": [
+      "(a)(ii)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact probability that at least one of the two beads selected is yellow.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "conditional probability from tree",
+     "depends_on": [
+      "(a)(ii)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find P(W | X): green selected given at least one yellow.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "mean from summary statistics",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Calculate the mean of the 400 m times from the given sums.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "standard deviation from summary statistics",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Calculate the standard deviation of the 400 m times from the given sums.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret spread to compare coaches with equal means",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "State, with a reason, which coach is more likely to have trained the winner among the fastest runners.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "choose binomial and use calculator",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a suitable model to find P(exactly 2) and P(more than 3) defective in a sample of 36.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "two-tailed binomial test with small p",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Complete a two-tailed binomial hypothesis test at 5% level for the proportion of defective components.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_SAMP_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "name sampling technique",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the name of the sampling technique of starting at a date and selecting every 10th day.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "large data set knowledge of \"tr\"",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain how rainfall data from the large data set might need cleaning before regression.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4",
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "large data set units and interpretation of intercept",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the units of the regression gradient and interpret the y-intercept, using the large data set.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "sign of gradient and correlation",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "State, with a reason, whether the teacher's claim is true for Kay's data.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "state hypotheses and conclude from p-value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the hypotheses and conclusion of a correlation test with p-value 0.015 at 5% level.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(f)",
+     "primary": [
+      "EDX_MATH_STATS_SAMP_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sample versus population in large data set context",
+     "depends_on": [
+      "(e)"
+     ],
+     "standalone": false,
+     "preview": "Describe the sample and a possible population for the correlation test.",
+     "confidence": "medium",
+     "note": "Dependency on (e) is contextual (the same test); could be standalone."
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "normal probabilities with calculator",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find probabilities that a man's height exceeds 186 cm and is between 175 and 185 cm.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "two inverse-normal conditions give simultaneous equations for mean and sd",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find mu and sigma for women's heights from P(<170) = 0.4 and P(>175) = 0.15.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2",
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "independent probabilities multiplied",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability that a randomly chosen man and woman both have heights between 170 and 175 cm.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_SEQ_4.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "sum of probabilities equals 1 with arithmetic series",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show k = n(n + 1) for a discrete random variable taking even values 2 to 2n.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sum probabilities over several values",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact value of P(16 <= R < 26) when n = 20.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "discriminant inequality in g then sum probabilities",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact probability that x^2 + gx + 3g = 5 has no real roots for a random value g of R.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

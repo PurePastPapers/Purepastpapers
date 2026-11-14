@@ -1,0 +1,376 @@
+{
+ "paper_id": "EDX_9MA0_2021_AUTUMN_P3S",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_SAMP_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "recall",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State a disadvantage of quota sampling compared with simple random sampling.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "binomial probabilities from calculator",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Model the number of dance club members in a sample as binomial and find two probabilities.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "multiply probabilities",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the probability a student is a club member who can dance the tango.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "new binomial with derived p",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability that fewer than 3 of 50 students are club members who can tango.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "describe correlation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Describe the correlation shown on a scatter diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "interpret scatter diagram",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Comment on a suggested relationship using the scatter diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "calculator PMCC",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a calculator to find the product moment correlation coefficient.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "one-tail test of correlation with critical value",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Test for negative correlation at the 5% level using the product moment correlation coefficient.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "large data set knowledge",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the units of Daily Mean Pressure in the large data set.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "decode mean",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the mean from coded summary data.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "standard deviation from coded sums",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the standard deviation from coded summary data.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "large data set knowledge of wind directions and pressure",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use knowledge of the large data set to assign cardinal wind directions to three locations.",
+     "confidence": "medium",
+     "note": "Depends on knowledge of locations geography and wind circulation; reasoning from image text not checked in detail"
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read Venn diagram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the proportion of students who read exactly one magazine from a Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "probabilities from Venn totals",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find unknown probabilities in a Venn diagram using given probabilities.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "conditional probability to form equation",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use a conditional probability to find two unknown Venn diagram probabilities.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1",
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "test independence with Venn probabilities",
+     "depends_on": [
+      "(b)",
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Determine whether two events defined from a Venn diagram are independent.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "inverse normal",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the height below which 1% of females fall using a normal model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "normal probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the proportion of heights between two values.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2",
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "conditional probability with normal distribution",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability that height exceeds 160 cm given it lies between 150 and 175 cm.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "one-tail z test for mean",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test Mia belief that the mean height is less than 166.5 cm.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "logs of probabilities summing to 1, integer reasoning",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find three distinct integers a, b, c from a distribution whose probabilities are logarithms.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1",
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sum of squared probabilities",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability two independent copies of X take equal values.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

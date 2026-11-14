@@ -1,0 +1,357 @@
+{
+ "paper_id": "EDX_9MA0_2019_JUNE_P3S",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "tree diagram from description",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Draw a tree diagram for selecting marbles from three bags.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "multiply along branch",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability Sasha selects 3 green marbles.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "at least one of each colour via complement",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability that Sasha selects at least one marble of each colour.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "conditional probability with tree",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Given he selects a red marble, find the probability it came from bag B.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4",
+      "EDX_MATH_STATS_DATA_2.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "apply outlier rule and draw whiskers",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Complete a box plot for Beijing temperatures, showing outliers.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "large data set knowledge of months",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "From knowledge of the large data set, suggest which month the two outliers came from.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "standard deviation from summary statistics",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the standard deviation is 5.19 from summary statistics.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "inverse normal for two percentiles",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find the 10th to 90th interpercentile range using Simon's normal model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "select suitable model and justify using large data set knowledge",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State two large data set variables not suitable for a normal model, with reasons.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "pmcc hypothesis test with critical value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test at 5% whether the population correlation coefficient is greater than zero.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1",
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "compare correlation of coded data to linear fit",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Explain how the coded correlation supports a non-linear model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "undo log coding to power law using log laws",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the relationship between y and x is y = a x^n, finding a and n.",
+     "confidence": "medium",
+     "note": "Pure logarithm content in a statistics question; tagged to pure ids."
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "relative frequency from table",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the probability a day has cloud cover of 6 oktas or greater.",
+     "confidence": "medium",
+     "note": "Basic probability from frequencies; closest point is 3.2."
+    },
+    {
+     "label": "(b)(i)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "binomial cumulative probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P(X >= 6) for X ~ B(8, 0.76).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)(ii)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "binomial probability times 184",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the expected number of days with cover of 7 oktas in 184 days under the model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "compare model with observed frequency",
+     "depends_on": [
+      "(a)",
+      "(b)(i)",
+      "(b)(ii)"
+     ],
+     "standalone": false,
+     "preview": "Explain whether the binomial results support Magali's model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "proportion from table",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the proportion of the 28 following days with cloud cover of 6 or more.",
+     "confidence": "medium",
+     "note": "Conditional proportion from table; 3.2 chosen."
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.3",
+      "EDX_MATH_STATS_PROB_3.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "critique independence assumption using conditional data",
+     "depends_on": [
+      "(d)"
+     ],
+     "standalone": false,
+     "preview": "Comment on the binomial model in light of the proportion in (d).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "standardise with inverse normal, symmetry to find k",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find k such that P(24.63 < D < k) = 0.45.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2",
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "binomial then normal approximation with continuity correction",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use a normal approximation to find the probability fewer than half of 200 bottles lie in the interval.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "one-tail test for mean with known sd",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test Hannah's belief that the mean amount is less than 25 ml at the 5% level.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

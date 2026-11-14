@@ -16,7 +16,7 @@ export function filterSpecForCurriculum(spec, visible) {
 }
 
 export function mountCurriculumSelector(root, { curriculum, specIndex, initial = {}, emitInitial = true, onChange = () => {} }) {
-  const { years, books, coverage } = curriculum;
+  const { years, books, coverage, modelReviewed } = curriculum;
   if (!years.length && !books.length) {
     const stale = Boolean(initial.year || initial.bookId || initial.chapterId);
     setHtml(root, html`<p class="small muted">${stale ? 'A saved curriculum filter is no longer available and has been cleared. ' : ''}Year and textbook chapter views are not yet verified for this subject. Browse the specification below.</p>`);
@@ -54,6 +54,7 @@ export function mountCurriculumSelector(root, { curriculum, specIndex, initial =
       ${years.length ? html`<label class="field"><span class="field__label">Content year</span><select class="select" data-curriculum-year><option value="">Both years</option>${[12, 13].filter((n) => years.some((item) => item.year === n)).map((n) => html`<option value="${n}" ${year === String(n) ? 'selected' : ''}>Year ${n}</option>`)}</select></label>` : ''}
       ${books.length ? html`<label class="field"><span class="field__label">Organisation</span><select class="select" data-curriculum-book><option value="">Official specification</option>${books.map((item) => html`<option value="${bookKey(item)}" ${bookId === bookKey(item) ? 'selected' : ''}>${item.publisher} · ${item.book} · ${item.edition}</option>`)}</select></label>` : ''}
       ${book ? html`<label class="field"><span class="field__label">Textbook chapter</span><select class="select" data-curriculum-chapter><option value="">All chapters</option>${book.chapters.map((item) => html`<option value="${item.id}" ${chapterId === item.id ? 'selected' : ''}>${item.title}</option>`)}</select></label>` : ''}
+      ${modelReviewed ? html`<p class="small muted">Year and chapter views were mapped to the specification by AI review and have not yet been checked by a teacher.</p>` : ''}
       ${chosen ? html`<p class="small muted">This view includes ${chosen.full.size} fully mapped and ${chosen.partial.size} partially mapped spec points. Changing the view does not change what you have covered.</p>${[...chosen.partial].map(([id, notes]) => html`<p class="small muted"><strong>${specIndex.label(id)}</strong> · Partial: ${notes.join('; ')}</p>`)}` : ''}
     </div>`);
     if (emit) onChange({ visible, full: chosen?.full || new Set(), partial: chosen?.partial || new Map(), state: { year, bookId, chapterId }, stale });

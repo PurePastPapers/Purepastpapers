@@ -7,7 +7,46 @@ import { difficultyBadge, sourceBadge } from './ui.js';
 
 const image = (url, alt) => (url && isSafeUrl(url) ? html`<a href="${url}" target="_blank" rel="noopener" aria-label="Open ${alt} image at its original size"><img src="${url}" alt="${alt}" loading="lazy" /></a>` : '');
 
+/** A vertical slice of a stitched source image: nothing is retyped, only cropped. */
+function slice(url, [width, height], { y0, y1 }, alt) {
+  if (!url || !isSafeUrl(url) || !(width > 0) || !(height > 0)) return '';
+  const visible = Math.max(1, Math.round(height * (y1 - y0)));
+  return html`<div class="qslice" role="img" aria-label="${alt}" style="aspect-ratio:${width} / ${visible};max-width:${Math.round(width / 2)}px">
+    <img src="${url}" alt="" loading="lazy" width="${width}" height="${height}" style="margin-top:-${((y0 * height) / width * 100).toFixed(3)}%" />
+  </div>`;
+}
+
+function slicedBody(question, { contextOpen }) {
+  const { question_image_url: url, image_size: size, question_slices: slices, preview_text: preview } = question.content;
+  const context = question.context || {};
+  const ref = `Question ${question.question_number}${question.part_label ? ` part ${question.part_label}` : ''}`;
+  const describe = (role) => `${ref}${role === 'stem' ? ', opening information' : role === 'tail' ? ', figure or data' : ''}${preview && role === 'part' ? `: ${preview}` : ''}`;
+  const stem = slices.filter((item) => item.role === 'stem');
+  const rest = slices.filter((item) => item.role !== 'stem');
+  const deps = (question.depends_on_question_ids || []).length;
+  return html`<div class="stack stack--sm">
+    ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
+    ${stem.map((item) => html`<div class="question-stem">${slice(url, size, item, describe('stem'))}</div>`)}
+    ${context.earlier_parts ? html`<details class="question-context" data-question-earlier="${question.question_id}" ${context.earlier_parts_open ? 'open' : ''}>
+      <summary>${context.earlier_parts_open ? 'Earlier parts (shown because this part follows on from them)' : 'Show earlier parts'}</summary>
+      <div class="stack stack--sm" style="margin-top:10px">
+        <p class="small muted">${deps ? 'This part uses the earlier parts.' : 'For context.'} They are not marked here and do not count towards this attempt.</p>
+        ${slice(url, size, context.earlier_parts, `${ref}: earlier parts of the question`)}
+      </div>
+    </details>` : ''}
+    <div class="question-selected-part">${rest.map((item) => slice(url, size, item, describe(item.role)))}</div>
+    ${question.part_label ? html`<details class="question-context" data-question-context="${question.question_id}" ${contextOpen ? 'open' : ''}>
+      <summary>Show the full question</summary>
+      <div class="stack stack--sm" style="margin-top:10px">
+        <p class="small muted">Context only. Answer and mark only part ${question.part_label}; other parts do not count towards this attempt.</p>
+        ${slice(url, size, { y0: 0, y1: 1 }, `Full ${ref.replace(/ part .*/, '')}`)}
+      </div>
+    </details>` : ''}
+  </div>`;
+}
+
 export function questionBody(question, { contextOpen = false } = {}) {
+  if (Array.isArray(question.content?.question_slices) && question.content.image_size) return slicedBody(question, { contextOpen });
   const { question_html: markup, question_image_url: url } = question.content || {};
   const context = question.context || {};
   const fullQuestion = context.full_question_html || (context.full_question_image_url && isSafeUrl(context.full_question_image_url));
@@ -28,11 +67,19 @@ export function questionBody(question, { contextOpen = false } = {}) {
 export function markSchemeBody(question) {
   const { mark_scheme_html: markup, mark_scheme_image_url: url } = question.content || {};
   if (!markup && !url) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
+  const size = question.content?.mark_scheme_size;
+  if (url && size) {
+    return html`<div class="ms"><div class="stack stack--sm">
+      ${question.content.mark_scheme_scope === 'question' && question.part_label ? html`<p class="small muted">Official mark scheme for the whole of Question ${question.question_number}. Use the rows for part ${question.part_label}; this part is out of ${question.marks}.</p>` : ''}
+      ${slice(url, size, { y0: 0, y1: 1 }, `Mark scheme for question ${question.question_number}`)}
+    </div></div>`;
+  }
   return html`<div class="ms"><div class="qcontent">${sanitizeHtml(markup)}${image(url, 'Mark scheme')}</div></div>`;
 }
 
 /** Plain-text opening of a question, for list cards. */
 export function questionSnippet(question, length = 220) {
+  if (question.content?.preview_text) return question.content.preview_text;
   const template = document.createElement('template');
   template.innerHTML = sanitizeHtml(question.content?.question_html)
     .toString()
@@ -64,7 +111,7 @@ export function questionRef(question, papersById) {
   // an extra wrapper around the whole nested path.
   const suffix = label.startsWith('(') ? label : label.replace(/^([^()]+)(.*)$/, '($1)$2');
   const part = label && !hasPart ? suffix : '';
-  return [paperLabel, `Q${number}${part}`].filter(Boolean).join(' · ');
+  return [paperLabel, `${question.section_label ? `${question.section_label} ` : ''}Q${number}${part}`].filter(Boolean).join(' · ');
 }
 
 export const marksPill = (marks) => html`<span class="marks-pill">${marks} ${marks === 1 ? 'mark' : 'marks'}</span>`;

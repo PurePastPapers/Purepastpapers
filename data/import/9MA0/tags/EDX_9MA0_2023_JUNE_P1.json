@@ -1,0 +1,681 @@
+{
+ "paper_id": "EDX_9MA0_2023_JUNE_P1",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.1",
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "expand then integrate fractional powers",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Expand and integrate an expression with fractional powers of x, writing each term in simplest form.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "direct factor theorem application",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the factor theorem to show a given cubic equation in a holds.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "solve for a then solve cubic using factorisation, exact roots",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the value of a, then use algebra to find the exact solutions of f(x) = 3.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single modulus calculation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the magnitude of a given position vector is sqrt(38).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.2",
+      "EDX_MATH_PURE_VEC_10.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "compare magnitudes and solve inequality",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the smallest integer a for which |OB| > |OA|.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "small angle approximation then solve quadratic for stationary point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a small angle approximation in f'(x) = 0 to estimate the x coordinate of a stationary point.",
+     "confidence": "medium",
+     "note": "Text of f'(x) is scrambled (cos of x/2 assumed); tag unaffected."
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2",
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "routine tangent equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the equation of the tangent to the curve at a given point.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "trapezium rule with unknown values",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the trapezium rule with the table to show a + 2b = 51.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_NUM_9.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "set up and solve simultaneous equations from sum of values",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the sum of y values and the earlier result to find a and b.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read off definition",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express log2 x in terms of a and/or b.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "factorise and apply product law",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express log2(x^2 + 8x) in terms of a and b.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "quotient and power laws combined",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express log2 of a fractional expression in terms of a and b in simplest form.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "range of a root function",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the range of a given function.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "find inverse of a root function",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the inverse function f^-1.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "composite function evaluation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Evaluate the composite function gf(6).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.2",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "set up equation with composite argument, solve to exact surd",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the exact value of a for which f(a^2 + 2) = g(a).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "arc length formula",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the arc length of a sector to show OC = 12 m.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "trig in right triangle from stage geometry, radians",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that angle AOB is 0.421 radians to 3 decimal places.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "multi-step geometry combining sector area, triangles and perimeter condition",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use the front length of the stage to find the total area of the stage to the nearest square metre.",
+     "confidence": "medium",
+     "note": "Dependency on (b) assumed from the angle value being reused."
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "common ratio equality",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that k satisfies a given quadratic from a geometric sequence.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "solve quadratic, apply convergence condition, sum to infinity",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find k with a reason for convergence and find the sum to infinity.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "complete the square for circle with parameter",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the centre and radius of a circle in terms of k.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4",
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "substitute line into circle, discriminant inequality in k, unsignposted",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the range of k for which a line meets the circle at two distinct points.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret log-linear graph intercept",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the log graph to find the initial value of the phone.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "gradient and intercept to exact a and b",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find a complete equation for V in terms of t from the log graph.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "evaluate model against given data",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use the value after 2 years to evaluate the reliability of the model.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "proof from first principles using sin addition formula",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use differentiation from first principles to show that the derivative of sin x is cos x.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "construct quadratic model from conditions",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find a, b in a quadratic height model using given maximum and starting height.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute into model",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the model to find the height at t = 40.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.3",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "fit amplitude, midline and phase of a cosine model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the constants alpha and beta in the alternative cosine height model.",
+     "confidence": "medium",
+     "note": "Could also be tagged 5.9 (trig in context); chose 5.3 with modelling."
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "evaluate model validity over a longer time",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Give a reason why the alternative model is more appropriate over 2 minutes.",
+     "confidence": "medium",
+     "note": "Reasoning relies on quadratic model of (a) giving negative heights; dependency inferred."
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "algebraic proof of parity",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove using algebra that (n + 1)^3 - n^3 is odd for all integers n.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "key": "q15",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "quotient and product rule then manipulate to given form",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Differentiate a quotient involving x and e^(3x) and show it takes a given form with constants A and B.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "set derivative to zero and rearrange to iteration form",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that the x coordinates of the turning points satisfy a given equation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "draw staircase diagram on given graph",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Draw a staircase diagram to show the iteration converges towards beta starting at x1 = 1.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "repeated substitution on calculator",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the iteration formula to find x2 and the value of beta to 3 decimal places.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "choose function and interval, change of sign",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show alpha = 0.432 to 3 d.p. using a suitable function and interval.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

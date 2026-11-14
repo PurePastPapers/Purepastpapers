@@ -1,0 +1,394 @@
+{
+ "paper_id": "EDX_9MA0_2022_JUNE_P3S",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "direct binomial calculator use",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P(X = 3) and a cumulative probability for a binomial number of target hits.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "normal approximation with continuity correction",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a normal approximation to find the probability of more than 110 hits in 250 throws.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "inverse normal then rearrange for sigma",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the standard deviation of rod length is 0.05 given 2.5% are under 7.902 cm.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "normal probability between two values",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the proportion of rods with length between 7.94 and 8.09 cm.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2",
+      "EDX_MATH_STATS_PROB_3.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "multi-outcome profit model, several probabilities",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the expected profit per 500 rods from a three-way pricing rule based on length.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1",
+      "EDX_MATH_STATS_DIST_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "evaluate binomial probability and compare with target, justify",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain whether a batch acceptance rule achieves the aim of 95% acceptance.",
+     "confidence": "medium",
+     "note": "Intended method (binomial B(200,0.015) P(X<6)) inferred; could involve approximation."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "large data set recall",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State how a rainfall value between 0 and 0.05 mm is recorded in the large data set.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "mean and standard deviation from summary statistics",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Calculate the mean and standard deviation of rainfall from sums of r and r^2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4",
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "judge evidence from limited data",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "State whether Leuchars data supports a belief about North/South rainfall difference.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.3",
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "critique binomial assumptions in context",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain why a binomial model may be unsuitable for dry days in a 14-day event.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "state hypotheses for two-tailed test",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write the null and alternative hypotheses for a change in the proportion arriving late.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2",
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "two-tailed critical region with each tail below 2.5%",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the critical region for a two-tailed binomial test at the 5% level.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "sum tail probabilities",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the actual significance level of the test from the critical region.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "compare observation with critical region",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Comment on the manager's belief given 15 of 50 customers arrived late.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read from two-way table",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the probability that a randomly chosen employee is skilled.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read from two-way table",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the probability an employee lives in area B and is not professional.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1",
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "build Venn counts from percentages and table",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Complete a Venn diagram for working from home, area and professional status.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read intersection from Venn",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find P(R' and F) from the Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read complement of union",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find the probability of being in neither H nor R.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(f)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "conditional probability from Venn",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find P(F | H) for working from home employees.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "describe scatter",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Interpret the relationship between resting heart rate and exercise from the scatter diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "one-tailed pmcc test with critical value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test for negative correlation between the coded variables using the pmcc at 5%.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "convert linear log model to power model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the line y = -0.05x + 1.92 to find a model h = a m^k.",
+     "confidence": "medium",
+     "note": "Mark scheme text absent; intended route via log laws assumed."
+    }
+   ]
+  }
+ ]
+}

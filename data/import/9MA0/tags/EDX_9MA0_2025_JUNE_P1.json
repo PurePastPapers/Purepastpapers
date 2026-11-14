@@ -1,0 +1,711 @@
+{
+ "paper_id": "EDX_9MA0_2025_JUNE_P1",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single translation of a point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the image of a point under the transformation y = f(x + 2).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "inverse function swaps coordinates",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the image of a point on y = f(x) on the curve y = f^-1(x).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "combined stretch, modulus and translation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the image of a point under y = 2|f(x)| - 3.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "read centre and radius from circle equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the centre of a circle and its radius as a simplified surd.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "choose method to compare origin with circle",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Decide with a reason whether the origin lies inside a given circle.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "equate common differences",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find k given the first three terms of an arithmetic sequence in terms of k.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "standard arithmetic series sum",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the sum of the first 50 terms of the arithmetic sequence.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "factorise cubic given a root",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write a cubic in the form (x + a)Q(x) given that f(-4) = 0.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "discriminant argument for no further roots",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Prove -4 is the only real root of a cubic using the factorised form, without a calculator.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "limit of a sum as an integral",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express a limit of a sum as a definite integral.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate x^(-1/2) and evaluate exactly",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that the integral has an integer value k, without a calculator.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11",
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "form and solve simultaneous equations with power 1.5",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the constants A and B in a height model h = A - B t^1.5 from two data points.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "interpret t = 0 in model",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the initial height of the nest above the sea from the model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret model domain via h >= 0",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the limitation on T from the model, using height at the end of the flight.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "read where gradient is non-positive from sketch, set notation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Give the set of x for which f'(x) <= 0 from a sketch of a quartic, in set notation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "repeated roots form with point to find constant",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the equation of a quartic from its turning points on the x-axis and y-intercept.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "relate vertical shift to number of roots using minimum value",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the range of k so that y = f(x) + k meets the x-axis at exactly four points.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "spot error in given proof",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Identify and correct an algebraic error in a student's proof by exhaustion.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "complete missing cases of proof by exhaustion",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the calculations needed to complete a proof that squares are of form 5n or 5n +/- 1.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "solve exponential equation for end time",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the time T at which a car modelled by v = 15t - te^(0.2t) stops, to 1 d.p.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "product rule then rearrange to given iterative form",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that maximum speed occurs when t = 5 ln(75/(5+t)).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "repeated iteration",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use the iteration formula to find t3 and the time to maximum speed.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "add vectors",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find vector PR given vectors PQ and QR.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.2",
+      "EDX_MATH_PURE_VEC_10.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "compare lengths and use Pythagoras",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that triangle PQR is both right-angled and isosceles using vector lengths.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "use two conditions in exponential model with logs",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the exact A and k (3 s.f.) in V = 1500 + Ae^(-kt) from two given values.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "differentiate and substitute for Ae^(-kt)",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that dV/dt = -k(V - 1500).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "limitation of model",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "State a limitation of the exponential model for a car's value.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute and compare",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Verify that a curve and line intersect where x = 6.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.4",
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "equate and clear algebraic fractions",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the x coordinate of the other intersection satisfies a given cubic.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_ALG_2.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "use known root to factorise then solve quadratic exactly",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use algebra to find the exact x coordinate of the second intersection Q.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "substitution or parts with exact evaluation, show that",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a definite integral of x/(2x+1)^3 from 0 to 2 equals 2/25, showing all stages.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "expand addition formulae with exact values",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that sin(x + 30) + sqrt3 cos(x + 30) is identically 2 cos x.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "reduce to quadratic in sin using double angle",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Hence solve a trig equation involving sin 2 theta for 0 <= theta < 180 degrees.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "key": "q15",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "combine sector area with rectangle and form perimeter",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the perimeter of a stage (sector plus rectangle) is 2r + 480/r given its area.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "differentiate and set to zero",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find r for which the perimeter P has a stationary value.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "second derivative test",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Prove by second differentiation that the stationary value gives the minimum perimeter.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 16,
+   "key": "q16",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "trig substitution, change limits, simplify to cosec^2",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use x = 2 sin u to express the area under 1/(x^2 sqrt(4 - x^2)) as an integral of cosec^2 u.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate cosec^2 and evaluate exact value",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact area of the region R by integrating the cosec^2 form.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

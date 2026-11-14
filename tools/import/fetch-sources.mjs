@@ -4,7 +4,10 @@
 // PDFs go to .import-cache/ (gitignored, never published). Only sha256, size and status are
 // written back, so reruns skip documents already fetched. Nothing bypasses access controls:
 // 401/403/login pages are recorded as "restricted".
-import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, access, rename } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+const run = promisify(execFile);
 import { createHash } from 'node:crypto';
 const INV = new URL('../../data/import/9MA0/inventory.json', import.meta.url);
 const CACHE = new URL('../../.import-cache/9MA0/', import.meta.url);
@@ -49,12 +52,15 @@ if (cmd === 'discover') {
       if (!d.urls.length) d.status = 'not_fetched';
       for (const url of d.urls) {
         try {
-          const res = await fetch(url);
-          if (res.status === 401 || res.status === 403) { d.status = 'restricted'; continue; }
-          if (!res.ok) { d.status = 'unavailable'; continue; }
-          const buf = Buffer.from(await res.arrayBuffer());
+          // curl honours HTTPS_PROXY and the system CA bundle; Node's fetch does not.
+          const tmp = file.pathname + '.part';
+          const { stdout } = await run('curl', ['-sS', '-L', '-m', '120', '-A', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/126', '-o', tmp, '-w', '%{http_code}', url]);
+          await new Promise((r) => setTimeout(r, 300));
+          if (stdout === '401' || stdout === '403') { d.status = 'restricted'; continue; }
+          if (stdout !== '200') { d.status = 'unavailable'; d.error = `HTTP ${stdout}`; continue; }
+          const buf = await readFile(tmp);
           if (buf.subarray(0, 5).toString() !== '%PDF-') { d.status = 'restricted'; continue; }
-          await writeFile(file, buf);
+          await rename(tmp, file); delete d.error;
           Object.assign(d, { status: 'fetched', sha256: createHash('sha256').update(buf).digest('hex'), bytes: buf.length, fetched_from: url, fetched_at: new Date().toISOString().slice(0, 10) });
           break;
         } catch (e) { d.status = 'unavailable'; d.error = String(e.cause?.message ?? e.message); }

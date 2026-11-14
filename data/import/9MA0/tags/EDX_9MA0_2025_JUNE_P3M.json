@@ -1,0 +1,387 @@
+{
+ "paper_id": "EDX_9MA0_2025_JUNE_P3M",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single suvat equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use constant acceleration to find the speed of a car 4 s after passing a signpost.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "one-step F = ma with a resistance",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use Newton's second law to find the driving force D on a car of mass 800 kg.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "resolve vertically with an angled force; show that",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Resolve vertically to show the normal reaction on a dragged box is 16.6 N.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "one-line description of deceleration under friction",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Describe the motion of the box after the dragging force is removed.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_FORCES_8.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "normal reaction equals weight",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the normal reaction on the box once the dragging force is removed.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6",
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "friction, F = ma then suvat",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Use the friction model to find the distance OX the box travels before coming to rest.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_MECH_UNITS_6.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "state a modelling limitation",
+     "depends_on": [
+      "(d)"
+     ],
+     "standalone": false,
+     "preview": "State one limitation of the model, other than air resistance, affecting the distance found.",
+     "confidence": "medium",
+     "note": "Modelling-assumption comments have no dedicated point; tagged to the mechanics modelling point 6.1."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "F = ma with vectors",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the force F in terms of i and j from the mass and vector acceleration.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "v = u + at with vectors",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the velocity vector of P at t = 2 s using constant acceleration.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "convert a velocity vector to a bearing",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the direction of motion of P at t = 2 s as a bearing.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "vector suvat for displacement",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the position vector OA of P at t = 5 s in terms of i and j.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute t into a position vector with fractional powers",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the position vector of P at t = 4 from r given in terms of t.",
+     "confidence": "medium",
+     "note": "Exponents in r are scrambled in the extracted text."
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "magnitude of a vector, exact form",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact distance of P from O at t = 4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "differentiate a vector with fractional powers",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Differentiate the position vector to find the velocity of P in terms of t.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2",
+      "EDX_MATH_PURE_COORD_3.1",
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "acceleration direction linked to a perpendicular gradient; unstructured",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find T when the acceleration of P is perpendicular to the line y = x/3.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "horizontal then vertical projectile equations from a cliff",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the cliff height H for a stone projected at 14 m/s that lands 40 m away.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "vertical motion to greatest height plus H",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the maximum height of the stone above the ground.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "resolve vertically for a rod in equilibrium",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the normal reaction R at the ground for a loaded rod against a smooth wall.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "moments about A; show that",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Take moments to show that the wall reaction S = Mg tan(alpha).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_FORCES_8.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "reason about friction at a rough wall changing the reaction",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "State whether R or R1 is greater when the wall is rough, with a reason.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1",
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_FORCES_8.4",
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "limiting equilibrium of a loaded ladder; long unstructured",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use limiting equilibrium of the rod with an extra particle at B to find the required quantity.",
+     "confidence": "medium",
+     "note": "The final lines of the question were cut off in the extracted text; preview kept general."
+    }
+   ]
+  }
+ ]
+}

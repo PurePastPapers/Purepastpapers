@@ -1,0 +1,462 @@
+{
+ "paper_id": "EDX_9MA0_2018_JUNE_P3",
+ "pages": 36,
+ "questions": [
+  {
+   "number": 1,
+   "section": 1,
+   "key": "q01",
+   "total": 5,
+   "image": "q01.webp",
+   "width": 1052,
+   "height": 460,
+   "pages": [
+    2
+   ],
+   "stem_end": 0.1824,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 2,
+     "y0": 0.1824,
+     "y1": 0.33124,
+     "text": "(a) Write down the probability distribution for C.\n(2)"
+    },
+    {
+     "label": "(b)",
+     "marks": 1,
+     "y0": 0.33124,
+     "y1": 0.49625,
+     "text": "(b) Using this model, find the probability that cloud cover is less than 50%\n(1)"
+    },
+    {
+     "label": "(c)",
+     "marks": 1,
+     "y0": 0.49625,
+     "y1": 0.82629,
+     "text": "Helen used all the data from the large data set for Hurn in 2015 and found that the\nproportion of days with cloud cover of less than 50% was 0.315\n(c) Comment on the suitability of Helen’s model in the light of this information.\n(1)"
+    },
+    {
+     "label": "(d)",
+     "marks": 1,
+     "y0": 0.82629,
+     "y1": 0.99131,
+     "text": "(d) Suggest an appropriate refinement to Helen’s model.\n(1)"
+    }
+   ],
+   "has_graphics": false,
+   "text": "1. Helen believes that the random variable C, representing cloud cover from the large data\nset, can be modelled by a discrete uniform distribution.\n(a) Write down the probability distribution for C.\n(2)\n(b) Using this model, find the probability that cloud cover is less than 50%\n(1)\nHelen used all the data from the large data set for Hurn in 2015 and found that the\nproportion of days with cloud cover of less than 50% was 0.315\n(c) Comment on the suitability of Helen’s model in the light of this information.\n(1)\n(d) Suggest an appropriate refinement to Helen’s model.\n(1)"
+  },
+  {
+   "number": 2,
+   "section": 1,
+   "key": "q02",
+   "total": 7,
+   "image": "q02.webp",
+   "width": 1052,
+   "height": 640,
+   "pages": [
+    4
+   ],
+   "stem_end": 0.17488,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 3,
+     "y0": 0.17488,
+     "y1": 0.32564,
+     "text": "(a) Stating your hypotheses clearly and using a 5% level of significance, test whether or\nnot the correlation between sales figures and average weekly temperature is negative.\n(3)"
+    },
+    {
+     "label": "(b)",
+     "marks": 1,
+     "y0": 0.32564,
+     "y1": 0.44428,
+     "text": "(b) Suggest a possible reason for this correlation.\n(1)"
+    },
+    {
+     "label": "(c)",
+     "marks": 1,
+     "y0": 0.44428,
+     "y1": 0.68157,
+     "text": "Tessa suggests that a linear regression model could be used to model these data.\n(c) State, giving a reason, whether or not the correlation coefficient is consistent with\nTessa’s suggestion.\n(1)"
+    },
+    {
+     "label": "(d)",
+     "marks": 1,
+     "y0": 0.68157,
+     "y1": 0.80021,
+     "text": "(d) State, giving a reason, which variable would be the explanatory variable.\n(1)"
+    },
+    {
+     "label": "(e)",
+     "marks": 1,
+     "y0": 0.80021,
+     "y1": 0.99375,
+     "text": "Tessa calculated the linear regression equation as w = 10 755 – 171t\n(e) Give an interpretation of the gradient of this regression equation.\n(1)"
+    }
+   ],
+   "has_graphics": false,
+   "text": "2. Tessa owns a small clothes shop in a seaside town. She records the weekly sales figures, £ w,\nand the average weekly temperature, t °C, for 8 weeks during the summer.\nThe product moment correlation coefficient for these data is −0.915\n(a) Stating your hypotheses clearly and using a 5% level of significance, test whether or\nnot the correlation between sales figures and average weekly temperature is negative.\n(3)\n(b) Suggest a possible reason for this correlation.\n(1)\nTessa suggests that a linear regression model could be used to model these data.\n(c) State, giving a reason, whether or not the correlation coefficient is consistent with\nTessa’s suggestion.\n(1)\n(d) State, giving a reason, which variable would be the explanatory variable.\n(1)\nTessa calculated the linear regression equation as w = 10 755 – 171t\n(e) Give an interpretation of the gradient of this regression equation.\n(1)"
+  },
+  {
+   "number": 3,
+   "section": 1,
+   "key": "q03",
+   "total": 11,
+   "image": "q03.webp",
+   "width": 1052,
+   "height": 954,
+   "pages": [
+    6
+   ],
+   "stem_end": 0.16769,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 2,
+     "y0": 0.16769,
+     "y1": 0.23953,
+     "text": "(a) State two assumptions Peta needs to make to use her model.\n(2)"
+    },
+    {
+     "label": "(b)",
+     "marks": 1,
+     "y0": 0.23953,
+     "y1": 0.31918,
+     "text": "(b) Using Peta’s model, find P(H  4)\n(1)"
+    },
+    {
+     "label": "(c)",
+     "marks": 2,
+     "y0": 0.31918,
+     "y1": 0.52876,
+     "text": "For each child the random variable F represents the number of the throw on which the\ndart first hits the target.\nUsing Peta’s assumptions about this experiment,\n(c) find P(F = 5)\n(2)"
+    },
+    {
+     "label": "(d)",
+     "marks": 4,
+     "y0": 0.52876,
+     "y1": 0.80714,
+     "text": "Thomas assumes that in this experiment no child will need more than 10 throws for the\ndart to hit the target for the first time. He models P(F = n) as\nP(F = n) = 0.01 + (n − 1) × α\nwhere α is a constant.\n(d) Find the value of α\n(4)"
+    },
+    {
+     "label": "(e)",
+     "marks": 1,
+     "y0": 0.80714,
+     "y1": 0.88679,
+     "text": "(e) Using Thomas’ model, find P(F = 5)\n(1)"
+    },
+    {
+     "label": "(f)",
+     "marks": 1,
+     "y0": 0.88679,
+     "y1": 0.99581,
+     "text": "(f) Explain how Peta’s and Thomas’ models differ in describing the probability that a\ndart hits the target in this experiment.\n(1)"
+    }
+   ],
+   "has_graphics": false,
+   "text": "3. In an experiment a group of children each repeatedly throw a dart at a target.\nFor each child, the random variable H represents the number of times the dart hits the\ntarget in the first 10 throws.\nPeta models H as B(10, 0.1)\n(a) State two assumptions Peta needs to make to use her model.\n(2)\n(b) Using Peta’s model, find P(H  4)\n(1)\nFor each child the random variable F represents the number of the throw on which the\ndart first hits the target.\nUsing Peta’s assumptions about this experiment,\n(c) find P(F = 5)\n(2)\nThomas assumes that in this experiment no child will need more than 10 throws for the\ndart to hit the target for the first time. He models P(F = n) as\nP(F = n) = 0.01 + (n − 1) × α\nwhere α is a constant.\n(d) Find the value of α\n(4)\n(e) Using Thomas’ model, find P(F = 5)\n(1)\n(f) Explain how Peta’s and Thomas’ models differ in describing the probability that a\ndart hits the target in this experiment.\n(1)"
+  },
+  {
+   "number": 4,
+   "section": 1,
+   "key": "q04",
+   "total": 13,
+   "image": "q04.webp",
+   "width": 1052,
+   "height": 1359,
+   "pages": [
+    10
+   ],
+   "stem_end": 0.08239,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 1,
+     "y0": 0.08239,
+     "y1": 0.1328,
+     "text": "(a) State the sampling method Charlie used.\n(1)"
+    },
+    {
+     "label": "(b)",
+     "marks": 2,
+     "y0": 0.1328,
+     "y1": 0.20931,
+     "text": "(b) State and briefly describe an alternative method of non-random sampling Charlie\ncould have used to obtain a sample of 40 workers.\n(2)"
+    },
+    {
+     "label": "(c)",
+     "marks": 1,
+     "y0": 0.20931,
+     "y1": 0.32109,
+     "text": "Taruni decided to ask every member of the company the time, x minutes, it takes them to\ntravel to the office.\n(c) State the data selection process Taruni used.\n(1)"
+    },
+    {
+     "label": "(d)",
+     "marks": 1,
+     "y0": 0.32109,
+     "y1": 0.64109,
+     "text": "Taruni’s results are summarised by the box plot and summary statistics below.\n10 20 30 40 50 60 70 80 90 100 110 120 130 140\nJourney time (minutes)\nn = 95 ∑ x = 4133 ∑ x2 = 202 294\n(d) Write down the interquartile range for these data.\n(1)"
+    },
+    {
+     "label": "(e)",
+     "marks": 3,
+     "y0": 0.64109,
+     "y1": 0.69698,
+     "text": "(e) Calculate the mean and the standard deviation for these data.\n(3)"
+    },
+    {
+     "label": "(f)",
+     "marks": 2,
+     "y0": 0.69698,
+     "y1": 0.77348,
+     "text": "(f) State, giving a reason, whether you would recommend using the mean and standard\ndeviation or the median and interquartile range to describe these data.\n(2)"
+    },
+    {
+     "label": "(g)",
+     "marks": 3,
+     "y0": 0.77348,
+     "y1": 0.99706,
+     "text": "Rana and David both work for the company and have both moved house since Taruni\ncollected her data.\nRana’s journey to work has changed from 75 minutes to 35 minutes and David’s journey\nto work has changed from 60 minutes to 33 minutes.\nTaruni drew her box plot again and only had to change two values.\n(g) Explain which two values Taruni must have changed and whether each of these\nvalues has increased or decreased.\n(3)"
+    }
+   ],
+   "has_graphics": true,
+   "text": "4. Charlie is studying the time it takes members of his company to travel to the office.\nHe stands by the door to the office from 08 40 to 08 50 one morning and asks workers, as\nthey arrive, how long their journey was.\n(a) State the sampling method Charlie used.\n(1)\n(b) State and briefly describe an alternative method of non-random sampling Charlie\ncould have used to obtain a sample of 40 workers.\n(2)\nTaruni decided to ask every member of the company the time, x minutes, it takes them to\ntravel to the office.\n(c) State the data selection process Taruni used.\n(1)\nTaruni’s results are summarised by the box plot and summary statistics below.\n10 20 30 40 50 60 70 80 90 100 110 120 130 140\nJourney time (minutes)\nn = 95 ∑ x = 4133 ∑ x2 = 202 294\n(d) Write down the interquartile range for these data.\n(1)\n(e) Calculate the mean and the standard deviation for these data.\n(3)\n(f) State, giving a reason, whether you would recommend using the mean and standard\ndeviation or the median and interquartile range to describe these data.\n(2)\nRana and David both work for the company and have both moved house since Taruni\ncollected her data.\nRana’s journey to work has changed from 75 minutes to 35 minutes and David’s journey\nto work has changed from 60 minutes to 33 minutes.\nTaruni drew her box plot again and only had to change two values.\n(g) Explain which two values Taruni must have changed and whether each of these\nvalues has increased or decreased.\n(3)"
+  },
+  {
+   "number": 5,
+   "section": 1,
+   "key": "q05",
+   "total": 14,
+   "image": "q05.webp",
+   "width": 1052,
+   "height": 965,
+   "pages": [
+    14,
+    18
+   ],
+   "stem_end": 0.16573,
+   "tail_start": 0.79614,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 1,
+     "y0": 0.16573,
+     "y1": 0.23674,
+     "text": "(a) Find the probability that a randomly selected battery will last for longer than 16 hours.\n(1)"
+    },
+    {
+     "label": "(b)",
+     "marks": 5,
+     "y0": 0.23674,
+     "y1": 0.39418,
+     "text": "At the start of her exams Alice put 4 new batteries in her calculator.\nShe has used her calculator for 16 hours, but has another 4 hours of exams to sit.\n(b) Find the probability that her calculator will not stop working for Alice’s remaining exams.\n(5)"
+    },
+    {
+     "label": "(c)",
+     "marks": 3,
+     "y0": 0.39418,
+     "y1": 0.60967,
+     "text": "Alice only has 2 new batteries so, after the first 16 hours of her exams, although her\ncalculator is still working, she randomly selects 2 of the batteries from her calculator and\nreplaces these with the 2 new batteries.\n(c) Show that the probability that her calculator will not stop working for the remainder\nof her exams is 0.199 to 3 significant figures.\n(3)"
+    },
+    {
+     "label": "(d)",
+     "marks": 5,
+     "y0": 0.60967,
+     "y1": 0.79614,
+     "text": "After her exams, Alice believed that the lifetime of the batteries was more than 18 hours.\nShe took a random sample of 20 of these batteries and found that their mean lifetime was\n19.2 hours.\n(d) Stating your hypotheses clearly and using a 5% level of significance, test Alice’s belief.\n(5)"
+    }
+   ],
+   "has_graphics": false,
+   "text": "5. The lifetime, L hours, of a battery has a normal distribution with mean 18 hours and\nstandard deviation 4 hours.\nAlice’s calculator requires 4 batteries and will stop working when any one battery reaches\nthe end of its lifetime.\n(a) Find the probability that a randomly selected battery will last for longer than 16 hours.\n(1)\nAt the start of her exams Alice put 4 new batteries in her calculator.\nShe has used her calculator for 16 hours, but has another 4 hours of exams to sit.\n(b) Find the probability that her calculator will not stop working for Alice’s remaining exams.\n(5)\nAlice only has 2 new batteries so, after the first 16 hours of her exams, although her\ncalculator is still working, she randomly selects 2 of the batteries from her calculator and\nreplaces these with the 2 new batteries.\n(c) Show that the probability that her calculator will not stop working for the remainder\nof her exams is 0.199 to 3 significant figures.\n(3)\nAfter her exams, Alice believed that the lifetime of the batteries was more than 18 hours.\nShe took a random sample of 20 of these batteries and found that their mean lifetime was\n19.2 hours.\n(d) Stating your hypotheses clearly and using a 5% level of significance, test Alice’s belief.\n(5)\nSECTION B: MECHANICS\nUnless otherwise stated, whenever a numerical value of g is required, take g = 9.8 m s−2 and give your\nanswer to either 2 significant figures or 3 significant figures.\nAnswer ALL questions. Write your answers in the spaces provided."
+  },
+  {
+   "number": 6,
+   "section": 1,
+   "key": "q06",
+   "total": 6,
+   "image": "q06.webp",
+   "width": 1052,
+   "height": 281,
+   "pages": [
+    18
+   ],
+   "stem_end": 0.0,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "",
+     "marks": 6,
+     "y0": 0.0,
+     "y1": 0.98578,
+     "text": "6. At time t seconds, where t  0, a particle P moves in the x-y plane in such a way that its\nvelocity v m s−1 is given by\n−1\nv = t 2 i − 4tj\nWhen t = 1, P is at the point A and when t = 4, P is at the point B.\nFind the exact distance AB.\n(6)"
+    }
+   ],
+   "has_graphics": true,
+   "text": "6. At time t seconds, where t  0, a particle P moves in the x-y plane in such a way that its\nvelocity v m s−1 is given by\n−1\nv = t 2 i − 4tj\nWhen t = 1, P is at the point A and when t = 4, P is at the point B.\nFind the exact distance AB.\n(6)"
+  },
+  {
+   "number": 7,
+   "section": 1,
+   "key": "q07",
+   "total": 8,
+   "image": "q07.webp",
+   "width": 1052,
+   "height": 1042,
+   "pages": [
+    20
+   ],
+   "stem_end": 0.52497,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 6,
+     "y0": 0.52497,
+     "y1": 0.59071,
+     "text": "(a) find the acceleration of the crate.\n(6)"
+    },
+    {
+     "label": "(b)",
+     "marks": 2,
+     "y0": 0.59071,
+     "y1": 0.99616,
+     "text": "The crate is now pushed along the same floor using the handle. The handle is again\ninclined at the same angle α to the floor, and the thrust in the handle is 40 N as shown in\nFigure 2 below.\n40 N\nα\n20 kg\nFigure 2\n(b) Explain briefly why the acceleration of the crate would now be less than the\nacceleration of the crate found in part (a).\n(2)"
+    }
+   ],
+   "has_graphics": true,
+   "text": "7.\n40 N\nα\n20 kg\nFigure 1\nA wooden crate of mass 20 kg is pulled in a straight line along a rough horizontal floor\nusing a handle attached to the crate.\n3\nThe handle is inclined at an angle α to the floor, as shown in Figure 1, where tan α =\n4\nThe tension in the handle is 40 N.\nThe coefficient of friction between the crate and the floor is 0.14\nThe crate is modelled as a particle and the handle is modelled as a light rod.\nUsing the model,\n(a) find the acceleration of the crate.\n(6)\nThe crate is now pushed along the same floor using the handle. The handle is again\ninclined at the same angle α to the floor, and the thrust in the handle is 40 N as shown in\nFigure 2 below.\n40 N\nα\n20 kg\nFigure 2\n(b) Explain briefly why the acceleration of the crate would now be less than the\nacceleration of the crate found in part (a).\n(2)"
+  },
+  {
+   "number": 8,
+   "section": 1,
+   "key": "q08",
+   "total": 8,
+   "image": "q08.webp",
+   "width": 1052,
+   "height": 460,
+   "pages": [
+    24
+   ],
+   "stem_end": 0.40595,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 4,
+     "y0": 0.40595,
+     "y1": 0.55708,
+     "text": "(a) Show that the magnitude of the acceleration of P is 2.5 m s−2\n(4)"
+    },
+    {
+     "label": "(b)",
+     "marks": 4,
+     "y0": 0.55708,
+     "y1": 0.99131,
+     "text": "At the instant when P leaves the point A, the acceleration of P changes so that P now\nmoves with constant acceleration (4i + 8.8j) m s−2\nAt the instant when P reaches the point B, the direction of motion of P is north east.\n(b) Find the time it takes for P to travel from A to B.\n(4)"
+    }
+   ],
+   "has_graphics": false,
+   "text": "8. [In this question i and j are horizontal unit vectors due east and due north respectively\nand position vectors are given relative to the fixed point O.]\nA particle P moves with constant acceleration.\nAt time t = 0, the particle is at O and is moving with velocity (2i − 3j) m s−1\nAt time t = 2 seconds, P is at the point A with position vector (7i − 10j) m.\n(a) Show that the magnitude of the acceleration of P is 2.5 m s−2\n(4)\nAt the instant when P leaves the point A, the acceleration of P changes so that P now\nmoves with constant acceleration (4i + 8.8j) m s−2\nAt the instant when P reaches the point B, the direction of motion of P is north east.\n(b) Find the time it takes for P to travel from A to B.\n(4)"
+  },
+  {
+   "number": 9,
+   "section": 1,
+   "key": "q09",
+   "total": 13,
+   "image": "q09.webp",
+   "width": 1052,
+   "height": 1393,
+   "pages": [
+    28
+   ],
+   "stem_end": 0.61074,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 3,
+     "y0": 0.61074,
+     "y1": 0.66994,
+     "text": "(a) Using the model, show that the tension in the rope is\n6a\n(3)"
+    },
+    {
+     "label": "(b)",
+     "marks": 2,
+     "y0": 0.66994,
+     "y1": 0.77901,
+     "text": "The magnitude of the horizontal component of the force exerted on the plank at A by the\nwall is 2 Mg.\n(b) Find x in terms of a.\n(2)"
+    },
+    {
+     "label": "(c)",
+     "marks": 5,
+     "y0": 0.77901,
+     "y1": 0.88807,
+     "text": "The force exerted on the plank at A by the wall acts in a direction which makes an\nangle β with the horizontal.\n(c) Find the value of tan β\n(5)"
+    },
+    {
+     "label": "(d)",
+     "marks": 3,
+     "y0": 0.88807,
+     "y1": 0.99713,
+     "text": "The rope will break if the tension in it exceeds 5 Mg.\n(d) Explain how this will restrict the possible positions of P. You must justify your\nanswer carefully.\n(3)"
+    }
+   ],
+   "has_graphics": true,
+   "text": "9.\nC\nx\nP α\nA B\n2a\nFigure 3\nA plank, AB, of mass M and length 2a, rests with its end A against a rough vertical wall.\nThe plank is held in a horizontal position by a rope. One end of the rope is attached to the plank\nat B and the other end is attached to the wall at the point C, which is vertically above A.\nA small block of mass 3M is placed on the plank at the point P, where AP = x.\nThe plank is in equilibrium in a vertical plane which is perpendicular to the wall.\n3\nThe angle between the rope and the plank is α, where tan α = , as shown in Figure 3.\n4\nThe plank is modelled as a uniform rod, the block is modelled as a particle and the rope\nis modelled as a light inextensible string.\n5Mg(3x + a)\n(a) Using the model, show that the tension in the rope is\n6a\n(3)\nThe magnitude of the horizontal component of the force exerted on the plank at A by the\nwall is 2 Mg.\n(b) Find x in terms of a.\n(2)\nThe force exerted on the plank at A by the wall acts in a direction which makes an\nangle β with the horizontal.\n(c) Find the value of tan β\n(5)\nThe rope will break if the tension in it exceeds 5 Mg.\n(d) Explain how this will restrict the possible positions of P. You must justify your\nanswer carefully.\n(3)"
+  },
+  {
+   "number": 10,
+   "section": 1,
+   "key": "q10",
+   "total": 15,
+   "image": "q10.webp",
+   "width": 1052,
+   "height": 1026,
+   "pages": [
+    32
+   ],
+   "stem_end": 0.61914,
+   "tail_start": null,
+   "units": [
+    {
+     "label": "(a)",
+     "marks": 2,
+     "y0": 0.61914,
+     "y1": 0.6999,
+     "text": "(a) show that U2 = .\nsin2 α\n(2)"
+    },
+    {
+     "label": "(b)",
+     "marks": 9,
+     "y0": 0.6999,
+     "y1": 0.848,
+     "text": "The point T is at a horizontal distance of 20 m from A and is at a height of 0.75 m above\nthe ground. The ball reaches T without hitting the ground.\n(b) Find the size of the angle α\n(9)"
+    },
+    {
+     "label": "(c)",
+     "marks": 1,
+     "y0": 0.848,
+     "y1": 0.92205,
+     "text": "(c) State one limitation of the model that could affect your answer to part (b).\n(1)"
+    },
+    {
+     "label": "(d)",
+     "marks": 3,
+     "y0": 0.92205,
+     "y1": 0.9961,
+     "text": "(d) Find the time taken for the ball to travel from A to T.\n(3)"
+    }
+   ],
+   "has_graphics": true,
+   "text": "10.\nU\nα\nA\n3 m\n2 m\nT\nFigure 4\nA boy throws a ball at a target. At the instant when the ball leaves the boy’s hand at the\npoint A, the ball is 2 m above horizontal ground and is moving with speed U at an angle α\nabove the horizontal.\nIn the subsequent motion, the highest point reached by the ball is 3 m above the ground.\nThe target is modelled as being the point T, as shown in Figure 4.\nThe ball is modelled as a particle moving freely under gravity.\nUsing the model,\n2 g\n(a) show that U2 = .\nsin2 α\n(2)\nThe point T is at a horizontal distance of 20 m from A and is at a height of 0.75 m above\nthe ground. The ball reaches T without hitting the ground.\n(b) Find the size of the angle α\n(9)\n(c) State one limitation of the model that could affect your answer to part (b).\n(1)\n(d) Find the time taken for the ball to travel from A to T.\n(3)"
+  }
+ ],
+ "exceptions": [],
+ "paper_total": 100
+}

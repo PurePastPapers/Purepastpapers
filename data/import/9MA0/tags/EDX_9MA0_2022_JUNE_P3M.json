@@ -1,0 +1,302 @@
+{
+ "paper_id": "EDX_9MA0_2022_JUNE_P3M",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4",
+      "EDX_MATH_MECH_KIN_7.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "evaluate velocity and its magnitude",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the speed of a particle at t = 2 from its velocity vector.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "differentiate velocity vector",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the acceleration vector of a particle from its velocity.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.2",
+      "EDX_MATH_PURE_VEC_10.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate with constant from given position",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the position vector at t = 1 given the position at t = 4.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)(i)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6",
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "resolve along and perpendicular to slope",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the friction magnitude on a block held on a rough slope by a horizontal force.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(a)(ii)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "direction of friction from resolution",
+     "depends_on": [
+      "(a)(i)"
+     ],
+     "standalone": false,
+     "preview": "State the direction of the friction force on the block.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6",
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "friction law plus Newton II on a slope",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the acceleration of a block moving down a rough slope after the force is removed.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.5",
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.1",
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "resultant parallel to given vector",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show lambda - 3 mu + 7 = 0 given the particle moves in the direction 3i + j.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.5",
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "find acceleration from F = ma, then suvat displacement",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the distance AB travelled in 4 seconds under two constant forces.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1",
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "reason about friction direction from moments or equilibrium",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain why friction at A acts horizontally to the right.",
+     "confidence": "medium",
+     "note": "Could rely on horizontal resolution; tag 8.6 less certain."
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "moments about A with perpendicular string",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the string tension is T = 2Mg cos theta by taking moments.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1",
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.9"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "resolve vertically and substitute",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Show the vertical force from the ground on the rod is 57Mg/25.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6",
+      "EDX_MATH_MECH_MOM_9.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "limiting friction with resolved components",
+     "depends_on": [
+      "(b)",
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Show the coefficient of friction is 8/19 when the rod is in limiting equilibrium.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "projectile with time of flight and range, double angle",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show U^2 sin(alpha) cos(alpha) = 588 for a golf ball landing 120 m away.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "vertical motion to max height combined with (a)",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show U^2 = 1960 given the maximum height is 10 m.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5",
+      "EDX_MATH_MECH_UNITS_6.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "qualitative comparison with air resistance",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State whether U or V is greater when air resistance is included, with a reason.",
+     "confidence": "medium",
+     "note": "Reason expected: air resistance reduces speed so V must be larger; tag 6.1 only a loose fit."
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "name a modelling refinement",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State one further refinement making the projectile model more realistic.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

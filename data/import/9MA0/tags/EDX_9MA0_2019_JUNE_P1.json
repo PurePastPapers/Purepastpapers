@@ -1,0 +1,664 @@
+{
+ "paper_id": "EDX_9MA0_2019_JUNE_P1",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "standard factor theorem, one equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the factor theorem to find an unknown constant in a cubic polynomial.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_NUM_9.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "graphical argument for number of roots, needs rearrangement to a line",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a given graph of y = cos x to show an equation has only one real root, giving a reason.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "small angle approximation then solve quadratic",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the small angle approximation for cos x to estimate a small root to 3 decimal places.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "quotient/chain rule then simplify by factorising",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Differentiate a rational function using the quotient rule and show it simplifies to the form A/(x+1)^n.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "deduce sign of gradient, must respect x not equal -1",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Deduce the range of x for which the gradient of the curve is negative.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "binomial expansion with negative fractional power, coefficients simplified",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the first three terms of the binomial expansion of (4 - x)^(-1/2) in ascending powers of x.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)(i)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "validity condition |x|<4 applied to given values",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State, with a reason, which of three given x values should not be used in the expansion to approximate sqrt 2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)(ii)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "judge accuracy of approximation from size of x without evaluating",
+     "depends_on": [
+      "(a)",
+      "(b)(i)"
+     ],
+     "standalone": false,
+     "preview": "State, with a reason, which valid x value gives the most accurate approximation to sqrt 2.",
+     "confidence": "medium",
+     "note": "Reasoning is about smallest |x| for fastest convergence; wording of reason is subtle."
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "standard completing the square",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write a quadratic in the form a(x + b)^2 + c.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sketch with intercept and turning point from completed square",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Sketch a quadratic curve showing axis intercepts and the turning point.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9",
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "identify translation from altered form, then range of a reciprocal-type function",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Describe the transformation from y = f(x) to y = g(x), and find the range of h(x) = 21/f(x).",
+     "confidence": "medium",
+     "note": "Unit merges parts (i) and (ii); range of 21/f(x) uses the minimum of f from (a)."
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "double angle with tan, produce quadratic in cos, several solutions in range",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Solve 5 sin 2x = 9 tan x for -180 to 180 degrees, using exact methods, to one decimal place.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_ALG_2.9"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "recognise shifted version of (a) and use transformation, not resolve",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Deduce the smallest positive solution of a related equation with shifted arguments.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7",
+      "EDX_MATH_PURE_EXP_6.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "form and fit an exponential model from two data points",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Form an exponential model for a car value from the value when new and after one year.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "evaluate model against data with a reasoned comment",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Evaluate the reliability of the model given the value after 10 years.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "explain adapting parameter for slower depreciation",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Explain how to adapt the model equation for a car that depreciates more slowly.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "expand, integrate, evaluate area between roots with exact fraction",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the exact area of region R between a cubic curve and the negative x-axis is 20 1/3.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "set up equal areas and factorise a quartic in b",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use equal areas of two regions to verify a given equation in b.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "explain geometrically with a diagram why a root is rejected",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Explain with a diagram the significance of the root 5.442.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "log laws then rearrange, show that",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use laws of logarithms to show a = b^2/(b-1).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "deduce restriction from positivity of a and logs, with reason",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Give the full restriction on b, with a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(i)",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "proof by cases (even/odd) with algebra",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove that n^2 + 2 is never divisible by 4 for any natural number n.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "test claim about modulus inequality, choose counter-example or reason",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Decide whether |3x - 28| >= x - 9 is always, sometimes or never true, with a reason.",
+     "confidence": "medium",
+     "note": "Could also be tagged to inequalities 2.5."
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5",
+      "EDX_MATH_PURE_SEQ_4.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "apply modelled 5% increase as geometric terms",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the modelled time to run the first 6 km is 36 min 55 s.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "general term of geometric sequence from model",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show the time for the rth kilometre is 6 x 1.05^(r-4).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5",
+      "EDX_MATH_PURE_SEQ_4.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "combine constant section and geometric sum, convert to minutes and seconds",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Estimate the total race time in minutes and seconds using the geometric model.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.2",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "product rule with exponential and trig, set to zero",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the turning points of y = 10e^(-0.25x) sin x satisfy tan x = 4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.9",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "sketch damped oscillation with modulus, long-term behaviour",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Sketch the graph of H(t) = |10e^(-0.25t) sin t| showing long-term behaviour.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.7"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "choose correct root in right interval and evaluate in model",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the maximum height between the first and second bounce from the model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "modelling limitation: bounces occur where H = 0 only approximately",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Explain why the model should not be used to predict the time of each bounce.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "link asymptotes to denominator factors, substitute point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain why q = 4 from the asymptotes, and show p = 15 using a given point.",
+     "confidence": "medium",
+     "note": "Unit merges (i) and (ii)."
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.10",
+      "EDX_MATH_PURE_INT_8.6",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "partial fractions, integrate to logs, evaluate and simplify exact area",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show the exact area under the curve is a ln 2 + b ln 3, finding rationals a and b.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "differentiate x = 4 sin 2y and invert",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find dy/dx at the origin for a curve given by x = 4 sin 2y.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2",
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "small angle approx then relate linear gradient to derivative",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the small angle approximation to find an equation for points near the origin and relate it to (a).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "express cos 2y in terms of x via identity and handle constants",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show dy/dx = 1/(a sqrt(b - x^2)) for all points on the curve, finding a and b.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

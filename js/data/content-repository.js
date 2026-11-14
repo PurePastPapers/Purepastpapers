@@ -155,7 +155,7 @@ async function loadBundle(subjectId) {
   for (const paper of papersById.values()) {
     paper.question_ids = (paper.question_ids || [])
       .filter((id) => questionsById.has(id))
-      .sort((a, b) => naturalCompare(questionsById.get(a).question_number, questionsById.get(b).question_number));
+      .sort((a, b) => naturalCompare(questionsById.get(a).sort_key ?? questionsById.get(a).question_number, questionsById.get(b).sort_key ?? questionsById.get(b).question_number));
   }
 
   // Crossover tags may point into other subjects: load those trees too, so the

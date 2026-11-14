@@ -1,0 +1,612 @@
+{
+ "paper_id": "EDX_9MA0_2018_JUNE_P2",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "evaluate composite",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Evaluate gg(5) for a rational function.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "state range",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the range of a rational function.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "find inverse and its domain",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the inverse function and state its domain.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.4",
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "vector arithmetic",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the position vector of D given AB = BD.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.4",
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "magnitude equation then quadratic",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the distance between two points to find a negative constant a.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "choose suitable counterexample with surds",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Disprove a statement about products of irrational numbers using a counter example.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "modulus graph and inequality reasoning",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Sketch y = |x| + 3 and explain why |x| + 3 >= |x + 3| for all real x.",
+     "confidence": "medium",
+     "note": "Parts (i) and (ii) combined into one unit."
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(i)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.3",
+      "EDX_MATH_PURE_SEQ_4.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "split sigma into arithmetic series",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the value of a sum of an arithmetic expression over 16 terms.",
+     "confidence": "medium",
+     "note": "Summation expression scrambled in extraction."
+    },
+    {
+     "label": "(ii)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.2",
+      "EDX_MATH_PURE_SEQ_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "identify periodic sequence then sum",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the exact sum of the first 100 terms of a periodic recurrence sequence.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "derive Newton-Raphson form and simplify",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the Newton-Raphson formula for a cubic equation takes a given form.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "apply iteration",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Apply the Newton-Raphson formula to find x2 and x3.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "explain failure when derivative is zero",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Explain why Newton-Raphson cannot start at x = 0.",
+     "confidence": "medium",
+     "note": "Assumes reason is zero gradient at the start value."
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "factor theorem and factorisation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Calculate f(2) and factorise a cubic into a linear and a quadratic factor.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "substitute y^2 and discriminant",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Prove an equation in y has exactly two real solutions using the factorisation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "count tan solutions over a long interval",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Deduce the number of real solutions of a cubic equation in tan theta over a given interval.",
+     "confidence": "medium",
+     "note": "Dependency on (a) and (b) inferred."
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(i)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "convert sec and solve sin2x",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Solve 4 sin x = sec x in a given interval.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6",
+      "EDX_MATH_PURE_TRIG_5.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "R-form then solve",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Solve 5 sin theta - 5 cos theta = 2 to one decimal place.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "construct quadratic from maximum and roots",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find a quadratic model for the trajectory of a ball from its maximum height and range.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "solve quadratic at given height",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the model to find the greatest horizontal distance at which the ball is at a given height.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "model limitation",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Give one limitation of the quadratic model of the ball.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.1",
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.2"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "first-principles proof with given limits",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove from first principles that the derivative of cos theta is -sin theta.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.6",
+      "EDX_MATH_PURE_INT_8.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "set up differential equation from words, separate, use two conditions",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Form and solve a differential equation for a dissolving spherical mint to link radius and time.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "solve for zero radius and convert units",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the total time for the mint to dissolve, in minutes and seconds.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "model limitation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Suggest a limitation of the dissolving mint model.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.10"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "partial fractions with improper fraction",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find constants A, B and C in a partial fraction decomposition.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2",
+      "EDX_MATH_PURE_ALG_2.10"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "differentiate and justify negative gradient for all x",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Prove that a rational function is decreasing for x greater than 3.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.8",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "prove identity with double angle",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove 1 - cos 2theta = tan theta sin 2theta.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "use identity to factorise and solve",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the identity to solve a trigonometric equation involving sec^2 x in a given interval.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_COORD_3.1",
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "normal, intersection, by-parts integral, composite area",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the exact area of a region bounded by y = x ln x, its normal and the x-axis.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute t = 0",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the initial number of mice from a logistic model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4",
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "chain rule then rewrite in terms of N",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the growth rate of a modelled population is given by a logistic differential equation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "maximise rate via N then solve for t",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the time when the rate of growth is greatest in a logistic model.",
+     "confidence": "medium",
+     "note": "Dependency on (b) assumed since the result simplifies maximisation."
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "long-term value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the maximum population according to the model.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

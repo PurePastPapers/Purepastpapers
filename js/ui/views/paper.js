@@ -146,7 +146,9 @@ export async function mount(element, context) {
           <section class="card ruled tilt-3">
             <i class="tape tape--c" aria-hidden="true"></i>
             <h2 class="card__title">Get the paper</h2>
-            ${pdf || markScheme
+            ${Array.isArray(paper.source_documents) && paper.source_documents.length > 2
+              ? html`<div class="stack stack--sm">${paper.source_documents.map((doc) => html`<a class="btn btn--block btn--left" href="${doc.url}" target="_blank" rel="noopener">${icon(doc.kind === 'mark_scheme' ? 'check' : 'file')} ${doc.label}</a>`)}</div>`
+              : pdf || markScheme
               ? html`<div class="stack stack--sm">
                   ${pdf ? html`<a class="btn btn--block btn--left" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
                   ${markScheme ? html`<a class="btn btn--block btn--left" href="${markScheme}" target="_blank" rel="noopener">${icon('check')} Mark scheme (PDF)</a>` : ''}

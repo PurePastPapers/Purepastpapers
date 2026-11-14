@@ -1,0 +1,604 @@
+{
+ "paper_id": "EDX_9MA0_2018_JUNE_P1",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "small angle approximations with a double-angle style simplification",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use small angle approximations to find an approximate value of a trigonometric expression in terms of theta.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.2",
+      "EDX_MATH_PURE_DIFF_7.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "routine first and second derivatives of powers",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the first and second derivatives of a curve with a quadratic and surd term.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute into derivative to verify stationary point",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Verify that a curve has a stationary point at x = 4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "second derivative test with reason",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Determine the nature of a stationary point, giving a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "combine area and perimeter conditions of a sector",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use sector area and a perimeter condition to find the exact radius of a sector.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "change of sign with ln evaluation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a root of an equation involving a logarithm lies between 3 and 4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret cobweb/staircase diagram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a graph to decide whether an iteration formula starting at x=4 converges to the root.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4",
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "quotient rule then trig identity simplification",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Differentiate a trigonometric quotient and show the result simplifies to a constant over 1 + sin 2theta.",
+     "confidence": "medium",
+     "note": "Equation text scrambled in extraction; read as 3sin(theta)/(2sin(theta)+2cos(theta))."
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2",
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "tangent perpendicular to radius, line through point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the line through the centre perpendicular to a tangent has a given equation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_COORD_3.1",
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "find point of contact then radius",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the equation of a circle given its centre and a tangent line.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "second tangent via symmetry or distance, unsignposted",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the constant k for the second tangent to a circle parallel to a given tangent.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate to logarithm and simplify with limits",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a definite integral with limits k and 2k is independent of k.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate and show inverse proportion",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a definite integral with limits k and 2k is inversely proportional to k.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute into model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the depth of water at a given time using a sinusoidal model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "solve trig inequality boundary and convert to time",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the earliest time the water depth reaches a required level, to the nearest minute.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "implicit differentiation with product term",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use implicit differentiation to show a given expression for dy/dx on a curve.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "vertical tangent condition and exact coordinates",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact coordinates of the furthest west point of a curve defined implicitly.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "explain stationary condition in context",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Explain how to find the furthest north point of a curve.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.2",
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "separate variables and integrate",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Solve a differential equation by separating variables to show a given exponential form.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read maximum from solution",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "State the maximum height of a passenger from a modelled solution.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "second maximum of sine",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the time at which the passenger reaches maximum height for the second time.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "two rational-power expansions and multiplication",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use binomial expansions to show a given quadratic approximation to a rational expression.",
+     "confidence": "medium",
+     "note": "Expression scrambled; read as a quotient of binomial powers."
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "validity of binomial expansion",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Give a reason why x = 1/11 or another value should not be used in the expansion.",
+     "confidence": "medium",
+     "note": "Substituted value scrambled in extraction; reason presumed to be validity range."
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "substitute and manipulate surds to a fraction",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Substitute a value into the approximation to obtain a fraction approximating sqrt(6).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "form two equations and divide",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find p and show A is about 24800 for an exponential model through two data points.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "interpret constants",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Interpret the constants A and p in an exponential value model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.5",
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "solve exponential inequality with logs",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the year in which the car value first exceeds a given amount.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "substitution with exact definite integral",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use integration to show an exact value for a definite integral of x times a root expression.",
+     "confidence": "medium",
+     "note": "Integrand scrambled; method presumed substitution or parts."
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "eliminate parameter with double angle",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Eliminate the parameter to show points on a parametric curve satisfy a Cartesian equation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.3",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sketch and restricted domain",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Sketch a parametric curve and explain why it is only part of a parabola.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.3",
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "intersection conditions on restricted curve, set notation",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the range of k for which a line meets a restricted parametric curve at two distinct points.",
+     "confidence": "medium",
+     "note": "Long unstructured problem; marks 5 for a range in set notation."
+    }
+   ]
+  }
+ ]
+}

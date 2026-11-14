@@ -74,7 +74,8 @@ export function validateQuestion(question, { specIndex, paperIds, subjectId }) {
       if (dependencies.some((dependency) => typeof dependency !== 'string' || !dependency.trim())) error('depends_on_question_ids must contain non-empty string ids.');
       if (new Set(dependencies).size !== dependencies.length) error('depends_on_question_ids contains duplicate ids.');
       if (dependencies.includes(question.question_id)) error('depends_on_question_ids cannot include the question itself.');
-      if (dependencies.length && !(typeof question.context?.shared_stem_html === 'string' && question.context.shared_stem_html.trim())) {
+      const earlierShown = question.context?.dependency_context === 'earlier_parts_shown' && question.context?.earlier_parts && Array.isArray(question.content?.question_slices);
+      if (dependencies.length && !earlierShown && !(typeof question.context?.shared_stem_html === 'string' && question.context.shared_stem_html.trim())) {
         error('A question with dependencies needs context.shared_stem_html supplying the earlier information needed to answer this part.');
       }
     }

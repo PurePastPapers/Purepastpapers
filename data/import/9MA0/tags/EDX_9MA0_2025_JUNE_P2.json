@@ -1,0 +1,680 @@
+{
+ "paper_id": "EDX_9MA0_2025_JUNE_P2",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "factor out then factorise quadratic",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Factorise completely a cubic by taking out a common factor and factorising the quadratic.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "integrate fractional and negative-index terms after simplifying",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find an indefinite integral of an expression involving powers of x and a root, in simplest form.",
+     "confidence": "medium",
+     "note": "Question text is scrambled by extraction; exact integrand not verified from the image, but clearly a power-term integral."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "take logs of both sides",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Given 3^x = 7^y, find the exact value of x/y.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "cosine rule rearranged",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that angle ABC is 0.394 radians using the cosine rule on a triangle with a sector.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "triangle area minus sector area",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the area of the region bounded by a line, a side of a triangle and a circular arc.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "find parameter from x",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the y coordinate of the point on a parametric curve with a given x coordinate.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "eliminate parameter",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the Cartesian equation of a parametric curve in the form y = f(x).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "differentiate Cartesian form by chain rule",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the gradient of the curve at the point P.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "square small angle approximation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the small angle approximation for cos to show that 1 - cos^2(2x) is approximately 4x^2 - 4x^4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "combine small angle approximations in a quotient",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use small angle approximations to express a trig fraction in the form a + bx^2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "deduce limiting value and justify",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Deduce an approximate value of the expression for very small x, giving a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.10",
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "improper fraction partial fractions with four constants",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find constants A, B, C, D in an identity expressing a cubic over a quadratic in partial fractions.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "differentiate and substitute to show a = -4",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show a = -4 given a quartic has a local maximum at x = -1/4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "exact evaluation at turning point",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact y coordinate of the local maximum.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "relate number of solutions of f(x)=k to turning point values",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the range of k, in set notation, for which f(x) = k has four distinct solutions.",
+     "confidence": "medium",
+     "note": "Needs the other minimum values found by solving f'(x)=0 algebraically; exact depends on mark scheme not fully read."
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute into exponential model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the number of cars sold in the first 3 months using an exponential model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "solve exponential equation using ln",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the time T when N = 3000 to 2 decimal places.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.2",
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "differentiate e^(kt) and evaluate",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the rate of increase in total sales at t = 3 to 3 s.f.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "refine model with new upper limit",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Suggest a refinement to the model given a new upper limit of 6500 cars.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "net rate of change in to out",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that 20 dV/dt = 9 - 6V from the rates of inflow and outflow.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "separate variables, integrate, apply condition, rearrange to exponential form",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the differential equation with V = 0.25 at t = 0 to show V = P - Qe^(-kt).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "use limiting value of V in context",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Determine whether the container (capacity 2 m^3) will ever become full, with a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.1",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "line through two points in context",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find a linear model for number of toys sold against selling price from two data points.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "build profit from revenue and costs",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that yearly profit P (thousands of pounds) is -0.06x^2 + 3.9x - 41.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "solve quadratic inequality P > 0",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the range of selling prices for which the company makes a profit.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "vertex by symmetry of roots",
+     "depends_on": [
+      "(b)",
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Deduce the selling price that maximises the profit.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "compare model prediction with actual data",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Evaluate the suitability of the profit model using one year's actual profit at a price of 35 pounds.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "evaluate modulus function",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the possible values of f(a) where |a| = 1 for f(x) = 4|x - 3| - 5.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "range of composite from range of f",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the range of gf(x) given f(x) = 4|x - 3| - 5 and g(x) = 2x + 17.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "compare line through origin with modulus graph vertex and gradient",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the range of k for which f(x) = kx has no solutions.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(i)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.3",
+      "EDX_MATH_PURE_TRIG_5.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "relate number of solutions to period",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Deduce n given that sin(nx) = k has exactly 6 solutions in [0, 2 pi) for all 0 < |k| < 1.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.3",
+      "EDX_MATH_PURE_TRIG_5.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "count solutions of sin^2 equation over longer interval with justification",
+     "depends_on": [
+      "(i)"
+     ],
+     "standalone": false,
+     "preview": "Deduce and justify the number of solutions of sin^2(nx) = k^2 in [0, 5 pi).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.3",
+      "EDX_MATH_PURE_VEC_10.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "parallel vectors give ratio condition",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that k = 5 given vectors for AB, BC and DB in a trapezium.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.5",
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "two routes to X, equate coefficients of independent vectors",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the ratio BX : XD where AN meets BD at X, with N dividing BC in the ratio 1 : 4.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "key": "q15",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.2"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "quotient rule, simplify and solve, then exact coordinates",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use calculus to find the exact coordinates of the minimum turning point P of a rational curve.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "trig substitution x = tan theta, change limits, simplify to cos^2",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use x = tan theta to show an integral of f(x) equals an integral of cos^2 theta between limits.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "integrate cos^2 using double angle and find exact area",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use algebraic integration to find the exact area of the shaded region R.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

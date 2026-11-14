@@ -1,0 +1,406 @@
+{
+ "paper_id": "EDX_9MA0_2020_AUTUMN_P3S",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read mutually exclusive events from Venn diagram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write down a pair of mutually exclusive events from a Venn diagram of four events.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read probability from Venn diagram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Given P(B), find the missing probability p on the Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "independence condition to find a probability",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Given A and B are independent, find the value of q on the Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_PROB_3.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "conditional probability to find two unknowns",
+     "depends_on": [
+      "(b)",
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Given P(B' | C) = 0.64, find the values of r and s on the Venn diagram.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "describe correlation from scatter diagram",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Describe the correlation shown in a scatter diagram of two variables.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "recall of large data set variables and units",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Using the large data set, identify the variable on the y-axis and state its units.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "two-tail test of correlation coefficient with critical value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Carry out a hypothesis test on a product moment correlation coefficient r = -0.377 for 30 days at the 5% level.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4",
+      "EDX_MATH_STATS_DATA_2.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "large data set context with interpretation of negative correlation",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Comment on the expected hours of sunshine when the daily maximum relative humidity is 97%.",
+     "confidence": "medium",
+     "note": "Unsure whether the mark scheme expects reliance on the (c) conclusion or the data set; tag between 2.2 and 2.4."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read range from box plot",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the range of the times from a box and whisker plot.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "read IQR from box plot",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the interquartile range of the times from a box and whisker plot.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "mean from summary statistics",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Calculate the mean time from the given sum of times.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "standard deviation from summary statistics",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Calculate the standard deviation of the times from the given sums.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "apply outlier definition with reason",
+     "depends_on": [
+      "(c)",
+      "(d)"
+     ],
+     "standalone": false,
+     "preview": "State how many outliers there are using the rule of more than 3 standard deviations above the mean.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(f)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "reason about median and mean changes when two values are added",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Suggest values for two extra times so that the median increases and the mean is unchanged, with explanation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(g)",
+     "primary": [
+      "EDX_MATH_STATS_DATA_2.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "qualitative effect on standard deviation",
+     "depends_on": [
+      "(d)"
+     ],
+     "standalone": false,
+     "preview": "Explain without calculation why the standard deviation of all 29 times is lower than in part (d).",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "sum of probabilities equals 1",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that k = 600/137 for a given discrete probability distribution.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sum of two independent discrete variables, list cases",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find P(D1 + D2 = 80) for two independent copies of D, to 3 significant figures.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_SEQ_4.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "link quadrilateral angle sum with arithmetic sequence and discrete probability",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact probability that the smallest angle of a quadrilateral whose angles form an arithmetic sequence with difference D exceeds 50 degrees.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single normal probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P(time > 15) when time is normal with mean 10 and standard deviation 4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_STATS_HYP_5.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "one-tail test for mean of a normal with known standard deviation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Test at the 5% level whether the mean consultation time exceeds 10 minutes given a sample mean of 11.5 for 20 patients.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)(i)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single normal probability",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P(T < 2) for T ~ N(5, 3.5^2).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)(ii)",
+     "primary": [
+      "EDX_MATH_STATS_PROB_3.2",
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "conditional probability with normal distribution",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find P(T < 2 | T > 0) for T ~ N(5, 3.5^2).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)(iii)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "critique normal model for a time variable",
+     "depends_on": [
+      "(c)(ii)"
+     ],
+     "standalone": false,
+     "preview": "Explain why this normal distribution may not be a good model for T.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_STATS_DIST_4.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_STATS_PROB_3.2"
+     ],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "median of truncated normal via conditional probability",
+     "depends_on": [
+      "(c)(i)"
+     ],
+     "standalone": false,
+     "preview": "Find the median time under a refined model including only T > 2, to one decimal place.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

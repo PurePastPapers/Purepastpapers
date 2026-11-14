@@ -1,0 +1,620 @@
+{
+ "paper_id": "EDX_9MA0_2020_AUTUMN_P1",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "binomial expansion with rational power and a coefficient inside the bracket",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the first four terms of the binomial expansion of (1 + 8x)^(-1/2) in ascending powers of x.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "explain substitution and validity in a binomial approximation",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Explain how to use a given value of x in the expansion to approximate a surd; no calculation needed.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "standard log solution of an exponential equation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Take logarithms of both sides to solve 4^(3p-1) = 5^210 for p to one decimal place.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "subtract position vectors",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the vector AB from the position vectors of points A and B.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "parallel vectors with a reason",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that a quadrilateral OABC is a trapezium, giving reasons.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "inverse function evaluated at a value",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find f^-1(7) for a given rational function f.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "composite function with algebraic simplification",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that ff(x) takes the form (ax + b)/(x - 3) and find integers a and b.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4",
+      "EDX_MATH_PURE_SEQ_4.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "arithmetic sequence in a modelling context",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Model the fastest speeds in successive gears as an arithmetic sequence and find the speed in 3rd gear.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5",
+      "EDX_MATH_PURE_SEQ_4.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "geometric sequence in a modelling context",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Model the fastest speeds in successive gears as a geometric sequence and find the speed in 5th gear.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "R sin(x + alpha) form with exact R",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express sin x + 2 cos x in the form R sin(x + alpha), with exact R and alpha in radians.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "use the harmonic form to find a maximum in a model",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the R sin form of a temperature model to deduce the maximum temperature.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "solve for the time of the maximum, convert to clock time",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find, to the nearest minute, the time of day at which the maximum temperature occurs.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.5",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "find line and quadratic from a sketch, then express region as inequalities",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use inequalities to define the shaded region between a quadratic curve with a minimum point and a straight line.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "translate proportional growth into exponential model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write a suitable equation for n in terms of t when the rate of increase of n is proportional to n.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "product and chain rule with exponential factor",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that f'(x) = 8(2 + x - x^2)e^(-2x) for f(x) = 4(x^2 - 2)e^(-2x).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "stationary points with exact coordinates",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the exact coordinates of the stationary points of the curve y = f(x).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.9",
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "ranges of transformed functions with restricted domain",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the ranges of g(x) = 2f(x) and h(x) = 2f(x) - 3 over their given domains.",
+     "confidence": "medium",
+     "note": "Domain notation scrambled in extraction; domains not confirmed from image."
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "change of variable including limits, show-that",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the substitution x = u^2 + 1 to show a definite integral equals the integral of 6/(u(3+2u)) between limits p and q.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.10",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "partial fractions then logarithmic integration to a given form",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use partial fractions to integrate algebraically and show the integral equals ln a for rational a.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.2",
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "find intersection of circles then angle by trigonometry",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the angle AOB between the intersection points of two circles is 0.635 radians.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1",
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "perimeter from arc lengths of two circles",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the perimeter of the shaded region bounded by two circular arcs, to one decimal place.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.8",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "prove identity with cosec and cot",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that cosec(theta) - sin(theta) is identically cos(theta) cot(theta).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "use identity to reduce to cot equation, find all solutions in a range",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Hence solve cosec x - sin x = cos x cot(3x - 50 degrees) for 0 < x < 180 degrees.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "periodic recurrence of order 3, build terms in k",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "For a recurrence with constant k and periodic of order 3 with a1 = 2, show that k^2 + k - 2 = 0.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "reject root by considering the sequence behaviour",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Explain why k cannot equal 1 for this periodic sequence.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.2",
+      "EDX_MATH_PURE_SEQ_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "sum of 80 terms of a periodic sequence",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the sum of the first 80 terms of the periodic sequence.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.6",
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "construct a differential equation from a rate model using chain rule",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that dr/dt = -k/r^2 given the volume of a spherical balloon decreases at a constant rate.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "separate variables, use two conditions to fix constants",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the differential equation using the given initial radius and radius after 5 seconds to link r and t.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret solution in context to find the valid time range",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the limitation on t for which the equation linking r and t is valid.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "key": "q15",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "implicit differentiation then eliminate trig using identity",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that dy/dx = -18x/(x^4 + 81) for the curve x^2 tan y = 9.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "second derivative by quotient rule and prove a point of inflection",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Prove that the curve has a point of inflection at a given x value.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 16,
+   "key": "q16",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "unfamiliar proof by contradiction using factorisation of difference of squares",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove by contradiction that there are no positive integers p and q with 4p^2 - q^2 = 25.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

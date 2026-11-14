@@ -1,0 +1,636 @@
+{
+ "paper_id": "EDX_9MA0_2023_JUNE_P2",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "second derivative of cubic",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the second derivative of a given cubic.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "concavity from sign of second derivative",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve f''(x) = 0 and find the range of x for which f is concave.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "evaluate recurrence with cos terms",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show u2 = 40 and find u3 and u4 for a recurrence involving cos(n pi/2).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.2",
+      "EDX_MATH_PURE_SEQ_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "use periodicity to sum 25 terms",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use periodic order 4 to find u5 and the sum of the first 25 terms.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "combine logs and convert to a quadratic",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that a given logarithmic equation reduces to 3x^2 - 13x - 30 = 0.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "solve quadratic and reject root outside log domain",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Write down the roots and state which is not a solution of the log equation, with a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "initial value in exponential model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the value of A from the initial temperature.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.7",
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "differentiate exponential model and apply rate condition",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the initial cooling rate to find B and give the equation for H.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "stationary point condition",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use the turning point at P to show k = 12.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate and use point to find constant",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the point where the curve crosses the y-axis.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.4"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "compare direction vectors",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that AD is parallel to BC.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.2",
+      "EDX_MATH_PURE_VEC_10.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_UNITS_6.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "side lengths via magnitudes, perimeter, units conversion",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the perimeter of the track and the runner's average speed in km per hour.",
+     "confidence": "medium",
+     "note": "Tagged with vectors in context; kinematics speed/unit conversion is a prerequisite."
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "implicit differentiation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find dy/dx for an implicit curve in terms of x and y.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.5",
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "normal at point using implicit gradient",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the equation of the normal at P in the form ax + by + c = 0.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "R cos(theta - alpha) form",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express 2cos(theta) + 8sin(theta) as R cos(theta - alpha).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.4",
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "sum of arithmetic terms in trig, maximise and deduce x",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find the maximum value of S9 for a trig arithmetic sequence and the smallest positive x giving it.",
+     "confidence": "medium",
+     "note": "Dependency on (a) via R cos form inferred; sequence setup is unsignposted."
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.1",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "eliminate parameter to Cartesian form",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the Cartesian equation is y = A ln(x + B).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_DIFF_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_COORD_3.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "find tangent to parametric curve at a point, arrange to given form",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that the tangent at P can be written in the form ax + by = c ln 5.",
+     "confidence": "medium",
+     "note": "Unclear whether parametric (7.5) or Cartesian (7.2) route intended; both valid."
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.10"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "partial fractions with parameter",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Express the given rational function in partial fractions in terms of k.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.6",
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.4",
+      "EDX_MATH_PURE_EXP_6.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "integrate partial fractions, exact definite integral, solve for k",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Integrate f(x) between limits and find the exact value of k for which the integral is 21.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "construct differential equation from proportionality, chain rule",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that dh/dt = lambda/h from the model for the tank.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.7"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "separate variables and use two conditions",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the differential equation to give an equation of the form h^(3/2) = At + B.",
+     "confidence": "medium",
+     "note": "Q text for form is scrambled; exponent assumed 3/2."
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute full height into solution",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the time taken for the tank to be completely full.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "evaluate modulus models at t = 0",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the initial difference between the two companies' subscriber numbers.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.7"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret graph of modulus model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Suggest a value of T with a reason from the graph of N_A.",
+     "confidence": "medium",
+     "note": "Answer is judgement-based from the model/graph."
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.7",
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "modulus inequality with set notation across branches",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the values of t for which N_A > N_B in set notation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "limitation of model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State a limitation of the model for company B.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "binomial expansion with negative index",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the first three terms of the binomial expansion of (3 + x)^-2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_SEQ_4.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "integrate expansion term by term and evaluate",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use the expansion from (a) and algebraic integration to estimate a definite integral.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.3",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "substitution or rewriting, exact answer in a ln b + c form",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the exact value of the definite integral in the form a ln b + c.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "manipulate with tan, sec^2 and double angle to given factorised form",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the trig equation can be written as sin2theta(A cos^2 + B cos + C) = 0.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "factorise, solve in extended interval, exclude invalid angle",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the equation for 360 <= x <= 540 degrees.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 15,
+   "key": "q15",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_PROOF_1.1",
+      "EDX_MATH_PURE_TRIG_5.8"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "complete proof by contradiction in trig setting",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Complete a student's proof by contradiction that sin x - cos x >= 1 for obtuse x.",
+     "confidence": "medium",
+     "note": "Task is to continue a given partial proof; tags inferred."
+    }
+   ]
+  }
+ ]
+}

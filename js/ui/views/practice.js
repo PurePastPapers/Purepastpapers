@@ -560,7 +560,11 @@ export async function mount(element, context) {
           <label class="field"><span class="field__label">Your notes or answer (optional)</span><textarea class="textarea" rows="3" data-answer="${question.question_id}" placeholder="You can also answer on paper">${draft.answer || ''}</textarea></label>
           <div class="row row--tight"><button type="button" class="btn btn--sm" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? 'Hide mark scheme' : 'Show mark scheme'}</button>
             ${paper ? html`<a class="btn btn--sm" href="#/paper/${subjectId}/${question.paper_id}">View full paper</a>` : html`<span class="small muted">Full paper unavailable</span>`}</div>
-          <p class="small muted">A verified examiner’s report has not been linked to this question.</p>
+          ${(() => {
+            const doc = (paper?.source_documents || []).find((item) => item.kind === 'question_paper' && (!question.section_label || item.label.startsWith(question.section_label))) || null;
+            const pdf = doc?.url || paper?.full_paper_pdf_url;
+            return html`<p class="small muted">${pdf ? html`<a href="${pdf}" target="_blank" rel="noopener">Open the source paper (PDF)</a> · ` : ''}Examiner’s report: not hosted here${paper?.official_source_url ? html`; <a href="${paper.official_source_url}" target="_blank" rel="noopener">find it on the ${subject.board} site</a>` : ''}.${question.provenance?.review_status ? ' Topic tags and difficulty are AI-reviewed, not teacher-reviewed.' : ''}</p>`;
+          })()}
           ${schemeOpen ? html`<section class="card stack stack--sm"><h3>Mark scheme</h3>${markSchemeBody(question)}
             <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
               ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}

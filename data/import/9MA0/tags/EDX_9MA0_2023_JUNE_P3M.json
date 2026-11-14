@@ -1,0 +1,382 @@
+{
+ "paper_id": "EDX_9MA0_2023_JUNE_P3M",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single suvat",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the speed of a car after 5 s with constant acceleration.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "single suvat",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the distance travelled by the car in the first 5 s.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "weight equals normal reaction",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the normal reaction of the plane on the particle.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "Newton second law horizontally",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the friction force given the particle accelerates at 1.4 m/s^2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "F = mu R",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the coefficient of friction.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_KIN_7.1"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute t = 0 and find magnitude",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the speed of P at t = 0 from its velocity vector.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_MECH_KIN_7.1",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "equate i and j components, solve quadratic",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find t when the velocity is parallel to i + j.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.2"
+     ],
+     "difficulty": "easy",
+     "difficulty_basis": "differentiate velocity vector",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the acceleration of P at time t.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "perpendicular to i means zero i component",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find t when the acceleration is perpendicular to i.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "vector suvat then magnitude",
+     "depends_on": [],
+     "standalone": false,
+     "preview": "Find the speed of P at B using constant acceleration in vector form.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "vector displacement, solve quadratic for time, choose T > 5",
+     "depends_on": [],
+     "standalone": false,
+     "preview": "Find the time T at which P reaches point C given its i-component position.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "use T in j-component of displacement",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the j-component c of the position vector of C.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "horizontal motion of projectile",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that T = 10/(7 cos alpha) for the ball.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5",
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "vertical equation with time, use sec^2 identity to reach quadratic in tan",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show that tan^2 alpha - 4 tan alpha + 3 = 0.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_ALG_2.3",
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "solve for alpha, choose greater, find max height",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the greatest height of the ball between O and A.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_KIN_7.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "limitation of projectile model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State one limitation of the model other than air resistance.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "direction of friction in limiting equilibrium",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "State the direction of the frictional force at A with a reason.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "moments about A for rod, show given result",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "By taking moments about A, show that S = (1/2) Mg cot(theta).",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6",
+      "EDX_MATH_MECH_MOM_9.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "resolve forces, limiting friction, combine with moments",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the coefficient of friction when tan theta = 3/4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_MECH_FORCES_8.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_VEC_10.2"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "resultant of two perpendicular forces",
+     "depends_on": [
+      "(b)",
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Find the magnitude of the resultant force at A in terms of M and g.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(e)",
+     "primary": [
+      "EDX_MATH_MECH_MOM_9.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "effect of centre of mass on moment",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "State whether S is larger, smaller or equal in the new model, with a reason.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

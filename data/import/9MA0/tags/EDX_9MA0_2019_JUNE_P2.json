@@ -1,0 +1,639 @@
+{
+ "paper_id": "EDX_9MA0_2019_JUNE_P2",
+ "tagger": "model",
+ "questions": [
+  {
+   "number": 1,
+   "key": "q01",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "indices with fractional powers and rewriting bases",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Rearrange an equation involving powers of x and y to express y as a function of x.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "key": "q02",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "trapezium rule with unequal data context",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use tabulated speeds to estimate the length of runway used by the jet.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "convexity of speed-time graph determines over/under estimate",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Explain whether the estimate is an underestimate or overestimate given smooth acceleration.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "key": "q03",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "identify degrees vs radians error",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain the error in a sector area calculation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "convert angle to radians and apply formula",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Write out a correct solution for the area of the sector.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "key": "q04",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.3",
+      "EDX_MATH_PURE_COORD_3.2"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_TRIG_5.5",
+      "EDX_MATH_PURE_ALG_2.3"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "substitute parametric into circle, use identity, choose correct quadrant",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the Cartesian coordinates of a point where a parametric curve meets a circle.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "key": "q05",
+   "units": [
+    {
+     "label": "",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.4"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.3"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret limit of a sum as integral, then evaluate",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Evaluate the limit of a sum of rectangle areas under y = sqrt x between 4 and 9.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "key": "q06",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "composite of piecewise function",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find gg(0) for a piecewise function.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8",
+      "EDX_MATH_PURE_ALG_2.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "solve inequality in each piece and combine ranges",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find all x for which g(x) > 28 for a piecewise function.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "one-one condition for inverse",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain why h has an inverse but g does not.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.8"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "inverse function evaluated by solving h(x) value",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Solve h^-1(x) = -1/2.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 7,
+   "key": "q07",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11",
+      "EDX_MATH_PURE_COORD_3.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "linear cost model",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Write a general linear equation for cost against number of bars.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_COORD_3.1",
+      "EDX_MATH_PURE_ALG_2.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "form two equations from profit data and solve",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show the cost model is y = 0.84x + 428 using two profit/loss data points.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "interpret gradient in context",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Interpret the value 0.84 in the cost model.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.5",
+      "EDX_MATH_PURE_ALG_2.11"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "form inequality revenue > cost, integer answer",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Find the least number of bars to make a profit on a given day.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 8,
+   "key": "q08",
+   "units": [
+    {
+     "label": "(i)",
+     "primary": [
+      "EDX_MATH_PURE_SEQ_4.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "identify first term and ratio of infinite geometric series starting at r = 4",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the sum to infinity of 20 x (1/2)^r from r = 4.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(ii)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.4",
+      "EDX_MATH_PURE_SEQ_4.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "combine logs of a telescoping product",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the sum of log5((n+2)/(n+1)) from n = 1 to 48 equals 2.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 9,
+   "key": "q09",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "medium",
+     "difficulty_basis": "explain linear log-log graph gives power law",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Explain how a linear log-log graph suggests d = kV^n with k about 0.017.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_EXP_6.6",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "substitute point, solve for n via logs",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Find n to 3 s.f. using a data point to give a complete model equation.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11",
+      "EDX_MATH_PURE_EXP_6.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "unit conversion, reaction distance plus modelled braking distance, compare with 100 m",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Use the model to decide if Sean stops before the puddle, including reaction time.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 10,
+   "key": "q10",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "vector journey through midpoint",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find CM in terms of a and b.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.5",
+      "EDX_MATH_PURE_VEC_10.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "ON via parameter along CM, show that",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Show ON = (3/2 - lambda) a + (1/2 lambda) b.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_VEC_10.5",
+      "EDX_MATH_PURE_PROOF_1.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "equate coefficients since ON parallel to b, prove ratio",
+     "depends_on": [
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Hence prove ON : NB = 2 : 1.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 11,
+   "key": "q11",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3",
+      "EDX_MATH_PURE_EXP_6.3"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_DIFF_7.5",
+      "EDX_MATH_PURE_EXP_6.4"
+     ],
+     "difficulty": "hard",
+     "difficulty_basis": "take logs, implicit differentiation, find stationary point",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the x coordinate of the turning point of y = x^x by first taking logarithms.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.1"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "change of sign with function evaluation",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show that the root alpha of x^x = 2 lies between 1.5 and 1.6.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "apply iteration formula",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use a given iteration formula to find x4 to 3 decimal places.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(d)",
+     "primary": [
+      "EDX_MATH_PURE_NUM_9.2"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "describe oscillating divergence/convergence",
+     "depends_on": [
+      "(c)"
+     ],
+     "standalone": false,
+     "preview": "Describe the long-term behaviour of the iteration sequence.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 12,
+   "key": "q12",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.8",
+      "EDX_MATH_PURE_TRIG_5.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "prove identity via compound angle formulae",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Prove cos3t/sin t + sin3t/cos t = 2 cot 2t.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_TRIG_5.7",
+      "EDX_MATH_PURE_TRIG_5.4"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "hence rewrite equation using cot 2t and solve in range",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Hence solve the equation for the given interval to one decimal place.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 13,
+   "key": "q13",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_ALG_2.11",
+      "EDX_MATH_PURE_ALG_2.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "form volume constraint and eliminate h, then surface area expression",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Show the surface area of the tank is 12/r + (5/3) pi r^2.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "differentiate and set to zero for minimum",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Use calculus to find the radius that minimises the surface area.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_DIFF_7.3"
+     ],
+     "prerequisites": [],
+     "difficulty": "easy",
+     "difficulty_basis": "substitute and round",
+     "depends_on": [
+      "(a)",
+      "(b)"
+     ],
+     "standalone": false,
+     "preview": "Calculate the minimum surface area to the nearest integer.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "number": 14,
+   "key": "q14",
+   "units": [
+    {
+     "label": "(a)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.5"
+     ],
+     "prerequisites": [],
+     "difficulty": "hard",
+     "difficulty_basis": "integration by substitution with surd, show that",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Use u = 4 - sqrt h to show the integral equals -8 ln|4 - sqrt h| - 2 sqrt h + k.",
+     "confidence": "high",
+     "note": ""
+    },
+    {
+     "label": "(b)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.8",
+      "EDX_MATH_PURE_DIFF_7.6"
+     ],
+     "prerequisites": [],
+     "difficulty": "medium",
+     "difficulty_basis": "interpret DE to find limiting heights",
+     "depends_on": [],
+     "standalone": true,
+     "preview": "Find the range of tree heights according to the differential equation model.",
+     "confidence": "medium",
+     "note": "Interpretation of the model; could be framed as 8.7."
+    },
+    {
+     "label": "(c)",
+     "primary": [
+      "EDX_MATH_PURE_INT_8.7"
+     ],
+     "prerequisites": [
+      "EDX_MATH_PURE_INT_8.5",
+      "EDX_MATH_PURE_EXP_6.5"
+     ],
+     "difficulty": "extra_hard",
+     "difficulty_basis": "separate variables, use result of (a), apply conditions, solve log equation",
+     "depends_on": [
+      "(a)"
+     ],
+     "standalone": false,
+     "preview": "Solve the differential equation with h = 1 at t = 0 to find the time to reach 12 m.",
+     "confidence": "high",
+     "note": ""
+    }
+   ]
+  }
+ ]
+}

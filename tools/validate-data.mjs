@@ -36,7 +36,7 @@ if (!Array.isArray(curriculum.mappings)) {
   errors += 1;
 } else {
   for (const mapping of curriculum.mappings) {
-    if (!specIndex.hasSubject(mapping.subject_id) || !['verified', 'provisional'].includes(mapping.status)) {
+    if (!specIndex.hasSubject(mapping.subject_id) || !['verified', 'model_reviewed', 'provisional'].includes(mapping.status)) {
       console.log(`  ERROR  curriculum: unknown subject or review status for ${mapping.subject_id || '(missing subject)'}`);
       errors += 1;
     }
