@@ -812,10 +812,11 @@ legend {
   border-bottom: 1px solid var(--line);
 }
 .tree__topic > summary {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 2px;
+  display: grid;
+  grid-template-columns: 16px 20px auto minmax(0, 1fr);
+  align-items: start;
+  gap: 3px 8px;
+  padding: 10px 2px;
   cursor: pointer;
   list-style: none;
 }
@@ -829,6 +830,7 @@ legend {
   flex: none;
   color: var(--ink-3);
   transition: transform 0.15s;
+  margin-top: 3px;
 }
 .tree__topic[open] > summary .tree__caret {
   transform: rotate(90deg);
@@ -840,6 +842,7 @@ legend {
   margin: 0;
   accent-color: var(--ink);
 }
+.tree__topic > summary .tree__check { margin-top: 3px; }
 .tree__code {
   flex: none;
   min-width: 2.2em;
@@ -850,17 +853,23 @@ legend {
   flex: 1;
   min-width: 0;
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 .tree__meta {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   gap: 4px 12px;
   font-size: 12.5px;
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
 }
+.tree__topic > summary .tree__meta { grid-column: 4; }
+.filter-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.filter-reset { min-height: 44px; background: var(--surface); color: var(--ink); border: 2px solid var(--ink); }
+.filter-reset:hover { background: var(--surface-2); }
+.filter-reset:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .tree__points {
   padding: 0 0 8px 29px;
 }
@@ -872,7 +881,8 @@ legend {
   border-radius: 6px;
 }
 .tree__point label {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px auto minmax(0, 1fr);
   align-items: flex-start;
   gap: 10px;
   flex: 1;

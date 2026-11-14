@@ -1,5 +1,7 @@
 # Phase 1 question bank and onboarding plan
 
+For the authoritative curriculum identity and tagging contract, see [Curriculum and question tagging](curriculum-and-question-tagging.md). The [import plan](question-import-and-filtering-plan.md) covers provenance and publication.
+
 ## Baseline and constraints
 
 The existing site is a static, browser-local application. Its guest flow keeps progress in memory and can transfer it to a new local account; existing accounts must remain readable. The current catalogue has 38 subjects, 926 paper records including 40 demo papers, and 249 sample questions. Catalogue entries are not question extracts. The practice engine already supports specification ranges, part identities, dependencies and several filters; reuse those models. The authored specification tree order is a provisional fallback unless an independently verified `point_order` is supplied. No verified year or textbook mappings were found in the repository. Do not invent mappings, question content, permissions or examiner reports.

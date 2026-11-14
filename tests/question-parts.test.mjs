@@ -4,6 +4,7 @@ import { validateBundle, validateQuestion } from '../js/data/schema.js';
 import { createSpecIndex } from '../js/engine/spec-index.js';
 import { filterQuestions } from '../js/engine/filter-engine.js';
 import { questionMeta, questionRef } from '../js/ui/question-view.js';
+import { practicePool } from '../js/ui/student.js';
 
 const subjectId = 'PARTS_SUBJECT';
 const index = createSpecIndex();
@@ -95,6 +96,17 @@ test('a selected part filters and counts by its own spec tags and marks, not its
   assert.deepEqual(result.matches.map((record) => record.question_id), ['Q7_B']);
   assert.equal(result.matches[0].marks, 3);
   assert.equal(result.locked.length, 0);
+});
+
+test('the practice pool uses assessable leaves even when an intermediate part is also a parent', () => {
+  const parent = question('PAPER_Q7', { primary_spec_points: ['POINT_6'], marks: 12 });
+  const b = part('PAPER_Q7_B', { primary_spec_points: ['POINT_6'], marks: 6 });
+  const bi = part('PAPER_Q7_B_I', { parent_question_id: 'PAPER_Q7_B', part_label: 'b(i)', primary_spec_points: ['POINT_1'], marks: 3 });
+  const c = part('PAPER_Q7_C', { part_label: 'c', primary_spec_points: ['POINT_6'], marks: 5 });
+  const bank = practicePool(bundle([parent, b, bi, c]));
+  assert.deepEqual(bank.map((q) => q.question_id), ['PAPER_Q7_B_I', 'PAPER_Q7_C']);
+  const result = filterQuestions(bank, { focus: ['POINT_1'], selectionMode: 'strict', learnedOnly: false }, { specIndex: index });
+  assert.deepEqual(result.matches.map((q) => [q.question_id, q.marks]), [['PAPER_Q7_B_I', 3]]);
 });
 
 test('question references identify isolated parts without duplicating legacy part suffixes', () => {

@@ -1,5 +1,7 @@
 # Question imports and specification filtering
 
+For canonical curriculum identities and textbook mappings, see [Curriculum and question tagging](curriculum-and-question-tagging.md).
+
 This is an ingestion plan and content contract, not a claim that real exam
 questions have been imported. Runtime part support exists, but neither the bulk
 pipeline nor the proposed provenance manifest is implemented. See also the

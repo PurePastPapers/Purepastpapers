@@ -33,7 +33,7 @@ export function practicePool(bundle) {
   // An assessable parent and its assessable children represent overlapping content.
   // Prefer the independently answerable parts; parent-only legacy questions remain.
   const parents = new Set(available.map((question) => question.parent_question_id).filter(Boolean));
-  return available.filter((question) => question.part_label || !parents.has(question.question_id));
+  return available.filter((question) => !parents.has(question.question_id));
 }
 
 export function subjectSummary(bundle, { progress, latest, learned }) {

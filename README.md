@@ -7,6 +7,8 @@ wired in behind feature flags and show as "Coming soon".
 Plain HTML5, CSS3 and vanilla JavaScript modules. No build step and no dependencies.
 PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.config.js`.
 
+**Start here for future agents:** [Curriculum and question tagging](docs/curriculum-and-question-tagging.md), with links to the Phase 1 and import plans.
+
 ## Run it
 
 ES modules do not load from `file://`, so serve the folder:

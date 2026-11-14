@@ -7,7 +7,7 @@ import { difficultyBadge, sourceBadge } from './ui.js';
 
 const image = (url, alt) => (url && isSafeUrl(url) ? html`<a href="${url}" target="_blank" rel="noopener" aria-label="Open ${alt} image at its original size"><img src="${url}" alt="${alt}" loading="lazy" /></a>` : '');
 
-export function questionBody(question) {
+export function questionBody(question, { contextOpen = false } = {}) {
   const { question_html: markup, question_image_url: url } = question.content || {};
   const context = question.context || {};
   const fullQuestion = context.full_question_html || (context.full_question_image_url && isSafeUrl(context.full_question_image_url));
@@ -15,7 +15,7 @@ export function questionBody(question) {
     ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
     ${context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
     <div class="qcontent question-selected-part">${sanitizeHtml(markup)}${image(url, `Question ${question.question_number}${question.part_label ? `, part ${question.part_label}` : ''}`)}</div>
-    ${fullQuestion ? html`<details class="question-context">
+    ${fullQuestion ? html`<details class="question-context" data-question-context="${question.question_id}" ${contextOpen ? 'open' : ''}>
       <summary>Show full question for context</summary>
       <div class="stack" style="margin-top:12px">
         <p class="small muted">Context only. Answer and mark only the selected ${question.part_label ? 'part' : 'question'} above; other parts do not count towards this attempt.</p>
@@ -38,6 +38,8 @@ export function questionSnippet(question, length = 220) {
     .toString()
     .replace(/<\/span><span class="frac__d">/g, '/') // fractions read as a/b
     .replace(/></g, '> <'); // keep words in neighbouring elements apart
+  for (const node of template.content.querySelectorAll('sup')) node.textContent = `^(${node.textContent})`;
+  for (const node of template.content.querySelectorAll('sub')) node.textContent = `_(${node.textContent})`;
   const text = template.content.textContent.replace(/\s+/g, ' ').trim();
   if (!text) return question.content?.question_image_url ? 'Question shown as an image.' : 'No preview available.';
   return text.length > length ? `${text.slice(0, length).trimEnd()}…` : text;
