@@ -1,8 +1,9 @@
 # Question imports and specification filtering
 
-Proposal prepared 12 November 2026. This is an ingestion plan, not a claim that
-real exam questions have been imported. Filtering and individual-part runtime
-support are implemented in the accompanying change; the bulk pipeline is future work.
+This is an ingestion plan and content contract, not a claim that real exam
+questions have been imported. Runtime part support exists, but neither the bulk
+pipeline nor the proposed provenance manifest is implemented. See also the
+[Phase 1 plan](phase-one-question-bank-and-onboarding.md).
 
 ## Evidence and limits
 
@@ -33,20 +34,69 @@ current board specifications when normal permitted access is available.
 
 ## Implemented now versus planned imports
 
-The current engine supports inclusive specification ranges, `any`/`all` point
-matching, primary versus primary-and-crossover scope, and composed paper/year/
-series/tier/source/difficulty/marks/progress/search filters. Sorting offers original
-paper order, specification order, difficulty and ascending/descending marks; ties
-retain input order. Practice exposes these controls, sample-content handling and
-30-result pagination. Runtime records can carry part identity, shared/full context
-and explicit dependencies without selecting or scoring unrelated parts. The
-accompanying automated suite now contains 35 tests; this is not evidence of a
+The engine supports inclusive specification ranges and the browser's strict and
+crossover selection modes, alongside legacy `any`/`all` matching for existing
+callers. Paper/year/series/tier/source/difficulty/marks/progress/search filters
+compose with those selections. Newest/oldest sorts use paper metadata; missing
+dates follow dated records. Specification, difficulty, marks and seeded shuffle
+sorts are also available. Shuffle is applied to the whole match set before
+pagination. Runtime records can carry part identity, shared/full context and
+explicit dependencies without selecting or scoring unrelated parts. The
+automated tests exercise these representations; this is not evidence of a
 completed real-content import or official-spec verification.
 
 The source inventory, extraction workers, provenance manifests, review queues,
 versioned publication pipeline and large-scale ingestion described below remain
 proposals. No competitor data, official question extracts or bulk importer ships
 as a result of these runtime changes.
+
+**Data status:** the 249 existing question records are labelled demo content;
+the 886 non-demo paper catalogue records link to paper sources and are not 886
+question extracts. Existing specification trees and authored order are useful
+working data, not proof of verified official sequencing. Any textbook chapter or
+year mapping without a traceable, reviewed source remains provisional and must
+not be presented as verified. Separate publisher, title, edition, pathway and
+qualification when recording a mapping; a display heading alone is not evidence.
+
+The curriculum mapping capability validates reviewed source metadata, year and
+textbook chapter relations, edition and partial/full point coverage. The mapping
+index currently contains no verified textbook or year mappings: no mapping is
+claimed as verified until a suitable source has been reviewed. Unreviewed records
+are not exposed as verified. Synthetic tests exercise the representation; they
+are not evidence that a real publisher's chapter names or order were checked.
+
+## Minimum import review record
+
+Before bulk ingestion, keep a versioned record for every source and assessable
+part with the following fields and review evidence. These are requirements for
+future ingestion, not a statement that the runtime currently enforces each field.
+
+| Area | Required information and review |
+| --- | --- |
+| Source and rights | Provider, original document identity and URL, provenance, rights holder, permission/licence and publication status; source capture date, checksum and reviewer. Public access alone is not permission to redistribute. |
+| Qualification | Board, qualification and level, subject, specification version and pathway, issue/applicability dates, and tier where relevant. |
+| Paper | Original paper ID, year, series, paper/component, variant and tier; verified question-paper, mark-scheme and report URLs. Missing assets remain explicitly missing. |
+| Structure | Original question reference and ordered part path, stable parent/group and assessable-part IDs; shared stems, instructions, figures, tables and original page/region references. Map each required asset to the part. |
+| Knowledge | Precise primary assessed points and genuine crossover/prerequisite points, evidence and reviewer for each; do not copy the union of parent or sibling topics to each child. |
+| Curriculum views | Board/qualification-specific year mappings and publisher, title, edition, volume, chapter and pathway mappings, with source, page, date, scope, reviewer and verification status. Preserve many-to-many mappings, content spanning years and partial coverage explicitly; a partial mapping must not silently cover a whole broader official point. |
+| Marking and reports | Part-specific maximum, mark scheme and notes; map question-specific examiner material only when verified. Otherwise label a verified report as paper-level or mark it unavailable. |
+| Dependencies | Explicit stable references to earlier parts, required shared information or a reviewed supplied result, provenance and review. If independently answering the part would be impossible, keep the required parts grouped; do not invent results. |
+| Difficulty | Rubric version, rating, rationale, reviewer and review/calibration status; retain uncertainty and sample size when calibrated. |
+| Identity and history | Immutable assessable-part ID, source path, content and mapping revisions, duplicate checks, review decisions and validation failures. Store attempt context separately from mutable content. |
+
+### Difficulty review rubric
+
+Assess the demands of the displayed assessable unit for its board and level,
+using the published task and mark scheme. Record a short rationale for reasoning
+steps, novelty, required knowledge, scaffolding, and interpretation or modelling
+demands. A provisional **easy** label indicates familiar, well-scaffolded work;
+**medium** indicates some independent selection or multi-step reasoning; **hard**
+indicates substantial integration, interpretation or unfamiliar application.
+These are editorial guides, not a score computed from marks or time. Review
+borderline examples with subject teachers, track disagreements and rubric version,
+and calibrate only against sufficiently large, appropriately consented attempt
+samples. Revisions must not silently rewrite the difficulty attached to historical
+attempts.
 
 ## Specification identity and order
 
@@ -90,15 +140,16 @@ Keep selection, knowledge prerequisites and presentation as separate operations.
 
 - Expand selected sections/topics/ranges into their leaf IDs using the selected
   specification tree. Keep selected endpoint/node IDs in saved filter state.
-- In `primary` scope, compare the selected leaves with the question part's
-  expanded `primary_spec_points`. In `primary_and_crossover` scope, compare with
-  the union of its expanded primary and crossover tags.
-- `any`: at least one selected leaf occurs in that comparison set. `all`: every
-  selected leaf occurs. `focus: null` or an unset focus is unrestricted; explicit
-  `focus: []` matches no records, including in `all` mode. UI “Clear selections”
-  intentionally chooses none; “Use all topics” removes the restriction. Label
-  matching modes “Any selected point” and “Every selected point”; broad topic selection
-  plus `all` can legitimately return no results.
+- In strict mode the part's expanded primary points must overlap the selection,
+  and every expanded primary and crossover requirement must fit inside it. This
+  permits a question tagged only 2.2 in a 2.1–2.6 selection without requiring it
+  to assess every selected point. Crossover mode still requires primary overlap,
+  but permits additional requirements outside the selection and identifies them.
+- Focus and range selections are separate groups combined with AND: when both
+  are active, each independently applies the selected matching mode. A null or
+  unset focus is unrestricted; explicit `focus: []` matches nothing. The engine
+  retains the older `any`/`all` and scope options for callers that use them; they
+  describe overlap/all-selected semantics, not the strict subset rule.
 - A record tagged with a topic expands to that topic's leaves. Prefer precise
   leaf tagging for imports; a broad tag otherwise implies every descendant.
 - The existing learned-only rule, when enabled, still requires **all** primary
@@ -108,16 +159,19 @@ Keep selection, knowledge prerequisites and presentation as separate operations.
   mark band and attempt-status filters. Do not infer a missing tier as both tiers.
   Show counts and a useful empty state; document handling of unknown metadata.
 - Sort by the selected mode, retaining original input/paper order on equal keys.
+  Newest/oldest use actual year and recognized series; unknown dates/series follow
+  known values. Shuffle the complete filtered set using a stable seed before
+  pagination, changing that seed only on a deliberate reshuffle.
   Stable IDs establish identity, not sort tie-breaks. Preserve printed question/
   part labels and original paper order for labels such as `9(a)(ii)`.
 - Match/count **assessable part records**, not every sibling of a matching part.
   Expanding context must never increase the result count, question count, marks,
   estimated assessed time, attempts or mastery evidence.
 
-For a `2.9`–`2.11` selection, a part tagged only `2.10` matches `any`; it does not
-match `all`. A part requiring unlearned crossover knowledge can match focus but
-remain locked under learned-only. Show why it is locked instead of losing it
-silently. Reject obsolete/unknown spec IDs at publication, not at quiz time.
+For a `2.9`–`2.11` selection, a part tagged only `2.10` fits strict mode provided
+all its requirements are inside the range. A part requiring unlearned crossover
+knowledge can match a crossover search but be excluded by the separate learned-only
+gate. Reject obsolete/unknown spec IDs at publication, not at quiz time.
 
 ## Part-level question model
 
@@ -290,6 +344,29 @@ Do not optimize “questions imported” while incomplete contexts accumulate.
   Existing whole-question attempts remain valid and require an explicit migration
   policy before any reconciliation with newly imported parts.
 
+Imported corrections must not make an old score appear to have been awarded for
+a different prompt, maximum or part. Snapshot or reference the published content
+revision, assessed part ID, maximum and marking context on each attempt. Changes
+to a task's assessment meaning require a new identity and a reviewed migration;
+do not silently merge historical marks into the replacement. Record reviewed
+canonical parent/child exclusions so a selected set cannot score a parent and
+its constituent parts twice. Viewing a task, opening context or revealing a
+scheme is not an attempt; an explicitly submitted zero is an attempt.
+
+### Year and textbook mapping evidence
+
+Official specification structure and a publisher's textbook organisation are
+different views of the same knowledge, not interchangeable labels. A mapping
+record should identify source and destination IDs, relation (`complete` or
+`partial`), scope and version, and carry the source page, source URL, access
+date, evidence and reviewer. A many-to-many relation is expected: one chapter
+may cover several points, and a point may recur in several chapters or years.
+If the source establishes only part of a broad point, retain that partial scope
+and do not mark the complete point learned. Do not infer coverage from a title,
+paper grouping or another edition. Switching a year or view filters display; it
+must never change learned status. A separate, explicitly requested bulk action
+may update coverage only for a verified mapping and must describe its scope.
+
 ## Rollout and acceptance
 
 1. Ship pure range/focus/metadata filters with synthetic regression fixtures.
@@ -307,6 +384,10 @@ Required acceptance cases:
   results together. Null/unset focus is unrestricted; explicit empty focus yields
   zero. Filters compose deterministically with year/series/tier. Equal sort keys
   preserve input order, and pagination never changes the matching set.
+- In a strict search selecting 2.1–2.6, a part requiring only 2.2 is included and
+  a part requiring 2.2 plus 2.7 is excluded; crossover mode identifies 2.7. This
+  is a subset-of-selection check, not a requirement to assess all six points.
+  Searching and switching year views never changes covered-topic records.
 - Selecting only Q4(b) displays its required stem/figure and part mark scheme;
   full-context expansion adds no selected IDs, marks, attempts or answer fields.
 - A dependency on Q4(a) is visible and handled explicitly; no answer leakage.
@@ -317,6 +398,9 @@ Required acceptance cases:
   practice; rollback restores prior content without rewriting attempt history.
 - Full-paper selection cannot contain both a scored parent and its scored parts.
   A part's attempt status/mastery uses its own stable ID and assessed tags only.
+- Viewed, scheme-revealed and skipped tasks remain unmarked; deliberate zero,
+  partial and full scores are distinguishable. Re-saving the same score does not
+  inflate counts; editing and deliberately starting another attempt are separate.
 - Schema/data checks and existing engine/session tests pass. Pilot review records
   prove permissions, transcription, tagging and marking acceptance before scale.
 

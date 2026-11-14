@@ -5,7 +5,7 @@ import { html, isSafeUrl, sanitizeHtml } from '../core/dom.js';
 import { fmtMinutes } from '../core/utils.js';
 import { difficultyBadge, sourceBadge } from './ui.js';
 
-const image = (url, alt) => (url && isSafeUrl(url) ? html`<img src="${url}" alt="${alt}" loading="lazy" />` : '');
+const image = (url, alt) => (url && isSafeUrl(url) ? html`<a href="${url}" target="_blank" rel="noopener" aria-label="Open ${alt} image at its original size"><img src="${url}" alt="${alt}" loading="lazy" /></a>` : '');
 
 export function questionBody(question) {
   const { question_html: markup, question_image_url: url } = question.content || {};

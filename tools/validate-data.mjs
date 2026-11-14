@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 import { validateBundle } from '../js/data/schema.js';
 import { createSpecIndex } from '../js/engine/spec-index.js';
+import { createCurriculumMap } from '../js/engine/curriculum-map.js';
 
 const DATA = new URL('../data/', import.meta.url);
 const load = async (path, fallback) => {
@@ -29,6 +30,26 @@ for (const entry of (await load('packs/index.json', { packs: [] })).packs || [])
 
 let errors = 0;
 let warnings = 0;
+const curriculum = await load('curriculum/index.json');
+if (!Array.isArray(curriculum.mappings)) {
+  console.log('  ERROR  curriculum: mappings must be an array');
+  errors += 1;
+} else {
+  for (const mapping of curriculum.mappings) {
+    if (!specIndex.hasSubject(mapping.subject_id) || !['verified', 'provisional'].includes(mapping.status)) {
+      console.log(`  ERROR  curriculum: unknown subject or review status for ${mapping.subject_id || '(missing subject)'}`);
+      errors += 1;
+    }
+  }
+  for (const subject of subjects) {
+    try {
+      createCurriculumMap({ subject_id: subject.subject_id, mappings: curriculum.mappings.filter((item) => item.subject_id === subject.subject_id) }, specIndex);
+    } catch (error) {
+      console.log(`  ERROR  curriculum ${subject.subject_id}: ${error.message}`);
+      errors += 1;
+    }
+  }
+}
 let questionTotal = 0;
 let paperTotal = 0;
 for (const subject of subjects) {

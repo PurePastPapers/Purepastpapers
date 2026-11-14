@@ -15,10 +15,17 @@ export function ragFor(percentage, thresholds = RAG) {
   return percentage >= thresholds.amber ? 'amber' : 'red';
 }
 
-/** Most recent attempt per question — "where the student is now". */
+/** An explicit valid score; blank or submitted-but-unmarked records are not marks. */
+export function hasValidMark(attempt) {
+  return Boolean(attempt && Number.isFinite(attempt.marks_awarded) && Number.isFinite(attempt.max_marks) &&
+    attempt.max_marks > 0 && attempt.marks_awarded >= 0 && attempt.marks_awarded <= attempt.max_marks);
+}
+
+/** Most recent marked attempt per question — "where the student is now". */
 export function latestByQuestion(attempts) {
   const latest = new Map();
   for (const attempt of attempts || []) {
+    if (!hasValidMark(attempt)) continue;
     const current = latest.get(attempt.question_id);
     if (!current || attempt.timestamp >= current.timestamp) latest.set(attempt.question_id, attempt);
   }

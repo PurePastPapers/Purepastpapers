@@ -17,7 +17,7 @@ npm start
 
 Then open http://localhost:5173. Any static host works for deployment (GitHub Pages, Netlify, Vercel).
 
-Click **Explore the demo account** on the home page to see every screen with data in it.
+Browse questions without an account; sample questions are labelled demo content. Create a free account to retain progress in this browser.
 
 | Command | What it does |
 | --- | --- |

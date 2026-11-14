@@ -2,12 +2,11 @@
 // the subjects and boards it covers, and what is coming later.
 
 import { FEATURES, PHASES } from '../../config/phases.js';
-import { $, html, setHtml } from '../../core/dom.js';
+import { html, setHtml } from '../../core/dom.js';
 import { getSubjects } from '../../data/content-repository.js';
-import { enterDemoAccount } from '../../data/demo.js';
 import { icon } from '../icons.js';
 import { SUBJECT_SWATCHES } from '../subject-colours.js';
-import { liveBadge, toast } from '../ui.js';
+import { liveBadge } from '../ui.js';
 
 /** The four phases, used on the Account and coming-soon pages. */
 export function roadmap() {
@@ -83,7 +82,6 @@ export async function mount(element, context) {
           <p class="lp-hero__reassurance">Browse questions and use filters for free. Create a free account to track marks, mistakes and progress in this browser.</p>
           <div class="lp-hero__actions">
             <a class="btn btn--primary btn--lg" href="#/subjects?welcome=1">Browse questions →</a>
-            <button type="button" class="btn btn--lg" data-demo>Try the demo</button>
           </div>
         </div>
         <div class="lp-art" aria-hidden="true">
@@ -191,14 +189,4 @@ export async function mount(element, context) {
       </section>`,
   );
 
-  $('[data-demo]', element).addEventListener('click', async (event) => {
-    const button = event.currentTarget;
-    button.disabled = true;
-    try {
-      await enterDemoAccount();
-    } catch (error) {
-      button.disabled = false;
-      toast(error.message, { type: 'error' });
-    }
-  });
 }

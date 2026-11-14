@@ -5,7 +5,7 @@ import { $, html, on, setHtml } from '../../core/dom.js';
 import { percent, plural } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, getSubjects, specIndex } from '../../data/content-repository.js';
-import { TARGET_BANDS, gradesIn, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../../engine/analytics.js';
+import { gradesIn, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../../engine/analytics.js';
 import { countByNode, filterQuestions, foreignSpecPoints, unlockSuggestions } from '../../engine/filter-engine.js';
 import { icon } from '../icons.js';
 import { mountSpecTree } from '../spec-tree.js';
@@ -53,8 +53,8 @@ export async function mount(element, context) {
         title: subject.subject,
         sub: `${subject.level} · ${subject.board} ${subject.spec_code} · ${subject.spec_notes}`,
         actions: subject.has_written_exam
-          ? html`<a class="btn btn--primary" href="#/practice?subject=${subjectId}">${icon('sliders')} Practise</a>
-              <a class="btn" href="#/papers?subject=${subjectId}">Past papers</a>
+          ? html`<a class="btn btn--primary" href="#/practice?subject=${subjectId}&mode=individual">${icon('sliders')} Find questions</a>
+              <a class="btn" href="#/papers?subject=${subjectId}">Full past papers</a>
               <a class="btn btn--ghost" href="${subject.official_url}" target="_blank" rel="noopener">${subject.board} site ${icon('external', { size: 15 })}</a>`
           : '',
       })}
@@ -63,19 +63,16 @@ export async function mount(element, context) {
         <div data-enrol-banner></div>
         ${subject.board_note ? banner(subject.board_note, { type: 'warn' }) : ''}
         ${subject.has_written_exam
-          ? html`<section class="grid grid--stats" data-stats aria-label="Summary"></section>
+          ? html`<p class="muted">Find questions: browse individual questions by topic, specification point, difficulty and exam year. Full past papers opens original papers by year, series and paper.</p><section class="grid grid--stats" data-stats aria-label="Summary"></section>
               <div class="split">
-                <section class="card ruled tilt-4">
+                <details class="card ruled tilt-4">
           <i class="tape tape--l" aria-hidden="true"></i>
-                  <div class="card__head">
-                    <h2 class="card__title">What have you learned so far?</h2>
-                  </div>
+                  <summary class="card__title">Edit covered topics</summary>
                   <p class="muted" style="margin-bottom:16px">
-                    Tick each topic or spec point once you have covered it. You will only be given questions where every spec point they need,
-                    including crossover knowledge, is ticked.
+                    Tick the topics and spec points you have covered. The optional covered-content filter matches questions whose required points are all ticked; you can turn it off to browse everything.
                   </p>
                   ${leaves.length ? html`<div data-tree></div>` : emptyState({ title: 'No specification tree yet', text: 'Topics for this subject have not been added.' })}
-                </section>
+                </details>
                 <aside class="stack" data-side></aside>
               </div>`
           : emptyState({ iconName: 'info', title: 'No written exam', text: subject.no_written_exam })}
@@ -116,33 +113,21 @@ export async function mount(element, context) {
           ${meter(percent(learnedCount, leaves.length), 'accent', 'Share of spec points learned')}
         </div>
         <div class="stat ruled">
-          <span class="stat__label">Questions unlocked</span>
+          <span class="stat__label">Questions matching your covered topics</span>
           <span class="stat__value">${derived.unlocked}<span class="stat__of"> / ${pool.length}</span></span>
-          <span class="stat__note">${derived.locked.length ? `${derived.locked.length} need topics you have not ticked` : 'Everything in the bank is available'}</span>
+          <span class="stat__note">${derived.locked.length ? `${derived.locked.length} need topics you have not ticked. Browse them with the covered-content filter off.` : 'All questions match your covered topics'}</span>
         </div>
         <div class="stat ruled">
-          <span class="stat__label">Questions answered</span>
+          <span class="stat__label">Questions marked</span>
           <span class="stat__value">${derived.score.count}</span>
+          <span class="stat__note">Distinct questions with a saved mark</span>
         </div>
-        ${lastVsTarget()
-          ? html`<div class="stat ruled">
-              <span class="stat__label">Last paper vs target</span>
-              <span class="stat__value">${lastVsTarget().last.grade}<span class="stat__of"> / target ${lastVsTarget().target}</span></span>
-              <span class="stat__note small">${lastVsTarget().band ? html`<span class="band" data-band="${lastVsTarget().band}">${TARGET_BANDS[lastVsTarget().band].label}</span>` : ''} ${lastVsTarget().last.title || ''}, ${fmtPercent(lastVsTarget().last.percentage)}</span>
-            </div>`
-          : html`<div class="stat ruled">
+        <div class="stat ruled">
               <span class="stat__label">Average score</span>
               <span class="stat__value">${fmtPercent(derived.score.percentage)}</span>
               <span class="stat__note">${derived.score.count ? ragBadge(ragFor(derived.score.percentage)) : 'No attempts yet'}</span>
-            </div>`}`,
+        </div>`,
     );
-  }
-
-  function lastVsTarget() {
-    const target = targetGrade(subject);
-    const history = paperHistory(progress.paper_attempts, { subjectId }).filter((attempt) => attempt.grade);
-    if (!target || !history.length) return null;
-    return { target, last: history[0], history: history.slice(0, 5), band: targetBand(history[0].grade, target, subject.grade_scheme) };
   }
 
   function targetCard() {
@@ -194,13 +179,13 @@ export async function mount(element, context) {
       target,
       html`${enrolled() ? targetCard() : ''}<section class="card ruled tilt-1">
           <i class="tape tape--c" aria-hidden="true"></i>
-          <h2 class="card__title">Unlock more questions</h2>
+          <h2 class="card__title">More questions match when you cover…</h2>
           ${pool.length === 0
             ? html`<p class="muted small" style="margin-top:8px">There are no questions for this subject yet.</p>`
             : derived.locked.length === 0
-              ? html`<p class="muted small" style="margin-top:8px">Every question in the bank is available to you.</p>`
+              ? html`<p class="muted small" style="margin-top:8px">All questions in the bank match your covered topics.</p>`
               : html`<p class="muted small" style="margin:8px 0 12px">
-                    ${plural(derived.locked.length, 'question')} ${derived.locked.length === 1 ? 'is' : 'are'} locked. Learning these spec points opens the most:
+                    ${plural(derived.locked.length, 'question')} need topics you have not marked as covered. These points match the most additional questions:
                   </p>
                   <ul class="unlocklist">
                     ${derived.suggestions.map(
@@ -209,7 +194,7 @@ export async function mount(element, context) {
                           <div style="min-width:0">
                             <p>${labelWithSubject(entry.id)}</p>
                             <p class="small muted">
-                              ${entry.unlocks ? `Unlocks ${plural(entry.unlocks, 'question')} on its own` : `Needed by ${plural(entry.needed_by, 'locked question')}`}
+                              ${entry.unlocks ? `Matches ${plural(entry.unlocks, 'question')} on its own` : `Needed by ${plural(entry.needed_by, 'question')}`}
                             </p>
                           </div>
                           <button type="button" class="btn btn--sm" data-learn="${entry.id}">Mark learned</button>
@@ -222,7 +207,7 @@ export async function mount(element, context) {
           <i class="tape tape--c" aria-hidden="true"></i>
               <h2 class="card__title">Crossover knowledge</h2>
               <p class="muted small" style="margin:8px 0 12px">
-                Some ${subject.subject} questions also draw on other subjects. Tick what you know so those questions can be unlocked.
+                Some ${subject.subject} questions also draw on other subjects. Tick what you know to include those questions in covered-content results.
               </p>
               ${[...foreignGroups].map(
                 ([owner, entries]) =>

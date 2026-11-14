@@ -4,12 +4,14 @@
 import { CATEGORY_GROUPS } from '../../config/app.config.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
 import * as api from '../../data/api.js';
-import { getBundle, getSubjects, specIndex } from '../../data/content-repository.js';
+import { getBundle, getCurriculum, getSubjects, specIndex } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
 import { saveSubjectSettings } from '../subject-colours.js';
 import { subjectDialog } from '../subject-dialog.js';
+import { mountSpecTree } from '../spec-tree.js';
+import { filterSpecForCurriculum, mountCurriculumSelector } from '../curriculum-selector.js';
 import { loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
-import { banner, emptyState, pageHead, toast } from '../ui.js';
+import { banner, emptyState, openModal, pageHead, toast } from '../ui.js';
 
 const LEVELS = [
   { id: 'gcse', label: 'GCSE', level: 'GCSE' },
@@ -110,6 +112,7 @@ export async function mount(element, context) {
                 <h3 class="empty__title">No subjects yet</h3>
                 <p class="empty__text">Pick the subjects you study from the list below. Each one is matched to its exam board and specification.</p>
               </div>`}
+          ${enrolled.length ? html`<div class="row" style="margin-top:16px"><a class="btn" href="#add-title" data-add-another>Add another subject</a><a class="btn btn--primary" href="#/practice?mode=individual">Finish setup · Find questions</a></div>` : ''}
         </section>
 
         <section class="dash-block" aria-labelledby="add-title">
@@ -160,6 +163,45 @@ export async function mount(element, context) {
     search = input.value;
     redrawCatalogue();
   });
+  async function chooseCoverage(bundle, leaves) {
+    let tree;
+    const curriculum = await getCurriculum(bundle.subject.subject_id);
+    return openModal({
+      title: `Covered topics · ${bundle.subject.subject}`,
+      wide: true,
+      body: html`<p class="muted">${bundle.subject.level} · ${bundle.subject.board} ${bundle.subject.spec_code}. Choose the topics and exact specification points you have covered. Changes are applied only when you save.</p><div data-coverage-curriculum></div><div data-coverage-tree></div>`,
+      actions: [
+        { label: 'Cancel', cancel: true },
+        { label: 'Save and continue adding subjects', variant: 'primary', collect: () => [...tree.getSelected()] },
+      ],
+      onOpen: (dialog) => {
+        const root = dialog.querySelector('[data-coverage-tree]');
+        let selected = leaves.filter((id) => api.learnedSet().has(id));
+        const drawTree = ({ visible = null, full = null } = {}) => {
+          if (tree) selected = [...tree.getSelected()];
+          const treeRoot = document.createElement('div');
+          root.replaceChildren(treeRoot);
+          tree = mountSpecTree(treeRoot, {
+            spec: filterSpecForCurriculum(bundle.spec, visible),
+            selected,
+            enabled: visible ? new Set([...visible].filter((id) => full.has(id))) : null,
+            disabledHint: 'Partially mapped points cannot be marked covered from this view. Use the official specification.',
+            noun: 'covered',
+          });
+        };
+        drawTree();
+        mountCurriculumSelector(dialog.querySelector('[data-coverage-curriculum]'), {
+          curriculum, specIndex,
+          onChange: drawTree,
+        });
+      },
+    });
+  }
+
+  on(element, 'click', '[data-add-another]', (event) => {
+    event.preventDefault();
+    $('[data-search]', element)?.focus();
+  });
   on(element, 'click', '[data-enrol]', async (event, button) => {
     const subject = subjects.find((candidate) => candidate.subject_id === button.dataset.enrol);
     const bundle = subject.has_written_exam ? await getBundle(subject.subject_id) : null;
@@ -170,11 +212,15 @@ export async function mount(element, context) {
     await saveSubjectSettings(subject.subject_id, { swatch: choice.swatch, target: choice.target });
     if (choice.learned === 'all') await api.setLearned(leaves, true);
     if (choice.learned === 'tick') {
-      toast(`${subject.subject} added. Tick the topics you have learned.`, { type: 'success' });
-      context.navigate(`/subject/${subject.subject_id}`);
-      return;
+      const selected = await chooseCoverage(bundle, leaves);
+      if (selected) {
+        const selectedSet = new Set(selected);
+        await api.setLearned(leaves.filter((id) => selectedSet.has(id)), true);
+        await api.setLearned(leaves.filter((id) => !selectedSet.has(id)), false);
+      }
     }
     await draw();
+    $('[data-search]', element)?.focus();
     toast(`${subject.subject} added.`, { type: 'success' });
   });
   on(element, 'click', '[data-edit]', async (event, button) => {

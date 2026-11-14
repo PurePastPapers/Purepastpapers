@@ -383,6 +383,7 @@ export async function mount(element, context) {
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="result-hero__left">
             <p class="hand">${KIND_LABELS[session.kind].toLowerCase()} complete</p>
+            ${result.questions_unmarked ? html`<p class="small muted">${plural(result.questions_unmarked, 'question')} left unmarked. This score covers marked questions only and is not a full paper result.</p>` : ''}
             <h1 class="result-hero__score" tabindex="-1">
               <span class="result-hero__value">${result.marks_awarded}</span><span class="result-hero__max"> / ${result.max_marks}</span>
             </h1>
@@ -632,7 +633,7 @@ export async function mount(element, context) {
     if (unmarked > 0) {
       const proceed = await confirmDialog({
         title: 'Some questions are not marked',
-        message: `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} no marks entered and will be scored 0.`,
+        message: `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} no marks entered and will be left out of the results.`,
         confirmLabel: 'Save results',
       });
       if (!proceed) return undefined;

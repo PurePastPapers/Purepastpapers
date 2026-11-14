@@ -79,7 +79,7 @@ const LOGS_PAPER = new Set(['full_paper', 'custom_test']);
 
 /**
  * Completes a session and records the results in the Data Hub.
- * Papers and tests count every question (unmarked = 0); question sets count only what was marked.
+ * Only deliberate marks create attempts; unmarked questions are left out.
  * @param {object} session
  * @param {{ questions: object[], subject: object, paper?: object, totalAwarded?: number }} context
  */
@@ -87,8 +87,8 @@ export async function finishSession(session, { questions, subject, paper = null,
   pauseTimer(session);
   const now = new Date().toISOString();
   const provider = getMarkingProvider();
-  const countsAll = LOGS_PAPER.has(session.kind);
-  const scored = countsAll ? questions : questions.filter((question) => session.marks[question.question_id] != null);
+  const scored = questions.filter((question) => Number.isInteger(session.marks[question.question_id]) && session.marks[question.question_id] >= 0 && session.marks[question.question_id] <= question.marks);
+  const unmarked = questions.length - scored.length;
 
   const questionAttempts = [];
   for (const question of scored) {
@@ -115,13 +115,13 @@ export async function finishSession(session, { questions, subject, paper = null,
 
   let awarded = sum(questionAttempts, (attempt) => attempt.marks_awarded);
   let max = sum(questionAttempts, (attempt) => attempt.max_marks);
-  if (!questions.length && session.total_marks) {
+  if (!questions.length && session.total_marks && totalAwarded != null) {
     // A paper sat from its PDF: one total is entered instead of per-question marks.
     max = session.total_marks;
     awarded = Math.min(max, Math.max(0, Math.round(Number(totalAwarded) || 0)));
   }
   const percentage = max > 0 ? round1(percent(awarded, max)) : 0;
-  const graded = LOGS_PAPER.has(session.kind) && max > 0;
+  const graded = LOGS_PAPER.has(session.kind) && max > 0 && unmarked === 0;
   const grade = graded ? gradeFor(percentage, subject.grade_scheme, paper?.grade_boundaries) : null;
 
   session.status = 'completed';
@@ -132,10 +132,11 @@ export async function finishSession(session, { questions, subject, paper = null,
     percentage,
     grade,
     questions_marked: questionAttempts.length,
+    questions_unmarked: unmarked,
     duration_seconds: Math.round(elapsedMs(session) / 1000),
   };
 
-  const logsPaper = max > 0 && (LOGS_PAPER.has(session.kind) || (session.kind === 'question_set' && questionAttempts.length >= 2));
+  const logsPaper = max > 0 && unmarked === 0 && (LOGS_PAPER.has(session.kind) || (session.kind === 'question_set' && questionAttempts.length >= 2));
   const paperAttempt = logsPaper
     ? {
         // PRD 8.4 fields

@@ -29,7 +29,11 @@ export const attemptInSubject = (attempt, bundle) =>
 /** Questions a student may currently practise from: in the custom pool and from a live source. */
 export function practicePool(bundle) {
   const sources = enabledSourceTypes();
-  return bundle.questions.filter((question) => question.include_in_custom_pool !== false && sources.includes(question.source_type));
+  const available = bundle.questions.filter((question) => question.include_in_custom_pool !== false && sources.includes(question.source_type));
+  // An assessable parent and its assessable children represent overlapping content.
+  // Prefer the independently answerable parts; parent-only legacy questions remain.
+  const parents = new Set(available.map((question) => question.parent_question_id).filter(Boolean));
+  return available.filter((question) => question.part_label || !parents.has(question.question_id));
 }
 
 export function subjectSummary(bundle, { progress, latest, learned }) {
@@ -119,7 +123,7 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
         : html`<p class="small muted">${subject.no_written_exam}</p>`}
       <footer class="row row--tight">
         ${subject.has_written_exam ? html`<a class="btn btn--sm btn--primary" href="#/subject/${id}">Topics learned</a>` : ''}
-        ${subject.has_written_exam ? html`<a class="btn btn--sm" href="#/practice?subject=${id}">Browse questions</a>` : ''}
+        ${subject.has_written_exam ? html`<a class="btn btn--sm" href="#/practice?subject=${id}&mode=individual">Browse questions</a>` : ''}
         <button type="button" class="btn btn--sm" data-edit="${id}">Edit</button>
         <button type="button" class="linkbtn small subject-card__remove" data-unenrol="${id}">Remove</button>
       </footer>

@@ -2,8 +2,9 @@
 // Views call these functions and never touch localStorage or a database directly, so the
 // backend can change by swapping the adapter below without rewriting any UI.
 
-import { LIMITS } from '../config/app.config.js';
+import { APP, LIMITS } from '../config/app.config.js';
 import { createBus } from '../core/bus.js';
+import { latestByQuestion } from '../engine/analytics.js';
 import { localAdapter } from './adapters/local-adapter.js';
 
 /** ← The one line that chooses the backend. Any object with the same methods will work. */
@@ -68,6 +69,20 @@ export const backendInfo = () => ({ id: adapter.id, label: adapter.label, syncsA
 export async function signUp({ initialProgress = null, ...details }) {
   const guestProgress = !user ? progress : null;
   user = await adapter.signUp(details);
+  // Carry a guest's browser search and unsaved question draft into the new account.
+  // Existing accounts never receive guest state on sign-in.
+  if (guestProgress && typeof sessionStorage !== 'undefined') {
+    const prefix = `${APP.storageNamespace}:practice:guest:`;
+    try {
+      for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        if (key?.startsWith(prefix)) {
+          const accountKey = `${APP.storageNamespace}:practice:${user.user_id}:${key.slice(prefix.length)}`;
+          localStorage.setItem(accountKey, sessionStorage.getItem(key));
+        }
+      }
+    } catch { /* storage may be unavailable; progress remains intact */ }
+  }
   progress = normalise(initialProgress || guestProgress, user.user_id);
   learnedCache = null;
   await adapter.saveProgress(user.user_id, progress);
@@ -206,6 +221,39 @@ export async function commitSessionResult(session, questionAttempts = [], paperA
   doc.question_attempts.push(...questionAttempts);
   if (paperAttempt) doc.paper_attempts.push(paperAttempt);
   upsertSession(session);
+  await persist();
+}
+
+/** Save an intentional inline mark. Editing preserves the attempt's original date and count. */
+export async function saveQuestionMark(question, marks, { reattempt = false } = {}) {
+  if (!Number.isInteger(marks) || marks < 0 || marks > question.marks) throw new Error('Enter a whole number within the available marks.');
+  const doc = requireProgress();
+  const previous = latestByQuestion(doc.question_attempts).get(question.question_id);
+  if (previous && !reattempt) {
+    if (previous.marks_awarded === marks) return previous;
+    previous.mark_edits = [...(previous.mark_edits || []), { marks_awarded: previous.marks_awarded, max_marks: previous.max_marks }];
+    previous.marks_awarded = marks;
+    previous.max_marks = question.marks;
+    await persist();
+    return previous;
+  }
+  const attempt = { question_id: question.question_id, subject_id: question.subject_id, source_type: question.source_type,
+    difficulty: question.difficulty, marks_awarded: marks, max_marks: question.marks, timestamp: new Date().toISOString(), marked_by: 'self', inline: true };
+  doc.question_attempts.push(attempt);
+  await persist();
+  return attempt;
+}
+
+/** Undo the most recent score edit, or remove a newly saved inline attempt. */
+export async function undoQuestionMark(questionId) {
+  const doc = requireProgress();
+  const index = doc.question_attempts.indexOf(latestByQuestion(doc.question_attempts).get(questionId));
+  if (index < 0) return;
+  const attempt = doc.question_attempts[index];
+  const previous = attempt.mark_edits?.pop();
+  if (previous) Object.assign(attempt, previous);
+  else if (attempt.inline) doc.question_attempts.splice(index, 1);
+  else return;
   await persist();
 }
 

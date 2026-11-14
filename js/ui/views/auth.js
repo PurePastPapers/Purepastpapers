@@ -3,7 +3,6 @@
 import { LIMITS } from '../../config/app.config.js';
 import { $, html, setHtml } from '../../core/dom.js';
 import * as api from '../../data/api.js';
-import { enterDemoAccount } from '../../data/demo.js';
 import { getSubjects } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
 
@@ -59,8 +58,6 @@ export async function mount(element, context) {
       <p class="muted" style="text-align:center">
         ${signup ? html`Already have an account? <a href="${other}">Log in</a>` : html`New here? <a href="${other}">Create a free account</a>`}
       </p>
-      <div class="auth__divider"><span>or</span></div>
-      <button type="button" class="btn btn--block" data-demo>${icon('play', { size: 16 })} Look around with the demo account</button>
       <p class="hand auth__note">
         ${backend.syncsAcrossDevices
           ? 'Saved to your account, so it’s there on your phone and laptop too.'
@@ -150,14 +147,4 @@ export async function mount(element, context) {
     }
   });
 
-  const demoButton = $('[data-demo]', element);
-  demoButton.addEventListener('click', async () => {
-    demoButton.disabled = true;
-    try {
-      await enterDemoAccount();
-    } catch (error) {
-      demoButton.disabled = false;
-      fail(error.message);
-    }
-  });
 }

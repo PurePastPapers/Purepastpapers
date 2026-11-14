@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { createSpecIndex } from '../js/engine/spec-index.js';
 import { filterQuestions } from '../js/engine/filter-engine.js';
+import { latestByQuestion } from '../js/engine/analytics.js';
 
 // Codes are labels, not numbers. In particular 2.10 follows 2.9, and the
 // author's B2-before-A1 order must survive every range and sort operation.
@@ -127,6 +128,59 @@ test('spec ranges are ANDed independently with focus using the selected scope an
   assert.deepEqual(matches(pool, { specRange: range, focus: ['A_29'], focusScope: 'primary_and_crossover' }), ['both', 'cross', 'topic']);
   assert.deepEqual(matches(pool, { specRange: range, focus: ['A_29'], focusMode: 'all' }), ['topic']);
   assert.deepEqual(matches(pool, { specRange: { ...range, fromId: 'missing' }, focusMode: 'all' }), []);
+});
+
+test('strict selection fits all required points without requiring every selected point', () => {
+  const bank = [q('one', ['A_29']), q('two', ['A_210']), q('outside', ['A_29'], ['A_211']), q('other', ['A_211'])];
+  const range = { subjectId: 'A', fromId: 'A_29', toId: 'A_210' };
+  assert.deepEqual(matches(bank, { specRange: range, selectionMode: 'strict' }), ['one', 'two']);
+  assert.deepEqual(matches(bank, { specRange: range, selectionMode: 'crossover' }), ['one', 'two', 'outside']);
+  assert.deepEqual(matches(bank, { focus: ['A_29', 'A_210'], selectionMode: 'strict' }), ['one', 'two']);
+  assert.deepEqual(matches(bank, { focus: [], selectionMode: 'strict' }), []);
+  assert.deepEqual(matches(bank, { focus: ['A_29'], specRange: range, selectionMode: 'strict' }), ['one']);
+  assert.deepEqual(filterQuestions(bank, { specRange: range, selectionMode: 'crossover' }, { specIndex, learned: new Set(['A_29', 'A_210']) }).matches.map(q => q.question_id), ['one', 'two']);
+});
+
+test('curriculum view is an independent assessed-point filter and never changes learned coverage', () => {
+  const learned = new Set(['A_29']);
+  const before = [...learned];
+  const bank = [q('nine', ['A_29']), q('ten', ['A_210']), q('cross-only', ['A_211'], ['A_210'])];
+  const ctx = { specIndex, learned };
+  assert.deepEqual(matches(bank, { curriculumPoints: ['A_210'] }, ctx), ['ten']);
+  assert.deepEqual(matches(bank, { curriculumPoints: [] }, ctx), []);
+  assert.deepEqual(matches(bank, { curriculumPoints: ['A_210'], focus: ['A_29'], selectionMode: 'crossover' }, ctx), []);
+  assert.deepEqual(filterQuestions(bank, { curriculumPoints: ['A_210'] }, ctx).matches, []);
+  assert.deepEqual([...learned], before);
+});
+
+test('mark status uses latest valid explicit mark, including zero', () => {
+  const attempts = latestByQuestion([
+    { question_id: 'nine', marks_awarded: 0, max_marks: 4, timestamp: '2026-01-01' },
+    { question_id: 'nine', marks_awarded: null, max_marks: 4, timestamp: '2026-01-02' },
+    { question_id: 'ten', marks_awarded: 3, max_marks: 4, timestamp: '2026-01-01' },
+    { question_id: 'both', marks_awarded: 4, max_marks: 4, timestamp: '2026-01-01' },
+  ]);
+  const ctx = { specIndex, latestAttempts: attempts };
+  assert.deepEqual(matches(pool, { markStatus: 'unmarked' }, ctx), ['cross', 'topic', 'foreign']);
+  assert.deepEqual(matches(pool, { markStatus: 'marked' }, ctx), ['nine', 'ten', 'both']);
+  assert.deepEqual(matches(pool, { markStatus: 'lost' }, ctx), ['nine', 'ten']);
+  assert.deepEqual(matches(pool, { markStatus: 'full' }, ctx), ['both']);
+});
+
+test('date order uses paper metadata and stable shuffle covers the entire filtered set', () => {
+  const papersById = new Map([
+    ['P24', { year: 2024, series: 'June', question_ids: ['old1', 'old2'] }],
+    ['P25', { year: 2025, series: 'June', question_ids: ['new1', 'new2'] }],
+    ['D', { year: null, series: 'Demo' }],
+  ]);
+  const bank = [q('old2', ['A_29'], [], { paper_id: 'P24' }), q('new2', ['A_29']), q('demo', ['A_29'], [], { paper_id: 'D' }), q('old1', ['A_29'], [], { paper_id: 'P24' }), q('new1', ['A_29'])];
+  const ctx = { specIndex, papersById };
+  assert.deepEqual(matches(bank, { sortBy: 'newest' }, ctx), ['new1', 'new2', 'old1', 'old2', 'demo']);
+  assert.deepEqual(matches(bank, { sortBy: 'oldest' }, ctx), ['old1', 'old2', 'new1', 'new2', 'demo']);
+  const first = matches(bank, { sortBy: 'shuffle', shuffleSeed: 123 }, ctx);
+  assert.deepEqual(first, matches(bank, { sortBy: 'shuffle', shuffleSeed: 123 }, ctx));
+  assert.notDeepEqual(first, matches(bank, { sortBy: 'shuffle', shuffleSeed: 321 }, ctx));
+  assert.deepEqual([...first].sort(), bank.map(q => q.question_id).sort());
 });
 
 test('learned-only remains an AND gate over all primary and crossover requirements', () => {

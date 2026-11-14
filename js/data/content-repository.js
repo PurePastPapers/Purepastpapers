@@ -10,6 +10,7 @@
 import { APP, CONTENT } from '../config/app.config.js';
 import { naturalCompare } from '../core/utils.js';
 import { createSpecIndex } from '../engine/spec-index.js';
+import { createCurriculumMap } from '../engine/curriculum-map.js';
 
 const DATA_ROOT = new URL('../../data/', import.meta.url);
 const LOCAL_PACK_KEY = `${APP.storageNamespace}:content-pack`;
@@ -19,6 +20,7 @@ export const specIndex = createSpecIndex();
 
 let subjectsPromise = null;
 let packsPromise = null;
+let curriculumPromise = null;
 const specPromises = new Map();
 const bundlePromises = new Map();
 
@@ -38,6 +40,16 @@ export function getSubjects() {
 
 export async function getSubject(subjectId) {
   return (await getSubjects()).find((subject) => subject.subject_id === subjectId) || null;
+}
+
+/** Verified alternate curriculum views, if any. Provisional entries stay hidden. */
+export async function getCurriculum(subjectId) {
+  const [index] = await Promise.all([
+    (curriculumPromise ??= fetchJson('curriculum/index.json').catch((error) => { curriculumPromise = null; throw error; })),
+    ensureSpec(subjectId),
+  ]);
+  if (!Array.isArray(index.mappings)) throw new TypeError('Curriculum index must contain a mappings array.');
+  return createCurriculumMap({ subject_id: subjectId, mappings: index.mappings.filter((item) => item.subject_id === subjectId) }, specIndex);
 }
 
 /** Loads a subject's specification tree and adds it to the shared index. */
