@@ -63,6 +63,7 @@ const defaults = () => ({
   rangeTo: '',
   year: '',
   years: [],
+  components: [],
   series: '',
   tier: '',
   paper: '',
@@ -87,10 +88,16 @@ const toggle = (list, value) => (list.includes(value) ? list.filter((item) => it
 
 export async function mount(element, context) {
   context.setTitle('Practice');
-  const student = await loadStudent();
+  let student = await loadStudent();
+  // A link that names a subject (for example from the subjects page) opens that subject's
+  // questions directly, without first enrolling. Browsing never changes saved subjects.
+  const linked = context.query.subject;
+  if (linked && !student.progress.enrolled_subjects.includes(linked)) {
+    student = await loadStudent([...student.progress.enrolled_subjects, linked]).catch(() => student);
+  }
   const { progress, bundles, latest } = student;
   const user = api.currentUser();
-  const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.practice_modes.length);
+  const enrolled = [...new Set([...progress.enrolled_subjects, ...(linked && bundles.get(linked) ? [linked] : [])])].map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.practice_modes.length);
   const head = (crumb) =>
     pageHead({
       title: 'Find questions',
@@ -117,7 +124,7 @@ export async function mount(element, context) {
   const subjectId = subject.subject_id;
   const curriculum = await getCurriculum(subjectId);
   let curriculumPoints = null;
-  if (progress.preferences.lastSubject !== subjectId) api.setPreference('lastSubject', subjectId);
+  if (progress.preferences.lastSubject !== subjectId && progress.enrolled_subjects.includes(subjectId)) api.setPreference('lastSubject', subjectId);
 
   // ── state (kept for the browser tab, so filters survive opening a question and coming back) ──
   const storageKey = `${APP.storageNamespace}:practice:${user?.user_id || 'guest'}:${subjectId}`;
@@ -130,6 +137,7 @@ export async function mount(element, context) {
   }
   // Preserve a previously saved single-year selection.
   if (!Array.isArray(state.years)) state.years = [];
+  if (!Array.isArray(state.components)) state.components = [];
   if (state.year && !state.years.length) state.years = [String(state.year)];
   state.year = '';
   const save = () => {
@@ -203,6 +211,7 @@ export async function mount(element, context) {
     specRange: state.rangeFrom || state.rangeTo
       ? { subjectId, fromId: state.rangeFrom, toId: state.rangeTo } : null,
     years: state.years.length ? state.years.map(Number) : null,
+    components: state.components.length ? state.components : null,
     series: state.series ? [state.series] : null,
     tiers: state.tier ? [state.tier] : null,
     paperIds: state.paper ? [state.paper] : null,
@@ -217,16 +226,18 @@ export async function mount(element, context) {
     const papers = [...new Set(scopedPool().map((question) => question.paper_id))].map((id) => bundle.papersById.get(id)).filter(Boolean);
     const years = [...new Set(papers.map((paper) => paper.year).filter(Number.isInteger))].sort((a, b) => b - a);
     const series = [...new Set(papers.map((paper) => paper.series).filter(Boolean))];
+    const components = [...new Set(scopedPool().map((question) => question.component).filter(Boolean))].sort();
     const tiers = [...new Set(scopedPool().map((question) => question.tier !== undefined ? question.tier : bundle.papersById.get(question.paper_id)?.tier).filter(Boolean))];
     const select = (key, label, values, all) => html`<label class="field"><span class="field__label">${label}</span><select class="select" data-filter="${key}"><option value="">${all}</option>${state[key] && !values.some((value) => String(value) === String(state[key])) ? html`<option value="${state[key]}" selected>Unavailable saved filter: ${state[key]}</option>` : ''}${values.map((value) => html`<option value="${value}" ${String(state[key]) === String(value) ? 'selected' : ''}>${value}</option>`)}</select></label>`;
     const papersAndYears = html`
       ${years.length || state.years.length ? html`<fieldset class="field"><legend class="field__label">Exam years</legend><div class="chips">${[...new Set([...state.years, ...years.map(String)])].map((year) => html`<button type="button" class="chip" data-multi="years" data-value="${year}" aria-pressed="${state.years.includes(year)}">${year}${years.includes(Number(year)) ? '' : ' (unavailable)'}</button>`)}</div>${state.years.length ? html`<button type="button" class="linkbtn small" data-clear-group="years">Clear exam years</button>` : ''}</fieldset>` : ''}
+      ${components.length ? html`<fieldset class="field"><legend class="field__label">Paper type</legend><div class="chips">${components.map((item) => html`<button type="button" class="chip" data-multi="components" data-value="${item}" aria-pressed="${state.components.includes(item)}">${item}</button>`)}</div></fieldset>` : ''}
       ${series.length || state.series ? select('series', 'Exam series', series, 'Any series') : ''}
       ${tiers.length || state.tier ? select('tier', 'Tier', tiers, 'Any tier') : ''}
       <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
     `;
     const content = html`<label class="field"><span class="field__label">Demo content</span><select class="select" data-filter="sampleMode"><option value="all" ${state.sampleMode === 'all' ? 'selected' : ''}>Include demo questions</option><option value="hide" ${state.sampleMode === 'hide' ? 'selected' : ''}>Hide demo questions</option><option value="only" ${state.sampleMode === 'only' ? 'selected' : ''}>Demo questions only</option></select></label>
-      <p class="field__hint">Only papers with extracted questions appear here. The current question bank is demo content; catalogue listings alone do not add questions. Missing year or tier data does not match a specific filter.</p>
+      <p class="field__hint">Only papers with extracted questions appear here; catalogue listings alone do not add questions. Missing year or tier data does not match a specific filter.</p>
     `;
     return browser ? html`<div class="browser-paper-filters">${papersAndYears}
       <label class="field browser-sort"><span class="field__label">Sort</span><select class="select" data-sort aria-label="Sort questions">
@@ -611,6 +622,7 @@ export async function mount(element, context) {
       ...(customMarks ? [{key: 'markRange', label: `Marks: ${state.markMin || '0'}–${state.markMax || 'any'}`}] : []),
       ...state.bands.map((value) => ({key: 'bands', value, label: bandOptions.find((b) => b.id === value)?.label || value})),
       ...state.years.map((value) => ({key: 'years', value, label: `Year: ${value}`})),
+      ...state.components.map((value) => ({key: 'components', value, label: value})),
       ...['series', 'tier', 'paper'].filter((key) => state[key]).map((key) => ({key, label: `${key}: ${state[key]}`})),
       ...(state.search ? [{key: 'search', label: `Search: ${state.search}`}] : []),
     ];
@@ -820,7 +832,7 @@ export async function mount(element, context) {
     else if (key === 'range') { state.rangeFrom = ''; state.rangeTo = ''; }
     else if (key === 'learnedOnly') state.learnedOnly = false;
     else if (key === 'sampleMode') state[key] = 'all';
-    else if (key === 'difficulties' || key === 'bands' || key === 'years' || key === 'markStatuses') state[key] = state[key].filter((value) => value !== button.dataset.chipValue);
+    else if (key === 'difficulties' || key === 'bands' || key === 'years' || key === 'components' || key === 'markStatuses') state[key] = state[key].filter((value) => value !== button.dataset.chipValue);
     else state[key] = '';
   }));
   on(element, 'click', '[data-page]', (event, button) => {

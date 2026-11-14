@@ -140,7 +140,10 @@ async function loadBundle(subjectId) {
       if (question.subject_id === subjectId) questionsById.set(question.question_id, question);
     }
   }
-  if (!CONTENT.showSampleContent) {
+  // Demo content only stands in for subjects with no imported questions: once a subject has
+  // real ones, its demo papers and questions are dropped so counts and results stay honest.
+  const hasReal = [...questionsById.values()].some((question) => !question.is_sample);
+  if (!CONTENT.showSampleContent || hasReal) {
     for (const [id, paper] of papersById) if (paper.is_sample) papersById.delete(id);
     for (const [id, question] of questionsById) if (question.is_sample) questionsById.delete(id);
   }

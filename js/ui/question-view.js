@@ -11,9 +11,9 @@ const image = (url, alt) => (url && isSafeUrl(url) ? html`<a href="${url}" targe
 function slice(url, [width, height], { y0, y1 }, alt) {
   if (!url || !isSafeUrl(url) || !(width > 0) || !(height > 0)) return '';
   const visible = Math.max(1, Math.round(height * (y1 - y0)));
-  return html`<div class="qslice" role="img" aria-label="${alt}" style="aspect-ratio:${width} / ${visible};max-width:${Math.round(width / 2)}px">
+  return html`<div class="qslice-scroll" tabindex="0"><div class="qslice" role="img" aria-label="${alt}" style="aspect-ratio:${width} / ${visible};max-width:${Math.round(width * 0.66)}px">
     <img src="${url}" alt="" loading="lazy" width="${width}" height="${height}" style="margin-top:-${((y0 * height) / width * 100).toFixed(3)}%" />
-  </div>`;
+  </div></div>`;
 }
 
 function slicedBody(question, { contextOpen }) {

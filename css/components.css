@@ -1215,8 +1215,21 @@ legend {
   border: 1px solid var(--line);
   border-radius: 6px;
 }
-.qslice + .qslice {
+.qslice-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.qslice-scroll + .qslice-scroll {
   margin-top: 8px;
+}
+/* Phones: keep printed maths legible; the crop scrolls sideways instead of shrinking. */
+@media (max-width: 640px) {
+  .qslice {
+    min-width: 500px;
+  }
+  .ms .qslice {
+    min-width: 620px;
+  }
 }
 .qslice img {
   display: block;

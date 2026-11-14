@@ -67,6 +67,7 @@ for (const file of files) {
       const record = {
         question_id: idOf(u), ...(single ? {} : { parent_question_id: groupId, part_label: u.label }),
         question_number: String(q.number), ...(sectionOf() ? { section_label: sectionOf() } : {}),
+        component: src.endsWith('P1') ? 'Paper 1 (Pure)' : src.endsWith('P2') ? 'Paper 2 (Pure)' : src.endsWith('P3S') || (src.endsWith('P3') && t.primary[0].includes('STATS')) ? 'Paper 3: Statistics' : src.endsWith('P3M') || (src.endsWith('P3') && t.primary[0].includes('MECH')) ? 'Paper 3: Mechanics' : (q.number <= 5 ? 'Paper 3: Statistics' : 'Paper 3: Mechanics'),
         sort_key: `${prefix}${String(q.number).padStart(2, '0')}.${String(ui).padStart(2, '0')}`,
         paper_id: paperId, subject_id: SUBJECT, source_type: 'real_past_paper', include_in_custom_pool: true,
         marks: u.marks, estimated_minutes: Math.max(1, Math.round(u.marks * 1.2)), difficulty: t.difficulty,

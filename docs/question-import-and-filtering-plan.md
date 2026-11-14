@@ -1,5 +1,7 @@
 # Question imports and specification filtering
 
+> **Update, 14 November 2026:** Edexcel A-Level Mathematics (9MA0) now has an implemented pipeline and a real imported bank. See [9MA0 import status](9ma0-import-status.md), which supersedes statements below that no import exists.
+
 For canonical curriculum identities and textbook mappings, see [Curriculum and question tagging](curriculum-and-question-tagging.md).
 
 This is an ingestion plan and content contract, not a claim that real exam

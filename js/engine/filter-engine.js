@@ -167,6 +167,7 @@ export function filterQuestions(questions, criteria = {}, context) {
   const years = nonEmpty(toSet(criteria.years));
   const series = nonEmpty(toSet(criteria.series));
   const tiers = nonEmpty(toSet(criteria.tiers));
+  const components = nonEmpty(toSet(criteria.components));
   const focus = criteria.focus == null ? null : specIndex.expand(criteria.focus);
   const curriculumPoints = criteria.curriculumPoints == null ? null : specIndex.expand(criteria.curriculumPoints);
   const range = criteria.specRange == null ? null : specIndex.range(
@@ -190,6 +191,7 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (series && (paper?.series == null || !series.has(paper.series))) continue;
     const tier = question.tier !== undefined ? question.tier : paper?.tier;
     if (tiers && (tier == null || !tiers.has(tier))) continue;
+    if (components && !components.has(question.component)) continue;
     if (difficulties && !difficulties.has(question.difficulty)) continue;
     if (bands && !bands.some((band) => question.marks >= band.min && question.marks <= band.max)) continue;
     if (curriculumPoints && !touchesSelection(specIndex.expand(question.primary_spec_points || []), curriculumPoints, 'any')) continue;

@@ -1,5 +1,7 @@
 # Curriculum and question tagging: start here
 
+> **Update, 14 November 2026:** the 9MA0 specification order is verified and AI-reviewed textbook and year mappings now ship. See [9MA0 import status](9ma0-import-status.md).
+
 ## Product and evidence
 
 PurePastPapers helps a student choose a subject, find individual questions by

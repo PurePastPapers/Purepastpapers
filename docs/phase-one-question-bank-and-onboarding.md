@@ -1,5 +1,7 @@
 # Phase 1 question bank and onboarding plan
 
+> **Update, 14 November 2026:** 9MA0 has real imported questions. See [9MA0 import status](9ma0-import-status.md).
+
 For the authoritative curriculum identity and tagging contract, see [Curriculum and question tagging](curriculum-and-question-tagging.md). The [import plan](question-import-and-filtering-plan.md) covers provenance and publication.
 
 ## Baseline and constraints
