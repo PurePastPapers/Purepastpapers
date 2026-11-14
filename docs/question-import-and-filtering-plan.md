@@ -423,3 +423,7 @@ Access/inspection date for all entries: **12 November 2026**.
 | [TryPlumi](https://tryplumi.app/) | Proxy CONNECT 403; no page or product behavior observed. |
 | [Pearson Physics materials](https://qualifications.pearson.com/en/qualifications/edexcel-a-levels/physics-2015.coursematerials.html) | URL from subjects; proxy CONNECT 403; specification and rights unverified. |
 | [OCR Chemistry assessment](https://www.ocr.org.uk/qualifications/as-and-a-level/chemistry-a-h032-h432-from-2015/assessment/) | URL from subjects; proxy CONNECT 403; specification and rights unverified. |
+
+## Follow-up verification
+
+See the [14 November browser audit](browser-audit-2026-11-14.md) for actual UI checks, remaining audit limits and regression commands. The [curriculum contract](curriculum-and-question-tagging.md#source-review-update--14-november-2026) records the updated source access and provisional textbook inventory; listing access does not establish verified mappings.

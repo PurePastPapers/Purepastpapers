@@ -25,10 +25,11 @@ does not itself import or license exam content.
 - `data/curriculum/index.json` is a separate mapping index. It currently has an
   empty `mappings` array. No textbook chapter or teaching-year mapping has been
   verified or shipped. The selector says so rather than presenting a guess.
-- Pearson, AQA, OCR and Eduqas official sites and the shared textbook folder were attempted on
-  14 November 2026 but the environment proxy returned HTTP CONNECT 403. The folder contents could not be inventoried. Record a source's
-  precise access and review evidence when available; never commit access-bearing
-  shared-folder links, keys or textbook PDFs to this public repository.
+- The previous cloud pass reported HTTP CONNECT 403 for source sites. On 14 November
+  2026 the local browser could list the shared textbook folder and its Edexcel Maths
+  subfolder, and the official Pearson specification was readable. See the source
+  review below. Other boards were not reverified in this follow-up. Never commit
+  access-bearing shared-folder links, keys or textbook PDFs.
 - `data/questions/` contains sample questions, `data/papers/` contains catalogue
   records, and `data/packs/index.json` lists optional content packs. These are not
   proof of permission to reproduce source extracts. The import plan defines the
@@ -88,6 +89,7 @@ Illustrative **synthetic** shape, not a verified textbook or official mapping:
     "edition": "1",
     "chapters": [{
       "id": "synthetic-chapter-1",
+      "position": 1,
       "title": "Illustrative chapter",
       "coverage": [
         {"point_id": "SYNTH_POINT_2_2", "extent": "full"},
@@ -170,3 +172,38 @@ specifications, review the Edexcel A-Level Mathematics editions and chapter
 coverage first, publish only sourced mappings with stable versioned identities,
 then extend subject by subject. Track inaccessible sources as gaps. A future
 server-backed database and cross-device accounts remain separate work.
+
+## Source review update — 14 November 2026
+
+Directly inspected: Pearson Edexcel Level 3 Advanced GCE Mathematics **9MA0**,
+[Specification Issue 4, February 2020](https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/a-level-l3-mathematics-specification-issue4.pdf).
+The cover states first teaching September 2017 and first certification 2018;
+printed pages 5–6 identify Pure Mathematics papers 1/2 and Statistics/Mechanics
+paper 3. This verifies document identity, not every stored point or applicability
+to all future exam years. No existing canonical IDs or version scopes were changed.
+
+The shared library root exposed 17 folders. Priority inventory from the
+“Pearson Edexcel Mathematics” folder (filenames as displayed):
+
+| File | Indicated coverage | Bibliographic/contents status |
+| --- | --- | --- |
+| Pure Year 1.pdf | Pure Mathematics Year 1/AS (cover thumbnail) | Exact edition/ISBN and contents unverified |
+| Pure Year 2.pdf | Pure Mathematics Year 2 (filename/thumbnail) | Exact edition/ISBN and contents unverified |
+| Stats_Mechanics Year 1.pdf | Statistics and Mechanics Year 1/AS (thumbnail) | Exact edition/ISBN and contents unverified |
+| Stats_Mechanics Year 2.pdf | Statistics and Mechanics Year 2 (thumbnail) | Exact edition/ISBN and contents unverified |
+| Oxford Year1 and Year 2 New Spec Edexcel Mathematics.pdf | Both years, Oxford (filename) | Publisher/title/edition need title-page confirmation |
+| CGP A-level Edexcel Maths.pdf | Revision/practice, Edexcel (thumbnail) | Edition and year coverage unverified |
+| A-Level-Maths-Workbook-CGP.pdf | Workbook, Edexcel (thumbnail) | Edition and year coverage unverified |
+| CGP A-Level Mathematics Edexcel Practice Exam Papers ( PDFDrive.com ).pdf | Practice papers (filename) | Edition/year coverage unverified; not a chapter authority |
+
+A separate “Pre-2017 Textbooks” folder was listed and was not used for the current
+specification. An automated attempt to open/download Pure Year 1 did not deliver a
+PDF download within 25 seconds. Only listings and cover thumbnails were inspected;
+no contents pages, chapter coverage or exact publisher/edition claims were verified.
+This is an incomplete source review, not evidence that the whole library is blocked.
+The next mapping pass must obtain readable contents and copyright/title pages,
+reconcile the full official point order, and then populate the existing mapping
+index. Chapter equivalence is currently tested only with labelled synthetic data.
+
+For the control-state and browser verification record, see the
+[browser audit](browser-audit-2026-11-14.md).

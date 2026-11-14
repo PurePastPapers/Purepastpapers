@@ -9,6 +9,8 @@ PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.confi
 
 **Start here for future agents:** [Curriculum and question tagging](docs/curriculum-and-question-tagging.md), with links to the Phase 1 and import plans.
 
+See the [latest browser audit](docs/browser-audit-2026-11-14.md) for verified behavior, regression commands and remaining gaps.
+
 ## Run it
 
 ES modules do not load from `file://`, so serve the folder:

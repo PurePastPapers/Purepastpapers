@@ -36,10 +36,16 @@ export function questionSnippet(question, length = 220) {
   const template = document.createElement('template');
   template.innerHTML = sanitizeHtml(question.content?.question_html)
     .toString()
-    .replace(/<\/span><span class="frac__d">/g, '/') // fractions read as a/b
     .replace(/></g, '> <'); // keep words in neighbouring elements apart
   for (const node of template.content.querySelectorAll('sup')) node.textContent = `^(${node.textContent})`;
   for (const node of template.content.querySelectorAll('sub')) node.textContent = `_(${node.textContent})`;
+  // Preserve grouped denominators and nested fractions instead of flattening
+  // 1/(2 + cos x) into the mathematically different '1/2 + cos x'.
+  for (const fraction of [...template.content.querySelectorAll('.frac')].reverse()) {
+    const numerator = fraction.querySelector(':scope > .frac__n');
+    const denominator = fraction.querySelector(':scope > .frac__d');
+    if (numerator && denominator) fraction.textContent = `(${numerator.textContent.trim()})/(${denominator.textContent.trim()})`;
+  }
   const text = template.content.textContent.replace(/\s+/g, ' ').trim();
   if (!text) return question.content?.question_image_url ? 'Question shown as an image.' : 'No preview available.';
   return text.length > length ? `${text.slice(0, length).trimEnd()}…` : text;

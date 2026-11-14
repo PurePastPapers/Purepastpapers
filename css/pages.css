@@ -1585,3 +1585,14 @@
     padding: 26px 20px 22px;
   }
 }
+
+/* Audit repairs: let controls wrap within narrow notebook cards. */
+.account-col, .split > *, .setting > * { min-width: 0; }
+.setting { flex-wrap: wrap; }
+.setting .seg { flex-wrap: wrap; max-width: 100%; }
+.account-col .seg { flex-wrap: wrap; }
+@media (max-width: 480px) {
+  .testpreview__actions { grid-template-columns: minmax(0, 1fr); }
+  .account-col > .card { padding: 22px 18px; }
+  .split > .tilt-4 { transform: none; }
+}

@@ -1394,3 +1394,10 @@ input[type='radio'] {
     display: none;
   }
 }
+
+/* Landscape tablets need the compact navigation before tabs collide. */
+@media (min-width: 821px) and (max-width: 1080px) {
+  .topnav__tabs, .tag.topnav__count { display: none; }
+  .menu__tabs { display: flex; padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1.5px dashed var(--line-strong); }
+  .tape--r, .tape--br { right: 12px; }
+}

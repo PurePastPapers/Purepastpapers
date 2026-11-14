@@ -262,3 +262,22 @@ test('search discovers primary/crossover codes and titles, HTML text and part la
   for (const search of ['2.9', 'Momentum', 'reused code', '(b)(ii)', 'acceleration']) assert.deepEqual(matches(bank, { search }), ['searchable']);
   assert.deepEqual(matches(bank, { search: 'absent word' }), []);
 });
+
+test('combined spec, difficulty, marks, year and progress filters intersect and sorting preserves the set', () => {
+  const bank = [
+    q('easy-match', ['A_29'], [], { difficulty: 'easy', marks: 2 }),
+    q('medium-match', ['A_210'], [], { marks: 5 }),
+    q('hard-excluded', ['A_29'], [], { difficulty: 'hard' }),
+    q('year-excluded', ['A_29'], [], { paper_id: 'P24' }),
+    q('marks-excluded', ['A_29'], [], { marks: 8 }),
+    q('saved-excluded', ['A_29']),
+    q('prerequisite-excluded', ['A_29'], ['A_211']),
+  ];
+  const ctx = { specIndex, papersById: new Map([['P25', { year: 2025 }], ['P24', { year: 2024 }]]),
+    latestAttempts: new Map([['saved-excluded', { marks_awarded: 0, max_marks: 4 }]]) };
+  const criteria = { focus: ['A_29', 'A_210'], selectionMode: 'strict', difficulties: ['easy', 'medium'],
+    markBands: [{ min: 2, max: 5 }], years: [2025], markStatus: 'unmarked' };
+  for (const sortBy of ['newest', 'oldest', 'marks_desc', 'difficulty', 'shuffle']) {
+    assert.deepEqual(matches(bank, { ...criteria, sortBy, shuffleSeed: 42 }, ctx).sort(), ['easy-match', 'medium-match']);
+  }
+});

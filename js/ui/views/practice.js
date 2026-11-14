@@ -47,6 +47,8 @@ const defaults = () => ({
   focus: null, // null = unrestricted; [] = no selected points
   difficulties: [],
   bands: [],
+  markMin: '',
+  markMax: '',
   statuses: [],
   learnedOnly: false,
   search: '',
@@ -490,6 +492,11 @@ export async function mount(element, context) {
           )}
         </div>
         ${state.bands.length ? html`<button type="button" class="linkbtn small" data-clear-group="bands">Clear marks</button>` : ''}
+        <details class="filter-details" ${state.markMin !== '' || state.markMax !== '' ? 'open' : ''}><summary>Custom mark range</summary>
+          <p class="field__hint">Use an exact range instead of the bands above.</p>
+          <div class="filter-grid filter-grid--two">${[['markMin', 'Minimum marks'], ['markMax', 'Maximum marks']].map(([key, label]) => html`<label class="field"><span class="field__label">${label}</span><input type="number" class="input" min="0" step="1" value="${state[key]}" data-filter="${key}" /></label>`)}</div>
+          ${state.markMin !== '' && state.markMax !== '' && Number(state.markMin) > Number(state.markMax) ? html`<p class="form-error" role="status">Minimum must not exceed maximum. No questions match this range.</p>` : ''}
+        </details>
       </fieldset>
       <label class="field"><span class="field__label">My progress</span><select class="select" data-filter="markStatus">${[['all', 'All questions'], ['unmarked', 'Unmarked'], ['marked', 'Marked'], ['lost', 'Lost marks'], ['full', 'Full marks']].map(([value, label]) => html`<option value="${value}" ${state.markStatus === value ? 'selected' : ''}>${label}</option>`)}</select></label>
       <details class="filter-details" ${state.years.length || state.series || state.tier || state.paper || state.sampleMode !== 'all' ? 'open' : ''}><summary>More filters</summary><div class="stack">
@@ -550,7 +557,12 @@ export async function mount(element, context) {
   }
 
   function browserResults() {
-    const bands = bandOptions.filter((band) => state.bands.includes(band.id));
+    const customMarks = state.markMin !== '' || state.markMax !== '';
+    const min = state.markMin === '' ? 0 : Number(state.markMin);
+    const max = state.markMax === '' ? Infinity : Number(state.markMax);
+    const valid = Number.isInteger(min) && min >= 0 && (max === Infinity || Number.isInteger(max)) && max >= min;
+    const bands = customMarks ? [{ min: valid ? min : Infinity, max: valid ? max : -Infinity }]
+      : bandOptions.filter((band) => state.bands.includes(band.id));
     const { matches, locked } = filterQuestions(
       scopedPool(),
       criteria({ difficulties: state.difficulties, markBands: bands, markStatus: state.markStatus, search: state.search }),
@@ -571,6 +583,7 @@ export async function mount(element, context) {
       ...(state.markStatus !== 'all' ? [{key: 'markStatus', label: `Progress: ${state.markStatus}`}] : []),
       ...(state.sampleMode !== 'all' ? [{key: 'sampleMode', label: state.sampleMode === 'hide' ? 'Hide demo content' : 'Demo content only'}] : []),
       ...state.difficulties.map((value) => ({key: 'difficulties', value, label: value.replaceAll('_', ' ')})),
+      ...(customMarks ? [{key: 'markRange', label: `Marks: ${state.markMin || '0'}–${state.markMax || 'any'}`}] : []),
       ...state.bands.map((value) => ({key: 'bands', value, label: bandOptions.find((b) => b.id === value)?.label || value})),
       ...state.years.map((value) => ({key: 'years', value, label: `Year: ${value}`})),
       ...['series', 'tier', 'paper'].filter((key) => state[key]).map((key) => ({key, label: `${key}: ${state[key]}`})),
@@ -583,9 +596,9 @@ export async function mount(element, context) {
             ${icon('search', { size: 16 })}
             <input class="input input--sm" type="search" placeholder="Search text or spec code" value="${state.search}" data-search aria-label="Search text or spec code" />
           </label>
-          <select class="select input--sm" data-sort aria-label="Sort questions" style="width:auto">
+          <label class="field browser-sort"><span class="field__label">Sort by</span><select class="select input--sm" data-sort aria-label="Sort questions">
             ${Object.entries(SORTS).map(([id, label]) => html`<option value="${id}" ${state.sort === id ? 'selected' : ''}>${label}</option>`)}
-          </select>
+          </select></label>
           ${state.sort === 'shuffle' ? html`<button class="btn btn--sm" type="button" data-reshuffle>Reshuffle</button>` : ''}
         </div>
       </div>
@@ -629,6 +642,34 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── drawing ─────────────────────────────────
 
+  // Preserve disclosure/search/scroll state when filter controls are rebuilt.
+  // These are view preferences, not curriculum coverage or search criteria.
+  function controlSnapshot() {
+    const root = $('[data-controls]', element);
+    if (!root) return null;
+    return {
+      details: new Map([...root.querySelectorAll('details')].map((node) => [node.dataset.topic || node.querySelector(':scope > summary')?.textContent.trim(), node.open])),
+      treeSearch: root.querySelector('[data-tree-search]')?.value || '',
+      treeScroll: root.querySelector('[data-tree]')?.scrollTop || 0,
+    };
+  }
+
+  function restoreControls(snapshot) {
+    if (!snapshot) return;
+    const root = $('[data-controls]', element);
+    root.querySelectorAll('details').forEach((node) => {
+      const key = node.dataset.topic || node.querySelector(':scope > summary')?.textContent.trim();
+      if (snapshot.details.has(key)) node.open = snapshot.details.get(key);
+    });
+    const search = root.querySelector('[data-tree-search]');
+    if (search && snapshot.treeSearch) {
+      search.value = snapshot.treeSearch;
+      search.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    const tree = root.querySelector('[data-tree]');
+    if (tree) tree.scrollTop = snapshot.treeScroll;
+  }
+
   function draw() {
     if (timed()) {
       const { matches, locked } = filterQuestions(scopedPool(), criteria(), engineContext);
@@ -661,16 +702,17 @@ export async function mount(element, context) {
   }
 
   /** Re-renders after a filter change. The topic tree keeps its own state, so only the rest redraws. */
-  function update({ keepControls = false } = {}) {
+  function update({ keepControls = false, resetControls = false } = {}) {
+    const controls = resetControls ? null : controlSnapshot();
     const scroll = window.scrollY;
     const active = document.activeElement;
-    const focusKeys = ['open', 'scheme', 'saveMark', 'reattempt', 'undo', 'select', 'removeSelected', 'filter'];
+    const focusKeys = ['open', 'scheme', 'saveMark', 'reattempt', 'undo', 'select', 'removeSelected', 'filter', 'multi', 'sort', 'resetFilters', 'clearGroup', 'removeFocus', 'toggleTree'];
     const key = focusKeys.find((name) => active?.dataset?.[name] !== undefined);
     const value = key ? active.dataset[key] : null;
     const restore = () => {
       if (key) {
         const attribute = key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
-        element.querySelector(`[data-${attribute}="${CSS.escape(value)}"]`)?.focus({ preventScroll: true });
+        element.querySelector(`[data-${attribute}="${CSS.escape(value)}"]${key === 'multi' ? `[data-value="${CSS.escape(active.dataset.value)}"]` : ''}`)?.focus({ preventScroll: true });
       }
       window.scrollTo(0, scroll);
     };
@@ -687,10 +729,12 @@ export async function mount(element, context) {
       if (points) setHtml(points, selectedPoints());
       const focusReset = $('[data-focus-reset]', element);
       if (focusReset) focusReset.hidden = state.focus === null;
+      restoreControls(controls);
       restore();
       return;
     }
     draw();
+    restoreControls(controls);
     restore();
   }
 
@@ -732,15 +776,19 @@ export async function mount(element, context) {
     save();
     draw();
   });
-  on(element, 'change', '[data-filter]', (event, select) => change(() => (state[select.dataset.filter] = select.value)));
+  on(element, 'change', '[data-filter]', (event, select) => change(() => {
+    state[select.dataset.filter] = select.value;
+    if (['markMin', 'markMax'].includes(select.dataset.filter)) state.bands = [];
+  }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
     const kept = { mode: state.mode, selected: state.selected, drafts: state.drafts, openQuestions: state.openQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions };
     state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept };
-  }));
+  }, { resetControls: true }));
   on(element, 'click', '[data-clear-chip]', (event, button) => change(() => {
     const key = button.dataset.clearChip;
-    if (key === 'focus') state.focus = null;
+    if (key === 'markRange') { state.markMin = ''; state.markMax = ''; }
+    else if (key === 'focus') state.focus = null;
     else if (key === 'range') { state.rangeFrom = ''; state.rangeTo = ''; }
     else if (key === 'learnedOnly') state.learnedOnly = false;
     else if (key === 'markStatus' || key === 'sampleMode') state[key] = 'all';
@@ -767,7 +815,10 @@ export async function mount(element, context) {
   on(element, 'click', '[data-source]', (event, button) => change(() => (state.source = button.dataset.source)));
   on(element, 'click', '[data-clear-group]', (event, button) => change(() => (state[button.dataset.clearGroup] = [])));
   on(element, 'click', '[data-remove-focus]', (event, button) => change(() => (state.focus = state.focus.filter((id) => id !== button.dataset.removeFocus))));
-  on(element, 'click', '[data-multi]', (event, button) => change(() => (state[button.dataset.multi] = toggle(state[button.dataset.multi], button.dataset.value))));
+  on(element, 'click', '[data-multi]', (event, button) => change(() => {
+    state[button.dataset.multi] = toggle(state[button.dataset.multi], button.dataset.value);
+    if (button.dataset.multi === 'bands') { state.markMin = ''; state.markMax = ''; }
+  }));
   on(element, 'change', '[data-flag]', (event, box) =>
     change(() => (state[box.dataset.flag] = box.checked), { keepControls: box.dataset.flag === 'stopwatch' || box.dataset.flag === 'preferUnseen' || box.dataset.flag === 'prioritiseWeak', keepPage: box.dataset.flag === 'stopwatch' }),
   );
@@ -792,7 +843,7 @@ export async function mount(element, context) {
       save();
       update({ keepControls: true });
       const box = $('[data-search]', element); // the results redraw replaces the input: restore typing position
-      box?.focus();
+      box?.focus({ preventScroll: true });
       box?.setSelectionRange(box.value.length, box.value.length);
     }, 300),
   );
@@ -831,7 +882,7 @@ export async function mount(element, context) {
     (state.drafts[input.dataset.answer] ||= {}).answer = input.value;
     save();
   });
-  on(element, 'change', '[data-mark]', (event, input) => {
+  on(element, 'input', '[data-mark]', (event, input) => {
     (state.drafts[input.dataset.mark] ||= {}).mark = input.value;
     save();
   });
@@ -839,7 +890,9 @@ export async function mount(element, context) {
     latest.clear();
     for (const [id, attempt] of latestByQuestion(api.getProgress().question_attempts)) latest.set(id, attempt);
   };
+  const pendingMarks = new Set();
   const saveMark = async (id, reattempt = false) => {
+    if (pendingMarks.has(id)) return;
     const question = bundle.questionsById.get(id);
     const value = element.querySelector(`[data-mark="${CSS.escape(id)}"]`)?.value ?? state.drafts[id]?.mark;
     (state.drafts[id] ||= {}).mark = value;
@@ -854,17 +907,25 @@ export async function mount(element, context) {
       save();
       return context.navigate(`/signup?next=${encodeURIComponent(`/practice?subject=${subjectId}`)}`);
     }
+    pendingMarks.add(id);
+    for (const button of card.querySelectorAll('[data-save-mark], [data-reattempt]')) button.disabled = true;
     try {
       await api.saveQuestionMark(question, Number(value), { reattempt });
       const confirmation = card?.querySelector('[data-mark-confirmation]');
       if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${value}/${question.marks}.`; }
+      // Persist drafts before any delayed refresh. Do not redraw another route
+      // after navigation, or allow duplicate clicks to create extra attempts.
+      save();
       await new Promise((resolve) => setTimeout(resolve, 1200));
+      if (!element.isConnected) return;
       refreshLatest();
       update({ keepControls: true, keepPage: true });
       toast(`Saved ${value}/${question.marks}.`, { type: 'success' });
     } catch (failure) {
-      error.hidden = false;
-      error.textContent = failure.message;
+      if (error) { error.hidden = false; error.textContent = failure.message; }
+    } finally {
+      pendingMarks.delete(id);
+      for (const button of card.querySelectorAll('[data-save-mark], [data-reattempt]')) button.disabled = false;
     }
   };
   on(element, 'click', '[data-save-mark]', (event, button) => saveMark(button.dataset.saveMark));

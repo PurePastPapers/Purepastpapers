@@ -18,3 +18,7 @@ The existing site is a static, browser-local application. Its guest flow keeps p
 ## Data safety and delivery
 
 Keep browser accounts, attempts and content identifiers compatible. Any new storage field must tolerate missing historical data; add migrations only where needed and test old records. Avoid claims of cross-device sync. Preserve homepage free-access copy and notebook styling. Source and textbook verification are independent of UI work and must not block safe improvements elsewhere.
+
+## Follow-up verification
+
+See the [14 November browser audit](browser-audit-2026-11-14.md) for actual UI checks, remaining audit limits and regression commands. The [curriculum contract](curriculum-and-question-tagging.md#source-review-update--14-november-2026) records the updated source access and provisional textbook inventory; listing access does not establish verified mappings.
