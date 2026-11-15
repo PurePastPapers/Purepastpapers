@@ -1,145 +1,4203 @@
 {
-  "subject_id": "EDX_ALEVEL_BIOL_9BN0",
-  "sections": [
+ "subject_id": "EDX_ALEVEL_BIOL_9BN0",
+ "specification_version": "pearson-9bn0-issue4-2018-11",
+ "official_source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/biology-a/2015/specification-and-sample-assessment-materials/9781446930885-gce2015-a-bioa-spec.pdf",
+ "source_document_sha256": "5c2a9abce32692b4d44c8b4e44e4f6f9c3d3714843df6d99bb09cf3b731b0040",
+ "as_source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/biology-a/2015/specification-and-sample-assessment-materials/9781446930908_GCE2015_AS_BioA_spec.pdf",
+ "as_source_document_sha256": "7d7a2f3db8a9a536a365f501beca85066ebba83461c5bcf65f133718b49eb282",
+ "as_comparison": {
+  "a_level_topic_1_4_statements": 65,
+  "as_statements": 65,
+  "codes_with_different_wording": [],
+  "as_only_codes": [],
+  "a_level_only_codes": []
+ },
+ "verified_at": "2026-11-15",
+ "review_status": "model_transcribed_from_official_pdf",
+ "order_status": "verified",
+ "point_order": [
+  "EDX_BIOL_OFF_T1_1.1",
+  "EDX_BIOL_OFF_T1_1.2",
+  "EDX_BIOL_OFF_T1_1.3",
+  "EDX_BIOL_OFF_T1_1.4",
+  "EDX_BIOL_OFF_T1_1.5",
+  "EDX_BIOL_OFF_T1_1.6",
+  "EDX_BIOL_OFF_T1_1.7",
+  "EDX_BIOL_OFF_T1_1.8",
+  "EDX_BIOL_OFF_T1_1.9",
+  "EDX_BIOL_OFF_T1_1.10",
+  "EDX_BIOL_OFF_T1_1.11",
+  "EDX_BIOL_OFF_T1_1.12",
+  "EDX_BIOL_OFF_T1_1.13",
+  "EDX_BIOL_OFF_T1_1.14",
+  "EDX_BIOL_OFF_T1_1.15",
+  "EDX_BIOL_OFF_T1_1.16",
+  "EDX_BIOL_OFF_T1_1.17",
+  "EDX_BIOL_OFF_T1_1.18",
+  "EDX_BIOL_OFF_T2_2.1",
+  "EDX_BIOL_OFF_T2_2.2",
+  "EDX_BIOL_OFF_T2_2.3",
+  "EDX_BIOL_OFF_T2_2.4",
+  "EDX_BIOL_OFF_T2_2.5",
+  "EDX_BIOL_OFF_T2_2.6",
+  "EDX_BIOL_OFF_T2_2.7",
+  "EDX_BIOL_OFF_T2_2.8",
+  "EDX_BIOL_OFF_T2_2.9",
+  "EDX_BIOL_OFF_T2_2.10",
+  "EDX_BIOL_OFF_T2_2.11",
+  "EDX_BIOL_OFF_T2_2.12",
+  "EDX_BIOL_OFF_T2_2.13",
+  "EDX_BIOL_OFF_T2_2.14",
+  "EDX_BIOL_OFF_T2_2.15",
+  "EDX_BIOL_OFF_T2_2.16",
+  "EDX_BIOL_OFF_T3_3.1",
+  "EDX_BIOL_OFF_T3_3.2",
+  "EDX_BIOL_OFF_T3_3.3",
+  "EDX_BIOL_OFF_T3_3.4",
+  "EDX_BIOL_OFF_T3_3.5",
+  "EDX_BIOL_OFF_T3_3.6",
+  "EDX_BIOL_OFF_T3_3.7",
+  "EDX_BIOL_OFF_T3_3.8",
+  "EDX_BIOL_OFF_T3_3.9",
+  "EDX_BIOL_OFF_T3_3.10",
+  "EDX_BIOL_OFF_T3_3.11",
+  "EDX_BIOL_OFF_T3_3.12",
+  "EDX_BIOL_OFF_T3_3.13",
+  "EDX_BIOL_OFF_T3_3.14",
+  "EDX_BIOL_OFF_T3_3.15",
+  "EDX_BIOL_OFF_T4_4.1",
+  "EDX_BIOL_OFF_T4_4.2",
+  "EDX_BIOL_OFF_T4_4.3",
+  "EDX_BIOL_OFF_T4_4.4",
+  "EDX_BIOL_OFF_T4_4.5",
+  "EDX_BIOL_OFF_T4_4.6",
+  "EDX_BIOL_OFF_T4_4.7",
+  "EDX_BIOL_OFF_T4_4.8",
+  "EDX_BIOL_OFF_T4_4.9",
+  "EDX_BIOL_OFF_T4_4.10",
+  "EDX_BIOL_OFF_T4_4.11",
+  "EDX_BIOL_OFF_T4_4.12",
+  "EDX_BIOL_OFF_T4_4.13",
+  "EDX_BIOL_OFF_T4_4.14",
+  "EDX_BIOL_OFF_T4_4.15",
+  "EDX_BIOL_OFF_T4_4.16",
+  "EDX_BIOL_OFF_T5_5.1",
+  "EDX_BIOL_OFF_T5_5.2",
+  "EDX_BIOL_OFF_T5_5.3",
+  "EDX_BIOL_OFF_T5_5.4",
+  "EDX_BIOL_OFF_T5_5.5",
+  "EDX_BIOL_OFF_T5_5.6",
+  "EDX_BIOL_OFF_T5_5.7",
+  "EDX_BIOL_OFF_T5_5.8",
+  "EDX_BIOL_OFF_T5_5.9",
+  "EDX_BIOL_OFF_T5_5.10",
+  "EDX_BIOL_OFF_T5_5.11",
+  "EDX_BIOL_OFF_T5_5.12",
+  "EDX_BIOL_OFF_T5_5.13",
+  "EDX_BIOL_OFF_T5_5.14",
+  "EDX_BIOL_OFF_T5_5.15",
+  "EDX_BIOL_OFF_T5_5.16",
+  "EDX_BIOL_OFF_T5_5.17",
+  "EDX_BIOL_OFF_T5_5.18",
+  "EDX_BIOL_OFF_T5_5.19",
+  "EDX_BIOL_OFF_T5_5.20",
+  "EDX_BIOL_OFF_T5_5.21",
+  "EDX_BIOL_OFF_T5_5.22",
+  "EDX_BIOL_OFF_T6_6.1",
+  "EDX_BIOL_OFF_T6_6.2",
+  "EDX_BIOL_OFF_T6_6.3",
+  "EDX_BIOL_OFF_T6_6.4",
+  "EDX_BIOL_OFF_T6_6.5",
+  "EDX_BIOL_OFF_T6_6.6",
+  "EDX_BIOL_OFF_T6_6.7",
+  "EDX_BIOL_OFF_T6_6.8",
+  "EDX_BIOL_OFF_T6_6.9",
+  "EDX_BIOL_OFF_T6_6.10",
+  "EDX_BIOL_OFF_T6_6.11",
+  "EDX_BIOL_OFF_T6_6.12",
+  "EDX_BIOL_OFF_T6_6.13",
+  "EDX_BIOL_OFF_T6_6.14",
+  "EDX_BIOL_OFF_T6_6.15",
+  "EDX_BIOL_OFF_T7_7.1",
+  "EDX_BIOL_OFF_T7_7.2",
+  "EDX_BIOL_OFF_T7_7.3",
+  "EDX_BIOL_OFF_T7_7.4",
+  "EDX_BIOL_OFF_T7_7.5",
+  "EDX_BIOL_OFF_T7_7.6",
+  "EDX_BIOL_OFF_T7_7.7",
+  "EDX_BIOL_OFF_T7_7.8",
+  "EDX_BIOL_OFF_T7_7.9",
+  "EDX_BIOL_OFF_T7_7.10",
+  "EDX_BIOL_OFF_T7_7.11",
+  "EDX_BIOL_OFF_T7_7.12",
+  "EDX_BIOL_OFF_T7_7.13",
+  "EDX_BIOL_OFF_T7_7.14",
+  "EDX_BIOL_OFF_T7_7.15",
+  "EDX_BIOL_OFF_T7_7.16",
+  "EDX_BIOL_OFF_T8_8.1",
+  "EDX_BIOL_OFF_T8_8.2",
+  "EDX_BIOL_OFF_T8_8.3",
+  "EDX_BIOL_OFF_T8_8.4",
+  "EDX_BIOL_OFF_T8_8.5",
+  "EDX_BIOL_OFF_T8_8.6",
+  "EDX_BIOL_OFF_T8_8.7",
+  "EDX_BIOL_OFF_T8_8.8",
+  "EDX_BIOL_OFF_T8_8.9",
+  "EDX_BIOL_OFF_T8_8.10",
+  "EDX_BIOL_OFF_T8_8.11",
+  "EDX_BIOL_OFF_T8_8.12",
+  "EDX_BIOL_OFF_T8_8.13",
+  "EDX_BIOL_OFF_T8_8.14",
+  "EDX_BIOL_OFF_T8_8.15",
+  "EDX_BIOL_OFF_T8_8.16",
+  "EDX_BIOL_OFF_T8_8.17",
+  "EDX_BIOL_OFF_T8_8.18",
+  "EDX_BIOL_OFF_T8_8.19",
+  "EDX_BIOL_OFF_CP1",
+  "EDX_BIOL_OFF_CP2",
+  "EDX_BIOL_OFF_CP3",
+  "EDX_BIOL_OFF_CP4",
+  "EDX_BIOL_OFF_CP5",
+  "EDX_BIOL_OFF_CP6",
+  "EDX_BIOL_OFF_CP7",
+  "EDX_BIOL_OFF_CP8",
+  "EDX_BIOL_OFF_CP9",
+  "EDX_BIOL_OFF_CP10",
+  "EDX_BIOL_OFF_CP11",
+  "EDX_BIOL_OFF_CP12",
+  "EDX_BIOL_OFF_CP13",
+  "EDX_BIOL_OFF_CP14",
+  "EDX_BIOL_OFF_CP15",
+  "EDX_BIOL_OFF_CP16",
+  "EDX_BIOL_OFF_CP17",
+  "EDX_BIOL_OFF_CP18",
+  "EDX_BIOL_OFF_MS_A.0.1",
+  "EDX_BIOL_OFF_MS_A.0.2",
+  "EDX_BIOL_OFF_MS_A.0.3",
+  "EDX_BIOL_OFF_MS_A.0.4",
+  "EDX_BIOL_OFF_MS_A.0.5",
+  "EDX_BIOL_OFF_MS_A.1.1",
+  "EDX_BIOL_OFF_MS_A.1.2",
+  "EDX_BIOL_OFF_MS_A.1.3",
+  "EDX_BIOL_OFF_MS_A.1.4",
+  "EDX_BIOL_OFF_MS_A.1.5",
+  "EDX_BIOL_OFF_MS_A.1.6",
+  "EDX_BIOL_OFF_MS_A.1.7",
+  "EDX_BIOL_OFF_MS_A.1.8",
+  "EDX_BIOL_OFF_MS_A.1.9",
+  "EDX_BIOL_OFF_MS_A.1.10",
+  "EDX_BIOL_OFF_MS_A.1.11",
+  "EDX_BIOL_OFF_MS_A.2.1",
+  "EDX_BIOL_OFF_MS_A.2.2",
+  "EDX_BIOL_OFF_MS_A.2.3",
+  "EDX_BIOL_OFF_MS_A.2.4",
+  "EDX_BIOL_OFF_MS_A.2.5",
+  "EDX_BIOL_OFF_MS_A.3.1",
+  "EDX_BIOL_OFF_MS_A.3.2",
+  "EDX_BIOL_OFF_MS_A.3.3",
+  "EDX_BIOL_OFF_MS_A.3.4",
+  "EDX_BIOL_OFF_MS_A.3.5",
+  "EDX_BIOL_OFF_MS_A.3.6",
+  "EDX_BIOL_OFF_MS_A.4.1"
+ ],
+ "order_note": "Official printed order: Topics 1–8 statements, then core practicals and Appendix 6 mathematical skills. Legacy seed points are excluded from the order and from the tree.",
+ "year_basis": "AS specification, \"Progression from Advanced Subsidiary GCE to Advanced GCE\": students \"would have covered Topics 1-4 which are common to both qualifications but the additional topics 5-8 will need to be covered\". Topics 1–4 are therefore Year 12 content and 5–8 Year 13.",
+ "sections": [
+  {
+   "id": "EDX_BIOL_OFF_SEC_Y12",
+   "title": "Topics 1–4 (AS and Year 12 content)",
+   "note": "Assessed on AS 8BN0 Papers 1–2 and on every A level 9BN0 paper",
+   "topics": [
     {
-      "id": "EDX_BIOL_SEC_P1",
-      "title": "Paper 1 topics",
-      "note": "Topics 1–6 are assessed on Paper 1",
-      "topics": [
-        {
-          "id": "EDX_BIOL_T1",
-          "code": "1",
-          "title": "Lifestyle, Health and Risk",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T1_1.1","code":"1.1","title":"The heart, blood vessels and mass transport"},
-            {"id":"EDX_BIOL_T1_1.2","code":"1.2","title":"The cardiac cycle, blood clotting and atherosclerosis"},
-            {"id":"EDX_BIOL_T1_1.3","code":"1.3","title":"Water as a solvent and its dipole nature"},
-            {"id":"EDX_BIOL_T1_1.4","code":"1.4","title":"Carbohydrates: monosaccharides, disaccharides and polysaccharides"},
-            {"id":"EDX_BIOL_T1_1.5","code":"1.5","title":"Lipids: triglycerides, saturated and unsaturated fats"},
-            {"id":"EDX_BIOL_T1_1.6","code":"1.6","title":"Risk factors for cardiovascular disease; correlation and causation"},
-            {"id":"EDX_BIOL_T1_1.7","code":"1.7","title":"Energy budgets, diet and obesity indicators"},
-            {"id":"EDX_BIOL_T1_1.8","code":"1.8","title":"Treatments for cardiovascular disease"}
-          ]
-        },
-        {
-          "id": "EDX_BIOL_T2",
-          "code": "2",
-          "title": "Genes and Health",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T2_2.1","code":"2.1","title":"Gas exchange surfaces and Fick's law"},
-            {"id":"EDX_BIOL_T2_2.2","code":"2.2","title":"Cell membranes and transport across them"},
-            {"id":"EDX_BIOL_T2_2.3","code":"2.3","title":"Protein structure and amino acids"},
-            {"id":"EDX_BIOL_T2_2.4","code":"2.4","title":"Enzymes: mechanism of action and factors affecting rate"},
-            {"id":"EDX_BIOL_T2_2.5","code":"2.5","title":"DNA and RNA structure; DNA replication"},
-            {"id":"EDX_BIOL_T2_2.6","code":"2.6","title":"The genetic code and protein synthesis"},
-            {"id":"EDX_BIOL_T2_2.7","code":"2.7","title":"Gene mutations and cystic fibrosis"},
-            {"id":"EDX_BIOL_T2_2.8","code":"2.8","title":"Monohybrid inheritance and pedigree diagrams"},
-            {"id":"EDX_BIOL_T2_2.9","code":"2.9","title":"Genetic screening and its ethical issues"}
-          ]
-        },
-        {
-          "id": "EDX_BIOL_T3",
-          "code": "3",
-          "title": "Voice of the Genome",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T3_3.1","code":"3.1","title":"Cell ultrastructure: eukaryotic and prokaryotic cells"},
-            {"id":"EDX_BIOL_T3_3.2","code":"3.2","title":"Protein trafficking: the role of the rER and Golgi apparatus"},
-            {"id":"EDX_BIOL_T3_3.3","code":"3.3","title":"Gametes and fertilisation"},
-            {"id":"EDX_BIOL_T3_3.4","code":"3.4","title":"Meiosis and genetic variation"},
-            {"id":"EDX_BIOL_T3_3.5","code":"3.5","title":"The cell cycle and mitosis"},
-            {"id":"EDX_BIOL_T3_3.6","code":"3.6","title":"Stem cells and differentiation"},
-            {"id":"EDX_BIOL_T3_3.7","code":"3.7","title":"Gene expression and epigenetics"},
-            {"id":"EDX_BIOL_T3_3.8","code":"3.8","title":"Phenotype, environment and polygenic inheritance"}
-          ]
-        },
-        {
-          "id": "EDX_BIOL_T4",
-          "code": "4",
-          "title": "Biodiversity and Natural Resources",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T4_4.1","code":"4.1","title":"Biodiversity, endemism and how they are measured"},
-            {"id":"EDX_BIOL_T4_4.2","code":"4.2","title":"Niches, adaptation and natural selection"},
-            {"id":"EDX_BIOL_T4_4.3","code":"4.3","title":"The Hardy–Weinberg equation and reproductive isolation"},
-            {"id":"EDX_BIOL_T4_4.4","code":"4.4","title":"Classification and the three domains"},
-            {"id":"EDX_BIOL_T4_4.5","code":"4.5","title":"Plant cell structure; starch and cellulose"},
-            {"id":"EDX_BIOL_T4_4.6","code":"4.6","title":"Transport in plants: xylem, phloem and plant fibres"},
-            {"id":"EDX_BIOL_T4_4.7","code":"4.7","title":"Drug testing and antimicrobial properties of plants"},
-            {"id":"EDX_BIOL_T4_4.8","code":"4.8","title":"Sustainability and conservation (zoos and seed banks)"}
-          ]
-        },
-        {
-          "id": "EDX_BIOL_T5",
-          "code": "5",
-          "title": "On the Wild Side",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T5_5.1","code":"5.1","title":"Ecosystems, habitats and succession"},
-            {"id":"EDX_BIOL_T5_5.2","code":"5.2","title":"Photosynthesis: light-dependent and light-independent reactions"},
-            {"id":"EDX_BIOL_T5_5.3","code":"5.3","title":"Productivity and energy transfer between trophic levels"},
-            {"id":"EDX_BIOL_T5_5.4","code":"5.4","title":"Evidence for climate change"},
-            {"id":"EDX_BIOL_T5_5.5","code":"5.5","title":"The carbon cycle and the greenhouse effect"},
-            {"id":"EDX_BIOL_T5_5.6","code":"5.6","title":"Effects of climate change on organisms"},
-            {"id":"EDX_BIOL_T5_5.7","code":"5.7","title":"Evolution, speciation and how science is validated"}
-          ]
-        },
-        {
-          "id": "EDX_BIOL_T6",
-          "code": "6",
-          "title": "Immunity, Infection and Forensics",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T6_6.1","code":"6.1","title":"Forensics: estimating time of death"},
-            {"id":"EDX_BIOL_T6_6.2","code":"6.2","title":"DNA profiling, PCR and gel electrophoresis"},
-            {"id":"EDX_BIOL_T6_6.3","code":"6.3","title":"Bacteria and viruses: structure and infection (TB and HIV)"},
-            {"id":"EDX_BIOL_T6_6.4","code":"6.4","title":"Non-specific immune responses"},
-            {"id":"EDX_BIOL_T6_6.5","code":"6.5","title":"The specific immune response: B and T cells"},
-            {"id":"EDX_BIOL_T6_6.6","code":"6.6","title":"Types of immunity and vaccination"},
-            {"id":"EDX_BIOL_T6_6.7","code":"6.7","title":"Antibiotics and antibiotic resistance"}
-          ]
-        }
-      ]
+     "id": "EDX_BIOL_OFF_T1",
+     "code": "1",
+     "title": "Topic 1: Lifestyle, Health and Risk",
+     "kind": "topic",
+     "introduced_year": 12,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T1_1.1",
+       "code": "1.1",
+       "title": "Understand why many animals have a heart and circulation (mass transport to overcome limitations of diffusion in meeting the requirements…",
+       "full_text": "Understand why many animals have a heart and circulation (mass transport to overcome limitations of diffusion in meeting the requirements of organisms).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.1",
+        "code": "1.1",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.2",
+       "code": "1.2",
+       "title": "Understand the importance of water as a solvent in transport, including its dipole nature.",
+       "full_text": "Understand the importance of water as a solvent in transport, including its dipole nature.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.2",
+        "code": "1.2",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.3",
+       "code": "1.3",
+       "title": "Understand how the structures of blood vessels (capillaries, arteries and veins) relate to their functions.",
+       "full_text": "Understand how the structures of blood vessels (capillaries, arteries and veins) relate to their functions.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.3",
+        "code": "1.3",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.4",
+       "code": "1.4",
+       "title": "i) Know the cardiac cycle (atrial systole, ventricular systole and cardiac diastole) and relate the structure and operation of the…",
+       "full_text": "i) Know the cardiac cycle (atrial systole, ventricular systole and cardiac diastole) and relate the structure and operation of the mammalian heart, including the major blood vessels, to its function. ii) Know how the relationship between heart structure and function can be investigated practically.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.4",
+        "code": "1.4",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.5",
+       "code": "1.5",
+       "title": "Understand the course of events that leads to atherosclerosis (endothelial dysfunction, inflammatory response, plaque formation, raised…",
+       "full_text": "Understand the course of events that leads to atherosclerosis (endothelial dysfunction, inflammatory response, plaque formation, raised blood pressure).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.5",
+        "code": "1.5",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.6",
+       "code": "1.6",
+       "title": "Understand the blood-clotting process (thromboplastin release, conversion of prothrombin to thrombin and fibrinogen to fibrin) and its role…",
+       "full_text": "Understand the blood-clotting process (thromboplastin release, conversion of prothrombin to thrombin and fibrinogen to fibrin) and its role in cardiovascular disease (CVD).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.6",
+        "code": "1.6",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.7",
+       "code": "1.7",
+       "title": "Know how factors such as genetics, diet, age, gender, high blood pressure, smoking and inactivity increase the risk of cardiovascular…",
+       "full_text": "Know how factors such as genetics, diet, age, gender, high blood pressure, smoking and inactivity increase the risk of cardiovascular disease (CVD).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.7",
+        "code": "1.7",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.8",
+       "code": "1.8",
+       "title": "Be able to analyse and interpret quantitative data on illness and mortality rates to determine health risks, including distinguishing…",
+       "full_text": "Be able to analyse and interpret quantitative data on illness and mortality rates to determine health risks, including distinguishing between correlation and causation and recognising conflicting evidence.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.8",
+        "code": "1.8",
+        "topic": 1,
+        "source_pages": [
+         19
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.9",
+       "code": "1.9",
+       "title": "Be able to evaluate the design of studies used to determine health risk factors, including sample selection and sample size used to collect…",
+       "full_text": "Be able to evaluate the design of studies used to determine health risk factors, including sample selection and sample size used to collect data that is both valid and reliable.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.9",
+        "code": "1.9",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.10",
+       "code": "1.10",
+       "title": "Understand why people’s perceptions of risks are often different from the actual risks, including underestimating and overestimating the…",
+       "full_text": "Understand why people’s perceptions of risks are often different from the actual risks, including underestimating and overestimating the risks due to diet and other lifestyle factors in the development of heart disease.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.10",
+        "code": "1.10",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.11",
+       "code": "1.11",
+       "title": "i) Be able to analyse data on energy budgets and diet. ii) Understand the consequences of energy imbalance, including weight loss, weight…",
+       "full_text": "i) Be able to analyse data on energy budgets and diet. ii) Understand the consequences of energy imbalance, including weight loss, weight gain, and development of obesity.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.11",
+        "code": "1.11",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.12",
+       "code": "1.12",
+       "title": "i) Know the difference between monosaccharides, disaccharides and polysaccharides, including glycogen and starch (amylose and amylopectin).…",
+       "full_text": "i) Know the difference between monosaccharides, disaccharides and polysaccharides, including glycogen and starch (amylose and amylopectin). ii) Be able to relate the structures of monosaccharides, disaccharides and polysaccharides to their roles in providing and storing energy (β-glucose and cellulose are not required in this topic).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.12",
+        "code": "1.12",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.13",
+       "code": "1.13",
+       "title": "Know how monosaccharides join to form disaccharides (sucrose, lactose and maltose) and polysaccharides (glycogen and amylose) through…",
+       "full_text": "Know how monosaccharides join to form disaccharides (sucrose, lactose and maltose) and polysaccharides (glycogen and amylose) through condensation reactions forming glycosidic bonds, and how these can be split through hydrolysis reactions.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.13",
+        "code": "1.13",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.14",
+       "code": "1.14",
+       "title": "i) Know how a triglyceride is synthesised by the formation of ester bonds during condensation reactions between glycerol and three fatty…",
+       "full_text": "i) Know how a triglyceride is synthesised by the formation of ester bonds during condensation reactions between glycerol and three fatty acids. ii) Know the differences between saturated and unsaturated lipids.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.14",
+        "code": "1.14",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.15",
+       "code": "1.15",
+       "title": "i) Be able to analyse and interpret data on the possible significance for health of blood cholesterol levels and levels of high-density…",
+       "full_text": "i) Be able to analyse and interpret data on the possible significance for health of blood cholesterol levels and levels of high-density lipoproteins (HDLs) and low-density lipoproteins (LDLs). ii) Know the evidence for a causal relationship between blood cholesterol levels (total cholesterol and LDL cholesterol) and cardiovascular disease (CVD).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.15",
+        "code": "1.15",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.16",
+       "code": "1.16",
+       "title": "Understand how people use scientific knowledge about the effects of diet, including obesity indicators, body mass index and waist-to-hip…",
+       "full_text": "Understand how people use scientific knowledge about the effects of diet, including obesity indicators, body mass index and waist-to-hip ratio, exercise and smoking to reduce their risk of coronary heart disease.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.16",
+        "code": "1.16",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.17",
+       "code": "1.17",
+       "title": "Be able discuss the potential ethical issues regarding the use of invertebrates in research.",
+       "full_text": "Be able discuss the potential ethical issues regarding the use of invertebrates in research.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.17",
+        "code": "1.17",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T1_1.18",
+       "code": "1.18",
+       "title": "Know the benefits and risks of treatments for cardiovascular disease (CVD) (antihypertensives, statins, anticoagulants and platelet…",
+       "full_text": "Know the benefits and risks of treatments for cardiovascular disease (CVD) (antihypertensives, statins, anticoagulants and platelet inhibitors).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-1.18",
+        "code": "1.18",
+        "topic": 1,
+        "source_pages": [
+         20
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      }
+     ]
     },
     {
-      "id": "EDX_BIOL_SEC_P2",
-      "title": "Paper 2 topics",
-      "note": "Topics 7–8 are assessed on Paper 2 (with Topics 1–4)",
-      "topics": [
-        {
-          "id": "EDX_BIOL_T7",
-          "code": "7",
-          "title": "Run for Your Life",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T7_7.1","code":"7.1","title":"Muscles, joints and the sliding filament theory"},
-            {"id":"EDX_BIOL_T7_7.2","code":"7.2","title":"Aerobic respiration: glycolysis, link reaction, Krebs cycle and oxidative phosphorylation"},
-            {"id":"EDX_BIOL_T7_7.3","code":"7.3","title":"Anaerobic respiration and lactate"},
-            {"id":"EDX_BIOL_T7_7.4","code":"7.4","title":"Control of heart rate and ventilation; ECGs and spirometry"},
-            {"id":"EDX_BIOL_T7_7.5","code":"7.5","title":"Homeostasis and thermoregulation"},
-            {"id":"EDX_BIOL_T7_7.6","code":"7.6","title":"Hormones, transcription factors and gene switching"},
-            {"id":"EDX_BIOL_T7_7.7","code":"7.7","title":"Sports injuries, medical technology and performance-enhancing substances"}
-          ]
-        },
-        {
-          "id": "EDX_BIOL_T8",
-          "code": "8",
-          "title": "Grey Matter",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_BIOL_T8_8.1","code":"8.1","title":"Neurones, resting potential and action potentials"},
-            {"id":"EDX_BIOL_T8_8.2","code":"8.2","title":"Synapses and neurotransmitters"},
-            {"id":"EDX_BIOL_T8_8.3","code":"8.3","title":"Nervous and hormonal coordination; plant responses"},
-            {"id":"EDX_BIOL_T8_8.4","code":"8.4","title":"The eye and the pupil reflex"},
-            {"id":"EDX_BIOL_T8_8.5","code":"8.5","title":"Brain structure, function and imaging"},
-            {"id":"EDX_BIOL_T8_8.6","code":"8.6","title":"Visual development, learning and habituation"},
-            {"id":"EDX_BIOL_T8_8.7","code":"8.7","title":"Brain chemistry, drugs and disease"},
-            {"id":"EDX_BIOL_T8_8.8","code":"8.8","title":"Genome sequencing and genetically modified organisms"}
-          ]
-        }
-      ]
+     "id": "EDX_BIOL_OFF_T2",
+     "code": "2",
+     "title": "Topic 2: Genes and Health",
+     "kind": "topic",
+     "introduced_year": 12,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T2_2.1",
+       "code": "2.1",
+       "title": "i) Know the properties of gas exchange surfaces in living organisms (large surface area to volume ratio, thickness of surface, difference…",
+       "full_text": "i) Know the properties of gas exchange surfaces in living organisms (large surface area to volume ratio, thickness of surface, difference in concentration). ii) Understand how the rate of diffusion is dependent on these properties and can be calculated using Fick’s Law of Diffusion. iii) Understand how the structure of the mammalian lung is adapted for rapid gaseous exchange.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.1",
+        "code": "2.1",
+        "topic": 2,
+        "source_pages": [
+         21
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.2",
+       "code": "2.2",
+       "title": "i) Know the structure and properties of cell membranes. ii) Understand how models such as the fluid mosaic model of cell membranes are…",
+       "full_text": "i) Know the structure and properties of cell membranes. ii) Understand how models such as the fluid mosaic model of cell membranes are interpretations of data used to develop scientific explanations of the structure and properties of cell membranes.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.2",
+        "code": "2.2",
+        "topic": 2,
+        "source_pages": [
+         21
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.3",
+       "code": "2.3",
+       "title": "Understand what is meant by osmosis in terms of the movement of free water molecules through a partially permeable membrane (consideration…",
+       "full_text": "Understand what is meant by osmosis in terms of the movement of free water molecules through a partially permeable membrane (consideration of water potential is not required).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.3",
+        "code": "2.3",
+        "topic": 2,
+        "source_pages": [
+         21
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.4",
+       "code": "2.4",
+       "title": "i) Understand what is meant by passive transport (diffusion, facilitated diffusion), active transport (including the role of ATP as an…",
+       "full_text": "i) Understand what is meant by passive transport (diffusion, facilitated diffusion), active transport (including the role of ATP as an immediate source of energy), endocytosis and exocytosis. ii) Understand the involvement of carrier and channel proteins in membrane transport.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.4",
+        "code": "2.4",
+        "topic": 2,
+        "source_pages": [
+         21
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.5",
+       "code": "2.5",
+       "title": "i) Know the basic structure of mononucleotides (deoxyribose or ribose linked to a phosphate and a base, including thymine, uracil,…",
+       "full_text": "i) Know the basic structure of mononucleotides (deoxyribose or ribose linked to a phosphate and a base, including thymine, uracil, cytosine, adenine or guanine) and the structures of DNA and RNA (polynucleotides composed of mononucleotides linked through condensation reactions). ii) Know how complementary base pairing and the hydrogen bonding between two complementary strands are involved in the formation of the DNA double helix.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.5",
+        "code": "2.5",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.6",
+       "code": "2.6",
+       "title": "i) Understand the process of protein synthesis (transcription) including the role of RNA polymerase, translation, messenger RNA, transfer…",
+       "full_text": "i) Understand the process of protein synthesis (transcription) including the role of RNA polymerase, translation, messenger RNA, transfer RNA, ribosomes and the role of start and stop codons. ii) Understand the roles of the DNA template (antisense) strand in transcription, codons on messenger RNA and anticodons on transfer RNA.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.6",
+        "code": "2.6",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.7",
+       "code": "2.7",
+       "title": "Understand the nature of the genetic code (triplet code, non-overlapping and degenerate).",
+       "full_text": "Understand the nature of the genetic code (triplet code, non-overlapping and degenerate).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.7",
+        "code": "2.7",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.8",
+       "code": "2.8",
+       "title": "Know that a gene is a sequence of bases on a DNA molecule that codes for a sequence of amino acids in a polypeptide chain.",
+       "full_text": "Know that a gene is a sequence of bases on a DNA molecule that codes for a sequence of amino acids in a polypeptide chain.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.8",
+        "code": "2.8",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.9",
+       "code": "2.9",
+       "title": "i) Know the basic structure of an amino acid (structures of specific amino acids are not required). ii) Understand the formation of…",
+       "full_text": "i) Know the basic structure of an amino acid (structures of specific amino acids are not required). ii) Understand the formation of polypeptides and proteins (amino acid monomers linked by peptide bonds in condensation reactions). iii) Understand the significance of a protein’s primary structure in determining its three-dimensional structure and properties (globular and fibrous proteins and the types of bonds involved in its three-dimensional structure). iv) Know the molecular structure of a globular protein and a fibrous protein and understand how their structures relate to their functions (including haemoglobin and collagen).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.9",
+        "code": "2.9",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.10",
+       "code": "2.10",
+       "title": "i) Understand the mechanism of action and the specificity of enzymes in terms of their three-dimensional structure. ii) Understand that…",
+       "full_text": "i) Understand the mechanism of action and the specificity of enzymes in terms of their three-dimensional structure. ii) Understand that enzymes are biological catalysts that reduce activation energy. iii) Know that there are intracellular enzymes catalysing reactions inside cells and extracellular enzymes produced by cells catalysing reactions outside of cells.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.10",
+        "code": "2.10",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.11",
+       "code": "2.11",
+       "title": "i) Understand the process of DNA replication, including the role of DNA polymerase. ii) Understand how Meselson and Stahl’s classic…",
+       "full_text": "i) Understand the process of DNA replication, including the role of DNA polymerase. ii) Understand how Meselson and Stahl’s classic experiment provided new data that supported the accepted theory of replication of DNA and refuted competing theories.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.11",
+        "code": "2.11",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.12",
+       "code": "2.12",
+       "title": "i) Understand how errors in DNA replication can give rise to mutations. ii) Understand how cystic fibrosis results from one of a number of…",
+       "full_text": "i) Understand how errors in DNA replication can give rise to mutations. ii) Understand how cystic fibrosis results from one of a number of possible gene mutations.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.12",
+        "code": "2.12",
+        "topic": 2,
+        "source_pages": [
+         22
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.13",
+       "code": "2.13",
+       "title": "i) Know the meaning of the terms: gene, allele, genotype, phenotype, recessive, dominant, incomplete dominance, homozygote and…",
+       "full_text": "i) Know the meaning of the terms: gene, allele, genotype, phenotype, recessive, dominant, incomplete dominance, homozygote and heterozygote. ii) Understand patterns of inheritance, including the interpretation of genetic pedigree diagrams, in the context of monohybrid inheritance.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.13",
+        "code": "2.13",
+        "topic": 2,
+        "source_pages": [
+         23
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.14",
+       "code": "2.14",
+       "title": "Understand how the expression of a gene mutation in people with cystic fibrosis impairs the functioning of the gaseous exchange, digestive…",
+       "full_text": "Understand how the expression of a gene mutation in people with cystic fibrosis impairs the functioning of the gaseous exchange, digestive and reproductive systems.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.14",
+        "code": "2.14",
+        "topic": 2,
+        "source_pages": [
+         23
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.15",
+       "code": "2.15",
+       "title": "i) Understand the uses of genetic screening, including the identification of carriers, pre-implantation genetic diagnosis (PGD) and…",
+       "full_text": "i) Understand the uses of genetic screening, including the identification of carriers, pre-implantation genetic diagnosis (PGD) and prenatal testing, including amniocentesis and chorionic villus sampling. ii) Understand the implications of prenatal genetic screening.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.15",
+        "code": "2.15",
+        "topic": 2,
+        "source_pages": [
+         23
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T2_2.16",
+       "code": "2.16",
+       "title": "Be able to identify and discuss the social and ethical issues related to genetic screening from a range of ethical viewpoints.",
+       "full_text": "Be able to identify and discuss the social and ethical issues related to genetic screening from a range of ethical viewpoints.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-2.16",
+        "code": "2.16",
+        "topic": 2,
+        "source_pages": [
+         23
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/01"
+        ],
+        "also_in_as_specification": true
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_T3",
+     "code": "3",
+     "title": "Topic 3: Voice of the Genome",
+     "kind": "topic",
+     "introduced_year": 12,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T3_3.1",
+       "code": "3.1",
+       "title": "Know that all living organisms are made of cells, sharing some common features.",
+       "full_text": "Know that all living organisms are made of cells, sharing some common features.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.1",
+        "code": "3.1",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.2",
+       "code": "3.2",
+       "title": "Know the ultrastructure of eukaryotic cells, including nucleus, nucleolus, ribosomes, rough and smooth endoplasmic reticulum, mitochondria,…",
+       "full_text": "Know the ultrastructure of eukaryotic cells, including nucleus, nucleolus, ribosomes, rough and smooth endoplasmic reticulum, mitochondria, centrioles, lysosomes, and Golgi apparatus.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.2",
+        "code": "3.2",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.3",
+       "code": "3.3",
+       "title": "Understand the role of the rough endoplasmic reticulum (rER) and the Golgi apparatus in protein transport within cells, including their…",
+       "full_text": "Understand the role of the rough endoplasmic reticulum (rER) and the Golgi apparatus in protein transport within cells, including their role in the formation of extracellular enzymes.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.3",
+        "code": "3.3",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.4",
+       "code": "3.4",
+       "title": "Know the ultrastructure of prokaryotic cells, including cell wall, capsule, plasmid, flagellum, pili, ribosomes, mesosomes and circular DNA.",
+       "full_text": "Know the ultrastructure of prokaryotic cells, including cell wall, capsule, plasmid, flagellum, pili, ribosomes, mesosomes and circular DNA.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.4",
+        "code": "3.4",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.5",
+       "code": "3.5",
+       "title": "Be able to recognise the organelles in 3.2 from electron microscope (EM) images.",
+       "full_text": "Be able to recognise the organelles in 3.2 from electron microscope (EM) images.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.5",
+        "code": "3.5",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.6",
+       "code": "3.6",
+       "title": "Understand how mammalian gametes are specialised for their functions (including the acrosome in sperm and the zona pellucida in the egg).",
+       "full_text": "Understand how mammalian gametes are specialised for their functions (including the acrosome in sperm and the zona pellucida in the egg).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.6",
+        "code": "3.6",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.7",
+       "code": "3.7",
+       "title": "Know the process of fertilisation in mammals, including the acrosome reaction, the cortical reaction and the fusion of nuclei.",
+       "full_text": "Know the process of fertilisation in mammals, including the acrosome reaction, the cortical reaction and the fusion of nuclei.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.7",
+        "code": "3.7",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.8",
+       "code": "3.8",
+       "title": "i) Know that a locus (plural = loci) is the location of genes on a chromosome. ii) Understand the linkage of genes on a chromosome and sex…",
+       "full_text": "i) Know that a locus (plural = loci) is the location of genes on a chromosome. ii) Understand the linkage of genes on a chromosome and sex linkage.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.8",
+        "code": "3.8",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.9",
+       "code": "3.9",
+       "title": "Understand the role of meiosis in ensuring genetic variation through the production of non-identical gametes as a consequence of…",
+       "full_text": "Understand the role of meiosis in ensuring genetic variation through the production of non-identical gametes as a consequence of independent assortment of chromosomes and crossing over of alleles between chromatids (details of the stages of meiosis are not required).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.9",
+        "code": "3.9",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.10",
+       "code": "3.10",
+       "title": "Understand the role of mitosis and the cell cycle in producing identical daughter cells for growth and asexual reproduction.",
+       "full_text": "Understand the role of mitosis and the cell cycle in producing identical daughter cells for growth and asexual reproduction.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.10",
+        "code": "3.10",
+        "topic": 3,
+        "source_pages": [
+         24
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.11",
+       "code": "3.11",
+       "title": "i) Understand what is meant by the terms ‘stem cell, pluripotency and totipotency’. ii) Be able to discuss the way society uses scientific…",
+       "full_text": "i) Understand what is meant by the terms ‘stem cell, pluripotency and totipotency’. ii) Be able to discuss the way society uses scientific knowledge to make decisions about the use of stem cells in medical therapies.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.11",
+        "code": "3.11",
+        "topic": 3,
+        "source_pages": [
+         25
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.12",
+       "code": "3.12",
+       "title": "Understand how cells become specialised through differential gene expression, producing active mRNA leading to synthesis of proteins, which…",
+       "full_text": "Understand how cells become specialised through differential gene expression, producing active mRNA leading to synthesis of proteins, which in turn control cell processes or determine cell structure in animals and plants, including the lac operon.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.12",
+        "code": "3.12",
+        "topic": 3,
+        "source_pages": [
+         25
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.13",
+       "code": "3.13",
+       "title": "Understand how the cells of multicellular organisms are organised into tissues, tissues into organs and organs into systems.",
+       "full_text": "Understand how the cells of multicellular organisms are organised into tissues, tissues into organs and organs into systems.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.13",
+        "code": "3.13",
+        "topic": 3,
+        "source_pages": [
+         25
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.14",
+       "code": "3.14",
+       "title": "i) Understand how phenotype is the result of an interaction between genotype and the environment. ii) Know how epigenetic changes,…",
+       "full_text": "i) Understand how phenotype is the result of an interaction between genotype and the environment. ii) Know how epigenetic changes, including DNA methylation and histone modification, can modify the activation of certain genes. iii) Understand how epigenetic changes can be passed on following cell division.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.14",
+        "code": "3.14",
+        "topic": 3,
+        "source_pages": [
+         25
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T3_3.15",
+       "code": "3.15",
+       "title": "Understand how some phenotypes are affected by multiple alleles for the same gene at many loci (polygenic inheritance) as well as the…",
+       "full_text": "Understand how some phenotypes are affected by multiple alleles for the same gene at many loci (polygenic inheritance) as well as the environment and how this can give rise to phenotypes that show continuous variation.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-3.15",
+        "code": "3.15",
+        "topic": 3,
+        "source_pages": [
+         25
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_T4",
+     "code": "4",
+     "title": "Topic 4: Biodiversity and Natural Resources",
+     "kind": "topic",
+     "introduced_year": 12,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T4_4.1",
+       "code": "4.1",
+       "title": "Know that over time the variety of life has become extensive but is now being threatened by human activity.",
+       "full_text": "Know that over time the variety of life has become extensive but is now being threatened by human activity.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.1",
+        "code": "4.1",
+        "topic": 4,
+        "source_pages": [
+         26
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.2",
+       "code": "4.2",
+       "title": "i) Understand the terms biodiversity and endemism. ii) Know how biodiversity can be measured within a habitat using species richness and…",
+       "full_text": "i) Understand the terms biodiversity and endemism. ii) Know how biodiversity can be measured within a habitat using species richness and within a species using genetic diversity by calculating the heterozygosity index (H): number of heterozygotes H= number of individuals in the population iii) Understand how biodiversity can be compared in different habitats using a formula to calculate an index of diversity (D): N ( N − 1) D= Σn ( n − 1)",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.2",
+        "code": "4.2",
+        "topic": 4,
+        "source_pages": [
+         26
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.3",
+       "code": "4.3",
+       "title": "Understand the concept of niche and be able to discuss examples of adaptation of organisms to their environment (behavioural, physiological…",
+       "full_text": "Understand the concept of niche and be able to discuss examples of adaptation of organisms to their environment (behavioural, physiological and anatomical).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.3",
+        "code": "4.3",
+        "topic": 4,
+        "source_pages": [
+         26
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.4",
+       "code": "4.4",
+       "title": "Understand how natural selection can lead to adaptation and evolution.",
+       "full_text": "Understand how natural selection can lead to adaptation and evolution.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.4",
+        "code": "4.4",
+        "topic": 4,
+        "source_pages": [
+         26
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.5",
+       "code": "4.5",
+       "title": "i) Understand how the Hardy-Weinberg equation can be used to see whether a change in allele frequency is occurring in a population over…",
+       "full_text": "i) Understand how the Hardy-Weinberg equation can be used to see whether a change in allele frequency is occurring in a population over time. ii) Understand that reproductive isolation can lead to accumulation of different genetic information in populations, potentially leading to the formation of new species.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.5",
+        "code": "4.5",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.6",
+       "code": "4.6",
+       "title": "i) Understand that classification is a means of organising the variety of life based on relationships between organisms using differences…",
+       "full_text": "i) Understand that classification is a means of organising the variety of life based on relationships between organisms using differences and similarities in phenotypes and in genotypes, and is built around the species concept. ii) Understand the process and importance of critical evaluation of new data by the scientific community, which leads to new taxonomic groupings, including the three domains of life based on molecular phylogeny, which are Bacteria, Archaea, Eukaryota.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.6",
+        "code": "4.6",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.7",
+       "code": "4.7",
+       "title": "Know the ultrastructure of plant cells (cell walls, chloroplasts, amyloplasts, vacuole, tonoplast, plasmodesmata, pits and middle lamella)…",
+       "full_text": "Know the ultrastructure of plant cells (cell walls, chloroplasts, amyloplasts, vacuole, tonoplast, plasmodesmata, pits and middle lamella) and be able to compare it with animal cells.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.7",
+        "code": "4.7",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.8",
+       "code": "4.8",
+       "title": "Be able to recognise the organelles in 4.7 from electron microscope (EM) images.",
+       "full_text": "Be able to recognise the organelles in 4.7 from electron microscope (EM) images.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.8",
+        "code": "4.8",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.9",
+       "code": "4.9",
+       "title": "Understand the structure and function of the polysaccharides starch and cellulose, including the role of hydrogen bonds between β-glucose…",
+       "full_text": "Understand the structure and function of the polysaccharides starch and cellulose, including the role of hydrogen bonds between β-glucose molecules in the formation of cellulose microfibrils.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.9",
+        "code": "4.9",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.10",
+       "code": "4.10",
+       "title": "Understand how the arrangement of cellulose microfibrils and secondary thickening in plant cell walls contributes to the physical…",
+       "full_text": "Understand how the arrangement of cellulose microfibrils and secondary thickening in plant cell walls contributes to the physical properties of xylem vessels and sclerenchyma fibres in plant fibres that can be exploited by humans.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.10",
+        "code": "4.10",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.11",
+       "code": "4.11",
+       "title": "Know the similarities and differences between the structures, position in the stem and function of sclerenchyma fibres (support), xylem…",
+       "full_text": "Know the similarities and differences between the structures, position in the stem and function of sclerenchyma fibres (support), xylem vessels (support and transport of water and mineral ions) and phloem (translocation of organic solutes).",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.11",
+        "code": "4.11",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.12",
+       "code": "4.12",
+       "title": "Understand the importance of water and inorganic ions (nitrate, calcium ions and magnesium ions) to plants.",
+       "full_text": "Understand the importance of water and inorganic ions (nitrate, calcium ions and magnesium ions) to plants.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.12",
+        "code": "4.12",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.13",
+       "code": "4.13",
+       "title": "Understand the development of drug testing from historic to contemporary protocols, including William Withering’s digitalis soup, double…",
+       "full_text": "Understand the development of drug testing from historic to contemporary protocols, including William Withering’s digitalis soup, double blind trials, placebo, three-phased testing.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.13",
+        "code": "4.13",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.14",
+       "code": "4.14",
+       "title": "Understand the conditions required for bacterial growth.",
+       "full_text": "Understand the conditions required for bacterial growth.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.14",
+        "code": "4.14",
+        "topic": 4,
+        "source_pages": [
+         27
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.15",
+       "code": "4.15",
+       "title": "Understand how the uses of plant fibres and starch may contribute to sustainability, including plant-based products to replace oil-based…",
+       "full_text": "Understand how the uses of plant fibres and starch may contribute to sustainability, including plant-based products to replace oil-based plastics.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.15",
+        "code": "4.15",
+        "topic": 4,
+        "source_pages": [
+         28
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T4_4.16",
+       "code": "4.16",
+       "title": "Be able to evaluate the methods used by zoos and seed banks in the conservation of endangered species and their genetic diversity,…",
+       "full_text": "Be able to evaluate the methods used by zoos and seed banks in the conservation of endangered species and their genetic diversity, including scientific research, captive breeding programmes, reintroduction programmes and education.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-4.16",
+        "code": "4.16",
+        "topic": 4,
+        "source_pages": [
+         28
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/02",
+         "9BN0/03",
+         "8BN0/02"
+        ],
+        "also_in_as_specification": true
+       }
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "EDX_BIOL_OFF_SEC_Y13",
+   "title": "Topics 5–8 (Year 13 content)",
+   "note": "Topics 5–6 on 9BN0 Paper 1, Topics 7–8 on Paper 2; all topics on Paper 3",
+   "topics": [
+    {
+     "id": "EDX_BIOL_OFF_T5",
+     "code": "5",
+     "title": "Topic 5: On the Wild Side",
+     "kind": "topic",
+     "introduced_year": 13,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T5_5.1",
+       "code": "5.1",
+       "title": "Understand the terms ecosystem, community, population and habitat.",
+       "full_text": "Understand the terms ecosystem, community, population and habitat.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.1",
+        "code": "5.1",
+        "topic": 5,
+        "source_pages": [
+         29
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.2",
+       "code": "5.2",
+       "title": "Understand that the numbers and distribution of organisms in a habitat are controlled by biotic and abiotic factors.",
+       "full_text": "Understand that the numbers and distribution of organisms in a habitat are controlled by biotic and abiotic factors.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.2",
+        "code": "5.2",
+        "topic": 5,
+        "source_pages": [
+         29
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.3",
+       "code": "5.3",
+       "title": "Understand how the concept of niche accounts for distribution and abundance of organisms in a habitat.",
+       "full_text": "Understand how the concept of niche accounts for distribution and abundance of organisms in a habitat.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.3",
+        "code": "5.3",
+        "topic": 5,
+        "source_pages": [
+         29
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.4",
+       "code": "5.4",
+       "title": "Understand the stages of succession from colonisation to a climax community.",
+       "full_text": "Understand the stages of succession from colonisation to a climax community.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.4",
+        "code": "5.4",
+        "topic": 5,
+        "source_pages": [
+         29
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.5",
+       "code": "5.5",
+       "title": "Understand the overall reaction of photosynthesis as requiring energy from light to split apart the strong bonds in water molecules,…",
+       "full_text": "Understand the overall reaction of photosynthesis as requiring energy from light to split apart the strong bonds in water molecules, storing the hydrogen in a fuel (glucose) by combining it with carbon dioxide and releasing oxygen into the atmosphere.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.5",
+        "code": "5.5",
+        "topic": 5,
+        "source_pages": [
+         29
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.6",
+       "code": "5.6",
+       "title": "Understand how phosphorylation of ADP requires energy and that hydrolysis of ATP provides an immediate supply of energy for biological…",
+       "full_text": "Understand how phosphorylation of ADP requires energy and that hydrolysis of ATP provides an immediate supply of energy for biological processes.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.6",
+        "code": "5.6",
+        "topic": 5,
+        "source_pages": [
+         29
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.7",
+       "code": "5.7",
+       "title": "Understand the light-dependent reactions of photosynthesis including how light energy is trapped by exciting electrons in chlorophyll and…",
+       "full_text": "Understand the light-dependent reactions of photosynthesis including how light energy is trapped by exciting electrons in chlorophyll and the role of these electrons in generating ATP, reducing NADP in photophosphorylation and producing oxygen through photolysis of water.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.7",
+        "code": "5.7",
+        "topic": 5,
+        "source_pages": [
+         29
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.8",
+       "code": "5.8",
+       "title": "i) Understand the light-independent reactions as reduction of carbon dioxide using the products of the light-dependent reactions (carbon…",
+       "full_text": "i) Understand the light-independent reactions as reduction of carbon dioxide using the products of the light-dependent reactions (carbon fixation in the Calvin cycle, the role of GP, GALP, RuBP and RUBISCO). ii) Know that the products are simple sugars that are used by plants, animals and other organisms in respiration and the synthesis of new biological molecules (polysaccharides, amino acids, lipids and nucleic acids).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.8",
+        "code": "5.8",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.9",
+       "code": "5.9",
+       "title": "Understand the structure of chloroplasts in relation to their role in photosynthesis.",
+       "full_text": "Understand the structure of chloroplasts in relation to their role in photosynthesis.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.9",
+        "code": "5.9",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.10",
+       "code": "5.10",
+       "title": "i) Be able to calculate net primary productivity. ii) Understand the relationship between gross primary productivity, net primary…",
+       "full_text": "i) Be able to calculate net primary productivity. ii) Understand the relationship between gross primary productivity, net primary productivity and plant respiration.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.10",
+        "code": "5.10",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.11",
+       "code": "5.11",
+       "title": "Know how to calculate the efficiency of biomass and energy transfers between trophic levels.",
+       "full_text": "Know how to calculate the efficiency of biomass and energy transfers between trophic levels.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.11",
+        "code": "5.11",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.12",
+       "code": "5.12",
+       "title": "Understand the different types of evidence for climate change and its causes (including records of carbon dioxide levels, temperature…",
+       "full_text": "Understand the different types of evidence for climate change and its causes (including records of carbon dioxide levels, temperature records, pollen in peat bogs and dendrochronology), recognising correlations and causal relationships.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.12",
+        "code": "5.12",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.13",
+       "code": "5.13",
+       "title": "Understand the causes of anthropogenic climate change, including the role of greenhouse gases (carbon dioxide and methane) in the…",
+       "full_text": "Understand the causes of anthropogenic climate change, including the role of greenhouse gases (carbon dioxide and methane) in the greenhouse effect.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.13",
+        "code": "5.13",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.14",
+       "code": "5.14",
+       "title": "i) Understand that data can be extrapolated to make predictions and that these are used in models of future climate change. ii) Understand…",
+       "full_text": "i) Understand that data can be extrapolated to make predictions and that these are used in models of future climate change. ii) Understand that models for climate change have limitations.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.14",
+        "code": "5.14",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.15",
+       "code": "5.15",
+       "title": "Understand the effects of climate change (changing rainfall patterns and changes in seasonal cycles) on plants and animals (distribution of…",
+       "full_text": "Understand the effects of climate change (changing rainfall patterns and changes in seasonal cycles) on plants and animals (distribution of species, development and life cycles).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.15",
+        "code": "5.15",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.16",
+       "code": "5.16",
+       "title": "Understand the effect of temperature on the rate of enzyme activity and its impact on plants, animals and microorganisms.",
+       "full_text": "Understand the effect of temperature on the rate of enzyme activity and its impact on plants, animals and microorganisms.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.16",
+        "code": "5.16",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.17",
+       "code": "5.17",
+       "title": "Understand how evolution (a change in the allele frequency) can come about through gene mutation and natural selection.",
+       "full_text": "Understand how evolution (a change in the allele frequency) can come about through gene mutation and natural selection.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.17",
+        "code": "5.17",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.18",
+       "code": "5.18",
+       "title": "Understand the role of the scientific community (scientific journals, the peer review process, scientific conferences) in validating new…",
+       "full_text": "Understand the role of the scientific community (scientific journals, the peer review process, scientific conferences) in validating new evidence, including proteomics and genomics, that supports the accepted scientific theory of evolution.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.18",
+        "code": "5.18",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.19",
+       "code": "5.19",
+       "title": "Understand how isolation reduces gene flow between populations, leading to allopatric or sympatric speciation.",
+       "full_text": "Understand how isolation reduces gene flow between populations, leading to allopatric or sympatric speciation.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.19",
+        "code": "5.19",
+        "topic": 5,
+        "source_pages": [
+         30
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.20",
+       "code": "5.20",
+       "title": "Understand the way in which scientific conclusions about controversial issues, such as what actions should be taken to reduce climate…",
+       "full_text": "Understand the way in which scientific conclusions about controversial issues, such as what actions should be taken to reduce climate change or the degree to which humans are affecting climate change, can sometimes depend on who is reaching the conclusions.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.20",
+        "code": "5.20",
+        "topic": 5,
+        "source_pages": [
+         31
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.21",
+       "code": "5.21",
+       "title": "Understand how knowledge of the carbon cycle can be applied to methods to reduce atmospheric levels of carbon dioxide.",
+       "full_text": "Understand how knowledge of the carbon cycle can be applied to methods to reduce atmospheric levels of carbon dioxide.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.21",
+        "code": "5.21",
+        "topic": 5,
+        "source_pages": [
+         31
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T5_5.22",
+       "code": "5.22",
+       "title": "Understand how reforestation and the use of sustainable resources, including biofuels, are examples of the effective management of the…",
+       "full_text": "Understand how reforestation and the use of sustainable resources, including biofuels, are examples of the effective management of the conflict between human needs and conservation.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-5.22",
+        "code": "5.22",
+        "topic": 5,
+        "source_pages": [
+         31
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_T6",
+     "code": "6",
+     "title": "Topic 6: Immunity, Infection and Forensics",
+     "kind": "topic",
+     "introduced_year": 13,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T6_6.1",
+       "code": "6.1",
+       "title": "Understand how to determine the time of death of a mammal by examining the extent of decomposition, stage of succession, forensic…",
+       "full_text": "Understand how to determine the time of death of a mammal by examining the extent of decomposition, stage of succession, forensic entomology, body temperature and degree of muscle contraction.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.1",
+        "code": "6.1",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.2",
+       "code": "6.2",
+       "title": "Know the role of micro-organisms in the decomposition of organic matter and the recycling of carbon.",
+       "full_text": "Know the role of micro-organisms in the decomposition of organic matter and the recycling of carbon.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.2",
+        "code": "6.2",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.3",
+       "code": "6.3",
+       "title": "Know how DNA profiling is used for identification and determining genetic relationships between organisms (plants and animals).",
+       "full_text": "Know how DNA profiling is used for identification and determining genetic relationships between organisms (plants and animals).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.3",
+        "code": "6.3",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.4",
+       "code": "6.4",
+       "title": "Know how DNA can be amplified using the polymerase chain reaction (PCR).",
+       "full_text": "Know how DNA can be amplified using the polymerase chain reaction (PCR).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.4",
+        "code": "6.4",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.5",
+       "code": "6.5",
+       "title": "Be able to compare the structure of bacteria and viruses.",
+       "full_text": "Be able to compare the structure of bacteria and viruses.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.5",
+        "code": "6.5",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.6",
+       "code": "6.6",
+       "title": "Understand how Mycobacterium tuberculosis (TB) and Human Immunodeficiency Virus (HIV) infect human cells, causing a sequence of symptoms…",
+       "full_text": "Understand how Mycobacterium tuberculosis (TB) and Human Immunodeficiency Virus (HIV) infect human cells, causing a sequence of symptoms that may result in death.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.6",
+        "code": "6.6",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.7",
+       "code": "6.7",
+       "title": "Understand the non-specific responses of the body to infection, including inflammation, lysozyme action, interferon, and phagocytosis.",
+       "full_text": "Understand the non-specific responses of the body to infection, including inflammation, lysozyme action, interferon, and phagocytosis.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.7",
+        "code": "6.7",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.8",
+       "code": "6.8",
+       "title": "Understand the roles of antigens and antibodies in the body’s immune response including the involvement of plasma cells, macrophages and…",
+       "full_text": "Understand the roles of antigens and antibodies in the body’s immune response including the involvement of plasma cells, macrophages and antigen-presenting cells.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.8",
+        "code": "6.8",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.9",
+       "code": "6.9",
+       "title": "Understand the differences between the roles of B cells (B memory and B effector cells) and T cells (T helper, T killer and T memory cells)…",
+       "full_text": "Understand the differences between the roles of B cells (B memory and B effector cells) and T cells (T helper, T killer and T memory cells) in the body’s immune response.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.9",
+        "code": "6.9",
+        "topic": 6,
+        "source_pages": [
+         32
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.10",
+       "code": "6.10",
+       "title": "Understand how one gene can give rise to more than one protein through post- transcriptional changes to messenger RNA (mRNA).",
+       "full_text": "Understand how one gene can give rise to more than one protein through post- transcriptional changes to messenger RNA (mRNA).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.10",
+        "code": "6.10",
+        "topic": 6,
+        "source_pages": [
+         33
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.11",
+       "code": "6.11",
+       "title": "i) Know the major routes pathogens may take when entering the body. ii) Understand the role of barriers in protecting the body from…",
+       "full_text": "i) Know the major routes pathogens may take when entering the body. ii) Understand the role of barriers in protecting the body from infection, including skin, stomach acid, and gut and skin flora.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.11",
+        "code": "6.11",
+        "topic": 6,
+        "source_pages": [
+         33
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.12",
+       "code": "6.12",
+       "title": "Understand how individuals may develop immunity (natural, artificial, active, passive).",
+       "full_text": "Understand how individuals may develop immunity (natural, artificial, active, passive).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.12",
+        "code": "6.12",
+        "topic": 6,
+        "source_pages": [
+         33
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.13",
+       "code": "6.13",
+       "title": "Understand how the theory of an ‘evolutionary race’ between pathogens and their hosts is supported by the evasion mechanisms shown by…",
+       "full_text": "Understand how the theory of an ‘evolutionary race’ between pathogens and their hosts is supported by the evasion mechanisms shown by pathogens.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.13",
+        "code": "6.13",
+        "topic": 6,
+        "source_pages": [
+         33
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.14",
+       "code": "6.14",
+       "title": "Understand the difference between bacteriostatic and bactericidal antibiotics.",
+       "full_text": "Understand the difference between bacteriostatic and bactericidal antibiotics.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.14",
+        "code": "6.14",
+        "topic": 6,
+        "source_pages": [
+         33
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T6_6.15",
+       "code": "6.15",
+       "title": "Know how an understanding of the contributory causes of hospital acquired infections have led to codes of practice regarding antibiotic…",
+       "full_text": "Know how an understanding of the contributory causes of hospital acquired infections have led to codes of practice regarding antibiotic prescription and hospital practice that relate to infection prevention and control.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-6.15",
+        "code": "6.15",
+        "topic": 6,
+        "source_pages": [
+         33
+        ],
+        "component_codes": [
+         "9BN0/01",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_T7",
+     "code": "7",
+     "title": "Topic 7: Run for your Life",
+     "kind": "topic",
+     "introduced_year": 13,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T7_7.1",
+       "code": "7.1",
+       "title": "Know the way in which muscles, tendons, the skeleton and ligaments interact to enable movement, including antagonistic muscle pairs,…",
+       "full_text": "Know the way in which muscles, tendons, the skeleton and ligaments interact to enable movement, including antagonistic muscle pairs, extensors and flexors.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.1",
+        "code": "7.1",
+        "topic": 7,
+        "source_pages": [
+         34
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.2",
+       "code": "7.2",
+       "title": "Understand the process of contraction of skeletal muscle in terms of the sliding filament theory, including the role of actin, myosin,…",
+       "full_text": "Understand the process of contraction of skeletal muscle in terms of the sliding filament theory, including the role of actin, myosin, troponin, tropomyosin, calcium ions (Ca2+), ATP and ATPase.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.2",
+        "code": "7.2",
+        "topic": 7,
+        "source_pages": [
+         34
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.3",
+       "code": "7.3",
+       "title": "i) Understand the overall reaction of aerobic respiration as splitting of the respiratory substrate, to release carbon dioxide as a waste…",
+       "full_text": "i) Understand the overall reaction of aerobic respiration as splitting of the respiratory substrate, to release carbon dioxide as a waste product and reuniting of hydrogen with atmospheric oxygen with the release of a large amount of energy. ii) Understand that respiration is a many-stepped process with each step controlled and catalysed by a specific intracellular enzyme.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.3",
+        "code": "7.3",
+        "topic": 7,
+        "source_pages": [
+         34
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.4",
+       "code": "7.4",
+       "title": "Understand the roles of glycolysis in aerobic and anaerobic respiration, including the phosphorylation of hexoses, the production of ATP,…",
+       "full_text": "Understand the roles of glycolysis in aerobic and anaerobic respiration, including the phosphorylation of hexoses, the production of ATP, reduced coenzyme, pyruvate and lactate (details of intermediate stages and compounds are not required).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.4",
+        "code": "7.4",
+        "topic": 7,
+        "source_pages": [
+         34
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.5",
+       "code": "7.5",
+       "title": "Understand the role of the link reaction and the Krebs cycle in the complete oxidation of glucose and formation of carbon dioxide (CO2),…",
+       "full_text": "Understand the role of the link reaction and the Krebs cycle in the complete oxidation of glucose and formation of carbon dioxide (CO2), ATP, reduced NAD and reduced FAD (names of other compounds are not required) and why these steps take place in the mitochondria, unlike glycolysis which occurs in the cytoplasm.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.5",
+        "code": "7.5",
+        "topic": 7,
+        "source_pages": [
+         34
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.6",
+       "code": "7.6",
+       "title": "Understand how ATP is synthesised by oxidative phosphorylation associated with the electron transport chain in mitochondria, including the…",
+       "full_text": "Understand how ATP is synthesised by oxidative phosphorylation associated with the electron transport chain in mitochondria, including the role of chemiosmosis and ATP synthase.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.6",
+        "code": "7.6",
+        "topic": 7,
+        "source_pages": [
+         34
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.7",
+       "code": "7.7",
+       "title": "Understand what happens to lactate after a period of anaerobic respiration in animals.",
+       "full_text": "Understand what happens to lactate after a period of anaerobic respiration in animals.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.7",
+        "code": "7.7",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.8",
+       "code": "7.8",
+       "title": "i) Know the myogenic nature of cardiac muscle. ii) Understand how the normal electrical activity of the heart coordinates the heart beat,…",
+       "full_text": "i) Know the myogenic nature of cardiac muscle. ii) Understand how the normal electrical activity of the heart coordinates the heart beat, including the roles of the sinoatrial node (SAN), the atrioventricular node (AVN), the bundle of His and the Purkyne fibres. iii) Understand how the use of electrocardiograms (ECGs) can aid the diagnosis of cardiovascular disease (CVD) and other heart conditions.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.8",
+        "code": "7.8",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.9",
+       "code": "7.9",
+       "title": "i) Be able to calculate cardiac output. ii) Understand how variations in ventilation and cardiac output enable rapid delivery of oxygen to…",
+       "full_text": "i) Be able to calculate cardiac output. ii) Understand how variations in ventilation and cardiac output enable rapid delivery of oxygen to tissues and the removal of carbon dioxide from them, including how the heart rate and ventilation rate are controlled and the roles of the cardiovascular control centre and the ventilation centre in the medulla oblongata.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.9",
+        "code": "7.9",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.10",
+       "code": "7.10",
+       "title": "i) Know the structure of a muscle fibre. ii) Understand the structural and physiological differences between fast and slow twitch muscle…",
+       "full_text": "i) Know the structure of a muscle fibre. ii) Understand the structural and physiological differences between fast and slow twitch muscle fibres.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.10",
+        "code": "7.10",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.11",
+       "code": "7.11",
+       "title": "i) Understand what is meant by negative feedback and positive feedback control. ii) Understand the principle of negative feedback in…",
+       "full_text": "i) Understand what is meant by negative feedback and positive feedback control. ii) Understand the principle of negative feedback in maintaining systems within narrow limits.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.11",
+        "code": "7.11",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.12",
+       "code": "7.12",
+       "title": "Understand homeostasis and its importance in maintaining the body in a state of dynamic equilibrium during exercise, including the role of…",
+       "full_text": "Understand homeostasis and its importance in maintaining the body in a state of dynamic equilibrium during exercise, including the role of the hypothalamus and the mechanisms of thermoregulation.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.12",
+        "code": "7.12",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.13",
+       "code": "7.13",
+       "title": "Understand the analysis and interpretation of data relating to possible disadvantages of exercising too much (wear and tear on joints,…",
+       "full_text": "Understand the analysis and interpretation of data relating to possible disadvantages of exercising too much (wear and tear on joints, suppression of the immune system) and exercising too little (increased risk of obesity, cardiovascular disease (CVD) and diabetes), recognising correlation and causal relationships.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.13",
+        "code": "7.13",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.14",
+       "code": "7.14",
+       "title": "Understand how medical technology, including the use of keyhole surgery and prostheses, is enabling those with injuries and disabilities to…",
+       "full_text": "Understand how medical technology, including the use of keyhole surgery and prostheses, is enabling those with injuries and disabilities to participate in sports.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.14",
+        "code": "7.14",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.15",
+       "code": "7.15",
+       "title": "Be able to discuss different ethical positions relating to whether the use of performance-enhancing substances by athletes is acceptable.",
+       "full_text": "Be able to discuss different ethical positions relating to whether the use of performance-enhancing substances by athletes is acceptable.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.15",
+        "code": "7.15",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T7_7.16",
+       "code": "7.16",
+       "title": "Understand how genes can be switched on and off by DNA transcription factors including hormones.",
+       "full_text": "Understand how genes can be switched on and off by DNA transcription factors including hormones.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-7.16",
+        "code": "7.16",
+        "topic": 7,
+        "source_pages": [
+         35
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_T8",
+     "code": "8",
+     "title": "Topic 8: Grey Matter",
+     "kind": "topic",
+     "introduced_year": 13,
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_T8_8.1",
+       "code": "8.1",
+       "title": "Know the structure and function of sensory, relay and motor neurones including the role of Schwann cells and myelination.",
+       "full_text": "Know the structure and function of sensory, relay and motor neurones including the role of Schwann cells and myelination.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.1",
+        "code": "8.1",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.2",
+       "code": "8.2",
+       "title": "i) Understand how the nervous systems of organisms can cause effectors to respond to a stimulus. ii) Understand how the pupil dilates and…",
+       "full_text": "i) Understand how the nervous systems of organisms can cause effectors to respond to a stimulus. ii) Understand how the pupil dilates and contracts.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.2",
+        "code": "8.2",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.3",
+       "code": "8.3",
+       "title": "Understand how a nerve impulse (action potential) is conducted along an axon including changes in membrane permeability to sodium and…",
+       "full_text": "Understand how a nerve impulse (action potential) is conducted along an axon including changes in membrane permeability to sodium and potassium ions and the role of the myelination in saltatory conduction.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.3",
+        "code": "8.3",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.4",
+       "code": "8.4",
+       "title": "Know the structure and function of synapses in nerve impulse transmission, including the role of neurotransmitters, including acetylcholine.",
+       "full_text": "Know the structure and function of synapses in nerve impulse transmission, including the role of neurotransmitters, including acetylcholine.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.4",
+        "code": "8.4",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.5",
+       "code": "8.5",
+       "title": "Understand how the nervous systems of organisms can detect stimuli with reference to rods in the retina of mammals, the roles of rhodopsin,…",
+       "full_text": "Understand how the nervous systems of organisms can detect stimuli with reference to rods in the retina of mammals, the roles of rhodopsin, opsin, retinal, sodium ions, cation channels and hyperpolarisation of rod cells in forming action potentials in the optic neurones.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.5",
+        "code": "8.5",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.6",
+       "code": "8.6",
+       "title": "Understand how phytochrome and IAA bring about responses in plants to environmental cues, including their effects on transcription.",
+       "full_text": "Understand how phytochrome and IAA bring about responses in plants to environmental cues, including their effects on transcription.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.6",
+        "code": "8.6",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.7",
+       "code": "8.7",
+       "title": "Understand how co-ordination is brought about through nervous and hormonal control in animals.",
+       "full_text": "Understand how co-ordination is brought about through nervous and hormonal control in animals.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.7",
+        "code": "8.7",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.8",
+       "code": "8.8",
+       "title": "Know the location and functions of the cerebral hemispheres, hypothalamus, cerebellum and medulla oblongata in the human brain.",
+       "full_text": "Know the location and functions of the cerebral hemispheres, hypothalamus, cerebellum and medulla oblongata in the human brain.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.8",
+        "code": "8.8",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.9",
+       "code": "8.9",
+       "title": "Understand how magnetic resonance imaging (MRI), functional magnetic resonance imaging (fMRI), positron emission tomography (PET) and…",
+       "full_text": "Understand how magnetic resonance imaging (MRI), functional magnetic resonance imaging (fMRI), positron emission tomography (PET) and computed tomography (CT) scans are used in medical diagnosis and the investigation of brain structure and function.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.9",
+        "code": "8.9",
+        "topic": 8,
+        "source_pages": [
+         36
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.10",
+       "code": "8.10",
+       "title": "Understand what happens during the critical period so that mammals can develop their visual capacities to the full.",
+       "full_text": "Understand what happens during the critical period so that mammals can develop their visual capacities to the full.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.10",
+        "code": "8.10",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.11",
+       "code": "8.11",
+       "title": "Understand the role animal models have played in the research into human brain development and function, including Hubel and Wiesel’s…",
+       "full_text": "Understand the role animal models have played in the research into human brain development and function, including Hubel and Wiesel’s experiments with monkeys and kittens.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.11",
+        "code": "8.11",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.12",
+       "code": "8.12",
+       "title": "Be able to discuss moral and ethical issues relating to the use of animals in medical research from two ethical standpoints.",
+       "full_text": "Be able to discuss moral and ethical issues relating to the use of animals in medical research from two ethical standpoints.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.12",
+        "code": "8.12",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.13",
+       "code": "8.13",
+       "title": "Understand how animals, including humans, can learn by habituation.",
+       "full_text": "Understand how animals, including humans, can learn by habituation.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.13",
+        "code": "8.13",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.14",
+       "code": "8.14",
+       "title": "Understand how imbalances in certain, naturally occurring brain chemicals can contribute to ill health, including dopamine in Parkinson’s…",
+       "full_text": "Understand how imbalances in certain, naturally occurring brain chemicals can contribute to ill health, including dopamine in Parkinson’s disease and serotonin in depression, and to the development of new drugs.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.14",
+        "code": "8.14",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.15",
+       "code": "8.15",
+       "title": "Understand the effects of drugs on synaptic transmissions, including the use of L-Dopa in the treatment of Parkinson’s disease and the…",
+       "full_text": "Understand the effects of drugs on synaptic transmissions, including the use of L-Dopa in the treatment of Parkinson’s disease and the action of MDMA in Ecstasy.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.15",
+        "code": "8.15",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.16",
+       "code": "8.16",
+       "title": "Understand how the outcomes of genome sequencing projects are being used in the development of personalised medicine and the social, moral…",
+       "full_text": "Understand how the outcomes of genome sequencing projects are being used in the development of personalised medicine and the social, moral and ethical issues this raises.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.16",
+        "code": "8.16",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.17",
+       "code": "8.17",
+       "title": "Know how drugs can be produced using genetically modified organisms (plants, animals and microorganisms).",
+       "full_text": "Know how drugs can be produced using genetically modified organisms (plants, animals and microorganisms).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.17",
+        "code": "8.17",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.18",
+       "code": "8.18",
+       "title": "Understand the risks and benefits associated with the use of genetically modified organisms.",
+       "full_text": "Understand the risks and benefits associated with the use of genetically modified organisms.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.18",
+        "code": "8.18",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_T8_8.19",
+       "code": "8.19",
+       "title": "Understand the methods used to investigate the contributions of nature and nurture to brain development, including evidence from the…",
+       "full_text": "Understand the methods used to investigate the contributions of nature and nurture to brain development, including evidence from the abilities of new-born babies, animal experiments, studies of individuals with damaged brain areas, twin studies and cross-cultural studies.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-8.19",
+        "code": "8.19",
+        "topic": 8,
+        "source_pages": [
+         37
+        ],
+        "component_codes": [
+         "9BN0/02",
+         "9BN0/03"
+        ],
+        "also_in_as_specification": false
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "EDX_BIOL_OFF_SEC_CP",
+   "title": "Core practicals",
+   "note": "Required core practicals as printed in the topic content; practical skills are assessed in written papers.",
+   "topics": [
+    {
+     "id": "EDX_BIOL_OFF_CP",
+     "code": "CP",
+     "title": "Core practicals 1–18",
+     "kind": "practical",
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_CP1",
+       "code": "CP1",
+       "title": "Investigate the effect of caffeine on heart rate in Daphnia.",
+       "full_text": "Investigate the effect of caffeine on heart rate in Daphnia.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP1",
+        "code": "CP1",
+        "topic": 1,
+        "printed_after_statement": "1.16",
+        "source_pages": [
+         20
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP2",
+       "code": "CP2",
+       "title": "Investigate the vitamin C content of food and drink.",
+       "full_text": "Investigate the vitamin C content of food and drink.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP2",
+        "code": "CP2",
+        "topic": 1,
+        "printed_after_statement": "1.17",
+        "source_pages": [
+         20
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP3",
+       "code": "CP3",
+       "title": "Investigate membrane structure, including the effect of alcohol concentration or temperature on membrane permeability.",
+       "full_text": "Investigate membrane structure, including the effect of alcohol concentration or temperature on membrane permeability.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP3",
+        "code": "CP3",
+        "topic": 2,
+        "printed_after_statement": "2.2",
+        "source_pages": [
+         21
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP4",
+       "code": "CP4",
+       "title": "Investigate the effect of enzyme and substrate concentrations on the initial rates of reactions.",
+       "full_text": "Investigate the effect of enzyme and substrate concentrations on the initial rates of reactions.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP4",
+        "code": "CP4",
+        "topic": 2,
+        "printed_after_statement": "2.10",
+        "source_pages": [
+         22
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP5",
+       "code": "CP5",
+       "title": "Prepare and stain a root tip squash to observe the stages of mitosis.",
+       "full_text": "Prepare and stain a root tip squash to observe the stages of mitosis.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP5",
+        "code": "CP5",
+        "topic": 3,
+        "printed_after_statement": "3.10",
+        "source_pages": [
+         25
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP6",
+       "code": "CP6",
+       "title": "Identify sclerenchyma fibres, phloem sieve tubes and xylem vessels and their location within stems through a light microscope.",
+       "full_text": "Identify sclerenchyma fibres, phloem sieve tubes and xylem vessels and their location within stems through a light microscope.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP6",
+        "code": "CP6",
+        "topic": 4,
+        "printed_after_statement": "4.10",
+        "source_pages": [
+         27
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP7",
+       "code": "CP7",
+       "title": "Investigate plant mineral deficiencies.",
+       "full_text": "Investigate plant mineral deficiencies.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP7",
+        "code": "CP7",
+        "topic": 4,
+        "printed_after_statement": "4.12",
+        "source_pages": [
+         27
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP8",
+       "code": "CP8",
+       "title": "Determine the tensile strength of plant fibres.",
+       "full_text": "Determine the tensile strength of plant fibres.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP8",
+        "code": "CP8",
+        "topic": 4,
+        "printed_after_statement": "4.12",
+        "source_pages": [
+         27
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP9",
+       "code": "CP9",
+       "title": "Investigate the antimicrobial properties of plants, including aseptic techniques for the safe handling of bacteria.",
+       "full_text": "Investigate the antimicrobial properties of plants, including aseptic techniques for the safe handling of bacteria.",
+       "introduced_year": 12,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP9",
+        "code": "CP9",
+        "topic": 4,
+        "printed_after_statement": "4.14",
+        "source_pages": [
+         28
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP10",
+       "code": "CP10",
+       "title": "Carry out a study on the ecology of a habitat, such as using quadrats and transects to determine distribution and abundance of organisms,…",
+       "full_text": "Carry out a study on the ecology of a habitat, such as using quadrats and transects to determine distribution and abundance of organisms, and measuring abiotic factors appropriate to the habitat.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP10",
+        "code": "CP10",
+        "topic": 5,
+        "printed_after_statement": "5.3",
+        "source_pages": [
+         29
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP11",
+       "code": "CP11",
+       "title": "Investigate photosynthesis using isolated chloroplasts (the Hill reaction).",
+       "full_text": "Investigate photosynthesis using isolated chloroplasts (the Hill reaction).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP11",
+        "code": "CP11",
+        "topic": 5,
+        "printed_after_statement": "5.8",
+        "source_pages": [
+         30
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP12",
+       "code": "CP12",
+       "title": "Investigate the effect of temperature on the initial rate of an enzyme-catalysed reaction, to include Q10.",
+       "full_text": "Investigate the effect of temperature on the initial rate of an enzyme-catalysed reaction, to include Q10.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP12",
+        "code": "CP12",
+        "topic": 5,
+        "printed_after_statement": "5.19",
+        "source_pages": [
+         31
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP13",
+       "code": "CP13",
+       "title": "Investigate the effects of temperature on the development of organisms (such as seedling growth rate, brine shrimp hatch rates).",
+       "full_text": "Investigate the effects of temperature on the development of organisms (such as seedling growth rate, brine shrimp hatch rates).",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP13",
+        "code": "CP13",
+        "topic": 5,
+        "printed_after_statement": "5.19",
+        "source_pages": [
+         31
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP14",
+       "code": "CP14",
+       "title": "Use gel electrophoresis to separate DNA fragments of different length.",
+       "full_text": "Use gel electrophoresis to separate DNA fragments of different length.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP14",
+        "code": "CP14",
+        "topic": 6,
+        "printed_after_statement": "6.4",
+        "source_pages": [
+         32
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP15",
+       "code": "CP15",
+       "title": "Investigate the effect of different antibiotics on bacteria.",
+       "full_text": "Investigate the effect of different antibiotics on bacteria.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP15",
+        "code": "CP15",
+        "topic": 6,
+        "printed_after_statement": "6.14",
+        "source_pages": [
+         33
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP16",
+       "code": "CP16",
+       "title": "Investigate rate of respiration.",
+       "full_text": "Investigate rate of respiration.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP16",
+        "code": "CP16",
+        "topic": 7,
+        "printed_after_statement": "7.7",
+        "source_pages": [
+         35
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP17",
+       "code": "CP17",
+       "title": "Investigate the effects of exercise on tidal volume, breathing rate, respiratory minute ventilation and oxygen consumption using data from…",
+       "full_text": "Investigate the effects of exercise on tidal volume, breathing rate, respiratory minute ventilation and oxygen consumption using data from spirometer traces.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP17",
+        "code": "CP17",
+        "topic": 7,
+        "printed_after_statement": "7.9",
+        "source_pages": [
+         35
+        ]
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_CP18",
+       "code": "CP18",
+       "title": "Investigate habituation to a stimulus.",
+       "full_text": "Investigate habituation to a stimulus.",
+       "introduced_year": 13,
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-CP18",
+        "code": "CP18",
+        "topic": 8,
+        "printed_after_statement": "8.13",
+        "source_pages": [
+         37
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "EDX_BIOL_OFF_SEC_MS",
+   "title": "Mathematical skills (Appendix 6)",
+   "note": "Tag as a prerequisite unless the mathematical skill itself is what the marks assess.",
+   "topics": [
+    {
+     "id": "EDX_BIOL_OFF_MS_A.0",
+     "code": "A.0",
+     "title": "Arithmetic and numerical computation",
+     "kind": "maths",
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_MS_A.0.1",
+       "code": "A.0.1",
+       "title": "Recognise and make use of appropriate units in calculations",
+       "full_text": "Recognise and make use of appropriate units in calculations",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.0.1",
+        "code": "A.0.1",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.0.2",
+       "code": "A.0.2",
+       "title": "Recognise and use expressions in decimal and standard form",
+       "full_text": "Recognise and use expressions in decimal and standard form",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.0.2",
+        "code": "A.0.2",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.0.3",
+       "code": "A.0.3",
+       "title": "Use ratios, fractions and percentages",
+       "full_text": "Use ratios, fractions and percentages",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.0.3",
+        "code": "A.0.3",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.0.4",
+       "code": "A.0.4",
+       "title": "Estimate results",
+       "full_text": "Estimate results",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.0.4",
+        "code": "A.0.4",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.0.5",
+       "code": "A.0.5",
+       "title": "Use calculators to find and use power, exponential and logarithmic functions",
+       "full_text": "Use calculators to find and use power, exponential and logarithmic functions",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.0.5",
+        "code": "A.0.5",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_MS_A.1",
+     "code": "A.1",
+     "title": "Handling data",
+     "kind": "maths",
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.1",
+       "code": "A.1.1",
+       "title": "Use an appropriate number of significant figures",
+       "full_text": "Use an appropriate number of significant figures",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.1",
+        "code": "A.1.1",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.2",
+       "code": "A.1.2",
+       "title": "Find arithmetic means",
+       "full_text": "Find arithmetic means",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.2",
+        "code": "A.1.2",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.3",
+       "code": "A.1.3",
+       "title": "Construct and interpret frequency tables and diagrams, bar charts and histograms",
+       "full_text": "Construct and interpret frequency tables and diagrams, bar charts and histograms",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.3",
+        "code": "A.1.3",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.4",
+       "code": "A.1.4",
+       "title": "Understand simple probability",
+       "full_text": "Understand simple probability",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.4",
+        "code": "A.1.4",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.5",
+       "code": "A.1.5",
+       "title": "Understand the principles of sampling as applied to scientific data",
+       "full_text": "Understand the principles of sampling as applied to scientific data",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.5",
+        "code": "A.1.5",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.6",
+       "code": "A.1.6",
+       "title": "Understand the terms mean, median and mode",
+       "full_text": "Understand the terms mean, median and mode",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.6",
+        "code": "A.1.6",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.7",
+       "code": "A.1.7",
+       "title": "Use a scatter diagram to identify a correlation between two variables",
+       "full_text": "Use a scatter diagram to identify a correlation between two variables",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.7",
+        "code": "A.1.7",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.8",
+       "code": "A.1.8",
+       "title": "Make order of magnitude calculations",
+       "full_text": "Make order of magnitude calculations",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.8",
+        "code": "A.1.8",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.9",
+       "code": "A.1.9",
+       "title": "Select and use a statistical test",
+       "full_text": "Select and use a statistical test",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.9",
+        "code": "A.1.9",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.10",
+       "code": "A.1.10",
+       "title": "Understand measures of dispersion, including standard deviation and range",
+       "full_text": "Understand measures of dispersion, including standard deviation and range",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.10",
+        "code": "A.1.10",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.1.11",
+       "code": "A.1.11",
+       "title": "Identify uncertainties in measurements and use simple techniques to determine uncertainty when data are combined",
+       "full_text": "Identify uncertainties in measurements and use simple techniques to determine uncertainty when data are combined",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.1.11",
+        "code": "A.1.11",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_MS_A.2",
+     "code": "A.2",
+     "title": "Algebra",
+     "kind": "maths",
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_MS_A.2.1",
+       "code": "A.2.1",
+       "title": "Understand and use the symbols: =, <, <<, >>, >, ∝, ~.",
+       "full_text": "Understand and use the symbols: =, <, <<, >>, >, ∝, ~.",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.2.1",
+        "code": "A.2.1",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.2.2",
+       "code": "A.2.2",
+       "title": "Change the subject of an equation",
+       "full_text": "Change the subject of an equation",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.2.2",
+        "code": "A.2.2",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.2.3",
+       "code": "A.2.3",
+       "title": "Substitute numerical values into algebraic equations using appropriate units for physical quantities",
+       "full_text": "Substitute numerical values into algebraic equations using appropriate units for physical quantities",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.2.3",
+        "code": "A.2.3",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.2.4",
+       "code": "A.2.4",
+       "title": "Solve algebraic equations",
+       "full_text": "Solve algebraic equations",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.2.4",
+        "code": "A.2.4",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.2.5",
+       "code": "A.2.5",
+       "title": "Use logarithms in relation to quantities that range over several orders of magnitude",
+       "full_text": "Use logarithms in relation to quantities that range over several orders of magnitude",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.2.5",
+        "code": "A.2.5",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_MS_A.3",
+     "code": "A.3",
+     "title": "Graphs",
+     "kind": "maths",
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_MS_A.3.1",
+       "code": "A.3.1",
+       "title": "Translate information between graphical, numerical and algebraic forms",
+       "full_text": "Translate information between graphical, numerical and algebraic forms",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.3.1",
+        "code": "A.3.1",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.3.2",
+       "code": "A.3.2",
+       "title": "Plot two variables from experimental or other data",
+       "full_text": "Plot two variables from experimental or other data",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.3.2",
+        "code": "A.3.2",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.3.3",
+       "code": "A.3.3",
+       "title": "Understand that y = mx + c represents a linear relationship",
+       "full_text": "Understand that y = mx + c represents a linear relationship",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.3.3",
+        "code": "A.3.3",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.3.4",
+       "code": "A.3.4",
+       "title": "Determine the intercept of a graph",
+       "full_text": "Determine the intercept of a graph",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.3.4",
+        "code": "A.3.4",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.3.5",
+       "code": "A.3.5",
+       "title": "Calculate rate of change from a graph showing a linear relationship",
+       "full_text": "Calculate rate of change from a graph showing a linear relationship",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.3.5",
+        "code": "A.3.5",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      },
+      {
+       "id": "EDX_BIOL_OFF_MS_A.3.6",
+       "code": "A.3.6",
+       "title": "Draw and use the slope of a tangent to a curve as a measure of rate of change",
+       "full_text": "Draw and use the slope of a tangent to a curve as a measure of rate of change",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.3.6",
+        "code": "A.3.6",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_OFF_MS_A.4",
+     "code": "A.4",
+     "title": "Geometry and trigonometry",
+     "kind": "maths",
+     "points": [
+      {
+       "id": "EDX_BIOL_OFF_MS_A.4.1",
+       "code": "A.4.1",
+       "title": "Calculate the circumferences, surface areas and volumes of regular shapes",
+       "full_text": "Calculate the circumferences, surface areas and volumes of regular shapes",
+       "official_reference": {
+        "reference_id": "9BN0-ISSUE4-APP6-A.4.1",
+        "code": "A.4.1",
+        "appendix": "Appendix 6: Mathematical skills and exemplifications"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "EDX_BIOL_SEC_LEGACY",
+   "title": "Historical summary points (not official)",
+   "legacy": true,
+   "note": "Summary headings from the original seed build. Kept only so saved learning records still resolve; never shown, never used for tagging and never converted to official coverage.",
+   "topics": [
+    {
+     "id": "EDX_BIOL_T1",
+     "code": "1",
+     "title": "Lifestyle, Health and Risk",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T1_1.1",
+       "code": "1.1",
+       "title": "The heart, blood vessels and mass transport"
+      },
+      {
+       "id": "EDX_BIOL_T1_1.2",
+       "code": "1.2",
+       "title": "The cardiac cycle, blood clotting and atherosclerosis"
+      },
+      {
+       "id": "EDX_BIOL_T1_1.3",
+       "code": "1.3",
+       "title": "Water as a solvent and its dipole nature"
+      },
+      {
+       "id": "EDX_BIOL_T1_1.4",
+       "code": "1.4",
+       "title": "Carbohydrates: monosaccharides, disaccharides and polysaccharides"
+      },
+      {
+       "id": "EDX_BIOL_T1_1.5",
+       "code": "1.5",
+       "title": "Lipids: triglycerides, saturated and unsaturated fats"
+      },
+      {
+       "id": "EDX_BIOL_T1_1.6",
+       "code": "1.6",
+       "title": "Risk factors for cardiovascular disease; correlation and causation"
+      },
+      {
+       "id": "EDX_BIOL_T1_1.7",
+       "code": "1.7",
+       "title": "Energy budgets, diet and obesity indicators"
+      },
+      {
+       "id": "EDX_BIOL_T1_1.8",
+       "code": "1.8",
+       "title": "Treatments for cardiovascular disease"
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_T2",
+     "code": "2",
+     "title": "Genes and Health",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T2_2.1",
+       "code": "2.1",
+       "title": "Gas exchange surfaces and Fick's law"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.2",
+       "code": "2.2",
+       "title": "Cell membranes and transport across them"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.3",
+       "code": "2.3",
+       "title": "Protein structure and amino acids"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.4",
+       "code": "2.4",
+       "title": "Enzymes: mechanism of action and factors affecting rate"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.5",
+       "code": "2.5",
+       "title": "DNA and RNA structure; DNA replication"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.6",
+       "code": "2.6",
+       "title": "The genetic code and protein synthesis"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.7",
+       "code": "2.7",
+       "title": "Gene mutations and cystic fibrosis"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.8",
+       "code": "2.8",
+       "title": "Monohybrid inheritance and pedigree diagrams"
+      },
+      {
+       "id": "EDX_BIOL_T2_2.9",
+       "code": "2.9",
+       "title": "Genetic screening and its ethical issues"
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_T3",
+     "code": "3",
+     "title": "Voice of the Genome",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T3_3.1",
+       "code": "3.1",
+       "title": "Cell ultrastructure: eukaryotic and prokaryotic cells"
+      },
+      {
+       "id": "EDX_BIOL_T3_3.2",
+       "code": "3.2",
+       "title": "Protein trafficking: the role of the rER and Golgi apparatus"
+      },
+      {
+       "id": "EDX_BIOL_T3_3.3",
+       "code": "3.3",
+       "title": "Gametes and fertilisation"
+      },
+      {
+       "id": "EDX_BIOL_T3_3.4",
+       "code": "3.4",
+       "title": "Meiosis and genetic variation"
+      },
+      {
+       "id": "EDX_BIOL_T3_3.5",
+       "code": "3.5",
+       "title": "The cell cycle and mitosis"
+      },
+      {
+       "id": "EDX_BIOL_T3_3.6",
+       "code": "3.6",
+       "title": "Stem cells and differentiation"
+      },
+      {
+       "id": "EDX_BIOL_T3_3.7",
+       "code": "3.7",
+       "title": "Gene expression and epigenetics"
+      },
+      {
+       "id": "EDX_BIOL_T3_3.8",
+       "code": "3.8",
+       "title": "Phenotype, environment and polygenic inheritance"
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_T4",
+     "code": "4",
+     "title": "Biodiversity and Natural Resources",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T4_4.1",
+       "code": "4.1",
+       "title": "Biodiversity, endemism and how they are measured"
+      },
+      {
+       "id": "EDX_BIOL_T4_4.2",
+       "code": "4.2",
+       "title": "Niches, adaptation and natural selection"
+      },
+      {
+       "id": "EDX_BIOL_T4_4.3",
+       "code": "4.3",
+       "title": "The Hardy–Weinberg equation and reproductive isolation"
+      },
+      {
+       "id": "EDX_BIOL_T4_4.4",
+       "code": "4.4",
+       "title": "Classification and the three domains"
+      },
+      {
+       "id": "EDX_BIOL_T4_4.5",
+       "code": "4.5",
+       "title": "Plant cell structure; starch and cellulose"
+      },
+      {
+       "id": "EDX_BIOL_T4_4.6",
+       "code": "4.6",
+       "title": "Transport in plants: xylem, phloem and plant fibres"
+      },
+      {
+       "id": "EDX_BIOL_T4_4.7",
+       "code": "4.7",
+       "title": "Drug testing and antimicrobial properties of plants"
+      },
+      {
+       "id": "EDX_BIOL_T4_4.8",
+       "code": "4.8",
+       "title": "Sustainability and conservation (zoos and seed banks)"
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_T5",
+     "code": "5",
+     "title": "On the Wild Side",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T5_5.1",
+       "code": "5.1",
+       "title": "Ecosystems, habitats and succession"
+      },
+      {
+       "id": "EDX_BIOL_T5_5.2",
+       "code": "5.2",
+       "title": "Photosynthesis: light-dependent and light-independent reactions"
+      },
+      {
+       "id": "EDX_BIOL_T5_5.3",
+       "code": "5.3",
+       "title": "Productivity and energy transfer between trophic levels"
+      },
+      {
+       "id": "EDX_BIOL_T5_5.4",
+       "code": "5.4",
+       "title": "Evidence for climate change"
+      },
+      {
+       "id": "EDX_BIOL_T5_5.5",
+       "code": "5.5",
+       "title": "The carbon cycle and the greenhouse effect"
+      },
+      {
+       "id": "EDX_BIOL_T5_5.6",
+       "code": "5.6",
+       "title": "Effects of climate change on organisms"
+      },
+      {
+       "id": "EDX_BIOL_T5_5.7",
+       "code": "5.7",
+       "title": "Evolution, speciation and how science is validated"
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_T6",
+     "code": "6",
+     "title": "Immunity, Infection and Forensics",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T6_6.1",
+       "code": "6.1",
+       "title": "Forensics: estimating time of death"
+      },
+      {
+       "id": "EDX_BIOL_T6_6.2",
+       "code": "6.2",
+       "title": "DNA profiling, PCR and gel electrophoresis"
+      },
+      {
+       "id": "EDX_BIOL_T6_6.3",
+       "code": "6.3",
+       "title": "Bacteria and viruses: structure and infection (TB and HIV)"
+      },
+      {
+       "id": "EDX_BIOL_T6_6.4",
+       "code": "6.4",
+       "title": "Non-specific immune responses"
+      },
+      {
+       "id": "EDX_BIOL_T6_6.5",
+       "code": "6.5",
+       "title": "The specific immune response: B and T cells"
+      },
+      {
+       "id": "EDX_BIOL_T6_6.6",
+       "code": "6.6",
+       "title": "Types of immunity and vaccination"
+      },
+      {
+       "id": "EDX_BIOL_T6_6.7",
+       "code": "6.7",
+       "title": "Antibiotics and antibiotic resistance"
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_T7",
+     "code": "7",
+     "title": "Run for Your Life",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T7_7.1",
+       "code": "7.1",
+       "title": "Muscles, joints and the sliding filament theory"
+      },
+      {
+       "id": "EDX_BIOL_T7_7.2",
+       "code": "7.2",
+       "title": "Aerobic respiration: glycolysis, link reaction, Krebs cycle and oxidative phosphorylation"
+      },
+      {
+       "id": "EDX_BIOL_T7_7.3",
+       "code": "7.3",
+       "title": "Anaerobic respiration and lactate"
+      },
+      {
+       "id": "EDX_BIOL_T7_7.4",
+       "code": "7.4",
+       "title": "Control of heart rate and ventilation; ECGs and spirometry"
+      },
+      {
+       "id": "EDX_BIOL_T7_7.5",
+       "code": "7.5",
+       "title": "Homeostasis and thermoregulation"
+      },
+      {
+       "id": "EDX_BIOL_T7_7.6",
+       "code": "7.6",
+       "title": "Hormones, transcription factors and gene switching"
+      },
+      {
+       "id": "EDX_BIOL_T7_7.7",
+       "code": "7.7",
+       "title": "Sports injuries, medical technology and performance-enhancing substances"
+      }
+     ]
+    },
+    {
+     "id": "EDX_BIOL_T8",
+     "code": "8",
+     "title": "Grey Matter",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "EDX_BIOL_T8_8.1",
+       "code": "8.1",
+       "title": "Neurones, resting potential and action potentials"
+      },
+      {
+       "id": "EDX_BIOL_T8_8.2",
+       "code": "8.2",
+       "title": "Synapses and neurotransmitters"
+      },
+      {
+       "id": "EDX_BIOL_T8_8.3",
+       "code": "8.3",
+       "title": "Nervous and hormonal coordination; plant responses"
+      },
+      {
+       "id": "EDX_BIOL_T8_8.4",
+       "code": "8.4",
+       "title": "The eye and the pupil reflex"
+      },
+      {
+       "id": "EDX_BIOL_T8_8.5",
+       "code": "8.5",
+       "title": "Brain structure, function and imaging"
+      },
+      {
+       "id": "EDX_BIOL_T8_8.6",
+       "code": "8.6",
+       "title": "Visual development, learning and habituation"
+      },
+      {
+       "id": "EDX_BIOL_T8_8.7",
+       "code": "8.7",
+       "title": "Brain chemistry, drugs and disease"
+      },
+      {
+       "id": "EDX_BIOL_T8_8.8",
+       "code": "8.8",
+       "title": "Genome sequencing and genetically modified organisms"
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

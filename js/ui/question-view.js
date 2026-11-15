@@ -90,7 +90,7 @@ export function questionMeta(question, { specIndex = null, topics = true, organi
   const textbook = question.textbook_references || [];
   const bookTags = [...new Set(textbook.filter(ref => ref.role === 'Assessed').map(ref => `${ref.book} · ${ref.chapter}`))];
   return html`<div class="qcard__meta">
-    ${difficultyBadge(question.difficulty)}${question.is_as ? html`<span class="tag">AS · 8MA0</span>` : ''}
+    ${difficultyBadge(question.difficulty)}${question.is_as ? html`<span class="tag">AS · ${question.qualification_code || 'AS'}</span>` : ''}
     <span class="small muted">about ${fmtMinutes(question.estimated_minutes || 1)}</span>
     ${sourceBadge(question)} ${organisation === 'textbook' && bookTags.length
       ? bookTags.map(title => html`<span class="tag">${title}</span>`)

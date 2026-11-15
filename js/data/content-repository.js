@@ -22,7 +22,8 @@ export const specIndex = createSpecIndex();
 let subjectsPromise = null;
 let packsPromise = null;
 let curriculumPromise = null;
-let textbookPromise = null;
+const textbookPromises = new Map(); // subject_id → Promise<{index, links}>
+const packPromises = new Map(); // pack file → Promise<pack or null>
 const specPromises = new Map();
 const bundlePromises = new Map();
 
@@ -54,16 +55,21 @@ export async function getCurriculum(subjectId) {
   return createCurriculumMap({ subject_id: subjectId, mappings: index.mappings.filter((item) => item.subject_id === subjectId) }, specIndex);
 }
 
-/** The owner's book-scoped contents and question skill associations. */
+/** The owner's book-scoped contents and question skill associations, declared
+ * per subject in subjects.json (`textbooks: {contents, links}`). Subjects without
+ * supplied contents have no textbook view. */
 export async function getTextbooks(subjectId) {
-  if (subjectId !== 'EDX_ALEVEL_MATH_9MA0') return null;
+  const source = (await getSubject(subjectId))?.textbooks;
+  if (!source?.contents || !source?.links) return null;
   await ensureSpec(subjectId);
-  textbookPromise ??= Promise.all([fetchJson('curriculum/maths-textbooks.json'),
-    fetchJson('imports/maths/textbook-question-links.json')]).then(([document, links]) => {
-    if (document.version !== links.version) throw new TypeError('Textbook association version mismatch.');
-    return {index: createTextbookIndex(document, specIndex), links: links.questions};
-  }).catch(error => { textbookPromise = null; throw error; });
-  return textbookPromise;
+  if (!textbookPromises.has(subjectId)) {
+    textbookPromises.set(subjectId, Promise.all([fetchJson(source.contents), fetchJson(source.links)]).then(([document, links]) => {
+      if (document.version !== links.version) throw new TypeError('Textbook association version mismatch.');
+      if (document.subject_id && document.subject_id !== subjectId) throw new TypeError('Textbook contents belong to another subject.');
+      return {index: createTextbookIndex(document, specIndex), links: links.questions};
+    }).catch(error => { textbookPromises.delete(subjectId); throw error; }));
+  }
+  return textbookPromises.get(subjectId);
 }
 
 /** Loads a subject's specification tree and adds it to the shared index. */
@@ -71,7 +77,7 @@ export function ensureSpec(subjectId) {
   if (!specPromises.has(subjectId)) {
     const promise = fetchJson(`specs/${subjectId}.json`).then((spec) => {
       specIndex.add(spec);
-      return spec;
+      return specIndex.spec(spec.subject_id) || spec; // legacy sections are lookup-only
     });
     promise.catch(() => specPromises.delete(subjectId));
     specPromises.set(subjectId, promise);
@@ -97,27 +103,30 @@ export function writeLocalPack(pack) {
   invalidateContent();
 }
 
-async function getPacks() {
-  packsPromise ??= (async () => {
-    const index = await fetchJson('packs/index.json').catch(() => ({ packs: [] }));
-    const packs = [];
-    for (const entry of index.packs || []) {
-      if (entry.enabled === false) continue;
-      try {
-        packs.push({ ...(await fetchJson(`packs/${entry.file}`)), file: entry.file });
-      } catch (error) {
+/** Enabled packs for one subject. An index entry may name its `subject_id`; an
+ * entry without one is loaded for every subject (local and older packs). */
+async function getPacks(subjectId) {
+  packsPromise ??= fetchJson('packs/index.json').catch(() => ({ packs: [] }));
+  const index = await packsPromise;
+  const wanted = (index.packs || []).filter((entry) => entry.enabled !== false && (!entry.subject_id || entry.subject_id === subjectId));
+  const packs = await Promise.all(wanted.map((entry) => {
+    if (!packPromises.has(entry.file)) {
+      packPromises.set(entry.file, fetchJson(`packs/${entry.file}`).then((pack) => ({ ...pack, file: entry.file })).catch((error) => {
         console.warn(`Content pack "${entry.file}" could not be loaded.`, error);
-      }
+        packPromises.delete(entry.file);
+        return null;
+      }));
     }
-    return packs;
-  })();
-  return [...(await packsPromise), readLocalPack()];
+    return packPromises.get(entry.file);
+  }));
+  return [...packs.filter(Boolean), readLocalPack()];
 }
 
 /** Call after content changes so the next read rebuilds from source. */
 export function invalidateContent() {
   bundlePromises.clear();
   packsPromise = null;
+  packPromises.clear();
 }
 
 // ── subject bundles ──
@@ -141,7 +150,7 @@ async function loadBundle(subjectId) {
     ensureSpec(subjectId),
     fetchJson(`papers/${subjectId}.json`),
     fetchJson(`questions/${subjectId}.json`),
-    getPacks(),
+    getPacks(subjectId),
   ]);
 
   const papersById = new Map(basePapers.map((paper) => [paper.paper_id, { ...paper }]));
@@ -186,12 +195,11 @@ async function loadBundle(subjectId) {
   }
   await Promise.all([...foreignSubjects].map((id) => ensureSpec(id).catch(() => null)));
 
-  const hasReviewedMaths = subjectId === 'EDX_ALEVEL_MATH_9MA0' &&
-    questions.some(question => question.provenance?.review_status === 'model_reviewed');
+  const hasReviewedSource = questions.some(question => question.provenance?.review_status === 'model_reviewed');
   // Authenticated source booklets supersede generated catalogue placeholders.
   // Keep the original lookup records so saved sessions and marks still resolve.
   const generatedIds = new Set(basePapers.map(paper => paper.paper_id));
-  const papers = [...papersById.values()].filter(paper => (CONTENT.showSampleContent || !paper.is_sample) && (!hasReviewedMaths ||
+  const papers = [...papersById.values()].filter(paper => (CONTENT.showSampleContent || !paper.is_sample) && (!hasReviewedSource ||
     !generatedIds.has(paper.paper_id) || paper.question_ids.some(id =>
       questionsById.get(id)?.provenance?.review_status === 'model_reviewed')));
   return { subject, spec, papers, papersById, questions, questionsById, textbooks: textbooks?.index || null };

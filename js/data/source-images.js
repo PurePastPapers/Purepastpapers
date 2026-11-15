@@ -1,7 +1,9 @@
 // Source crops are grouped by booklet for lazy static hosting. Nothing is
 // transcribed or recompressed: each asset retains its original lossless bytes.
+// A crop path names its subject slug: assets/<slug>/<PAPER>/<NAME>.webp is served
+// from the catalogue data/<slug>-assets/<PAPER>.json (e.g. maths, biology).
 import { html, isSafeUrl } from '../core/dom.js';
-const PATH = /^assets\/maths\/([A-Z0-9_]+)\/([A-Za-z0-9_]+\.webp)$/;
+const PATH = /^assets\/([a-z]+)\/([A-Z0-9_]+)\/([A-Za-z0-9_]+\.webp)$/;
 const bundles = new Map();
 const urls = new Map();
 export function sourceImage(url, alt) {
@@ -12,12 +14,13 @@ async function resolve(path) {
   if (urls.has(path)) return urls.get(path);
   const match = PATH.exec(path);
   if (!match) throw new Error('Invalid source-image reference');
-  const [, paper, name] = match;
-  if (!bundles.has(paper)) bundles.set(paper, fetch(`data/maths-assets/${paper}.json`).then(async response => {
+  const [, slug, paper, name] = match;
+  const key = `${slug}/${paper}`;
+  if (!bundles.has(key)) bundles.set(key, fetch(`data/${slug}-assets/${paper}.json`).then(async response => {
     if (!response.ok) throw new Error('Source image bundle is unavailable');
     return response.json();
-  }));
-  const bundle = await bundles.get(paper);
+  }).catch(error => { bundles.delete(key); throw error; }));
+  const bundle = await bundles.get(key);
   const asset = bundle.assets[name];
   if (!asset || !asset.base64) throw new Error('Source image is unavailable');
   const bytes = Uint8Array.from(atob(asset.base64), char => char.charCodeAt(0));

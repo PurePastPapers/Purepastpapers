@@ -3,6 +3,10 @@
 export function createTextbookIndex(document, specIndex) {
   const points = new Map(), chapters = new Map(), books = new Map();
   const sections = [];
+  // Each subject's document names its own prefixes; the defaults are the Maths ones,
+  // so existing saved Maths identities are unchanged.
+  const sectionPrefix = document.section_prefix || 'TB_MATH';
+  const bookPrefix = document.book_prefix || 'TB_BOOK';
   for (const book of document.books || []) {
     if (books.has(book.id) || ![12, 13].includes(book.year)) throw new TypeError('Invalid textbook identity.');
     books.set(book.id, book);
@@ -12,7 +16,7 @@ export function createTextbookIndex(document, specIndex) {
       chapters.set(chapter.id, {...chapter, book});
       const leaves = [];
       for (const section of chapter.sections) {
-        if (points.has(section.id) || !section.id.startsWith(`TB_MATH_${book.id}_`) ||
+        if (points.has(section.id) || !section.id.startsWith(`${sectionPrefix}_${book.id}_`) ||
             !section.official_points.length || section.official_points.some(id => !specIndex.has(id))) {
           throw new TypeError('Invalid textbook subsection or official association.');
         }
@@ -22,7 +26,7 @@ export function createTextbookIndex(document, specIndex) {
       }
       topics.push({id: chapter.id, code: chapter.code, title: chapter.title, points: leaves});
     }
-    sections.push({id: `TB_BOOK_${book.id}`, title: book.title, search_aliases: book.aliases, topics});
+    sections.push({id: `${bookPrefix}_${book.id}`, title: book.title, search_aliases: book.aliases, topics});
   }
   function attach(question, association) {
     if (!association) return question;
@@ -64,7 +68,7 @@ export function createTextbookIndex(document, specIndex) {
     }
     return new Map([...matches].map(([id, questions]) => [id, questions.size]));
   }
-  return {points, chapters, books, counts, ids: [...points.keys()],
+  return {points, chapters, books, counts, ids: [...points.keys()], bookNodeId: (book) => `${bookPrefix}_${book.id}`,
     tree: {subject_id: document.subject_id, sections}, attach};
 }
 
@@ -94,7 +98,7 @@ export function textbookMasteryByNode(latest, questionsById, index) {
     const nodes = new Set();
     for (const group of question?.textbook_primary_groups || []) for (const section of group.ids) {
       const point = index.points.get(section);
-      nodes.add(`TB_BOOK_${point.book.id}`);
+      nodes.add(index.bookNodeId ? index.bookNodeId(point.book) : `TB_BOOK_${point.book.id}`);
       nodes.add(point.chapter.id);
       if (group.precision === 'subsection') nodes.add(section);
     }

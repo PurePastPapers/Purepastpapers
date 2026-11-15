@@ -34,7 +34,7 @@ export async function coverageDialog({bundle}) {
     body:html`<div class="stack">
       <p class="muted">${subject.level} · ${subject.board} ${subject.spec_code}. Choose the chapters and points you have covered. Changes are applied only when you save.</p>
       ${topicOrganisationControl(organisation,{available:Boolean(textbooks),name:'coverage-organisation'})}
-      ${textbooks ? html`<p class="field__hint">Textbook chapters use each book’s own numbering. Pure 1 · 6.2 is Equation of a circle. Textbook and official-spec ticks are saved separately.</p>` : ''}
+      ${textbooks ? html`<p class="field__hint">Textbook chapters use each book’s own numbering.${subject.textbook_example ? ` ${subject.textbook_example}` : ''} Textbook and official-spec ticks are saved separately.</p>` : ''}
       <div data-coverage-curriculum></div>
       <div data-coverage-tree></div>
     </div>`,

@@ -15,7 +15,11 @@
     "practice_modes": ["timed_test","individual"],
     "grade_scheme": "alevel",
     "has_written_exam": true,
-    "has_catalogue": true
+    "has_catalogue": true,
+    "qualifications": [{"code": "9MA0", "label": "A-Level"}, {"code": "8MA0", "label": "AS", "is_as": true}],
+    "content_year_source": "introduced_year",
+    "textbooks": {"contents": "curriculum/maths-textbooks.json", "links": "imports/maths/textbook-question-links.json"},
+    "textbook_example": "For example, Pure 1 · 6.2 is Equation of a circle."
   },
   {
     "subject_id": "EDX_ALEVEL_FMATH_9FM0",
@@ -51,7 +55,9 @@
     "grade_scheme": "alevel",
     "has_written_exam": true,
     "extra_hard": false,
-    "has_catalogue": true
+    "has_catalogue": true,
+    "qualifications": [{"code": "9BN0", "label": "A-Level"}, {"code": "8BN0", "label": "AS", "is_as": true}],
+    "content_year_source": "introduced_year"
   },
   {
     "subject_id": "OCR_ALEVEL_CHEM_H432",
