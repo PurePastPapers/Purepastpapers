@@ -50,8 +50,8 @@ The 2020 and 2021 series are October. Summer 2020/2021 exams were not sat. All
 141 PDFs were downloaded and checksummed (`data/imports/physics/inventory/`);
 June 2026 files were not public on 15 November 2026 (recorded as
 `not_publicly_available` with the probe window). Official sample assessments are
-in two collated PDFs (A level SAMs, 158 pages; AS SAMs, 84 pages) and still need
-page-range splitting like `tools/maths/prepare_samples.py`.
+in two collated PDFs (A level SAMs, 158 pages; AS SAMs, 97 pages); they are now
+split and imported (Checkpoint 5).
 
 Four booklets are image-only scans with no text layer: 9PH0 June 2019 Papers 1
 and 2, and 8PH0 June 2019 Papers 1 and 2. They need OCR for positioning
@@ -167,3 +167,39 @@ candidates still record v4; re-extracting gives identical parts).
 To find tokens to check on a new scan, re-OCR the left margin and tariff column
 at 4× (tesseract `--psm 11`) and compare against the OCR cache; confirm every
 difference on the rendered page before adding it.
+
+## Checkpoint 5 — official sample assessments; Physics import complete (15 November 2026)
+
+**Status: complete.** `coverage.json` reports `complete`, 0 queued: 52 booklets
+(47 past papers + 5 official SAMs), 856 source questions, 1,794 scored units,
+4,760 marks, 4,422 crops. Tests 73/73, validation 0 errors, browser check PASS
+(AS 692 units, Year 13 only 572).
+
+SAMs (Issue 1, October 2014) are recorded in
+`data/imports/physics/inventory/{9ph0,8ph0}-samples-inventory.json` as page ranges
+of Pearson's two public collations. `tools/physics/prepare_samples.py` writes
+byte-stable private caches (fixed PDF ID) and `source-page-provenance.json`; the
+mark-scheme ranges carry `rotate_degrees: 90` because the landscape tables are set
+sideways on portrait pages (only the page /Rotate entry changes, never content).
+`build.py` and `finalize.py` accept a cache only when the manifest ties it to the
+inventory's original checksum. SAM papers show as "Official sample", year null,
+`is_official_sample: true`. Scheme crops can show a sliver of the collation's
+sideways footer at the left edge; it is source pixels and was left as is.
+
+Two small extractor/indexer fixes came with the SAMs: total lines set in small
+caps ("(total for Question …") are recognised, and the scheme header match is
+case-insensitive ("Question number"). Re-indexing every published scheme with
+the new rule gives identical regions.
+
+```sh
+python3 tools/physics/prepare_samples.py data/imports/physics/inventory/9ph0-samples-inventory.json --originals ../physics-research/sam-originals --output ../physics-research/sources
+python3 tools/physics/prepare_samples.py data/imports/physics/inventory/8ph0-samples-inventory.json --originals ../physics-research/sam-originals --output ../physics-research/sources
+# then extract (SAMPLE question papers), reviews.py, build.py <samples inventory>, finalize.py
+```
+
+### Still open
+
+- Textbook organisation: waiting for the owner's Physics textbook contents pages.
+- June 2026 papers: not public on 15 November 2026; add them with the same
+  pipeline when Pearson publishes them.
+- All tagging is model review, labelled as such; no teacher review yet.

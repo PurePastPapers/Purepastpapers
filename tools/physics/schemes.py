@@ -23,7 +23,7 @@ def scheme_regions(path, question_count):
             for w in sorted(ws, key=lambda w: (w['top'], w['x0'])):
                 if not started:
                     near = ' '.join(o['text'] for o in ws if -2 < o['top'] - w['top'] < 20)
-                    if w['text'] == 'Question' and w['x0'] < 130 and re.search(r'Number|Answer', near):
+                    if w['text'] == 'Question' and w['x0'] < 130 and re.search(r'Number|Answer', near, re.I):
                         started = True
                     continue
                 if w['x0'] > 125:

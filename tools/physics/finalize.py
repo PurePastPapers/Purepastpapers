@@ -50,7 +50,10 @@ def main():
     previous = read(registry_path)['units'] if registry_path.exists() else {}
     identities, packs, groups, queue, not_public = {}, [], defaultdict(Counter), [], []
     difficulty, years = Counter(), Counter()
-    for name in ['9ph0-inventory', '8ph0-inventory']:
+    manifest_path = research / 'sources' / 'source-page-provenance.json'
+    derived = {(r['paper_id'], r['kind']): r for r in read(manifest_path)['records']} if manifest_path.exists() else {}
+    samples = []
+    for name in ['9ph0-inventory', '8ph0-inventory', '9ph0-samples-inventory', '8ph0-samples-inventory']:
         inventory = read(target / 'inventory' / f'{name}.json')
         not_public += [x['paper_id'] for x in inventory.get('unavailable', [])]
         for paper in inventory['papers']:
@@ -62,9 +65,16 @@ def main():
                 assert not pack_path.exists() or pid not in previous, pid
                 continue
             candidate, review, pack = read(cand_path), read(review_path), read(pack_path)
-            assert review['source_sha256'] == candidate['source_sha256'] == paper['documents']['question_paper']['sha256'], pid
+            original = paper['documents']['question_paper']['sha256']
+            if paper.get('is_sample'):
+                # A sample is a recorded page range of the official collation.
+                record = derived[(pid, 'question_paper')]
+                assert record['original_source_sha256'] == original and record['cache_sha256'] == candidate['source_sha256'], pid
+                original = candidate['source_sha256']
+                samples.append(pid)
+            assert review['source_sha256'] == candidate['source_sha256'] == original, pid
             assert sum(q['marks'] for q in pack['questions']) == paper['max_marks'] == candidate['total_marks'], pid
-            group = groups[('AS' if paper['is_as'] else 'A-Level') + ' exams']
+            group = groups[('AS' if paper['is_as'] else 'A-Level') + (' official samples' if paper.get('is_sample') else ' exams')]
             group.update(booklets=1, source_questions=len(candidate['questions']), scored_units=len(pack['questions']), marks=paper['max_marks'])
             by_parent = defaultdict(list)
             for unit in pack['questions']:
@@ -101,7 +111,7 @@ def main():
                 'groups': {k: dict(v) for k, v in groups.items()}, 'totals': totals,
                 'difficulty': dict(difficulty), 'introduced_year': {str(k): v for k, v in years.items()},
                 'queued_public_booklets': queue, 'not_publicly_available': not_public,
-                'official_samples': 'not yet imported (collated SAM PDFs need page-range splitting)',
+                'official_samples': sorted(samples),
                 'source_question_count_basis': 'Source-scoped original question numbers per booklet.'}
     write(target / 'coverage.json', coverage)
     print(json.dumps({k: coverage[k] for k in ('status', 'groups', 'totals')}, indent=1), len(queue), 'queued')

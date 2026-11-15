@@ -239,7 +239,7 @@ def extract(path, ocr_dir=None, overrides_dir=None):
                     continue
                 tariff = [w for w in ws if re.fullmatch(r'\(\d{1,2}\)', w['text']) and w['x0'] > p.width * .7]
                 page_text = (p.extract_text() or '') if not getattr(p, '_ocr_words', None) else ' '.join(w['text'] for w in p._ocr_words)
-                total_words = [w for w in ws if w['text'] == '(Total' and w['x0'] > p.width * .45]
+                total_words = [w for w in ws if w['text'].lower() == '(total' and w['x0'] > p.width * .45]
                 if pi == end_page and index + 1 < len(starts) and start_page != end_page and hi <= 38:
                     continue
                 if not has_figure and (not substantive or (not tariff and all(w['text'].strip('().').isdigit() for w in substantive))):

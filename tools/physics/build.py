@@ -54,7 +54,13 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
         raise ValueError('Question source revision mismatch')
     ms_sha = hashlib.sha256(ms.read_bytes()).hexdigest()
     if ms_sha != paper['documents']['mark_scheme']['sha256']:
-        raise ValueError('Scheme source revision mismatch')
+        # Official samples are page ranges of a collation: the private cache must be
+        # the recorded faithful extraction of the recorded original source.
+        manifest_path = sources/'source-page-provenance.json'
+        manifest = json.loads(manifest_path.read_text())['records'] if manifest_path.exists() else []
+        derivation = next((item for item in manifest if item['paper_id'] == paper['paper_id'] and item['kind'] == 'mark_scheme'), None)
+        if not derivation or derivation['cache_sha256'] != ms_sha or derivation['original_source_sha256'] != paper['documents']['mark_scheme']['sha256']:
+            raise ValueError('Scheme source revision mismatch')
     schemes = scheme_regions(ms, len(candidate['questions']))
     renderer, scheme_renderer = SourceRenderer(qp), SourceRenderer(ms)
     with pdfplumber.open(qp) as doc:
