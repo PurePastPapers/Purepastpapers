@@ -6,6 +6,7 @@ import { APP, LIMITS } from '../config/app.config.js';
 import { createBus } from '../core/bus.js';
 import { latestByQuestion } from '../engine/analytics.js';
 import { localAdapter } from './adapters/local-adapter.js';
+import { LEGACY_SPEC_IDS } from '../config/spec-id-migrations.js';
 
 /** ← The one line that chooses the backend. Any object with the same methods will work. */
 const adapter = localAdapter;
@@ -38,7 +39,13 @@ function normalise(document, userId) {
     if (!Array.isArray(merged[key])) merged[key] = [];
   }
   if (!merged.preferences || typeof merged.preferences !== 'object') merged.preferences = {};
+  merged.learned_spec_points = migrateLearnedIds(merged.learned_spec_points);
   return merged;
+}
+
+/** Expand retired runtime skill ids into the official statements that replaced them. */
+export function migrateLearnedIds(ids) {
+  return [...new Set(ids.flatMap((id) => LEGACY_SPEC_IDS[id] || [id]))];
 }
 
 function requireProgress() {

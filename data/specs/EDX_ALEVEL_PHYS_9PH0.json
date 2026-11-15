@@ -1,182 +1,5292 @@
 {
   "subject_id": "EDX_ALEVEL_PHYS_9PH0",
+  "official_source": {
+    "title": "Pearson Edexcel Level 3 Advanced GCE in Physics (9PH0) specification",
+    "issue": "Issue 3",
+    "issue_date": "November 2018",
+    "first_certification": 2017,
+    "url": "https://qualifications.pearson.com/content/dam/pdf/A Level/Physics/2015/Specification and sample assessments/pearsonedexcel-alevel-physics-spec.pdf",
+    "sha256": "f91bef5283754e7cb3624dcb7b4a92b41b033225a5ececf1ce40a53d91ed90d3",
+    "verified_at": "2026-11-15",
+    "as_qualification": {
+      "code": "8PH0",
+      "issue": "Issue 2",
+      "issue_date": "March 2016",
+      "first_certification": 2016,
+      "url": "https://qualifications.pearson.com/content/dam/pdf/A Level/Physics/2015/Specification and sample assessments/PearsonEdexcel-AS-Physics-Spec.pdf",
+      "content": "Topics 1–5, statements 1–96 with identical numbering"
+    },
+    "approach": "Concept-led content order (the SHAP context-led route reorders the same statements and is assessed by the same papers).",
+    "components": {
+      "9PH0/01": {
+        "title": "Advanced Physics I",
+        "marks": 90,
+        "minutes": 105,
+        "topics": [
+          1,
+          2,
+          3,
+          6,
+          7,
+          8
+        ]
+      },
+      "9PH0/02": {
+        "title": "Advanced Physics II",
+        "marks": 90,
+        "minutes": 105,
+        "topics": [
+          1,
+          4,
+          5,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "9PH0/03": {
+        "title": "General and Practical Principles in Physics",
+        "marks": 120,
+        "minutes": 150,
+        "topics": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "8PH0/01": {
+        "title": "Core Physics I",
+        "marks": 80,
+        "minutes": 90,
+        "topics": [
+          1,
+          2,
+          3
+        ]
+      },
+      "8PH0/02": {
+        "title": "Core Physics II",
+        "marks": 80,
+        "minutes": 90,
+        "topics": [
+          1,
+          4,
+          5
+        ]
+      }
+    },
+    "notes": "Statement numbers are strings. Runtime leaves are the 191 official statements (EDX_PHYS_Snnn). Middle-level group ids are the earlier runtime skill ids, retained so saved learned ticks migrate."
+  },
+  "legacy_ids": {
+    "EDX_PHYS_M1_1.1": [
+      "EDX_PHYS_S001",
+      "EDX_PHYS_S003"
+    ],
+    "EDX_PHYS_M1_1.2": [
+      "EDX_PHYS_S002",
+      "EDX_PHYS_S004"
+    ],
+    "EDX_PHYS_M1_1.3": [
+      "EDX_PHYS_S005",
+      "EDX_PHYS_S006",
+      "EDX_PHYS_S007",
+      "EDX_PHYS_S008"
+    ],
+    "EDX_PHYS_M2_2.1": [
+      "EDX_PHYS_S009",
+      "EDX_PHYS_S010",
+      "EDX_PHYS_S011"
+    ],
+    "EDX_PHYS_M2_2.2": [
+      "EDX_PHYS_S012",
+      "EDX_PHYS_S013",
+      "EDX_PHYS_S014",
+      "EDX_PHYS_S015"
+    ],
+    "EDX_PHYS_M2_2.3": [
+      "EDX_PHYS_S016",
+      "EDX_PHYS_S017",
+      "EDX_PHYS_S018",
+      "EDX_PHYS_S019",
+      "EDX_PHYS_S020"
+    ],
+    "EDX_PHYS_M2_2.4": [
+      "EDX_PHYS_S021",
+      "EDX_PHYS_S022"
+    ],
+    "EDX_PHYS_M2_2.5": [
+      "EDX_PHYS_S023",
+      "EDX_PHYS_S024"
+    ],
+    "EDX_PHYS_M2_2.6": [
+      "EDX_PHYS_S025",
+      "EDX_PHYS_S026",
+      "EDX_PHYS_S027",
+      "EDX_PHYS_S028"
+    ],
+    "EDX_PHYS_M2_2.7": [
+      "EDX_PHYS_S029",
+      "EDX_PHYS_S030"
+    ],
+    "EDX_PHYS_M3_3.1": [
+      "EDX_PHYS_S031",
+      "EDX_PHYS_S032",
+      "EDX_PHYS_S033"
+    ],
+    "EDX_PHYS_M3_3.3": [
+      "EDX_PHYS_S034",
+      "EDX_PHYS_S035",
+      "EDX_PHYS_S036"
+    ],
+    "EDX_PHYS_M3_3.7": [
+      "EDX_PHYS_S037"
+    ],
+    "EDX_PHYS_M3_3.2": [
+      "EDX_PHYS_S038"
+    ],
+    "EDX_PHYS_M3_3.4": [
+      "EDX_PHYS_S039",
+      "EDX_PHYS_S040",
+      "EDX_PHYS_S041"
+    ],
+    "EDX_PHYS_M3_3.5": [
+      "EDX_PHYS_S042",
+      "EDX_PHYS_S043",
+      "EDX_PHYS_S044"
+    ],
+    "EDX_PHYS_M3_3.6": [
+      "EDX_PHYS_S045",
+      "EDX_PHYS_S046"
+    ],
+    "EDX_PHYS_M3_3.8": [
+      "EDX_PHYS_S047",
+      "EDX_PHYS_S048"
+    ],
+    "EDX_PHYS_M4_4.1": [
+      "EDX_PHYS_S049",
+      "EDX_PHYS_S050"
+    ],
+    "EDX_PHYS_M4_4.2": [
+      "EDX_PHYS_S051",
+      "EDX_PHYS_S052"
+    ],
+    "EDX_PHYS_M4_4.3": [
+      "EDX_PHYS_S053"
+    ],
+    "EDX_PHYS_M4_4.4": [
+      "EDX_PHYS_S054",
+      "EDX_PHYS_S055",
+      "EDX_PHYS_S056",
+      "EDX_PHYS_S057"
+    ],
+    "EDX_PHYS_M4_4.5": [
+      "EDX_PHYS_S058"
+    ],
+    "EDX_PHYS_M5_5.1": [
+      "EDX_PHYS_S059",
+      "EDX_PHYS_S060",
+      "EDX_PHYS_S061",
+      "EDX_PHYS_S062",
+      "EDX_PHYS_S063",
+      "EDX_PHYS_S064"
+    ],
+    "EDX_PHYS_M5_5.2": [
+      "EDX_PHYS_S065",
+      "EDX_PHYS_S066",
+      "EDX_PHYS_S067",
+      "EDX_PHYS_S068",
+      "EDX_PHYS_S069",
+      "EDX_PHYS_S070"
+    ],
+    "EDX_PHYS_M5_5.3": [
+      "EDX_PHYS_S071",
+      "EDX_PHYS_S072",
+      "EDX_PHYS_S073",
+      "EDX_PHYS_S074"
+    ],
+    "EDX_PHYS_M5_5.4": [
+      "EDX_PHYS_S075",
+      "EDX_PHYS_S076",
+      "EDX_PHYS_S077",
+      "EDX_PHYS_S078",
+      "EDX_PHYS_S079",
+      "EDX_PHYS_S080",
+      "EDX_PHYS_S081"
+    ],
+    "EDX_PHYS_M5_5.5": [
+      "EDX_PHYS_S082",
+      "EDX_PHYS_S083",
+      "EDX_PHYS_S084",
+      "EDX_PHYS_S085"
+    ],
+    "EDX_PHYS_M5_5.6": [
+      "EDX_PHYS_S086",
+      "EDX_PHYS_S087"
+    ],
+    "EDX_PHYS_M5_5.9": [
+      "EDX_PHYS_S088",
+      "EDX_PHYS_S089"
+    ],
+    "EDX_PHYS_M5_5.7": [
+      "EDX_PHYS_S090",
+      "EDX_PHYS_S091",
+      "EDX_PHYS_S092",
+      "EDX_PHYS_S093",
+      "EDX_PHYS_S094",
+      "EDX_PHYS_S095"
+    ],
+    "EDX_PHYS_M5_5.8": [
+      "EDX_PHYS_S096"
+    ],
+    "EDX_PHYS_M6_6.1": [
+      "EDX_PHYS_S097",
+      "EDX_PHYS_S098",
+      "EDX_PHYS_S099",
+      "EDX_PHYS_S100"
+    ],
+    "EDX_PHYS_M6_6.2": [
+      "EDX_PHYS_S101",
+      "EDX_PHYS_S102"
+    ],
+    "EDX_PHYS_M6_6.3": [
+      "EDX_PHYS_S103",
+      "EDX_PHYS_S104",
+      "EDX_PHYS_S105",
+      "EDX_PHYS_S106",
+      "EDX_PHYS_S107"
+    ],
+    "EDX_PHYS_M7_7.1": [
+      "EDX_PHYS_S108",
+      "EDX_PHYS_S109",
+      "EDX_PHYS_S110",
+      "EDX_PHYS_S111"
+    ],
+    "EDX_PHYS_M7_7.2": [
+      "EDX_PHYS_S112",
+      "EDX_PHYS_S113",
+      "EDX_PHYS_S114",
+      "EDX_PHYS_S115"
+    ],
+    "EDX_PHYS_M7_7.3": [
+      "EDX_PHYS_S116",
+      "EDX_PHYS_S117"
+    ],
+    "EDX_PHYS_M7_7.4": [
+      "EDX_PHYS_S118",
+      "EDX_PHYS_S119",
+      "EDX_PHYS_S120"
+    ],
+    "EDX_PHYS_M7_7.5": [
+      "EDX_PHYS_S121"
+    ],
+    "EDX_PHYS_M7_7.6": [
+      "EDX_PHYS_S122",
+      "EDX_PHYS_S123"
+    ],
+    "EDX_PHYS_M7_7.7": [
+      "EDX_PHYS_S124",
+      "EDX_PHYS_S125",
+      "EDX_PHYS_S126",
+      "EDX_PHYS_S127"
+    ],
+    "EDX_PHYS_M7_7.8": [
+      "EDX_PHYS_S128",
+      "EDX_PHYS_S129"
+    ],
+    "EDX_PHYS_M8_8.1": [
+      "EDX_PHYS_S130",
+      "EDX_PHYS_S131"
+    ],
+    "EDX_PHYS_M8_8.2": [
+      "EDX_PHYS_S132",
+      "EDX_PHYS_S133",
+      "EDX_PHYS_S134",
+      "EDX_PHYS_S135"
+    ],
+    "EDX_PHYS_M8_8.3": [
+      "EDX_PHYS_S136",
+      "EDX_PHYS_S137",
+      "EDX_PHYS_S138",
+      "EDX_PHYS_S139"
+    ],
+    "EDX_PHYS_M8_8.4": [
+      "EDX_PHYS_S140",
+      "EDX_PHYS_S141",
+      "EDX_PHYS_S142",
+      "EDX_PHYS_S143"
+    ],
+    "EDX_PHYS_M9_9.1": [
+      "EDX_PHYS_S144",
+      "EDX_PHYS_S145",
+      "EDX_PHYS_S146"
+    ],
+    "EDX_PHYS_M9_9.2": [
+      "EDX_PHYS_S147",
+      "EDX_PHYS_S148"
+    ],
+    "EDX_PHYS_M9_9.3": [
+      "EDX_PHYS_S149",
+      "EDX_PHYS_S150",
+      "EDX_PHYS_S151",
+      "EDX_PHYS_S152"
+    ],
+    "EDX_PHYS_M10_10.1": [
+      "EDX_PHYS_S153",
+      "EDX_PHYS_S154",
+      "EDX_PHYS_S155"
+    ],
+    "EDX_PHYS_M10_10.2": [
+      "EDX_PHYS_S156",
+      "EDX_PHYS_S158"
+    ],
+    "EDX_PHYS_M10_10.3": [
+      "EDX_PHYS_S157"
+    ],
+    "EDX_PHYS_M10_10.4": [
+      "EDX_PHYS_S159",
+      "EDX_PHYS_S160"
+    ],
+    "EDX_PHYS_M10_10.5": [
+      "EDX_PHYS_S161",
+      "EDX_PHYS_S162",
+      "EDX_PHYS_S163"
+    ],
+    "EDX_PHYS_M11_11.1": [
+      "EDX_PHYS_S164",
+      "EDX_PHYS_S165",
+      "EDX_PHYS_S166",
+      "EDX_PHYS_S167"
+    ],
+    "EDX_PHYS_M11_11.2": [
+      "EDX_PHYS_S168",
+      "EDX_PHYS_S169",
+      "EDX_PHYS_S170",
+      "EDX_PHYS_S171"
+    ],
+    "EDX_PHYS_M11_11.3": [
+      "EDX_PHYS_S172",
+      "EDX_PHYS_S173"
+    ],
+    "EDX_PHYS_M12_12.1": [
+      "EDX_PHYS_S174",
+      "EDX_PHYS_S175",
+      "EDX_PHYS_S176",
+      "EDX_PHYS_S177"
+    ],
+    "EDX_PHYS_M12_12.2": [
+      "EDX_PHYS_S178"
+    ],
+    "EDX_PHYS_M12_12.3": [
+      "EDX_PHYS_S179",
+      "EDX_PHYS_S180"
+    ],
+    "EDX_PHYS_M13_13.1": [
+      "EDX_PHYS_S181"
+    ],
+    "EDX_PHYS_M13_13.2": [
+      "EDX_PHYS_S182",
+      "EDX_PHYS_S183",
+      "EDX_PHYS_S184",
+      "EDX_PHYS_S185"
+    ],
+    "EDX_PHYS_M13_13.3": [
+      "EDX_PHYS_S186",
+      "EDX_PHYS_S187",
+      "EDX_PHYS_S188",
+      "EDX_PHYS_S189",
+      "EDX_PHYS_S190",
+      "EDX_PHYS_S191"
+    ],
+    "EDX_PHYS_M9_9.4": [
+      "EDX_PHYS_S149",
+      "EDX_PHYS_S152"
+    ]
+  },
+  "point_order": [
+    "EDX_PHYS_S001",
+    "EDX_PHYS_S002",
+    "EDX_PHYS_S003",
+    "EDX_PHYS_S004",
+    "EDX_PHYS_S005",
+    "EDX_PHYS_S006",
+    "EDX_PHYS_S007",
+    "EDX_PHYS_S008",
+    "EDX_PHYS_S009",
+    "EDX_PHYS_S010",
+    "EDX_PHYS_S011",
+    "EDX_PHYS_S012",
+    "EDX_PHYS_S013",
+    "EDX_PHYS_S014",
+    "EDX_PHYS_S015",
+    "EDX_PHYS_S016",
+    "EDX_PHYS_S017",
+    "EDX_PHYS_S018",
+    "EDX_PHYS_S019",
+    "EDX_PHYS_S020",
+    "EDX_PHYS_S021",
+    "EDX_PHYS_S022",
+    "EDX_PHYS_S023",
+    "EDX_PHYS_S024",
+    "EDX_PHYS_S025",
+    "EDX_PHYS_S026",
+    "EDX_PHYS_S027",
+    "EDX_PHYS_S028",
+    "EDX_PHYS_S029",
+    "EDX_PHYS_S030",
+    "EDX_PHYS_S031",
+    "EDX_PHYS_S032",
+    "EDX_PHYS_S033",
+    "EDX_PHYS_S034",
+    "EDX_PHYS_S035",
+    "EDX_PHYS_S036",
+    "EDX_PHYS_S037",
+    "EDX_PHYS_S038",
+    "EDX_PHYS_S039",
+    "EDX_PHYS_S040",
+    "EDX_PHYS_S041",
+    "EDX_PHYS_S042",
+    "EDX_PHYS_S043",
+    "EDX_PHYS_S044",
+    "EDX_PHYS_S045",
+    "EDX_PHYS_S046",
+    "EDX_PHYS_S047",
+    "EDX_PHYS_S048",
+    "EDX_PHYS_S049",
+    "EDX_PHYS_S050",
+    "EDX_PHYS_S051",
+    "EDX_PHYS_S052",
+    "EDX_PHYS_S053",
+    "EDX_PHYS_S054",
+    "EDX_PHYS_S055",
+    "EDX_PHYS_S056",
+    "EDX_PHYS_S057",
+    "EDX_PHYS_S058",
+    "EDX_PHYS_S059",
+    "EDX_PHYS_S060",
+    "EDX_PHYS_S061",
+    "EDX_PHYS_S062",
+    "EDX_PHYS_S063",
+    "EDX_PHYS_S064",
+    "EDX_PHYS_S065",
+    "EDX_PHYS_S066",
+    "EDX_PHYS_S067",
+    "EDX_PHYS_S068",
+    "EDX_PHYS_S069",
+    "EDX_PHYS_S070",
+    "EDX_PHYS_S071",
+    "EDX_PHYS_S072",
+    "EDX_PHYS_S073",
+    "EDX_PHYS_S074",
+    "EDX_PHYS_S075",
+    "EDX_PHYS_S076",
+    "EDX_PHYS_S077",
+    "EDX_PHYS_S078",
+    "EDX_PHYS_S079",
+    "EDX_PHYS_S080",
+    "EDX_PHYS_S081",
+    "EDX_PHYS_S082",
+    "EDX_PHYS_S083",
+    "EDX_PHYS_S084",
+    "EDX_PHYS_S085",
+    "EDX_PHYS_S086",
+    "EDX_PHYS_S087",
+    "EDX_PHYS_S088",
+    "EDX_PHYS_S089",
+    "EDX_PHYS_S090",
+    "EDX_PHYS_S091",
+    "EDX_PHYS_S092",
+    "EDX_PHYS_S093",
+    "EDX_PHYS_S094",
+    "EDX_PHYS_S095",
+    "EDX_PHYS_S096",
+    "EDX_PHYS_S097",
+    "EDX_PHYS_S098",
+    "EDX_PHYS_S099",
+    "EDX_PHYS_S100",
+    "EDX_PHYS_S101",
+    "EDX_PHYS_S102",
+    "EDX_PHYS_S103",
+    "EDX_PHYS_S104",
+    "EDX_PHYS_S105",
+    "EDX_PHYS_S106",
+    "EDX_PHYS_S107",
+    "EDX_PHYS_S108",
+    "EDX_PHYS_S109",
+    "EDX_PHYS_S110",
+    "EDX_PHYS_S111",
+    "EDX_PHYS_S112",
+    "EDX_PHYS_S113",
+    "EDX_PHYS_S114",
+    "EDX_PHYS_S115",
+    "EDX_PHYS_S116",
+    "EDX_PHYS_S117",
+    "EDX_PHYS_S118",
+    "EDX_PHYS_S119",
+    "EDX_PHYS_S120",
+    "EDX_PHYS_S121",
+    "EDX_PHYS_S122",
+    "EDX_PHYS_S123",
+    "EDX_PHYS_S124",
+    "EDX_PHYS_S125",
+    "EDX_PHYS_S126",
+    "EDX_PHYS_S127",
+    "EDX_PHYS_S128",
+    "EDX_PHYS_S129",
+    "EDX_PHYS_S130",
+    "EDX_PHYS_S131",
+    "EDX_PHYS_S132",
+    "EDX_PHYS_S133",
+    "EDX_PHYS_S134",
+    "EDX_PHYS_S135",
+    "EDX_PHYS_S136",
+    "EDX_PHYS_S137",
+    "EDX_PHYS_S138",
+    "EDX_PHYS_S139",
+    "EDX_PHYS_S140",
+    "EDX_PHYS_S141",
+    "EDX_PHYS_S142",
+    "EDX_PHYS_S143",
+    "EDX_PHYS_S144",
+    "EDX_PHYS_S145",
+    "EDX_PHYS_S146",
+    "EDX_PHYS_S147",
+    "EDX_PHYS_S148",
+    "EDX_PHYS_S149",
+    "EDX_PHYS_S150",
+    "EDX_PHYS_S151",
+    "EDX_PHYS_S152",
+    "EDX_PHYS_S153",
+    "EDX_PHYS_S154",
+    "EDX_PHYS_S155",
+    "EDX_PHYS_S156",
+    "EDX_PHYS_S157",
+    "EDX_PHYS_S158",
+    "EDX_PHYS_S159",
+    "EDX_PHYS_S160",
+    "EDX_PHYS_S161",
+    "EDX_PHYS_S162",
+    "EDX_PHYS_S163",
+    "EDX_PHYS_S164",
+    "EDX_PHYS_S165",
+    "EDX_PHYS_S166",
+    "EDX_PHYS_S167",
+    "EDX_PHYS_S168",
+    "EDX_PHYS_S169",
+    "EDX_PHYS_S170",
+    "EDX_PHYS_S171",
+    "EDX_PHYS_S172",
+    "EDX_PHYS_S173",
+    "EDX_PHYS_S174",
+    "EDX_PHYS_S175",
+    "EDX_PHYS_S176",
+    "EDX_PHYS_S177",
+    "EDX_PHYS_S178",
+    "EDX_PHYS_S179",
+    "EDX_PHYS_S180",
+    "EDX_PHYS_S181",
+    "EDX_PHYS_S182",
+    "EDX_PHYS_S183",
+    "EDX_PHYS_S184",
+    "EDX_PHYS_S185",
+    "EDX_PHYS_S186",
+    "EDX_PHYS_S187",
+    "EDX_PHYS_S188",
+    "EDX_PHYS_S189",
+    "EDX_PHYS_S190",
+    "EDX_PHYS_S191"
+  ],
   "sections": [
     {
-      "id": "EDX_PHYS_SEC_P1",
-      "title": "Paper 1 topics",
-      "note": "Advanced Physics I",
+      "id": "EDX_PHYS_M1",
+      "code": "Topic 1",
+      "title": "Working as a Physicist",
+      "note": "Year 1 / AS content",
+      "official_reference": {
+        "topic_number": "1",
+        "statements": [
+          "1",
+          "8"
+        ],
+        "printed_pages": [
+          8
+        ]
+      },
       "topics": [
         {
-          "id": "EDX_PHYS_M1",
-          "code": "1",
-          "title": "Working as a Physicist",
-          "kind": "topic",
+          "id": "EDX_PHYS_M1_1.1",
+          "code": "1–3",
+          "title": "Quantities, units and estimation",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M1_1.1","code":"1.1","title":"SI units, base and derived quantities, and estimation"},
-            {"id":"EDX_PHYS_M1_1.2","code":"1.2","title":"Practical skills, uncertainties and errors"},
-            {"id":"EDX_PHYS_M1_1.3","code":"1.3","title":"Applications and implications of science"}
+            {
+              "id": "EDX_PHYS_S001",
+              "code": "1",
+              "title": "Base and derived quantities and their SI units",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-1",
+                "statement": "1",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S003",
+              "code": "3",
+              "title": "Estimating values of physical quantities and using estimates to solve problems",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-3",
+                "statement": "3",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M2",
-          "code": "2",
-          "title": "Mechanics",
-          "kind": "topic",
+          "id": "EDX_PHYS_M1_1.2",
+          "code": "2–4",
+          "title": "Practical skills and limitations of measurement",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M2_2.1","code":"2.1","title":"Equations of motion and motion graphs"},
-            {"id":"EDX_PHYS_M2_2.2","code":"2.2","title":"Scalars and vectors: resolving, combining and projectile motion"},
-            {"id":"EDX_PHYS_M2_2.3","code":"2.3","title":"Free-body diagrams and Newton's laws of motion"},
-            {"id":"EDX_PHYS_M2_2.4","code":"2.4","title":"Momentum and its conservation in one dimension"},
-            {"id":"EDX_PHYS_M2_2.5","code":"2.5","title":"Moments, centre of gravity and equilibrium"},
-            {"id":"EDX_PHYS_M2_2.6","code":"2.6","title":"Work, kinetic and gravitational potential energy; conservation of energy"},
-            {"id":"EDX_PHYS_M2_2.7","code":"2.7","title":"Power and efficiency"}
+            {
+              "id": "EDX_PHYS_S002",
+              "code": "2",
+              "title": "Practical skills and techniques for familiar and unfamiliar experiments",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-2",
+                "statement": "2",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S004",
+              "code": "4",
+              "title": "Limitations of physical measurement (uncertainty) applied to practical situations",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-4",
+                "statement": "4",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M3",
-          "code": "3",
-          "title": "Electric Circuits",
-          "kind": "topic",
+          "id": "EDX_PHYS_M1_1.3",
+          "code": "5–8",
+          "title": "Communication, applications and science in society",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M3_3.1","code":"3.1","title":"Charge, current, potential difference and resistance"},
-            {"id":"EDX_PHYS_M3_3.2","code":"3.2","title":"Ohm's law and I–V characteristics"},
-            {"id":"EDX_PHYS_M3_3.3","code":"3.3","title":"Series and parallel circuits; conservation of charge and energy"},
-            {"id":"EDX_PHYS_M3_3.4","code":"3.4","title":"Resistivity and the transport equation I = nqvA"},
-            {"id":"EDX_PHYS_M3_3.5","code":"3.5","title":"Potential dividers, thermistors and LDRs"},
-            {"id":"EDX_PHYS_M3_3.6","code":"3.6","title":"E.m.f. and internal resistance"},
-            {"id":"EDX_PHYS_M3_3.7","code":"3.7","title":"Electrical power and energy"}
-          ]
-        },
-        {
-          "id": "EDX_PHYS_M6",
-          "code": "6",
-          "title": "Further Mechanics",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_PHYS_M6_6.1","code":"6.1","title":"Impulse and momentum in two dimensions"},
-            {"id":"EDX_PHYS_M6_6.2","code":"6.2","title":"Elastic and inelastic collisions"},
-            {"id":"EDX_PHYS_M6_6.3","code":"6.3","title":"Circular motion: angular velocity and centripetal force"}
-          ]
-        },
-        {
-          "id": "EDX_PHYS_M7",
-          "code": "7",
-          "title": "Electric and Magnetic Fields",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_PHYS_M7_7.1","code":"7.1","title":"Electric fields and Coulomb's law"},
-            {"id":"EDX_PHYS_M7_7.2","code":"7.2","title":"Electric potential and equipotentials"},
-            {"id":"EDX_PHYS_M7_7.3","code":"7.3","title":"Capacitance and energy stored by a capacitor"},
-            {"id":"EDX_PHYS_M7_7.4","code":"7.4","title":"Capacitor charge and discharge; time constant"},
-            {"id":"EDX_PHYS_M7_7.5","code":"7.5","title":"Magnetic flux density, flux and flux linkage"},
-            {"id":"EDX_PHYS_M7_7.6","code":"7.6","title":"Forces on current-carrying conductors and moving charges"},
-            {"id":"EDX_PHYS_M7_7.7","code":"7.7","title":"Electromagnetic induction: Faraday's and Lenz's laws"},
-            {"id":"EDX_PHYS_M7_7.8","code":"7.8","title":"Alternating currents: peak and r.m.s. values"}
-          ]
-        },
-        {
-          "id": "EDX_PHYS_M8",
-          "code": "8",
-          "title": "Nuclear and Particle Physics",
-          "kind": "topic",
-          "points": [
-            {"id":"EDX_PHYS_M8_8.1","code":"8.1","title":"The nuclear model of the atom and alpha scattering"},
-            {"id":"EDX_PHYS_M8_8.2","code":"8.2","title":"Particle accelerators and detectors"},
-            {"id":"EDX_PHYS_M8_8.3","code":"8.3","title":"Mass–energy equivalence and relativistic effects"},
-            {"id":"EDX_PHYS_M8_8.4","code":"8.4","title":"The standard model: quarks, leptons and conservation laws"}
+            {
+              "id": "EDX_PHYS_S005",
+              "code": "5",
+              "title": "Communicating information and ideas using appropriate terminology",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-5",
+                "statement": "5",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S006",
+              "code": "6",
+              "title": "Applications and implications of science; evaluating benefits and risks",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-6",
+                "statement": "6",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S007",
+              "code": "7",
+              "title": "Role of the scientific community in validating new knowledge and ensuring integrity",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-7",
+                "statement": "7",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S008",
+              "code": "8",
+              "title": "How society uses science to inform decision making",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-8",
+                "statement": "8",
+                "topic_number": "1",
+                "source_pages": [
+                  22
+                ],
+                "printed_pages": [
+                  8
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         }
       ]
     },
     {
-      "id": "EDX_PHYS_SEC_P2",
-      "title": "Paper 2 topics",
-      "note": "Advanced Physics II",
+      "id": "EDX_PHYS_M2",
+      "code": "Topic 2",
+      "title": "Mechanics",
+      "note": "Year 1 / AS content",
+      "official_reference": {
+        "topic_number": "2",
+        "statements": [
+          "9",
+          "30"
+        ],
+        "printed_pages": [
+          9,
+          10
+        ]
+      },
       "topics": [
         {
-          "id": "EDX_PHYS_M4",
-          "code": "4",
-          "title": "Materials",
-          "kind": "topic",
+          "id": "EDX_PHYS_M2_2.1",
+          "code": "9–11",
+          "title": "Kinematics: suvat and motion graphs",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M4_4.1","code":"4.1","title":"Density and upthrust"},
-            {"id":"EDX_PHYS_M4_4.2","code":"4.2","title":"Viscous drag, Stokes' law and terminal velocity"},
-            {"id":"EDX_PHYS_M4_4.3","code":"4.3","title":"Hooke's law and elastic strain energy"},
-            {"id":"EDX_PHYS_M4_4.4","code":"4.4","title":"Stress, strain and the Young modulus"}
+            {
+              "id": "EDX_PHYS_S009",
+              "code": "9",
+              "title": "Equations for uniformly accelerated motion in one dimension (suvat)",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-9",
+                "statement": "9",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S010",
+              "code": "10",
+              "title": "Drawing and interpreting displacement–time, velocity–time and acceleration–time graphs",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-10",
+                "statement": "10",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S011",
+              "code": "11",
+              "title": "Quantities from slopes and areas of motion graphs, including non-uniform acceleration",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-11",
+                "statement": "11",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M5",
-          "code": "5",
-          "title": "Waves and the Particle Nature of Light",
-          "kind": "topic",
+          "id": "EDX_PHYS_M2_2.2",
+          "code": "12–15",
+          "title": "Vectors and projectiles",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M5_5.1","code":"5.1","title":"Wave properties and the wave equation"},
-            {"id":"EDX_PHYS_M5_5.2","code":"5.2","title":"Superposition, interference and stationary waves"},
-            {"id":"EDX_PHYS_M5_5.3","code":"5.3","title":"Refraction, Snell's law and total internal reflection"},
-            {"id":"EDX_PHYS_M5_5.4","code":"5.4","title":"Lenses: focal length, power and magnification"},
-            {"id":"EDX_PHYS_M5_5.5","code":"5.5","title":"Polarisation and diffraction; the diffraction grating"},
-            {"id":"EDX_PHYS_M5_5.6","code":"5.6","title":"Wave–particle duality and electron diffraction"},
-            {"id":"EDX_PHYS_M5_5.7","code":"5.7","title":"The photoelectric effect and photons"},
-            {"id":"EDX_PHYS_M5_5.8","code":"5.8","title":"Atomic line spectra and energy levels"}
+            {
+              "id": "EDX_PHYS_S012",
+              "code": "12",
+              "title": "Scalar and vector quantities and vector notation",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-12",
+                "statement": "12",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S013",
+              "code": "13",
+              "title": "Resolving a vector into two perpendicular components",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-13",
+                "statement": "13",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S014",
+              "code": "14",
+              "title": "Resultant of two coplanar vectors (drawing at any angle; calculation at right angles)",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-14",
+                "statement": "14",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S015",
+              "code": "15",
+              "title": "Independence of vertical and horizontal motion of a projectile",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-15",
+                "statement": "15",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M9",
-          "code": "9",
-          "title": "Thermodynamics",
-          "kind": "topic",
+          "id": "EDX_PHYS_M2_2.3",
+          "code": "16–20",
+          "title": "Forces, Newton’s laws, weight and free fall",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M9_9.1","code":"9.1","title":"Specific heat capacity and specific latent heat"},
-            {"id":"EDX_PHYS_M9_9.2","code":"9.2","title":"Internal energy and absolute zero"},
-            {"id":"EDX_PHYS_M9_9.3","code":"9.3","title":"The ideal gas equation"},
-            {"id":"EDX_PHYS_M9_9.4","code":"9.4","title":"Kinetic theory of gases"}
+            {
+              "id": "EDX_PHYS_S016",
+              "code": "16",
+              "title": "Free-body force diagrams for a particle or an extended rigid body",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-16",
+                "statement": "16",
+                "topic_number": "2",
+                "source_pages": [
+                  23
+                ],
+                "printed_pages": [
+                  9
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S017",
+              "code": "17",
+              "title": "ΣF = ma (Newton’s second law) and Newton’s first law; terminal velocity",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-17",
+                "statement": "17",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S018",
+              "code": "18",
+              "title": "Gravitational field strength g = F/m and weight W = mg",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-18",
+                "statement": "18",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S019",
+              "code": "19",
+              "title": "Core practical 1: determine the acceleration of a freely-falling object",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-19",
+                "statement": "19",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S020",
+              "code": "20",
+              "title": "Newton’s third law and the properties of interaction pairs of forces",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-20",
+                "statement": "20",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M10",
-          "code": "10",
-          "title": "Space",
-          "kind": "topic",
+          "id": "EDX_PHYS_M2_2.4",
+          "code": "21–22",
+          "title": "Momentum",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M10_10.1","code":"10.1","title":"Black body radiation: Stefan–Boltzmann and Wien's laws"},
-            {"id":"EDX_PHYS_M10_10.2","code":"10.2","title":"Intensity, luminosity and standard candles"},
-            {"id":"EDX_PHYS_M10_10.3","code":"10.3","title":"Astronomical distances and trigonometric parallax"},
-            {"id":"EDX_PHYS_M10_10.4","code":"10.4","title":"The Hertzsprung–Russell diagram and stellar evolution"},
-            {"id":"EDX_PHYS_M10_10.5","code":"10.5","title":"The Doppler effect, redshift and Hubble's law"}
+            {
+              "id": "EDX_PHYS_S021",
+              "code": "21",
+              "title": "Momentum p = mv",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-21",
+                "statement": "21",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S022",
+              "code": "22",
+              "title": "Conservation of linear momentum in one dimension and its link to Newton’s laws",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-22",
+                "statement": "22",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M11",
-          "code": "11",
-          "title": "Nuclear Radiation",
-          "kind": "topic",
+          "id": "EDX_PHYS_M2_2.5",
+          "code": "23–24",
+          "title": "Moments and equilibrium",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M11_11.1","code":"11.1","title":"Binding energy, fission and fusion"},
-            {"id":"EDX_PHYS_M11_11.2","code":"11.2","title":"Alpha, beta and gamma radiation; background radiation"},
-            {"id":"EDX_PHYS_M11_11.3","code":"11.3","title":"Radioactive decay: activity, decay constant and half-life"}
+            {
+              "id": "EDX_PHYS_S023",
+              "code": "23",
+              "title": "Moment of a force = Fx (perpendicular distance)",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-23",
+                "statement": "23",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S024",
+              "code": "24",
+              "title": "Centre of gravity and the principle of moments for an extended body in equilibrium",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-24",
+                "statement": "24",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M12",
-          "code": "12",
-          "title": "Gravitational Fields",
-          "kind": "topic",
+          "id": "EDX_PHYS_M2_2.6",
+          "code": "25–28",
+          "title": "Work and energy",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M12_12.1","code":"12.1","title":"Gravitational field strength and Newton's law of gravitation"},
-            {"id":"EDX_PHYS_M12_12.2","code":"12.2","title":"Gravitational potential in a radial field"},
-            {"id":"EDX_PHYS_M12_12.3","code":"12.3","title":"Orbital motion; comparing electric and gravitational fields"}
+            {
+              "id": "EDX_PHYS_S025",
+              "code": "25",
+              "title": "Work done ΔW = FΔs, including a force not along the line of motion",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-25",
+                "statement": "25",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S026",
+              "code": "26",
+              "title": "Kinetic energy Ek = ½mv²",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-26",
+                "statement": "26",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S027",
+              "code": "27",
+              "title": "Gravitational potential energy difference ΔEgrav = mgΔh",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-27",
+                "statement": "27",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S028",
+              "code": "28",
+              "title": "Conservation of energy using work done, gravitational potential and kinetic energy",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-28",
+                "statement": "28",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_PHYS_M13",
-          "code": "13",
-          "title": "Oscillations",
-          "kind": "topic",
+          "id": "EDX_PHYS_M2_2.7",
+          "code": "29–30",
+          "title": "Power and efficiency",
+          "kind": "group",
           "points": [
-            {"id":"EDX_PHYS_M13_13.1","code":"13.1","title":"Conditions for simple harmonic motion"},
-            {"id":"EDX_PHYS_M13_13.2","code":"13.2","title":"SHM equations, graphs and energy"},
-            {"id":"EDX_PHYS_M13_13.3","code":"13.3","title":"Free, damped and forced oscillations; resonance"}
+            {
+              "id": "EDX_PHYS_S029",
+              "code": "29",
+              "title": "Power P = E/t and P = W/t",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-29",
+                "statement": "29",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S030",
+              "code": "30",
+              "title": "Efficiency in terms of useful energy output and useful power output",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-30",
+                "statement": "30",
+                "topic_number": "2",
+                "source_pages": [
+                  24
+                ],
+                "printed_pages": [
+                  10
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M3",
+      "code": "Topic 3",
+      "title": "Electric Circuits",
+      "note": "Year 1 / AS content",
+      "official_reference": {
+        "topic_number": "3",
+        "statements": [
+          "31",
+          "48"
+        ],
+        "printed_pages": [
+          11,
+          12
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M3_3.1",
+          "code": "31–33",
+          "title": "Current, potential difference and resistance",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S031",
+              "code": "31",
+              "title": "Current as rate of flow of charged particles, I = ΔQ/Δt",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-31",
+                "statement": "31",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S032",
+              "code": "32",
+              "title": "Potential difference V = W/Q",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-32",
+                "statement": "32",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S033",
+              "code": "33",
+              "title": "Resistance R = V/I; Ohm’s law as the special case I ∝ V at constant temperature",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-33",
+                "statement": "33",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M3_3.3",
+          "code": "34–36",
+          "title": "Series and parallel circuits",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S034",
+              "code": "34",
+              "title": "Distribution of current as a consequence of charge conservation",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-34",
+                "statement": "34",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S035",
+              "code": "35",
+              "title": "Distribution of potential difference as a consequence of energy conservation",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-35",
+                "statement": "35",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S036",
+              "code": "36",
+              "title": "Deriving and using equations for resistors in series and parallel",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-36",
+                "statement": "36",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M3_3.7",
+          "code": "37",
+          "title": "Electrical power and energy",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S037",
+              "code": "37",
+              "title": "Electrical power and energy: P = VI, W = VIt, P = I²R, P = V²/R",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-37",
+                "statement": "37",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M3_3.2",
+          "code": "38",
+          "title": "I–V characteristics",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S038",
+              "code": "38",
+              "title": "Current–potential difference graphs: ohmic conductor, filament bulb, thermistor, diode",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-38",
+                "statement": "38",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M3_3.4",
+          "code": "39–41",
+          "title": "Resistivity and I = nqvA",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S039",
+              "code": "39",
+              "title": "Resistivity, R = ρl/A",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-39",
+                "statement": "39",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S040",
+              "code": "40",
+              "title": "Core practical 2: determine the electrical resistivity of a material",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-40",
+                "statement": "40",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S041",
+              "code": "41",
+              "title": "Using I = nqvA to explain the range of resistivities of materials",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-41",
+                "statement": "41",
+                "topic_number": "3",
+                "source_pages": [
+                  25
+                ],
+                "printed_pages": [
+                  11
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M3_3.5",
+          "code": "42–44",
+          "title": "Potential dividers",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S042",
+              "code": "42",
+              "title": "Variation of potential along a uniform current-carrying wire",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-42",
+                "statement": "42",
+                "topic_number": "3",
+                "source_pages": [
+                  26
+                ],
+                "printed_pages": [
+                  12
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S043",
+              "code": "43",
+              "title": "Principles of a potential divider; calculating potential differences and resistances",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-43",
+                "statement": "43",
+                "topic_number": "3",
+                "source_pages": [
+                  26
+                ],
+                "printed_pages": [
+                  12
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S044",
+              "code": "44",
+              "title": "Potential dividers with a variable resistance, thermistor or LDR",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-44",
+                "statement": "44",
+                "topic_number": "3",
+                "source_pages": [
+                  26
+                ],
+                "printed_pages": [
+                  12
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M3_3.6",
+          "code": "45–46",
+          "title": "E.m.f. and internal resistance",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S045",
+              "code": "45",
+              "title": "E.m.f., internal resistance and terminal potential difference",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-45",
+                "statement": "45",
+                "topic_number": "3",
+                "source_pages": [
+                  26
+                ],
+                "printed_pages": [
+                  12
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S046",
+              "code": "46",
+              "title": "Core practical 3: determine the e.m.f. and internal resistance of an electrical cell",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-46",
+                "statement": "46",
+                "topic_number": "3",
+                "source_pages": [
+                  26
+                ],
+                "printed_pages": [
+                  12
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M3_3.8",
+          "code": "47–48",
+          "title": "Resistance, temperature and illumination",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S047",
+              "code": "47",
+              "title": "Resistance change with temperature: lattice vibrations, conduction electrons, metals and NTC thermistors",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-47",
+                "statement": "47",
+                "topic_number": "3",
+                "source_pages": [
+                  26
+                ],
+                "printed_pages": [
+                  12
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S048",
+              "code": "48",
+              "title": "Resistance change with illumination in terms of conduction electrons (LDRs)",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-48",
+                "statement": "48",
+                "topic_number": "3",
+                "source_pages": [
+                  26
+                ],
+                "printed_pages": [
+                  12
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M4",
+      "code": "Topic 4",
+      "title": "Materials",
+      "note": "Year 1 / AS content",
+      "official_reference": {
+        "topic_number": "4",
+        "statements": [
+          "49",
+          "58"
+        ],
+        "printed_pages": [
+          13
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M4_4.1",
+          "code": "49–50",
+          "title": "Density and upthrust",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S049",
+              "code": "49",
+              "title": "Density ρ = m/V",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-49",
+                "statement": "49",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S050",
+              "code": "50",
+              "title": "Upthrust = weight of fluid displaced",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-50",
+                "statement": "50",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M4_4.2",
+          "code": "51–52",
+          "title": "Viscosity and Stokes’ law",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S051",
+              "code": "51",
+              "title": "Viscous drag F = 6πηrv (Stokes’ law), its conditions and temperature dependence of viscosity",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-51",
+                "statement": "51",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S052",
+              "code": "52",
+              "title": "Core practical 4: falling-ball method to determine the viscosity of a liquid",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-52",
+                "statement": "52",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M4_4.3",
+          "code": "53",
+          "title": "Hooke’s law",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S053",
+              "code": "53",
+              "title": "Hooke’s law ΔF = kΔx and stiffness",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-53",
+                "statement": "53",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M4_4.4",
+          "code": "54–57",
+          "title": "Stress, strain and the Young modulus",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S054",
+              "code": "54",
+              "title": "Stress, strain and the Young modulus (tensile or compressive)",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-54",
+                "statement": "54",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S055",
+              "code": "55",
+              "title": "Force–extension and force–compression graphs; limit of proportionality, elastic limit, yield point, elastic and plastic deformation",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-55",
+                "statement": "55",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S056",
+              "code": "56",
+              "title": "Stress–strain graphs and breaking stress",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-56",
+                "statement": "56",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S057",
+              "code": "57",
+              "title": "Core practical 5: determine the Young modulus of a material",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-57",
+                "statement": "57",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M4_4.5",
+          "code": "58",
+          "title": "Elastic strain energy",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S058",
+              "code": "58",
+              "title": "Elastic strain energy ΔEel = ½FΔx and from the area under a force–extension graph",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-58",
+                "statement": "58",
+                "topic_number": "4",
+                "source_pages": [
+                  27
+                ],
+                "printed_pages": [
+                  13
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M5",
+      "code": "Topic 5",
+      "title": "Waves and Particle Nature of Light",
+      "note": "Year 1 / AS content",
+      "official_reference": {
+        "topic_number": "5",
+        "statements": [
+          "59",
+          "96"
+        ],
+        "printed_pages": [
+          14,
+          15,
+          16
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M5_5.1",
+          "code": "59–64",
+          "title": "Wave properties",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S059",
+              "code": "59",
+              "title": "Amplitude, frequency, period, speed and wavelength",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-59",
+                "statement": "59",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S060",
+              "code": "60",
+              "title": "The wave equation v = fλ",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-60",
+                "statement": "60",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S061",
+              "code": "61",
+              "title": "Longitudinal waves: pressure variation and displacement of molecules",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-61",
+                "statement": "61",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S062",
+              "code": "62",
+              "title": "Transverse waves",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-62",
+                "statement": "62",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S063",
+              "code": "63",
+              "title": "Graphs representing transverse, longitudinal and stationary waves",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-63",
+                "statement": "63",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S064",
+              "code": "64",
+              "title": "Core practical 6: speed of sound in air using a two-beam oscilloscope",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-64",
+                "statement": "64",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.2",
+          "code": "65–70",
+          "title": "Superposition, stationary waves and intensity",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S065",
+              "code": "65",
+              "title": "Wavefront, coherence, path difference, superposition, interference and phase",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-65",
+                "statement": "65",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S066",
+              "code": "66",
+              "title": "Relationship between phase difference and path difference",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-66",
+                "statement": "66",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S067",
+              "code": "67",
+              "title": "Formation of stationary waves; nodes and antinodes",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-67",
+                "statement": "67",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S068",
+              "code": "68",
+              "title": "Speed of a transverse wave on a string v = √(T/μ)",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-68",
+                "statement": "68",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S069",
+              "code": "69",
+              "title": "Core practical 7: effects of length, tension and mass per unit length on the frequency of a vibrating string",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-69",
+                "statement": "69",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S070",
+              "code": "70",
+              "title": "Intensity of radiation I = P/A",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-70",
+                "statement": "70",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.3",
+          "code": "71–74",
+          "title": "Refraction and total internal reflection",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S071",
+              "code": "71",
+              "title": "Refraction: n₁sinθ₁ = n₂sinθ₂ and refractive index n = c/v",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-71",
+                "statement": "71",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S072",
+              "code": "72",
+              "title": "Critical angle sin C = 1/n",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-72",
+                "statement": "72",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S073",
+              "code": "73",
+              "title": "Predicting whether total internal reflection occurs at an interface",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-73",
+                "statement": "73",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S074",
+              "code": "74",
+              "title": "Measuring the refractive index of a solid material",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-74",
+                "statement": "74",
+                "topic_number": "5",
+                "source_pages": [
+                  28
+                ],
+                "printed_pages": [
+                  14
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.4",
+          "code": "75–81",
+          "title": "Lenses",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S075",
+              "code": "75",
+              "title": "Focal length of converging and diverging lenses",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-75",
+                "statement": "75",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S076",
+              "code": "76",
+              "title": "Ray diagrams through a lens to locate an image",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-76",
+                "statement": "76",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S077",
+              "code": "77",
+              "title": "Power of a lens P = 1/f",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-77",
+                "statement": "77",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S078",
+              "code": "78",
+              "title": "Thin lenses in combination P = P₁ + P₂ + P₃ + …",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-78",
+                "statement": "78",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S079",
+              "code": "79",
+              "title": "Real and virtual images",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-79",
+                "statement": "79",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S080",
+              "code": "80",
+              "title": "Thin lens equation 1/u + 1/v = 1/f (real is positive)",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-80",
+                "statement": "80",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S081",
+              "code": "81",
+              "title": "Magnification = image height/object height = v/u",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-81",
+                "statement": "81",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.5",
+          "code": "82–85",
+          "title": "Polarisation, diffraction and gratings",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S082",
+              "code": "82",
+              "title": "Plane polarisation",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-82",
+                "statement": "82",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S083",
+              "code": "83",
+              "title": "Diffraction and Huygens’ construction at a slit or obstacle",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-83",
+                "statement": "83",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S084",
+              "code": "84",
+              "title": "Diffraction grating nλ = d sinθ",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-84",
+                "statement": "84",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S085",
+              "code": "85",
+              "title": "Core practical 8: wavelength of light using a diffraction grating",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-85",
+                "statement": "85",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.6",
+          "code": "86–87",
+          "title": "Electron diffraction and de Broglie",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S086",
+              "code": "86",
+              "title": "Electron diffraction as evidence for the wave nature of electrons",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-86",
+                "statement": "86",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S087",
+              "code": "87",
+              "title": "de Broglie equation λ = h/p",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-87",
+                "statement": "87",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.9",
+          "code": "88–89",
+          "title": "Reflection at interfaces and pulse–echo",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S088",
+              "code": "88",
+              "title": "Transmission and reflection of waves at an interface between media",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-88",
+                "statement": "88",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S089",
+              "code": "89",
+              "title": "Pulse–echo techniques and limits set by wavelength and pulse duration",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-89",
+                "statement": "89",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.7",
+          "code": "90–95",
+          "title": "Photons and the photoelectric effect",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S090",
+              "code": "90",
+              "title": "Wave and photon models of electromagnetic radiation and how they developed",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-90",
+                "statement": "90",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S091",
+              "code": "91",
+              "title": "Photon energy E = hf",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-91",
+                "statement": "91",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S092",
+              "code": "92",
+              "title": "Absorption of a photon can emit a photoelectron",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-92",
+                "statement": "92",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S093",
+              "code": "93",
+              "title": "Threshold frequency, work function and hf = φ + ½mv²max",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-93",
+                "statement": "93",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S094",
+              "code": "94",
+              "title": "The electronvolt (eV) for small energies",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-94",
+                "statement": "94",
+                "topic_number": "5",
+                "source_pages": [
+                  29
+                ],
+                "printed_pages": [
+                  15
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S095",
+              "code": "95",
+              "title": "The photoelectric effect as evidence for the particle nature of electromagnetic radiation",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-95",
+                "statement": "95",
+                "topic_number": "5",
+                "source_pages": [
+                  30
+                ],
+                "printed_pages": [
+                  16
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M5_5.8",
+          "code": "96",
+          "title": "Line spectra and energy levels",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S096",
+              "code": "96",
+              "title": "Atomic line spectra and transitions between discrete energy levels",
+              "introduced_year": 12,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-96",
+                "statement": "96",
+                "topic_number": "5",
+                "source_pages": [
+                  30
+                ],
+                "printed_pages": [
+                  16
+                ],
+                "qualifications": [
+                  "9PH0",
+                  "8PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M6",
+      "code": "Topic 6",
+      "title": "Further Mechanics",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "6",
+        "statements": [
+          "97",
+          "107"
+        ],
+        "printed_pages": [
+          17
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M6_6.1",
+          "code": "97–100",
+          "title": "Impulse and momentum in two dimensions",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S097",
+              "code": "97",
+              "title": "Impulse = FΔt = Δp (Newton’s second law)",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-97",
+                "statement": "97",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S098",
+              "code": "98",
+              "title": "Core practical 9: force exerted on an object and its change of momentum",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-98",
+                "statement": "98",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S099",
+              "code": "99",
+              "title": "Conservation of linear momentum in two dimensions",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-99",
+                "statement": "99",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S100",
+              "code": "100",
+              "title": "Core practical 10: use ICT to analyse collisions between small spheres",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-100",
+                "statement": "100",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M6_6.2",
+          "code": "101–102",
+          "title": "Elastic and inelastic collisions",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S101",
+              "code": "101",
+              "title": "Determining whether a collision is elastic or inelastic",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-101",
+                "statement": "101",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S102",
+              "code": "102",
+              "title": "Kinetic energy of a non-relativistic particle Ek = p²/2m",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-102",
+                "statement": "102",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M6_6.3",
+          "code": "103–107",
+          "title": "Circular motion",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S103",
+              "code": "103",
+              "title": "Angular displacement in radians and degrees",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-103",
+                "statement": "103",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S104",
+              "code": "104",
+              "title": "Angular velocity: v = ωr and T = 2π/ω",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-104",
+                "statement": "104",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S105",
+              "code": "105",
+              "title": "Centripetal acceleration a = v²/r = rω²",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-105",
+                "statement": "105",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S106",
+              "code": "106",
+              "title": "A resultant (centripetal) force is required for circular motion",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-106",
+                "statement": "106",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S107",
+              "code": "107",
+              "title": "Centripetal force F = mv²/r = mrω²",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-107",
+                "statement": "107",
+                "topic_number": "6",
+                "source_pages": [
+                  31
+                ],
+                "printed_pages": [
+                  17
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M7",
+      "code": "Topic 7",
+      "title": "Electric and Magnetic Fields",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "7",
+        "statements": [
+          "108",
+          "129"
+        ],
+        "printed_pages": [
+          18,
+          19
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M7_7.1",
+          "code": "108–111",
+          "title": "Electric fields and Coulomb’s law",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S108",
+              "code": "108",
+              "title": "An electric field as a region where a charged particle experiences a force",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-108",
+                "statement": "108",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S109",
+              "code": "109",
+              "title": "Electric field strength E = F/Q",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-109",
+                "statement": "109",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S110",
+              "code": "110",
+              "title": "Coulomb’s law F = Q₁Q₂/4πε₀r²",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-110",
+                "statement": "110",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S111",
+              "code": "111",
+              "title": "Field of a point charge E = Q/4πε₀r²",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-111",
+                "statement": "111",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M7_7.2",
+          "code": "112–115",
+          "title": "Electric potential and equipotentials",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S112",
+              "code": "112",
+              "title": "Relation between electric field and electric potential",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-112",
+                "statement": "112",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S113",
+              "code": "113",
+              "title": "Uniform field between parallel plates E = V/d",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-113",
+                "statement": "113",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S114",
+              "code": "114",
+              "title": "Potential in a radial field V = Q/4πε₀r",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-114",
+                "statement": "114",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S115",
+              "code": "115",
+              "title": "Field lines and equipotentials for radial and uniform electric fields",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-115",
+                "statement": "115",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M7_7.3",
+          "code": "116–117",
+          "title": "Capacitance and stored energy",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S116",
+              "code": "116",
+              "title": "Capacitance C = Q/V",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-116",
+                "statement": "116",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S117",
+              "code": "117",
+              "title": "Energy stored by a capacitor W = ½QV = ½CV² = ½Q²/C",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-117",
+                "statement": "117",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M7_7.4",
+          "code": "118–120",
+          "title": "Capacitor charge and discharge",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S118",
+              "code": "118",
+              "title": "Charge and discharge curves for RC circuits; the time constant RC",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-118",
+                "statement": "118",
+                "topic_number": "7",
+                "source_pages": [
+                  32
+                ],
+                "printed_pages": [
+                  18
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S119",
+              "code": "119",
+              "title": "Core practical 11: oscilloscope or data logger analysis of capacitor charge and discharge",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-119",
+                "statement": "119",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S120",
+              "code": "120",
+              "title": "Exponential discharge Q = Q₀e^(−t/RC), I and V forms and log equations",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-120",
+                "statement": "120",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M7_7.5",
+          "code": "121",
+          "title": "Magnetic flux and flux linkage",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S121",
+              "code": "121",
+              "title": "Magnetic flux density B, flux φ and flux linkage Nφ",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-121",
+                "statement": "121",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M7_7.6",
+          "code": "122–123",
+          "title": "Magnetic forces",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S122",
+              "code": "122",
+              "title": "F = Bqv sinθ and Fleming’s left-hand rule for moving charges",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-122",
+                "statement": "122",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S123",
+              "code": "123",
+              "title": "F = BIl sinθ and Fleming’s left-hand rule for current-carrying conductors",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-123",
+                "statement": "123",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M7_7.7",
+          "code": "124–127",
+          "title": "Electromagnetic induction",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S124",
+              "code": "124",
+              "title": "Factors affecting e.m.f. induced by relative motion of a coil and magnet",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-124",
+                "statement": "124",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S125",
+              "code": "125",
+              "title": "Factors affecting e.m.f. induced by a changing current in a linked coil",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-125",
+                "statement": "125",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S126",
+              "code": "126",
+              "title": "Lenz’s law: direction of induced e.m.f. and energy conservation",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-126",
+                "statement": "126",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S127",
+              "code": "127",
+              "title": "Faraday’s law: magnitude of induced e.m.f., ε = −d(Nφ)/dt",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-127",
+                "statement": "127",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M7_7.8",
+          "code": "128–129",
+          "title": "Alternating current",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S128",
+              "code": "128",
+              "title": "Frequency, period, peak and root-mean-square values of alternating current and p.d.",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-128",
+                "statement": "128",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S129",
+              "code": "129",
+              "title": "Vrms = V₀/√2 and Irms = I₀/√2",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-129",
+                "statement": "129",
+                "topic_number": "7",
+                "source_pages": [
+                  33
+                ],
+                "printed_pages": [
+                  19
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M8",
+      "code": "Topic 8",
+      "title": "Nuclear and Particle Physics",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "8",
+        "statements": [
+          "130",
+          "143"
+        ],
+        "printed_pages": [
+          20
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M8_8.1",
+          "code": "130–131",
+          "title": "The nuclear atom",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S130",
+              "code": "130",
+              "title": "Nucleon (mass) number and proton (atomic) number",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-130",
+                "statement": "130",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S131",
+              "code": "131",
+              "title": "Alpha-particle scattering as evidence for the nuclear model; changing models of the atom",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-131",
+                "statement": "131",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M8_8.2",
+          "code": "132–135",
+          "title": "Accelerators, detectors and particle tracks",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S132",
+              "code": "132",
+              "title": "Thermionic emission and accelerating electrons with electric and magnetic fields",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-132",
+                "statement": "132",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S133",
+              "code": "133",
+              "title": "Fields in particle accelerators (linac, cyclotron) and detectors",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-133",
+                "statement": "133",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S134",
+              "code": "134",
+              "title": "Radius of a charged particle’s path r = p/BQ",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-134",
+                "statement": "134",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S135",
+              "code": "135",
+              "title": "Conservation of charge, energy and momentum in particle interactions; particle tracks",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-135",
+                "statement": "135",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M8_8.3",
+          "code": "136–139",
+          "title": "High energies, mass–energy and relativistic effects",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S136",
+              "code": "136",
+              "title": "Why high energies are needed to investigate the structure of nucleons",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-136",
+                "statement": "136",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S137",
+              "code": "137",
+              "title": "ΔE = c²Δm for creation and annihilation of matter and antimatter",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-137",
+                "statement": "137",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S138",
+              "code": "138",
+              "title": "MeV, GeV, MeV/c² and GeV/c² and conversion to SI units",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-138",
+                "statement": "138",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S139",
+              "code": "139",
+              "title": "Situations where relativistic increase in particle lifetime is significant",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-139",
+                "statement": "139",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M8_8.4",
+          "code": "140–143",
+          "title": "The standard model and particle equations",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S140",
+              "code": "140",
+              "title": "Standard quark–lepton model: baryons, mesons, leptons, photons; prediction of the top quark",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-140",
+                "statement": "140",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S141",
+              "code": "141",
+              "title": "Particles and antiparticles and their properties",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-141",
+                "statement": "141",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S142",
+              "code": "142",
+              "title": "Conservation of charge, baryon number and lepton number in particle interactions",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-142",
+                "statement": "142",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S143",
+              "code": "143",
+              "title": "Writing and interpreting particle equations",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-143",
+                "statement": "143",
+                "topic_number": "8",
+                "source_pages": [
+                  34
+                ],
+                "printed_pages": [
+                  20
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M9",
+      "code": "Topic 9",
+      "title": "Thermodynamics",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "9",
+        "statements": [
+          "144",
+          "155"
+        ],
+        "printed_pages": [
+          21
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M9_9.1",
+          "code": "144–146",
+          "title": "Specific heat capacity and latent heat",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S144",
+              "code": "144",
+              "title": "Specific heat capacity ΔE = mcΔθ and specific latent heat ΔE = LΔm",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-144",
+                "statement": "144",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S145",
+              "code": "145",
+              "title": "Core practical 12: calibrate a thermistor in a potential divider circuit as a thermostat",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-145",
+                "statement": "145",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S146",
+              "code": "146",
+              "title": "Core practical 13: determine the specific latent heat of a phase change",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-146",
+                "statement": "146",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M9_9.2",
+          "code": "147–148",
+          "title": "Internal energy and absolute zero",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S147",
+              "code": "147",
+              "title": "Internal energy as the random distribution of molecular potential and kinetic energy",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-147",
+                "statement": "147",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S148",
+              "code": "148",
+              "title": "Absolute zero and average molecular kinetic energy related to absolute temperature",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-148",
+                "statement": "148",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M9_9.3",
+          "code": "149–152",
+          "title": "Kinetic theory and ideal gases",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S149",
+              "code": "149",
+              "title": "Kinetic theory: deriving and using pV = ⅓Nm⟨c²⟩",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-149",
+                "statement": "149",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S150",
+              "code": "150",
+              "title": "Ideal gas equation pV = NkT",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-150",
+                "statement": "150",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S151",
+              "code": "151",
+              "title": "Core practical 14: pressure and volume of a gas at fixed temperature",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-151",
+                "statement": "151",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S152",
+              "code": "152",
+              "title": "½m⟨c²⟩ = 3/2 kT",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-152",
+                "statement": "152",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M10_10.1",
+          "code": "153–155",
+          "title": "Black body radiation",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S153",
+              "code": "153",
+              "title": "Black body radiators and interpreting radiation curves",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-153",
+                "statement": "153",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S154",
+              "code": "154",
+              "title": "Stefan–Boltzmann law L = σAT⁴",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-154",
+                "statement": "154",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S155",
+              "code": "155",
+              "title": "Wien’s law λmaxT = 2.898 × 10⁻³ m K",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-155",
+                "statement": "155",
+                "topic_number": "9",
+                "source_pages": [
+                  35
+                ],
+                "printed_pages": [
+                  21
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M10",
+      "code": "Topic 10",
+      "title": "Space",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "10",
+        "statements": [
+          "156",
+          "163"
+        ],
+        "printed_pages": [
+          22
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M10_10.2",
+          "code": "156–158",
+          "title": "Luminosity, intensity and standard candles",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S156",
+              "code": "156",
+              "title": "Intensity I = L/4πd² in terms of luminosity",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-156",
+                "statement": "156",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S158",
+              "code": "158",
+              "title": "Astronomical distance using standard candles",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-158",
+                "statement": "158",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M10_10.3",
+          "code": "157",
+          "title": "Trigonometric parallax",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S157",
+              "code": "157",
+              "title": "Astronomical distance by trigonometric parallax",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-157",
+                "statement": "157",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M10_10.4",
+          "code": "159–160",
+          "title": "Hertzsprung–Russell diagram and stellar evolution",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S159",
+              "code": "159",
+              "title": "Sketching and interpreting a simple Hertzsprung–Russell diagram",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-159",
+                "statement": "159",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S160",
+              "code": "160",
+              "title": "Relating the Hertzsprung–Russell diagram to the life cycle of stars",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-160",
+                "statement": "160",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M10_10.5",
+          "code": "161–163",
+          "title": "Doppler effect, redshift and cosmology",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S161",
+              "code": "161",
+              "title": "The Doppler effect for a moving source",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-161",
+                "statement": "161",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S162",
+              "code": "162",
+              "title": "Redshift z = Δλ/λ ≈ Δf/f ≈ v/c and Hubble’s law v = H₀d",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-162",
+                "statement": "162",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S163",
+              "code": "163",
+              "title": "Controversy over the age and fate of the universe, the Hubble constant and dark matter",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-163",
+                "statement": "163",
+                "topic_number": "10",
+                "source_pages": [
+                  36
+                ],
+                "printed_pages": [
+                  22
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M11",
+      "code": "Topic 11",
+      "title": "Nuclear Radiation",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "11",
+        "statements": [
+          "164",
+          "173"
+        ],
+        "printed_pages": [
+          23
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M11_11.1",
+          "code": "164–167",
+          "title": "Binding energy, fission and fusion",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S164",
+              "code": "164",
+              "title": "Nuclear binding energy and ΔE = c²Δm, including mass deficit",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-164",
+                "statement": "164",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S165",
+              "code": "165",
+              "title": "The atomic mass unit (u) and conversion to SI units",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-165",
+                "statement": "165",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S166",
+              "code": "166",
+              "title": "Fusion and fission and the binding energy per nucleon curve",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-166",
+                "statement": "166",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S167",
+              "code": "167",
+              "title": "Mechanism of nuclear fusion; need for very high densities and temperatures",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-167",
+                "statement": "167",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M11_11.2",
+          "code": "168–171",
+          "title": "Nuclear radiations",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S168",
+              "code": "168",
+              "title": "Background radiation and allowing for it in calculations",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-168",
+                "statement": "168",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S169",
+              "code": "169",
+              "title": "Nature, penetration, ionising ability and range of alpha, beta and gamma radiation",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-169",
+                "statement": "169",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S170",
+              "code": "170",
+              "title": "Writing and interpreting nuclear equations",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-170",
+                "statement": "170",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S171",
+              "code": "171",
+              "title": "Core practical 15: absorption of gamma radiation by lead",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-171",
+                "statement": "171",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M11_11.3",
+          "code": "172–173",
+          "title": "Radioactive decay",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S172",
+              "code": "172",
+              "title": "Spontaneous and random nature of nuclear decay",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-172",
+                "statement": "172",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S173",
+              "code": "173",
+              "title": "Half-life and decay equations A = λN, dN/dt = −λN, N = N₀e^(−λt) and log forms",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-173",
+                "statement": "173",
+                "topic_number": "11",
+                "source_pages": [
+                  37
+                ],
+                "printed_pages": [
+                  23
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M12",
+      "code": "Topic 12",
+      "title": "Gravitational Fields",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "12",
+        "statements": [
+          "174",
+          "180"
+        ],
+        "printed_pages": [
+          24
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M12_12.1",
+          "code": "174–177",
+          "title": "Gravitational fields and Newton’s law of gravitation",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S174",
+              "code": "174",
+              "title": "A gravitational field as a region where a mass experiences a force",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-174",
+                "statement": "174",
+                "topic_number": "12",
+                "source_pages": [
+                  38
+                ],
+                "printed_pages": [
+                  24
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S175",
+              "code": "175",
+              "title": "Gravitational field strength g = F/m",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-175",
+                "statement": "175",
+                "topic_number": "12",
+                "source_pages": [
+                  38
+                ],
+                "printed_pages": [
+                  24
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S176",
+              "code": "176",
+              "title": "Newton’s law of universal gravitation F = Gm₁m₂/r²",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-176",
+                "statement": "176",
+                "topic_number": "12",
+                "source_pages": [
+                  38
+                ],
+                "printed_pages": [
+                  24
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S177",
+              "code": "177",
+              "title": "Field of a point mass g = Gm/r²",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-177",
+                "statement": "177",
+                "topic_number": "12",
+                "source_pages": [
+                  38
+                ],
+                "printed_pages": [
+                  24
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M12_12.2",
+          "code": "178",
+          "title": "Gravitational potential",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S178",
+              "code": "178",
+              "title": "Gravitational potential in a radial field Vgrav = −Gm/r",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-178",
+                "statement": "178",
+                "topic_number": "12",
+                "source_pages": [
+                  38
+                ],
+                "printed_pages": [
+                  24
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M12_12.3",
+          "code": "179–180",
+          "title": "Comparing fields and orbits",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S179",
+              "code": "179",
+              "title": "Comparing electric fields with gravitational fields",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-179",
+                "statement": "179",
+                "topic_number": "12",
+                "source_pages": [
+                  38
+                ],
+                "printed_pages": [
+                  24
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S180",
+              "code": "180",
+              "title": "Newton’s laws of motion and gravitation applied to orbital motion",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-180",
+                "statement": "180",
+                "topic_number": "12",
+                "source_pages": [
+                  38
+                ],
+                "printed_pages": [
+                  24
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_PHYS_M13",
+      "code": "Topic 13",
+      "title": "Oscillations",
+      "note": "Year 2 A level content",
+      "official_reference": {
+        "topic_number": "13",
+        "statements": [
+          "181",
+          "191"
+        ],
+        "printed_pages": [
+          25
+        ]
+      },
+      "topics": [
+        {
+          "id": "EDX_PHYS_M13_13.1",
+          "code": "181",
+          "title": "Conditions for SHM",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S181",
+              "code": "181",
+              "title": "Condition for simple harmonic motion F = −kx",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-181",
+                "statement": "181",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M13_13.2",
+          "code": "182–185",
+          "title": "SHM equations and graphs",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S182",
+              "code": "182",
+              "title": "SHM equations a = −ω²x, x = A cos ωt, v = −Aω sin ωt, T = 1/f = 2π/ω",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-182",
+                "statement": "182",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S183",
+              "code": "183",
+              "title": "Periods of a mass–spring system T = 2π√(m/k) and a simple pendulum T = 2π√(l/g)",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-183",
+                "statement": "183",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S184",
+              "code": "184",
+              "title": "Displacement–time graphs for oscillations; gradient gives velocity",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-184",
+                "statement": "184",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S185",
+              "code": "185",
+              "title": "Velocity–time graphs for oscillations; gradient gives acceleration",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-185",
+                "statement": "185",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_PHYS_M13_13.3",
+          "code": "186–191",
+          "title": "Resonance, damping and energy",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_PHYS_S186",
+              "code": "186",
+              "title": "Resonance",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-186",
+                "statement": "186",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S187",
+              "code": "187",
+              "title": "Core practical 16: determine an unknown mass using resonant frequencies of known masses",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-187",
+                "statement": "187",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ],
+                "core_practical": true
+              }
+            },
+            {
+              "id": "EDX_PHYS_S188",
+              "code": "188",
+              "title": "Conservation of energy in damped and undamped oscillating systems",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-188",
+                "statement": "188",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S189",
+              "code": "189",
+              "title": "Free and forced oscillations",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-189",
+                "statement": "189",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S190",
+              "code": "190",
+              "title": "Amplitude of forced oscillations near the natural frequency; effect of damping on resonance",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-190",
+                "statement": "190",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            },
+            {
+              "id": "EDX_PHYS_S191",
+              "code": "191",
+              "title": "Damping and plastic deformation of ductile materials reduce amplitude",
+              "introduced_year": 13,
+              "official_reference": {
+                "reference_id": "9PH0-ISSUE3-191",
+                "statement": "191",
+                "topic_number": "13",
+                "source_pages": [
+                  39
+                ],
+                "printed_pages": [
+                  25
+                ],
+                "qualifications": [
+                  "9PH0"
+                ]
+              }
+            }
           ]
         }
       ]
