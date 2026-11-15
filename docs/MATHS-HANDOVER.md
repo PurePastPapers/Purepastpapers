@@ -156,8 +156,8 @@ and updates immutable identities and coverage. It refuses partial completion.
   Reports and visual evidence stay in the private research workspace.
 
 The earlier partial36-booklet/639-unit release was f36ebfff733a2625020fdc9130ac437121a53956.
-This commit supersedes it with the full60-source release and corrected image
-catalogues. GitHub Pages deploys main automatically; confirm its latest run and
+Release a457592481486e567e83c136ad3d52bd7035143e supersedes it with the
+full60-source release and corrected image catalogues. GitHub Pages deploys main automatically; confirm its latest run and
 live index/catalogue after each publication. Site domain is purepastpapers.com.
 
 Shell fetch works here but shell push has no credentials. Publishing uses the
@@ -165,3 +165,17 @@ connected GitHub create_blob/create_tree/create_commit tools, then update_ref
 with expected_sha (never force). Compare the remote tree with the committed
 local tree before advancing main. Store upload SHA ledgers privately so a new
 agent can resume. Fetch and align local history only after exact tree comparison.
+
+### Deployed release verification
+
+Release `a457592481486e567e83c136ad3d52bd7035143e` was published to main.
+GitHub Pages run43755785393 completed successfully. The live HTTP index contains
+60 packs; live coverage.json, corrected sample01 image catalogue and a newly
+added AS2021 source pack match local release SHA256 bytes. Local and remote Git
+trees were matched before publication; local history is aligned with main.
+
+The real-bank and filter browser checks passed locally. A direct isolated Chrome
+check of the production HTTP origin was blocked by the client. HTTPS still
+fails certificate hostname verification for purepastpapers.com. This is a
+separate existing domain/hosting issue; no DNS or TLS configuration was changed
+by the Maths import. Do not claim production HTTPS/browser verification passed.
