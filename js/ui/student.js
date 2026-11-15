@@ -1,6 +1,7 @@
 // Helpers shared by the signed-in views: load a student's subjects with their content,
 // summarise progress per subject, and start practice sessions.
 
+import { SOURCE_BANKS } from '../config/app.config.js';
 import { enabledSourceTypes } from '../config/phases.js';
 import { html, on, setHtml } from '../core/dom.js';
 import * as api from '../data/api.js';
@@ -34,8 +35,8 @@ export function practicePool(bundle) {
   // An assessable parent and its assessable children represent overlapping content.
   // Prefer the independently answerable parts; parent-only legacy questions remain.
   const parents = new Set(available.map((question) => question.parent_question_id).filter(Boolean));
-  const hasRealMaths = bundle.subject.subject_id === 'EDX_ALEVEL_MATH_9MA0' && available.some(question => !question.is_sample && question.provenance?.review_status === 'model_reviewed');
-  return available.filter((question) => !parents.has(question.question_id) && !(hasRealMaths && question.is_sample));
+  const hasRealBank = Boolean(SOURCE_BANKS[bundle.subject.subject_id]) && available.some(question => !question.is_sample && question.provenance?.review_status === 'model_reviewed');
+  return available.filter((question) => !parents.has(question.question_id) && !(hasRealBank && question.is_sample));
 }
 
 export function subjectSummary(bundle, { progress, latest, learned }) {

@@ -7,7 +7,7 @@
 // Swapping this module for one that calls a real database is the only change needed to move
 // content server-side.
 
-import { APP, CONTENT } from '../config/app.config.js';
+import { APP, CONTENT, SOURCE_BANKS } from '../config/app.config.js';
 import { naturalCompare } from '../core/utils.js';
 import { createSpecIndex } from '../engine/spec-index.js';
 import { createCurriculumMap } from '../engine/curriculum-map.js';
@@ -186,12 +186,12 @@ async function loadBundle(subjectId) {
   }
   await Promise.all([...foreignSubjects].map((id) => ensureSpec(id).catch(() => null)));
 
-  const hasReviewedMaths = subjectId === 'EDX_ALEVEL_MATH_9MA0' &&
+  const hasReviewedBank = Boolean(SOURCE_BANKS[subjectId]) &&
     questions.some(question => question.provenance?.review_status === 'model_reviewed');
   // Authenticated source booklets supersede generated catalogue placeholders.
   // Keep the original lookup records so saved sessions and marks still resolve.
   const generatedIds = new Set(basePapers.map(paper => paper.paper_id));
-  const papers = [...papersById.values()].filter(paper => (CONTENT.showSampleContent || !paper.is_sample) && (!hasReviewedMaths ||
+  const papers = [...papersById.values()].filter(paper => (CONTENT.showSampleContent || !paper.is_sample) && (!hasReviewedBank ||
     !generatedIds.has(paper.paper_id) || paper.question_ids.some(id =>
       questionsById.get(id)?.provenance?.review_status === 'model_reviewed')));
   return { subject, spec, papers, papersById, questions, questionsById, textbooks: textbooks?.index || null };

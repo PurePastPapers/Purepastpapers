@@ -1,7 +1,7 @@
 // Source crops are grouped by booklet for lazy static hosting. Nothing is
 // transcribed or recompressed: each asset retains its original lossless bytes.
 import { html, isSafeUrl } from '../core/dom.js';
-const PATH = /^assets\/maths\/([A-Z0-9_]+)\/([A-Za-z0-9_]+\.webp)$/;
+const PATH = /^assets\/(maths|physics)\/([A-Z0-9_]+)\/([A-Za-z0-9_]+\.webp)$/;
 const bundles = new Map();
 const urls = new Map();
 export function sourceImage(url, alt) {
@@ -12,8 +12,8 @@ async function resolve(path) {
   if (urls.has(path)) return urls.get(path);
   const match = PATH.exec(path);
   if (!match) throw new Error('Invalid source-image reference');
-  const [, paper, name] = match;
-  if (!bundles.has(paper)) bundles.set(paper, fetch(`data/maths-assets/${paper}.json`).then(async response => {
+  const [, bank, paper, name] = match;
+  if (!bundles.has(paper)) bundles.set(paper, fetch(`data/${bank}-assets/${paper}.json`).then(async response => {
     if (!response.ok) throw new Error('Source image bundle is unavailable');
     return response.json();
   }));

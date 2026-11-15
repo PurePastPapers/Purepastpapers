@@ -5,7 +5,7 @@
 // student is never given a question that needs a topic they have not marked as learned.
 
 import {
-  APP, DEFAULT_TEST_MINUTES, DIFFICULTIES, LIMITS, MARK_BANDS, MIXED, PRACTICE_MODES, TEST_DURATIONS,
+  APP, DEFAULT_TEST_MINUTES, DIFFICULTIES, LIMITS, MARK_BANDS, MIXED, PRACTICE_MODES, SOURCE_BANKS, TEST_DURATIONS,
 } from '../../config/app.config.js';
 import { FEATURES, enabledSourceTypes, isEnabled } from '../../config/phases.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
@@ -231,7 +231,7 @@ export async function mount(element, context) {
     learnedNamespace: textbookMode() ? 'textbook' : 'official',
     qualificationCodes: state.qualifications,
     curriculumPoints,
-    contentYear: subjectId === 'EDX_ALEVEL_MATH_9MA0' ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
+    contentYear: SOURCE_BANKS[subjectId] ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
     years: state.years.length ? state.years.map(Number) : null,
     series: state.series ? [state.series] : null,
     tiers: state.tier ? [state.tier] : null,
@@ -255,7 +255,7 @@ export async function mount(element, context) {
       ${tiers.length || state.tier ? select('tier', 'Tier', tiers, 'Any tier') : ''}
       <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
     `;
-    const qualifications = subjectId === 'EDX_ALEVEL_MATH_9MA0' ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${[['9MA0', 'A-Level'], ['8MA0', 'AS']].map(([value, label]) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
+    const qualifications = SOURCE_BANKS[subjectId] ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${SOURCE_BANKS[subjectId].qualifications.map(([value, label]) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
       <label class="field browser-sort"><span class="field__label">Sort</span><select class="select" data-sort aria-label="Sort questions">
         <option value="" disabled ${state.shuffled ? 'selected' : ''}>Choose sort order</option>
@@ -324,9 +324,9 @@ export async function mount(element, context) {
     const curriculumTarget = $('[data-curriculum]', element);
     if (curriculumTarget) {
       let mounting = true;
-      mountCurriculumSelector(curriculumTarget, { curriculum: textbooks ? {...curriculum, books: []} : curriculum, specIndex, cumulativeYear13: subjectId === 'EDX_ALEVEL_MATH_9MA0', initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
+      mountCurriculumSelector(curriculumTarget, { curriculum: textbooks ? {...curriculum, books: []} : curriculum, specIndex, cumulativeYear13: Boolean(SOURCE_BANKS[subjectId]), initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
         state.curriculum = next;
-        curriculumPoints = subjectId === 'EDX_ALEVEL_MATH_9MA0' && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
+        curriculumPoints = SOURCE_BANKS[subjectId] && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
         if (partial.size) {
           const note = document.createElement('p');
           note.className = 'small muted';

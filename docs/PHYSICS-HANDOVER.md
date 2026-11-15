@@ -80,13 +80,49 @@ The owner has been asked for the Physics textbook contents pages (15 November).
 Until they arrive, Physics uses the official specification organisation only.
 No textbook chapters are invented.
 
+## Checkpoint 2 — pipeline, runtime wiring, first reviewed booklet (15 November 2026)
+
+**Status: partial.** One booklet is live (9PH0 June 2018 Paper 1: 18 source
+questions, 37 scored units, 90/90 marks, 88 lossless crops). 46 public booklets
+are queued in `data/imports/physics/coverage.json`. Official SAMs are not split yet.
+
+### Pipeline (all under `tools/physics/`)
+
+| Step | Script | Notes |
+| --- | --- | --- |
+| OCR (scans only) | `ocr.py` | tesseract positions only, never replacement text |
+| Extract | `extract.py SOURCES --output CANDIDATES [--ocr-dir OCR]` | CropBox-relative (several 2020+ booklets have an inset MediaBox); `(n)` tariffs; MCQs use the "Total for Question" line; part regions include data printed after the tariff |
+| Scheme index | `schemes.py` | "Question Number" tables, `*Q13`-style refs |
+| Review sheet | `sheet.py CANDIDATE.json 500` | prints parts and text for review |
+| Reviews | `reviews.py RESEARCH [glob]` | compiles `review-src/<pid>.txt` lines `Q \| parts \| statements[; prereqs] \| e/m/h \| summary \| basis [\| i/s/g]` |
+| Build | `build.py INVENTORY --sources … --candidates … --reviews … --only PID` | statement → `EDX_PHYS_Snnn`; year from statements; AS units may not tag statements > 96 |
+| Publish | `finalize.py --research RESEARCH` | activates reconciled packs only, writes identities, coverage, lazy asset catalogues |
+
+Extraction check: 44 of 47 text/OCR booklets reconcile exactly to 80/90/120.
+Still failing and **not** published: 8PH0 June 2019 P1 (78/80), 9PH0 June 2019
+P1 (Q10 tariffs unread), 9PH0 June 2019 P2 (only Q1 found). Plan: checked manual
+overrides for these scans.
+
+### Runtime
+
+`SOURCE_BANKS` in `js/config/app.config.js` now drives the source-image path,
+reviewed-bank catalogue hiding, qualification chips (9PH0/8PH0) and Year 12/13
+logic, so Maths and Physics share one code path. Crops are rebuilt locally in
+`assets/physics/` (gitignored) and shipped as `data/physics-assets/<paper>.json`.
+
+### Checks
+
+- `npm test` includes `tests/physics-bank.test.mjs` (totals per component,
+  identities, tariff coverage, statement tags, AS ⊂ Year 12, crop checksums),
+  all driven by `coverage.json` so they grow with each batch.
+- `node tools/browser-physics-bank.cjs` (server running): counts, chips,
+  Year 12/13, AS filter, question and scheme pixels, no overflow at
+  320/390/768/1440, no console errors.
+
 ### Next
 
-1. Physics extractor (`tools/physics/extract.py`): question starts, `(n)` tariffs,
-   `(Total for Question N = M marks)`, MCQ single-mark questions; OCR adapter for
-   the four 2019 scans.
-2. Scheme indexer for Physics "Question Number" tables.
-3. Model review per paper: units, official statements, difficulty, context.
-4. Runtime: generalise the Maths-only checks (source-image path, reviewed-bank
-   catalogue hiding, qualification chips, Year 12/13 logic) to Physics.
-5. Build, validate, browser-check and publish packs in batches.
+1. Review the remaining 42 text booklets in batches; build, finalize, test,
+   publish each batch.
+2. Manual overrides for the three failing 2019 scans, then review the four scans.
+3. Split and import the A level and AS SAM collations.
+4. Textbook organisation when the owner sends the contents pages.
