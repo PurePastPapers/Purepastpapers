@@ -9,6 +9,8 @@ PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.confi
 
 **Maths release:** [60-source A-level and AS bank, coverage and handover](docs/MATHS-HANDOVER.md).
 
+**Reuse this workflow for another subject:** [Subject question-bank agent prompt](docs/prompts/SUBJECT-QUESTION-BANK-AGENT.md).
+
 **Start here for future agents:** [Curriculum and question tagging](docs/curriculum-and-question-tagging.md), with links to the Phase 1 and import plans.
 
 See the [latest browser audit](docs/browser-audit-2026-11-14.md) for verified behavior, regression commands and remaining gaps.
@@ -23,7 +25,7 @@ npm start
 
 Then open http://localhost:5173. Any static host works for deployment (GitHub Pages, Netlify, Vercel).
 
-Browse questions without an account; sample questions are labelled demo content. Create a free account to retain progress in this browser.
+Browse real questions without an account. Demo questions are hidden; official sample assessments remain clearly labelled. Create a free account to retain progress in this browser.
 
 | Command | What it does |
 | --- | --- |
@@ -53,10 +55,7 @@ each session, ready for AI marking in Phase 4.
   from the specification's paper structure, with a link to the exam board's past-paper
   page. PDFs are not hosted: papers are the boards' copyright. A student opens the paper
   on the board's site, sits it here against the clock and logs the mark.
-- **Demo questions (249, in 40 demo papers).** Written for this build so the filtering
-  engine, tests and Data Hub can be tried. They are flagged `"is_sample": true`, always
-  labelled "Demo content" in the UI, and are not from any exam paper. Set
-  `CONTENT.showSampleContent = false` in `js/config/app.config.js` to hide them all.
+- **Demo records (249, in 40 historical demo papers).** Hidden from all question and paper discovery. Their IDs remain available only so old saved sessions and marks still resolve. `CONTENT.showSampleContent` is false; official sample assessments use a separate flag and remain available.
 - **Edexcel Maths source bank:** 32 A-level and 23 AS public exam booklets (2018–2025), plus five official samples: 602 original source questions / 1,110 scored units. Source images, schemes, reviewed tags and year scope are active. Recent restricted 2026 sources are excluded. See [coverage and limitations](docs/MATHS-HANDOVER.md).
 
 ### Adding real papers and questions

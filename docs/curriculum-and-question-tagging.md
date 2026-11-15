@@ -24,8 +24,9 @@ does not itself import or license exam content.
   subject's sections, topics, points and printed codes. These trees and fallback
   ordering are working data, not verified verbatim official specifications.
 - `data/curriculum/index.json` is a separate mapping index. It currently contains
-  verified Maths year relations and14 PureYear1/AS textbook chapters. Other
-  textbook maps remain unverified; the selector does not present guesses.
+  verified Maths year relations. The separate owner-supplied textbook index now
+  exposes4 books,45 chapters and251 subsections with scoped codes; see the latest
+  handover for precise versus conservative chapter-level question associations.
 - The previous cloud pass reported HTTP CONNECT 403 for source sites. On 14 November
   2026 the local browser could list the shared textbook folder and its Edexcel Maths
   subfolder, and the official Pearson specification was readable. See the source

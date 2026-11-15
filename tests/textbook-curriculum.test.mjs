@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {createSpecIndex} from '../js/engine/spec-index.js';
-import {createTextbookIndex, matchesTextbookSelection} from '../js/engine/textbook-index.js';
+import {createTextbookIndex, matchesTextbookSelection, textbookMasteryByNode} from '../js/engine/textbook-index.js';
 import {filterQuestions, missingSpecPoints} from '../js/engine/filter-engine.js';
 import * as api from '../js/data/api.js';
 
@@ -89,4 +89,16 @@ test('textbook ticks persist separately through account reload and never mark a 
   await api.setTextbookLearned(['TB_MATH_P1_6.2'],false);
   assert(!api.learnedSet().has('TB_MATH_P1_6.2'));
   assert(api.learnedSet().has('old-official-point'));
+});
+
+test('book and chapter mastery count one saved mark once even when a question touches several subsections', () => {
+  const question = {...equation, textbook_primary_groups:[{ids:['TB_MATH_P1_6.2','TB_MATH_P1_6.4'],precision:'subsection'}]};
+  const latest = new Map([['equation',{marks_awarded:0,max_marks:3}]]);
+  const scores = textbookMasteryByNode(latest,new Map([['equation',question]]),books);
+  assert.deepEqual(scores.get('TB_MATH_P1_6'),{marks:0,max:3,count:1,percentage:0});
+  assert.deepEqual(scores.get('TB_BOOK_P1'),{marks:0,max:3,count:1,percentage:0});
+  const uncertain = {...question,textbook_primary_groups:[{...question.textbook_primary_groups[0],precision:'chapter'}]};
+  const coarse = textbookMasteryByNode(latest,new Map([['equation',uncertain]]),books);
+  assert(coarse.has('TB_MATH_P1_6'));
+  assert(!coarse.has('TB_MATH_P1_6.2'));
 });

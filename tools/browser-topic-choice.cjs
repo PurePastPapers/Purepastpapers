@@ -41,6 +41,7 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
       const api = await import('/js/data/api.js');
       return JSON.stringify({learned: [...api.learnedSet()].sort(), attempts: api.getProgress().question_attempts});
     });
+    await page.locator('[data-topic-organisation="official"]').check();
     const point = await page.evaluate(async id => {
       const {getBundle, specIndex} = await import('/js/data/content-repository.js');
       const api = await import('/js/data/api.js');

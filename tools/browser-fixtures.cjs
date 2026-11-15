@@ -19,6 +19,15 @@ const assert = require('node:assert/strict');
       height: 1000
     }
   });
+  await p.route('**/data/packs/index.json', async route => {
+    const response=await route.fetch();const index=await response.json();
+    index.packs=index.packs.filter(pack=>!pack.file.startsWith('maths/'));
+    await route.fulfill({response,json:index});
+  });
+  await p.route('**/js/config/app.config.js', async route => {
+    const response=await route.fetch();
+    await route.fulfill({response,body:(await response.text()).replace('showSampleContent: false','showSampleContent: true')});
+  });
   await p.route('**/data/papers/EDX_ALEVEL_MATH_9MA0.json', async route => {
     const res = await route.fetch();
     const papers = await res.json();
@@ -35,6 +44,7 @@ const assert = require('node:assert/strict');
     '/#/practice?subject=EDX_ALEVEL_MATH_9MA0');
   await p.waitForSelector('[data-reset-filters]');
   await p.locator('[data-reset-filters]').click();
+  await p.locator('[data-topic-organisation="official"]').check();
   await p.locator('[data-multi="difficulties"][data-value="easy"]').click();
   await p.locator('[data-multi="difficulties"][data-value="medium"]').click();
   console.log('bands', await p.locator('[data-multi="bands"]').evaluateAll(es => es.map(e => ({
@@ -90,7 +100,7 @@ const assert = require('node:assert/strict');
   await p.locator('[data-sort]').selectOption('oldest');
   assert.deepEqual((await p.locator('.qlist [data-open]').evaluateAll(es => es.map(e => e.dataset.open))).sort(), [...ranged].sort());
   console.log('Exact 2–5 range returned two matching records and preserved spec, years, difficulty and progress');
-  await p.getByText('Review selected spec points', {
+  await p.getByText('Review selected points', {
     exact: true
   }).click();
   const count = await p.locator('[data-remove-focus]').count();

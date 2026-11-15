@@ -258,3 +258,29 @@ source images, samples, inline marks, drafts, shuffle, and four viewport widths.
 Desktop/mobile filter and expanded-reference screenshots were visually inspected.
 Pending in the next checkpoint: the requested reusable subject-import prompt,
 with current board identifiers, source workflow, verification and handover rules.
+
+## Completed handoff and publication verification
+
+The textbook UI was published as64228ff2131e8f076cf46f3b9f577a1cea104a0b;
+Pages run43760665944 succeeded. Live HTTP copies of the practice view, textbook
+engine, all251-section contents,1110-unit textbook links and hidden-demo
+configuration match the release byte checksums. The existing HTTPS hostname
+limitation remains separate; no production browser pass is claimed here.
+
+The reusable full prompt is now docs/prompts/SUBJECT-QUESTION-BANK-AGENT.md,
+linked from README. It identifies the registered A-level boards/codes, prioritises
+Biology and Physics then Chemistry, separates Geography/History and later GCSE,
+and explains how to adapt source extraction, curriculum identity, review, UI,
+covered learning, validation, publication and handover. The owner also receives
+the full prompt text in chat. It is an instruction for a future target-subject
+run; it does not claim those other banks are already imported.
+
+Final verification:67 unit tests pass, including zero-mark book/chapter mastery
+without double counting. All6 relevant browser suites pass:topic choice,
+textbooks, real Maths bank, filter regression, dated/spec fixtures and source-part
+context. Synthetic demo fixtures explicitly enable demos only inside their
+isolated test profiles; production remains globally hidden. Data validation:
+38 subjects,986 raw paper records,1359 raw question records,0errors,0warnings.
+Historical demo records are included in those raw validator counts but absent
+from runtime discovery. All current source identities, marks and image bytes
+remain intact. No further Maths UI work is queued by this request.
