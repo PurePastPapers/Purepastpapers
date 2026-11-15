@@ -179,3 +179,30 @@ check of the production HTTP origin was blocked by the client. HTTPS still
 fails certificate hostname verification for purepastpapers.com. This is a
 separate existing domain/hosting issue; no DNS or TLS configuration was changed
 by the Maths import. Do not claim production HTTPS/browser verification passed.
+
+## Topic picker and expanded questions (15 November 2026)
+
+The question browser now has one topic tree. The duplicate specification-range
+and selection-mode controls are removed from this view. “Use topics I’ve learned”
+sits at the top of Topics: checked uses all learned requirements independently
+of the saved manual topic focus; unchecked restores those manual choices.
+Topic selection matches assessed points, with crossover requirements still shown
+on each card. Learned mode requires all assessed/prerequisite skills to be learned.
+The year/chapter, qualification, difficulty, marks and progress filters still apply.
+
+Old saved browser ranges migrate to the visible topic selection (intersecting
+an existing focus); no invisible range constraint remains. Timed-test advanced
+controls retain their existing behavior. Switching views never edits learned
+coverage or saved marks.
+
+All questions on each results page start expanded. The mark-scheme action is
+above the source question; schemes remain hidden until requested. Only explicit
+manual collapses are saved in closedQuestions. Legacy openQuestions arrays do
+not collapse cards after upgrade. Drafts, selected sets and open schemes persist.
+
+Verification:60 unit tests and data validation pass. browser-topic-choice.cjs
+covers manual/learned switching, old-range migration, drafts/selections, pagination,
+collapse persistence, and320/390/768/1440 widths. browser-maths-bank.cjs and
+browser-regression.cjs also pass with the expanded default. Desktop/mobile filters
+and an expanded source card were visually inspected; local screenshots are in
+../../outputs/top-filters/topics-single-picker*.png and questions-default-expanded.png.

@@ -319,6 +319,7 @@
 .question-filters .filter-heading { padding-bottom: 16px; border-bottom: 1px dashed var(--line-strong); }
 .question-filters .builder__title { margin-bottom: 4px; }
 .browser-topics { min-width: 0; }
+.topics-choice { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 6px; }
 .browser-topics > .row { margin-bottom: 6px; }
 .browser-filter-options {
   display: grid;

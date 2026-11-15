@@ -34,7 +34,8 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
     assert.equal(await count(), 0);
     await page.locator('[data-year13-only]').uncheck();
     assert.equal(await count(), asCount);
-    await page.locator('[data-open]').first().click();
+    assert.equal(await page.locator('[data-open][aria-expanded="true"]').count(), 30);
+    assert.equal(await page.locator('[data-scheme]').count(), 30);
     async function loaded(selector) {
       const image = page.locator(selector).first();
       await image.scrollIntoViewIfNeeded();

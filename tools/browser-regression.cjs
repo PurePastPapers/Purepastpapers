@@ -81,13 +81,13 @@ const assert = require('node:assert/strict');
   assert.deepEqual(shuffledState, { sort: 'newest', shuffled: true });
   const first = p.locator('[data-open]').first();
   const id = await first.getAttribute('data-open');
-  await first.click();
+  assert.equal(await first.getAttribute('aria-expanded'), 'true');
   await p.locator(`[data-answer="${id}"]`).fill('unsaved regression answer');
   await p.locator(`[data-scheme="${id}"]`).click();
   await p.locator(`[data-mark="${id}"]`).selectOption('0');
   await p.locator('[data-select]').first().check();
   const secondId = shuffled.find(candidate => candidate !== id);
-  await p.locator(`[data-open="${secondId}"]`).click();
+  assert.equal(await p.locator(`[data-open="${secondId}"]`).getAttribute('aria-expanded'), 'true');
   const scrollBefore = await p.evaluate(() => {
     window.scrollTo(0, 800);
     return scrollY;
@@ -99,7 +99,7 @@ const assert = require('node:assert/strict');
     select.dispatchEvent(new Event('change', {bubbles: true}));
   });
   assert.equal(await p.evaluate(() => scrollY), scrollBefore);
-  assert.equal(await p.locator('[data-answer]').count(), 2);
+  assert.equal(await p.locator('[data-answer]').count(), shuffled.length);
   assert.equal(await p.locator(`[data-answer="${id}"]`).inputValue(), 'unsaved regression answer');
   console.log('scroll, multiple expanded questions and unsaved answer preserved while sorting');
 
