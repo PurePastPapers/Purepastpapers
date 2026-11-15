@@ -105,10 +105,11 @@ overrides for these scans.
 
 ### Runtime
 
-`SOURCE_BANKS` in `js/config/app.config.js` now drives the source-image path,
-reviewed-bank catalogue hiding, qualification chips (9PH0/8PH0) and Year 12/13
-logic, so Maths and Physics share one code path. Crops are rebuilt locally in
-`assets/physics/` (gitignored) and shipped as `data/physics-assets/<paper>.json`.
+Physics uses the subject-generic runtime on main: `data/subjects.json` gives it
+`qualifications` (9PH0 A-Level, 8PH0 AS) and `content_year_source:
+"introduced_year"`, which drive the qualification chips and Year 12/13 logic.
+Crops (`assets/physics/<paper>/…`) are rebuilt locally (gitignored) and served
+from `data/physics-assets/<paper>.json` by `js/data/source-images.js`.
 
 ### Checks
 

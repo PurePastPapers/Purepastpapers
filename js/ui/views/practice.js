@@ -5,7 +5,7 @@
 // student is never given a question that needs a topic they have not marked as learned.
 
 import {
-  APP, DEFAULT_TEST_MINUTES, DIFFICULTIES, LIMITS, MARK_BANDS, MIXED, PRACTICE_MODES, SOURCE_BANKS, TEST_DURATIONS,
+  APP, DEFAULT_TEST_MINUTES, DIFFICULTIES, LIMITS, MARK_BANDS, MIXED, PRACTICE_MODES, TEST_DURATIONS,
 } from '../../config/app.config.js';
 import { FEATURES, enabledSourceTypes, isEnabled } from '../../config/phases.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
@@ -120,6 +120,14 @@ export async function mount(element, context) {
   const bundle = enrolled.find((candidate) => candidate.subject.subject_id === wanted) || enrolled[0];
   const { subject, spec, textbooks } = bundle;
   const subjectId = subject.subject_id;
+  // Subjects whose scored units carry a reviewed introduced_year use it for the
+  // Year 12 / Year 13-only filters, and treat Year 13 as cumulative.
+  const unitContentYears = subject.content_year_source === 'introduced_year';
+  const qualificationOptions = subject.qualifications || [];
+  const qualificationLabel = (code) => {
+    const option = qualificationOptions.find((item) => item.code === code);
+    return option ? `${option.label} papers` : `${code} papers`;
+  };
   const curriculum = await getCurriculum(subjectId);
   let curriculumPoints = null;
   if (progress.preferences.lastSubject !== subjectId) api.setPreference('lastSubject', subjectId);
@@ -231,7 +239,7 @@ export async function mount(element, context) {
     learnedNamespace: textbookMode() ? 'textbook' : 'official',
     qualificationCodes: state.qualifications,
     curriculumPoints,
-    contentYear: SOURCE_BANKS[subjectId] ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
+    contentYear: unitContentYears ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
     years: state.years.length ? state.years.map(Number) : null,
     series: state.series ? [state.series] : null,
     tiers: state.tier ? [state.tier] : null,
@@ -255,7 +263,7 @@ export async function mount(element, context) {
       ${tiers.length || state.tier ? select('tier', 'Tier', tiers, 'Any tier') : ''}
       <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
     `;
-    const qualifications = SOURCE_BANKS[subjectId] ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${SOURCE_BANKS[subjectId].qualifications.map(([value, label]) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
+    const qualifications = qualificationOptions.length > 1 ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${qualificationOptions.map(({code: value, label}) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
       <label class="field browser-sort"><span class="field__label">Sort</span><select class="select" data-sort aria-label="Sort questions">
         <option value="" disabled ${state.shuffled ? 'selected' : ''}>Choose sort order</option>
@@ -284,7 +292,7 @@ export async function mount(element, context) {
     return html`<fieldset class="field ${browser ? 'browser-topics' : ''}">
       <legend class="field__label">Topics</legend>
       ${topicOrganisationControl(state.topicOrganisation, {available: Boolean(textbooks)})}
-      <p class="field__hint">${textbookMode() ? 'Book numbers follow your supplied contents pages. For example, Pure 1 · 6.2 is Equation of a circle.' : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
+      <p class="field__hint">${textbookMode() ? `Book numbers follow your supplied contents pages.${subject.textbook_example ? ` ${subject.textbook_example}` : ''}` : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
       ${curriculum.years.length ? html`<div data-curriculum></div>` : ''}
       ${browser && user ? html`<div class="topics-choice">
         <label class="check checkpoint"><input type="checkbox" data-flag="learnedOnly" ${state.learnedOnly ? 'checked' : ''} /><span>Only content I’ve covered</span></label>
@@ -324,9 +332,9 @@ export async function mount(element, context) {
     const curriculumTarget = $('[data-curriculum]', element);
     if (curriculumTarget) {
       let mounting = true;
-      mountCurriculumSelector(curriculumTarget, { curriculum: textbooks ? {...curriculum, books: []} : curriculum, specIndex, cumulativeYear13: Boolean(SOURCE_BANKS[subjectId]), initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
+      mountCurriculumSelector(curriculumTarget, { curriculum: textbooks ? {...curriculum, books: []} : curriculum, specIndex, cumulativeYear13: unitContentYears, initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
         state.curriculum = next;
-        curriculumPoints = SOURCE_BANKS[subjectId] && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
+        curriculumPoints = unitContentYears && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
         if (partial.size) {
           const note = document.createElement('p');
           note.className = 'small muted';
@@ -602,7 +610,7 @@ export async function mount(element, context) {
       ...(activeFocus() !== null ? [{key: 'focus', label: `${activeFocus().length} spec points selected`}] : []),
       ...(activeTextbookFocus() !== null ? [{key: 'textbookFocus', label: `${activeTextbookFocus().length} textbook subsections selected`}] : []),
       ...(state.learnedOnly ? [{key: 'learnedOnly', label: 'Topics I’ve learned'}] : []),
-      ...state.qualifications.map(value => ({key: 'qualifications', value, label: value === '8MA0' ? 'AS papers' : 'A-Level papers'})),
+      ...state.qualifications.map(value => ({key: 'qualifications', value, label: qualificationLabel(value)})),
       ...state.markStatuses.map((value) => ({key: 'markStatuses', value, label: PROGRESS_FILTERS[value]})),
       ...(state.sampleMode !== 'all' ? [{key: 'sampleMode', label: state.sampleMode === 'hide' ? 'Hide demo content' : 'Demo content only'}] : []),
       ...state.difficulties.map((value) => ({key: 'difficulties', value, label: value.replaceAll('_', ' ')})),

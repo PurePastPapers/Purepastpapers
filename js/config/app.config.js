@@ -13,16 +13,6 @@ export const CONTENT = {
   showSampleContent: false,
 };
 
-/**
- * Subjects with an imported, model-reviewed bank of original source questions.
- * Their generated catalogue placeholders are hidden once reviewed units exist, and
- * the qualification chips separate the A level and AS question pools.
- */
-export const SOURCE_BANKS = {
-  EDX_ALEVEL_MATH_9MA0: { assets: 'maths', qualifications: [['9MA0', 'A-Level'], ['8MA0', 'AS']] },
-  EDX_ALEVEL_PHYS_9PH0: { assets: 'physics', qualifications: [['9PH0', 'A-Level'], ['8PH0', 'AS']] },
-};
-
 /** PRD 4.2 — difficulty levels. `level` drives the 1–4 pip indicator. */
 export const DIFFICULTIES = [
   { id: 'easy', label: 'Easy', level: 1, description: 'Standard recall, foundation concepts or routine single-step questions.' },

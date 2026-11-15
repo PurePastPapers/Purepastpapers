@@ -9,8 +9,29 @@ export function createSpecIndex() {
   const nodes = new Map(); // id → node
   const subjects = new Map(); // subject_id → { spec, leaves, positions, nodes }
 
-  function add(spec) {
-    if (!spec || subjects.has(spec.subject_id)) return;
+  function add(source) {
+    if (!source || subjects.has(source.subject_id)) return;
+    // Legacy sections keep retired ids resolvable (saved learning, old sessions)
+    // without offering them in trees, ranges, coverage or tagging.
+    const legacySections = (source.sections || []).filter((section) => section.legacy);
+    const spec = legacySections.length
+      ? { ...source, sections: source.sections.filter((section) => !section.legacy), legacy_sections: legacySections }
+      : source;
+    for (const section of legacySections) {
+      for (const topic of section.topics || []) {
+        nodes.set(topic.id, {
+          id: topic.id, type: 'topic', title: topic.title, code: topic.code || '', kind: 'legacy', legacy: true,
+          subject_id: source.subject_id, parent: null, children: (topic.points || []).map((point) => point.id),
+          leaves: (topic.points || []).map((point) => point.id),
+        });
+        for (const point of topic.points || []) {
+          nodes.set(point.id, {
+            id: point.id, type: 'point', title: point.title, code: point.code || '', kind: 'legacy', legacy: true,
+            subject_id: source.subject_id, parent: topic.id, children: [], leaves: [point.id],
+          });
+        }
+      }
+    }
     // A verified board order can override a tree grouped by paper. It must be an
     // exact leaf-id permutation: never guess order by parsing display codes.
     if (spec.point_order !== undefined) {
