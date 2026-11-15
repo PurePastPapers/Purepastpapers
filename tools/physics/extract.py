@@ -17,7 +17,7 @@ import re
 from pathlib import Path
 
 
-VERSION = 'pearson-9ph0-layout-v4-split-star-labels'
+VERSION = 'pearson-9ph0-layout-v5-checked-ocr-overrides'
 TOTAL = r'Total for Question\s+{n}\s*=\s*(\d+)\s*marks?'
 
 
@@ -120,17 +120,56 @@ def region(page, page_index, top, bottom):
             round(min(page.height - 45, bottom) / page.height, 6)]}
 
 
-def extract(path, ocr_dir=None):
+def apply_ocr_overrides(words, page_number, override, sha):
+    """Apply checked corrections to one scanned page's OCR words.
+
+    Overrides only add or correct layout tokens (question numbers, part labels and
+    "(n)" tariffs) that tesseract missed or misread. Each was checked against the
+    rendered source page. They never supply question text: crops stay source pixels.
+    """
+    if override.get('source_sha256') != sha:
+        raise ValueError(f"OCR override is for another source revision: {override.get('paper_id')}")
+    words = list(words)
+    for item in override['words']:
+        if item['page'] != page_number:
+            continue
+        if item['action'] == 'add':
+            # Keep tesseract's reading order: insert before the first later line.
+            at = next((k for k, w in enumerate(words) if w['top'] > item['top'] + 3), len(words))
+            words.insert(at, {'text': item['text'], 'x0': item['x0'], 'x1': item['x1'], 'top': item['top'],
+                          'bottom': item['bottom'], 'fontname': 'OCR', 'upright': True, 'override': True})
+        elif item['action'] == 'correct':
+            near = [w for w in words if abs(w['top'] - item['top']) < 5 and abs(w['x0'] - item['x0']) < 8 and w['text'] == item['was']]
+            if len(near) != 1:
+                raise ValueError(f"OCR override p{page_number} {item}: expected one {item['was']!r} near it, found {len(near)}")
+            words[words.index(near[0])] = {**near[0], 'text': item['text'], 'override': True}
+        elif item['action'] == 'drop':
+            near = [w for w in words if abs(w['top'] - item['top']) < 5 and abs(w['x0'] - item['x0']) < 8 and w['text'] == item['was']]
+            if len(near) != 1:
+                raise ValueError(f"OCR override p{page_number} {item}: expected one {item['was']!r} near it, found {len(near)}")
+            words.remove(near[0])
+        else:
+            raise ValueError(f"Unknown OCR override action {item['action']!r}")
+    return words
+
+
+def extract(path, ocr_dir=None, overrides_dir=None):
     import pdfplumber
     with pdfplumber.open(path) as pdf:
         views = [CropView(p.filter(lambda c: c.get('object_type') != 'char' or c.get('upright', True))) for p in pdf.pages]
         pages = [{'page': v, 'words': words_for(v)} for v in views]
+        sha = digest(path)
+        pid = path.stem.replace('__question_paper', '')
+        override_file = Path(overrides_dir) / f'{pid}.json' if overrides_dir else None
+        override = json.loads(override_file.read_text()) if override_file and override_file.exists() else None
         if ocr_dir:
             for i, data in enumerate(pages):
                 cache = Path(ocr_dir) / path.stem.replace('__question_paper', '') / f'page-{i + 1:03}.json'
                 if not data['words'] and cache.exists():
                     cached = json.loads(cache.read_text())
                     data['words'] = cached['words']
+                    if override:
+                        data['words'] = apply_ocr_overrides(data['words'], i + 1, override, sha)
                     data['page']._ocr_words = data['words']
                     # A scan is one page image: use OCR ink bands as its drawings.
                     data['page'].images = []
@@ -169,7 +208,13 @@ def extract(path, ocr_dir=None):
                 if (w['x0'] < 78 and re.fullmatch(r'\*?\d{1,2}', w['text'])
                         and ('Bold' in w['fontname'] or w['fontname'] == 'OCR') and int(w['text'].lstrip('*')) == expected
                         and w['top'] < pages[i]['page'].height - 80):
-                    starts.append((i, 38 if not starts or starts[-1][0] != i else w['top'] - 25, expected))
+                    top = 38 if not starts or starts[-1][0] != i else w['top'] - 25
+                    if getattr(data['page'], '_ocr_words', None) and top > 38:
+                        # Scans: never start inside the previous question's total line.
+                        totals = [o for o in data['words'] if o['text'] == '(Total' and o['bottom'] > top and o['top'] < w['top'] - 3]
+                        above = [o['bottom'] for t in totals for o in data['words'] if abs(o['top'] - t['top']) < 4]
+                        top = max([top] + [b + 7 for b in above])
+                    starts.append((i, top, expected))
                     expected += 1
         questions = []
         for index, (start_page, start_y, number) in enumerate(starts):
@@ -278,7 +323,8 @@ def extract(path, ocr_dir=None):
             exceptions.append({'type': 'paper_marks_mismatch', 'expected': expected_marks,
                                'actual': sum(q['marks'] for q in questions)})
         candidate = {'expected_question_count': expected_count, 'expected_total_marks': expected_marks,
-                'extraction_version': VERSION, 'source_sha256': digest(path), 'source_file': str(path),
+                'extraction_version': VERSION, 'source_sha256': sha, 'source_file': str(path),
+                'ocr_overrides': len(override['words']) if override else 0,
                 'page_count': len(pages), 'questions': questions,
                 'total_marks': sum(q['marks'] for q in questions), 'exceptions': exceptions}
         return candidate
@@ -289,6 +335,7 @@ def main():
     parser.add_argument('sources', type=Path)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--ocr-dir', type=Path)
+    parser.add_argument('--ocr-overrides', type=Path, help='checked OCR layout corrections, one JSON per paper')
     parser.add_argument('--workers', type=int, default=4)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
@@ -302,7 +349,7 @@ def main():
                 continue
         pending.append((path, out))
     with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as pool:
-        futures = {pool.submit(extract, p, args.ocr_dir): (p, out) for p, out in pending}
+        futures = {pool.submit(extract, p, args.ocr_dir, args.ocr_overrides): (p, out) for p, out in pending}
         for future in concurrent.futures.as_completed(futures):
             path, out = futures[future]
             try:

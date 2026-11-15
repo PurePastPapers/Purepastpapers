@@ -91,7 +91,7 @@ Batches 1–3 are live (see Checkpoint 3). Official SAMs are not split yet.
 | Step | Script | Notes |
 | --- | --- | --- |
 | OCR (scans only) | `ocr.py` | tesseract positions only, never replacement text |
-| Extract | `extract.py SOURCES --output CANDIDATES [--ocr-dir OCR]` | CropBox-relative (several 2020+ booklets have an inset MediaBox); `(n)` tariffs; MCQs use the "Total for Question" line; part regions include data printed after the tariff |
+| Extract | `extract.py SOURCES --output CANDIDATES [--ocr-dir OCR --ocr-overrides data/imports/physics/ocr-overrides]` | CropBox-relative (several 2020+ booklets have an inset MediaBox); `(n)` tariffs; MCQs use the "Total for Question" line; part regions include data printed after the tariff |
 | Scheme index | `schemes.py` | "Question Number" tables, `*Q13`-style refs |
 | Review sheet | `sheet.py CANDIDATE.json 500` | prints parts and text for review |
 | Reviews | `reviews.py RESEARCH [glob]` (append `@x` to a parts cell to override a misread printed label) | compiles `review-src/<pid>.txt` lines `Q \| parts \| statements[; prereqs] \| e/m/h \| summary \| basis [\| i/s/g]` |
@@ -145,3 +145,25 @@ it is tagged to the AS statement it actually assesses.
 Still queued (4): 9PH0 June 2019 P1 and P2, 8PH0 June 2019 P1 and P2 (scans).
 8PH0 June 2019 P2 reconciles from OCR and only needs a review; the other three
 need checked manual overrides first. Then the A level and AS SAM collations.
+
+## Checkpoint 4 — 2019 scans live, every public past paper imported (15 November 2026)
+
+**Status: all 47 public past-paper booklets are live** (27 × 9PH0, 20 × 8PH0):
+769 source questions, 1,630 scored units, 4,300 marks, 4,008 crops, 0 queued.
+Tests 73/73, validation 0 errors, browser check PASS (AS 631 units, Year 13
+only 521). Only the official SAMs remain for Physics.
+
+The four June 2019 scans now reconcile exactly (80/80/90/90, 0 exceptions) using
+**checked OCR overrides** in `data/imports/physics/ocr-overrides/<paper>.json`
+(extractor v5). Each entry adds, corrects or drops one layout token on one page
+(a question number, a part label such as "(i)" read as "(1)", a "(5)" tariff
+read as "(3)", or a total line tesseract missed), is pinned to the source
+SHA256, and was checked against the rendered page. Overrides never supply
+question text: crops stay source pixels. On scans a question that starts below
+the previous total line now starts after that line, so crops do not carry a
+sliver of the previous question. Text booklets are unaffected by v5 (their
+candidates still record v4; re-extracting gives identical parts).
+
+To find tokens to check on a new scan, re-OCR the left margin and tariff column
+at 4× (tesseract `--psm 11`) and compare against the OCR cache; confirm every
+difference on the rendered page before adding it.
