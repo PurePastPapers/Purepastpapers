@@ -40,8 +40,8 @@ No IDs, stored attempts or learned records were rewritten. No point was removed.
 
 ## Teaching years
 
-`data/curriculum/math-9ma0.json` is a candidate for the curriculum index; it is
-not loaded merely by existing on disk. Its year mapping follows the explicitly
+`data/curriculum/math-9ma0.json` is now merged into the active curriculum index.
+Its year mapping follows the explicitly
 headed Year 1/AS and Year 2 remaining A level content in Pearson's
 [two-year scheme of work, issue 3](https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/Teaching%20and%20learning%20materials/a-level-maths-2-years-sow-issue-3.docx),
 cross-checked against bold common-AS content in the specification. It represents
@@ -58,7 +58,7 @@ selects Year 12 as learned nor rewrites any saved learned state.
 
 ## Textbooks and remaining evidence
 
-The same candidate includes 14 chapters from *Edexcel AS and A level Mathematics:
+The active mapping includes 14 chapters from *Edexcel AS and A level Mathematics:
 Pure Mathematics Year 1/AS*, Pearson, 2017 series, ISBN 9781292183398. The
 [publisher's contents PDF](https://www.pearsonschoolsandfecolleges.co.uk/asset-library/pdf/Secondary/mathematics/edexcel-as-a-level-maths-and-further-maths/free-resources/Pure-1-contents.pdf)
 identifies chapters/subsections and printed chapter starts; edition/ISBN is
@@ -73,8 +73,6 @@ shared-folder access link and textbook PDFs are excluded from the public repo.
 
 ## Validation
 
-The mapping candidate passes `createCurriculumMap` against the versioned runtime
-specification: 2 year choices, 1 book, 14 chapters. All 52 repository tests pass;
-the data validator reports 38 subjects, 926 paper records and 249 current demo
-questions, with no errors or warnings at this point. These checks validate the
-representation; they do not count this work as imported exam questions.
+The active mapping passes `createCurriculumMap`: 2 year choices, 1 verified book,
+14 chapters. The full source bank and current checks are documented in
+[MATHS-HANDOVER.md](MATHS-HANDOVER.md); the earlier demo-only counts are superseded.

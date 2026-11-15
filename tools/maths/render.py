@@ -15,7 +15,12 @@ class SourceRenderer:
 
     @lru_cache(maxsize=4)
     def page(self, index):
-        return self.document[index].render(scale=self.scale).to_pil().convert('RGB')
+        page = self.document[index]
+        # Extraction coordinates use the MediaBox. PDFium otherwise renders the
+        # inset CropBox, silently shifting/scaling every normalised crop.
+        # Change only this in-memory page view; original PDFs remain immutable.
+        page.set_cropbox(*page.get_mediabox())
+        return page.render(scale=self.scale).to_pil().convert('RGB')
 
     def render(self, regions, output):
         pieces = []

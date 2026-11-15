@@ -147,6 +147,7 @@ export function ragBadge(rag, percentage = null, { label = true } = {}) {
 
 /** Where a question or paper comes from. Demo content is always labelled as such. */
 export function sourceBadge(item) {
+  if (item.is_official_sample) return html`<span class="badge badge--official">Official sample assessment</span>`;
   if (item.is_sample) return html`<span class="badge badge--demo" title="Written for this build. Not from an official exam paper.">Demo content</span>`;
   const type = item.source_type || item.paper_type;
   if (type === 'user_custom_test') return html`<span class="badge">${PAPER_TYPES.user_custom_test.label}</span>`;

@@ -8,6 +8,12 @@ Normal approximation belongs ...STATS_DIST_4.2, not legacy4.3.
 
 1. `extract.py SOURCE_DIR --output CANDIDATES` produces coordinate-based review
    candidates, not published content. Source checksums/version make reruns safe.
+   It automatically calls `source_overrides.apply_overrides` for fresh candidates
+   and matching resumed candidates. Checksum-bound corrections retain the sample
+   Paper 1 Q12(d) final tariff boundary and Paper 2 Q6 table tariffs. To reapply
+   directly, run `python3 tools/maths/source_overrides.py CANDIDATE.json`.
+   The Q12 boundary override stamps a stable `extraction_revision`, invalidating
+   its build signature while preserving the source and review checksums.
 2. Inspect actual source rendering where text extraction loses mathematical
    notation, figures or context: `render.py CANDIDATE --question N --output Q.png`.
    Source pixels, not OCR or rewritten prose, are the displayed question.

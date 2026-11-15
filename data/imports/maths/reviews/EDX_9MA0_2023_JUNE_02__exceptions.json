@@ -1,0 +1,71 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_02",
+  "reviewer_type": "model",
+  "exceptions": [
+    {
+      "question": "1",
+      "resolution": "The raw(b)(ii)2mark tariff jointly scores(b)(i)and(ii); grouped with(a)because the second derivative is not printed."
+    },
+    {
+      "question": "2",
+      "resolution": "Raw(a)(ii)and(b)(ii)tariffs cover their respective(i),(ii)prompts; the period-four sum needs the unprinted terms found in(a)."
+    },
+    {
+      "question": "2",
+      "resolution": "Source recurrence is u_(n+1)=u_n+7cos(nπ/2)-5(-1)^n."
+    },
+    {
+      "question": "3",
+      "resolution": "The raw(b)(ii)2mark tariff covers both root calculation and domain rejection; the quadratic is explicitly repeated in(b)."
+    },
+    {
+      "question": "5",
+      "resolution": "Source derivative is2x^3-9x^2+5x+k; printedk=12is retained as unscored context for(b)."
+    },
+    {
+      "question": "8",
+      "resolution": "The raw(b)(ii)3mark tariff covers maximum value and its argument; unknown amplitude-phase constants from(a)are needed."
+    },
+    {
+      "question": "9",
+      "resolution": "The source shows x=t^2+6t-16,y=6ln(t+3),t>-3; (b)can be solved directly from these printed parametric equations without inventingAorB."
+    },
+    {
+      "question": "10",
+      "resolution": "Source numerator is3kx-18and denominator(x+4)(x-2); bounds are-3and1. The partial-fraction coefficients are not printed, so(a)+(b)remain grouped."
+    },
+    {
+      "question": "11",
+      "resolution": "Source rendering confirmsdh/dt=λ/sqrt(h)and the requestedh^(3/2)=At+B; (c)depends on unknown constants fitted in(b)."
+    },
+    {
+      "question": "12",
+      "resolution": "Modulus functions are additional A-level content; the diagram and both full equations were visually checked. No earlier numerical answers are needed by later parts."
+    },
+    {
+      "question": "13",
+      "resolution": "Parts(a)+(b)grouped because the expansion is not supplied. Part(c)reprints the original integral, is independent of the approximation, and permits substitution or equivalent algebraic decomposition."
+    },
+    {
+      "question": "13",
+      "resolution": "Source bounds are0.2to0.4and integrand6x/(3+x)^2."
+    },
+    {
+      "question": "14",
+      "resolution": "The source has23sin^2θand8sin2θ(1+tan^2θ); coefficientsA,B,Care unknown, so(a)+(b)must remain grouped."
+    }
+  ],
+  "total_marks_checked": 100,
+  "source_parts_checked": 33,
+  "reviewed_units": 24,
+  "unresolved_exceptions": [],
+  "publication_holds": [
+    {
+      "scope": "source_renderer_coordinate_space",
+      "status": "requires_shared_renderer_fix",
+      "example_question": "12",
+      "issue": "Candidates use pdfplumber MediaBox coordinates (651.969 by 898.583 points), while the current pypdfium renderer defaults to the offset CropBox (595.2755 by 841.8895 points). Applying the candidate bbox to CropBox pixels clips final tariff endpoints.",
+      "verified_resolution": "Private diagnostic rendering with the page CropBox set to its MediaBox restores complete source text and tariffs; the corrected example was visually checked. Apply equivalent coordinate handling in the shared renderer before packaging these booklets."
+    }
+  ]
+}

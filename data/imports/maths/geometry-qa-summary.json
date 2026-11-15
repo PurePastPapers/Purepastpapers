@@ -1,0 +1,85 @@
+{
+  "checked_at": "2026-11-15",
+  "compiler_signature": "crop-build-v3-mediabox",
+  "totals": {
+    "questions": 602,
+    "units": 1110,
+    "part_endpoints": 3088,
+    "part_starts": 1444,
+    "scheme_regions": 1074,
+    "differing_cropbox_pages": 1368,
+    "papers": 60,
+    "failures": 0,
+    "pending_builds": 0,
+    "unique_assets_checked": 2038
+  },
+  "failures": [],
+  "representative_visual_checks": [
+    {
+      "paper_id": "EDX_9MA0_2019_JUNE_31",
+      "question": "2",
+      "full_source": "EDX_9MA0_2019_JUNE_31_Q02_full.png",
+      "units": [
+        "EDX_9MA0_2019_JUNE_31_Q02_U01.png",
+        "EDX_9MA0_2019_JUNE_31_Q02_U02.png",
+        "EDX_9MA0_2019_JUNE_31_Q02_U03.png",
+        "EDX_9MA0_2019_JUNE_31_Q02_U04.png",
+        "EDX_9MA0_2019_JUNE_31_Q02_U05.png"
+      ],
+      "tariffs": "EDX_9MA0_2019_JUNE_31_Q02_tariffs.png",
+      "status": "visually_inspected",
+      "reviewer_type": "model",
+      "notes": "Original graph/labels, printed prompt and bottom tariffs are visible in the rendered source/crop."
+    },
+    {
+      "paper_id": "EDX_9MA0_2025_JUNE_02_MODIFIED",
+      "question": "12",
+      "full_source": "EDX_9MA0_2025_JUNE_02_MODIFIED_Q12_full.png",
+      "units": [
+        "EDX_9MA0_2025_JUNE_02_MODIFIED_Q12_U01.png"
+      ],
+      "tariffs": "EDX_9MA0_2025_JUNE_02_MODIFIED_Q12_tariffs.png",
+      "status": "visually_inspected",
+      "reviewer_type": "model",
+      "notes": "Original graph/labels, printed prompt and bottom tariffs are visible in the rendered source/crop."
+    },
+    {
+      "paper_id": "EDX_9MA0_SAMPLE_01",
+      "question": "12",
+      "full_source": "EDX_9MA0_SAMPLE_01_Q12_full.png",
+      "units": [
+        "EDX_9MA0_SAMPLE_01_Q12_U01.png",
+        "EDX_9MA0_SAMPLE_01_Q12_U02.png",
+        "EDX_9MA0_SAMPLE_01_Q12_U03.png",
+        "EDX_9MA0_SAMPLE_01_Q12_U04.png"
+      ],
+      "tariffs": "EDX_9MA0_SAMPLE_01_Q12_tariffs.png",
+      "status": "model_visual_checked",
+      "observations": "Full prompt, graph, all part labels and tariffs are visible. Regenerated Q12(d) now retains the complete printed (1) tariff with bottom padding."
+    },
+    {
+      "paper_id": "EDX_9MA0_SAMPLE_01",
+      "question": "15",
+      "full_source": "EDX_9MA0_SAMPLE_01_Q15_full.png",
+      "units": [
+        "EDX_9MA0_SAMPLE_01_Q15_U01.png"
+      ],
+      "tariffs": "EDX_9MA0_SAMPLE_01_Q15_tariffs.png",
+      "status": "model_visual_checked",
+      "observations": "Question wording, figure where present, part labels and tariffs are complete. The stitched continuation answer page retains a cosmetic partial TOTAL FOR PAPER footer below the complete question total."
+    },
+    {
+      "paper_id": "EDX_8MA0_SAMPLE_01",
+      "question": "17",
+      "full_source": "EDX_8MA0_SAMPLE_01_Q17_full.png",
+      "units": [
+        "EDX_8MA0_SAMPLE_01_Q17_U01.png",
+        "EDX_8MA0_SAMPLE_01_Q17_U02.png"
+      ],
+      "tariffs": "EDX_8MA0_SAMPLE_01_Q17_tariffs.png",
+      "status": "model_visual_checked",
+      "observations": "Question wording, figure where present, part labels and tariffs are complete. The stitched continuation answer page retains a cosmetic partial TOTAL FOR PAPER footer below the complete question total."
+    }
+  ],
+  "scope": "Automated geometry for every published source; representative visual checks are model review, not teacher review."
+}

@@ -1,170 +1,167 @@
-# Maths corpus: continue here
+# Maths corpus: release and continuation notes
 
-Updated 15 November 2026. **IN PROGRESS: the full question bank is not yet live.**
-The user requires all publicly available Edexcel A level 9MA0 AND AS 8MA0,
-including public legitimate variants and separately labelled official samples.
-They explicitly requested frequent pushes and a resumable handover.
+Updated 15 November 2026. This release activates all **60 verified public
+current-specification Edexcel Maths sources** found in the audited inventories:
+55 exam booklets from 2018–2025 and five official sample assessment components.
+The seven recorded 2026 booklets are restricted; they are not in the public bank.
 
-## Latest working-bank checkpoint (15 November)
+## Exact coverage
 
-- Runtime index currently activates **36 real source booklets, 359 original
-  questions and 639 independently scored units**, including173ASunits. This is
-  a working partial bank, not a comprehensive completion claim. Remaining exam
-  booklets and SAMs are still in review/build queues. Seven2026booklets remain
-  restricted and are not acquired.
-- Unit year scope is reviewed per assessable unit. Year12 includes AS-scope
-  questions from either qualification; Year13 is cumulative by default; its
-  additional-topics-only checkbox includes only introduced_year13. A broad
-  official point can span both years, so year filtering uses reviewed unit scope
-  rather than a point-overlap guess. Qualification chips distinguish8MA0/9MA0.
-- Browser verified AS visibility in12and13, exclusion with13only, actual source
-  image/scheme loads, explicit zero saved acrossreload, nooverflow320/390/768/1440.
-  57unit tests pass; data validation962papers/888records incl other-subject demos,
-  zero errors/warnings. New Maths practice suppresses demos while retaining their
-  historical lookup IDs. Source-source PDF/report links retain truequalification.
-- Source pixels remain losslessWebP. `tools/maths/package_assets.py` packages
-  referenced crops into **lazy per-booklet JSONassetcatalogues** under
-  `data/maths-assets/`. Original crop caches `assets/maths/` are ignored. The
-  browser resolves images to BlobURLs only when a question opens. Do NOT dump
-  base64catalogues into an agent context; inspect metadata or render source crops.
-  This keeps static publishing to one asset catalogue per booklet, with exact
-  original byte checksums and no third-party runtime dependencies.
-- `tools/maths/build.py` now indexes schemes and renders reviewed units/context;
-  before activating another pack require complete original tariff coverage,
-  sourcechecksum identity, valid tags, reviewed year/difficulty, reconciled marks,
-  nonempty source/scheme regions, and browser visual checks. Joint tariffs keep
-  all prompts. Interstitial givens after a previous tariff stay in the selected
-  crop; required earlier printed context is visible and unscored. Derived earlier
-  answers must be grouped, never invented. Graph-only continued pages are retained.
-- Current build failures: a few ASscheme boundaries,2021ALMechanics32schemeempty
-  region cases are under inventoryworkerreview. Rootcompiler now tolerates
-  explicitly reviewed duplicate raw label occurrences without doublecounting.
-- Active workers: canonical2022ALfourbooklets; earlierworker2023ALfour after
-  finishingAS2018–21; inventoryworkerSAMS+schemeedgecases. AS2022–25reviewed.
-  All outputs remain `../math-research/reviews`; copy completed versions into
-  `data/imports/maths/reviews/` at every checkpoint. Rebuild when reviews change.
+| Source group | Booklets | Original source questions | Scored units | Marks |
+| --- | ---: | ---: | ---: | ---: |
+| A-Level 9MA0 exams | 32 | 345 | 658 | 2,500 |
+| AS 8MA0 exams | 23 | 190 | 333 | 1,280 |
+| A-Level official samples | 3 | 41 | 75 | 300 |
+| AS official samples | 2 | 26 | 44 | 160 |
+| Total | 60 | 602 | 1,110 | 4,240 |
 
-## Original acquisition checkpoint
+All 1,544 original printed tariff occurrences are assigned exactly once. Counts
+are source-scoped: the legitimate distinct 2025 modified Paper 2 remains a
+separate source. These are not claims of semantic deduplication of every phrase.
+Split Statistics/Mechanics booklets are components, not extra complete sittings.
+First certification is 2018. Series in 2020/2021 are October/November respectively.
 
-- Approved full-width notebook filters are deployed at parent e9950cf. Four
-  difficulty choices, progress checkboxes, one separate Shuffle action. Preserve
-  saved marks, learned content, drafts and sets; never reinterpret their IDs.
-- `data/imports/maths/inventory/` contains the authoritative source inventory:
-  32 public A-level booklets (including distinct 2025 Paper2 modified variant),
-  23 public AS booklets; recent secure 2026 documents are recorded separately.
-  Metadata and source links are not an imported question bank.
-- Acquired 32 A-level QPs +32 MS +32 reports, four official 2019 specification
-  maps, specification Issue4, plus the official sample bundle. AS acquisition is
-  underway (23QP,23MS,22reports; 2020 AS Statistics report not found).
-- `data/specs/EDX_ALEVEL_MATH_9MA0.json` retains 90 stable runtime skills plus
-  89 exact official reference groups. Read `math-spec-review.md` for proof1.1 /
-  legacyproof1.2 and Statistics4.3 compatibility. Source pixels remain the
-  authority for mathematical typography.
-- `data/curriculum/math-9ma0.json` is a verified mapping candidate, NOT loaded
-  until explicitly merged into curriculum/index.json. Year12/13 SOW relations
-  and 14 PureYear1 textbook chapters are sourced; other three books unresolved.
-- `data/imports/maths/reviews/` stores completed model reviews and exceptions.
-  These are NOT human-reviewed and NOT enabled runtime content packs yet.
-- Owner confirmed Pearson permission covers public question-bank republication
-  on 14Nov2026. Basis is owner confirmation, not an independent licence audit.
-  Plumi's public bank mixes A-level, AS and legacy papers and has no verified
-  open-data grant. No competitor records/tags/assets were reused.
+All 60 source QPs and matching schemes are present; the five sample components
+retain original official ZIP entry, PDF page offsets and source checksums.
+Examiner-report links cover 54/55 exam booklets. The 2020 AS Statistics 21 report
+was not found. Samples have no invented exam year or examiner report.
 
-## Commands and source pipeline
+Review status is **model_reviewed**, not teacher/human reviewed. All 90 stable
+runtime skill IDs occur in primary or prerequisite tags; 89 occur as primary
+assessed tags. Difficulty is reasoned per scored unit: 409 Easy, 593 Medium,
+108 Hard. The Extra hard option remains available; none of these official units
+was assigned that beyond-specification category.
 
-Development Python needs pdfplumber, pypdfium2 and Pillow. On the current Mac:
-`/Users/mimanshakvatsyayan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3`.
-The application remains static HTML/CSS/ES modules, without processing keys.
+## Learner and filter logic
+
+- The full-width notebook filter panel precedes results. Difficulty uses four
+  selectable chips; My progress uses independent checkboxes. Shuffle is one
+  separate action, removed from the Sort menu.
+- Year 12 selects reviewed AS-scope units from either qualification. Year 13
+  includes all content by default, including all 377 AS exam/sample units.
+  The explicit “Year 13 topics only” checkbox selects introduced_year 13;
+  it excludes AS and the AS-scope units from A-level papers. Broad specification
+  leaves span both years, so their overlap alone cannot determine unit scope.
+- Qualification chips distinguish 8MA0 from 9MA0 and intersect with year, topic,
+  difficulty, marks and progress. Selecting multiple values within a group is OR.
+  No year/chapter selection marks anything learned.
+- New Maths practice uses real source units. Generated catalogue placeholders
+  and demo papers are hidden from new Maths listings; historical lookup IDs,
+  marks, drafts and sets remain available. All 639 previously published source
+  unit identities were compared with the new release and remain unchanged.
+- `data/imports/maths/identities.json` locks source SHA, parent, original tariff
+  indices and marks to each unit ID. Build/finalize rejects identity drift.
+  If an assessment grouping changes, allocate a new ID and plan a migration;
+  never reinterpret an old saved mark as a different assessment.
+
+## Source images and dependencies
+
+Original mathematical typography, graphs and tables are source pixels, stored as
+lossless WebP crops. Editorial summaries support browsing/search; they do not
+replace original question wording. Shared printed context is visible and
+unscored. Dependent earlier answers are grouped with the assessed unit rather
+than invented as new givens. The full original question is also expandable.
+Official full-question schemes retain alternatives/notes and are labelled when
+they include other parts; the saved mark applies only to the selected unit.
+
+The renderer explicitly renders the MediaBox used by pdfplumber coordinates.
+Default PDFium CropBox rendering could shift/clamp content in publisher PDFs;
+that issue was corrected and the final catalogue rebuilt. The sample Paper 1
+Q12(d) bottom tariff and sample Paper 2 Q6 table tariffs have checksum-bound,
+reproducible coordinate corrections in `source_overrides.py`.
+
+The 2,559 referenced image assets are packaged into lazy per-booklet catalogues
+in `data/maths-assets/` (about 123 MB total). A booklet loads when its first
+source image is needed, not when listing questions. The browser creates Blob
+URLs without recompression. Crop caches in `assets/maths/` are gitignored.
+Never print base64 catalogues into an agent context; inspect metadata/checksums
+or render local crops. Source PDFs and shared textbook keys are not committed.
+
+## Specification, curriculum and remaining external gaps
+
+`data/specs/EDX_ALEVEL_MATH_9MA0.json` contains 89 exact official reference groups
+from Pearson Issue 4 (February 2020), plus 90 stable runtime skill leaves.
+See [math-spec-review.md](math-spec-review.md) for the historical proof1.2 ID
+(displayed as official1.1) and legacy Statistics4.3 compatibility. New normal
+approximation tags use4.2. Do not repurpose existing IDs.
+
+`data/curriculum/index.json` loads the verified Maths year relations and 14 Pure
+Year1/AS textbook chapters. The year map has52 Year12 and64 Year13 relations,
+including26 partial overlaps, covering all90 runtime leaves. Textbook chapter
+maps for PureYear2 and both Statistics/Mechanics books remain unverified and
+are not guessed. This does not remove their topics or questions from the bank.
+Other subjects still use their existing catalogue/demo content.
+
+Pearson's seven recent2026 source booklets are restricted. Separate specimen
+links lead to authenticated MathsEmporium access. Neither access gate was
+bypassed. Re-audit those sources when they become publicly available; do not
+claim every restricted or historical legacy-syllabus paper is imported.
+
+The owner explicitly confirmed on14 November2026 that Pearson permission covers
+public question-bank republication. `rights.json` records owner confirmation,
+not an independent licence audit. No Plumi records, tags or assets were imported;
+no suitable open-data licence was verified for its mixed current/legacy bank.
+
+## Reproduce and continue
+
+Application: static HTML/CSS/ES modules, no frontend build or processing API key.
+Development extraction requires Python with pdfplumber, pypdfium2 and Pillow;
+OCR positioning for image-only2019 applied papers uses native macOS Vision.
+The private research workspace is `../math-research/` relative to this repo.
+It retains immutable source PDFs, extraction/OCR caches, review evidence,
+official sample ZIP/page provenance, geometry reports and publish ledgers.
+Public copies remove private absolute paths and textbook access keys.
 
 ```sh
 python3 tools/maths/acquire.py data/imports/maths/inventory/9ma0-inventory.json --cache ../math-research/sources
 python3 tools/maths/acquire.py data/imports/maths/inventory/8ma0-inventory.json --cache ../math-research/as-sources
 python3 tools/maths/extract.py ../math-research/sources --output ../math-research/extracted --ocr-dir ../math-research/ocr
-swift tools/maths/ocr.swift SOURCE.pdf OCR_DIRECTORY
-python3 tools/maths/render.py CANDIDATE.json --question 1 --output QUESTION.png
+python3 tools/maths/build.py INVENTORY --sources SOURCE_CACHE --candidates CANDIDATES --reviews ../math-research/reviews
+python3 tools/maths/finalize.py --research ../math-research
+python3 tools/maths/package_assets.py
+python3 tools/maths/geometry_qa.py --output ../math-research/geometry-qa-RELEASE
 npm test
 npm run validate
+node tools/browser-maths-bank.cjs
+node tools/browser-regression.cjs
 ```
 
-Sources are immutable cache files named `<paper_id>__<document_kind>.pdf`.
-Acquisition verifies PDF magic, SHA256 and source revisions; it refuses secure
-paths. The manifest retains checksums, official URLs, dates, restrictions and
-missing-document states. Do not bypass teacher logins. Native macOS Vision OCR
-is only a positioning/search aid for image-only 2019 applied booklets; display
-faithful PDF crops, never OCR math. See `tools/maths/REVIEW.md` for shared schema.
+Build all four manifests (9ma0/8ma0 exams and samples) with their corresponding
+cache/candidate directories. Full commands/source provenance are in tools/maths.
+`build.py` validates source and review checksums, tags, introduced year, exact
+part coverage and paper totals. Resume signatures include candidate/review bytes;
+bump the compiler signature whenever crop behavior changes. `finalize.py`
+checks and activates every public source, copies sanitized inventories/reviews,
+and updates immutable identities and coverage. It refuses partial completion.
+`package_assets.py` then captures exactly the referenced crop bytes.
 
-On this host the complete private research workspace is `../math-research/`
-(relative to repo). It contains sources, OCR caches, extraction candidates,
-review images, scripts and worker outputs. Public checkpoint copies omit private
-absolute paths. Do not commit shared-folder keys or textbook PDFs.
+## Verification and publication
 
-## Work now being done / next required steps
+- 60 automated tests pass, including source coverage, immutable identities,
+  original tariff occurrences and every packaged image checksum.
+- Data validation:38 subjects,986 paper records,1,359 questions (including other
+  subjects/demos), zero errors or warnings. Runtime Maths listing has60 authentic
+  booklets; catalogue lookup records are retained for historical sessions.
+- Real-bank browser check:1,110 results,377 AS results in Year12 and cumulative13,
+  none with AS plus13-only; actual question/scheme Blob images load; explicit
+  zero survives reload;320/390/768/1440 layouts have no horizontal overflow;
+  samples have the correct label/source bundle and legacy lookups resolve.
+- Filter regression uses an explicit small demo fixture; it covers difficulty
+  and progress unions, shuffle, sorting, set selections, drafts, zero/edit/undo,
+  reset/reload and22 theme/subject contrast cases (minimum7.68:1).
+- Full geometry QA passes:60 booklets,3,088 tariff edges,1,444 part starts,
+  1,074 scheme regions and2,038 unique raster assets checked; zero failures.
+  Every packaged asset checksum is separately tested. Representative source
+  graphs and sample crops were visually checked.
+  Reports and visual evidence stay in the private research workspace.
 
-1. Finish extraction QA (many items below superseded by latest checkpoint): current text-PDF extraction reconciles 50/100 marks.
-   Scanned 2019 applied starts need OCR-boundary correction (inventory worker
-   currently fixing `extract.py`). A correct mark sum alone is not layout proof.
-   Joint tariffs for (i)+(ii) must include both prompts and have corrected
-   display labels; retain all source labels/regions and exceptions.
-2. Finish scheme-region indexing and actual runtime-pack builder. Render source
-   question/part/shared context and matching schemes to lossless assets. A
-   dependent unit groups its needed earlier parts; don't invent supplied results.
-   Validate original part coverage once, question totals, paper totals, IDs,
-   assets, source checksums, dependencies and model review before accepting.
-3. Active review ownership: earlier-years worker:2018 then2020/2021; later-years
-   worker:2024/2025 including modifiedP2; lead:2022/2023; inventory worker:2019
-   official mappings +SAMS after AS acquisition/OCR. AS batches must follow.
-   Every unit needs introduced_year12|13 by assessed skill, difficulty rationale,
-   accurate assessed/prerequisite IDs and model_reviewed/needs_review status.
-4. AS qualification remains8MA0 in provenance while sharing the Maths skill bank.
-   Year12 = AS-scope skills; Year13 default = cumulative full A-level, including
-   all AS questions. Add separately labelled 'Year13 topics only' for additional
-   material, using reviewed unit introduced_year (not paper year/qualification).
-   Do not guess partial point coverage or auto-mark Year12 learned.
-5. Correct synthetic combined applied-paper catalogue rows to authenticated
-   component metadata:2019+9MA0 uses31Statistics/32Mechanics;8MA0 uses21/22.
-   Their exam allocation is shared120min(Alevel) /75min(AS), not officially
-   independent60/37.5min timings. Any per-booklet timer is an explicit allocation.
-6. Import accepted packs, preserve notebook styling, expose genuine source and
-   paper-level report links, distinguish AS/Alevel/sample/modified. Replace demo
-   content for Maths only after real material is functional; retain historical
-   demo attempt identities rather than destroying learner records.
-7. Complete browser tests with real maths/figures, strict and combined filters,
-   exact/scope year behavior, AS visibility, schemes, zero/edit/undo/reload,
-   sets, shuffle/pagination, phone/tablet/desktop. Update counts from manifests,
-   publish checkpoints and final tested corpus; verify deployed files.
+The earlier partial36-booklet/639-unit release was f36ebfff733a2625020fdc9130ac437121a53956.
+This commit supersedes it with the full60-source release and corrected image
+catalogues. GitHub Pages deploys main automatically; confirm its latest run and
+live index/catalogue after each publication. Site domain is purepastpapers.com.
 
-## Publishing from this host
-
-Git shell clone/fetch works; shell push has no credentials. Use connected GitHub
-create_blob (base64 assets), create_tree with base tree, create_commit parent,
-then update_ref(main, expected_sha=oldhead). Never force or discard contributor
-work. Match the new tree to local staged content before moving main. Fetch the
-published commit; only align local history after exact tree comparison. Existing
-GitHub Pages deployment runs automatically. Site domain is purepastpapers.com;
-user's singular spelling is shorthand, not a second configured domain.
-
-## Completion report required
-
-Report expected/found/imported/reviewed papers and unique full questions vs
-assessable units separately, source schemes/reports, AS/Alevel/sample/variant
-coverage, specification/year/textbook coverage, unresolved/restricted records,
-checks and deployment SHA. Do not count catalogue links or proposed extraction
-candidates as imported or claim a complete corpus while batches remain.
-
-## Build and publish continuation
-
-```sh
-python3 tools/maths/build.py INVENTORY --sources SOURCE_CACHE --candidates CANDIDATES --reviews REVIEWS
-python3 tools/maths/package_assets.py
-```
-
-Build status JSON is under `data/imports/maths/*-build-status.json`; built packs
-are in `data/packs/maths/`. Add only accepted packs to `data/packs/index.json`,
-then package assets, validate, test browser and publish. A cache resume signature
-includes extraction+review contents; update compiler version when crop logic changes.
-Original acquisition scripts/evidence and native OCR caches remain private and
-reproducible from inventory. ASsource acquisition is now complete68/68documents.
-
-The private `../math-browser-qa.cjs` holds the realbank browser test; copy it into
-`tools/` before final completion (it uses optional devPlaywright/Chrome paths).
-Do not use the old demo-count browser regressions without adapting their fixtures.
+Shell fetch works here but shell push has no credentials. Publishing uses the
+connected GitHub create_blob/create_tree/create_commit tools, then update_ref
+with expected_sha (never force). Compare the remote tree with the committed
+local tree before advancing main. Store upload SHA ledgers privately so a new
+agent can resume. Fetch and align local history only after exact tree comparison.

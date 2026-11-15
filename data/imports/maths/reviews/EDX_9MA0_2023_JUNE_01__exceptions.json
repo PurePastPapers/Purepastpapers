@@ -1,0 +1,67 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_01",
+  "reviewer_type": "model",
+  "exceptions": [
+    {
+      "question": "1",
+      "resolution": "Fractional exponent, division by3 and indefinite integral verified from source rendering."
+    },
+    {
+      "question": "2",
+      "resolution": "The raw(b)(ii)4mark tariff jointly scores(b)(i)and(ii); both prompts retained."
+    },
+    {
+      "question": "4",
+      "resolution": "Source derivative is2x+(1/2)cosx; the tangent part is independent of the approximation in(a)."
+    },
+    {
+      "question": "6",
+      "resolution": "Source rendering confirms(a)log2(sqrt x)and(c)log2(8+64/x); no dependence on the answers to earlier parts."
+    },
+    {
+      "question": "7",
+      "resolution": "Source radical coversx-2; inverse/domain and composite-function tasks require additional A-level function concepts."
+    },
+    {
+      "question": "8",
+      "resolution": "Source plan inspected: congruent triangles flank the sector; earlier show-that radius and angle are visible unscored context for(c)."
+    },
+    {
+      "question": "9",
+      "resolution": "The raw(b)(ii)5mark tariff covers both parameter selection and sum to infinity."
+    },
+    {
+      "question": "10",
+      "resolution": "The raw(a)(ii)3mark tariff covers centre and radius; (b)uses the original circle equation and does not need derived results from(a)."
+    },
+    {
+      "question": "11",
+      "resolution": "Parts(b)and(c)grouped because reliability evaluation uses the fitted model; (a)is separately solvable from the printed intercept."
+    },
+    {
+      "question": "15",
+      "resolution": "The source function denominator is sqrt(e^(3x)-2); derivative coefficients A,B are unknown and require(a)+(b)to be scored together."
+    },
+    {
+      "question": "15",
+      "resolution": "The raw(d)(ii)3mark tariff jointly covers(d)(i)and(ii). Iteration equation and starting value are explicitly printed, so(c),(d),(e)do not use invented earlier answers."
+    },
+    {
+      "question": "15",
+      "resolution": "Source rendering includes the continued-page staircase graph and its spare copy."
+    }
+  ],
+  "total_marks_checked": 100,
+  "source_parts_checked": 37,
+  "reviewed_units": 34,
+  "unresolved_exceptions": [],
+  "publication_holds": [
+    {
+      "scope": "source_renderer_coordinate_space",
+      "status": "requires_shared_renderer_fix",
+      "example_question": "15",
+      "issue": "Candidates use pdfplumber MediaBox coordinates (651.969 by 898.583 points), while the current pypdfium renderer defaults to the offset CropBox (595.2755 by 841.8895 points). Applying the candidate bbox to CropBox pixels clips final tariff endpoints.",
+      "verified_resolution": "Private diagnostic rendering with the page CropBox set to its MediaBox restores complete source text and tariffs; the corrected example was visually checked. Apply equivalent coordinate handling in the shared renderer before packaging these booklets."
+    }
+  ]
+}

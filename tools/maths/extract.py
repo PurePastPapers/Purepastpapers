@@ -12,6 +12,8 @@ import json
 import re
 from pathlib import Path
 
+from source_overrides import apply_overrides
+
 VERSION = 'pearson-9ma0-layout-v5'
 
 
@@ -181,10 +183,12 @@ def extract(path, ocr_dir=None):
         if expected_marks is not None and sum(q['marks'] for q in questions) != expected_marks:
             exceptions.append({'type': 'paper_marks_mismatch', 'expected': expected_marks,
                                'actual': sum(q['marks'] for q in questions)})
-        return {'expected_question_count': expected_count, 'expected_total_marks': expected_marks,
+        candidate = {'expected_question_count': expected_count, 'expected_total_marks': expected_marks,
                 'extraction_version': VERSION, 'source_sha256': digest(path), 'source_file': str(path),
                 'page_count': len(pages), 'questions': questions,
                 'total_marks': sum(q['marks'] for q in questions), 'exceptions': exceptions}
+        apply_overrides(candidate)
+        return candidate
 
 
 def main():
@@ -202,6 +206,8 @@ def main():
         if out.exists():
             old = json.loads(out.read_text())
             if old.get('extraction_version') == VERSION and old.get('source_sha256') == digest(path):
+                if apply_overrides(old):
+                    out.write_text(json.dumps(old, ensure_ascii=False, indent=2) + '\n')
                 continue
         pending.append((path, out))
     with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as pool:

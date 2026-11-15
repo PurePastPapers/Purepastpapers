@@ -18,6 +18,14 @@ const assert = require('node:assert/strict');
       height: 1000
     }
   });
+  // This regression uses the original small demo fixture so every result fits
+  // one page. Real source-bank coverage is tested by browser-maths-bank.cjs.
+  await p.route('**/data/packs/index.json', async route => {
+    const response = await route.fetch();
+    const index = await response.json();
+    index.packs = index.packs.filter(pack => !pack.file.startsWith('maths/'));
+    await route.fulfill({response, json: index});
+  });
   const errors = [];
   p.on('pageerror', e => errors.push(e.message));
   await p.goto((process.env.AUDIT_URL || 'http://localhost:5173'));

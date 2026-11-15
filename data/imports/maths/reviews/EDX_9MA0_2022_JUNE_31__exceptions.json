@@ -1,0 +1,33 @@
+{
+  "paper_id": "EDX_9MA0_2022_JUNE_31",
+  "reviewer_type": "model",
+  "exceptions": [
+    {
+      "question": "1",
+      "resolution": "The raw (a)(ii) 3-mark tariff jointly covers both requested binomial probabilities. Normal approximation is mapped to official 4.2, not legacy runtime 4.3."
+    },
+    {
+      "question": "2",
+      "resolution": "The standard deviation x=0.05 is explicitly printed in (a); later normal calculations use it as unscored source context. Part (d) concerns a separate binomial hinge model, without a formal hypothesis test."
+    },
+    {
+      "question": "3",
+      "resolution": "The raw (b)(ii) 3-mark tariff jointly covers mean and standard deviation. The critique in (d) is binomial-model selection within AS skills, despite sharing the full-spec distribution-selection leaf."
+    },
+    {
+      "question": "4",
+      "resolution": "Source rendering verifies printed parts (a),(b),(c),(d). The candidate mislabels the 1-mark printed (c) tariff as a second (b); the review preserves both raw (b) occurrences exactly once, in source order, and displays (a)–(d)."
+    },
+    {
+      "question": "5",
+      "resolution": "The source Venn diagram is on continued PDF page 13, with a spare copy on page 15; both are present as shared_figure regions and were visually checked. Parts (c),(e),(f) are grouped for missing counts. Part (d) uses a table count already given, so its mark is separate."
+    },
+    {
+      "question": "6",
+      "resolution": "The source scatter diagram and log₁₀ coding are present on PDF page 16 and visually verified. Part (c) uses the separately supplied regression equation, not an answer from the correlation test."
+    }
+  ],
+  "total_marks_checked": 50,
+  "source_parts_checked": 23,
+  "reviewed_units": 16
+}

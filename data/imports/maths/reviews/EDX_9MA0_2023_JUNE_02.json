@@ -1,0 +1,573 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "abda298d4ff94de6560c1f73cb58b105a1624fda120632805dc8543ba0eedc8c",
+  "mark_scheme_sha256": "a60ee5f4655d55567459659fc2db056fabe8b839045d8a5d9bf0f6d807b835bd",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.1",
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Differentiate the cubic twice, then reuse the derived second derivative to locate and interpret the interval of concavity; concavity extends the AS second-derivative demand.",
+          "difficulty_basis": "Differentiate the cubic twice, then reuse the derived second derivative to locate and interpret the interval of concavity; concavity extends the AS second-derivative demand.",
+          "summary": "Use a cubic second derivative to determine concavity.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)(ii)"
+        }
+      ],
+      "exceptions": [
+        "The raw(b)(ii)2mark tariff jointly scores(b)(i)and(ii); grouped with(a)because the second derivative is not printed."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.2",
+            "EDX_MATH_PURE_SEQ_4.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Generate the first cycle of a trigonometric recurrence, then use its stated period to find a later term and sum complete cycles plus a remainder.",
+          "difficulty_basis": "Generate the first cycle of a trigonometric recurrence, then use its stated period to find a later term and sum complete cycles plus a remainder.",
+          "summary": "Generate and sum a periodic recurrence.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)(i)–(b)(ii)"
+        }
+      ],
+      "exceptions": [
+        "Raw(a)(ii)and(b)(ii)tariffs cover their respective(i),(ii)prompts; the period-four sum needs the unprinted terms found in(a).",
+        "Source recurrence is u_(n+1)=u_n+7cos(nπ/2)-5(-1)^n."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Combine logarithms, convert the constant into the appropriate base-two logarithm and rearrange into the printed quadratic.",
+          "difficulty_basis": "Combine logarithms, convert the constant into the appropriate base-two logarithm and rearrange into the printed quadratic.",
+          "summary": "Reduce a logarithmic equation to a quadratic.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_EXP_6.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Solve the quadratic reprinted within the part and use the positive logarithm domain to reject an invalid root.",
+          "difficulty_basis": "Solve the quadratic reprinted within the part and use the positive logarithm domain to reject an invalid root.",
+          "summary": "Select valid roots of a logarithmic equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)(i)–(ii)"
+        }
+      ],
+      "exceptions": [
+        "The raw(b)(ii)2mark tariff covers both root calculation and domain rejection; the quadratic is explicitly repeated in(b)."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7",
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the initial temperature to find one model constant, then differentiate the exponential and use the initial cooling rate to fit the other.",
+          "difficulty_basis": "Use the initial temperature to find one model constant, then differentiate the exponential and use the initial cooling rate to fit the other.",
+          "summary": "Fit an exponential cooling model using a rate of change.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Set the supplied derivative to zero at the stated turning point and determine the constant.",
+          "difficulty_basis": "Set the supplied derivative to zero at the stated turning point and determine the constant.",
+          "summary": "Find a derivative parameter from a stationary point.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.1",
+            "EDX_MATH_PURE_INT_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use the parameter explicitly printed in(a), integrate the polynomial derivative and fit the integration constant using the known point before finding the intercept.",
+          "difficulty_basis": "Use the parameter explicitly printed in(a), integrate the polynomial derivative and fit the integration constant using the known point before finding the intercept.",
+          "summary": "Recover a polynomial curve and its vertical intercept.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Source derivative is2x^3-9x^2+5x+k; printedk=12is retained as unscored context for(b)."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Subtract two pairs of position vectors and identify one displacement as a scalar multiple of the other.",
+          "difficulty_basis": "Subtract two pairs of position vectors and identify one displacement as a scalar multiple of the other.",
+          "summary": "Prove two track sides are parallel using vectors.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2",
+            "EDX_MATH_PURE_VEC_10.4",
+            "EDX_MATH_PURE_VEC_10.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_MECH_UNITS_6.1"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Find the four side lengths from the printed two-dimensional coordinates, form the two-lap distance and convert the resulting speed to kilometres per hour.",
+          "difficulty_basis": "Find the four side lengths from the printed two-dimensional coordinates, form the two-lap distance and convert the resulting speed to kilometres per hour.",
+          "summary": "Use vector distances to calculate a runner’s average speed.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Apply implicit differentiation including the mixed product term, then reuse the derived gradient to construct a normal at the supplied point.",
+          "difficulty_basis": "Apply implicit differentiation including the mixed product term, then reuse the derived gradient to construct a normal at the supplied point.",
+          "summary": "Differentiate an implicit curve and find a normal.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_SEQ_4.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Obtain amplitude-phase constants, express the arithmetic sum as a matching sine-cosine combination and reuse the derived constants to find its maximum and first positive phase.",
+          "difficulty_basis": "Obtain amplitude-phase constants, express the arithmetic sum as a matching sine-cosine combination and reuse the derived constants to find its maximum and first positive phase.",
+          "summary": "Maximise an arithmetic sum with trigonometric terms.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)(ii)"
+        }
+      ],
+      "exceptions": [
+        "The raw(b)(ii)3mark tariff covers maximum value and its argument; unknown amplitude-phase constants from(a)are needed."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.3",
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Complete the square in the parameter equation and use the positive parameter restriction to eliminate it inside a logarithm.",
+          "difficulty_basis": "Complete the square in the parameter equation and use the positive parameter restriction to eliminate it inside a logarithm.",
+          "summary": "Convert a logarithmic parametric curve to Cartesian form.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the original parametric equations to locate the vertical-axis crossing and obtain the tangent gradient; the unknown Cartesian coefficients from(a)need not be supplied.",
+          "difficulty_basis": "Use the original parametric equations to locate the vertical-axis crossing and obtain the tangent gradient; the unknown Cartesian coefficients from(a)need not be supplied.",
+          "summary": "Find a tangent to a logarithmic parametric curve.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The source shows x=t^2+6t-16,y=6ln(t+3),t>-3; (b)can be solved directly from these printed parametric equations without inventingAorB."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.10",
+            "EDX_MATH_PURE_INT_8.6",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Derive the parameterised partial fractions, integrate them over the given limits and solve the resulting exact logarithmic equation for the parameter.",
+          "difficulty_basis": "Derive the parameterised partial fractions, integrate them over the given limits and solve the resulting exact logarithmic equation for the parameter.",
+          "summary": "Find a parameter using partial fractions and a definite integral.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source numerator is3kx-18and denominator(x+4)(x-2); bounds are-3and1. The partial-fraction coefficients are not printed, so(a)+(b)remain grouped."
+      ]
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.6",
+            "EDX_MATH_PURE_DIFF_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Relate volume to water height in the cuboid and combine the inverse-square-root flow condition with connected rates.",
+          "difficulty_basis": "Relate volume to water height in the cuboid and combine the inverse-square-root flow condition with connected rates.",
+          "summary": "Construct a water-height differential equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.7",
+            "EDX_MATH_PURE_INT_8.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Separate the differential equation explicitly printed in(a), fit both constants to the two given heights and reuse the fitted model to find the filling time.",
+          "difficulty_basis": "Separate the differential equation explicitly printed in(a), fit both constants to the two given heights and reuse the fitted model to find the filling time.",
+          "summary": "Solve and use a tank-filling differential equation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Source rendering confirmsdh/dt=λ/sqrt(h)and the requestedh^(3/2)=At+B; (c)depends on unknown constants fitted in(b)."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Evaluate both supplied modulus functions at the initial time and interpret the difference in thousands.",
+          "difficulty_basis": "Evaluate both supplied modulus functions at the initial time and interpret the difference in thousands.",
+          "summary": "Compare initial subscriber counts in modulus models.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Identify the time when the first modulus model changes from decreasing to increasing and explain it in context.",
+          "difficulty_basis": "Identify the time when the first modulus model changes from decreasing to increasing and explain it in context.",
+          "summary": "Interpret the turning time of a modulus subscriber model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Resolve the modulus expressions on the relevant intervals, locate both intersections and combine the strict comparison intervals with the nonnegative time domain in set notation.",
+          "difficulty_basis": "Resolve the modulus expressions on the relevant intervals, locate both intersections and combine the strict comparison intervals with the nonnegative time domain in set notation.",
+          "summary": "Solve an inequality between two modulus models.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Recognise the eventual negative subscriber count implied by the supplied modulus model.",
+          "difficulty_basis": "Recognise the eventual negative subscriber count implied by the supplied modulus model.",
+          "summary": "Identify a limitation of a subscriber model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Modulus functions are additional A-level content; the diagram and both full equations were visually checked. No earlier numerical answers are needed by later parts."
+      ]
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1",
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Normalise a negative-power binomial, derive its first three terms and reuse that unprinted expansion to approximate a definite rational integral.",
+          "difficulty_basis": "Normalise a negative-power binomial, derive its first three terms and reuse that unprinted expansion to approximate a definite rational integral.",
+          "summary": "Approximate a definite integral with a binomial expansion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.5",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Transform or decompose the original rational integrand, integrate its logarithmic and reciprocal terms exactly and combine the endpoint logarithms.",
+          "difficulty_basis": "Transform or decompose the original rational integrand, integrate its logarithmic and reciprocal terms exactly and combine the endpoint logarithms.",
+          "summary": "Evaluate a rational definite integral exactly.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Parts(a)+(b)grouped because the expansion is not supplied. Part(c)reprints the original integral, is independent of the approximation, and permits substitution or equivalent algebraic decomposition.",
+        "Source bounds are0.2to0.4and integrand6x/(3+x)^2."
+      ]
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_TRIG_5.7"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Combine Pythagorean and double-angle identities to derive an unprinted cosine quadratic, then solve all factors in the extended degree interval while excluding the undefined angle.",
+          "difficulty_basis": "Combine Pythagorean and double-angle identities to derive an unprinted cosine quadratic, then solve all factors in the extended degree interval while excluding the undefined angle.",
+          "summary": "Rearrange and solve a trigonometric equation over an extended interval.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The source has23sin^2θand8sin2θ(1+tan^2θ); coefficientsA,B,Care unknown, so(a)+(b)must remain grouped."
+      ]
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Continue the supplied contradiction assumption, use the Pythagorean identity and justify the sign of the product in the obtuse quadrant.",
+          "difficulty_basis": "Continue the supplied contradiction assumption, use the Pythagorean identity and justify the sign of the product in the obtuse quadrant.",
+          "summary": "Complete a trigonometric proof by contradiction.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

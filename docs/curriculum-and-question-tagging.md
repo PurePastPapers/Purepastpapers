@@ -6,9 +6,10 @@ PurePastPapers helps a student choose a subject, find individual questions by
 specification point, answer and self-mark, then review progress. Keep the
 notebook-inspired paper background, typography, colours and cards. Browsing and
 filtering are free for guests. An optional free account retains marks and progress
-in the current browser; it does not sync across devices. Do not imply a complete
-bank of real question extracts: the shipped question records are labelled demo
-content. The official paper catalogue and question extracts are different things.
+in the current browser; it does not sync across devices. Edexcel Maths now has a reviewed source bank; see
+[MATHS-HANDOVER.md](MATHS-HANDOVER.md) for exact exam/AS/sample coverage and gaps.
+Other subjects retain catalogue/demo content. Catalogue listings and extracted
+questions are different things.
 
 This document is the authoritative home for curriculum identity, navigation and
 the question-tagging relationship. The [Phase 1 plan](phase-one-question-bank-and-onboarding.md)
@@ -22,9 +23,9 @@ does not itself import or license exam content.
   and specification identifiers. `data/specs/<subject_id>.json` contains each
   subject's sections, topics, points and printed codes. These trees and fallback
   ordering are working data, not verified verbatim official specifications.
-- `data/curriculum/index.json` is a separate mapping index. It currently has an
-  empty `mappings` array. No textbook chapter or teaching-year mapping has been
-  verified or shipped. The selector says so rather than presenting a guess.
+- `data/curriculum/index.json` is a separate mapping index. It currently contains
+  verified Maths year relations and14 PureYear1/AS textbook chapters. Other
+  textbook maps remain unverified; the selector does not present guesses.
 - The previous cloud pass reported HTTP CONNECT 403 for source sites. On 14 November
   2026 the local browser could list the shared textbook folder and its Edexcel Maths
   subfolder, and the official Pearson specification was readable. See the source

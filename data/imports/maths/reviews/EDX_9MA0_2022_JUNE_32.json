@@ -1,0 +1,315 @@
+{
+  "paper_id": "EDX_9MA0_2022_JUNE_32",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "76df109bf787c4dcb53745335d5149dd2403df3cdfd18f135f2e04f66b0c8deb",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "This tariff only evaluates a given two-dimensional vector and its magnitude; no vector calculus or vector constant-acceleration formula is needed.",
+          "difficulty_basis": "Evaluate the two velocity components at the stated time and take their Euclidean magnitude.",
+          "summary": "Find speed from a supplied velocity vector.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Apply power differentiation to each component of the supplied velocity vector.",
+          "summary": "Differentiate a planar velocity to find acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Integrate both velocity components, determine their two constants from the supplied position at t=4 and evaluate the resulting vector at t=1.",
+          "summary": "Integrate planar velocity to obtain a position.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified v=3t²i−6t^(1/2)j; the extracted line breaks can misread the square-root power. The position condition before (c) is an interstitial printed given."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)(i)",
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Resolve the known normal reaction to determine the horizontal force, then balance along the incline and use the signed result to identify friction’s direction.",
+          "summary": "Find the magnitude and direction of static incline friction.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Recalculate the normal reaction after the horizontal force is removed, model kinetic friction and apply Newton’s second law down the slope.",
+          "summary": "Find acceleration down a rough inclined plane after release.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Inclined-plane geometry, horizontal force direction and tan(α)=3/4 visually verified. Part (b) requires a new reaction after the force is removed and does not reuse the earlier static friction."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Adding two supplied force vectors and applying Newton’s second law in fixed component directions is AS scope; no general planar kinematic formula is needed.",
+          "difficulty_basis": "Add the two coplanar force vectors and use proportional components of the resultant, parallel to the initial motion from rest, to establish the printed relation.",
+          "summary": "Derive a force-parameter relation from a motion direction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "The mark scheme explicitly allows taking the resultant-force magnitude followed by scalar s=ut+½at². The planar context does not require the additional A level vector suvat extension.",
+          "difficulty_basis": "Use the parameter relation explicitly printed in (a), determine the resultant-force magnitude and apply scalar constant-acceleration displacement from rest along the fixed straight path.",
+          "summary": "Find a fixed-direction travel distance under a resultant force.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "The source and mark scheme were checked: (a) prints λ−3μ+7=0, usable unscored in (b). The mark scheme for (b) explicitly provides scalar-distance alternatives as well as the vector route, supporting Year 12 classification."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Identify the leftward horizontal component of tension and use horizontal equilibrium to infer the opposing friction direction.",
+          "summary": "Explain the direction of ground friction on a supported rod.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Take moments about the ground contact, place the uniform rod weight at its midpoint and include the attached particle’s lever arm.",
+          "summary": "Find a rod’s string tension using moments.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the tension formula explicitly printed in (b), resolve its vertical component and balance it with both weights at the supplied angle.",
+          "summary": "Find a rod’s vertical ground reaction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.6",
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the tension and reaction results explicitly printed in (b),(c), resolve the horizontal force and apply F=μR.",
+          "summary": "Determine a rod’s limiting-friction coefficient.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)",
+            "(c)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Rod, perpendicular-string geometry, cos(θ)=3/5 and printed reaction 57Mg/25 visually verified. Later units retain the exact printed show-that formulas as unscored context; no unprinted answer is supplied."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Resolve the initial speed, form the horizontal range and zero-net-height equations and eliminate the flight time to establish the printed identity.",
+          "summary": "Derive a projectile range identity from horizontal and vertical motion.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use zero vertical speed at the maximum height, combine this with the range identity explicitly printed in (a) and eliminate the launch angle.",
+          "summary": "Determine projectile launch speed from range and peak height.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Explain why a larger initial speed is needed to retain the same horizontal range in the refined resistive model.",
+          "summary": "Compare launch speeds when air resistance is included.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Identify a physical refinement beyond the air resistance already included, such as ball size or spin.",
+          "summary": "Suggest another refinement to a golf-ball projectile model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The source range 120 m, maximum height 10 m and printed identity U²sin(α)cos(α)=588 were visually checked. The identity is retained unscored for (b); the later qualitative units do not need the numerical launch-speed answer."
+      ]
+    }
+  ]
+}

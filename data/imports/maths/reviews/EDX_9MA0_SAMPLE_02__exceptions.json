@@ -1,0 +1,29 @@
+{
+  "paper_id": "EDX_9MA0_SAMPLE_02",
+  "reviewer_type": "model",
+  "exceptions": [
+    {
+      "question": "2",
+      "status": "resolved",
+      "resolution": "Raw (b)(ii) is the single printed joint tariff for b/i/ii; retain all prompts and score its marks once."
+    },
+    {
+      "question": "6",
+      "status": "resolved",
+      "resolution": "Source-verified table override restores the three printed 2-mark tariffs (i)/(ii)/(iii) inside the statement column; reproduce with tools/maths/source_overrides.py. No question text or answer is rewritten."
+    },
+    {
+      "question": "13",
+      "status": "resolved",
+      "resolution": "Raw (b)(ii) is the single printed joint tariff for b/i/ii; retain all prompts and score its marks once."
+    }
+  ],
+  "unresolved_exceptions": [],
+  "total_marks_checked": 100,
+  "full_questions_checked": 16,
+  "source_parts_checked": 33,
+  "reviewed_units": 25,
+  "source_sha256": "8b1090840cab51618728358bd0d22a51f88451129ecb1d0a1304e90eebd3ef41",
+  "scheme_source_sha256": "de73c300084f30db7a3a1b54ed6bf93b7f07ff574f323cff698222622419ab08",
+  "scheme_questions_checked": 16
+}

@@ -1,0 +1,614 @@
+{
+  "paper_id": "EDX_9MA0_SAMPLE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "e3faaf59ebf4aab5281088fa0f11cfc7b8b6b8294cda453bdba30e65f273d30e",
+  "scheme_source_sha256": "fb9e12e1fb5738bd48f1a3fd18f1a6f97417d5e76d9aeef66dfbad9e35fc48d6",
+  "specification_basis": "Pearson Issue 4 canonical 89 printed reference groups / stable 90 runtime IDs; sample question-level callouts are supporting evidence, not part-level tag unions.",
+  "visual_review": "Every question crop inspected from SourceRenderer output; original PDF pixels remain authoritative for mathematical typography, diagrams and all joint tariffs.",
+  "source_provenance": {
+    "question_paper": {
+      "paper_id": "EDX_9MA0_SAMPLE_01",
+      "kind": "question_paper",
+      "cache_file": "EDX_9MA0_SAMPLE_01__question_paper.pdf",
+      "cache_sha256": "e3faaf59ebf4aab5281088fa0f11cfc7b8b6b8294cda453bdba30e65f273d30e",
+      "original_source_file": "9ma0_samples_official_bundle.pdf",
+      "original_source_sha256": "597d62df69fab389cc9c3ca33a2ae00f4eb47102ddcd40af5ec330fd6cdfbdff",
+      "original_source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/as-al-maths-further-sams.zip",
+      "source_zip_entry": "9MA0 A level Mathematics SAMs.pdf",
+      "source_pages_inclusive": [
+        9,
+        40
+      ],
+      "original_page_offset": 8,
+      "operation": "faithful source page extraction; no question rewriting",
+      "source_zip_file": "as-al-maths-further-sams.zip",
+      "source_zip_sha256": "c158f17ba92edd515d4fd2454756473ad1ecd98fe42318cab748446f5da7a40d"
+    },
+    "mark_scheme": {
+      "paper_id": "EDX_9MA0_SAMPLE_01",
+      "kind": "mark_scheme",
+      "cache_file": "EDX_9MA0_SAMPLE_01__mark_scheme.pdf",
+      "cache_sha256": "fb9e12e1fb5738bd48f1a3fd18f1a6f97417d5e76d9aeef66dfbad9e35fc48d6",
+      "original_source_file": "9ma0_samples_official_bundle.pdf",
+      "original_source_sha256": "597d62df69fab389cc9c3ca33a2ae00f4eb47102ddcd40af5ec330fd6cdfbdff",
+      "original_source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/as-al-maths-further-sams.zip",
+      "source_zip_entry": "9MA0 A level Mathematics SAMs.pdf",
+      "source_pages_inclusive": [
+        41,
+        58
+      ],
+      "original_page_offset": 40,
+      "operation": "faithful source page extraction; no question rewriting",
+      "source_zip_file": "as-al-maths-further-sams.zip",
+      "source_zip_sha256": "c158f17ba92edd515d4fd2454756473ad1ecd98fe42318cab748446f5da7a40d"
+    }
+  },
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.1",
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Apply two polynomial differentiation steps, substitute a supplied stationary abscissa and interpret the second derivative.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Polynomial differentiation and stationary-point classification are within AS scope.",
+          "summary": "Differentiate a polynomial and classify its stationary point.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        }
+      ],
+      "exceptions": [
+        "Raw (a)(ii) is the single printed joint tariff for a/i/ii; retain all prompts and score its marks once."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use arc length to find one radius, infer the second radius from the straight line, and identify the supplementary angle in radians.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Radians, arc length and sector area are additional A level content within the broad trigonometry point.",
+          "summary": "Find a sector radius and the area of an adjoining sector.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Complete both squares, identify the centre and require a strictly positive squared radius.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Circle equations, completing the square and the resulting linear inequality are AS content.",
+          "summary": "Complete a circle equation and constrain its constant.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Separate the constant and reciprocal terms, evaluate at both parameter limits and combine logarithms.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Integration of the reciprocal function is additional A level integration content.",
+          "summary": "Evaluate an integral with parameter-dependent limits.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Rearrange the linear parameter equation and combine the substituted terms over one denominator.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Parametric equations are additional A level content.",
+          "summary": "Eliminate a parameter from a rational parametric curve.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Interpolate using the two supplied model points and explain the physical limitation of continuing a decreasing line.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Straight-line modelling and its limitations are within AS scope.",
+          "summary": "Use and critique a linear oil-production model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Fit the initial value and a decay factor from a second observation, then evaluate the fitted model.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Fitting a basic exponential growth or decay model is within AS scope.",
+          "summary": "Fit and use an exponential oil-production model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)"
+        }
+      ],
+      "exceptions": [
+        "Raw (a)(ii) is the single printed joint tariff for a/i/ii; retain all prompts and score its marks once.",
+        "Raw (b)(ii) is the single printed joint tariff for b/i/ii; retain all prompts and score its marks once."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.2",
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Construct the missing displacement, calculate vector magnitudes and use the cosine rule with the correct triangle angle.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Three-dimensional vectors extend the AS two-dimensional vector scope.",
+          "summary": "Find an angle in a triangle defined by three-dimensional vectors.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Evaluate the function at both supplied endpoints and connect the sign change with continuity.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Root-location methods are additional A level numerical content.",
+          "summary": "Locate a root by a sign change.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Substitute the explicitly supplied function value and derivative into one Newton–Raphson update.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Newton–Raphson is additional A level numerical content.",
+          "summary": "Apply a supplied Newton–Raphson step.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Differentiate the function and use the sign of its derivative throughout the stated domain to rule out another root.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Differentiating a logarithm of a linear expression extends AS polynomial and exponential differentiation.",
+          "summary": "Establish uniqueness of a logarithmic-equation root.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Use current Issue 4 numerical-method codes: Newton–Raphson 9.3 and trapezium rule 9.4; the older sample exemplification uses earlier numbering."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.4",
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_TRIG_5.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Rewrite tangent and cotangent as quotients, use Pythagorean and double-angle identities, then apply a trig-function range restriction.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Reciprocal trig functions and double-angle identities are additional A level content.",
+          "summary": "Prove a reciprocal-trig identity and exclude real roots.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.6"
+          ],
+          "difficulty": "hard",
+          "difficulty_basis": "Build the difference quotient, expand a compound angle and justify the limiting terms using the two allowed limits.",
+          "introduced_year": 13,
+          "introduced_year_basis": "First principles for trigonometric differentiation extends the AS polynomial first-principles scope.",
+          "summary": "Prove the sine derivative from first principles.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Set the supplied height model to ground level, solve its quadratic and select the physically valid distance.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Solving and interpreting a quadratic model is within AS scope.",
+          "summary": "Find a quadratic model’s physical endpoint.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Relate the constant term to the height at zero horizontal distance.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Interpreting a supplied function model is within AS scope.",
+          "summary": "Interpret a height-model intercept.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Complete the square and transfer its vertex information to a model with a changed constant term.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Completing the square and quadratic maxima are within AS scope.",
+          "summary": "Complete the square and use an adapted quadratic model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(c)–(d)"
+        }
+      ],
+      "exceptions": [
+        "Raw (d)(ii) is the single printed joint tariff for d/i/ii; retain all prompts and score its marks once."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Take logarithms and identify the gradient and intercept of the resulting straight line.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Logarithm laws and linearising power models are within AS scope.",
+          "summary": "Linearise a power model using logarithms.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Read or infer the fitted straight-line parameters and transform back to the original population scale.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Estimating parameters with a logarithmic graph is within AS scope.",
+          "summary": "Estimate a population from a logarithmic graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compare the proposed population with the observed graphical range and explain the unreliability of extrapolation.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Interpreting and limiting a logarithmic model is within AS scope.",
+          "summary": "Assess extrapolation from a logarithmic model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use the supplied power model to interpret its coefficient at the natural unit-time input.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Interpreting the coefficient of a power model uses AS logarithmic-modelling scope.",
+          "summary": "Interpret a power-model constant.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.3",
+            "EDX_MATH_PURE_TRIG_5.6"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Form the ratio of parameter derivatives, evaluate at the supplied parameter value and construct the perpendicular line.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Parametric differentiation is additional A level content.",
+          "summary": "Differentiate a parametric curve and establish a normal.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.3",
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_TRIG_5.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use the printed normal equation and a double-angle identity to reduce the intersection to a quadratic and distinguish the second point.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Parametric curves and double-angle identities are additional A level content.",
+          "summary": "Find a second intersection of a parametric curve and normal.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Apply the trapezium rule directly to all supplied equally spaced tabulated values.",
+          "introduced_year": 13,
+          "introduced_year_basis": "The trapezium rule is additional A level numerical-integration content.",
+          "summary": "Estimate an area using the trapezium rule.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Explain how reducing strip width changes the numerical approximation.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Accuracy of the trapezium rule is additional A level numerical content.",
+          "summary": "Improve a trapezium-rule estimate.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.5",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "difficulty": "hard",
+          "difficulty_basis": "Choose integration by parts for a polynomial times a logarithm, apply both limits and simplify the exact logarithmic expression.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Integration by parts is additional A level integration content.",
+          "summary": "Evaluate a logarithmic area exactly.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Use current Issue 4 numerical-method codes: Newton–Raphson 9.3 and trapezium rule 9.4; the older sample exemplification uses earlier numbering."
+      ]
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_ALG_2.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Differentiate the quotient, solve the resulting trig equation over the domain, and distinguish minima after horizontal and vertical transformations.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Quotient differentiation with trigonometric functions is additional A level content.",
+          "summary": "Find and transform stationary points of an exponential-trig curve.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        }
+      ],
+      "exceptions": [
+        "Raw (b)(ii) is the single printed joint tariff for b/i/ii; retain all prompts and score its marks once."
+      ]
+    }
+  ]
+}

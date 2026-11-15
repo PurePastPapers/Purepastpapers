@@ -1,0 +1,348 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_32",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "4d8b97e58e553322ccfa275ac8b29998340f91146de2996d342b19207ffa0693",
+  "mark_scheme_sha256": "40e3150f10cb6b26d108d43be5378beff6508d5a54ba564d7b5b6bfe25cf693e",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use the stated constant acceleration, rest condition and elapsed time to find speed.",
+          "difficulty_basis": "Use the stated constant acceleration, rest condition and elapsed time to find speed.",
+          "summary": "Find a car’s speed under constant acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use the original rest condition and acceleration in the displacement formula; the speed answer from(a)is unnecessary.",
+          "difficulty_basis": "Use the original rest condition and acceleration in the displacement formula; the speed answer from(a)is unnecessary.",
+          "summary": "Find distance travelled from rest under constant acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.3",
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Find the normal reaction from vertical equilibrium, apply Newton’s second law horizontally and reuse both unprinted forces in the friction law.",
+          "difficulty_basis": "Find the normal reaction from vertical equilibrium, apply Newton’s second law horizontally and reuse both unprinted forces in the friction law.",
+          "summary": "Find reaction, resistance and a coefficient of friction.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Parts(a),(b),(c)remain grouped because(c)needs the unprinted reaction and friction values; friction coefficients are additional A-level content."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Evaluate a two-dimensional velocity vector at the stated time and take its magnitude to obtain speed.",
+          "difficulty_basis": "Evaluate a two-dimensional velocity vector at the stated time and take its magnitude to obtain speed.",
+          "summary": "Find speed from a two-dimensional velocity vector.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Express parallel motion by equal velocity components, solve the resulting quadratic and enforce the nonnegative time restriction.",
+          "difficulty_basis": "Express parallel motion by equal velocity components, solve the resulting quadratic and enforce the nonnegative time restriction.",
+          "summary": "Find when a velocity is parallel to a given direction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Differentiate the velocity components, then use the derived acceleration vector to impose a perpendicular-direction condition.",
+          "difficulty_basis": "Differentiate the velocity components, then use the derived acceleration vector to impose a perpendicular-direction condition.",
+          "summary": "Find acceleration and a time when it has a specified direction.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source velocity is(t^2-3t+7)i+(2t^2-3)j. The acceleration vector requested in(c)is not printed, so(c)+(d)are grouped. Two-dimensional vector kinematics is additional A-level scope."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Apply the two-dimensional constant-acceleration velocity equation over the given interval and take the magnitude of the resulting vector.",
+          "difficulty_basis": "Apply the two-dimensional constant-acceleration velocity equation over the given interval and take the magnitude of the resulting vector.",
+          "summary": "Find speed after constant vector acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_VEC_10.4"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the original initial position, velocity and acceleration to solve the horizontal displacement quadratic, select the permitted time and reuse it in the vertical coordinate.",
+          "difficulty_basis": "Use the original initial position, velocity and acceleration to solve the horizontal displacement quadratic, select the permitted time and reuse it in the vertical coordinate.",
+          "summary": "Find a time and position coordinate in planar motion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The(b)+(c)unit uses the fully printed initial data atA,not an invented velocity from(a); the unknownTfrom(b)is required by(c)."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Resolve the launch velocity horizontally and use the given horizontal displacement to obtain the flight-time expression.",
+          "difficulty_basis": "Resolve the launch velocity horizontally and use the given horizontal displacement to obtain the flight-time expression.",
+          "summary": "Derive a projectile flight-time expression.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Form the vertical displacement equation, eliminate time using the formula explicitly printed in(a)and use the tangent identity to reach the required quadratic.",
+          "difficulty_basis": "Form the vertical displacement equation, eliminate time using the formula explicitly printed in(a)and use the tangent identity to reach the required quadratic.",
+          "summary": "Derive a projectile launch-angle equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Solve the tangent quadratic explicitly printed in(b), choose the launch angle producing the larger peak and apply the zero-vertical-speed condition to obtain its height.",
+          "difficulty_basis": "Solve the tangent quadratic explicitly printed in(b), choose the launch angle producing the larger peak and apply the zero-vertical-speed condition to obtain its height.",
+          "summary": "Find the greatest possible projectile height.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Identify a generic particle or constant-gravity modelling limitation beyond the excluded air resistance; no projectile equation or two-dimensional calculation is required.",
+          "difficulty_basis": "Identify a generic particle or constant-gravity modelling limitation beyond the excluded air resistance; no projectile equation or two-dimensional calculation is required.",
+          "summary": "Identify a limitation of a projectile model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source trajectory,20mheight,40mhorizontal displacement and28m/slaunch speed visually checked. Parts(b),(c)use earlier results explicitly printed as show-that statements, with no invented angle or time.",
+        "Part(d)assesses an AS-scope mechanics modelling assumption despite its projectile context."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Identify the tendency to slip and explain how static friction opposes it in limiting equilibrium.",
+          "difficulty_basis": "Identify the tendency to slip and explain how static friction opposes it in limiting equilibrium.",
+          "summary": "Explain the direction of friction on a leaning rod.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.4"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the midpoint of a uniform rod and the perpendicular lever arms in a moment balance about its lower end.",
+          "difficulty_basis": "Use the midpoint of a uniform rod and the perpendicular lever arms in a moment balance about its lower end.",
+          "summary": "Derive a wall reaction by taking moments.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.6",
+            "EDX_MATH_MECH_FORCES_8.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the wall-reaction formula explicitly printed in(b), resolve equilibrium forces and apply limiting friction, then reuse the two contact-force components to find their resultant magnitude.",
+          "difficulty_basis": "Use the wall-reaction formula explicitly printed in(b), resolve equilibrium forces and apply limiting friction, then reuse the two contact-force components to find their resultant magnitude.",
+          "summary": "Find limiting friction and the resultant contact force on a rod.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Compare the weight’s lever arm when the centre of mass moves towards the wall and infer the effect on the balancing wall reaction.",
+          "difficulty_basis": "Compare the weight’s lever arm when the centre of mass moves towards the wall and infer the effect on the balancing wall reaction.",
+          "summary": "Explain how a shifted centre of mass changes a wall reaction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source rod geometry and uniform/non-uniform model change visually checked. Part(b)printsS=(1/2)Mgcotθ; this is retained unscored for(c)+(d).",
+        "Parts(c)+(d)are grouped because the resultant needs contact-force components derived in(c);(e)requires only a qualitative comparison of moments."
+      ]
+    }
+  ]
+}

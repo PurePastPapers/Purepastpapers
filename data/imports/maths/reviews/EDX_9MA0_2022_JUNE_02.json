@@ -1,0 +1,569 @@
+{
+  "paper_id": "EDX_9MA0_2022_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "6cc4bfeab8b84c08049536edbd3e7d688784beb128c66c4431757f358a97fabe",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Solve both sign branches and verify branch restrictions against the nonnegative modulus.",
+          "summary": "Solve a linear modulus equation algebraically.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use positivity, the vertical-axis intercept and monotonic exponential growth to draw the supplied function.",
+          "summary": "Sketch a simple exponential graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Take logarithms of 4^x=100 and round the resulting input.",
+          "summary": "Solve a numerical exponential equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.2",
+            "EDX_MATH_PURE_SEQ_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Generate the alternating terms to prove periodicity, then reuse their unprinted pair values and period to sum 85 terms.",
+          "summary": "Identify a periodic recurrence and sum an odd number of terms.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        }
+      ],
+      "exceptions": [
+        "The raw (a)(ii) 2-mark tariff jointly covers the periodicity demonstration and the order in (a)(i),(ii)."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Expand the forward difference quotient for 2x² and take its limit as the increment tends to zero.",
+          "summary": "Differentiate a quadratic from first principles.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.4",
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Apply the trapezium rule to all five ordinates, then reuse its unprinted estimate with logarithm power and product laws to transform two related integrals.",
+          "summary": "Estimate related logarithmic integrals from a trapezium calculation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        }
+      ],
+      "exceptions": [
+        "The raw (b)(ii) 3-mark tariff jointly covers both related integrals. Source rendering confirms log₃((2x)^10) and log₃(18x), rather than a tenth power of the logarithm."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_NUM_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Differentiate the supplied sine function, use the sketch to select the correct stationary maximum and reuse the unprinted derivative for one Newton–Raphson step.",
+          "summary": "Locate a specified trigonometric maximum and refine a root.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a), (c)"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the two function values explicitly printed before (b) and continuity to identify a sign change.",
+          "summary": "Justify a bracket for a continuous-function root.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified f(x)=8sin(x/2)−3x+9; the marked local maximum P is the later maximum shown on the sketch. Parts (a),(c) are grouped to retain the derivative; (b) is scored separately and uses only supplied values."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Factor out the leading constant, obtain four rational-power terms and reuse their signs to infer the direction of the truncated-series error.",
+          "summary": "Expand a radical binomial and judge approximation error.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified: the binomial is √(4−9x), and the approximation substitutes x=1/9 to estimate √3."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.1",
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Expand the numerator over 4√x, integrate the resulting powers between the two positive intercepts and reverse the sign because the curve lies below the axis.",
+          "summary": "Find an exact area under a rational-power curve.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified denominator 4√x; standard power integration suffices, without partial fractions or integration by parts."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.9",
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the maximum for amplitude, the modulus period for angular rate and the increasing initial branch to select the phase.",
+          "summary": "Fit a modulus-sine Ferris-wheel height model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Recognise that the passenger remains above ground at the minimum, so a positive vertical offset improves the model; no fitted parameters are needed.",
+          "summary": "Refine a Ferris-wheel height model’s baseline.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified H=|A sin(bt+α)°|; extraction corrupts the modulus bars. The graph shows a rising initial branch and a full revolution corresponding to the modulus period."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Set the supplied rational function equal to 3/2 and solve for the input.",
+          "summary": "Evaluate an inverse rational function at a supplied output.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Determine the unprinted rational decomposition, identify the inverse function’s range and reuse these results to bound f(g⁻¹(x)).",
+          "summary": "Rearrange a rational function and find an inverse-composite range.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)–(d)"
+        }
+      ],
+      "exceptions": [
+        "Visually verified f(x)=(8x+5)/(2x+3), x>−3/2, and the input in (a) is 3/2. The defined g has domain [0,4]."
+      ]
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Separate the even and odd cases, substitute algebraic parity forms and show the product is even in each exhaustive case.",
+          "summary": "Prove an integer expression is even.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Apply the quotient rule, determine the unprinted positive factor g(x), then use it to reduce the stationary-point condition to a quadratic discriminant inequality.",
+          "summary": "Differentiate a rational exponential and constrain stationary-point parameters.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source denominator is 4x²+k with k>0. Parts are grouped because showing that g(x) has no zeros is needed to justify using only the printed quadratic factor for stationary points."
+      ]
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.4",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use proportional three-dimensional displacement components to find the point parameter, then reuse the point to construct the parallel direction and calculate the exact distance.",
+          "summary": "Determine collinear points and an extended position-vector distance.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The mark scheme reuses p from (a) in the vector to D; parts are grouped to retain that unprinted parameter."
+      ]
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.10",
+            "EDX_MATH_PURE_INT_8.6",
+            "EDX_MATH_PURE_INT_8.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Find the unprinted partial-fraction coefficients, separate variables and integrate, then apply the supplied time-volume observation to determine the integration constant.",
+          "summary": "Use partial fractions to solve an oxygen-production differential equation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the explicit solution printed in (b) to identify its zero-volume start and long-time limit, converting the delay from hours to minutes.",
+          "summary": "Interpret a differential-equation model’s delay and limiting volume.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)"
+          ],
+          "display_part_label": "(c)"
+        }
+      ],
+      "exceptions": [
+        "Visually verified dV/dt=3V/((2t−1)(t+1)) and the printed solution V=3(2t−1)/(t+1). The raw (c)(ii) 2-mark tariff jointly covers delay and limiting volume."
+      ]
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5",
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Equate consecutive geometric ratios and use tan(θ)=sin(θ)/cos(θ) with the Pythagorean identity to obtain the printed quadratic.",
+          "summary": "Derive a trigonometric condition for geometric-series terms.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_SEQ_4.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Solve the quadratic explicitly printed in (a), select the exact obtuse radian angle and reuse it to determine the signed first term, convergent ratio and simplified infinite sum.",
+          "summary": "Find an obtuse series angle and its exact sum to infinity.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Visually verified series terms 12cos(θ), 5+2sin(θ), 6tan(θ) and requested sum k(1−√3); (b),(c) are grouped because the selected angle is not printed."
+      ]
+    },
+    {
+      "number": "16",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_TRIG_5.4"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Differentiate both parameter expressions, evaluate the gradient and coordinates at π/4, then construct the perpendicular line.",
+          "summary": "Find a normal to a trigonometric parametric curve.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use sec²(t)=1+tan²(t) with the supplied x expression to establish the printed Cartesian equation.",
+          "summary": "Eliminate a tangent parameter to obtain a parabola.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.4",
+            "EDX_MATH_PURE_ALG_2.5",
+            "EDX_MATH_PURE_COORD_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the Cartesian equation explicitly printed in (b), require two distinct real intersections and impose the x interval induced by the parameter bounds; the discriminant condition alone is insufficient.",
+          "summary": "Constrain a line to meet a restricted parametric parabola twice.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Visually verified x=2tan(t)+1, y=2sec²(t)+3 and −π/4≤t≤π/3. Part (c) must retain the parameter interval as well as the printed Cartesian equation from (b)."
+      ]
+    }
+  ]
+}

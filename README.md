@@ -7,6 +7,8 @@ wired in behind feature flags and show as "Coming soon".
 Plain HTML5, CSS3 and vanilla JavaScript modules. No build step and no dependencies.
 PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.config.js`.
 
+**Maths release:** [60-source A-level and AS bank, coverage and handover](docs/MATHS-HANDOVER.md).
+
 **Start here for future agents:** [Curriculum and question tagging](docs/curriculum-and-question-tagging.md), with links to the Phase 1 and import plans.
 
 See the [latest browser audit](docs/browser-audit-2026-11-14.md) for verified behavior, regression commands and remaining gaps.
@@ -55,7 +57,7 @@ each session, ready for AI marking in Phase 4.
   engine, tests and Data Hub can be tried. They are flagged `"is_sample": true`, always
   labelled "Demo content" in the UI, and are not from any exam paper. Set
   `CONTENT.showSampleContent = false` in `js/config/app.config.js` to hide them all.
-- **Real question extracts: not included.** Add them as content packs (below).
+- **Edexcel Maths source bank:** 32 A-level and 23 AS public exam booklets (2018–2025), plus five official samples: 602 original source questions / 1,110 scored units. Source images, schemes, reviewed tags and year scope are active. Recent restricted 2026 sources are excluded. See [coverage and limitations](docs/MATHS-HANDOVER.md).
 
 ### Adding real papers and questions
 

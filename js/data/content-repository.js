@@ -171,7 +171,15 @@ async function loadBundle(subjectId) {
   }
   await Promise.all([...foreignSubjects].map((id) => ensureSpec(id).catch(() => null)));
 
-  return { subject, spec, papers: [...papersById.values()], papersById, questions, questionsById };
+  const hasReviewedMaths = subjectId === 'EDX_ALEVEL_MATH_9MA0' &&
+    questions.some(question => question.provenance?.review_status === 'model_reviewed');
+  // Authenticated source booklets supersede generated catalogue placeholders.
+  // Keep the original lookup records so saved sessions and marks still resolve.
+  const generatedIds = new Set(basePapers.map(paper => paper.paper_id));
+  const papers = [...papersById.values()].filter(paper => !hasReviewedMaths ||
+    !generatedIds.has(paper.paper_id) || paper.question_ids.some(id =>
+      questionsById.get(id)?.provenance?.review_status === 'model_reviewed'));
+  return { subject, spec, papers, papersById, questions, questionsById };
 }
 
 /**

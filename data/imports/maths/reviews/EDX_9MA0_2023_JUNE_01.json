@@ -1,0 +1,713 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "2488b4e6aa13bbaa9cbbc5bb3edaefb02d2dd729ed4359f691e6e20a7b15892e",
+  "mark_scheme_sha256": "5f6c8ab5947b5f2fce2a69d4424e50646fd99a2df7db9ee6d9f34de2afb27978",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.1"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Expand the numerator into fractional powers, then apply the power integration rule and simplify exact coefficients.",
+          "difficulty_basis": "Expand the numerator into fractional powers, then apply the power integration rule and simplify exact coefficients.",
+          "summary": "Integrate a polynomial with fractional indices.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Fractional exponent, division by3 and indefinite integral verified from source rendering."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Apply the factor theorem at the parameter value and factor the resulting cubic expression.",
+          "difficulty_basis": "Apply the factor theorem at the parameter value and factor the resulting cubic expression.",
+          "summary": "Derive a parameter constraint using the factor theorem.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use the printed parameter equation, select its positive root, then reduce the requested cubic equation to a linear factor and a quadratic.",
+          "difficulty_basis": "Use the printed parameter equation, select its positive root, then reduce the requested cubic equation to a linear factor and a quadratic.",
+          "summary": "Find a parameter and solve a resulting cubic exactly.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ],
+          "display_part_label": "(b)(i)–(ii)"
+        }
+      ],
+      "exceptions": [
+        "The raw(b)(ii)4mark tariff jointly scores(b)(i)and(ii); both prompts retained."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Calculate the magnitude of a vector with three components.",
+          "difficulty_basis": "Calculate the magnitude of a vector with three components.",
+          "summary": "Find a three-dimensional vector magnitude.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Compare squared three-dimensional magnitudes and select the least positive integer meeting a strict inequality.",
+          "difficulty_basis": "Compare squared three-dimensional magnitudes and select the least positive integer meeting a strict inequality.",
+          "summary": "Find an integer parameter from a vector-length inequality.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Replace cosine by its small-angle approximation, solve the resulting quadratic and reject the root inconsistent with a small angle.",
+          "difficulty_basis": "Replace cosine by its small-angle approximation, solve the resulting quadratic and reject the root inconsistent with a small angle.",
+          "summary": "Estimate a stationary point with a small-angle approximation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Evaluate the supplied derivative at the stated point and write the tangent line; no trigonometric differentiation is required.",
+          "difficulty_basis": "Evaluate the supplied derivative at the stated point and write the tangent line; no trigonometric differentiation is required.",
+          "summary": "Find a tangent from a supplied derivative.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source derivative is2x+(1/2)cosx; the tangent part is independent of the approximation in(a)."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the correct table spacing and endpoint weighting to form a trapezium-rule equation with two unknown ordinates.",
+          "difficulty_basis": "Use the correct table spacing and endpoint weighting to form a trapezium-rule equation with two unknown ordinates.",
+          "summary": "Recover a relation between missing trapezium-rule ordinates.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Form a second linear equation from the total of the ordinates and solve it with the relation explicitly printed in(a).",
+          "difficulty_basis": "Form a second linear equation from the total of the ordinates and solve it with the relation explicitly printed in(a).",
+          "summary": "Find missing table values using simultaneous equations.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Apply the logarithm power law to a square root.",
+          "difficulty_basis": "Apply the logarithm power law to a square root.",
+          "summary": "Express a square-root logarithm using a given logarithm.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Factor the quadratic argument and apply the product law for logarithms.",
+          "difficulty_basis": "Factor the quadratic argument and apply the product law for logarithms.",
+          "summary": "Rewrite a product logarithm using given logarithms.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Combine the sum inside the logarithm into one factored fraction before applying the logarithm laws.",
+          "difficulty_basis": "Combine the sum inside the logarithm into one factored fraction before applying the logarithm laws.",
+          "summary": "Simplify a rational logarithmic expression.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source rendering confirms(a)log2(sqrt x)and(c)log2(8+64/x); no dependence on the answers to earlier parts."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the strict domain boundary of the square-root function to state its range.",
+          "difficulty_basis": "Use the strict domain boundary of the square-root function to state its range.",
+          "summary": "State the range of a restricted square-root function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Reverse the square-root mapping and state the corresponding inverse domain from the original function.",
+          "difficulty_basis": "Reverse the square-root mapping and state the corresponding inverse domain from the original function.",
+          "summary": "Find an inverse square-root function and its domain.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Evaluate the functions in the specified composition order.",
+          "difficulty_basis": "Evaluate the functions in the specified composition order.",
+          "summary": "Evaluate a composite function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Substitute into both supplied functions, solve the resulting quadratic relation and reject the sign incompatible with the original equation.",
+          "difficulty_basis": "Substitute into both supplied functions, solve the resulting quadratic relation and reject the sign incompatible with the original equation.",
+          "summary": "Solve an equation connecting two supplied functions.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source radical coversx-2; inverse/domain and composite-function tasks require additional A-level function concepts."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Relate the supplied arc length and radian angle to the sector radius.",
+          "difficulty_basis": "Relate the supplied arc length and radian angle to the sector radius.",
+          "summary": "Find a stage-sector radius from an arc length.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the straight angle and the congruent triangles to calculate a radian angle.",
+          "difficulty_basis": "Use the straight angle and the congruent triangles to calculate a radian angle.",
+          "summary": "Find a radian angle in a composite stage plan.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the radius and angle explicitly printed in(a)and(b), infer a triangle side from the stage frontage, then combine sector and triangle areas.",
+          "difficulty_basis": "Use the radius and angle explicitly printed in(a)and(b), infer a triangle side from the stage frontage, then combine sector and triangle areas.",
+          "summary": "Find the area of a stage built from a sector and triangles.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)",
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Source plan inspected: congruent triangles flank the sector; earlier show-that radius and angle are visible unscored context for(c)."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Equate successive term ratios and simplify to the stated parameter quadratic.",
+          "difficulty_basis": "Equate successive term ratios and simplify to the stated parameter quadratic.",
+          "summary": "Derive a parameter equation for three geometric terms.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Solve the printed quadratic, use convergence to choose the valid common ratio and calculate the exact sum to infinity.",
+          "difficulty_basis": "Solve the printed quadratic, use convergence to choose the valid common ratio and calculate the exact sum to infinity.",
+          "summary": "Select a convergent geometric sequence and find its infinite sum.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ],
+          "display_part_label": "(b)(i)–(ii)"
+        }
+      ],
+      "exceptions": [
+        "The raw(b)(ii)5mark tariff covers both parameter selection and sum to infinity."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Complete both squares to extract a parameterised circle centre and radius.",
+          "difficulty_basis": "Complete both squares to extract a parameterised circle centre and radius.",
+          "summary": "Find a parameterised circle centre and radius.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)(i)–(ii)"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Substitute the line into the original circle equation, impose a strictly positive discriminant and solve the resulting parameter inequality.",
+          "difficulty_basis": "Substitute the line into the original circle equation, impose a strictly positive discriminant and solve the resulting parameter inequality.",
+          "summary": "Find parameter values giving two line-circle intersections.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The raw(a)(ii)3mark tariff covers centre and radius; (b)uses the original circle equation and does not need derived results from(a)."
+      ]
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Interpret the logarithmic intercept as the initial price and reverse the base-ten logarithm.",
+          "difficulty_basis": "Interpret the logarithmic intercept as the initial price and reverse the base-ten logarithm.",
+          "summary": "Read an initial value from a logarithmic graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use the two printed graph points to determine an exponential decay model, then compare its two-year prediction with an observed value.",
+          "difficulty_basis": "Use the two printed graph points to determine an exponential decay model, then compare its two-year prediction with an observed value.",
+          "summary": "Fit and assess an exponential phone-value model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Parts(b)and(c)grouped because reliability evaluation uses the fitted model; (a)is separately solvable from the printed intercept."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.6"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Build the difference quotient, apply the permitted sine addition formula and isolate the supplied limiting ratios to complete the first-principles argument.",
+          "difficulty_basis": "Build the difference quotient, apply the permitted sine addition formula and isolate the supplied limiting ratios to complete the first-principles argument.",
+          "summary": "Prove the derivative of sine from first principles.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Fit a quadratic height model from its maximum and starting height, then use it at a later time.",
+          "difficulty_basis": "Fit a quadratic height model from its maximum and starting height, then use it at a later time.",
+          "summary": "Fit and use a quadratic roller-coaster height model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.3",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Match the amplitude, vertical shift and degree phase of the supplied cosine model to the maximum and starting height; only AS trigonometric graphs and transformations are needed.",
+          "difficulty_basis": "Match the amplitude, vertical shift and degree phase of the supplied cosine model to the maximum and starting height; only AS trigonometric graphs and transformations are needed.",
+          "summary": "Fit a periodic roller-coaster height model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_TRIG_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Recognise that a cosine model repeats over successive circuits whereas the quadratic model cannot describe repeated motion.",
+          "difficulty_basis": "Recognise that a cosine model repeats over successive circuits whereas the quadratic model cannot describe repeated motion.",
+          "summary": "Explain why a periodic model better describes repeated circuits.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Expand and organise the algebra to justify parity for every natural number, rather than checking examples.",
+          "difficulty_basis": "Expand and organise the algebra to justify parity for every natural number, rather than checking examples.",
+          "summary": "Prove a difference of consecutive cubes is odd.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Combine product, quotient and chain differentiation, determine the two unknown derivative coefficients, then use them to rearrange the turning-point condition.",
+          "difficulty_basis": "Combine product, quotient and chain differentiation, determine the two unknown derivative coefficients, then use them to rearrange the turning-point condition.",
+          "summary": "Differentiate an exponential quotient and derive its turning-point equation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Follow alternating vertical and horizontal steps on the supplied curve and diagonal to show convergence to the larger root.",
+          "difficulty_basis": "Follow alternating vertical and horizontal steps on the supplied curve and diagonal to show convergence to the larger root.",
+          "summary": "Draw a staircase diagram for a fixed-point iteration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Apply the fully printed recurrence from its supplied starting value and continue until the larger root is stable to the requested precision.",
+          "difficulty_basis": "Apply the fully printed recurrence from its supplied starting value and continue until the larger root is stable to the requested precision.",
+          "summary": "Use fixed-point iteration to approximate a root.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(d)(i)–(ii)"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Choose a continuous zero function from the printed fixed-point equation and demonstrate a sign change within an interval that justifies rounding.",
+          "difficulty_basis": "Choose a continuous zero function from the printed fixed-point equation and demonstrate a sign change within an interval that justifies rounding.",
+          "summary": "Verify a root to three decimal places using a sign change.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The source function denominator is sqrt(e^(3x)-2); derivative coefficients A,B are unknown and require(a)+(b)to be scored together.",
+        "The raw(d)(ii)3mark tariff jointly covers(d)(i)and(ii). Iteration equation and starting value are explicitly printed, so(c),(d),(e)do not use invented earlier answers.",
+        "Source rendering includes the continued-page staircase graph and its spare copy."
+      ]
+    }
+  ]
+}

@@ -39,13 +39,19 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
         raise ValueError('Not every source question has a review')
     if candidate['total_marks'] != paper['max_marks']:
         raise ValueError('Question-paper mark total mismatch')
+    if paper['documents']['question_paper']['url'].lower().endswith('.zip'):
+        paper = {**paper, 'source_format': 'zip'}
     qp = sources / (paper['paper_id'] + '__question_paper.pdf')
     ms = sources / (paper['paper_id'] + '__mark_scheme.pdf')
     if hashlib.sha256(qp.read_bytes()).hexdigest() != candidate['source_sha256']:
         raise ValueError('Question source revision mismatch')
     ms_sha = hashlib.sha256(ms.read_bytes()).hexdigest()
     if ms_sha != paper['documents']['mark_scheme']['sha256']:
-        raise ValueError('Scheme source revision mismatch')
+        manifest_path = sources/'source-page-provenance.json'
+        manifest = json.loads(manifest_path.read_text())['records'] if manifest_path.exists() else []
+        derivation = next((item for item in manifest if item['paper_id'] == paper['paper_id'] and item['kind'] == 'mark_scheme'), None)
+        if not derivation or derivation['cache_sha256'] != ms_sha or derivation['original_source_sha256'] != paper['documents']['mark_scheme']['sha256']:
+            raise ValueError('Scheme source revision mismatch')
     schemes = scheme_regions(ms, len(candidate['questions']))
     renderer, scheme_renderer = SourceRenderer(qp), SourceRenderer(ms)
     with pdfplumber.open(qp) as doc:
@@ -77,7 +83,11 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
             if index == 0:
                 return (question['regions'][0]['page'], question['regions'][0]['bbox'][1])
             previous = raw_parts[index - 1]
-            return (previous['page'], (previous['bottom'] + 7) / sizes[previous['page'] - 1][1])
+            begin = part.get('start')
+            y = previous['bottom'] + 7
+            if begin and begin['page'] == previous['page']:
+                y = min(y, begin['top'] - 4)
+            return (previous['page'], y / sizes[previous['page'] - 1][1])
         for ui, unit in enumerate(checked['units'], 1):
             if unit.get('review_status') != 'model_reviewed' or unit.get('introduced_year') not in [12, 13]:
                 raise ValueError(f"Q{question['number']}: unresolved unit/year review")
@@ -92,7 +102,13 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
                 for part in chosen:
                     begin = part.get('start')
                     start = part_start(part)
-                    regions.extend(clip(question['regions'], start, (part['page'], (part['bottom']+7)/sizes[part['page']-1][1])))
+                    end_y = part['bottom'] + 7
+                    part_index = raw_parts.index(part)
+                    if part_index + 1 < len(raw_parts):
+                        next_start = raw_parts[part_index + 1].get('start')
+                        if next_start and next_start['page'] == part['page']:
+                            end_y = max(part['bottom'] + 1, min(end_y, next_start['top'] - 4))
+                    regions.extend(clip(question['regions'], start, (part['page'], end_y/sizes[part['page']-1][1])))
             image = full_image if whole else root / f"Q{int(question['number']):02}_U{ui:02}.webp"
             if not whole: renderer.render(regions, image)
             rel = lambda path: path.relative_to(repo).as_posix()
@@ -104,7 +120,7 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
                 'paper_id': paper['paper_id'], 'subject_id': SUBJECT, 'board': 'Edexcel',
                 'level': 'AS' if paper.get('is_as') else 'A-Level', 'subject': 'Mathematics',
                 'spec_code': paper['qualification_code'], 'qualification_code': paper['qualification_code'],
-                'is_as': bool(paper.get('is_as')), 'subject_category': 'STEM',
+                'is_as': bool(paper.get('is_as')), 'is_official_sample': bool(paper.get('is_sample')), 'subject_category': 'STEM',
                 'year': paper['year'], 'series': paper['series'], 'component': paper['component'],
                 'question_number': question['number'], 'marks': marks, 'estimated_minutes': max(1, round(marks*1.2)),
                 'difficulty': unit['difficulty'], 'introduced_year': 12 if paper.get('is_as') else unit['introduced_year'],
@@ -116,7 +132,13 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
                 'context': {'full_question_image_url': rel(full_image)} if not whole else {},
                 'provenance': {'review_status': 'model_reviewed', 'reviewer_type': 'model',
                     'question_source_sha256': candidate['source_sha256'], 'scheme_source_sha256': ms_sha,
+                    'original_question_source_sha256': paper['documents']['question_paper']['sha256'],
+                    'original_scheme_source_sha256': paper['documents']['mark_scheme']['sha256'],
+                    'question_page_offset': paper['documents']['question_paper'].get('source_pages_inclusive', [1])[0]-1,
+                    'scheme_page_offset': paper['documents']['mark_scheme'].get('source_pages_inclusive', [1])[0]-1,
+                    'scheme_regions': schemes[question['number']],
                     'source_regions': regions, 'original_parts': unit['parts'],
+                    'original_tariff_indices': [raw_parts.index(part) for part in chosen],
                     'difficulty_basis': unit['difficulty_basis'], 'year_basis': unit.get('year_basis') or unit.get('introduced_year_basis'),
                     'context_basis': unit['context_basis'], 'qualification_code': paper['qualification_code']},
             }
@@ -141,7 +163,8 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
     component = paper['component']
     subject_name = {'01': 'Pure Mathematics', '02': 'Pure Mathematics' if paper['qualification_code']=='9MA0' else 'Statistics and Mechanics', '03': 'Statistics and Mechanics', '31': 'Statistics', '32': 'Mechanics', '21': 'Statistics', '22': 'Mechanics'}[component]
     title = f"{paper['series']} {paper['year']} · {'AS' if paper.get('is_as') else 'A-Level'} {subject_name} {component}"
-    if paper.get('variant') != 'standard': title += ' · '+paper['variant'].title()
+    if paper.get('is_sample'): title = f"Official sample · {'AS' if paper.get('is_as') else 'A-Level'} {subject_name} {component}"
+    if paper.get('variant', 'standard') != 'standard': title += ' · '+paper['variant'].title()
     docs = paper['documents']
     runtime_paper = {'paper_id': paper['paper_id'], 'paper_type': 'real_past_paper', 'subject_id': SUBJECT,
         'board': 'Edexcel', 'level': 'AS' if paper.get('is_as') else 'A-Level', 'subject': 'Mathematics',
@@ -149,8 +172,10 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
         'paper_code': component, 'title': title, 'total_marks': paper['max_marks'],
         'duration_minutes': (75 if paper.get('is_as') else 120) if component in ['31','32','21','22'] else paper.get('duration_minutes') or paper.get('assessment_duration_minutes') or (120 if not paper.get('is_as') else 75),
         'duration_note': paper.get('duration_note') or ('Shared assessment duration for the Statistics and Mechanics booklets.' if component in ['31','32','21','22'] else None),
-        'question_ids': [r['question_id'] for r in records], 'full_paper_pdf_url': docs['question_paper']['url'],
-        'full_mark_scheme_pdf_url': docs['mark_scheme']['url'], 'official_source_url': docs['question_paper']['url'],
+        'question_ids': [r['question_id'] for r in records], 'is_official_sample': bool(paper.get('is_sample')),
+        'source_bundle_url': docs['question_paper']['url'] if paper.get('source_format') == 'zip' else None,
+        'full_paper_pdf_url': (docs['question_paper']['url'] + ('#page='+str(docs['question_paper']['source_pages_inclusive'][0]) if docs['question_paper'].get('source_pages_inclusive') else '')) if paper.get('source_format') != 'zip' else None,
+        'full_mark_scheme_pdf_url': (docs['mark_scheme']['url'] + ('#page='+str(docs['mark_scheme']['source_pages_inclusive'][0]) if docs['mark_scheme'].get('source_pages_inclusive') else '')) if paper.get('source_format') != 'zip' else None, 'official_source_url': docs['question_paper']['url'],
         'examiner_report_url': docs.get('examiner_report', {}).get('url')}
     return {'pack_id': paper['paper_id'].lower(), 'papers': [runtime_paper], 'questions': records}
 
@@ -161,13 +186,23 @@ def build_job(job):
     if not review.exists() or not candidate.exists():
         return {'paper_id': paper_id, 'status': 'awaiting_review_or_source'}
     target = repo/'data/packs/maths'/f'{paper_id}.json'
-    signature = hashlib.sha256(b'crop-build-v2' + candidate.read_bytes() + review.read_bytes()).hexdigest()
+    signature = hashlib.sha256(b'crop-build-v3-mediabox' + candidate.read_bytes() + review.read_bytes()).hexdigest()
     try:
         if target.exists():
             existing = json.loads(target.read_text())
             if existing.get('build_signature') == signature:
                 return {'paper_id': paper_id, 'status': 'built', 'units': len(existing['questions']), 'marks': sum(q['marks'] for q in existing['questions']), 'resumed': True}
         pack = build_paper(paper, json.loads(candidate.read_text()), json.loads(review.read_text()), sources, repo/'assets/maths', repo, valid)
+        registry_path = repo/'data/imports/maths/identities.json'
+        if registry_path.exists():
+            registry = json.loads(registry_path.read_text())['units']
+            for unit in pack['questions']:
+                identity = {'parent_question_id': unit['parent_question_id'],
+                            'source_sha256': unit['provenance']['question_source_sha256'],
+                            'original_tariff_indices': unit['provenance']['original_tariff_indices'],
+                            'marks': unit['marks']}
+                if unit['question_id'] in registry and registry[unit['question_id']] != identity:
+                    raise ValueError('Published assessment identity changed; assign a new ID: '+unit['question_id'])
         pack['build_signature'] = signature
         write_json(target, pack)
         return {'paper_id': paper_id, 'status': 'built', 'units': len(pack['questions']), 'marks': sum(q['marks'] for q in pack['questions'])}

@@ -1,0 +1,47 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_32",
+  "reviewer_type": "model",
+  "exceptions": [
+    {
+      "question": "2",
+      "resolution": "Parts(a),(b),(c)remain grouped because(c)needs the unprinted reaction and friction values; friction coefficients are additional A-level content."
+    },
+    {
+      "question": "3",
+      "resolution": "Source velocity is(t^2-3t+7)i+(2t^2-3)j. The acceleration vector requested in(c)is not printed, so(c)+(d)are grouped. Two-dimensional vector kinematics is additional A-level scope."
+    },
+    {
+      "question": "4",
+      "resolution": "The(b)+(c)unit uses the fully printed initial data atA,not an invented velocity from(a); the unknownTfrom(b)is required by(c)."
+    },
+    {
+      "question": "5",
+      "resolution": "Source trajectory,20mheight,40mhorizontal displacement and28m/slaunch speed visually checked. Parts(b),(c)use earlier results explicitly printed as show-that statements, with no invented angle or time."
+    },
+    {
+      "question": "5",
+      "resolution": "Part(d)assesses an AS-scope mechanics modelling assumption despite its projectile context."
+    },
+    {
+      "question": "6",
+      "resolution": "Source rod geometry and uniform/non-uniform model change visually checked. Part(b)printsS=(1/2)Mgcotθ; this is retained unscored for(c)+(d)."
+    },
+    {
+      "question": "6",
+      "resolution": "Parts(c)+(d)are grouped because the resultant needs contact-force components derived in(c);(e)requires only a qualitative comparison of moments."
+    }
+  ],
+  "total_marks_checked": 50,
+  "source_parts_checked": 21,
+  "reviewed_units": 16,
+  "unresolved_exceptions": [],
+  "publication_holds": [
+    {
+      "scope": "source_renderer_coordinate_space",
+      "status": "requires_shared_renderer_fix",
+      "example_question": "6",
+      "issue": "Candidates use pdfplumber MediaBox coordinates (651.969 by 898.583 points), while the current pypdfium renderer defaults to the offset CropBox (595.2755 by 841.8895 points). Applying the candidate bbox to CropBox pixels clips final tariff endpoints.",
+      "verified_resolution": "Private diagnostic rendering with the page CropBox set to its MediaBox restores complete source text and tariffs; the corrected example was visually checked. Apply equivalent coordinate handling in the shared renderer before packaging these booklets."
+    }
+  ]
+}

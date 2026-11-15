@@ -1,0 +1,559 @@
+{
+  "paper_id": "EDX_8MA0_SAMPLE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "a41950b539750adea3418f0ccca37c156ef0cb24cdc9cd21c443b5dc9f47eb41",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Calculate the gradient from the two supplied points and substitute either point into the straight-line equation.",
+          "summary": "Find a line through two points.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Differentiate each polynomial term algebraically and evaluate the derivative at the supplied abscissa.",
+          "summary": "Find a quadratic curve’s gradient at a point.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.4",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Subtract the supplied position vectors and reuse the unprinted displacement components in Pythagoras, simplifying the resulting surd.",
+          "summary": "Find a planar displacement vector and its exact magnitude.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "AS vector topic 9 is mapped to the shared A level runtime topic 10; these are two-dimensional AS vector skills."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Evaluate the supplied cubic at its stated candidate root and conclude from the zero remainder.",
+          "summary": "Verify a polynomial factor using the factor theorem.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Use the factor explicitly printed in (a), divide to obtain the residual quadratic and establish that the residual factor has no real zeros.",
+          "summary": "Prove a cubic has only one real root.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Integrate the polynomial and reciprocal-square terms, substitute a surd upper limit and simplify the exact result.",
+          "summary": "Evaluate a definite power-function integral exactly.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified f(x)=2x+3+12/x² and the integral limits 1 and 2√2. The supplied result is 16+3√2."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Expand the difference quotient for 3x², cancel the common terms and take the increment limit.",
+          "summary": "Prove a quadratic derivative from first principles.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Apply positive-integer binomial coefficients for three terms, then identify the substitution making the original base equal to the proposed decimal.",
+          "summary": "Expand an integer-power binomial and describe its numerical use.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source rendering confirms (2−x/2)^7 and the requested estimate 1.995^7; this is a positive-integer AS binomial expansion."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Find the third angle, use the sine rule to obtain a second side and use the included-angle area formula.",
+          "summary": "Find the area of a triangle from a side and two angles.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Relate the claimed square-metre precision to the limited input accuracy or to the assumption that a real lawn is flat.",
+          "summary": "Explain a precision limitation in a lawn-area model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.7"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Replace sin²(x) by 1−cos²(x), solve the resulting quadratic and place both inverse-cosine solutions in the interval beyond one full turn.",
+          "summary": "Solve a trigonometric equation in an extended degree interval.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified 12sin²(x)+7cos(x)−13=0, not sin(2x), on 360°≤x<540°."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Handle the zero-leading-coefficient case separately, then use a negative quadratic discriminant and solve its parameter inequality.",
+          "summary": "Constrain a coefficient when an equation has no real roots.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source and scheme explicitly include the degenerate k=0 case; the discriminant argument applies only after separating that case. The printed target is 0≤k<3/4."
+      ]
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Start from a nonnegative square of square roots, expand it and use positivity to justify the required inequality.",
+          "summary": "Prove a mean inequality for positive inputs.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Choose two negative values, evaluate both sides of the inequality explicitly printed in (a) and show the counterexample.",
+          "summary": "Disprove the mean inequality for negative inputs.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Visually verified the left-hand side is √(xy), not xy. Counterexample (b) uses the inequality printed in (a), without needing the proof answer."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Recognise the incorrect index law and the incorrect evaluation of a positive integer power in the supplied attempt.",
+          "summary": "Identify errors in an exponential-equation solution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.5",
+            "EDX_MATH_PURE_ALG_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Apply the correct index law, divide by the positive exponential factor and use logarithms for the exact input, rejecting a zero exponential value.",
+          "summary": "Solve an exponential equation exactly.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified the original equation is 2^(2x+4)−9(2^x)=0; the +4 belongs inside the exponent. The erroneous attempt remains original printed context."
+      ]
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Find the repeated factor, reuse its unprinted roots and multiplicities in the cubic sketch, then use those roots to identify both possible horizontal translations.",
+          "summary": "Factor a cubic, sketch it and infer possible translations.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)(ii)",
+            "(d)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_EXP_6.6",
+            "EDX_MATH_PURE_EXP_6.7",
+            "EDX_MATH_PURE_EXP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Construct the line from its given slope and intercept, recover the unprinted exponential constants, interpret their meanings and reuse them for population and doubling-time predictions.",
+          "summary": "Fit, interpret and use a logarithmic population model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(d)"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Give two contextual limitations of long-term constant proportional growth without needing fitted numerical parameters.",
+          "summary": "Critique an exponential population model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Raw (c)(ii) and (d)(ii) each carry a joint (i)–(ii) tariff. Parts (a)–(d) are grouped because the line equation and exponential constants are derived rather than printed."
+      ]
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_EXP_6.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Differentiate the quadratic, construct its normal at the supplied point and combine the line with a second curve so the linear terms cancel before exponentiating for exact coordinates.",
+          "summary": "Find where one curve’s normal meets a logarithmic curve.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified C₂ is y=x/2+ln(2x); the logarithm is not differentiated in this question."
+      ]
+    },
+    {
+      "number": "16",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Combine rectangle and semicircle areas to eliminate depth, derive the perimeter and reuse the unprinted depth expression with positive physical dimensions to explain the radius bound.",
+          "summary": "Construct a pool-perimeter model and its physical domain.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Differentiate the rational-power perimeter expression explicitly printed in (a), solve the stationary equation and substitute the physical radius into the perimeter.",
+          "summary": "Find the minimum of a supplied perimeter model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Visually verified P=2x+250/x+πx/2 and 0<x<√(500/π). The shape uses ordinary semicircle formulae; no additional A level radian-sector skill is required. The mark scheme for (b) reuses the unprinted y expression from (a)."
+      ]
+    },
+    {
+      "number": "17",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Compare the two distances from the supplied centre or substitute into the circle equation obtained from the known point.",
+          "summary": "Verify a second point lies on a circle.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Use radius–tangent perpendicularity to construct one or both tangent lines, then obtain their vertical-axis intercepts and separation; symmetry provides a shorter complete route.",
+          "summary": "Find the separation of two circle-tangent intercepts.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

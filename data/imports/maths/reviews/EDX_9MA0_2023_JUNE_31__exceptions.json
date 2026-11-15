@@ -1,0 +1,51 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_31",
+  "reviewer_type": "model",
+  "exceptions": [
+    {
+      "question": "1",
+      "resolution": "Source Venn diagram inspected; B has completely specified probability0.6, so(c)can useP(B')=1-P(B)without the unprintedp,qanswers from(b)."
+    },
+    {
+      "question": "2",
+      "resolution": "The raw(b)(ii)2mark tariff scores(b)(i)and(ii); grouped with(c)because its second binomial probability is not printed. The later hypothesis-test sample is separately specified."
+    },
+    {
+      "question": "3",
+      "resolution": "Raw(b)(ii)and(c)(ii)tariffs jointly cover their respective(i),(ii)prompts. Suppliedsummarytotals make(b)independent of the cleaning choice in(a);(c)needs seasonal reasoning rather than an invented mean."
+    },
+    {
+      "question": "4",
+      "resolution": "Part(c)uses the unprinted tail probability from(b), so those parts are grouped."
+    },
+    {
+      "question": "5",
+      "resolution": "The printedc=(8/5)bresult is visible unscored context for(b). Part(c)can use the originalk/xmodel and Nav’s given100cmrate directly, without the distribution derived in(b)."
+    },
+    {
+      "question": "6",
+      "resolution": "Source histogram continuation visually checked: frequency density over unequal class widths is required in(a)."
+    },
+    {
+      "question": "6",
+      "resolution": "Printed definite-integral formula in(c)is retained as unscored context for(d)and(e)(ii);(e)(ii)explicitly supplies99,so it does not depend on an unprinted calibration answer."
+    },
+    {
+      "question": "6",
+      "resolution": "The raw(e)(i)and(e)(ii)tariffs are separate1markand2markassessments and remain separately scored."
+    }
+  ],
+  "total_marks_checked": 50,
+  "source_parts_checked": 23,
+  "reviewed_units": 21,
+  "unresolved_exceptions": [],
+  "publication_holds": [
+    {
+      "scope": "source_renderer_coordinate_space",
+      "status": "requires_shared_renderer_fix",
+      "example_question": "6",
+      "issue": "Candidates use pdfplumber MediaBox coordinates (651.969 by 898.583 points), while the current pypdfium renderer defaults to the offset CropBox (595.2755 by 841.8895 points). Applying the candidate bbox to CropBox pixels clips final tariff endpoints.",
+      "verified_resolution": "Private diagnostic rendering with the page CropBox set to its MediaBox restores complete source text and tariffs; the corrected example was visually checked. Apply equivalent coordinate handling in the shared renderer before packaging these booklets."
+    }
+  ]
+}

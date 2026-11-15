@@ -1,0 +1,418 @@
+{
+  "paper_id": "EDX_9MA0_2023_JUNE_31",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "b46109568eb19657f7a9437c00a0c489a3f468be478230958c98e5b9876d93ce",
+  "mark_scheme_sha256": "e73f42ea1ab3235f3a1810f7a3c3c079d52d9da5c55ecd1a4fd802601223c574",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Add the two fully labelled disjoint regions inside the requested event.",
+          "difficulty_basis": "Add the two fully labelled disjoint regions inside the requested event.",
+          "summary": "Read an event probability from a Venn diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use independence to determine one unknown Venn region, then use total probability to determine the other.",
+          "difficulty_basis": "Use independence to determine one unknown Venn region, then use total probability to determine the other.",
+          "summary": "Find missing Venn probabilities using independence.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Form a conditional probability with a complemented conditioning event; its denominator follows from the fully labelled B regions, so neither unknown from(b)is needed.",
+          "difficulty_basis": "Form a conditional probability with a complemented conditioning event; its denominator follows from the fully labelled B regions, so neither unknown from(b)is needed.",
+          "summary": "Find a conditional probability involving a complement.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source Venn diagram inspected; B has completely specified probability0.6, so(c)can useP(B')=1-P(B)without the unprintedp,qanswers from(b)."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: State a contextual independence or constant-success-probability condition for the binomial model.",
+          "difficulty_basis": "State a contextual independence or constant-success-probability condition for the binomial model.",
+          "summary": "State a binomial modelling condition.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Calculate two packet-count probabilities, then reuse the unprinted lower-tail probability as the success parameter for a second binomial model over boxes.",
+          "difficulty_basis": "Calculate two packet-count probabilities, then reuse the unprinted lower-tail probability as the success parameter for a second binomial model over boxes.",
+          "summary": "Use nested binomial models for packets and boxes.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)(i)–(c)"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Set a lower-tail binomial hypothesis test using the stated population claim, calculate a suitable tail probability and conclude in context at the specified significance level.",
+          "difficulty_basis": "Set a lower-tail binomial hypothesis test using the stated population claim, calculate a suitable tail probability and conclude in context at the specified significance level.",
+          "summary": "Test a claimed proportion of prize packets.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The raw(b)(ii)2mark tariff scores(b)(i)and(ii); grouped with(c)because its second binomial probability is not printed. The later hypothesis-test sample is separately specified."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Recognise the large-data-set trace code and replace it with a suitable small numerical rainfall value before calculation.",
+          "difficulty_basis": "Recognise the large-data-set trace code and replace it with a suitable small numerical rainfall value before calculation.",
+          "summary": "Clean trace rainfall entries from the large data set.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use the explicitly supplied total, sum of squares and full sample size to calculate a mean and standard deviation.",
+          "difficulty_basis": "Use the explicitly supplied total, sum of squares and full sample size to calculate a mean and standard deviation.",
+          "summary": "Calculate rainfall mean and standard deviation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)(i)–(ii)"
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Use the large data set’s seasonal coverage to explain why its mean is not representative of a whole year and predict the direction of bias without needing the numerical mean.",
+          "difficulty_basis": "Use the large data set’s seasonal coverage to explain why its mean is not representative of a whole year and predict the direction of bias without needing the numerical mean.",
+          "summary": "Assess seasonal bias in a rainfall estimate.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(c)(i)–(ii)"
+        }
+      ],
+      "exceptions": [
+        "Raw(b)(ii)and(c)(ii)tariffs jointly cover their respective(i),(ii)prompts. Suppliedsummarytotals make(b)independent of the cleaning choice in(a);(c)needs seasonal reasoning rather than an invented mean."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Find an upper-tail probability from the fully specified normal height distribution.",
+          "difficulty_basis": "Find an upper-tail probability from the fully specified normal height distribution.",
+          "summary": "Find a proportion from a normal distribution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Use the sample-mean normal distribution with the known standard deviation for a two-sided test, conclude in context and double the derived one-tail probability for its p-value.",
+          "difficulty_basis": "Use the sample-mean normal distribution with the known standard deviation for a two-sided test, conclude in context and double the derived one-tail probability for its p-value.",
+          "summary": "Test a normal mean and calculate a two-sided p-value.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Part(c)uses the unprinted tail probability from(b), so those parts are grouped."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Translate equal joint success probabilities into a relation between two spinner probabilities using the conditional-probability model.",
+          "difficulty_basis": "Translate equal joint success probabilities into a relation between two spinner probabilities using the conditional-probability model.",
+          "summary": "Derive a relation in a conditional-probability game model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.2",
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Derive proportional probability relations for the spinner outcomes and combine them with normalisation to determine the complete discrete distribution.",
+          "difficulty_basis": "Derive proportional probability relations for the spinner outcomes and combine them with normalisation to determine the complete discrete distribution.",
+          "summary": "Find a discrete distribution from equal joint probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Fit the conditional-success constant directly to the new player’s supplied success rate and exhibit a distance where the predicted probability exceeds one.",
+          "difficulty_basis": "Fit the conditional-success constant directly to the new player’s supplied success rate and exhibit a distance where the predicted probability exceeds one.",
+          "summary": "Show why a conditional-probability model fails for another player.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The printedc=(8/5)bresult is visible unscored context for(b). Part(c)can use the originalk/xmodel and Nav’s given100cmrate directly, without the distribution derived in(b)."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Read unequal-width histogram bars, calculate the frequency over the requested partial interval and divide by the stated sample size.",
+          "difficulty_basis": "Read unequal-width histogram bars, calculate the frequency over the requested partial interval and divide by the stated sample size.",
+          "summary": "Estimate a probability from histogram areas.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Compare the observed histogram’s asymmetry with the symmetry expected under a normal model.",
+          "difficulty_basis": "Compare the observed histogram’s asymmetry with the symmetry expected under a normal model.",
+          "summary": "Assess a normal model using a histogram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.5",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Apply integration by parts to a polynomial-times-exponential integrand and evaluate the two symbolic endpoints to prove the printed formula.",
+          "difficulty_basis": "Apply integration by parts to a polynomial-times-exponential integrand and evaluate the two symbolic endpoints to prove the printed formula.",
+          "summary": "Prove a definite exponential integral for a frequency model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Interpret the continuous frequency-curve area as the sample total and use the definite-integral result explicitly printed in(c)to calibrate the model constant.",
+          "difficulty_basis": "Interpret the continuous frequency-curve area as the sample total and use the definite-integral result explicitly printed in(c)to calibrate the model constant.",
+          "summary": "Calibrate a continuous frequency model from its total area.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(c)"
+          ]
+        },
+        {
+          "parts": [
+            "(e)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Calculate a between-values probability from the normal model fully repeated in the selected part.",
+          "difficulty_basis": "Calculate a between-values probability from the normal model fully repeated in the selected part.",
+          "summary": "Estimate a hospital-stay probability with a normal model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.3",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 scope: Convert hours to the curve’s tens-of-hours variable, use the antiderivative result printed in(c)at two endpoints and normalise the resulting model frequency.",
+          "difficulty_basis": "Convert hours to the curve’s tens-of-hours variable, use the antiderivative result printed in(c)at two endpoints and normalise the resulting model frequency.",
+          "summary": "Estimate a hospital-stay probability with an exponential frequency curve.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(c)"
+          ]
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 scope: Recognise that the supplied model excludes stays beyond its fixed upper time boundary; no integration or normal-distribution calculation is required.",
+          "difficulty_basis": "Recognise that the supplied model excludes stays beyond its fixed upper time boundary; no integration or normal-distribution calculation is required.",
+          "summary": "Identify a range limitation in a hospital-stay model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source histogram continuation visually checked: frequency density over unequal class widths is required in(a).",
+        "Printed definite-integral formula in(c)is retained as unscored context for(d)and(e)(ii);(e)(ii)explicitly supplies99,so it does not depend on an unprinted calibration answer.",
+        "The raw(e)(i)and(e)(ii)tariffs are separate1markand2markassessments and remain separately scored."
+      ]
+    }
+  ]
+}

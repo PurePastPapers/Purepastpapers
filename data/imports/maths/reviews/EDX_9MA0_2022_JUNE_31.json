@@ -1,0 +1,334 @@
+{
+  "paper_id": "EDX_9MA0_2022_JUNE_31",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "78e19fee9373b80078cf0b8ae108f742000dffe111b10dcd9f90983e051be284",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Choose the binomial model from the stated fixed number of throws and hit probability, then evaluate a point probability and an inclusive upper tail.",
+          "summary": "Calculate point and tail binomial hit probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Determine the binomial mean and variance and apply the continuity correction for more than 110 hits before evaluating the normal tail.",
+          "summary": "Approximate a large binomial upper tail by a normal model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The raw (a)(ii) 3-mark tariff jointly covers both requested binomial probabilities. Normal approximation is mapped to official 4.2, not legacy runtime 4.3."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the specified 2.5% tail and its standard-normal quantile to solve the location-scale equation.",
+          "summary": "Determine a normal standard deviation from a lower percentile.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Find the in-specification and tail probabilities and reuse the unprinted in-specification probability in a weighted profit calculation for 500 rods, including the extra shortening cost.",
+          "summary": "Use normal categories to find expected manufacturing profit.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Model the number of faulty hinges, evaluate the inclusive tail corresponding to fewer than six faults and compare the acceptance probability with the stated target.",
+          "summary": "Assess a batch-acceptance target using a binomial model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The standard deviation x=0.05 is explicitly printed in (a); later normal calculations use it as unscored source context. Part (d) concerns a separate binomial hinge model, without a formal hypothesis test."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Identify how a positive rainfall amount at or below 0.05 mm is recorded.",
+          "summary": "Recall the large-data-set trace rainfall code.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Calculate the mean and standard deviation from supplied totals, then reuse the unprinted mean with the large-data-set station locations to assess the north–south claim.",
+          "summary": "Calculate rainfall summaries and compare a geographic claim.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)–(c)"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Only AS binomial-model assumptions are assessed; no normal model or additional A level probability calculation is needed.",
+          "difficulty_basis": "Identify that successive dry-day events may be dependent or that a whole-year probability may not remain constant during a summer event.",
+          "summary": "Critique a binomial weather-count model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The raw (b)(ii) 3-mark tariff jointly covers mean and standard deviation. The critique in (d) is binomial-model selection within AS skills, despite sharing the full-spec distribution-selection leaf."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(b)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1",
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "State the hypotheses, determine discrete critical tails with each probability below 0.025, add the actual rejection probabilities and reuse the critical region to judge the observed count.",
+          "summary": "Construct and interpret a two-tailed binomial hypothesis test.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(d)"
+        }
+      ],
+      "exceptions": [
+        "Source rendering verifies printed parts (a),(b),(c),(d). The candidate mislabels the 1-mark printed (c) tariff as a second (b); the review preserves both raw (b) occurrences exactly once, in source order, and displays (a)–(d)."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Add the two skilled-employee counts and divide by the full workforce.",
+          "summary": "Read a classification probability from a two-way table.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Add the two nonprofessional counts in area B and divide by the full workforce.",
+          "summary": "Find a joint employee-category probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(e)",
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use the given category-specific home-working percentages to determine missing region counts, then reuse those unprinted counts for a complement-of-union event and the conditional professional probability.",
+          "summary": "Complete an employee Venn diagram and find a conditional probability.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(c), (e)–(f)"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Read the area-B professional count directly from the original table; no completed Venn region is needed.",
+          "summary": "Find a professional employee’s area-complement probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The source Venn diagram is on continued PDF page 13, with a spare copy on page 15; both are present as shared_figure regions and were visually checked. Parts (c),(e),(f) are grouped for missing counts. Part (d) uses a table count already given, so its mark is separate."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Describe the negative association in terms of the two measured variables, using the visible source scatter plot.",
+          "summary": "Interpret an exercise–heart-rate scatter diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "State one-tailed population-correlation hypotheses, select the n=19 critical value and compare it with the supplied product-moment coefficient.",
+          "summary": "Test for negative population correlation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Logarithm laws and straight-line linearisation of a power model are AS pure skills; the regression equation is supplied and no correlation test is assessed here.",
+          "difficulty_basis": "Substitute both given log codings into the supplied line, apply logarithm laws and exponentiate to recover its coefficient and power.",
+          "summary": "Recover a power-law model from a logarithmic regression line.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The source scatter diagram and log₁₀ coding are present on PDF page 16 and visually verified. Part (c) uses the separately supplied regression equation, not an answer from the correlation test."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "paper_id": "EDX_8MA0_SAMPLE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Recognise a random start followed by a constant selection interval as systematic sampling.",
+          "summary": "Identify a fixed-interval sampling method.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Use large-data-set knowledge that some daily readings are absent, so the selected date pattern may not supply twenty recorded values.",
+          "summary": "Explain missing observations in a weather-data sample.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Calculate the mean from the supplied sum and size, then use the sum of squares to obtain the standard deviation.",
+          "summary": "Calculate standard deviation from summary statistics.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Use real class boundaries and frequency-density areas to infer missing frequencies, then combine complete and partial classes for the requested interval and divide by the reconstructed total.",
+          "summary": "Estimate a percentage from a partial histogram and table.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The complete source histogram was visually checked: bar heights supply the missing 7–8 and 16–20 frequencies, and the 8.5–13.5 interval includes one third of the 13–15 class. Image pixels retain the scale and class boundaries."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Use the supplied union and total probability to find the missing parameter, then reuse it to form both marginals and compare their product with the intersection.",
+          "summary": "Complete Venn probabilities and test independence.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Add the explicitly given tennis-only and outside-all-sports probabilities; no unknown region value is required.",
+          "summary": "Find the complement of a union from labelled Venn regions.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The source Venn figure was visually checked. Part (c) is independent of the unprinted p and q results, since both required regions are explicitly labelled."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Calculate the upper outlier threshold from the three given quartiles and compare it with the named observation.",
+          "summary": "Verify a rainfall outlier using a supplied IQR rule.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Give a defensible data-retention reason and a defensible exclusion reason without treating every extreme value as an error.",
+          "summary": "Discuss including or excluding a rainfall outlier.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ],
+          "display_part_label": "(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Describe the positive association in terms of the two measured weather variables.",
+          "summary": "Interpret a rainfall–humidity scatter diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Translate the supplied slope into rainfall change per percentage-point change in humidity.",
+          "summary": "Interpret a regression slope in weather units.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Assess the limited coverage of one month at one station for a UK-wide claim and suggest wider use of locations and months.",
+          "summary": "Critique and improve a weather-study sample.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(e)"
+        }
+      ],
+      "exceptions": [
+        "Raw (b)(ii) and (e)(ii) each jointly cover their roman subparts. The scatter diagram before (c), and the regression equation on the continued source page before (d), were visually verified and must remain immediate printed context."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Use the inclusive upper-tail complement for the fully specified B(40,0.27) variable.",
+          "summary": "Calculate a supplied binomial upper-tail probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)",
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1",
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "State the proportion hypotheses, find critical tails below 0.05 each, add the actual rejection probabilities and reuse the critical region to assess the observed customer count.",
+          "summary": "Construct and interpret a two-tailed binomial test.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)–(e)"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Explain how a scout-group visit can invalidate independence or the assumed representative random sample; no earlier p-value is required.",
+          "summary": "Critique a binomial shopping model’s assumptions.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Part (a) is a separate B(40,0.27) probability task. The manager’s test uses a different sample size and null proportion, so (a) is not grouped with it."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.2",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Combine rectangle-and-triangle or trapezium areas under the velocity graph, then use its gradient to eliminate the unknown vertical height; quoted suvat formulae are explicitly excluded.",
+          "summary": "Derive a constant-acceleration displacement formula from a graph.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source velocity–time graph and the prohibition on using quoted suvat formulae were visually checked. The assessment is a graphical derivation, not numerical substitution."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Form two equations with a common initial speed and acceleration, account for the consecutive time intervals and solve simultaneously.",
+          "summary": "Find a car’s acceleration and initial speed from two travel intervals.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(i)–(ii)"
+        }
+      ],
+      "exceptions": [
+        "The raw (ii) 7-mark tariff jointly assesses acceleration (i) and speed at A (ii); both remain one unit."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Show the displacement is zero at both stated endpoints and positive between them, relating those facts to departure from and return to the nest.",
+          "summary": "Interpret the physical time domain of a bird-flight model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4",
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Differentiate displacement to obtain velocity, solve its factored zero equation, select the first interior positive time and substitute it into the original displacement.",
+          "summary": "Find a bird’s distance at its first later instant of rest.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Visually verified s=(t⁴−20t³+100t²)/10 on 0≤t≤10. The domain is explicitly supplied, so (b) does not need an unprinted domain answer from (a)."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Write both equations of motion with common acceleration and tension, solve them and reuse the unprinted acceleration with the one-metre fall from rest.",
+          "summary": "Model connected particles and find the hanging ball’s fall time.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4",
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Official AS sample assessment: assessed skills are within Year 1/AS scope.",
+          "difficulty_basis": "Identify two changes to the stated particle, small-pulley, constant-resistance or gravity assumptions.",
+          "summary": "Suggest refinements to a connected-particle model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The raw (a)(ii) 4-mark tariff jointly covers both equations of motion. Source diagram, hanging height and stated constant resistance 12.7 N were visually checked. Since resistance is supplied directly, no coefficient-of-friction law is assessed."
+      ]
+    }
+  ]
+}

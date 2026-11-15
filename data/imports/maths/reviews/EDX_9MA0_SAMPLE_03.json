@@ -1,0 +1,520 @@
+{
+  "paper_id": "EDX_9MA0_SAMPLE_03",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "e6bbbac02db049093787098250e19578374b9195a7910b8aa5d13a098a027790",
+  "scheme_source_sha256": "c16bc134c27ed320464ff11649f92fe6ba26b32cc69ccc71507c018bb3bff6c1",
+  "specification_basis": "Pearson Issue 4 canonical 89 printed reference groups / stable 90 runtime IDs; sample question-level callouts are supporting evidence, not part-level tag unions.",
+  "visual_review": "Every question crop inspected from SourceRenderer output; original PDF pixels remain authoritative for mathematical typography, diagrams and all joint tariffs.",
+  "source_provenance": {
+    "question_paper": {
+      "paper_id": "EDX_9MA0_SAMPLE_03",
+      "kind": "question_paper",
+      "cache_file": "EDX_9MA0_SAMPLE_03__question_paper.pdf",
+      "cache_sha256": "e6bbbac02db049093787098250e19578374b9195a7910b8aa5d13a098a027790",
+      "original_source_file": "9ma0_samples_official_bundle.pdf",
+      "original_source_sha256": "597d62df69fab389cc9c3ca33a2ae00f4eb47102ddcd40af5ec330fd6cdfbdff",
+      "original_source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/as-al-maths-further-sams.zip",
+      "source_zip_entry": "9MA0 A level Mathematics SAMs.pdf",
+      "source_pages_inclusive": [
+        101,
+        126
+      ],
+      "original_page_offset": 100,
+      "operation": "faithful source page extraction; no question rewriting",
+      "source_zip_file": "as-al-maths-further-sams.zip",
+      "source_zip_sha256": "c158f17ba92edd515d4fd2454756473ad1ecd98fe42318cab748446f5da7a40d"
+    },
+    "mark_scheme": {
+      "paper_id": "EDX_9MA0_SAMPLE_03",
+      "kind": "mark_scheme",
+      "cache_file": "EDX_9MA0_SAMPLE_03__mark_scheme.pdf",
+      "cache_sha256": "c16bc134c27ed320464ff11649f92fe6ba26b32cc69ccc71507c018bb3bff6c1",
+      "original_source_file": "9ma0_samples_official_bundle.pdf",
+      "original_source_sha256": "597d62df69fab389cc9c3ca33a2ae00f4eb47102ddcd40af5ec330fd6cdfbdff",
+      "original_source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/as-al-maths-further-sams.zip",
+      "source_zip_entry": "9MA0 A level Mathematics SAMs.pdf",
+      "source_pages_inclusive": [
+        127,
+        142
+      ],
+      "original_page_offset": 126,
+      "operation": "faithful source page extraction; no question rewriting",
+      "source_zip_file": "as-al-maths-further-sams.zip",
+      "source_zip_sha256": "c158f17ba92edd515d4fd2454756473ad1ecd98fe42318cab748446f5da7a40d"
+    }
+  },
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Relate bar area to frequency and transfer both horizontal and vertical scales from the supplied reference class.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Histogram frequency density and unequal class widths are within AS scope.",
+          "summary": "Scale histogram bars for unequal class widths.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)",
+            "(e)",
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_DIST_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Estimate grouped-data mean and spread, compare consistency, estimate a data-based upper count and compare it with the normal-model prediction.",
+          "introduced_year": 13,
+          "introduced_year_basis": "The normal-model comparison is additional A level content; the linked mean/spread and count parts remain grouped because the final comparison needs their computed results.",
+          "summary": "Compare grouped-data summaries with a normal sunshine model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Parts (b)–(f) remain one unit because the final model comparison needs the earlier calculated data-based count; no derived values are inserted into independent context."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compare the proposed input with the observed temperature range.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Regression interpretation and extrapolation are within AS scope.",
+          "summary": "Assess an extrapolated regression prediction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify the aspect of linear association measured by the supplied coefficient.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Interpreting a correlation coefficient is the additional A level extension of the hypothesis-testing point.",
+          "summary": "Interpret the product moment correlation coefficient.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "State population-coefficient hypotheses, choose the one-tailed critical value and interpret the sample coefficient at the stated level.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Hypothesis testing for correlation coefficients is additional A level content.",
+          "summary": "Test a population correlation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use geographical and seasonal knowledge of the prescribed large data set to justify a location.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Familiarity with locations and variables in the large data set is within AS scope.",
+          "summary": "Use the large data set to identify a plausible location.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Infer a normal mean from a supplied percentile, find the acceptable-length probability and reuse its complement in a binomial count.",
+          "introduced_year": 13,
+          "introduced_year_basis": "The linked normal-distribution calculation is additional A level content.",
+          "summary": "Combine normal measurement and binomial batch models.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the sampling distribution of the mean with known standard deviation, apply a one-tailed significance test and state the contextual conclusion.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Testing the mean of a normal distribution is additional A level content.",
+          "summary": "Test a normal population mean.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the union-complement probability as a numerator and the conditioning complement as a denominator.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Conditional probability is additional A level content.",
+          "summary": "Find a conditional probability involving complements.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compare the supplied intersection probability with the product of the two marginal probabilities.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Independence of events is within AS scope.",
+          "summary": "Check whether two events are independent.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Combine independence and mutual exclusivity to assign all Venn regions, then sum the regions outside the required union.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Venn diagrams, independence, mutual exclusivity and complements are within AS scope.",
+          "summary": "Complete a three-event probability diagram.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Relate a census to the practical consequences of germinating the entire seed population.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Population and sample reasoning is within AS scope.",
+          "summary": "Explain why destructive testing should use a sample.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Find a tray success probability and use that probability in a second binomial distribution for the number of successful trays.",
+          "introduced_year": 12,
+          "introduced_year_basis": "Both stages use the AS binomial-distribution scope; their nested structure raises difficulty without adding Year 13 content.",
+          "summary": "Use a binomial model within another binomial model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "State appropriate restrictions on the binomial parameters for a usable normal approximation.",
+          "introduced_year": 13,
+          "introduced_year_basis": "The normal approximation to the binomial is additional A level content under official Statistics 4.2.",
+          "summary": "State conditions for a normal approximation to a binomial model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)",
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the binomial mean and variance, apply a continuity correction and interpret the resulting tail probability as evidence about the claim.",
+          "introduced_year": 13,
+          "introduced_year_basis": "The normal approximation is additional A level content, although the underlying binomial hypothesis-testing point also contains AS material.",
+          "summary": "Approximate a binomial tail and evaluate a germination claim.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Normal approximation to the binomial maps to current official Statistics 4.2; runtime STATS_DIST_4.3 is used only for selecting/evaluating distribution suitability."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Integrate both acceleration components, impose the initial velocity and calculate the magnitude of the velocity at the requested time.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Calculus in two-dimensional kinematics extends the AS one-dimensional calculus scope.",
+          "summary": "Find speed from a time-dependent vector acceleration.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Resolve normal and tangential forces during upward motion, determine the friction coefficient and compare limiting friction with the downhill component after stopping.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Friction and resolving forces on an inclined plane are additional A level mechanics content.",
+          "summary": "Determine friction on an incline and assess rest afterwards.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use the change in each supplied velocity component over the stated elapsed time.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Constant-acceleration motion in two dimensions extends AS one-dimensional kinematics.",
+          "summary": "Find a boat’s constant vector acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3",
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Construct vector displacement and velocity expressions, then impose equal positive components on the appropriate vector for each direction question.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Vector constant-acceleration kinematics in two dimensions is additional A level content.",
+          "summary": "Distinguish a boat’s north-east position from its direction of travel.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Identify the force positions and use perpendicular distances in a moment balance about the foot.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Moments and rigid-body equilibrium are additional A level mechanics content.",
+          "summary": "Use moments for a loaded ladder in equilibrium.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.6",
+            "EDX_MATH_MECH_FORCES_8.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use vertical and horizontal equilibrium with both possible friction directions to obtain the admissible applied-force interval.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Planar equilibrium with limiting friction is additional A level mechanics content.",
+          "summary": "Find the force range preventing ladder slip.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.6",
+            "EDX_MATH_MECH_FORCES_8.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Connect the added downward load with the ground reaction and available friction while recognising its position in the moment balance.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Frictional equilibrium of an extended body is additional A level mechanics content.",
+          "summary": "Explain how extra load at a ladder’s foot affects stability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Resolve the initial velocity, combine horizontal and vertical displacement conditions, then recover both velocity components at the specified height.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Projectile motion is additional A level mechanics content.",
+          "summary": "Determine a projectile’s launch speed and later speed.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify two physical assumptions in the stated free-flight model that could be made more realistic.",
+          "introduced_year": 13,
+          "introduced_year_basis": "Evaluating a projectile model is additional A level mechanics content.",
+          "summary": "Suggest improvements to a projectile model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

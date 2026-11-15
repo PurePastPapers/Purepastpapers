@@ -147,6 +147,7 @@ export async function mount(element, context) {
           <section class="card ruled tilt-3">
             <i class="tape tape--c" aria-hidden="true"></i>
             <h2 class="card__title">Get the paper</h2>
+            ${paper.source_bundle_url ? html`<a class="btn btn--block btn--left" href="${paper.source_bundle_url}" target="_blank" rel="noopener">Official assessment source bundle (ZIP)</a>` : ''}
             ${pdf || markScheme
               ? html`<div class="stack stack--sm">
                   ${pdf ? html`<a class="btn btn--block btn--left" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
