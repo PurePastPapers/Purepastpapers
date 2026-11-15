@@ -17,7 +17,7 @@ import re
 from pathlib import Path
 
 
-VERSION = 'pearson-9ph0-layout-v3-printed-content'
+VERSION = 'pearson-9ph0-layout-v4-split-star-labels'
 TOTAL = r'Total for Question\s+{n}\s*=\s*(\d+)\s*marks?'
 
 
@@ -74,6 +74,11 @@ def _merge_split_numbers(words):
         if (prev and re.fullmatch(r'\*?\d', prev['text']) and re.fullmatch(r'\d', w['text'])
                 and abs(prev['top'] - w['top']) < 1 and 0 <= w['x0'] - prev['x1'] < 2.5
                 and 'Bold' in prev['fontname'] and 'Bold' in w['fontname']):
+            out[-1] = {**prev, 'text': prev['text'] + w['text'], 'x1': w['x1']}
+            continue
+        # A starred part label can be set as "*(" + "c)".
+        if (prev and prev['text'] in ('*(', '(') and re.fullmatch(r'(?:[a-h]|[ivx]+)\)', w['text'])
+                and abs(prev['top'] - w['top']) < 1 and 0 <= w['x0'] - prev['x1'] < 2.5):
             out[-1] = {**prev, 'text': prev['text'] + w['text'], 'x1': w['x1']}
             continue
         out.append(w)

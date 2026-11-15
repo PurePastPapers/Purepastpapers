@@ -82,9 +82,9 @@ No textbook chapters are invented.
 
 ## Checkpoint 2 — pipeline, runtime wiring, first reviewed booklet (15 November 2026)
 
-**Status: partial.** One booklet is live (9PH0 June 2018 Paper 1: 18 source
-questions, 37 scored units, 90/90 marks, 88 lossless crops). 46 public booklets
-are queued in `data/imports/physics/coverage.json`. Official SAMs are not split yet.
+**Status: partial.** Live booklets and totals are in
+`data/imports/physics/coverage.json` (the source of truth; it lists the queue).
+Batch 1 (9PH0 June 2017–October 2020, 10 booklets) is live. Official SAMs are not split yet.
 
 ### Pipeline (all under `tools/physics/`)
 
@@ -94,10 +94,12 @@ are queued in `data/imports/physics/coverage.json`. Official SAMs are not split 
 | Extract | `extract.py SOURCES --output CANDIDATES [--ocr-dir OCR]` | CropBox-relative (several 2020+ booklets have an inset MediaBox); `(n)` tariffs; MCQs use the "Total for Question" line; part regions include data printed after the tariff |
 | Scheme index | `schemes.py` | "Question Number" tables, `*Q13`-style refs |
 | Review sheet | `sheet.py CANDIDATE.json 500` | prints parts and text for review |
-| Reviews | `reviews.py RESEARCH [glob]` | compiles `review-src/<pid>.txt` lines `Q \| parts \| statements[; prereqs] \| e/m/h \| summary \| basis [\| i/s/g]` |
+| Reviews | `reviews.py RESEARCH [glob]` (append `@x` to a parts cell to override a misread printed label) | compiles `review-src/<pid>.txt` lines `Q \| parts \| statements[; prereqs] \| e/m/h \| summary \| basis [\| i/s/g]` |
 | Build | `build.py INVENTORY --sources … --candidates … --reviews … --only PID` | statement → `EDX_PHYS_Snnn`; year from statements; AS units may not tag statements > 96 |
 | Publish | `finalize.py --research RESEARCH` | activates reconciled packs only, writes identities, coverage, lazy asset catalogues |
 
+Extractor v4 also joins starred labels set as "*(" + "c)", which fixed 15 booklets
+where a starred part was read as unlabelled or as a repeat of the previous label.
 Extraction check: 44 of 47 text/OCR booklets reconcile exactly to 80/90/120.
 Still failing and **not** published: 8PH0 June 2019 P1 (78/80), 9PH0 June 2019
 P1 (Q10 tariffs unread), 9PH0 June 2019 P2 (only Q1 found). Plan: checked manual

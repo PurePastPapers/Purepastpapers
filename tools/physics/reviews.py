@@ -7,6 +7,8 @@ One line per scored unit (lines starting with # are comments):
 
 parts are the candidate's original part labels joined by "+" (written without
 brackets, e.g. a, b(i)+b(ii), or "-" for an unlabelled multiple-choice tariff).
+Where the printed label was misread (e.g. "*( a)" read as unlabelled, or "*(c)"
+read as a second "(b)"), append "@printed" to the parts cell: "-@a", "b@c".
 Statements are official 9PH0 numbers. Context defaults to independent for a
 question's first unit and shared_stem afterwards; g = grouped_dependency.
 Every candidate tariff must be used exactly once (checked here and in build.py).
@@ -49,9 +51,12 @@ def compile_sheet(sheet, candidate):
         q, parts, tags, diff, summary, basis = cells[:6]
         stmts, _, pre = tags.partition(';')
         nums = lambda s: [int(x) for x in re.findall(r'\d+', s)]
+        parts, _, printed = parts.partition('@')
         unit = {'parts': [parse_label(p) for p in parts.split('+')], 'statements': nums(stmts),
                 'prerequisites': nums(pre), 'difficulty': DIFF[diff], 'summary': summary,
                 'difficulty_basis': basis, 'review_status': 'model_reviewed'}
+        if printed:
+            unit['display_part_label'] = parse_label(printed)
         bucket = questions.setdefault(q, [])
         unit['context_basis'] = CTX[cells[6]] if len(cells) == 7 and cells[6] else ('independent' if not bucket else 'shared_stem')
         if not unit['statements'] or any(not 1 <= x <= 191 for x in unit['statements'] + unit['prerequisites']):
