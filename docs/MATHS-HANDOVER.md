@@ -284,3 +284,35 @@ isolated test profiles; production remains globally hidden. Data validation:
 Historical demo records are included in those raw validator counts but absent
 from runtime discovery. All current source identities, marks and image bytes
 remain intact. No further Maths UI work is queued by this request.
+
+## Subject-setup covered-topics popup (15 November)
+
+The add-subject Covered topics popup now uses the same book/official identities
+as exam practice. New Maths setup defaults to the four supplied textbooks:
+45 chapters and251 subsections. An explicit saved official-view preference is
+honoured. The obsolete Organisation dropdown is replaced with the shared native
+Textbook chapters / Official specification choices. Content-year browsing shows
+138 Year12 subsections,251 cumulative Year13 subsections, or113 additional Year13
+subsections; it never marks any content learned merely by changing the view.
+
+js/ui/coverage-dialog.js owns the staged modal. It retains independent textbook
+and official drafts across namespace/year switches, including selected IDs hidden
+by the current year view. Save returns only additions/removals in each namespace;
+Cancel, Escape or close returns null without changing either learned list or its
+saved organisation. The subjects view applies those deltas through the existing
+API only after Save. The earlier explicit Add-subject action still enrols the
+subject even when optional covered-topic selection is cancelled.
+
+The initial setup preview and I’ve covered everything action use the actual
+selected/default namespace, with251 textbook sections or90 official Maths points.
+The preview retains existing learned counts. Studying-now cards now label book
+counts as textbook sections rather than spec points. The covered-popup footer
+wraps on narrow screens. The reusable subject-agent prompt now explicitly covers
+all onboarding/covered-learning entry points, not only the practice/subject pages.
+
+Validation:67 unit tests pass; data validation0errors/0warnings. The new isolated
+browser-coverage-dialog.cjs passes scoped6.2 Pure1 search, separate staged drafts,
+year views, cancel/save, account reload, both cover-all namespace paths, retained
+hidden-year selections, non-textbook fallback, and320/390/768/1440 modal layouts.
+Desktop and mobile popup screenshots were visually inspected in the private
+outputs/top-filters/covered-topics-textbooks*.png evidence.

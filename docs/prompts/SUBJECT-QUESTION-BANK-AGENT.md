@@ -100,9 +100,12 @@ js/data/source-images.js
 js/data/api.js
 js/ui/spec-tree.js
 js/ui/topic-organisation.js
+js/ui/coverage-dialog.js
+js/ui/subject-dialog.js
 js/ui/question-view.js
 js/ui/views/practice.js
 js/ui/views/subject.js
+js/ui/views/subjects.js
 tests/ and tools/browser-*.cjs
 ```
 
@@ -259,6 +262,15 @@ Selecting one partial textbook section must never mark an entire broad official
 point learned. Covered-content filtering must respect the chosen namespace and
 all prerequisites. Keep historical official coverage accessible. Guests should
 select practice topics freely without being pushed into a save/edit-learned flow.
+
+Apply that same organisation to every covered-learning entry point, including
+the add-subject setup popup and the subject page. The setup popup stages textbook
+and official selections independently until Save; switching namespace/year must
+retain both drafts, and Cancel/Escape must change neither learned list. Its
+“I’ve covered everything” action must tick the actual textbook subsections in
+textbook mode, with the correct counts and labels; honour an explicitly saved
+official-mode preference instead of silently changing namespaces. Keep
+Year13 cumulative by default without automatically ticking earlier content.
 
 Hide all demo questions and papers from discovery. Preserve their lookup IDs
 only where old sessions/marks need them. `is_official_sample` is distinct from

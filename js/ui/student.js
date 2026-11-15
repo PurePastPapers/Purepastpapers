@@ -54,6 +54,7 @@ export function subjectSummary(bundle, { progress, latest, learned }) {
   });
   return {
     leaves: leaves.length,
+    learningUnit: textbookMode ? 'textbook sections' : 'spec points',
     learned: leaves.filter((id) => learned.has(id)).length,
     pool: pool.length,
     unlocked: matches.length,
@@ -122,7 +123,7 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
       ${targetLine(subject, progress)}
       ${subject.has_written_exam
         ? html`<span class="segbar" role="img" aria-label="Topic scores">${summary.segments.map((segment) => html`<i data-rag="${segment.rag}" title="${segment.title}"></i>`)}</span>
-            <p class="subject-card__meta">${summary.learned}/${summary.leaves} spec points learned</p>`
+            <p class="subject-card__meta">${summary.learned}/${summary.leaves} ${summary.learningUnit} learned</p>`
         : html`<p class="small muted">${subject.no_written_exam}</p>`}
       <footer class="row row--tight">
         ${subject.has_written_exam ? html`<a class="btn btn--sm btn--primary" href="#/subject/${id}">Topics learned</a>` : ''}

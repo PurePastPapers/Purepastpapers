@@ -7,7 +7,7 @@ import { gradesIn } from '../engine/analytics.js';
 import { SUBJECT_SWATCHES, subjectSwatchId, targetGrade } from './subject-colours.js';
 import { openModal } from './ui.js';
 
-const preview = (subject, swatchHex, target, leaves) =>
+const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount) =>
   html`<p class="hand subject-dialog__how">how it will look</p>
     <div class="card subject-card" style="--sc:${swatchHex}" data-preview>
       <header class="subject-card__band"><h3>${subject.subject}</h3><span class="cdot" aria-hidden="true"></span></header>
@@ -15,15 +15,15 @@ const preview = (subject, swatchHex, target, leaves) =>
         <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}</p>
         <div class="target"><span class="target__grade" data-preview-grade>${target || '–'}</span><span><span class="target__label">Target grade</span>Last paper: <b>none yet</b></span></div>
         <span class="segbar" aria-hidden="true">${Array.from({ length: 8 }, () => html`<i></i>`)}</span>
-        ${subject.has_written_exam ? html`<p class="subject-card__meta">0/${leaves} spec points learned</p>` : ''}
+        ${subject.has_written_exam && leaves ? html`<p class="subject-card__meta">${coveredCount}/${leaves} ${learningUnit} learned</p>` : ''}
       </div>
     </div>`;
 
 /**
- * @param {{ subject: object, mode: 'add'|'edit', leaves?: number }} options
+ * @param {{ subject: object, mode: 'add'|'edit', leaves?: number, learningUnit?: string, coveredCount?: number }} options
  * @returns {Promise<null | { swatch: string, target: string|null, learned: 'tick'|'all'|'skip' }>}
  */
-export function subjectDialog({ subject, mode, leaves = 0 }) {
+export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec points', coveredCount = 0 }) {
   const grades = gradesIn(subject.grade_scheme).filter((grade) => grade !== 'U');
   const startSwatch = subjectSwatchId(subject) || SUBJECT_SWATCHES[0].id;
   const startTarget = mode === 'edit' ? targetGrade(subject) : null;
@@ -65,13 +65,13 @@ export function subjectDialog({ subject, mode, leaves = 0 }) {
             <p class="step__hint">Use the learned-topic filter in practice to limit questions to the topics you’ve ticked.</p>
             <div class="opts">
               <label class="opt"><input type="radio" name="learned" value="tick" checked /><span>Choose what I’ve covered</span><small>opens the topic list next</small></label>
-              <label class="opt"><input type="radio" name="learned" value="all" /><span>I’ve covered everything</span><small>ticks all ${leaves} spec points</small></label>
+              <label class="opt"><input type="radio" name="learned" value="all" /><span>I’ve covered everything</span><small>ticks all ${leaves} ${learningUnit}</small></label>
               <label class="opt"><input type="radio" name="learned" value="skip" /><span>Skip for now</span></label>
             </div>
           </fieldset>`
         : ''}
     </div>
-    <aside class="subject-dialog__preview">${preview(subject, SUBJECT_SWATCHES.find((s) => s.id === startSwatch).hex, startTarget, leaves)}</aside>
+    <aside class="subject-dialog__preview">${preview(subject, SUBJECT_SWATCHES.find((s) => s.id === startSwatch).hex, startTarget, leaves, learningUnit, coveredCount)}</aside>
   </div>`;
 
   return openModal({

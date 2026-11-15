@@ -749,6 +749,10 @@ legend {
   padding: 12px 20px 16px;
   border-top: 1px solid var(--line);
 }
+.modal--coverage .modal__foot > .btn {
+  max-width: 100%;
+  white-space: normal;
+}
 .toasts {
   position: fixed;
   z-index: 100;
