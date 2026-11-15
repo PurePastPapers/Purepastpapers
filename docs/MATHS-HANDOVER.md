@@ -206,3 +206,21 @@ collapse persistence, and320/390/768/1440 widths. browser-maths-bank.cjs and
 browser-regression.cjs also pass with the expanded default. Desktop/mobile filters
 and an expanded source card were visually inspected; local screenshots are in
 ../../outputs/top-filters/topics-single-picker*.png and questions-default-expanded.png.
+
+## Textbook organisation work in progress (15 November, evening)
+
+The owner supplied four exact textbook contents spreads: PureYear1/AS, PureYear2,
+Statistics/MechanicsYear1/AS and Statistics/MechanicsYear2. Source images and their
+SHA256 provenance are checkpointed in assets/references/maths-textbook-contents
+and data/imports/maths/textbook-contents-sources.json. The transcribed dataset is
+now data/curriculum/maths-textbooks.json:4 books,45 chapters,251 subsections.
+Codes are book-scoped:Pure1 6.2 = Equation of a circle; officialPure6.2 is a
+separate reference. These images supersede the earlier incomplete textbook
+navigation evidence. Edition pages were not supplied, so unverified ISBNs are
+not invented. Official specification IDs and question identities must remain stable.
+
+Next:wire separate Textbook/Official controls, precise per-question textbook
+associations with conservative unresolved scopes, textbook learned selections,
+expandable reference labels, prominent strict/crossover controls, globally hidden
+demos with historical lookup retention, then browser checks and publication.
+Finally commit and deliver the requested reusable subject-import agent prompt.
