@@ -1,0 +1,539 @@
+{
+  "paper_id": "EDX_9MA0_2020_OCTOBER_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "c78b9b49c89b653e44307aceb010d1020f45ed304379b67179ebe7d1c2910e2d",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Rational half-power expansion, then reuse its coefficients to explain how a particular substitution approximates a surd.",
+          "difficulty_basis": "Rational half-power expansion, then reuse its coefficients to explain how a particular substitution approximates a surd.",
+          "summary": "Expand a rational binomial and explain a surd approximation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Square-root binomial source rendering inspected."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Take logarithms of positive exponential terms and rearrange for the unknown exponent.",
+          "difficulty_basis": "Take logarithms of positive exponential terms and rearrange for the unknown exponent.",
+          "summary": "Solve an exponential equation using logarithms.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Find a displacement, then compare vector directions to establish a pair of parallel sides in three dimensions.",
+          "difficulty_basis": "Find a displacement, then compare vector directions to establish a pair of parallel sides in three dimensions.",
+          "summary": "Use three-dimensional displacement vectors to prove a trapezium.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Translate the inverse-value request to a rational equation.",
+          "difficulty_basis": "Translate the inverse-value request to a rational equation.",
+          "summary": "Evaluate an inverse function at a given value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Compose the explicitly supplied function with itself and simplify a nested rational expression.",
+          "difficulty_basis": "Compose the explicitly supplied function with itself and simplify a nested rational expression.",
+          "summary": "Find a composite rational function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Rational function denominator x-2 verified visually."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.4",
+            "EDX_MATH_PURE_SEQ_4.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Determine the common difference from endpoint terms and interpolate the requested term.",
+          "difficulty_basis": "Determine the common difference from endpoint terms and interpolate the requested term.",
+          "summary": "Use an arithmetic model for successive gear speeds.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5",
+            "EDX_MATH_PURE_SEQ_4.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Determine a common ratio from non-adjacent terms and find an intermediate gear speed.",
+          "difficulty_basis": "Determine a common ratio from non-adjacent terms and find an intermediate gear speed.",
+          "summary": "Use a geometric model for successive gear speeds.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Convert a sine–cosine combination to amplitude-phase form, then reuse both derived constants to find a contextual maximum and its first feasible time.",
+          "difficulty_basis": "Convert a sine–cosine combination to amplitude-phase form, then reuse both derived constants to find a contextual maximum and its first feasible time.",
+          "summary": "Find and time the maximum of a sinusoidal temperature model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.5",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the vertex and intersection coordinates to obtain both boundary equations and the appropriate inequalities.",
+          "difficulty_basis": "Use the vertex and intersection coordinates to obtain both boundary equations and the appropriate inequalities.",
+          "summary": "Define a region bounded by a quadratic and a straight line.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Boundary graph inspected; region lies between the quadratic and straight-line segment."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise proportional rate of increase as an exponential model; no solution of a differential equation is requested.",
+          "difficulty_basis": "Recognise proportional rate of increase as an exponential model; no solution of a differential equation is requested.",
+          "summary": "State an exponential growth model from proportional growth.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply the product rule and simplify the exponential derivative.",
+          "difficulty_basis": "Apply the product rule and simplify the exponential derivative.",
+          "summary": "Differentiate a polynomial-times-exponential function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.8",
+            "EDX_MATH_PURE_ALG_2.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the derivative printed in(a) to find exact extrema, then reuse their values for transformed functions with unrestricted and restricted domains.",
+          "difficulty_basis": "Use the derivative printed in(a) to find exact extrema, then reuse their values for transformed functions with unrestricted and restricted domains.",
+          "summary": "Find stationary points and transformed-function ranges.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)–(c)"
+        }
+      ],
+      "exceptions": [
+        "Joint(c)(ii)3mark tariff includes ranges(c)(i),(ii); grouped with(b) because exact extrema are required."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.5",
+            "EDX_MATH_PURE_INT_8.6",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.10",
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Transform the radical integral with the supplied substitution, establish new limits, then integrate a rational function and simplify exact logarithms.",
+          "difficulty_basis": "Transform the radical integral with the supplied substitution, establish new limits, then integrate a rational function and simplify exact logarithms.",
+          "summary": "Evaluate a definite integral using substitution and partial fractions.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source radical, substitution and all integral limits verified visually."
+      ]
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Solve circle-intersection geometry and determine the central angle in radians.",
+          "difficulty_basis": "Solve circle-intersection geometry and determine the central angle in radians.",
+          "summary": "Find a radian angle where two circles intersect.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use intersection geometry and the angle explicitly supplied in(a) to combine relevant circular arcs.",
+          "difficulty_basis": "Use intersection geometry and the angle explicitly supplied in(a) to combine relevant circular arcs.",
+          "summary": "Find the perimeter of a two-circle lens.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.8",
+            "EDX_MATH_PURE_TRIG_5.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Rewrite cosecant and cotangent and use the Pythagorean identity.",
+          "difficulty_basis": "Rewrite cosecant and cotangent and use the Pythagorean identity.",
+          "summary": "Prove a reciprocal-trigonometric identity.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the printed identity, handle possible zero factors, and find every degree solution in the requested interval.",
+          "difficulty_basis": "Use the printed identity, handle possible zero factors, and find every degree solution in the requested interval.",
+          "summary": "Solve an equation with cosecant and cotangent.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Calculate successive terms and enforce the stated period.",
+          "difficulty_basis": "Calculate successive terms and enforce the stated period.",
+          "summary": "Derive a parameter constraint for a periodic recurrence.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.2",
+            "EDX_MATH_PURE_SEQ_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Reject the constant-sequence parameter, then reuse the resulting period to sum80terms.",
+          "difficulty_basis": "Reject the constant-sequence parameter, then reuse the resulting period to sum80terms.",
+          "summary": "Select the valid recurrence parameter and sum periodic terms.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_DIFF_7.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Relate constant volume change to radius change using connected rates.",
+          "difficulty_basis": "Relate constant volume change to radius change using connected rates.",
+          "summary": "Construct a radius differential equation for a deflating sphere.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.7",
+            "EDX_MATH_PURE_INT_8.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Solve the separable equation printed in(a), fit constants from two radii and restrict time to physically nonnegative volume.",
+          "difficulty_basis": "Solve the separable equation printed in(a), fit constants from two radii and restrict time to physically nonnegative volume.",
+          "summary": "Solve and restrict a balloon-deflation model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply implicit differentiation and eliminate trigonometric terms to match the required derivative.",
+          "difficulty_basis": "Apply implicit differentiation and eliminate trigonometric terms to match the required derivative.",
+          "summary": "Differentiate a curve involving an implicit tangent function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_DIFF_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Differentiate the explicitly printed first derivative and justify a concavity change at the stated point.",
+          "difficulty_basis": "Differentiate the explicitly printed first derivative and justify a concavity change at the stated point.",
+          "summary": "Prove a point of inflection on a rational derivative curve.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source derivative is -18x/(x^4+81); point-of-inflection coordinate is fourth root of27."
+      ]
+    },
+    {
+      "number": "16",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Choose an appropriate parity or factor argument within a proof by contradiction.",
+          "difficulty_basis": "Choose an appropriate parity or factor argument within a proof by contradiction.",
+          "summary": "Prove an integer equation has no positive solutions.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

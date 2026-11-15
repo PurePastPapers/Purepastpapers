@@ -1,0 +1,562 @@
+{
+  "paper_id": "EDX_9MA0_2018_JUNE_03",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "c6764b4d8a9f0d04e6011df429eeefc2962fc75872dba523462aecf432549046",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1",
+            "EDX_MATH_STATS_DATA_2.4",
+            "EDX_MATH_STATS_PROB_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use large-data-set cloud-cover categories to construct the model, calculate a probability, then compare and refine it against observed data. Later model criticism depends on the earlier model probability.",
+          "summary": "Assess a discrete-uniform model for cloud cover.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Assess a discrete-uniform model for cloud cover."
+        }
+      ],
+      "exceptions": [
+        "Cloud cover uses large-data-set oktas. Grouped so derived model probabilities are not silently assumed when evaluating suitability."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "State directional hypotheses and compare the sample product-moment correlation with a critical value.",
+          "summary": "Test for negative population correlation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Test for negative population correlation."
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Relate the supplied negative correlation to the variables in context.",
+          "summary": "Explain a negative correlation in a sales context.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Explain a negative correlation in a sales context."
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Interpret the strength of the explicitly supplied correlation coefficient.",
+          "summary": "Assess whether a correlation supports a linear model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Assess whether a correlation supports a linear model."
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify which variable reasonably explains changes in the other.",
+          "summary": "Choose the explanatory variable for a regression model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Choose the explanatory variable for a regression model."
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Translate the explicitly printed gradient into weekly sales per degree change.",
+          "summary": "Interpret a regression gradient in context.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Interpret a regression gradient in context."
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify independence and constant hit probability in a repeated-trial context.",
+          "summary": "State binomial-model assumptions for repeated throws.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: State binomial-model assumptions for repeated throws."
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use the explicitly supplied binomial parameters and select the correct complementary tail.",
+          "summary": "Calculate a binomial upper-tail probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Calculate a binomial upper-tail probability."
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Combine consecutive misses with a hit on the specified trial; all trial probabilities are supplied in the stem.",
+          "summary": "Find a first-success probability from independent trials.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Find a first-success probability from independent trials."
+        },
+        {
+          "parts": [
+            "(d)",
+            "(e)",
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1",
+            "EDX_MATH_STATS_PROB_3.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.4"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Use total probability to fit the linear mass function, reuse the constant for a probability, and compare changing versus constant trial-hit chances.",
+          "summary": "Normalise a discrete probability model and compare its assumptions.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Year13: normalising the linear probability mass function requires arithmetic-series summation (genuine prerequisite); this extends beyond the AS discrete/binomial work."
+        }
+      ],
+      "exceptions": [
+        "Parts(d)–(f) grouped because the fitted constant is not supplied; normalization may use arithmetic-series knowledge, recorded as a genuine prerequisite."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Recognise the described convenience-based sample.",
+          "summary": "Identify an opportunity sampling method.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Identify an opportunity sampling method."
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Name a valid method and explain how it obtains the requested sample.",
+          "summary": "Describe an alternative non-random sampling method.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Describe an alternative non-random sampling method."
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Recognise collection of data from every population member.",
+          "summary": "Identify a census.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Identify a census."
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Read the two quartiles from the supplied diagram and subtract.",
+          "summary": "Read an interquartile range from a box plot.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Read an interquartile range from a box plot."
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use the supplied sample size and sums in standard formulae.",
+          "summary": "Calculate mean and standard deviation from summary statistics.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Calculate mean and standard deviation from summary statistics."
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the supplied box plot to justify robust location and spread measures; computed values from(e) are not needed.",
+          "summary": "Select suitable summaries for a distribution with outliers.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Select suitable summaries for a distribution with outliers."
+        },
+        {
+          "parts": [
+            "(g)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Reason about ordering, quartiles and extreme values after the specified observations change.",
+          "summary": "Explain box-plot changes when two journey times decrease.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "year_basis": "Assessed demand is within AS/Year12 skills; supplied formulas are interpreted without requiring their derivation. Assessed skill: Explain box-plot changes when two journey times decrease."
+        }
+      ],
+      "exceptions": [
+        "Source-rendered box plot inspected, including marked outliers and summary statistics. No values were invented from corrupted text."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use given normal parameters to calculate one tail.",
+          "summary": "Find a normal upper-tail probability for battery life.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Find a normal upper-tail probability for battery life."
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_PROB_3.2",
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Condition old battery lifetimes on survival so far, combine independent components, then reuse conditional probabilities in a replacement scenario.",
+          "summary": "Find survival probabilities for old and replacement batteries.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Find survival probabilities for old and replacement batteries."
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Form directional hypotheses and use the sampling distribution of the mean with the stated significance level.",
+          "summary": "Test a normal mean with a known population variance.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Test a normal mean with a known population variance."
+        }
+      ],
+      "exceptions": [
+        "Parts(b),(c) grouped because remaining lifetimes require conditioning on survival to16hours and later replacement calculations reuse the derived quantities."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Integrate each fractional-power velocity component over the stated interval, then find the magnitude of displacement rather than distance travelled.",
+          "summary": "Find a straight-line displacement distance from vector velocity.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Year13: vector-valued variable-acceleration integration in two dimensions, beyond the AS straight-line calculus subset."
+        }
+      ],
+      "exceptions": [
+        "Source rendering inspected: first velocity component is t^(-1/2), not t^2. Question asks displacement distance AB, not path length."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Resolve the inclined force, calculate the normal reaction and friction, apply Newton’s law and explain how the changed vertical force affects acceleration.",
+          "summary": "Compare pulling and pushing a crate on a rough floor.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Compare pulling and pushing a crate on a rough floor."
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Infer acceleration components from position data, find the intermediate velocity, then reuse it after acceleration changes to impose a northeast direction.",
+          "summary": "Model two phases of vector constant-acceleration motion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Year13: vector constant acceleration in a plane, beyond scalar AS suvat."
+        }
+      ],
+      "exceptions": [
+        "Parts(a),(b) grouped because the unprinted vector acceleration and intermediate velocity from(a) are needed by(b); the supplied scalar magnitude alone is insufficient."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Balance moments with an angled tension and two weights.",
+          "summary": "Find rope tension by moments for a loaded horizontal plank.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Find rope tension by moments for a loaded horizontal plank."
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use the printed tension formula and horizontal reaction to find position, then reuse force components to determine the reaction angle.",
+          "summary": "Determine block position and wall-reaction direction.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Determine block position and wall-reaction direction."
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1",
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Apply the stated tension threshold to the explicitly supplied tension formula and enforce the physical plank domain.",
+          "summary": "Restrict a block position using a rope-breaking condition.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Restrict a block position using a rope-breaking condition."
+        }
+      ],
+      "exceptions": [
+        "Source figure inspected. Tension formula in(a) is explicitly printed and available as verified context for(b)–(d)."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Apply vertical constant-acceleration motion at the highest point.",
+          "summary": "Relate projectile speed to its maximum height.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Relate projectile speed to its maximum height."
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "difficulty": "hard",
+          "difficulty_basis": "Combine horizontal and vertical motion with the printed speed-height relation, choose a physically feasible angle and reuse it for time. The model critique is retained in the dependent sequence to avoid presenting a later time request without its launch data.",
+          "summary": "Find a projectile launch angle, critique the model and find flight time.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "year_basis": "Assessed demand is additional A-level/Year13 content, checked against the Pearson suggested AS/remaining-A-level split. Assessed skill: Find a projectile launch angle, critique the model and find flight time."
+        }
+      ],
+      "exceptions": [
+        "Source figure inspected. Parts(b),(d) depend through the unprinted launch angle; model critique(c) retained within this contiguous group. Blank continuation page may be trimmed."
+      ]
+    }
+  ]
+}
