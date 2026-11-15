@@ -84,7 +84,7 @@ No textbook chapters are invented.
 
 **Status: partial.** Live booklets and totals are in
 `data/imports/physics/coverage.json` (the source of truth; it lists the queue).
-Batch 1 (9PH0 June 2017–October 2020, 10 booklets) is live. Official SAMs are not split yet.
+Batches 1–3 are live (see Checkpoint 3). Official SAMs are not split yet.
 
 ### Pipeline (all under `tools/physics/`)
 
@@ -129,3 +129,19 @@ from `data/physics-assets/<paper>.json` by `js/data/source-images.js`.
 2. Manual overrides for the three failing 2019 scans, then review the four scans.
 3. Split and import the A level and AS SAM collations.
 4. Textbook organisation when the owner sends the contents pages.
+
+## Checkpoint 3 — all text booklets live (15 November 2026)
+
+**Status: partial.** 43 booklets are live: all 25 text 9PH0 booklets (2017–2025)
+and all 18 text 8PH0 booklets (2016–2018, October 2020, October 2021, 2022–2025).
+That is 702 source questions, 1,496 scored units, 3,960 marks and 3,686 crops
+(`coverage.json` totals). `npm test` passes 73 tests, validation reports 0 errors, and
+the browser check passes (AS filter 570 units, Year 13 only 479).
+
+AS reviews tag only statements 1–96 (the build refuses anything higher). Where an
+AS question touches later content (for example a diode on an alternating supply),
+it is tagged to the AS statement it actually assesses.
+
+Still queued (4): 9PH0 June 2019 P1 and P2, 8PH0 June 2019 P1 and P2 (scans).
+8PH0 June 2019 P2 reconciles from OCR and only needs a review; the other three
+need checked manual overrides first. Then the A level and AS SAM collations.
