@@ -23,6 +23,7 @@ const emptyProgress = (userId) => ({
   schema_version: 1,
   enrolled_subjects: [],
   learned_spec_points: [],
+  learned_textbook_sections: [],
   question_attempts: [],
   paper_attempts: [],
   custom_tests: [],
@@ -33,7 +34,7 @@ const emptyProgress = (userId) => ({
 function normalise(document, userId) {
   const base = emptyProgress(userId);
   const merged = { ...base, ...(document || {}), user_id: userId };
-  for (const key of ['enrolled_subjects', 'learned_spec_points', 'question_attempts', 'paper_attempts', 'custom_tests', 'sessions']) {
+  for (const key of ['enrolled_subjects', 'learned_spec_points', 'learned_textbook_sections', 'question_attempts', 'paper_attempts', 'custom_tests', 'sessions']) {
     if (!Array.isArray(merged[key])) merged[key] = [];
   }
   if (!merged.preferences || typeof merged.preferences !== 'object') merged.preferences = {};
@@ -152,7 +153,7 @@ export async function setEnrolled(subjectId, enrolled) {
 
 /** The student's learned spec points as a Set (the input to the filtering engine). */
 export function learnedSet() {
-  learnedCache ??= new Set(requireProgress().learned_spec_points);
+  learnedCache ??= new Set([...requireProgress().learned_spec_points, ...requireProgress().learned_textbook_sections]);
   return learnedCache;
 }
 
@@ -164,7 +165,20 @@ export async function setLearned(specPointIds, learned) {
     else set.delete(id);
   }
   doc.learned_spec_points = [...set];
-  learnedCache = set;
+  learnedCache = new Set([...set, ...doc.learned_textbook_sections]);
+  await persist();
+}
+
+/** Book subsections never imply that an entire broad official skill is learned. */
+export async function setTextbookLearned(sectionIds, learned) {
+  const doc = requireProgress();
+  const selected = new Set(doc.learned_textbook_sections);
+  for (const id of sectionIds) {
+    if (typeof id !== 'string' || !/^TB_[A-Z0-9_]+_\d+\.\d+$/.test(id)) throw new TypeError('Invalid textbook subsection.');
+    if (learned) selected.add(id); else selected.delete(id);
+  }
+  doc.learned_textbook_sections = [...selected];
+  learnedCache = new Set([...doc.learned_spec_points, ...selected]);
   await persist();
 }
 

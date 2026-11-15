@@ -121,8 +121,9 @@ test('question references identify isolated parts without duplicating legacy par
 
 test('question metadata explains exact primary and crossover spec codes without exposing internal ids', () => {
   const markup = String(questionMeta(part('Q7_B', { crossover_spec_points: ['POINT_6'], is_sample: true }), { specIndex: index }));
-  assert.match(markup, /Spec 1\.1/);
-  assert.match(markup, /Also needs 6\.1/);
+  assert.match(markup, /<summary>Topics & references<\/summary>/);
+  assert.match(markup, /1\.1 Topic 1 point <span[^>]*>\(Assessed\)/);
+  assert.match(markup, /6\.1 Topic 6 point <span[^>]*>\(Prerequisite\)/);
   assert.match(markup, /title="1\.1 Topic 1 point"/);
   assert.match(markup, /title="6\.1 Topic 6 point"/);
   assert.ok(!markup.includes('POINT_1') && !markup.includes('POINT_6'));

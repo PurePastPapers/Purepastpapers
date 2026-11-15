@@ -11,6 +11,7 @@ import { APP, CONTENT } from '../config/app.config.js';
 import { naturalCompare } from '../core/utils.js';
 import { createSpecIndex } from '../engine/spec-index.js';
 import { createCurriculumMap } from '../engine/curriculum-map.js';
+import { createTextbookIndex } from '../engine/textbook-index.js';
 
 const DATA_ROOT = new URL('../../data/', import.meta.url);
 const LOCAL_PACK_KEY = `${APP.storageNamespace}:content-pack`;
@@ -21,6 +22,7 @@ export const specIndex = createSpecIndex();
 let subjectsPromise = null;
 let packsPromise = null;
 let curriculumPromise = null;
+let textbookPromise = null;
 const specPromises = new Map();
 const bundlePromises = new Map();
 
@@ -50,6 +52,18 @@ export async function getCurriculum(subjectId) {
   ]);
   if (!Array.isArray(index.mappings)) throw new TypeError('Curriculum index must contain a mappings array.');
   return createCurriculumMap({ subject_id: subjectId, mappings: index.mappings.filter((item) => item.subject_id === subjectId) }, specIndex);
+}
+
+/** The owner's book-scoped contents and question skill associations. */
+export async function getTextbooks(subjectId) {
+  if (subjectId !== 'EDX_ALEVEL_MATH_9MA0') return null;
+  await ensureSpec(subjectId);
+  textbookPromise ??= Promise.all([fetchJson('curriculum/maths-textbooks.json'),
+    fetchJson('imports/maths/textbook-question-links.json')]).then(([document, links]) => {
+    if (document.version !== links.version) throw new TypeError('Textbook association version mismatch.');
+    return {index: createTextbookIndex(document, specIndex), links: links.questions};
+  }).catch(error => { textbookPromise = null; throw error; });
+  return textbookPromise;
 }
 
 /** Loads a subject's specification tree and adds it to the shared index. */
@@ -140,9 +154,9 @@ async function loadBundle(subjectId) {
       if (question.subject_id === subjectId) questionsById.set(question.question_id, question);
     }
   }
-  if (!CONTENT.showSampleContent) {
-    for (const [id, paper] of papersById) if (paper.is_sample) papersById.delete(id);
-    for (const [id, question] of questionsById) if (question.is_sample) questionsById.delete(id);
+  const textbooks = await getTextbooks(subjectId);
+  if (textbooks) for (const [id, question] of questionsById) {
+    questionsById.set(id, textbooks.index.attach(question, textbooks.links[id]));
   }
 
   // Keep papers and questions consistent: a question that names a paper belongs to it.
@@ -160,7 +174,8 @@ async function loadBundle(subjectId) {
 
   // Crossover tags may point into other subjects: load those trees too, so the
   // learned-topics gate can expand them and the UI can name them.
-  const questions = [...questionsById.values()];
+  // Hide demos from discovery, retaining lookups for saved historical sessions.
+  const questions = [...questionsById.values()].filter(question => CONTENT.showSampleContent || !question.is_sample);
   const foreignSubjects = new Set();
   for (const question of questions) {
     for (const id of [...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]) {
@@ -176,10 +191,10 @@ async function loadBundle(subjectId) {
   // Authenticated source booklets supersede generated catalogue placeholders.
   // Keep the original lookup records so saved sessions and marks still resolve.
   const generatedIds = new Set(basePapers.map(paper => paper.paper_id));
-  const papers = [...papersById.values()].filter(paper => !hasReviewedMaths ||
+  const papers = [...papersById.values()].filter(paper => (CONTENT.showSampleContent || !paper.is_sample) && (!hasReviewedMaths ||
     !generatedIds.has(paper.paper_id) || paper.question_ids.some(id =>
-      questionsById.get(id)?.provenance?.review_status === 'model_reviewed'));
-  return { subject, spec, papers, papersById, questions, questionsById };
+      questionsById.get(id)?.provenance?.review_status === 'model_reviewed')));
+  return { subject, spec, papers, papersById, questions, questionsById, textbooks: textbooks?.index || null };
 }
 
 /**

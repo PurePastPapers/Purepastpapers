@@ -320,6 +320,10 @@
 .question-filters .builder__title { margin-bottom: 4px; }
 .browser-topics { min-width: 0; }
 .topics-choice { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 6px; }
+.topic-choices { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.question-reference-details { flex-basis: 100%; font-size: 14px; }
+.question-reference-details > summary { min-height: 32px; padding: 6px 0; cursor: pointer; }
+.question-reference-details[open] { padding: 8px 12px; background: var(--surface-2); border-radius: var(--radius-sm); }
 .browser-topics > .row { margin-bottom: 6px; }
 .browser-filter-options {
   display: grid;

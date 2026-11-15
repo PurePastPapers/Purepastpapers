@@ -8,6 +8,7 @@ import { getBundles, specIndex } from '../data/content-repository.js';
 import { createSession } from '../data/sessions.js';
 import { TARGET_BANDS, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../engine/analytics.js';
 import { filterQuestions } from '../engine/filter-engine.js';
+import { textbookMasteryByNode } from '../engine/textbook-index.js';
 import { icon } from './icons.js';
 import { SUBJECT_SWATCHES, scStyle, setSubjectColour, subjectColour, subjectSwatchId, targetGrade } from './subject-colours.js';
 import { fmtPercent, groupDot } from './ui.js';
@@ -38,17 +39,18 @@ export function practicePool(bundle) {
 }
 
 export function subjectSummary(bundle, { progress, latest, learned }) {
-  const leaves = specIndex.subjectLeaves(bundle.subject.subject_id);
+  const textbookMode = bundle.textbooks && progress.preferences[`coveredView:${bundle.subject.subject_id}`] !== 'official';
+  const leaves = textbookMode ? bundle.textbooks.ids : specIndex.subjectLeaves(bundle.subject.subject_id);
   const pool = practicePool(bundle);
-  const { matches } = filterQuestions(pool, {}, { specIndex, learned, latestAttempts: latest });
+  const { matches } = filterQuestions(pool, {learnedNamespace:textbookMode ? 'textbook' : 'official'}, { specIndex, learned, latestAttempts: latest });
   const answered = [...latest.values()].filter((attempt) => attemptInSubject(attempt, bundle));
   const score = totals(answered);
   // One segment per topic (up to 8): its RAG from the latest attempts, or empty with no evidence yet.
-  const mastery = masteryByNode(latest, bundle.questionsById, specIndex);
-  const topics = (bundle.spec?.sections || []).flatMap((section) => section.topics);
+  const mastery = textbookMode ? textbookMasteryByNode(latest,bundle.questionsById,bundle.textbooks) : masteryByNode(latest, bundle.questionsById, specIndex);
+  const topics = textbookMode ? bundle.textbooks.tree.sections : (bundle.spec?.sections || []).flatMap((section) => section.topics);
   const segments = topics.slice(0, 8).map((topic) => {
     const entry = mastery.get(topic.id);
-    return { title: topic.title, rag: entry && entry.max > 0 ? entry.rag : 'none' };
+    return { title: topic.title, rag: entry && entry.max > 0 ? entry.rag || ragFor(entry.percentage) : 'none' };
   });
   return {
     leaves: leaves.length,

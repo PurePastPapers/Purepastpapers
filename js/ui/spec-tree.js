@@ -147,15 +147,19 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
 
   on(root, 'input', '[data-tree-search]', (event, input) => {
     const query = input.value.trim().toLowerCase();
+    const terms = query.split(/\s+/).filter(Boolean);
+    const hits = text => terms.every(term => text.toLowerCase().includes(term));
     for (const section of spec.sections) {
-      const sectionHit = filterLayout && query && section.title.toLowerCase().includes(query);
+      const sectionText = `${section.title} ${(section.search_aliases || []).join(' ')}`;
+      const sectionHit = query && hits(sectionText);
       let sectionVisible = false;
       for (const topic of section.topics) {
         const element = $(`[data-topic="${CSS.escape(topic.id)}"]`, root);
-        const topicHit = !query || sectionHit || `${topic.code} ${topic.title}`.toLowerCase().includes(query);
+        const topicText = `${sectionText} ${topic.code} ${topic.title}`;
+        const topicHit = !query || sectionHit || hits(topicText);
         let anyPoint = false;
         for (const point of topic.points) {
-          const hit = topicHit || `${point.code} ${point.title}`.toLowerCase().includes(query);
+          const hit = topicHit || hits(`${topicText} ${point.code} ${point.title} ${(point.search_aliases || []).join(' ')}`);
           $(`[data-point-row="${CSS.escape(point.id)}"]`, root).hidden = !hit;
           anyPoint ||= hit;
         }

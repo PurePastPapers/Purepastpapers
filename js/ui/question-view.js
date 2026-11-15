@@ -72,17 +72,12 @@ export function questionRef(question, papersById) {
 export const marksPill = (marks) => html`<span class="marks-pill">${marks} ${marks === 1 ? 'mark' : 'marks'}</span>`;
 
 /** Marks, time, difficulty, source and (optionally) the topics a question is tagged with. */
-export function questionMeta(question, { specIndex = null, topics = true } = {}) {
+export function questionMeta(question, { specIndex = null, topics = true, organisation = 'textbook', referencesOpen = false } = {}) {
   const primary = question.primary_spec_points || [];
   const crossover = question.crossover_spec_points || [];
   const labelOf = (id) => {
     const node = specIndex?.get(id);
     return node ? [node.code, node.title].filter(Boolean).join(' ') : 'Unmapped specification point';
-  };
-  const codeOf = (id) => {
-    const node = specIndex?.get(id);
-    if (!node) return 'Unmapped specification point';
-    return node.code ? `${node.code}${node.type !== 'point' ? ' (whole topic)' : ''}` : node.title;
   };
   const tags = new Map();
   if (topics && specIndex) {
@@ -92,12 +87,20 @@ export function questionMeta(question, { specIndex = null, topics = true } = {})
       tags.get(title).push(labelOf(id));
     }
   }
+  const textbook = question.textbook_references || [];
+  const bookTags = [...new Set(textbook.filter(ref => ref.role === 'Assessed').map(ref => `${ref.book} · ${ref.chapter}`))];
   return html`<div class="qcard__meta">
     ${difficultyBadge(question.difficulty)}${question.is_as ? html`<span class="tag">AS · 8MA0</span>` : ''}
     <span class="small muted">about ${fmtMinutes(question.estimated_minutes || 1)}</span>
-    ${sourceBadge(question)} ${[...tags].map(([title, labels]) => html`<span class="tag" title="${labels.join(' · ')}">${title}</span>`)}
+    ${sourceBadge(question)} ${organisation === 'textbook' && bookTags.length
+      ? bookTags.map(title => html`<span class="tag">${title}</span>`)
+      : [...tags].map(([title, labels]) => html`<span class="tag" title="${labels.join(' · ')}">${title}</span>`)}
     ${crossover.length ? html`<span class="tag" title="${specIndex ? crossover.map(labelOf).join(' · ') : 'Also needs knowledge from other topics'}">+ crossover</span>` : ''}
-    ${topics && specIndex && primary.length ? html`<span class="question-spec-codes small muted" title="${primary.map(labelOf).join(' · ')}">Spec ${[...new Set(primary.map(codeOf))].join(' · ')}</span>` : ''}
-    ${topics && specIndex && crossover.length ? html`<span class="question-spec-codes small muted" title="${crossover.map(labelOf).join(' · ')}">Also needs ${[...new Set(crossover.map(codeOf))].join(' · ')}</span>` : ''}
+    ${topics && specIndex && primary.length ? html`<details class="question-reference-details" data-question-references="${question.question_id}" ${referencesOpen ? 'open' : ''}>
+      <summary>Topics & references</summary><div class="stack stack--sm">
+        ${textbook.length ? html`<div><strong>Textbook sections</strong><ul>${textbook.map(ref => html`<li>${ref.book} · ${ref.code} ${ref.title} <span class="small muted">(${ref.role}${ref.precision === 'chapter' ? '; chapter-level link, subsection not resolved' : ''})</span></li>`)}</ul></div>` : ''}
+        <div><strong>Official ${question.board || 'exam-board'} specification</strong><ul>${[...new Set([...primary, ...crossover])].map(id => html`<li>${labelOf(id)} <span class="small muted">(${primary.includes(id) ? 'Assessed' : 'Prerequisite'})</span></li>`)}</ul></div>
+        ${textbook.length ? html`<p class="small muted">Textbook subsection numbers and official specification numbers are separate references.</p>` : ''}
+      </div></details>` : ''}
   </div>`;
 }

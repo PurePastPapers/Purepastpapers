@@ -9,6 +9,8 @@ import { gradesIn, latestByQuestion, masteryByNode, paperHistory, ragFor, target
 import { countByNode, filterQuestions, foreignSpecPoints, unlockSuggestions } from '../../engine/filter-engine.js';
 import { icon } from '../icons.js';
 import { mountSpecTree } from '../spec-tree.js';
+import { topicOrganisationControl } from '../topic-organisation.js';
+import { textbookMasteryByNode } from '../../engine/textbook-index.js';
 import { attemptInSubject, practicePool } from '../student.js';
 import { saveSubjectSettings, scStyle, targetGrade, tintPage } from '../subject-colours.js';
 import { subjectDialog } from '../subject-dialog.js';
@@ -16,7 +18,7 @@ import { banner, confirmDialog, emptyState, fmtPercent, meter, pageHead, ragBadg
 
 export async function mount(element, context) {
   const [bundle, subjects] = await Promise.all([getBundle(context.params.subjectId), getSubjects()]);
-  const { subject, spec } = bundle;
+  const { subject, spec, textbooks } = bundle;
   const subjectId = subject.subject_id;
   const subjectById = new Map(subjects.map((candidate) => [candidate.subject_id, candidate]));
   context.setTitle(subject.subject);
@@ -26,18 +28,26 @@ export async function mount(element, context) {
   const questionCounts = countByNode(pool, specIndex);
   const foreign = foreignSpecPoints(pool, subjectId, specIndex); // spec points owned by other subjects
   const leaves = specIndex.subjectLeaves(subjectId);
+  const textbookCounts = textbooks?.counts(pool);
+  let organisation = textbooks ? progress.preferences[`coveredView:${subjectId}`] || 'textbook' : 'official';
+  if (!['textbook', 'official'].includes(organisation)) organisation = 'textbook';
+  const textbookMode = () => Boolean(textbooks && organisation === 'textbook');
+  const viewLeaves = () => textbookMode() ? textbooks.ids : leaves;
 
   let derived = null;
   function compute() {
     const learned = api.learnedSet();
     const latest = latestByQuestion(progress.question_attempts);
-    const result = filterQuestions(pool, {}, { specIndex, learned, latestAttempts: latest });
+    const result = filterQuestions(pool, {learnedNamespace: textbookMode() ? 'textbook' : 'official'}, { specIndex, learned, latestAttempts: latest });
+    const suggestions = textbookMode() ? result.locked.map(({question, missing}) => ({question,
+      missing: [...new Set(missing.flatMap(id => question.textbook_requirements?.[id]?.ids || [id]))].filter(id => !learned.has(id))})) : result.locked;
     derived = {
       learned,
       mastery: masteryByNode(latest, bundle.questionsById, specIndex),
+      textbookMastery: textbooks ? textbookMasteryByNode(latest,bundle.questionsById,textbooks) : null,
       unlocked: result.matches.length,
       locked: result.locked,
-      suggestions: unlockSuggestions(result.locked, 6),
+      suggestions: unlockSuggestions(suggestions, 6),
       score: totals([...latest.values()].filter((attempt) => attemptInSubject(attempt, bundle))),
     };
   }
@@ -65,14 +75,15 @@ export async function mount(element, context) {
         ${subject.has_written_exam
           ? html`<p class="muted">Find questions: browse individual questions by topic, specification point, difficulty and exam year. Full past papers opens original papers by year, series and paper.</p><section class="grid grid--stats" data-stats aria-label="Summary"></section>
               <div class="split">
-                <details class="card ruled tilt-4">
+                ${api.currentUser() ? html`<details class="card ruled tilt-4" open>
           <i class="tape tape--l" aria-hidden="true"></i>
-                  <summary class="card__title">Edit covered topics</summary>
+                  <summary class="card__title">Topics I’ve covered</summary>
                   <p class="muted" style="margin-bottom:16px">
-                    Tick the topics and spec points you have covered. The optional covered-content filter matches questions whose required points are all ticked; you can turn it off to browse everything.
+                    Tick the chapters and points you have covered. Textbook and official-spec ticks are saved separately; a textbook subsection never marks an entire official point learned.
                   </p>
+                  ${topicOrganisationControl(organisation, {available: Boolean(textbooks), name: 'covered-organisation'})}
                   ${leaves.length ? html`<div data-tree></div>` : emptyState({ title: 'No specification tree yet', text: 'Topics for this subject have not been added.' })}
-                </details>
+                </details>` : html`<section class="card"><h2>Choose topics for practice</h2><p>You can select any topics without saving a learned-topic list.</p><a class="btn" href="#/practice?subject=${subjectId}">Find questions</a></section>`}
                 <aside class="stack" data-side></aside>
               </div>`
           : emptyState({ iconName: 'info', title: 'No written exam', text: subject.no_written_exam })}
@@ -104,13 +115,14 @@ export async function mount(element, context) {
   function drawStats() {
     const target = $('[data-stats]', element);
     if (!target) return;
-    const learnedCount = leaves.filter((id) => derived.learned.has(id)).length;
+    const currentLeaves = viewLeaves();
+    const learnedCount = currentLeaves.filter(id => derived.learned.has(id)).length;
     setHtml(
       target,
       html`<div class="stat ruled">
-          <span class="stat__label">Spec points learned</span>
-          <span class="stat__value">${learnedCount}<span class="stat__of"> / ${leaves.length}</span></span>
-          ${meter(percent(learnedCount, leaves.length), 'accent', 'Share of spec points learned')}
+          <span class="stat__label">${textbookMode() ? 'Textbook sections learned' : 'Official points learned'}</span>
+          <span class="stat__value">${learnedCount}<span class="stat__of"> / ${currentLeaves.length}</span></span>
+          ${meter(percent(learnedCount, currentLeaves.length), 'accent', 'Share of selected curriculum learned')}
         </div>
         <div class="stat ruled">
           <span class="stat__label">Questions matching your covered topics</span>
@@ -159,6 +171,8 @@ export async function mount(element, context) {
   }
 
   const labelWithSubject = (id) => {
+    const textbook = textbooks?.points.get(id);
+    if (textbook) return `${textbook.book.short_title} · ${textbook.code} ${textbook.title}`;
     const owner = specIndex.subjectOf(id);
     const name = specIndex.label(id);
     return owner && owner !== subjectId ? `${name} (${subjectById.get(owner)?.subject || 'another subject'})` : name;
@@ -197,7 +211,7 @@ export async function mount(element, context) {
                               ${entry.unlocks ? `Matches ${plural(entry.unlocks, 'question')} on its own` : `Needed by ${plural(entry.needed_by, 'question')}`}
                             </p>
                           </div>
-                          <button type="button" class="btn btn--sm" data-learn="${entry.id}">Mark learned</button>
+                          ${api.currentUser() ? html`<button type="button" class="btn btn--sm" data-learn="${entry.id}">Mark learned</button>` : ''}
                         </li>`,
                     )}
                   </ul>`}
@@ -233,28 +247,39 @@ export async function mount(element, context) {
 
   let tree = null;
   const treeElement = $('[data-tree]', element);
-  if (treeElement) {
+  function mountCoveredTree() {
+    if (!treeElement) return;
     tree = mountSpecTree(treeElement, {
-      spec,
-      selected: leaves.filter((id) => derived.learned.has(id)),
+      spec: textbookMode() ? textbooks.tree : spec,
+      filterLayout: true,
+      selected: viewLeaves().filter(id => derived.learned.has(id)),
       noun: 'learned',
       topicMeta: (topic, { selected, total }) => {
-        const entry = derived.mastery.get(topic.id);
-        const count = questionCounts.get(topic.id) || 0;
-        return html`${entry ? ragBadge(entry.rag, entry.percentage, { label: false }) : ''}
+        const entry = textbookMode() ? derived.textbookMastery.get(topic.id) : derived.mastery.get(topic.id);
+        const count = textbookMode() ? textbookCounts.get(topic.id) || 0 : questionCounts.get(topic.id) || 0;
+        return html`${entry ? ragBadge(entry.rag || ragFor(entry.percentage), entry.percentage, { label: false }) : ''}
           <span>${count} ${count === 1 ? 'question' : 'questions'}</span><span>${selected}/${total} learned</span>`;
       },
       pointMeta: (id) => {
-        const entry = derived.mastery.get(id);
-        const count = questionCounts.get(id) || 0;
-        return html`${entry ? ragBadge(entry.rag, entry.percentage, { label: false }) : ''}${count ? html`<span>${count} q</span>` : ''}`;
+        const entry = textbookMode() ? derived.textbookMastery.get(id) : derived.mastery.get(id);
+        const count = textbookMode() ? textbookCounts.get(id) || 0 : questionCounts.get(id) || 0;
+        return html`${entry ? ragBadge(entry.rag || ragFor(entry.percentage), entry.percentage, { label: false }) : ''}${count ? html`<span>${count} q</span>` : ''}`;
       },
       onChange: async (selected, changed, checked) => {
-        await api.setLearned(changed, checked);
+        if (textbookMode()) await api.setTextbookLearned(changed, checked);
+        else await api.setLearned(changed, checked);
         refresh();
       },
     });
   }
+  mountCoveredTree();
+  on(element, 'change', '[data-topic-organisation]', async (event, input) => {
+    organisation = input.value;
+    await api.setPreference(`coveredView:${subjectId}`, organisation);
+    compute();
+    mountCoveredTree();
+    refresh();
+  });
 
   function refresh() {
     compute();
@@ -265,10 +290,11 @@ export async function mount(element, context) {
 
   on(element, 'click', '[data-learn]', async (event, button) => {
     const id = button.dataset.learn;
-    await api.setLearned([id], true);
-    if (leaves.includes(id)) tree?.setSelected(leaves.filter((leaf) => api.learnedSet().has(leaf)));
+    if (textbooks?.points.has(id)) await api.setTextbookLearned([id], true);
+    else await api.setLearned([id], true);
+    tree?.setSelected(viewLeaves().filter(leaf => api.learnedSet().has(leaf)));
     refresh();
-    toast(`Marked as learned: ${specIndex.label(id)}`, { type: 'success' });
+    toast(`Marked as learned: ${labelWithSubject(id)}`, { type: 'success' });
   });
   on(element, 'change', '[data-foreign]', async (event, box) => {
     await api.setLearned([box.dataset.foreign], box.checked);

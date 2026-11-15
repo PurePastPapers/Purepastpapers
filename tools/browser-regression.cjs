@@ -26,6 +26,10 @@ const assert = require('node:assert/strict');
     index.packs = index.packs.filter(pack => !pack.file.startsWith('maths/'));
     await route.fulfill({response, json: index});
   });
+  await p.route('**/js/config/app.config.js', async route => {
+    const response = await route.fetch();
+    await route.fulfill({response, body:(await response.text()).replace('showSampleContent: false','showSampleContent: true')});
+  });
   const errors = [];
   p.on('pageerror', e => errors.push(e.message));
   await p.goto((process.env.AUDIT_URL || 'http://localhost:5173'));

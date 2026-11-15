@@ -7,6 +7,7 @@
 
 import { RAG } from '../config/app.config.js';
 import { hasValidMark } from './analytics.js';
+import { matchesTextbookSelection } from './textbook-index.js';
 
 /** Every leaf spec point a student must have learned to be given this question. */
 export function requiredSpecPoints(question, specIndex) {
@@ -14,9 +15,14 @@ export function requiredSpecPoints(question, specIndex) {
 }
 
 /** The required spec points that are NOT yet learned (empty array = question is available). */
-export function missingSpecPoints(question, learned, specIndex) {
+export function missingSpecPoints(question, learned, specIndex, {namespace} = {}) {
   const missing = [];
-  for (const id of requiredSpecPoints(question, specIndex)) if (!learned.has(id)) missing.push(id);
+  for (const id of requiredSpecPoints(question, specIndex)) {
+    if (namespace !== 'textbook' && learned.has(id)) continue;
+    const textbook = question.textbook_requirements?.[id];
+    if (namespace !== 'official' && textbook?.ids?.length && textbook.ids.every(section => learned.has(section))) continue;
+    missing.push(id);
+  }
   return missing;
 }
 
@@ -195,6 +201,7 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (tiers && (tier == null || !tiers.has(tier))) continue;
     if (difficulties && !difficulties.has(question.difficulty)) continue;
     if (bands && !bands.some((band) => question.marks >= band.min && question.marks <= band.max)) continue;
+    if (!matchesTextbookSelection(question, criteria.textbookFocus, criteria.selectionMode)) continue;
     if (curriculumPoints && !touchesSelection(specIndex.expand(question.primary_spec_points || []), curriculumPoints, 'any')) continue;
     if (focus || range) {
       if (criteria.selectionMode === 'strict' || criteria.selectionMode === 'crossover') {
@@ -220,13 +227,14 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (search) {
       const specText = [...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]
         .map((id) => specIndex.label(id)).join(' ');
-      const haystack = `${question.question_number} ${question.part_label || ''} ${question.paper_id || ''} ${question.content?.question_html || ''} ${question.preview_text || ''} ${question.qualification_code || ''} ${specText}`
+      const textbookText = (question.textbook_references || []).map(ref => `${ref.book} ${(ref.aliases || []).join(' ')} Year ${ref.year} ${ref.code} ${ref.title}`).join(' ');
+      const haystack = `${question.question_number} ${question.part_label || ''} ${question.paper_id || ''} ${question.content?.question_html || ''} ${question.preview_text || ''} ${question.qualification_code || ''} ${specText} ${textbookText}`
         .replace(/<[^>]+>/g, ' ')
         .toLowerCase();
-      if (!haystack.includes(search)) continue;
+      if (!search.split(/\s+/).every(term => haystack.includes(term))) continue;
     }
     if (learnedOnly) {
-      const missing = missingSpecPoints(question, learned, specIndex);
+      const missing = missingSpecPoints(question, learned, specIndex, {namespace: criteria.learnedNamespace});
       if (missing.length) {
         locked.push({ question, missing });
         continue;

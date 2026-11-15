@@ -224,3 +224,37 @@ associations with conservative unresolved scopes, textbook learned selections,
 expandable reference labels, prominent strict/crossover controls, globally hidden
 demos with historical lookup retention, then browser checks and publication.
 Finally commit and deliver the requested reusable subject-import agent prompt.
+
+## Textbook UI release checkpoint (15 November, evening)
+
+The earlier source-only checkpoint is now wired into runtime. Textbook chapters
+are the default Maths organisation, with a separate Official specification radio
+choice. All4 supplied books,45 chapters and251 subsections are selectable. Search
+accepts scoped references such as6.2 Pure1; book labels prevent collisions with
+Applied1 6.2 or officialPure6.2. Strict/Include crossover choices are prominent.
+Question references expand to named textbook sections plus named official points;
+the expanded-reference state survives filter redraws. Cards remain expanded.
+
+Textbook ticks are saved separately in learned_textbook_sections. Official ticks
+remain unchanged in learned_spec_points. Practice and covered-topic statistics
+respect the selected namespace, and a book subsection does not promote a broad
+official point to learned. Existing official coverage remains accessible via its
+tab. Guests select topics without a learned-editor/save flow. Globally hidden
+demos retain only historical lookup records; official sample assessments remain.
+
+All1110 source units have conservative textbook links. Of1949 required official
+skill relationships,1713 have a positive named-subsection association and236
+retain explicit chapter scope.912 units have subsection-level links for all
+requirements;198 contain at least one chapter-level relationship. A chapter
+relationship does not falsely match a single subsection and requires its whole
+related scope for learned filtering. These are editorial rationale associations,
+not an independent teacher review or re-extraction of question mathematics.
+No AS unit was linked to Year2-only material. Source question IDs/marks unchanged.
+
+Current checks:66 unit tests pass; data validation has0errors/warnings. Browser
+checks cover all4 books, scoped search, strict/crossover, full reference labels,
+account reload, independent learned storage, guests, hidden demos/retained history,
+source images, samples, inline marks, drafts, shuffle, and four viewport widths.
+Desktop/mobile filter and expanded-reference screenshots were visually inspected.
+Pending in the next checkpoint: the requested reusable subject-import prompt,
+with current board identifiers, source workflow, verification and handover rules.

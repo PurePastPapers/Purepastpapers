@@ -20,6 +20,7 @@ import { icon } from '../icons.js';
 import { markSchemeBody, marksPill, questionBody, questionMeta, questionRef, questionSnippet } from '../question-view.js';
 import { mountSpecTree } from '../spec-tree.js';
 import { mountCurriculumSelector } from '../curriculum-selector.js';
+import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { scStyle, tintPage } from '../subject-colours.js';
 import { banner, difficultyBadge, emptyState, pageHead, soonBadge, toast } from '../ui.js';
@@ -46,6 +47,8 @@ const defaults = () => ({
   mode: null,
   source: 'official',
   focus: null, // null = unrestricted; [] = no selected points
+  textbookFocus: null,
+  topicOrganisation: null,
   difficulties: [],
   qualifications: [],
   bands: [],
@@ -57,7 +60,7 @@ const defaults = () => ({
   sort: 'newest',
   shuffled: false,
   markStatuses: [],
-  selectionMode: 'strict',
+  selectionMode: 'crossover',
   focusMode: 'any',
   focusScope: 'primary',
   rangeFrom: '',
@@ -78,6 +81,7 @@ const defaults = () => ({
   closedQuestions: [],
   schemeQuestions: [],
   contextQuestions: [],
+  referenceQuestions: [],
   drafts: {},
   stopwatch: false,
   showTree: false,
@@ -114,7 +118,7 @@ export async function mount(element, context) {
 
   const wanted = context.query.subject || progress.preferences.lastSubject;
   const bundle = enrolled.find((candidate) => candidate.subject.subject_id === wanted) || enrolled[0];
-  const { subject, spec } = bundle;
+  const { subject, spec, textbooks } = bundle;
   const subjectId = subject.subject_id;
   const curriculum = await getCurriculum(subjectId);
   let curriculumPoints = null;
@@ -159,9 +163,16 @@ export async function mount(element, context) {
   delete state.openQuestions;
   delete state.openQuestion;
   if (!Array.isArray(state.contextQuestions)) state.contextQuestions = [];
+  if (!Array.isArray(state.referenceQuestions)) state.referenceQuestions = [];
+  if (!textbooks || !['textbook', 'official'].includes(state.topicOrganisation)) {
+    state.topicOrganisation = textbooks && state.focus === null ? 'textbook' : 'official';
+  }
+  if (state.textbookFocus !== null && !Array.isArray(state.textbookFocus)) state.textbookFocus = null;
+  if (textbooks) { state.curriculum.bookId = ''; state.curriculum.chapterId = ''; }
   if (!['any', 'all'].includes(state.focusMode)) state.focusMode = 'any';
   if (!['primary', 'primary_and_crossover'].includes(state.focusScope)) state.focusScope = 'primary';
-  if (!['all', 'hide', 'only'].includes(state.sampleMode)) state.sampleMode = 'all';
+  state.sampleMode = 'all';
+  if (!user) state.learnedOnly = false;
   state.page = Math.max(1, Math.floor(Number(state.page) || 1));
   if (!SOURCE_CHOICES.some((choice) => choice.id === state.source && (!choice.feature || isEnabled(choice.feature)))) state.source = 'official';
 
@@ -171,16 +182,17 @@ export async function mount(element, context) {
   if (context.query.topic) {
     // "Practise this topic" links arrive here with a topic or spec point id.
     const wantedLeaves = specIndex.leavesOf(context.query.topic).filter((id) => subjectLeaves.includes(id));
-    if (wantedLeaves.length) { state.focus = wantedLeaves; state.learnedOnly = false; }
+    if (wantedLeaves.length) { state.focus = wantedLeaves; state.learnedOnly = false; state.topicOrganisation = 'official'; }
   }
   // Retire the second browser topic selector without leaving invisible saved
   // range constraints. Its inclusive points become the single topic selection.
   function migrateBrowserRange() {
-    if (state.mode === 'timed_test' || (!state.rangeFrom && !state.rangeTo)) return;
+    if (!state.rangeFrom && !state.rangeTo) return;
     const range = specIndex.range(subjectId, state.rangeFrom, state.rangeTo);
     state.focus = state.focus === null ? [...range] : [...specIndex.expand(state.focus)].filter(id => range.has(id));
     state.rangeFrom = '';
     state.rangeTo = '';
+    state.topicOrganisation = 'official';
   }
   migrateBrowserRange();
   state.selected = state.selected.filter((id) => bundle.questionsById.has(id));
@@ -190,7 +202,6 @@ export async function mount(element, context) {
   const representedParents = new Set(pool.map((question) => question.parent_question_id).filter(Boolean));
   const suppressedParents = bundle.questions.filter((question) => !question.part_label && representedParents.has(question.question_id) && question.include_in_custom_pool !== false && enabledSourceTypes().includes(question.source_type)).length;
   const engineContext = { specIndex, learned, latestAttempts: latest, papersById: bundle.papersById };
-  const specNodes = specIndex.subjectNodes(subjectId).filter((node) => node.type !== 'section');
   const PAGE_SIZE = 30;
   const timed = () => state.mode === 'timed_test';
   const sourceTypes = () => SOURCE_CHOICES.find((choice) => choice.id === state.source).types.filter((type) => enabledSourceTypes().includes(type));
@@ -202,21 +213,25 @@ export async function mount(element, context) {
     ? [...new Set(pool.map((question) => question.marks))].sort((a, b) => a - b).map((marks) => ({ id: `=${marks}`, label: `${marks} marks`, min: marks, max: marks }))
     : MARK_BANDS;
 
-  function activeFocus() {
-    return !timed() && state.learnedOnly ? null : state.focus;
-  }
+  const textbookMode = () => Boolean(textbooks && state.topicOrganisation === 'textbook');
+  const focusKey = () => textbookMode() ? 'textbookFocus' : 'focus';
+  const labelPoint = id => textbooks?.points.has(id) ? `${textbooks.points.get(id).book.short_title} · ${textbooks.points.get(id).code} ${textbooks.points.get(id).title}` : specIndex.label(id);
+  const manualFocus = () => state[focusKey()];
+  const chosenFocus = () => !timed() && state.learnedOnly ? null : manualFocus();
+  const activeFocus = () => textbookMode() ? null : chosenFocus();
+  const activeTextbookFocus = () => textbookMode() ? chosenFocus() : null;
 
   const criteria = (extra = {}) => ({
     sourceTypes: sourceTypes(),
     focus: activeFocus(),
     focusMode: state.focusMode,
     focusScope: state.focusScope,
-    selectionMode: timed() ? state.selectionMode : 'crossover',
+    selectionMode: state.selectionMode,
+    textbookFocus: activeTextbookFocus(),
+    learnedNamespace: textbookMode() ? 'textbook' : 'official',
     qualificationCodes: state.qualifications,
     curriculumPoints,
     contentYear: subjectId === 'EDX_ALEVEL_MATH_9MA0' ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
-    specRange: timed() && (state.rangeFrom || state.rangeTo)
-      ? { subjectId, fromId: state.rangeFrom, toId: state.rangeTo } : null,
     years: state.years.length ? state.years.map(Number) : null,
     series: state.series ? [state.series] : null,
     tiers: state.tier ? [state.tier] : null,
@@ -240,9 +255,6 @@ export async function mount(element, context) {
       ${tiers.length || state.tier ? select('tier', 'Tier', tiers, 'Any tier') : ''}
       <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
     `;
-    const content = html`<label class="field"><span class="field__label">Demo content</span><select class="select" data-filter="sampleMode"><option value="all" ${state.sampleMode === 'all' ? 'selected' : ''}>Include demo questions</option><option value="hide" ${state.sampleMode === 'hide' ? 'selected' : ''}>Hide demo questions</option><option value="only" ${state.sampleMode === 'only' ? 'selected' : ''}>Demo questions only</option></select></label>
-      <p class="field__hint">Only papers with extracted questions appear here. Catalogue listings alone do not add extracted questions. Missing year or tier data does not match a specific filter.</p>
-    `;
     const qualifications = subjectId === 'EDX_ALEVEL_MATH_9MA0' ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${[['9MA0', 'A-Level'], ['8MA0', 'AS']].map(([value, label]) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
       <label class="field browser-sort"><span class="field__label">Sort</span><select class="select" data-sort aria-label="Sort questions">
@@ -250,84 +262,51 @@ export async function mount(element, context) {
         ${Object.entries(SORTS).map(([id, label]) => html`<option value="${id}" ${!state.shuffled && state.sort === id ? 'selected' : ''}>${label}</option>`)}
       </select></label>
       <label class="field browser-search"><span class="field__label">Search questions</span><span class="searchbox">${icon('search', { size: 16 })}<input class="input" type="search" placeholder="Search text or spec code" value="${state.search}" data-search aria-label="Search text or spec code" /></span></label>
-    </div><details class="filter-details" ${state.sampleMode !== 'all' ? 'open' : ''}><summary>Question sources & demo content</summary><div class="stack">${content}${sourceControl()}</div></details>`
-      : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper || state.sampleMode !== 'all' ? 'open' : ''}><summary>Paper & content filters</summary><div class="stack">${papersAndYears}${content}</div></details>`;
+    </div>${sourceControl()}`
+      : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper ? 'open' : ''}><summary>Paper filters</summary><div class="stack">${papersAndYears}</div></details>`;
   }
-
-  function rangeControl() {
-    const from = specIndex.get(state.rangeFrom);
-    const to = specIndex.get(state.rangeTo);
-    const active = Boolean(state.rangeFrom || state.rangeTo);
-    const valid = active && specIndex.range(subjectId, state.rangeFrom, state.rangeTo).size > 0;
-    const optionLabel = (node) => `${node.code ? node.code + ' · ' : ''}${node.title} — ${specIndex.get(node.type === 'topic' ? node.parent : specIndex.get(node.parent)?.parent)?.title || ''}`;
-    return html`<details class="filter-details" ${active ? 'open' : ''}><summary>Specification range</summary><div class="stack stack--sm">
-      <p class="field__hint">Select an inclusive range in stored specification order.</p>
-      <div class="filter-grid filter-grid--two">${[['rangeFrom', 'From'], ['rangeTo', 'To']].map(([key, label]) => html`<label class="field"><span class="field__label">${label}</span><select class="select" data-filter="${key}"><option value="">Choose a spec point or topic</option>${state[key] && !specNodes.some((node) => node.id === state[key]) ? html`<option value="${state[key]}" selected>Saved spec point unavailable</option>` : ''}${specNodes.map((node) => html`<option value="${node.id}" ${state[key] === node.id ? 'selected' : ''}>${optionLabel(node)}</option>`)}</select></label>`)}</div>
-      ${active ? html`<p class="small ${valid ? 'muted' : 'form-error'}" role="status">${valid ? `${from.code || from.title} to ${to.code || to.title}: ${specIndex.range(subjectId, state.rangeFrom, state.rangeTo).size} spec points. Also applies any topic selections above.` : 'Choose both endpoints in specification order. No questions match an incomplete or reversed range.'}</p><button type="button" class="linkbtn small" data-range-reset>Clear range</button>` : ''}
-    </div></details>`;
-  }
-
-  // ───────────────────────────────── shared controls ─────────────────────────────────
 
   function focusSummary(browser = false) {
-    const focus = activeFocus();
-    if (focus === null) return browser ? 'Open a section to choose topics or individual specification points.' : 'Every topic in the specification. Learned-topic filtering applies separately.';
+    const focus = manualFocus();
+    if (focus === null) return browser ? 'Open a book or section to choose chapters and individual points.' : 'All topics are selected.';
     if (!focus.length) return 'No topics chosen.';
-    const topics = new Set(focus.map((id) => specIndex.topicOf(id)?.title || specIndex.label(id)));
-    return `${plural(focus.length, 'spec point')} across ${plural(topics.size, 'topic')}: ${[...topics].slice(0, 3).join(', ')}${topics.size > 3 ? '…' : ''}`;
+    return `${plural(focus.length, textbookMode() ? 'textbook subsection' : 'spec point')} selected.`;
   }
 
   function selectedPoints() {
-    return state.focus?.length ? html`<details><summary>Review selected spec points</summary><div class="chips">${state.focus.map((id) => html`<button type="button" class="chip" data-remove-focus="${id}" aria-label="Remove ${specIndex.label(id)}">${specIndex.label(id)} ×</button>`)}</div></details>` : '';
+    const focus = manualFocus();
+    return focus?.length ? html`<details><summary>Review selected points</summary><div class="chips">${focus.map(id => html`<button type="button" class="chip" data-remove-focus="${id}" aria-label="Remove ${labelPoint(id)}">${labelPoint(id)} ×</button>`)}</div></details>` : '';
   }
 
   function topicsControl(browser = false) {
-    const hasCurriculum = curriculum.years.length || curriculum.books.length;
+    const learnedIds = textbookMode() ? textbooks.ids : subjectLeaves;
+    const learnedCount = learnedIds.filter(id => learned.has(id)).length;
     return html`<fieldset class="field ${browser ? 'browser-topics' : ''}">
-      <legend class="field__label">${browser ? 'Topics' : 'Topics & specification points'}</legend>
-      ${browser ? html`<div class="topics-choice">
-        <label class="check checkpoint"><input type="checkbox" data-flag="learnedOnly" ${state.learnedOnly ? 'checked' : ''} /><span>Use topics I’ve learned</span></label>
+      <legend class="field__label">Topics</legend>
+      ${topicOrganisationControl(state.topicOrganisation, {available: Boolean(textbooks)})}
+      <p class="field__hint">${textbookMode() ? 'Book numbers follow your supplied contents pages. For example, Pure 1 · 6.2 is Equation of a circle.' : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
+      ${curriculum.years.length ? html`<div data-curriculum></div>` : ''}
+      ${browser && user ? html`<div class="topics-choice">
+        <label class="check checkpoint"><input type="checkbox" data-flag="learnedOnly" ${state.learnedOnly ? 'checked' : ''} /><span>Only content I’ve covered</span></label>
         <a class="small" href="#/subject/${subjectId}">Edit learned topics</a>
-      </div>
-      <p class="field__hint">${state.learnedOnly ? `Questions use only the ${plural(learnedLeaves.length, 'spec point')} you’ve marked as learned. Untick to choose your own topics.` : 'Choose your own topics below, or tick the box to use what you’ve learned.'}</p>` : ''}
-      ${!browser || hasCurriculum ? html`<div data-curriculum></div>` : ''}
+      </div>${state.learnedOnly ? html`<p class="field__hint">Using the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'official point')} you’ve ticked in this view. Untick to choose your own topics.</p>` : ''}` : ''}
       <div class="stack stack--sm" data-topic-picker ${browser && state.learnedOnly ? 'hidden' : ''}>
-      <p class="small muted" data-focus-summary>${focusSummary(browser)}</p>
-      <div data-selected-points>${selectedPoints()}</div>
-      ${setTexts.length
-        ? html`<div class="chips" role="group" aria-label="Set texts">
-            ${setTexts.map((point) => {
-              const usable = !treeEnabled() || treeEnabled().has(point.id);
-              const on_ = state.focus?.includes(point.id) || false;
-              return html`<button type="button" class="chip" data-text="${point.id}" aria-pressed="${on_}" ${usable ? '' : 'disabled'} title="${usable ? '' : 'Not ticked as learned'}">
-                ${point.title}
-              </button>`;
-            })}
-          </div>`
-        : ''}
-      ${browser ? '' : html`<div class="row row--tight">
-        <button type="button" class="btn btn--sm" data-toggle-tree aria-expanded="${state.showTree}">
-          ${icon('list', { size: 15 })} ${state.showTree ? 'Hide topic list' : 'Choose topics'}
-        </button>
-        <button type="button" class="linkbtn small" data-focus-reset ${state.focus === null ? 'hidden' : ''}>Use all topics</button>
-        <button type="button" class="linkbtn small" data-focus-clear>Clear selection</button>
-        <a class="small" href="#/subject/${subjectId}">Edit what I have learned</a>
-      </div>`}
-      <div class="focus-tree ${browser ? 'focus-tree--browser' : ''}" data-tree ${browser || state.showTree ? '' : 'hidden'}></div>
+        <p class="small muted" data-focus-summary>${focusSummary(browser)}</p>
+        <div data-selected-points>${selectedPoints()}</div>
+        ${!textbookMode() && setTexts.length ? html`<div class="chips" role="group" aria-label="Set texts">${setTexts.map(point => html`<button type="button" class="chip" data-text="${point.id}" aria-pressed="${state.focus?.includes(point.id) || false}">${point.title}</button>`)}</div>` : ''}
+        ${browser ? '' : html`<button type="button" class="btn btn--sm" data-toggle-tree aria-expanded="${state.showTree}">${icon('list', {size: 15})} ${state.showTree ? 'Hide topic list' : 'Choose topics'}</button>`}
+        <div class="focus-tree ${browser ? 'focus-tree--browser' : ''}" data-tree ${browser || state.showTree ? '' : 'hidden'}></div>
       </div>
-      ${browser ? '' : html`
-      <details class="filter-details" ${state.rangeFrom || state.rangeTo || state.selectionMode !== 'strict' ? 'open' : ''}><summary>Specification options</summary><div class="stack stack--sm">
-      ${rangeControl()}
-      <label class="field"><span class="field__label">Specification selection</span><select class="select" data-filter="selectionMode"><option value="strict" ${state.selectionMode === 'strict' ? 'selected' : ''}>Only these spec points</option><option value="crossover" ${state.selectionMode === 'crossover' ? 'selected' : ''}>Include crossover questions</option></select></label>
-      <details class="small"><summary>How specification filtering works</summary><p>Strict matching includes questions that assess a selected point and need no points outside the selection. Crossover can include extra required points, shown on each card. Covered-topic filtering is separate.</p></details>
-      </div></details>`}
+      <fieldset class="field"><legend class="field__label">Question coverage</legend><div class="topic-choices">
+        ${[['strict', 'Only these points'], ['crossover', 'Include crossover questions']].map(([id, label]) => html`<label class="check checkpoint"><input type="radio" name="question-coverage" data-topic-coverage="${id}" value="${id}" ${state.selectionMode === id ? 'checked' : ''} /><span>${label}</span></label>`)}
+      </div><p class="field__hint">${state.selectionMode === 'strict' ? 'Every required topic must be in your selection.' : 'Questions may also need other topics; their references are shown on each question.'}</p></fieldset>
     </fieldset>`;
   }
 
   function sourceControl() {
     return html`<fieldset class="field">
       <legend class="field__label">Question source</legend>
-      <p class="field__hint">Browse source-linked past-paper questions. Any remaining demo questions are labelled separately.</p>
+      <p class="field__hint">Browse original past-paper questions and official sample assessments.</p>
       <div class="seg" role="radiogroup" aria-label="Question source">
         ${SOURCE_CHOICES.map((choice) => {
           const available = !choice.feature || isEnabled(choice.feature);
@@ -345,7 +324,7 @@ export async function mount(element, context) {
     const curriculumTarget = $('[data-curriculum]', element);
     if (curriculumTarget) {
       let mounting = true;
-      mountCurriculumSelector(curriculumTarget, { curriculum, specIndex, cumulativeYear13: subjectId === 'EDX_ALEVEL_MATH_9MA0', initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
+      mountCurriculumSelector(curriculumTarget, { curriculum: textbooks ? {...curriculum, books: []} : curriculum, specIndex, cumulativeYear13: subjectId === 'EDX_ALEVEL_MATH_9MA0', initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
         state.curriculum = next;
         curriculumPoints = subjectId === 'EDX_ALEVEL_MATH_9MA0' && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
         if (partial.size) {
@@ -364,21 +343,22 @@ export async function mount(element, context) {
       return;
     }
     const enabledSet = treeEnabled();
-    const all = enabledSet ? learnedLeaves : subjectLeaves;
+    const all = textbookMode() ? textbooks.ids : enabledSet ? learnedLeaves : subjectLeaves;
     const counts = countByNode(scopedPool(), specIndex);
+    const textbookCounts = textbookMode() ? textbooks.counts(scopedPool()) : null;
     tree = mountSpecTree(target, {
-      spec,
+      spec: textbookMode() ? textbooks.tree : spec,
       filterLayout: !timed(),
-      selected: state.focus === null ? all : state.focus,
+      selected: manualFocus() === null ? all : manualFocus(),
       enabled: enabledSet,
       noun: 'chosen',
       disabledHint: 'Not ticked as learned yet',
       topicMeta: (topic, { selected }) => {
-        const count = counts.get(topic.id) || 0;
+        const count = textbookMode() ? textbookCounts.get(topic.id) || 0 : counts.get(topic.id) || 0;
         return html`<span>${count} ${count === 1 ? 'question' : 'questions'}</span><span>${selected} chosen</span>`;
       },
       onChange: (selected) => {
-        state.focus = selected.size === all.length ? null : [...selected];
+        state[focusKey()] = selected.size === all.length ? null : [...selected];
         state.page = 1;
         save();
         update({ keepControls: true }); // leave the tree as the student has it open
@@ -574,7 +554,7 @@ export async function mount(element, context) {
       <div style="min-width:0">
         <p class="qcard__ref">${questionRef(question, bundle.papersById)} ${attempt ? html`<span class="tag">Saved ${attempt.marks_awarded}/${attempt.max_marks}</span>` : html`<span class="tag">Unmarked</span>`}</p>
         <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
-        ${questionMeta(question, { specIndex })}
+        ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
         ${open ? html`<div class="stack" style="margin-top:16px">
           <div class="row row--tight"><button type="button" class="btn btn--sm" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? 'Hide mark scheme' : 'Show mark scheme'}</button>
@@ -620,6 +600,7 @@ export async function mount(element, context) {
     const picker = state.mode === 'picker';
     const active = [
       ...(activeFocus() !== null ? [{key: 'focus', label: `${activeFocus().length} spec points selected`}] : []),
+      ...(activeTextbookFocus() !== null ? [{key: 'textbookFocus', label: `${activeTextbookFocus().length} textbook subsections selected`}] : []),
       ...(state.learnedOnly ? [{key: 'learnedOnly', label: 'Topics I’ve learned'}] : []),
       ...state.qualifications.map(value => ({key: 'qualifications', value, label: value === '8MA0' ? 'AS papers' : 'A-Level papers'})),
       ...state.markStatuses.map((value) => ({key: 'markStatuses', value, label: PROGRESS_FILTERS[value]})),
@@ -740,7 +721,7 @@ export async function mount(element, context) {
     const controls = resetControls ? null : controlSnapshot();
     const scroll = window.scrollY;
     const active = document.activeElement;
-    const focusKeys = ['open', 'scheme', 'saveMark', 'reattempt', 'undo', 'select', 'removeSelected', 'filter', 'flag', 'multi', 'progress', 'sort', 'resetFilters', 'clearGroup', 'removeFocus', 'toggleTree', 'shuffleQuestions'];
+    const focusKeys = ['open', 'scheme', 'saveMark', 'reattempt', 'undo', 'select', 'removeSelected', 'filter', 'flag', 'topicOrganisation', 'topicCoverage', 'multi', 'progress', 'sort', 'resetFilters', 'clearGroup', 'removeFocus', 'toggleTree', 'shuffleQuestions'];
     const key = focusKeys.find((name) => active?.dataset?.[name] !== undefined);
     const value = key ? active.dataset[key] : null;
     const restore = () => {
@@ -828,13 +809,14 @@ export async function mount(element, context) {
   }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
-    const kept = { mode: state.mode, selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions };
+    const kept = { mode: state.mode, topicOrganisation: textbooks ? 'textbook' : 'official', selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
     state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept };
   }, { resetControls: true }));
   on(element, 'click', '[data-clear-chip]', (event, button) => change(() => {
     const key = button.dataset.clearChip;
     if (key === 'markRange') { state.markMin = ''; state.markMax = ''; }
     else if (key === 'focus') state.focus = null;
+    else if (key === 'textbookFocus') state.textbookFocus = null;
     else if (key === 'range') { state.rangeFrom = ''; state.rangeTo = ''; }
     else if (key === 'learnedOnly') state.learnedOnly = false;
     else if (key === 'sampleMode') state[key] = 'all';
@@ -860,7 +842,9 @@ export async function mount(element, context) {
   on(element, 'click', '[data-difficulty]', (event, button) => change(() => (state.difficulty = button.dataset.difficulty)));
   on(element, 'click', '[data-source]', (event, button) => change(() => (state.source = button.dataset.source)));
   on(element, 'click', '[data-clear-group]', (event, button) => change(() => (state[button.dataset.clearGroup] = [])));
-  on(element, 'click', '[data-remove-focus]', (event, button) => change(() => (state.focus = state.focus.filter((id) => id !== button.dataset.removeFocus))));
+  on(element, 'click', '[data-remove-focus]', (event, button) => change(() => (state[focusKey()] = manualFocus().filter(id => id !== button.dataset.removeFocus))));
+  on(element, 'change', '[data-topic-organisation]', (event, input) => change(() => { state.topicOrganisation = input.value; }));
+  on(element, 'change', '[data-topic-coverage]', (event, input) => change(() => { state.selectionMode = input.value; }));
   on(element, 'click', '[data-multi]', (event, button) => change(() => {
     state[button.dataset.multi] = toggle(state[button.dataset.multi], button.dataset.value);
     if (button.dataset.multi === 'bands') { state.markMin = ''; state.markMax = ''; }
@@ -873,8 +857,8 @@ export async function mount(element, context) {
   );
   on(element, 'click', '[data-shuffle]', () => change(() => (state.seed = Math.floor(Math.random() * 1e9)), { keepControls: true }));
   on(element, 'click', '[data-toggle-tree]', () => change(() => (state.showTree = !state.showTree)));
-  on(element, 'click', '[data-focus-reset]', () => change(() => (state.focus = null)));
-  on(element, 'click', '[data-focus-clear]', () => change(() => { state.focus = []; state.showTree = true; }));
+  on(element, 'click', '[data-focus-reset]', () => change(() => (state[focusKey()] = null)));
+  on(element, 'click', '[data-focus-clear]', () => change(() => { state[focusKey()] = []; state.showTree = true; }));
   on(element, 'click', '[data-text]', (event, button) =>
     change(() => {
       const next = toggle(state.focus || [], button.dataset.text);
@@ -917,11 +901,12 @@ export async function mount(element, context) {
   }, { keepControls: true, keepPage: true }));
   on(element, 'click', '[data-scheme]', (event, button) => change(() => (state.schemeQuestions = toggle(state.schemeQuestions, button.dataset.scheme)), { keepControls: true, keepPage: true }));
   element.addEventListener('toggle', (event) => {
-    const id = event.target?.dataset?.questionContext;
+    const id = event.target?.dataset?.questionContext || event.target?.dataset?.questionReferences;
     if (!id) return;
-    const selected = new Set(state.contextQuestions);
+    const key = event.target.dataset.questionReferences ? 'referenceQuestions' : 'contextQuestions';
+    const selected = new Set(state[key]);
     if (event.target.open) selected.add(id); else selected.delete(id);
-    state.contextQuestions = [...selected];
+    state[key] = [...selected];
     save();
   }, true);
   on(element, 'click', '[data-shuffle-questions]', () => change(() => {

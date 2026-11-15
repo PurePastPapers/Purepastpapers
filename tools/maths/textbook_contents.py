@@ -283,7 +283,7 @@ def main():
     books = []
     for bid, title, short, year, aliases, chapters in BOOKS:
         book = {'id': bid, 'title': title, 'short_title': short, 'year': year,
-                'aliases': aliases + [f'year {year-11}', f'year {year}'],
+                'aliases': aliases + [f'year {year-11}', f'year {year}', f'year{year-11}', f'year{year}'],
                 'source': next(item for item in evidence if item['book_id'] == bid), 'chapters': []}
         for ci, (chapter_title, page, rows) in enumerate(chapters, 1):
             chapter = {'id': f'TB_MATH_{bid}_{ci}', 'code': str(ci), 'title': chapter_title,

@@ -9,8 +9,8 @@ export const APP = {
 };
 
 export const CONTENT = {
-  /** Demo papers/questions ship so every feature can be tried. Set to false to hide them all. */
-  showSampleContent: true,
+  /** Demo records are retained solely for historical lookups and isolated tests. */
+  showSampleContent: false,
 };
 
 /** PRD 4.2 — difficulty levels. `level` drives the 1–4 pip indicator. */
