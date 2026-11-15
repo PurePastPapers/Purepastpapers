@@ -1,0 +1,321 @@
+{
+  "paper_id": "EDX_9MA0_2019_JUNE_31",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "caf64ee2be9938a17025f984febdafad499b50b9aeaf413515d9eabfb1640f92",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Sequential branches and complements determine the required unconditional events.",
+          "difficulty_basis": "Sequential branches and complements determine the required unconditional events.",
+          "summary": "Represent a stopping experiment by a tree and calculate event probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Form the requested conditional ratio from the experiment, with unconditional tree probabilities as a prerequisite.",
+          "difficulty_basis": "Form the requested conditional ratio from the experiment, with unconditional tree probabilities as a prerequisite.",
+          "summary": "Find a conditional probability for a red marble coming from a specified bag.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Read the quartiles and apply the stated IQR outlier rule to the supplied extremes.",
+          "difficulty_basis": "Read the quartiles and apply the stated IQR outlier rule to the supplied extremes.",
+          "summary": "Complete a box plot and identify outlying temperatures.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Interpret the unusually low Beijing temperatures using the supplied dataset context.",
+          "difficulty_basis": "Interpret the unusually low Beijing temperatures using the supplied dataset context.",
+          "summary": "Use large-data-set knowledge to identify a likely month.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the supplied sample size and corrected sum of squares.",
+          "difficulty_basis": "Use the supplied sample size and corrected sum of squares.",
+          "summary": "Verify a standard deviation from summary statistics.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use inverse normal quantiles with the explicitly supplied mean and standard deviation.",
+          "difficulty_basis": "Use inverse normal quantiles with the explicitly supplied mean and standard deviation.",
+          "summary": "Find a normal-model interpercentile range.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4",
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use variable type, boundaries or shape to justify why a normal model is unsuitable.",
+          "difficulty_basis": "Use variable type, boundaries or shape to justify why a normal model is unsuitable.",
+          "summary": "Identify large-data-set variables unsuitable for a normal model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Isolated source question number2was omitted by OCR; source-page6and followingcontinuationpage7identify it. The box-plot diagram and later supplied normal model must remain visible as context."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: State population hypotheses and compare the given sample PMCC with a critical value.",
+          "difficulty_basis": "State population hypotheses and compare the given sample PMCC with a critical value.",
+          "summary": "Test whether a population correlation is positive.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Interpret the larger magnitude of the coded-data PMCC.",
+          "difficulty_basis": "Interpret the larger magnitude of the coded-data PMCC.",
+          "summary": "Compare correlations for linear and logarithmically coded data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Apply logarithm laws to the supplied transformed-variable equation.",
+          "difficulty_basis": "Apply logarithm laws to the supplied transformed-variable equation.",
+          "summary": "Convert a logarithmic regression relation into a power law.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Part(c) assesses Pure logarithm laws even though it belongs to a Statistics booklet; contextual regression is not retagged as a fresh sampling task."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Add the relevant observed frequencies and divide by the total sample size.",
+          "difficulty_basis": "Add the relevant observed frequencies and divide by the total sample size.",
+          "summary": "Find an empirical event probability from a frequency table.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(b)(ii)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: The two binomial outputs are compared with the supplied observed frequencies.",
+          "difficulty_basis": "The two binomial outputs are compared with the supplied observed frequencies.",
+          "summary": "Calculate binomial probabilities and expectations, then assess a model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)(i)–(c)"
+        },
+        {
+          "parts": [
+            "(d)",
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: An empirical proportion is compared with the binomial model to question its assumptions.",
+          "difficulty_basis": "An empirical proportion is compared with the binomial model to question its assumptions.",
+          "summary": "Use next-day frequency data to assess a binomial cloud-cover model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "OCR labels(b)(i) as(b), but its2-mark tariff is separate from(b)(ii). Official mapping row4d supplies4.1 in a merged table cell."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Invert one stated tail probability to find the standard deviation before locating the second boundary.",
+          "difficulty_basis": "Invert one stated tail probability to find the standard deviation before locating the second boundary.",
+          "summary": "Use normal probabilities to determine an unknown spread and a quantile.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: The event probability0.45 is printed; apply a normal approximation and continuity correction.",
+          "difficulty_basis": "The event probability0.45 is printed; apply a normal approximation and continuity correction.",
+          "summary": "Use a normal approximation for a binomial bottle count.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the new known standard deviation and a sample mean in a one-sided normal-mean test.",
+          "difficulty_basis": "Use the new known standard deviation and a sample mean in a one-sided normal-mean test.",
+          "summary": "Test a claim about the mean amount dispensed by a machine.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Normal approximation belongs runtimeSTATS_DIST_4.2, while the binomial trial model is an explicit prerequisite."
+      ]
+    }
+  ],
+  "mark_scheme_sha256": "02ea0bc9a947367f57d3953c354b370d1af015f519850f504f5dd417d745a3f3",
+  "official_mapping_evidence": "2019-official-spec-mappings.json",
+  "review_method": "Source text and question-part tariffs checked against official Pearson specification mapping; mathematical display uses original source pixels. Model judgment resolves assessed content versus context."
+}

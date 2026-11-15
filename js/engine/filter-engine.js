@@ -158,6 +158,7 @@ function sortMatches(matches, sortBy, specIndex, papersById, shuffleSeed) {
  */
 export function filterQuestions(questions, criteria = {}, context) {
   const { specIndex, learned = new Set(), latestAttempts = new Map(), papersById = new Map() } = context;
+  const qualificationCodes = nonEmpty(toSet(criteria.qualificationCodes));
   const sourceTypes = nonEmpty(toSet(criteria.sourceTypes));
   const difficulties = nonEmpty(toSet(criteria.difficulties));
   const statuses = nonEmpty(toSet(criteria.statuses));
@@ -183,6 +184,8 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (poolOnly && question.include_in_custom_pool === false) continue;
     if (criteria.sampleMode === 'hide' && question.is_sample === true) continue;
     if (criteria.sampleMode === 'only' && question.is_sample !== true) continue;
+    if (qualificationCodes && !qualificationCodes.has(question.qualification_code || question.spec_code)) continue;
+    if (criteria.contentYear && Number(question.introduced_year) !== Number(criteria.contentYear)) continue;
     if (sourceTypes && !sourceTypes.has(question.source_type)) continue;
     if (paperIds && !paperIds.has(question.paper_id)) continue;
     const paper = papersById.get(question.paper_id);
@@ -217,7 +220,7 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (search) {
       const specText = [...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]
         .map((id) => specIndex.label(id)).join(' ');
-      const haystack = `${question.question_number} ${question.part_label || ''} ${question.paper_id || ''} ${question.content?.question_html || ''} ${specText}`
+      const haystack = `${question.question_number} ${question.part_label || ''} ${question.paper_id || ''} ${question.content?.question_html || ''} ${question.preview_text || ''} ${question.qualification_code || ''} ${specText}`
         .replace(/<[^>]+>/g, ' ')
         .toLowerCase();
       if (!haystack.includes(search)) continue;

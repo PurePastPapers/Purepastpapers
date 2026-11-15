@@ -12,7 +12,7 @@ import json
 import re
 from pathlib import Path
 
-VERSION = 'pearson-9ma0-layout-v4'
+VERSION = 'pearson-9ma0-layout-v5'
 
 
 def digest(path):
@@ -103,11 +103,17 @@ def extract(path, ocr_dir=None):
                 ws = [w for w in pages[pi]['words'] if lo <= w['top'] < hi]
                 # Blank answer continuations are intentionally omitted; prompts,
                 # diagrams and all mark tariffs remain faithful source regions.
+                drawings = [c for c in p.curves + p.lines + p.images
+                            if c['x0'] > 60 and c['x1'] < p.width - 60
+                            and lo <= c['top'] < hi and c['bottom'] < p.height - 90
+                            and c['bottom'] - c['top'] > 3
+                            and c['x1'] - c['x0'] < p.width * .75]
+                has_figure = len(drawings) >= 3
                 substantive = [w for w in ws if not re.search(r'_{5}|Total|Question|continued', w['text'], re.I)]
                 tariff = [w for w in ws if re.fullmatch(r'\(\d{1,2}\)', w['text']) and w['x0'] > p.width * .7]
                 if pi == end_page and index + 1 < len(starts) and start_page != end_page and hi <= 38:
                     continue
-                if not substantive or (not tariff and all(w['text'].strip('().').isdigit() for w in substantive)):
+                if not has_figure and (not substantive or (not tariff and all(w['text'].strip('().').isdigit() for w in substantive))):
                     continue
                 text = clean_text(p, lo, hi)
                 tm = re.search(rf'Total for Question\s+{number}\s+is\s+(\d+)\s+marks?', (p.extract_text() or '') if not getattr(p, '_ocr_words', None) else ' '.join(w['text'] for w in p._ocr_words), re.I)
@@ -117,16 +123,18 @@ def extract(path, ocr_dir=None):
                 # tariff bounds an exam prompt; diagram content preceding it stays.
                 bottom = max((w['bottom'] for w in tariff), default=0)
                 if not bottom:
-                    if not text or len(re.sub(r'[\W\d_]', '', text)) < 8:
+                    if not has_figure and (not text or len(re.sub(r'[\W\d_]', '', text)) < 8):
                         continue
                     non_lines = [w for w in ws if '_' not in w['text']]
                     if not non_lines or re.fullmatch(r'[\W\d]*(?:Total for Question.*)?', text, re.I):
                         continue
-                    bottom = max(w['bottom'] for w in non_lines)
+                    bottom = max([w['bottom'] for w in non_lines] + [c['bottom'] for c in drawings])
                 if not tariff and 'Question' in text and 'continued' in text and len(text) < 120:
                     continue
                 frag_index = len(fragments)
-                fragments.append(region(p, pi, lo, bottom + 7))
+                fragment = region(p, pi, lo, bottom + 7)
+                if not tariff and has_figure: fragment['shared_figure'] = True
+                fragments.append(fragment)
                 text_parts.append(clean_text(p, lo, bottom + 7))
                 for w in ws:
                     if w['top'] > bottom + 2:

@@ -1,11 +1,50 @@
 # Maths corpus: continue here
 
-Updated 14 November 2026. **IN PROGRESS: the full question bank is not yet live.**
+Updated 15 November 2026. **IN PROGRESS: the full question bank is not yet live.**
 The user requires all publicly available Edexcel A level 9MA0 AND AS 8MA0,
 including public legitimate variants and separately labelled official samples.
 They explicitly requested frequent pushes and a resumable handover.
 
-## Current checkpoint
+## Latest working-bank checkpoint (15 November)
+
+- Runtime index currently activates **36 real source booklets, 359 original
+  questions and 639 independently scored units**, including173ASunits. This is
+  a working partial bank, not a comprehensive completion claim. Remaining exam
+  booklets and SAMs are still in review/build queues. Seven2026booklets remain
+  restricted and are not acquired.
+- Unit year scope is reviewed per assessable unit. Year12 includes AS-scope
+  questions from either qualification; Year13 is cumulative by default; its
+  additional-topics-only checkbox includes only introduced_year13. A broad
+  official point can span both years, so year filtering uses reviewed unit scope
+  rather than a point-overlap guess. Qualification chips distinguish8MA0/9MA0.
+- Browser verified AS visibility in12and13, exclusion with13only, actual source
+  image/scheme loads, explicit zero saved acrossreload, nooverflow320/390/768/1440.
+  57unit tests pass; data validation962papers/888records incl other-subject demos,
+  zero errors/warnings. New Maths practice suppresses demos while retaining their
+  historical lookup IDs. Source-source PDF/report links retain truequalification.
+- Source pixels remain losslessWebP. `tools/maths/package_assets.py` packages
+  referenced crops into **lazy per-booklet JSONassetcatalogues** under
+  `data/maths-assets/`. Original crop caches `assets/maths/` are ignored. The
+  browser resolves images to BlobURLs only when a question opens. Do NOT dump
+  base64catalogues into an agent context; inspect metadata or render source crops.
+  This keeps static publishing to one asset catalogue per booklet, with exact
+  original byte checksums and no third-party runtime dependencies.
+- `tools/maths/build.py` now indexes schemes and renders reviewed units/context;
+  before activating another pack require complete original tariff coverage,
+  sourcechecksum identity, valid tags, reviewed year/difficulty, reconciled marks,
+  nonempty source/scheme regions, and browser visual checks. Joint tariffs keep
+  all prompts. Interstitial givens after a previous tariff stay in the selected
+  crop; required earlier printed context is visible and unscored. Derived earlier
+  answers must be grouped, never invented. Graph-only continued pages are retained.
+- Current build failures: a few ASscheme boundaries,2021ALMechanics32schemeempty
+  region cases are under inventoryworkerreview. Rootcompiler now tolerates
+  explicitly reviewed duplicate raw label occurrences without doublecounting.
+- Active workers: canonical2022ALfourbooklets; earlierworker2023ALfour after
+  finishingAS2018–21; inventoryworkerSAMS+schemeedgecases. AS2022–25reviewed.
+  All outputs remain `../math-research/reviews`; copy completed versions into
+  `data/imports/maths/reviews/` at every checkpoint. Rebuild when reviews change.
+
+## Original acquisition checkpoint
 
 - Approved full-width notebook filters are deployed at parent e9950cf. Four
   difficulty choices, progress checkboxes, one separate Shuffle action. Preserve
@@ -61,7 +100,7 @@ absolute paths. Do not commit shared-folder keys or textbook PDFs.
 
 ## Work now being done / next required steps
 
-1. Finish extraction QA: current text-PDF extraction reconciles 50/100 marks.
+1. Finish extraction QA (many items below superseded by latest checkpoint): current text-PDF extraction reconciles 50/100 marks.
    Scanned 2019 applied starts need OCR-boundary correction (inventory worker
    currently fixing `extract.py`). A correct mark sum alone is not layout proof.
    Joint tariffs for (i)+(ii) must include both prompts and have corrected
@@ -111,3 +150,21 @@ assessable units separately, source schemes/reports, AS/Alevel/sample/variant
 coverage, specification/year/textbook coverage, unresolved/restricted records,
 checks and deployment SHA. Do not count catalogue links or proposed extraction
 candidates as imported or claim a complete corpus while batches remain.
+
+## Build and publish continuation
+
+```sh
+python3 tools/maths/build.py INVENTORY --sources SOURCE_CACHE --candidates CANDIDATES --reviews REVIEWS
+python3 tools/maths/package_assets.py
+```
+
+Build status JSON is under `data/imports/maths/*-build-status.json`; built packs
+are in `data/packs/maths/`. Add only accepted packs to `data/packs/index.json`,
+then package assets, validate, test browser and publish. A cache resume signature
+includes extraction+review contents; update compiler version when crop logic changes.
+Original acquisition scripts/evidence and native OCR caches remain private and
+reproducible from inventory. ASsource acquisition is now complete68/68documents.
+
+The private `../math-browser-qa.cjs` holds the realbank browser test; copy it into
+`tools/` before final completion (it uses optional devPlaywright/Chrome paths).
+Do not use the old demo-count browser regressions without adapting their fixtures.

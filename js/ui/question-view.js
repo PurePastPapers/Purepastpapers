@@ -2,10 +2,11 @@
 // A question's content may be HTML, an image, or both (PRD 8.2: question_html / question_image_url).
 
 import { html, isSafeUrl, sanitizeHtml } from '../core/dom.js';
+import { sourceImage } from '../data/source-images.js';
 import { fmtMinutes } from '../core/utils.js';
 import { difficultyBadge, sourceBadge } from './ui.js';
 
-const image = (url, alt) => (url && isSafeUrl(url) ? html`<a href="${url}" target="_blank" rel="noopener" aria-label="Open ${alt} image at its original size"><img src="${url}" alt="${alt}" loading="lazy" /></a>` : '');
+const image = sourceImage;
 
 export function questionBody(question, { contextOpen = false } = {}) {
   const { question_html: markup, question_image_url: url } = question.content || {};
@@ -14,7 +15,7 @@ export function questionBody(question, { contextOpen = false } = {}) {
   return html`<div class="stack">
     ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
     ${context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
-    <div class="qcontent question-selected-part">${sanitizeHtml(markup)}${image(url, `Question ${question.question_number}${question.part_label ? `, part ${question.part_label}` : ''}`)}</div>
+    <div class="qcontent question-selected-part">${sanitizeHtml(markup)}${image(url, `${question.preview_text || 'Source-rendered question'}. Question ${question.question_number}${question.part_label ? `, part ${question.part_label}` : ''}`)}</div>
     ${fullQuestion ? html`<details class="question-context" data-question-context="${question.question_id}" ${contextOpen ? 'open' : ''}>
       <summary>Show full question for context</summary>
       <div class="stack" style="margin-top:12px">
@@ -28,11 +29,12 @@ export function questionBody(question, { contextOpen = false } = {}) {
 export function markSchemeBody(question) {
   const { mark_scheme_html: markup, mark_scheme_image_url: url } = question.content || {};
   if (!markup && !url) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
-  return html`<div class="ms"><div class="qcontent">${sanitizeHtml(markup)}${image(url, 'Mark scheme')}</div></div>`;
+  return html`<div class="ms">${question.scheme_scope === 'full_question' ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, 'Mark scheme')}</div></div>`;
 }
 
 /** Plain-text opening of a question, for list cards. */
 export function questionSnippet(question, length = 220) {
+  if (question.preview_text) return question.preview_text;
   const template = document.createElement('template');
   template.innerHTML = sanitizeHtml(question.content?.question_html)
     .toString()
@@ -91,7 +93,7 @@ export function questionMeta(question, { specIndex = null, topics = true } = {})
     }
   }
   return html`<div class="qcard__meta">
-    ${difficultyBadge(question.difficulty)}
+    ${difficultyBadge(question.difficulty)}${question.is_as ? html`<span class="tag">AS · 8MA0</span>` : ''}
     <span class="small muted">about ${fmtMinutes(question.estimated_minutes || 1)}</span>
     ${sourceBadge(question)} ${[...tags].map(([title, labels]) => html`<span class="tag" title="${labels.join(' · ')}">${title}</span>`)}
     ${crossover.length ? html`<span class="tag" title="${specIndex ? crossover.map(labelOf).join(' · ') : 'Also needs knowledge from other topics'}">+ crossover</span>` : ''}

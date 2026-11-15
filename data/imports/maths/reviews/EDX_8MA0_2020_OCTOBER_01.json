@@ -1,0 +1,549 @@
+{
+  "paper_id": "EDX_8MA0_2020_OCTOBER_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "08a43273335d07b9cdfc76b0ddae2553dc3bb3e3ca557be68dedf3ed7485d42a",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Differentiate powers to find a gradient and use the given point in a line equation.",
+          "difficulty_basis": "Differentiate powers to find a gradient and use the given point in a line equation.",
+          "summary": "Find a tangent to a cubic at a stated point.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.4",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine planar displacement and choose the bearing with the correct compass quadrant.",
+          "difficulty_basis": "Determine planar displacement and choose the bearing with the correct compass quadrant.",
+          "summary": "Find a boat’s bearing from two position vectors.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.4",
+            "EDX_MATH_PURE_VEC_10.2",
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the two stated positions to find distance and divide by the elapsed hours.",
+          "difficulty_basis": "Use the two stated positions to find distance and divide by the elapsed hours.",
+          "summary": "Find speed from a planar displacement and clock times.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Collect terms involving the unknown and simplify the exact radical quotient.",
+          "difficulty_basis": "Collect terms involving the unknown and simplify the exact radical quotient.",
+          "summary": "Solve and rationalise a surd equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Express the radical reciprocal and fourth-power base as powers of two before equating exponents.",
+          "difficulty_basis": "Express the radical reciprocal and fourth-power base as powers of two before equating exponents.",
+          "summary": "Solve an exponential equation by matching powers.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source(i) is x*sqrt(2)-sqrt(18)=x; source(ii) is4^(3x-2)=1/(2sqrt(2))."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Find a line from two historical observations and reuse its prediction for comparison with later data.",
+          "difficulty_basis": "Find a line from two historical observations and reuse its prediction for comparison with later data.",
+          "summary": "Fit and assess a linear emissions model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Resolve the ambiguous sine-rule angle using the diagram and reuse the geometry for the complete structure with whole-metre purchasing.",
+          "difficulty_basis": "Resolve the ambiguous sine-rule angle using the diagram and reuse the geometry for the complete structure with whole-metre purchasing.",
+          "summary": "Find a roof angle and the steel required by its triangular frame.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Roof source diagram inspected for sine-rule ambiguity and steel-member lengths."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Find initial coefficients and reuse their relationship to determine both nonzero parameter possibilities.",
+          "difficulty_basis": "Find initial coefficients and reuse their relationship to determine both nonzero parameter possibilities.",
+          "summary": "Expand an integer binomial and find a parameter from its coefficients.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Integrate a reciprocal square root and substitute the stated lower/unknown upper bounds.",
+          "difficulty_basis": "Integrate a reciprocal square root and substitute the stated lower/unknown upper bounds.",
+          "summary": "Derive a bound equation from a definite power integral.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.1",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the necessary equation explicitly printed in(a), substitute sqrt(k), solve the quadratic and retain positive admissible values.",
+          "difficulty_basis": "Use the necessary equation explicitly printed in(a), substitute sqrt(k), solve the quadratic and retain positive admissible values.",
+          "summary": "Solve a square-root parameter equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Source integrand is5/(2sqrt(x))+3; printed bound condition is3k+5sqrt(k)-12=0."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Substitute zero elapsed time.",
+          "difficulty_basis": "Substitute zero elapsed time.",
+          "summary": "Find the initial temperature of an exponential cooling model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.5",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Rearrange the printed exponential expression and solve using logarithms.",
+          "difficulty_basis": "Rearrange the printed exponential expression and solve using logarithms.",
+          "summary": "Find when a cooling model reaches a specified temperature.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify its positive exponential term and limiting room-temperature offset.",
+          "difficulty_basis": "Identify its positive exponential term and limiting room-temperature offset.",
+          "summary": "Explain a cooling model’s lower temperature bound.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the two data points printed on the figure to solve for its offset and amplitude.",
+          "difficulty_basis": "Use the two data points printed on the figure to solve for its offset and amplitude.",
+          "summary": "Find a second cooling model’s horizontal asymptote.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.3",
+            "EDX_MATH_PURE_ALG_2.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: State the first negative minimum and reuse it under horizontal stretch and translation.",
+          "difficulty_basis": "State the first negative minimum and reuse it under horizontal stretch and translation.",
+          "summary": "Locate and transform a minimum on a degree cosine graph.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Rewrite tangent, form an algebraic sine equation, reject invalid possibilities and map the specified degree interval.",
+          "difficulty_basis": "Rewrite tangent, form an algebraic sine equation, reject invalid possibilities and map the specified degree interval.",
+          "summary": "Solve a sine–cosine equation over a later revolution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(b)(i),(ii)2mark tariff covers both graph transformations."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Apply the factor theorem at the specified root.",
+          "difficulty_basis": "Apply the factor theorem at the specified root.",
+          "summary": "Verify a cubic factor.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine the unprinted roots and reuse them as integration boundaries with the correct area sign.",
+          "difficulty_basis": "Determine the unprinted roots and reuse them as integration boundaries with the correct area sign.",
+          "summary": "Factor a cubic and find its below-axis enclosed area.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Complete squares for the centre, then use the perpendicular radius gradient.",
+          "difficulty_basis": "Complete squares for the centre, then use the perpendicular radius gradient.",
+          "summary": "Find a tangent to a circle at a supplied point.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the centre’s axis distances and require a real positive radius smaller than either distance.",
+          "difficulty_basis": "Use the centre’s axis distances and require a real positive radius smaller than either distance.",
+          "summary": "Find circle parameters that keep it within a quadrant.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Two circles are separate independent subquestions; quadrant constraint source visually checked."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Invert the straight-line logarithmic relation to obtain its constants.",
+          "difficulty_basis": "Invert the straight-line logarithmic relation to obtain its constants.",
+          "summary": "Convert a logarithmic advert-view model into exponential form.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise the supplied product as the model value after the first day.",
+          "difficulty_basis": "Recognise the supplied product as the model value after the first day.",
+          "summary": "Interpret a product of exponential-model constants.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the original printed logarithmic model directly; no earlier calculated constants are needed.",
+          "difficulty_basis": "Use the original printed logarithmic model directly; no earlier calculated constants are needed.",
+          "summary": "Predict total advert views after twenty days.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Clear the positive denominator and recognise a nonnegative square.",
+          "difficulty_basis": "Clear the positive denominator and recognise a nonnegative square.",
+          "summary": "Prove a two-variable rational inequality for positive inputs.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Choose a valid counterexample outside the explicitly positive domain.",
+          "difficulty_basis": "Choose a valid counterexample outside the explicitly positive domain.",
+          "summary": "Disprove unrestricted extension of an inequality.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source inequality is4a/b+b/a>=4, with a,b>0 in(a)."
+      ]
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the coefficient relation, origin and stationary point to solve for the cubic, then reuse it for a second-derivative maximum test.",
+          "difficulty_basis": "Use the coefficient relation, origin and stationary point to solve for the cubic, then reuse it for a second-derivative maximum test.",
+          "summary": "Determine a cubic from stationary-point constraints and classify it.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

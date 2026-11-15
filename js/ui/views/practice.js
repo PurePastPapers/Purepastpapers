@@ -47,6 +47,7 @@ const defaults = () => ({
   source: 'official',
   focus: null, // null = unrestricted; [] = no selected points
   difficulties: [],
+  qualifications: [],
   bands: [],
   markMin: '',
   markMax: '',
@@ -199,7 +200,9 @@ export async function mount(element, context) {
     focusMode: state.focusMode,
     focusScope: state.focusScope,
     selectionMode: state.selectionMode,
+    qualificationCodes: state.qualifications,
     curriculumPoints,
+    contentYear: subjectId === 'EDX_ALEVEL_MATH_9MA0' ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
     specRange: state.rangeFrom || state.rangeTo
       ? { subjectId, fromId: state.rangeFrom, toId: state.rangeTo } : null,
     years: state.years.length ? state.years.map(Number) : null,
@@ -226,9 +229,10 @@ export async function mount(element, context) {
       <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
     `;
     const content = html`<label class="field"><span class="field__label">Demo content</span><select class="select" data-filter="sampleMode"><option value="all" ${state.sampleMode === 'all' ? 'selected' : ''}>Include demo questions</option><option value="hide" ${state.sampleMode === 'hide' ? 'selected' : ''}>Hide demo questions</option><option value="only" ${state.sampleMode === 'only' ? 'selected' : ''}>Demo questions only</option></select></label>
-      <p class="field__hint">Only papers with extracted questions appear here. The current question bank is demo content; catalogue listings alone do not add questions. Missing year or tier data does not match a specific filter.</p>
+      <p class="field__hint">Only papers with extracted questions appear here. Catalogue listings alone do not add extracted questions. Missing year or tier data does not match a specific filter.</p>
     `;
-    return browser ? html`<div class="browser-paper-filters">${papersAndYears}
+    const qualifications = subjectId === 'EDX_ALEVEL_MATH_9MA0' ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${[['9MA0', 'A-Level'], ['8MA0', 'AS']].map(([value, label]) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
+    return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
       <label class="field browser-sort"><span class="field__label">Sort</span><select class="select" data-sort aria-label="Sort questions">
         <option value="" disabled ${state.shuffled ? 'selected' : ''}>Choose sort order</option>
         ${Object.entries(SORTS).map(([id, label]) => html`<option value="${id}" ${!state.shuffled && state.sort === id ? 'selected' : ''}>${label}</option>`)}
@@ -305,7 +309,7 @@ export async function mount(element, context) {
   function sourceControl() {
     return html`<fieldset class="field">
       <legend class="field__label">Question source</legend>
-      <p class="field__hint">The current extracted-question examples are demo content, not official exam questions. Other sources will appear only when available.</p>
+      <p class="field__hint">Browse source-linked past-paper questions. Any remaining demo questions are labelled separately.</p>
       <div class="seg" role="radiogroup" aria-label="Question source">
         ${SOURCE_CHOICES.map((choice) => {
           const available = !choice.feature || isEnabled(choice.feature);
@@ -323,9 +327,9 @@ export async function mount(element, context) {
     const curriculumTarget = $('[data-curriculum]', element);
     if (curriculumTarget) {
       let mounting = true;
-      mountCurriculumSelector(curriculumTarget, { curriculum, specIndex, initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
+      mountCurriculumSelector(curriculumTarget, { curriculum, specIndex, cumulativeYear13: subjectId === 'EDX_ALEVEL_MATH_9MA0', initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
         state.curriculum = next;
-        curriculumPoints = visible ? [...visible] : null;
+        curriculumPoints = subjectId === 'EDX_ALEVEL_MATH_9MA0' && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
         if (partial.size) {
           const note = document.createElement('p');
           note.className = 'small muted';
@@ -552,7 +556,7 @@ export async function mount(element, context) {
       </span>
       <div style="min-width:0">
         <p class="qcard__ref">${questionRef(question, bundle.papersById)} ${attempt ? html`<span class="tag">Saved ${attempt.marks_awarded}/${attempt.max_marks}</span>` : html`<span class="tag">Unmarked</span>`}</p>
-        <p class="small muted">${subject.board} · ${subject.subject} · ${subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
+        <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(question, { specIndex })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
         ${open ? html`<div class="stack" style="margin-top:16px">
@@ -560,7 +564,7 @@ export async function mount(element, context) {
           <label class="field"><span class="field__label">Your notes or answer (optional)</span><textarea class="textarea" rows="3" data-answer="${question.question_id}" placeholder="You can also answer on paper">${draft.answer || ''}</textarea></label>
           <div class="row row--tight"><button type="button" class="btn btn--sm" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? 'Hide mark scheme' : 'Show mark scheme'}</button>
             ${paper ? html`<a class="btn btn--sm" href="#/paper/${subjectId}/${question.paper_id}">View full paper</a>` : html`<span class="small muted">Full paper unavailable</span>`}</div>
-          <p class="small muted">A verified examiner’s report has not been linked to this question.</p>
+          ${paper?.examiner_report_url ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Open official examiner’s report (whole booklet)</a>` : html`<p class="small muted">A verified examiner’s report has not been linked to this question.</p>`}
           ${schemeOpen ? html`<section class="card stack stack--sm"><h3>Mark scheme</h3>${markSchemeBody(question)}
             <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
               ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}
@@ -601,6 +605,7 @@ export async function mount(element, context) {
       ...(state.focus !== null ? [{key: 'focus', label: `${state.focus.length} spec points selected`}] : []),
       ...(state.rangeFrom || state.rangeTo ? [{key: 'range', label: 'Specification range'}] : []),
       ...(state.learnedOnly ? [{key: 'learnedOnly', label: 'Only covered content'}] : []),
+      ...state.qualifications.map(value => ({key: 'qualifications', value, label: value === '8MA0' ? 'AS papers' : 'A-Level papers'})),
       ...state.markStatuses.map((value) => ({key: 'markStatuses', value, label: PROGRESS_FILTERS[value]})),
       ...(state.sampleMode !== 'all' ? [{key: 'sampleMode', label: state.sampleMode === 'hide' ? 'Hide demo content' : 'Demo content only'}] : []),
       ...state.difficulties.map((value) => ({key: 'difficulties', value, label: value.replaceAll('_', ' ')})),
@@ -816,7 +821,7 @@ export async function mount(element, context) {
     else if (key === 'range') { state.rangeFrom = ''; state.rangeTo = ''; }
     else if (key === 'learnedOnly') state.learnedOnly = false;
     else if (key === 'sampleMode') state[key] = 'all';
-    else if (key === 'difficulties' || key === 'bands' || key === 'years' || key === 'markStatuses') state[key] = state[key].filter((value) => value !== button.dataset.chipValue);
+    else if (key === 'difficulties' || key === 'bands' || key === 'years' || key === 'markStatuses' || key === 'qualifications') state[key] = state[key].filter((value) => value !== button.dataset.chipValue);
     else state[key] = '';
   }));
   on(element, 'click', '[data-page]', (event, button) => {

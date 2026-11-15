@@ -1,0 +1,377 @@
+{
+  "paper_id": "EDX_8MA0_2018_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "8ae9e961429fbacbf79e2875cce78c15973f28579b1e9a3bb1078c0fc64e947e",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Interpret the sign of the explicitly supplied regression gradient.",
+          "difficulty_basis": "Interpret the sign of the explicitly supplied regression gradient.",
+          "summary": "Describe correlation from a regression model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Relate the stated gradient to pay change per evaluation point.",
+          "difficulty_basis": "Relate the stated gradient to pay change per evaluation point.",
+          "summary": "Interpret a pay-regression gradient.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Consider extrapolation and the model’s contextual restrictions.",
+          "difficulty_basis": "Consider extrapolation and the model’s contextual restrictions.",
+          "summary": "Assess the applicability of a regression pay model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Form the mutually exclusive supplier branches and solve the total-probability equation.",
+          "difficulty_basis": "Form the mutually exclusive supplier branches and solve the total-probability equation.",
+          "summary": "Find a supplier fault rate from overall probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Compare the fault probability supplied for supplierB directly with the overall fault rate.",
+          "difficulty_basis": "Compare the fault probability supplied for supplierB directly with the overall fault rate.",
+          "summary": "Explain a failure of statistical independence.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the stated trial count and chance of winning.",
+          "difficulty_basis": "Use the stated trial count and chance of winning.",
+          "summary": "Calculate point and upper-tail binomial probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: State one-sided hypotheses and compare the observed count with a binomial tail at the stated significance level.",
+          "difficulty_basis": "State one-sided hypotheses and compare the observed count with a binomial tail at the stated significance level.",
+          "summary": "Test a claim of an increased binomial success probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(a)(i),(ii)3mark tariff covers two binomial calculations."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Exclude the n/a category, compute weighted mean and standard deviation, and state the large-data-set units.",
+          "difficulty_basis": "Exclude the n/a category, compute weighted mean and standard deviation, and state the large-data-set units.",
+          "summary": "Calculate wind-speed summaries with missing data.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Connect the unusually high average wind speed with the named historical weather-data period.",
+          "difficulty_basis": "Connect the unusually high average wind speed with the named historical weather-data period.",
+          "summary": "Identify a likely month from large-data-set weather knowledge.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the separately printed source box plots and relative location/spread information.",
+          "difficulty_basis": "Use the separately printed source box plots and relative location/spread information.",
+          "summary": "Interpret outliers and match a box plot to summary statistics.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(d)"
+        }
+      ],
+      "exceptions": [
+        "RESOLVED: extractorv5 source figure continuation restored and visually verified on2026-11-15; model review released."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1",
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Normalize the symmetric discrete model, apply a binomial count model and reuse its probabilities in a transformed-variable condition.",
+          "difficulty_basis": "Normalize the symmetric discrete model, apply a binomial count model and reuse its probabilities in a transformed-variable condition.",
+          "summary": "Construct a spinner distribution and analyse repeated and transformed outcomes.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source transformed condition isY-X<=4; joint distribution/transform group retains the unknown derived probabilities."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Apply one-dimensional constant-acceleration motion with the explicitly supplied gravitational acceleration and initial height.",
+          "difficulty_basis": "Apply one-dimensional constant-acceleration motion with the explicitly supplied gravitational acceleration and initial height.",
+          "summary": "Find the landing time of a vertically thrown ball.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)(iii)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.2",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Calculate acceleration/deceleration data, sketch the speed graph and reuse its areas with the supplied total distance.",
+          "difficulty_basis": "Calculate acceleration/deceleration data, sketch the speed graph and reuse its areas with the supplied total distance.",
+          "summary": "Find a train journey time from a three-stage speed model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify a realistic change to the constant-acceleration/constant-speed assumptions.",
+          "difficulty_basis": "Identify a realistic change to the constant-acceleration/constant-speed assumptions.",
+          "summary": "Suggest a refinement to a train-motion model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(a)(i)–(iii)3mark tariff includes speed, deceleration time and graph."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Differentiate the one-dimensional displacement, locate direction changes and reuse them to sum travelled distance over the interval.",
+          "difficulty_basis": "Differentiate the one-dimensional displacement, locate direction changes and reuse them to sum travelled distance over the interval.",
+          "summary": "Find rest times and total distance from a polynomial displacement.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the factored-square displacement to prove nonnegative position, rather than incorrectly asserting velocity is always positive.",
+          "difficulty_basis": "Use the factored-square displacement to prove nonnegative position, rather than incorrectly asserting velocity is always positive.",
+          "summary": "Show a particle never enters the negative half-axis.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source displacement is0.5*t^2*(t^2-2t+1); part(c)concernsposition onnegativex-axis, notabsenceofnegativevelocity."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Apply vertical Newton equations, use equal acceleration from the inextensible string and reuse tension to determine the mass ratio.",
+          "difficulty_basis": "Apply vertical Newton equations, use equal acceleration from the inextensible string and reuse tension to determine the mass ratio.",
+          "summary": "Find string tension and an unknown hanging mass.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify a string or pulley assumption that affects the inferred mass ratio.",
+          "difficulty_basis": "Identify a string or pulley assumption that affects the inferred mass ratio.",
+          "summary": "State a limitation of a connected-particle pulley model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

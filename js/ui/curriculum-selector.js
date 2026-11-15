@@ -15,7 +15,7 @@ export function filterSpecForCurriculum(spec, visible) {
   })).filter((section) => section.topics.length) };
 }
 
-export function mountCurriculumSelector(root, { curriculum, specIndex, initial = {}, emitInitial = true, onChange = () => {} }) {
+export function mountCurriculumSelector(root, { curriculum, specIndex, initial = {}, emitInitial = true, cumulativeYear13 = false, onChange = () => {} }) {
   const { years, books, coverage } = curriculum;
   if (!years.length && !books.length) {
     const stale = Boolean(initial.year || initial.bookId || initial.chapterId);
@@ -24,6 +24,7 @@ export function mountCurriculumSelector(root, { curriculum, specIndex, initial =
     return { getState: () => ({ year: '', bookId: '', chapterId: '' }) };
   }
   let year = ['12', '13'].includes(initial.year) && years.some((item) => String(item.year) === initial.year) ? initial.year : '';
+  let year13Only = cumulativeYear13 && initial.year13Only === true;
   let bookId = books.some((item) => item.id === initial.bookId) ? initial.bookId : '';
   let chapterId = books.find((item) => item.id === bookId)?.chapters.some((item) => item.id === initial.chapterId) ? initial.chapterId : '';
   let stale = Boolean((initial.year && initial.year !== year) || (initial.bookId && initial.bookId !== bookId) || (initial.chapterId && initial.chapterId !== chapterId));
@@ -34,7 +35,7 @@ export function mountCurriculumSelector(root, { curriculum, specIndex, initial =
   function draw(emit = true) {
     const book = books.find((item) => bookKey(item) === bookId);
     const chapter = book?.chapters.find((item) => item.id === chapterId);
-    const yearEntries = year ? years.filter((item) => String(item.year) === year) : years;
+    const yearEntries = year === '13' && cumulativeYear13 && !year13Only ? years : year ? years.filter((item) => String(item.year) === year) : years;
     const yearCoverage = yearEntries.length ? coverage(yearEntries) : null;
     const bookCoverage = chapter ? coverage([chapter]) : null;
     let visible = null;
@@ -51,14 +52,16 @@ export function mountCurriculumSelector(root, { curriculum, specIndex, initial =
     }
     setHtml(root, html`<div class="stack">
       ${stale ? html`<p class="small muted">A saved curriculum filter is no longer available and has been cleared.</p>` : ''}
-      ${years.length ? html`<label class="field"><span class="field__label">Content year</span><select class="select" data-curriculum-year><option value="">Both years</option>${[12, 13].filter((n) => years.some((item) => item.year === n)).map((n) => html`<option value="${n}" ${year === String(n) ? 'selected' : ''}>Year ${n}</option>`)}</select></label>` : ''}
+      ${years.length ? html`<label class="field"><span class="field__label">Content year</span><select class="select" data-curriculum-year><option value="">All content</option>${[12, 13].filter((n) => years.some((item) => item.year === n)).map((n) => html`<option value="${n}" ${year === String(n) ? 'selected' : ''}>Year ${n}${cumulativeYear13 ? (n === 12 ? ' / AS content' : ' (including AS)') : ''}</option>`)}</select></label>` : ''}
+      ${cumulativeYear13 && year === '13' ? html`<label class="check"><input type="checkbox" data-year13-only ${year13Only ? 'checked' : ''} /><span>Year 13 topics only</span></label><p class="field__hint">${year13Only ? 'Only questions assessing the additional A-level material. Earlier prerequisite skills may still be needed.' : 'Includes AS and Year 12 questions, because Year 13 builds on that content.'}</p>` : ''}
       ${books.length ? html`<label class="field"><span class="field__label">Organisation</span><select class="select" data-curriculum-book><option value="">Official specification</option>${books.map((item) => html`<option value="${bookKey(item)}" ${bookId === bookKey(item) ? 'selected' : ''}>${item.publisher} · ${item.book} · ${item.edition}</option>`)}</select></label>` : ''}
       ${book ? html`<label class="field"><span class="field__label">Textbook chapter</span><select class="select" data-curriculum-chapter><option value="">All chapters</option>${book.chapters.map((item) => html`<option value="${item.id}" ${chapterId === item.id ? 'selected' : ''}>${item.title}</option>`)}</select></label>` : ''}
-      ${chosen ? html`<p class="small muted">This view includes ${chosen.full.size} fully mapped and ${chosen.partial.size} partially mapped spec points. Changing the view does not change what you have covered.</p>${[...chosen.partial].map(([id, notes]) => html`<p class="small muted"><strong>${specIndex.label(id)}</strong> · Partial: ${notes.join('; ')}</p>`)}` : ''}
+      ${chosen ? html`<p class="small muted">This view includes ${chosen.full.size} fully mapped and ${chosen.partial.size} partially mapped spec points. Changing the view does not change what you have covered.</p><details><summary>Review partial mappings</summary>${[...chosen.partial].map(([id, notes]) => html`<p class="small muted"><strong>${specIndex.label(id)}</strong> · Partial: ${notes.join('; ')}</p>`)}</details>` : ''}
     </div>`);
-    if (emit) onChange({ visible, full: chosen?.full || new Set(), partial: chosen?.partial || new Map(), state: { year, bookId, chapterId }, stale });
+    if (emit) onChange({ visible, full: chosen?.full || new Set(), partial: chosen?.partial || new Map(), state: { year, bookId, chapterId, year13Only }, stale });
   }
   on(root, 'change', '[data-curriculum-year]', (event, select) => { year = select.value; stale = false; draw(); });
+  on(root, 'change', '[data-year13-only]', (event, input) => { year13Only = input.checked; stale = false; draw(); });
   on(root, 'change', '[data-curriculum-book]', (event, select) => { bookId = select.value; chapterId = ''; stale = false; draw(); });
   on(root, 'change', '[data-curriculum-chapter]', (event, select) => { chapterId = select.value; stale = false; draw(); });
   draw(emitInitial);

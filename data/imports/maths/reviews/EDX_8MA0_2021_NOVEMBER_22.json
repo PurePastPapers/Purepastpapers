@@ -1,0 +1,161 @@
+{
+  "paper_id": "EDX_8MA0_2021_NOVEMBER_22",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "0ebc83d55e302524ab2705e97e06bb4aa2ce45c0401eb364808c88b755e5a63f",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the stated initial speed and gravitational acceleration with zero net displacement.",
+          "difficulty_basis": "Use the stated initial speed and gravitational acceleration with zero net displacement.",
+          "summary": "Find return time to a vertical launch point.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Find the highest point, split ascent/descent and sum distances rather than using signed displacement.",
+          "difficulty_basis": "Find the highest point, split ascent/descent and sum distances rather than using signed displacement.",
+          "summary": "Find total distance in a vertical throw over a fixed time.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify a modelling assumption beyond air resistance.",
+          "difficulty_basis": "Identify a modelling assumption beyond air resistance.",
+          "summary": "Suggest a physical refinement to vertical-particle motion.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the one-dimensional derivative relationship.",
+          "difficulty_basis": "Use the one-dimensional derivative relationship.",
+          "summary": "Differentiate a polynomial velocity to find acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine the unknown velocity parameter from the stated rest time, factor the resulting velocity and reuse its sign changes in distance integration.",
+          "difficulty_basis": "Determine the unknown velocity parameter from the stated rest time, factor the resulting velocity and reuse its sign changes in distance integration.",
+          "summary": "Find another rest time and total distance in polynomial motion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Write both vertical equations, solve for the initial shared acceleration and model the subsequent free vertical motion after the string becomes slack.",
+          "difficulty_basis": "Write both vertical equations, solve for the initial shared acceleration and model the subsequent free vertical motion after the string becomes slack.",
+          "summary": "Find a connected particle’s greatest height after its partner lands.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify how finite ball size could change the relevant motion distance.",
+          "difficulty_basis": "Identify how finite ball size could change the relevant motion distance.",
+          "summary": "Explain a limitation of treating connected balls as particles.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise that the equal-magnitude acceleration condition need not hold.",
+          "difficulty_basis": "Recognise that the equal-magnitude acceleration condition need not hold.",
+          "summary": "Explain the acceleration effect of an extensible string.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(a)(i),(ii)4mark tariff includes the two separate Newton equations."
+      ]
+    }
+  ]
+}

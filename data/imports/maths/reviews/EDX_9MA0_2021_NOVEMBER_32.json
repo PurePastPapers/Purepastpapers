@@ -1,0 +1,252 @@
+{
+  "paper_id": "EDX_9MA0_2021_NOVEMBER_32",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "87b140b6176875d12b65333b123ba5e027c30f2d5580c3f585a21116630ab702",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Add the stated acceleration components times the elapsed time.",
+          "difficulty_basis": "Add the stated acceleration components times the elapsed time.",
+          "summary": "Find a velocity vector with constant planar acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the initial position and velocity with the vector displacement formula.",
+          "difficulty_basis": "Use the initial position and velocity with the vector displacement formula.",
+          "summary": "Find a position vector with constant planar acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Resolve the inclined stone’s weight, model friction and solve the linked equations for equal-magnitude accelerations.",
+          "difficulty_basis": "Resolve the inclined stone’s weight, model friction and solve the linked equations for equal-magnitude accelerations.",
+          "summary": "Find acceleration of connected stones on a rough inclined plane.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: The acceleration is explicitly supplied in(b); use the inextensible-string condition and constant acceleration to sketch a straight graph.",
+          "difficulty_basis": "The acceleration is explicitly supplied in(b); use the inextensible-string condition and constant acceleration to sketch a straight graph.",
+          "summary": "Sketch the velocity-time graph of an accelerating connected stone.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise that non-light string changes the equal-tension assumption, without resolving inclined forces.",
+          "difficulty_basis": "Recognise that non-light string changes the equal-tension assumption, without resolving inclined forces.",
+          "summary": "Explain the effect of a string’s mass on a pulley model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Pulley diagram, direction of motion and friction coefficient1/6 visually verified."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Balance moments and contact forces, then apply the inequality for static friction.",
+          "difficulty_basis": "Balance moments and contact forces, then apply the inequality for static friction.",
+          "summary": "Derive a friction bound for a leaning uniform beam.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1",
+            "EDX_MATH_MECH_FORCES_8.6",
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Recalculate equilibrium with the explicitly supplied angle/friction coefficient and an additional horizontal force; no unprinted result from(a) is necessary.",
+          "difficulty_basis": "Recalculate equilibrium with the explicitly supplied angle/friction coefficient and an additional horizontal force; no unprinted result from(a) is necessary.",
+          "summary": "Find an added horizontal force at limiting equilibrium.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source inequality is mu>=1/2*cot(theta), not cot(theta/2); figure and applied force direction inspected."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Resolve the given launch velocity, solve the vertical flight equation, then reuse the flight time in the velocity components.",
+          "difficulty_basis": "Resolve the given launch velocity, solve the vertical flight equation, then reuse the flight time in the velocity components.",
+          "summary": "Find a cliff projectile’s flight time and impact speed.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Give a physical simplification beyond the air-resistance limitation already named.",
+          "difficulty_basis": "Give a physical simplification beyond the air-resistance limitation already named.",
+          "summary": "Identify another limitation of a projectile model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply power differentiation to both velocity components in planar motion.",
+          "difficulty_basis": "Apply power differentiation to both velocity components in planar motion.",
+          "summary": "Differentiate a vector velocity to find acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use proportional components of the explicitly supplied velocity and the positive-time restriction.",
+          "difficulty_basis": "Use proportional components of the explicitly supplied velocity and the positive-time restriction.",
+          "summary": "Find a time when velocity has a specified direction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Determine integration constants from a position condition, solve the supplied velocity-magnitude equation and reuse the resulting time in the unprinted position expression.",
+          "difficulty_basis": "Determine integration constants from a position condition, solve the supplied velocity-magnitude equation and reuse the resulting time in the unprinted position expression.",
+          "summary": "Integrate vector velocity and find a position at a specified speed.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source velocity first component is3*sqrt(t), not3*t^2. Blank final continuation page may be trimmed."
+      ]
+    }
+  ]
+}

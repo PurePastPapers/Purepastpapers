@@ -99,7 +99,7 @@ export async function mount(element, context) {
         : ''}`;
   }
 
-  const facts = [subject.board, `${subject.spec_code}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.year ? `${paper.series} ${paper.year}` : null, `${paper.total_marks} marks`, fmtMinutes(paper.duration_minutes), paper.tier ? `${paper.tier} tier` : null]
+  const facts = [subject.board, `${paper.spec_code || subject.spec_code}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.year ? `${paper.series} ${paper.year}` : null, `${paper.total_marks} marks`, fmtMinutes(paper.duration_minutes), paper.tier ? `${paper.tier} tier` : null]
     .filter(Boolean)
     .join(' · ');
 
@@ -120,10 +120,11 @@ export async function mount(element, context) {
               <button type="button" class="btn" data-log>Log a score</button>`,
       })}
       <p class="row row--tight paper-facts">
-        <span class="tag">${groupDot(subject)} ${subject.level} ${subject.subject}</span>
+        <span class="tag">${groupDot(subject)} ${paper.level || subject.level} ${subject.subject}</span>
         ${sourceBadge(paper)}
         <span class="muted">${facts}</span>
       </p>
+      ${paper.duration_note ? html`<p class="small muted">${paper.duration_note}</p>` : ''}
       ${paper.is_sample ? banner(paper.sample_note || 'Demo content.', { type: 'demo' }) : ''}
       <div class="split paper-layout">
         <section class="card ruled tilt-1 paper-qs">
@@ -149,6 +150,7 @@ export async function mount(element, context) {
             ${pdf || markScheme
               ? html`<div class="stack stack--sm">
                   ${pdf ? html`<a class="btn btn--block btn--left" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
+                  ${paper.examiner_report_url ? html`<a class="btn btn--block btn--left" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report (PDF)</a>` : ''}
                   ${markScheme ? html`<a class="btn btn--block btn--left" href="${markScheme}" target="_blank" rel="noopener">${icon('check')} Mark scheme (PDF)</a>` : ''}
                 </div>`
               : questions.length

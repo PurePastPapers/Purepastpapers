@@ -1,0 +1,619 @@
+{
+  "paper_id": "EDX_9MA0_2020_OCTOBER_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "740fb2631fbc3fac4c67ee260382f96e9b510238376d287ee65edca7f84ff3ee",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply the rule to supplied values, scale the resulting estimate and compare with a stated integral value.",
+          "difficulty_basis": "Apply the rule to supplied values, scale the resulting estimate and compare with a stated integral value.",
+          "summary": "Estimate and assess related integrals with the trapezium rule.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Integral radical spans the full ratio x/(1+x); scaling in(b) is3, not9. Source table visually inspected."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use component-free vector addition and a stated one-third ratio; no three-dimensional coordinate technique is required.",
+          "difficulty_basis": "Use component-free vector addition and a stated one-third ratio; no three-dimensional coordinate technique is required.",
+          "summary": "Prove a position-vector formula for internal division.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use logarithm laws to combine expressions and rearrange.",
+          "difficulty_basis": "Use logarithm laws to combine expressions and rearrange.",
+          "summary": "Transform a logarithmic equation to a quadratic.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.3",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Solve the quadratic explicitly printed in(a) and reject a root outside the logarithm domain.",
+          "difficulty_basis": "Solve the quadratic explicitly printed in(a) and reject a root outside the logarithm domain.",
+          "summary": "Select admissible roots of a logarithmic equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Raw(b)(ii)2marks jointly covers(b)(i),(ii); display(b)."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Select the fourth-power term of a positive-integer expansion and solve its coefficient equation.",
+          "difficulty_basis": "Select the fourth-power term of a positive-integer expansion and solve its coefficient equation.",
+          "summary": "Find a constant from an integer binomial coefficient.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use index laws to collect powers of the same base and solve using logarithms.",
+          "difficulty_basis": "Use index laws to collect powers of the same base and solve using logarithms.",
+          "summary": "Find an exact intersection of two exponential curves.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source inspected: first curve3*2^x and second15-2^(x+1)."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Determine the polynomial-plus-reciprocal form, then reuse its coefficients to evaluate a logarithmic definite integral.",
+          "difficulty_basis": "Determine the polynomial-plus-reciprocal form, then reuse its coefficients to evaluate a logarithmic definite integral.",
+          "summary": "Integrate a rational function after algebraic division.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source rational expression and logarithmic target inspected; dependent(a),(b) grouped."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Rewrite the algebraic quotient into powers and differentiate the logarithm.",
+          "difficulty_basis": "Rewrite the algebraic quotient into powers and differentiate the logarithm.",
+          "summary": "Differentiate a logarithmic curve after simplifying powers.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Set the derivative explicitly printed in(a) equal to zero and rearrange powers; no logarithmic differentiation is needed for this unit.",
+          "difficulty_basis": "Set the derivative explicitly printed in(a) equal to zero and rearrange powers; no logarithmic differentiation is needed for this unit.",
+          "summary": "Rearrange a stationary-point condition into an iteration equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply the printed recurrence from its starting value and assess convergence to the requested accuracy.",
+          "difficulty_basis": "Apply the printed recurrence from its starting value and assess convergence to the requested accuracy.",
+          "summary": "Use a supplied fixed-point iteration to locate a minimum.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(c)"
+        }
+      ],
+      "exceptions": [
+        "Source radicals and two-thirds power in iteration inspected; raw(c)(ii)3marks jointly covers(c)(i),(ii)."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Integrate a polynomial, determine the constant from the intercept and use the factor theorem to determine the remaining parameter.",
+          "difficulty_basis": "Integrate a polynomial, determine the constant from the intercept and use the factor theorem to determine the remaining parameter.",
+          "summary": "Recover a cubic from its derivative, intercept and factor.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine the two constants from observed temperatures, then reuse the limiting temperature to assess whether the model reaches boiling.",
+          "difficulty_basis": "Determine the two constants from observed temperatures, then reuse the limiting temperature to assess whether the model reaches boiling.",
+          "summary": "Fit and evaluate an exponential heating model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_TRIG_5.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Combine angle-addition and double-angle identities to obtain the required cubic.",
+          "difficulty_basis": "Combine angle-addition and double-angle identities to obtain the required cubic.",
+          "summary": "Prove a triple-angle cosine identity.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: The triple-angle identity is explicitly supplied in(a); using it reduces the equation to algebra in cosine and AS-level degree solutions.",
+          "difficulty_basis": "The triple-angle identity is explicitly supplied in(a); using it reduces the equation to algebra in cosine and AS-level degree solutions.",
+          "summary": "Solve a degree trigonometric equation using a printed identity.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Unit(b) can be AS-level using the identity explicitly printed in(a); it does not require deriving a triple-angle formula."
+      ]
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Interpret the change of sign inside the modulus and vertical translation.",
+          "difficulty_basis": "Interpret the change of sign inside the modulus and vertical translation.",
+          "summary": "Find the vertex of a translated modulus graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Consider the valid linear branches and check admissible roots.",
+          "difficulty_basis": "Consider the valid linear branches and check admissible roots.",
+          "summary": "Solve a linear equation involving modulus.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Analyse both branches and endpoint cases to obtain a complete slope range.",
+          "difficulty_basis": "Analyse both branches and endpoint cases to obtain a complete slope range.",
+          "summary": "Find slopes of lines intersecting a modulus graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.3",
+            "EDX_MATH_PURE_COORD_3.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_TRIG_5.6"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use y times dx/dt and a double-angle identity to form the stated integral.",
+          "difficulty_basis": "Use y times dx/dt and a double-angle identity to form the stated integral.",
+          "summary": "Set up an area integral for a parametric curve.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.5",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: The integrand and limits are explicitly printed in(a)(i); use substitution or reverse-chain integration to obtain the exact area.",
+          "difficulty_basis": "The integrand and limits are explicitly printed in(a)(i); use substitution or reverse-chain integration to obtain the exact area.",
+          "summary": "Evaluate a parametric-area integral exactly.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)(i)"
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.4",
+            "EDX_MATH_PURE_TRIG_5.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Solve the height condition for two parameter values and use their horizontal coordinates.",
+          "difficulty_basis": "Solve the height condition for two parameter values and use their horizontal coordinates.",
+          "summary": "Find a walkway width in a parametric dam profile.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source figures, parametric domain and integral sin(t)*cos(t)^2 inspected."
+      ]
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Set the explicitly printed denominator to zero and invert the logarithm.",
+          "difficulty_basis": "Set the explicitly printed denominator to zero and invert the logarithm.",
+          "summary": "Identify an excluded input in a logarithmic expression.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Differentiate a quotient of logarithmic expressions and establish a positive derivative.",
+          "difficulty_basis": "Differentiate a quotient of logarithmic expressions and establish a positive derivative.",
+          "summary": "Prove a logarithmic quotient is increasing.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.3",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Consider numerator and denominator signs and convert the resulting logarithm intervals to the input domain.",
+          "difficulty_basis": "Consider numerator and denominator signs and convert the resulting logarithm intervals to the input domain.",
+          "summary": "Solve a sign inequality for a logarithmic quotient.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source quotient is(3ln(x)-7)/(ln(x)-2), not logarithm of another fraction."
+      ]
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use axis tangency to identify the centre and substitute a straight line into the circle equation.",
+          "difficulty_basis": "Use axis tangency to identify the centre and substitute a straight line into the circle equation.",
+          "summary": "Form a circle–line intersection equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the intersection quadratic explicitly printed in(a), enforce a repeated root and simplify the resulting surds.",
+          "difficulty_basis": "Use the intersection quadratic explicitly printed in(a), enforce a repeated root and simplify the resulting surds.",
+          "summary": "Determine circle radii using a tangent discriminant.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Compare a finite sum with its ratio multiple and rearrange algebraically.",
+          "difficulty_basis": "Compare a finite sum with its ratio multiple and rearrange algebraically.",
+          "summary": "Prove the finite geometric-series formula.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the explicitly printed series formula, cancel valid factors and solve the resulting power equation.",
+          "difficulty_basis": "Use the explicitly printed series formula, cancel valid factors and solve the resulting power equation.",
+          "summary": "Determine a geometric ratio from two partial sums.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "16",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Split natural numbers into three residue classes and exhaust the possibilities algebraically.",
+          "difficulty_basis": "Split natural numbers into three residue classes and exhaust the possibilities algebraically.",
+          "summary": "Prove the possible square remainders modulo three.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

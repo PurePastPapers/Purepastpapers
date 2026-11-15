@@ -1,0 +1,511 @@
+{
+  "paper_id": "EDX_8MA0_2023_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "da5bc48cd174e51df47132e18e2147b48129edec9921b737fdd71f5cf778c627",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Differentiate the cubic and solve the resulting quadratic derivative-sign inequality.",
+          "summary": "Find where a cubic curve is decreasing.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use a square-root substitution to obtain a quadratic, retain admissible substituted roots and recover x.",
+          "summary": "Solve an equation using a square-root substitution.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Find the included angle from two bearings and apply the cosine rule.",
+          "summary": "Find separation from two bearings.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Distinguish straight-line model distance from the engineer’s actual available route.",
+          "summary": "Critique a straight-line travel-distance estimate.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Sketch the positive reciprocal function and its asymptotes over the stated domain.",
+          "summary": "Sketch a reciprocal graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.5",
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use the reciprocal graph or a sign-aware inequality manipulation to retain the correct positive-domain interval.",
+          "summary": "Solve a reciprocal inequality.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.3",
+            "EDX_MATH_PURE_INT_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Find the curve’s positive intersection with the horizontal bound, integrate and subtract from the enclosing rectangle exactly.",
+          "summary": "Find an exact area between a quadratic curve and a horizontal line.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Complete the coordinate squares sufficiently to read the circle centre.",
+          "summary": "Find a circle’s centre.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Combine positive radius squared with the requirement that radius be smaller than centre-to-axis distance.",
+          "summary": "Constrain a circle parameter to avoid the x-axis.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Fit a linear fuel relationship from two observations, use both intercepts and compare a real range with the prediction.",
+          "summary": "Fit and evaluate a linear fuel-use model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        }
+      ],
+      "exceptions": [
+        "Raw(b)(ii) is the joint initial-volume and journey-distance tariff."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.5",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Construct a quadratic from its roots and a supplied point, determine the line and select correct boundary inequalities from the shaded region.",
+          "summary": "Describe a shaded quadratic–linear region by inequalities.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Combine logarithms to obtain a quadratic equation, solve it and reject values outside the logarithm domain.",
+          "summary": "Solve a logarithmic equation with domain checks.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use perpendicular gradients to form the second line, solve for its intersection and calculate an exact triangle area.",
+          "summary": "Find perpendicular lines and a coordinate triangle area.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Evaluate the supplied exponential height at the time origin.",
+          "summary": "Find an initial plant height.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Differentiate a supplied exponential and convert metres per year to centimetres per year.",
+          "summary": "Find an exponential plant-growth rate.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Interpret the limiting exponential term in the supplied model.",
+          "summary": "Find the limiting plant height.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Convert a tangent–cosine equation to a quadratic in sine, retain all interval roots and extend the root count by periodicity.",
+          "summary": "Solve and count roots of a trigonometric equation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(a)",
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.2",
+            "EDX_MATH_PURE_VEC_10.4",
+            "EDX_MATH_PURE_VEC_10.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Find a displacement and magnitude, use collinearity to fit a coordinate and reuse the division ratio to compare triangle areas.",
+          "summary": "Analyse collinear points and triangle areas using vectors.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        }
+      ],
+      "exceptions": [
+        "Rawsecond(a)labelisactual(b),confirmedsourceimage. Preserveboth2-marktariffs;raw(c)(ii)isjoint(c)(i)–(ii)."
+      ]
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Identify two relevant binomial terms and combine their contributions after multiplying by a quadratic factor.",
+          "summary": "Find a coefficient in a product with a binomial expansion.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Verify a known intersection, factor the resulting cubic using that root and select the negative quadratic root exactly.",
+          "summary": "Find exact intersections of cubic and quadratic curves.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "16",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Integrate a derivative containing unknown parameters, then combine a stationary condition with two point conditions to determine all constants.",
+          "summary": "Recover a curve from its derivative and stationary-point data.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "17",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Choose a pair of positive integers disproving a universal divisibility statement.",
+          "summary": "Disprove an integer divisibility statement.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1",
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Represent consecutive even integers and factor their cubic difference to exhibit divisibility.",
+          "summary": "Prove a cubic difference is divisible by eight.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

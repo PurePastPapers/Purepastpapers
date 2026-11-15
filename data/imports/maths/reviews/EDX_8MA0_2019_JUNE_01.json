@@ -1,0 +1,617 @@
+{
+  "paper_id": "EDX_8MA0_2019_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "b9913da13247ac2897b75680584921a03c0a732b629f5f92a3ecd8397105c2c3",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine the unprinted gradient and reuse it in simultaneous line equations.",
+          "difficulty_basis": "Determine the unprinted gradient and reuse it in simultaneous line equations.",
+          "summary": "Find a perpendicular line and its intersection.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Retain the zero solution while solving the remaining fractional-power equation.",
+          "difficulty_basis": "Retain the zero solution while solving the remaining fractional-power equation.",
+          "summary": "Solve an equation involving a square root and an integer power.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use a quadratic substitution and reject impossible squared values.",
+          "difficulty_basis": "Use a quadratic substitution and reject impossible squared values.",
+          "summary": "Solve a biquadratic equation for all real roots.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source(i) is16a^2=2sqrt(a); retain a=0 when solving."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Find an antiderivative then reuse it to impose the stated definite-integral value.",
+          "difficulty_basis": "Find an antiderivative then reuse it to impose the stated definite-integral value.",
+          "summary": "Integrate a reciprocal-power expression and determine a parameter.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine a line from observed heights and reuse its intercept to compare with the initial height.",
+          "difficulty_basis": "Determine a line from observed heights and reuse its intercept to compare with the initial height.",
+          "summary": "Fit and test a linear tree-growth model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Compute the unprinted derivative and reuse its sign condition on the positive domain.",
+          "difficulty_basis": "Compute the unprinted derivative and reuse its sign condition on the positive domain.",
+          "summary": "Differentiate a reciprocal-power curve and find where it increases.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the degree sine-area formula and simplify an exact square root.",
+          "difficulty_basis": "Use the degree sine-area formula and simplify an exact square root.",
+          "summary": "Determine a triangle scale from exact area.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: The scale is explicitly printed in(a); use it with the stated angle and side ratios.",
+          "difficulty_basis": "The scale is explicitly printed in(a); use it with the stated angle and side ratios.",
+          "summary": "Find an exact third side using the cosine rule.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Exact area18sqrt(3)and printed scale2sqrt(3) visually verified."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the sign of the nonzero square parameter and the standard reciprocal graph.",
+          "difficulty_basis": "Use the sign of the nonzero square parameter and the standard reciprocal graph.",
+          "summary": "Sketch a translated reciprocal graph and its asymptote.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Equate the explicitly given expressions and clear the nonzero denominator.",
+          "difficulty_basis": "Equate the explicitly given expressions and clear the nonzero denominator.",
+          "summary": "Form an intersection equation for a line and reciprocal curve.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the quadratic explicitly printed in(b) and require a repeated root.",
+          "difficulty_basis": "Use the quadratic explicitly printed in(b) and require a repeated root.",
+          "summary": "Find a reciprocal-curve parameter from a tangency condition.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Source curve is y=k^2/x+1, not another placement of the square."
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Calculate initial binomial coefficients and reuse the expansion for the requested near-base power.",
+          "difficulty_basis": "Calculate initial binomial coefficients and reuse the expansion for the requested near-base power.",
+          "summary": "Expand a positive-integer binomial and explain a numerical estimate.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Positive integer binomial source and target1.925^6 visually verified."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Convert the date to elapsed years and substitute.",
+          "difficulty_basis": "Convert the date to elapsed years and substitute.",
+          "summary": "Evaluate cumulative extraction in a quadratic model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the vertex form explicitly supplied.",
+          "difficulty_basis": "Use the vertex form explicitly supplied.",
+          "summary": "Read a cumulative model’s maximum value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Distinguish the increment of a cumulative model from its total value.",
+          "difficulty_basis": "Distinguish the increment of a cumulative model from its total value.",
+          "summary": "Find extraction during a specified calendar year.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Require nonnegative elapsed time and avoid a decreasing cumulative total.",
+          "difficulty_basis": "Require nonnegative elapsed time and avoid a decreasing cumulative total.",
+          "summary": "Determine a physically sensible model domain.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Complete squares for centre/radius and reuse those unprinted values for the two vertical tangents.",
+          "difficulty_basis": "Complete squares for centre/radius and reuse those unprinted values for the two vertical tangents.",
+          "summary": "Find circle data and its vertical tangents.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        }
+      ],
+      "exceptions": [
+        "Joint(a)(i),(ii)3mark tariff includes centre and radius."
+      ]
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Apply the factor theorem at the stated root.",
+          "difficulty_basis": "Apply the factor theorem at the stated root.",
+          "summary": "Verify a factor of a cubic polynomial.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Find the repeated-root structure and reuse it with the supplied sketch for vertical and horizontal changes.",
+          "difficulty_basis": "Find the repeated-root structure and reuse it with the supplied sketch for vertical and horizontal changes.",
+          "summary": "Factor a cubic and reason about shifted roots.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source diagram with repeated-root touch visually inspected."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the Pythagorean identity and factorisation to establish the printed cosine form.",
+          "difficulty_basis": "Use the Pythagorean identity and factorisation to establish the printed cosine form.",
+          "summary": "Simplify a rational trigonometric expression.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the identity printed in(a), simplify to a tangent relation and select all degree solutions.",
+          "difficulty_basis": "Use the identity printed in(a), simplify to a tangent relation and select all degree solutions.",
+          "summary": "Solve a degree trigonometric equation using a supplied simplification.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Identity source is fraction=(4-5cos(theta)); selected(b) uses its printed result."
+      ]
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Differentiate the cubic to determine the relevant turning point, then integrate to that unprinted bound.",
+          "difficulty_basis": "Differentiate the cubic to determine the relevant turning point, then integrate to that unprinted bound.",
+          "summary": "Find an area whose endpoint is a curve minimum.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Substitute zero elapsed time in the explicitly supplied exponential model.",
+          "difficulty_basis": "Substitute zero elapsed time in the explicitly supplied exponential model.",
+          "summary": "Find an initial value in a car-depreciation model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.2",
+            "EDX_MATH_PURE_EXP_6.5",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Differentiate the supplied exponential model and solve its rate equation logarithmically; exponential gradients are in AS content.",
+          "difficulty_basis": "Differentiate the supplied exponential model and solve its rate equation logarithmically; exponential gradients are in AS content.",
+          "summary": "Find when a car’s depreciation rate reaches a given value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Interpret its horizontal asymptote.",
+          "difficulty_basis": "Interpret its horizontal asymptote.",
+          "summary": "State an exponential model’s limiting value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify a contextual limitation in constant-parameter exponential depreciation.",
+          "difficulty_basis": "Identify a contextual limitation in constant-parameter exponential depreciation.",
+          "summary": "State a limitation of a depreciation model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(b)(i),(ii)6mark tariff includes derivative equation and its solution."
+      ]
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Exhaust even and odd cases, using their algebraic parity or remainder properties.",
+          "difficulty_basis": "Exhaust even and odd cases, using their algebraic parity or remainder properties.",
+          "summary": "Prove an integer cubic expression is not divisible by eight.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "16",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2",
+            "EDX_MATH_PURE_VEC_10.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise same-direction parallel vectors from equality in the triangle-length relationship.",
+          "difficulty_basis": "Recognise same-direction parallel vectors from equality in the triangle-length relationship.",
+          "summary": "Interpret equality in a vector-length relation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.2",
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Represent the vectors as a triangle and apply the degree sine/cosine rule with the specified side lengths.",
+          "difficulty_basis": "Represent the vectors as a triangle and apply the degree sine/cosine rule with the specified side lengths.",
+          "summary": "Find a geometric angle between a vector and a difference vector.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Vector-length and angle notation visually verified."
+      ]
+    }
+  ]
+}

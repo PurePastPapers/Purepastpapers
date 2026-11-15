@@ -1,3 +1,884 @@
 {
-  "mappings": []
+  "mappings": [
+    {
+      "subject_id": "EDX_ALEVEL_MATH_9MA0",
+      "id": "pearson-9ma0-sow-issue3-years",
+      "type": "year",
+      "status": "verified",
+      "source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/Teaching%20and%20learning%20materials/a-level-maths-2-years-sow-issue-3.docx",
+      "reviewed_at": "2026-11-14",
+      "review_status": "model_reviewed",
+      "specification_version": "pearson-9ma0-issue4-2020-02",
+      "source_sha256": "421a88010949142816cb0e8e373ada390a3dc4b04df5422eb56f49bf4a8d5388",
+      "evidence_note": "Pearson two-year scheme of work, issue 3: explicitly headed Year 1 AS content and Year 2 remaining A level content, cross-checked with bold common-AS content in specification Issue 4. This is a suggested standalone teaching sequence, not an exam-entry restriction. References in older SOW use some AS numbering; mapping follows the named skill and Issue 4 code. Overlapping scopes remain partial.",
+      "years": [
+        {
+          "id": "pearson-9ma0-year-12",
+          "title": "Year 12 (Pearson suggested sequence)",
+          "year": 12,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_PROOF_1.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.6",
+              "extent": "partial",
+              "note": "Expanding, factorising, algebraic division and factor theorem."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.7",
+              "extent": "partial",
+              "note": "Polynomial/reciprocal graphs, intersections and proportion."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.9",
+              "extent": "partial",
+              "note": "Translations and stretches of the Year 1 function repertoire."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_COORD_3.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_COORD_3.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.1",
+              "extent": "partial",
+              "note": "Binomial expansion for positive integer powers."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.1",
+              "extent": "partial",
+              "note": "Sine/cosine rules, triangle area and angles in degrees."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.3",
+              "extent": "partial",
+              "note": "Trigonometric functions, exact values and graphs in degrees."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.5",
+              "extent": "partial",
+              "note": "tan θ = sin θ/cos θ and sin²θ + cos²θ = 1."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.7",
+              "extent": "partial",
+              "note": "Trigonometric equations in degrees using Year 1 functions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.6",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.7",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.1",
+              "extent": "partial",
+              "note": "Gradient/rate interpretation, polynomial first principles and second derivatives."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.2",
+              "extent": "partial",
+              "note": "Differentiation of powers and polynomial expressions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.3",
+              "extent": "partial",
+              "note": "Gradients, tangents, normals, stationary points, monotonicity and modelling."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.2",
+              "extent": "partial",
+              "note": "Integrating powers, polynomial expressions and finding a curve from its derivative."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.3",
+              "extent": "partial",
+              "note": "Definite integrals and areas under polynomial curves and bounded by lines."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.1",
+              "extent": "partial",
+              "note": "Two-dimensional vectors."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.2",
+              "extent": "partial",
+              "note": "Magnitude/direction of vectors in two dimensions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.3",
+              "extent": "partial",
+              "note": "Vector operations and geometrical interpretation in two dimensions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.4",
+              "extent": "partial",
+              "note": "Position vectors/distances in two dimensions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.5",
+              "extent": "partial",
+              "note": "Two-dimensional geometry and vector modelling."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_SAMP_1.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DATA_2.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DATA_2.2",
+              "extent": "partial",
+              "note": "Scatter diagrams, linear regression, interpolation and qualitative correlation."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DATA_2.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DATA_2.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_PROB_3.1",
+              "extent": "partial",
+              "note": "Independent/mutually exclusive events and basic discrete probability."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DIST_4.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_HYP_5.1",
+              "extent": "partial",
+              "note": "Language of hypothesis testing through the binomial model."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_HYP_5.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_UNITS_6.1",
+              "extent": "partial",
+              "note": "Fundamental SI units and derived velocity, acceleration, force and weight."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_KIN_7.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_KIN_7.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_KIN_7.3",
+              "extent": "partial",
+              "note": "Constant acceleration in a straight line using scalar quantities."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_KIN_7.4",
+              "extent": "partial",
+              "note": "Calculus for variable acceleration in a straight line."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.2",
+              "extent": "partial",
+              "note": "Newton’s second law with parallel/perpendicular or supplied 2-D vector forces."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.4",
+              "extent": "partial",
+              "note": "Newton’s third law, connected particles and simple equilibrium."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-year-13",
+          "title": "Year 13 (Pearson suggested sequence)",
+          "year": 13,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_PROOF_1.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.6",
+              "extent": "partial",
+              "note": "Further rational-expression manipulation."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.7",
+              "extent": "partial",
+              "note": "Modulus graphs and additional function contexts."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.8",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.9",
+              "extent": "partial",
+              "note": "Combined transformations and the extended A level function repertoire."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.10",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.11",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_COORD_3.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_COORD_3.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.1",
+              "extent": "partial",
+              "note": "Expansion for rational powers, validity and approximation."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.6",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.1",
+              "extent": "partial",
+              "note": "Radian measure, arc length and sector area."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.3",
+              "extent": "partial",
+              "note": "Radian-measure expressions and the extended function repertoire."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.5",
+              "extent": "partial",
+              "note": "Secant/cosecant/cotangent identities."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.6",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.7",
+              "extent": "partial",
+              "note": "Radian-measure problems and equations using the extended A level repertoire."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.8",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.9",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.1",
+              "extent": "partial",
+              "note": "First principles for sin/cos and convexity/concavity/inflections."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.2",
+              "extent": "partial",
+              "note": "Exponential, logarithmic and trigonometric differentiation."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.3",
+              "extent": "partial",
+              "note": "Inflection points and applications with the extended function repertoire."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.6",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.2",
+              "extent": "partial",
+              "note": "Exponential, reciprocal and trigonometric integrals."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.3",
+              "extent": "partial",
+              "note": "Further curve-to-curve and parametrically defined areas."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.6",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.7",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.8",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_NUM_9.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_NUM_9.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_NUM_9.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_NUM_9.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_NUM_9.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.1",
+              "extent": "partial",
+              "note": "Three-dimensional vectors."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.2",
+              "extent": "partial",
+              "note": "Three-dimensional vector magnitudes/directions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.3",
+              "extent": "partial",
+              "note": "Vector operations in three dimensions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.4",
+              "extent": "partial",
+              "note": "Position vectors/distances in three dimensions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.5",
+              "extent": "partial",
+              "note": "Three-dimensional geometry and further contexts."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DATA_2.2",
+              "extent": "partial",
+              "note": "Change of variable and exponential-model regression."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_PROB_3.1",
+              "extent": "partial",
+              "note": "Use with conditional and continuous probability contexts."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_PROB_3.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_PROB_3.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DIST_4.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_DIST_4.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_STATS_HYP_5.1",
+              "extent": "partial",
+              "note": "Correlation coefficients and tests for zero correlation."
+            },
+            {
+              "point_id": "EDX_MATH_STATS_HYP_5.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_UNITS_6.1",
+              "extent": "partial",
+              "note": "Moment as a derived quantity/unit."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_KIN_7.3",
+              "extent": "partial",
+              "note": "Constant acceleration in two dimensions using vectors."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_KIN_7.4",
+              "extent": "partial",
+              "note": "Two-dimensional vector calculus in kinematics."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_KIN_7.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.2",
+              "extent": "partial",
+              "note": "Resolving forces at other angles and inclined-plane problems."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.4",
+              "extent": "partial",
+              "note": "Resolving forces in two dimensions and coplanar equilibrium."
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_FORCES_8.6",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_MECH_MOM_9.1",
+              "extent": "full"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject_id": "EDX_ALEVEL_MATH_9MA0",
+      "id": "pearson-9ma0-pure-y1-2017-9781292183398",
+      "type": "textbook",
+      "status": "verified",
+      "source_url": "https://www.pearsonschoolsandfecolleges.co.uk/asset-library/pdf/Secondary/mathematics/edexcel-as-a-level-maths-and-further-maths/free-resources/Pure-1-contents.pdf",
+      "reviewed_at": "2026-11-14",
+      "review_status": "model_reviewed",
+      "specification_version": "pearson-9ma0-issue4-2020-02",
+      "publisher": "Pearson Education Limited",
+      "book": "Edexcel AS and A level Mathematics: Pure Mathematics Year 1/AS",
+      "edition": "2017 series; ISBN 9781292183398",
+      "isbn": "9781292183398",
+      "source_sha256": "285733060e0b38ece2f2f13f113dd6e5e7d5ee741086c79492afe70340a9582b",
+      "evidence_note": "Publisher-hosted contents pages ii–iii, confirmed by the publisher’s 2017 resource page and Issue 4 official skills. Chapter numbers are textbook navigation, not official specification codes. Conservative partial relations preserve the wider A level scope.",
+      "chapters": [
+        {
+          "id": "pearson-9ma0-pure-y1-ch01",
+          "position": 1,
+          "title": "Algebraic expressions",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 1,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.6",
+              "extent": "partial",
+              "note": "Expanding brackets and factorising; division and factor theorem occur later."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch02",
+          "position": 2,
+          "title": "Quadratics",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 18,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.3",
+              "extent": "full"
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch03",
+          "position": 3,
+          "title": "Equations and inequalities",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 38,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.5",
+              "extent": "full"
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch04",
+          "position": 4,
+          "title": "Graphs and transformations",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 59,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.7",
+              "extent": "partial",
+              "note": "Cubic, quartic and reciprocal graphs and their intersections; modulus is not in this chapter."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.9",
+              "extent": "partial",
+              "note": "Translations and stretches of Year 1 functions."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch05",
+          "position": 5,
+          "title": "Straight line graphs",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 89,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_COORD_3.1",
+              "extent": "full"
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch06",
+          "position": 6,
+          "title": "Circles",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 113,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_COORD_3.2",
+              "extent": "full"
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch07",
+          "position": 7,
+          "title": "Algebraic methods",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 137,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_ALG_2.6",
+              "extent": "partial",
+              "note": "Algebraic fractions, division and factor theorem; expanding/factorising also occurs in chapter 1."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_PROOF_1.1",
+              "extent": "full"
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch08",
+          "position": 8,
+          "title": "The binomial expansion",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 158,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_SEQ_4.1",
+              "extent": "partial",
+              "note": "Positive integer powers, factorial notation and binomial estimation; rational powers occur in Year 2."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch09",
+          "position": 9,
+          "title": "Trigonometric ratios",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 173,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.1",
+              "extent": "partial",
+              "note": "Triangle ratios/rules/area in degrees; radian content is Year 2."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.3",
+              "extent": "partial",
+              "note": "Graphs and transformations in degrees."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch10",
+          "position": 10,
+          "title": "Trigonometric identities and equations",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 202,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.3",
+              "extent": "partial",
+              "note": "Exact values in degrees."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.5",
+              "extent": "partial",
+              "note": "Year 1 sine/cosine/tangent identities."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_TRIG_5.7",
+              "extent": "partial",
+              "note": "Trigonometric equations using the Year 1 functions in degrees."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch11",
+          "position": 11,
+          "title": "Vectors",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 230,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.1",
+              "extent": "partial",
+              "note": "Two-dimensional vectors only; the corresponding three-dimensional scope appears in Year 2."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.2",
+              "extent": "partial",
+              "note": "Two-dimensional vectors only; the corresponding three-dimensional scope appears in Year 2."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.3",
+              "extent": "partial",
+              "note": "Two-dimensional vectors only; the corresponding three-dimensional scope appears in Year 2."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.4",
+              "extent": "partial",
+              "note": "Two-dimensional vectors only; the corresponding three-dimensional scope appears in Year 2."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_VEC_10.5",
+              "extent": "partial",
+              "note": "Two-dimensional vectors only; the corresponding three-dimensional scope appears in Year 2."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch12",
+          "position": 12,
+          "title": "Differentiation",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 255,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.1",
+              "extent": "partial",
+              "note": "Gradient/rate interpretation, polynomial first principles and second derivatives."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.2",
+              "extent": "partial",
+              "note": "Differentiation of powers and polynomial expressions."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_DIFF_7.3",
+              "extent": "partial",
+              "note": "Gradients, tangents, normals, stationary points, monotonicity and modelling."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch13",
+          "position": 13,
+          "title": "Integration",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 287,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.2",
+              "extent": "partial",
+              "note": "Integrating powers, polynomial expressions and finding a curve from its derivative."
+            },
+            {
+              "point_id": "EDX_MATH_PURE_INT_8.3",
+              "extent": "partial",
+              "note": "Definite integrals and areas under polynomial curves and bounded by lines."
+            }
+          ]
+        },
+        {
+          "id": "pearson-9ma0-pure-y1-ch14",
+          "position": 14,
+          "title": "Exponentials and logarithms",
+          "teaching_years": [
+            12
+          ],
+          "printed_page": 311,
+          "coverage": [
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.1",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.2",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.3",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.4",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.5",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.6",
+              "extent": "full"
+            },
+            {
+              "point_id": "EDX_MATH_PURE_EXP_6.7",
+              "extent": "full"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

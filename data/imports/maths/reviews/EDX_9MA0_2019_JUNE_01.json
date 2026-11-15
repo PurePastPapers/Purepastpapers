@@ -1,0 +1,484 @@
+{
+  "paper_id": "EDX_9MA0_2019_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "589ca5535b002c74f234d725d7047383a64d4751e94e423f24ba384cb98641dc",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Substitute the known root and solve one linear equation.",
+          "difficulty_basis": "Substitute the known root and solve one linear equation.",
+          "summary": "Use the factor theorem to determine a polynomial coefficient.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_TRIG_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Interpret the intersection of a cosine graph in radians and a linear graph.",
+          "difficulty_basis": "Interpret the intersection of a cosine graph in radians and a linear graph.",
+          "summary": "Use a cosine graph and a straight line to justify a unique root.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.2",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Form a quadratic from the small-angle cosine approximation and choose the admissible root.",
+          "difficulty_basis": "Form a quadratic from the small-angle cosine approximation and choose the admissible root.",
+          "summary": "Estimate a small root using a cosine approximation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source uses radians, so graph part is marked Year13; its small-angle part is separate."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Quotient or chain differentiation is simplified algebraically; the inequality then uses the resulting derivative.",
+          "difficulty_basis": "Quotient or chain differentiation is simplified algebraically; the inequality then uses the resulting derivative.",
+          "summary": "Differentiate a rational function and find where its derivative is negative.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the rational-index binomial series with a rescaled argument.",
+          "difficulty_basis": "Use the rational-index binomial series with a rescaled argument.",
+          "summary": "Expand a reciprocal square-root expression in powers of x.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Compare supplied x-values with the convergence interval and the size of the expansion parameter.",
+          "difficulty_basis": "Compare supplied x-values with the convergence interval and the size of the expansion parameter.",
+          "summary": "Assess validity and accuracy of possible binomial substitutions.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)(i)–(ii)"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: The vertex obtained by completing the square supplies the sketch coordinates.",
+          "difficulty_basis": "The vertex obtained by completing the square supplies the sketch coordinates.",
+          "summary": "Complete the square and sketch a quadratic.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.9",
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: A joint tariff covers both the transformation and a range argument using a positive quadratic minimum.",
+          "difficulty_basis": "A joint tariff covers both the transformation and a range argument using a positive quadratic minimum.",
+          "summary": "Describe a graph transformation and the range of a reciprocal function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(c)(i)–(ii)"
+        }
+      ],
+      "exceptions": [
+        "Raw(c)(ii) tariff is joint(c)(i)–(ii); retain both tasks and the stated function domains."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use identities, retain solutions that could be lost by division, then transform the earlier solution set.",
+          "difficulty_basis": "Use identities, retain solutions that could be lost by division, then transform the earlier solution set.",
+          "summary": "Solve a double-angle trigonometric equation and deduce a shifted solution.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.1",
+            "EDX_MATH_PURE_EXP_6.3",
+            "EDX_MATH_PURE_EXP_6.5",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: The fitted car-value equation is used by both the reliability check and the requested refinement.",
+          "difficulty_basis": "The fitted car-value equation is used by both the reliability check and the requested refinement.",
+          "summary": "Fit, evaluate and adapt an exponential depreciation model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Expand the cubic and integrate between its relevant intercepts with a sign-aware area.",
+          "difficulty_basis": "Expand the cubic and integrate between its relevant intercepts with a sign-aware area.",
+          "summary": "Find an exact area bounded by a cubic and the x-axis.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: The target area and the two roots are printed; connect the algebra to signed and geometric areas.",
+          "difficulty_basis": "The target area and the two roots are printed; connect the algebra to signed and geometric areas.",
+          "summary": "Form an equal-area equation and interpret an extraneous-looking root geometrically.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.3",
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use log laws and positivity constraints; the second part uses the expression established in the first.",
+          "difficulty_basis": "Use log laws and positivity constraints; the second part uses the expression established in the first.",
+          "summary": "Rearrange a logarithmic relation and justify the parameter restrictions.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Choose exhaustive integer parity or remainder cases and show each gives a nonzero remainder.",
+          "difficulty_basis": "Choose exhaustive integer parity or remainder cases and show each gives a nonzero remainder.",
+          "summary": "Prove a divisibility claim by considering residue cases.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1",
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use modulus reasoning and counterexamples or a complete inequality argument.",
+          "difficulty_basis": "Use modulus reasoning and counterexamples or a complete inequality argument.",
+          "summary": "Decide whether a modulus inequality is always, sometimes or never true.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5",
+            "EDX_MATH_PURE_SEQ_4.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Translate percentage slowing into geometric terms, then sum the model and convert time units.",
+          "difficulty_basis": "Translate percentage slowing into geometric terms, then sum the model and convert time units.",
+          "summary": "Use a geometric model to estimate a runner’s total race time.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_ALG_2.9",
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Derivative turning points, the modulus graph and later-bounce height use the same damped model and intervening source graph.",
+          "difficulty_basis": "Derivative turning points, the modulus graph and later-bounce height use the same damped model and intervening source graph.",
+          "summary": "Analyse a damped trigonometric height model and its limitations.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Conservative dependency unit retains the intervening supplied graph and modelling context; no preceding answer is invented."
+      ]
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.10",
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3",
+            "EDX_MATH_PURE_INT_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: The parameter results and bounds lead to partial fractions and exact logarithmic integration.",
+          "difficulty_basis": "The parameter results and bounds lead to partial fractions and exact logarithmic integration.",
+          "summary": "Use asymptotes to fix a rational curve and integrate its shaded area.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        }
+      ],
+      "exceptions": [
+        "Raw(a)(ii) tariff jointly covers(a)(i)–(ii). Parameters are established before the dependent exact-area calculation."
+      ]
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_TRIG_5.2",
+            "EDX_MATH_PURE_DIFF_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: The gradient calculation and the approximation are explicitly compared; the joint b tariff includes both subparts.",
+          "difficulty_basis": "The gradient calculation and the approximation are explicitly compared; the joint b tariff includes both subparts.",
+          "summary": "Compare an implicit derivative at the origin with a small-angle linear approximation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Differentiate the printed implicit sine relation and use a Pythagorean identity with its domain restriction.",
+          "difficulty_basis": "Differentiate the printed implicit sine relation and use a Pythagorean identity with its domain restriction.",
+          "summary": "Express an implicit derivative entirely in terms of x.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Raw(b)(ii) joint tariff covers approximation(b)(i) and comparison(b)(ii). Source displayed derivative includes a square root lost by text extraction."
+      ]
+    }
+  ],
+  "mark_scheme_sha256": "adba10425dc5498efc93bd332f7360925da7122cd7b364eef29d5ab0187ad930",
+  "official_mapping_evidence": "2019-official-spec-mappings.json",
+  "review_method": "Source text and question-part tariffs checked against official Pearson specification mapping; mathematical display uses original source pixels. Model judgment resolves assessed content versus context."
+}

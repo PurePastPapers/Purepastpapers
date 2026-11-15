@@ -1,0 +1,275 @@
+{
+  "paper_id": "EDX_9MA0_2025_JUNE_31",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "22296da7be30ed64b0bec6d8d9b27863e90d24917b14d5bd714f5622a857b44e",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)(i)",
+            "(a)(ii)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Infer a missing bag probability from independent selections, complete the tree and reuse its branches for a union and conditional event.",
+          "summary": "Complete a two-bag probability tree and find a conditional probability.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Calculate two summary measures and compare spread when the two groups have equal means, interpreting likely fastest performance.",
+          "summary": "Compare athletic performance using means and standard deviations.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Select a binomial model and evaluate point and upper-tail probabilities.",
+          "summary": "Calculate binomial defect probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Carry out a two-tailed population-proportion test with the appropriate discrete tail probability.",
+          "summary": "Test whether a defect rate has changed.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Raw(a)(ii) is the joint probability tariff for(a)(i)–(ii)."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Identify a fixed-interval sampling procedure.",
+          "summary": "Identify a systematic sampling method.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Identify large-data-set missing/trace-value cleaning needed before regression.",
+          "summary": "Explain data cleaning before fitting a regression.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Interpret the slope units and intercept in terms of the named data variables.",
+          "summary": "Interpret units and intercept of a weather regression.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(c)"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use the sign of the fitted gradient to assess the claimed association.",
+          "summary": "Assess an association claim from a regression line.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "State the direction of population-correlation hypotheses and compare a supplied p-value with significance.",
+          "summary": "Interpret a correlation-test p-value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Identify the data actually sampled and a defensible target population for the stated investigation.",
+          "summary": "Describe a sample and possible population.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(f)"
+        }
+      ],
+      "exceptions": [
+        "Raw(c)(ii) and(f)(ii) each carry joint(i)–(ii) tariffs."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Evaluate upper-tail and interval probabilities in a fully specified normal model.",
+          "summary": "Find normal height probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Fit a normal mean/scale from two quantiles and reuse it with an independent normal probability for the other player.",
+          "summary": "Fit and combine two normal height models.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Raw(a)(ii) is a joint two-probability tariff."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1",
+            "EDX_MATH_PURE_SEQ_4.4",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Normalise an even-integer distribution using an arithmetic sum, evaluate an event and derive a parameter interval from a negative quadratic discriminant.",
+          "summary": "Normalise a discrete distribution and apply a discriminant event.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "paper_id": "EDX_8MA0_2024_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "53fbfff199080bc1ab163eeeba78efc982d2cf5c10fa5943636f98e79c51edb1",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Rewrite the quotient as separate powers and integrate each term, retaining the integration constant.",
+          "summary": "Integrate a quotient of power terms.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.4",
+            "EDX_MATH_PURE_ALG_2.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use two polynomial factors to determine parameters and the remaining factor, then transform its roots under horizontal scaling.",
+          "summary": "Determine a parameterised cubic and scaled roots.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        }
+      ],
+      "exceptions": [
+        "Raw(c)(ii) is the joint number-of-roots and transformed-root tariff."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.2",
+            "EDX_MATH_PURE_VEC_10.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Find a displacement, establish perpendicular sides from vector lengths/directions and combine two vector-defined triangle areas.",
+          "summary": "Prove a right angle and find a vector quadrilateral area.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Apply the sine rule in one triangle and reuse its fitted side parameter with the straight-line angle relation to find another triangle side.",
+          "summary": "Find lengths in adjoining triangles.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Sketch a translated reciprocal function and identify both asymptotes and intercepts.",
+          "summary": "Sketch a reciprocal curve and its asymptotes.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Clear denominators to obtain a cubic intersection equation, use the provided root and solve its remaining quadratic exactly.",
+          "summary": "Find exact intersections of reciprocal and quadratic curves.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Raw(a)(ii) is the joint sketch/asymptote tariff."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Compare the first binomial coefficient to fit a constant, reuse it for the quadratic coefficient and choose a suitable small substitution for an approximation.",
+          "summary": "Fit and use a positive-integer binomial expansion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Recover exponential constants from a logarithmic line through two points and interpret the one-unit-distance model value.",
+          "summary": "Fit and interpret a smoke-concentration exponential model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.6",
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use the tangent gradient and curve equation to locate contact, verify a second intersection and integrate between the curve and line.",
+          "summary": "Find a tangent-bounded cubic area.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Express the given number as a power of the logarithm’s known argument.",
+          "summary": "Express a power logarithm in terms of a given value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Factor the logarithm’s argument using the two known arguments and apply logarithm laws.",
+          "summary": "Express a combined logarithm using two known values.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Express both logarithms as linear combinations of the supplied values before multiplying them.",
+          "summary": "Simplify a product of logarithms.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_COORD_3.2",
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use a perpendicular radius gradient to determine the circle parameter and reuse its centre and boundary point to obtain radius squared.",
+          "summary": "Determine a circle from a tangent and parameterised points.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.2",
+            "EDX_MATH_PURE_EXP_6.5",
+            "EDX_MATH_PURE_EXP_6.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Fit one exponential scale from the stated initial-value comparison, equate growth/decay rate magnitudes and solve logarithmically for time.",
+          "summary": "Compare exponential metal-price rates.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_DIFF_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Eliminate a geometric dimension using fixed area, construct a perimeter function, minimise and verify it by calculus, then assess an access-width constraint.",
+          "summary": "Minimise a pool perimeter and assess an access constraint.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Rewrite a sine–cosine equation as a tangent quadratic, find all roots in one cycle and use frequency/periodicity for a distant restricted interval.",
+          "summary": "Solve a trigonometric equation and shift to a new angular interval.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_PROOF_1.1",
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use an algebraic parity argument or exhaustive even/odd cases to prove a universal integer claim.",
+          "summary": "Prove an integer quadratic is always even.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

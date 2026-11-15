@@ -2,6 +2,7 @@
 // Each view module exports `mount(element, context)` and may return a cleanup function.
 // Views are loaded on demand, so a problem in one view never stops the others loading.
 
+import { observeSourceImages } from './data/source-images.js';
 import { APP } from './config/app.config.js';
 import { isEnabled } from './config/phases.js';
 import { $, html, setHtml } from './core/dom.js';
@@ -163,6 +164,7 @@ async function handleRoute() {
 }
 
 async function start() {
+  observeSourceImages();
   await api.init();
   shell.mountShell(document.getElementById('app'));
   api.events.on('auth', (user) => {

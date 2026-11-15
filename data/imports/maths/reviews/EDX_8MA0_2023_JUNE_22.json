@@ -1,0 +1,202 @@
+{
+  "paper_id": "EDX_8MA0_2023_JUNE_22",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "92aec1ab841456e203c2309fe74c220ef26bb16afd54a5f513cca22253454c21",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Relate each velocity-graph area to the identical race displacement.",
+          "summary": "Explain equal areas under velocity–time graphs.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Calculate a straight-line velocity gradient.",
+          "summary": "Find acceleration from a race graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.2",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Calculate the common race distance and reuse it with another acceleration duration to solve a quadratic speed condition.",
+          "summary": "Find a competitor’s top speed from equal race distances.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3",
+            "EDX_MATH_MECH_FORCES_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use signed vertical constant-acceleration equations to determine height and a bounded speed-time interval, then critique the gravity-only model.",
+          "summary": "Analyse height and speed intervals for vertical motion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        }
+      ],
+      "exceptions": [
+        "The finalraw(a)1-marktariffisactual(c);thepromptreferencestoanswer(a)confusedthecandidateparser.Sourcequestionhas(a),(b),(c)."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Substitute the stated time into the supplied velocity to verify instantaneous rest.",
+          "summary": "Verify an instantaneous-rest time.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Differentiate the supplied velocity and take the magnitude of the evaluated acceleration.",
+          "summary": "Find acceleration from a velocity function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Integrate velocity and split at the explicitly supplied rest time so total distance does not cancel.",
+          "summary": "Find total distance for motion reversing direction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Write equations for the towing car and trailer, using the common acceleration and stated tension to eliminate resistance.",
+          "summary": "Find acceleration of a car-and-trailer system.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Reason about additional accelerating mass when the rope is no longer light.",
+          "summary": "Compare acceleration with a massive tow rope.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Identify a limitation of the stated constant-resistance assumption.",
+          "summary": "Critique a resistance model for a towing car.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

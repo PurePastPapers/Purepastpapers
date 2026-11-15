@@ -1,0 +1,241 @@
+{
+  "paper_id": "EDX_8MA0_2021_NOVEMBER_21",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "fe98ad3d64e6c1089335a5352c016835bcfa4b74e639e0fd8a671dd1901049c6",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Subtract explicitly supplied disjoint region probabilities from one.",
+          "difficulty_basis": "Subtract explicitly supplied disjoint region probabilities from one.",
+          "summary": "Complete the total probability in a Venn diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Read disjoint events directly from the supplied diagram.",
+          "difficulty_basis": "Read disjoint events directly from the supplied diagram.",
+          "summary": "Identify mutually exclusive events.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use known frequencies to scale histogram areas, recover the missing counts and reuse the completed distribution in interpolation.",
+          "difficulty_basis": "Use known frequencies to scale histogram areas, recover the missing counts and reuse the completed distribution in interpolation.",
+          "summary": "Complete a histogram and estimate its median.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the explicitly supplied quartiles to compare the upper fence with the stated maximum age bound.",
+          "difficulty_basis": "Use the explicitly supplied quartiles to compare the upper fence with the stated maximum age bound.",
+          "summary": "Test whether an oldest passenger could be an outlier.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise a regular interval after a stated start date.",
+          "difficulty_basis": "Recognise a regular interval after a stated start date.",
+          "summary": "Identify systematic sampling of weather observations.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the named qualitative variable repertoire and recorded outcome counts.",
+          "difficulty_basis": "Use the named qualitative variable repertoire and recorded outcome counts.",
+          "summary": "Identify a qualitative large-data-set variable and its common outcome.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Judge what the similar sample and population proportions support without claiming exact frequencies.",
+          "difficulty_basis": "Judge what the similar sample and population proportions support without claiming exact frequencies.",
+          "summary": "State a reliable inference from systematic weather samples.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(b)(i),(ii)2mark tariff names the variable and common outcome."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the supplied sample size and red-bead proportion.",
+          "difficulty_basis": "Use the supplied sample size and red-bead proportion.",
+          "summary": "State a binomial bead-count model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the sample size and success chance explicitly supplied in the stem.",
+          "difficulty_basis": "Use the sample size and success chance explicitly supplied in the stem.",
+          "summary": "Calculate point and upper-tail binomial bead probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Consider approximate independence and constant success probability for a small sample from a large sack.",
+          "difficulty_basis": "Consider approximate independence and constant success probability for a small sample from a large sack.",
+          "summary": "Assess a binomial approximation for sampling beads.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)",
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Conduct a two-sided binomial test and reuse the appropriate extreme-tail probability for its p-value.",
+          "difficulty_basis": "Conduct a two-sided binomial test and reuse the appropriate extreme-tail probability for its p-value.",
+          "summary": "Test a changed bead proportion and report its p-value.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(b)(i),(ii)3mark tariff covers both binomial probabilities."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Enumerate feasible colour transfers, apply the equal-count constraint and combine the mutually exclusive valid branches.",
+          "difficulty_basis": "Enumerate feasible colour transfers, apply the equal-count constraint and combine the mutually exclusive valid branches.",
+          "summary": "Find a bag composition and two-stage transfer probability.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

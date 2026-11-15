@@ -1,0 +1,192 @@
+{
+  "paper_id": "EDX_8MA0_2024_JUNE_21",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "73ca7663bcf85f9691731439b5b2c6c7c1a70f23ffba7938de76213964772164",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Recover the missing quartile and maximum from the given IQR/range and draw the five-number summary on a scale.",
+          "summary": "Draw a box plot from summary measures.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use directional-frequency knowledge of the large data set to identify the least common recorded compass direction.",
+          "summary": "Interpret a large-data-set wind-direction summary.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Recognise an invalid direction code as missing/unusable data and explain its treatment.",
+          "summary": "Handle an invalid large-data-set value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Translate histogram areas into frequencies and use the completed table to construct the remaining density bars.",
+          "summary": "Complete a frequency table and histogram.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Integrate the proposed reciprocal-square frequency-density curve over its stated range and equate total area to the sample count.",
+          "summary": "Fit a continuous frequency-density scale.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Evaluate a binomial point probability and a discrete interval probability.",
+          "summary": "Calculate two binomial probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Carry out a lower-tailed binomial test of a reduced defect rate and report the test’s actual p-value.",
+          "summary": "Test a post-maintenance defect rate.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Raw(a)(ii) is the joint probability tariff."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use total probability one to determine equal unknown probabilities.",
+          "summary": "Complete a discrete spinner distribution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Enumerate successive independent spin stopping events, construct the truncated stopping-time distribution and compare it with the possible count of successes.",
+          "summary": "Construct a spinner stopping-time distribution.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

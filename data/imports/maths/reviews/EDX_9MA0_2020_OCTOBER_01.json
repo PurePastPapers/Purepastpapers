@@ -269,7 +269,10 @@
           "summary": "Find stationary points and transformed-function ranges.",
           "context_basis": "grouped_dependency",
           "review_status": "model_reviewed",
-          "display_part_label": "(b)–(c)"
+          "display_part_label": "(b)–(c)",
+          "shared_source_parts": [
+            "(a)"
+          ]
         }
       ],
       "exceptions": [
@@ -341,7 +344,10 @@
           "difficulty_basis": "Use intersection geometry and the angle explicitly supplied in(a) to combine relevant circular arcs.",
           "summary": "Find the perimeter of a two-circle lens.",
           "context_basis": "shared_stem",
-          "review_status": "model_reviewed"
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
         }
       ],
       "exceptions": []
@@ -383,7 +389,10 @@
           "difficulty_basis": "Use the printed identity, handle possible zero factors, and find every degree solution in the requested interval.",
           "summary": "Solve an equation with cosecant and cotangent.",
           "context_basis": "shared_stem",
-          "review_status": "model_reviewed"
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
         }
       ],
       "exceptions": []
@@ -464,7 +473,10 @@
           "difficulty_basis": "Solve the separable equation printed in(a), fit constants from two radii and restrict time to physically nonnegative volume.",
           "summary": "Solve and restrict a balloon-deflation model.",
           "context_basis": "grouped_dependency",
-          "review_status": "model_reviewed"
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
         }
       ],
       "exceptions": []
@@ -506,7 +518,10 @@
           "difficulty_basis": "Differentiate the explicitly printed first derivative and justify a concavity change at the stated point.",
           "summary": "Prove a point of inflection on a rational derivative curve.",
           "context_basis": "shared_stem",
-          "review_status": "model_reviewed"
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
         }
       ],
       "exceptions": [

@@ -1,0 +1,147 @@
+{
+  "paper_id": "EDX_8MA0_2019_JUNE_22",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "da04692fa576670f1c25168e5e3721f6b1792833ec22d72d9e3b95c50e8d3128",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3",
+            "EDX_MATH_MECH_KIN_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine the initial fall speed, reuse it in the deceleration/constant-speed stages, then interpret the effect of altered early motion on total time.",
+          "difficulty_basis": "Determine the initial fall speed, reuse it in the deceleration/constant-speed stages, then interpret the effect of altered early motion on total time.",
+          "summary": "Model a parachutist’s multi-stage descent and compare refinements.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify an idealisation beyond the already named air resistance.",
+          "difficulty_basis": "Identify an idealisation beyond the already named air resistance.",
+          "summary": "Suggest another refinement to a descent model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the light-string equal-tension/equal-acceleration assumptions with Newton equations.",
+          "difficulty_basis": "Use the light-string equal-tension/equal-acceleration assumptions with Newton equations.",
+          "summary": "Find acceleration of a table-and-hanging-ball system.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3",
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the acceleration explicitly given in(a), calculate the speed at impact, then account for the remaining constant-speed motion.",
+          "difficulty_basis": "Use the acceleration explicitly given in(a), calculate the speed at impact, then account for the remaining constant-speed motion.",
+          "summary": "Find a travel time after a connected particle hits the floor.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: State an assumption that affects the inferred acceleration.",
+          "difficulty_basis": "State an assumption that affects the inferred acceleration.",
+          "summary": "Identify a limitation of a connected-particle model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Solve a polynomial velocity equation for positive time and differentiate to find the acceleration magnitude.",
+          "difficulty_basis": "Solve a polynomial velocity equation for positive time and differentiate to find the acceleration magnitude.",
+          "summary": "Find acceleration when a particle is instantaneously at rest.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Verify the velocity sign on the supplied interval and integrate the explicitly given polynomial.",
+          "difficulty_basis": "Verify the velocity sign on the supplied interval and integrate the explicitly given polynomial.",
+          "summary": "Find distance travelled from a polynomial velocity.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

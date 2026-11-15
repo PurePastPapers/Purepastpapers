@@ -1,0 +1,315 @@
+{
+  "paper_id": "EDX_9MA0_2020_OCTOBER_31",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "78466ab9ddfe054295c24ee94c91b34e88593a543cc48f905005d2e863378097",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Read disjoint regions from the supplied probability diagram.",
+          "difficulty_basis": "Read disjoint regions from the supplied probability diagram.",
+          "summary": "Identify mutually exclusive events in a Venn diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Find successive unknown regions using a total event probability, independence and a conditional probability; later regions depend on earlier values.",
+          "difficulty_basis": "Find successive unknown regions using a total event probability, independence and a conditional probability; later regions depend on earlier values.",
+          "summary": "Determine Venn-region probabilities from independence and conditioning.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)–(d)"
+        }
+      ],
+      "exceptions": [
+        "Source Venn diagram visually checked. Raw(d)(ii)4marks is joint(d)(i),(ii)."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Read the direction and strength qualitatively from the provided plot.",
+          "difficulty_basis": "Read the direction and strength qualitatively from the provided plot.",
+          "summary": "Describe correlation in a scatter diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the weather-data context and known large-data-set measurements, without inferential correlation testing.",
+          "difficulty_basis": "Use the weather-data context and known large-data-set measurements, without inferential correlation testing.",
+          "summary": "Identify a large-data-set variable and its units.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1",
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Perform a two-sided correlation test using the supplied coefficient and then use the conclusion to judge a sunshine prediction.",
+          "difficulty_basis": "Perform a two-sided correlation test using the supplied coefficient and then use the conclusion to judge a sunshine prediction.",
+          "summary": "Test weather-variable correlation and interpret its implication.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Raw(b)(ii)2marks is joint variable/unit request(b)(i),(ii)."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify the minimum and maximum including displayed outliers.",
+          "difficulty_basis": "Identify the minimum and maximum including displayed outliers.",
+          "summary": "Read a range from a box-and-whisker plot.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.1",
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Subtract the quartiles shown by the box.",
+          "difficulty_basis": "Subtract the quartiles shown by the box.",
+          "summary": "Read an interquartile range from a box plot.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)",
+            "(e)",
+            "(f)",
+            "(g)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DATA_2.4",
+            "EDX_MATH_STATS_DATA_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use supplied sums for mean and standard deviation, identify outliers, then reuse the computed mean/spread with box-plot ordering to analyse two added observations.",
+          "difficulty_basis": "Use supplied sums for mean and standard deviation, identify outliers, then reuse the computed mean/spread with box-plot ordering to analyse two added observations.",
+          "summary": "Calculate and compare summaries after adding observations.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source box-plot whiskers and outliers inspected; dependent computed-summary sequence retained together."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use total probability one to verify a constant explicitly printed in the question.",
+          "difficulty_basis": "Use total probability one to verify a constant explicitly printed in the question.",
+          "summary": "Normalise a discrete probability distribution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1",
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Enumerate the allowed pairs and multiply independent probabilities; the normalising constant is explicitly given in(a).",
+          "difficulty_basis": "Enumerate the allowed pairs and multiply independent probabilities; the normalising constant is explicitly given in(a).",
+          "summary": "Find the probability of a sum of independent discrete variables.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1",
+            "EDX_MATH_PURE_SEQ_4.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the quadrilateral angle sum to bound the first term of an arithmetic sequence, then sum the corresponding model probabilities.",
+          "difficulty_basis": "Use the quadrilateral angle sum to bound the first term of an arithmetic sequence, then sum the corresponding model probabilities.",
+          "summary": "Combine an arithmetic angle sequence with a discrete probability model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Source probabilities are k/10,k/20,k/30,k/40,k/50; normalization constant600/137 is explicitly printed."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use given normal parameters for one tail.",
+          "difficulty_basis": "Use given normal parameters for one tail.",
+          "summary": "Calculate a normal upper-tail appointment probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: State directional hypotheses and use the known-variance sampling distribution of the mean.",
+          "difficulty_basis": "State directional hypotheses and use the known-variance sampling distribution of the mean.",
+          "summary": "Test whether a mean appointment time has increased.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(i)",
+            "(c)(ii)",
+            "(c)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_PROB_3.2",
+            "EDX_MATH_STATS_PROB_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Calculate short-appointment probabilities, condition on positive durations, then reuse the results to identify a model limitation.",
+          "difficulty_basis": "Calculate short-appointment probabilities, condition on positive durations, then reuse the results to identify a model limitation.",
+          "summary": "Calculate conditional normal probabilities and critique a duration model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(c)"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Translate a conditional fifty-percent point above the supplied lower truncation into an inverse-normal probability.",
+          "difficulty_basis": "Translate a conditional fifty-percent point above the supplied lower truncation into an inverse-normal probability.",
+          "summary": "Find the median of a truncated normal distribution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

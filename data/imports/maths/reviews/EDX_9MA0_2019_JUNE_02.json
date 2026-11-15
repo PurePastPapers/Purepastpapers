@@ -1,0 +1,501 @@
+{
+  "paper_id": "EDX_9MA0_2019_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "6e346964b34f429ea0a214a5fe473f12c6c62540a2e68db4723ac6f92777a3de",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Write all quantities with one base and equate exponents.",
+          "difficulty_basis": "Write all quantities with one base and equate exponents.",
+          "summary": "Rearrange an equation involving powers of two.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply numerical integration to speed-time data and use curve shape to judge over- or underestimation.",
+          "difficulty_basis": "Apply numerical integration to speed-time data and use curve shape to judge over- or underestimation.",
+          "summary": "Estimate runway distance with the trapezium rule and assess the error.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Recognise the radian requirement of the supplied formula and produce a correct area.",
+          "difficulty_basis": "Recognise the radian requirement of the supplied formula and produce a correct area.",
+          "summary": "Correct a sector-area calculation that uses the wrong angle units.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.3",
+            "EDX_MATH_PURE_TRIG_5.3",
+            "EDX_MATH_PURE_TRIG_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Eliminate or combine the trigonometric parameter, solve the resulting equation and choose the fourth-quadrant point.",
+          "difficulty_basis": "Eliminate or combine the trigonometric parameter, solve the resulting equation and choose the fourth-quadrant point.",
+          "summary": "Find a specified intersection of a parametric curve and a circle.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source equations involve trigonometric parametric coordinates and a square root; faithful source crop is required."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3",
+            "EDX_MATH_PURE_INT_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Recognise a Riemann-sum limit and integrate its stated function over the given interval.",
+          "difficulty_basis": "Recognise a Riemann-sum limit and integrate its stated function over the given interval.",
+          "summary": "Evaluate a limiting sum as an area integral.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The limit is a Riemann sum of sqrt(x) over4to9, not a text-only sum with missing radicals."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Select the correct branch at each of two successive function evaluations.",
+          "difficulty_basis": "Select the correct branch at each of two successive function evaluations.",
+          "summary": "Evaluate a composite piecewise function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Solve the quadratic and linear inequalities and intersect each with its branch condition.",
+          "difficulty_basis": "Solve the quadratic and linear inequalities and intersect each with its branch condition.",
+          "summary": "Solve a piecewise-function inequality.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: The restricted function is introduced before(c); use its one-to-one domain and the meaning of an inverse.",
+          "difficulty_basis": "The restricted function is introduced before(c); use its one-to-one domain and the meaning of an inverse.",
+          "summary": "Explain invertibility and solve an inverse-function equation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Translate a fixed charge and a proportional cost into a linear equation.",
+          "difficulty_basis": "Translate a fixed charge and a proportional cost into a linear equation.",
+          "summary": "Write a fixed-plus-variable linear cost model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.4",
+            "EDX_MATH_PURE_ALG_2.11",
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Profit and loss observations fix the line; its parameters support the interpretation and integer inequality.",
+          "difficulty_basis": "Profit and loss observations fix the line; its parameters support the interpretation and integer inequality.",
+          "summary": "Fit a cost model, interpret its gradient and find a break-even quantity.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.3",
+            "EDX_MATH_PURE_SEQ_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Select the correct first included term and apply convergence and the geometric sum.",
+          "difficulty_basis": "Select the correct first included term and apply convergence and the geometric sum.",
+          "summary": "Sum an infinite geometric series with a nonzero starting index.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.3",
+            "EDX_MATH_PURE_EXP_6.3",
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise telescoping cancellation after applying logarithm laws to a product.",
+          "difficulty_basis": "Recognise telescoping cancellation after applying logarithm laws to a product.",
+          "summary": "Prove an exact finite logarithmic sum.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use log-log linearisation and the plotted intercept to establish the coefficient.",
+          "difficulty_basis": "Use log-log linearisation and the plotted intercept to establish the coefficient.",
+          "summary": "Interpret a straight-line logarithmic plot as a power-law model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.5",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Find the exponent from the supplied coefficient and one point; reuse it with reaction distance and unit conversion.",
+          "difficulty_basis": "Find the exponent from the supplied coefficient and one point; reuse it with reaction distance and unit conversion.",
+          "summary": "Fit a power-law braking model and assess stopping safety.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_VEC_10.1",
+            "EDX_MATH_PURE_VEC_10.3",
+            "EDX_MATH_PURE_VEC_10.4",
+            "EDX_MATH_PURE_VEC_10.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Vector addition supplies a line expression; collinearity fixes its scalar and the final ratio.",
+          "difficulty_basis": "Vector addition supplies a line expression; collinearity fixes its scalar and the final ratio.",
+          "summary": "Use vector expressions to prove a ratio in a triangle.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_DIFF_7.4",
+            "EDX_MATH_PURE_DIFF_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Taking logarithms converts a variable exponent into an implicitly differentiable relation.",
+          "difficulty_basis": "Taking logarithms converts a variable exponent into an implicitly differentiable relation.",
+          "summary": "Find a turning point of x raised to x using logarithmic differentiation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Evaluate the printed curve relation at the two stated bounds and justify an intervening root.",
+          "difficulty_basis": "Evaluate the printed curve relation at the two stated bounds and justify an intervening root.",
+          "summary": "Locate a root by a sign-change argument.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_NUM_9.2",
+            "EDX_MATH_PURE_SEQ_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Perform the stated fixed-point iteration and investigate the eventual pattern; no Newton formula is used.",
+          "difficulty_basis": "Perform the stated fixed-point iteration and investigate the eventual pattern; no Newton formula is used.",
+          "summary": "Iterate a supplied recurrence and describe its long-term behaviour.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Publisher mapping labels(c)9.3, but actual printed task is supplied fixed-point iteration; canonical runtime9.2 is the precise assessed point."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.4",
+            "EDX_MATH_PURE_TRIG_5.5",
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_TRIG_5.8",
+            "EDX_MATH_PURE_TRIG_5.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Combine reciprocal and compound-angle identities, then use the established identity to solve.",
+          "difficulty_basis": "Combine reciprocal and compound-angle identities, then use the established identity to solve.",
+          "summary": "Prove a trigonometric identity and solve a restricted equation from it.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.4",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the supplied cylinder and hemisphere geometry to eliminate the cylinder height.",
+          "difficulty_basis": "Use the supplied cylinder and hemisphere geometry to eliminate the cylinder height.",
+          "summary": "Form a surface-area function for a fixed-volume tank.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Differentiate the displayed area function, justify a minimum, then use the resulting radius.",
+          "difficulty_basis": "Differentiate the displayed area function, justify a minimum, then use the resulting radius.",
+          "summary": "Minimise a tank surface area and calculate the resulting area.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.5",
+            "EDX_MATH_PURE_INT_8.7",
+            "EDX_MATH_PURE_INT_8.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: A square-root substitution supplies an integral used in the separable differential equation and interpretation of the limiting height.",
+          "difficulty_basis": "A square-root substitution supplies an integral used in the separable differential equation and interpretation of the limiting height.",
+          "summary": "Integrate by substitution and solve a tree-growth differential model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source uses sqrt(h) in the substitution/differential equation and a target height12m; raw text loses the radical. Inspect source pixels."
+      ]
+    }
+  ],
+  "mark_scheme_sha256": "53e7850a2d7df74e4861af008ac401448815f3326f3d9db7b934f8bc703b5ff6",
+  "official_mapping_evidence": "2019-official-spec-mappings.json",
+  "review_method": "Source text and question-part tariffs checked against official Pearson specification mapping; mathematical display uses original source pixels. Model judgment resolves assessed content versus context."
+}

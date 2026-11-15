@@ -1,0 +1,487 @@
+{
+  "paper_id": "EDX_9MA0_2021_NOVEMBER_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "4ec32398efc10c98c6b6d56ab43fc68577b5adcc9920d0bc67590f1d4e161ba6",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Determine the common difference from two terms, then reuse it in a finite arithmetic-series sum.",
+          "difficulty_basis": "Determine the common difference from two terms, then reuse it in a finite arithmetic-series sum.",
+          "summary": "Find an arithmetic difference and a long partial sum.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the quadratic maximum; no composite or inverse function operation is needed.",
+          "difficulty_basis": "Use the quadratic maximum; no composite or inverse function operation is needed.",
+          "summary": "Find the range of a downward quadratic.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply two explicitly supplied functions in their stated order.",
+          "difficulty_basis": "Apply two explicitly supplied functions in their stated order.",
+          "summary": "Evaluate a composite function numerically.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Rearrange the supplied rational expression for its input.",
+          "difficulty_basis": "Rearrange the supplied rational expression for its input.",
+          "summary": "Find an inverse rational function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source rational function and quadratic range visually verified."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.3",
+            "EDX_MATH_PURE_EXP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Combine logarithms, exponentiate and check positive arguments.",
+          "difficulty_basis": "Combine logarithms, exponentiate and check positive arguments.",
+          "summary": "Solve a difference-of-logarithms equation.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Substitute standard small-angle approximations at the stated arguments and collect powers.",
+          "difficulty_basis": "Substitute standard small-angle approximations at the stated arguments and collect powers.",
+          "summary": "Expand a small-angle expression to quadratic order.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.1",
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Find two derivatives and inspect the change of gradient/concavity around the stated stationary point. The point-of-inflection assessment is additional A-level demand.",
+          "difficulty_basis": "Find two derivatives and inspect the change of gradient/concavity around the stated stationary point. The point-of-inflection assessment is additional A-level demand.",
+          "summary": "Classify a stationary point of inflection on a quartic.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        }
+      ],
+      "exceptions": [
+        "Joint3mark tariff(a) includes first/second derivatives; joint4mark tariff(b) includes verification and point-of-inflection proof."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Determine the missing radian angle and reuse it to combine sector areas and boundary arc lengths.",
+          "difficulty_basis": "Determine the missing radian angle and reuse it to combine sector areas and boundary arc lengths.",
+          "summary": "Find angles, area and perimeter of a composite sector logo.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Composite sector figure and stated congruence visually checked."
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.2",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_COORD_3.1",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Differentiate a cubic, construct its tangent, verify the second intersection and reuse these boundaries in exact polynomial integration.",
+          "difficulty_basis": "Differentiate a cubic, construct its tangent, verify the second intersection and reuse these boundaries in exact polynomial integration.",
+          "summary": "Find a tangent and the polynomial area between it and a curve.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_DIFF_7.3",
+            "EDX_MATH_PURE_ALG_2.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Find the unprinted derivative coefficients, use the point and normal gradient, then solve the resulting simultaneous parameter equations.",
+          "difficulty_basis": "Find the unprinted derivative coefficients, use the point and normal gradient, then solve the resulting simultaneous parameter equations.",
+          "summary": "Determine parameters of an implicit curve from its normal.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Implicit derivative numerator/denominator signs and parameter placeholders visually verified."
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_SEQ_4.5",
+            "EDX_MATH_PURE_SEQ_4.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.3"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Recognise the alternating signs of cos(180n)degrees and apply a convergent geometric sum starting at the second term.",
+          "difficulty_basis": "Recognise the alternating signs of cos(180n)degrees and apply a convergent geometric sum starting at the second term.",
+          "summary": "Sum an infinite alternating trigonometric-geometric series.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Geometric ratio is3/4 to power n multiplied by cos(180n)degrees; initial n=2."
+      ]
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_PURE_EXP_6.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Apply logarithm laws to the explicitly supplied pendulum formula.",
+          "difficulty_basis": "Apply logarithm laws to the explicitly supplied pendulum formula.",
+          "summary": "Linearise a power-law model with logarithms.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_EXP_6.6",
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_COORD_3.1"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Determine slope and intercept, invert the intercept logarithm and interpret the resulting constant at unit length.",
+          "difficulty_basis": "Determine slope and intercept, invert the intercept logarithm and interpret the resulting constant at unit length.",
+          "summary": "Fit and interpret a power-law model from a logarithmic graph.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "11",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.7",
+            "EDX_MATH_PURE_ALG_2.9",
+            "EDX_MATH_PURE_ALG_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Sketch reflected/translated branches, solve across branch domains and reuse the unprinted maximum point in a composite graph transformation.",
+          "difficulty_basis": "Sketch reflected/translated branches, solve across branch domains and reuse the unprinted maximum point in a composite graph transformation.",
+          "summary": "Transform a modulus graph and solve its parameterised inequality.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source transformation(c) is y=3-5f(x/2); grouped so derived maximum is not assumed."
+      ]
+    },
+    {
+      "number": "12",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.5",
+            "EDX_MATH_PURE_INT_8.2",
+            "EDX_MATH_PURE_INT_8.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_ALG_2.6"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Transform the radical and limits, simplify the rational integrand and reuse the new bounds to evaluate polynomial and logarithmic terms.",
+          "difficulty_basis": "Transform the radical and limits, simplify the rational integrand and reuse the new bounds to evaluate polynomial and logarithmic terms.",
+          "summary": "Evaluate a radical rational integral after a supplied substitution.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source substitution is u=1+sqrt(x), not u=1+x."
+      ]
+    },
+    {
+      "number": "13",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.5",
+            "EDX_MATH_PURE_DIFF_7.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.4",
+            "EDX_MATH_PURE_DIFF_7.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the chain rule in both parameters, form their derivative ratio and reuse it at an exact trigonometric input selected from the height condition.",
+          "difficulty_basis": "Use the chain rule in both parameters, form their derivative ratio and reuse it at an exact trigonometric input selected from the height condition.",
+          "summary": "Differentiate a reciprocal-trigonometric parametric curve.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source y=cosec^3(theta), not cosec(3theta); x=sin(2theta)."
+      ]
+    },
+    {
+      "number": "14",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_DIFF_7.6",
+            "EDX_MATH_PURE_DIFF_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Relate volume to depth and combine inflow with the height-dependent outflow.",
+          "difficulty_basis": "Relate volume to depth and combine inflow with the height-dependent outflow.",
+          "summary": "Construct a tank-depth differential equation from flow rates.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_INT_8.7",
+            "EDX_MATH_PURE_INT_8.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Separate the supplied rate equation, fit the initial condition and reuse the limiting depth to test the physical tank-height constraint.",
+          "difficulty_basis": "Separate the supplied rate equation, fit the initial condition and reuse the limiting depth to test the physical tank-height constraint.",
+          "summary": "Solve a tank-flow equation and assess whether it fills.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "15",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)(ii)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_TRIG_5.6",
+            "EDX_MATH_PURE_TRIG_5.7",
+            "EDX_MATH_PURE_TRIG_5.9"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Derive unprinted amplitude-phase constants, reuse them for the first maximum and solve radian boundary equations over one revolution.",
+          "difficulty_basis": "Derive unprinted amplitude-phase constants, reuse them for the first maximum and solve radian boundary equations over one revolution.",
+          "summary": "Model the maximum height and submerged duration of a water-wheel paddle.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(c)"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_PURE_ALG_2.11"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recognise that the vertical baseline must vary with time; no radian trigonometric manipulation is required.",
+          "difficulty_basis": "Recognise that the vertical baseline must vary with time; no radian trigonometric manipulation is required.",
+          "summary": "Refine a height model for changing water level.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(b)(ii)3marks includes both maximum height and first maximum time."
+      ]
+    }
+  ]
+}

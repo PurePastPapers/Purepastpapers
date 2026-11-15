@@ -1,0 +1,263 @@
+{
+  "paper_id": "EDX_9MA0_2019_JUNE_32",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "c802bf701889f98b22b9bcf5c343579a4dd1f71093a668e99381cbb171bef738",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Variable acceleration is handled componentwise in two dimensions.",
+          "difficulty_basis": "Variable acceleration is handled componentwise in two dimensions.",
+          "summary": "Differentiate a vector velocity to find acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Integrate both components and use the stated initial position; the preceding acceleration answer is not required.",
+          "difficulty_basis": "Integrate both components and use the stated initial position; the preceding acceleration answer is not required.",
+          "summary": "Integrate a vector velocity to find position.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use vector constant-acceleration equations and parallel components.",
+          "difficulty_basis": "Use vector constant-acceleration equations and parallel components.",
+          "summary": "Find a time from the direction of a particle’s velocity.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Find the displacement vector over the stated time and calculate its magnitude; no value of T from(a)is needed.",
+          "difficulty_basis": "Find the displacement vector over the stated time and calculate its magnitude; no value of T from(a)is needed.",
+          "summary": "Find distance between two positions under vector constant acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Resolve forces, model friction and solve coupled Newton equations for the two masses.",
+          "difficulty_basis": "Resolve forces, model friction and solve coupled Newton equations for the two masses.",
+          "summary": "Find the tension in a connected-particle system on a rough incline.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.1",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Compare the downslope weight component with limiting static friction after the connected motion has ended.",
+          "difficulty_basis": "Compare the downslope weight component with limiting static friction after the connected motion has ended.",
+          "summary": "Decide whether a block remains at rest after its string becomes slack.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Evaluate idealised particles, pulley or string assumptions without using the earlier acceleration/tension answer.",
+          "difficulty_basis": "Evaluate idealised particles, pulley or string assumptions without using the earlier acceleration/tension answer.",
+          "summary": "Suggest refinements to particle and string assumptions.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source question3number and diagram verified at originalPDFpage6; OCR missed isolatednumber. Do not display OCR values for the incline angle or friction coefficient as a transcription."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the absence of tangential friction on a smooth surface.",
+          "difficulty_basis": "Use the absence of tangential friction on a smooth surface.",
+          "summary": "Explain the direction of reaction at a smooth contact.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1",
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use moments and force resolution with rough and smooth contacts, then combine components.",
+          "difficulty_basis": "Use moments and force resolution with rough and smooth contacts, then combine components.",
+          "summary": "Find a resultant support force for a ramp resting on a drum.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Compare turning moments qualitatively with the ramp in the same equilibrium position.",
+          "difficulty_basis": "Compare turning moments qualitatively with the ramp in the same equilibrium position.",
+          "summary": "Predict how shifting a ramp’s centre of mass affects a reaction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source question4begins originalPDFpage10with a diagram; its question number was inferred from the following continuationheader and visually checked."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Resolve initial velocity and use the given collision time in horizontal and vertical motion.",
+          "difficulty_basis": "Resolve initial velocity and use the given collision time in horizontal and vertical motion.",
+          "summary": "Find a projectile’s velocity just before a collision.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5",
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: The joint six-mark tariff covers both angle and speed, using the common position at the stated collision time.",
+          "difficulty_basis": "The joint six-mark tariff covers both angle and speed, using the common position at the stated collision time.",
+          "summary": "Find the projection angle and speed of a second colliding projectile.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)(i)–(ii)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Evaluate a physical modelling assumption other than the explicitly excluded air resistance.",
+          "difficulty_basis": "Evaluate a physical modelling assumption other than the explicitly excluded air resistance.",
+          "summary": "State a limitation of a colliding-projectile model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source question5begins originalPDFpage14; joint(b)(i)–(ii)six-mark tariff is retained as one assessable unit."
+      ]
+    }
+  ],
+  "mark_scheme_sha256": "2400176244ab15340f616119c3852d442fcc33586cda5061262c7df3ce8a9c0d",
+  "official_mapping_evidence": "2019-official-spec-mappings.json",
+  "review_method": "Source text and question-part tariffs checked against official Pearson specification mapping; mathematical display uses original source pixels. Model judgment resolves assessed content versus context."
+}

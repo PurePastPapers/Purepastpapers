@@ -1,0 +1,196 @@
+{
+  "paper_id": "EDX_8MA0_2020_OCTOBER_22",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "a308439542af32d81bbb7d8d679ecb3ed4cb9b80b820c807dfb9b64a12a2e020",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Apply the velocity–displacement constant-acceleration relation.",
+          "difficulty_basis": "Apply the velocity–displacement constant-acceleration relation.",
+          "summary": "Determine vertical launch speed from the impact speed and drop.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the launch speed explicitly printed in(a) and the supplied signed impact velocity.",
+          "difficulty_basis": "Use the launch speed explicitly printed in(a) and the supplied signed impact velocity.",
+          "summary": "Find the duration of a vertical flight.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the printed launch speed to solve a displacement equation and select the valid positive time.",
+          "difficulty_basis": "Use the printed launch speed to solve a displacement equation and select the valid positive time.",
+          "summary": "Find when a rising-and-falling ball passes a specified lower height.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use the printed initial and final velocities and uniform acceleration; the endpoint time may be represented by the given symbolT.",
+          "difficulty_basis": "Use the printed initial and final velocities and uniform acceleration; the endpoint time may be represented by the given symbolT.",
+          "summary": "Sketch a velocity graph for a vertical flight.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Reason about resistance during ascent/descent under a fixed impact-speed condition.",
+          "difficulty_basis": "Reason about resistance during ascent/descent under a fixed impact-speed condition.",
+          "summary": "Assess the launch-speed change when resistance is included.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Identify a physical idealisation beyond air resistance.",
+          "difficulty_basis": "Identify a physical idealisation beyond air resistance.",
+          "summary": "Suggest a further refinement to a vertical-motion model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Solve the two vertical Newton equations for tension/acceleration and combine the two downward string forces on the pulley.",
+          "difficulty_basis": "Solve the two vertical Newton equations for tension/acceleration and combine the two downward string forces on the pulley.",
+          "summary": "Find the force on a pulley during connected-particle motion.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: State a relevant string or pulley modelling assumption.",
+          "difficulty_basis": "State a relevant string or pulley modelling assumption.",
+          "summary": "Identify a limitation affecting a pulley-force calculation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Expand/differentiate the supplied velocity and solve the zero-acceleration condition.",
+          "difficulty_basis": "Expand/differentiate the supplied velocity and solve the zero-acceleration condition.",
+          "summary": "Find when acceleration becomes zero in polynomial motion.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Solve the explicitly supplied velocity for the positive turning time and integrate to find displacement over the interval.",
+          "difficulty_basis": "Solve the explicitly supplied velocity for the positive turning time and integrate to find displacement over the interval.",
+          "summary": "Find distance from an origin at a direction change.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

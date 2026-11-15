@@ -61,7 +61,7 @@ const ALLOWED_TAGS = new Set([
 const DROPPED_WITH_CONTENT = new Set(['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'EMBED', 'LINK', 'META', 'TEMPLATE', 'SVG', 'MATH', 'FORM']);
 const ALLOWED_ATTRIBUTES = {
   '*': ['class', 'title', 'lang'],
-  IMG: ['src', 'alt', 'width', 'height'],
+  IMG: ['src', 'alt', 'width', 'height', 'data-math-image'],
   TD: ['colspan', 'rowspan'],
   TH: ['colspan', 'rowspan', 'scope'],
 };

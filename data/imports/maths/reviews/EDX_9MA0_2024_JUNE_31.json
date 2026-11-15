@@ -1,0 +1,332 @@
+{
+  "paper_id": "EDX_9MA0_2024_JUNE_31",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "5d8d891d3b5c0036916757108e5e6e7bd1e23819ca2e337a802a4bba67733cd4",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)(ii)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Choose a binomial model for die rolls, then reuse a calculated event probability in a second binomial model over days.",
+          "summary": "Use nested binomial models for repeated die experiments.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Use the total number of trials and success probability to estimate a count.",
+          "summary": "Estimate the number of sixes in repeated rolls.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Identify the binomial mean and variance for all rolls and apply a continuity-corrected normal approximation.",
+          "summary": "Approximate a binomial tail with a normal model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "The raw(a)(ii) tariff covers both binomial probabilities in(a)."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Interpret a supplied regression gradient using the response and explanatory variables.",
+          "summary": "Interpret a height–time regression gradient.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "State population-correlation hypotheses and compare the sample correlation with the appropriate one-tail critical value.",
+          "summary": "Test for negative correlation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Assess a linear fit against visible nonlinear structure in the scatter plot.",
+          "summary": "Assess a linear regression model from a scatter plot.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Choose a translated squared explanatory variable to reflect the graph’s turning point.",
+          "summary": "Refine a regression model using a transformed variable.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Identify an implausible selected large-data-set variable from the stated summary statistics.",
+          "summary": "Identify a wrongly selected large-data-set variable.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Calculate mean and population standard deviation from supplied totals.",
+          "summary": "Calculate temperature summary statistics.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3",
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Interpret a monthly mean using seasonal location knowledge of the large data set.",
+          "summary": "Identify a plausible month from Perth temperature statistics.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.1",
+            "EDX_MATH_STATS_HYP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Construct two discrete critical tails, add their actual probabilities and reuse the rejection region to judge a sample.",
+          "summary": "Construct and interpret a two-tailed binomial test.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Evaluate a supplied normal upper-tail probability.",
+          "summary": "Calculate a high-jump normal tail probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "State independence, convert the time boundary consistently and multiply the two model probabilities.",
+          "summary": "Combine independent normal sporting-performance probabilities.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use two inverse-normal quantiles and solve for the location and scale parameters.",
+          "summary": "Recover normal mean and standard deviation from two tails.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Source-rendered(d) statesP(D>29.0)=0.10; plain PDF text incorrectly renders this as a lower-tail sign. Preserve source pixels."
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Read disjoint regions from the supplied Venn diagram.",
+          "summary": "Identify mutually exclusive events.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)",
+            "(d)",
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "introduced_year_basis": "Assessed additional A level skill scope, beyond the AS subset.",
+          "difficulty_basis": "Use independence to fit an unknown region, optimise a conditional probability, then use a second conditional constraint and event complements.",
+          "summary": "Determine and combine unknown Venn-diagram probabilities.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "introduced_year_basis": "Assessed Year 1/AS skill scope.",
+          "difficulty_basis": "Translate the labelled region to set notation without needing its numerical probability.",
+          "summary": "Express a Venn region in set notation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "paper_id": "EDX_9MA0_2020_OCTOBER_32",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "8b7be39072db9329218b4b9dcde677474695740c46bbc38ecbdc56109eb47165",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Resolve weight into plane-normal and downslope components, then reuse the reaction in the limiting-friction condition.",
+          "difficulty_basis": "Resolve weight into plane-normal and downslope components, then reuse the reaction in the limiting-friction condition.",
+          "summary": "Find the limiting-friction coefficient on an inclined plane.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.6",
+            "EDX_MATH_MECH_FORCES_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Recognise that the ratio of friction limit to downslope weight is independent of mass.",
+          "difficulty_basis": "Recognise that the ratio of friction limit to downslope weight is independent of mass.",
+          "summary": "Explain why a heavier brick remains in equilibrium.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.6",
+            "EDX_MATH_MECH_FORCES_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the supplied friction coefficient and zero resultant to infer constant-speed motion.",
+          "difficulty_basis": "Use the supplied friction coefficient and zero resultant to infer constant-speed motion.",
+          "summary": "Describe a projected brick on a limiting rough slope.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the supplied acceleration and initial-velocity components over a stated time.",
+          "difficulty_basis": "Use the supplied acceleration and initial-velocity components over a stated time.",
+          "summary": "Find a velocity vector under constant acceleration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Solve the vertical displacement equation for its positive time, then reuse that time for horizontal displacement.",
+          "difficulty_basis": "Solve the vertical displacement equation for its positive time, then reuse that time for horizontal displacement.",
+          "summary": "Find a time and position coordinate in planar accelerated motion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Integrate both components using the initial condition and reuse the velocity expression to set its horizontal component to zero.",
+          "difficulty_basis": "Integrate both components using the initial condition and reuse the velocity expression to set its horizontal component to zero.",
+          "summary": "Integrate a vector acceleration and find a perpendicular direction.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(i)(a)–(b)"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.4",
+            "EDX_MATH_PURE_VEC_10.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Differentiate the independently given position vector and solve its velocity-magnitude equation.",
+          "difficulty_basis": "Differentiate the independently given position vector and solve its velocity-magnitude equation.",
+          "summary": "Find when a second particle reaches a specified speed.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(ii)"
+        }
+      ],
+      "exceptions": [
+        "Printed hierarchy is Q3(i)(a),Q3(i)(b),Q3(ii), while extractor names final6mark tariff(b)(ii). Visually verified and display labels supplied."
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_MOM_9.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Identify the force direction and lever arms for a uniform rod.",
+          "difficulty_basis": "Identify the force direction and lever arms for a uniform rod.",
+          "summary": "Find a smooth-rail reaction on a ladder by moments.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_FORCES_8.2",
+            "EDX_MATH_MECH_FORCES_8.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Resolve the reaction explicitly given in(a), balance horizontal and vertical forces, then apply limiting friction.",
+          "difficulty_basis": "Resolve the reaction explicitly given in(a), balance horizontal and vertical forces, then apply limiting friction.",
+          "summary": "Find a ladder’s coefficient of limiting friction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": [
+        "Source figure inspected: ladder rests on a smooth horizontal rail; reaction is perpendicular to ladder, not horizontal like a wall."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Eliminate the flight time between horizontal and vertical equations with the stated launch angle and landing displacement.",
+          "difficulty_basis": "Eliminate the flight time between horizontal and vertical equations with the stated launch angle and landing displacement.",
+          "summary": "Determine projectile speed from a cliff-to-ground flight.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the launch speed explicitly supplied in(a), then add the cliff height to vertical ascent.",
+          "difficulty_basis": "Use the launch speed explicitly supplied in(a), then add the cliff height to vertical ascent.",
+          "summary": "Find a projectile’s greatest height above the ground.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "shared_source_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Explain how resistance changes the speed required to maintain the stated range.",
+          "difficulty_basis": "Explain how resistance changes the speed required to maintain the stated range.",
+          "summary": "Compare launch speeds when air resistance is included.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_MECH_KIN_7.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Identify another physical simplification in the stated particle/free-gravity model.",
+          "difficulty_basis": "Identify another physical simplification in the stated particle/free-gravity model.",
+          "summary": "Suggest a further refinement to a projectile model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

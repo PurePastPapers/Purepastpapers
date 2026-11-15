@@ -1,0 +1,308 @@
+{
+  "paper_id": "EDX_9MA0_2021_NOVEMBER_31",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "001f553b92066dc6902b68aa01eef26278c354f476c29ca091037ff398f5f464",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_SAMP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: State a relevant disadvantage in selecting a representative sample.",
+          "difficulty_basis": "State a relevant disadvantage in selecting a representative sample.",
+          "summary": "Compare quota and simple-random sampling.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use a fixed sample size with the stated membership probability.",
+          "difficulty_basis": "Use a fixed sample size with the stated membership probability.",
+          "summary": "Choose a binomial model and calculate point and tail probabilities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_DIST_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Find the joint club-and-tango probability and reuse it as a new binomial success parameter; no conditional-probability quotient is required.",
+          "difficulty_basis": "Find the joint club-and-tango probability and reuse it as a new binomial success parameter; no conditional-probability quotient is required.",
+          "summary": "Combine a probability-tree branch with a binomial count.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "Joint(b)(ii)3mark tariff includes(b)(i),(ii)."
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Read the qualitative direction of association in the source scatter plot.",
+          "difficulty_basis": "Read the qualitative direction of association in the source scatter plot.",
+          "summary": "Describe a scatter diagram’s correlation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Compare the stated claim with the direction/strength displayed in the plot.",
+          "difficulty_basis": "Compare the stated claim with the direction/strength displayed in the plot.",
+          "summary": "Assess a contextual claim using a scatter diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.2",
+            "EDX_MATH_STATS_HYP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the supplied data to calculate the unprinted coefficient, then reuse it in a one-sided significance test.",
+          "difficulty_basis": "Use the supplied data to calculate the unprinted coefficient, then reuse it in a one-sided significance test.",
+          "summary": "Calculate a correlation coefficient and test for negative correlation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": [
+        "RESOLVED: extractorv5 source figure continuation restored and visually verified on2026-11-15; model review released."
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Recall the measurement unit associated with the named weather variable.",
+          "difficulty_basis": "Recall the measurement unit associated with the named weather variable.",
+          "summary": "State the units for large-data-set atmospheric pressure.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Calculate the coded summaries and apply the additive coding relation; the spread calculation can reuse the unprinted coded mean.",
+          "difficulty_basis": "Calculate the coded summaries and apply the additive coding relation; the spread calculation can reuse the unprinted coded mean.",
+          "summary": "Recover mean and standard deviation from coded pressure data.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DATA_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Combine the stated circulation rules with UK station geography and high-pressure observations.",
+          "difficulty_basis": "Combine the stated circulation rules with UK station geography and high-pressure observations.",
+          "summary": "Use large-data-set location knowledge to assign wind directions.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Add the three explicitly labelled single-event-only Venn regions.",
+          "difficulty_basis": "Add the three explicitly labelled single-event-only Venn regions.",
+          "summary": "Find the proportion reading exactly one magazine.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)",
+            "(c)(ii)",
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_PROB_3.1",
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Find successive unknown regions from an event total and a conditional probability, then reuse them for the stated composite-event independence test.",
+          "difficulty_basis": "Find successive unknown regions from an event total and a conditional probability, then reuse them for the stated composite-event independence test.",
+          "summary": "Complete a Venn distribution and test independence of derived events.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(b)–(d)"
+        }
+      ],
+      "exceptions": [
+        "Venn diagram visually inspected; joint(b) and(c) tariffs include both roman subparts."
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Apply an inverse-normal calculation with the stated lower-tail probability.",
+          "difficulty_basis": "Apply an inverse-normal calculation with the stated lower-tail probability.",
+          "summary": "Find a normal lower-percentile height.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)",
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.2",
+            "EDX_MATH_STATS_PROB_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Calculate the interval probability then reuse it as the conditioning denominator for a truncated group.",
+          "difficulty_basis": "Calculate the interval probability then reuse it as the conditioning denominator for a truncated group.",
+          "summary": "Find interval and conditional normal height probabilities.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_HYP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "introduced_year": 13,
+          "year_basis": "Additional A-level/Year13 demand: Use the supplied sample mean and known standard deviation in a directional significance test.",
+          "difficulty_basis": "Use the supplied sample mean and known standard deviation in a directional significance test.",
+          "summary": "Test whether a normal population mean is lower.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)(iii)",
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_MATH_STATS_DIST_4.1",
+            "EDX_MATH_PURE_EXP_6.4",
+            "EDX_MATH_STATS_PROB_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "AS/Year12 demand: Use probability normalization and logarithm laws to identify three distinct positive integer outcomes, then reuse their probabilities for equality of two independent observations. All required probability/logarithm skills are within AS scope.",
+          "difficulty_basis": "Use probability normalization and logarithm laws to identify three distinct positive integer outcomes, then reuse their probabilities for equality of two independent observations. All required probability/logarithm skills are within AS scope.",
+          "summary": "Determine a logarithmic discrete distribution and match two independent draws.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "display_part_label": "(a)–(b)"
+        }
+      ],
+      "exceptions": [
+        "Base36 logarithm probabilities and joint(a)(i)–(iii)5mark tariff visually verified."
+      ]
+    }
+  ]
+}
