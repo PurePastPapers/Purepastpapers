@@ -227,10 +227,34 @@ previous run's research folder, or recreate them from the compiled JSON reviews 
 - AS November 2021 and A-level June 2018-2019 / AS June 2017-2019: not public.
 - 30 excluded parts: publishable only if AQA releases versions with the figures.
 - Textbook organisation: none supplied; official specification only.
-- Published to the session branch `claude/purepastpapers-subject-impl-ktdw1g`. Merging to
-  `main` (and so deployment) needs the owner's go-ahead; production not yet checked.
+
+## Deployed release verification (16 November 2026)
+
+- The owner approved publishing. `main` was fast-forwarded to `61ae858` (it already
+  contained the History 9HI0 release `8c265e9`; the `.gitignore` and pack-index
+  conflicts were resolved by keeping both subjects, and the migrations file was
+  regenerated identically). No force-push.
+- GitHub Pages run 47 (id 43843404728) for `61ae858` concluded **success** at 09:52 UTC.
+- Live `https://purepastpapers.com/data/packs/index.json` (last-modified 09:52:16 GMT)
+  lists 237 packs: 26 Geography, 27 History.
+- **62 release files are byte-identical live and in `61ae858`**: index.html, the changed
+  app modules (question-view, schema, migrations), subjects, curriculum index, pack index,
+  Geography spec, coverage, identities, all 26 Geography packs and all 26
+  `data/geography-assets/` catalogues (109 MB).
+- **Production browser test passed**: `tools/browser-geography-bank.cjs` with
+  `AUDIT_URL=https://purepastpapers.com` in a fresh isolated Chromium profile (progress
+  is browser-local only, so nothing in production was changed): 605 units, AS filter,
+  insert figures, fieldwork stem, question and scheme pixels from the live catalogues,
+  paper page, 320/390/768/1440 px with no overflow and no console errors.
+- **HTTPS caveat:** this cloud session's proxy re-terminates TLS, so these checks do not
+  prove the domain's own certificate is valid. The certificate hostname issue recorded in
+  `docs/MATHS-HANDOVER.md` is **not verified as fixed**; check it from a normal browser.
+  `www.purepastpapers.com` answers 301 to the apex domain. No DNS or hosting settings were
+  changed.
+- Session network: the personal "Purepastpapers" environment now also allows
+  `purepastpapers.com`, `www.purepastpapers.com` and `purepastpapers.github.io`.
 
 ## Next action
 
-Owner: approve merging the branch to `main`; then compare the live index, coverage and a
-representative `data/geography-assets/` catalogue against this release.
+Add June 2026 papers when AQA lists them publicly (rerun from `tools/geography/resources.py`).
+Check purepastpapers.com's HTTPS certificate from an ordinary browser.
