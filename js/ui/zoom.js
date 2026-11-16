@@ -16,7 +16,8 @@ function open(source) {
   dialog.className = 'modal zoom';
   dialog.setAttribute('aria-label', title);
   dialog.innerHTML = `<div class="modal__box"><header class="modal__head zoom__head"><h2 class="modal__title zoom__title"></h2>
-    <button type="button" class="btn btn--sm" data-zoom-close>Close</button></header><div class="modal__body zoom__body"></div></div>`;
+    <span class="zoom__tools"><button type="button" class="btn btn--sm zoom__fit" data-zoom-fit aria-pressed="false">Fit to screen</button>
+    <button type="button" class="btn btn--sm" data-zoom-close>Close</button></span><p class="zoom__hint small muted">Drag to move around</p></header><div class="modal__body zoom__body"></div></div>`;
   dialog.querySelector('.zoom__title').textContent = title;
   const body = dialog.querySelector('.zoom__body');
   if (original) {
@@ -40,7 +41,16 @@ function open(source) {
     if (copy.querySelector('img')) dialog.classList.add('zoom--image');
   }
   const close = () => { dialog.close(); dialog.remove(); };
-  dialog.addEventListener('click', (event) => { if (event.target === dialog || event.target.closest('[data-zoom-close]')) close(); });
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog || event.target.closest('[data-zoom-close]')) return close();
+    const fit = event.target.closest('[data-zoom-fit]');
+    if (fit) {
+      const fitted = dialog.classList.toggle('zoom--fit');
+      fit.setAttribute('aria-pressed', String(fitted));
+      fit.textContent = fitted ? 'Zoom in' : 'Fit to screen';
+      dialog.querySelector('.zoom__hint').textContent = fitted ? 'Showing the whole question' : 'Drag to move around';
+    }
+  });
   dialog.addEventListener('cancel', (event) => { event.preventDefault(); close(); });
   document.body.append(dialog);
   dialog.showModal();

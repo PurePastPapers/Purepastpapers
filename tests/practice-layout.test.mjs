@@ -129,3 +129,62 @@ test('Phone width: nothing overflows the screen sideways', { skip }, async () =>
   assert.deepEqual(errors, []);
   await page.close();
 });
+
+test('Enlarge: question, mark scheme and answer box open large over the page', { skip }, async () => {
+  const { page, errors } = await demoPage({ width: 1366, height: 900 });
+  const card = page.locator('.qcard').filter({ has: page.locator('.qsplit') }).first();
+  const small = await card.locator('.qsplit__main img').first().boundingBox();
+
+  await card.locator('.qsplit__main [data-zoom]').click();
+  const dialog = page.locator('dialog.zoom[open]');
+  await dialog.waitFor();
+  assert.match(await dialog.locator('.zoom__title').textContent(), /^Question/);
+  const big = await dialog.locator('img').first().boundingBox();
+  assert.ok(big.width > small.width * 1.5, `enlarged image is ${big.width}px wide (was ${small.width}px)`);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('dialog.zoom').count(), 0, 'Escape closes it');
+
+  // Clicking the question image itself also enlarges it.
+  await card.locator('.qsplit__main img').first().click();
+  await dialog.waitFor();
+  await dialog.locator('[data-zoom-close]').click();
+  assert.equal(await page.locator('dialog.zoom').count(), 0);
+
+  // Typing in the enlarged answer box edits the real answer.
+  await card.locator('.qsplit__answerfield [data-zoom]').click();
+  await dialog.locator('.zoom__answer').fill('Typed large');
+  await dialog.locator('[data-zoom-close]').click();
+  assert.equal(await card.locator('.qsplit__answer').inputValue(), 'Typed large');
+
+  await card.locator('[data-scheme]').click();
+  const opened = page.locator('.qcard').filter({ has: page.locator('.qsplit__main.is-scheme') }).first();
+  await opened.locator('.qsplit__main [data-zoom]').click();
+  assert.match(await dialog.locator('.zoom__title').textContent(), /^Mark scheme/);
+  assert.equal(await dialog.locator('.qsplit__label, button:not([data-zoom-close]):not([data-zoom-fit])').count(), 0);
+  await page.keyboard.press('Escape');
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+test('Enlarge on a phone: the question can be dragged around or fitted to the screen', { skip }, async () => {
+  const { page, errors } = await demoPage({ width: 390, height: 844 });
+  await page.locator('[data-select]').first().check();
+  await page.locator('[data-start-set]').click();
+  await page.locator('.qview [data-zoom]').click();
+  const dialog = page.locator('dialog.zoom[open]');
+  await dialog.waitFor();
+  const box = await dialog.boundingBox();
+  assert.ok(box.width >= 389 && box.height >= 840, 'fills the phone screen');
+  const body = dialog.locator('.zoom__body');
+  const scrollable = await body.evaluate((node) => node.scrollWidth > node.clientWidth);
+  assert.ok(scrollable, 'the enlarged question is wider than the screen and scrolls sideways');
+  assert.equal((await dialog.locator('.zoom__hint').textContent()).trim(), 'Drag to move around');
+
+  await dialog.locator('[data-zoom-fit]').click();
+  assert.ok(await body.evaluate((node) => node.scrollWidth <= node.clientWidth + 1), 'Fit to screen shows the whole width');
+  assert.equal((await dialog.locator('[data-zoom-fit]').textContent()).trim(), 'Zoom in');
+  await dialog.locator('[data-zoom-fit]').click();
+  assert.ok(await body.evaluate((node) => node.scrollWidth > node.clientWidth));
+  assert.deepEqual(errors, []);
+  await page.close();
+});
