@@ -42,6 +42,18 @@ test('textbook 6.2 selects circle equations independently from the broad officia
   assert.deepEqual(missingSpecPoints(tangent,new Set(['TB_MATH_P1_6.2']),specIndex), [circle]);
 });
 
+test('a test-only book selection satisfies its own learned gate without changing progress', () => {
+  const savedLearning = new Set();
+  const result = filterQuestions([equation,tangent], {
+    textbookFocus:['TB_MATH_P1_6.2'], learnedNamespace:'textbook', testTopicSelectionOnly:true,
+  }, {specIndex, learned:savedLearning});
+  assert.deepEqual(result.matches.map(question=>question.question_id),['equation']);
+  assert.deepEqual(filterQuestions([equation], {
+    textbookFocus:[], learnedNamespace:'textbook', testTopicSelectionOnly:true,
+  }, {specIndex, learned:savedLearning}).matches,[],'an empty test topic list must not mean all topics');
+  assert.deepEqual([...savedLearning],[],'test-only choices never become saved progress');
+});
+
 test('official and textbook learned modes are independent and preserve legacy official coverage', () => {
   assert.deepEqual(missingSpecPoints(equation,new Set([circle]),specIndex), []);
   assert.deepEqual(missingSpecPoints(equation,new Set([circle]),specIndex,{namespace:'textbook'}), [circle]);

@@ -263,6 +263,18 @@ point learned. Covered-content filtering must respect the chosen namespace and
 all prerequisites. Keep historical official coverage accessible. Guests should
 select practice topics freely without being pushed into a save/edit-learned flow.
 
+In the timed-test builder, keep the topic checklist separate from both saved
+mastery and individual-practice focus. Start with the currently selected
+numbering system's learned points checked, expand the checklist by default,
+and let students close/reopen it. Students may add or remove topics for this
+test only; explicitly selected topics count as covered only during this test
+run. Other unlearned crossover requirements stay locked unless they are also
+selected. Never save test-only choices into either learned list. An empty list
+means no test topics, never all topics. Preserve separate official/textbook
+test selections when students switch numbering systems, and retain them across
+mode changes and reloads. Guests start with an empty checklist and can choose
+their test topics freely.
+
 Apply that same organisation to every covered-learning entry point, including
 the add-subject setup popup and the subject page. The setup popup stages textbook
 and official selections independently until Save; switching namespace/year must
