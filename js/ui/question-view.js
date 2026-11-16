@@ -45,11 +45,13 @@ export function questionBody(question, { contextOpen = false } = {}) {
 function resources(question) {
   const context = question.context || {};
   const stem = context.stem_image_url && isSafeUrl(context.stem_image_url) ? context.stem_image_url : null;
+  // Only tools/parts/refine.py output (part_display "refined") tailors the stem to the part;
+  // any other stem is the question's whole shared introduction (e.g. Geography fieldwork).
   const figures = (Array.isArray(context.figures) ? context.figures : []).filter((figure) => figure && isSafeUrl(figure.image_url));
   if (!stem && !figures.length) return '';
   return html`<section class="stack question-resources" aria-label="Resources for this question (unscored)" data-question-resources="${question.question_id}">
     <p class="small muted">Resources for this question. Unscored context: they carry no marks of their own.</p>
-    ${stem ? html`<figure class="qcontent"><figcaption class="small">${question.part_label ? `Question ${question.question_number}: introduction and earlier material this part uses` : `Question ${question.question_number} (shared introduction)`}</figcaption>${image(stem, `Introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
+    ${stem ? html`<figure class="qcontent"><figcaption class="small">${question.provenance?.part_display === 'refined' ? `Question ${question.question_number}: introduction and earlier material this part uses` : `Question ${question.question_number} (shared introduction)`}</figcaption>${image(stem, `Introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
     ${figures.map((figure) => html`<figure class="qcontent"><figcaption class="small">${figure.label} · ${figure.source === 'insert' ? 'from the insert' : 'printed earlier in the question paper'}</figcaption>${image(figure.image_url, `${figure.label}, unscored resource`)}</figure>`)}
   </section>`;
 }
