@@ -48,7 +48,11 @@ export async function mount(element, context) {
   // Leaving returns to the page the student came from (the paper, practice, the dashboard…),
   // falling back to the paper or practice when the runner was opened directly.
   const fallbackRoute = routeOf(
-    session.kind === 'full_paper' && bundle.papersById.has(session.paper_id) ? links.paper(subject.subject_id, session.paper_id) : links.practice({ subject: subject.subject_id }),
+    session.kind === 'full_paper' && bundle.papersById.has(session.paper_id)
+      ? links.paper(subject.subject_id, session.paper_id)
+      : bundle.papersById.has(session.source_paper_id)
+        ? links.paper(subject.subject_id, session.source_paper_id)
+        : links.practice({ subject: subject.subject_id }),
   );
   const exitRoute = context.backTarget(fallbackRoute);
   const exitHref = `#${exitRoute}`;
@@ -715,6 +719,7 @@ export async function mount(element, context) {
       mark_mode: session.mark_mode,
       total_marks: session.total_marks,
     });
+    retry.source_paper_id = session.source_paper_id || (session.kind === 'full_paper' ? session.paper_id : null);
     await api.saveSession(retry, { silent: true });
     context.navigate(routeOf(links.session(retry.session_id)), { replace: true });
   });

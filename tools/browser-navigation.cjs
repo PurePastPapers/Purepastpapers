@@ -34,6 +34,19 @@ const BASE = process.env.AUDIT_URL || 'http://localhost:5173';
   const paperHash = hash();
   assert.match(paperHash, /^#\/paper\//);
 
+  // 0. "Practise" on one question opens the paper's questions as a set, on that question.
+  await page.locator('[data-open]').nth(2).click();
+  await settle();
+  assert(await page.locator('.palette__item').count() > 1, 'number row lists the paper questions');
+  assert.equal((await page.locator('.palette__item.is-current').innerText()).trim(), '3');
+  await page.locator('.palette__item').nth(4).click();
+  await settle();
+  assert.match(await page.locator('.qview__num').innerText(), /^Question 5/);
+  await page.locator('.runner__bar [data-exit]').click();
+  await settle();
+  assert.equal(hash(), paperHash, 'exit from practice returns to the paper');
+  assert.equal(await page.locator('[data-discard-open]').count(), 0, 'practising does not create a paper attempt');
+
   // 1. Save and exit returns to the paper, and browser Back then reaches the list, not the runner.
   await page.locator('[data-start="timed"]').click();
   await settle();

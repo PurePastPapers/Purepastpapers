@@ -213,7 +213,24 @@ export async function mount(element, context) {
   });
 
   on(element, 'click', '[data-start]', (event, button) => start(button.dataset.start === 'timed'));
-  on(element, 'click', '[data-open]', (event, button) => startSingle(bundle.questionsById.get(button.dataset.open), context.navigate));
+  // Practising one question opens the whole paper as a mark-as-you-go set, starting on that
+  // question, so the number row and Next move straight on without returning here.
+  on(element, 'click', '[data-open]', async (event, button) => {
+    const question = bundle.questionsById.get(button.dataset.open);
+    if (questions.length < 2) return startSingle(question, context.navigate);
+    const session = createSession({
+      kind: 'question_set',
+      subject_id: subject.subject_id,
+      title: `${paper.title}: questions`,
+      question_ids: questions.map((item) => item.question_id),
+      paper_type: 'user_custom_test',
+      mark_mode: 'each',
+    });
+    session.current_index = Math.max(0, questions.indexOf(question));
+    session.source_paper_id = paper.paper_id; // where "Save and exit" falls back to
+    await api.saveSession(session, { silent: true });
+    context.navigate(routeOf(links.session(session.session_id)));
+  });
 
   on(element, 'click', '[data-log]', async () => {
     const entry = await openModal({
