@@ -105,7 +105,40 @@ python3 tools/geography/fetch.py $R/records.json --dest $R/sources
 python3 tools/geography/inventory.py $R/records.json --sources $R/sources
 ```
 
+## Checkpoint 3: extraction, figures and schemes (16 November 2026)
+
+**Status: no Geography questions are published yet.** Candidates are in
+`../geography-research/candidates/` (not committed; reproducible).
+
+- `tools/geography/extract.py` (layout v2): one scored unit per AQA part label
+  ("0 1 . 2", also printed "0 1 2"), ending at its "[n marks]" tariff. **All 26
+  booklets reconcile to their cover maximum with 0 exceptions: 635 units.**
+  - Choice groups come from the cover ("Answer either Question 2 or Question 3 or
+    Question 4"); every option in a group carries the same total.
+  - AS multiple choice: the A to D options are printed after "[1 mark]" (sometimes as
+    flow-chart rows with the letter mid-option). They are kept with the part; all 72
+    one-mark AS units have exactly four options.
+  - A question-level label without a tariff (AS Paper 2 fieldwork scenarios, "0 3 A
+    group of students...") is a **shared stem**: unscored context for every part.
+  - Figures printed inline are indexed by heading. A part's own crop keeps only its own
+    lines; figure rows it does not cite are dropped (AQA often prints a part's figure
+    after its tariff, above the next part).
+- `tools/geography/figures.py` indexes insert figures (rotated landscape pages are
+  read with PDFium). `tools/geography/resolve.py` resolves every citation: 134 in the
+  unit's own crop, 64 in a shared stem, 166 in the insert, 55 printed elsewhere in the
+  paper, 0 unresolved.
+- **Excluded: 35 units** whose cited figure (or own text) AQA removed for third-party
+  copyright. No modified insert restores a removed figure (the one non-CR modified
+  insert is an OS map key). They are recorded, not published.
+- `tools/geography/schemes.py` finds each unit's scheme from its label row to the next
+  (labels matched strictly in paper order, including one stacked label in AS Nov 2020
+  Paper 2). All 26 schemes index all units; levels grids are included with their part.
+- `tools/geography/reviews.py prepare` writes review packets (unit text, route, figures,
+  official scheme excerpt); `compile` enforces route-scoped primary tags (an option's
+  questions can only be tagged to that option plus skills 3.4.x; AS units only to
+  AS-shared content or AS3.4).
+
 ## Next action
 
-Checkpoint 3: `tools/geography/extract.py` (AQA "0 1 . 1" part labels, cover choice
-groups, insert figure index), then scheme indexing.
+Model review of 600 publishable units in four batches (A-level Paper 1, A-level Paper
+2, AS Paper 1, AS Paper 2), then lead review of flagged lines, then the build.
