@@ -182,9 +182,15 @@ Notes:
 - Browser (local server, isolated profiles): `tools/browser-biology-bank.cjs` PASS.
   Maths, Physics, textbooks, topic choice, coverage dialog, regression and parts
   suites also pass.
-- Production: see the latest commit's deploy check in the final report. The
-  purepastpapers.com HTTPS hostname issue from the Maths handover is unchanged and
-  not verified fixed.
+- Production: GitHub Pages run 40 ("pages build and deployment") completed with
+  success for `3344625`, the commit carrying all Biology packs and catalogues.
+- A live file comparison was **not** possible from the authoring environment: its
+  network policy blocks purepastpapers.com (HTTP 403 from the outbound proxy). So
+  there is no production browser test yet. Next agent: fetch the live
+  `data/imports/biology/coverage.json` and one catalogue, and compare their SHA256
+  with the repository.
+- The purepastpapers.com HTTPS hostname issue from the Maths handover is unchanged
+  and not verified fixed.
 
 ## Next actions
 
