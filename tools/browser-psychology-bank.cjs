@@ -33,12 +33,6 @@ const units = packs.flatMap(p => p.questions);
     };
     assert.equal(await count(), units.length, 'all units discoverable, demos hidden');
 
-    // Qualification filter: AS 7181 only.
-    await page.locator('[data-multi="qualifications"][data-value="7181"]').click();
-    assert.equal(await count(), units.filter(q => q.is_as).length, 'AS filter');
-    await page.locator('[data-multi="qualifications"][data-value="7181"]').click();
-    assert.equal(await count(), units.length);
-
     async function loaded(selector) {
       const image = page.locator(selector).first();
       await image.scrollIntoViewIfNeeded();
@@ -77,7 +71,7 @@ const units = packs.flatMap(p => p.questions);
     assert.match(await page.locator('.paper-qs__count').textContent(), new RegExp(`${sample.question_ids.length} questions`));
     assert.equal(await page.getByText('Demo content', {exact: true}).count(), 0);
     assert.deepEqual(errors, []);
-    console.log(`${packs.length} Psychology booklets / ${units.length} units; AS filter; source+scheme pixels; paper page; 4 widths: PASS`);
+    console.log(`${packs.length} Psychology booklets / ${units.length} units; source+scheme pixels; paper page; 4 widths: PASS`);
   } finally {
     await browser.close();
   }

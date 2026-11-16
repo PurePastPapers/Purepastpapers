@@ -28,7 +28,7 @@ complete while public booklets are still queued.
 
 ## Checkpoint 1: specification, inventory, extraction (16 November 2026)
 
-**Status: no Psychology questions are published yet.** The 8 existing Psychology rows
+**Status (Checkpoint 1): no Psychology questions were published yet.** The 8 existing Psychology rows
 are hidden demo records, now tagged to official leaves.
 
 ### Specification
@@ -159,4 +159,4 @@ python3 tools/psychology/finalize.py --research $R [--activate]
 
 ## Next action
 
-Activate (`finalize.py --activate`, its own commit), browser check, push, verify live.
+Activated 16 November 2026 (own commit). Browser check `tools/browser-psychology-bank.cjs` passes (653 units, source and scheme pixels, paper page, 4 widths). The Geography browser script still clicks the qualification chips the compact filter bar removed (Maths only now); the Psychology script does not use them.
