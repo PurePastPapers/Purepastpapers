@@ -82,3 +82,79 @@ python3 tools/politics/build_spec.py ../politics-research/spec.pdf   # AQA-7152-
   publish those four questions (the source is incomplete); record them as excluded.
 - `schemes.py`: a question's scheme is its section's "Levels of response" grid plus
   its own "Indicative content" block, both source pixels. All 20 schemes index.
+
+## Checkpoint 3 — reviewed, built and verified; awaiting AQA rights (16 November 2026)
+
+**Status: all 20 public booklets are built and checked, but not live.** The packs
+are in `data/packs/politics/` and are deliberately **not** in
+`data/packs/index.json`, and no source-pixel catalogue (`data/politics-assets/`) is
+committed. Coverage status is `built_awaiting_rights_confirmation`.
+
+| | Booklets | Questions printed | Published units | Excluded |
+| --- | --- | --- | --- | --- |
+| Exams, Paper 1 | 5 | 30 | 30 | 0 |
+| Exams, Paper 2 | 6 | 36 | 34 | 2 |
+| Exams, Paper 3 | 6 | 54 | 54 | 0 |
+| Official samples | 3 | 21 | 19 | 2 |
+| **Total** | **20** | **141** | **137** | **4** |
+
+- **Excluded:** Q4 (25 marks) of June 2022 Paper 2, June 2023 Paper 2, sample
+  Paper 2 and sample Paper 3. AQA removed third-party extracts from the public
+  papers, so the questions are incomplete. Each paper lists them under
+  `excluded_questions`, and `coverage.json` records them. The sample Paper 1 file
+  is named "-CR" but prints its extract in full, so its Q4 is published.
+- **Choice groups:** each paper records `choice_groups` (Section C: Q5/Q6 on
+  Papers 1–2; Q5–Q9 on Paper 3). `js/data/schema.js` now counts one question per
+  choice group when it checks a paper's total, so full booklets reconcile to 77
+  and only the four booklets with an excluded Q4 fall short (by 25).
+- **Model review** (`reviewer_type: model`, never teacher review). Each question is
+  tagged to official sections (primary) plus related sections (crossover), with a
+  summary and difficulty basis. Difficulty: easy 12, medium 41, hard 84. Easy
+  means a 9-mark question on a list the specification names; medium is any other
+  9-mark question; hard is every 25-mark essay or extract question and the Paper 2
+  comparative-theory 9-markers. No official question is labelled Extra hard.
+  Every section has a primary question except 3.2.1.8 (US civil rights), which
+  appears only as a crossover. Review sheets are compiled by `tools/politics/reviews.py`
+  (`Q | sections ; prerequisites | e/m/h | summary | basis`); the compiled reviews
+  are public in `data/imports/politics/reviews/`.
+- **Images** are source pixels: the question crop, and a scheme crop that is the
+  section's levels-of-response grid followed by the question's indicative content.
+  `extract.py` v2 drops the "…Government and Politics." rubric tail that had been
+  joining the first Section C crop.
+- **Checks:** `tests/politics-bank.test.mjs` (5 tests; 87 in the suite pass),
+  `npm run validate` 0 errors. `tools/browser-politics-bank.cjs` passed against a
+  temporary local activation: 137 units in the bank, question and scheme crops
+  load, a paper page lists all 9 questions, no overflow at 320–1440 px, no console
+  errors. The activation was then reverted.
+
+### To go live (only once the owner confirms AQA permission)
+
+```sh
+R=../politics-research
+python3 tools/politics/finalize.py --research $R --activate   # index + crop catalogues
+npm test && npm run validate
+npm start & node tools/browser-politics-bank.cjs
+```
+
+Commit `data/packs/index.json`, `data/politics-assets/`, `data/imports/politics/`.
+
+### Reproduce the build
+
+```sh
+R=../politics-research   # sources/, candidates/, review-src/, reviews/
+for inv in 7152-inventory 7152-samples-inventory; do
+  python3 tools/politics/extract.py data/imports/politics/inventory/$inv.json --sources $R/sources --output $R/candidates
+done
+python3 tools/politics/reviews.py $R
+for inv in 7152-inventory 7152-samples-inventory; do
+  python3 tools/politics/build.py data/imports/politics/inventory/$inv.json --sources $R/sources --candidates $R/candidates --reviews $R/reviews
+done
+python3 tools/politics/finalize.py --research $R
+```
+
+### Still open
+
+- Owner decision on AQA rights (packs stay hidden until then).
+- June 2025 Paper 1 question paper: add when AQA lists it publicly.
+- June 2026 papers: add when AQA publishes them.
+- Textbook organisation: none supplied, so the official specification is used.

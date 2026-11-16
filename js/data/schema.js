@@ -106,6 +106,11 @@ export function validatePaper(paper, { questionsById, subjectId }) {
     if (!question) error(`question_ids lists "${questionId}", which does not exist.`);
     else marks += question.marks;
   }
+  // Optional questions ("answer one of"): the paper total counts one question per choice group.
+  for (const group of Array.isArray(paper.choice_groups) ? paper.choice_groups : []) {
+    const members = group.map((id) => questionsById.get(id)).filter(Boolean);
+    if (members.length > 1) marks -= members.reduce((total, question) => total + question.marks, 0) - Math.max(...members.map((question) => question.marks));
+  }
   if (ids.length && marks !== paper.total_marks) {
     warning(`question marks add up to ${marks}, but total_marks is ${paper.total_marks} (fine while a paper is only partly extracted).`);
   }

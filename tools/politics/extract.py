@@ -19,9 +19,9 @@ import json
 import re
 from pathlib import Path
 
-VERSION = 'aqa-7152-layout-v1'
+VERSION = 'aqa-7152-layout-v2'
 TARIFF = re.compile(r'\[(\d{1,2}) marks?\]')
-RUBRIC = re.compile(r'^(Section [A-D]\b|Answer (all|questions?|either|one|the question)|Either$|or$|In your answer you should draw on|from across the whole range|study in Politics\.?$)', re.I)
+RUBRIC = re.compile(r'^(Section [A-D]\b|Answer (all|questions?|either|one|the question)|Either$|or$|In your answer you should draw on|from across the whole range|study in Politics\.?$|(Government and )?Politics\.$)', re.I)
 FOOTER = re.compile(r'^(IB/[A-Z]/|Turn over|_{10,}|END OF QUESTIONS|\d{1,2}$|\*\s*\*$|[0-9a-z]*7152/\d$)')
 REMOVED = re.compile(r'not reproduced here|copyright restrictions|has been removed', re.I)
 
