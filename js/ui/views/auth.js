@@ -5,11 +5,12 @@ import { $, html, setHtml } from '../../core/dom.js';
 import * as api from '../../data/api.js';
 import { getSubjects } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
+import { links } from '../../core/links.js';
 
 export async function mount(element, context) {
   const signup = context.options.mode === 'signup';
   const next = context.query.next?.startsWith('/') ? context.query.next : null;
-  const other = `#/${signup ? 'login' : 'signup'}${next ? `?next=${encodeURIComponent(next)}` : ''}`;
+  const other = signup ? links.login(next) : links.signup(next);
   context.setTitle(signup ? 'Create an account' : 'Log in');
   const subjects = signup ? await getSubjects() : [];
   const names = [...new Set(subjects.map((subject) => subject.subject.replace(/\s*\(.*\)$/, '')))];

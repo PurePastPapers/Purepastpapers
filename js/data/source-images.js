@@ -1,5 +1,7 @@
 // Source crops are grouped by booklet for lazy static hosting. Nothing is
 // transcribed or recompressed: each asset retains its original lossless bytes.
+// Catalogue crops are not lazy-loaded: their bytes are already in memory once the
+// booklet catalogue arrives, and a lazy image with no intrinsic size can stay blank.
 // A crop path names its subject slug: assets/<slug>/<PAPER>/<NAME>.webp is served
 // from the catalogue data/<slug>-assets/<PAPER>.json (e.g. maths, biology).
 import { html, isSafeUrl } from '../core/dom.js';
@@ -8,7 +10,7 @@ const bundles = new Map();
 const urls = new Map();
 export function sourceImage(url, alt) {
   if (!url || !isSafeUrl(url)) return '';
-  return html`<a href="${url}" target="_blank" rel="noopener" aria-label="Open ${alt} image at its original size">${PATH.test(url) ? html`<img data-math-image="${url}" alt="${alt}" loading="lazy" />` : html`<img src="${url}" alt="${alt}" loading="lazy" />`}</a>`;
+  return html`<a href="${url}" target="_blank" rel="noopener" aria-label="Open ${alt} image at its original size">${PATH.test(url) ? html`<img data-math-image="${url}" alt="${alt}" />` : html`<img src="${url}" alt="${alt}" loading="lazy" />`}</a>`;
 }
 async function resolve(path) {
   if (urls.has(path)) return urls.get(path);
@@ -16,11 +18,19 @@ async function resolve(path) {
   if (!match) throw new Error('Invalid source-image reference');
   const [, slug, paper, name] = match;
   const key = `${slug}/${paper}`;
-  if (!bundles.has(key)) bundles.set(key, fetch(`data/${slug}-assets/${paper}.json`).then(async response => {
+  if (!bundles.has(key)) bundles.set(key, fetch(`data/${slug}-assets/${paper}.json`, {cache: 'no-cache'}).then(async response => {
     if (!response.ok) throw new Error('Source image bundle is unavailable');
     return response.json();
   }).catch(error => { bundles.delete(key); throw error; }));
-  const bundle = await bundles.get(key);
+  let bundle = await bundles.get(key);
+  if (!bundle.assets[name]) {
+    // A page left open across a deploy can hold the previous catalogue: fetch it afresh once.
+    bundles.set(key, fetch(`data/${slug}-assets/${paper}.json`, {cache: 'reload'}).then(response => {
+      if (!response.ok) throw new Error('Source image bundle is unavailable');
+      return response.json();
+    }).catch(error => { bundles.delete(key); throw error; }));
+    bundle = await bundles.get(key);
+  }
   const asset = bundle.assets[name];
   if (!asset || !asset.base64) throw new Error('Source image is unavailable');
   const bytes = Uint8Array.from(atob(asset.base64), char => char.charCodeAt(0));

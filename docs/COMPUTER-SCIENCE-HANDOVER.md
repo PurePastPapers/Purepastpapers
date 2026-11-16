@@ -183,6 +183,12 @@ samples). No part was excluded.
 
 ### Checks (local)
 
+After merging `main` (16 November 2026, 14 new commits incl. a practice layout redesign
+and Psychology): the `js/ui/question-view.js` conflict was resolved keeping `main`'s new
+introduction wording and whole-question scheme option plus this run's `intros` and
+parent-part note; migrations regenerated identically. `npm test` on the merged tree:
+124 of 131 pass; the 7 failures are identical on a clean `origin/main` (see Still open).
+
 - `npm test`: 112 pass (new: `tests/cs-spec.test.mjs` 3, `tests/cs-bank.test.mjs` 5);
   `npm run validate`: 0 errors.
 - 2,399 image references checked non-empty (one deliberately thin one-line scheme row).
@@ -223,6 +229,14 @@ The review line sheets are the only hand-made input; the compiled reviews are pu
 ### Still open
 
 - **Owner decision: OCR rights.** Nothing OCR is live until confirmed.
+- **Regression on `main` (not from this run):** commit `c353026` ("Seed test builder from
+  learned topics") was made from a stale base and reverted the generic qualification
+  filter (`subject.qualifications`, now Maths-only at `js/ui/views/practice.js`), the
+  per-unit content-year filter (`content_year_source`), the shared link builder and the
+  Enlarge import. `main`'s own suite fails the same 7 tests with and without this merge,
+  and `tools/browser-geography-bank.cjs` / `tools/browser-cs-bank.cjs` time out on the
+  missing AS chip. Fixing it means re-applying those features around `c353026`'s new test
+  builder: queued as a separate task.
 - June 2026 papers: add when OCR lists them.
 - GCSE J277 (`OCR_GCSE_CS_J277`): a separate later run.
 - Textbook organisation: none supplied.

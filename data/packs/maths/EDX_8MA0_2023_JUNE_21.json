@@ -71,12 +71,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "1",
+      "scheme_scope": "part",
+      "scheme_question_number": "1(a)(b)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_full.webp"
+        "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_full.webp",
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -103,18 +105,9 @@
             "page": 2,
             "bbox": [
               0.038345,
-              0.042289,
+              0.439006,
               0.961655,
-              0.4801862487939345
-            ]
-          },
-          {
-            "page": 2,
-            "bbox": [
-              0.038345,
-              0.4801862487939345,
-              0.961655,
-              0.5224527951229881
+              0.522453
             ]
           }
         ],
@@ -129,7 +122,59 @@
         "original_tariff_indices": [
           0,
           1
-        ]
+        ],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.431597
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.04731,
+              0.958006,
+              0.167465
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.167465,
+              0.958006,
+              0.277499
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.524934,
+              0.958006,
+              0.699577
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.699577,
+              0.958006,
+              0.889908
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)–(b)"
     },
@@ -166,13 +211,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "1",
+      "scheme_scope": "part",
+      "scheme_question_number": "1(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_8MA0_2023_JUNE_21/Q01_U02_context.webp\" alt=\"Shared source stem for question 1\" />"
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q01_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -199,9 +245,9 @@
             "page": 2,
             "bbox": [
               0.038345,
-              0.5224527951229881,
+              0.576903,
               0.961655,
-              0.6336678971224695
+              0.633668
             ]
           }
         ],
@@ -214,7 +260,73 @@
         "qualification_code": "8MA0",
         "original_tariff_indices": [
           2
-        ]
+        ],
+        "part_display": "refined",
+        "context_bridge_text": "Later it was discovered that the scales used to weigh the plums were broken. Each plum actually weighs 5 grams less than originally thought.",
+        "context_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.431597
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.038345,
+              0.439006,
+              0.961655,
+              0.476848
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.038345,
+              0.481272,
+              0.961655,
+              0.573591
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result",
+          "names an earlier part",
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.04731,
+              0.958006,
+              0.06622
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.277499,
+              0.958006,
+              0.524934
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.889908,
+              0.958006,
+              0.929304
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
@@ -251,12 +363,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_full.webp"
+        "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_full.webp",
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -283,7 +397,7 @@
             "page": 4,
             "bbox": [
               0.038345,
-              0.042289,
+              0.512664,
               0.961655,
               0.553844
             ]
@@ -298,7 +412,41 @@
         "qualification_code": "8MA0",
         "original_tariff_indices": [
           0
-        ]
+        ],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.04731,
+              0.958006,
+              0.116581
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.386251,
+              0.958006,
+              0.42939
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -335,13 +483,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U02_context.webp\" alt=\"Shared source stem for question 2\" />"
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -368,9 +517,9 @@
             "page": 5,
             "bbox": [
               0.038345,
-              0.042289,
+              0.123182,
               0.961655,
-              0.17994698319465194
+              0.179947
             ]
           }
         ],
@@ -383,7 +532,50 @@
         "qualification_code": "8MA0",
         "original_tariff_indices": [
           1
-        ]
+        ],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.04731,
+              0.958006,
+              0.06622
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.116581,
+              0.958006,
+              0.187514
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.42939,
+              0.958006,
+              0.474857
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -420,13 +612,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U03_context.webp\" alt=\"Shared source stem for question 2\" />"
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -453,9 +646,9 @@
             "page": 5,
             "bbox": [
               0.038345,
-              0.17994698319465194,
+              0.181033,
               0.961655,
-              0.2377980665113851
+              0.237798
             ]
           }
         ],
@@ -468,7 +661,61 @@
         "qualification_code": "8MA0",
         "original_tariff_indices": [
           2
-        ]
+        ],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.038345,
+              0.123182,
+              0.961655,
+              0.177721
+            ]
+          }
+        ],
+        "context_reasons": [
+          "figure 2"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.04731,
+              0.958006,
+              0.06622
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.187514,
+              0.958006,
+              0.260775
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.474857,
+              0.958006,
+              0.542893
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
@@ -506,13 +753,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U04.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U04_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(d)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U04_context.webp\" alt=\"Shared source stem for question 2\" />"
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_U04_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -539,9 +787,9 @@
             "page": 5,
             "bbox": [
               0.038345,
-              0.2377980665113851,
+              0.238884,
               0.961655,
-              0.31123368681579777
+              0.311234
             ]
           }
         ],
@@ -554,7 +802,50 @@
         "qualification_code": "8MA0",
         "original_tariff_indices": [
           3
-        ]
+        ],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.04731,
+              0.958006,
+              0.06622
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.260775,
+              0.958006,
+              0.386251
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041994,
+              0.542893,
+              0.958006,
+              0.611032
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(d)"
     },
@@ -765,12 +1056,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "5",
+      "scheme_scope": "part",
+      "scheme_question_number": "5(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_full.webp"
+        "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_full.webp",
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -806,9 +1099,9 @@
             "page": 10,
             "bbox": [
               0.038345,
-              0.042289,
+              0.176987,
               0.961655,
-              0.21816715873770132
+              0.218167
             ]
           }
         ],
@@ -821,7 +1114,41 @@
         "qualification_code": "8MA0",
         "original_tariff_indices": [
           0
-        ]
+        ],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.173675
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041994,
+              0.068691,
+              0.958006,
+              0.336365
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041994,
+              0.634635,
+              0.958006,
+              0.815364
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -858,13 +1185,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "5",
+      "scheme_scope": "part",
+      "scheme_question_number": "5(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_8MA0_2023_JUNE_21/Q05_U02_context.webp\" alt=\"Shared source stem for question 5\" />"
+        "stem_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_2023_JUNE_21/Q05_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -900,9 +1228,9 @@
             "page": 10,
             "bbox": [
               0.038345,
-              0.21816715873770132,
+              0.273071,
               0.961655,
-              0.31425177195651366
+              0.314252
             ]
           }
         ],
@@ -915,7 +1243,62 @@
         "qualification_code": "8MA0",
         "original_tariff_indices": [
           1
-        ]
+        ],
+        "part_display": "refined",
+        "context_bridge_text": "Yuki selects 10 letters at random, one at a time with replacement, from the word D E V I A T I O N",
+        "context_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.173675
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.038345,
+              0.219253,
+              0.961655,
+              0.269759
+            ]
+          }
+        ],
+        "context_reasons": [
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041994,
+              0.336365,
+              0.958006,
+              0.634243
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041994,
+              0.815364,
+              0.958006,
+              0.894242
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041994,
+              0.023755,
+              0.958006,
+              0.920693
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     }

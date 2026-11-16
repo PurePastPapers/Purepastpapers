@@ -1,5 +1,7 @@
 # Physics 9PH0 / 8PH0 question bank: handover
 
+> **Part display (2026-11-16):** the packs have since been post-processed by `tools/parts/refine.py`. Each part shows its own crop, only the context it needs and its own mark-scheme rows, and parts that build on an earlier answer are gated. The "preceding context" and full-question-scheme descriptions below describe the subject build only. After rebuilding this subject, re-run the refiner (see [PART-DISPLAY.md](PART-DISPLAY.md)).
+
 Live working notes for the Edexcel A level Physics import (`EDX_ALEVEL_PHYS_9PH0`).
 Read this first, then `docs/MATHS-HANDOVER.md` for the reference pipeline. Each
 checkpoint below says exactly what is done and what remains. Nothing is called

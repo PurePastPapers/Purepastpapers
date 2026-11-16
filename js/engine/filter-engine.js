@@ -1,9 +1,10 @@
 // Advanced Topic & Crossover Filtering Engine (PRD 4.1) plus difficulty, marks,
 // status and source filters (PRD 4.2, 4.4). Pure functions — no DOM, no storage.
 //
-// THE RULE: a question is only offered when every one of its primary_spec_points AND
-// every one of its crossover_spec_points is in the student's learned list. A topic-level
-// tag counts as learned only when all of that topic's spec points are learned.
+// Ordinary practice only offers a question when every one of its primary_spec_points AND
+// every one of its crossover_spec_points is in the student's learned list. The timed-test
+// builder may temporarily add topics explicitly selected for that test. A topic-level tag
+// counts as learned only when all of that topic's spec points are learned.
 
 import { RAG } from '../config/app.config.js';
 import { hasValidMark } from './analytics.js';
@@ -136,6 +137,9 @@ function sortMatches(matches, sortBy, specIndex, papersById, shuffleSeed) {
  *   sourceTypes   Iterable<string>   allowed source_type values (null = any)
  *   poolOnly      boolean            respect include_in_custom_pool (default true)
  *   learnedOnly   boolean            apply the learned-topics rule (default true)
+ *   testTopicSelectionOnly boolean   let selected test topics count as learned for this
+ *                                    test run only; unsaved/unselected crossover needs
+ *                                    remain locked.
  *   focus         Iterable<string>   topic / spec point ids to practise: a question matches
  *                                    when one of its PRIMARY spec points is in the focus
  *   focusMode     'any' | 'all'       require any or every expanded selected leaf (default any)
@@ -175,6 +179,10 @@ export function filterQuestions(questions, criteria = {}, context) {
   const series = nonEmpty(toSet(criteria.series));
   const tiers = nonEmpty(toSet(criteria.tiers));
   const focus = criteria.focus == null ? null : specIndex.expand(criteria.focus);
+  const testSelection = criteria.testTopicSelectionOnly
+    ? (criteria.learnedNamespace === 'textbook' ? toSet(criteria.textbookFocus) : focus)
+    : null;
+  const learnedForQuestion = testSelection ? new Set([...learned, ...testSelection]) : learned;
   const curriculumPoints = criteria.curriculumPoints == null ? null : specIndex.expand(criteria.curriculumPoints);
   const range = criteria.specRange == null ? null : specIndex.range(
     criteria.specRange.subjectId, criteria.specRange.fromId, criteria.specRange.toId,
@@ -234,7 +242,7 @@ export function filterQuestions(questions, criteria = {}, context) {
       if (!search.split(/\s+/).every(term => haystack.includes(term))) continue;
     }
     if (learnedOnly) {
-      const missing = missingSpecPoints(question, learned, specIndex, {namespace: criteria.learnedNamespace});
+      const missing = missingSpecPoints(question, learnedForQuestion, specIndex, {namespace: criteria.learnedNamespace});
       if (missing.length) {
         locked.push({ question, missing });
         continue;

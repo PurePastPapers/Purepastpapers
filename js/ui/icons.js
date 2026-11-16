@@ -3,6 +3,7 @@
 import { raw } from '../core/dom.js';
 
 const PATHS = {
+  expand: '<path d="M14 4h6v6"/><path d="M20 4l-7 7"/><path d="M10 20H4v-6"/><path d="M4 20l7-7"/>',
   home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
   cap: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c2 2.2 10 2.2 12 0v-4.5"/><path d="M22 9v6"/>',
   file: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/>',

@@ -7,9 +7,11 @@
 
 import { isEnabled } from '../../config/phases.js';
 import { $, $$, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
+import { backLabel, links, routeOf } from '../../core/links.js';
 import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, plural, sum } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
+import { zoomButton } from '../zoom.js';
 import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { targetGrade } from '../subject-colours.js';
@@ -28,7 +30,7 @@ export async function mount(element, context) {
         iconName: 'clock',
         title: 'This session is no longer available',
         text: 'It may have been discarded, or it belongs to a different account.',
-        action: html`<a class="btn btn--primary" href="#/">Back to the dashboard</a>`,
+        action: html`<a class="btn btn--primary" href="${links.home()}">Go to the home page</a>`,
       }),
     );
     return undefined;
@@ -44,10 +46,18 @@ export async function mount(element, context) {
   context.setTitle(session.title);
   element.classList.add('view--runner');
 
-  const backHref =
+  // Leaving returns to the page the student came from (the paper, practice, the dashboard…),
+  // falling back to the paper or practice when the runner was opened directly.
+  const fallbackRoute = routeOf(
     session.kind === 'full_paper' && bundle.papersById.has(session.paper_id)
-      ? `#/paper/${subject.subject_id}/${encodeURIComponent(session.paper_id)}`
-      : `#/practice?subject=${subject.subject_id}`;
+      ? links.paper(subject.subject_id, session.paper_id)
+      : bundle.papersById.has(session.source_paper_id)
+        ? links.paper(subject.subject_id, session.source_paper_id)
+        : links.practice({ subject: subject.subject_id }),
+  );
+  const exitRoute = context.backTarget(fallbackRoute);
+  const exitHref = `#${exitRoute}`;
+  const leave = () => context.back(fallbackRoute);
   let removed = false; // set once the session has been deleted, so a late save cannot bring it back
   const persist = debounce(() => {
     if (!removed) api.saveSession(session, { silent: true });
@@ -90,7 +100,7 @@ export async function mount(element, context) {
     const running = isRunning(session);
     const timed = session.timer.mode !== 'off';
     return html`<header class="card runner__bar">
-      <a class="btn btn--sm" href="${backHref}">${icon('chevronLeft', { size: 16 })} ${stage === 'run' ? 'Save and exit' : stage === 'result' && session.kind === 'full_paper' ? 'Back to the paper' : 'Back'}</a>
+      <a class="btn btn--sm" href="${exitHref}" data-exit>${icon('chevronLeft', { size: 16 })} ${stage === 'result' ? backLabel(exitRoute) : 'Save and exit'}</a>
       <div class="runner__title">
         <p class="h3">${session.title}</p>
         <p class="small muted">${subject.level} ${subject.subject} · ${KIND_LABELS[session.kind]}</p>
@@ -108,6 +118,12 @@ export async function mount(element, context) {
         : ''}
       ${stage === 'run' && !timed && !wholePaper
         ? html`<button type="button" class="btn btn--sm" data-stopwatch>${icon('stopwatch', { size: 16 })} Start stopwatch</button>`
+        : ''}
+      ${stage !== 'result'
+        ? html`<div class="row row--tight row--nowrap runner__attempt" role="group" aria-label="This attempt">
+            <button type="button" class="btn btn--sm btn--ghost" data-restart title="Clear everything and start this attempt again">${icon('refresh', { size: 15 })}<span class="runner__attempt-label">Restart</span></button>
+            <button type="button" class="btn btn--sm btn--ghost" data-abandon title="Leave without saving anything from this attempt">${icon('x', { size: 15 })}<span class="runner__attempt-label">Abandon</span></button>
+          </div>`
         : ''}
       ${stage === 'run' && !wholePaper
         ? html`<button type="button" class="btn btn--sm btn--primary" data-finish>${each ? 'Finish' : 'Finish and mark'}</button>`
@@ -203,7 +219,16 @@ export async function mount(element, context) {
         ${paused()
           ? pausedPanel()
           : html`<div class="runner__grid">
-        <article class="card ruled tilt-1 qview">
+        ${each && revealed
+          ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? index + 1 : question.question_number}">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <header class="qview__head">
+                <h1 class="qview__num" tabindex="-1">Mark scheme <span class="small muted qview__for">for question ${questions.length > 1 ? index + 1 : question.question_number}</span></h1>
+                <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('mark scheme')}</div>
+              </header>
+              <div data-zoom-body>${markSchemeBody(question)}</div>
+            </article>`
+          : html`<article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? index + 1 : question.question_number}">
           <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
             <h1 class="qview__num" tabindex="-1">
@@ -211,36 +236,40 @@ export async function mount(element, context) {
                 ? html`Question ${index + 1}<span class="muted"> of ${questions.length}</span>`
                 : html`Question ${question.question_number}`}
             </h1>
-            <div class="row row--tight">${marksPill(question.marks)} ${difficultyBadge(question.difficulty)} ${sourceBadge(question)}</div>
+            <div class="row row--tight">${marksPill(question.marks)} ${difficultyBadge(question.difficulty)} ${sourceBadge(question)} ${zoomButton('question')}</div>
           </header>
-          ${questionBody(question)}
-        </article>
+          <div data-zoom-body>${questionBody(question)}</div>
+        </article>`}
         <div class="stack">
-        <section class="card ruled tilt-3 answer-card">
+        <section class="card ruled tilt-3 answer-card" data-zoom-src="Your answer">
           <i class="tape tape--c" aria-hidden="true"></i>
           <label class="field">
-            <span class="card__title">Your answer</span>
+            <span class="card__title row row--between">Your answer ${zoomButton('answer box')}</span>
             <span class="hand">${api.isSignedIn() ? 'optional: type here, it saves as you go, or answer on paper' : 'optional: type here or answer on paper; guest answers are temporary'}</span>
             <textarea class="textarea" data-answer="${id}" placeholder="Type your working or essay here.">${session.answers[id] || ''}</textarea>
           </label>
         </section>
-        ${each
-          ? html`<section class="card stack">
-              ${revealed
-                ? html`<h2 class="card__title">Mark scheme</h2>
-                    ${markSchemeBody(question)} ${marksInput(question)} ${aiMarkingNote()}`
-                : html`<div class="row row--between">
-                    <div>
-                      <h2 class="card__title">Ready to mark?</h2>
-                      <p class="small muted">Compare your answer with the mark scheme and award yourself the marks.</p>
-                    </div>
-                    <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Show mark scheme</button>
-                  </div>`}
-            </section>`
+        ${each && revealed
+          ? html`<section class="card stack">${marksInput(question)} ${aiMarkingNote()}</section>`
           : ''}
         </div>
         </div>
-        <footer class="runner__nav">
+        ${each
+          ? html`<footer class="runner__nav runner__nav--pinned">
+              ${revealed
+                ? html`<button type="button" class="btn" data-unreveal="${id}">${icon('chevronLeft', { size: 16 })} Go back</button>
+                    <span class="spacer"></span>
+                    ${last
+                      ? html`<button type="button" class="btn btn--primary" data-finish>Finish</button>`
+                      : html`<button type="button" class="btn btn--primary" data-go="${index + 1}">Next question ${icon('chevronRight', { size: 16 })}</button>`}`
+                : html`<button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
+                      ${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag question'}
+                    </button>
+                    <span class="spacer"></span>
+                    ${questions.length > 1 && index > 0 ? html`<button type="button" class="btn" data-go="${index - 1}">${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
+                    <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Mark scheme</button>`}
+            </footer>`
+          : html`<footer class="runner__nav">
           <button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
             ${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag for review'}
           </button>
@@ -251,7 +280,7 @@ export async function mount(element, context) {
           ${last
             ? html`<button type="button" class="btn btn--primary" data-finish>${each ? 'Finish' : 'Finish and mark'}</button>`
             : html`<button type="button" class="btn btn--primary" data-go="${index + 1}">Next ${icon('chevronRight', { size: 16 })}</button>`}
-        </footer>`}
+        </footer>`}`}
       </div>`,
     );
     return undefined;
@@ -378,7 +407,7 @@ export async function mount(element, context) {
       element,
       html`<div class="runner">
         ${bar({ stage: 'result' })}
-        ${!api.isSignedIn() ? banner(html`Your results are temporary. <a href="#/signup?next=%2Fhub">Create a free account</a> to save and track your marks and progress in this browser.`) : ''}
+        ${!api.isSignedIn() ? banner(html`Your results are temporary. <a href="${links.signup('/hub')}">Create a free account</a> to save and track your marks and progress in this browser.`) : ''}
         <section class="card ruled result-hero">
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="result-hero__left">
@@ -404,8 +433,8 @@ export async function mount(element, context) {
             </div>
             ${meter(result.percentage, rag, `Score ${fmtPercent(result.percentage)}`)}
             <div class="row">
-              <a class="btn btn--primary" href="${backHref}">${session.kind === 'full_paper' ? 'Back to the paper' : 'More practice'}</a>
-              ${api.isSignedIn() ? html`<a class="btn" href="#/hub">Open the Data Hub</a>` : html`<a class="btn" href="#/signup?next=%2Fhub">Create a free account</a>`}
+              <a class="btn btn--primary" href="${exitHref}" data-exit>${backLabel(exitRoute)}</a>
+              ${api.isSignedIn() ? html`<a class="btn" href="${links.hub()}">Open the Data Hub</a>` : html`<a class="btn" href="${links.signup('/hub')}">Create a free account</a>`}
               ${questions.length ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} ${session.kind === 'full_paper' ? 'Sit it again' : 'Try these again'}</button>` : ''}
             </div>
             <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? 'Saved in this browser and added to your Data Hub.' : 'Temporary guest result; create an account to save it in this browser.'}</p>
@@ -510,7 +539,7 @@ export async function mount(element, context) {
         if (!leave) return;
         removed = true;
         await api.deleteSession(session.session_id);
-        location.hash = backHref;
+        leave();
         return;
       }
       const unmarked = questions.length - markedCount();
@@ -598,6 +627,11 @@ export async function mount(element, context) {
     persist();
     draw({ focus: false });
   });
+  on(element, 'click', '[data-unreveal]', (event, button) => {
+    session.revealed[button.dataset.unreveal] = false;
+    persist();
+    draw({ focus: false });
+  });
   on(element, 'click', '[data-reveal]', (event, button) => {
     session.revealed[button.dataset.reveal] = true;
     persist();
@@ -641,6 +675,56 @@ export async function mount(element, context) {
     return complete();
   });
 
+  // Exit links step back through history rather than adding a new entry, so the browser's
+  // Back button never reopens a session the student has just left.
+  on(element, 'click', '[data-exit]', (event) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    leave();
+  });
+
+  on(element, 'click', '[data-restart]', async () => {
+    const proceed = await confirmDialog({
+      title: 'Restart this attempt?',
+      message: 'Your typed answers, flags and marks in this attempt are cleared and the clock goes back to the start. Nothing from it is recorded.',
+      cancelLabel: 'Keep going',
+      confirmLabel: 'Restart',
+    });
+    if (!proceed) return;
+    Object.assign(session, {
+      answers: {},
+      flagged: {},
+      marks: {},
+      revealed: {},
+      current_index: 0,
+      status: 'in_progress',
+      total_awarded: null,
+      time_up_noted: false,
+      started_at: new Date().toISOString(),
+      timer: { mode: session.timer.mode, elapsed_ms: 0, running_since: null },
+    });
+    if (session.timer.mode !== 'off') startTimer(session);
+    await api.saveSession(session, { silent: true });
+    draw();
+    window.scrollTo(0, 0);
+    toast('Restarted. Nothing from the earlier attempt was kept.', { type: 'info' });
+  });
+
+  on(element, 'click', '[data-abandon]', async () => {
+    const proceed = await confirmDialog({
+      title: 'Abandon this attempt?',
+      message: 'You leave now and nothing from this attempt is saved: no answers, no marks and nothing in your Data Hub. Results you saved before are not affected.',
+      cancelLabel: 'Keep going',
+      confirmLabel: 'Abandon',
+      danger: true,
+    });
+    if (!proceed) return;
+    removed = true;
+    await api.deleteSession(session.session_id);
+    leave();
+    toast('Attempt abandoned. Nothing was recorded.', { type: 'info' });
+  });
+
   on(element, 'click', '[data-retry]', async () => {
     const retry = createSession({
       kind: session.kind === 'full_paper' ? 'question_set' : session.kind,
@@ -654,8 +738,9 @@ export async function mount(element, context) {
       mark_mode: session.mark_mode,
       total_marks: session.total_marks,
     });
+    retry.source_paper_id = session.source_paper_id || (session.kind === 'full_paper' ? session.paper_id : null);
     await api.saveSession(retry, { silent: true });
-    context.navigate(`/session/${retry.session_id}`);
+    context.navigate(routeOf(links.session(retry.session_id)), { replace: true });
   });
 
   const saveOnHide = () => {
@@ -676,9 +761,17 @@ export async function mount(element, context) {
     clearInterval(interval);
     document.removeEventListener('visibilitychange', saveOnHide);
     window.removeEventListener('pagehide', pauseOnLeave);
-    if (removed || !api.isSignedIn()) return;
+    // Skip if it was deleted, or the student signed out (it then belongs to another progress record).
+    if (removed || !api.getSession(session.session_id)) return;
     if (session.status === 'in_progress') pauseTimer(session); // the clock only runs while the paper is open
-    const untouched = session.kind === 'single' && session.status === 'in_progress' && !Object.keys(session.marks).length && !Object.keys(session.answers).length;
+    // Opening something to have a look should not leave an "in progress" attempt behind:
+    // an attempt with nothing typed, flagged or marked, and under a minute on the clock, is dropped.
+    const untouched =
+      session.status === 'in_progress' &&
+      !Object.keys(session.marks).length &&
+      !Object.keys(session.answers).length &&
+      !Object.keys(session.flagged).length &&
+      (session.kind === 'single' || elapsedMs(session) < 60_000);
     removed = untouched;
     if (untouched) api.deleteSession(session.session_id);
     else if (session.status !== 'completed') api.saveSession(session, { silent: true });
