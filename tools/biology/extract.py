@@ -24,7 +24,7 @@ from pathlib import Path
 
 from source_overrides import overrides_for
 
-VERSION = 'pearson-9bn0-layout-v10'
+VERSION = 'pearson-9bn0-layout-v12'
 JUNK = re.compile(r'^[.·…_\-–\s]+$')
 LINE_JUNK = re.compile(r'DO NOT WRITE|Total for Question|TOTAL FOR PAPER|BLANK PAGE|Turn over|\*[A-Z]?\d{5}[A-Z]{1,2}\d{4}\*|^\s*[.·…_\s]+$', re.I)
 LABEL = re.compile(r'(\*?)\(([a-z]|[ivx]+)\)')  # '*' marks an extended response
@@ -211,15 +211,34 @@ def extract(path, ocr_dir=None):
                     marks.append({'marks': int(t['text'][1:-1]), 'page': pi + 1, 'top': t['top'],
                                   'tariff_bottom': t['bottom'], 'bottom': max([t['bottom']] + after),
                                   'fragment': frag_index})
-            # Letters and Roman numerals are told apart by indentation: '(i)' at the
-            # letter indent after '(h)' is the ninth letter, not a sub-part.
-            letter_x = sorted(l['x'] for l in labels if l['label'] in 'abcdefgh' and len(l['label']) == 1)
-            letter_x = letter_x[len(letter_x) // 2] if letter_x else None
-            for l in labels:
+            # '(i)' is the ninth letter only when it follows '(h)' or precedes '(j)';
+            # otherwise it is a Roman sub-part (indentation varies between booklets).
+            # Letters must also run in sequence; a bracketed symbol such as '(n)' in a
+            # formula is not a part label.
+            previous_letter, accepted = '', []
+            for k, l in enumerate(labels):
                 roman = re.fullmatch(r'[ivx]+', l['label'])
-                l['level'] = 'letter' if not roman or (letter_x is not None and abs(l['x'] - letter_x) < 8
-                                                        and len(l['label']) == 1) else 'roman'
+                following = labels[k + 1]['label'] if k + 1 < len(labels) else ''
+                if not roman or (l['label'] == 'i' and (previous_letter == 'h' or following == 'j')):
+                    expected_next = chr(ord(previous_letter) + 1) if previous_letter else None
+                    if l['label'] != expected_next and not (not previous_letter and l['label'] in 'ab'):
+                        exceptions.append({'question': number, 'type': 'ignored_out_of_sequence_label',
+                                           'label': l['label'], 'page': l['page']})
+                        continue
+                    l['level'] = 'letter'
+                    previous_letter = l['label']
+                else:
+                    l['level'] = 'roman'
+                accepted.append(l)
+            labels = accepted
+            # Some booklets print '(i)', '(ii)' before '(b)' with no '(a)' (the scheme
+            # calls them (a)(i), (a)(ii)): record the implied letter.
+            first_letter = next((l['label'] for l in labels if l['level'] == 'letter'), None)
             parts, letter, consumed = [], '', set()
+            if first_letter == 'b' and labels and labels[0]['level'] == 'roman':
+                letter = 'a'
+                exceptions.append({'question': number, 'type': 'implied_letter_a',
+                                   'note': 'Booklet prints (i), (ii) before (b) without (a); labelled (a)(i), (a)(ii) as in the scheme.'})
             for mi, mark in enumerate(marks):
                 preceding = [l for l in labels if (l['page'], l['top']) <= (mark['page'], mark['top'] + 2)]
                 last = preceding[-1] if preceding else None

@@ -34,11 +34,32 @@ from schemes import scheme_regions  # noqa: E402  (Biology adapter, this directo
 _spec = importlib.util.spec_from_file_location('qbank_render', Path(__file__).resolve().parents[1] / 'maths' / 'render.py')
 _render = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_render)
-SourceRenderer = _render.SourceRenderer
+_BaseRenderer = _render.SourceRenderer
+WEBP_LIMIT = 16000  # WebP's hard limit is 16383 px per side
+
+
+class SourceRenderer(_BaseRenderer):
+    """The Maths renderer, falling back to a smaller (still lossless) scale when a
+    long multi-page crop would exceed WebP's maximum height."""
+
+    def __init__(self, path, scale=1.6):
+        super().__init__(path, scale)
+        self.path = path
+        self.reduced = {}
+
+    def render(self, regions, output):
+        with pdfplumber.open(self.path) as doc:
+            heights = {r['page']: doc.pages[r['page'] - 1].height for r in regions}
+        height = sum((r['bbox'][3] - r['bbox'][1]) * heights[r['page']] * self.scale for r in regions) + 12 * (len(regions) - 1)
+        if height <= WEBP_LIMIT:
+            return super().render(regions, output)
+        scale = self.scale * WEBP_LIMIT / height * 0.98
+        self.reduced[str(output)] = round(scale, 3)
+        return _BaseRenderer(self.path, scale).render(regions, output)
 
 SUBJECT = 'EDX_ALEVEL_BIOL_9BN0'
 SLUG = 'biology'
-SIGNATURE = b'biology-build-v2'
+SIGNATURE = b'biology-build-v3'
 
 
 def write_json(path, value):

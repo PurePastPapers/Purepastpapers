@@ -1,0 +1,770 @@
+{
+  "paper_id": "EDX_9BN0_SAMPLE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "73446dfc2b07ab9445968b2ff782c111eff278440975c134bf4126d49ee8d085",
+  "questions": [
+    {
+      "number": "1",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP12"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.0.3",
+            "EDX_BIOL_OFF_T5_5.16"
+          ],
+          "tag_basis": "Scheme credits Q10 = rate at 30 / rate at 20 from the graph.",
+          "difficulty": "medium",
+          "difficulty_basis": "Routine one-step ratio from a graph.",
+          "summary": "Temperature coefficient from a rate graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.16"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.10"
+          ],
+          "tag_basis": "Credits collision frequency then enzyme denaturation above 30 C.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation linking kinetic energy and denaturation to a rate curve.",
+          "summary": "Why photosynthesis rate rises then falls with temperature.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.6"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Selecting which organisms are eukaryotes (domain Eukaryota).",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall using diagram.",
+          "summary": "Which microbes are eukaryotes.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.1"
+          ],
+          "tag_basis": "Identifies organisms lacking a nucleus (prokaryote, virus).",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall of cell structure.",
+          "summary": "Spotting organisms with no nucleus.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.0.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.4"
+          ],
+          "tag_basis": "Credits only the size ratio read from the scale.",
+          "difficulty": "easy",
+          "difficulty_basis": "One-step ratio from scale diagram.",
+          "summary": "Size comparison from a scale bar.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.5"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits virus versus bacterium structural differences.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall.",
+          "summary": "Virus versus bacterium structure.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.6"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits the species definition (fertile offspring).",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall of definition.",
+          "summary": "Choosing the best species definition.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.17",
+            "EDX_BIOL_OFF_T5_5.19"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T4_4.4"
+          ],
+          "tag_basis": "Credits isolation, mutation, selection, allele frequency change and divergence.",
+          "difficulty": "hard",
+          "difficulty_basis": "Extended multi-point explanation in an unfamiliar context.",
+          "summary": "How an isolated insect population may diverge into a new species.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.13"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits placebo, double blind, animal pre-testing, larger samples, statistics.",
+          "difficulty": "medium",
+          "difficulty_basis": "Recall applied to compare protocols.",
+          "summary": "Why modern drug trials beat historic ones.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.13"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.8"
+          ],
+          "tag_basis": "Credits comparing improvement with placebo and need for statistical testing.",
+          "difficulty": "hard",
+          "difficulty_basis": "Data evaluation of a trial claim.",
+          "summary": "Judging a conclusion from drug trial data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.12"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Identifies active artificial immunity from vaccination.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall of immunity types.",
+          "summary": "Type of immunity from vaccination.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.8",
+            "EDX_BIOL_OFF_T6_6.9",
+            "EDX_BIOL_OFF_T6_6.12"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Indicative content: primary and secondary responses, T helper, plasma and memory cells.",
+          "difficulty": "hard",
+          "difficulty_basis": "Levels-marked extended response applying immune response to graph.",
+          "summary": "Why prior vaccination protected against one pathogen only.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.10"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits NPP = GPP - R.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall.",
+          "summary": "Relationship between productivity measures.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP10"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.5"
+          ],
+          "tag_basis": "Credits random quadrats and drying to constant mass.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applying sampling method to a context.",
+          "summary": "Method to find mean dry biomass.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.11"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.0.3",
+            "EDX_BIOL_OFF_MS_A.3.5"
+          ],
+          "tag_basis": "Credits energy in biomass over solar input as percentage.",
+          "difficulty": "medium",
+          "difficulty_basis": "Multi-step calculation from graph gradient.",
+          "summary": "Efficiency of converting sunlight to biomass.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T5_5.2"
+          ],
+          "tag_basis": "Credits regrowth of moss, mat grass colonisation and heather outcompeting.",
+          "difficulty": "medium",
+          "difficulty_basis": "Interpreting a succession graph.",
+          "summary": "Explaining vegetation change after burning.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.4"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits primers, polymerase, repeated cycles and temperature changes.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall of PCR.",
+          "summary": "How tiny DNA amounts are amplified.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP14"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Small fragments move further towards the anode.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall of electrophoresis.",
+          "summary": "Direction DNA fragments move in a gel.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP14"
+          ],
+          "tag_basis": "Credits band patterns differing between samples so not all one species.",
+          "difficulty": "medium",
+          "difficulty_basis": "Interpreting a gel in context.",
+          "summary": "Reading prey DNA from a gel.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP4"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.3.6"
+          ],
+          "tag_basis": "Credits selecting linear portion and calculating rate.",
+          "difficulty": "medium",
+          "difficulty_basis": "Routine tangent or gradient calculation.",
+          "summary": "Initial rate of an enzyme reaction from a graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.10",
+            "EDX_BIOL_OFF_CP4"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits active sites increasing then substrate becoming limiting.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation of rate data using limiting factors.",
+          "summary": "Enzyme concentration and reaction rate.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.2"
+          ],
+          "tag_basis": "Identifies the mitochondrion.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recognition of organelle from micrograph.",
+          "summary": "Spotting the organelle that respires.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.2"
+          ],
+          "tag_basis": "Identifies the nucleolus.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recognition of organelle from micrograph.",
+          "summary": "Identifying the nucleolus on a micrograph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.6"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T6_6.10"
+          ],
+          "tag_basis": "Credits template strand, RNA polymerase, complementary pairing and intron removal.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation using diagram.",
+          "summary": "How mRNA is made from a gene.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.10"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.8"
+          ],
+          "tag_basis": "Credits one gene giving several mRNAs by different exon removal.",
+          "difficulty": "hard",
+          "difficulty_basis": "Applying alternative splicing to resolve a gene-number puzzle.",
+          "summary": "Why humans have fewer genes than proteins.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP11"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.10"
+          ],
+          "tag_basis": "Credits cold and buffer preventing denaturation and sucrose preventing osmotic damage.",
+          "difficulty": "medium",
+          "difficulty_basis": "Practical reasoning.",
+          "summary": "Why the chloroplast extraction medium is chosen.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP11"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits control showing DCPIP does not change without light.",
+          "difficulty": "easy",
+          "difficulty_basis": "Control purpose recall.",
+          "summary": "Purpose of a dark control tube.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP11"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T5_5.7",
+            "EDX_BIOL_OFF_MS_A.3.1"
+          ],
+          "tag_basis": "Credits chloroplast tubes, replicates, controlled light and colorimeter filter.",
+          "difficulty": "hard",
+          "difficulty_basis": "Inferring practical design from data.",
+          "summary": "Designing the wavelength investigation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.8"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.13"
+          ],
+          "tag_basis": "Identifies the stage making sucrose via condensation.",
+          "difficulty": "medium",
+          "difficulty_basis": "Recall applied to diagram.",
+          "summary": "Locating a condensation step in the Calvin cycle.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.8"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Identifies the carbon fixation stage involving RUBISCO.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall.",
+          "summary": "Stage where RUBISCO acts.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP10"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits environmental gradient.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall of sampling rationale.",
+          "summary": "Why systematic sampling suits a shore.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T5_5.3",
+            "EDX_BIOL_OFF_CP10"
+          ],
+          "tag_basis": "Indicative content: tolerance of exposure, substrate, competition and grazers.",
+          "difficulty": "hard",
+          "difficulty_basis": "Levels-marked analysis of distribution data.",
+          "summary": "Explaining seaweed zonation on a shore.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.2.3"
+          ],
+          "tag_basis": "Credits N(N-1), sum n(n-1) and the quotient.",
+          "difficulty": "medium",
+          "difficulty_basis": "Routine substitution into a given formula.",
+          "summary": "Calculating an index of diversity.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.2"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits higher diversity despite fewer individuals.",
+          "difficulty": "medium",
+          "difficulty_basis": "Interpreting diversity index against numbers.",
+          "summary": "Comparing diversity between shore zones.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.1"
+          ],
+          "tag_basis": "Credits surface area to volume ratio and ethanol solubility.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explaining method choice.",
+          "summary": "Why chopped garlic soaked in ethanol extracts well.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.4.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP9"
+          ],
+          "tag_basis": "Credits pi r squared with diameter halved.",
+          "difficulty": "easy",
+          "difficulty_basis": "One-step area of a circle.",
+          "summary": "Area of an inhibition zone.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP9"
+          ],
+          "tag_basis": "Credits t-test for difference of means, not chi-squared or correlation.",
+          "difficulty": "hard",
+          "difficulty_basis": "Evaluating statistical test choice.",
+          "summary": "Choosing the right statistical test.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.10"
+          ],
+          "tag_basis": "Credits variance terms, square root and t value.",
+          "difficulty": "medium",
+          "difficulty_basis": "Multi-step substitution calculation.",
+          "summary": "Calculating a t value.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP9"
+          ],
+          "tag_basis": "Credits no significant difference, p above 0.05, chance, accept null.",
+          "difficulty": "hard",
+          "difficulty_basis": "Interpreting t against critical values.",
+          "summary": "Testing a null hypothesis from t.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP9"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits cedar no effect and extracts' MIC values.",
+          "difficulty": "medium",
+          "difficulty_basis": "Data analysis of MIC results.",
+          "summary": "Interpreting a micro-titre MIC result.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP9"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits extending concentration ranges.",
+          "difficulty": "medium",
+          "difficulty_basis": "Refining procedure.",
+          "summary": "Improving MIC accuracy.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.9"
+          ],
+          "tag_basis": "Credits repeats and more species or extracts.",
+          "difficulty": "hard",
+          "difficulty_basis": "Evaluating limitations.",
+          "summary": "Limitations of the MIC investigation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}
