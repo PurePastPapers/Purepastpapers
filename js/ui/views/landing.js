@@ -7,6 +7,7 @@ import { getSubjects } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
 import { SUBJECT_SWATCHES } from '../subject-colours.js';
 import { liveBadge } from '../ui.js';
+import { links } from '../../core/links.js';
 
 /** The four phases, used on the Account and coming-soon pages. */
 export function roadmap() {
@@ -81,7 +82,7 @@ export async function mount(element, context) {
           </p>
           <p class="lp-hero__reassurance">Browse questions and use filters for free. Create a free account to track marks, mistakes and progress in this browser.</p>
           <div class="lp-hero__actions">
-            <a class="btn btn--primary btn--lg" href="#/subjects?welcome=1">Browse questions →</a>
+            <a class="btn btn--primary btn--lg" href="${links.subjects({ welcome: 1 })}">Browse questions →</a>
           </div>
         </div>
         <div class="lp-art" aria-hidden="true">
@@ -185,8 +186,11 @@ export async function mount(element, context) {
       <section class="lp-close" aria-labelledby="close-title">
         <h2 id="close-title">Ready when you are.</h2>
         <p class="hand">Browse and filter for free. Save your progress with a free account.</p>
-        <a class="btn btn--primary btn--lg" href="#/signup">Create a free account →</a>
+        <a class="btn btn--primary btn--lg" href="${links.signup()}">Create a free account →</a>
       </section>`,
   );
+  // Arriving from a top-bar link on another page ("Features", "Subjects", "How it works").
+  const section = context.query.section && document.getElementById(context.query.section);
+  if (section) requestAnimationFrame(() => section.scrollIntoView({ block: 'start' }));
 
 }

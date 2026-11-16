@@ -3,6 +3,7 @@
 
 import { GRADE_SCHEMES, PAPER_TYPES } from '../../config/app.config.js';
 import { $, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
+import { links, routeOf } from '../../core/links.js';
 import { fmtDate, fmtMinutes, localDayKey, percent, plural, round1 } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
@@ -15,14 +16,12 @@ import { startSingle } from '../student.js';
 import { targetGrade } from '../subject-colours.js';
 import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, openModal, pageHead, sourceBadge, toast } from '../ui.js';
 
-const ROUTES = { real_past_paper: '/papers', ai_past_paper: '/ai-papers', predicted_paper: '/predicted' };
-
 export async function mount(element, context) {
   const bundle = await getBundle(context.params.subjectId);
   const { subject } = bundle;
   const paper = bundle.papersById.get(context.params.paperId);
   if (!paper) {
-    setHtml(element, emptyState({ iconName: 'file', title: 'Paper not found', text: 'It may have been removed.', action: html`<a class="btn" href="#/papers">Back to papers</a>` }));
+    setHtml(element, emptyState({ iconName: 'file', title: 'Paper not found', text: 'It may have been removed.', action: html`<a class="btn" href="${links.papers()}">Back to past papers</a>` }));
     return;
   }
   context.setTitle(paper.title);
@@ -31,7 +30,6 @@ export async function mount(element, context) {
   const latest = latestByQuestion(progress.question_attempts);
   const questions = paper.question_ids.map((id) => bundle.questionsById.get(id)).filter(Boolean);
   const locked = questions.filter((question) => missingSpecPoints(question, learned, specIndex).length > 0);
-  const listRoute = ROUTES[paper.paper_type] || '/papers';
   const openSession = api.resumableSessions().find((session) => session.paper_id === paper.paper_id);
   const pdf = isSafeUrl(paper.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
   const markScheme = isSafeUrl(paper.full_mark_scheme_pdf_url) ? paper.full_mark_scheme_pdf_url : null;
@@ -61,7 +59,7 @@ export async function mount(element, context) {
                   <span class="rag-dot" data-rag="${ragFor(attempt.percentage)}" title="${fmtPercent(attempt.percentage)}"></span>
                   ${attempt.grade ? html`<span class="grade-stamp grade-stamp--sm" data-band="${band || ''}" title="${band ? TARGET_BANDS[band].label : `Grade ${attempt.grade}`}">${attempt.grade}</span>` : html`<span></span>`}
                   <span class="attempt-list__act">
-                    ${session ? html`<a class="btn btn--sm" href="#/session/${attempt.session_id}">Review</a>` : html`<span class="muted small">${attempt.session_kind === 'logged' ? 'logged' : ''}</span>`}
+                    ${session ? html`<a class="btn btn--sm" href="${links.session(attempt.session_id)}">Review</a>` : html`<span class="muted small">${attempt.session_kind === 'logged' ? 'logged' : ''}</span>`}
                     <button type="button" class="btn btn--sm btn--ghost btn--icon" data-delete-attempt="${index}" aria-label="Delete the attempt from ${fmtDate(attempt.timestamp)}">${icon('trash', { size: 15 })}</button>
                   </span>
                 </li>`;
@@ -107,14 +105,15 @@ export async function mount(element, context) {
     element,
     html`${pageHead({
         crumbs: [
-          { label: 'Home', href: '#/' },
-          { label: PAPER_TYPES[paper.paper_type]?.plural === 'Official past papers' ? 'Past papers' : PAPER_TYPES[paper.paper_type]?.plural || 'Papers', href: `#${listRoute}` },
-          { label: subject.subject, href: `#${listRoute}?subject=${subject.subject_id}` },
+          { label: 'Home', href: links.home() },
+          { label: PAPER_TYPES[paper.paper_type]?.plural === 'Official past papers' ? 'Past papers' : PAPER_TYPES[paper.paper_type]?.plural || 'Papers', href: links.papers(null, paper.paper_type) },
+          { label: subject.subject, href: links.papers(subject.subject_id, paper.paper_type) },
           ...(paper.year ? [{ label: `${paper.series} ${paper.year}` }] : []),
         ],
         title: paper.title.replace(paper.year ? `${paper.series} ${paper.year} ` : '', ''),
         actions: openSession
-          ? html`<a class="btn btn--primary" href="#/session/${openSession.session_id}">${icon('play', { size: 16 })} Resume paper</a>`
+          ? html`<a class="btn btn--primary" href="${links.session(openSession.session_id)}">${icon('play', { size: 16 })} Resume paper</a>
+              <button type="button" class="btn" data-discard-open>${icon('x', { size: 16 })} Discard attempt</button>`
           : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${fmtMinutes(paper.duration_minutes)})</button>
               <button type="button" class="btn" data-start="untimed">Sit untimed</button>
               <button type="button" class="btn" data-log>Log a score</button>`,
@@ -135,7 +134,7 @@ export async function mount(element, context) {
           </div>
           ${questions.length
             ? html`${locked.length
-                  ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs a topic' : 'need topics'} you have not marked as learned. <a href="#/subject/${subject.subject_id}">Update learned topics</a>`, { type: 'warn' })
+                  ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs a topic' : 'need topics'} you have not marked as learned. <a href="${links.subject(subject.subject_id)}">Update learned topics</a>`, { type: 'warn' })
                   : ''}
                 <div data-questions>${questionRows()}</div>`
             : html`<div class="empty paper-qs__whole">
@@ -197,11 +196,41 @@ export async function mount(element, context) {
       total_marks: paper.total_marks,
     });
     await api.saveSession(session, { silent: true });
-    context.navigate(`/session/${session.session_id}`);
+    context.navigate(routeOf(links.session(session.session_id)));
   }
 
+  on(element, 'click', '[data-discard-open]', async () => {
+    const confirmed = await confirmDialog({
+      title: 'Discard your unfinished attempt?',
+      message: 'Its answers and timing are removed and nothing is recorded. Results you have already saved for this paper are not affected.',
+      confirmLabel: 'Discard',
+      danger: true,
+    });
+    if (!confirmed) return;
+    await api.deleteSession(openSession.session_id);
+    toast('Unfinished attempt discarded.', { type: 'info' });
+    context.refresh();
+  });
+
   on(element, 'click', '[data-start]', (event, button) => start(button.dataset.start === 'timed'));
-  on(element, 'click', '[data-open]', (event, button) => startSingle(bundle.questionsById.get(button.dataset.open), context.navigate));
+  // Practising one question opens the whole paper as a mark-as-you-go set, starting on that
+  // question, so the number row and Next move straight on without returning here.
+  on(element, 'click', '[data-open]', async (event, button) => {
+    const question = bundle.questionsById.get(button.dataset.open);
+    if (questions.length < 2) return startSingle(question, context.navigate);
+    const session = createSession({
+      kind: 'question_set',
+      subject_id: subject.subject_id,
+      title: `${paper.title}: questions`,
+      question_ids: questions.map((item) => item.question_id),
+      paper_type: 'user_custom_test',
+      mark_mode: 'each',
+    });
+    session.current_index = Math.max(0, questions.indexOf(question));
+    session.source_paper_id = paper.paper_id; // where "Save and exit" falls back to
+    await api.saveSession(session, { silent: true });
+    context.navigate(routeOf(links.session(session.session_id)));
+  });
 
   on(element, 'click', '[data-log]', async () => {
     const entry = await openModal({

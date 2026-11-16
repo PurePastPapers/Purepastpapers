@@ -24,6 +24,7 @@ import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { scStyle, tintPage } from '../subject-colours.js';
 import { banner, difficultyBadge, emptyState, pageHead, soonBadge, toast } from '../ui.js';
+import { links, routeOf } from '../../core/links.js';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
 const SOURCE_CHOICES = [
@@ -100,7 +101,7 @@ export async function mount(element, context) {
     pageHead({
       title: 'Find questions',
       sub: 'Browse questions or build a test',
-      crumbs: [{ label: 'Home', href: '#/' }, { label: 'Practice', href: '#/practice' }, ...(crumb ? [{ label: crumb }] : [])],
+      crumbs: [{ label: 'Home', href: links.home() }, { label: 'Practice', href: links.practice() }, ...(crumb ? [{ label: crumb }] : [])],
     });
 
   if (!enrolled.length) {
@@ -110,7 +111,7 @@ export async function mount(element, context) {
         iconName: 'cap',
         title: 'Add a subject first',
         text: 'Practice is built from the subjects you study and the topics you have ticked as learned.',
-        action: html`<a class="btn btn--primary" href="#/subjects">Choose subjects</a>`,
+        action: html`<a class="btn btn--primary" href="${links.subjects()}">Choose subjects</a>`,
       })}`,
     );
     return;
@@ -291,7 +292,7 @@ export async function mount(element, context) {
       ${curriculum.years.length ? html`<div data-curriculum></div>` : ''}
       ${browser && user ? html`<div class="topics-choice">
         <label class="check checkpoint"><input type="checkbox" data-flag="learnedOnly" ${state.learnedOnly ? 'checked' : ''} /><span>Only content I’ve covered</span></label>
-        <a class="small" href="#/subject/${subjectId}">Edit learned topics</a>
+        <a class="small" href="${links.subject(subjectId)}">Edit learned topics</a>
       </div>${state.learnedOnly ? html`<p class="field__hint">Using the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'official point')} you’ve ticked in this view. Untick to choose your own topics.</p>` : ''}` : ''}
       <div class="stack stack--sm" data-topic-picker ${browser && state.learnedOnly ? 'hidden' : ''}>
         <p class="small muted" data-focus-summary>${focusSummary(browser)}</p>
@@ -441,7 +442,7 @@ export async function mount(element, context) {
             : lockedCount
               ? `${plural(lockedCount, 'question')} in this subject need topics you have not ticked. Try another difficulty or widen your topics.`
               : 'Try another difficulty, widen your topics, or add questions for this subject.',
-          action: html`<a class="btn btn--primary" href="#/subject/${subjectId}">Tick learned topics</a>`,
+          action: html`<a class="btn btn--primary" href="${links.subject(subjectId)}">Tick learned topics</a>`,
         })}
       </div>`;
     }
@@ -576,7 +577,7 @@ export async function mount(element, context) {
             </section>` : ''}
             <div class="row row--tight">
               <button type="button" class="btn btn--sm ${schemeOpen ? '' : 'btn--primary'}" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? html`${icon('chevronLeft', { size: 15 })} Back to question` : html`${icon('eye', { size: 15 })} Show mark scheme`}</button>
-              ${paper ? html`<a class="btn btn--sm" href="#/paper/${subjectId}/${question.paper_id}">View full paper</a>` : ''}
+              ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, question.paper_id)}">View full paper</a>` : ''}
             </div>
             ${paper?.examiner_report_url ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report</a>` : ''}
           </div>
@@ -651,14 +652,14 @@ export async function mount(element, context) {
             text: !learnedLeaves.length && state.learnedOnly
               ? 'Tick the topics you have learned and questions will appear here.'
               : 'Change the filters to see more questions.',
-            action: !learnedLeaves.length && state.learnedOnly ? html`<a class="btn btn--primary" href="#/subject/${subjectId}">Tick learned topics</a>` : null,
+            action: !learnedLeaves.length && state.learnedOnly ? html`<a class="btn btn--primary" href="${links.subject(subjectId)}">Tick learned topics</a>` : null,
           })}
       ${sorted.length > PAGE_SIZE ? html`<nav class="row row--between filter-pagination" aria-label="Question results pages"><button type="button" class="btn btn--sm" data-page="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>Previous</button><span class="small muted" role="status">Page ${state.page} of ${pageCount} · ${(state.page - 1) * PAGE_SIZE + 1}–${Math.min(state.page * PAGE_SIZE, sorted.length)} of ${sorted.length}</span><button type="button" class="btn btn--sm" data-page="${state.page + 1}" ${state.page >= pageCount ? 'disabled' : ''}>Next</button></nav>` : ''}
       ${locked.length
         ? html`<details class="locked">
             <summary>${icon('lock', { size: 16 })} ${plural(locked.length, 'more question')} ${locked.length === 1 ? 'needs' : 'need'} topics you have not ticked as learned</summary>
             <div class="qlist" style="margin-top:12px">${locked.slice(0, 40).map((entry) => questionCard(entry.question, { locked: entry.missing }))}</div>
-            <p class="small" style="margin-top:10px"><a href="#/subject/${subjectId}">Update your covered topics</a>, or turn off the covered-content filter to browse them.</p>
+            <p class="small" style="margin-top:10px"><a href="${links.subject(subjectId)}">Update your covered topics</a>, or turn off the covered-content filter to browse them.</p>
           </details>`
         : ''}`;
   }
@@ -776,10 +777,10 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${head(subject.subject)}
-      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="#/signup?next=%2Fpractice">Create a free account</a> to save it in this browser.`) : ''}
+      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="${links.signup('/practice')}">Create a free account</a> to save it in this browser.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
-        ${subjectPills(enrolled, subjectId, (id) => `#/practice?subject=${id}`)}
+        ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
         ${modes.length > 1
           ? html`<div class="seg mode-switch" role="tablist">
               ${[...modes].sort((a, b) => (a === 'timed_test') - (b === 'timed_test')).map(
@@ -963,7 +964,7 @@ export async function mount(element, context) {
     }
     if (!user) {
       save();
-      return context.navigate(`/signup?next=${encodeURIComponent(`/practice?subject=${subjectId}`)}`);
+      return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
     }
     pendingMarks.add(id);
     for (const button of card.querySelectorAll('[data-save-mark], [data-reattempt]')) button.disabled = true;
@@ -1044,6 +1045,6 @@ export async function mount(element, context) {
     await api.saveSession(session, { silent: true });
     state.seed = Math.floor(Math.random() * 1e9); // a fresh test next time
     save();
-    context.navigate(`/session/${session.session_id}`);
+    context.navigate(routeOf(links.session(session.session_id)));
   });
 }

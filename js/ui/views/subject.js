@@ -15,6 +15,7 @@ import { attemptInSubject, practicePool } from '../student.js';
 import { saveSubjectSettings, scStyle, targetGrade, tintPage } from '../subject-colours.js';
 import { subjectDialog } from '../subject-dialog.js';
 import { banner, confirmDialog, emptyState, fmtPercent, meter, pageHead, ragBadge, subjectName, toast } from '../ui.js';
+import { links } from '../../core/links.js';
 
 export async function mount(element, context) {
   const [bundle, subjects] = await Promise.all([getBundle(context.params.subjectId), getSubjects()]);
@@ -59,12 +60,12 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${pageHead({
-        crumbs: [{ label: 'Home', href: '#/' }, { label: 'My subjects', href: '#/subjects' }, { label: subject.subject }],
+        crumbs: [{ label: 'Home', href: links.home() }, { label: 'My subjects', href: links.subjects() }, { label: subject.subject }],
         title: subject.subject,
         sub: `${subject.level} · ${subject.board} ${subject.spec_code} · ${subject.spec_notes}`,
         actions: subject.has_written_exam
-          ? html`<a class="btn btn--primary" href="#/practice?subject=${subjectId}&mode=individual">${icon('sliders')} Find questions</a>
-              <a class="btn" href="#/papers?subject=${subjectId}">Full past papers</a>
+          ? html`<a class="btn btn--primary" href="${links.practice({ subject: subjectId, mode: 'individual' })}">${icon('sliders')} Find questions</a>
+              <a class="btn" href="${links.papers(subjectId)}">Full past papers</a>
               <a class="btn btn--ghost" href="${subject.official_url}" target="_blank" rel="noopener">${subject.board} site ${icon('external', { size: 15 })}</a>`
           : '',
       })}
@@ -83,7 +84,7 @@ export async function mount(element, context) {
                   </p>
                   ${topicOrganisationControl(organisation, {available: Boolean(textbooks), name: 'covered-organisation'})}
                   ${leaves.length ? html`<div data-tree></div>` : emptyState({ title: 'No specification tree yet', text: 'Topics for this subject have not been added.' })}
-                </details>` : html`<section class="card"><h2>Choose topics for practice</h2><p>You can select any topics without saving a learned-topic list.</p><a class="btn" href="#/practice?subject=${subjectId}">Find questions</a></section>`}
+                </details>` : html`<section class="card"><h2>Choose topics for practice</h2><p>You can select any topics without saving a learned-topic list.</p><a class="btn" href="${links.practice({ subject: subjectId })}">Find questions</a></section>`}
                 <aside class="stack" data-side></aside>
               </div>`
           : emptyState({ iconName: 'info', title: 'No written exam', text: subject.no_written_exam })}

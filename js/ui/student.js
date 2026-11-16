@@ -12,6 +12,7 @@ import { textbookMasteryByNode } from '../engine/textbook-index.js';
 import { icon } from './icons.js';
 import { SUBJECT_SWATCHES, scStyle, setSubjectColour, subjectColour, subjectSwatchId, targetGrade } from './subject-colours.js';
 import { fmtPercent, groupDot } from './ui.js';
+import { links, routeOf } from '../core/links.js';
 
 /**
  * Progress plus content for a set of subjects (default: the enrolled ones).
@@ -73,7 +74,7 @@ export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) 
   const id = subject.subject_id;
   return html`<article class="card subject-card ${tilt ? `tilt-${tilt}` : ''}" style="${scStyle(subject)}" data-subject-card="${id}">
     <header class="subject-card__band">
-      <h3><a href="#/subject/${id}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
+      <h3><a href="${links.subject(id)}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
       <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
     </header>
     <div class="subject-card__body">
@@ -85,9 +86,9 @@ export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) 
             <p class="subject-card__score"><span>${summary.answered ? 'average' : 'no answers yet'}</span><b>${summary.answered ? fmtPercent(summary.percentage) : ''}</b></p>
             ${actions
               ? html`<footer class="row row--tight">
-                  <a class="btn btn--sm" href="#/papers?subject=${id}">Papers</a>
-                  <a class="btn btn--sm" href="#/practice?subject=${id}">Practice</a>
-                  <a class="btn btn--sm" href="#/subject/${id}">Topics</a>
+                  <a class="btn btn--sm" href="${links.papers(id)}">Papers</a>
+                  <a class="btn btn--sm" href="${links.practice({ subject: id })}">Practice</a>
+                  <a class="btn btn--sm" href="${links.subject(id)}">Topics</a>
                 </footer>`
               : ''}`
         : html`<p class="small muted">${subject.no_written_exam}</p>`}
@@ -116,7 +117,7 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
   const id = subject.subject_id;
   return html`<article class="card subject-card ${tilt ? `tilt-${tilt}` : ''}" style="${scStyle(subject)}" data-subject-card="${id}">
     <header class="subject-card__band">
-      <h3><a href="#/subject/${id}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
+      <h3><a href="${links.subject(id)}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
       <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
     </header>
     <div class="subject-card__body">
@@ -127,8 +128,8 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
             <p class="subject-card__meta">${summary.learned}/${summary.leaves} ${summary.learningUnit} learned</p>`
         : html`<p class="small muted">${subject.no_written_exam}</p>`}
       <footer class="row row--tight">
-        ${subject.has_written_exam ? html`<a class="btn btn--sm btn--primary" href="#/subject/${id}">Topics learned</a>` : ''}
-        ${subject.has_written_exam ? html`<a class="btn btn--sm" href="#/practice?subject=${id}&mode=individual">Browse questions</a>` : ''}
+        ${subject.has_written_exam ? html`<a class="btn btn--sm btn--primary" href="${links.subject(id)}">Topics learned</a>` : ''}
+        ${subject.has_written_exam ? html`<a class="btn btn--sm" href="${links.practice({ subject: id, mode: 'individual' })}">Browse questions</a>` : ''}
         <button type="button" class="btn btn--sm" data-edit="${id}">Edit</button>
         <button type="button" class="linkbtn small subject-card__remove" data-unenrol="${id}">Remove</button>
       </footer>
@@ -204,7 +205,7 @@ export function subjectPills(bundles, activeId, hrefFor) {
           ${groupDot(bundle.subject)}${bundle.subject.level === 'GCSE' ? 'GCSE ' : ''}${bundle.subject.subject}
         </a>`,
     )}
-    <a class="chip" href="#/subjects">${icon('plus', { size: 15 })} Subjects</a>
+    <a class="chip" href="${links.subjects()}">${icon('plus', { size: 15 })} Subjects</a>
   </nav>`;
 }
 
@@ -220,7 +221,7 @@ export async function startSingle(question, navigate) {
     mark_mode: 'each',
   });
   await api.saveSession(session, { silent: true });
-  navigate(`/session/${session.session_id}`);
+  navigate(routeOf(links.session(session.session_id)));
 }
 
 /** Starts an untimed set of chosen questions (the humanities picker, retries, quick practice). */
@@ -236,5 +237,5 @@ export async function startQuestionSet({ subject, questions, title, stopwatch = 
     mark_mode: 'each',
   });
   await api.saveSession(session, { silent: true });
-  navigate(`/session/${session.session_id}`);
+  navigate(routeOf(links.session(session.session_id)));
 }

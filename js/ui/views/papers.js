@@ -12,6 +12,7 @@ import { icon } from '../icons.js';
 import { loadStudent, subjectPills } from '../student.js';
 import { scStyle, tintPage } from '../subject-colours.js';
 import { banner, emptyState, meter, pageHead, ragBadge, sourceBadge } from '../ui.js';
+import { links } from '../../core/links.js';
 
 const INTRO = {
   real_past_paper: 'every exam series for your subjects, sit one against the clock',
@@ -29,7 +30,7 @@ export async function mount(element, context) {
   const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.has_written_exam);
   const pageTitle = paperType === 'real_past_paper' ? 'Past papers' : typeInfo.plural;
   const head = (crumb) =>
-    pageHead({ title: pageTitle, sub: INTRO[paperType], crumbs: [{ label: 'Home', href: '#/' }, { label: pageTitle, href: `#${context.path}` }, ...(crumb ? [{ label: crumb }] : [])] });
+    pageHead({ title: pageTitle, sub: INTRO[paperType], crumbs: [{ label: 'Home', href: links.home() }, { label: pageTitle, href: `#${context.path}` }, ...(crumb ? [{ label: crumb }] : [])] });
 
   if (!enrolled.length) {
     setHtml(
@@ -38,7 +39,7 @@ export async function mount(element, context) {
         iconName: 'cap',
         title: 'Add a subject first',
         text: 'Papers are listed for the subjects you study.',
-        action: html`<a class="btn btn--primary" href="#/subjects">Choose subjects</a>`,
+        action: html`<a class="btn btn--primary" href="${links.subjects()}">Choose subjects</a>`,
       })}`,
     );
     return;
@@ -63,7 +64,7 @@ export async function mount(element, context) {
   };
 
   const resumeFor = new Map(api.resumableSessions().filter((session) => session.paper_id).map((session) => [session.paper_id, session]));
-  const paperHref = (paper) => `#/paper/${subject.subject_id}/${encodeURIComponent(paper.paper_id)}`;
+  const paperHref = (paper) => links.paper(subject.subject_id, paper.paper_id);
   const shortTitle = (paper) => (paper.title.includes(': ') ? paper.title.split(': ').slice(1).join(': ') : paper.title);
   const codeLine = (paper) =>
     paper.is_sample ? 'Demo paper' : `${subject.spec_code} · ${/^P\d+$/.test(paper.paper_code) ? `Paper ${paper.paper_code.slice(1)}` : paper.paper_code}${paper.tier ? ` · ${paper.tier}` : ''}`;
@@ -88,7 +89,7 @@ export async function mount(element, context) {
               <a class="btn btn--sm" href="${paperHref(paper)}">Review</a>`
           : status === 'progress'
             ? html`<span class="paper-card__status is-progress">In progress</span>
-                <a class="btn btn--sm btn--primary" href="${session ? `#/session/${session.session_id}` : paperHref(paper)}">Resume</a>`
+                <a class="btn btn--sm btn--primary" href="${session ? links.session(session.session_id) : paperHref(paper)}">Resume</a>`
             : html`<span class="paper-card__status">Not started</span><a class="btn btn--sm" href="${paperHref(paper)}">Sit paper</a>`}
       </div>
     </li>`;
@@ -172,7 +173,7 @@ export async function mount(element, context) {
     element,
     html`${head(subject.subject)}
       <div class="stack stack--lg" style="${scStyle(subject)}">
-        ${subjectPills(enrolled, subject.subject_id, (id) => `#${context.path}?subject=${id}`)}
+        ${subjectPills(enrolled, subject.subject_id, (id) => links.papers(id, paperType))}
         ${subject.catalogue_note ? banner(subject.catalogue_note) : ''}
         <div class="with-side">
           <aside class="with-side__side" data-side>${sidebar()}</aside>

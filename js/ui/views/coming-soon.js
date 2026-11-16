@@ -10,6 +10,7 @@ import { html, setHtml } from '../../core/dom.js';
 import * as api from '../../data/api.js';
 import { icon } from '../icons.js';
 import { pageHead } from '../ui.js';
+import { links } from '../../core/links.js';
 
 const ICONS = { aiPastPapers: 'sparkle', predictedPapers: 'target', aiMarking: 'check' };
 const STATUS = { live: ['Live', 'live'], coming_soon: ['Coming later', 'soon'] };
@@ -26,7 +27,7 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${pageHead({
-        crumbs: [{ label: 'Home', href: '#/' }, { label: 'Coming later' }, { label: feature.title }],
+        crumbs: [{ label: 'Home', href: links.home() }, { label: 'Coming later' }, { label: feature.title }],
         title: feature.title,
         badge: live ? html`<span class="badge badge--live">Live</span>` : html`<span class="stamp-soon">Coming in Phase ${phase.id}</span>`,
         sub: feature.lead.replace(/\.$/, '').replace(/^./, (letter) => letter.toLowerCase()),
@@ -52,8 +53,8 @@ export async function mount(element, context) {
             <p class="muted">${key === 'aiMarking' ? 'Mark your own answers against the mark scheme in Practice and Past papers.' : 'Official past papers and customisable practice are live.'}</p>
             <div class="row" style="margin-top:16px">
               ${signedIn
-                ? html`<a class="btn btn--primary" href="#/practice">Practice</a><a class="btn" href="#/papers">Past papers</a>`
-                : html`<a class="btn btn--primary" href="#/signup">Create a free account</a><a class="btn" href="#/login">Log in</a>`}
+                ? html`<a class="btn btn--primary" href="${links.practice()}">Practice</a><a class="btn" href="${links.papers()}">Past papers</a>`
+                : html`<a class="btn btn--primary" href="${links.signup()}">Create a free account</a><a class="btn" href="${links.login()}">Log in</a>`}
             </div>
           </section>
           <section class="card ruled tilt-1">

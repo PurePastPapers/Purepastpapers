@@ -921,3 +921,14 @@
 .runner:has(> .runner__nav--pinned) > .runner__nav--pinned { margin-top: auto; }
 .runner:has(> .runner__nav--pinned) > .runner__grid { margin-bottom: 18px; }
 .qview__for { font: 400 15px/1.2 var(--font); white-space: nowrap; }
+/* Restart / Abandon in the runner bar: icon-only on phones so the sticky bar stays short. */
+@media (max-width: 640px) {
+  .runner__attempt .runner__attempt-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
