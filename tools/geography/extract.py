@@ -23,7 +23,7 @@ import json
 import re
 from pathlib import Path
 
-VERSION = 'aqa-geography-layout-v2'
+VERSION = 'aqa-geography-layout-v3'
 TARIFF = re.compile(r'\[(\d{1,2}) marks?\]')
 LABEL = re.compile(r'^(\d) (\d)(?:(?: \.)? (\d))?(?=\s|$)')
 OPTION = re.compile(r'^[A-D]\s+\S')
@@ -146,12 +146,17 @@ def extract(path):
                 if not FOOTER.match(row['text']):
                     rows.append(row)
             bands = figure_bands(page, rows)
+            for b in bands:   # a figure never extends over the next part's label
+                labels = [r['top'] for r in rows if r['x0'] < 75 and LABEL.match(r['text']) and r['top'] > b['top'] + 2]
+                if labels and min(labels) < b['bottom']:
+                    b['bottom'] = min(labels) - 2
             for b in bands:
                 fig = inline.setdefault(b['name'], {'regions': [], 'removed': False})
                 fig['regions'].append({'page': pi + 1, 'bbox': [round(20 / page.width, 6), round(max(36, b['top'] - 6) / page.height, 6),
                                                                round((page.width - 20) / page.width, 6), round(min(page.height - 40, b['bottom'] + 6) / page.height, 6)]})
             for row in rows:
-                owner = next((b['name'] for b in bands if b['top'] - 1 <= row['top'] and row['bottom'] <= b['bottom'] + 1), None)
+                structural = (row['x0'] < 75 and LABEL.match(row['text'])) or (TARIFF.search(row['text']) and row['words'][-1]['x0'] > 380)
+                owner = None if structural else next((b['name'] for b in bands if b['top'] - 1 <= row['top'] and row['bottom'] <= b['bottom'] + 1), None)
                 row['figure'] = owner
                 stream.append((pi, row))
         for name, fig in inline.items():

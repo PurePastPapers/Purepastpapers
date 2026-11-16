@@ -127,7 +127,7 @@ python3 tools/geography/inventory.py $R/records.json --sources $R/sources
   read with PDFium). `tools/geography/resolve.py` resolves every citation: 134 in the
   unit's own crop, 64 in a shared stem, 166 in the insert, 55 printed elsewhere in the
   paper, 0 unresolved.
-- **Excluded: 35 units** whose cited figure (or own text) AQA removed for third-party
+- **Excluded: 30 units** whose cited figure (or own text) AQA removed for third-party
   copyright. No modified insert restores a removed figure (the one non-CR modified
   insert is an OS map key). They are recorded, not published.
 - `tools/geography/schemes.py` finds each unit's scheme from its label row to the next
@@ -138,7 +138,99 @@ python3 tools/geography/inventory.py $R/records.json --sources $R/sources
   questions can only be tagged to that option plus skills 3.4.x; AS units only to
   AS-shared content or AS3.4).
 
+## Checkpoint 4: reviewed, built, verified and live (16 November 2026)
+
+**Status: all 26 public booklets are imported and listed in `data/packs/index.json`.**
+Coverage status `complete` (`data/imports/geography/coverage.json`).
+
+| Group | Booklets | Questions | Printed parts | Scored units | Excluded | Marks published / printed | Examiner report |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A-level 7037 · Exams · Paper 1 | 6 | 36 | 156 | 147 | 9 | 1377 / 1440 | 5 |
+| A-level 7037 · Exams · Paper 2 | 6 | 30 | 138 | 125 | 13 | 1200 / 1296 | 5 |
+| A-level 7037 · Official samples · Paper 1 | 1 | 6 | 26 | 25 | 1 | 234 / 240 | 0 |
+| A-level 7037 · Official samples · Paper 2 | 1 | 5 | 23 | 21 | 2 | 201 / 216 | 0 |
+| AS 7036 · Exams · Paper 1 | 5 | 25 | 150 | 147 | 3 | 982 / 1000 | 4 |
+| AS 7036 · Exams · Paper 2 | 5 | 20 | 93 | 91 | 2 | 457 / 470 | 4 |
+| AS 7036 · Official samples · Paper 1 | 1 | 5 | 30 | 30 | 0 | 200 / 200 | 0 |
+| AS 7036 · Official samples · Paper 2 | 1 | 4 | 19 | 19 | 0 | 97 / 97 | 0 |
+| **Total** | **26** | **131** | **635** | **605** | **30** | **4748 / 4959** | **18** |
+
+"Printed" marks count every option; each booklet's cover maximum (120 A level, 80 AS,
+65 for AS June 2022 Paper 2) counts one option per choice group and reconciles exactly.
+Every booklet has its official mark scheme; examiner reports are linked for 18 of 26
+(none is published for A-level Nov 2021, AS Nov 2020 or the samples; none is invented).
+
+- **Review:** four Claude (Sonnet, medium effort) workers each owned one batch
+  (A-level Paper 1, A-level Paper 2, AS Paper 1, AS Paper 2) and wrote line sheets in
+  `../geography-research/review-src/`; `reviews.py compile` enforced codes, routes and
+  AS scope. Lead review (Claude Opus) spot-checked every batch and resolved all three
+  flags, recorded as `lead_note` on the unit: AS June 2023 P1 2.4 (AO3-only data
+  analysis, tagged to the coastal skills leaf 3.1.3.5 and 3.4.2.3); AS sample P1 5.5
+  (urban route leaf 3.2.3.3, Changing places as prerequisites); A-level June 2023 P1
+  5.5 (candidate-chosen hazard, so only case-study and hazard-concept leaves). Every
+  unit is `reviewer_type: model`; nothing is labelled a teacher review. Compiled reviews
+  are public in `data/imports/geography/reviews/`.
+- **Difficulty:** easy 223, medium 169, hard 213, each with a basis (tariff, command word,
+  AO split, data or synoptic demand). No official part is labelled Extra hard.
+- **Content year:** 454 units Year 12, 151 Year 13. AS units are Year 12. An A-level unit is
+  Year 12 only when every primary leaf is AS 7036 shared content, otherwise Year 13
+  (`provenance.content_year_basis`). The year mapping in `data/curriculum/index.json`
+  (`aqa-7037-7036-co-teaching-years`, 47 Year 12 leaves, 36 Year 13) cites AQA spec
+  section 6.2 ("overlapping content ... helps you teach the AS and A-level together").
+  It is a co-teaching basis, **not an AQA-prescribed teaching order.**
+- **Leaves with no primary unit:** 3.1.1.5, 3.1.2.5, 3.1.4.6, 3.2.1.7, 3.2.4.1, 3.2.5.7, 3.3.1
+  (topic quantitative-skills leaves, the population introduction, resource case studies,
+  and A-level fieldwork requirements, which only the NEA assesses).
+- **App changes:** `js/ui/question-view.js` shows a part's shared stem and cited figures
+  visibly before it, labelled unscored ("Resources for this question"). `js/data/schema.js`
+  accepts a choice-group member that is an array of unit ids (a whole multi-part option).
+  `data/subjects.json` adds the 7037/7036 qualification filter and
+  `content_year_source: introduced_year`. Question ids: `AQA_7037_2024_JUNE_01_Q01_P02`
+  (parent `..._Q01`), immutable via `data/imports/geography/identities.json` (605).
+- **Images:** 1,399 lossless WebP crops (question, scheme, stem, figures) in
+  `data/geography-assets/` (109 MB, largest catalogue 8.6 MB), loaded lazily per booklet.
+  All 1,445 image references were checked non-empty and non-blank; representative crops
+  (multiple choice, flow-chart options, inline figures after a tariff, insert figures,
+  rotated insert pages, fieldwork stems, schemes) were inspected by eye.
+
+### Checks (local)
+
+- `npm test`: 97 pass (new: `tests/geography-spec.test.mjs` 4, `tests/geography-bank.test.mjs` 6).
+- `npm run validate`: 0 errors; 9 Geography warnings are exactly the booklets with an
+  excluded part (plus the 4 known Politics ones).
+- `node tools/browser-geography-bank.cjs` (local server, isolated demo profile): 605 units
+  discoverable, AS filter, insert figures and scheme pixels load, fieldwork stem shown,
+  paper page, no overflow at 320/390/768/1440, no console errors: PASS. Existing
+  `browser-regression`, `browser-politics-bank`, `browser-topic-choice` and
+  `browser-coverage-dialog` also pass. This is local verification, not a production test.
+
+### Reproduce the build
+
+```sh
+R=../geography-research   # sources/, candidates/, review-in/, review-src/, reviews/
+for q in 7037 7036; do python3 tools/geography/extract.py data/imports/geography/inventory/$q-inventory.json --sources $R/sources --output $R/candidates; done
+python3 tools/geography/reviews.py prepare $R      # packets for reviewers
+python3 tools/geography/reviews.py compile $R      # review-src/*.txt -> reviews/*.json
+python3 tools/geography/build.py --research $R
+python3 tools/geography/finalize.py --research $R --activate
+npm test && npm run validate
+npm start & node tools/browser-geography-bank.cjs
+```
+
+The review line sheets (`review-src/`) are the only hand-made input; copy them from a
+previous run's research folder, or recreate them from the compiled JSON reviews in
+`data/imports/geography/reviews/`.
+
+### Still open
+
+- June 2026 papers: add when AQA lists them publicly (rerun resources.py onwards).
+- AS November 2021 and A-level June 2018-2019 / AS June 2017-2019: not public.
+- 30 excluded parts: publishable only if AQA releases versions with the figures.
+- Textbook organisation: none supplied; official specification only.
+- Published to the session branch `claude/purepastpapers-subject-impl-ktdw1g`. Merging to
+  `main` (and so deployment) needs the owner's go-ahead; production not yet checked.
+
 ## Next action
 
-Model review of 600 publishable units in four batches (A-level Paper 1, A-level Paper
-2, AS Paper 1, AS Paper 2), then lead review of flagged lines, then the build.
+Owner: approve merging the branch to `main`; then compare the live index, coverage and a
+representative `data/geography-assets/` catalogue against this release.

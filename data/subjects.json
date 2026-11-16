@@ -121,7 +121,7 @@
     "subject": "Geography",
     "board": "AQA",
     "spec_code": "7037",
-    "spec_notes": "Paper 1 (Physical), Paper 2 (Human) — includes synoptic links",
+    "spec_notes": "Paper 1 Physical (options: deserts, coasts or glaciers; hazards or ecosystems), Paper 2 Human (options: urban, population or resources); AS 7036 included",
     "subject_category": "Humanities / Mixed",
     "sp_prefix": "AQA_GEOG",
     "id_stem": "AQA_7037",
@@ -131,7 +131,9 @@
     "grade_scheme": "alevel",
     "has_written_exam": true,
     "extra_hard": false,
-    "has_catalogue": true
+    "has_catalogue": true,
+    "qualifications": [{"code": "7037", "label": "A-Level"}, {"code": "7036", "label": "AS", "is_as": true}],
+    "content_year_source": "introduced_year"
   },
   {
     "subject_id": "EDX_ALEVEL_HIST_9HI0",

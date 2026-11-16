@@ -17,6 +17,7 @@ export function questionBody(question, { contextOpen = false } = {}) {
   return html`<div class="stack">
     ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
     ${context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
+    ${resources(question)}
     <div class="qcontent question-selected-part">${sanitizeHtml(markup)}${image(url, `${question.preview_text || 'Source-rendered question'}. Question ${question.question_number}${question.part_label ? `, part ${question.part_label}` : ''}`)}</div>
     ${fullQuestion ? html`<details class="question-context" data-question-context="${question.question_id}" ${contextOpen ? 'open' : ''}>
       <summary>Show full question for context</summary>
@@ -34,6 +35,23 @@ export function questionBody(question, { contextOpen = false } = {}) {
       </div>
     </details>` : html`<p class="small muted">This question uses the pre-release scientific article for its paper. Pearson has not made that article publicly available, so it is not reproduced here.</p>` : ''}
   </div>`;
+}
+
+/**
+ * Printed resources a part needs but does not score: a question's shared stem (e.g. an
+ * AQA fieldwork scenario) and figures from the insert or printed with an earlier part.
+ * Shown open, before the part, and labelled unscored.
+ */
+function resources(question) {
+  const context = question.context || {};
+  const stem = context.stem_image_url && isSafeUrl(context.stem_image_url) ? context.stem_image_url : null;
+  const figures = (Array.isArray(context.figures) ? context.figures : []).filter((figure) => figure && isSafeUrl(figure.image_url));
+  if (!stem && !figures.length) return '';
+  return html`<section class="stack question-resources" aria-label="Resources for this question (unscored)" data-question-resources="${question.question_id}">
+    <p class="small muted">Resources for this question. Unscored context: they carry no marks of their own.</p>
+    ${stem ? html`<figure class="qcontent"><figcaption class="small">Question ${question.question_number} (shared introduction)</figcaption>${image(stem, `Shared introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
+    ${figures.map((figure) => html`<figure class="qcontent"><figcaption class="small">${figure.label} · ${figure.source === 'insert' ? 'from the insert' : 'printed earlier in the question paper'}</figcaption>${image(figure.image_url, `${figure.label}, unscored resource`)}</figure>`)}
+  </section>`;
 }
 
 export function markSchemeBody(question) {
