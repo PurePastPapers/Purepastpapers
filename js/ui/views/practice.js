@@ -811,6 +811,9 @@ export async function mount(element, context) {
     if (!opened.matches?.('.fpop') || !opened.open) return;
     for (const other of element.querySelectorAll('.fpop[open]')) if (other !== opened) other.open = false;
   }, true);
+  on(element, 'click', '.fpop__btn', (event, summary) => {
+    for (const other of element.querySelectorAll('.fpop[open]')) if (other !== summary.parentElement) other.open = false;
+  });
   const closePops = (event) => {
     if (!element.isConnected) { document.removeEventListener('click', closePops); document.removeEventListener('keydown', closePops); return; }
     if (event.type === 'keydown' && event.key !== 'Escape') return;
