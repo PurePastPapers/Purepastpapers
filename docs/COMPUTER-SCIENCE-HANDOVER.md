@@ -96,7 +96,43 @@ curl -A "Mozilla/5.0" -o $R/page.html https://www.ocr.org.uk/qualifications/as-a
 python3 tools/cs/inventory.py $R/page.html --sources $R/sources
 ```
 
+## Checkpoint 3: extraction and scheme indexing (16 November 2026)
+
+**Status: no Computer Science questions are published yet.** Candidates are in
+`../cs-research/candidates/` (not committed; reproducible).
+
+- `tools/cs/extract.py`: one scored unit per tariff "[n]" (OCR prints it at the right,
+  often fused onto the last dotted answer line). Labels "1", "2*", "(a)", "(i)" are read
+  from the label column; "(i)" is a numeral or part letter i by the sequence it continues.
+  A bare number counts as a question only in the margin (x < 68), or when question text
+  follows it, so code-listing line numbers, table cells and numbered answer lines are
+  never read as questions. A repeated part label on a continuation page is skipped.
+  **All 22 booklets reconcile to their cover totals with 0 exceptions: 167 questions,
+  724 scored units, 2,380 marks; part letters and numerals run in order everywhere.**
+- Unit crops keep the printed lines, tables, trace tables and diagrams and leave out blank
+  dotted answer lines (the tariff line is kept). A question's stem (e.g. a pseudocode
+  listing) and a part's lead-in (e.g. "(a) A logic gate diagram is shown below") are
+  stored as shared, unscored context for every part beneath them: 662 units carry context.
+  63 units are extended-response (*) items. No copyright-removed material was found.
+- `tools/cs/schemes.py`: OCR schemes are ruled tables whose label cells vary by year
+  (compact "1aii", split "1" "(a)" "(i)", bare "a" "ii", only the changed level, a typo
+  "Iv"). Rows are read between the table rules (drawn per cell); the label zone is where
+  each page's answer column starts. Rows are aligned to the question paper's own ordered
+  labels (a fully stated label re-synchronises), so guidance pages and marks never start
+  a scheme. **All 724 units have their official scheme rows.** 3 use a parent row: AS
+  sample Paper 2 4(c)(i)/(ii) share one row in OCR's scheme, and November 2021 Paper 1
+  7(b)(i)'s 4-mark row is labelled only "(b)".
+- Visually checked: a trace table with its pseudocode, a truth table with the logic-gate
+  diagram in its part lead-in, and a numbered code-listing stem.
+
+### Reproduce
+
+```sh
+R=../cs-research
+for q in H446 H046; do python3 tools/cs/extract.py data/imports/cs/inventory/$q-inventory.json --sources $R/sources --output $R/candidates; done
+```
+
 ## Next action
 
-Checkpoint 3: `tools/cs/extract.py` (OCR "1 (a) (i)" labels and "[n]" tariffs, code and
-pseudocode listings, trace and truth tables, answer grids after a tariff), then schemes.
+Model review in four batches (H446 Paper 1, H446 Paper 2, H046 Paper 1, H046 Paper 2),
+lead review of flags, then build (hidden: OCR rights unconfirmed), tests, merge, verify.
