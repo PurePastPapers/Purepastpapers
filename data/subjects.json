@@ -179,7 +179,7 @@
     "subject": "English Literature",
     "board": "Edexcel",
     "spec_code": "9ET0",
-    "spec_notes": "Drama (Othello/Streetcar), Prose (Handmaid's Tale/Frankenstein), Poetry",
+    "spec_notes": "Drama (Othello, A Streetcar Named Desire), Prose (Science and Society: Frankenstein, The Handmaid's Tale), Poetry (Poems of the Decade, The Romantics); AS 8ET0 included",
     "subject_category": "Humanities (Essay)",
     "sp_prefix": "EDX_ENGLIT",
     "id_stem": "EDX_9ET0",
@@ -189,7 +189,9 @@
     "grade_scheme": "alevel",
     "has_written_exam": true,
     "extra_hard": false,
-    "has_catalogue": true
+    "has_catalogue": true,
+    "qualifications": [{"code": "9ET0", "label": "A-Level"}, {"code": "8ET0", "label": "AS", "is_as": true}],
+    "content_year_source": "introduced_year"
   },
   {
     "subject_id": "AQA_ALEVEL_PSYCH_7182",

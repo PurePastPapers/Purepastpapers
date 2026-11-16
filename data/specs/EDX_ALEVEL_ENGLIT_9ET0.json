@@ -1,71 +1,1131 @@
 {
   "subject_id": "EDX_ALEVEL_ENGLIT_9ET0",
+  "specification_version": "pearson-9et0-issue-11-2025-08",
+  "official_source_url": "https://qualifications.pearson.com/en/qualifications/edexcel-a-levels/english-literature-2015.html",
+  "order_status": "verified",
+  "official_source": {
+    "title": "Pearson Edexcel Level 3 Advanced GCE in English Literature (9ET0) specification",
+    "version": "Issue 11",
+    "issue_date": "August 2025",
+    "first_teaching": 2015,
+    "url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/English%20Literature/2015/Specification%20and%20sample%20assessments/gce2015-a-level-eng-lit-spec.pdf",
+    "page": "https://qualifications.pearson.com/en/qualifications/edexcel-a-levels/english-literature-2015.html",
+    "sha256": "2f27dbd3c208726149c2ed237160a04bda1784f8eec28d3e70d6043ce856fd83",
+    "verified_at": "2026-11-16",
+    "note": "Reissue with no content changes affecting the exams (NEA authentication sheet only); all public papers were set on this content."
+  },
+  "as_source": {
+    "title": "Pearson Edexcel Level 3 Advanced Subsidiary GCE in English Literature (8ET0) specification",
+    "version": "Issue 8",
+    "issue_date": "September 2023",
+    "url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/English%20Literature/2015/Specification%20and%20sample%20assessments/as-literature-spec.pdf",
+    "sha256": "bad1e11d316398a6f332dc6362ff9836f0e9fd9696a1e8c1ee67378201cb9fe2",
+    "verified_at": "2026-11-16"
+  },
+  "approach": "Official Pearson set-text order, scoped to the owner’s route. No textbook organisation has been supplied.",
+  "route": {
+    "paper_1": "Othello (Section A, tragedy) and A Streetcar Named Desire (Section B)",
+    "paper_2": "Science and Society: Frankenstein and The Handmaid’s Tale",
+    "paper_3": "Poems of the Decade (Section A) and The Romantics (Section B)",
+    "as": "AS Paper 1: Poems of the Decade and A Streetcar Named Desire; AS Paper 2: Science and Society",
+    "evidence": "The Reach Free School Sixth Form Prospectus 2025/26 (owner-supplied source); The Romantics chosen by the owner, 16 Nov 2026"
+  },
+  "options_not_in_scope": {
+    "Component 1 Shakespeare": "Antony and Cleopatra, Hamlet, King Lear (tragedy); A Midsummer Night’s Dream, Measure for Measure, The Taming of the Shrew, Twelfth Night (comedy)",
+    "Component 1 Other drama": "Doctor Faustus, The Duchess of Malfi, The Importance of Being Earnest, The Rover, Les Blancs, Sweat, Waiting for Godot",
+    "Component 2 Prose themes": "Childhood; Colonisation and its Aftermath; Crime and Detection; The Supernatural; Women and Society. Science and Society alternatives The War of the Worlds and Never Let Me Go are not studied.",
+    "Component 3 Section B": "Medieval Poetic Drama, Chaucer, The Metaphysical Poets, Donne, Keats (named poet), The Victorians, Rossetti, Modernism, T S Eliot, The Movement, Larkin",
+    "Component 4": "Non-examination assessment (coursework) has no exam questions."
+  },
+  "components": {
+    "9ET0/01": {
+      "title": "Drama",
+      "marks": 60,
+      "minutes": 135,
+      "structure": "A Shakespeare (35), B other drama (25); one of two questions on the studied text in each"
+    },
+    "9ET0/02": {
+      "title": "Prose",
+      "marks": 40,
+      "minutes": 75,
+      "structure": "one of two comparative questions on the studied theme"
+    },
+    "9ET0/03": {
+      "title": "Poetry",
+      "marks": 60,
+      "minutes": 135,
+      "structure": "A post-2000 poetry with an unseen poem (30), B pre- or post-1900 poetry (30)"
+    },
+    "8ET0/01": {
+      "title": "AS Poetry and Drama",
+      "marks": 72,
+      "minutes": 120,
+      "structure": "A post-2000 poetry (24), B drama (48)"
+    },
+    "8ET0/02": {
+      "title": "AS Prose",
+      "marks": 44,
+      "minutes": 75,
+      "structure": "one of two comparative questions on the studied theme"
+    }
+  },
+  "as_section_map": {
+    "8ET0 8ET0/01 Section B B.1": "EDX_ENGLIT_DRAMA_B.1",
+    "8ET0 8ET0/02 P.1": "EDX_ENGLIT_PROSE_P.1",
+    "8ET0 8ET0/02 P.2": "EDX_ENGLIT_PROSE_P.2",
+    "8ET0 8ET0/01 Section A PD.1": "EDX_ENGLIT_MODERN_PD.1",
+    "8ET0 8ET0/01 Section A PD.2": "EDX_ENGLIT_MODERN_PD.2",
+    "8ET0 8ET0/01 Section A PD.3": "EDX_ENGLIT_MODERN_PD.3",
+    "8ET0 8ET0/01 Section A PD.4": "EDX_ENGLIT_MODERN_PD.4",
+    "8ET0 8ET0/01 Section A PD.5": "EDX_ENGLIT_MODERN_PD.5",
+    "8ET0 8ET0/01 Section A PD.6": "EDX_ENGLIT_MODERN_PD.6",
+    "8ET0 8ET0/01 Section A PD.7": "EDX_ENGLIT_MODERN_PD.7",
+    "8ET0 8ET0/01 Section A PD.8": "EDX_ENGLIT_MODERN_PD.8",
+    "8ET0 8ET0/01 Section A PD.9": "EDX_ENGLIT_MODERN_PD.9",
+    "8ET0 8ET0/01 Section A PD.10": "EDX_ENGLIT_MODERN_PD.10",
+    "8ET0 8ET0/01 Section A PD.11": "EDX_ENGLIT_MODERN_PD.11",
+    "8ET0 8ET0/01 Section A PD.12": "EDX_ENGLIT_MODERN_PD.12",
+    "8ET0 8ET0/01 Section A PD.13": "EDX_ENGLIT_MODERN_PD.13",
+    "8ET0 8ET0/01 Section A PD.14": "EDX_ENGLIT_MODERN_PD.14",
+    "8ET0 8ET0/01 Section A PD.15": "EDX_ENGLIT_MODERN_PD.15",
+    "8ET0 8ET0/01 Section A PD.16": "EDX_ENGLIT_MODERN_PD.16",
+    "8ET0 8ET0/01 Section A PD.17": "EDX_ENGLIT_MODERN_PD.17",
+    "8ET0 8ET0/01 Section A PD.18": "EDX_ENGLIT_MODERN_PD.18",
+    "8ET0 8ET0/01 Section A PD.19": "EDX_ENGLIT_MODERN_PD.19",
+    "8ET0 8ET0/01 Section A PD.20": "EDX_ENGLIT_MODERN_PD.20"
+  },
+  "year_12_points": [
+    "EDX_ENGLIT_DRAMA_B.1",
+    "EDX_ENGLIT_PROSE_P.1",
+    "EDX_ENGLIT_PROSE_P.2",
+    "EDX_ENGLIT_MODERN_PD.1",
+    "EDX_ENGLIT_MODERN_PD.2",
+    "EDX_ENGLIT_MODERN_PD.3",
+    "EDX_ENGLIT_MODERN_PD.4",
+    "EDX_ENGLIT_MODERN_PD.5",
+    "EDX_ENGLIT_MODERN_PD.6",
+    "EDX_ENGLIT_MODERN_PD.7",
+    "EDX_ENGLIT_MODERN_PD.8",
+    "EDX_ENGLIT_MODERN_PD.9",
+    "EDX_ENGLIT_MODERN_PD.10",
+    "EDX_ENGLIT_MODERN_PD.11",
+    "EDX_ENGLIT_MODERN_PD.12",
+    "EDX_ENGLIT_MODERN_PD.13",
+    "EDX_ENGLIT_MODERN_PD.14",
+    "EDX_ENGLIT_MODERN_PD.15",
+    "EDX_ENGLIT_MODERN_PD.16",
+    "EDX_ENGLIT_MODERN_PD.17",
+    "EDX_ENGLIT_MODERN_PD.18",
+    "EDX_ENGLIT_MODERN_PD.19",
+    "EDX_ENGLIT_MODERN_PD.20"
+  ],
+  "notes": "Leaves are the route’s set texts and prescribed poems in Pearson’s printed order. Pearson prints no codes; codes are positional. Linear A level: Pearson prints no Year 12/13 order; the AS 8ET0 set texts give the co-teaching Year 12 subset.",
+  "legacy_ids": {
+    "EDX_ENGLIT_MODERN_A.1": [
+      "EDX_ENGLIT_MODERN_PD.1",
+      "EDX_ENGLIT_MODERN_PD.2",
+      "EDX_ENGLIT_MODERN_PD.3",
+      "EDX_ENGLIT_MODERN_PD.4",
+      "EDX_ENGLIT_MODERN_PD.5",
+      "EDX_ENGLIT_MODERN_PD.6",
+      "EDX_ENGLIT_MODERN_PD.7",
+      "EDX_ENGLIT_MODERN_PD.8",
+      "EDX_ENGLIT_MODERN_PD.9",
+      "EDX_ENGLIT_MODERN_PD.10",
+      "EDX_ENGLIT_MODERN_PD.11",
+      "EDX_ENGLIT_MODERN_PD.12",
+      "EDX_ENGLIT_MODERN_PD.13",
+      "EDX_ENGLIT_MODERN_PD.14",
+      "EDX_ENGLIT_MODERN_PD.15",
+      "EDX_ENGLIT_MODERN_PD.16",
+      "EDX_ENGLIT_MODERN_PD.17",
+      "EDX_ENGLIT_MODERN_PD.18",
+      "EDX_ENGLIT_MODERN_PD.19",
+      "EDX_ENGLIT_MODERN_PD.20",
+      "EDX_ENGLIT_MODERN_UNSEEN"
+    ],
+    "EDX_ENGLIT_POET_B.1": [
+      "EDX_ENGLIT_POET_R.1",
+      "EDX_ENGLIT_POET_R.2",
+      "EDX_ENGLIT_POET_R.3",
+      "EDX_ENGLIT_POET_R.4",
+      "EDX_ENGLIT_POET_R.5",
+      "EDX_ENGLIT_POET_R.6",
+      "EDX_ENGLIT_POET_R.7",
+      "EDX_ENGLIT_POET_R.8",
+      "EDX_ENGLIT_POET_R.9",
+      "EDX_ENGLIT_POET_R.10",
+      "EDX_ENGLIT_POET_R.11",
+      "EDX_ENGLIT_POET_R.12",
+      "EDX_ENGLIT_POET_R.13",
+      "EDX_ENGLIT_POET_R.14",
+      "EDX_ENGLIT_POET_R.15",
+      "EDX_ENGLIT_POET_R.16",
+      "EDX_ENGLIT_POET_R.17",
+      "EDX_ENGLIT_POET_R.18",
+      "EDX_ENGLIT_POET_R.19"
+    ],
+    "EDX_ENGLIT_POET_B.2": [
+      "EDX_ENGLIT_POET_R.16",
+      "EDX_ENGLIT_POET_R.17",
+      "EDX_ENGLIT_POET_R.18",
+      "EDX_ENGLIT_POET_R.19"
+    ]
+  },
+  "point_order": [
+    "EDX_ENGLIT_SHAKES_A.1",
+    "EDX_ENGLIT_SHAKES_A.2",
+    "EDX_ENGLIT_DRAMA_B.1",
+    "EDX_ENGLIT_PROSE_P.1",
+    "EDX_ENGLIT_PROSE_P.2",
+    "EDX_ENGLIT_MODERN_PD.1",
+    "EDX_ENGLIT_MODERN_PD.2",
+    "EDX_ENGLIT_MODERN_PD.3",
+    "EDX_ENGLIT_MODERN_PD.4",
+    "EDX_ENGLIT_MODERN_PD.5",
+    "EDX_ENGLIT_MODERN_PD.6",
+    "EDX_ENGLIT_MODERN_PD.7",
+    "EDX_ENGLIT_MODERN_PD.8",
+    "EDX_ENGLIT_MODERN_PD.9",
+    "EDX_ENGLIT_MODERN_PD.10",
+    "EDX_ENGLIT_MODERN_PD.11",
+    "EDX_ENGLIT_MODERN_PD.12",
+    "EDX_ENGLIT_MODERN_PD.13",
+    "EDX_ENGLIT_MODERN_PD.14",
+    "EDX_ENGLIT_MODERN_PD.15",
+    "EDX_ENGLIT_MODERN_PD.16",
+    "EDX_ENGLIT_MODERN_PD.17",
+    "EDX_ENGLIT_MODERN_PD.18",
+    "EDX_ENGLIT_MODERN_PD.19",
+    "EDX_ENGLIT_MODERN_PD.20",
+    "EDX_ENGLIT_MODERN_UNSEEN",
+    "EDX_ENGLIT_POET_R.1",
+    "EDX_ENGLIT_POET_R.2",
+    "EDX_ENGLIT_POET_R.3",
+    "EDX_ENGLIT_POET_R.4",
+    "EDX_ENGLIT_POET_R.5",
+    "EDX_ENGLIT_POET_R.6",
+    "EDX_ENGLIT_POET_R.7",
+    "EDX_ENGLIT_POET_R.8",
+    "EDX_ENGLIT_POET_R.9",
+    "EDX_ENGLIT_POET_R.10",
+    "EDX_ENGLIT_POET_R.11",
+    "EDX_ENGLIT_POET_R.12",
+    "EDX_ENGLIT_POET_R.13",
+    "EDX_ENGLIT_POET_R.14",
+    "EDX_ENGLIT_POET_R.15",
+    "EDX_ENGLIT_POET_R.16",
+    "EDX_ENGLIT_POET_R.17",
+    "EDX_ENGLIT_POET_R.18",
+    "EDX_ENGLIT_POET_R.19"
+  ],
   "sections": [
     {
       "id": "EDX_ENGLIT_SEC_P1",
+      "code": "Paper 1",
       "title": "Paper 1: Drama",
+      "official_reference": {
+        "component": "9ET0/01"
+      },
       "topics": [
         {
           "id": "EDX_ENGLIT_SHAKES",
           "code": "A",
-          "title": "Section A: Shakespeare",
+          "title": "Section A: Shakespeare (tragedy): Othello",
           "kind": "set_text",
+          "route": "Paper 1 Section A (one play from the tragedy or comedy list)",
           "points": [
-            {"id":"EDX_ENGLIT_SHAKES_A.1","code":"A.1","title":"Othello"},
-            {"id":"EDX_ENGLIT_SHAKES_A.2","code":"A.2","title":"Critical anthology: Shakespearean tragedy"}
+            {
+              "id": "EDX_ENGLIT_SHAKES_A.1",
+              "code": "A.1",
+              "title": "Othello",
+              "content": [
+                "Othello, William Shakespeare (Tragedy).",
+                "One essay question incorporating ideas from wider critical reading (AO1, AO2, AO3, AO5)."
+              ],
+              "official_reference": {
+                "component": "9ET0/01",
+                "source_pages": [
+                  15
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_SHAKES_A.2",
+              "code": "A.2",
+              "title": "Critical reading: Shakespeare: A Critical Anthology – Tragedy",
+              "content": [
+                "Students engage with different interpretations of their Shakespeare play, supported by Shakespeare: A Critical Anthology – Tragedy (four generic essays and three essays on each set text). The anthology must not be taken into the examination."
+              ],
+              "official_reference": {
+                "component": "9ET0/01",
+                "source_pages": [
+                  15
+                ]
+              }
+            }
           ]
         },
         {
           "id": "EDX_ENGLIT_DRAMA",
           "code": "B",
-          "title": "Section B: Other drama",
+          "title": "Section B: Other drama: A Streetcar Named Desire",
           "kind": "set_text",
+          "route": "Paper 1 Section B (one post-1900 or pre-1900 play); AS Paper 1 Section B",
           "points": [
-            {"id":"EDX_ENGLIT_DRAMA_B.1","code":"B.1","title":"A Streetcar Named Desire"}
+            {
+              "id": "EDX_ENGLIT_DRAMA_B.1",
+              "code": "B.1",
+              "title": "A Streetcar Named Desire",
+              "content": [
+                "A Streetcar Named Desire, Tennessee Williams (post-1900 other drama).",
+                "One essay question (AO1, AO2, AO3)."
+              ],
+              "official_reference": {
+                "component": "9ET0/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section B",
+                "source_pages": [
+                  10
+                ]
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "EDX_ENGLIT_SEC_P2",
+      "code": "Paper 2",
       "title": "Paper 2: Prose",
       "note": "Theme: Science and Society",
+      "official_reference": {
+        "component": "9ET0/02"
+      },
       "topics": [
         {
           "id": "EDX_ENGLIT_PROSE",
           "code": "P",
-          "title": "Comparative prose study",
+          "title": "Science and Society: comparative prose",
           "kind": "set_text",
+          "route": "Paper 2 (one theme, two texts, at least one pre-1900); AS Paper 2",
           "points": [
-            {"id":"EDX_ENGLIT_PROSE_P.1","code":"P.1","title":"The Handmaid's Tale"},
-            {"id":"EDX_ENGLIT_PROSE_P.2","code":"P.2","title":"Frankenstein"}
+            {
+              "id": "EDX_ENGLIT_PROSE_P.1",
+              "code": "P.1",
+              "title": "The Handmaid’s Tale",
+              "content": [
+                "The Handmaid’s Tale, Margaret Atwood (Science and Society, post-1900).",
+                "One comparative essay question on the theme (AO1-AO4)."
+              ],
+              "official_reference": {
+                "component": "9ET0/02",
+                "source_pages": [
+                  16
+                ]
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/02",
+                "source_pages": [
+                  11
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_PROSE_P.2",
+              "code": "P.2",
+              "title": "Frankenstein",
+              "content": [
+                "Frankenstein, Mary Shelley (Science and Society, pre-1900).",
+                "One comparative essay question on the theme (AO1-AO4)."
+              ],
+              "official_reference": {
+                "component": "9ET0/02",
+                "source_pages": [
+                  16
+                ]
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/02",
+                "source_pages": [
+                  11
+                ]
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "EDX_ENGLIT_SEC_P3",
+      "code": "Paper 3",
       "title": "Paper 3: Poetry",
+      "official_reference": {
+        "component": "9ET0/03"
+      },
       "topics": [
         {
           "id": "EDX_ENGLIT_MODERN",
-          "code": "A",
-          "title": "Section A: Post-2000 specified poetry",
+          "code": "PD",
+          "title": "Section A: Post-2000 specified poetry: Poems of the Decade",
           "kind": "set_text",
+          "route": "Paper 3 Section A (unseen comparison); AS Paper 1 Section A",
           "points": [
-            {"id":"EDX_ENGLIT_MODERN_A.1","code":"A.1","title":"Poems of the Decade (comparison with an unseen poem)"}
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.1",
+              "code": "PD.1",
+              "title": "Eat Me (Patience Agbabi)",
+              "content": [
+                "Eat Me, Patience Agbabi (Poems of the Decade, page 3)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 3
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.2",
+              "code": "PD.2",
+              "title": "Chainsaw Versus the Pampas Grass (Simon Armitage)",
+              "content": [
+                "Chainsaw Versus the Pampas Grass, Simon Armitage (Poems of the Decade, page 6)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 6
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.3",
+              "code": "PD.3",
+              "title": "Material (Ros Barber)",
+              "content": [
+                "Material, Ros Barber (Poems of the Decade, page 10)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 10
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.4",
+              "code": "PD.4",
+              "title": "History (John Burnside)",
+              "content": [
+                "History, John Burnside (Poems of the Decade, page 25)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 25
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.5",
+              "code": "PD.5",
+              "title": "An Easy Passage (Julia Copus)",
+              "content": [
+                "An Easy Passage, Julia Copus (Poems of the Decade, page 37)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 37
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.6",
+              "code": "PD.6",
+              "title": "The Deliverer (Tishani Doshi)",
+              "content": [
+                "The Deliverer, Tishani Doshi (Poems of the Decade, page 43)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 43
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.7",
+              "code": "PD.7",
+              "title": "The Lammas Hireling (Ian Duhig)",
+              "content": [
+                "The Lammas Hireling, Ian Duhig (Poems of the Decade, page 51)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 51
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.8",
+              "code": "PD.8",
+              "title": "To My Nine-Year-Old Self (Helen Dunmore)",
+              "content": [
+                "To My Nine-Year-Old Self, Helen Dunmore (Poems of the Decade, page 52)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 52
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.9",
+              "code": "PD.9",
+              "title": "A Minor Role (U A Fanthorpe)",
+              "content": [
+                "A Minor Role, U A Fanthorpe (Poems of the Decade, page 57)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 57
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.10",
+              "code": "PD.10",
+              "title": "The Gun (Vicki Feaver)",
+              "content": [
+                "The Gun, Vicki Feaver (Poems of the Decade, page 62)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 62
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.11",
+              "code": "PD.11",
+              "title": "The Furthest Distances I’ve Travelled (Leontia Flynn)",
+              "content": [
+                "The Furthest Distances I’ve Travelled, Leontia Flynn (Poems of the Decade, page 64)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 64
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.12",
+              "code": "PD.12",
+              "title": "Giuseppe (Roderick Ford)",
+              "content": [
+                "Giuseppe, Roderick Ford (Poems of the Decade, page 66)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 66
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.13",
+              "code": "PD.13",
+              "title": "Out of the Bag (Seamus Heaney)",
+              "content": [
+                "Out of the Bag, Seamus Heaney (Poems of the Decade, page 81)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 81
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.14",
+              "code": "PD.14",
+              "title": "Effects (Alan Jenkins)",
+              "content": [
+                "Effects, Alan Jenkins (Poems of the Decade, page 92)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 92
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.15",
+              "code": "PD.15",
+              "title": "Genetics (Sinéad Morrissey)",
+              "content": [
+                "Genetics, Sinéad Morrissey (Poems of the Decade, page 125)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 125
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.16",
+              "code": "PD.16",
+              "title": "From the Journal of a Disappointed Man (Andrew Motion)",
+              "content": [
+                "From the Journal of a Disappointed Man, Andrew Motion (Poems of the Decade, page 127)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 127
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.17",
+              "code": "PD.17",
+              "title": "Look We Have Coming to Dover! (Daljit Nagra)",
+              "content": [
+                "Look We Have Coming to Dover!, Daljit Nagra (Poems of the Decade, page 129)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 129
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.18",
+              "code": "PD.18",
+              "title": "Please Hold (Ciaran O’Driscoll)",
+              "content": [
+                "Please Hold, Ciaran O’Driscoll (Poems of the Decade, page 132)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 132
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.19",
+              "code": "PD.19",
+              "title": "On Her Blindness (Adam Thorpe)",
+              "content": [
+                "On Her Blindness, Adam Thorpe (Poems of the Decade, page 170)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 170
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_PD.20",
+              "code": "PD.20",
+              "title": "Ode on a Grayson Perry Urn (Tim Turnbull)",
+              "content": [
+                "Ode on a Grayson Perry Urn, Tim Turnbull (Poems of the Decade, page 172)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  62
+                ],
+                "anthology_page": 172
+              },
+              "as_reference": {
+                "qualification": "8ET0",
+                "component": "8ET0/01 Section A",
+                "source_pages": [
+                  38
+                ]
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_MODERN_UNSEEN",
+              "code": "PD.U",
+              "title": "Unseen poetry: comparing an unseen post-2000 poem",
+              "content": [
+                "Students respond to an unseen poem in comparison with a studied poem from their contemporary text (AO1, AO2, AO4)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  28
+                ]
+              }
+            }
           ]
         },
         {
           "id": "EDX_ENGLIT_POET",
-          "code": "B",
-          "title": "Section B: Specified poetry pre- or post-1900",
+          "code": "R",
+          "title": "Section B: The Romantics (English Romantic Verse)",
           "kind": "set_text",
+          "route": "Paper 3 Section B (one period or named poet)",
           "points": [
-            {"id":"EDX_ENGLIT_POET_B.1","code":"B.1","title":"The Romantics"},
-            {"id":"EDX_ENGLIT_POET_B.2","code":"B.2","title":"John Keats"},
-            {"id":"EDX_ENGLIT_POET_B.3","code":"B.3","title":"Christina Rossetti"},
-            {"id":"EDX_ENGLIT_POET_B.4","code":"B.4","title":"Philip Larkin"}
+            {
+              "id": "EDX_ENGLIT_POET_R.1",
+              "code": "R.1",
+              "title": "Songs of Innocence: Holy Thursday (William Blake)",
+              "content": [
+                "Songs of Innocence: Holy Thursday, William Blake (English Romantic Verse, ed. David Wright, page 69)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 69
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.2",
+              "code": "R.2",
+              "title": "Songs of Experience: Holy Thursday (William Blake)",
+              "content": [
+                "Songs of Experience: Holy Thursday, William Blake (English Romantic Verse, ed. David Wright, page 73)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 73
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.3",
+              "code": "R.3",
+              "title": "Songs of Experience: The Sick Rose (William Blake)",
+              "content": [
+                "Songs of Experience: The Sick Rose, William Blake (English Romantic Verse, ed. David Wright, page 73)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 73
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.4",
+              "code": "R.4",
+              "title": "Songs of Experience: The Tyger (William Blake)",
+              "content": [
+                "Songs of Experience: The Tyger, William Blake (English Romantic Verse, ed. David Wright, page 74)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 74
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.5",
+              "code": "R.5",
+              "title": "Songs of Experience: London (William Blake)",
+              "content": [
+                "Songs of Experience: London, William Blake (English Romantic Verse, ed. David Wright, page 75)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 75
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.6",
+              "code": "R.6",
+              "title": "Lines Written in Early Spring (William Wordsworth)",
+              "content": [
+                "Lines Written in Early Spring, William Wordsworth (English Romantic Verse, ed. David Wright, page 108)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 108
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.7",
+              "code": "R.7",
+              "title": "Lines Composed a Few Miles above Tintern Abbey (William Wordsworth)",
+              "content": [
+                "Lines Composed a Few Miles above Tintern Abbey, William Wordsworth (English Romantic Verse, ed. David Wright, page 109)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 109
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.8",
+              "code": "R.8",
+              "title": "Ode: Intimations of Immortality (William Wordsworth)",
+              "content": [
+                "Ode: Intimations of Immortality, William Wordsworth (English Romantic Verse, ed. David Wright, page 133)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 133
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.9",
+              "code": "R.9",
+              "title": "Lines Inscribed upon a Cup Formed from a Skull (George Gordon, Lord Byron)",
+              "content": [
+                "Lines Inscribed upon a Cup Formed from a Skull, George Gordon, Lord Byron (English Romantic Verse, ed. David Wright, page 211)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 211
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.10",
+              "code": "R.10",
+              "title": "So We’ll Go no more A Roving (George Gordon, Lord Byron)",
+              "content": [
+                "So We’ll Go no more A Roving, George Gordon, Lord Byron (English Romantic Verse, ed. David Wright, page 213)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 213
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.11",
+              "code": "R.11",
+              "title": "On This Day I Complete My Thirty-Sixth Year (George Gordon, Lord Byron)",
+              "content": [
+                "On This Day I Complete My Thirty-Sixth Year, George Gordon, Lord Byron (English Romantic Verse, ed. David Wright, page 232)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 232
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.12",
+              "code": "R.12",
+              "title": "‘The cold earth slept below’ (Percy Bysshe Shelley)",
+              "content": [
+                "‘The cold earth slept below’, Percy Bysshe Shelley (English Romantic Verse, ed. David Wright, page 242)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 242
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.13",
+              "code": "R.13",
+              "title": "Stanzas Written in Dejection, near Naples (Percy Bysshe Shelley)",
+              "content": [
+                "Stanzas Written in Dejection, near Naples, Percy Bysshe Shelley (English Romantic Verse, ed. David Wright, page 243)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 243
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.14",
+              "code": "R.14",
+              "title": "Ode to the West Wind (Percy Bysshe Shelley)",
+              "content": [
+                "Ode to the West Wind, Percy Bysshe Shelley (English Romantic Verse, ed. David Wright, page 246)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 246
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.15",
+              "code": "R.15",
+              "title": "The Question (Percy Bysshe Shelley)",
+              "content": [
+                "The Question, Percy Bysshe Shelley (English Romantic Verse, ed. David Wright, page 249)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 249
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.16",
+              "code": "R.16",
+              "title": "Ode to a Nightingale (John Keats)",
+              "content": [
+                "Ode to a Nightingale, John Keats (English Romantic Verse, ed. David Wright, page 276)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 276
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.17",
+              "code": "R.17",
+              "title": "Ode on a Grecian Urn (John Keats)",
+              "content": [
+                "Ode on a Grecian Urn, John Keats (English Romantic Verse, ed. David Wright, page 279)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 279
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.18",
+              "code": "R.18",
+              "title": "Ode on Melancholy (John Keats)",
+              "content": [
+                "Ode on Melancholy, John Keats (English Romantic Verse, ed. David Wright, page 283)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 283
+              }
+            },
+            {
+              "id": "EDX_ENGLIT_POET_R.19",
+              "code": "R.19",
+              "title": "Sonnet on the Sea (John Keats)",
+              "content": [
+                "Sonnet on the Sea, John Keats (English Romantic Verse, ed. David Wright, page 287)."
+              ],
+              "official_reference": {
+                "component": "9ET0/03",
+                "source_pages": [
+                  68
+                ],
+                "anthology_page": 287
+              }
+            }
           ]
         }
       ]
