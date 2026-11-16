@@ -35,7 +35,7 @@ def cover(path):
     with pdfplumber.open(path) as pdf:
         text = ' '.join((pdf.pages[i].extract_text() or '') for i in range(min(2, len(pdf.pages))))
     marks = re.search(r'marks available for this paper is (\d+)|maximum mark for this paper is (\d+)', text)
-    time = re.search(r'Time allowed:\s*(\d+) hours?(?: (\d+) minutes)?|Time allowed:\s*(\d+) minutes', text)
+    time = re.search(r'Time allowed:\s*(\d+) hours?(?: (?:and )?(\d+) minutes)?|Time allowed:\s*(\d+) minutes', text)
     minutes = None
     if time:
         minutes = int(time.group(3)) if time.group(3) else int(time.group(1)) * 60 + int(time.group(2) or 0)

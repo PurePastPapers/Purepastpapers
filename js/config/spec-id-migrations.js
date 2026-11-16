@@ -429,6 +429,84 @@ export const LEGACY_SPEC_IDS = Object.freeze({
     "AQA_PSYCH_4.3.9_b3",
     "AQA_PSYCH_4.3.9_b4"
   ],
+  "AQA_SOC_EDU_1.1": [
+    "AQA_SOC_4.1.1_b1"
+  ],
+  "AQA_SOC_EDU_1.2": [
+    "AQA_SOC_4.1.1_b2"
+  ],
+  "AQA_SOC_EDU_1.3": [
+    "AQA_SOC_4.1.1_b3"
+  ],
+  "AQA_SOC_EDU_1.4": [
+    "AQA_SOC_4.1.1_b4"
+  ],
+  "AQA_SOC_MIC_2.1": [
+    "AQA_SOC_4.1.2_b1"
+  ],
+  "AQA_SOC_TM_3.1": [
+    "AQA_SOC_4.1.3_b1",
+    "AQA_SOC_4.1.3_b2",
+    "AQA_SOC_4.1.3_b3"
+  ],
+  "AQA_SOC_TM_3.2": [
+    "AQA_SOC_4.1.3_b4",
+    "AQA_SOC_4.1.3_b5"
+  ],
+  "AQA_SOC_TM_3.3": [
+    "AQA_SOC_4.1.3_b6"
+  ],
+  "AQA_SOC_TM_3.4": [
+    "AQA_SOC_4.1.3_b7",
+    "AQA_SOC_4.1.3_b8",
+    "AQA_SOC_4.1.3_b10"
+  ],
+  "AQA_SOC_TM_3.5": [
+    "AQA_SOC_4.1.3_b9",
+    "AQA_SOC_4.1.3_b11"
+  ],
+  "AQA_SOC_FAM_4.1": [
+    "AQA_SOC_4.2.2_b1"
+  ],
+  "AQA_SOC_FAM_4.2": [
+    "AQA_SOC_4.2.2_b2"
+  ],
+  "AQA_SOC_FAM_4.3": [
+    "AQA_SOC_4.2.2_b3"
+  ],
+  "AQA_SOC_FAM_4.4": [
+    "AQA_SOC_4.2.2_b4"
+  ],
+  "AQA_SOC_FAM_4.5": [
+    "AQA_SOC_4.2.2_b5"
+  ],
+  "AQA_SOC_BELIEFS_5.1": [
+    "AQA_SOC_4.2.5_b1"
+  ],
+  "AQA_SOC_BELIEFS_5.2": [
+    "AQA_SOC_4.2.5_b2"
+  ],
+  "AQA_SOC_BELIEFS_5.3": [
+    "AQA_SOC_4.2.5_b3"
+  ],
+  "AQA_SOC_BELIEFS_5.4": [
+    "AQA_SOC_4.2.5_b4"
+  ],
+  "AQA_SOC_BELIEFS_5.5": [
+    "AQA_SOC_4.2.5_b5"
+  ],
+  "AQA_SOC_CRIME_6.1": [
+    "AQA_SOC_4.3.1_b1"
+  ],
+  "AQA_SOC_CRIME_6.2": [
+    "AQA_SOC_4.3.1_b2"
+  ],
+  "AQA_SOC_CRIME_6.3": [
+    "AQA_SOC_4.3.1_b3"
+  ],
+  "AQA_SOC_CRIME_6.4": [
+    "AQA_SOC_4.3.1_b4"
+  ],
   "EDX_HIST_1H_INT_5.1": [
     "EDX_HIST_1H_INT_INT.1",
     "EDX_HIST_1H_INT_INT.2",
