@@ -16,7 +16,9 @@ test('every public AQA 7152 booklet is built, checked and accounted for', () => 
   assert.deepEqual(packs.map(p => p.papers[0].paper_id).sort(), ids);
   assert.equal(ids.length, 20);
   assert.deepEqual(coverage.queued_public_booklets, []);
-  assert.deepEqual(coverage.totals, {booklets: 20, source_questions: 141, scored_units: 137, marks_available: 1540, excluded_questions: 4});
+  const {image_assets, ...totals} = coverage.totals;
+  if (coverage.published) assert.equal(image_assets, 274);
+  assert.deepEqual(totals, {booklets: 20, source_questions: 141, scored_units: 137, marks_available: 1540, excluded_questions: 4});
   assert.deepEqual(coverage.not_publicly_available, ['AQA_7152_2025_JUNE_01']);
 });
 
@@ -58,7 +60,7 @@ test('units are model-reviewed, tagged to official sections and labelled honestl
   }
 });
 
-test('Politics packs validate against the schema and stay hidden until AQA rights are confirmed', () => {
+test('Politics packs validate against the schema and are live only once AQA rights are confirmed', () => {
   const subject = read('data/subjects.json').find(s => s.subject_id === 'AQA_ALEVEL_POL_7152');
   const index = createSpecIndex(); index.add(spec);
   const questions = packs.flatMap(p => p.questions);
@@ -67,7 +69,7 @@ test('Politics packs validate against the schema and stay hidden until AQA right
   // Only booklets missing a copyright-removed question may fall short of the printed total.
   assert.deepEqual([...new Set(issues.map(i => i.id))].sort(), ['AQA_7152_2022_JUNE_02', 'AQA_7152_2023_JUNE_02', 'AQA_7152_SAMPLE_02', 'AQA_7152_SAMPLE_03']);
   const live = read('data/packs/index.json').packs.map(p => p.file);
-  if (!coverage.published) assert(!live.some(f => f.startsWith('politics/')));
+  assert.equal(live.filter(f => f.startsWith('politics/')).length, coverage.published ? 20 : 0);
   const identities = read('data/imports/politics/identities.json').units;
   assert.equal(Object.keys(identities).length, 137);
 });

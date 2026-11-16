@@ -158,3 +158,13 @@ python3 tools/politics/finalize.py --research $R
 - June 2025 Paper 1 question paper: add when AQA lists it publicly.
 - June 2026 papers: add when AQA publishes them.
 - Textbook organisation: none supplied, so the official specification is used.
+
+## Checkpoint 4 — live (16 November 2026)
+
+The owner confirmed on 16 November 2026 that their AQA permission covers
+republishing these papers. `finalize.py --activate` added all 20 packs to
+`data/packs/index.json` and wrote the crop catalogues to `data/politics-assets/`
+(274 lossless WebP crops, about 23 MB). Coverage status is `complete`. Tests pass,
+`npm run validate` shows 0 errors (4 expected warnings: the booklets missing a
+copyright-removed Q4 total 52, not 77), and `tools/browser-politics-bank.cjs`
+passed against the live index.
