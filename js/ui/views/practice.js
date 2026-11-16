@@ -23,6 +23,7 @@ import { mountCurriculumSelector } from '../curriculum-selector.js';
 import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { scStyle, tintPage } from '../subject-colours.js';
+import { zoomButton } from '../zoom.js';
 import { banner, difficultyBadge, emptyState, pageHead, soonBadge, toast } from '../ui.js';
 import { links, routeOf } from '../../core/links.js';
 
@@ -559,13 +560,14 @@ export async function mount(element, context) {
         ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
         ${open ? html`<div class="qsplit">
-          <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}">
+          <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Question'} · ${questionRef(question, bundle.papersById)}">
+            ${zoomButton(schemeOpen ? 'mark scheme' : 'question')}
             ${schemeOpen
               ? html`<p class="qsplit__label">${icon('eye', { size: 15 })} Mark scheme</p>${markSchemeBody(question)}`
               : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
           </div>
           <div class="qsplit__side stack stack--sm">
-            <label class="field"><span class="field__label">Your answer (optional)</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${draft.answer || ''}</textarea></label>
+            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${draft.answer || ''}</textarea></label>
             ${schemeOpen ? html`<section class="markbox stack stack--sm">
               <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
                 ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}

@@ -10,6 +10,7 @@ import * as api from './data/api.js';
 import * as shell from './ui/shell.js';
 import { tintPage } from './ui/subject-colours.js';
 import { revealOnScroll } from './ui/motion.js';
+import { installZoom } from './ui/zoom.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 import { links } from './core/links.js';
 
@@ -209,6 +210,7 @@ async function handleRoute() {
 
 async function start() {
   observeSourceImages();
+  installZoom();
   await api.init();
   shell.mountShell(document.getElementById('app'));
   api.events.on('auth', (user) => {

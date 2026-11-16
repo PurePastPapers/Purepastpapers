@@ -11,6 +11,7 @@ import { backLabel, links, routeOf } from '../../core/links.js';
 import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, plural, sum } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
+import { zoomButton } from '../zoom.js';
 import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { targetGrade } from '../subject-colours.js';
@@ -219,15 +220,15 @@ export async function mount(element, context) {
           ? pausedPanel()
           : html`<div class="runner__grid">
         ${each && revealed
-          ? html`<article class="card ruled tilt-1 qview qview--scheme">
+          ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? index + 1 : question.question_number}">
               <i class="tape tape--c" aria-hidden="true"></i>
               <header class="qview__head">
                 <h1 class="qview__num" tabindex="-1">Mark scheme <span class="small muted qview__for">for question ${questions.length > 1 ? index + 1 : question.question_number}</span></h1>
-                <div class="row row--tight">${marksPill(question.marks)}</div>
+                <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('mark scheme')}</div>
               </header>
-              ${markSchemeBody(question)}
+              <div data-zoom-body>${markSchemeBody(question)}</div>
             </article>`
-          : html`<article class="card ruled tilt-1 qview">
+          : html`<article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? index + 1 : question.question_number}">
           <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
             <h1 class="qview__num" tabindex="-1">
@@ -235,15 +236,15 @@ export async function mount(element, context) {
                 ? html`Question ${index + 1}<span class="muted"> of ${questions.length}</span>`
                 : html`Question ${question.question_number}`}
             </h1>
-            <div class="row row--tight">${marksPill(question.marks)} ${difficultyBadge(question.difficulty)} ${sourceBadge(question)}</div>
+            <div class="row row--tight">${marksPill(question.marks)} ${difficultyBadge(question.difficulty)} ${sourceBadge(question)} ${zoomButton('question')}</div>
           </header>
-          ${questionBody(question)}
+          <div data-zoom-body>${questionBody(question)}</div>
         </article>`}
         <div class="stack">
-        <section class="card ruled tilt-3 answer-card">
+        <section class="card ruled tilt-3 answer-card" data-zoom-src="Your answer">
           <i class="tape tape--c" aria-hidden="true"></i>
           <label class="field">
-            <span class="card__title">Your answer</span>
+            <span class="card__title row row--between">Your answer ${zoomButton('answer box')}</span>
             <span class="hand">${api.isSignedIn() ? 'optional: type here, it saves as you go, or answer on paper' : 'optional: type here or answer on paper; guest answers are temporary'}</span>
             <textarea class="textarea" data-answer="${id}" placeholder="Type your working or essay here.">${session.answers[id] || ''}</textarea>
           </label>
