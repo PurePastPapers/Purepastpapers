@@ -274,6 +274,18 @@ errors); the AS/A-level chip step is skipped only because `c353026` removed the 
 qualification filter from `main`. The default (strict) run will pass again once that is
 restored. `browser-regression` and `browser-topic-choice` pass.
 
+### Live verification (16 November 2026)
+
+- `main` at `9b83b58`. The live pack index listed all 22 CS packs about 105 s after the push.
+- **51 files byte-identical live and in `9b83b58`**: index.html, pack index, coverage,
+  identities, spec, subjects, question-view, all 22 packs and all 22 crop catalogues.
+- **Production browser test passed**: `tools/browser-cs-bank.cjs` against
+  https://purepastpapers.com in a fresh isolated Chromium profile with
+  `AUDIT_SKIP_QUALIFICATIONS=1` (724 units, stems and lead-ins, question and scheme pixels
+  from the live catalogues, paper page, 320/390/768/1440 px, no console errors). The AS/A-level
+  chip step was skipped only because of the `c353026` regression on `main`.
+- HTTPS certificate caveat unchanged (proxy re-terminates TLS in this session).
+
 ## Next action
 
 Restore the filters reverted by `c353026` (queued task), then run
