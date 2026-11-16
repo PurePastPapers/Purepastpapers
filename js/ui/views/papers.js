@@ -5,7 +5,7 @@
 
 import { PAPER_TYPES } from '../../config/app.config.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
-import { fmtMinutes, groupBy, naturalCompare, plural } from '../../core/utils.js';
+import { fmtMinutes, groupBy, naturalCompare, paperCodeLabel, plural } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { paperSummaries, ragFor } from '../../engine/analytics.js';
 import { icon } from '../icons.js';
@@ -55,7 +55,12 @@ export async function mount(element, context) {
   const inProgress = new Set(api.resumableSessions().map((session) => session.paper_id).filter(Boolean));
   const years = [...new Set(papers.map((paper) => paper.year).filter(Boolean))].sort((a, b) => b - a);
   const codes = [...new Set(papers.filter((paper) => !paper.is_sample).map((paper) => paper.paper_code))].sort(naturalCompare);
-  const filters = { year: 'all', code: 'all', status: 'all' };
+  // A subject can carry a second qualification's papers (AS alongside A level). They are
+  // named on every card and listed after the subject's own, so neither is mistaken for the other.
+  const levelOf = (paper) => paper.level || subject.level;
+  const ownLevelFirst = (a, b) => (a === subject.level ? 0 : 1) - (b === subject.level ? 0 : 1);
+  const levels = [...new Set(papers.filter((paper) => !paper.is_sample).map(levelOf))].sort(ownLevelFirst);
+  const filters = { year: 'all', level: 'all', code: 'all', status: 'all' };
 
   const statusOf = (paper) => {
     const summary = summaries.get(paper.paper_id);
@@ -67,7 +72,9 @@ export async function mount(element, context) {
   const paperHref = (paper) => links.paper(subject.subject_id, paper.paper_id);
   const shortTitle = (paper) => (paper.title.includes(': ') ? paper.title.split(': ').slice(1).join(': ') : paper.title);
   const codeLine = (paper) =>
-    paper.is_sample ? 'Demo paper' : `${subject.spec_code} · ${/^P\d+$/.test(paper.paper_code) ? `Paper ${paper.paper_code.slice(1)}` : paper.paper_code}${paper.tier ? ` · ${paper.tier}` : ''}`;
+    paper.is_sample
+      ? 'Demo paper'
+      : `${levels.length > 1 ? `${levelOf(paper)} · ` : ''}${paper.spec_code || subject.spec_code} · ${paperCodeLabel(paper.paper_code)}${paper.tier ? ` · ${paper.tier}` : ''}`;
 
   function card(paper, index) {
     const summary = summaries.get(paper.paper_id);
@@ -99,10 +106,17 @@ export async function mount(element, context) {
     const visible = papers.filter(
       (paper) =>
         (filters.status === 'all' || statusOf(paper) === filters.status) &&
-        (paper.is_sample || ((filters.year === 'all' || String(paper.year) === filters.year) && (filters.code === 'all' || paper.paper_code === filters.code))),
+        (paper.is_sample ||
+          ((filters.year === 'all' || String(paper.year) === filters.year) &&
+            (filters.level === 'all' || levelOf(paper) === filters.level) &&
+            (filters.code === 'all' || paper.paper_code === filters.code))),
     );
     const demo = visible.filter((paper) => paper.is_sample);
-    const bySeries = groupBy(visible.filter((paper) => !paper.is_sample), (paper) => `${paper.year}|${paper.series || ''}`);
+    // The board's specimen papers carry no exam year: they form one group after the dated series.
+    const bySeries = groupBy(
+      visible.filter((paper) => !paper.is_sample).sort((a, b) => ownLevelFirst(levelOf(a), levelOf(b))),
+      (paper) => (paper.year ? `${paper.year}|${paper.series || ''}` : '0|'),
+    );
     if (!visible.length) {
       return emptyState({
         iconName: 'file',
@@ -118,7 +132,9 @@ export async function mount(element, context) {
     return html`${keys.map((key) => {
         const [year, series] = key.split('|');
         return html`<section class="paper-group">
-          <div class="paper-group__head"><h2>${year}</h2>${series ? html`<span class="hand">${series} series</span>` : ''}</div>
+          <div class="paper-group__head">
+            ${Number(year) ? html`<h2>${year}</h2>${series ? html`<span class="hand">${series} series</span>` : ''}` : html`<h2>Official samples</h2><span class="hand">specimen papers from ${subject.board}</span>`}
+          </div>
           <ul class="paper-cards">${bySeries.get(key).map(card)}</ul>
         </section>`;
       })}
@@ -158,7 +174,8 @@ export async function mount(element, context) {
       <i class="tape tape--l" aria-hidden="true"></i>
       <h2 class="h3">Find a paper</h2>
       ${filterGroup('year', 'Year', [['all', 'All'], ...years.map((year) => [String(year), String(year)])])}
-      ${codes.length > 1 ? filterGroup('code', 'Paper', [['all', 'All'], ...codes.map((code) => [code, /^P\d+$/.test(code) ? `Paper ${code.slice(1)}` : code])]) : ''}
+      ${levels.length > 1 ? filterGroup('level', 'Qualification', [['all', 'All'], ...levels.map((level) => [level, level])]) : ''}
+      ${codes.length > 1 ? filterGroup('code', 'Paper', [['all', 'All'], ...codes.map((code) => [code, paperCodeLabel(code)])]) : ''}
       ${filterGroup('status', 'Status', [['all', 'All'], ['todo', 'Not started'], ['progress', 'In progress'], ['done', 'Completed']])}
     </div>
     <div class="card tilt-1 side-progress">
@@ -175,6 +192,9 @@ export async function mount(element, context) {
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subject.subject_id, (id) => links.papers(id, paperType))}
         ${subject.catalogue_note ? banner(subject.catalogue_note) : ''}
+        ${bundle.failedPacks?.length
+          ? banner(html`Some ${subject.subject} papers did not load, so this list is incomplete (${plural(bundle.failedPacks.length, 'file')} could not be fetched). Check your connection. <button type="button" class="linkbtn" data-retry-load>Try again</button>`, { type: 'warn' })
+          : ''}
         <div class="with-side">
           <aside class="with-side__side" data-side>${sidebar()}</aside>
           <div data-list>${list()}</div>
@@ -182,6 +202,7 @@ export async function mount(element, context) {
       </div>`,
   );
 
+  on(element, 'click', '[data-retry-load]', () => context.refresh());
   on(element, 'click', '[data-filter]', (event, chip) => {
     filters[chip.dataset.filter] = chip.dataset.value;
     for (const other of element.querySelectorAll(`[data-filter="${chip.dataset.filter}"]`)) other.setAttribute('aria-checked', String(other === chip));

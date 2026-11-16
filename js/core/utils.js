@@ -39,6 +39,12 @@ export function shuffle(list, random = Math.random) {
 
 export const naturalCompare = (a, b) => String(a).localeCompare(String(b), 'en', { numeric: true, sensitivity: 'base' });
 
+/** "Paper 1" for the codes "P1" and "01"; any other component code ("1H", "21") is shown as printed. */
+export function paperCodeLabel(code) {
+  const match = /^(?:P(\d+)|0(\d))$/.exec(String(code ?? ''));
+  return match ? `Paper ${match[1] || match[2]}` : String(code ?? '');
+}
+
 export function plural(count, one, many = `${one}s`) {
   return `${count} ${count === 1 ? one : many}`;
 }

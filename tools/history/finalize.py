@@ -84,7 +84,7 @@ def main():
             write(target / 'reviews' / f'{pid}.json', review)
             if a.activate:
                 group.update(image_assets=package(repo, pack_path, pid))
-                packs.append({'file': f'history/{pid}.json'})
+                packs.append({'file': f'history/{pid}.json', 'subject_id': 'EDX_ALEVEL_HIST_9HI0'})
     assert previous.keys() <= identities.keys(), 'Published History identities removed'
     index_path = repo / 'data/packs/index.json'
     if a.activate:

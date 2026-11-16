@@ -21,7 +21,18 @@ export async function mount(element, context) {
   const { subject } = bundle;
   const paper = bundle.papersById.get(context.params.paperId);
   if (!paper) {
-    setHtml(element, emptyState({ iconName: 'file', title: 'Paper not found', text: 'It may have been removed.', action: html`<a class="btn" href="${links.papers()}">Back to past papers</a>` }));
+    // A paper whose file did not download is missing for now, not removed.
+    const failed = bundle.failedPacks?.length > 0;
+    setHtml(
+      element,
+      emptyState({
+        iconName: 'file',
+        title: failed ? 'This paper did not load' : 'Paper not found',
+        text: failed ? `Some ${subject.subject} papers could not be fetched. Check your connection, then try again.` : 'It may have been removed.',
+        action: html`${failed ? html`<button type="button" class="btn btn--primary" data-retry-load>Try again</button>` : ''}<a class="btn" href="${links.papers(subject.subject_id)}">Back to past papers</a>`,
+      }),
+    );
+    if (failed) on(element, 'click', '[data-retry-load]', () => context.refresh());
     return;
   }
   context.setTitle(paper.title);
@@ -33,6 +44,8 @@ export async function mount(element, context) {
   const openSession = api.resumableSessions().find((session) => session.paper_id === paper.paper_id);
   const pdf = isSafeUrl(paper.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
   const markScheme = isSafeUrl(paper.full_mark_scheme_pdf_url) ? paper.full_mark_scheme_pdf_url : null;
+  // Some boards print a paper's figures in a separate insert booklet (AQA Geography).
+  const insert = isSafeUrl(paper.insert_pdf_url) ? paper.insert_pdf_url : null;
 
   const target = targetGrade(subject);
   const schemeBands = GRADE_SCHEMES[subject.grade_scheme]?.bands || [];
@@ -70,6 +83,14 @@ export async function mount(element, context) {
     </section>`;
   }
 
+  // AQA prints the question number inside its part labels ("1.2"): show that rather than
+  // "Q1" on every part. Longer labels ("(a)(ii)") do not fit this column and stay as "Q1".
+  const rowLabel = (question) => {
+    const number = String(question.question_number ?? '');
+    const part = String(question.part_label || '').trim();
+    return part.startsWith(`${number}.`) ? part : `Q${number}`;
+  };
+
   function questionRows() {
     const shown = showAll ? questions : questions.slice(0, SHOW_FIRST);
     return html`<ol class="paper-questions">
@@ -78,7 +99,7 @@ export async function mount(element, context) {
           const status = questionStatus(question, latest);
           const attempt = latest.get(question.question_id);
           return html`<li>
-            <span class="paper-questions__num">Q${question.question_number}</span>
+            <span class="paper-questions__num">${rowLabel(question)}</span>
             <div style="min-width:0">
               <p class="paper-questions__text">${questionSnippet(question, 120)}</p>
               <p class="row row--tight small">
@@ -110,7 +131,7 @@ export async function mount(element, context) {
           { label: subject.subject, href: links.papers(subject.subject_id, paper.paper_type) },
           ...(paper.year ? [{ label: `${paper.series} ${paper.year}` }] : []),
         ],
-        title: paper.title.replace(paper.year ? `${paper.series} ${paper.year} ` : '', ''),
+        title: paper.title.replace(paper.year ? `${paper.series} ${paper.year} ` : '', '').replace(/^·\s*/, ''),
         actions: openSession
           ? html`<a class="btn btn--primary" href="${links.session(openSession.session_id)}">${icon('play', { size: 16 })} Resume paper</a>
               <button type="button" class="btn" data-discard-open>${icon('x', { size: 16 })} Discard attempt</button>`
@@ -150,6 +171,7 @@ export async function mount(element, context) {
             ${pdf || markScheme
               ? html`<div class="stack stack--sm">
                   ${pdf ? html`<a class="btn btn--block btn--left" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
+                  ${insert ? html`<a class="btn btn--block btn--left" href="${insert}" target="_blank" rel="noopener">${icon('file')} Insert with the figures (PDF)</a>` : ''}
                   ${paper.examiner_report_url ? html`<a class="btn btn--block btn--left" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report (PDF)</a>` : ''}
                   ${markScheme ? html`<a class="btn btn--block btn--left" href="${markScheme}" target="_blank" rel="noopener">${icon('check')} Mark scheme (PDF)</a>` : ''}
                 </div>`

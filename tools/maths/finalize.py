@@ -93,7 +93,7 @@ def main():
             exceptions = research / 'reviews' / (pid + '__exceptions.json')
             if exceptions.exists():
                 write(target / 'reviews' / exceptions.name, public(read(exceptions)))
-            packs.append({'file': 'maths/' + path.name})
+            packs.append({'file': 'maths/' + path.name, 'subject_id': 'EDX_ALEVEL_MATH_9MA0'})
         write(target / 'inventory' / (name + '.json'), public(inventory))
     assert previous.keys() <= identities.keys(), 'Published identities removed'
     index = repo / 'data/packs/index.json'

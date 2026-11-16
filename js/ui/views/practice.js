@@ -13,7 +13,7 @@ import { debounce, fmtMinutes, plural, sum, uid } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getCurriculum, specIndex } from '../../data/content-repository.js';
 import { createSession } from '../../data/sessions.js';
-import { countByNode, filterQuestions } from '../../engine/filter-engine.js';
+import { countByNode, currentFocus, filterQuestions } from '../../engine/filter-engine.js';
 import { latestByQuestion } from '../../engine/analytics.js';
 import { buildTest, minutesOf } from '../../engine/test-builder.js';
 import { icon } from '../icons.js';
@@ -188,6 +188,9 @@ export async function mount(element, context) {
   const learned = api.learnedSet();
   const subjectLeaves = specIndex.subjectLeaves(subjectId);
   const learnedLeaves = subjectLeaves.filter((id) => learned.has(id));
+  // A saved topic choice can name points that a specification import has since replaced.
+  // Learned ticks are carried forward when progress loads; this does the same for the filter.
+  state.focus = currentFocus(state.focus, subjectLeaves, specIndex);
   if (context.query.topic) {
     // "Practise this topic" links arrive here with a topic or spec point id.
     const wantedLeaves = specIndex.leavesOf(context.query.topic).filter((id) => subjectLeaves.includes(id));
@@ -779,6 +782,9 @@ export async function mount(element, context) {
     html`${head(subject.subject)}
       ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="${links.signup('/practice')}">Create a free account</a> to save it in this browser.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
+      ${bundle.failedPacks?.length
+        ? banner(html`Some ${subject.subject} questions did not load, so this list is incomplete (${plural(bundle.failedPacks.length, 'file')} could not be fetched). Check your connection. <button type="button" class="linkbtn" data-retry-load>Try again</button>`, { type: 'warn' })
+        : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
         ${modes.length > 1
@@ -835,6 +841,7 @@ export async function mount(element, context) {
     if (['markMin', 'markMax'].includes(select.dataset.filter)) state.bands = [];
   }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
+  on(element, 'click', '[data-retry-load]', () => context.refresh());
   on(element, 'click', '[data-reset-filters]', () => change(() => {
     const kept = { mode: state.mode, topicOrganisation: textbooks ? 'textbook' : 'official', selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
     state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept };

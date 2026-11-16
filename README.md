@@ -72,7 +72,10 @@ A content pack is a JSON file using the PRD schemas:
 }
 ```
 
-1. Save it in `data/packs/` and list it in `data/packs/index.json`: `{ "packs": [{ "file": "9ph0-2024.json" }] }`.
+1. Save it in `data/packs/` and list it in `data/packs/index.json`:
+   `{ "packs": [{ "file": "9ph0-2024.json", "subject_id": "EDX_ALEVEL_PHYS_9PH0" }] }`.
+   Name the pack's `subject_id`: a subject then fetches only its own packs. An entry without
+   one is fetched for every subject.
 2. Records merge by id. A paper entry with an existing `paper_id` only needs the fields it
    changes (for example the PDF paths), and a question that names a `paper_id` is added
    to that paper automatically.

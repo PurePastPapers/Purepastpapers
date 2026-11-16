@@ -103,23 +103,34 @@ export function writeLocalPack(pack) {
   invalidateContent();
 }
 
-/** Enabled packs for one subject. An index entry may name its `subject_id`; an
- * entry without one is loaded for every subject (local and older packs). */
+/** One pack file, tried twice: a single dropped request must not hide a paper. */
+function loadPack(file) {
+  if (!packPromises.has(file)) {
+    const attempt = () => fetchJson(`packs/${file}`).then((pack) => ({ ...pack, file }));
+    packPromises.set(file, attempt().catch(attempt).catch((error) => {
+      console.warn(`Content pack "${file}" could not be loaded.`, error);
+      packPromises.delete(file);
+      return null;
+    }));
+  }
+  return packPromises.get(file);
+}
+
+/** Enabled packs for one subject, plus the files that could not be fetched.
+ * An index entry names its `subject_id`, so a subject fetches only its own packs;
+ * an entry without one is loaded for every subject (local and older packs). */
 async function getPacks(subjectId) {
-  packsPromise ??= fetchJson('packs/index.json').catch(() => ({ packs: [] }));
+  const attempt = () => fetchJson('packs/index.json');
+  packsPromise ??= attempt().catch(attempt).catch((error) => {
+    console.warn('The content pack index could not be loaded.', error);
+    packsPromise = null; // not kept, so the next read tries again
+    return null;
+  });
   const index = await packsPromise;
-  const wanted = (index.packs || []).filter((entry) => entry.enabled !== false && (!entry.subject_id || entry.subject_id === subjectId));
-  const packs = await Promise.all(wanted.map((entry) => {
-    if (!packPromises.has(entry.file)) {
-      packPromises.set(entry.file, fetchJson(`packs/${entry.file}`).then((pack) => ({ ...pack, file: entry.file })).catch((error) => {
-        console.warn(`Content pack "${entry.file}" could not be loaded.`, error);
-        packPromises.delete(entry.file);
-        return null;
-      }));
-    }
-    return packPromises.get(entry.file);
-  }));
-  return [...packs.filter(Boolean), readLocalPack()];
+  const wanted = (index?.packs || []).filter((entry) => entry.enabled !== false && (!entry.subject_id || entry.subject_id === subjectId));
+  const packs = await Promise.all(wanted.map((entry) => loadPack(entry.file)));
+  const failed = index ? wanted.filter((entry, position) => !packs[position]).map((entry) => entry.file) : ['index.json'];
+  return { packs: [...packs.filter(Boolean), readLocalPack()], failed };
 }
 
 /** Call after content changes so the next read rebuilds from source. */
@@ -146,7 +157,7 @@ async function loadBundle(subjectId) {
   const subject = subjects.find((candidate) => candidate.subject_id === subjectId);
   if (!subject) throw new Error(`Unknown subject "${subjectId}".`);
 
-  const [spec, basePapers, baseQuestions, packs] = await Promise.all([
+  const [spec, basePapers, baseQuestions, { packs, failed: failedPacks }] = await Promise.all([
     ensureSpec(subjectId),
     fetchJson(`papers/${subjectId}.json`),
     fetchJson(`questions/${subjectId}.json`),
@@ -221,17 +232,20 @@ async function loadBundle(subjectId) {
   const papers = [...papersById.values()].filter(paper => (CONTENT.showSampleContent || !paper.is_sample) && (!hasReviewedSource ||
     !generatedIds.has(paper.paper_id) || paper.question_ids.some(id =>
       questionsById.get(id)?.provenance?.review_status === 'model_reviewed')));
-  return { subject, spec, papers, papersById, questions, questionsById, textbooks: textbooks?.index || null };
+  return { subject, spec, papers, papersById, questions, questionsById, textbooks: textbooks?.index || null, failedPacks };
 }
 
 /**
- * Everything the UI needs for one subject.
- * @returns {Promise<{subject, spec, papers, papersById: Map, questions, questionsById: Map}>}
+ * Everything the UI needs for one subject. `failedPacks` lists pack files that could
+ * not be fetched: their papers are missing from this bundle, so views say so.
+ * @returns {Promise<{subject, spec, papers, papersById: Map, questions, questionsById: Map, failedPacks: string[]}>}
  */
 export function getBundle(subjectId) {
   if (!bundlePromises.has(subjectId)) {
     const promise = loadBundle(subjectId);
-    promise.catch(() => bundlePromises.delete(subjectId));
+    const forget = () => { if (bundlePromises.get(subjectId) === promise) bundlePromises.delete(subjectId); };
+    // An incomplete bundle is not kept either, so the next read fetches what is missing.
+    promise.then((bundle) => { if (bundle.failedPacks.length) forget(); }, forget);
     bundlePromises.set(subjectId, promise);
   }
   return bundlePromises.get(subjectId);

@@ -254,6 +254,53 @@ previous run's research folder, or recreate them from the compiled JSON reviews 
 - Session network: the personal "Purepastpapers" environment now also allows
   `purepastpapers.com`, `www.purepastpapers.com` and `purepastpapers.github.io`.
 
+## Past papers list and loading fix (16 November 2026)
+
+Reported by the owner: "the past papers aren't there". Checked first, changed second.
+
+- **Not reproduced as missing data.** In a clean browser the live site listed all 26
+  booklets and 605 units, on desktop and at phone width, for the demo account, a new
+  account and a guest; all 108 paper, mark scheme, insert and examiner report links
+  answered. AQA's two public resource pages were fetched again: they still publish
+  exactly the 22 exam question papers and the sample set that are imported.
+- **What did change on the day:** before the import this subject listed 16 generated
+  placeholders, including June 2018 and June 2019. AQA does not publish those two
+  series, so they were not imported, and placeholders are hidden once a subject has
+  reviewed booklets. Those four cards are the only papers that left the list.
+- **Stale browser:** GitHub Pages serves every file with `max-age=600`. A browser that
+  had the site open before a deploy keeps old files for up to ten minutes. Carrying a
+  browser profile from the pre-import commit to the current one reproduced the old
+  list (16 placeholders, "0 questions match") until the cache expired, then 26 and 605.
+- **Saved topic choice (reproduced, fixed):** the import replaced the 56 seeded leaf
+  ids with the 83 official ones. Learned ticks were carried forward, but a Practice
+  topic choice saved in the browser was not, so a browser holding one showed
+  "0 questions match" for Geography until Reset was pressed. `currentFocus` in
+  `js/engine/filter-engine.js` now carries a saved choice to the official points, drops
+  ids that no longer exist and lifts the restriction if none is left. The same applies
+  to every subject whose seeded ids were replaced.
+- **Fixed, loading:** only Biology's pack index entries named a `subject_id`, so every
+  subject fetched all 185 other packs (229 requests for the Geography papers page; 70
+  now, 26 of them packs). All index entries and the five `finalize.py` tools now name
+  the subject. A pack request that fails is retried once; if it still fails the
+  bundle carries `failedPacks`, is not cached, and Past papers, Practice and the paper
+  page say that papers did not load, with "Try again". Before, the papers vanished
+  with only a console warning.
+- **Fixed, Past papers list:** AS cards were labelled with the A-level code ("7037 · 01")
+  and listed first. Cards now read "A-Level · 7037 · Paper 1" or "AS · 7036 · Paper 1",
+  A-level first in each series, with a Qualification filter. The sample set is headed
+  "Official samples" (it was "null").
+- **Fixed, paper page:** the insert PDF (12 A-level exam booklets carry
+  `insert_pdf_url`) is linked beside the question paper; AQA parts are numbered 1.1, 1.2
+  rather than "Q1" four times (other boards' longer labels do not fit that column and
+  are unchanged); the heading no longer starts with a stray "·".
+- **Checks:** `npm test` 126 pass (new `tests/content-loading.test.mjs`, 7);
+  `npm run validate` 0 errors; `node tools/browser-geography-bank.cjs` PASS locally. That
+  script now opens the "More" dropdown for its filters and reads the current stem
+  caption, both changed by other commits that day, and covers the Past papers list.
+- **Not changed:** June 2018 and June 2019 stay unlisted. Guests still have no menu
+  link to Past papers. The paper page overflows by 6 px at 390 px wide (tilted card),
+  as it did before.
+
 ## Next action
 
 Add June 2026 papers when AQA lists them publicly (rerun from `tools/geography/resources.py`).

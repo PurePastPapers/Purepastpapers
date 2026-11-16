@@ -99,7 +99,7 @@ def main():
             write(target / 'reviews' / f'{pid}.json', public(review))
             n = package(repo, pack_path, pid)
             group.update(image_assets=n)
-            packs.append({'file': f'physics/{pid}.json'})
+            packs.append({'file': f'physics/{pid}.json', 'subject_id': 'EDX_ALEVEL_PHYS_9PH0'})
     assert previous.keys() <= identities.keys(), 'Published Physics identities removed'
     index_path = repo / 'data/packs/index.json'
     other = [x for x in read(index_path)['packs'] if not x['file'].startswith('physics/')]

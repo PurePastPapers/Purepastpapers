@@ -6,6 +6,7 @@
 // tag counts as learned only when all of that topic's spec points are learned.
 
 import { RAG } from '../config/app.config.js';
+import { LEGACY_SPEC_IDS } from '../config/spec-id-migrations.js';
 import { hasValidMark } from './analytics.js';
 import { matchesTextbookSelection } from './textbook-index.js';
 
@@ -261,6 +262,20 @@ export function unlockSuggestions(locked, limit = 5) {
     }
   }
   return [...tally.values()].sort((a, b) => b.unlocks - a.unlocks || b.needed_by - a.needed_by).slice(0, limit);
+}
+
+/**
+ * A saved topic selection brought up to date with the specification. Retired ids become
+ * the official points that replaced them; ids with no current point in the subject are
+ * dropped. Returns null (no restriction) when nothing selectable is left, so a choice
+ * saved before a specification import cannot hide every question. `null` and `[]`
+ * (deliberately nothing selected) pass through unchanged.
+ */
+export function currentFocus(focus, subjectLeaves, specIndex) {
+  if (!Array.isArray(focus) || !focus.length) return focus;
+  const live = new Set(subjectLeaves);
+  const current = [...new Set(focus.flatMap((id) => LEGACY_SPEC_IDS[id] || [id]))].filter((id) => specIndex.leavesOf(id).some((leaf) => live.has(leaf)));
+  return current.length ? current : null;
 }
 
 /** How many pool questions have each spec node (point, topic or section) among their primary tags. */
