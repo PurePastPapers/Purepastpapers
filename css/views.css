@@ -874,7 +874,7 @@
 .fbar__sort .select { min-height: 40px; width: auto; }
 .fbar__search { flex: 1 1 200px; min-width: 180px; }
 .fbar__search .input { min-height: 40px; width: 100%; }
-.fbar__reset { margin-left: auto; }
+.fbar__reset { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; } /* 44px touch target */
 .fbar .browser-paper-filters { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
 @media (max-width: 720px) {
   .fbar { position: relative; top: auto; padding: 12px; }

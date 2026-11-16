@@ -2,6 +2,14 @@
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
+
+// The practice filters sit in a compact bar of dropdowns (.fpop); open the one holding a control first.
+async function openFor(page, selector) {
+  await page.evaluate((s) => {
+    const pop = document.querySelector(s)?.closest('.fpop');
+    if (pop && !pop.open) pop.querySelector(':scope > summary').click();
+  }, selector);
+}
 const subject = 'EDX_ALEVEL_MATH_9MA0';
 
 (async () => {
@@ -26,9 +34,10 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
     assert.equal(await page.locator('[data-filter="rangeFrom"], [data-filter="rangeTo"], [data-filter="selectionMode"]').count(), 0);
     assert.equal(await page.getByText('Specification options', {exact: true}).count(), 0);
     assert.equal(await page.locator('.browser-topics [data-flag="learnedOnly"]').count(), 1);
-    const actionBeforeQuestion = await page.locator('.qcard').first().evaluate(card =>
-      Boolean(card.querySelector('[data-scheme]').compareDocumentPosition(card.querySelector('.question-selected-part')) & Node.DOCUMENT_POSITION_FOLLOWING));
-    assert(actionBeforeQuestion);
+    // Question on the left, answer column (with Show mark scheme) on the right.
+    const splitLayout = await page.locator('.qcard').first().evaluate(card =>
+      Boolean(card.querySelector('.qsplit__main .question-selected-part') && card.querySelector('.qsplit__side [data-scheme]')));
+    assert(splitLayout);
     await page.locator('[data-page="2"]').click();
     await allExpanded();
     await page.locator('[data-reset-filters]').click();
@@ -41,6 +50,7 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
       const api = await import('/js/data/api.js');
       return JSON.stringify({learned: [...api.learnedSet()].sort(), attempts: api.getProgress().question_attempts});
     });
+    await openFor(page, '.browser-topics');
     await page.locator('[data-topic-organisation="official"]').check();
     const point = await page.evaluate(async id => {
       const {getBundle, specIndex} = await import('/js/data/content-repository.js');
@@ -51,6 +61,7 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
         .flatMap(q => [...specIndex.expand(q.primary_spec_points)]).find(id => !learned.has(id));
     }, subject);
     assert(point, 'fixture has an unlearned assessed point');
+    await openFor(page, '.browser-topics');
     await page.locator('[data-tree-bulk="none"]').click();
     const checkbox = page.locator(`[data-point="${point}"]`);
     await page.locator('.tree__section--filter').filter({has: checkbox}).locator(':scope > summary').click();
@@ -58,10 +69,12 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
     await checkbox.check();
     await allExpanded();
     assert.deepEqual((await state()).focus, [point]);
+    await page.keyboard.press('Escape'); // close the filter dropdown that overlays the cards
     const id = await page.locator('[data-open]').first().getAttribute('data-open');
     await page.locator(`[data-answer="${id}"]`).fill('Keep my manual-topic draft');
     await page.locator(`[data-select="${id}"]`).check();
     const learnedToggle = () => page.locator('.browser-topics [data-flag="learnedOnly"]');
+    await openFor(page, '.browser-topics');
     await learnedToggle().check();
     assert(await page.locator('[data-topic-picker]').isHidden());
     assert.deepEqual((await state()).focus, [point], 'manual choices remain saved');
@@ -70,12 +83,15 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
     assert(!learnedResults.includes(id));
     await page.reload();
     await page.waitForSelector('[data-reset-filters]');
+    await openFor(page, '.browser-topics');
     assert(await learnedToggle().isChecked());
+    await openFor(page, '.browser-topics');
     await learnedToggle().uncheck();
     assert(await page.locator('[data-topic-picker]').isVisible());
     assert.deepEqual((await state()).focus, [point]);
     assert.equal(await page.locator(`[data-answer="${id}"]`).inputValue(), 'Keep my manual-topic draft');
     assert(await page.locator(`[data-select="${id}"]`).isChecked());
+    await page.keyboard.press('Escape'); // close the filter dropdown that overlays the cards
     await page.locator(`[data-open="${id}"]`).click();
     assert.equal(await page.locator(`[data-answer="${id}"]`).count(), 0);
     await page.reload();

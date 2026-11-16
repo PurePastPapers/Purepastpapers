@@ -30,6 +30,11 @@ const assert = require('node:assert/strict');
     const response = await route.fetch();
     await route.fulfill({response, body:(await response.text()).replace('showSampleContent: false','showSampleContent: true')});
   });
+  // The practice filters sit in a compact bar of dropdowns (.fpop); open the one holding a control first.
+  const openFor = selector => p.evaluate((s) => {
+    const pop = document.querySelector(s)?.closest('.fpop');
+    if (pop && !pop.open) pop.querySelector(':scope > summary').click();
+  }, selector);
   const errors = [];
   p.on('pageerror', e => errors.push(e.message));
   await p.goto((process.env.AUDIT_URL || 'http://localhost:5173'));
@@ -59,11 +64,14 @@ const assert = require('node:assert/strict');
   assert.equal(await p.locator('[data-shuffle-questions]').count(), 1);
   assert.deepEqual(await p.locator('[data-progress]').evaluateAll(es => es.map(e => [e.dataset.progress, e.type])),
     [['unmarked', 'checkbox'], ['marked', 'checkbox'], ['lost', 'checkbox'], ['full', 'checkbox']]);
+  await openFor('.tree__section--filter');
   const section = p.locator('.tree__section--filter').first();
   if (await section.getAttribute('open') === null) await section.locator(':scope > summary').click();
   await p.locator('.tree__topic summary').first().click();
+  await openFor('[data-multi="difficulties"][data-value="easy"]');
   await p.locator('[data-multi="difficulties"][data-value="easy"]').click();
   assert(await p.locator('.tree__topic').first().getAttribute('open') !== null, 'topic stayed open');
+  await openFor('[data-multi="difficulties"][data-value="medium"]');
   await p.locator('[data-multi="difficulties"][data-value="medium"]').click();
   assert.equal(await p.locator('.qlist .qcard').count(), 13);
   assert(await p.evaluate(async () => {
@@ -120,6 +128,7 @@ const assert = require('node:assert/strict');
   await p.waitForSelector('[data-reset-filters]');
   assert.equal(await p.locator(`[data-answer="${id}"]`).inputValue(), 'unsaved regression answer');
   console.log('reset preserved progress, set, open question/scheme and drafts across reload');
+  await openFor('[data-progress="unmarked"]');
   await p.locator('[data-progress="unmarked"]').check();
   const uid = await p.locator('[data-open]').first().getAttribute('data-open');
   if (!await p.locator(`[data-answer="${uid}"]`).count()) await p.locator(`[data-open="${uid}"]`).click();
@@ -130,10 +139,13 @@ const assert = require('node:assert/strict');
   assert(await p.locator(`[data-open="${uid}"]`).count());
   await p.waitForTimeout(1400);
   assert.equal(await p.locator(`[data-open="${uid}"]`).count(), 0);
+  await openFor('[data-progress="unmarked"]');
   await p.locator('[data-progress="unmarked"]').uncheck();
+  await openFor('[data-progress="lost"]');
   await p.locator('[data-progress="lost"]').check();
   assert(await p.locator(`[data-open="${uid}"]`).count());
   const lostOnly = await ids();
+  await openFor('[data-progress="unmarked"]');
   await p.locator('[data-progress="unmarked"]').check();
   const progressUnion = await ids();
   assert(progressUnion.length > lostOnly.length && lostOnly.every(value => progressUnion.includes(value)),
@@ -147,7 +159,9 @@ const assert = require('node:assert/strict');
   assert(await p.locator('[data-progress="unmarked"]').isChecked());
   assert(!await p.locator('[data-progress="lost"]').isChecked());
   assert.equal(await p.locator(`[data-open="${uid}"]`).count(), 0);
+  await openFor('[data-progress="lost"]');
   await p.locator('[data-progress="lost"]').check();
+  await openFor('[data-progress="unmarked"]');
   await p.locator('[data-progress="unmarked"]').uncheck();
   console.log('progress checkbox union persisted across reload; removing one chip preserved the other');
   await p.locator(`[data-mark="${uid}"]`).selectOption('1');
@@ -175,13 +189,17 @@ const assert = require('node:assert/strict');
         document.documentElement.style.setProperty('--page-sc', sw.hex);
         await new Promise(r => setTimeout(r, 160));
         const s = getComputedStyle(el);
+        // Reset is a text link in the compact filter bar: measure against the first opaque backdrop.
+        let backdrop = el;
+        while (backdrop && /rgba\(.*,\s*0\)$|transparent/.test(getComputedStyle(backdrop).backgroundColor)) backdrop = backdrop.parentElement;
+        const background = getComputedStyle(backdrop || document.body).backgroundColor;
         cases.push({
           theme,
           swatch: sw.id,
-          background: s.backgroundColor,
+          background,
           color: s.color,
-          ratio: (Math.max(lum(s.color), lum(s.backgroundColor)) + .05) / (Math.min(lum(s
-            .color), lum(s.backgroundColor)) + .05),
+          ratio: (Math.max(lum(s.color), lum(background)) + .05) / (Math.min(lum(s
+            .color), lum(background)) + .05),
           height: el.getBoundingClientRect().height
         })
       }

@@ -5,6 +5,14 @@ const assert = require('node:assert/strict');
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
+
+// The practice filters sit in a compact bar of dropdowns (.fpop); open the one holding a control first.
+async function openFor(page, selector) {
+  await page.evaluate((s) => {
+    const pop = document.querySelector(s)?.closest('.fpop');
+    if (pop && !pop.open) pop.querySelector(':scope > summary').click();
+  }, selector);
+}
 const subject = 'AQA_ALEVEL_GEOG_7037';
 const root = path.join(__dirname, '..');
 const read = file => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
@@ -34,8 +42,10 @@ const units = packs.flatMap(p => p.questions);
     assert.equal(await count(), units.length, 'all units discoverable, demos hidden');
 
     // Qualification filter: AS 7036 only.
+    await openFor(page, '[data-multi="qualifications"][data-value="7036"]');
     await page.locator('[data-multi="qualifications"][data-value="7036"]').click();
     assert.equal(await count(), units.filter(q => q.is_as).length, 'AS filter');
+    await openFor(page, '[data-multi="qualifications"][data-value="7036"]');
     await page.locator('[data-multi="qualifications"][data-value="7036"]').click();
     assert.equal(await count(), units.length);
 
@@ -49,6 +59,7 @@ const units = packs.flatMap(p => p.questions);
     }
     // An A-level paper whose parts use insert figures: question, figure and scheme pixels load.
     const insertPaper = 'AQA_7037_2024_JUNE_01';
+    await openFor(page, '[data-filter="paper"]');
     await page.locator('[data-filter="paper"]').selectOption(insertPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === insertPaper).length);
     await loaded('.question-selected-part img');
@@ -59,9 +70,11 @@ const units = packs.flatMap(p => p.questions);
 
     // AS fieldwork: the shared scenario is attached to its parts; multiple choice renders.
     const fieldPaper = 'AQA_7036_2024_JUNE_02';
+    await openFor(page, '[data-filter="paper"]');
     await page.locator('[data-filter="paper"]').selectOption(fieldPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === fieldPaper).length);
-    assert(await page.locator('[data-question-resources] figcaption', {hasText: 'shared introduction'}).count() > 0, 'stem shown');
+    assert(await page.locator('[data-question-resources] figcaption', {hasText: /shared introduction|introduction and earlier material this part uses/}).count() > 0, 'stem shown');
+    await openFor(page, '[data-filter="paper"]');
     await page.locator('[data-filter="paper"]').selectOption('');
 
     for (const width of [320, 390, 768, 1440]) {
