@@ -6,10 +6,25 @@ import { APP, LIMITS } from '../config/app.config.js';
 import { createBus } from '../core/bus.js';
 import { latestByQuestion } from '../engine/analytics.js';
 import { localAdapter } from './adapters/local-adapter.js';
+import { supabaseAdapter } from './adapters/supabase-adapter.js';
+import { SUPABASE_CONFIGURED } from '../config/supabase.config.js';
 import { LEGACY_SPEC_IDS } from '../config/spec-id-migrations.js';
 
-/** ← The one line that chooses the backend. Any object with the same methods will work. */
-const adapter = localAdapter;
+/** The cloud adapter is the default when configured; browser-only accounts use an explicit legacy login. */
+const backendAdapter = SUPABASE_CONFIGURED ? supabaseAdapter : localAdapter;
+const legacyModeKey = `${APP.storageNamespace}:legacy-mode`;
+let activeAdapter = backendAdapter;
+
+function setLegacyMode(enabled) {
+  try {
+    if (enabled) localStorage.setItem(legacyModeKey, '1');
+    else localStorage.removeItem(legacyModeKey);
+  } catch {}
+}
+
+function isLegacyMode() {
+  try { return localStorage.getItem(legacyModeKey) === '1'; } catch { return false; }
+}
 
 /** Emits 'auth' (user | null) and 'progress' (the progress document). */
 export const events = createBus();
@@ -55,7 +70,7 @@ function requireProgress() {
 
 async function persist({ silent = false } = {}) {
   // Guest selections and attempts live only in memory until an account is created.
-  if (user) await adapter.saveProgress(user.user_id, progress);
+  if (user) await activeAdapter.saveProgress(user.user_id, progress);
   if (!silent) events.emit('progress', progress);
 }
 
@@ -63,37 +78,87 @@ async function persist({ silent = false } = {}) {
 
 /** Restores the logged-in user (if any). Call once at start-up. */
 export async function init() {
-  user = await adapter.currentUser();
-  progress = user ? normalise(await adapter.loadProgress(user.user_id), user.user_id) : emptyProgress('guest');
+  activeAdapter = backendAdapter;
+  try {
+    user = await activeAdapter.currentUser();
+  } catch (error) {
+    // Keep public browsing available if the auth CDN or network is temporarily unavailable.
+    console.warn('Supabase session could not be restored:', error);
+    user = null;
+  }
+  if (!user && SUPABASE_CONFIGURED && isLegacyMode()) {
+    user = await localAdapter.currentUser();
+    if (user) activeAdapter = localAdapter;
+    else setLegacyMode(false);
+  }
+  if (user) {
+    let saved = await activeAdapter.loadProgress(user.user_id);
+    if (!saved && activeAdapter === supabaseAdapter) {
+      await supabaseAdapter.restorePendingSignup(user.email, user.user_id);
+      saved = await activeAdapter.loadProgress(user.user_id);
+    }
+    progress = normalise(saved, user.user_id);
+  } else {
+    progress = emptyProgress('guest');
+  }
   learnedCache = null;
   return user;
 }
 
 export const currentUser = () => user;
 export const isSignedIn = () => Boolean(user);
-export const backendInfo = () => ({ id: adapter.id, label: adapter.label, syncsAcrossDevices: adapter.syncsAcrossDevices });
+export const backendInfo = () => ({ id: activeAdapter.id, label: activeAdapter.label, syncsAcrossDevices: activeAdapter.syncsAcrossDevices, cloudConfigured: SUPABASE_CONFIGURED });
 
 /** `initialProgress` (optional) pre-fills the new account — used by the demo account. */
-export async function signUp({ initialProgress = null, ...details }) {
+export async function signUp({ initialProgress = null, redirectTo = null, ...details }) {
+  const chosenAdapter = details.isDemo ? localAdapter : backendAdapter;
   const guestProgress = !user ? progress : null;
-  user = await adapter.signUp(details);
+  activeAdapter = chosenAdapter;
+  if (chosenAdapter === supabaseAdapter) setLegacyMode(false);
+  else if (SUPABASE_CONFIGURED && details.isDemo) setLegacyMode(true);
+  if (chosenAdapter === supabaseAdapter && guestProgress) {
+    await supabaseAdapter.stagePendingSignup(details.email, guestProgress, redirectTo);
+  }
+  let created;
+  try {
+    created = await chosenAdapter.signUp({ ...details, redirectTo });
+  } catch (error) {
+    activeAdapter = backendAdapter;
+    throw error;
+  }
+  if (created?.pendingConfirmation) {
+    user = null;
+    progress = guestProgress || emptyProgress('guest');
+    learnedCache = null;
+    return null;
+  }
+  user = created;
   // Carry a guest's browser search and unsaved question draft into the new account.
-  // Existing accounts never receive guest state on sign-in.
   if (guestProgress && typeof sessionStorage !== 'undefined') {
     const prefix = `${APP.storageNamespace}:practice:guest:`;
     try {
+      const drafts = [];
       for (let i = 0; i < sessionStorage.length; i++) {
         const key = sessionStorage.key(i);
-        if (key?.startsWith(prefix)) {
-          const accountKey = `${APP.storageNamespace}:practice:${user.user_id}:${key.slice(prefix.length)}`;
-          localStorage.setItem(accountKey, sessionStorage.getItem(key));
-        }
+        if (key?.startsWith(prefix)) drafts.push([key, sessionStorage.getItem(key)]);
+      }
+      for (const [key, value] of drafts) {
+        const accountKey = `${APP.storageNamespace}:practice:${user.user_id}:${key.slice(prefix.length)}`;
+        localStorage.setItem(accountKey, value);
+        sessionStorage.removeItem(key);
       }
     } catch { /* storage may be unavailable; progress remains intact */ }
   }
   progress = normalise(initialProgress || guestProgress, user.user_id);
   learnedCache = null;
-  await adapter.saveProgress(user.user_id, progress);
+  try {
+    await activeAdapter.saveProgress(user.user_id, progress);
+    if (chosenAdapter === supabaseAdapter) await supabaseAdapter.clearPendingSignup(details.email);
+  } catch (error) {
+    user = null;
+    activeAdapter = backendAdapter;
+    throw error;
+  }
   events.emit('auth', user);
   return user;
 }
@@ -101,44 +166,69 @@ export async function signUp({ initialProgress = null, ...details }) {
 /** Deletes a leftover demo profile (for example from a tab closed without leaving the demo). */
 export async function discardDemo(details) {
   try {
-    const leftover = await adapter.signIn(details);
-    if (leftover.is_demo) await adapter.deleteUser(leftover.user_id);
-    else await adapter.signOut();
+    const leftover = await localAdapter.signIn(details);
+    if (leftover.is_demo) await localAdapter.deleteUser(leftover.user_id);
+    else await localAdapter.signOut();
   } catch {
     // no demo profile in this browser yet
   }
 }
 
 export async function signIn(details) {
-  user = await adapter.signIn(details);
-  progress = normalise(await adapter.loadProgress(user.user_id), user.user_id);
+  activeAdapter = backendAdapter;
+  user = await activeAdapter.signIn(details);
+  setLegacyMode(false);
+  let saved = await activeAdapter.loadProgress(user.user_id);
+  if (!saved && activeAdapter === supabaseAdapter) {
+    await supabaseAdapter.restorePendingSignup(user.email, user.user_id);
+    saved = await activeAdapter.loadProgress(user.user_id);
+  }
+  progress = normalise(saved, user.user_id);
   learnedCache = null;
   events.emit('auth', user);
   return user;
 }
 
+export async function signInLegacy(details) {
+  activeAdapter = localAdapter;
+  user = await localAdapter.signIn(details);
+  setLegacyMode(SUPABASE_CONFIGURED);
+  progress = normalise(await localAdapter.loadProgress(user.user_id), user.user_id);
+  learnedCache = null;
+  events.emit('auth', user);
+  return user;
+}
+
+export const requestPasswordReset = (email) => backendAdapter.requestPasswordReset(email);
+export const setNewPassword = (password) => backendAdapter.setNewPassword(password);
+export const isPasswordRecoverySession = () => activeAdapter === supabaseAdapter && supabaseAdapter.hasPasswordRecoverySession(user?.user_id);
+
 export async function signOut() {
   // The demo account is thrown away when you leave it, so the next visitor gets it back
   // exactly as it was built (owner request, 2026-11-13). enterDemoAccount() rebuilds it.
-  if (user?.is_demo) await adapter.deleteUser(user.user_id);
-  else await adapter.signOut();
+  if (user?.is_demo) await activeAdapter.deleteUser(user.user_id);
+  else await activeAdapter.signOut();
   user = null;
+  setLegacyMode(false);
+  activeAdapter = backendAdapter;
   progress = emptyProgress('guest');
   learnedCache = null;
   events.emit('auth', null);
 }
 
 export async function updateProfile(patch) {
-  user = await adapter.updateUser(user.user_id, patch);
+  user = await activeAdapter.updateUser(user.user_id, patch);
   events.emit('auth', user);
   return user;
 }
 
-export const changePassword = (currentPassword, newPassword) => adapter.changePassword(user.user_id, currentPassword, newPassword);
+export const changePassword = (currentPassword, newPassword) => activeAdapter.changePassword(user.user_id, currentPassword, newPassword);
 
 export async function deleteAccount() {
-  await adapter.deleteUser(user.user_id);
+  await activeAdapter.deleteUser(user.user_id, user.email);
   user = null;
+  setLegacyMode(false);
+  activeAdapter = backendAdapter;
   progress = emptyProgress('guest');
   learnedCache = null;
   events.emit('auth', null);

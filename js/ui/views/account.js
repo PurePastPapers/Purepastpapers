@@ -169,8 +169,12 @@ export async function mount(element, context) {
     event.preventDefault();
     showError('[data-profile-error]', '');
     try {
-      await api.updateProfile(Object.fromEntries(new FormData(form)));
-      toast('Profile saved.', { type: 'success' });
+      const patch = Object.fromEntries(new FormData(form));
+      const emailChanged = patch.email?.trim().toLowerCase() !== user.email?.trim().toLowerCase();
+      await api.updateProfile(patch);
+      toast(emailChanged && backend.id === 'supabase'
+        ? 'Profile saved. Check your email to confirm the address change.'
+        : 'Profile saved.', { type: 'success' });
     } catch (error) {
       showError('[data-profile-error]', error.message);
     }
