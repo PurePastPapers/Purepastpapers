@@ -13,6 +13,7 @@ trailing fields:
   EXCLUDE: reason   the unit needs content the v1.4 specification no longer includes
                     (owner decision 16 Nov 2026); no codes are given ("-").
   CTX: 5,6 | CTX: none   override the extractor's earlier-unit context.
+  ITEMS: ITEM2 | ITEMS: none   override which shared items are shown with the unit.
   DEP: 7               the unit builds on the answer to an earlier unit (dependency gate).
   NOTE: text           lead note kept on the unit.
 
@@ -97,6 +98,10 @@ def prepare(research):
             if r is False:
                 continue
             extra = []
+            if u.get('items'):
+                extra.append('items ' + ','.join(u['items']))
+            if u.get('shared_stem'):
+                extra.append('stem ' + u['shared_stem'])
             if u.get('context_units'):
                 extra.append('ctx ' + ','.join(u['context_units']))
             if u.get('answer_reference'):
@@ -172,6 +177,10 @@ def compile_reviews(research, only=None):
                         'difficulty_basis': cols[4]})
             if 'CTX' in extra:
                 rec['context_units'] = [] if extra['CTX'].lower() == 'none' else [x.strip() for x in extra['CTX'].split(',')]
+            if 'ITEMS' in extra:
+                rec['items'] = [] if extra['ITEMS'].lower() == 'none' else [x.strip() for x in extra['ITEMS'].split(',')]
+                if any(x not in {it['id'] for it in cand['items']} for x in rec['items']):
+                    problems.append(f'{where}: unknown item in {rec["items"]}')
             if 'DEP' in extra:
                 rec['depends_on'] = [x.strip() for x in extra['DEP'].split(',')]
             for key in ('CTX', 'DEP'):

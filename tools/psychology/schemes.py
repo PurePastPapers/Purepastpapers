@@ -11,7 +11,7 @@ general "Level of response marking instructions" pages are not repeated per unit
 """
 import re
 
-END = re.compile(r'^(Copyright information|There are no|END OF)', re.I)
+END = re.compile(r'^(Copyright|There are no|END OF|Assessment Objectives? (?:Grid|grid|by question))', re.I)
 
 
 def label_pattern(label):

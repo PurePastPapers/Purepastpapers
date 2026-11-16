@@ -110,7 +110,53 @@ for q in 7182 7181; do python3 tools/psychology/extract.py data/imports/psycholo
 python3 tools/psychology/reviews.py prepare $R
 ```
 
+## Checkpoint 2: model review and build (16 November 2026)
+
+**Model review** (`reviewer_type: model`, never a teacher review). One line per in-route unit
+in `data/imports/psychology/review-src/<PAPER>.txt` (format in `tools/psychology/reviews.py`),
+compiled to `data/imports/psychology/reviews/`. 702 in-route units: **653 published**, **49 left
+out** because they need content Version 1.4 no longer includes (owner decision). Removed
+content met: types of long-term memory; caregiver-infant interactions (reciprocity,
+interactional synchrony, Schaffer's stages, role of the father); Zimbardo and conformity to
+social roles; identification; social change; biological rhythms; Wundt and introspection
+(including "emergence of psychology as a science"); token economies; psychodynamic
+explanations of offending; atavistic form. Kept with a lead note: questions where removed
+content is only one listed choice or a distractor (biological offending listing atavistic
+form; matching items with "identification" as a distractor), validity/reliability of
+schizophrenia diagnosis (v1.4 frames it as co-morbidity, bias and symptom overlap), theory
+of mind and autism, and a research-design question set in a biological-rhythms study.
+192 Paper 3 option units outside the route are listed, not published.
+
+**Build** (`tools/psychology/build.py`, `finalize.py`):
+- Unit crop, part-only scheme crop (to the next unit's label; stops at the Assessment
+  Objective Grid / copyright footer), lossless WebP.
+- Unscored context: the part's shared stem (`stem_image_url`); shared items as figures
+  ("Shared information printed before Question N"); earlier questions whose scenario the
+  unit continues ("Question N (this question continues its scenario)").
+- Dependency gate: a unit that builds on an earlier answer has `depends_on_question_ids`,
+  a `shared_stem_html` note and the earlier question shown. Because the schema keeps
+  dependencies inside one parent, a dependent question joins its source's group
+  (e.g. 2025 P1 Q17 has parent Q16 and `part_label` "17").
+- Reconciliation per booklet: published + removed-content marks = cover maximum
+  (Paper 3: Section A plus one route topic per option section).
+- Content year: AS 7181 units Year 12; A-level units Year 12 only when every primary leaf is
+  AS-shared, else Year 13 (440 / 213). Curriculum mapping `aqa-7182-7181-co-teaching-years`.
+- Difficulty: 181 easy, 355 medium, 117 hard. Every one of the 84 leaves has a primary unit.
+- Extraction fix: an AQA "This is a repeat of information" stem no longer replaces the full
+  item printed first (AS specimen Paper 2 Q12).
+
+Tests: `tests/psychology-bank.test.mjs` (7 pass). `npm test` otherwise unchanged: the same 7
+UI tests fail on the main baseline (c353026). Browser check: `tools/browser-psychology-bank.cjs`.
+
+Reproduce after Checkpoint 1's commands:
+
+```sh
+cp data/imports/psychology/review-src/*.txt $R/review-src/
+python3 tools/psychology/reviews.py compile $R
+python3 tools/psychology/build.py --research $R
+python3 tools/psychology/finalize.py --research $R [--activate]
+```
+
 ## Next action
 
-Model review of the 702 in-route units (`reviews.py` line sheets), then build, check
-and activate.
+Activate (`finalize.py --activate`, its own commit), browser check, push, verify live.

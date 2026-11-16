@@ -42,7 +42,7 @@ RUBRIC = re.compile(r'^(Section [A-D]$|Section [A-D]\b.*|Answer (all|either|one|
                     r'Do not write.*|outside the.*|box$|Turn over.*|Specimen material.*|Only one answer per question.*|'
                     r'For (the|each) multiple-choice.*|For each answer completely.*|CORRECT METHOD.*|If you want to change.*|'
                     r'If you wish to return.*|select as shown\.?|as shown\.?|End of (Question \d+|Section [A-D])\.?|'
-                    r'Shade the circle.*|\.$|_{5,}.*|\.{5,}.*|\(?\d{2}\)?$|\*\d{2}\*$|\* \*$|\*$|'
+                    r'Shade the circle.*|Only one answer\b.*|For each question completely.*|\.$|_{5,}.*|\.{5,}.*|\(?\d{2}\)?$|\*\d{2}\*$|\* \*$|\*$|'
                     r'(Relationships|Gender|Cognition and development|Schizophrenia|Eating behaviour|Stress|Aggression|'
                     r'Forensic [Pp]sychology|Addiction)( or .*)?$|'
                     r'Social influence$|Memory$|Attachment$|Psychopathology$|Approaches in [Pp]sychology$|Biopsychology$|'
@@ -57,11 +57,13 @@ SHARED = re.compile(r'^(Read (the|this|these)\b|Use the (item|information)\b|Stu
 QUESTION_LIST = re.compile(r'answer Questions? ((?:\d{1,2}(?:\.\d)?)(?:(?:,\s*|\s+and\s+|\s+to\s+)\d{1,2}(?:\.\d)?)*)', re.I)
 REFERS = re.compile(r'\b(the|this|these|that|their|her|his) (study|studies|psychologists?|researchers?|investigation|experiment|'
                     r'participants|results|item|data|questionnaire|interview|interviews|observation|observers|sample|'
-                    r'report|students?|teachers?|scenario|programme|group|groups|patients?|children|therapist|'
+                    r'report|students?|pupils?|teachers?|scenario|programme|group|groups|patients?|children|therapist|'
                     r'information above|case|psychiatrist|clinic|scores)\b|\binformation above\b|\bthe above\b|'
                     r'\bin the (study|experiment|investigation)\b', re.I)
 INTRODUCES = re.compile(r'^(An?|One|Two|Some|Researchers?|Psychologists?|In an?|In one|Read|The following|[A-Z][a-z]+ is|'
                         r'[A-Z][a-z]+ and [A-Z][a-z]+)\b')
+ANSWER_TABLE = re.compile(r'\b(complete (the|this|Table|Figure)|(table|grid|diagram|figure|space) below|below to show|'
+                          r'in the (table|grid|boxes)|fill(ing)? in (the )?(table|boxes|gaps|blanks))', re.I)
 ANSWER_REF = re.compile(r'\b(your answers? to|using your answers?|from your answer|use your answer|in your answer to (question )?\d|'
                         r'your (graph|sketch|hypothesis|calculation|table|bar chart|histogram|scattergram|answer above)|'
                         r'you have (identified|named|drawn|sketched|calculated|written|chosen|suggested|given|described|outlined))', re.I)
@@ -194,19 +196,30 @@ def extract(path):
                     i += 1
                     continue
                 if current is not None and current['label'] == number and part.startswith(number + '.'):
-                    stems[number] = current['rows']   # question-level stem: shared unscored context
+                    stems.setdefault(number, current['rows'])   # question-level stem: shared unscored context;
+                    # a later 'repeat of information' printing keeps the first, full item
                     current = None
                 elif current is not None:
                     exceptions.append({'type': 'label_before_tariff', 'unit': current['label'], 'next': part})
                 if question_no is not None and number != question_no and int(number) != int(question_no) + 1:
                     exceptions.append({'type': 'unexpected_question_number', 'found': number, 'after': question_no})
                 question_no = number
-                if pending:   # an unlabelled item printed before this question
+                if pending and LABEL_ONLY.match(text) and pending[-1][0] == pi and row['top'] - pending[-1][1]['bottom'] < 24:
+                    pass   # the label's own wording printed just above its box (specimen layout): keep it in the crop
+                elif pending and units and ANSWER_TABLE.search(units[-1]['text_so_far']) and \
+                        pending[0][0] - units[-1]['tariff']['page'] + 1 <= 1:
+                    units[-1]['rows'] += pending   # the table/diagram the previous question asks to complete
+                    units[-1]['answer_table'] = True
+                    pending = []
+                elif pending and not any(len(r['text'].split()) >= 5 for _, r in pending):
+                    pending = []   # answer-space headings ("Difference", "Similarity"), not content
+                elif pending:   # an unlabelled item printed before this question
                     ptext = ' '.join(r['text'] for _, r in pending)
-                    if SHARED.match(pending[0][1]['text']) or QUESTION_LIST.search(ptext):
-                        shared.append({'rows': pending, 'text': '\n'.join(r['text'] for _, r in pending),
-                                       'first': part, 'questions': question_list(ptext), 'section': section, 'topic': topic})
-                        pending = []
+                    explicit = bool(SHARED.match(pending[0][1]['text']) or QUESTION_LIST.search(ptext))
+                    shared.append({'rows': pending, 'text': '\n'.join(r['text'] for _, r in pending),
+                                   'first': part, 'questions': question_list(ptext), 'section': section, 'topic': topic,
+                                   'explicit': explicit})
+                    pending = []
                 current = {'question': number, 'label': part, 'section': section, 'topic': topic,
                            'rows': list(pending) + [(pi, row)]}
                 pending = []
@@ -248,6 +261,7 @@ def extract(path):
                             current['rows'].append(stream[j])
                     i = last_j + 1
                     current['options'] = len(marks_at)
+                current['text_so_far'] = ' '.join(r['text'] for _, r in current['rows'])
                 units.append(current)
                 current = None
                 continue
@@ -303,12 +317,25 @@ def extract(path):
                 basis = 'named in the item ("answer Questions ...")'
             else:
                 serves = []
-                for e in out[first:]:
+                item_names = names_in(s['text']) | set(re.findall(r'\b([A-Z][a-z]{2,})\b', s['text'])) & \
+                    set(re.findall(r'\b([A-Z][a-z]{2,})\b', ' '.join(e['text'] for e in out[first:])))
+                for n, e in enumerate(out[first:]):
                     if e['section'] != s['section'] or e['topic'] != s['topic'] or \
-                            (k + 1 < len(shared) and shared[k + 1]['first'] in (e['label'], e['question'])):
+                            (k + 1 < len(shared) and shared[k + 1]['first'] in (e['label'], e['question']) and
+                             (s['explicit'] or INTRODUCES.match(shared[k + 1]['text']) and not REFERS.search(shared[k + 1]['text']))):
                         break
+                    body = e['text'].split('\n')
+                    if n and not s['explicit']:
+                        new_scenario = INTRODUCES.match(LABEL.sub('', body[0]).strip()) and len(body) > 2
+                        refers = REFERS.search(e['text']) or any(f in e['text'] for f in figure_refs(s['text'])) or \
+                            any(re.search(rf'\b{nm}\b', e['text']) for nm in item_names - {'The', 'This', 'Table', 'Figure', 'Discuss', 'Explain', 'Outline'})
+                        if new_scenario:
+                            break
+                        if not refers:
+                            continue
                     serves.append(e['label'])
-                basis = '"the questions that follow": the following questions of the same section/topic'
+                basis = ('"the questions that follow": the following questions of the same section/topic' if s['explicit'] else
+                         'unlabelled item printed before the first question; later questions of the same section/topic that refer to it')
             item = {'id': f'ITEM{k + 1}', 'regions': regions(s['rows']), 'text': s['text'], 'figures': figure_refs(s['text']),
                     'serves': serves, 'basis': basis, 'copyright_removed_content': bool(REMOVED.search(s['text']))}
             items.append(item)
