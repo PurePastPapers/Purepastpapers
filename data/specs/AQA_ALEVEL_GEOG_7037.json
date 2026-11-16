@@ -1,24 +1,558 @@
 {
   "subject_id": "AQA_ALEVEL_GEOG_7037",
+  "specification_version": "aqa-7037-v1.2-2019-09-02",
+  "official_source_url": "https://filestore.aqa.org.uk/resources/geography/specifications/AQA-7037-SP-2016.PDF",
+  "order_status": "verified",
+  "official_source": {
+    "title": "AQA A-level Geography (7037) specification",
+    "version": "Version 1.2",
+    "issue_date": "2 September 2019",
+    "first_teaching": 2016,
+    "first_exams": 2018,
+    "url": "https://filestore.aqa.org.uk/resources/geography/specifications/AQA-7037-SP-2016.PDF",
+    "sha256": "f7fac6d21e535784f1fb349797e4ee8501b4b885dbf264fa916386713b7fca72",
+    "verified_at": "2026-11-16",
+    "as_qualification": {
+      "code": "7036",
+      "title": "AQA AS Geography (7036) specification",
+      "version": "Version 1.0",
+      "issue_date": "2 June 2016",
+      "first_exams": 2017,
+      "url": "https://filestore.aqa.org.uk/resources/geography/specifications/AQA-7036-SP-2016.PDF",
+      "sha256": "f907ae02ab4006ad3e54644c3af429ece0a36d7cf86be553a9991c52217d4c51"
+    }
+  },
+  "approach": "Official AQA content order. No textbook organisation has been supplied.",
+  "components": {
+    "7037/1": {
+      "title": "Physical geography",
+      "marks": 120,
+      "minutes": 150,
+      "sections": [
+        "3.1"
+      ],
+      "structure": "A: water and carbon cycles (36, compulsory); B: one of hot deserts, coasts, glaciers (36); C: one of hazards, ecosystems under stress (48)"
+    },
+    "7037/2": {
+      "title": "Human geography",
+      "marks": 120,
+      "minutes": 150,
+      "sections": [
+        "3.2"
+      ],
+      "structure": "A: global systems and global governance (36); B: changing places (36); C: one of urban environments, population and the environment, resource security (48)"
+    },
+    "7037/3": {
+      "title": "Geography fieldwork investigation (NEA)",
+      "marks": 60,
+      "written_exam": false,
+      "note": "Coursework: not imported as exam questions."
+    },
+    "7036/1": {
+      "title": "AS Physical geography and people and the environment",
+      "marks": 80,
+      "minutes": 90,
+      "structure": "A: one of water and carbon, coasts, glaciers (40); B: one of hazards, urban environments (40)"
+    },
+    "7036/2": {
+      "title": "AS Human geography and geography fieldwork investigation",
+      "marks": 80,
+      "minutes": 90,
+      "structure": "A: changing places (40); B: fieldwork and skills, question 2 plus one of questions 3 or 4 (40)"
+    }
+  },
+  "as_section_map": {
+    "3.1.1.1": "AQA_GEOG_3.1.1.1",
+    "3.1.1.2": "AQA_GEOG_3.1.1.2",
+    "3.1.1.3": "AQA_GEOG_3.1.1.3",
+    "3.1.1.4": "AQA_GEOG_3.1.1.4",
+    "3.1.1.5": "AQA_GEOG_3.1.1.5",
+    "3.1.1.6": "AQA_GEOG_3.1.1.6",
+    "3.1.2.1": "AQA_GEOG_3.1.3.1",
+    "3.1.2.2": "AQA_GEOG_3.1.3.2",
+    "3.1.2.3": "AQA_GEOG_3.1.3.3",
+    "3.1.2.4": "AQA_GEOG_3.1.3.4",
+    "3.1.2.5": "AQA_GEOG_3.1.3.5",
+    "3.1.2.6": "AQA_GEOG_3.1.3.6",
+    "3.1.3.1": "AQA_GEOG_3.1.4.1",
+    "3.1.3.2": "AQA_GEOG_3.1.4.2",
+    "3.1.3.3": "AQA_GEOG_3.1.4.3",
+    "3.1.3.4": "AQA_GEOG_3.1.4.4",
+    "3.1.3.5": "AQA_GEOG_3.1.4.5",
+    "3.1.3.6": "AQA_GEOG_3.1.4.6",
+    "3.1.3.7": "AQA_GEOG_3.1.4.7",
+    "3.3.1.1": "AQA_GEOG_3.1.5.1",
+    "3.3.1.2": "AQA_GEOG_3.1.5.2",
+    "3.3.1.3": "AQA_GEOG_3.1.5.3",
+    "3.3.1.4": "AQA_GEOG_3.1.5.4",
+    "3.3.1.5": "AQA_GEOG_3.1.5.5",
+    "3.3.1.6": "AQA_GEOG_3.1.5.6",
+    "3.3.1.7": "AQA_GEOG_3.1.5.7",
+    "3.2.1.1": "AQA_GEOG_3.2.2.1",
+    "3.2.1.2.1": "AQA_GEOG_3.2.2.2.1",
+    "3.2.1.2.2": "AQA_GEOG_3.2.2.2.2",
+    "3.2.1.3": "AQA_GEOG_3.2.2.3",
+    "3.2.1.4": "AQA_GEOG_3.2.2.4",
+    "3.3.2.1": "AQA_GEOG_3.2.3.1",
+    "3.3.2.2": "AQA_GEOG_3.2.3.2",
+    "3.3.2.3": "AQA_GEOG_3.2.3.3",
+    "3.3.2.4": "AQA_GEOG_3.2.3.4",
+    "3.3.2.5": "AQA_GEOG_3.2.3.5",
+    "3.3.2.6": "AQA_GEOG_3.2.3.6",
+    "3.3.2.7": "AQA_GEOG_3.2.3.7",
+    "3.3.2.8": "AQA_GEOG_3.2.3.8",
+    "3.3.2.9": "AQA_GEOG_3.2.3.9",
+    "3.4": "AQA_GEOG_AS_3.4",
+    "3.5.1": "AQA_GEOG_3.4.1",
+    "3.5.2.1": "AQA_GEOG_3.4.2.1",
+    "3.5.2.2": "AQA_GEOG_3.4.2.2",
+    "3.5.2.3": "AQA_GEOG_3.4.2.3",
+    "3.5.2.4": "AQA_GEOG_3.4.2.4",
+    "3.5.2.5": "AQA_GEOG_3.4.2.5"
+  },
+  "notes": "Leaves are AQA numbered content sections (AQA_GEOG_3.x...). content is AQA wording. Optional topics are kind \"option\" with their paper section. Linear A level: AQA prints no Year 12/13 order; the AS 7036 code map and text similarity are recorded so AS questions are tagged only to matching content.",
+  "legacy_ids": {
+    "AQA_GEOG_WC_1.1": [
+      "AQA_GEOG_3.1.1.1"
+    ],
+    "AQA_GEOG_WC_1.2": [
+      "AQA_GEOG_3.1.1.2"
+    ],
+    "AQA_GEOG_WC_1.3": [
+      "AQA_GEOG_3.1.1.2"
+    ],
+    "AQA_GEOG_WC_1.4": [
+      "AQA_GEOG_3.1.1.3"
+    ],
+    "AQA_GEOG_WC_1.5": [
+      "AQA_GEOG_3.1.1.3"
+    ],
+    "AQA_GEOG_WC_1.6": [
+      "AQA_GEOG_3.1.1.4"
+    ],
+    "AQA_GEOG_WC_1.7": [
+      "AQA_GEOG_3.1.1.6"
+    ],
+    "AQA_GEOG_HD_2.1": [
+      "AQA_GEOG_3.1.2.1"
+    ],
+    "AQA_GEOG_HD_2.2": [
+      "AQA_GEOG_3.1.2.2"
+    ],
+    "AQA_GEOG_HD_2.3": [
+      "AQA_GEOG_3.1.2.3"
+    ],
+    "AQA_GEOG_HD_2.4": [
+      "AQA_GEOG_3.1.2.4"
+    ],
+    "AQA_GEOG_COAST_3.1": [
+      "AQA_GEOG_3.1.3.1"
+    ],
+    "AQA_GEOG_COAST_3.2": [
+      "AQA_GEOG_3.1.3.2"
+    ],
+    "AQA_GEOG_COAST_3.3": [
+      "AQA_GEOG_3.1.3.3"
+    ],
+    "AQA_GEOG_COAST_3.4": [
+      "AQA_GEOG_3.1.3.4"
+    ],
+    "AQA_GEOG_COAST_3.5": [
+      "AQA_GEOG_3.1.3.6"
+    ],
+    "AQA_GEOG_GLAC_4.1": [
+      "AQA_GEOG_3.1.4.1",
+      "AQA_GEOG_3.1.4.2"
+    ],
+    "AQA_GEOG_GLAC_4.2": [
+      "AQA_GEOG_3.1.4.3"
+    ],
+    "AQA_GEOG_GLAC_4.3": [
+      "AQA_GEOG_3.1.4.4"
+    ],
+    "AQA_GEOG_GLAC_4.4": [
+      "AQA_GEOG_3.1.4.5"
+    ],
+    "AQA_GEOG_HAZ_5.1": [
+      "AQA_GEOG_3.1.5.1"
+    ],
+    "AQA_GEOG_HAZ_5.2": [
+      "AQA_GEOG_3.1.5.2"
+    ],
+    "AQA_GEOG_HAZ_5.3": [
+      "AQA_GEOG_3.1.5.3"
+    ],
+    "AQA_GEOG_HAZ_5.4": [
+      "AQA_GEOG_3.1.5.4"
+    ],
+    "AQA_GEOG_HAZ_5.5": [
+      "AQA_GEOG_3.1.5.5"
+    ],
+    "AQA_GEOG_HAZ_5.6": [
+      "AQA_GEOG_3.1.5.6"
+    ],
+    "AQA_GEOG_HAZ_5.7": [
+      "AQA_GEOG_3.1.5.7"
+    ],
+    "AQA_GEOG_ECO_6.1": [
+      "AQA_GEOG_3.1.6.1"
+    ],
+    "AQA_GEOG_ECO_6.2": [
+      "AQA_GEOG_3.1.6.2"
+    ],
+    "AQA_GEOG_ECO_6.3": [
+      "AQA_GEOG_3.1.6.3"
+    ],
+    "AQA_GEOG_ECO_6.4": [
+      "AQA_GEOG_3.1.6.4"
+    ],
+    "AQA_GEOG_ECO_6.5": [
+      "AQA_GEOG_3.1.6.5"
+    ],
+    "AQA_GEOG_GS_7.1": [
+      "AQA_GEOG_3.2.1.1"
+    ],
+    "AQA_GEOG_GS_7.2": [
+      "AQA_GEOG_3.2.1.2"
+    ],
+    "AQA_GEOG_GS_7.3": [
+      "AQA_GEOG_3.2.1.3"
+    ],
+    "AQA_GEOG_GS_7.4": [
+      "AQA_GEOG_3.2.1.4"
+    ],
+    "AQA_GEOG_GS_7.5": [
+      "AQA_GEOG_3.2.1.5",
+      "AQA_GEOG_3.2.1.5.1"
+    ],
+    "AQA_GEOG_CP_8.1": [
+      "AQA_GEOG_3.2.2.1"
+    ],
+    "AQA_GEOG_CP_8.2": [
+      "AQA_GEOG_3.2.2.2.1",
+      "AQA_GEOG_3.2.2.2.2"
+    ],
+    "AQA_GEOG_CP_8.3": [
+      "AQA_GEOG_3.2.2.4"
+    ],
+    "AQA_GEOG_URB_9.1": [
+      "AQA_GEOG_3.2.3.1",
+      "AQA_GEOG_3.2.3.2"
+    ],
+    "AQA_GEOG_URB_9.2": [
+      "AQA_GEOG_3.2.3.3"
+    ],
+    "AQA_GEOG_URB_9.3": [
+      "AQA_GEOG_3.2.3.4",
+      "AQA_GEOG_3.2.3.5"
+    ],
+    "AQA_GEOG_URB_9.4": [
+      "AQA_GEOG_3.2.3.6",
+      "AQA_GEOG_3.2.3.7"
+    ],
+    "AQA_GEOG_URB_9.5": [
+      "AQA_GEOG_3.2.3.8"
+    ],
+    "AQA_GEOG_POP_10.1": [
+      "AQA_GEOG_3.2.4.2"
+    ],
+    "AQA_GEOG_POP_10.2": [
+      "AQA_GEOG_3.2.4.3"
+    ],
+    "AQA_GEOG_POP_10.3": [
+      "AQA_GEOG_3.2.4.4"
+    ],
+    "AQA_GEOG_POP_10.4": [
+      "AQA_GEOG_3.2.4.5",
+      "AQA_GEOG_3.2.4.6"
+    ],
+    "AQA_GEOG_RES_11.1": [
+      "AQA_GEOG_3.2.5.1",
+      "AQA_GEOG_3.2.5.2"
+    ],
+    "AQA_GEOG_RES_11.2": [
+      "AQA_GEOG_3.2.5.3"
+    ],
+    "AQA_GEOG_RES_11.3": [
+      "AQA_GEOG_3.2.5.4"
+    ],
+    "AQA_GEOG_RES_11.4": [
+      "AQA_GEOG_3.2.5.5",
+      "AQA_GEOG_3.2.5.6"
+    ],
+    "AQA_GEOG_SK_12.1": [
+      "AQA_GEOG_3.4.1"
+    ],
+    "AQA_GEOG_SK_12.2": [
+      "AQA_GEOG_3.4.2.4"
+    ],
+    "AQA_GEOG_SK_12.3": [
+      "AQA_GEOG_3.4.2.2",
+      "AQA_GEOG_3.4.2.3"
+    ]
+  },
+  "point_order": [
+    "AQA_GEOG_3.1.1.1",
+    "AQA_GEOG_3.1.1.2",
+    "AQA_GEOG_3.1.1.3",
+    "AQA_GEOG_3.1.1.4",
+    "AQA_GEOG_3.1.1.5",
+    "AQA_GEOG_3.1.1.6",
+    "AQA_GEOG_3.1.2.1",
+    "AQA_GEOG_3.1.2.2",
+    "AQA_GEOG_3.1.2.3",
+    "AQA_GEOG_3.1.2.4",
+    "AQA_GEOG_3.1.2.5",
+    "AQA_GEOG_3.1.2.6",
+    "AQA_GEOG_3.1.3.1",
+    "AQA_GEOG_3.1.3.2",
+    "AQA_GEOG_3.1.3.3",
+    "AQA_GEOG_3.1.3.4",
+    "AQA_GEOG_3.1.3.5",
+    "AQA_GEOG_3.1.3.6",
+    "AQA_GEOG_3.1.4.1",
+    "AQA_GEOG_3.1.4.2",
+    "AQA_GEOG_3.1.4.3",
+    "AQA_GEOG_3.1.4.4",
+    "AQA_GEOG_3.1.4.5",
+    "AQA_GEOG_3.1.4.6",
+    "AQA_GEOG_3.1.4.7",
+    "AQA_GEOG_3.1.5.1",
+    "AQA_GEOG_3.1.5.2",
+    "AQA_GEOG_3.1.5.3",
+    "AQA_GEOG_3.1.5.4",
+    "AQA_GEOG_3.1.5.5",
+    "AQA_GEOG_3.1.5.6",
+    "AQA_GEOG_3.1.5.7",
+    "AQA_GEOG_3.1.6.1",
+    "AQA_GEOG_3.1.6.2",
+    "AQA_GEOG_3.1.6.3",
+    "AQA_GEOG_3.1.6.4",
+    "AQA_GEOG_3.1.6.5",
+    "AQA_GEOG_3.1.6.6",
+    "AQA_GEOG_3.1.6.7",
+    "AQA_GEOG_3.2.1.1",
+    "AQA_GEOG_3.2.1.2",
+    "AQA_GEOG_3.2.1.3",
+    "AQA_GEOG_3.2.1.4",
+    "AQA_GEOG_3.2.1.5",
+    "AQA_GEOG_3.2.1.5.1",
+    "AQA_GEOG_3.2.1.6",
+    "AQA_GEOG_3.2.1.7",
+    "AQA_GEOG_3.2.2.1",
+    "AQA_GEOG_3.2.2.2.1",
+    "AQA_GEOG_3.2.2.2.2",
+    "AQA_GEOG_3.2.2.3",
+    "AQA_GEOG_3.2.2.4",
+    "AQA_GEOG_3.2.3.1",
+    "AQA_GEOG_3.2.3.2",
+    "AQA_GEOG_3.2.3.3",
+    "AQA_GEOG_3.2.3.4",
+    "AQA_GEOG_3.2.3.5",
+    "AQA_GEOG_3.2.3.6",
+    "AQA_GEOG_3.2.3.7",
+    "AQA_GEOG_3.2.3.8",
+    "AQA_GEOG_3.2.3.9",
+    "AQA_GEOG_3.2.4.1",
+    "AQA_GEOG_3.2.4.2",
+    "AQA_GEOG_3.2.4.3",
+    "AQA_GEOG_3.2.4.4",
+    "AQA_GEOG_3.2.4.5",
+    "AQA_GEOG_3.2.4.6",
+    "AQA_GEOG_3.2.4.7",
+    "AQA_GEOG_3.2.5.1",
+    "AQA_GEOG_3.2.5.2",
+    "AQA_GEOG_3.2.5.3",
+    "AQA_GEOG_3.2.5.4",
+    "AQA_GEOG_3.2.5.5",
+    "AQA_GEOG_3.2.5.6",
+    "AQA_GEOG_3.2.5.7",
+    "AQA_GEOG_3.3.1",
+    "AQA_GEOG_AS_3.4",
+    "AQA_GEOG_3.4.1",
+    "AQA_GEOG_3.4.2.1",
+    "AQA_GEOG_3.4.2.2",
+    "AQA_GEOG_3.4.2.3",
+    "AQA_GEOG_3.4.2.4",
+    "AQA_GEOG_3.4.2.5"
+  ],
   "sections": [
     {
       "id": "AQA_GEOG_SEC_PHYS",
-      "title": "Physical geography",
-      "note": "Paper 1",
+      "code": "Paper 1",
+      "title": "Paper 1: Physical geography",
+      "official_reference": {
+        "component": "7037/1"
+      },
       "topics": [
         {
           "id": "AQA_GEOG_WC",
           "code": "3.1.1",
           "title": "Water and carbon cycles",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 1 Section A (compulsory)",
           "points": [
-            {"id":"AQA_GEOG_WC_1.1","code":"1.1","title":"Systems in physical geography"},
-            {"id":"AQA_GEOG_WC_1.2","code":"1.2","title":"The water cycle: stores, transfers, drainage basins and hydrographs"},
-            {"id":"AQA_GEOG_WC_1.3","code":"1.3","title":"Changes in the water cycle over time"},
-            {"id":"AQA_GEOG_WC_1.4","code":"1.4","title":"The carbon cycle: stores, transfers and the carbon budget"},
-            {"id":"AQA_GEOG_WC_1.5","code":"1.5","title":"Changes in the carbon cycle over time"},
-            {"id":"AQA_GEOG_WC_1.6","code":"1.6","title":"Water, carbon, climate and life on Earth"},
-            {"id":"AQA_GEOG_WC_1.7","code":"1.7","title":"Case studies: tropical rainforest and river catchment"}
+            {
+              "id": "AQA_GEOG_3.1.1.1",
+              "code": "3.1.1.1",
+              "title": "Water and carbon cycles as natural systems",
+              "official_reference": {
+                "section": "3.1.1.1",
+                "component": "7037/1",
+                "source_pages": [
+                  11
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Systems in physical geography: systems concepts and their application to the water and carbon cycles inputs – outputs, energy, stores/components, flows/transfers, positive/negative feedback, dynamic equilibrium."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.1.1",
+                "title": "Water and carbon cycles as natural systems",
+                "source_pages": [
+                  9
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.1.2",
+              "code": "3.1.1.2",
+              "title": "The water cycle",
+              "official_reference": {
+                "section": "3.1.1.2",
+                "component": "7037/1",
+                "source_pages": [
+                  11
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Global distribution and size of major stores of water – lithosphere, hydrosphere, cryosphere and atmosphere.",
+                "Processes driving change in the magnitude of these stores over time and space, including flows and transfers: evaporation, condensation, cloud formation, causes of precipitation and cryospheric processes at hill slope, drainage basin and global scales with reference to varying timescales involved.",
+                "Drainage basins as open systems – inputs and outputs, to include precipitation, evapo- transpiration and runoff; stores and flows, to include interception, surface, soil water, groundwater and channel storage; stemflow, infiltration overland flow, and channel flow. Concept of water balance.",
+                "Runoff variation and the flood hydrograph.",
+                "Changes in the water cycle over time to include natural variation including storm events, seasonal changes and human impact including farming practices, land use change and water abstraction."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.1.2",
+                "title": "The water cycle",
+                "source_pages": [
+                  9
+                ],
+                "text_similarity": 0.996
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.1.3",
+              "code": "3.1.1.3",
+              "title": "The carbon cycle",
+              "official_reference": {
+                "section": "3.1.1.3",
+                "component": "7037/1",
+                "source_pages": [
+                  11,
+                  12
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Global distribution, and size of major stores of carbon – lithosphere, hydrosphere, cryosphere biosphere, atmosphere.",
+                "Factors driving change in the magnitude of these stores over time and space, including flows and transfers at plant, sere and continental scales. Photosynthesis, respiration, decomposition, combustion, carbon sequestration in oceans and sediments, weathering.",
+                "Changes in the carbon cycle over time, to include natural variation (including wild fires, volcanic activity) and human impact (including hydrocarbon fuel extraction and burning, farming practices, deforestation, land use changes).",
+                "The carbon budget and the impact of the carbon cycle upon land, ocean and atmosphere, including global climate."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.1.3",
+                "title": "The carbon cycle",
+                "source_pages": [
+                  9,
+                  10
+                ],
+                "text_similarity": 0.995
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.1.4",
+              "code": "3.1.1.4",
+              "title": "Water, carbon, climate and life on Earth",
+              "official_reference": {
+                "section": "3.1.1.4",
+                "component": "7037/1",
+                "source_pages": [
+                  12
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "The key role of the carbon and water stores and cycles in supporting life on Earth with particular reference to climate. The relationship between the water cycle and carbon cycle in the atmosphere. The role of feedbacks within and between cycles and their link to climate change and implications for life on Earth.",
+                "Human interventions in the carbon cycle designed to influence carbon transfers and mitigate the impacts of climate change."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.1.4",
+                "title": "Water, carbon, climate and life on Earth",
+                "source_pages": [
+                  10
+                ],
+                "text_similarity": 0.986
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.1.5",
+              "code": "3.1.1.5",
+              "title": "Quantitative and qualitative skills",
+              "official_reference": {
+                "section": "3.1.1.5",
+                "component": "7037/1",
+                "source_pages": [
+                  12
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Students must engage with a range of quantitative and relevant qualitative skills, within the theme water and carbon cycles. Students must specifically understand simple mass balance, unit conversions and the analysis and presentation of field data."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.1.5",
+                "title": "Quantitative and qualitative skills",
+                "source_pages": [
+                  10
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.1.6",
+              "code": "3.1.1.6",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.1.1.6",
+                "component": "7037/1",
+                "source_pages": [
+                  12
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Case study of a tropical rainforest setting to illustrate and analyse key themes in water and carbon cycles and their relationship to environmental change and human activity.",
+                "Case study of a river catchment(s) at a local scale to illustrate and analyse the key themes above, engage with field data and consider the impact of precipitation upon drainage basin stores and transfers and implications for sustainable water supply and/or flooding."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.1.6",
+                "title": "Case studies",
+                "source_pages": [
+                  10
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
@@ -26,11 +560,115 @@
           "code": "3.1.2",
           "title": "Hot desert systems and landscapes",
           "kind": "option",
+          "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)",
           "points": [
-            {"id":"AQA_GEOG_HD_2.1","code":"2.1","title":"Deserts as natural systems"},
-            {"id":"AQA_GEOG_HD_2.2","code":"2.2","title":"Systems and processes in hot deserts"},
-            {"id":"AQA_GEOG_HD_2.3","code":"2.3","title":"Arid landscape development"},
-            {"id":"AQA_GEOG_HD_2.4","code":"2.4","title":"Desertification"}
+            {
+              "id": "AQA_GEOG_3.1.2.1",
+              "code": "3.1.2.1",
+              "title": "Deserts as natural systems",
+              "official_reference": {
+                "section": "3.1.2.1",
+                "component": "7037/1",
+                "source_pages": [
+                  12,
+                  13
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Systems in physical geography: systems concepts and their application to the development of desert landscapes – inputs, outputs, energy, stores/components, flows/transfers, positive/negative feedback, dynamic equilibrium. The concepts of landform and landscape and how related landforms combine to form characteristic landscapes.",
+                "The global distribution of mid and low latitude deserts and their margins (arid and semi-arid).",
+                "Characteristics of hot desert environments and their margins: climate, soils and vegetation (and their interaction). Water balance and aridity index.",
+                "The causes of aridity: atmospheric processes relating to pressure, winds, continentality, relief and cold ocean currents."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.2.2",
+              "code": "3.1.2.2",
+              "title": "Systems and processes",
+              "official_reference": {
+                "section": "3.1.2.2",
+                "component": "7037/1",
+                "source_pages": [
+                  13
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Sources of energy in hot desert environments: insolation, winds, runoff.",
+                "Sediment sources, cells and budgets.",
+                "Geomorphological processes: weathering, mass movement, erosion, transportation and deposition.",
+                "Distinctively arid geomorphological processes: weathering (thermal fracture, exfoliation, chemical weathering, block and granular disintegration).",
+                "The role of wind – erosion: deflation and abrasion; transportation; suspension, saltation, surface creep, deposition.",
+                "Sources of water: exogenous, endoreic and ephemeral; the episodic role of water; sheet flooding, channel flash flooding."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.2.3",
+              "code": "3.1.2.3",
+              "title": "Arid landscape development in contrasting settings",
+              "official_reference": {
+                "section": "3.1.2.3",
+                "component": "7037/1",
+                "source_pages": [
+                  13
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Origin and development of landforms of mid and low latitude deserts: aeolian – deflation hollows, desert pavements, ventifacts, yardangs, zeugen, barchans and seif dunes; water – wadis, bahadas, pediments, playas, inselbergs.",
+                "The relationship between process, time, landforms and landscapes in mid and low latitude desert settings: characteristic desert landscapes."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.2.4",
+              "code": "3.1.2.4",
+              "title": "Desertification",
+              "official_reference": {
+                "section": "3.1.2.4",
+                "component": "7037/1",
+                "source_pages": [
+                  13
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "The changing extent and distribution of hot deserts over the last 10,000 years. The causes of desertification – climate change and human impact; distribution of areas at risk; impact on ecosystems, landscapes and populations. Predicted climate change and its impacts; alternative possible futures for local populations."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.2.5",
+              "code": "3.1.2.5",
+              "title": "Quantitative and qualitative skills",
+              "official_reference": {
+                "section": "3.1.2.5",
+                "component": "7037/1",
+                "source_pages": [
+                  13
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Students must engage with a range of quantitative and relevant qualitative skills, within the theme landscape systems. These should include observation skills, measurement and geospatial mapping skills and data manipulation and statistical skills applied to field measurements."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.2.6",
+              "code": "3.1.2.6",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.1.2.6",
+                "component": "7037/1",
+                "source_pages": [
+                  13
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Case study of a hot desert environment setting to illustrate and analyse key themes set out above and engage with field data (exemplifying field data may be gathered in settings that experience some of the aeolian processes associated with mid and low latitude desert environments such as coastal dunes).",
+                "Case study at a local scale of a landscape where desertification has occurred to illustrate and analyse key themes of desertification, causes and impacts, implications for sustainable development. Evaluation of human responses of resilience, mitigation and adaptation."
+              ]
+            }
           ]
         },
         {
@@ -38,12 +676,171 @@
           "code": "3.1.3",
           "title": "Coastal systems and landscapes",
           "kind": "option",
+          "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)",
           "points": [
-            {"id":"AQA_GEOG_COAST_3.1","code":"3.1","title":"Coasts as natural systems"},
-            {"id":"AQA_GEOG_COAST_3.2","code":"3.2","title":"Systems and processes: waves, tides, sediment cells, erosion and deposition"},
-            {"id":"AQA_GEOG_COAST_3.3","code":"3.3","title":"Coastal landscape development and sea level change"},
-            {"id":"AQA_GEOG_COAST_3.4","code":"3.4","title":"Coastal management"},
-            {"id":"AQA_GEOG_COAST_3.5","code":"3.5","title":"Case studies: local coast and a contrasting coast beyond the UK"}
+            {
+              "id": "AQA_GEOG_3.1.3.1",
+              "code": "3.1.3.1",
+              "title": "Coasts as natural systems",
+              "official_reference": {
+                "section": "3.1.3.1",
+                "component": "7037/1",
+                "source_pages": [
+                  14
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Systems in physical geography: systems concepts and their application to the development of coastal landscapes – inputs, outputs, energy, stores/components, flows/transfers, positive/negative feedback, dynamic equilibrium. The concepts of landform and landscape and how related landforms combine to form characteristic landscapes."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.2.1",
+                "title": "Coasts as natural systems",
+                "source_pages": [
+                  10
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.3.2",
+              "code": "3.1.3.2",
+              "title": "Systems and processes",
+              "official_reference": {
+                "section": "3.1.3.2",
+                "component": "7037/1",
+                "source_pages": [
+                  14
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Sources of energy in coastal environments: winds, waves (constructive and destructive), currents and tides. Low energy and high energy coasts.",
+                "Sediment sources, cells and budgets.",
+                "Geomorphological processes: weathering, mass movement, erosion, transportation and deposition.",
+                "Distinctively coastal processes: marine: erosion – hydraulic action, wave quarrying, corrasion/ abrasion, cavitation, solution, attrition; transportation: traction, suspension (longshore/littoral drift) and deposition; sub-aerial weathering, mass movement and runoff."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.2.2",
+                "title": "Systems and processes",
+                "source_pages": [
+                  10,
+                  11
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.3.3",
+              "code": "3.1.3.3",
+              "title": "Coastal landscape development",
+              "official_reference": {
+                "section": "3.1.3.3",
+                "component": "7037/1",
+                "source_pages": [
+                  14
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "This content must include study of a variety of landscapes from beyond the United Kingdom (UK) but may also include UK examples.",
+                "Origin and development of landforms and landscapes of coastal erosion: cliffs and wave cut platforms, cliff profile features including caves, arches and stacks; factors and processes in their development.",
+                "Origin and development of landforms and landscapes of coastal deposition. Beaches, simple and compound spits, tombolos, offshore bars, barrier beaches and islands and sand dunes; factors and processes in their development.",
+                "Estuarine mudflat/saltmarsh environments and associated landscapes; factors and processes in their development.",
+                "Eustatic, isostatic and tectonic sea level change: major changes in sea level in the last 10,000 years.",
+                "Coastlines of emergence and submergence. Origin and development of associated landforms:",
+                "raised beaches, marine platforms; rias, fjords, Dalmatian coasts.",
+                "Recent and predicted climatic change and potential impact on coasts.",
+                "The relationship between process, time, landforms and landscapes in coastal settings."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.2.3",
+                "title": "Coastal landscape development",
+                "source_pages": [
+                  11
+                ],
+                "text_similarity": 0.993
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.3.4",
+              "code": "3.1.3.4",
+              "title": "Coastal management",
+              "official_reference": {
+                "section": "3.1.3.4",
+                "component": "7037/1",
+                "source_pages": [
+                  14
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Human intervention in coastal landscapes. Traditional approaches to coastal flood and erosion risk: hard and soft engineering. Sustainable approaches to coastal flood risk and coastal erosion management: shoreline management/integrated coastal zone management."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.2.4",
+                "title": "Coastal management",
+                "source_pages": [
+                  11
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.3.5",
+              "code": "3.1.3.5",
+              "title": "Quantitative and qualitative skills",
+              "official_reference": {
+                "section": "3.1.3.5",
+                "component": "7037/1",
+                "source_pages": [
+                  15
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Students must engage with a range of quantitative and relevant qualitative skills, within the theme landscape systems. These should include observation skills, measurement and geospatial mapping skills and data manipulation and statistical skills applied to field measurements."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.2.5",
+                "title": "Quantitative and qualitative skills",
+                "source_pages": [
+                  11
+                ],
+                "text_similarity": 0.973
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.3.6",
+              "code": "3.1.3.6",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.1.3.6",
+                "component": "7037/1",
+                "source_pages": [
+                  15
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Case study(ies) of coastal environment(s) at a local scale to illustrate and analyse fundamental coastal processes, their landscape outcomes as set out above and engage with field data and challenges represented in their sustainable management.",
+                "Case study of a contrasting coastal landscape beyond the UK to illustrate and analyse how it presents risks and opportunities for human occupation and development and evaluate human responses of resilience, mitigation and adaptation."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.2.6",
+                "title": "Case studies",
+                "source_pages": [
+                  11
+                ],
+                "text_similarity": 0.972
+              }
+            }
           ]
         },
         {
@@ -51,11 +848,200 @@
           "code": "3.1.4",
           "title": "Glacial systems and landscapes",
           "kind": "option",
+          "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)",
           "points": [
-            {"id":"AQA_GEOG_GLAC_4.1","code":"4.1","title":"Glaciers as natural systems; the nature and distribution of cold environments"},
-            {"id":"AQA_GEOG_GLAC_4.2","code":"4.2","title":"Systems and processes in glaciated environments"},
-            {"id":"AQA_GEOG_GLAC_4.3","code":"4.3","title":"Glaciated landscape development"},
-            {"id":"AQA_GEOG_GLAC_4.4","code":"4.4","title":"Human impacts on cold environments"}
+            {
+              "id": "AQA_GEOG_3.1.4.1",
+              "code": "3.1.4.1",
+              "title": "Glaciers as natural systems",
+              "official_reference": {
+                "section": "3.1.4.1",
+                "component": "7037/1",
+                "source_pages": [
+                  15
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Systems in physical geography: systems concepts and their application to the development of glaciated landscapes – inputs, outputs, energy, stores/components, flows/transfers, positive/ negative feedback, dynamic equilibrium. The concepts of landform and landscape and how related landforms combine to form characteristic landscapes."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.3.1",
+                "title": "Glaciers as natural systems",
+                "source_pages": [
+                  12
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.4.2",
+              "code": "3.1.4.2",
+              "title": "The nature and distribution of cold environments",
+              "official_reference": {
+                "section": "3.1.4.2",
+                "component": "7037/1",
+                "source_pages": [
+                  15
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "The global distribution of cold environments.",
+                "Physical characteristics of cold environments. Climate, soils and vegetation (and their interaction).",
+                "The global distribution of past and present cold environments (polar, alpine, glacial and periglacial) and of areas affected by the Pleistocene glaciations."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.3.2",
+                "title": "The nature and distribution of cold environments",
+                "source_pages": [
+                  12
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.4.3",
+              "code": "3.1.4.3",
+              "title": "Systems and processes",
+              "official_reference": {
+                "section": "3.1.4.3",
+                "component": "7037/1",
+                "source_pages": [
+                  15,
+                  16
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Glacial systems including glacial budgets.",
+                "Ablation and accumulation – historical patterns of ice advance and retreat.",
+                "Warm and cold based glaciers: characteristics and development.",
+                "Geomorphological processes – weathering: frost action, nivation; ice movement: internal deformation, rotational, compressional, extensional and basal sliding; erosion: plucking, abrasion; transportation and deposition.",
+                "Fluvioglacial processes: meltwater, erosion transportation and deposition.",
+                "Periglacial features and processes: permafrost, active layer and mass movement."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.3.3",
+                "title": "Systems and processes",
+                "source_pages": [
+                  12
+                ],
+                "text_similarity": 0.992
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.4.4",
+              "code": "3.1.4.4",
+              "title": "Glaciated landscape development",
+              "official_reference": {
+                "section": "3.1.4.4",
+                "component": "7037/1",
+                "source_pages": [
+                  16
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "This content must include study of a variety of landscapes from beyond the UK and may also include UK examples.",
+                "Origin and development of glaciated landscapes.",
+                "Erosional and depositional landforms: corries, arêtes, glacial troughs, hanging valleys, truncated spurs, roches moutonnées. Characteristic glaciated landscapes.",
+                "Origin and development of landforms and landscapes of glacial deposition: drumlins, erratics, moraines, till plains. Characteristic glaciated landscapes.",
+                "Fluvioglacial landforms of erosion and deposition: meltwater channels, kames, eskers, outwash plains. Characteristic fluvioglacial landscapes.",
+                "Periglacial landforms: patterned ground, ice wedges, pingos, blockfields, solifluction, lobes, terracettes, thermokarst. Characteristic periglacial landscapes.",
+                "The relationship between process, time, landforms and landscapes in glaciated settings:",
+                "characteristic glaciated and periglacial landscapes."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.3.4",
+                "title": "Glaciated landscape development",
+                "source_pages": [
+                  12,
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.4.5",
+              "code": "3.1.4.5",
+              "title": "Human impacts on cold environments",
+              "official_reference": {
+                "section": "3.1.4.5",
+                "component": "7037/1",
+                "source_pages": [
+                  16
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Concept of environmental fragility. Human impacts on fragile cold environments over time and at a variety of scales. Recent and prospective impact of climate change. Management of cold environments at present and in alternative possible futures."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.3.5",
+                "title": "Human impacts on cold environments",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.4.6",
+              "code": "3.1.4.6",
+              "title": "Quantitative and qualitative skills",
+              "official_reference": {
+                "section": "3.1.4.6",
+                "component": "7037/1",
+                "source_pages": [
+                  16
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Students must engage with a range of quantitative and relevant qualitative skills, within the theme landscape systems. These should include observation skills, measurement and geospatial mapping skills and data manipulation and statistical skills applied to field measurements."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.3.6",
+                "title": "Quantitative and qualitative skills",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 0.973
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.4.7",
+              "code": "3.1.4.7",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.1.4.7",
+                "component": "7037/1",
+                "source_pages": [
+                  16
+                ],
+                "route": "Paper 1 Section B option (one of hot deserts, coasts, glaciers)"
+              },
+              "content": [
+                "Case study(ies) of glaciated environment(s) at a local scale to illustrate and analyse fundamental glacial processes, their landscape outcomes as set out above and engage with field data.",
+                "Case study of a contrasting glaciated landscape from beyond the UK to illustrate and analyse how it presents challenges and opportunities for human occupation and development and evaluate human responses of resilience, mitigation and adaptation."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.1.3.7",
+                "title": "Case studies",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 0.992
+              }
+            }
           ]
         },
         {
@@ -63,14 +1049,195 @@
           "code": "3.1.5",
           "title": "Hazards",
           "kind": "option",
+          "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)",
           "points": [
-            {"id":"AQA_GEOG_HAZ_5.1","code":"5.1","title":"The concept of hazard in a geographical context"},
-            {"id":"AQA_GEOG_HAZ_5.2","code":"5.2","title":"Plate tectonics"},
-            {"id":"AQA_GEOG_HAZ_5.3","code":"5.3","title":"Volcanic hazards"},
-            {"id":"AQA_GEOG_HAZ_5.4","code":"5.4","title":"Seismic hazards"},
-            {"id":"AQA_GEOG_HAZ_5.5","code":"5.5","title":"Storm hazards"},
-            {"id":"AQA_GEOG_HAZ_5.6","code":"5.6","title":"Fires in nature"},
-            {"id":"AQA_GEOG_HAZ_5.7","code":"5.7","title":"Case studies: multi-hazardous environment and local hazard setting"}
+            {
+              "id": "AQA_GEOG_3.1.5.1",
+              "code": "3.1.5.1",
+              "title": "The concept of hazard in a geographical context",
+              "official_reference": {
+                "section": "3.1.5.1",
+                "component": "7037/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "Nature, forms and potential impacts of natural hazards (geophysical, atmospheric and hydrological). Hazard perception and its economic and cultural determinants. Characteristic human responses – fatalism, prediction, adjustment/adaptation, mitigation, management, risk sharing – and their relationship to hazard incidence, intensity, magnitude, distribution and level of development. The Park model of human response to hazards. The Hazard Management Cycle."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.1.1",
+                "title": "The concept of hazard in a geographical context",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.5.2",
+              "code": "3.1.5.2",
+              "title": "Plate tectonics",
+              "official_reference": {
+                "section": "3.1.5.2",
+                "component": "7037/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "Earth structure and internal energy sources. Plate tectonic theory of crustal evolution: tectonic plates; plate movement; gravitational sliding; ridge push, slab pull; convection currents and sea- floor spreading.",
+                "Destructive, constructive and conservative plate margins. Characteristic processes: seismicity and vulcanicity. Associated landforms: young fold mountains, rift valleys, ocean ridges, deep sea trenches and island arcs, volcanoes.",
+                "Magma plumes and their relationship to plate movement."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.1.2",
+                "title": "Plate tectonics",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.5.3",
+              "code": "3.1.5.3",
+              "title": "Volcanic hazards",
+              "official_reference": {
+                "section": "3.1.5.3",
+                "component": "7037/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "The nature of vulcanicity and its relation to plate tectonics: forms of volcanic hazard: nuées ardentes, lava flows, mudflows, pyroclastic and ash fallout, gases/acid rain, tephra. Spatial distribution, magnitude, frequency, regularity and predictability of hazard events.",
+                "Impacts: primary/secondary, environmental, social, economic, political. Short and long-term responses: risk management designed to reduce the impacts of the hazard through preparedness, mitigation, prevention and adaptation.",
+                "Impacts and human responses as evidenced by a recent volcanic event."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.1.3",
+                "title": "Volcanic hazards",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 0.994
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.5.4",
+              "code": "3.1.5.4",
+              "title": "Seismic hazards",
+              "official_reference": {
+                "section": "3.1.5.4",
+                "component": "7037/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "The nature of seismicity and its relation to plate tectonics: forms of seismic hazard: earthquakes, shockwaves, tsunamis, liquefaction, landslides. Spatial distribution, randomness, magnitude, frequency, regularity, predictability of hazard events.",
+                "Impacts: primary/secondary; environmental, social, economic, political. Short and long-term responses; risk management designed to reduce the impacts of the hazard through preparedness, mitigation, prevention and adaptation.",
+                "Impacts and human responses as evidenced by a recent seismic event."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.1.4",
+                "title": "Seismic hazards",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.5.5",
+              "code": "3.1.5.5",
+              "title": "Storm hazards",
+              "official_reference": {
+                "section": "3.1.5.5",
+                "component": "7037/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "The nature of tropical storms and their underlying causes. Forms of storm hazard: high winds, storm surges, coastal flooding, river flooding and landslides. Spatial distribution, magnitude, frequency, regularity, predictability of hazard events.",
+                "Impacts: primary/secondary, environmental, social, economic, political. Short and long-term responses: risk management designed to reduce the impacts of the hazard through preparedness, mitigation, prevention and adaptation.",
+                "Impacts and human responses as evidenced by two recent tropical storms in contrasting areas of the world."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.1.5",
+                "title": "Storm hazards",
+                "source_pages": [
+                  16,
+                  17
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.5.6",
+              "code": "3.1.5.6",
+              "title": "Fires in nature",
+              "official_reference": {
+                "section": "3.1.5.6",
+                "component": "7037/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "Nature of wildfires. Conditions favouring intense wild fires: vegetation type, fuel characteristics, climate and recent weather and fire behaviour. Causes of fires: natural and human agency.",
+                "Impacts: primary/secondary, environmental, social, economic, political. Short and long-term responses; risk management designed to reduce the impacts of the hazard through preparedness, mitigation, prevention and adaptation.",
+                "Impact and human responses as evidenced by a recent wild fire event."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.1.6",
+                "title": "Fires in nature",
+                "source_pages": [
+                  17
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.1.5.7",
+              "code": "3.1.5.7",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.1.5.7",
+                "component": "7037/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "Case study of a multi-hazardous environment beyond the UK to illustrate and analyse the nature of the hazards and the social, economic and environmental risks presented, and how human qualities and responses such as resilience, adaptation, mitigation and management contribute to its continuing human occupation.",
+                "Case study at a local scale of a specified place in a hazardous setting to illustrate the physical nature of the hazard and analyse how the economic, social and political character of its community reflects the presence and impacts of the hazard and the community’s response to the risk."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.1.7",
+                "title": "Case studies",
+                "source_pages": [
+                  17
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
@@ -78,43 +1245,479 @@
           "code": "3.1.6",
           "title": "Ecosystems under stress",
           "kind": "option",
+          "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)",
           "points": [
-            {"id":"AQA_GEOG_ECO_6.1","code":"6.1","title":"Ecosystems and sustainability"},
-            {"id":"AQA_GEOG_ECO_6.2","code":"6.2","title":"Ecosystems and processes"},
-            {"id":"AQA_GEOG_ECO_6.3","code":"6.3","title":"Biomes"},
-            {"id":"AQA_GEOG_ECO_6.4","code":"6.4","title":"Ecosystems in the British Isles over time"},
-            {"id":"AQA_GEOG_ECO_6.5","code":"6.5","title":"Marine ecosystems"}
+            {
+              "id": "AQA_GEOG_3.1.6.1",
+              "code": "3.1.6.1",
+              "title": "Ecosystems and sustainability",
+              "official_reference": {
+                "section": "3.1.6.1",
+                "component": "7037/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "The concept of biodiversity. Local and global trends in biodiversity. Causes, rates and potential impacts of declining biodiversity.",
+                "Ecosystems and their importance for human populations in the light of continuing population growth and economic development. Human populations in ecosystem development and sustainability."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.6.2",
+              "code": "3.1.6.2",
+              "title": "Ecosystems and processes",
+              "official_reference": {
+                "section": "3.1.6.2",
+                "component": "7037/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "Nature of ecosystems – their structure, energy flows, trophic levels, food chains and food webs.",
+                "Application of systems concepts to ecosystems – inputs, outputs, stores and transfers of energy and materials. Concepts of biomass and net primary production.",
+                "Concepts of succession: seral stages, climatic climax, sub-climax and plagioclimax.",
+                "Mineral nutrient cycling.",
+                "Nature of terrestrial ecosystems and the inter-connections between climate, vegetation, soil and topography which produce them. Ecosystem responses to changes in one or more of their components or environmental controls.",
+                "Factors influencing the changing of ecosystems, including climate change and human exploitation of the global environment."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.6.3",
+              "code": "3.1.6.3",
+              "title": "Biomes",
+              "official_reference": {
+                "section": "3.1.6.3",
+                "component": "7037/1",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "The concept of the biome. The global distribution of major terrestrial biomes.",
+                "The nature of two contrasting biomes: tropical rainforest and savanna grassland to include:",
+                "• the main characteristics of each biome",
+                "• ecological responses to the climate, soil and soil moisture budget – adaptations by flora and fauna",
+                "• human activity and its impact on each biome",
+                "• typical development issues in each biome to include changes in population, economic development, agricultural extension and intensification, implications for biodiversity and sustainability."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.6.4",
+              "code": "3.1.6.4",
+              "title": "Ecosystems in the British Isles over time",
+              "official_reference": {
+                "section": "3.1.6.4",
+                "component": "7037/1",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "Succession and climatic climax as illustrated by lithoseres and hydroseres.",
+                "The characteristics of the climatic climax: temperate deciduous woodland biome.",
+                "The effects of human activity on succession – illustrated by one plagioclimax such as a heather moorland."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.6.5",
+              "code": "3.1.6.5",
+              "title": "Marine ecosystems",
+              "official_reference": {
+                "section": "3.1.6.5",
+                "component": "7037/1",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "The distribution and main characteristics of coral reef ecosystems. Environmental conditions associated with reef development.",
+                "The following aspects should be examined with reference to a named, located coral reef:",
+                "Factors in the health and survival of reefs:",
+                "• Natural: Water temperature, acidity, salinity, algal blooms.",
+                "• Human activity and its impact: Major drainage basin schemes, onshore development, desalination, pollution, tourism, fishing.",
+                "• Future prospects for coral reefs."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.6.6",
+              "code": "3.1.6.6",
+              "title": "Local ecosystems",
+              "official_reference": {
+                "section": "3.1.6.6",
+                "component": "7037/1",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "The main characteristics of a distinctive local ecosystem (such as an area of heathland, managed parkland, pond, dune system). Ecological responses to the climate, soil and soil moisture budget – adaptations by flora and fauna.",
+                "Local factors in ecological development and change (such as agriculture, urban change, the planned and unplanned introduction of new species).",
+                "The impacts of change and measures to manage these impacts. Conservation strategies and their implementation in specific settings."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.1.6.7",
+              "code": "3.1.6.7",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.1.6.7",
+                "component": "7037/1",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 1 Section C option (one of hazards, ecosystems under stress)"
+              },
+              "content": [
+                "Case study of a specified region experiencing ecological change to illustrate and analyse the nature of the change and the reasons for it, how the economic, social and political character of its community reflects its ecological setting and how the community is responding to change.",
+                "Case study of a specified ecosystem at a local scale to illustrate and analyse key themes set out above, including the nature and properties of the ecosystem, human impact upon it and the challenges and opportunities presented in its sustainable development."
+              ]
+            }
           ]
         }
       ]
     },
     {
       "id": "AQA_GEOG_SEC_HUM",
-      "title": "Human geography",
-      "note": "Paper 2",
+      "code": "Paper 2",
+      "title": "Paper 2: Human geography",
+      "official_reference": {
+        "component": "7037/2"
+      },
       "topics": [
         {
           "id": "AQA_GEOG_GS",
           "code": "3.2.1",
           "title": "Global systems and global governance",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 2 Section A (compulsory)",
           "points": [
-            {"id":"AQA_GEOG_GS_7.1","code":"7.1","title":"Globalisation"},
-            {"id":"AQA_GEOG_GS_7.2","code":"7.2","title":"Global systems"},
-            {"id":"AQA_GEOG_GS_7.3","code":"7.3","title":"International trade and access to markets"},
-            {"id":"AQA_GEOG_GS_7.4","code":"7.4","title":"Global governance"},
-            {"id":"AQA_GEOG_GS_7.5","code":"7.5","title":"The global commons and Antarctica"}
+            {
+              "id": "AQA_GEOG_3.2.1.1",
+              "code": "3.2.1.1",
+              "title": "Globalisation",
+              "official_reference": {
+                "section": "3.2.1.1",
+                "component": "7037/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "Dimensions of globalisation: flows of capital, labour, products, services and information; global marketing; patterns of production, distribution and consumption.",
+                "Factors in globalisation: the development of technologies, systems and relationships, including financial, transport, security, communications, management and information systems and trade agreements."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.1.2",
+              "code": "3.2.1.2",
+              "title": "Global systems",
+              "official_reference": {
+                "section": "3.2.1.2",
+                "component": "7037/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "Form and nature of economic, political, social and environmental interdependence in the contemporary world.",
+                "Issues associated with interdependence including how:",
+                "• unequal flows of people, money, ideas and technology within global systems can sometimes act to promote stability, growth and development but can also cause inequalities, conflicts and injustices for people and places",
+                "• unequal power relations enable some states to drive global systems to their own advantage and to directly influence geopolitical events, while others are only able to respond or resist in a more constrained way."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.1.3",
+              "code": "3.2.1.3",
+              "title": "International trade and access to markets",
+              "official_reference": {
+                "section": "3.2.1.3",
+                "component": "7037/2",
+                "source_pages": [
+                  20,
+                  21
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "Global features and trends in the volume and pattern of international trade and investment associated with globalisation.",
+                "Trading relationships and patterns between large, highly developed economies such as the United States, the European Union, emerging major economies such as China and India and smaller, less developed economies such as those in sub-Saharan Africa, southern Asia and Latin America.",
+                "Differential access to markets associated with levels of economic development and trading agreements and its impacts on economic and societal well-being.",
+                "The nature and role of transnational corporations (TNCs), including their spatial organisation, production, linkages, trading and marketing patterns, with a detailed reference to a specified TNC and its impacts on those countries in which it operates.",
+                "World trade in at least one food commodity or one manufacturing product.",
+                "Analysis and assessment of the geographical consequences of global systems to specifically consider how international trade and variable access to markets underly and impacts on students' and other people's lives across the globe."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.1.4",
+              "code": "3.2.1.4",
+              "title": "Global governance",
+              "official_reference": {
+                "section": "3.2.1.4",
+                "component": "7037/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The emergence and developing role of norms, laws and institutions in regulating and reproducing global systems.",
+                "Issues associated with attempts at global governance, including how:",
+                "• agencies, including the UN in the post-1945 era, can work to promote growth and stability but may also exacerbate inequalities and injustices",
+                "• interactions between the local, regional, national, international and global scales are fundamental to understanding global governance."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.1.5",
+              "code": "3.2.1.5",
+              "title": "The 'global commons'",
+              "official_reference": {
+                "section": "3.2.1.5",
+                "component": "7037/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The concept of the ‘global commons’. The rights of all to the benefits of the global commons.",
+                "Acknowledgement that the rights of all people to sustainable development must also acknowledge the need to protect the global commons."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.1.5.1",
+              "code": "3.2.1.5.1",
+              "title": "Antarctica as a global common",
+              "official_reference": {
+                "section": "3.2.1.5.1",
+                "component": "7037/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "An outline of the contemporary geography, including climate, of Antarctica (including the Southern Ocean as far north as the Antarctic Convergence) to demonstrate its role as a global common and illustrate its vulnerability to global economic pressures and environmental change.",
+                "Threats to Antarctica arising from:",
+                "• climate change",
+                "• fishing and whaling",
+                "• the search for mineral resources",
+                "• tourism and scientific research.",
+                "Critical appraisal of the developing governance of Antarctica. International government organisations to include United Nations (UN) agencies such as United Nations Environment Programme (UNEP) and the International Whaling Commission. The Antarctic Treaty (1959), the Protocol on Environmental Protection to the Antarctic Treaty (1991); IWC Whaling Moratorium (1982) – their purpose, scope and systems for inspection and enforcement.",
+                "The role of NGOs in monitoring threats and enhancing protection of Antarctica.",
+                "Analysis and assessment of the geographical consequences of global governance for citizens and places in Antarctica and elsewhere to specifically consider how global governance underlies and impacts on students’ and other people's lives across the globe."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.1.6",
+              "code": "3.2.1.6",
+              "title": "Globalisation critique",
+              "official_reference": {
+                "section": "3.2.1.6",
+                "component": "7037/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The impacts of globalisation to consider the benefits of growth, development, integration, stability against the costs in terms of inequalities, injustice, conflict and environmental impact."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.1.7",
+              "code": "3.2.1.7",
+              "title": "Quantitative and qualitative skills",
+              "official_reference": {
+                "section": "3.2.1.7",
+                "component": "7037/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "Students must engage with quantitative and qualitative approaches across the theme as a whole."
+              ]
+            }
           ]
         },
         {
           "id": "AQA_GEOG_CP",
           "code": "3.2.2",
           "title": "Changing places",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 2 Section B (compulsory)",
           "points": [
-            {"id":"AQA_GEOG_CP_8.1","code":"8.1","title":"The nature and importance of places"},
-            {"id":"AQA_GEOG_CP_8.2","code":"8.2","title":"Relationships, connections, meaning and representation"},
-            {"id":"AQA_GEOG_CP_8.3","code":"8.3","title":"Place studies: local place and contrasting place"}
+            {
+              "id": "AQA_GEOG_3.2.2.1",
+              "code": "3.2.2.1",
+              "title": "The nature and importance of places",
+              "official_reference": {
+                "section": "3.2.2.1",
+                "component": "7037/2",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "The concept of place and the importance of place in human life and experience.",
+                "Insider and outsider perspectives on place.",
+                "Categories of place:",
+                "• near places and far places",
+                "• experienced places and media places.",
+                "Factors contributing to the character of places:",
+                "• Endogenous: location, topography, physical geography, land use, built environment and infrastructure, demographic and economic characteristics.",
+                "• Exogenous: relationships with other places."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.2.1.1",
+                "title": "The nature and importance of places",
+                "source_pages": [
+                  13,
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.2.2.1",
+              "code": "3.2.2.2.1",
+              "title": "Relationships and connections",
+              "official_reference": {
+                "section": "3.2.2.2.1",
+                "component": "7037/2",
+                "source_pages": [
+                  22,
+                  23
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "The impact of relationships and connections on people and place with a particular focus on:",
+                "either changing demographic and cultural characteristics or economic change and social inequalities.",
+                "• How the demographic, socio-economic and cultural characteristics of places are shaped by shifting flows of people, resources, money and investment, and ideas at all scales from local to global.",
+                "• The characteristics and impacts of external forces operating at different scales from local to global, including either government policies or the decisions of transnational corporations or the impacts of international or global institutions.",
+                "• How past and present connections, within and beyond localities, shape places and embed them in the regional, national, international and global scales."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.2.1.2.1",
+                "title": "Relationships and connections",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 0.991
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.2.2.2",
+              "code": "3.2.2.2.2",
+              "title": "Meaning and representation",
+              "official_reference": {
+                "section": "3.2.2.2.2",
+                "component": "7037/2",
+                "source_pages": [
+                  23
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "The importance of the meanings and representations attached to places by people with a particular focus on people's lived experience of place in the past and at present.",
+                "• How humans perceive, engage with and form attachments to places and how they present and represent the world to others, including the way in which everyday place meanings are bound up with different identities, perspectives and experiences.",
+                "• How external agencies, including government, corporate bodies and community or local groups make attempts to influence or create specific place-meanings and thereby shape the actions and behaviours of individuals, groups, businesses and institutions.",
+                "• How places may be represented in a variety of different forms such as advertising copy, tourist agency material, local art exhibitions in diverse media (eg film, photography, art, story, song etc) that often give contrasting images to that presented formally or statistically such as cartography and census data.",
+                "• How both past and present processes of development can be seen to influence the social and economic characteristics of places and so be implicit in present meanings."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.2.1.2.2",
+                "title": "Meaning and representation",
+                "source_pages": [
+                  14,
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.2.3",
+              "code": "3.2.2.3",
+              "title": "Quantitative and qualitative skills",
+              "official_reference": {
+                "section": "3.2.2.3",
+                "component": "7037/2",
+                "source_pages": [
+                  23
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "Students must engage with a range of quantitative and qualitative approaches across the theme as a whole. Quantitative data, including the use of geospatial data, must be used to investigate and present place characteristics, particular weight must be given to qualitative approaches involved in representing place, and to analysing critically the impacts of different media on place meanings and perceptions. The use of different types of data should allow the development of critical perspectives on the data categories and approaches."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.2.1.3",
+                "title": "Quantitative and qualitative skills",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 0.981
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.2.4",
+              "code": "3.2.2.4",
+              "title": "Place studies",
+              "official_reference": {
+                "section": "3.2.2.4",
+                "component": "7037/2",
+                "source_pages": [
+                  23,
+                  24
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "Local place study exploring the developing character of a place local to the home or study centre.",
+                "Contrasting place study exploring the developing character of a contrasting and distant place.",
+                "Place studies must apply the knowledge acquired through engagement with prescribed specification content and thereby further enhance understanding of the way students' own lives and those of others are affected by continuity and change in the nature of places. Sources must include qualitative and quantitative data to represent places in the past and present.",
+                "Both place studies must focus equally on:",
+                "• people's lived experience of the place in the past and at present and either",
+                "• changing demographic and cultural characteristics or",
+                "• economic change and social inequalities.",
+                "Suitable data sources could include:",
+                "• statistics, such as census data",
+                "• maps",
+                "• geo-located data",
+                "• geospatial data, including geographic information systems (GIS) applications",
+                "• photographs",
+                "• text, from varied media",
+                "• audio-visual media",
+                "• artistic representations",
+                "• oral sources, such as interviews, reminiscences, songs etc."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.2.1.4",
+                "title": "Place studies",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 0.994
+              }
+            }
           ]
         },
         {
@@ -122,12 +1725,253 @@
           "code": "3.2.3",
           "title": "Contemporary urban environments",
           "kind": "option",
+          "route": "Paper 2 Section C option (one of urban, population, resources)",
           "points": [
-            {"id":"AQA_GEOG_URB_9.1","code":"9.1","title":"Urbanisation and urban forms"},
-            {"id":"AQA_GEOG_URB_9.2","code":"9.2","title":"Social and economic issues associated with urbanisation"},
-            {"id":"AQA_GEOG_URB_9.3","code":"9.3","title":"Urban climate and urban drainage"},
-            {"id":"AQA_GEOG_URB_9.4","code":"9.4","title":"Urban waste and other environmental issues"},
-            {"id":"AQA_GEOG_URB_9.5","code":"9.5","title":"Sustainable urban development"}
+            {
+              "id": "AQA_GEOG_3.2.3.1",
+              "code": "3.2.3.1",
+              "title": "Urbanisation",
+              "official_reference": {
+                "section": "3.2.3.1",
+                "component": "7037/2",
+                "source_pages": [
+                  24
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Urbanisation and its importance in human affairs. Global patterns of urbanisation since 1945.",
+                "Urbanisation, suburbanisation, counter-urbanisation, urban resurgence. The emergence of megacities and world cities and their role in global and regional economies.",
+                "Economic, social, technological, political and demographic processes associated with urbanisation and urban growth.",
+                "Urban change: deindustrialisation, decentralisation, rise of service economy.",
+                "Urban policy and regeneration in Britain since 1979."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.1",
+                "title": "Urbanisation",
+                "source_pages": [
+                  17
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.2",
+              "code": "3.2.3.2",
+              "title": "Urban forms",
+              "official_reference": {
+                "section": "3.2.3.2",
+                "component": "7037/2",
+                "source_pages": [
+                  24
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Contemporary characteristics of mega/world cities. Urban characteristics in contrasting settings.",
+                "Physical and human factors in urban forms. Spatial patterns of land use, economic inequality, social segregation and cultural diversity in contrasting urban areas, and the factors that influence them.",
+                "New urban landscapes: town centre mixed developments, cultural and heritage quarters, fortress developments, gentrified areas, edge cities. The concept of the post-modern western city."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.2",
+                "title": "Urban forms",
+                "source_pages": [
+                  17,
+                  18
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.3",
+              "code": "3.2.3.3",
+              "title": "Social and economic issues associated with urbanisation",
+              "official_reference": {
+                "section": "3.2.3.3",
+                "component": "7037/2",
+                "source_pages": [
+                  24
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Issues associated with economic inequality, social segregation and cultural diversity in contrasting urban areas.",
+                "Strategies to manage these issues."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.3",
+                "title": "Social and economic issues associated with urbanisation",
+                "source_pages": [
+                  18
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.4",
+              "code": "3.2.3.4",
+              "title": "Urban climate",
+              "official_reference": {
+                "section": "3.2.3.4",
+                "component": "7037/2",
+                "source_pages": [
+                  25
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "The impact of urban forms and processes on local climate and weather.",
+                "Urban temperatures: the urban heat island effect. Precipitation: frequency and intensity. Fogs and thunderstorms in urban environments. Wind: the effects of urban structures and layout on wind speed, direction and frequency. Air quality: particulate and photo-chemical pollution.",
+                "Pollution reduction policies."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.4",
+                "title": "Urban climate",
+                "source_pages": [
+                  18
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.5",
+              "code": "3.2.3.5",
+              "title": "Urban drainage",
+              "official_reference": {
+                "section": "3.2.3.5",
+                "component": "7037/2",
+                "source_pages": [
+                  25
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Urban precipitation, surfaces and catchment characteristics; impacts on drainage basin storage areas; urban water cycle: water movement through urban catchments as measured by hydrographs.",
+                "Issues associated with catchment management in urban areas. The development of sustainable urban drainage systems (SUDS).",
+                "River restoration and conservation in damaged urban catchments with reference to a specific project. Reasons for and aims of the project; attitudes and contributions of parties involved; project activities and evaluation of project outcomes."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.5",
+                "title": "Urban drainage",
+                "source_pages": [
+                  18
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.6",
+              "code": "3.2.3.6",
+              "title": "Urban waste and its disposal",
+              "official_reference": {
+                "section": "3.2.3.6",
+                "component": "7037/2",
+                "source_pages": [
+                  25
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Urban physical waste generation: sources of waste - industrial and commercial activity, personal consumption. Relation of waste components and waste streams to economic characteristics, lifestyles and attitudes. The environmental impacts of alternative approaches to waste disposal:",
+                "unregulated, recycling, recovery, incineration, burial, submergence and trade.",
+                "Comparison of incineration and landfill approaches to waste disposal in relation to a specified urban area."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.6",
+                "title": "Urban waste and its disposal",
+                "source_pages": [
+                  18
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.7",
+              "code": "3.2.3.7",
+              "title": "Other contemporary urban environmental issues",
+              "official_reference": {
+                "section": "3.2.3.7",
+                "component": "7037/2",
+                "source_pages": [
+                  25
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Environmental problems in contrasting urban areas: atmospheric pollution, water pollution and dereliction.",
+                "Strategies to manage these environmental problems."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.7",
+                "title": "Other contemporary urban environmental issues",
+                "source_pages": [
+                  18
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.8",
+              "code": "3.2.3.8",
+              "title": "Sustainable urban development",
+              "official_reference": {
+                "section": "3.2.3.8",
+                "component": "7037/2",
+                "source_pages": [
+                  25
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Impact of urban areas on local and global environments. Ecological footprint of major urban areas.",
+                "Dimensions of sustainability: natural, physical, social and economic. Nature and features of sustainable cities. Concept of liveability.",
+                "Contemporary opportunities and challenges in developing more sustainable cities.",
+                "Strategies for developing more sustainable cities."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.8",
+                "title": "Sustainable urban development",
+                "source_pages": [
+                  18
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.2.3.9",
+              "code": "3.2.3.9",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.2.3.9",
+                "component": "7037/2",
+                "source_pages": [
+                  25
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Case studies of two contrasting urban areas to illustrate and analyse key themes set out above, to include:",
+                "• patterns of economic and social well-being",
+                "• the nature and impact of physical environmental conditions with particular reference to the implications for environmental sustainability, the character of the study areas and the experience and attitudes of their populations."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.3.2.9",
+                "title": "Case studies",
+                "source_pages": [
+                  19
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
@@ -135,11 +1979,131 @@
           "code": "3.2.4",
           "title": "Population and the environment",
           "kind": "option",
+          "route": "Paper 2 Section C option (one of urban, population, resources)",
           "points": [
-            {"id":"AQA_GEOG_POP_10.1","code":"10.1","title":"Environment and population: food production and soils"},
-            {"id":"AQA_GEOG_POP_10.2","code":"10.2","title":"Environment, health and well-being"},
-            {"id":"AQA_GEOG_POP_10.3","code":"10.3","title":"Population change"},
-            {"id":"AQA_GEOG_POP_10.4","code":"10.4","title":"Population ecology and global population futures"}
+            {
+              "id": "AQA_GEOG_3.2.4.1",
+              "code": "3.2.4.1",
+              "title": "Introduction",
+              "official_reference": {
+                "section": "3.2.4.1",
+                "component": "7037/2",
+                "source_pages": [
+                  26
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "The environmental context for human population characteristics and change. Key elements in the physical environment: climate, soils, resource distributions including water supply. Key population parameters: distribution, density, numbers, change. Key role of development processes. Global patterns of population numbers, densities and change rates."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.4.2",
+              "code": "3.2.4.2",
+              "title": "Environment and population",
+              "official_reference": {
+                "section": "3.2.4.2",
+                "component": "7037/2",
+                "source_pages": [
+                  26
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Global and regional patterns of food production and consumption. Agricultural systems and agricultural productivity. Relationship with key physical environmental variables – climate and soils.",
+                "Characteristics and distribution of two major climatic types to exemplify relationships between climate and human activities and numbers. Climate change as it affects agriculture.",
+                "Characteristics and distribution of two key zonal soils to exemplify relationship between soils and human activities especially agriculture. Soil problems and their management as they relate to agriculture: soil erosion, waterlogging, salinisation, structural deterioration.",
+                "Strategies to ensure food security."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.4.3",
+              "code": "3.2.4.3",
+              "title": "Environment, health and well-being",
+              "official_reference": {
+                "section": "3.2.4.3",
+                "component": "7037/2",
+                "source_pages": [
+                  26
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Global patterns of health, mortality and morbidity. Economic and social development and the epidemiological transition.",
+                "The relationship between environment variables eg climate, topography (drainage) and incidence of disease. Air quality and health. Water quality and health.",
+                "The global prevalence, distribution, seasonal incidence of one specified biologically transmitted disease, eg malaria; its links to physical and socio-economic environments including impacts of environmental variables on transmission vectors. Impact on health and well-being. Management and mitigation strategies.",
+                "The global prevalence and distribution of one specified non-communicable disease, eg a specific type of cancer, coronary heart disease, asthma; its links to physical and socio-economic environment including impacts of lifestyles. Impact on health and well-being. Management and mitigation strategies.",
+                "Role of international agencies and NGOs in promoting health and combating disease at the global scale."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.4.4",
+              "code": "3.2.4.4",
+              "title": "Population change",
+              "official_reference": {
+                "section": "3.2.4.4",
+                "component": "7037/2",
+                "source_pages": [
+                  27
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Factors in natural population change: the demographic transition model, key vital rates, age–sex composition; cultural controls. Models of natural population change, and their application in contrasting physical and human settings. Concept of the Demographic Dividend.",
+                "International migration: refugees, asylum seekers and economic migrants: environmental and socio-economic causes, processes. Demographic, environmental, social, economic, health and political implications of migration."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.4.5",
+              "code": "3.2.4.5",
+              "title": "Principles of population ecology and their application to human populations",
+              "official_reference": {
+                "section": "3.2.4.5",
+                "component": "7037/2",
+                "source_pages": [
+                  27
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Population growth dynamics. Concepts of overpopulation, underpopulation and optimum population. Implications of population size and structure for the balance between population and resources; the concepts of ‘carrying capacity’ and ‘ecological footprint’ and their implications.",
+                "Population, resources and pollution model: positive and negative feedback. Contrasting perspectives on population growth and its implications; Malthusian, neo-Malthusian and alternatives such as associated with Boserup and Simon."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.4.6",
+              "code": "3.2.4.6",
+              "title": "Global population futures",
+              "official_reference": {
+                "section": "3.2.4.6",
+                "component": "7037/2",
+                "source_pages": [
+                  27
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Health impacts of global environmental change: ozone depletion – skin cancer, cataracts; climate change – thermal stress, emergent and changing distribution of vector borne diseases, agricultural productivity and nutritional standards.",
+                "Prospects for the global population. Projected distributions. Critical appraisal of future population- environment relationships."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.4.7",
+              "code": "3.2.4.7",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.2.4.7",
+                "component": "7037/2",
+                "source_pages": [
+                  27
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Case study of a country/society experiencing specific patterns of overall population change – increase or decline – to illustrate and analyse the character, scale, and patterns of change, relevant environmental and socio-economic factors and implications for the country/society.",
+                "Case study of a specified local area to illustrate and analyse the relationship between place and health related to its physical environment, socio-economic character and the experience and attitudes of its populations."
+              ]
+            }
           ]
         },
         {
@@ -147,28 +2111,398 @@
           "code": "3.2.5",
           "title": "Resource security",
           "kind": "option",
+          "route": "Paper 2 Section C option (one of urban, population, resources)",
           "points": [
-            {"id":"AQA_GEOG_RES_11.1","code":"11.1","title":"Resource development and natural resource issues"},
-            {"id":"AQA_GEOG_RES_11.2","code":"11.2","title":"Water security"},
-            {"id":"AQA_GEOG_RES_11.3","code":"11.3","title":"Energy security"},
-            {"id":"AQA_GEOG_RES_11.4","code":"11.4","title":"Mineral security and resource futures"}
+            {
+              "id": "AQA_GEOG_3.2.5.1",
+              "code": "3.2.5.1",
+              "title": "Resource development",
+              "official_reference": {
+                "section": "3.2.5.1",
+                "component": "7037/2",
+                "source_pages": [
+                  28
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Concept of a resource. Resource classifications to include stock and flow resources. Stock resource evaluation: measured reserves, indicated reserves, inferred resources, possible resources. Natural resource development over time: exploration, exploitation, development.",
+                "Concept of the resource frontier. Concept of resource peak.",
+                "Sustainable resource development. Environmental Impact Assessment (EIA) in relation to resource development projects."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.5.2",
+              "code": "3.2.5.2",
+              "title": "Natural resource issues",
+              "official_reference": {
+                "section": "3.2.5.2",
+                "component": "7037/2",
+                "source_pages": [
+                  28
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Global patterns of production, consumption and trade/movements of energy and ore minerals.",
+                "Global patterns of water availability and demand.",
+                "The geopolitics of energy, ore mineral and water resource distributions, trade and management."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.5.3",
+              "code": "3.2.5.3",
+              "title": "Water security",
+              "official_reference": {
+                "section": "3.2.5.3",
+                "component": "7037/2",
+                "source_pages": [
+                  28
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Sources of water; components of demand, water stress.",
+                "Relationship of water supply (volume and quality) to key aspects of physical geography – climate, geology and drainage.",
+                "Strategies to increase water supply to include catchment, diversion, storage and water transfers and desalination.",
+                "Environmental impacts of a major water supply scheme incorporating a major dam and/or barrage and associated distribution networks.",
+                "Strategies to manage water consumption (including reducing demand).",
+                "Sustainability issues associated with water management: virtual water trade, conservation, recycling, ‘greywater’ and groundwater management.",
+                "Water conflicts at a variety of scales – local, national, international."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.5.4",
+              "code": "3.2.5.4",
+              "title": "Energy security",
+              "official_reference": {
+                "section": "3.2.5.4",
+                "component": "7037/2",
+                "source_pages": [
+                  28
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Sources of energy, both primary and secondary. Components of demand and energy mixes in contrasting settings.",
+                "Relationship of energy supply (volume and quality) to key aspects of physical geography – climate, geology and drainage.",
+                "Energy supplies in a globalising world: competing national interests and the role of transnational corporations in energy production, processing and distribution.",
+                "Environmental impacts of a major energy resource development such as an oil, coal or gas field and associated distribution networks.",
+                "Strategies to increase energy supply (oil and gas exploration, nuclear power and development of renewable sources).",
+                "Strategies to manage energy consumption (including reducing demand).",
+                "Sustainability issues associated with energy production, trade and consumption: acid rain, the enhanced greenhouse effect, nuclear waste and energy conservation."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.5.5",
+              "code": "3.2.5.5",
+              "title": "Mineral security",
+              "official_reference": {
+                "section": "3.2.5.5",
+                "component": "7037/2",
+                "source_pages": [
+                  29
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "With reference to iron ore or a specified globally traded non-ferrous metal ore eg copper, tin, manganese.",
+                "Sources of the specified ore. Distribution of reserves/resources. End uses of the ore. Components of demand for ore. Role of specified ore in global commerce and industry.",
+                "Key aspects of physical geography associated with ore occurrence and working: geological conditions and location.",
+                "Environmental impacts of a major mineral resource extraction scheme and associated distribution networks.",
+                "Sustainability issues associated with ore extraction, trade and processing."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.5.6",
+              "code": "3.2.5.6",
+              "title": "Resource futures",
+              "official_reference": {
+                "section": "3.2.5.6",
+                "component": "7037/2",
+                "source_pages": [
+                  29
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Alternative energy, water and mineral ore futures and their relationship with a range of technological, economic, environmental and political developments."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_3.2.5.7",
+              "code": "3.2.5.7",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "3.2.5.7",
+                "component": "7037/2",
+                "source_pages": [
+                  29
+                ],
+                "route": "Paper 2 Section C option (one of urban, population, resources)"
+              },
+              "content": [
+                "Case study of either water or energy or mineral ore resource issues in a global or specified regional setting to illustrate and analyse theme(s) set out above, their implications for the setting including the relationship between resource security and human welfare and attempts to manage the resource.",
+                "Case study of a specified place to illustrate and analyse how aspects of its physical environment affects the availability and cost of water or energy or mineral ore and the way in which water or energy or mineral ore is used."
+              ]
+            }
           ]
         }
       ]
     },
     {
       "id": "AQA_GEOG_SEC_SKILLS",
-      "title": "Geographical skills",
+      "code": "Skills",
+      "title": "Skills: Geographical skills and fieldwork",
+      "official_reference": {},
       "topics": [
+        {
+          "id": "AQA_GEOG_FW",
+          "code": "3.3",
+          "title": "Geography fieldwork",
+          "kind": "skill",
+          "route": "A-level: assessed by the NEA, not the written papers. AS: assessed in Paper 2 Section B.",
+          "points": [
+            {
+              "id": "AQA_GEOG_3.3.1",
+              "code": "3.3.1",
+              "title": "Fieldwork requirements",
+              "official_reference": {
+                "section": "3.3.1",
+                "component": "all written papers",
+                "source_pages": [
+                  29
+                ],
+                "route": "A-level: assessed by the NEA, not the written papers. AS: assessed in Paper 2 Section B."
+              },
+              "content": [
+                "All students are required to undertake fieldwork in relation to processes in both physical and human geography. Students must undertake four days of fieldwork during their A-level course.",
+                "Fieldwork can be completed in a number of ways: locally or further afield, on full days or on part days. Schools and colleges will be required to confirm that all A-level geography students have been given an opportunity to fulfil this requirement.",
+                "Schools and colleges are required to provide a fieldwork statement that confirms each student has undertaken four days of geographical fieldwork in relation to processes in both physical and human geography. Schools and colleges must provide the fieldwork statement by 15 May in the year of entry. Any failure to provide this statement in a timely manner will be treated as malpractice or maladministration (under Ofqual's General Condition A8 (Malpractice and maladministration))."
+              ]
+            },
+            {
+              "id": "AQA_GEOG_AS_3.4",
+              "code": "AS 3.4",
+              "title": "AS fieldwork enquiry (7036 only)",
+              "official_reference": {
+                "section": "3.4",
+                "qualification": "7036",
+                "component": "7036/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "AS Paper 2 Section B (written exam). Not in the A-level written papers."
+              },
+              "content": [
+                "All students are required to undertake fieldwork in relation to processes in both physical and human geography. Students must undertake a minimum of two days of fieldwork during their AS course. Fieldwork can be completed in a number of ways: locally or further afield, on full days or on part days. Schools and colleges will be required to confirm that all AS geography students have been given an opportunity to fulfil this requirement.",
+                "Schools and colleges are required to provide a fieldwork statement which confirms each student has undertaken two days of geographical fieldwork in relation to processes in both physical and human geography. Schools and colleges must provide the fieldwork statement by 15 May in the year of entry. Any failure to provide this statement in a timely manner will be treated as malpractice or maladministration (under Ofqual's General Condition A8 (Malpractice and maladministration)).",
+                "Students will not be asked to hand in a completed enquiry although, for the exam, they do need to be familiar with all the stages of fieldwork-based enquiry. Students must be taught and may be asked questions on any of the following.",
+                "• Preparation for fieldwork, including background reading, drawing up aims and objectives for the enquiry, planning research in the field and from secondary sources, using data sampling techniques and carrying out health and safety procedures.",
+                "• Collection of primary data in the field and using secondary data sources.",
+                "• Processing and presenting data using relevant graphical and cartographical techniques.",
+                "• Analysing data, including using statistical techniques where relevant.",
+                "• Drawing conclusions related back to the original aims and objectives and linking these conclusions to both the place studied and the general ideas forming the basis of the enquiry.",
+                "• Reviewing the success, or otherwise, of all stages of the enquiry.",
+                "• Considering how the enquiry could be further developed.",
+                "Questions in the exam could be asked so as to test the students’ general understanding of the fieldwork enquiry process or they could ask for specific details of each student’s own individual fieldwork enquiry.",
+                "It is accepted that some schools or colleges will need to carry out data collection in groups.",
+                "However, examiners will expect candidates to show that they have been personally involved in all the stages of the enquiry and have had opportunities to use their own initiative, at all stages, to develop their enquiries."
+              ],
+              "qualification_scope": [
+                "7036"
+              ]
+            }
+          ]
+        },
         {
           "id": "AQA_GEOG_SK",
           "code": "3.4",
           "title": "Geographical skills checklist",
           "kind": "skill",
+          "route": "Assessed across all written papers",
           "points": [
-            {"id":"AQA_GEOG_SK_12.1","code":"12.1","title":"Qualitative and quantitative data skills"},
-            {"id":"AQA_GEOG_SK_12.2","code":"12.2","title":"Statistical skills (including Spearman rank and chi-squared)"},
-            {"id":"AQA_GEOG_SK_12.3","code":"12.3","title":"Cartographic and graphical skills"}
+            {
+              "id": "AQA_GEOG_3.4.1",
+              "code": "3.4.1",
+              "title": "Qualitative skills and quantitative skills",
+              "official_reference": {
+                "section": "3.4.1",
+                "component": "all written papers",
+                "source_pages": [
+                  40
+                ],
+                "route": "Assessed across all written papers"
+              },
+              "content": [
+                "Students should develop the following with respect to qualitative data:",
+                "• use and understanding of a mixture of methodological approaches, including interviews",
+                "• interpretation and evaluation of a range of source material including textual and visual sources",
+                "• understanding of the opportunities and limitations of qualitative techniques such as coding and sampling, and appreciation of how they actively create particular geographical representations",
+                "• understanding of the ethical and socio-political implications of collecting, studying and representing geographical data about human communities.",
+                "Students should develop the following with respect to quantitative data:",
+                "• understanding of what makes data geographical and the geospatial technologies (eg GIS) that are used to collect, analyse and present geographical data",
+                "• an ability to collect and use digital and geo-located data, and understand a range of approaches to use and analyse such data",
+                "• understanding of the purposes and difference between the following and to use them in appropriate contexts:",
+                "• descriptive statistics of central tendency and dispersion",
+                "• descriptive measures of difference and association, inferential statistics and the foundations of relational statistics",
+                "• measurement, measurement errors, and sampling",
+                "• understanding of the ethical and socio-political implications of collecting, studying and representing geographical data about human communities."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.5.1",
+                "title": "Qualitative skills and quantitative skills",
+                "source_pages": [
+                  20
+                ],
+                "text_similarity": 0.985
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.4.2.1",
+              "code": "3.4.2.1",
+              "title": "Core skills",
+              "official_reference": {
+                "section": "3.4.2.1",
+                "component": "all written papers",
+                "source_pages": [
+                  41
+                ],
+                "route": "Assessed across all written papers"
+              },
+              "content": [
+                "• Use and annotation of illustrative and visual material: base maps, sketch maps, OS maps (at a variety of scales), diagrams, graphs, field sketches, photographs, geospatial, geo-located and digital imagery.",
+                "• Use of overlays, both physical and electronic.",
+                "• Literacy – use of factual text and discursive/creative material and coding techniques when analysing text.",
+                "• Numeracy – use of number, measure and measurement.",
+                "• Questionnaire and interview techniques."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.5.2.1",
+                "title": "Core skills",
+                "source_pages": [
+                  21
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.4.2.2",
+              "code": "3.4.2.2",
+              "title": "Cartographic skills",
+              "official_reference": {
+                "section": "3.4.2.2",
+                "component": "all written papers",
+                "source_pages": [
+                  41
+                ],
+                "route": "Assessed across all written papers"
+              },
+              "content": [
+                "• Atlas maps.",
+                "• Weather maps – including synoptic charts (if applicable).",
+                "• Maps with located proportional symbols.",
+                "• Maps showing movement – flow lines, desire lines and trip lines.",
+                "• Maps showing spatial patterns – choropleth, isoline and dot maps."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.5.2.2",
+                "title": "Cartographic skills",
+                "source_pages": [
+                  21
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.4.2.3",
+              "code": "3.4.2.3",
+              "title": "Graphical skills",
+              "official_reference": {
+                "section": "3.4.2.3",
+                "component": "all written papers",
+                "source_pages": [
+                  41
+                ],
+                "route": "Assessed across all written papers"
+              },
+              "content": [
+                "• Line graphs – simple, comparative, compound and divergent.",
+                "• Bar graphs – simple, comparative, compound and divergent.",
+                "• Scatter graphs, and the use of best fit line.",
+                "• Pie charts and proportional divided circles.",
+                "• Triangular graphs.",
+                "• Graphs with logarithmic scales.",
+                "• Dispersion diagrams."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.5.2.3",
+                "title": "Graphical skills",
+                "source_pages": [
+                  21
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.4.2.4",
+              "code": "3.4.2.4",
+              "title": "Statistical skills",
+              "official_reference": {
+                "section": "3.4.2.4",
+                "component": "all written papers",
+                "source_pages": [
+                  41
+                ],
+                "route": "Assessed across all written papers"
+              },
+              "content": [
+                "• Measures of central tendency – mean, mode, median.",
+                "• Measures of dispersion – range, inter-quartile range and standard deviation.",
+                "• Inferential and relational statistical techniques to include Spearman’s rank correlation and Chi-square test and the application of significance tests."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.5.2.4",
+                "title": "Statistical skills",
+                "source_pages": [
+                  21
+                ],
+                "text_similarity": 0.93
+              }
+            },
+            {
+              "id": "AQA_GEOG_3.4.2.5",
+              "code": "3.4.2.5",
+              "title": "ICT skills",
+              "official_reference": {
+                "section": "3.4.2.5",
+                "component": "all written papers",
+                "source_pages": [
+                  41
+                ],
+                "route": "Assessed across all written papers"
+              },
+              "content": [
+                "• Use of remotely sensed data (as described above in Core skills).",
+                "• Use of electronic databases.",
+                "• Use of innovative sources of data such as crowd sourcing and ‘big data’.",
+                "• Use of ICT to generate evidence of many of the skills provided above such as producing maps, graphs and statistical calculations."
+              ],
+              "as_reference": {
+                "qualification": "7036",
+                "section": "3.5.2.5",
+                "title": "ICT skills",
+                "source_pages": [
+                  21
+                ],
+                "text_similarity": 0.847
+              }
+            }
           ]
         }
       ]

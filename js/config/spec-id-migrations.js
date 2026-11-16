@@ -2,6 +2,184 @@
 // Earlier runtime skill ids whose meaning is now an exact set of official leaves.
 // Saved learned ticks expand once on load.
 export const LEGACY_SPEC_IDS = Object.freeze({
+  "AQA_GEOG_WC_1.1": [
+    "AQA_GEOG_3.1.1.1"
+  ],
+  "AQA_GEOG_WC_1.2": [
+    "AQA_GEOG_3.1.1.2"
+  ],
+  "AQA_GEOG_WC_1.3": [
+    "AQA_GEOG_3.1.1.2"
+  ],
+  "AQA_GEOG_WC_1.4": [
+    "AQA_GEOG_3.1.1.3"
+  ],
+  "AQA_GEOG_WC_1.5": [
+    "AQA_GEOG_3.1.1.3"
+  ],
+  "AQA_GEOG_WC_1.6": [
+    "AQA_GEOG_3.1.1.4"
+  ],
+  "AQA_GEOG_WC_1.7": [
+    "AQA_GEOG_3.1.1.6"
+  ],
+  "AQA_GEOG_HD_2.1": [
+    "AQA_GEOG_3.1.2.1"
+  ],
+  "AQA_GEOG_HD_2.2": [
+    "AQA_GEOG_3.1.2.2"
+  ],
+  "AQA_GEOG_HD_2.3": [
+    "AQA_GEOG_3.1.2.3"
+  ],
+  "AQA_GEOG_HD_2.4": [
+    "AQA_GEOG_3.1.2.4"
+  ],
+  "AQA_GEOG_COAST_3.1": [
+    "AQA_GEOG_3.1.3.1"
+  ],
+  "AQA_GEOG_COAST_3.2": [
+    "AQA_GEOG_3.1.3.2"
+  ],
+  "AQA_GEOG_COAST_3.3": [
+    "AQA_GEOG_3.1.3.3"
+  ],
+  "AQA_GEOG_COAST_3.4": [
+    "AQA_GEOG_3.1.3.4"
+  ],
+  "AQA_GEOG_COAST_3.5": [
+    "AQA_GEOG_3.1.3.6"
+  ],
+  "AQA_GEOG_GLAC_4.1": [
+    "AQA_GEOG_3.1.4.1",
+    "AQA_GEOG_3.1.4.2"
+  ],
+  "AQA_GEOG_GLAC_4.2": [
+    "AQA_GEOG_3.1.4.3"
+  ],
+  "AQA_GEOG_GLAC_4.3": [
+    "AQA_GEOG_3.1.4.4"
+  ],
+  "AQA_GEOG_GLAC_4.4": [
+    "AQA_GEOG_3.1.4.5"
+  ],
+  "AQA_GEOG_HAZ_5.1": [
+    "AQA_GEOG_3.1.5.1"
+  ],
+  "AQA_GEOG_HAZ_5.2": [
+    "AQA_GEOG_3.1.5.2"
+  ],
+  "AQA_GEOG_HAZ_5.3": [
+    "AQA_GEOG_3.1.5.3"
+  ],
+  "AQA_GEOG_HAZ_5.4": [
+    "AQA_GEOG_3.1.5.4"
+  ],
+  "AQA_GEOG_HAZ_5.5": [
+    "AQA_GEOG_3.1.5.5"
+  ],
+  "AQA_GEOG_HAZ_5.6": [
+    "AQA_GEOG_3.1.5.6"
+  ],
+  "AQA_GEOG_HAZ_5.7": [
+    "AQA_GEOG_3.1.5.7"
+  ],
+  "AQA_GEOG_ECO_6.1": [
+    "AQA_GEOG_3.1.6.1"
+  ],
+  "AQA_GEOG_ECO_6.2": [
+    "AQA_GEOG_3.1.6.2"
+  ],
+  "AQA_GEOG_ECO_6.3": [
+    "AQA_GEOG_3.1.6.3"
+  ],
+  "AQA_GEOG_ECO_6.4": [
+    "AQA_GEOG_3.1.6.4"
+  ],
+  "AQA_GEOG_ECO_6.5": [
+    "AQA_GEOG_3.1.6.5"
+  ],
+  "AQA_GEOG_GS_7.1": [
+    "AQA_GEOG_3.2.1.1"
+  ],
+  "AQA_GEOG_GS_7.2": [
+    "AQA_GEOG_3.2.1.2"
+  ],
+  "AQA_GEOG_GS_7.3": [
+    "AQA_GEOG_3.2.1.3"
+  ],
+  "AQA_GEOG_GS_7.4": [
+    "AQA_GEOG_3.2.1.4"
+  ],
+  "AQA_GEOG_GS_7.5": [
+    "AQA_GEOG_3.2.1.5",
+    "AQA_GEOG_3.2.1.5.1"
+  ],
+  "AQA_GEOG_CP_8.1": [
+    "AQA_GEOG_3.2.2.1"
+  ],
+  "AQA_GEOG_CP_8.2": [
+    "AQA_GEOG_3.2.2.2.1",
+    "AQA_GEOG_3.2.2.2.2"
+  ],
+  "AQA_GEOG_CP_8.3": [
+    "AQA_GEOG_3.2.2.4"
+  ],
+  "AQA_GEOG_URB_9.1": [
+    "AQA_GEOG_3.2.3.1",
+    "AQA_GEOG_3.2.3.2"
+  ],
+  "AQA_GEOG_URB_9.2": [
+    "AQA_GEOG_3.2.3.3"
+  ],
+  "AQA_GEOG_URB_9.3": [
+    "AQA_GEOG_3.2.3.4",
+    "AQA_GEOG_3.2.3.5"
+  ],
+  "AQA_GEOG_URB_9.4": [
+    "AQA_GEOG_3.2.3.6",
+    "AQA_GEOG_3.2.3.7"
+  ],
+  "AQA_GEOG_URB_9.5": [
+    "AQA_GEOG_3.2.3.8"
+  ],
+  "AQA_GEOG_POP_10.1": [
+    "AQA_GEOG_3.2.4.2"
+  ],
+  "AQA_GEOG_POP_10.2": [
+    "AQA_GEOG_3.2.4.3"
+  ],
+  "AQA_GEOG_POP_10.3": [
+    "AQA_GEOG_3.2.4.4"
+  ],
+  "AQA_GEOG_POP_10.4": [
+    "AQA_GEOG_3.2.4.5",
+    "AQA_GEOG_3.2.4.6"
+  ],
+  "AQA_GEOG_RES_11.1": [
+    "AQA_GEOG_3.2.5.1",
+    "AQA_GEOG_3.2.5.2"
+  ],
+  "AQA_GEOG_RES_11.2": [
+    "AQA_GEOG_3.2.5.3"
+  ],
+  "AQA_GEOG_RES_11.3": [
+    "AQA_GEOG_3.2.5.4"
+  ],
+  "AQA_GEOG_RES_11.4": [
+    "AQA_GEOG_3.2.5.5",
+    "AQA_GEOG_3.2.5.6"
+  ],
+  "AQA_GEOG_SK_12.1": [
+    "AQA_GEOG_3.4.1"
+  ],
+  "AQA_GEOG_SK_12.2": [
+    "AQA_GEOG_3.4.2.4"
+  ],
+  "AQA_GEOG_SK_12.3": [
+    "AQA_GEOG_3.4.2.2",
+    "AQA_GEOG_3.4.2.3"
+  ],
   "AQA_POL_UKGOV_1.1": [
     "AQA_POL_3.1.1.1"
   ],
