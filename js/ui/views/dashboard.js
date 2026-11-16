@@ -11,20 +11,21 @@ import { currentStreak, totals } from '../../engine/analytics.js';
 import { icon } from '../icons.js';
 import { loadStudent, subjectCard, subjectSummary, wireColourPicker } from '../student.js';
 import { confirmDialog, fmtPercent } from '../ui.js';
+import { links } from '../../core/links.js';
 
 const SESSION_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Question' };
 
 const SECTIONS = [
-  { href: '#/papers', icon: 'file', title: 'Past papers', text: 'Full official papers by year and series.' },
-  { href: '#/practice', icon: 'clock', title: 'Practice', text: 'Custom tests or single questions from your topics.' },
-  { href: '#/hub', icon: 'chart', title: 'Data Hub', text: 'Scores, history and topic mastery.' },
-  { href: '#/subjects', icon: 'target', title: 'My subjects', text: "Subjects and the topics you've learned." },
+  { href: links.papers(), icon: 'file', title: 'Past papers', text: 'Full official papers by year and series.' },
+  { href: links.practice(), icon: 'clock', title: 'Practice', text: 'Custom tests or single questions from your topics.' },
+  { href: links.hub(), icon: 'chart', title: 'Data Hub', text: 'Scores, history and topic mastery.' },
+  { href: links.subjects(), icon: 'target', title: 'My subjects', text: "Subjects and the topics you've learned." },
 ];
 
 const SOON = [
-  { href: '#/ai-papers', label: 'AI practice questions', feature: 'aiPastPapers' },
-  { href: '#/predicted', label: 'AI predicted papers', feature: 'predictedPapers' },
-  { href: '#/ai-marking', label: 'AI marking', feature: 'aiMarking' },
+  { href: links.aiPapers(), label: 'AI practice questions', feature: 'aiPastPapers' },
+  { href: links.predicted(), label: 'AI predicted papers', feature: 'predictedPapers' },
+  { href: links.aiMarking(), label: 'AI marking', feature: 'aiMarking' },
 ];
 
 export async function mount(element, context) {
@@ -84,7 +85,7 @@ export async function mount(element, context) {
                       · ${fmtDuration(elapsedMs(session) / 1000)} so far
                     </p>
                     <div class="row row--tight">
-                      <a class="btn btn--primary btn--sm" href="#/session/${session.session_id}">Resume</a>
+                      <a class="btn btn--primary btn--sm" href="${links.session(session.session_id)}">Resume</a>
                       <button type="button" class="btn btn--ghost btn--sm" data-discard="${session.session_id}">Discard</button>
                     </div>
                   </div>`,
@@ -103,7 +104,7 @@ export async function mount(element, context) {
           : html`<div class="empty">
               <h3 class="empty__title">No subjects yet</h3>
               <p class="empty__text">Pick your subjects to see their papers, practice and progress here.</p>
-              <a class="btn btn--primary" href="#/subjects">Add a subject</a>
+              <a class="btn btn--primary" href="${links.subjects()}">Add a subject</a>
             </div>`}
       </section>
 
@@ -123,7 +124,7 @@ export async function mount(element, context) {
           <h2 id="later-title">Coming later</h2>
           <div class="soon-list">
             ${SOON.filter((item) => !FEATURES[item.feature]?.enabled).map((item) => html`<a class="tag tag--soon" href="${item.href}">${item.label}</a>`)}
-            <a class="tag" href="#/subjects">+ Add a subject</a>
+            <a class="tag" href="${links.subjects()}">+ Add a subject</a>
           </div>
         </section>
       </div>`,

@@ -9,6 +9,7 @@ import { getDisplayPref, getThemePreference, setDisplayPref, setThemePreference 
 import { SUBJECT_SWATCHES } from '../subject-colours.js';
 import { banner, confirmDialog, pageHead, toast } from '../ui.js';
 import { PHASES } from '../../config/phases.js';
+import { links } from '../../core/links.js';
 
 export async function mount(element, context) {
   context.setTitle('Account');
@@ -30,7 +31,7 @@ export async function mount(element, context) {
     element,
     html`${pageHead({
         title: 'Account',
-        crumbs: [{ label: 'Home', href: '#/' }, { label: 'Account' }],
+        crumbs: [{ label: 'Home', href: links.home() }, { label: 'Account' }],
         sub: `signed in as ${user.email} · member since ${new Date(user.created_at).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}`,
         actions: html`<button type="button" class="btn" data-logout>Log out</button>`,
       })}
@@ -97,7 +98,7 @@ export async function mount(element, context) {
             ${toggle('large', 'Larger text', 'Makes questions and mark schemes easier to read.')}
             <div class="setting">
               <div><p>Subject colours and target grades</p><p class="small muted">Set these for each subject in My subjects.</p></div>
-              <a class="btn btn--sm" href="#/subjects">Open My subjects</a>
+              <a class="btn btn--sm" href="${links.subjects()}">Open My subjects</a>
             </div>
             <p class="small muted" style="margin-top:10px">These display settings are saved on this device.</p>
           </section>
@@ -152,7 +153,7 @@ export async function mount(element, context) {
           <section class="card card--soon">
             <h2 class="card__title">For the site owner</h2>
             <p class="muted small" style="margin:6px 0 14px">Check the question and paper database and prepare new content.</p>
-            <div class="row"><a class="btn btn--sm" href="#/studio">Open the Content Studio</a><span class="small muted">version ${APP.version}</span></div>
+            <div class="row"><a class="btn btn--sm" href="${links.studio()}">Open the Content Studio</a><span class="small muted">version ${APP.version}</span></div>
           </section>
         </div>
       </div>`,

@@ -17,6 +17,7 @@ import { questionRef, questionSnippet } from '../question-view.js';
 import { attemptInSubject, loadStudent, startQuestionSet, startSingle } from '../student.js';
 import { tintPage } from '../subject-colours.js';
 import { difficultyBadge, emptyState, fmtPercent, groupDot, meter, pageHead, ragBadge, soonBadge, subjectName } from '../ui.js';
+import { links } from '../../core/links.js';
 
 const TABS = [
   { id: 'overview', label: 'Overview' },
@@ -48,7 +49,7 @@ export async function mount(element, context) {
   const scope = subjectId === 'all' ? [...bundles.values()] : [bundles.get(subjectId)];
   const href = (next) => {
     const target = { tab, subject: subjectId, ...next };
-    return `#/hub?tab=${target.tab}${target.subject === 'all' ? '' : `&subject=${target.subject}`}`;
+    return links.hub({ tab: target.tab, subject: target.subject === 'all' ? null : target.subject });
   };
 
   const attempts = progress.question_attempts.filter((attempt) => scope.some((bundle) => attemptInSubject(attempt, bundle)));
@@ -276,7 +277,7 @@ export async function mount(element, context) {
                     </li>`;
                   })}
                 </ul>
-                <p><a class="btn btn--sm" href="#/practice?subject=${bundle.subject.subject_id}&topic=${encodeURIComponent(topic.id)}">Practise this topic</a></p>
+                <p><a class="btn btn--sm" href="${links.practice({ subject: bundle.subject.subject_id, topic: topic.id })}">Practise this topic</a></p>
               </div>
             </details>`;
           })}
@@ -289,7 +290,7 @@ export async function mount(element, context) {
       return html`<div class="stack">
         <p class="muted">
           ${ragBadge('green')} ${RAG.green}% or more &nbsp; ${ragBadge('amber')} ${RAG.amber}–${RAG.green - 1}% &nbsp; ${ragBadge('red')} below ${RAG.amber}%.
-          Ratings use your latest attempt at each question. <a href="#/subject/${subjectId}">Edit what you have learned</a>
+          Ratings use your latest attempt at each question. <a href="${links.subject(subjectId)}">Edit what you have learned</a>
         </p>
         ${topicsForSubject(scope[0])}
       </div>`;
@@ -343,7 +344,7 @@ export async function mount(element, context) {
               <td class="nowrap">${fmtDate(attempt.timestamp)}</td>
               <td>
                 ${isPaper
-                  ? html`<a href="#/paper/${attempt.subject_id}/${encodeURIComponent(attempt.paper_id)}">${attempt.title}</a>`
+                  ? html`<a href="${links.paper(attempt.subject_id, attempt.paper_id)}">${attempt.title}</a>`
                   : attempt.title || 'Practice'}
                 ${bundle ? html`<br /><span class="small muted">${subjectName(bundle.subject)}</span>` : ''}
               </td>
@@ -352,7 +353,7 @@ export async function mount(element, context) {
               <td class="nowrap">${ragBadge(ragFor(attempt.percentage), attempt.percentage, { label: false })} ${attempt.grade ? html`<span class="tag">Grade ${attempt.grade}</span>` : ''}</td>
               <td class="nowrap small">${attempt.duration_seconds ? fmtDuration(attempt.duration_seconds) : '—'}</td>
               <td class="right">
-                ${attempt.session_id && api.getSession(attempt.session_id) ? html`<a class="btn btn--sm btn--ghost" href="#/session/${attempt.session_id}">Review</a>` : ''}
+                ${attempt.session_id && api.getSession(attempt.session_id) ? html`<a class="btn btn--sm btn--ghost" href="${links.session(attempt.session_id)}">Review</a>` : ''}
               </td>
             </tr>`;
           })}
@@ -410,7 +411,7 @@ export async function mount(element, context) {
         iconName: 'chart',
         title: 'Your Data Hub fills up as you practise',
         text: 'Answer questions, sit a paper or build a timed test. Every mark is logged here by question, topic and paper.',
-        action: html`<a class="btn btn--primary" href="#/practice">Start practising</a>`,
+        action: html`<a class="btn btn--primary" href="${links.practice()}">Start practising</a>`,
       })
     : tab === 'questions'
       ? questionsTab()
@@ -426,7 +427,7 @@ export async function mount(element, context) {
     html`${pageHead({
         title: 'Data Hub',
         sub: 'everything you’ve done, in one place: questions, topics, papers and tests',
-        crumbs: [{ label: 'Home', href: '#/' }, { label: 'Data Hub', href: '#/hub' }, ...(subjectId === 'all' ? [] : [{ label: bundles.get(subjectId).subject.subject }])],
+        crumbs: [{ label: 'Home', href: links.home() }, { label: 'Data Hub', href: links.hub() }, ...(subjectId === 'all' ? [] : [{ label: bundles.get(subjectId).subject.subject }])],
       })}
       <nav class="chips subject-pills" aria-label="Subject">
         <a class="chip ${subjectId === 'all' ? 'is-on' : ''}" href="${href({ subject: 'all' })}" aria-current="${subjectId === 'all' ? 'true' : 'false'}">All subjects</a>

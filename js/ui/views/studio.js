@@ -11,6 +11,7 @@ import { getBundles, getSubjects, invalidateContent, readLocalPack, specIndex, w
 import { validateBundle, validateQuestion } from '../../data/schema.js';
 import { icon } from '../icons.js';
 import { banner, confirmDialog, loadingBlock, pageHead, subjectName, toast } from '../ui.js';
+import { links } from '../../core/links.js';
 
 const TABS = [
   ['overview', 'Overview'],
@@ -26,7 +27,7 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${pageHead({
-        crumbs: [{ label: 'Home', href: '#/' }, { label: 'Account', href: '#/account' }, { label: 'Content Studio' }],
+        crumbs: [{ label: 'Home', href: links.home() }, { label: 'Account', href: links.account() }, { label: 'Content Studio' }],
         title: 'Content Studio',
         sub: 'for the site owner · check the database and add new questions',
       })}
