@@ -62,8 +62,50 @@ python3 tools/geography/build_spec.py $R/spec.pdf $R/spec-as.pdf
 Checks: `tests/geography-spec.test.mjs` (4 tests; 91 in the suite pass), `npm run
 validate` 0 errors.
 
+## Checkpoint 2: source inventory (16 November 2026)
+
+**Status: no Geography questions are imported yet.**
+
+`data/imports/geography/inventory/7037-inventory.json` and `7036-inventory.json` are
+written by `tools/geography/inventory.py` from the JSON embedded in AQA's public
+assessment-resources pages for 7037 and 7036 (file name, publisher sha1, size), parsed
+by `tools/geography/resources.py`. `tools/geography/fetch.py` downloads every question
+paper, mark scheme, insert (all variants), examiner report and sample commentary from
+AQA's cdn.sanity.io asset URL into `../geography-research/sources` and checks the
+`%PDF` header and AQA's sha1 (110 files, all verified). Modified question papers are
+skipped (same questions). Maximum marks and durations come from each booklet's cover.
+
+| Qualification | Series | QP | MS | Insert | Examiner report |
+| --- | --- | --- | --- | --- | --- |
+| A level 7037 | Nov 2020, Nov 2021, Jun 2022, Jun 2023, Jun 2024, Jun 2025 | 2 each | 2 each | 2 each (mostly -CR) | all except Nov 2021 |
+| A level 7037 | Sample set 1 | 2 (-CR, figures inline) | 2 | none | none (answers and commentary instead) |
+| AS 7036 | Nov 2020, Jun 2022, Jun 2023, Jun 2024, Jun 2025 | 2 each | 2 each | standard QPs print figures inline | all except Nov 2020 |
+| AS 7036 | Sample set 1 | 2 (-CR) | 2 | none | none (answers and commentary instead) |
+
+26 booklets: 14 A level (12 exams + 2 samples), 12 AS (10 exams + 2 samples).
+
+- **Adapted sitting:** AS June 2022 Paper 2 is printed as 65 marks, 1 hour 15 minutes
+  (the specification says 80 marks, 1 hour 30). The cover values are used.
+- **Not public:** A-level June 2018 and June 2019, AS June 2017 to June 2019 and AS
+  November 2021 are not on AQA's public pages. No secure or teacher routes were used.
+  June 2026 papers are not yet listed.
+- **Copyright removed:** most A-level inserts are AQA's "-CR" versions with named
+  figures replaced by a notice (for example June 2022 Paper 1 Figures 7a, 7b and 9).
+  A unit whose required figure is removed will be excluded and recorded, not
+  published incomplete.
+
+### Reproduce
+
+```sh
+R=../geography-research
+curl -o $R/page.html https://www.aqa.org.uk/subjects/geography/a-level/geography-7037/assessment-resources
+curl -L -o $R/page-as.html https://www.aqa.org.uk/subjects/geography/as/geography-7036/assessment-resources
+python3 tools/geography/resources.py $R/page.html $R/page-as.html > $R/records.json
+python3 tools/geography/fetch.py $R/records.json --dest $R/sources
+python3 tools/geography/inventory.py $R/records.json --sources $R/sources
+```
+
 ## Next action
 
-Checkpoint 2: commit the source inventory (`tools/geography/resources.py`,
-`tools/geography/fetch.py`; 110 sources cached and sha1-verified in
-`../geography-research/sources`).
+Checkpoint 3: `tools/geography/extract.py` (AQA "0 1 . 1" part labels, cover choice
+groups, insert figure index), then scheme indexing.
