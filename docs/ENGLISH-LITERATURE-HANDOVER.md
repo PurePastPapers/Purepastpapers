@@ -82,3 +82,7 @@ python3 tools/englit/reviews.py compile $R
 python3 tools/englit/build.py --research $R
 python3 tools/englit/finalize.py --research $R [--activate]
 ```
+
+## Next action
+
+Activated 16 November 2026 (own commit). Browser check `tools/browser-englit-bank.cjs` passes (142 units, source and scheme pixels, paper page, 4 widths). `npm test`: 149 pass; the one failure (part-display "a part is held back...") also fails on main. Possible follow-up: import Pearson's specimen papers (paper and scheme share one PDF).
