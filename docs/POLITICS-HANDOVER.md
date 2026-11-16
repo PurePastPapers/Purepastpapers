@@ -65,3 +65,20 @@ owner confirms they have permission to republish AQA material.
 ```sh
 python3 tools/politics/build_spec.py ../politics-research/spec.pdf   # AQA-7152-SP-2017.PDF
 ```
+
+## Checkpoint 2 — extraction and scheme indexing (16 November 2026)
+
+**Status: no Politics questions published.** The tools are in `tools/politics/`.
+
+- `extract.py INVENTORY --sources SRC --output CANDIDATES`: AQA layout ("0 1" boxed
+  numbers, "[9 marks]" tariffs, specimen "1" numbering). One unit per question. A
+  question's crop runs from the first printed line after the previous tariff (section
+  rubric and Either/or lines skipped) to its own tariff, so extract questions keep
+  their extracts. Choice groups come from "Either"/"Answer either/one question"
+  rubric; the paper maximum must equal compulsory tariffs plus one per group.
+  **All 20 booklets reconcile to 77 with 0 exceptions.**
+- Copyright-removed extracts ("not reproduced here") are flagged on the question:
+  Q4 of June 2022 and June 2023 Paper 2, and of sample Papers 2 and 3. Plan: do not
+  publish those four questions (the source is incomplete); record them as excluded.
+- `schemes.py`: a question's scheme is its section's "Levels of response" grid plus
+  its own "Indicative content" block, both source pixels. All 20 schemes index.
