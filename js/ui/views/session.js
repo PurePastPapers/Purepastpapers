@@ -203,7 +203,16 @@ export async function mount(element, context) {
         ${paused()
           ? pausedPanel()
           : html`<div class="runner__grid">
-        <article class="card ruled tilt-1 qview">
+        ${each && revealed
+          ? html`<article class="card ruled tilt-1 qview qview--scheme">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <header class="qview__head">
+                <h1 class="qview__num" tabindex="-1">Mark scheme <span class="small muted qview__for">for question ${questions.length > 1 ? index + 1 : question.question_number}</span></h1>
+                <div class="row row--tight">${marksPill(question.marks)}</div>
+              </header>
+              ${markSchemeBody(question)}
+            </article>`
+          : html`<article class="card ruled tilt-1 qview">
           <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
             <h1 class="qview__num" tabindex="-1">
@@ -214,7 +223,7 @@ export async function mount(element, context) {
             <div class="row row--tight">${marksPill(question.marks)} ${difficultyBadge(question.difficulty)} ${sourceBadge(question)}</div>
           </header>
           ${questionBody(question)}
-        </article>
+        </article>`}
         <div class="stack">
         <section class="card ruled tilt-3 answer-card">
           <i class="tape tape--c" aria-hidden="true"></i>
@@ -224,23 +233,27 @@ export async function mount(element, context) {
             <textarea class="textarea" data-answer="${id}" placeholder="Type your working or essay here.">${session.answers[id] || ''}</textarea>
           </label>
         </section>
-        ${each
-          ? html`<section class="card stack">
-              ${revealed
-                ? html`<h2 class="card__title">Mark scheme</h2>
-                    ${markSchemeBody(question)} ${marksInput(question)} ${aiMarkingNote()}`
-                : html`<div class="row row--between">
-                    <div>
-                      <h2 class="card__title">Ready to mark?</h2>
-                      <p class="small muted">Compare your answer with the mark scheme and award yourself the marks.</p>
-                    </div>
-                    <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Show mark scheme</button>
-                  </div>`}
-            </section>`
+        ${each && revealed
+          ? html`<section class="card stack">${marksInput(question)} ${aiMarkingNote()}</section>`
           : ''}
         </div>
         </div>
-        <footer class="runner__nav">
+        ${each
+          ? html`<footer class="runner__nav runner__nav--pinned">
+              ${revealed
+                ? html`<button type="button" class="btn" data-unreveal="${id}">${icon('chevronLeft', { size: 16 })} Go back</button>
+                    <span class="spacer"></span>
+                    ${last
+                      ? html`<button type="button" class="btn btn--primary" data-finish>Finish</button>`
+                      : html`<button type="button" class="btn btn--primary" data-go="${index + 1}">Next question ${icon('chevronRight', { size: 16 })}</button>`}`
+                : html`<button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
+                      ${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag question'}
+                    </button>
+                    <span class="spacer"></span>
+                    ${questions.length > 1 && index > 0 ? html`<button type="button" class="btn" data-go="${index - 1}">${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
+                    <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Mark scheme</button>`}
+            </footer>`
+          : html`<footer class="runner__nav">
           <button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
             ${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag for review'}
           </button>
@@ -251,7 +264,7 @@ export async function mount(element, context) {
           ${last
             ? html`<button type="button" class="btn btn--primary" data-finish>${each ? 'Finish' : 'Finish and mark'}</button>`
             : html`<button type="button" class="btn btn--primary" data-go="${index + 1}">Next ${icon('chevronRight', { size: 16 })}</button>`}
-        </footer>`}
+        </footer>`}`}
       </div>`,
     );
     return undefined;
@@ -595,6 +608,11 @@ export async function mount(element, context) {
   on(element, 'click', '[data-stopwatch]', () => {
     session.timer.mode = 'stopwatch';
     startTimer(session);
+    persist();
+    draw({ focus: false });
+  });
+  on(element, 'click', '[data-unreveal]', (event, button) => {
+    session.revealed[button.dataset.unreveal] = false;
     persist();
     draw({ focus: false });
   });

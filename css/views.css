@@ -847,3 +847,77 @@
   .browser .qcard__select { padding: 10px; margin: -7px; }
   .tree__point label { min-height: 44px; }
 }
+
+/* ── compact filter bar (Find questions) ── */
+.fbar { position: relative; z-index: 30; padding: 14px 16px; }
+.fbar__row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.fpop { position: static; }
+.fpop__btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 12px;
+  border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--surface);
+  font-size: 14px; cursor: pointer; list-style: none; white-space: nowrap;
+}
+.fpop__btn::-webkit-details-marker { display: none; }
+.fpop__btn:hover { background: var(--surface-2); }
+.fpop[open] > .fpop__btn { background: var(--ink); color: var(--surface); }
+.fpop__label { font-weight: 600; }
+.fpop__value { color: var(--ink-2); max-width: 14ch; overflow: hidden; text-overflow: ellipsis; }
+.fpop__value.is-set { color: inherit; background: var(--highlight); padding: 0 6px; border-radius: 4px; }
+.fpop[open] > .fpop__btn .fpop__value { color: inherit; background: transparent; }
+.fpop__panel {
+  position: absolute; left: 12px; top: calc(100% + 6px); z-index: 40;
+  width: min(420px, calc(100% - 24px)); max-height: min(70vh, 640px); overflow: auto;
+  padding: 18px; border: 2px solid var(--ink); border-radius: var(--radius-sm);
+  background: var(--surface); box-shadow: 5px 5px 0 var(--ink);
+}
+.fpop__panel--wide { width: calc(100% - 24px); }
+.fbar__sort .select { min-height: 40px; width: auto; }
+.fbar__search { flex: 1 1 200px; min-width: 180px; }
+.fbar__search .input { min-height: 40px; width: 100%; }
+.fbar__reset { margin-left: auto; }
+.fbar .browser-paper-filters { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+@media (max-width: 720px) {
+  .fbar { position: relative; top: auto; padding: 12px; }
+  .fbar__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .fpop, .fbar__sort { min-width: 0; }
+  .fpop__btn { min-width: 0; overflow: hidden; }
+  .fbar__search { min-width: 0; }
+  .fpop__btn { width: 100%; justify-content: space-between; }
+  .fpop__label { margin-right: auto; }
+  .fbar__sort, .fbar__sort .select { width: 100%; }
+  .fbar__search { grid-column: 1 / -1; }
+  .fbar__reset { grid-column: 1 / -1; margin: 0; justify-self: end; }
+  .fpop__panel, .fpop__panel--wide { left: 8px; width: calc(100% - 16px); max-height: 65vh; }
+}
+
+/* ── Find questions: question (or its mark scheme) left, answer right ── */
+.qsplit { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; margin-top: 16px; align-items: start; }
+.qsplit__main { min-width: 0; }
+.qsplit__main .qcontent img { max-width: 100%; height: auto; }
+.qsplit__main.is-scheme { padding: 14px; border: 2px solid var(--ink); border-radius: var(--radius-sm); background: var(--surface); }
+.qsplit__label { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; margin-bottom: 8px; }
+.qsplit__side { position: sticky; top: 90px; }
+.qsplit__answer { min-height: 200px; font: 16px/1.6 var(--font); }
+@media (max-width: 820px) {
+  .qsplit { grid-template-columns: minmax(0, 1fr); }
+  .qsplit__side { position: static; }
+}
+
+/* ── question runner: actions pinned to the bottom of the screen ── */
+.runner__nav--pinned {
+  position: sticky; bottom: 8px; z-index: 20;
+  margin: 18px -8px 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  border: 2px solid var(--ink); border-radius: var(--radius-sm);
+  background: var(--surface); box-shadow: 0 -4px 0 color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.runner__nav--pinned .btn { min-height: 46px; }
+.qview--scheme .ms img, .qview--scheme .qcontent img { max-width: 100%; height: auto; }
+@media (max-width: 720px) {
+  .runner__nav--pinned { margin: 14px -4px 0; }
+  .runner__nav--pinned .btn { flex: 1 1 0; justify-content: center; }
+  .runner__nav--pinned .spacer { display: none; }
+}
+.runner:has(> .runner__nav--pinned) { display: flex; flex-direction: column; min-height: calc(100vh - 56px); }
+.runner:has(> .runner__nav--pinned) > .runner__nav--pinned { margin-top: auto; }
+.runner:has(> .runner__nav--pinned) > .runner__grid { margin-bottom: 18px; }
+.qview__for { font: 400 15px/1.2 var(--font); white-space: nowrap; }

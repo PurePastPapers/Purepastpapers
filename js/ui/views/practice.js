@@ -265,11 +265,6 @@ export async function mount(element, context) {
     `;
     const qualifications = qualificationOptions.length > 1 ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${qualificationOptions.map(({code: value, label}) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
-      <label class="field browser-sort"><span class="field__label">Sort</span><select class="select" data-sort aria-label="Sort questions">
-        <option value="" disabled ${state.shuffled ? 'selected' : ''}>Choose sort order</option>
-        ${Object.entries(SORTS).map(([id, label]) => html`<option value="${id}" ${!state.shuffled && state.sort === id ? 'selected' : ''}>${label}</option>`)}
-      </select></label>
-      <label class="field browser-search"><span class="field__label">Search questions</span><span class="searchbox">${icon('search', { size: 16 })}<input class="input" type="search" placeholder="Search text or spec code" value="${state.search}" data-search aria-label="Search text or spec code" /></span></label>
     </div>${sourceControl()}`
       : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper ? 'open' : ''}><summary>Paper filters</summary><div class="stack">${papersAndYears}</div></details>`;
   }
@@ -494,45 +489,43 @@ export async function mount(element, context) {
 
   function browserFilters(base) {
     const count = (predicate) => base.filter(predicate).length;
-    return html`<div class="card stack question-filters" aria-labelledby="question-filters-title">
+    const focus = manualFocus();
+    const topicsValue = state.learnedOnly && user ? 'Covered only' : focus === null ? 'All' : !focus.length ? 'None' : `${focus.length} chosen`;
+    const pick = (values, labelOf) => (values.length ? (values.length > 2 ? `${values.length} chosen` : values.map(labelOf).join(', ')) : 'Any');
+    const difficultyValue = pick(state.difficulties, (id) => DIFFICULTIES.find((d) => d.id === id)?.label || id);
+    const marksValue = state.markMin !== '' || state.markMax !== '' ? `${state.markMin || 0}–${state.markMax || 'any'}` : pick(state.bands, (id) => bandOptions.find((b) => b.id === id)?.label || id);
+    const progressValue = pick(state.markStatuses, (id) => PROGRESS_FILTERS[id]);
+    const moreCount = state.years.length + state.qualifications.length + [state.series, state.tier, state.paper].filter(Boolean).length;
+    const pop = (key, label, value, body, wide = false) => html`<details class="fpop" data-section="fpop-${key}">
+        <summary class="fpop__btn"><span class="fpop__label">${label}</span><span class="fpop__value ${['Any', 'All', 'Year, paper'].includes(value) ? '' : 'is-set'}">${value}</span>${icon('chevronDown', { size: 14 })}</summary>
+        <div class="fpop__panel ${wide ? 'fpop__panel--wide' : ''}">${body}</div>
+      </details>`;
+    return html`<div class="card question-filters fbar" aria-labelledby="question-filters-title">
       <i class="tape tape--c" aria-hidden="true"></i>
-      <div class="filter-heading"><div><h2 class="builder__title" id="question-filters-title">Filter questions</h2><p class="small muted">Choose your topics, then narrow down your practice.</p></div><button type="button" class="btn btn--sm filter-reset" data-reset-filters>Reset filters</button></div>
-      ${topicsControl(true)}
-      <div class="browser-filter-options">
-      <fieldset class="field browser-filter-row">
-        <legend class="field__label">Difficulty</legend>
-        <div class="chips">
-          ${DIFFICULTIES.map(
-            (d) =>
-              html`<button type="button" class="chip" data-multi="difficulties" data-value="${d.id}" aria-pressed="${state.difficulties.includes(d.id)}" title="${d.description}">
-                ${d.label}<span class="chip__count">${count((q) => q.difficulty === d.id)}</span>
-              </button>`,
-          )}
-        </div>
-        ${state.difficulties.length ? html`<button type="button" class="linkbtn small" data-clear-group="difficulties">Clear difficulty</button>` : ''}
-      </fieldset>
-      <fieldset class="field browser-filter-row">
-        <legend class="field__label">${exactTariffs ? 'Marks (essay length)' : 'Marks'}</legend>
-        <div class="chips">
-          ${bandOptions.map(
-            (band) =>
-              html`<button type="button" class="chip" data-multi="bands" data-value="${band.id}" aria-pressed="${state.bands.includes(band.id)}">
-                ${band.label}<span class="chip__count">${count((q) => q.marks >= band.min && q.marks <= band.max)}</span>
-              </button>`,
-          )}
-        </div>
-        ${state.bands.length ? html`<button type="button" class="linkbtn small" data-clear-group="bands">Clear marks</button>` : ''}
-        <details class="filter-details" ${state.markMin !== '' || state.markMax !== '' ? 'open' : ''}><summary>Custom mark range</summary>
-          <p class="field__hint">Use an exact range instead of the bands above.</p>
-          <div class="filter-grid filter-grid--two">${[['markMin', 'Minimum marks'], ['markMax', 'Maximum marks']].map(([key, label]) => html`<label class="field"><span class="field__label">${label}</span><input type="number" class="input" min="0" step="1" value="${state[key]}" data-filter="${key}" /></label>`)}</div>
+      <h2 class="sr-only" id="question-filters-title">Filter questions</h2>
+      <div class="fbar__row">
+        ${pop('topics', 'Topics', topicsValue, topicsControl(true), true)}
+        ${pop('difficulty', 'Difficulty', difficultyValue, html`<fieldset class="field"><legend class="field__label">Difficulty</legend><div class="chips">
+          ${DIFFICULTIES.map((d) => html`<button type="button" class="chip" data-multi="difficulties" data-value="${d.id}" aria-pressed="${state.difficulties.includes(d.id)}" title="${d.description}">${d.label}<span class="chip__count">${count((q) => q.difficulty === d.id)}</span></button>`)}
+        </div>${state.difficulties.length ? html`<button type="button" class="linkbtn small" data-clear-group="difficulties">Clear difficulty</button>` : ''}</fieldset>`)}
+        ${pop('marks', exactTariffs ? 'Marks' : 'Marks', marksValue, html`<fieldset class="field"><legend class="field__label">${exactTariffs ? 'Marks (essay length)' : 'Marks'}</legend><div class="chips">
+          ${bandOptions.map((band) => html`<button type="button" class="chip" data-multi="bands" data-value="${band.id}" aria-pressed="${state.bands.includes(band.id)}">${band.label}<span class="chip__count">${count((q) => q.marks >= band.min && q.marks <= band.max)}</span></button>`)}
+        </div>${state.bands.length ? html`<button type="button" class="linkbtn small" data-clear-group="bands">Clear marks</button>` : ''}
+          <p class="field__hint">Or use an exact range:</p>
+          <div class="filter-grid filter-grid--two">${[['markMin', 'Minimum'], ['markMax', 'Maximum']].map(([key, label]) => html`<label class="field"><span class="field__label">${label}</span><input type="number" class="input" min="0" step="1" value="${state[key]}" data-filter="${key}" /></label>`)}</div>
           ${state.markMin !== '' && state.markMax !== '' && Number(state.markMin) > Number(state.markMax) ? html`<p class="form-error" role="status">Minimum must not exceed maximum. No questions match this range.</p>` : ''}
-        </details>
-      </fieldset>
-      <fieldset class="field browser-filter-row"><legend class="field__label">My progress</legend><div class="progress-checkpoints">
-        ${Object.entries(PROGRESS_FILTERS).map(([value, label]) => html`<label class="check checkpoint"><input type="checkbox" data-progress="${value}" ${state.markStatuses.includes(value) ? 'checked' : ''} /><span>${label}</span></label>`)}
-      </div><p class="field__hint">Tick any that apply. Leave all unticked to see every question.</p></fieldset>
+        </fieldset>`)}
+        ${pop('progress', 'Progress', progressValue, html`<fieldset class="field"><legend class="field__label">My progress</legend><div class="progress-checkpoints">
+          ${Object.entries(PROGRESS_FILTERS).map(([value, label]) => html`<label class="check checkpoint"><input type="checkbox" data-progress="${value}" ${state.markStatuses.includes(value) ? 'checked' : ''} /><span>${label}</span></label>`)}
+        </div><p class="field__hint">Leave all unticked to see every question.</p></fieldset>`)}
+        ${pop('more', 'More', moreCount ? `${moreCount} set` : 'Year, paper', html`<div class="stack">${metadataControls(true)}</div>`, true)}
+        <label class="fbar__sort"><span class="sr-only">Sort</span><select class="select select--sm" data-sort aria-label="Sort questions">
+          <option value="" disabled ${state.shuffled ? 'selected' : ''}>Sort</option>
+          ${Object.entries(SORTS).map(([id, label]) => html`<option value="${id}" ${!state.shuffled && state.sort === id ? 'selected' : ''}>${label}</option>`)}
+        </select></label>
+        <label class="fbar__search searchbox">${icon('search', { size: 16 })}<input class="input input--sm" type="search" placeholder="Search text or spec code" value="${state.search}" data-search aria-label="Search text or spec code" /></label>
+        <button type="button" class="linkbtn small fbar__reset" data-reset-filters>Reset</button>
       </div>
-      ${metadataControls(true)}
     </div>`;
   }
 
@@ -564,22 +557,29 @@ export async function mount(element, context) {
         <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
-        ${open ? html`<div class="stack" style="margin-top:16px">
-          <div class="row row--tight"><button type="button" class="btn btn--sm" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? 'Hide mark scheme' : 'Show mark scheme'}</button>
-            ${paper ? html`<a class="btn btn--sm" href="#/paper/${subjectId}/${question.paper_id}">View full paper</a>` : html`<span class="small muted">Full paper unavailable</span>`}</div>
-          ${questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
-          <label class="field"><span class="field__label">Your notes or answer (optional)</span><textarea class="textarea" rows="3" data-answer="${question.question_id}" placeholder="You can also answer on paper">${draft.answer || ''}</textarea></label>
-          ${paper?.examiner_report_url ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Open official examiner’s report (whole booklet)</a>` : html`<p class="small muted">A verified examiner’s report has not been linked to this question.</p>`}
-          ${schemeOpen ? html`<section class="card stack stack--sm"><h3>Mark scheme</h3>${markSchemeBody(question)}
-            <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
-              ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}
-            </label>
-            <details class="small muted"><summary>About saving marks</summary><p>Save deliberately. Zero is valid; leaving this blank records nothing.</p></details>
-            <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? 'Save mark' : 'Create free account to save mark'}</button>
-              ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as new attempt</button>` : ''}
-              ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
-            <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>
-          </section>` : ''}
+        ${open ? html`<div class="qsplit">
+          <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}">
+            ${schemeOpen
+              ? html`<p class="qsplit__label">${icon('eye', { size: 15 })} Mark scheme</p>${markSchemeBody(question)}`
+              : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
+          </div>
+          <div class="qsplit__side stack stack--sm">
+            <label class="field"><span class="field__label">Your answer (optional)</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${draft.answer || ''}</textarea></label>
+            ${schemeOpen ? html`<section class="markbox stack stack--sm">
+              <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
+                ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}
+              </label>
+              <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? 'Save mark' : 'Create free account to save mark'}</button>
+                ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as new attempt</button>` : ''}
+                ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
+              <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>
+            </section>` : ''}
+            <div class="row row--tight">
+              <button type="button" class="btn btn--sm ${schemeOpen ? '' : 'btn--primary'}" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? html`${icon('chevronLeft', { size: 15 })} Back to question` : html`${icon('eye', { size: 15 })} Show mark scheme`}</button>
+              ${paper ? html`<a class="btn btn--sm" href="#/paper/${subjectId}/${question.paper_id}">View full paper</a>` : ''}
+            </div>
+            ${paper?.examiner_report_url ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report</a>` : ''}
+          </div>
         </div>` : ''}
       </div>
       <div class="qcard__side">${marksPill(question.marks)}<button type="button" class="btn btn--sm" data-open="${question.question_id}" aria-expanded="${open}">${open ? 'Hide question' : 'Show question'}</button></div>
@@ -803,6 +803,21 @@ export async function mount(element, context) {
     save();
     update(options);
   };
+
+  // Filter bar: one dropdown open at a time; a click outside or Escape closes it.
+  element.addEventListener('toggle', (event) => {
+    const opened = event.target;
+    if (!opened.matches?.('.fpop') || !opened.open) return;
+    for (const other of element.querySelectorAll('.fpop[open]')) if (other !== opened) other.open = false;
+  }, true);
+  const closePops = (event) => {
+    if (!element.isConnected) { document.removeEventListener('click', closePops); document.removeEventListener('keydown', closePops); return; }
+    if (event.type === 'keydown' && event.key !== 'Escape') return;
+    if (event.type === 'click' && event.target.closest?.('.fbar')) return;
+    for (const pop of element.querySelectorAll('.fpop[open]')) pop.open = false;
+  };
+  document.addEventListener('click', closePops);
+  document.addEventListener('keydown', closePops);
 
   on(element, 'click', '[data-mode]', (event, button) => {
     state.mode = button.dataset.mode;
