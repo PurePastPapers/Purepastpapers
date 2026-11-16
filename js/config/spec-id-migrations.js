@@ -274,6 +274,161 @@ export const LEGACY_SPEC_IDS = Object.freeze({
   "AQA_POL_OTHER_6.5": [
     "AQA_POL_3.3.2.5"
   ],
+  "AQA_PSYCH_SOCIAL_1.1": [
+    "AQA_PSYCH_4.1.1_b1"
+  ],
+  "AQA_PSYCH_SOCIAL_1.2": [
+    "AQA_PSYCH_4.1.1_b2"
+  ],
+  "AQA_PSYCH_SOCIAL_1.3": [
+    "AQA_PSYCH_4.1.1_b3"
+  ],
+  "AQA_PSYCH_SOCIAL_1.4": [
+    "AQA_PSYCH_4.1.1_b4"
+  ],
+  "AQA_PSYCH_MEMORY_2.1": [
+    "AQA_PSYCH_4.1.2_b1"
+  ],
+  "AQA_PSYCH_MEMORY_2.2": [
+    "AQA_PSYCH_4.1.2_b2"
+  ],
+  "AQA_PSYCH_MEMORY_2.3": [
+    "AQA_PSYCH_4.1.2_b3"
+  ],
+  "AQA_PSYCH_MEMORY_2.4": [
+    "AQA_PSYCH_4.1.2_b4"
+  ],
+  "AQA_PSYCH_ATTACH_3.2": [
+    "AQA_PSYCH_4.1.3_b1",
+    "AQA_PSYCH_4.1.3_b2"
+  ],
+  "AQA_PSYCH_ATTACH_3.3": [
+    "AQA_PSYCH_4.1.3_b3"
+  ],
+  "AQA_PSYCH_ATTACH_3.4": [
+    "AQA_PSYCH_4.1.3_b4",
+    "AQA_PSYCH_4.1.3_b5"
+  ],
+  "AQA_PSYCH_PSYCHOPATH_4.1": [
+    "AQA_PSYCH_4.1.4_b1"
+  ],
+  "AQA_PSYCH_PSYCHOPATH_4.2": [
+    "AQA_PSYCH_4.1.4_b2",
+    "AQA_PSYCH_4.1.4_b3"
+  ],
+  "AQA_PSYCH_PSYCHOPATH_4.3": [
+    "AQA_PSYCH_4.1.4_b2",
+    "AQA_PSYCH_4.1.4_b4"
+  ],
+  "AQA_PSYCH_PSYCHOPATH_4.4": [
+    "AQA_PSYCH_4.1.4_b2",
+    "AQA_PSYCH_4.1.4_b5"
+  ],
+  "AQA_PSYCH_APPROACH_5.1": [
+    "AQA_PSYCH_4.2.1_b1"
+  ],
+  "AQA_PSYCH_APPROACH_5.2": [
+    "AQA_PSYCH_4.2.1_b2"
+  ],
+  "AQA_PSYCH_APPROACH_5.3": [
+    "AQA_PSYCH_4.2.1_b3"
+  ],
+  "AQA_PSYCH_APPROACH_5.4": [
+    "AQA_PSYCH_4.2.1_b4",
+    "AQA_PSYCH_4.2.1_b5",
+    "AQA_PSYCH_4.2.1_b6"
+  ],
+  "AQA_PSYCH_BIO_6.1": [
+    "AQA_PSYCH_4.2.2_b1",
+    "AQA_PSYCH_4.2.2_b2"
+  ],
+  "AQA_PSYCH_BIO_6.2": [
+    "AQA_PSYCH_4.2.2_b3",
+    "AQA_PSYCH_4.2.2_b4"
+  ],
+  "AQA_PSYCH_BIO_6.3": [
+    "AQA_PSYCH_4.2.2_b6"
+  ],
+  "AQA_PSYCH_BIO_6.4": [
+    "AQA_PSYCH_4.2.2_b5",
+    "AQA_PSYCH_4.2.2_b6"
+  ],
+  "AQA_PSYCH_RM_7.1": [
+    "AQA_PSYCH_4.2.3_b1",
+    "AQA_PSYCH_4.2.3_b2",
+    "AQA_PSYCH_4.2.3_b3",
+    "AQA_PSYCH_4.2.3_b4",
+    "AQA_PSYCH_4.2.3_b5",
+    "AQA_PSYCH_4.2.3_b6"
+  ],
+  "AQA_PSYCH_RM_7.2": [
+    "AQA_PSYCH_4.2.3.1_b1",
+    "AQA_PSYCH_4.2.3.1_b2",
+    "AQA_PSYCH_4.2.3.1_b3",
+    "AQA_PSYCH_4.2.3.1_b4",
+    "AQA_PSYCH_4.2.3.1_b5",
+    "AQA_PSYCH_4.2.3.1_b6",
+    "AQA_PSYCH_4.2.3.1_b7",
+    "AQA_PSYCH_4.2.3.1_b8",
+    "AQA_PSYCH_4.2.3.1_b9",
+    "AQA_PSYCH_4.2.3.1_b10",
+    "AQA_PSYCH_4.2.3.1_b11",
+    "AQA_PSYCH_4.2.3.1_b12",
+    "AQA_PSYCH_4.2.3.1_b13",
+    "AQA_PSYCH_4.2.3.1_b14",
+    "AQA_PSYCH_4.2.3.1_b15",
+    "AQA_PSYCH_4.2.3.1_b16",
+    "AQA_PSYCH_4.2.3.1_b17"
+  ],
+  "AQA_PSYCH_RM_7.3": [
+    "AQA_PSYCH_4.2.3.2_b1",
+    "AQA_PSYCH_4.2.3.2_b2",
+    "AQA_PSYCH_4.2.3.2_b3",
+    "AQA_PSYCH_4.2.3.2_b4",
+    "AQA_PSYCH_4.2.3.2_b5",
+    "AQA_PSYCH_4.2.3.2_b6",
+    "AQA_PSYCH_4.2.3.2_b7",
+    "AQA_PSYCH_4.2.3.2_b8"
+  ],
+  "AQA_PSYCH_RM_7.4": [
+    "AQA_PSYCH_4.2.3.3_b1",
+    "AQA_PSYCH_4.2.3.3_b2",
+    "AQA_PSYCH_4.2.3.3_b3"
+  ],
+  "AQA_PSYCH_ISSUES_8.1": [
+    "AQA_PSYCH_4.3.1_b1"
+  ],
+  "AQA_PSYCH_ISSUES_8.2": [
+    "AQA_PSYCH_4.3.1_b2",
+    "AQA_PSYCH_4.3.1_b3"
+  ],
+  "AQA_PSYCH_ISSUES_8.3": [
+    "AQA_PSYCH_4.3.1_b4",
+    "AQA_PSYCH_4.3.1_b5"
+  ],
+  "AQA_PSYCH_ISSUES_8.4": [
+    "AQA_PSYCH_4.3.1_b6"
+  ],
+  "AQA_PSYCH_OPT1_9.3": [
+    "AQA_PSYCH_4.3.4_b1",
+    "AQA_PSYCH_4.3.4_b2",
+    "AQA_PSYCH_4.3.4_b3",
+    "AQA_PSYCH_4.3.4_b4"
+  ],
+  "AQA_PSYCH_OPT2_10.1": [
+    "AQA_PSYCH_4.3.5_b1",
+    "AQA_PSYCH_4.3.5_b2",
+    "AQA_PSYCH_4.3.5_b3",
+    "AQA_PSYCH_4.3.5_b4",
+    "AQA_PSYCH_4.3.5_b5",
+    "AQA_PSYCH_4.3.5_b6"
+  ],
+  "AQA_PSYCH_OPT3_11.2": [
+    "AQA_PSYCH_4.3.9_b1",
+    "AQA_PSYCH_4.3.9_b2",
+    "AQA_PSYCH_4.3.9_b3",
+    "AQA_PSYCH_4.3.9_b4"
+  ],
   "EDX_HIST_1H_INT_5.1": [
     "EDX_HIST_1H_INT_INT.1",
     "EDX_HIST_1H_INT_INT.2",
