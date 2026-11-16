@@ -18,7 +18,7 @@ async function resolve(path) {
   if (!match) throw new Error('Invalid source-image reference');
   const [, slug, paper, name] = match;
   const key = `${slug}/${paper}`;
-  if (!bundles.has(key)) bundles.set(key, fetch(`data/${slug}-assets/${paper}.json`).then(async response => {
+  if (!bundles.has(key)) bundles.set(key, fetch(`data/${slug}-assets/${paper}.json`, {cache: 'no-cache'}).then(async response => {
     if (!response.ok) throw new Error('Source image bundle is unavailable');
     return response.json();
   }).catch(error => { bundles.delete(key); throw error; }));

@@ -28,7 +28,7 @@ const specPromises = new Map();
 const bundlePromises = new Map();
 
 async function fetchJson(path) {
-  const response = await fetch(new URL(path, DATA_ROOT));
+  const response = await fetch(new URL(path, DATA_ROOT), {cache: 'no-cache'}); // revalidate, so a new deploy shows at once
   if (!response.ok) throw new Error(`Could not load data/${path} (HTTP ${response.status}).`);
   return response.json();
 }
