@@ -33,6 +33,13 @@ const units = packs.flatMap(p => p.questions);
     };
     assert.equal(await count(), units.length, 'all units discoverable, demos hidden');
 
+    // The paper filter sits in the compact filter bar's "More" popover.
+    const selectPaper = async id => {
+      const more = page.locator('[data-section="fpop-more"]').first();
+      if (await more.count() && !(await more.evaluate(d => d.open))) await more.locator('summary').first().click();
+      await page.locator('[data-filter="paper"]').first().selectOption(id);
+    };
+
     async function loaded(selector) {
       const image = page.locator(selector).first();
       await image.scrollIntoViewIfNeeded();
@@ -43,10 +50,10 @@ const units = packs.flatMap(p => p.questions);
     }
     // A Research methods paper: shared study information shown as unscored context; scheme pixels load.
     const itemPaper = 'AQA_7182_2025_JUNE_02';
-    await page.locator('[data-filter="paper"]').selectOption(itemPaper);
+    await selectPaper(itemPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === itemPaper).length);
     await loaded('.question-selected-part img');
-    await page.locator('[data-filter="paper"]').selectOption('AQA_7182_2025_JUNE_01');
+    await selectPaper('AQA_7182_2025_JUNE_01');
     assert.equal(await count(), units.filter(q => q.paper_id === 'AQA_7182_2025_JUNE_01').length);
     await loaded('.question-selected-part img');
     await page.locator('[data-scheme]').first().click();
@@ -54,9 +61,9 @@ const units = packs.flatMap(p => p.questions);
 
     // AS paper with a shared stem across parts.
     const stemPaper = 'AQA_7181_SAMPLE_02';
-    await page.locator('[data-filter="paper"]').selectOption(stemPaper);
+    await selectPaper(stemPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === stemPaper).length);
-    await page.locator('[data-filter="paper"]').selectOption('');
+    await selectPaper('');
 
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});

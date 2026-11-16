@@ -71,3 +71,7 @@ python3 tools/sociology/reviews.py compile $R
 python3 tools/sociology/build.py --research $R
 python3 tools/sociology/finalize.py --research $R [--activate]
 ```
+
+## Next action
+
+Activated 16 November 2026 (own commit). Browser check `tools/browser-sociology-bank.cjs` passes (191 units, source and scheme pixels, paper page, 4 widths). The paper filter now sits in the compact filter bar's "More" popover, so the Sociology and Psychology browser scripts open it first; the other subjects' browser scripts still select the paper directly and need the same change.
