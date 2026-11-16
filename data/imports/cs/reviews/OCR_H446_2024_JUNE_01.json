@@ -1,0 +1,700 @@
+{
+  "paper_id": "OCR_H446_2024_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "b83ba937b59856e4a2c2d966a1fc98220a78103514a7df2d41b7ead3a10c8519",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)",
+      "sections": [
+        "OCR_CS_1.1.1b",
+        "OCR_CS_1.1.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(b)",
+        "1.1.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe the fetch stage, naming the registers and buses involved.",
+      "difficulty_basis": "4-mark describe needing ordered register transfers and bus roles.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_1.1.1a",
+        "OCR_CS_1.1.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(a)",
+        "1.1.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State which register a branch instruction alters during execution.",
+      "difficulty_basis": "1-mark AO1 recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)",
+      "sections": [
+        "OCR_CS_1.1.1d",
+        "OCR_CS_1.1.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(d)",
+        "1.1.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how pipelining improves CPU performance.",
+      "difficulty_basis": "3-mark explain of overlapped stages and throughput.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(i)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3c"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "State the five outputs of a faulty LMC Fibonacci program.",
+      "difficulty_basis": "3-mark trace of a looping LMC program with an error to spot.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(ii)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3c"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete corrected LMC code using a temporary variable to output Fibonacci numbers.",
+      "difficulty_basis": "4-mark LMC completion needing understanding of data flow between variables.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(e)",
+      "sections": [
+        "OCR_CS_1.2.4d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.4(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give three modes of memory addressing other than direct.",
+      "difficulty_basis": "3-mark AO1 recall of listed modes.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(f)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4b"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(b)"
+      ],
+      "difficulty": "easy",
+      "summary": "Give two reasons programmers may choose assembly language.",
+      "difficulty_basis": "2-mark AO1 recall of familiar reasons.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(g)",
+      "sections": [
+        "OCR_CS_1.1.3c",
+        "OCR_CS_1.2.1b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.3d"
+      ],
+      "codes": [
+        "1.1.3(c)",
+        "1.2.1(b)"
+      ],
+      "prerequisite_codes": [
+        "1.1.3(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why adding more RAM improves computer performance.",
+      "difficulty_basis": "3-mark explain linking RAM size to reduced virtual memory use.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_1.1.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Name one input device for a fitness tracker and what it is used for.",
+      "difficulty_basis": "2-mark device plus applied use in a familiar scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)",
+      "sections": [
+        "OCR_CS_1.1.3b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.3a"
+      ],
+      "codes": [
+        "1.1.3(b)"
+      ],
+      "prerequisite_codes": [
+        "1.1.3(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain two reasons flash storage suits a fitness tracker.",
+      "difficulty_basis": "4-mark two reasons each expanded in the scenario context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(i)",
+      "sections": [
+        "OCR_CS_1.2.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe what the BIOS does to start up a computer.",
+      "difficulty_basis": "3-mark describe of the boot sequence.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(ii)",
+      "sections": [
+        "OCR_CS_1.1.3c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.3(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe another use of ROM in the embedded system and its advantage.",
+      "difficulty_basis": "2-mark application of ROM to a given context with justification.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(i)",
+      "sections": [
+        "OCR_CS_1.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe two other roles of an operating system.",
+      "difficulty_basis": "4-mark two roles each described.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(ii)",
+      "sections": [
+        "OCR_CS_1.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Match five scheduling algorithms to their descriptions.",
+      "difficulty_basis": "5-mark matching needing accurate discrimination between similar algorithms.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(e)",
+      "sections": [
+        "OCR_CS_1.5.2_whole"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1j"
+      ],
+      "codes": [
+        "1.5.2"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(j)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss layout, colour and character set considerations for a multicultural user interface.",
+      "difficulty_basis": "9-mark extended response (*) with AO3.3 discussion across three considerations.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_1.2.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the most suitable application software for each of five tasks.",
+      "difficulty_basis": "5-mark recall matching tasks to familiar software types.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_1.2.1h"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(h)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State one advantage of running applications in a virtual machine.",
+      "difficulty_basis": "1-mark recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)",
+      "sections": [
+        "OCR_CS_1.3.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why lossless rather than lossy compression suits transmitted user input.",
+      "difficulty_basis": "3-mark explain applied to text data in a client-server context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)(i)",
+      "sections": [
+        "OCR_CS_1.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what a linker is.",
+      "difficulty_basis": "2-mark AO1 description.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)(ii)",
+      "sections": [
+        "OCR_CS_1.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what a loader is.",
+      "difficulty_basis": "2-mark AO1 description.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Convert a negative denary number to 8-bit two's complement.",
+      "difficulty_basis": "1-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State one other way to represent negative binary numbers.",
+      "difficulty_basis": "1-mark recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_1.4.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1e"
+      ],
+      "codes": [
+        "1.4.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(e)"
+      ],
+      "difficulty": "easy",
+      "summary": "Convert a denary number to hexadecimal.",
+      "difficulty_basis": "2-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(c)",
+      "sections": [
+        "OCR_CS_1.4.1g"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1c"
+      ],
+      "codes": [
+        "1.4.1(g)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Convert a normalised floating point number with negative mantissa to denary with working.",
+      "difficulty_basis": "3-mark multi-step conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(d)",
+      "sections": [
+        "OCR_CS_1.4.1g"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1c"
+      ],
+      "codes": [
+        "1.4.1(g)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Normalise an unnormalised floating point number showing working.",
+      "difficulty_basis": "4-mark multi-step normalisation adjusting mantissa and exponent.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(e)",
+      "sections": [
+        "OCR_CS_1.4.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1b"
+      ],
+      "codes": [
+        "1.4.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(b)"
+      ],
+      "difficulty": "easy",
+      "summary": "Add two 8-bit unsigned binary numbers showing working.",
+      "difficulty_basis": "2-mark routine binary addition with carries.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_1.4.3a",
+        "OCR_CS_1.4.3d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(a)",
+        "1.4.3(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Draw a logic circuit for an alarm that combines sensors with set and test mode conditions.",
+      "difficulty_basis": "4-mark design of a circuit from a worded scenario with four inputs.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.3c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Apply De Morgan's first law to a given expression.",
+      "difficulty_basis": "1-mark routine rule application.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(ii)",
+      "sections": [
+        "OCR_CS_1.4.3c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Simplify a double negation.",
+      "difficulty_basis": "1-mark routine rule application.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(iii)",
+      "sections": [
+        "OCR_CS_1.4.3c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Simplify an expression using the distribution rule.",
+      "difficulty_basis": "2-mark rule application with less obvious factoring.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_1.3.4b",
+        "OCR_CS_1.3.4c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(b)",
+        "1.3.4(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss why search engine indexing and PageRank matter, factors affecting ranking and ways to improve it.",
+      "difficulty_basis": "12-mark extended response (*) covering three bullet areas with AO3.3 reasoning.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)",
+      "sections": [
+        "OCR_CS_1.3.4d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.4a"
+      ],
+      "codes": [
+        "1.3.4(d)"
+      ],
+      "prerequisite_codes": [
+        "1.3.4(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Tick whether four web tasks run on the client side or server side.",
+      "difficulty_basis": "4-mark classification across four tasks.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(c)",
+      "sections": [
+        "OCR_CS_1.3.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Explain what a protocol is and why protocols matter.",
+      "difficulty_basis": "2-mark explain of a core definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(d)",
+      "sections": [
+        "OCR_CS_1.3.3d",
+        "OCR_CS_1.3.3e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.3(d)",
+        "1.3.3(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe three pieces of network hardware in a client-server network.",
+      "difficulty_basis": "6-mark paired name plus expansion across three devices.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7",
+      "sections": [
+        "OCR_CS_1.3.2a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.2c"
+      ],
+      "codes": [
+        "1.3.2(a)"
+      ],
+      "prerequisite_codes": [
+        "1.3.2(c)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss benefits and drawbacks of flat file versus relational databases for a growing leisure centre.",
+      "difficulty_basis": "9-mark extended response (*) with AO3.3 evaluation and a recommendation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)",
+      "sections": [
+        "OCR_CS_1.4.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Write a line declaring a two-dimensional array of given size.",
+      "difficulty_basis": "2-mark routine declaration.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.2b",
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2a"
+      ],
+      "codes": [
+        "1.4.2(b)",
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Complete a 2D array storing a binary search tree with left and right pointers.",
+      "difficulty_basis": "4-mark unfamiliar array representation of a tree requiring multi-stage mapping.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Add four towns in order to a binary search tree diagram.",
+      "difficulty_basis": "4-mark multi-step ordered insertion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "9",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a class with private attributes and a four-parameter constructor.",
+      "difficulty_basis": "5-mark AO3 code writing of class definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(a)",
+      "sections": [
+        "OCR_CS_1.5.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.5.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State three additional powers given by the Regulation of Investigatory Powers Act.",
+      "difficulty_basis": "3-mark AO1 recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(b)",
+      "sections": [
+        "OCR_CS_1.5.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.5.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify three principles of the Data Protection Act.",
+      "difficulty_basis": "3-mark AO1 recall.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

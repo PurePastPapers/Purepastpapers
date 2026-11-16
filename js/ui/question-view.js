@@ -45,11 +45,14 @@ export function questionBody(question, { contextOpen = false } = {}) {
 function resources(question) {
   const context = question.context || {};
   const stem = context.stem_image_url && isSafeUrl(context.stem_image_url) ? context.stem_image_url : null;
+  // Several printed introductions, e.g. a question's code listing and then its part's lead-in.
+  const intros = (Array.isArray(context.intros) ? context.intros : []).filter((intro) => intro && isSafeUrl(intro.image_url));
   const figures = (Array.isArray(context.figures) ? context.figures : []).filter((figure) => figure && isSafeUrl(figure.image_url));
-  if (!stem && !figures.length) return '';
+  if (!stem && !intros.length && !figures.length) return '';
   return html`<section class="stack question-resources" aria-label="Resources for this question (unscored)" data-question-resources="${question.question_id}">
     <p class="small muted">Resources for this question. Unscored context: they carry no marks of their own.</p>
     ${stem ? html`<figure class="qcontent"><figcaption class="small">Question ${question.question_number} (shared introduction)</figcaption>${image(stem, `Shared introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
+    ${intros.map((intro) => html`<figure class="qcontent"><figcaption class="small">${intro.label} (printed introduction)</figcaption>${image(intro.image_url, `${intro.label}, unscored context`)}</figure>`)}
     ${figures.map((figure) => html`<figure class="qcontent"><figcaption class="small">${figure.label} · ${figure.source === 'insert' ? 'from the insert' : 'printed earlier in the question paper'}</figcaption>${image(figure.image_url, `${figure.label}, unscored resource`)}</figure>`)}
   </section>`;
 }
@@ -57,7 +60,7 @@ function resources(question) {
 export function markSchemeBody(question) {
   const { mark_scheme_html: markup, mark_scheme_image_url: url } = question.content || {};
   if (!markup && !url) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
-  return html`<div class="ms">${question.scheme_scope === 'full_question' ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, 'Mark scheme')}</div></div>`;
+  return html`<div class="ms">${question.scheme_scope === 'full_question' ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : question.scheme_scope === 'parent_part' ? html`<p class="small muted">The board prints this scheme for the whole part${question.scheme_part ? ` ${question.scheme_part}` : ''}. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, 'Mark scheme')}</div></div>`;
 }
 
 /** Plain-text opening of a question, for list cards. */

@@ -1,0 +1,710 @@
+{
+  "paper_id": "OCR_H446_2021_NOVEMBER_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "71001b4dc144f9496fac0a8b4288ec34f87c427884a08b5c9626ec9fb6281208",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)(i)",
+      "sections": [
+        "OCR_CS_1.1.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State two factors that affect CPU performance.",
+      "difficulty_basis": "2-mark AO1.1 recall of familiar listed factors.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(a)(ii)",
+      "sections": [
+        "OCR_CS_1.1.3c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.3(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how RAM and ROM differ and how the computer system uses each.",
+      "difficulty_basis": "4-mark AO1.2 explain command needing difference plus use for both memories.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(a)(iii)",
+      "sections": [
+        "OCR_CS_1.1.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe a non-graphical use of a GPU for an insurance company.",
+      "difficulty_basis": "AO2.2 application of GPU uses to an insurance context, which is less familiar.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.1b"
+      ],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.1.1(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain what pipelining means in a processor.",
+      "difficulty_basis": "3-mark explain item needing overlap of fetch, decode and execute stages.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)",
+      "sections": [
+        "OCR_CS_1.1.3b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.3a"
+      ],
+      "codes": [
+        "1.1.3(b)"
+      ],
+      "prerequisite_codes": [
+        "1.1.3(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss whether magnetic or solid state storage suits servers, clients and backup, weighing pros and cons.",
+      "difficulty_basis": "9-mark extended response (*) with AO3.3 evaluation applied across three contexts.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(i)",
+      "sections": [
+        "OCR_CS_1.3.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State what a primary key is and identify it in the table.",
+      "difficulty_basis": "2-mark recall plus simple identification from a table.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(ii)",
+      "sections": [
+        "OCR_CS_1.3.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Write an SQL query returning two fields for customers with one of two titles.",
+      "difficulty_basis": "4-mark AO3.2 SQL writing with SELECT, FROM and compound WHERE.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(iii)",
+      "sections": [
+        "OCR_CS_1.3.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe a problem with a flat file when a customer insures several cars.",
+      "difficulty_basis": "2-mark AO2.1 application of flat file weaknesses such as redundancy to context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(iv)",
+      "sections": [
+        "OCR_CS_1.3.2a",
+        "OCR_CS_1.3.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(a)",
+        "1.3.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how to restructure the flat file so customers can insure multiple cars.",
+      "difficulty_basis": "5-mark describe item needing second table, foreign key and one-to-many relationship.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1b"
+      ],
+      "codes": [
+        "1.4.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(b)"
+      ],
+      "difficulty": "easy",
+      "summary": "Convert a denary number to unsigned 8-bit binary.",
+      "difficulty_basis": "1-mark AO1.2 routine base conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1e"
+      ],
+      "codes": [
+        "1.4.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(e)"
+      ],
+      "difficulty": "easy",
+      "summary": "Convert a hexadecimal number to unsigned 8-bit binary.",
+      "difficulty_basis": "1-mark AO1.2 routine base conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.1g"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1c"
+      ],
+      "codes": [
+        "1.4.1(g)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Normalise a given two's complement floating point number showing working.",
+      "difficulty_basis": "4-mark multi-step normalisation adjusting both mantissa and exponent.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(ii)",
+      "sections": [
+        "OCR_CS_1.4.1g"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1c"
+      ],
+      "codes": [
+        "1.4.1(g)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Convert the normalised floating point number to denary with working.",
+      "difficulty_basis": "3-mark multi-step conversion using exponent to place the binary point.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)",
+      "sections": [
+        "OCR_CS_1.4.1h"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1g"
+      ],
+      "codes": [
+        "1.4.1(h)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(g)"
+      ],
+      "difficulty": "hard",
+      "summary": "Add two normalised floating point numbers and give a normalised result with working.",
+      "difficulty_basis": "5-mark multi-stage addition needing exponent alignment, addition and renormalisation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_1.3.4a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe the purposes of HTML and CSS in a website.",
+      "difficulty_basis": "4-mark AO1.1 describe needing distinct roles for two technologies.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_1.3.4a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Write HTML for an image that acts as a hyperlink to a page.",
+      "difficulty_basis": "3-mark AO3.2 code writing combining anchor and image tags.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)",
+      "sections": [
+        "OCR_CS_1.3.4d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.3.4(d)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a JavaScript booking fee function by filling in missing parts.",
+      "difficulty_basis": "4-mark AO3.2 completing code using variables, selection and return.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)(i)",
+      "sections": [
+        "OCR_CS_1.3.4d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why the booking fee is recalculated by server side processing.",
+      "difficulty_basis": "3-mark AO2.1 explain applying server versus client trust to context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)(ii)",
+      "sections": [
+        "OCR_CS_1.3.4d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Explain one advantage of client side processing to the customer or company.",
+      "difficulty_basis": "2-mark single advantage developed as a 2x1 point.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(e)(i)",
+      "sections": [
+        "OCR_CS_1.3.4b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how a search engine indexes a website.",
+      "difficulty_basis": "4-mark AO1.1 describe of crawler and index process.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(e)(ii)",
+      "sections": [
+        "OCR_CS_1.3.4c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State what the damping factor is.",
+      "difficulty_basis": "1-mark AO1.1 recall of a defined term.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(e)(iii)",
+      "sections": [
+        "OCR_CS_1.3.4c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give two other factors affecting a site's PageRank value.",
+      "difficulty_basis": "2-mark AO1.1 recall of inbound links and their ranks.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4",
+      "sections": [
+        "OCR_CS_1.5.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.5.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss whether the Computer Misuse Act criminalises people merely learning how systems work.",
+      "difficulty_basis": "9-mark extended response (*) with AO3.3 balanced evaluation of legislation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_1.4.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Complete a Boolean expression modelling a two-factor authentication scenario.",
+      "difficulty_basis": "3-mark AO1.2 turning a worded condition into AND/OR with brackets.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.3c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Simplify a negated Boolean expression, naming the algebra rules used.",
+      "difficulty_basis": "2-mark AO2.2 applying De Morgan and double negation with justification.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)(i)",
+      "sections": [
+        "OCR_CS_1.4.3e"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.3d"
+      ],
+      "codes": [
+        "1.4.3(e)"
+      ],
+      "prerequisite_codes": [
+        "1.4.3(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Give the Boolean expressions for the outputs of a half adder circuit.",
+      "difficulty_basis": "2-mark AO2.1 reading a gate diagram to derive expressions.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)(ii)",
+      "sections": [
+        "OCR_CS_1.4.3d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.3e"
+      ],
+      "codes": [
+        "1.4.3(d)"
+      ],
+      "prerequisite_codes": [
+        "1.4.3(e)"
+      ],
+      "difficulty": "easy",
+      "summary": "Complete the truth table for the given logic circuit.",
+      "difficulty_basis": "2-mark AO2.1 routine truth table over two inputs.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)(iii)",
+      "sections": [
+        "OCR_CS_1.4.3e"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1d"
+      ],
+      "codes": [
+        "1.4.3(e)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe how the half adder circuit can be extended to add two 4-bit numbers.",
+      "difficulty_basis": "4-mark describe needing full adder construction and carry chaining.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(i)",
+      "sections": [
+        "OCR_CS_1.1.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State what a register is.",
+      "difficulty_basis": "2-mark AO1.1 definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(ii)",
+      "sections": [
+        "OCR_CS_1.1.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4c"
+      ],
+      "codes": [
+        "1.1.1(a)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain how the accumulator is used when a branch-if-positive instruction runs.",
+      "difficulty_basis": "2-mark AO1.2 explain linking ACC to a given LMC instruction.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3c"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a table of outputs for an LMC program given inputs.",
+      "difficulty_basis": "4-mark AO2.2 trace of a looping program over several input pairs.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(c)",
+      "sections": [
+        "OCR_CS_1.2.3c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4c"
+      ],
+      "codes": [
+        "1.2.3(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write pseudocode with the same functionality as the given LMC program.",
+      "difficulty_basis": "4-mark AO3.2 requiring understanding of the LMC program then re-expressing it.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(d)",
+      "sections": [
+        "OCR_CS_1.2.4d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4c"
+      ],
+      "codes": [
+        "1.2.4(d)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(c)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss the memory addressing modes, how operands are interpreted and why several are needed.",
+      "difficulty_basis": "12-mark extended response (*) with AO3.3 reasoned discussion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Name the data structure described.",
+      "difficulty_basis": "1-mark AO1.1 recall identification.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1e"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write pseudocode to push a name onto the stack after checking it is not full.",
+      "difficulty_basis": "4-mark AO3.2 algorithm combining input, full check and pointer update.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a binary search tree diagram by inserting four names.",
+      "difficulty_basis": "4-mark AO2.1 multi-step ordered insertion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe searching the given binary search tree for a name not present.",
+      "difficulty_basis": "3-mark AO2.2 trace of the search path through a tree.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)(iii)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1c"
+      ],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(c)"
+      ],
+      "difficulty": "easy",
+      "summary": "Compare the search efficiency of a binary search tree and a linked list.",
+      "difficulty_basis": "2-mark AO1.2 comparison with optional Big O.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)(iv)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1c"
+      ],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(c)"
+      ],
+      "difficulty": "easy",
+      "summary": "Compare the search efficiency of a binary search tree and a hash table.",
+      "difficulty_basis": "2-mark AO1.2 comparison with optional Big O.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(c)(i)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the meaning of object, method and attribute.",
+      "difficulty_basis": "3-mark AO1.1 recall of three terms.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(c)(ii)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write a fully encapsulated class with get and set methods including validated attendance.",
+      "difficulty_basis": "5-mark AO3.2 writing OO code with private attributes, methods and a validation rule.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

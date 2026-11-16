@@ -132,7 +132,102 @@ R=../cs-research
 for q in H446 H046; do python3 tools/cs/extract.py data/imports/cs/inventory/$q-inventory.json --sources $R/sources --output $R/candidates; done
 ```
 
+## Checkpoint 4: reviewed, built and verified; awaiting OCR rights (16 November 2026)
+
+**Status: all 22 public booklets are built and checked, but NOT live.** The packs are in
+`data/packs/cs/` and are deliberately **not** in `data/packs/index.json`; no crop
+catalogue (`data/cs-assets/`) is committed. Coverage status
+`built_awaiting_rights_confirmation` (`data/imports/cs/coverage.json`).
+
+| Group | Booklets | Questions | Scored units | Marks | Examiner report |
+| --- | --- | --- | --- | --- | --- |
+| A-level H446 · Exams · Paper 01 | 5 | 38 | 217 | 700 | 5 |
+| A-level H446 · Exams · Paper 02 | 5 | 42 | 193 | 700 | 5 |
+| A-level H446 · Official samples · Paper 01 | 1 | 10 | 46 | 140 | 0 |
+| A-level H446 · Official samples · Paper 02 | 1 | 10 | 35 | 140 | 0 |
+| AS H046 · Exams · Paper 01 | 4 | 28 | 94 | 280 | 4 |
+| AS H046 · Exams · Paper 02 | 4 | 26 | 90 | 280 | 4 |
+| AS H046 · Official samples · Paper 01 | 1 | 7 | 27 | 70 | 0 |
+| AS H046 · Official samples · Paper 02 | 1 | 6 | 22 | 70 | 0 |
+| **Total** | **22** | **167** | **724** | **2380** | **18** |
+
+Every booklet reconciles exactly (140 A level, 70 AS); every unit has its official scheme
+rows; examiner reports are linked for all 18 exam booklets (OCR publishes none for the
+samples). No part was excluded.
+
+- **Review:** four Claude (Sonnet, medium effort) workers, one batch each (H446/01,
+  H446/02, H046/01, H046/02), wrote line sheets in `../cs-research/review-src/`;
+  `tools/cs/reviews.py compile` enforces codes and scope (H446 Paper 1 primary tags are
+  section 1; Paper 2 is synoptic per OCR; AS units only AS-shared or AS-only leaves;
+  A-level units never AS-only leaves). Lead review (Claude Opus) spot-checked every batch;
+  no flags were raised. Two workers reported that extended-response (*) markers had
+  spread to sibling parts: confirmed as an extractor bug (the asterisk was applied to every
+  label on its row) and fixed; 46 units are now (*), all worth 8+ marks; the workers had
+  already rated those parts on content. All units are `reviewer_type: model`.
+- **Difficulty:** easy 290, medium 357, hard 77, each with a basis. No Extra hard.
+- **Content year:** 554 Year 12, 170 Year 13 (AS units Year 12; A-level units Year 12 only when every
+  primary leaf is AS-shared). Year mapping `ocr-h446-h046-co-teaching-years` (76 Year 12
+  leaves, 37 Year 13) cites OCR spec section 2b: the A level "has been designed to be
+  co-teachable with the stand alone AS Level". A co-teaching basis, not an OCR order.
+- **Leaves never a primary tag:** 1.3.2e, 1.3.3c, 2.1.3c, 2.1.4c.
+- **Parent-scope schemes (3):** AS sample Paper 2 4(c)(i)/(ii) share one OCR row; November
+  2021 Paper 1 7(b)(i)'s row is labelled only "(b)". The scheme view says so.
+- **App changes:** `js/ui/question-view.js` shows several labelled printed introductions
+  (`context.intros`: question stem, part lead-in) as unscored resources, and a note for
+  `scheme_scope: 'parent_part'`. `data/subjects.json` adds the H446/H046 filter and
+  `content_year_source`. Ids: `OCR_H446_2024_JUNE_02_Q01_a_i`; whole questions `..._Q02_W`
+  (parent `..._Q02`); `part_label` is "(a)(i)" (site convention). Identities are recorded
+  in `data/imports/cs/identities.json` (724).
+- **Extraction fixes during this checkpoint** (layout v3): asterisk scoped to its own
+  label; label-only context blocks with no drawing dropped (20).
+
+### Checks (local)
+
+- `npm test`: 112 pass (new: `tests/cs-spec.test.mjs` 3, `tests/cs-bank.test.mjs` 5);
+  `npm run validate`: 0 errors.
+- 2,399 image references checked non-empty (one deliberately thin one-line scheme row).
+  Inspected by eye: trace table, logic-gate lead-in, code-listing stem, scheme rows, a
+  phone-width card.
+- `node tools/browser-cs-bank.cjs` passed against a **temporary local activation** (724
+  units, AS filter, stems and lead-ins, question and scheme pixels, paper page, no overflow
+  at 320/390/768/1440, no console errors); the activation was then reverted. Regression,
+  Geography, Politics and topic-choice browser suites pass. Not a production test: CS is
+  not live.
+
+### To go live (only once the owner confirms OCR permission)
+
+```sh
+R=../cs-research
+python3 tools/cs/finalize.py --research $R --activate   # index + crop catalogues
+npm test && npm run validate
+npm start & node tools/browser-cs-bank.cjs
+```
+
+Commit `data/packs/index.json`, `data/cs-assets/` and `data/imports/cs/`, then merge to
+`main` and compare the live index and a catalogue with the release.
+
+### Reproduce the build
+
+```sh
+R=../cs-research   # sources/, candidates/, review-in/, review-src/, reviews/
+for q in H446 H046; do python3 tools/cs/extract.py data/imports/cs/inventory/$q-inventory.json --sources $R/sources --output $R/candidates; done
+python3 tools/cs/reviews.py prepare $R
+python3 tools/cs/reviews.py compile $R
+python3 tools/cs/build.py --research $R
+python3 tools/cs/finalize.py --research $R
+```
+
+The review line sheets are the only hand-made input; the compiled reviews are public in
+`data/imports/cs/reviews/`.
+
+### Still open
+
+- **Owner decision: OCR rights.** Nothing OCR is live until confirmed.
+- June 2026 papers: add when OCR lists them.
+- GCSE J277 (`OCR_GCSE_CS_J277`): a separate later run.
+- Textbook organisation: none supplied.
+
 ## Next action
 
-Model review in four batches (H446 Paper 1, H446 Paper 2, H046 Paper 1, H046 Paper 2),
-lead review of flags, then build (hidden: OCR rights unconfirmed), tests, merge, verify.
+Owner: confirm (or not) permission to republish OCR Computer Science papers and mark
+schemes. If confirmed, run the "To go live" steps.

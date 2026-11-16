@@ -20,7 +20,7 @@ import json
 import re
 from pathlib import Path
 
-VERSION = 'ocr-cs-layout-v1'
+VERSION = 'ocr-cs-layout-v3'
 ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
 TARIFF = re.compile(r'\[(\d{1,2})\]$')
 DOTS = re.compile(r'^[.…\s]{8,}(\[\d{1,2}\])?$')
@@ -97,21 +97,20 @@ def extract(path):
                     lq, lp, ls = t.rstrip('*'), None, None
                 elif re.fullmatch(r'\([a-z]{1,4}\)\*?', t):
                     v = t.rstrip('*')[1:-1]
-                    if t.endswith('*'):
-                        starred = True
+                    star = t.endswith('*')
                     if v == lp and not labels:   # the current part label repeated on a continuation page
                         k += 1
                         continue
                     next_sub = ROMAN[ROMAN.index(ls) + 1] if ls in ROMAN[:-1] else 'i'
                     next_part = chr(ord(lp) + 1) if lp else 'a'
                     if v == next_sub and lp and v != next_part:
-                        labels.append(('s', v))
+                        labels.append(('s', v, star))
                         ls = v
                     elif v == next_part:
-                        labels.append(('p', v))
+                        labels.append(('p', v, star))
                         lp, ls = v, None
                     elif v == next_sub and lp:
-                        labels.append(('s', v))
+                        labels.append(('s', v, star))
                         ls = v
                     else:
                         break
@@ -129,12 +128,11 @@ def extract(path):
                     node = {'level': 'q', 'key': q, 'rows': [], 'open': True, 'extended': lab[2]}
                 elif lab[0] == 'p':
                     part, sub = lab[1], None
-                    node = {'level': 'p', 'key': f'{q}({part})', 'rows': [], 'open': True}
+                    node = {'level': 'p', 'key': f'{q}({part})', 'rows': [], 'open': True, 'extended': lab[2]}
                 else:
                     sub = lab[1]
-                    node = {'level': 's', 'key': f'{q}({part})({sub})', 'rows': [], 'open': True}
-                if starred:
-                    node['extended'] = True
+                    node = {'level': 's', 'key': f'{q}({part})({sub})', 'rows': [], 'open': True, 'extended': lab[2]}
+                # The asterisk belongs only to the label printed with it (OCR "(a)*"), never its siblings.
             if node is None:
                 continue
             node['rows'].append((pi, row))
@@ -143,7 +141,7 @@ def extract(path):
             if t and last['x1'] > 480:
                 label = f'{q}' + (f'({part})' if part else '') + (f'({sub})' if sub else '')
                 units.append({'question': q, 'label': label, 'marks': int(t.group(1)), 'rows': node['rows'],
-                              'extended_response': bool(stems.get(q, {}).get('extended') or node.get('extended')),
+                              'extended_response': bool(node.get('extended')),
                               'tariff': {'page': pi + 1, 'top': row['top']}})
                 node['open'] = False
                 node = {'level': node['level'], 'key': node['key'] + '+', 'rows': [], 'open': False}
@@ -196,7 +194,16 @@ def extract(path):
         for key, n in list(stems.items()) + list(leads.items()):
             if n['rows']:
                 text = '\n'.join(r['text'] for _, r in n['rows'] if not DOTS.match(r['text']))
-                context[key] = {'regions': regions(n['rows']), 'text': text, 'copyright_removed_content': bool(REMOVED.search(text))}
+                regs = regions(n['rows'])
+                height = sum(r['bbox'][3] - r['bbox'][1] for r in regs)
+                if len(text.split()) <= 1 and height < 0.035:
+                    continue   # only the printed label ("4", "(b)"): nothing a part needs
+                context[key] = {'regions': regs, 'text': text, 'copyright_removed_content': bool(REMOVED.search(text))}
+        for u in out:   # point units only at the context blocks that were kept
+            if 'context' in u:
+                u['context'] = [k for k in u['context'] if k in context]
+                if not u['context']:
+                    del u['context']
         total = sum(u['marks'] for u in out)
         if expected is not None and total != expected:
             exceptions.append({'type': 'paper_marks_mismatch', 'expected': expected, 'actual': total})
