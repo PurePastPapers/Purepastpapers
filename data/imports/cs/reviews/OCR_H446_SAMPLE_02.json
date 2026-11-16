@@ -1,0 +1,630 @@
+{
+  "paper_id": "OCR_H446_SAMPLE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "3c19783af61f45e846c3d24c2ffc1a6b405ee2961e40b488fb6bcf4d9c11f1ed",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)",
+      "sections": [
+        "OCR_CS_2.1.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.1c"
+      ],
+      "codes": [
+        "2.1.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Define abstraction using a map as an example.",
+      "difficulty_basis": "4-mark definition plus application to a given context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(i)",
+      "sections": [
+        "OCR_CS_2.1.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give three examples of reusable components used on a map.",
+      "difficulty_basis": "3-mark application of the reuse idea to an unfamiliar non-programming context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(ii)",
+      "sections": [
+        "OCR_CS_2.1.2d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.2f"
+      ],
+      "codes": [
+        "2.1.2(d)"
+      ],
+      "prerequisite_codes": [
+        "1.2.2(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain how programmers use reusable components when developing large programs.",
+      "difficulty_basis": "3-mark explanation covering modularity and libraries.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)",
+      "sections": [
+        "OCR_CS_2.1.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain two advantages of using reusable components.",
+      "difficulty_basis": "4-mark explanation of two advantages with expansion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the name of the algorithm shown in a pseudocode listing.",
+      "difficulty_basis": "1-mark recognition of binary search.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe the purpose of a binary search function.",
+      "difficulty_basis": "2-mark recall of what the algorithm does.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Identify the parameters of a recursive binary search and the purpose of each.",
+      "difficulty_basis": "8-mark reading of a listing to identify four parameters and roles.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(i)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what is meant by recursion.",
+      "difficulty_basis": "2-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify an example of recursion in the given algorithm.",
+      "difficulty_basis": "1-mark routine reading of a listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(e)",
+      "sections": [
+        "OCR_CS_2.2.2d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "2.2.2(d)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain how the binary search is a divide and conquer approach.",
+      "difficulty_basis": "3-mark explanation applied to a given algorithm.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(f)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a",
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)",
+        "2.3.1(f)"
+      ],
+      "difficulty": "hard",
+      "summary": "Rewrite a recursive binary search iteratively with explanatory comments.",
+      "difficulty_basis": "8-mark conversion requiring transforming recursion into iteration with flags and bounds.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_2.1.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.3a"
+      ],
+      "codes": [
+        "2.1.2(b)"
+      ],
+      "prerequisite_codes": [
+        "2.1.3(a)"
+      ],
+      "difficulty": "easy",
+      "summary": "State four items of data to obtain when choosing an app project.",
+      "difficulty_basis": "4-mark recall of sensible inputs in a context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2a"
+      ],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss the extent to which computational methods can predict app success.",
+      "difficulty_basis": "9-mark extended response (*) requiring evaluative judgement on computational methods.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how data mining revealed an unexpected sales pattern.",
+      "difficulty_basis": "4-mark explanation applying data mining to a scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what a heuristic approach to problem solving is.",
+      "difficulty_basis": "2-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how heuristics are used when deciding when to cross a busy road.",
+      "difficulty_basis": "3-mark application of heuristics to an everyday scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.3c"
+      ],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [
+        "1.3.3(c)"
+      ],
+      "difficulty": "hard",
+      "summary": "Evaluate heuristic and pattern matching approaches to virus detection.",
+      "difficulty_basis": "9-mark extended response (*) requiring evaluation of two approaches in context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_2.1.2a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2f"
+      ],
+      "codes": [
+        "2.1.2(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "State three data items to collect to investigate slow cafeteria service.",
+      "difficulty_basis": "3-mark identification of data relevant to modelling a problem.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2c"
+      ],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain how computational methods could improve a cafeteria layout.",
+      "difficulty_basis": "4-mark explanation involving performance modelling and decomposition in context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2f"
+      ],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(f)"
+      ],
+      "difficulty": "easy",
+      "summary": "Describe the term pipelining.",
+      "difficulty_basis": "2-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.5a"
+      ],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [
+        "2.1.5(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain how pipelining principles can speed up building a house.",
+      "difficulty_basis": "4-mark application of pipelining and parallel tasks to an unfamiliar context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(c)",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2f"
+      ],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe two examples of pipelining in computer systems.",
+      "difficulty_basis": "4-mark description of two examples with expansion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8",
+      "sections": [
+        "OCR_CS_1.4.1i"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1a",
+        "OCR_CS_1.3.1c"
+      ],
+      "codes": [
+        "1.4.1(i)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(a)",
+        "1.3.1(c)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write an annotated algorithm to XOR-encrypt a text message with a repeating key.",
+      "difficulty_basis": "8-mark algorithm writing combining text conversion, bitwise XOR and key cycling on an unfamiliar problem.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "9(a)",
+      "sections": [
+        "OCR_CS_2.3.1c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "2.3.1(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a table of best, average and worst case checks for binary and linear search.",
+      "difficulty_basis": "4-mark recall of case complexities for two algorithms.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "9(b)",
+      "sections": [
+        "OCR_CS_2.3.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State what logarithmic growth means.",
+      "difficulty_basis": "1-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "9(c)",
+      "sections": [
+        "OCR_CS_2.3.1b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "2.3.1(b)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)"
+      ],
+      "difficulty": "easy",
+      "summary": "Give a situation where linear search beats binary search on a sorted array.",
+      "difficulty_basis": "1-mark recall of a familiar situation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why a stack is preferable to a queue for storing disks on a pole.",
+      "difficulty_basis": "2-mark explanation applying LIFO to a context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f",
+        "OCR_CS_1.2.4e"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)",
+        "1.2.4(e)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write the push method of a tower class with a validity rule and comments.",
+      "difficulty_basis": "6-mark method writing for an unfamiliar problem combining stack logic and a comparison rule.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a layer of a state-space tree showing four possible moves.",
+      "difficulty_basis": "4-mark application of backtracking style search to an unfamiliar puzzle.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(b)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2f"
+      ],
+      "codes": [
+        "2.3.1(e)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe an advantage and a disadvantage of depth-first compared with breadth-first search.",
+      "difficulty_basis": "4-mark comparison of two traversal strategies.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(c)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a",
+        "OCR_CS_2.3.1a"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)",
+        "2.3.1(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Complete an annotated program using three tower objects to solve Towers of Hanoi iteratively.",
+      "difficulty_basis": "10-mark algorithm completion for an unfamiliar puzzle combining objects, loops and validity checks.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(d)(i)",
+      "sections": [
+        "OCR_CS_2.3.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Calculate the time for a 5 disk problem given the time for 3 disks and exponential growth.",
+      "difficulty_basis": "1-mark calculation requiring exponential complexity reasoning.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(d)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State a reason why a complexity-based time estimate is only approximate.",
+      "difficulty_basis": "1-mark recall of Big O limitations.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(d)(iii)",
+      "sections": [
+        "OCR_CS_2.3.1c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1d"
+      ],
+      "codes": [
+        "2.3.1(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a graph showing exponential growth of solving time.",
+      "difficulty_basis": "2-mark sketch applying exponential complexity.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(e)",
+      "sections": [
+        "OCR_CS_2.1.5a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.5b"
+      ],
+      "codes": [
+        "2.1.5(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.5(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss to what extent concurrency helps solve Towers of Hanoi under two approaches.",
+      "difficulty_basis": "9-mark extended response (*) requiring extent of judgement across two approaches.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

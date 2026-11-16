@@ -1,0 +1,729 @@
+{
+  "paper_id": "OCR_H446_2022_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "72cd68dcea1ba06aca00ff5e02ac093a1d78f4d1c2a03e35721c35d1402ecac3",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the precondition for a binary search.",
+      "difficulty_basis": "1-mark recall of familiar standard algorithm requirement.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(a)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe how a linear search works.",
+      "difficulty_basis": "4-mark recall description of a simple standard algorithm.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two variables in a given function.",
+      "difficulty_basis": "2-mark routine reading of a short listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe the difference between passing parameters by value and by reference.",
+      "difficulty_basis": "2-mark recall of familiar distinction.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(iii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Rewrite a for loop in a function as a while loop.",
+      "difficulty_basis": "4-mark code rewrite requiring counter initialisation, condition and increment.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give one benefit and one drawback of a global variable.",
+      "difficulty_basis": "2-mark recall of familiar pros and cons.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)",
+      "sections": [
+        "OCR_CS_2.2.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe one IDE feature for writing and one for testing code.",
+      "difficulty_basis": "4-mark description of two features each with expansion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(e)",
+      "sections": [
+        "OCR_CS_2.1.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give two benefits of reusable program components.",
+      "difficulty_basis": "2-mark recall of familiar benefits.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the root node of a binary search tree.",
+      "difficulty_basis": "1-mark routine reading of a diagram.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two leaf nodes in a binary search tree.",
+      "difficulty_basis": "2-mark routine reading of a diagram.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Add four new values to a binary search tree in order.",
+      "difficulty_basis": "4-mark insertion applying BST ordering rules repeatedly.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)",
+      "sections": [
+        "OCR_CS_2.3.1e"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "2.3.1(e)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Compare breadth-first and post-order depth-first traversals of a given tree including output orders.",
+      "difficulty_basis": "9-mark extended response (*) requiring comparison and producing both traversal orders.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_1.4.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State why values are stored in an array rather than separate variables.",
+      "difficulty_basis": "1-mark recall of familiar benefit.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete the missing statements of a bubble sort with swap and flag.",
+      "difficulty_basis": "5-mark completion of a standard algorithm listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Show the stages of a merge sort on eight values.",
+      "difficulty_basis": "4-mark trace of split and merge stages on given data.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1c",
+        "OCR_CS_2.3.1d"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(c)",
+        "2.3.1(d)"
+      ],
+      "difficulty": "hard",
+      "summary": "Compare bubble, merge and insertion sorts including complexities and suitability for 10 values.",
+      "difficulty_basis": "12-mark extended response (*) comparing three algorithms with Big O and context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)(i)",
+      "sections": [
+        "OCR_CS_2.2.2e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2c"
+      ],
+      "codes": [
+        "2.2.2(e)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(c)"
+      ],
+      "difficulty": "easy",
+      "summary": "Define abstraction and decomposition.",
+      "difficulty_basis": "2-mark recall definitions.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)(ii)",
+      "sections": [
+        "OCR_CS_2.1.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give three differences between an abstracted simulator and reality.",
+      "difficulty_basis": "3-mark application of abstraction to a given scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)(iii)",
+      "sections": [
+        "OCR_CS_2.1.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give two reasons for using abstraction.",
+      "difficulty_basis": "2-mark recall of familiar reasons.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_2.1.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how caching can be used in an aeroplane simulator.",
+      "difficulty_basis": "2-mark application of caching to a context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State a difference between directed and undirected graphs.",
+      "difficulty_basis": "1-mark recall of familiar distinction.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State a difference between a graph and a tree.",
+      "difficulty_basis": "1-mark recall of familiar distinction.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_2.1.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give a reason why a graph is a visualisation of the delivery problem.",
+      "difficulty_basis": "1-mark application of abstraction to context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Apply Dijkstra's algorithm to a weighted graph to find shortest path and distance.",
+      "difficulty_basis": "6-mark trace of a standard algorithm using a table on a given graph.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1d"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Give a similarity and difference between Dijkstra's and A* performance.",
+      "difficulty_basis": "2-mark comparison of two standard algorithms.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)(i)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State why performance modelling is used to test a system.",
+      "difficulty_basis": "1-mark recall of purpose.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)(ii)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how performance modelling can be used in the delivery system.",
+      "difficulty_basis": "2-mark application of modelling to a given context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_2.1.3b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.3d"
+      ],
+      "codes": [
+        "2.1.3(b)"
+      ],
+      "prerequisite_codes": [
+        "2.1.3(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Identify three other components of a card game.",
+      "difficulty_basis": "3-mark decomposition of a given problem.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State why checkValid is a function not a procedure.",
+      "difficulty_basis": "1-mark recall of function versus procedure.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(ii)",
+      "sections": [
+        "OCR_CS_2.1.4a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4c"
+      ],
+      "codes": [
+        "2.1.4(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe the decisions in a validity check and their return values.",
+      "difficulty_basis": "3-mark description of branching logic applied to game rules.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(c)",
+      "sections": [
+        "OCR_CS_1.4.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Write a declaration of a two-dimensional array.",
+      "difficulty_basis": "2-mark routine declaration.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)(i)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give the line number of the recursive call.",
+      "difficulty_basis": "1-mark routine reading of a listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State two features of any recursive algorithm.",
+      "difficulty_basis": "2-mark recall of familiar features.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Trace a recursive function for input 5 and give the return value.",
+      "difficulty_basis": "5-mark trace of recursive calls and unwinding in a table.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(c)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give the call that would return 55 from the recursive function.",
+      "difficulty_basis": "1-mark reasoning about the function's behaviour to infer the argument.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Show stack contents and pointer after a sequence of pops and pushes.",
+      "difficulty_basis": "2-mark trace of array-based stack operations.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the purpose of the stack pointer.",
+      "difficulty_basis": "1-mark recall of familiar purpose.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete the pop method of a stack class.",
+      "difficulty_basis": "5-mark completion applying stack pointer logic in a class method.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write the push method of a stack class with a full check.",
+      "difficulty_basis": "6-mark method writing with boundary check and pointer update.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(iii)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Declare an object of the stack class.",
+      "difficulty_basis": "2-mark routine instantiation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(iv)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a loop pushing user input onto a stack until full.",
+      "difficulty_basis": "4-mark completion using method return values in a loop.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(v)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write code repeatedly popping and totalling items up to 20 or until empty.",
+      "difficulty_basis": "8-mark code writing with a compound loop condition, running total and output.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(c)(i)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2c"
+      ],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe how an array can implement a queue.",
+      "difficulty_basis": "3-mark description of head and tail pointer behaviour.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(c)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4e",
+        "OCR_CS_1.2.4b"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(e)",
+        "1.2.4(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss object-oriented versus procedural programming for creating several queues.",
+      "difficulty_basis": "9-mark extended response (*) requiring discussion of two paradigms in context.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "paper_id": "OCR_H046_2024_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "773426886d005a25c08b2282f266dfb2b2ba5cdfe048eab3e8d2b98ad1c6c832",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)(i)",
+      "sections": [
+        "OCR_CS_2.1.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what is meant by abstraction.",
+      "difficulty_basis": "2-mark recall of definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(a)(ii)",
+      "sections": [
+        "OCR_CS_2.1.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.1c"
+      ],
+      "codes": [
+        "2.1.1(d)"
+      ],
+      "prerequisite_codes": [
+        "2.1.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Give three examples of how abstraction could be used in the computerised board game.",
+      "difficulty_basis": "3 marks applying abstraction to a given scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(a)(iii)",
+      "sections": [
+        "OCR_CS_2.1.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give two reasons for using abstraction when designing the game.",
+      "difficulty_basis": "2-mark explanation of the need for abstraction.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_2.1.3d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.3a"
+      ],
+      "codes": [
+        "2.1.3(d)"
+      ],
+      "prerequisite_codes": [
+        "2.1.3(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Identify three sub problems that the board game could be broken into.",
+      "difficulty_basis": "3 marks decomposing a given scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)",
+      "sections": [
+        "OCR_CS_2.1.4b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4c"
+      ],
+      "codes": [
+        "2.1.4(b)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe two logical conditions checked after a dice roll and how each affects the game outcome.",
+      "difficulty_basis": "4 marks pairing conditions with outcomes in a scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify one similarity and one difference between a stack and a queue.",
+      "difficulty_basis": "2-mark recall comparing two data structures.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give the name of the parameter in the enqueue function.",
+      "difficulty_basis": "1-mark identification from given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give the name of a global variable used in the enqueue function.",
+      "difficulty_basis": "1-mark identification from given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(iii)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe one benefit and one drawback of global variables compared with parameter passing.",
+      "difficulty_basis": "4 marks; benefit and drawback each needing expansion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(iv)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why enqueue returns true or false and how the main program uses it.",
+      "difficulty_basis": "3-mark explanation of return values in a queue operation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(v)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Identify three errors in the dequeue pseudocode and state each correction.",
+      "difficulty_basis": "3 marks; debugging given queue code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(vi)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a main program that repeatedly calls dequeue and outputs items until empty.",
+      "difficulty_basis": "3-mark short loop algorithm using given function.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3",
+      "sections": [
+        "OCR_CS_2.3.1b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a",
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "2.3.1(b)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)",
+        "2.2.1(d)"
+      ],
+      "difficulty": "hard",
+      "summary": "Compare the suitability of two file-reading algorithms for reuse with files of unknown length.",
+      "difficulty_basis": "9-mark extended response comparing two unfamiliar algorithms.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)",
+      "sections": [
+        "OCR_CS_1.2.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Complete a table describing extreme programming, the waterfall lifecycle and the spiral model.",
+      "difficulty_basis": "6 marks describing three methodologies.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_AS_2.2.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "AS 2.2.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what alpha testing is.",
+      "difficulty_basis": "3-mark recall of a test strategy.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1a"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete the missing parts of a binary search pseudocode function.",
+      "difficulty_basis": "6 marks completing a standard algorithm with index arithmetic.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how an insertion sort puts given data into descending order.",
+      "difficulty_basis": "5-mark description of a standard algorithm applied to given data.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(ii)",
+      "sections": [
+        "OCR_CS_AS_2.2.2e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "AS 2.2.2(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give two sets of test data for an insertion sort and the purpose of each.",
+      "difficulty_basis": "2 marks choosing varied test data with justified purposes.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a",
+        "OCR_CS_2.1.4c"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)",
+        "2.1.4(c)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write a fizz buzz game algorithm checking each input and reporting the correct answer.",
+      "difficulty_basis": "8-mark original algorithm with loop, MOD and ordered multiple conditions.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

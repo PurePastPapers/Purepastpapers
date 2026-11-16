@@ -1,0 +1,617 @@
+{
+  "paper_id": "OCR_H446_2021_NOVEMBER_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "f82f30da873913e752def0c71ce03488941080c361c713afbbb34fa3d2c88d5d",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)",
+      "sections": [
+        "OCR_CS_2.2.2e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.1a"
+      ],
+      "codes": [
+        "2.2.2(e)"
+      ],
+      "prerequisite_codes": [
+        "2.1.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe how abstraction could be applied when designing an online circus game.",
+      "difficulty_basis": "3-mark describe task applying abstraction to a given game context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(i)",
+      "sections": [
+        "OCR_CS_2.1.5a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.5(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Define concurrent processing.",
+      "difficulty_basis": "2-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(ii)",
+      "sections": [
+        "OCR_CS_2.1.5b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.2f"
+      ],
+      "codes": [
+        "2.1.5(b)"
+      ],
+      "prerequisite_codes": [
+        "1.3.2(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why concurrent processing is needed for many simultaneous game users.",
+      "difficulty_basis": "3-mark explanation applying benefits of concurrency to a multi-user server scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Define a heuristic in the context of A* search.",
+      "difficulty_basis": "2-mark recall definition of a term.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Apply A* to a weighted graph with heuristics to find shortest path and distance.",
+      "difficulty_basis": "8-mark multi-step trace of A* tracking distances, heuristics and previous nodes on an unfamiliar graph.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)",
+      "sections": [
+        "OCR_CS_2.3.1e"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "2.3.1(e)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Show how a breadth-first traversal visits the nodes of a given binary tree.",
+      "difficulty_basis": "6-mark traversal applied to a given tree, level by level ordering.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(e)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.2b"
+      ],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [
+        "1.3.2(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Evaluate how data mining of user data can inform improvements to a game.",
+      "difficulty_basis": "9-mark extended response requiring evaluation in context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete missing statements in a pseudocode binary search function.",
+      "difficulty_basis": "6-mark completion of an iterative binary search requiring understanding of midpoint and bound updates.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State an alternative loop type to a while loop.",
+      "difficulty_basis": "1-mark recall of post-condition loop.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)",
+      "sections": [
+        "OCR_CS_2.3.1c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1d"
+      ],
+      "codes": [
+        "2.3.1(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Tick Big O space and time complexities for binary and linear search.",
+      "difficulty_basis": "6-mark recall of complexities across several cases requiring knowledge of both algorithms.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)",
+      "sections": [
+        "OCR_CS_2.3.1b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "2.3.1(b)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)"
+      ],
+      "difficulty": "easy",
+      "summary": "Identify a situation where linear search is preferable to binary search.",
+      "difficulty_basis": "1-mark recall of a familiar condition such as unsorted data.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how quicksort sorts a one dimensional array ascending.",
+      "difficulty_basis": "5-mark description of a multi-step standard algorithm with pivots and sublists.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_2.2.2d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "2.2.2(d)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why quicksort is called a divide and conquer algorithm.",
+      "difficulty_basis": "2-mark explanation linking quicksort to splitting into subproblems.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4",
+      "sections": [
+        "OCR_CS_2.2.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss the benefits of using an IDE rather than a text editor.",
+      "difficulty_basis": "9-mark extended response (*) requiring discussion with balanced points.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4e"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(e)"
+      ],
+      "difficulty": "easy",
+      "summary": "State the purpose of a class constructor.",
+      "difficulty_basis": "1-mark recall of object-oriented term.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "easy",
+      "summary": "Describe inheritance with reference to the given building classes.",
+      "difficulty_basis": "2-mark description tied to the supplied class diagram.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4e"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a class declaration with constructor, getter and setter statements.",
+      "difficulty_basis": "5-mark completion applying encapsulation, constructor and setter validation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4e"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a subclass declaration with attributes and constructor calling the parent constructor.",
+      "difficulty_basis": "6-mark code writing applying inheritance and super constructor calls.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(e)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2a"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a method that adds an object to the next free array position.",
+      "difficulty_basis": "4-mark short method writing using array and counter.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(f)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Write code to instantiate house and road objects and pass the house to the constructor.",
+      "difficulty_basis": "4-mark code writing creating objects with parameters.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.1b"
+      ],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.1.1(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Show which instructions are in which pipeline stage at each interval.",
+      "difficulty_basis": "4-mark trace of overlapping fetch decode execute stages for four instructions.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Explain why pipelining improves processor performance.",
+      "difficulty_basis": "2-mark explanation of familiar benefit.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2c"
+      ],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "State purpose and name of the two pointers of an array-based circular queue.",
+      "difficulty_basis": "4-mark recall and naming applied to circular queue implementation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1e"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe the steps of enqueue on a circular array queue.",
+      "difficulty_basis": "5-mark description including full check and pointer wraparound.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)(i)",
+      "sections": [
+        "OCR_CS_2.1.3d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2c"
+      ],
+      "codes": [
+        "2.1.3(d)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Extend a structure diagram by adding a layer of subtasks.",
+      "difficulty_basis": "3-mark decomposition of a given game into sub-procedures.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)(ii)",
+      "sections": [
+        "OCR_CS_2.2.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Explain why decomposing a problem helps design a solution.",
+      "difficulty_basis": "2-mark recall explanation of a familiar benefit.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)(iii)",
+      "sections": [
+        "OCR_CS_2.1.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify one input, process and output for the game.",
+      "difficulty_basis": "3-mark identification of inputs and outputs in a familiar context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2a"
+      ],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a pseudocode function counting consecutive set cells in an array row.",
+      "difficulty_basis": "5-mark completion requiring tracing the logic of a loop over a 2D array.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain the purpose of initialising a string variable on one line.",
+      "difficulty_basis": "2-mark explanation requiring understanding of string concatenation in a given listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(iii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4c"
+      ],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe the purpose of branching and iteration in the given function.",
+      "difficulty_basis": "3-mark description applied to a given listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(iv)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1d",
+        "OCR_CS_1.4.2a"
+      ],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(d)",
+        "1.4.2(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a procedure outputting a 2D array with row clues using nested loops and a function call.",
+      "difficulty_basis": "6-mark code writing with nested loops and a function call.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(v)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4b"
+      ],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Find and correct three logic errors in a function comparing two grids.",
+      "difficulty_basis": "3-mark debugging of a given listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(c)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(d)"
+      ],
+      "difficulty": "hard",
+      "summary": "Compare global and local variables and parameters in a given program.",
+      "difficulty_basis": "9-mark extended response (*) requiring comparison with application to context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(d)",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe how a program could automatically generate a new puzzle grid of any size.",
+      "difficulty_basis": "4-mark algorithm design describing random generation with loops.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

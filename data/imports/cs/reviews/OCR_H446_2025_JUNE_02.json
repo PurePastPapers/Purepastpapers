@@ -1,0 +1,648 @@
+{
+  "paper_id": "OCR_H446_2025_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "ff48691a647653d3e7a151ac1ce14d1d95549174ce927ef358844dbd9781975f",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe the steps a bubble sort takes to sort items ascending.",
+      "difficulty_basis": "5-mark description of a standard algorithm including flag and passes.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(a)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain how a bubble sort version could finish in fewer passes using a flag.",
+      "difficulty_basis": "2-mark reasoning about an optimisation applied to a given dataset.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how an insertion sort orders four given values.",
+      "difficulty_basis": "5-mark description applied to given data.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(i)",
+      "sections": [
+        "OCR_CS_2.2.1b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f"
+      ],
+      "codes": [
+        "2.2.1(b)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)"
+      ],
+      "difficulty": "easy",
+      "summary": "Identify the recursive function and its recursive call lines in a quick sort listing.",
+      "difficulty_basis": "2-mark routine reading of a listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the type of iteration used in the partition function.",
+      "difficulty_basis": "1-mark recall of count-controlled loop.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(iii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe the role of the partition function in quick sort.",
+      "difficulty_basis": "3-mark description interpreting a given listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(iv)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Change one line of quick sort so it sorts descending.",
+      "difficulty_basis": "2-mark reasoning about a comparison condition in a given listing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(v)",
+      "sections": [
+        "OCR_CS_2.2.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what divide and conquer means.",
+      "difficulty_basis": "2-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1c",
+        "OCR_CS_2.3.1b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(c)",
+        "2.3.1(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Compare linear and binary search on 50 million sorted records using Big O and recommend one.",
+      "difficulty_basis": "9-mark extended response (*) requiring comparison, complexity reasoning and justified conclusion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what data mining means.",
+      "difficulty_basis": "3-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how a shopping website company could use data mining to improve the site.",
+      "difficulty_basis": "2-mark application of data mining to a scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Show stack contents and pointer after two pushes.",
+      "difficulty_basis": "2-mark routine trace of stack operations.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Complete the push function for an array-based stack with a full check.",
+      "difficulty_basis": "4-mark completion applying pointer logic.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a pop function returning false when the stack is empty.",
+      "difficulty_basis": "6-mark function writing with empty check and pointer update.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a main program pushing ten inputs then popping them to reverse the data.",
+      "difficulty_basis": "5-mark code writing with two loops using stack subroutines.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.1b"
+      ],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.1.1(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss pipelining of the first four instructions through fetch, decode and execute and justify its use.",
+      "difficulty_basis": "9-mark extended response (*) requiring explanation, application to four instructions and conclusion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_2.1.1c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2e"
+      ],
+      "codes": [
+        "2.1.1(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why a graph is a visualisation of the planet travel problem.",
+      "difficulty_basis": "2-mark explanation of abstraction applied to context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Apply Dijkstra's algorithm to a directed weighted graph to find cheapest path and cost.",
+      "difficulty_basis": "7-mark table-based trace of a standard algorithm on a directed graph.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2f"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe how A* uses heuristics to be efficient.",
+      "difficulty_basis": "2-mark description linking heuristics to efficiency.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_2.2.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Identify and describe three IDE debugging features.",
+      "difficulty_basis": "6-mark identification and description of three features.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Explain the difference between global and local variables.",
+      "difficulty_basis": "2-mark recall of familiar distinction.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe one drawback of global variables.",
+      "difficulty_basis": "2-mark recall of a familiar drawback.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(iii)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe one drawback of local variables.",
+      "difficulty_basis": "2-mark recall of a familiar drawback.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(c)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what passing a parameter by value means.",
+      "difficulty_basis": "2-mark recall definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(d)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2a"
+      ],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Find and correct four errors in nested-loop pseudocode counting values using a two-dimensional array.",
+      "difficulty_basis": "4-mark debugging of an unfamiliar multi-error listing with nested loops and 2D array indexing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Add five values to a binary search tree.",
+      "difficulty_basis": "3-mark insertion applying BST ordering repeatedly.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1c"
+      ],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe the drawback of an unbalanced binary search tree when searching.",
+      "difficulty_basis": "2-mark explanation linking tree shape to search cost.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(c)",
+      "sections": [
+        "OCR_CS_2.3.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give outputs of post-order depth-first and breadth-first traversals of a given tree.",
+      "difficulty_basis": "4-mark trace of two traversals on a given tree.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe the features of a linked list data structure.",
+      "difficulty_basis": "3-mark recall of structure features.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4e"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(e)"
+      ],
+      "difficulty": "easy",
+      "summary": "Write a get method returning an attribute.",
+      "difficulty_basis": "2-mark routine short method.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4e"
+      ],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(e)"
+      ],
+      "difficulty": "easy",
+      "summary": "Write a set method assigning a parameter to an attribute.",
+      "difficulty_basis": "3-mark routine short method.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(c)(i)",
+      "sections": [
+        "OCR_CS_2.2.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Write a constructor initialising an attribute to null.",
+      "difficulty_basis": "2-mark routine constructor.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(c)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1e",
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(e)",
+        "2.2.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a method traversing an object-based linked list and joining node data.",
+      "difficulty_basis": "5-mark completion of pointer traversal using accessor methods.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(d)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write code creating a linked list object, inserting three values and outputting it.",
+      "difficulty_basis": "5-mark code writing using object instantiation and method calls.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(e)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1e"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe the steps and decisions to remove a node from a linked list.",
+      "difficulty_basis": "5-mark description of traversal and pointer reassignment with decisions.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(f)",
+      "sections": [
+        "OCR_CS_2.2.2a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.2f"
+      ],
+      "codes": [
+        "2.2.2(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.2(f)"
+      ],
+      "difficulty": "easy",
+      "summary": "Identify three computational methods other than divide and conquer.",
+      "difficulty_basis": "3-mark recall of named computational methods.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(g)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f",
+        "OCR_CS_2.1.2d",
+        "OCR_CS_2.3.1b"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)",
+        "2.1.2(d)",
+        "2.3.1(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Compare object-based and array-based linked list implementations and evaluate their efficiency.",
+      "difficulty_basis": "12-mark extended response (*) requiring comparison of two implementations with evaluative conclusion.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

@@ -1,102 +1,3311 @@
 {
   "subject_id": "OCR_ALEVEL_CS_H446",
+  "specification_version": "ocr-h446-v3.0-2026-04",
+  "official_source_url": "https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf",
+  "order_status": "verified",
+  "official_source": {
+    "title": "OCR A Level Computer Science (H446) specification",
+    "version": "Version 3.0",
+    "issue_date": "April 2026",
+    "first_teaching": 2015,
+    "first_exams": 2017,
+    "url": "https://www.ocr.org.uk/Images/170844-specification-accredited-a-level-gce-computer-science-h446.pdf",
+    "sha256": "8551bc2636fa4d8718d97901b462b0642b4bb6148e06407f662c507750764a44",
+    "verified_at": "2026-11-16",
+    "as_qualification": {
+      "code": "H046",
+      "title": "OCR AS Level Computer Science (H046) specification",
+      "version": "Version 2.0",
+      "issue_date": "February 2026",
+      "first_exams": 2016,
+      "url": "https://www.ocr.org.uk/Images/170845-specification-accredited-as-level-gce-computer-science-h046.pdf",
+      "sha256": "7445600025a30cb6ec539e4ffefdd9a8a21f3a9a096cbd1f62076a3c909ecd6b"
+    }
+  },
+  "approach": "Official OCR content order. No textbook organisation has been supplied.",
+  "components": {
+    "H446/01": {
+      "title": "Computer systems",
+      "marks": 140,
+      "minutes": 150,
+      "sections": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5"
+      ]
+    },
+    "H446/02": {
+      "title": "Algorithms and programming",
+      "marks": 140,
+      "minutes": 150,
+      "sections": [
+        "2.1",
+        "2.2",
+        "2.3"
+      ],
+      "note": "Synoptic: may also assess Component 01 content."
+    },
+    "H446/03-04": {
+      "title": "Programming project (NEA)",
+      "written_exam": false,
+      "note": "Coursework: not imported as exam questions."
+    },
+    "H046/01": {
+      "title": "AS Computing principles",
+      "marks": 70,
+      "minutes": 75
+    },
+    "H046/02": {
+      "title": "AS Algorithms and problem solving",
+      "marks": 70,
+      "minutes": 75
+    }
+  },
+  "as_section_map": {
+    "1.1.1(a)": {
+      "leaf": "OCR_CS_1.1.1a",
+      "similarity": 1.0
+    },
+    "1.1.1(b)": {
+      "leaf": "OCR_CS_1.1.1b",
+      "similarity": 1.0
+    },
+    "1.1.1(c)": {
+      "leaf": "OCR_CS_1.1.1c",
+      "similarity": 1.0
+    },
+    "1.1.1(d)": {
+      "leaf": "OCR_CS_1.1.1e",
+      "similarity": 1.0
+    },
+    "1.1.2(a)": {
+      "leaf": "OCR_CS_1.1.2a",
+      "similarity": 1.0
+    },
+    "1.1.2(b)": {
+      "leaf": "OCR_CS_1.1.2c",
+      "similarity": 1.0
+    },
+    "1.1.3(a)": {
+      "leaf": "OCR_CS_1.1.3a",
+      "similarity": 1.0
+    },
+    "1.1.3(b)": {
+      "leaf": "OCR_CS_1.1.3b",
+      "similarity": 1.0
+    },
+    "1.1.3(c)": {
+      "leaf": "OCR_CS_1.1.3c",
+      "similarity": 1.0
+    },
+    "1.1.3(d)": {
+      "leaf": "OCR_CS_1.1.3d",
+      "similarity": 1.0
+    },
+    "1.2.1(a)": {
+      "leaf": "OCR_CS_1.2.1a",
+      "similarity": 1.0
+    },
+    "1.2.1(b)": {
+      "leaf": "OCR_CS_1.2.1b",
+      "similarity": 1.0
+    },
+    "1.2.1(c)": {
+      "leaf": "OCR_CS_1.2.1c",
+      "similarity": 1.0
+    },
+    "1.2.1(d)": {
+      "leaf": "OCR_CS_1.2.1d",
+      "similarity": 1.0
+    },
+    "1.2.1(e)": {
+      "leaf": "OCR_CS_1.2.1e",
+      "similarity": 1.0
+    },
+    "1.2.1(f)": {
+      "leaf": "OCR_CS_1.2.1f",
+      "similarity": 1.0
+    },
+    "1.2.1(g)": {
+      "leaf": "OCR_CS_1.2.1g",
+      "similarity": 1.0
+    },
+    "1.2.1(h)": {
+      "leaf": "OCR_CS_1.2.1h",
+      "similarity": 1.0
+    },
+    "1.2.2(a)": {
+      "leaf": "OCR_CS_1.2.2a",
+      "similarity": 1.0
+    },
+    "1.2.2(b)": {
+      "leaf": "OCR_CS_1.2.2b",
+      "similarity": 1.0
+    },
+    "1.2.2(c)": {
+      "leaf": "OCR_CS_1.2.2c",
+      "similarity": 1.0
+    },
+    "1.2.2(d)": {
+      "leaf": "OCR_CS_1.2.2d",
+      "similarity": 1.0
+    },
+    "1.2.3(a)": {
+      "leaf": "OCR_CS_1.2.4b",
+      "similarity": 0.2,
+      "lead_override": "AS procedural programming techniques are the content of A-level 1.2.4(b) Procedural languages"
+    },
+    "1.2.3(b)": {
+      "leaf": "OCR_CS_1.2.4c",
+      "similarity": 1.0
+    },
+    "1.3.1(a)": {
+      "leaf": "OCR_CS_1.3.2a",
+      "similarity": 1.0
+    },
+    "1.3.1(b)": {
+      "leaf": "OCR_CS_1.3.2b",
+      "similarity": 1.0
+    },
+    "1.3.2(a)": {
+      "leaf": "OCR_CS_1.3.3a",
+      "similarity": 1.0
+    },
+    "1.3.2(b)": {
+      "leaf": "OCR_CS_1.3.3b",
+      "similarity": 1.0
+    },
+    "1.3.2(c)": {
+      "leaf": "OCR_CS_1.3.3e",
+      "similarity": 1.0
+    },
+    "1.3.3(a)": {
+      "leaf": "OCR_CS_1.3.4a",
+      "similarity": 1.0
+    },
+    "1.3.3(b)": {
+      "leaf": "OCR_CS_1.3.1a",
+      "similarity": 1.0
+    },
+    "1.4.1(a)": {
+      "leaf": "OCR_CS_1.4.1a",
+      "similarity": 1.0
+    },
+    "1.4.1(b)": {
+      "leaf": "OCR_CS_1.4.1b",
+      "similarity": 1.0
+    },
+    "1.4.1(c)": {
+      "leaf": "OCR_CS_1.4.1c",
+      "similarity": 1.0
+    },
+    "1.4.1(d)": {
+      "leaf": "OCR_CS_1.4.1d",
+      "similarity": 1.0
+    },
+    "1.4.1(e)": {
+      "leaf": "OCR_CS_1.4.1e",
+      "similarity": 1.0
+    },
+    "1.4.1(f)": {
+      "leaf": "OCR_CS_1.4.1f",
+      "similarity": 1.0
+    },
+    "1.4.1(g)": {
+      "leaf": "OCR_CS_1.4.1g",
+      "similarity": 0.625
+    },
+    "1.4.1(h)": {
+      "leaf": "OCR_CS_1.4.1j",
+      "similarity": 1.0
+    },
+    "1.4.2(a)": {
+      "leaf": "OCR_CS_1.4.2a",
+      "similarity": 1.0
+    },
+    "1.4.2(b)": {
+      "leaf": "OCR_CS_1.4.2b",
+      "similarity": 0.667
+    },
+    "1.4.3(a)": {
+      "leaf": "OCR_CS_1.4.3a",
+      "similarity": 1.0
+    },
+    "1.4.3(b)": {
+      "leaf": "OCR_CS_1.4.3b",
+      "similarity": 1.0
+    },
+    "1.4.3(c)": {
+      "leaf": "OCR_CS_1.4.3d",
+      "similarity": 1.0
+    },
+    "1.5.1(a)": {
+      "leaf": "OCR_CS_1.5.1a",
+      "similarity": 1.0
+    },
+    "1.5.1(b)": {
+      "leaf": "OCR_CS_1.5.1b",
+      "similarity": 1.0
+    },
+    "1.5.1(c)": {
+      "leaf": "OCR_CS_1.5.1c",
+      "similarity": 1.0
+    },
+    "1.5.1(d)": {
+      "leaf": "OCR_CS_1.5.1d",
+      "similarity": 1.0
+    },
+    "1.5.2(a)": {
+      "leaf": "OCR_CS_1.5.2_whole",
+      "similarity": 1.0
+    },
+    "2.1.1(a)": {
+      "leaf": "OCR_CS_2.1.1a",
+      "similarity": 1.0
+    },
+    "2.1.1(b)": {
+      "leaf": "OCR_CS_2.1.1b",
+      "similarity": 1.0
+    },
+    "2.1.1(c)": {
+      "leaf": "OCR_CS_2.1.1c",
+      "similarity": 1.0
+    },
+    "2.1.1(d)": {
+      "leaf": "OCR_CS_2.1.1d",
+      "similarity": 1.0
+    },
+    "2.1.2(a)": {
+      "leaf": "OCR_CS_2.1.2a",
+      "similarity": 1.0
+    },
+    "2.1.2(b)": {
+      "leaf": "OCR_CS_2.1.2b",
+      "similarity": 1.0
+    },
+    "2.1.2(c)": {
+      "leaf": "OCR_CS_2.1.2d",
+      "similarity": 1.0
+    },
+    "2.1.3(a)": {
+      "leaf": "OCR_CS_2.1.3a",
+      "similarity": 1.0
+    },
+    "2.1.3(b)": {
+      "leaf": "OCR_CS_2.1.3b",
+      "similarity": 1.0
+    },
+    "2.1.3(c)": {
+      "leaf": "OCR_CS_2.1.3c",
+      "similarity": 1.0
+    },
+    "2.1.3(d)": {
+      "leaf": "OCR_CS_2.1.3d",
+      "similarity": 1.0
+    },
+    "2.1.4(a)": {
+      "leaf": "OCR_CS_2.1.4a",
+      "similarity": 1.0
+    },
+    "2.1.4(b)": {
+      "leaf": "OCR_CS_2.1.4b",
+      "similarity": 1.0
+    },
+    "2.1.4(c)": {
+      "leaf": "OCR_CS_2.1.4c",
+      "similarity": 1.0
+    },
+    "2.2.1(a)": {
+      "leaf": "OCR_CS_2.2.1a",
+      "similarity": 1.0
+    },
+    "2.2.1(b)": {
+      "leaf": "OCR_CS_2.2.1c",
+      "similarity": 1.0
+    },
+    "2.2.1(c)": {
+      "leaf": "OCR_CS_2.2.1d",
+      "similarity": 1.0
+    },
+    "2.2.1(d)": {
+      "leaf": "OCR_CS_2.2.1e",
+      "similarity": 1.0
+    },
+    "2.2.2(a)": {
+      "leaf": "OCR_CS_1.2.3a",
+      "similarity": 1.0
+    },
+    "2.2.2(b)": {
+      "leaf": "OCR_CS_1.2.3b",
+      "similarity": 1.0
+    },
+    "2.2.2(c)": {
+      "leaf": "OCR_CS_1.2.3c",
+      "similarity": 1.0
+    },
+    "2.3.1(a)": {
+      "leaf": "OCR_CS_2.3.1a",
+      "similarity": 1.0
+    },
+    "2.3.1(b)": {
+      "leaf": "OCR_CS_2.3.1f",
+      "similarity": 1.0
+    },
+    "2.3.1(c)": {
+      "leaf": "OCR_CS_2.3.1f",
+      "similarity": 0.75
+    },
+    "2.3.1(d)": {
+      "leaf": "OCR_CS_2.3.1f",
+      "similarity": 0.75
+    },
+    "2.3.1(e)": {
+      "leaf": "OCR_CS_1.4.2c",
+      "similarity": 0.5,
+      "lead_override": "AS adding to and removing from stacks and queues is A-level 1.4.2(c) for those structures"
+    },
+    "2.3.1(f)": {
+      "leaf": "OCR_CS_2.3.1b",
+      "similarity": 0.833
+    },
+    "2.2.2(d)": {
+      "leaf": "OCR_CS_AS_2.2.2d",
+      "similarity": 0.24,
+      "as_only": true
+    },
+    "2.2.2(e)": {
+      "leaf": "OCR_CS_AS_2.2.2e",
+      "similarity": 0.333,
+      "as_only": true
+    }
+  },
+  "notes": "Leaves are OCR lettered content points (OCR_CS_1.1.1a, printed 1.1.1(a)); content is OCR wording. Topics keep the earlier ids. AS H046 points are matched to A-level points by text similarity (recorded); unmatched AS points are AS-only leaves.",
+  "legacy_ids": {
+    "OCR_CS_1.1.1": [
+      "OCR_CS_1.1.1a",
+      "OCR_CS_1.1.1b",
+      "OCR_CS_1.1.1c",
+      "OCR_CS_1.1.1d",
+      "OCR_CS_1.1.1e"
+    ],
+    "OCR_CS_1.1.2": [
+      "OCR_CS_1.1.2a",
+      "OCR_CS_1.1.2b",
+      "OCR_CS_1.1.2c"
+    ],
+    "OCR_CS_1.1.3": [
+      "OCR_CS_1.1.3a",
+      "OCR_CS_1.1.3b",
+      "OCR_CS_1.1.3c",
+      "OCR_CS_1.1.3d"
+    ],
+    "OCR_CS_1.2.1": [
+      "OCR_CS_1.2.1a",
+      "OCR_CS_1.2.1b",
+      "OCR_CS_1.2.1c",
+      "OCR_CS_1.2.1d",
+      "OCR_CS_1.2.1e",
+      "OCR_CS_1.2.1f",
+      "OCR_CS_1.2.1g",
+      "OCR_CS_1.2.1h"
+    ],
+    "OCR_CS_1.2.2": [
+      "OCR_CS_1.2.2a",
+      "OCR_CS_1.2.2b",
+      "OCR_CS_1.2.2c",
+      "OCR_CS_1.2.2d",
+      "OCR_CS_1.2.2e",
+      "OCR_CS_1.2.2f"
+    ],
+    "OCR_CS_1.2.3": [
+      "OCR_CS_1.2.3a",
+      "OCR_CS_1.2.3b",
+      "OCR_CS_1.2.3c"
+    ],
+    "OCR_CS_1.2.4": [
+      "OCR_CS_1.2.4a",
+      "OCR_CS_1.2.4b",
+      "OCR_CS_1.2.4c",
+      "OCR_CS_1.2.4d",
+      "OCR_CS_1.2.4e"
+    ],
+    "OCR_CS_1.3.1": [
+      "OCR_CS_1.3.1a",
+      "OCR_CS_1.3.1b",
+      "OCR_CS_1.3.1c",
+      "OCR_CS_1.3.1d"
+    ],
+    "OCR_CS_1.3.2": [
+      "OCR_CS_1.3.2a",
+      "OCR_CS_1.3.2b",
+      "OCR_CS_1.3.2c",
+      "OCR_CS_1.3.2d",
+      "OCR_CS_1.3.2e",
+      "OCR_CS_1.3.2f"
+    ],
+    "OCR_CS_1.3.3": [
+      "OCR_CS_1.3.3a",
+      "OCR_CS_1.3.3b",
+      "OCR_CS_1.3.3c",
+      "OCR_CS_1.3.3d",
+      "OCR_CS_1.3.3e"
+    ],
+    "OCR_CS_1.3.4": [
+      "OCR_CS_1.3.4a",
+      "OCR_CS_1.3.4b",
+      "OCR_CS_1.3.4c",
+      "OCR_CS_1.3.4d"
+    ],
+    "OCR_CS_1.4.1": [
+      "OCR_CS_1.4.1a",
+      "OCR_CS_1.4.1b",
+      "OCR_CS_1.4.1c",
+      "OCR_CS_1.4.1d",
+      "OCR_CS_1.4.1e",
+      "OCR_CS_1.4.1f",
+      "OCR_CS_1.4.1g",
+      "OCR_CS_1.4.1h",
+      "OCR_CS_1.4.1i",
+      "OCR_CS_1.4.1j"
+    ],
+    "OCR_CS_1.4.2": [
+      "OCR_CS_1.4.2a",
+      "OCR_CS_1.4.2b",
+      "OCR_CS_1.4.2c"
+    ],
+    "OCR_CS_1.4.3": [
+      "OCR_CS_1.4.3a",
+      "OCR_CS_1.4.3b",
+      "OCR_CS_1.4.3c",
+      "OCR_CS_1.4.3d",
+      "OCR_CS_1.4.3e"
+    ],
+    "OCR_CS_1.5.1": [
+      "OCR_CS_1.5.1a",
+      "OCR_CS_1.5.1b",
+      "OCR_CS_1.5.1c",
+      "OCR_CS_1.5.1d"
+    ],
+    "OCR_CS_1.5.2": [
+      "OCR_CS_1.5.2_whole"
+    ],
+    "OCR_CS_2.1.1": [
+      "OCR_CS_2.1.1a",
+      "OCR_CS_2.1.1b",
+      "OCR_CS_2.1.1c",
+      "OCR_CS_2.1.1d"
+    ],
+    "OCR_CS_2.1.2": [
+      "OCR_CS_2.1.2a",
+      "OCR_CS_2.1.2b",
+      "OCR_CS_2.1.2c",
+      "OCR_CS_2.1.2d"
+    ],
+    "OCR_CS_2.1.3": [
+      "OCR_CS_2.1.3a",
+      "OCR_CS_2.1.3b",
+      "OCR_CS_2.1.3c",
+      "OCR_CS_2.1.3d"
+    ],
+    "OCR_CS_2.1.4": [
+      "OCR_CS_2.1.4a",
+      "OCR_CS_2.1.4b",
+      "OCR_CS_2.1.4c"
+    ],
+    "OCR_CS_2.1.5": [
+      "OCR_CS_2.1.5a",
+      "OCR_CS_2.1.5b"
+    ],
+    "OCR_CS_2.2.1": [
+      "OCR_CS_2.2.1a",
+      "OCR_CS_2.2.1b",
+      "OCR_CS_2.2.1c",
+      "OCR_CS_2.2.1d",
+      "OCR_CS_2.2.1e",
+      "OCR_CS_2.2.1f"
+    ],
+    "OCR_CS_2.2.2": [
+      "OCR_CS_2.2.2a",
+      "OCR_CS_2.2.2b",
+      "OCR_CS_2.2.2c",
+      "OCR_CS_2.2.2d",
+      "OCR_CS_2.2.2e",
+      "OCR_CS_2.2.2f"
+    ],
+    "OCR_CS_2.3.1": [
+      "OCR_CS_2.3.1a",
+      "OCR_CS_2.3.1b",
+      "OCR_CS_2.3.1c",
+      "OCR_CS_2.3.1d",
+      "OCR_CS_2.3.1e",
+      "OCR_CS_2.3.1f"
+    ]
+  },
+  "point_order": [
+    "OCR_CS_1.1.1a",
+    "OCR_CS_1.1.1b",
+    "OCR_CS_1.1.1c",
+    "OCR_CS_1.1.1d",
+    "OCR_CS_1.1.1e",
+    "OCR_CS_1.1.2a",
+    "OCR_CS_1.1.2b",
+    "OCR_CS_1.1.2c",
+    "OCR_CS_1.1.3a",
+    "OCR_CS_1.1.3b",
+    "OCR_CS_1.1.3c",
+    "OCR_CS_1.1.3d",
+    "OCR_CS_1.2.1a",
+    "OCR_CS_1.2.1b",
+    "OCR_CS_1.2.1c",
+    "OCR_CS_1.2.1d",
+    "OCR_CS_1.2.1e",
+    "OCR_CS_1.2.1f",
+    "OCR_CS_1.2.1g",
+    "OCR_CS_1.2.1h",
+    "OCR_CS_1.2.2a",
+    "OCR_CS_1.2.2b",
+    "OCR_CS_1.2.2c",
+    "OCR_CS_1.2.2d",
+    "OCR_CS_1.2.2e",
+    "OCR_CS_1.2.2f",
+    "OCR_CS_1.2.3a",
+    "OCR_CS_1.2.3b",
+    "OCR_CS_1.2.3c",
+    "OCR_CS_1.2.4a",
+    "OCR_CS_1.2.4b",
+    "OCR_CS_1.2.4c",
+    "OCR_CS_1.2.4d",
+    "OCR_CS_1.2.4e",
+    "OCR_CS_1.3.1a",
+    "OCR_CS_1.3.1b",
+    "OCR_CS_1.3.1c",
+    "OCR_CS_1.3.1d",
+    "OCR_CS_1.3.2a",
+    "OCR_CS_1.3.2b",
+    "OCR_CS_1.3.2c",
+    "OCR_CS_1.3.2d",
+    "OCR_CS_1.3.2e",
+    "OCR_CS_1.3.2f",
+    "OCR_CS_1.3.3a",
+    "OCR_CS_1.3.3b",
+    "OCR_CS_1.3.3c",
+    "OCR_CS_1.3.3d",
+    "OCR_CS_1.3.3e",
+    "OCR_CS_1.3.4a",
+    "OCR_CS_1.3.4b",
+    "OCR_CS_1.3.4c",
+    "OCR_CS_1.3.4d",
+    "OCR_CS_1.4.1a",
+    "OCR_CS_1.4.1b",
+    "OCR_CS_1.4.1c",
+    "OCR_CS_1.4.1d",
+    "OCR_CS_1.4.1e",
+    "OCR_CS_1.4.1f",
+    "OCR_CS_1.4.1g",
+    "OCR_CS_1.4.1h",
+    "OCR_CS_1.4.1i",
+    "OCR_CS_1.4.1j",
+    "OCR_CS_1.4.2a",
+    "OCR_CS_1.4.2b",
+    "OCR_CS_1.4.2c",
+    "OCR_CS_1.4.3a",
+    "OCR_CS_1.4.3b",
+    "OCR_CS_1.4.3c",
+    "OCR_CS_1.4.3d",
+    "OCR_CS_1.4.3e",
+    "OCR_CS_1.5.1a",
+    "OCR_CS_1.5.1b",
+    "OCR_CS_1.5.1c",
+    "OCR_CS_1.5.1d",
+    "OCR_CS_1.5.2_whole",
+    "OCR_CS_2.1.1a",
+    "OCR_CS_2.1.1b",
+    "OCR_CS_2.1.1c",
+    "OCR_CS_2.1.1d",
+    "OCR_CS_2.1.2a",
+    "OCR_CS_2.1.2b",
+    "OCR_CS_2.1.2c",
+    "OCR_CS_2.1.2d",
+    "OCR_CS_2.1.3a",
+    "OCR_CS_2.1.3b",
+    "OCR_CS_2.1.3c",
+    "OCR_CS_2.1.3d",
+    "OCR_CS_2.1.4a",
+    "OCR_CS_2.1.4b",
+    "OCR_CS_2.1.4c",
+    "OCR_CS_2.1.5a",
+    "OCR_CS_2.1.5b",
+    "OCR_CS_2.2.1a",
+    "OCR_CS_2.2.1b",
+    "OCR_CS_2.2.1c",
+    "OCR_CS_2.2.1d",
+    "OCR_CS_2.2.1e",
+    "OCR_CS_2.2.1f",
+    "OCR_CS_2.2.2a",
+    "OCR_CS_2.2.2b",
+    "OCR_CS_2.2.2c",
+    "OCR_CS_2.2.2d",
+    "OCR_CS_2.2.2e",
+    "OCR_CS_2.2.2f",
+    "OCR_CS_AS_2.2.2d",
+    "OCR_CS_AS_2.2.2e",
+    "OCR_CS_2.3.1a",
+    "OCR_CS_2.3.1b",
+    "OCR_CS_2.3.1c",
+    "OCR_CS_2.3.1d",
+    "OCR_CS_2.3.1e",
+    "OCR_CS_2.3.1f"
+  ],
   "sections": [
     {
-      "id": "OCR_CS_SEC_C1",
-      "title": "Component 01: Computer systems",
+      "id": "OCR_CS_1.1",
+      "code": "1.1",
+      "title": "1.1 The characteristics of contemporary processors, input, output and storage devices",
+      "official_reference": {
+        "component": "H446/01",
+        "source_pages": [
+          12
+        ]
+      },
+      "note": "Components of a computer and their uses",
       "topics": [
         {
-          "id": "OCR_CS_1.1",
-          "code": "1.1",
-          "title": "The characteristics of contemporary processors, input, output and storage devices",
-          "kind": "topic",
+          "id": "OCR_CS_1.1.1",
+          "code": "1.1.1",
+          "title": "Structure and function of the processor",
+          "kind": "group",
           "points": [
-            {"id":"OCR_CS_1.1.1","code":"1.1.1","title":"Structure and function of the processor"},
-            {"id":"OCR_CS_1.1.2","code":"1.1.2","title":"Types of processor"},
-            {"id":"OCR_CS_1.1.3","code":"1.1.3","title":"Input, output and storage"}
+            {
+              "id": "OCR_CS_1.1.1a",
+              "code": "1.1.1(a)",
+              "title": "The Arithmetic and Logic Unit; ALU, Control Unit and Registers (Program Counter; PC, Accumulator; ACC, Memory Address Register; MAR, Memory Data Register;...",
+              "official_reference": {
+                "section": "1.1.1(a)",
+                "topic": "1.1.1",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The Arithmetic and Logic Unit; ALU, Control Unit and Registers (Program Counter; PC, Accumulator; ACC, Memory Address Register; MAR, Memory Data Register; MDR, Current Instruction Register; CIR). Buses: data, address and control: how this relates to assembly language programs."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.1.1b",
+              "code": "1.1.1(b)",
+              "title": "The Fetch-Decode-Execute Cycle; including its effects on registers.",
+              "official_reference": {
+                "section": "1.1.1(b)",
+                "topic": "1.1.1",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The Fetch-Decode-Execute Cycle; including its effects on registers."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.1(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.1.1c",
+              "code": "1.1.1(c)",
+              "title": "The factors affecting the performance of the CPU: clock speed, number of cores, cache.",
+              "official_reference": {
+                "section": "1.1.1(c)",
+                "topic": "1.1.1",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The factors affecting the performance of the CPU: clock speed, number of cores, cache."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.1(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.1.1d",
+              "code": "1.1.1(d)",
+              "title": "The use of pipelining in a processor to improve efficiency.",
+              "official_reference": {
+                "section": "1.1.1(d)",
+                "topic": "1.1.1",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The use of pipelining in a processor to improve efficiency."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.1.1e",
+              "code": "1.1.1(e)",
+              "title": "Von Neumann, Harvard and contemporary processor architecture.",
+              "official_reference": {
+                "section": "1.1.1(e)",
+                "topic": "1.1.1",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "Von Neumann, Harvard and contemporary processor architecture."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.1(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
-          "id": "OCR_CS_1.2",
-          "code": "1.2",
-          "title": "Software and software development",
-          "kind": "topic",
+          "id": "OCR_CS_1.1.2",
+          "code": "1.1.2",
+          "title": "Types of processor",
+          "kind": "group",
           "points": [
-            {"id":"OCR_CS_1.2.1","code":"1.2.1","title":"Systems software"},
-            {"id":"OCR_CS_1.2.2","code":"1.2.2","title":"Applications generation"},
-            {"id":"OCR_CS_1.2.3","code":"1.2.3","title":"Software development"},
-            {"id":"OCR_CS_1.2.4","code":"1.2.4","title":"Types of programming language"}
+            {
+              "id": "OCR_CS_1.1.2a",
+              "code": "1.1.2(a)",
+              "title": "The differences between and uses of CISC and RISC processors.",
+              "official_reference": {
+                "section": "1.1.2(a)",
+                "topic": "1.1.2",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The differences between and uses of CISC and RISC processors."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.2(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.1.2b",
+              "code": "1.1.2(b)",
+              "title": "GPUs and their uses (including those not related to graphics).",
+              "official_reference": {
+                "section": "1.1.2(b)",
+                "topic": "1.1.2",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "GPUs and their uses (including those not related to graphics)."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.1.2c",
+              "code": "1.1.2(c)",
+              "title": "Multicore and Parallel systems.",
+              "official_reference": {
+                "section": "1.1.2(c)",
+                "topic": "1.1.2",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "Multicore and Parallel systems."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.2(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
-          "id": "OCR_CS_1.3",
-          "code": "1.3",
-          "title": "Exchanging data",
-          "kind": "topic",
+          "id": "OCR_CS_1.1.3",
+          "code": "1.1.3",
+          "title": "Input, output and storage",
+          "kind": "group",
           "points": [
-            {"id":"OCR_CS_1.3.1","code":"1.3.1","title":"Compression, encryption and hashing"},
-            {"id":"OCR_CS_1.3.2","code":"1.3.2","title":"Databases"},
-            {"id":"OCR_CS_1.3.3","code":"1.3.3","title":"Networks"},
-            {"id":"OCR_CS_1.3.4","code":"1.3.4","title":"Web technologies"}
-          ]
-        },
-        {
-          "id": "OCR_CS_1.4",
-          "code": "1.4",
-          "title": "Data types, data structures and algorithms",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CS_1.4.1","code":"1.4.1","title":"Data types"},
-            {"id":"OCR_CS_1.4.2","code":"1.4.2","title":"Data structures"},
-            {"id":"OCR_CS_1.4.3","code":"1.4.3","title":"Boolean algebra"}
-          ]
-        },
-        {
-          "id": "OCR_CS_1.5",
-          "code": "1.5",
-          "title": "Legal, moral, cultural and ethical issues",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CS_1.5.1","code":"1.5.1","title":"Computing related legislation"},
-            {"id":"OCR_CS_1.5.2","code":"1.5.2","title":"Moral and ethical issues"}
+            {
+              "id": "OCR_CS_1.1.3a",
+              "code": "1.1.3(a)",
+              "title": "How different input, output and storage devices can be applied to the solution of different problems.",
+              "official_reference": {
+                "section": "1.1.3(a)",
+                "topic": "1.1.3",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "How different input, output and storage devices can be applied to the solution of different problems."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.3(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.1.3b",
+              "code": "1.1.3(b)",
+              "title": "The uses of magnetic, flash and optical storage devices.",
+              "official_reference": {
+                "section": "1.1.3(b)",
+                "topic": "1.1.3",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The uses of magnetic, flash and optical storage devices."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.3(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.1.3c",
+              "code": "1.1.3(c)",
+              "title": "RAM and ROM.",
+              "official_reference": {
+                "section": "1.1.3(c)",
+                "topic": "1.1.3",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "RAM and ROM."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.3(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.1.3d",
+              "code": "1.1.3(d)",
+              "title": "Virtual storage.",
+              "official_reference": {
+                "section": "1.1.3(d)",
+                "topic": "1.1.3",
+                "component": "H446/01",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "Virtual storage."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.1.3(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         }
       ]
     },
     {
-      "id": "OCR_CS_SEC_C2",
-      "title": "Component 02: Algorithms and programming",
+      "id": "OCR_CS_1.2",
+      "code": "1.2",
+      "title": "1.2 Software and software development",
+      "official_reference": {
+        "component": "H446/01",
+        "source_pages": [
+          13
+        ]
+      },
+      "note": "Types of software and the different methodologies used to develop software",
       "topics": [
         {
-          "id": "OCR_CS_2.1",
-          "code": "2.1",
-          "title": "Elements of computational thinking",
-          "kind": "topic",
+          "id": "OCR_CS_1.2.1",
+          "code": "1.2.1",
+          "title": "Systems Software",
+          "kind": "group",
           "points": [
-            {"id":"OCR_CS_2.1.1","code":"2.1.1","title":"Thinking abstractly"},
-            {"id":"OCR_CS_2.1.2","code":"2.1.2","title":"Thinking ahead"},
-            {"id":"OCR_CS_2.1.3","code":"2.1.3","title":"Thinking procedurally"},
-            {"id":"OCR_CS_2.1.4","code":"2.1.4","title":"Thinking logically"},
-            {"id":"OCR_CS_2.1.5","code":"2.1.5","title":"Thinking concurrently"}
+            {
+              "id": "OCR_CS_1.2.1a",
+              "code": "1.2.1(a)",
+              "title": "The need for, function and purpose of operating systems.",
+              "official_reference": {
+                "section": "1.2.1(a)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "The need for, function and purpose of operating systems."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.1b",
+              "code": "1.2.1(b)",
+              "title": "Memory Management (paging, segmentation and virtual memory).",
+              "official_reference": {
+                "section": "1.2.1(b)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Memory Management (paging, segmentation and virtual memory)."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.1c",
+              "code": "1.2.1(c)",
+              "title": "Interrupts, the role of interrupts and Interrupt Service Routines (ISR), role within the Fetch-Decode-Execute Cycle.",
+              "official_reference": {
+                "section": "1.2.1(c)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Interrupts, the role of interrupts and Interrupt Service Routines (ISR), role within the Fetch-Decode-Execute Cycle."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.1d",
+              "code": "1.2.1(d)",
+              "title": "Scheduling: round robin, first come first served, multi-level feedback queues, shortest job first and shortest remaining time.",
+              "official_reference": {
+                "section": "1.2.1(d)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Scheduling: round robin, first come first served, multi-level feedback queues, shortest job first and shortest remaining time."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.1e",
+              "code": "1.2.1(e)",
+              "title": "Distributed, embedded, multi-tasking, multi-user and Real Time operating systems.",
+              "official_reference": {
+                "section": "1.2.1(e)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Distributed, embedded, multi-tasking, multi-user and Real Time operating systems."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(e)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.1f",
+              "code": "1.2.1(f)",
+              "title": "BIOS.",
+              "official_reference": {
+                "section": "1.2.1(f)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "BIOS."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(f)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.1g",
+              "code": "1.2.1(g)",
+              "title": "Device drivers.",
+              "official_reference": {
+                "section": "1.2.1(g)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Device drivers."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(g)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.1h",
+              "code": "1.2.1(h)",
+              "title": "Virtual machines, any instance where software is used to take on the function of a machine, including executing intermediate code or running an operating...",
+              "official_reference": {
+                "section": "1.2.1(h)",
+                "topic": "1.2.1",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Virtual machines, any instance where software is used to take on the function of a machine, including executing intermediate code or running an operating system within another."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.1(h)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
-          "id": "OCR_CS_2.2",
-          "code": "2.2",
-          "title": "Problem solving and programming",
-          "kind": "topic",
+          "id": "OCR_CS_1.2.2",
+          "code": "1.2.2",
+          "title": "Applications Generation",
+          "kind": "group",
           "points": [
-            {"id":"OCR_CS_2.2.1","code":"2.2.1","title":"Programming techniques"},
-            {"id":"OCR_CS_2.2.2","code":"2.2.2","title":"Computational methods"}
+            {
+              "id": "OCR_CS_1.2.2a",
+              "code": "1.2.2(a)",
+              "title": "The nature of applications, justifying suitable applications for a specific purpose.",
+              "official_reference": {
+                "section": "1.2.2(a)",
+                "topic": "1.2.2",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "The nature of applications, justifying suitable applications for a specific purpose."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.2(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.2b",
+              "code": "1.2.2(b)",
+              "title": "Utilities.",
+              "official_reference": {
+                "section": "1.2.2(b)",
+                "topic": "1.2.2",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Utilities."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.2(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.2c",
+              "code": "1.2.2(c)",
+              "title": "Open source vs closed source.",
+              "official_reference": {
+                "section": "1.2.2(c)",
+                "topic": "1.2.2",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Open source vs closed source."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.2(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.2d",
+              "code": "1.2.2(d)",
+              "title": "Translators:Interpreters, compilers and assemblers.",
+              "official_reference": {
+                "section": "1.2.2(d)",
+                "topic": "1.2.2",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Translators:Interpreters, compilers and assemblers."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.2(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.2e",
+              "code": "1.2.2(e)",
+              "title": "Stages of compilation (lexical analysis, syntax analysis, code generation and optimisation).",
+              "official_reference": {
+                "section": "1.2.2(e)",
+                "topic": "1.2.2",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Stages of compilation (lexical analysis, syntax analysis, code generation and optimisation)."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.2.2f",
+              "code": "1.2.2(f)",
+              "title": "Linkers and loaders and use of libraries.",
+              "official_reference": {
+                "section": "1.2.2(f)",
+                "topic": "1.2.2",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Linkers and loaders and use of libraries."
+              ]
+            }
           ]
         },
         {
-          "id": "OCR_CS_2.3",
-          "code": "2.3",
+          "id": "OCR_CS_1.2.3",
+          "code": "1.2.3",
+          "title": "Software Development",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.2.3a",
+              "code": "1.2.3(a)",
+              "title": "Understand the waterfall lifecycle, agile methodologies, extreme programming, the spiral model and rapid application development.",
+              "official_reference": {
+                "section": "1.2.3(a)",
+                "topic": "1.2.3",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Understand the waterfall lifecycle, agile methodologies, extreme programming, the spiral model and rapid application development."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.2.2(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.3b",
+              "code": "1.2.3(b)",
+              "title": "The relative merits and drawbacks of different methodologies and when they might be used.",
+              "official_reference": {
+                "section": "1.2.3(b)",
+                "topic": "1.2.3",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "The relative merits and drawbacks of different methodologies and when they might be used."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.2.2(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.3c",
+              "code": "1.2.3(c)",
+              "title": "Writing and following algorithms.",
+              "official_reference": {
+                "section": "1.2.3(c)",
+                "topic": "1.2.3",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Writing and following algorithms."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.2.2(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_1.2.4",
+          "code": "1.2.4",
+          "title": "Types of Programming Language",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.2.4a",
+              "code": "1.2.4(a)",
+              "title": "Need for and characteristics of a variety of programming paradigms.",
+              "official_reference": {
+                "section": "1.2.4(a)",
+                "topic": "1.2.4",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Need for and characteristics of a variety of programming paradigms."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.2.4b",
+              "code": "1.2.4(b)",
+              "title": "Procedural languages.",
+              "official_reference": {
+                "section": "1.2.4(b)",
+                "topic": "1.2.4",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Procedural languages."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.3(a)"
+                ],
+                "text_similarity": 0.2
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.4c",
+              "code": "1.2.4(c)",
+              "title": "Assembly language (including following and writing simple programs with the Little Man Computer instruction set). See appendix 5d.",
+              "official_reference": {
+                "section": "1.2.4(c)",
+                "topic": "1.2.4",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Assembly language (including following and writing simple programs with the Little Man Computer instruction set). See appendix 5d."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.2.3(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.2.4d",
+              "code": "1.2.4(d)",
+              "title": "Modes of addressing memory (immediate, direct, indirect and indexed).",
+              "official_reference": {
+                "section": "1.2.4(d)",
+                "topic": "1.2.4",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Modes of addressing memory (immediate, direct, indirect and indexed)."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.2.4e",
+              "code": "1.2.4(e)",
+              "title": "Object-oriented languages (see appendix 5d for pseudocode style) with an understanding of classes, objects, methods, attributes, inheritance, encapsulation...",
+              "official_reference": {
+                "section": "1.2.4(e)",
+                "topic": "1.2.4",
+                "component": "H446/01",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "Object-oriented languages (see appendix 5d for pseudocode style) with an understanding of classes, objects, methods, attributes, inheritance, encapsulation and polymorphism."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_CS_1.3",
+      "code": "1.3",
+      "title": "1.3 Exchanging data",
+      "official_reference": {
+        "component": "H446/01",
+        "source_pages": [
+          14
+        ]
+      },
+      "note": "How data is exchanged between different systems",
+      "topics": [
+        {
+          "id": "OCR_CS_1.3.1",
+          "code": "1.3.1",
+          "title": "Compression, Encryption and Hashing",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.3.1a",
+              "code": "1.3.1(a)",
+              "title": "Lossy vs Lossless compression.",
+              "official_reference": {
+                "section": "1.3.1(a)",
+                "topic": "1.3.1",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Lossy vs Lossless compression."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.3.3(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.3.1b",
+              "code": "1.3.1(b)",
+              "title": "Run length encoding and dictionary coding for lossless compression.",
+              "official_reference": {
+                "section": "1.3.1(b)",
+                "topic": "1.3.1",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Run length encoding and dictionary coding for lossless compression."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.1c",
+              "code": "1.3.1(c)",
+              "title": "Symmetric and asymmetric encryption.",
+              "official_reference": {
+                "section": "1.3.1(c)",
+                "topic": "1.3.1",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Symmetric and asymmetric encryption."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.1d",
+              "code": "1.3.1(d)",
+              "title": "Different uses of hashing.",
+              "official_reference": {
+                "section": "1.3.1(d)",
+                "topic": "1.3.1",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Different uses of hashing."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_1.3.2",
+          "code": "1.3.2",
+          "title": "Databases",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.3.2a",
+              "code": "1.3.2(a)",
+              "title": "Relational database, flat file, primary key, foreign key, secondary key, entity relationship modelling, normalisation and indexing. See appendix 5f.",
+              "official_reference": {
+                "section": "1.3.2(a)",
+                "topic": "1.3.2",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Relational database, flat file, primary key, foreign key, secondary key, entity relationship modelling, normalisation and indexing. See appendix 5f."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.3.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.3.2b",
+              "code": "1.3.2(b)",
+              "title": "Methods of capturing, selecting, managing and exchanging data.",
+              "official_reference": {
+                "section": "1.3.2(b)",
+                "topic": "1.3.2",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Methods of capturing, selecting, managing and exchanging data."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.3.1(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.3.2c",
+              "code": "1.3.2(c)",
+              "title": "Normalisation to 3NF.",
+              "official_reference": {
+                "section": "1.3.2(c)",
+                "topic": "1.3.2",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Normalisation to 3NF."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.2d",
+              "code": "1.3.2(d)",
+              "title": "SQL – Interpret and modify. See appendix 5d.",
+              "official_reference": {
+                "section": "1.3.2(d)",
+                "topic": "1.3.2",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "SQL – Interpret and modify. See appendix 5d."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.2e",
+              "code": "1.3.2(e)",
+              "title": "Referential integrity.",
+              "official_reference": {
+                "section": "1.3.2(e)",
+                "topic": "1.3.2",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Referential integrity."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.2f",
+              "code": "1.3.2(f)",
+              "title": "Transaction processing, ACID (Atomicity, Consistency, Isolation, Durability), record locking and redundancy.",
+              "official_reference": {
+                "section": "1.3.2(f)",
+                "topic": "1.3.2",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Transaction processing, ACID (Atomicity, Consistency, Isolation, Durability), record locking and redundancy."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_1.3.3",
+          "code": "1.3.3",
+          "title": "Networks",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.3.3a",
+              "code": "1.3.3(a)",
+              "title": "Characteristics of networks and the importance of protocols and standards.",
+              "official_reference": {
+                "section": "1.3.3(a)",
+                "topic": "1.3.3",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Characteristics of networks and the importance of protocols and standards."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.3.2(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.3.3b",
+              "code": "1.3.3(b)",
+              "title": "The internet structure: • The TCP/IP Stack. • DNS • Protocol layering. • LANs and WANs. • Packet and circuit switching.",
+              "official_reference": {
+                "section": "1.3.3(b)",
+                "topic": "1.3.3",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "The internet structure: • The TCP/IP Stack. • DNS • Protocol layering. • LANs and WANs. • Packet and circuit switching."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.3.2(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.3.3c",
+              "code": "1.3.3(c)",
+              "title": "Network security and threats, use of firewalls, proxies and encryption.",
+              "official_reference": {
+                "section": "1.3.3(c)",
+                "topic": "1.3.3",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Network security and threats, use of firewalls, proxies and encryption."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.3d",
+              "code": "1.3.3(d)",
+              "title": "Network hardware.",
+              "official_reference": {
+                "section": "1.3.3(d)",
+                "topic": "1.3.3",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Network hardware."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.3e",
+              "code": "1.3.3(e)",
+              "title": "Client-server and peer to peer.",
+              "official_reference": {
+                "section": "1.3.3(e)",
+                "topic": "1.3.3",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Client-server and peer to peer."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.3.2(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_1.3.4",
+          "code": "1.3.4",
+          "title": "Web Technologies",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.3.4a",
+              "code": "1.3.4(a)",
+              "title": "HTML, CSS and JavaScript. See appendix 5d.",
+              "official_reference": {
+                "section": "1.3.4(a)",
+                "topic": "1.3.4",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "HTML, CSS and JavaScript. See appendix 5d."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.3.3(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.3.4b",
+              "code": "1.3.4(b)",
+              "title": "Search engine indexing.",
+              "official_reference": {
+                "section": "1.3.4(b)",
+                "topic": "1.3.4",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Search engine indexing."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.4c",
+              "code": "1.3.4(c)",
+              "title": "PageRank algorithm.",
+              "official_reference": {
+                "section": "1.3.4(c)",
+                "topic": "1.3.4",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "PageRank algorithm."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.3.4d",
+              "code": "1.3.4(d)",
+              "title": "Server and client side processing.",
+              "official_reference": {
+                "section": "1.3.4(d)",
+                "topic": "1.3.4",
+                "component": "H446/01",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Server and client side processing."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_CS_1.4",
+      "code": "1.4",
+      "title": "1.4 Data types, data structures and algorithms",
+      "official_reference": {
+        "component": "H446/01",
+        "source_pages": [
+          15
+        ]
+      },
+      "note": "How data is represented and stored within different structures. Different algorithms that can be applied to",
+      "topics": [
+        {
+          "id": "OCR_CS_1.4.1",
+          "code": "1.4.1",
+          "title": "Data Types",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.4.1a",
+              "code": "1.4.1(a)",
+              "title": "Primitive data types, integer, real/floating point, character, string and Boolean.",
+              "official_reference": {
+                "section": "1.4.1(a)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Primitive data types, integer, real/floating point, character, string and Boolean."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.1b",
+              "code": "1.4.1(b)",
+              "title": "Represent positive integers in binary.",
+              "official_reference": {
+                "section": "1.4.1(b)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Represent positive integers in binary."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.1c",
+              "code": "1.4.1(c)",
+              "title": "Use of sign and magnitude and two’s complement to represent negative numbers in binary.",
+              "official_reference": {
+                "section": "1.4.1(c)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Use of sign and magnitude and two’s complement to represent negative numbers in binary."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.1d",
+              "code": "1.4.1(d)",
+              "title": "Addition and subtraction of binary integers.",
+              "official_reference": {
+                "section": "1.4.1(d)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Addition and subtraction of binary integers."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.1e",
+              "code": "1.4.1(e)",
+              "title": "Represent positive integers in hexadecimal.",
+              "official_reference": {
+                "section": "1.4.1(e)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Represent positive integers in hexadecimal."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(e)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.1f",
+              "code": "1.4.1(f)",
+              "title": "Convert positive integers between binary hexadecimal and denary.",
+              "official_reference": {
+                "section": "1.4.1(f)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Convert positive integers between binary hexadecimal and denary."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(f)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.1g",
+              "code": "1.4.1(g)",
+              "title": "Representation and normalisation of floating point numbers in binary.",
+              "official_reference": {
+                "section": "1.4.1(g)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Representation and normalisation of floating point numbers in binary."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(g)"
+                ],
+                "text_similarity": 0.625
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.1h",
+              "code": "1.4.1(h)",
+              "title": "Floating point arithmetic, positive and negative numbers, addition and subtraction.",
+              "official_reference": {
+                "section": "1.4.1(h)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Floating point arithmetic, positive and negative numbers, addition and subtraction."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.4.1i",
+              "code": "1.4.1(i)",
+              "title": "Bitwise manipulation and masks: shifts, combining with AND, OR, and XOR.",
+              "official_reference": {
+                "section": "1.4.1(i)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Bitwise manipulation and masks: shifts, combining with AND, OR, and XOR."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.4.1j",
+              "code": "1.4.1(j)",
+              "title": "How character sets (ASCII and UNICODE) are used to represent text.",
+              "official_reference": {
+                "section": "1.4.1(j)",
+                "topic": "1.4.1",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "How character sets (ASCII and UNICODE) are used to represent text."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.1(h)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_1.4.2",
+          "code": "1.4.2",
+          "title": "Data Structures",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.4.2a",
+              "code": "1.4.2(a)",
+              "title": "Arrays (of up to 3 dimensions), records, lists, tuples.",
+              "official_reference": {
+                "section": "1.4.2(a)",
+                "topic": "1.4.2",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Arrays (of up to 3 dimensions), records, lists, tuples."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.2(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.2b",
+              "code": "1.4.2(b)",
+              "title": "The following structures to store data: linked-list, graph (directed and undirected), stack, queue, tree, binary search tree, hash table.",
+              "official_reference": {
+                "section": "1.4.2(b)",
+                "topic": "1.4.2",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "The following structures to store data: linked-list, graph (directed and undirected), stack, queue, tree, binary search tree, hash table."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.2(b)"
+                ],
+                "text_similarity": 0.667
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.2c",
+              "code": "1.4.2(c)",
+              "title": "How to create, traverse, add data to and remove data from the data structures mentioned above. (NB this can be either using arrays and procedural...",
+              "official_reference": {
+                "section": "1.4.2(c)",
+                "topic": "1.4.2",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "How to create, traverse, add data to and remove data from the data structures mentioned above. (NB this can be either using arrays and procedural programming or an object-oriented approach)."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.3.1(e)"
+                ],
+                "text_similarity": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_1.4.3",
+          "code": "1.4.3",
+          "title": "Boolean Algebra",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.4.3a",
+              "code": "1.4.3(a)",
+              "title": "Define problems using Boolean logic. See appendix 5d.",
+              "official_reference": {
+                "section": "1.4.3(a)",
+                "topic": "1.4.3",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Define problems using Boolean logic. See appendix 5d."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.3(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.3b",
+              "code": "1.4.3(b)",
+              "title": "Manipulate Boolean expressions, including the use of Karnaugh maps to simplify Boolean expressions.",
+              "official_reference": {
+                "section": "1.4.3(b)",
+                "topic": "1.4.3",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Manipulate Boolean expressions, including the use of Karnaugh maps to simplify Boolean expressions."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.3(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.3c",
+              "code": "1.4.3(c)",
+              "title": "Use the following rules to derive or simplify statements in Boolean algebra: De Morgan’s Laws, distribution, association, commutation, double negation.",
+              "official_reference": {
+                "section": "1.4.3(c)",
+                "topic": "1.4.3",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Use the following rules to derive or simplify statements in Boolean algebra: De Morgan’s Laws, distribution, association, commutation, double negation."
+              ]
+            },
+            {
+              "id": "OCR_CS_1.4.3d",
+              "code": "1.4.3(d)",
+              "title": "Using logic gate diagrams and truth tables. See appendix 5d.",
+              "official_reference": {
+                "section": "1.4.3(d)",
+                "topic": "1.4.3",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Using logic gate diagrams and truth tables. See appendix 5d."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.4.3(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.4.3e",
+              "code": "1.4.3(e)",
+              "title": "The logic associated with D type flip flops, half and full adders.",
+              "official_reference": {
+                "section": "1.4.3(e)",
+                "topic": "1.4.3",
+                "component": "H446/01",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "The logic associated with D type flip flops, half and full adders."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_CS_1.5",
+      "code": "1.5",
+      "title": "1.5 Legal, moral, cultural and ethical issues",
+      "official_reference": {
+        "component": "H446/01",
+        "source_pages": [
+          16
+        ]
+      },
+      "note": "The individual moral, social, ethical and cultural opportunities and risks of digital technology. Legislation",
+      "topics": [
+        {
+          "id": "OCR_CS_1.5.1",
+          "code": "1.5.1",
+          "title": "Computing related legislation",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.5.1a",
+              "code": "1.5.1(a)",
+              "title": "The Data Protection Act 1998.",
+              "official_reference": {
+                "section": "1.5.1(a)",
+                "topic": "1.5.1",
+                "component": "H446/01",
+                "source_pages": [
+                  16
+                ]
+              },
+              "content": [
+                "The Data Protection Act 1998."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.5.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.5.1b",
+              "code": "1.5.1(b)",
+              "title": "The Computer Misuse Act 1990.",
+              "official_reference": {
+                "section": "1.5.1(b)",
+                "topic": "1.5.1",
+                "component": "H446/01",
+                "source_pages": [
+                  16
+                ]
+              },
+              "content": [
+                "The Computer Misuse Act 1990."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.5.1(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.5.1c",
+              "code": "1.5.1(c)",
+              "title": "The Copyright Design and Patents Act 1988.",
+              "official_reference": {
+                "section": "1.5.1(c)",
+                "topic": "1.5.1",
+                "component": "H446/01",
+                "source_pages": [
+                  16
+                ]
+              },
+              "content": [
+                "The Copyright Design and Patents Act 1988."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.5.1(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_1.5.1d",
+              "code": "1.5.1(d)",
+              "title": "The Regulation of Investigatory Powers Act 2000.",
+              "official_reference": {
+                "section": "1.5.1(d)",
+                "topic": "1.5.1",
+                "component": "H446/01",
+                "source_pages": [
+                  16
+                ]
+              },
+              "content": [
+                "The Regulation of Investigatory Powers Act 2000."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.5.1(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_1.5.2",
+          "code": "1.5.2",
+          "title": "Moral and ethical Issues",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_1.5.2_whole",
+              "code": "1.5.2",
+              "title": "The individual moral, social, ethical and cultural opportunities and risks of digital technology: • Computers in the workforce. • Automated decision making....",
+              "official_reference": {
+                "section": "1.5.2()",
+                "topic": "1.5.2",
+                "component": "H446/01",
+                "source_pages": [
+                  16
+                ],
+                "unlettered": true
+              },
+              "content": [
+                "The individual moral, social, ethical and cultural opportunities and risks of digital technology: • Computers in the workforce. • Automated decision making. • Artificial intelligence. • Environmental effects. • Censorship and the Internet. • Monitor behaviour. • Analyse personal information. • Piracy and offensive communications. • Layout, colour paradigms and character sets."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "1.5.2(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_CS_2.1",
+      "code": "2.1",
+      "title": "2.1 Elements of computational thinking",
+      "official_reference": {
+        "component": "H446/02",
+        "source_pages": [
+          17
+        ]
+      },
+      "note": "Understand what is meant by computational thinking",
+      "topics": [
+        {
+          "id": "OCR_CS_2.1.1",
+          "code": "2.1.1",
+          "title": "Thinking abstractly",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_2.1.1a",
+              "code": "2.1.1(a)",
+              "title": "The nature of abstraction.",
+              "official_reference": {
+                "section": "2.1.1(a)",
+                "topic": "2.1.1",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "The nature of abstraction."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.1b",
+              "code": "2.1.1(b)",
+              "title": "The need for abstraction.",
+              "official_reference": {
+                "section": "2.1.1(b)",
+                "topic": "2.1.1",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "The need for abstraction."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.1(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.1c",
+              "code": "2.1.1(c)",
+              "title": "The differences between an abstraction and reality.",
+              "official_reference": {
+                "section": "2.1.1(c)",
+                "topic": "2.1.1",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "The differences between an abstraction and reality."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.1(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.1d",
+              "code": "2.1.1(d)",
+              "title": "Devise an abstract model for a variety of situations.",
+              "official_reference": {
+                "section": "2.1.1(d)",
+                "topic": "2.1.1",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Devise an abstract model for a variety of situations."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.1(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_2.1.2",
+          "code": "2.1.2",
+          "title": "Thinking ahead",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_2.1.2a",
+              "code": "2.1.2(a)",
+              "title": "Identify the inputs and outputs for a given situation.",
+              "official_reference": {
+                "section": "2.1.2(a)",
+                "topic": "2.1.2",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Identify the inputs and outputs for a given situation."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.2(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.2b",
+              "code": "2.1.2(b)",
+              "title": "Determine the preconditions for devising a solution to a problem.",
+              "official_reference": {
+                "section": "2.1.2(b)",
+                "topic": "2.1.2",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Determine the preconditions for devising a solution to a problem."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.2(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.2c",
+              "code": "2.1.2(c)",
+              "title": "The nature, benefits and drawbacks of caching.",
+              "official_reference": {
+                "section": "2.1.2(c)",
+                "topic": "2.1.2",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "The nature, benefits and drawbacks of caching."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.1.2d",
+              "code": "2.1.2(d)",
+              "title": "The need for reusable program components.",
+              "official_reference": {
+                "section": "2.1.2(d)",
+                "topic": "2.1.2",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "The need for reusable program components."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.2(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_2.1.3",
+          "code": "2.1.3",
+          "title": "Thinking procedurally",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_2.1.3a",
+              "code": "2.1.3(a)",
+              "title": "Identify the components of a problem.",
+              "official_reference": {
+                "section": "2.1.3(a)",
+                "topic": "2.1.3",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Identify the components of a problem."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.3(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.3b",
+              "code": "2.1.3(b)",
+              "title": "Identify the components of a solution to a problem.",
+              "official_reference": {
+                "section": "2.1.3(b)",
+                "topic": "2.1.3",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Identify the components of a solution to a problem."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.3(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.3c",
+              "code": "2.1.3(c)",
+              "title": "Determine the order of the steps needed to solve a problem.",
+              "official_reference": {
+                "section": "2.1.3(c)",
+                "topic": "2.1.3",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Determine the order of the steps needed to solve a problem."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.3(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.3d",
+              "code": "2.1.3(d)",
+              "title": "Identify sub-procedures necessary to solve a problem.",
+              "official_reference": {
+                "section": "2.1.3(d)",
+                "topic": "2.1.3",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Identify sub-procedures necessary to solve a problem."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.3(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_2.1.4",
+          "code": "2.1.4",
+          "title": "Thinking logically",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_2.1.4a",
+              "code": "2.1.4(a)",
+              "title": "Identify the points in a solution where a decision has to be taken.",
+              "official_reference": {
+                "section": "2.1.4(a)",
+                "topic": "2.1.4",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Identify the points in a solution where a decision has to be taken."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.4(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.4b",
+              "code": "2.1.4(b)",
+              "title": "Determine the logical conditions that affect the outcome of a decision.",
+              "official_reference": {
+                "section": "2.1.4(b)",
+                "topic": "2.1.4",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Determine the logical conditions that affect the outcome of a decision."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.4(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.1.4c",
+              "code": "2.1.4(c)",
+              "title": "Determine how decisions affect flow through a program.",
+              "official_reference": {
+                "section": "2.1.4(c)",
+                "topic": "2.1.4",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Determine how decisions affect flow through a program."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.1.4(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_2.1.5",
+          "code": "2.1.5",
+          "title": "Thinking concurrently",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_2.1.5a",
+              "code": "2.1.5(a)",
+              "title": "Determine the parts of a problem that can be tackled at the same time.",
+              "official_reference": {
+                "section": "2.1.5(a)",
+                "topic": "2.1.5",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Determine the parts of a problem that can be tackled at the same time."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.1.5b",
+              "code": "2.1.5(b)",
+              "title": "Outline the benefits and trade offs that might result from concurrent processing in a particular situation.",
+              "official_reference": {
+                "section": "2.1.5(b)",
+                "topic": "2.1.5",
+                "component": "H446/02",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Outline the benefits and trade offs that might result from concurrent processing in a particular situation."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_CS_2.2",
+      "code": "2.2",
+      "title": "2.2 Problem solving and programming",
+      "official_reference": {
+        "component": "H446/02",
+        "source_pages": [
+          18
+        ]
+      },
+      "note": "How computers can be used to solve problems and programs can be written to solve them",
+      "topics": [
+        {
+          "id": "OCR_CS_2.2.1",
+          "code": "2.2.1",
+          "title": "Programming techniques",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_2.2.1a",
+              "code": "2.2.1(a)",
+              "title": "Programming constructs: sequence, iteration, branching.",
+              "official_reference": {
+                "section": "2.2.1(a)",
+                "topic": "2.2.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Programming constructs: sequence, iteration, branching."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.2.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.2.1b",
+              "code": "2.2.1(b)",
+              "title": "Recursion, how it can be used and compares to an iterative approach.",
+              "official_reference": {
+                "section": "2.2.1(b)",
+                "topic": "2.2.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Recursion, how it can be used and compares to an iterative approach."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.2.1c",
+              "code": "2.2.1(c)",
+              "title": "Global and local variables.",
+              "official_reference": {
+                "section": "2.2.1(c)",
+                "topic": "2.2.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Global and local variables."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.2.1(b)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.2.1d",
+              "code": "2.2.1(d)",
+              "title": "Modularity, functions and procedures, parameter passing by value and by reference.",
+              "official_reference": {
+                "section": "2.2.1(d)",
+                "topic": "2.2.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Modularity, functions and procedures, parameter passing by value and by reference."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.2.1(c)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.2.1e",
+              "code": "2.2.1(e)",
+              "title": "Use of an IDE to develop/debug a program.",
+              "official_reference": {
+                "section": "2.2.1(e)",
+                "topic": "2.2.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Use of an IDE to develop/debug a program."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.2.1(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.2.1f",
+              "code": "2.2.1(f)",
+              "title": "Use of object oriented techniques.",
+              "official_reference": {
+                "section": "2.2.1(f)",
+                "topic": "2.2.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Use of object oriented techniques."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_2.2.2",
+          "code": "2.2.2",
+          "title": "Computational methods",
+          "kind": "group",
+          "points": [
+            {
+              "id": "OCR_CS_2.2.2a",
+              "code": "2.2.2(a)",
+              "title": "Features that make a problem solvable by computational methods.",
+              "official_reference": {
+                "section": "2.2.2(a)",
+                "topic": "2.2.2",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Features that make a problem solvable by computational methods."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.2.2b",
+              "code": "2.2.2(b)",
+              "title": "Problem recognition.",
+              "official_reference": {
+                "section": "2.2.2(b)",
+                "topic": "2.2.2",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Problem recognition."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.2.2c",
+              "code": "2.2.2(c)",
+              "title": "Problem decomposition.",
+              "official_reference": {
+                "section": "2.2.2(c)",
+                "topic": "2.2.2",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Problem decomposition."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.2.2d",
+              "code": "2.2.2(d)",
+              "title": "Use of divide and conquer.",
+              "official_reference": {
+                "section": "2.2.2(d)",
+                "topic": "2.2.2",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Use of divide and conquer."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.2.2e",
+              "code": "2.2.2(e)",
+              "title": "Use of abstraction.",
+              "official_reference": {
+                "section": "2.2.2(e)",
+                "topic": "2.2.2",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Use of abstraction."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.2.2f",
+              "code": "2.2.2(f)",
+              "title": "Learners should apply their knowledge of: • backtracking • data mining • heuristics • performance modelling • pipelining • visualisation to solve problems.",
+              "official_reference": {
+                "section": "2.2.2(f)",
+                "topic": "2.2.2",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Learners should apply their knowledge of: • backtracking • data mining • heuristics • performance modelling • pipelining • visualisation to solve problems."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "OCR_CS_AS_2.2",
+          "code": "AS 2.2",
+          "title": "AS only (H046): content not in the A level",
+          "kind": "option",
+          "points": [
+            {
+              "id": "OCR_CS_AS_2.2.2d",
+              "code": "AS 2.2.2(d)",
+              "title": "Different test strategies, including black and white box testing and alpha and beta testing.",
+              "official_reference": {
+                "section": "2.2.2(d)",
+                "qualification": "H046",
+                "component": "H046/02",
+                "source_pages": [
+                  17
+                ],
+                "nearest_a_level": "1.4.1i",
+                "similarity": 0.24
+              },
+              "content": [
+                "Different test strategies, including black and white box testing and alpha and beta testing."
+              ],
+              "qualification_scope": [
+                "H046"
+              ]
+            },
+            {
+              "id": "OCR_CS_AS_2.2.2e",
+              "code": "AS 2.2.2(e)",
+              "title": "Test programs that solve problems using suitable test data and end user feedback, justify a test strategy for a given situation.",
+              "official_reference": {
+                "section": "2.2.2(e)",
+                "qualification": "H046",
+                "component": "H046/02",
+                "source_pages": [
+                  17
+                ],
+                "nearest_a_level": "2.1.2a",
+                "similarity": 0.333
+              },
+              "content": [
+                "Test programs that solve problems using suitable test data and end user feedback, justify a test strategy for a given situation."
+              ],
+              "qualification_scope": [
+                "H046"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_CS_2.3",
+      "code": "2.3",
+      "title": "2.3 Algorithms",
+      "official_reference": {
+        "component": "H446/02",
+        "source_pages": [
+          18
+        ]
+      },
+      "note": "The use of algorithms to describe problems and standard algorithms",
+      "topics": [
+        {
+          "id": "OCR_CS_2.3.1",
+          "code": "2.3.1",
           "title": "Algorithms",
-          "kind": "topic",
+          "kind": "group",
           "points": [
-            {"id":"OCR_CS_2.3.1","code":"2.3.1","title":"Algorithms: analysis, design, sorting, searching and path finding"}
+            {
+              "id": "OCR_CS_2.3.1a",
+              "code": "2.3.1(a)",
+              "title": "Analysis and design of algorithms for a given situation.",
+              "official_reference": {
+                "section": "2.3.1(a)",
+                "topic": "2.3.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Analysis and design of algorithms for a given situation."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.3.1(a)"
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "OCR_CS_2.3.1b",
+              "code": "2.3.1(b)",
+              "title": "The suitability of different algorithms for a given task and data set, in terms of execution time and space.",
+              "official_reference": {
+                "section": "2.3.1(b)",
+                "topic": "2.3.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "The suitability of different algorithms for a given task and data set, in terms of execution time and space."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.3.1(f)"
+                ],
+                "text_similarity": 0.833
+              }
+            },
+            {
+              "id": "OCR_CS_2.3.1c",
+              "code": "2.3.1(c)",
+              "title": "Measures and methods to determine the efficiency of different algorithms, Big O notation (constant, linear, polynomial, exponential and logarithmic complexity).",
+              "official_reference": {
+                "section": "2.3.1(c)",
+                "topic": "2.3.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Measures and methods to determine the efficiency of different algorithms, Big O notation (constant, linear, polynomial, exponential and logarithmic complexity)."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.3.1d",
+              "code": "2.3.1(d)",
+              "title": "Comparison of the complexity of algorithms.",
+              "official_reference": {
+                "section": "2.3.1(d)",
+                "topic": "2.3.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Comparison of the complexity of algorithms."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.3.1e",
+              "code": "2.3.1(e)",
+              "title": "Algorithms for the main data structures, (stacks, queues, trees, linked lists, depth-first (post-order) and breadth-first traversal of trees).",
+              "official_reference": {
+                "section": "2.3.1(e)",
+                "topic": "2.3.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Algorithms for the main data structures, (stacks, queues, trees, linked lists, depth-first (post-order) and breadth-first traversal of trees)."
+              ]
+            },
+            {
+              "id": "OCR_CS_2.3.1f",
+              "code": "2.3.1(f)",
+              "title": "Standard algorithms (bubble sort, insertion sort, merge sort, quick sort, Dijkstra’s shortest path algorithm, A* algorithm, binary search and linear search).",
+              "official_reference": {
+                "section": "2.3.1(f)",
+                "topic": "2.3.1",
+                "component": "H446/02",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Standard algorithms (bubble sort, insertion sort, merge sort, quick sort, Dijkstra’s shortest path algorithm, A* algorithm, binary search and linear search)."
+              ],
+              "as_reference": {
+                "qualification": "H046",
+                "sections": [
+                  "2.3.1(b)",
+                  "2.3.1(c)",
+                  "2.3.1(d)"
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         }
       ]

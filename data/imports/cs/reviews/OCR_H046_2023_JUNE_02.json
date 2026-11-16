@@ -1,0 +1,432 @@
+{
+  "paper_id": "OCR_H046_2023_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "8e823fbca79f5e1044833d46e6868950c2f02b12990d148f3ef9ce6553b6624f",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Show each labelled pass of a bubble sort on six numbers.",
+      "difficulty_basis": "4-mark trace of a standard algorithm on given data.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(i)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why the array is passed by reference rather than by value in the bubble sort procedure.",
+      "difficulty_basis": "3-mark explanation applied to the given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State what a count controlled loop is.",
+      "difficulty_basis": "1-mark recall of iteration type.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(iii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the purpose of the temporary hold variable in the bubble sort.",
+      "difficulty_basis": "3-mark explanation of a swap variable in familiar code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)(iv)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe what must be added so the partial bubble sort fully sorts the array.",
+      "difficulty_basis": "2 marks; reasoning about missing outer loop in given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(b)"
+      ],
+      "difficulty": "easy",
+      "summary": "State the maximum number of passes a bubble sort needs for 356 items.",
+      "difficulty_basis": "1-mark recall of bubble sort pass bound.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the name of another sorting algorithm.",
+      "difficulty_basis": "1-mark recall of a named sort.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_2.1.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.1d"
+      ],
+      "codes": [
+        "2.1.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Give three examples of where abstraction could be used in designing the earthquake simulation.",
+      "difficulty_basis": "3 marks applying abstraction to a given scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(i)",
+      "sections": [
+        "OCR_CS_2.1.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two inputs for the simulation program.",
+      "difficulty_basis": "2-mark identification of inputs from a scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(ii)",
+      "sections": [
+        "OCR_CS_2.1.4a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4b"
+      ],
+      "codes": [
+        "2.1.4(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Identify two further decision points in the simulation program.",
+      "difficulty_basis": "2 marks; identifying decisions in an unfamiliar scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(i)",
+      "sections": [
+        "OCR_CS_1.2.3a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3b"
+      ],
+      "codes": [
+        "1.2.3(a)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe the difference between the spiral model and the waterfall model.",
+      "difficulty_basis": "4-mark comparison needing explicit differences.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(ii)",
+      "sections": [
+        "OCR_CS_1.2.3b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.3(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give two reasons the waterfall model is unsuitable for the client's situation.",
+      "difficulty_basis": "2-mark application of methodology merits to a scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(iii)",
+      "sections": [
+        "OCR_CS_1.2.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Name and describe one other software development model.",
+      "difficulty_basis": "2-mark recall of a methodology.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3",
+      "sections": [
+        "OCR_CS_2.2.1e"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.2d"
+      ],
+      "codes": [
+        "2.2.1(e)"
+      ],
+      "prerequisite_codes": [
+        "1.2.2(d)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss differences between writing and debugging with an IDE versus a text editor and the benefits of an IDE.",
+      "difficulty_basis": "9-mark extended response needing balanced discussion across three required areas.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1f",
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(f)",
+        "2.2.1(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write a function converting a denary integer to a binary string by repeated division.",
+      "difficulty_basis": "6-mark original algorithm with loop, MOD and string building.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a main program that validates input in a range and calls the conversion function.",
+      "difficulty_basis": "4-mark short algorithm using validation loop and function call.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)(i)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the programming construct used in the first three lines.",
+      "difficulty_basis": "1-mark identification from code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the programming construct used in a selection block.",
+      "difficulty_basis": "1-mark identification from code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two variables used in the algorithm.",
+      "difficulty_basis": "2-mark identification from code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Identify four errors in the pseudocode and correct each line.",
+      "difficulty_basis": "4 marks; debugging a given algorithm.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)(i)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State what a local variable is.",
+      "difficulty_basis": "1-mark recall of definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Give one benefit and one drawback of declaring the array as a local variable in the main program.",
+      "difficulty_basis": "2-mark application of scope to a context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe how a linear search finds an input number in an array.",
+      "difficulty_basis": "5-mark description of a standard algorithm.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(b)"
+      ],
+      "difficulty": "easy",
+      "summary": "State why a linear search would be chosen over a binary search.",
+      "difficulty_basis": "1-mark recall of suitability.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2c",
+        "OCR_CS_1.4.2a"
+      ],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(c)",
+        "1.4.2(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe how an array can implement a stack, including adding and removing data.",
+      "difficulty_basis": "4-mark description of structure operations using an array.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

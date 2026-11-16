@@ -17,7 +17,13 @@
     "marks": 3,
     "estimated_minutes": 4,
     "difficulty": "easy",
-    "primary_spec_points": ["OCR_CS_1.1.1"],
+    "primary_spec_points": [
+      "OCR_CS_1.1.1a",
+      "OCR_CS_1.1.1b",
+      "OCR_CS_1.1.1c",
+      "OCR_CS_1.1.1d",
+      "OCR_CS_1.1.1e"
+    ],
     "crossover_spec_points": [],
     "content": {
       "question_html": "<div class=\"q-line\"><div class=\"q-line__text\">Describe the role of each of these registers during the fetch–decode–execute cycle: the program counter, the memory address register and the accumulator.</div><span class=\"q-marks\">(3)</span></div>",
@@ -44,7 +50,18 @@
     "marks": 4,
     "estimated_minutes": 5,
     "difficulty": "medium",
-    "primary_spec_points": ["OCR_CS_1.4.1"],
+    "primary_spec_points": [
+      "OCR_CS_1.4.1a",
+      "OCR_CS_1.4.1b",
+      "OCR_CS_1.4.1c",
+      "OCR_CS_1.4.1d",
+      "OCR_CS_1.4.1e",
+      "OCR_CS_1.4.1f",
+      "OCR_CS_1.4.1g",
+      "OCR_CS_1.4.1h",
+      "OCR_CS_1.4.1i",
+      "OCR_CS_1.4.1j"
+    ],
     "crossover_spec_points": [],
     "content": {
       "question_html": "<div class=\"q-part\"><span class=\"q-part__label\">(a)</span><div class=\"q-part__body\">Convert the denary number −37 into 8-bit two's complement binary. Show your working.</div><span class=\"q-marks\">(2)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(b)</span><div class=\"q-part__body\">Convert the hexadecimal number 3F into denary.</div><span class=\"q-marks\">(1)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(c)</span><div class=\"q-part__body\">State the range of values that can be stored in 8-bit two's complement.</div><span class=\"q-marks\">(1)</span></div>",
@@ -71,7 +88,13 @@
     "marks": 5,
     "estimated_minutes": 6,
     "difficulty": "medium",
-    "primary_spec_points": ["OCR_CS_1.4.3"],
+    "primary_spec_points": [
+      "OCR_CS_1.4.3a",
+      "OCR_CS_1.4.3b",
+      "OCR_CS_1.4.3c",
+      "OCR_CS_1.4.3d",
+      "OCR_CS_1.4.3e"
+    ],
     "crossover_spec_points": [],
     "content": {
       "question_html": "<div class=\"q-part\"><span class=\"q-part__label\">(a)</span><div class=\"q-part__body\">Simplify the Boolean expression (A ∧ B) ∨ (A ∧ ¬B) ∨ (¬A ∧ B). Show each step.</div><span class=\"q-marks\">(3)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(b)</span><div class=\"q-part__body\">Complete a truth table to confirm that your simplified expression is equivalent.</div><span class=\"q-marks\">(2)</span></div>",
@@ -98,7 +121,14 @@
     "marks": 5,
     "estimated_minutes": 6,
     "difficulty": "medium",
-    "primary_spec_points": ["OCR_CS_1.3.2"],
+    "primary_spec_points": [
+      "OCR_CS_1.3.2a",
+      "OCR_CS_1.3.2b",
+      "OCR_CS_1.3.2c",
+      "OCR_CS_1.3.2d",
+      "OCR_CS_1.3.2e",
+      "OCR_CS_1.3.2f"
+    ],
     "crossover_spec_points": [],
     "content": {
       "question_html": "<p>A database contains the tables Student(StudentID, Name, Form) and Result(StudentID, Subject, Mark).</p>\n<div class=\"q-part\"><span class=\"q-part__label\">(a)</span><div class=\"q-part__body\">Write an SQL query to list the name and mark of every student who scored more than 70 in Maths, with the highest mark first.</div><span class=\"q-marks\">(4)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(b)</span><div class=\"q-part__body\">Explain what is meant by a foreign key.</div><span class=\"q-marks\">(1)</span></div>",
@@ -125,7 +155,13 @@
     "marks": 4,
     "estimated_minutes": 5,
     "difficulty": "medium",
-    "primary_spec_points": ["OCR_CS_1.3.3"],
+    "primary_spec_points": [
+      "OCR_CS_1.3.3a",
+      "OCR_CS_1.3.3b",
+      "OCR_CS_1.3.3c",
+      "OCR_CS_1.3.3d",
+      "OCR_CS_1.3.3e"
+    ],
     "crossover_spec_points": [],
     "content": {
       "question_html": "<div class=\"q-line\"><div class=\"q-line__text\">Explain two differences between packet switching and circuit switching.</div><span class=\"q-marks\">(4)</span></div>",
@@ -152,7 +188,14 @@
     "marks": 6,
     "estimated_minutes": 8,
     "difficulty": "hard",
-    "primary_spec_points": ["OCR_CS_2.3.1"],
+    "primary_spec_points": [
+      "OCR_CS_2.3.1a",
+      "OCR_CS_2.3.1b",
+      "OCR_CS_2.3.1c",
+      "OCR_CS_2.3.1d",
+      "OCR_CS_2.3.1e",
+      "OCR_CS_2.3.1f"
+    ],
     "crossover_spec_points": [],
     "content": {
       "question_html": "<p>The list [2, 5, 8, 12, 16, 23, 38, 56, 72, 91] is stored in an array indexed from 0.</p>\n<div class=\"q-part\"><span class=\"q-part__label\">(a)</span><div class=\"q-part__body\">Show the steps of a binary search for the value 23.</div><span class=\"q-marks\">(3)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(b)</span><div class=\"q-part__body\">State the worst-case time complexity of binary search and explain why.</div><span class=\"q-marks\">(2)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(c)</span><div class=\"q-part__body\">State the precondition for binary search to work.</div><span class=\"q-marks\">(1)</span></div>",
@@ -179,8 +222,20 @@
     "marks": 8,
     "estimated_minutes": 10,
     "difficulty": "hard",
-    "primary_spec_points": ["OCR_CS_2.2.1"],
-    "crossover_spec_points": ["OCR_CS_2.1.3"],
+    "primary_spec_points": [
+      "OCR_CS_2.2.1a",
+      "OCR_CS_2.2.1b",
+      "OCR_CS_2.2.1c",
+      "OCR_CS_2.2.1d",
+      "OCR_CS_2.2.1e",
+      "OCR_CS_2.2.1f"
+    ],
+    "crossover_spec_points": [
+      "OCR_CS_2.1.3a",
+      "OCR_CS_2.1.3b",
+      "OCR_CS_2.1.3c",
+      "OCR_CS_2.1.3d"
+    ],
     "content": {
       "question_html": "<div class=\"q-part\"><span class=\"q-part__label\">(a)</span><div class=\"q-part__body\">Write a recursive function that returns the nth Fibonacci number, where fib(0) = 0 and fib(1) = 1.</div><span class=\"q-marks\">(4)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(b)</span><div class=\"q-part__body\">Explain one disadvantage of using recursion for this problem.</div><span class=\"q-marks\">(2)</span></div>\n<div class=\"q-part\"><span class=\"q-part__label\">(c)</span><div class=\"q-part__body\">Describe how an iterative solution would avoid this disadvantage.</div><span class=\"q-marks\">(2)</span></div>",
       "question_image_url": null,
@@ -206,8 +261,15 @@
     "marks": 9,
     "estimated_minutes": 15,
     "difficulty": "hard",
-    "primary_spec_points": ["OCR_CS_1.5.2"],
-    "crossover_spec_points": ["OCR_CS_1.5.1"],
+    "primary_spec_points": [
+      "OCR_CS_1.5.2_whole"
+    ],
+    "crossover_spec_points": [
+      "OCR_CS_1.5.1a",
+      "OCR_CS_1.5.1b",
+      "OCR_CS_1.5.1c",
+      "OCR_CS_1.5.1d"
+    ],
     "content": {
       "question_html": "<p>A company plans to use an artificial intelligence system to decide which job applicants are invited to interview.</p>\n<div class=\"q-line\"><div class=\"q-line__text\">Discuss the moral, ethical and legal issues that the company should consider.</div><span class=\"q-marks\">(9)</span></div>",
       "question_image_url": null,
