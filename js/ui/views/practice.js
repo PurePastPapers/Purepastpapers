@@ -590,9 +590,9 @@ export async function mount(element, context) {
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
         ${open ? html`<div class="qsplit">
           <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Question'} · ${questionRef(question, bundle.papersById)}">
-            ${zoomButton(schemeOpen ? 'mark scheme' : 'question')}
+            <div class="qsplit__head"><span class="field__label">${schemeOpen ? html`${icon('eye', { size: 14 })} Mark scheme` : 'Question'}</span>${zoomButton(schemeOpen ? 'mark scheme' : 'question')}</div>
             ${schemeOpen
-              ? html`<p class="qsplit__label">${icon('eye', { size: 15 })} Mark scheme</p>${markSchemeBody(question)}`
+              ? markSchemeBody(question)
               : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
           </div>
           <div class="qsplit__side stack stack--sm">
