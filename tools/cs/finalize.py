@@ -5,8 +5,8 @@ live pack index.
 
 Usage: finalize.py --research DIR [--activate]
 Published identities are immutable: a changed mark meaning needs a new question id.
-OCR rights are NOT confirmed: run without --activate (packs stay out of the live index and
-no crop catalogue is written) until the owner confirms permission to republish OCR papers.
+The owner confirmed OCR permission on 16 November 2026; --activate publishes the packs and
+writes the lazy crop catalogues. Without it, packs are verified but kept out of the index.
 """
 import argparse
 import base64
@@ -106,7 +106,8 @@ def main():
     write(registry_path, {'format': 'cs-assessment-identity-v1', 'units': identities})
     coverage = {'checked_at': '2026-11-16', 'reviewer_type': 'model', 'subject_id': 'OCR_ALEVEL_CS_H446',
                 'status': ('complete' if a.activate else 'built_awaiting_rights_confirmation') if not queue else 'partial',
-                'published': bool(a.activate), 'rights_basis': 'NOT CONFIRMED: recorded permissions cover Pearson and AQA only. Built and verified but kept out of the live index until the owner confirms OCR permission.',
+                'published': bool(a.activate), 'rights_basis': ('Owner confirmed on 16 November 2026 that their permission covers republishing OCR Computer Science H446/H046 papers and mark schemes.'
+                                 if a.activate else 'NOT CONFIRMED: built and verified but kept out of the live index until the owner confirms OCR permission.'),
                 'groups': {k: dict(v) for k, v in sorted(groups.items())}, 'totals': dict(sum(groups.values(), Counter())),
                 'difficulty': dict(difficulty), 'content_years': {str(k): v for k, v in sorted(years.items())},
                 'units_per_leaf': {i: sections.get(i, 0) for i in ids},

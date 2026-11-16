@@ -257,7 +257,36 @@ The review line sheets are the only hand-made input; the compiled reviews are pu
 - The HTTPS certificate caveat in `docs/GEOGRAPHY-HANDOVER.md` still applies (this
   session's proxy re-terminates TLS). No DNS or hosting settings were changed.
 
+## Checkpoint 5: live (16 November 2026)
+
+The owner confirmed on 16 November 2026 that their permission covers republishing OCR
+Computer Science H446/H046 papers and mark schemes. After merging `main` (Psychology
+activation), `tools/cs/finalize.py --activate` added all 22 packs to `data/packs/index.json`
+and wrote the lazy crop catalogues to `data/cs-assets/` (1,679 lossless WebP crops,
+26 MB, largest catalogue 2 MB). Coverage status `complete`; `rights_basis` records the
+confirmation.
+
+Checks before publishing: `npm test` 131 of 138 pass, and the 7 failures are the known
+ones from stale commit `c353026` (identical on `origin/main`); `npm run validate` 0 errors.
+`tools/browser-cs-bank.cjs` with `AUDIT_SKIP_QUALIFICATIONS=1` passed locally (724 units,
+stems and lead-ins, question and scheme pixels, paper page, 320-1440 px, no console
+errors); the AS/A-level chip step is skipped only because `c353026` removed the generic
+qualification filter from `main`. The default (strict) run will pass again once that is
+restored. `browser-regression` and `browser-topic-choice` pass.
+
+### Live verification (16 November 2026)
+
+- `main` at `9b83b58`. The live pack index listed all 22 CS packs about 105 s after the push.
+- **51 files byte-identical live and in `9b83b58`**: index.html, pack index, coverage,
+  identities, spec, subjects, question-view, all 22 packs and all 22 crop catalogues.
+- **Production browser test passed**: `tools/browser-cs-bank.cjs` against
+  https://purepastpapers.com in a fresh isolated Chromium profile with
+  `AUDIT_SKIP_QUALIFICATIONS=1` (724 units, stems and lead-ins, question and scheme pixels
+  from the live catalogues, paper page, 320/390/768/1440 px, no console errors). The AS/A-level
+  chip step was skipped only because of the `c353026` regression on `main`.
+- HTTPS certificate caveat unchanged (proxy re-terminates TLS in this session).
+
 ## Next action
 
-Owner: confirm (or not) permission to republish OCR Computer Science papers and mark
-schemes. If confirmed, run the "To go live" steps.
+Restore the filters reverted by `c353026` (queued task), then run
+`node tools/browser-cs-bank.cjs` without the skip. Add June 2026 papers when OCR lists them.

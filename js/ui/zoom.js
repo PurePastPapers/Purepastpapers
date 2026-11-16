@@ -35,7 +35,7 @@ function open(source) {
     const copy = (source.querySelector('[data-zoom-body]') || source).cloneNode(true);
     copy.removeAttribute('data-zoom-body');
     copy.removeAttribute('data-zoom-src');
-    copy.querySelectorAll('.zoom-btn, .qsplit__label, button, input, select, textarea').forEach((node) => node.remove());
+    copy.querySelectorAll('.zoom-btn, .qsplit__label, .qsplit__head, button, input, select, textarea').forEach((node) => node.remove());
     copy.classList.add('zoom__content');
     body.append(copy);
     if (copy.querySelector('img')) dialog.classList.add('zoom--image');
