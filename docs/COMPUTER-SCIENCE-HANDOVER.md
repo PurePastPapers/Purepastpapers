@@ -64,7 +64,39 @@ python3 tools/cs/build_spec.py $R/170844-*.pdf $R/170845-*.pdf
 
 Checks: `tests/cs-spec.test.mjs` (3 tests; 107 in the suite pass), `npm run validate` 0 errors.
 
+## Checkpoint 2: source inventory (16 November 2026)
+
+**Status: no Computer Science questions are imported yet.**
+
+`data/imports/cs/inventory/H446-inventory.json` and `H046-inventory.json` are written by
+`tools/cs/inventory.py` from OCR's public H046/H446 assessment page. Each PDF is cached
+once in `../cs-research/sources`, checked for a PDF header and recorded with SHA-256,
+size and OCR's Last-Modified date (OCR publishes no checksums). 58 PDFs, 118 MB.
+
+| Qualification | Series | Booklets | QP | MS | Examiner report | Max / time (from covers) |
+| --- | --- | --- | --- | --- | --- | --- |
+| A level H446 | Nov 2021, Jun 2022, Jun 2023, Jun 2024, Jun 2025 | 10 | 10 | 10 | 10 | 140 marks, 2h30 |
+| A level H446 | Sample assessment materials | 2 | in one PDF with its MS | | none | 140 marks, 2h30 |
+| AS H046 | Jun 2022, Jun 2023, Jun 2024, Jun 2025 | 8 | 8 | 8 | 8 | 70 marks, 1h15 |
+| AS H046 | Sample assessment materials | 2 | in one PDF with its MS | | none | 70 marks, 1h15 |
+
+22 booklets in total (12 A level, 10 AS).
+
+- **Not public:** A-level June 2017 to 2019 and November 2020, and AS 2016 to 2021, are
+  not on OCR's public page (no Teach Cambridge or other login routes used). June 2026 is
+  not yet listed.
+- **Not used:** modified-paper ZIPs (same questions), moderators' reports and the
+  programming-project sample (coursework).
+
+### Reproduce
+
+```sh
+R=../cs-research
+curl -A "Mozilla/5.0" -o $R/page.html https://www.ocr.org.uk/qualifications/as-and-a-level/computer-science-h046-h446-from-2015/assessment/
+python3 tools/cs/inventory.py $R/page.html --sources $R/sources
+```
+
 ## Next action
 
-Checkpoint 2: source inventory from OCR's public assessment page (A level: November 2021,
-June 2022 to June 2025, sample assessment materials; AS: June 2022 to June 2025, samples).
+Checkpoint 3: `tools/cs/extract.py` (OCR "1 (a) (i)" labels and "[n]" tariffs, code and
+pseudocode listings, trace and truth tables, answer grids after a tariff), then schemes.
