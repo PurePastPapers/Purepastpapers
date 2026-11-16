@@ -11,7 +11,8 @@ import { matchesTextbookSelection } from './textbook-index.js';
 
 /** Every leaf spec point a student must have learned to be given this question. */
 export function requiredSpecPoints(question, specIndex) {
-  return specIndex.expand([...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]);
+  // dependency_spec_points: topics of earlier parts this part builds on (see content-repository).
+  return specIndex.expand([...(question.primary_spec_points || []), ...(question.crossover_spec_points || []), ...(question.dependency_spec_points || [])]);
 }
 
 /** The required spec points that are NOT yet learned (empty array = question is available). */

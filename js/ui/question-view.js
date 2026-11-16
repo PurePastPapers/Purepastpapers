@@ -49,7 +49,7 @@ function resources(question) {
   if (!stem && !figures.length) return '';
   return html`<section class="stack question-resources" aria-label="Resources for this question (unscored)" data-question-resources="${question.question_id}">
     <p class="small muted">Resources for this question. Unscored context: they carry no marks of their own.</p>
-    ${stem ? html`<figure class="qcontent"><figcaption class="small">Question ${question.question_number} (shared introduction)</figcaption>${image(stem, `Shared introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
+    ${stem ? html`<figure class="qcontent"><figcaption class="small">${question.part_label ? `Question ${question.question_number}: introduction and earlier material this part uses` : `Question ${question.question_number} (shared introduction)`}</figcaption>${image(stem, `Introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
     ${figures.map((figure) => html`<figure class="qcontent"><figcaption class="small">${figure.label} · ${figure.source === 'insert' ? 'from the insert' : 'printed earlier in the question paper'}</figcaption>${image(figure.image_url, `${figure.label}, unscored resource`)}</figure>`)}
   </section>`;
 }
@@ -57,7 +57,9 @@ function resources(question) {
 export function markSchemeBody(question) {
   const { mark_scheme_html: markup, mark_scheme_image_url: url } = question.content || {};
   if (!markup && !url) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
-  return html`<div class="ms">${question.scheme_scope === 'full_question' ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, 'Mark scheme')}</div></div>`;
+  const full = question.scheme_scope === 'part' && question.context?.full_scheme_image_url && isSafeUrl(question.context.full_scheme_image_url) ? question.context.full_scheme_image_url : null;
+  return html`<div class="ms">${question.scheme_scope === 'full_question' ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, question.part_label ? `Mark scheme for part ${question.part_label}` : 'Mark scheme')}</div>
+    ${full ? html`<details class="question-context" data-full-scheme="${question.question_id}"><summary>Show the mark scheme for the whole question</summary><div class="qcontent" style="margin-top:12px">${image(full, 'Mark scheme for the whole question, context only')}</div></details>` : ''}</div>`;
 }
 
 /** Plain-text opening of a question, for list cards. */

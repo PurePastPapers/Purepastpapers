@@ -512,12 +512,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "6",
+      "scheme_scope": "part",
+      "scheme_question_number": "6(a)(ii)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -544,9 +546,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.045137,
+              0.6022,
               0.958003,
-              0.6464526244521256
+              0.646453
             ]
           }
         ],
@@ -559,7 +561,50 @@
         "difficulty_basis": "Interpolate using the two supplied model points and explain the physical limitation of continuing a decreasing line.",
         "year_basis": "Straight-line modelling and its limitations are within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.54681
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.557087,
+              0.958003,
+              0.6022
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.098599
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.547708,
+              0.958003,
+              0.585325
+            ]
+          }
+        ],
+        "part_scheme_check": "reference_matched"
       },
       "part_label": "(a)"
     },
@@ -596,13 +641,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "6",
+      "scheme_scope": "part",
+      "scheme_question_number": "6(b)(ii)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q06_U02_context.webp\" alt=\"Shared source stem for question 6\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q06_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -629,7 +675,7 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.6464526244521256,
+              0.692425,
               0.958003,
               0.753312
             ]
@@ -644,9 +690,57 @@
         "difficulty_basis": "Fit the initial value and a decay factor from a second observation, then evaluate the fitted model.",
         "year_basis": "Fitting a basic exponential growth or decay model is within AS scope.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.54681
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.6022,
+              0.958003,
+              0.692425
+            ]
+          }
+        ],
+        "context_reasons": [
+          "builds on the previous answer"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.098599
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.859696,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "reference_matched"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_SAMPLE_01_Q06_U01"
+      ]
     },
     {
       "question_id": "EDX_9MA0_SAMPLE_01_Q07_U01",
@@ -764,12 +858,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "8",
+      "scheme_scope": "part",
+      "scheme_question_number": "8(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -796,9 +892,9 @@
             "page": 12,
             "bbox": [
               0.041997,
-              0.045137,
+              0.101465,
               0.958003,
-              0.1457180866859092
+              0.145718
             ]
           }
         ],
@@ -811,7 +907,41 @@
         "difficulty_basis": "Evaluate the function at both supplied endpoints and connect the sign change with continuity.",
         "year_basis": "Root-location methods are additional A level numerical content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.09823
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.19253
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.605232,
+              0.958003,
+              0.724428
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -848,13 +978,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "8",
+      "scheme_scope": "part",
+      "scheme_question_number": "8(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q08_U02_context.webp\" alt=\"Shared source stem for question 8\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -881,9 +1012,9 @@
             "page": 12,
             "bbox": [
               0.041997,
-              0.1457180866859092,
+              0.203536,
               0.958003,
-              0.26442243048379255
+              0.264422
             ]
           }
         ],
@@ -896,7 +1027,63 @@
         "difficulty_basis": "Substitute the explicitly supplied function value and derivative into one Newton–Raphson update.",
         "year_basis": "Newton–Raphson is additional A level numerical content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_bridge_text": "Given f(4) = 3.099 and fʹ(4) = 16.67 to 4 significant figures,",
+        "context_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.142155
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.175057,
+              0.958003,
+              0.200001
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result",
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.19253,
+              0.958003,
+              0.288635
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.724428,
+              0.958003,
+              0.814512
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -934,13 +1121,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "8",
+      "scheme_scope": "part",
+      "scheme_question_number": "8(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q08_U03_context.webp\" alt=\"Shared source stem for question 8\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q08_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -967,7 +1155,7 @@
             "page": 12,
             "bbox": [
               0.041997,
-              0.26442243048379255,
+              0.265282,
               0.958003,
               0.309535
             ]
@@ -982,7 +1170,52 @@
         "difficulty_basis": "Differentiate the function and use the sign of its derivative throughout the stated domain to rule out another root.",
         "year_basis": "Differentiating a logarithm of a linear expression extends AS polynomial and exponential differentiation.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.142155
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.288635,
+              0.958003,
+              0.605232
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.814512,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
@@ -1199,12 +1432,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "11",
+      "scheme_scope": "part",
+      "scheme_question_number": "11(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1231,9 +1466,9 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.045137,
+              0.211727,
               0.958003,
-              0.25597987860646887
+              0.25598
             ]
           }
         ],
@@ -1246,7 +1481,41 @@
         "difficulty_basis": "Set the supplied height model to ground level, solve its quadratic and select the physically valid distance.",
         "year_basis": "Solving and interpreting a quadratic model is within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.208192
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.255104
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.563612,
+              0.958003,
+              0.676251
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -1283,13 +1552,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "11",
+      "scheme_scope": "part",
+      "scheme_question_number": "11(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q11_U02_context.webp\" alt=\"Shared source stem for question 11\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1316,9 +1586,9 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.25597987860646887,
+              0.25684,
               0.958003,
-              0.30109266056135614
+              0.301093
             ]
           }
         ],
@@ -1331,7 +1601,50 @@
         "difficulty_basis": "Relate the constant term to the height at zero horizontal distance.",
         "year_basis": "Interpreting a supplied function model is within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.208192
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.255104,
+              0.958003,
+              0.311503
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.676251,
+              0.958003,
+              0.737114
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -1369,13 +1682,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "11",
+      "scheme_scope": "part",
+      "scheme_question_number": "11(c)(d)(ii)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q11_U03_context.webp\" alt=\"Shared source stem for question 11\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q11_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1402,16 +1716,7 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.30109266056135614,
-              0.958003,
-              0.4031023055268502
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.4031023055268502,
+              0.301953,
               0.958003,
               0.590611
             ]
@@ -1428,7 +1733,68 @@
         "difficulty_basis": "Complete the square and transfer its vertex information to a model with a changed constant term.",
         "year_basis": "Completing the square and quadratic maxima are within AS scope.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.208192
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.311503,
+              0.958003,
+              0.431314
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.431314,
+              0.958003,
+              0.563612
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.737114,
+              0.958003,
+              0.836177
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.836177,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)–(d)"
     },
@@ -1466,12 +1832,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "12",
+      "scheme_scope": "part",
+      "scheme_question_number": "12(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1507,9 +1875,9 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.045137,
+              0.173029,
               0.958003,
-              0.2758599104396061
+              0.27586
             ]
           }
         ],
@@ -1522,7 +1890,41 @@
         "difficulty_basis": "Take logarithms and identify the gradient and intercept of the resulting straight line.",
         "year_basis": "Logarithm laws and linearising power models are within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.169503
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.178704
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.068041,
+              0.958003,
+              0.177421
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -1559,13 +1961,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "12",
+      "scheme_scope": "part",
+      "scheme_question_number": "12(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q12_U02_context.webp\" alt=\"Shared source stem for question 12\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1601,9 +2004,9 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.2758599104396061,
+              0.764289,
               0.958003,
-              0.8251762106688522
+              0.825176
             ]
           }
         ],
@@ -1616,7 +2019,63 @@
         "difficulty_basis": "Read or infer the fitted straight-line parameters and transform back to the original population scale.",
         "year_basis": "Estimating parameters with a logarithmic graph is within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_bridge_text": "10 5.0 – 4.5 – 4.0 – 3.5 – 3.0 – 2.5 – 2.0 – 1.5 – 1.0 – 0.5 – 0 – log T 0 0.2 0.4 0.6 0.8 1.0 1.2 1.4 10 Figure 3 Figure 3 shows the line of best fit for values of log N plotted against values of log T 10 10",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.272296
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.290092,
+              0.958003,
+              0.763676
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result",
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.178704,
+              0.958003,
+              0.31871
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.177421,
+              0.958003,
+              0.521421
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -1653,13 +2112,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "12",
+      "scheme_scope": "part",
+      "scheme_question_number": "12(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q12_U03_context.webp\" alt=\"Shared source stem for question 12\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1695,9 +2155,9 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.8251762106688522,
+              0.826036,
               0.958003,
-              0.8869229946905177
+              0.886923
             ]
           }
         ],
@@ -1710,7 +2170,62 @@
         "difficulty_basis": "Compare the proposed population with the observed graphical range and explain the unreliability of extrapolation.",
         "year_basis": "Interpreting and limiting a logarithmic model is within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.272296
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.290092,
+              0.958003,
+              0.763676
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result",
+          "earlier figure or data"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.31871,
+              0.958003,
+              0.416633
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.521421,
+              0.958003,
+              0.750513
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
@@ -1747,13 +2262,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U04.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U04_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "12",
+      "scheme_scope": "part",
+      "scheme_question_number": "12(d)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q12_U04_context.webp\" alt=\"Shared source stem for question 12\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_U04_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q12_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1789,9 +2305,9 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.8869229946905177,
+              0.887783,
               0.958003,
-              0.932035776645405
+              0.932036
             ]
           }
         ],
@@ -1804,7 +2320,71 @@
         "difficulty_basis": "Use the supplied power model to interpret its coefficient at the natural unit-time input.",
         "year_basis": "Interpreting the coefficient of a power model uses AS logarithmic-modelling scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.272296
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.290092,
+              0.958003,
+              0.763676
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result",
+          "earlier figure or data"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.416633,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.068041
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.750513,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(d)"
     },
@@ -1845,12 +2425,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "13",
+      "scheme_scope": "part",
+      "scheme_question_number": "13(a)(b)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1886,18 +2468,9 @@
             "page": 22,
             "bbox": [
               0.041997,
-              0.045137,
+              0.137376,
               0.958003,
-              0.18162812243879853
-            ]
-          },
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.18162812243879853,
-              0.958003,
-              0.3342961669576786
+              0.334296
             ]
           }
         ],
@@ -1912,7 +2485,59 @@
         "difficulty_basis": "Form the ratio of parameter derivatives, evaluate at the supplied parameter value and construct the perpendicular line.",
         "year_basis": "Parametric differentiation is additional A level content.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.126001
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.227594
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.227594,
+              0.958003,
+              0.478232
+            ]
+          },
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.068041,
+              0.958003,
+              0.28892
+            ]
+          },
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.28892,
+              0.958003,
+              0.563754
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)–(b)"
     },
@@ -1951,13 +2576,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "13",
+      "scheme_scope": "part",
+      "scheme_question_number": "13(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q13_U02_context.webp\" alt=\"Shared source stem for question 13\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q13_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1993,9 +2619,9 @@
             "page": 22,
             "bbox": [
               0.041997,
-              0.3342961669576786,
+              0.363635,
               0.958003,
-              0.43636650868878357
+              0.436367
             ]
           }
         ],
@@ -2008,9 +2634,78 @@
         "difficulty_basis": "Use the printed normal equation and a double-angle identity to reduce the intersection to a quadratic and distinguish the second point.",
         "year_basis": "Parametric curves and double-angle identities are additional A level content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_bridge_text": "The line l intersects the curve C again at the point Q.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.126001
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.261533,
+              0.958003,
+              0.3601
+            ]
+          }
+        ],
+        "context_reasons": [
+          "builds on the previous answer",
+          "earlier \"show that\" result",
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.478232,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.068041
+            ]
+          },
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.563754,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_SAMPLE_01_Q13_U01"
+      ]
     },
     {
       "question_id": "EDX_9MA0_SAMPLE_01_Q14_U01",
@@ -2045,12 +2740,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "14",
+      "scheme_scope": "part",
+      "scheme_question_number": "14(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2086,9 +2783,9 @@
             "page": 26,
             "bbox": [
               0.041997,
-              0.045137,
+              0.538629,
               0.958003,
-              0.5995159700198364
+              0.599516
             ]
           }
         ],
@@ -2101,7 +2798,41 @@
         "difficulty_basis": "Apply the trapezium rule directly to all supplied equally spaced tabulated values.",
         "year_basis": "The trapezium rule is additional A level numerical-integration content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 26,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.534851
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.235006
+            ]
+          },
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.068041,
+              0.958003,
+              0.26014
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -2138,13 +2869,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "14",
+      "scheme_scope": "part",
+      "scheme_question_number": "14(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q14_U02_context.webp\" alt=\"Shared source stem for question 14\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2180,9 +2912,9 @@
             "page": 26,
             "bbox": [
               0.041997,
-              0.5995159700198364,
+              0.600376,
               0.958003,
-              0.6612627540415019
+              0.661263
             ]
           }
         ],
@@ -2195,7 +2927,50 @@
         "difficulty_basis": "Explain how reducing strip width changes the numerical approximation.",
         "year_basis": "Accuracy of the trapezium rule is additional A level numerical content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 26,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.534851
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.235006,
+              0.958003,
+              0.3361
+            ]
+          },
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.26014,
+              0.958003,
+              0.300335
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -2235,13 +3010,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "14",
+      "scheme_scope": "part",
+      "scheme_question_number": "14(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_01/Q14_U03_context.webp\" alt=\"Shared source stem for question 14\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_01/Q14_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2277,9 +3053,9 @@
             "page": 26,
             "bbox": [
               0.041997,
-              0.6612627540415019,
+              0.662123,
               0.958003,
-              0.722972716150566
+              0.722973
             ]
           }
         ],
@@ -2292,7 +3068,59 @@
         "difficulty_basis": "Choose integration by parts for a polynomial times a logarithm, apply both limits and simplify the exact logarithmic expression.",
         "year_basis": "Integration by parts is additional A level integration content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 26,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.534851
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.096888
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.3361,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.068041
+            ]
+          },
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.300335,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
