@@ -241,6 +241,22 @@ The review line sheets are the only hand-made input; the compiled reviews are pu
 - GCSE J277 (`OCR_GCSE_CS_J277`): a separate later run.
 - Textbook organisation: none supplied.
 
+## Deployed release verification (16 November 2026)
+
+- `main` fast-forwarded to `c5fb68f` (contains this run plus everything already on main).
+  GitHub Pages run 59 (id 43949694129) concluded **success** at 20:27 UTC.
+- **33 files byte-identical live and in `c5fb68f`**: index.html, question-view, subjects,
+  curriculum index, pack index, migrations, the CS spec, coverage, identities, both
+  inventories and all 22 CS packs.
+- **Hidden as intended:** the live pack index (237 packs) lists 0 CS packs, and
+  `data/cs-assets/` is not served (404). Students cannot see OCR material until the owner
+  confirms rights and the "To go live" steps are run.
+- `tools/browser-regression.cjs` passed against https://purepastpapers.com in a fresh
+  isolated Chromium profile (progress is browser-local, so nothing in production changed).
+  The CS bank browser test was run only against the temporary local activation.
+- The HTTPS certificate caveat in `docs/GEOGRAPHY-HANDOVER.md` still applies (this
+  session's proxy re-terminates TLS). No DNS or hosting settings were changed.
+
 ## Next action
 
 Owner: confirm (or not) permission to republish OCR Computer Science papers and mark
