@@ -658,5 +658,164 @@ export const LEGACY_SPEC_IDS = Object.freeze({
   "EDX_PHYS_M9_9.4": [
     "EDX_PHYS_S149",
     "EDX_PHYS_S152"
+  ],
+  "OCR_CS_1.1.1": [
+    "OCR_CS_1.1.1a",
+    "OCR_CS_1.1.1b",
+    "OCR_CS_1.1.1c",
+    "OCR_CS_1.1.1d",
+    "OCR_CS_1.1.1e"
+  ],
+  "OCR_CS_1.1.2": [
+    "OCR_CS_1.1.2a",
+    "OCR_CS_1.1.2b",
+    "OCR_CS_1.1.2c"
+  ],
+  "OCR_CS_1.1.3": [
+    "OCR_CS_1.1.3a",
+    "OCR_CS_1.1.3b",
+    "OCR_CS_1.1.3c",
+    "OCR_CS_1.1.3d"
+  ],
+  "OCR_CS_1.2.1": [
+    "OCR_CS_1.2.1a",
+    "OCR_CS_1.2.1b",
+    "OCR_CS_1.2.1c",
+    "OCR_CS_1.2.1d",
+    "OCR_CS_1.2.1e",
+    "OCR_CS_1.2.1f",
+    "OCR_CS_1.2.1g",
+    "OCR_CS_1.2.1h"
+  ],
+  "OCR_CS_1.2.2": [
+    "OCR_CS_1.2.2a",
+    "OCR_CS_1.2.2b",
+    "OCR_CS_1.2.2c",
+    "OCR_CS_1.2.2d",
+    "OCR_CS_1.2.2e",
+    "OCR_CS_1.2.2f"
+  ],
+  "OCR_CS_1.2.3": [
+    "OCR_CS_1.2.3a",
+    "OCR_CS_1.2.3b",
+    "OCR_CS_1.2.3c"
+  ],
+  "OCR_CS_1.2.4": [
+    "OCR_CS_1.2.4a",
+    "OCR_CS_1.2.4b",
+    "OCR_CS_1.2.4c",
+    "OCR_CS_1.2.4d",
+    "OCR_CS_1.2.4e"
+  ],
+  "OCR_CS_1.3.1": [
+    "OCR_CS_1.3.1a",
+    "OCR_CS_1.3.1b",
+    "OCR_CS_1.3.1c",
+    "OCR_CS_1.3.1d"
+  ],
+  "OCR_CS_1.3.2": [
+    "OCR_CS_1.3.2a",
+    "OCR_CS_1.3.2b",
+    "OCR_CS_1.3.2c",
+    "OCR_CS_1.3.2d",
+    "OCR_CS_1.3.2e",
+    "OCR_CS_1.3.2f"
+  ],
+  "OCR_CS_1.3.3": [
+    "OCR_CS_1.3.3a",
+    "OCR_CS_1.3.3b",
+    "OCR_CS_1.3.3c",
+    "OCR_CS_1.3.3d",
+    "OCR_CS_1.3.3e"
+  ],
+  "OCR_CS_1.3.4": [
+    "OCR_CS_1.3.4a",
+    "OCR_CS_1.3.4b",
+    "OCR_CS_1.3.4c",
+    "OCR_CS_1.3.4d"
+  ],
+  "OCR_CS_1.4.1": [
+    "OCR_CS_1.4.1a",
+    "OCR_CS_1.4.1b",
+    "OCR_CS_1.4.1c",
+    "OCR_CS_1.4.1d",
+    "OCR_CS_1.4.1e",
+    "OCR_CS_1.4.1f",
+    "OCR_CS_1.4.1g",
+    "OCR_CS_1.4.1h",
+    "OCR_CS_1.4.1i",
+    "OCR_CS_1.4.1j"
+  ],
+  "OCR_CS_1.4.2": [
+    "OCR_CS_1.4.2a",
+    "OCR_CS_1.4.2b",
+    "OCR_CS_1.4.2c"
+  ],
+  "OCR_CS_1.4.3": [
+    "OCR_CS_1.4.3a",
+    "OCR_CS_1.4.3b",
+    "OCR_CS_1.4.3c",
+    "OCR_CS_1.4.3d",
+    "OCR_CS_1.4.3e"
+  ],
+  "OCR_CS_1.5.1": [
+    "OCR_CS_1.5.1a",
+    "OCR_CS_1.5.1b",
+    "OCR_CS_1.5.1c",
+    "OCR_CS_1.5.1d"
+  ],
+  "OCR_CS_1.5.2": [
+    "OCR_CS_1.5.2_whole"
+  ],
+  "OCR_CS_2.1.1": [
+    "OCR_CS_2.1.1a",
+    "OCR_CS_2.1.1b",
+    "OCR_CS_2.1.1c",
+    "OCR_CS_2.1.1d"
+  ],
+  "OCR_CS_2.1.2": [
+    "OCR_CS_2.1.2a",
+    "OCR_CS_2.1.2b",
+    "OCR_CS_2.1.2c",
+    "OCR_CS_2.1.2d"
+  ],
+  "OCR_CS_2.1.3": [
+    "OCR_CS_2.1.3a",
+    "OCR_CS_2.1.3b",
+    "OCR_CS_2.1.3c",
+    "OCR_CS_2.1.3d"
+  ],
+  "OCR_CS_2.1.4": [
+    "OCR_CS_2.1.4a",
+    "OCR_CS_2.1.4b",
+    "OCR_CS_2.1.4c"
+  ],
+  "OCR_CS_2.1.5": [
+    "OCR_CS_2.1.5a",
+    "OCR_CS_2.1.5b"
+  ],
+  "OCR_CS_2.2.1": [
+    "OCR_CS_2.2.1a",
+    "OCR_CS_2.2.1b",
+    "OCR_CS_2.2.1c",
+    "OCR_CS_2.2.1d",
+    "OCR_CS_2.2.1e",
+    "OCR_CS_2.2.1f"
+  ],
+  "OCR_CS_2.2.2": [
+    "OCR_CS_2.2.2a",
+    "OCR_CS_2.2.2b",
+    "OCR_CS_2.2.2c",
+    "OCR_CS_2.2.2d",
+    "OCR_CS_2.2.2e",
+    "OCR_CS_2.2.2f"
+  ],
+  "OCR_CS_2.3.1": [
+    "OCR_CS_2.3.1a",
+    "OCR_CS_2.3.1b",
+    "OCR_CS_2.3.1c",
+    "OCR_CS_2.3.1d",
+    "OCR_CS_2.3.1e",
+    "OCR_CS_2.3.1f"
   ]
 });
