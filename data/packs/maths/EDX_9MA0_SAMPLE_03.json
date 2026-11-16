@@ -84,12 +84,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "1",
+      "scheme_scope": "part",
+      "scheme_question_number": "1(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -125,9 +127,9 @@
             "page": 2,
             "bbox": [
               0.041997,
-              0.045137,
+              0.293972,
               0.958003,
-              0.3382251838126122
+              0.338225
             ]
           }
         ],
@@ -140,7 +142,41 @@
         "difficulty_basis": "Relate bar area to frequency and transfer both horizontal and vertical scales from the supplied reference class.",
         "year_basis": "Histogram frequency density and unequal class widths are within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.290437
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 1,
+            "bbox": [
+              0.041997,
+              0.102986,
+              0.958003,
+              0.2523
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.068041,
+              0.958003,
+              0.188444
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -179,13 +215,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "1",
+      "scheme_scope": "part",
+      "scheme_question_number": "1(b)(c)(d)(e)(f)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q01_U02_context.webp\" alt=\"Shared source stem for question 1\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q01_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -221,45 +258,9 @@
             "page": 2,
             "bbox": [
               0.041997,
-              0.3382251838126122,
+              0.339085,
               0.958003,
-              0.41660596990105603
-            ]
-          },
-          {
-            "page": 2,
-            "bbox": [
-              0.041997,
-              0.41660596990105603,
-              0.958003,
-              0.5567335400111656
-            ]
-          },
-          {
-            "page": 2,
-            "bbox": [
-              0.041997,
-              0.5567335400111656,
-              0.958003,
-              0.618480324032831
-            ]
-          },
-          {
-            "page": 2,
-            "bbox": [
-              0.041997,
-              0.618480324032831,
-              0.958003,
-              0.7252989107840692
-            ]
-          },
-          {
-            "page": 2,
-            "bbox": [
-              0.041997,
-              0.7252989107840692,
-              0.958003,
-              0.7870456948057347
+              0.787046
             ]
           }
         ],
@@ -280,9 +281,138 @@
         "difficulty_basis": "Estimate grouped-data mean and spread, compare consistency, estimate a data-based upper count and compare it with the normal-model prediction.",
         "year_basis": "The normal-model comparison is additional A level content; the linked mean/spread and count parts remain grouped because the final comparison needs their computed results.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.33585
+            ]
+          }
+        ],
+        "context_reasons": [
+          "builds on the previous answer"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 1,
+            "bbox": [
+              0.041997,
+              0.102986,
+              0.958003,
+              0.125966
+            ]
+          },
+          {
+            "page": 1,
+            "bbox": [
+              0.041997,
+              0.2523,
+              0.958003,
+              0.404422
+            ]
+          },
+          {
+            "page": 1,
+            "bbox": [
+              0.041997,
+              0.404422,
+              0.958003,
+              0.485953
+            ]
+          },
+          {
+            "page": 1,
+            "bbox": [
+              0.041997,
+              0.485953,
+              0.958003,
+              0.571641
+            ]
+          },
+          {
+            "page": 1,
+            "bbox": [
+              0.041997,
+              0.571641,
+              0.958003,
+              0.652174
+            ]
+          },
+          {
+            "page": 1,
+            "bbox": [
+              0.041997,
+              0.652174,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.068041
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.188444,
+              0.958003,
+              0.250875
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.250875,
+              0.958003,
+              0.312779
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.312779,
+              0.958003,
+              0.376057
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.376057,
+              0.958003,
+              0.43521
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.43521,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
-      "part_label": "(b)–(c)–(d)–(e)–(f)"
+      "part_label": "(b)–(c)–(d)–(e)–(f)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_SAMPLE_03_Q01_U01"
+      ]
     },
     {
       "question_id": "EDX_9MA0_SAMPLE_03_Q02_U01",
@@ -317,12 +447,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -349,9 +481,9 @@
             "page": 4,
             "bbox": [
               0.041997,
-              0.045137,
+              0.243901,
               0.958003,
-              0.30478815522217884
+              0.304788
             ]
           }
         ],
@@ -364,7 +496,41 @@
         "difficulty_basis": "Compare the proposed input with the observed temperature range.",
         "year_basis": "Regression interpretation and extrapolation are within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.240366
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.147679
+            ]
+          },
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.4491,
+              0.958003,
+              0.489374
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -401,13 +567,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q02_U02_context.webp\" alt=\"Shared source stem for question 2\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -434,9 +601,9 @@
             "page": 4,
             "bbox": [
               0.041997,
-              0.30478815522217884,
+              0.305648,
               0.958003,
-              0.3499009371770661
+              0.349901
             ]
           }
         ],
@@ -449,7 +616,50 @@
         "difficulty_basis": "Identify the aspect of linear association measured by the supplied coefficient.",
         "year_basis": "Interpreting a correlation coefficient is the additional A level extension of the hypothesis-testing point.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.240366
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.147679,
+              0.958003,
+              0.198849
+            ]
+          },
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.489374,
+              0.958003,
+              0.529878
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -486,13 +696,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q02_U03_context.webp\" alt=\"Shared source stem for question 2\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -519,9 +730,9 @@
             "page": 4,
             "bbox": [
               0.041997,
-              0.3499009371770661,
+              0.350761,
               0.958003,
-              0.4116477211987316
+              0.411648
             ]
           }
         ],
@@ -534,7 +745,50 @@
         "difficulty_basis": "State population-coefficient hypotheses, choose the one-tailed critical value and interpret the sample coefficient at the stated level.",
         "year_basis": "Hypothesis testing for correlation coefficients is additional A level content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.240366
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.198849,
+              0.958003,
+              0.34698
+            ]
+          },
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.529878,
+              0.958003,
+              0.610696
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
@@ -571,13 +825,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U04.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U04_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "2",
+      "scheme_scope": "part",
+      "scheme_question_number": "2(d)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q02_U04_context.webp\" alt=\"Shared source stem for question 2\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_U04_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q02_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -604,7 +859,7 @@
             "page": 4,
             "bbox": [
               0.041997,
-              0.4116477211987316,
+              0.440965,
               0.958003,
               0.501852
             ]
@@ -619,7 +874,62 @@
         "difficulty_basis": "Use geographical and seasonal knowledge of the prescribed large data set to justify a location.",
         "year_basis": "Familiarity with locations and variables in the large data set is within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_bridge_text": "Using the same 9 days a location from the large data set gave t = 27.2 and w = 3.5",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.240366
+            ]
+          },
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.412508,
+              0.958003,
+              0.437452
+            ]
+          }
+        ],
+        "context_reasons": [
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.34698,
+              0.958003,
+              0.4491
+            ]
+          },
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.610696,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(d)"
     },
@@ -662,7 +972,8 @@
       "scheme_scope": "full_question",
       "scheme_question_number": "3",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q03_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q03_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q03_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -698,18 +1009,9 @@
             "page": 6,
             "bbox": [
               0.041997,
-              0.045137,
+              0.171413,
               0.958003,
-              0.21566558576536138
-            ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.041997,
-              0.21566558576536138,
-              0.958003,
-              0.2892571476083575
+              0.289257
             ]
           }
         ],
@@ -724,7 +1026,20 @@
         "difficulty_basis": "Infer a normal mean from a supplied percentile, find the acceptable-length probability and reuse its complement in a binomial count.",
         "year_basis": "The linked normal-distribution calculation is additional A level content.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.167878
+            ]
+          }
+        ],
+        "context_reasons": []
       },
       "part_label": "(a)–(b)"
     },
@@ -767,7 +1082,7 @@
       "scheme_question_number": "3",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q03_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q03_U02_context.webp\" alt=\"Shared source stem for question 3\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q03_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -803,7 +1118,7 @@
             "page": 6,
             "bbox": [
               0.041997,
-              0.2892571476083575,
+              0.380343,
               0.958003,
               0.441229
             ]
@@ -818,7 +1133,20 @@
         "difficulty_basis": "Use the sampling distribution of the mean with known standard deviation, apply a one-tailed significance test and state the contextual conclusion.",
         "year_basis": "Testing the mean of a normal distribution is additional A level content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.167878
+            ]
+          }
+        ],
+        "context_reasons": []
       },
       "part_label": "(c)"
     },
@@ -857,12 +1185,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "4",
+      "scheme_scope": "part",
+      "scheme_question_number": "4(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -889,9 +1219,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.045137,
+              0.154765,
               0.958003,
-              0.19902457565715245
+              0.199025
             ]
           }
         ],
@@ -904,7 +1234,41 @@
         "difficulty_basis": "Use the union-complement probability as a numerator and the conditioning complement as a denominator.",
         "year_basis": "Conditional probability is additional A level content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.15123
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.207939
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.634279,
+              0.958003,
+              0.693225
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -941,13 +1305,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "4",
+      "scheme_scope": "part",
+      "scheme_question_number": "4(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q04_U02_context.webp\" alt=\"Shared source stem for question 4\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -974,9 +1339,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.19902457565715245,
+              0.199885,
               0.958003,
-              0.2441373576120397
+              0.244137
             ]
           }
         ],
@@ -989,7 +1354,50 @@
         "difficulty_basis": "Compare the supplied intersection probability with the product of the two marginal probabilities.",
         "year_basis": "Independence of events is within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.15123
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.207939,
+              0.958003,
+              0.279525
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.693225,
+              0.958003,
+              0.733741
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -1026,13 +1434,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "4",
+      "scheme_scope": "part",
+      "scheme_question_number": "4(c)(d)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q04_U03_context.webp\" alt=\"Shared source stem for question 4\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q04_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1059,16 +1468,7 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.2441373576120397,
-              0.958003,
-              0.36284170140992306
-            ]
-          },
-          {
-            "page": 8,
-            "bbox": [
-              0.041997,
-              0.36284170140992306,
+              0.301955,
               0.958003,
               0.407954
             ]
@@ -1085,7 +1485,80 @@
         "difficulty_basis": "Combine independence and mutual exclusivity to assign all Venn regions, then sum the regions outside the required union.",
         "year_basis": "Venn diagrams, independence, mutual exclusivity and complements are within AS scope.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_bridge_text": "The events A and C are mutually exclusive and the events B and C are statistically independent.",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.15123
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.273476,
+              0.958003,
+              0.29842
+            ]
+          }
+        ],
+        "context_reasons": [
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.279525,
+              0.958003,
+              0.498663
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.498663,
+              0.958003,
+              0.634279
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.733741,
+              0.958003,
+              0.86858
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.86858,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)–(d)"
     },
@@ -1122,12 +1595,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "5",
+      "scheme_scope": "part",
+      "scheme_question_number": "5(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1154,9 +1629,9 @@
             "page": 10,
             "bbox": [
               0.041997,
-              0.045137,
+              0.097807,
               0.958003,
-              0.1586941286866456
+              0.158694
             ]
           }
         ],
@@ -1169,7 +1644,41 @@
         "difficulty_basis": "Relate a census to the practical consequences of germinating the entire seed population.",
         "year_basis": "Population and sample reasoning is within AS scope.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.094572
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.156516
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.576837,
+              0.958003,
+              0.61711
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -1206,13 +1715,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "5",
+      "scheme_scope": "part",
+      "scheme_question_number": "5(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q05_U02_context.webp\" alt=\"Shared source stem for question 5\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1239,9 +1749,9 @@
             "page": 10,
             "bbox": [
               0.041997,
-              0.1586941286866456,
+              0.188033,
               0.958003,
-              0.24891969259642008
+              0.24892
             ]
           }
         ],
@@ -1254,7 +1764,50 @@
         "difficulty_basis": "Find a tray success probability and use that probability in a second binomial distribution for the number of successful trays.",
         "year_basis": "Both stages use the AS binomial-distribution scope; their nested structure raises difficulty without adding Year 13 content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.094572
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.156516,
+              0.958003,
+              0.295774
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.61711,
+              0.958003,
+              0.695256
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -1291,13 +1844,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "5",
+      "scheme_scope": "part",
+      "scheme_question_number": "5(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q05_U03_context.webp\" alt=\"Shared source stem for question 5\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1324,9 +1878,9 @@
             "page": 10,
             "bbox": [
               0.041997,
-              0.24891969259642008,
+              0.24978,
               0.958003,
-              0.31066647661808566
+              0.310666
             ]
           }
         ],
@@ -1339,7 +1893,50 @@
         "difficulty_basis": "State appropriate restrictions on the binomial parameters for a usable normal approximation.",
         "year_basis": "The normal approximation to the binomial is additional A level content under official Statistics 4.2.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.094572
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.295774,
+              0.958003,
+              0.34698
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.695256,
+              0.958003,
+              0.735736
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
@@ -1377,13 +1974,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U04.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U04_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "5",
+      "scheme_scope": "part",
+      "scheme_question_number": "5(d)(e)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q05_U04_context.webp\" alt=\"Shared source stem for question 5\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_U04_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q05_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1410,18 +2008,9 @@
             "page": 10,
             "bbox": [
               0.041997,
-              0.31066647661808566,
+              0.340005,
               0.958003,
-              0.4008920405278601
-            ]
-          },
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.4008920405278601,
-              0.958003,
-              0.46263882454952565
+              0.462639
             ]
           }
         ],
@@ -1436,9 +2025,84 @@
         "difficulty_basis": "Use the binomial mean and variance, apply a continuity correction and interpret the resulting tail probability as evidence about the claim.",
         "year_basis": "The normal approximation is additional A level content, although the underlying binomial hypothesis-testing point also contains AS material.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.094572
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.24978,
+              0.958003,
+              0.33647
+            ]
+          }
+        ],
+        "context_reasons": [
+          "builds on the previous answer"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.34698,
+              0.958003,
+              0.475548
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.475548,
+              0.958003,
+              0.576837
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.735736,
+              0.958003,
+              0.813704
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.813704,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
-      "part_label": "(d)–(e)"
+      "part_label": "(d)–(e)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_SAMPLE_03_Q05_U03"
+      ]
     },
     {
       "question_id": "EDX_9MA0_SAMPLE_03_Q06_U01",
@@ -1641,12 +2305,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "8",
+      "scheme_scope": "part",
+      "scheme_question_number": "8(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1673,9 +2339,9 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.045137,
+              0.268705,
               0.958003,
-              0.31296285738041796
+              0.312963
             ]
           }
         ],
@@ -1688,7 +2354,41 @@
         "difficulty_basis": "Use the change in each supplied velocity component over the stated elapsed time.",
         "year_basis": "Constant-acceleration motion in two dimensions extends AS one-dimensional kinematics.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.265171
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.177184
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.548329,
+              0.958003,
+              0.607418
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -1726,13 +2426,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "8",
+      "scheme_scope": "part",
+      "scheme_question_number": "8(b)(c)(d)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q08_U02_context.webp\" alt=\"Shared source stem for question 8\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q08_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1759,25 +2460,7 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.31296285738041796,
-              0.958003,
-              0.3580756393353052
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.3580756393353052,
-              0.958003,
-              0.40318842129019233
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.40318842129019233,
+              0.313823,
               0.958003,
               0.448301
             ]
@@ -1796,7 +2479,88 @@
         "difficulty_basis": "Construct vector displacement and velocity expressions, then impose equal positive components on the appropriate vector for each direction question.",
         "year_basis": "Vector constant-acceleration kinematics in two dimensions is additional A level content.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.309399
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.177184,
+              0.958003,
+              0.277244
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.277244,
+              0.958003,
+              0.39701
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.39701,
+              0.958003,
+              0.548329
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.607418,
+              0.958003,
+              0.684103
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.684103,
+              0.958003,
+              0.762106
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.762106,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)–(c)–(d)"
     },
@@ -1833,12 +2597,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "9",
+      "scheme_scope": "part",
+      "scheme_question_number": "9(a)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1874,9 +2640,9 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.045137,
+              0.51652,
               0.958003,
-              0.5607730226039032
+              0.560773
             ]
           }
         ],
@@ -1889,7 +2655,41 @@
         "difficulty_basis": "Identify the force positions and use perpendicular distances in a moment balance about the foot.",
         "year_basis": "Moments and rigid-body equilibrium are additional A level mechanics content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.512985
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.287792
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.068041,
+              0.958003,
+              0.240612
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)"
     },
@@ -1927,13 +2727,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "9",
+      "scheme_scope": "part",
+      "scheme_question_number": "9(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q09_U02_context.webp\" alt=\"Shared source stem for question 9\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1969,9 +2770,9 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.5607730226039032,
+              0.561633,
               0.958003,
-              0.6225198066255687
+              0.62252
             ]
           }
         ],
@@ -1984,7 +2785,52 @@
         "difficulty_basis": "Use vertical and horizontal equilibrium with both possible friction directions to obtain the admissible applied-force interval.",
         "year_basis": "Planar equilibrium with limiting friction is additional A level mechanics content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.55721
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.287792,
+              0.958003,
+              0.466283
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.240612,
+              0.958003,
+              0.373634
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(b)"
     },
@@ -2022,13 +2868,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U03.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U03_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "9",
+      "scheme_scope": "part",
+      "scheme_question_number": "9(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q09_U03_context.webp\" alt=\"Shared source stem for question 9\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_U03_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q09_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2064,7 +2911,7 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.6225198066255687,
+              0.651859,
               0.958003,
               0.696111
             ]
@@ -2079,7 +2926,72 @@
         "difficulty_basis": "Connect the added downward load with the ground reaction and available friction while recognising its position in the moment balance.",
         "year_basis": "Frictional equilibrium of an extended body is additional A level mechanics content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_bridge_text": "Often in practice, the builder’s assistant will simply stand on the bottom of the ladder.",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.55721
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.62338,
+              0.958003,
+              0.648324
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result",
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.466283,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.068041
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.373634,
+              0.958003,
+              0.983832
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     },
@@ -2116,12 +3028,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_U01.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_U01_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "10",
+      "scheme_scope": "part",
+      "scheme_question_number": "10(a)(b)",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_full.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_full.webp",
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_U01_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2175,18 +3089,9 @@
             "page": 22,
             "bbox": [
               0.041997,
-              0.045137,
+              0.54219,
               0.958003,
-              0.5864431220230671
-            ]
-          },
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.5864431220230671,
-              0.958003,
-              0.6481899060447327
+              0.64819
             ]
           }
         ],
@@ -2201,7 +3106,59 @@
         "difficulty_basis": "Resolve the initial velocity, combine horizontal and vertical displacement conditions, then recover both velocity components at the specified height.",
         "year_basis": "Projectile motion is additional A level mechanics content.",
         "context_basis": "grouped_dependency",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.538655
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.323034
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.323034,
+              0.958003,
+              0.529165
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.068041,
+              0.958003,
+              0.258287
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.258287,
+              0.958003,
+              0.37506
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(a)–(b)"
     },
@@ -2238,13 +3195,14 @@
         "question_html": "",
         "question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_U02.webp",
         "mark_scheme_html": "",
-        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_scheme.webp"
+        "mark_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_U02_scheme.webp"
       },
-      "scheme_scope": "full_question",
-      "scheme_question_number": "10",
+      "scheme_scope": "part",
+      "scheme_question_number": "10(c)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/maths/EDX_9MA0_SAMPLE_03/Q10_U02_context.webp\" alt=\"Shared source stem for question 10\" />"
+        "stem_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_U02_context.webp",
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_SAMPLE_03/Q10_scheme.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2298,9 +3256,9 @@
             "page": 22,
             "bbox": [
               0.041997,
-              0.6481899060447327,
+              0.64905,
               0.958003,
-              0.6933026879996199
+              0.693303
             ]
           }
         ],
@@ -2313,7 +3271,77 @@
         "difficulty_basis": "Identify two physical assumptions in the stated free-flight model that could be made more realistic.",
         "year_basis": "Evaluating a projectile model is additional A level mechanics content.",
         "context_basis": "shared_stem",
-        "qualification_code": "9MA0"
+        "qualification_code": "9MA0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.045137,
+              0.958003,
+              0.538655
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.072887,
+              0.958003,
+              0.095748
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.529165,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.068041
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.37506,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.983832
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.023756,
+              0.958003,
+              0.862655
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
       },
       "part_label": "(c)"
     }

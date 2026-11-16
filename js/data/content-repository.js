@@ -168,6 +168,25 @@ async function loadBundle(subjectId) {
     questionsById.set(id, textbooks.index.attach(question, textbooks.links[id]));
   }
 
+  // A part that builds on an earlier part's answer (depends_on_question_ids) also
+  // needs that part's topics: it is only offered once those are learnt too.
+  for (const [id, question] of questionsById) {
+    if (!question.depends_on_question_ids?.length) continue;
+    const points = new Set();
+    const requirements = { ...(question.textbook_requirements || {}) };
+    const seen = new Set([id]);
+    const queue = [...question.depends_on_question_ids];
+    while (queue.length) {
+      const dependency = questionsById.get(queue.shift());
+      if (!dependency || seen.has(dependency.question_id)) continue;
+      seen.add(dependency.question_id);
+      for (const point of [...(dependency.primary_spec_points || []), ...(dependency.crossover_spec_points || [])]) points.add(point);
+      for (const [point, requirement] of Object.entries(dependency.textbook_requirements || {})) requirements[point] ??= requirement;
+      queue.push(...(dependency.depends_on_question_ids || []));
+    }
+    questionsById.set(id, { ...question, dependency_spec_points: [...points], ...(Object.keys(requirements).length ? { textbook_requirements: requirements } : {}) });
+  }
+
   // Keep papers and questions consistent: a question that names a paper belongs to it.
   for (const question of questionsById.values()) {
     const paper = papersById.get(question.paper_id);

@@ -1,5 +1,7 @@
 # Biology A (Salters-Nuffield) 9BN0 / 8BN0 handover
 
+> **Part display (2026-11-16):** the packs have since been post-processed by `tools/parts/refine.py`. Each part shows its own crop, only the context it needs and its own mark-scheme rows, and parts that build on an earlier answer are gated. The "preceding context" and full-question-scheme descriptions below describe the subject build only. After rebuilding this subject, re-run the refiner (see [PART-DISPLAY.md](PART-DISPLAY.md)).
+
 Subject: `EDX_ALEVEL_BIOL_9BN0` (Pearson Edexcel A level Biology A, Salters-Nuffield,
 with AS 8BN0 papers inside the same subject). Specification Issue 4, November 2018.
 Reviewer type for every tag, grouping and difficulty: **model** (Claude subagents with

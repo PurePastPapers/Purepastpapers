@@ -1,5 +1,7 @@
 # Maths corpus: release and continuation notes
 
+> **Part display (2026-11-16):** the packs have since been post-processed by `tools/parts/refine.py`. Each part shows its own crop, only the context it needs and its own mark-scheme rows, and parts that build on an earlier answer are gated. The "preceding context" and full-question-scheme descriptions below describe the subject build only. After rebuilding this subject, re-run the refiner (see [PART-DISPLAY.md](PART-DISPLAY.md)).
+
 Updated 15 November 2026. This release activates all **60 verified public
 current-specification Edexcel Maths sources** found in the audited inventories:
 55 exam booklets from 2018–2025 and five official sample assessment components.

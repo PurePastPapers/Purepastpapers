@@ -109,7 +109,7 @@
       "scheme_question_number": "1",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q01_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q01_stem.webp\" alt=\"Shared source stem for question 1\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q01_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -136,7 +136,7 @@
             "page": 2,
             "bbox": [
               0.041997,
-              0.5070809725736142,
+              0.507081,
               0.958003,
               0.600922
             ]
@@ -147,7 +147,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -165,7 +165,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q01_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -211,7 +215,7 @@
       "scheme_question_number": "1",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q01_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q01_U02_context.webp\" alt=\"Shared source stem for question 1\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q01_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -238,7 +242,7 @@
             "page": 3,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.069328,
               0.958003,
               0.277991
             ]
@@ -257,7 +261,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q01_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)"
     },
@@ -400,7 +408,7 @@
       "scheme_question_number": "3",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q03_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q03_stem.webp\" alt=\"Shared source stem for question 3\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q03_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -427,9 +435,9 @@
             "page": 6,
             "bbox": [
               0.041997,
-              0.11444096022045629,
+              0.14292,
               0.958003,
-              0.6119428904013589
+              0.611943
             ]
           }
         ],
@@ -447,7 +455,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.114441,
+              0.958003,
+              0.14292
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q03_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)(i)"
     },
@@ -495,7 +517,7 @@
       "scheme_question_number": "3",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q03_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q03_U02_context.webp\" alt=\"Shared source stem for question 3\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q03_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -522,7 +544,7 @@
             "page": 6,
             "bbox": [
               0.041997,
-              0.6119428904013589,
+              0.611943,
               0.958003,
               0.67253
             ]
@@ -533,7 +555,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -551,9 +573,28 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.114441,
+              0.958003,
+              0.201132
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q03_stem.webp",
+        "context_reasons": [
+          "builds on the previous answer"
+        ]
       },
-      "part_label": "(a)(ii)"
+      "part_label": "(a)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_SAMPLE_03_Q03_U01"
+      ]
     },
     {
       "question_id": "EDX_9PH0_SAMPLE_03_Q03_U03",
@@ -599,7 +640,7 @@
       "scheme_question_number": "3",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q03_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q03_U03_context.webp\" alt=\"Shared source stem for question 3\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q03_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -626,7 +667,7 @@
             "page": 7,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.069328,
               0.958003,
               0.942517
             ]
@@ -646,7 +687,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q03_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)"
     },
@@ -694,7 +739,7 @@
       "scheme_question_number": "4",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q04_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q04_stem.webp\" alt=\"Shared source stem for question 4\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q04_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -721,7 +766,7 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.09780695815367794,
+              0.097807,
               0.958003,
               0.368342
             ]
@@ -732,7 +777,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -750,7 +795,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q04_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -798,7 +847,7 @@
       "scheme_question_number": "4",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q04_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q04_U02_context.webp\" alt=\"Shared source stem for question 4\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q04_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -825,7 +874,7 @@
             "page": 9,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.069328,
               0.958003,
               0.29462
             ]
@@ -845,7 +894,23 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.097807,
+              0.958003,
+              0.365967
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q04_stem.webp",
+        "context_reasons": [
+          "scenario (student)"
+        ]
       },
       "part_label": "(b)"
     },
@@ -999,7 +1064,7 @@
       "scheme_question_number": "6",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q06_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q06_stem.webp\" alt=\"Shared source stem for question 6\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q06_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1026,7 +1091,7 @@
             "page": 12,
             "bbox": [
               0.041997,
-              0.4956973001223438,
+              0.495697,
               0.958003,
               0.56813
             ]
@@ -1037,7 +1102,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -1056,7 +1121,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q06_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -1106,7 +1175,7 @@
       "scheme_question_number": "6",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q06_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q06_U02_context.webp\" alt=\"Shared source stem for question 6\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q06_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1133,9 +1202,9 @@
             "page": 13,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.209456,
               0.958003,
-              0.4266455237620117
+              0.426646
             ]
           }
         ],
@@ -1154,7 +1223,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.209456
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q06_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)(i)"
     },
@@ -1202,7 +1285,7 @@
       "scheme_question_number": "6",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q06_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q06_U03_context.webp\" alt=\"Shared source stem for question 6\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q06_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1229,7 +1312,7 @@
             "page": 13,
             "bbox": [
               0.041997,
-              0.4266455237620117,
+              0.426646,
               0.958003,
               0.852723
             ]
@@ -1249,7 +1332,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.209456
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q06_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)(ii)"
     },
@@ -1297,7 +1394,7 @@
       "scheme_question_number": "7",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q07_stem.webp\" alt=\"Shared source stem for question 7\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1324,9 +1421,9 @@
             "page": 15,
             "bbox": [
               0.041997,
-              0.42801862476095454,
+              0.473131,
               0.958003,
-              0.6568737008397771
+              0.656874
             ]
           }
         ],
@@ -1344,7 +1441,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.428019,
+              0.958003,
+              0.473131
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q07_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)(i)"
     },
@@ -1390,7 +1501,7 @@
       "scheme_question_number": "7",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q07_U02_context.webp\" alt=\"Shared source stem for question 7\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1417,7 +1528,7 @@
             "page": 15,
             "bbox": [
               0.041997,
-              0.6568737008397771,
+              0.656874,
               0.958003,
               0.700827
             ]
@@ -1428,7 +1539,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932817826556904
+              0.069328
             ]
           }
         ],
@@ -1445,7 +1556,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.428019,
+              0.958003,
+              0.473131
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q07_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)(ii)"
     },
@@ -1491,7 +1616,7 @@
       "scheme_question_number": "7",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q07_U03_context.webp\" alt=\"Shared source stem for question 7\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1518,7 +1643,7 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.06932817826556904,
+              0.789679,
               0.958003,
               0.833632
             ]
@@ -1529,7 +1654,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06934195678770382
+              0.069342
             ]
           }
         ],
@@ -1546,7 +1671,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.789679
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q07_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)(i)"
     },
@@ -1592,7 +1731,7 @@
       "scheme_question_number": "7",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q07_U04_context.webp\" alt=\"Shared source stem for question 7\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_U04_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1619,9 +1758,9 @@
             "page": 17,
             "bbox": [
               0.041997,
-              0.06934195678770382,
+              0.069342,
               0.958003,
-              0.19282115240708408
+              0.192821
             ]
           }
         ],
@@ -1638,9 +1777,28 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.831257
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q07_stem.webp",
+        "context_reasons": [
+          "builds on the previous answer"
+        ]
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_SAMPLE_03_Q07_U03"
+      ]
     },
     {
       "question_id": "EDX_9PH0_SAMPLE_03_Q07_U05",
@@ -1686,7 +1844,7 @@
       "scheme_question_number": "7",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q07_U05_context.webp\" alt=\"Shared source stem for question 7\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q07_U05_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1713,7 +1871,7 @@
             "page": 17,
             "bbox": [
               0.041997,
-              0.19282115240708408,
+              0.192821,
               0.958003,
               0.582337
             ]
@@ -1733,7 +1891,23 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.766695
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q07_stem.webp",
+        "context_reasons": [
+          "earlier figure or data"
+        ]
       },
       "part_label": "(c)"
     },
@@ -1781,7 +1955,7 @@
       "scheme_question_number": "8",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q08_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q08_stem.webp\" alt=\"Shared source stem for question 8\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q08_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1808,7 +1982,7 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.5538735464253051,
+              0.553874,
               0.958003,
               0.64294
             ]
@@ -1819,7 +1993,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -1837,7 +2011,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q08_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -1885,7 +2063,7 @@
       "scheme_question_number": "8",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q08_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q08_U02_context.webp\" alt=\"Shared source stem for question 8\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q08_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1912,9 +2090,9 @@
             "page": 19,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.114441,
               0.958003,
-              0.3817409637838673
+              0.381741
             ]
           }
         ],
@@ -1932,7 +2110,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 19,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.114441
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q08_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)(i)"
     },
@@ -1980,7 +2172,7 @@
       "scheme_question_number": "8",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q08_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q08_U03_context.webp\" alt=\"Shared source stem for question 8\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q08_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2007,7 +2199,7 @@
             "page": 19,
             "bbox": [
               0.041997,
-              0.3817409637838673,
+              0.381741,
               0.958003,
               0.673961
             ]
@@ -2027,7 +2219,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 19,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.114441
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q08_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)(ii)"
     },
@@ -2079,7 +2285,7 @@
       "scheme_question_number": "9",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q09_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q09_stem.webp\" alt=\"Shared source stem for question 9\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q09_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2124,7 +2330,7 @@
             "page": 20,
             "bbox": [
               0.041997,
-              0.11444096022045629,
+              0.114441,
               0.958003,
               0.837029
             ]
@@ -2135,7 +2341,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -2155,7 +2361,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q09_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -2205,7 +2415,7 @@
       "scheme_question_number": "9",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q09_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q09_U02_context.webp\" alt=\"Shared source stem for question 9\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q09_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2250,7 +2460,7 @@
             "page": 21,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.069328,
               0.958003,
               0.775701
             ]
@@ -2271,7 +2481,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q09_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)"
     },
@@ -2319,7 +2533,7 @@
       "scheme_question_number": "10",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q10_stem.webp\" alt=\"Shared source stem for question 10\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2355,9 +2569,9 @@
             "page": 22,
             "bbox": [
               0.041997,
-              0.2949852118447777,
+              0.294985,
               0.958003,
-              0.5404689448740334
+              0.540469
             ]
           }
         ],
@@ -2375,7 +2589,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q10_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -2423,7 +2641,7 @@
       "scheme_question_number": "10",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q10_U02_context.webp\" alt=\"Shared source stem for question 10\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2459,7 +2677,7 @@
             "page": 22,
             "bbox": [
               0.041997,
-              0.5404689448740334,
+              0.540469,
               0.958003,
               0.724536
             ]
@@ -2470,7 +2688,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -2488,7 +2706,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q10_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)"
     },
@@ -2538,7 +2760,7 @@
       "scheme_question_number": "10",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q10_U03_context.webp\" alt=\"Shared source stem for question 10\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2574,9 +2796,9 @@
             "page": 23,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.131065,
               0.958003,
-              0.39837021463611644
+              0.39837
             ]
           }
         ],
@@ -2595,7 +2817,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 23,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.131065
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q10_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(c)(i)"
     },
@@ -2645,7 +2881,7 @@
       "scheme_question_number": "10",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q10_U04_context.webp\" alt=\"Shared source stem for question 10\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q10_U04_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2681,7 +2917,7 @@
             "page": 23,
             "bbox": [
               0.041997,
-              0.39837021463611644,
+              0.39837,
               0.958003,
               0.69059
             ]
@@ -2702,7 +2938,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 23,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.131065
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q10_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(c)(ii)"
     },
@@ -2750,7 +3000,7 @@
       "scheme_question_number": "11",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q11_stem.webp\" alt=\"Shared source stem for question 11\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2786,9 +3036,9 @@
             "page": 24,
             "bbox": [
               0.041997,
-              0.24986245233937918,
+              0.249862,
               0.958003,
-              0.5171505778664671
+              0.517151
             ]
           }
         ],
@@ -2806,7 +3056,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q11_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -2852,7 +3106,7 @@
       "scheme_question_number": "11",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q11_U02_context.webp\" alt=\"Shared source stem for question 11\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2888,7 +3142,7 @@
             "page": 24,
             "bbox": [
               0.041997,
-              0.5171505778664671,
+              0.517151,
               0.958003,
               0.651323
             ]
@@ -2899,7 +3153,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06933530508736296
+              0.069335
             ]
           }
         ],
@@ -2916,7 +3170,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q11_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)"
     },
@@ -2962,7 +3220,7 @@
       "scheme_question_number": "11",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q11_U03_context.webp\" alt=\"Shared source stem for question 11\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2998,7 +3256,7 @@
             "page": 25,
             "bbox": [
               0.041997,
-              0.06933530508736296,
+              0.272108,
               0.958003,
               0.887585
             ]
@@ -3009,7 +3267,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06934207556806701
+              0.069342
             ]
           }
         ],
@@ -3026,7 +3284,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 25,
+            "bbox": [
+              0.041997,
+              0.069335,
+              0.958003,
+              0.272108
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q11_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(c)(i)"
     },
@@ -3072,7 +3344,7 @@
       "scheme_question_number": "11",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q11_U04_context.webp\" alt=\"Shared source stem for question 11\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q11_U04_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3108,7 +3380,7 @@
             "page": 26,
             "bbox": [
               0.041997,
-              0.06934207556806701,
+              0.069342,
               0.958003,
               0.411862
             ]
@@ -3127,7 +3399,21 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 25,
+            "bbox": [
+              0.041997,
+              0.069335,
+              0.958003,
+              0.272108
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q11_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(c)(ii)"
     },
@@ -3175,7 +3461,7 @@
       "scheme_question_number": "12",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q12_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q12_stem.webp\" alt=\"Shared source stem for question 12\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q12_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3202,9 +3488,9 @@
             "page": 28,
             "bbox": [
               0.041997,
-              0.11444096022045629,
+              0.114441,
               0.958003,
-              0.4052389267006379
+              0.405239
             ]
           }
         ],
@@ -3222,7 +3508,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q12_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)(i)"
     },
@@ -3270,7 +3560,7 @@
       "scheme_question_number": "12",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q12_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q12_U02_context.webp\" alt=\"Shared source stem for question 12\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q12_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3297,7 +3587,7 @@
             "page": 28,
             "bbox": [
               0.041997,
-              0.4052389267006379,
+              0.405239,
               0.958003,
               0.666602
             ]
@@ -3308,7 +3598,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -3326,7 +3616,23 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 28,
+            "bbox": [
+              0.041997,
+              0.114441,
+              0.958003,
+              0.229608
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q12_stem.webp",
+        "context_reasons": [
+          "scenario (model)"
+        ]
       },
       "part_label": "(a)(ii)"
     },
@@ -3374,7 +3680,7 @@
       "scheme_question_number": "12",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q12_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q12_U03_context.webp\" alt=\"Shared source stem for question 12\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q12_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3401,7 +3707,7 @@
             "page": 29,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.069328,
               0.958003,
               0.406658
             ]
@@ -3421,7 +3727,23 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 28,
+            "bbox": [
+              0.041997,
+              0.114441,
+              0.958003,
+              0.229608
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q12_stem.webp",
+        "context_reasons": [
+          "scenario (model)"
+        ]
       },
       "part_label": "(b)"
     },
@@ -3471,7 +3793,7 @@
       "scheme_question_number": "13",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q13_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q13_stem.webp\" alt=\"Shared source stem for question 13\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q13_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3516,7 +3838,7 @@
             "page": 30,
             "bbox": [
               0.041997,
-              0.38756203304469705,
+              0.387562,
               0.958003,
               0.431516
             ]
@@ -3527,7 +3849,7 @@
               0.041997,
               0.045137,
               0.958003,
-              0.06932805948520585
+              0.069328
             ]
           }
         ],
@@ -3546,7 +3868,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q13_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(a)"
     },
@@ -3594,7 +3920,7 @@
       "scheme_question_number": "13",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q13_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q13_U02_context.webp\" alt=\"Shared source stem for question 13\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q13_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3639,9 +3965,9 @@
             "page": 31,
             "bbox": [
               0.041997,
-              0.06932805948520585,
+              0.069328,
               0.958003,
-              0.45385846131917473
+              0.453858
             ]
           }
         ],
@@ -3659,7 +3985,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q13_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)(i)"
     },
@@ -3707,7 +4037,7 @@
       "scheme_question_number": "13",
       "context": {
         "full_question_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q13_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/physics/EDX_9PH0_SAMPLE_03/Q13_U03_context.webp\" alt=\"Shared source stem for question 13\" />"
+        "stem_image_url": "assets/physics/EDX_9PH0_SAMPLE_03/Q13_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3752,7 +4082,7 @@
             "page": 31,
             "bbox": [
               0.041997,
-              0.45385846131917473,
+              0.453858,
               0.958003,
               0.942472
             ]
@@ -3772,7 +4102,11 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "shared_stem",
-        "qualification_code": "9PH0"
+        "qualification_code": "9PH0",
+        "part_display": "refined",
+        "context_regions": [],
+        "context_includes_stem_image": "Q13_stem.webp",
+        "context_reasons": []
       },
       "part_label": "(b)(ii)"
     }
