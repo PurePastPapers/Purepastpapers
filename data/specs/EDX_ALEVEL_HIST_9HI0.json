@@ -1,144 +1,1062 @@
 {
   "subject_id": "EDX_ALEVEL_HIST_9HI0",
+  "specification_version": "pearson-9hi0-issue4-2026-06",
+  "official_source_url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/History/2015/Specification%20and%20sample%20assessments/9781446914366-gce-2015-a-hist.pdf",
+  "order_status": "verified",
+  "official_source": {
+    "title": "Pearson Edexcel Level 3 Advanced GCE in History (9HI0) specification",
+    "issue": "Issue 4",
+    "issue_date": "June 2026",
+    "first_teaching": 2015,
+    "first_exams": 2017,
+    "url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/History/2015/Specification%20and%20sample%20assessments/9781446914366-gce-2015-a-hist.pdf",
+    "sha256": "fdb12503123b24101ba7b47c25d1199c39c17493e0aaee98740b03af17a17735",
+    "verified_at": "2026-11-16",
+    "as_qualification": null
+  },
+  "approach": "Official Pearson content order for Route H as studied here: 1H, 2H.2 and option 33. No textbook organisation has been supplied.",
+  "scope": {
+    "route": "H",
+    "included_options": [
+      "1H",
+      "2H.2",
+      "33"
+    ],
+    "excluded_options": [
+      "2H.1 (owner excluded)"
+    ],
+    "coursework": "Non-examined assessment (Coursework) has no exam questions and is out of scope."
+  },
+  "components": {
+    "9HI0/1H": {
+      "title": "Paper 1: Breadth study with interpretations",
+      "marks": 60,
+      "minutes": 135
+    },
+    "9HI0/2H": {
+      "title": "Paper 2: Depth study (option 2H.2 only)",
+      "marks": 40,
+      "minutes": 90
+    },
+    "9HI0/33": {
+      "title": "Paper 3: Themes in breadth with aspects in depth",
+      "marks": 60,
+      "minutes": 135
+    }
+  },
+  "notes": "Runtime leaves are the official content bullets, with Pearson wording verbatim. Linear A level: Pearson gives no Year 12/13 split, so none is recorded.",
+  "legacy_ids": {
+    "EDX_HIST_1H_INT_5.1": [
+      "EDX_HIST_1H_INT_INT.1",
+      "EDX_HIST_1H_INT_INT.2",
+      "EDX_HIST_1H_INT_INT.3",
+      "EDX_HIST_1H_INT_INT.4"
+    ],
+    "EDX_HIST_33_B_B.1": [
+      "EDX_HIST_33_B1_B.1.1",
+      "EDX_HIST_33_B1_B.1.2"
+    ],
+    "EDX_HIST_33_B": [
+      "EDX_HIST_33_B1_B.1.1",
+      "EDX_HIST_33_B1_B.1.2",
+      "EDX_HIST_33_B2_B.2.1",
+      "EDX_HIST_33_B2_B.2.2"
+    ],
+    "EDX_HIST_33_B_B.2": [
+      "EDX_HIST_33_B2_B.2.1",
+      "EDX_HIST_33_B2_B.2.2"
+    ],
+    "EDX_HIST_33_D_D.1": [
+      "EDX_HIST_33_D1_D.1.1",
+      "EDX_HIST_33_D1_D.1.2",
+      "EDX_HIST_33_D1_D.1.3"
+    ],
+    "EDX_HIST_33_D": [
+      "EDX_HIST_33_D1_D.1.1",
+      "EDX_HIST_33_D1_D.1.2",
+      "EDX_HIST_33_D1_D.1.3",
+      "EDX_HIST_33_D2_D.2.1",
+      "EDX_HIST_33_D2_D.2.2",
+      "EDX_HIST_33_D2_D.2.3",
+      "EDX_HIST_33_D3_D.3.1",
+      "EDX_HIST_33_D3_D.3.2",
+      "EDX_HIST_33_D3_D.3.3",
+      "EDX_HIST_33_D4_D.4.1",
+      "EDX_HIST_33_D4_D.4.2",
+      "EDX_HIST_33_D4_D.4.3",
+      "EDX_HIST_33_D5_D.5.1",
+      "EDX_HIST_33_D5_D.5.2",
+      "EDX_HIST_33_D5_D.5.3"
+    ],
+    "EDX_HIST_33_D_D.2": [
+      "EDX_HIST_33_D2_D.2.1",
+      "EDX_HIST_33_D2_D.2.2",
+      "EDX_HIST_33_D2_D.2.3"
+    ],
+    "EDX_HIST_33_D_D.3": [
+      "EDX_HIST_33_D3_D.3.1",
+      "EDX_HIST_33_D3_D.3.2",
+      "EDX_HIST_33_D3_D.3.3"
+    ],
+    "EDX_HIST_33_D_D.4": [
+      "EDX_HIST_33_D4_D.4.1",
+      "EDX_HIST_33_D4_D.4.2",
+      "EDX_HIST_33_D4_D.4.3"
+    ],
+    "EDX_HIST_33_D_D.5": [
+      "EDX_HIST_33_D5_D.5.1",
+      "EDX_HIST_33_D5_D.5.2",
+      "EDX_HIST_33_D5_D.5.3"
+    ]
+  },
+  "point_order": [
+    "EDX_HIST_1H_T1_1.1",
+    "EDX_HIST_1H_T1_1.2",
+    "EDX_HIST_1H_T1_1.3",
+    "EDX_HIST_1H_T2_2.1",
+    "EDX_HIST_1H_T2_2.2",
+    "EDX_HIST_1H_T2_2.3",
+    "EDX_HIST_1H_T3_3.1",
+    "EDX_HIST_1H_T3_3.2",
+    "EDX_HIST_1H_T3_3.3",
+    "EDX_HIST_1H_T4_4.1",
+    "EDX_HIST_1H_T4_4.2",
+    "EDX_HIST_1H_T4_4.3",
+    "EDX_HIST_1H_INT_INT.1",
+    "EDX_HIST_1H_INT_INT.2",
+    "EDX_HIST_1H_INT_INT.3",
+    "EDX_HIST_1H_INT_INT.4",
+    "EDX_HIST_2H2_K1_1.1",
+    "EDX_HIST_2H2_K1_1.2",
+    "EDX_HIST_2H2_K1_1.3",
+    "EDX_HIST_2H2_K1_1.4",
+    "EDX_HIST_2H2_K2_2.1",
+    "EDX_HIST_2H2_K2_2.2",
+    "EDX_HIST_2H2_K2_2.3",
+    "EDX_HIST_2H2_K2_2.4",
+    "EDX_HIST_2H2_K3_3.1",
+    "EDX_HIST_2H2_K3_3.2",
+    "EDX_HIST_2H2_K3_3.3",
+    "EDX_HIST_2H2_K3_3.4",
+    "EDX_HIST_2H2_K4_4.1",
+    "EDX_HIST_2H2_K4_4.2",
+    "EDX_HIST_2H2_K4_4.3",
+    "EDX_HIST_2H2_K4_4.4",
+    "EDX_HIST_33_B1_B.1.1",
+    "EDX_HIST_33_B1_B.1.2",
+    "EDX_HIST_33_B2_B.2.1",
+    "EDX_HIST_33_B2_B.2.2",
+    "EDX_HIST_33_D1_D.1.1",
+    "EDX_HIST_33_D1_D.1.2",
+    "EDX_HIST_33_D1_D.1.3",
+    "EDX_HIST_33_D2_D.2.1",
+    "EDX_HIST_33_D2_D.2.2",
+    "EDX_HIST_33_D2_D.2.3",
+    "EDX_HIST_33_D3_D.3.1",
+    "EDX_HIST_33_D3_D.3.2",
+    "EDX_HIST_33_D3_D.3.3",
+    "EDX_HIST_33_D4_D.4.1",
+    "EDX_HIST_33_D4_D.4.2",
+    "EDX_HIST_33_D4_D.4.3",
+    "EDX_HIST_33_D5_D.5.1",
+    "EDX_HIST_33_D5_D.5.2",
+    "EDX_HIST_33_D5_D.5.3"
+  ],
   "sections": [
     {
       "id": "EDX_HIST_SEC_P1",
+      "code": "1H",
       "title": "Paper 1, Option 1H: Britain transformed, 1918–97",
       "topics": [
         {
           "id": "EDX_HIST_1H_T1",
-          "code": "1",
+          "code": "Theme 1",
           "title": "A changing political and economic environment, 1918–79",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_1H_T1_1.1","code":"1.1","title":"A changing political landscape"},
-            {"id":"EDX_HIST_1H_T1_1.2","code":"1.2","title":"Responding to economic challenges"},
-            {"id":"EDX_HIST_1H_T1_1.3","code":"1.3","title":"Change and challenge in the workplace"}
+            {
+              "id": "EDX_HIST_1H_T1_1.1",
+              "code": "1.1",
+              "title": "A changing political landscape",
+              "content": "A changing political landscape: changing party fortunes, 1918–31; the National Government, 1931–45; Labour government, the rise of consensus politics and political challenge, 1945–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 1",
+                "bullet": 1,
+                "source_pages": [
+                  86
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T1_1.2",
+              "code": "1.2",
+              "title": "Economic challenges in 1918 and post-war boom, crisis and recovery, 1918–39",
+              "content": "Economic challenges in 1918 and post-war boom, crisis and recovery, 1918–39; creating a managed economy, 1939– 51; the response to economic challenges, 1951–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 1",
+                "bullet": 2,
+                "source_pages": [
+                  86
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T1_1.3",
+              "code": "1.3",
+              "title": "Change and challenge in the workplace",
+              "content": "Change and challenge in the workplace: the reasons for, and consequences of, industrial change and changing industrial relations, 1918–39; changing working opportunities and conditions, 1939–79; industrial relations, 1939–1979, and the reason for their breakdown in the 1960s and 70s.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 1",
+                "bullet": 3,
+                "source_pages": [
+                  86
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
           "id": "EDX_HIST_1H_T2",
-          "code": "2",
+          "code": "Theme 2",
           "title": "Creating a welfare state, 1918–79",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_1H_T2_2.1","code":"2.1","title":"The provision of welfare support"},
-            {"id":"EDX_HIST_1H_T2_2.2","code":"2.2","title":"Public health"},
-            {"id":"EDX_HIST_1H_T2_2.3","code":"2.3","title":"Education and widening opportunities"}
+            {
+              "id": "EDX_HIST_1H_T2_2.1",
+              "code": "2.1",
+              "title": "Providing social welfare",
+              "content": "Providing social welfare: the extent, and nature of, social welfare provision, 1918–39; the impact of the Second World War, the Labour government and consensus, 1939–64; the reasons for increasing challenges to state welfare provision, 1964–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 2",
+                "bullet": 1,
+                "source_pages": [
+                  86
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T2_2.2",
+              "code": "2.2",
+              "title": "Public health",
+              "content": "Public health: health provision, 1918–45; the creation and impact of the National Health Service (NHS), 1945–79, and the challenge of medical advances.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 2",
+                "bullet": 2,
+                "source_pages": [
+                  86
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T2_2.3",
+              "code": "2.3",
+              "title": "Education and widening opportunities",
+              "content": "Education and widening opportunities: education policy, 1918–43; the significance of the ‘Butler Act’ 1944, and the development of comprehensive education to 1979; the growth and social impact of university education, 1918–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 2",
+                "bullet": 3,
+                "source_pages": [
+                  86
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
           "id": "EDX_HIST_1H_T3",
-          "code": "3",
+          "code": "Theme 3",
           "title": "Society in transition, 1918–79",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_1H_T3_3.1","code":"3.1","title":"Class and social values"},
-            {"id":"EDX_HIST_1H_T3_3.2","code":"3.2","title":"The changing role and status of women"},
-            {"id":"EDX_HIST_1H_T3_3.3","code":"3.3","title":"Race and immigration"}
+            {
+              "id": "EDX_HIST_1H_T3_3.1",
+              "code": "3.1",
+              "title": "Class and social values",
+              "content": "Class and social values: class, social change and the impact of wars, 1918–51; the emergence of the ‘liberal society’, and its opponents, 1951–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 3",
+                "bullet": 1,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T3_3.2",
+              "code": "3.2",
+              "title": "The changing role and status of women",
+              "content": "The changing role and status of women: the right to vote and political advancement, 1918–79; changes in family life and the quest for personal freedoms, 1918–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 3",
+                "bullet": 2,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T3_3.3",
+              "code": "3.3",
+              "title": "Immigration and ethnic minorities",
+              "content": "Immigration and ethnic minorities: immigration policies and attitudes towards ethnic minorities, 1918–39; the impact of the Second World War and new Commonwealth immigration; controversy over immigration and the impact of government policies on race relations and immigration, 1958–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 3",
+                "bullet": 3,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
           "id": "EDX_HIST_1H_T4",
-          "code": "4",
+          "code": "Theme 4",
           "title": "The changing quality of life, 1918–79",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_1H_T4_4.1","code":"4.1","title":"Changing living standards"},
-            {"id":"EDX_HIST_1H_T4_4.2","code":"4.2","title":"Popular culture and entertainment"},
-            {"id":"EDX_HIST_1H_T4_4.3","code":"4.3","title":"Leisure and travel"}
+            {
+              "id": "EDX_HIST_1H_T4_4.1",
+              "code": "4.1",
+              "title": "Changing living standards",
+              "content": "Changing living standards: the impact of boom, crisis and recovery, and the significance of regional differences, 1918–39; the effects of ‘total war’ and austerity, 1939–51; the growth of a consumer society, 1951–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 4",
+                "bullet": 1,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T4_4.2",
+              "code": "4.2",
+              "title": "Popular culture and entertainment",
+              "content": "Popular culture and entertainment: the impact of mass popular culture, including cinema, radio and music, 1918–79; the influence of television from the 1950s and youth culture, 1955–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 4",
+                "bullet": 2,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_T4_4.3",
+              "code": "4.3",
+              "title": "Leisure and travel",
+              "content": "Leisure and travel: the growth of spectator sports from the 1920s; increased leisure time and the development of mass tourism from the 1930s; the impact of car ownership and travel developments, 1918–79.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Theme 4",
+                "bullet": 3,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
           "id": "EDX_HIST_1H_INT",
-          "code": "5",
-          "title": "Historical interpretations",
-          "kind": "topic",
+          "code": "Historical interpretations",
+          "title": "What impact did Thatcher’s governments (1979–90) have on Britain, 1979–97?",
           "points": [
-            {"id":"EDX_HIST_1H_INT_5.1","code":"5.1","title":"What impact did Thatcher's governments (1979–90) have on Britain, 1979–97?"}
+            {
+              "id": "EDX_HIST_1H_INT_INT.1",
+              "code": "INT.1",
+              "title": "The effect of Thatcher’s economic policies",
+              "content": "The effect of Thatcher’s economic policies.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Historical interpretations",
+                "bullet": 1,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_INT_INT.2",
+              "code": "INT.2",
+              "title": "The extent to which state intervention and the public sector were ‘rolled-back’",
+              "content": "The extent to which state intervention and the public sector were ‘rolled-back’.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Historical interpretations",
+                "bullet": 2,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_INT_INT.3",
+              "code": "INT.3",
+              "title": "The extent of political and social division within Britain",
+              "content": "The extent of political and social division within Britain.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Historical interpretations",
+                "bullet": 3,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_1H_INT_INT.4",
+              "code": "INT.4",
+              "title": "The effect of Thatcherism on politics and party development",
+              "content": "The effect of Thatcherism on politics and party development.",
+              "official_reference": {
+                "option": "1H",
+                "topic": "Historical interpretations",
+                "bullet": 4,
+                "source_pages": [
+                  87
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "EDX_HIST_SEC_P2",
+      "code": "2H.2",
       "title": "Paper 2, Option 2H.2: The USA, 1955–92: conformity and challenge",
       "topics": [
         {
           "id": "EDX_HIST_2H2_K1",
-          "code": "1",
+          "code": "Key topic 1",
           "title": "Affluence and conformity, 1955–63",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_2H2_K1_1.1","code":"1.1","title":"Urbanisation, affluence and the consumer society"},
-            {"id":"EDX_HIST_2H2_K1_1.2","code":"1.2","title":"Cultural conformity and challenge"},
-            {"id":"EDX_HIST_2H2_K1_1.3","code":"1.3","title":"The civil rights movement and the Ku Klux Klan"},
-            {"id":"EDX_HIST_2H2_K1_1.4","code":"1.4","title":"Kennedy's New Frontier"}
+            {
+              "id": "EDX_HIST_2H2_K1_1.1",
+              "code": "1.1",
+              "title": "Urbanisation and affluence",
+              "content": "Urbanisation and affluence: the changing nature of cities; expansion of the suburbs; highway development; growing ownership and use of cars; white collar jobs and service industries; consumerism and domestic technology.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 1",
+                "bullet": 1,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K1_1.2",
+              "code": "1.2",
+              "title": "Cultural conformity and challenge",
+              "content": "Cultural conformity and challenge: suburban conformity and social change in film and TV; advertising; the challenge of teenage culture and music; ‘beatnik’ culture.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 1",
+                "bullet": 2,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K1_1.3",
+              "code": "1.3",
+              "title": "The civil rights movement, including the Montgomery and Birmingham protests",
+              "content": "The civil rights movement, including the Montgomery and Birmingham protests; the impact of the Washington march; the Ku Klux Klan and White Citizens’ Committees.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 1",
+                "bullet": 3,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K1_1.4",
+              "code": "1.4",
+              "title": "Kennedy’s New Frontier",
+              "content": "Kennedy’s New Frontier: social welfare and unemployment programmes; environmentalism and expansion of the National Park system; the Peace Corps; the space programme; extent of Kennedy’s domestic achievements.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 1",
+                "bullet": 4,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
           "id": "EDX_HIST_2H2_K2",
-          "code": "2",
+          "code": "Key topic 2",
           "title": "Protest and reaction, 1963–72",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_2H2_K2_2.1","code":"2.1","title":"Civil rights: from King to Black Power"},
-            {"id":"EDX_HIST_2H2_K2_2.2","code":"2.2","title":"Protest and personal freedom"},
-            {"id":"EDX_HIST_2H2_K2_2.3","code":"2.3","title":"Johnson's Great Society"},
-            {"id":"EDX_HIST_2H2_K2_2.4","code":"2.4","title":"Reactions to the counter-culture, 1968–72"}
+            {
+              "id": "EDX_HIST_2H2_K2_2.1",
+              "code": "2.1",
+              "title": "Civil rights",
+              "content": "Civil rights: the significance of Malcolm X, Black Power and the Black Panthers; King’s changing priorities, including the campaigns in Selma and Chicago; King’s achievements and the impact of his assassination; the work of Cesar Chavez.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 2",
+                "bullet": 1,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K2_2.2",
+              "code": "2.2",
+              "title": "Protest and personal freedom",
+              "content": "Protest and personal freedom: student protest; counter- culture and its key features; the growth of the women’s movement; the impact of sexual liberalisation; the origins of gay rights.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 2",
+                "bullet": 2,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K2_2.3",
+              "code": "2.3",
+              "title": "Johnson’s Great Society, 1964–68",
+              "content": "Johnson’s Great Society, 1964–68: tackling poverty and unemployment; improving housing and education; Medicare and Medicaid; civil rights laws; Johnson’s achievements.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 2",
+                "bullet": 3,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K2_2.4",
+              "code": "2.4",
+              "title": "Reactions to the counter-culture, 1968–72",
+              "content": "Reactions to the counter-culture, 1968–72: the rise of the ‘silent majority’; the role of the media in influencing attitudes. The impact of events in Vietnam and at Kent State; Nixon’s appeal and his attack on the Great Society.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 2",
+                "bullet": 4,
+                "source_pages": [
+                  90
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
           "id": "EDX_HIST_2H2_K3",
-          "code": "3",
+          "code": "Key topic 3",
           "title": "Social and political change, 1973–80",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_2H2_K3_3.1","code":"3.1","title":"The crisis of political leadership"},
-            {"id":"EDX_HIST_2H2_K3_3.2","code":"3.2","title":"The impact of economic change on society"},
-            {"id":"EDX_HIST_2H2_K3_3.3","code":"3.3","title":"Changing popular culture"},
-            {"id":"EDX_HIST_2H2_K3_3.4","code":"3.4","title":"The extent of progress in individual and civil rights"}
+            {
+              "id": "EDX_HIST_2H2_K3_3.1",
+              "code": "3.1",
+              "title": "The crisis of political leadership",
+              "content": "The crisis of political leadership: the impact of Watergate on politics and the presidency; Ford, Carter and a new style of leadership; growing political disillusion, including the impact of the Iranian hostage crisis; the political impact of environmentalism.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 3",
+                "bullet": 1,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K3_3.2",
+              "code": "3.2",
+              "title": "The impact of economic change on society",
+              "content": "The impact of economic change on society: the effects of inflation on family incomes; the growth of homelessness; the oil crisis and the end of cheap energy; the impact of foreign competition; the response of the government.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 3",
+                "bullet": 2,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K3_3.3",
+              "code": "3.3",
+              "title": "Changing popular culture",
+              "content": "Changing popular culture: business interests in sports; the fragmentation of popular music; contradictions in film and TV, including the depiction of political and social tensions and a return to escapism; developments in news media.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 3",
+                "bullet": 3,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K3_3.4",
+              "code": "3.4",
+              "title": "The extent of progress in individual and civil rights",
+              "content": "The extent of progress in individual and civil rights: the political and social impact of Roe v. Wade; women’s rights; workers’ rights; gay rights; Indigenous American rights and the impact of Red Power; the status of Black Americans.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 3",
+                "bullet": 4,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
           "id": "EDX_HIST_2H2_K4",
-          "code": "4",
+          "code": "Key topic 4",
           "title": "Republican dominance and its opponents, 1981–92",
-          "kind": "topic",
           "points": [
-            {"id":"EDX_HIST_2H2_K4_4.1","code":"4.1","title":"New directions in economic policy"},
-            {"id":"EDX_HIST_2H2_K4_4.2","code":"4.2","title":"The Religious Right and its critics"},
-            {"id":"EDX_HIST_2H2_K4_4.3","code":"4.3","title":"Cultural challenge"},
-            {"id":"EDX_HIST_2H2_K4_4.4","code":"4.4","title":"Social change"}
+            {
+              "id": "EDX_HIST_2H2_K4_4.1",
+              "code": "4.1",
+              "title": "New directions in economic policy",
+              "content": "New directions in economic policy: Reaganomics and the role of federal government; the impact of Reagan’s policies on workers and the family; the trade and budget deficit; the significance of Bush’s decision to raise taxes.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 4",
+                "bullet": 1,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K4_4.2",
+              "code": "4.2",
+              "title": "The Religious Right and its critics",
+              "content": "The Religious Right and its critics: the promotion of traditional values; campaigns against abortion and homosexuality; Nancy Reagan’s ‘Just Say No’ campaign; the growth of bitter political divisions and their significance.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 4",
+                "bullet": 2,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K4_4.3",
+              "code": "4.3",
+              "title": "Cultural challenge",
+              "content": "Cultural challenge: trends in youth culture; the impact of technology on popular culture; the growth of cable television and the influence of MTV; the impact of the AIDS crisis; controversial social issues in film and television.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 4",
+                "bullet": 3,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_2H2_K4_4.4",
+              "code": "4.4",
+              "title": "Social change",
+              "content": "Social change: the changing status of ethnic minorities; the impact of the success of Black Americans in politics, business, sport and popular culture; the extent of racial tolerance and integration by 1992; the impact of women in politics and the workplace; the changing status of women by 1992.",
+              "official_reference": {
+                "option": "2H.2",
+                "topic": "Key topic 4",
+                "bullet": 4,
+                "source_pages": [
+                  91
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "EDX_HIST_SEC_P3",
+      "code": "33",
       "title": "Paper 3, Option 33: The witch craze in Britain, Europe and North America, c1580–c1750",
       "topics": [
         {
-          "id": "EDX_HIST_33_B",
-          "code": "B",
-          "title": "Aspects in breadth: challenges to the witch craze",
-          "kind": "topic",
+          "id": "EDX_HIST_33_B1",
+          "code": "Breadth theme 1",
+          "title": "Changing attitudes to witchcraft in Britain",
           "points": [
-            {"id":"EDX_HIST_33_B_B.1","code":"B.1","title":"Changing attitudes to witchcraft in Britain"},
-            {"id":"EDX_HIST_33_B_B.2","code":"B.2","title":"The wider intellectual context: the coming of the age of science and reason"}
+            {
+              "id": "EDX_HIST_33_B1_B.1.1",
+              "code": "B.1.1",
+              "title": "The existence and growth of scepticism, c1580–c1750",
+              "content": "The existence and growth of scepticism, c1580–c1750: the impact of notable frauds and doubtful cases (key developments: the case of the Boy of Burton 1597, the Pendle Swindle 1634, the Demon Drummer of Tedworth 1662, the case of Jane Wenham in 1712); the influence of Lord Chief Justice Sir John Holt, 1689–1710.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Breadth theme 1",
+                "bullet": 1,
+                "source_pages": [
+                  100
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_B1_B.1.2",
+              "code": "B.1.2",
+              "title": "The impact of notable sceptic publications, c1580–c1750",
+              "content": "The impact of notable sceptic publications, c1580–c1750: Reginald Scot's The Discoverie of Witchcraft 1584, Samuel Harsnett's A Discovery of the Fraudulent Practices of John Darrel 1599, Thomas Ady's A Candle in the Dark 1656, John Webster's The Displaying of Supposed Witchcraft 1677 (key development: the publication of Balthasar Bekker’s The Enchanted World 1691).",
+              "official_reference": {
+                "option": "33",
+                "topic": "Breadth theme 1",
+                "bullet": 2,
+                "source_pages": [
+                  100
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         },
         {
-          "id": "EDX_HIST_33_D",
-          "code": "D",
-          "title": "Aspects in depth: persecuting witches",
-          "kind": "topic",
+          "id": "EDX_HIST_33_B2",
+          "code": "Breadth theme 2",
+          "title": "The wider intellectual context: the coming of the age of science and reason",
           "points": [
-            {"id":"EDX_HIST_33_D_D.1","code":"D.1","title":"The North Berwick witches in Scotland, 1590–91, and the aftermath to 1597"},
-            {"id":"EDX_HIST_33_D_D.2","code":"D.2","title":"The Lancashire witches of 1604–13"},
-            {"id":"EDX_HIST_33_D_D.3","code":"D.3","title":"The Great Witch Hunt in Bamberg, Germany, 1623–32"},
-            {"id":"EDX_HIST_33_D_D.4","code":"D.4","title":"Matthew Hopkins and the East Anglian witch craze, 1645–47"},
-            {"id":"EDX_HIST_33_D_D.5","code":"D.5","title":"Cotton Mather and the Salem witch hunt, 1692–93"}
+            {
+              "id": "EDX_HIST_33_B2_B.2.1",
+              "code": "B.2.1",
+              "title": "Making sense of the universe and its impact, c1580–c1750",
+              "content": "Making sense of the universe and its impact, c1580–c1750: the coexistence of new and older ideas and impact of Johannes Kepler, Galileo Galilei and Isaac Newton.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Breadth theme 2",
+                "bullet": 1,
+                "source_pages": [
+                  100
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_B2_B.2.2",
+              "code": "B.2.2",
+              "title": "The changing approach to human understanding and knowledge, c1580–c1750",
+              "content": "The changing approach to human understanding and knowledge, c1580–c1750 (key developments: Francis Bacon and the empirical scientific approach, the foundation of Gresham College 1597 and the Royal Society 1660, Thomas Hobbes’s deductive reasoning and materialism, John Locke and his Essay Concerning Human Understanding 1690).",
+              "official_reference": {
+                "option": "33",
+                "topic": "Breadth theme 2",
+                "bullet": 2,
+                "source_pages": [
+                  100
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_HIST_33_D1",
+          "code": "Depth topic 1",
+          "title": "The North Berwick witches in Scotland, 1590–91, and the aftermath to 1597",
+          "points": [
+            {
+              "id": "EDX_HIST_33_D1_D.1.1",
+              "code": "D.1.1",
+              "title": "The origins of the persecution",
+              "content": "The origins of the persecution: Gilly Duncan's confession; the impact of James VI’s voyage from Denmark; the extent to which Danish witch hunting influenced events in Scotland.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 1",
+                "bullet": 1,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D1_D.1.2",
+              "code": "D.1.2",
+              "title": "The widening net",
+              "content": "The widening net: the case of Agnes Sampson and John Fian; the role of the King and torture; the involvement of the Earl of Bothwell; impact of the confessions, trials and executions.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 1",
+                "bullet": 2,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D1_D.1.3",
+              "code": "D.1.3",
+              "title": "Reasons for the extent of persecutions in Scotland to 1597",
+              "content": "Reasons for the extent of persecutions in Scotland to 1597, including judicial procedures, lack of strong central control, the role of King James and significance of his Daemonologie.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 1",
+                "bullet": 3,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_HIST_33_D2",
+          "code": "Depth topic 2",
+          "title": "The Lancashire witches of 1604–13",
+          "points": [
+            {
+              "id": "EDX_HIST_33_D2_D.2.1",
+              "code": "D.2.1",
+              "title": "The influence of social, economic and religious context of the area around Pendle in the early seventeenth century and the significance of the new witchcraft statute of 1604",
+              "content": "The influence of social, economic and religious context of the area around Pendle in the early seventeenth century and the significance of the new witchcraft statute of 1604.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 2",
+                "bullet": 1,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D2_D.2.2",
+              "code": "D.2.2",
+              "title": "The origins of the case",
+              "content": "The origins of the case: Alizon Device and John Law; the investigations of Roger Nowell; Old Demdike and Old Chattox and their witchcraft families; the meeting at Malkin Tower.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 2",
+                "bullet": 2,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D2_D.2.3",
+              "code": "D.2.3",
+              "title": "The trial 1612",
+              "content": "The trial 1612: the Judges Bromley and Altham; the conduct and outcomes of the trial; impact of Thomas Potts's account.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 2",
+                "bullet": 3,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_HIST_33_D3",
+          "code": "Depth topic 3",
+          "title": "The Great Witch Hunt in Bamberg, Germany, 1623–32",
+          "points": [
+            {
+              "id": "EDX_HIST_33_D3_D.3.1",
+              "code": "D.3.1",
+              "title": "The economic, political and religious context",
+              "content": "The economic, political and religious context: reclaiming territory for the Catholic Church; the impact of the Thirty Years War on Bamberg in these years; economic crises.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 3",
+                "bullet": 1,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D3_D.3.2",
+              "code": "D.3.2",
+              "title": "Numbers and social groups affected by the witch hunts",
+              "content": "Numbers and social groups affected by the witch hunts; the use of torture and property confiscations; the roles of the Prince-Bishop von Dornheim and Frederick Forner.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 3",
+                "bullet": 2,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D3_D.3.3",
+              "code": "D.3.3",
+              "title": "The reasons for the ending of the craze",
+              "content": "The reasons for the ending of the craze: the influence of the Emperor Ferdinand II and the Imperial Chamber Court; the arrival of the Swedish army.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 3",
+                "bullet": 3,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_HIST_33_D4",
+          "code": "Depth topic 4",
+          "title": "Matthew Hopkins and the East Anglian witch craze, 1645–47",
+          "points": [
+            {
+              "id": "EDX_HIST_33_D4_D.4.1",
+              "code": "D.4.1",
+              "title": "Economic and political context",
+              "content": "Economic and political context: the impact of the breakdown of traditional authority and legal structures; economic crises.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 4",
+                "bullet": 1,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D4_D.4.2",
+              "code": "D.4.2",
+              "title": "Geography, numbers, class and gender of victims",
+              "content": "Geography, numbers, class and gender of victims; the roles and methods of Matthew Hopkins and John Stearne and reasons for their influence and power.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 4",
+                "bullet": 2,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D4_D.4.3",
+              "code": "D.4.3",
+              "title": "The ending of the witch craze",
+              "content": "The ending of the witch craze: the growing cost; the re- establishment of traditional authority; the role of John Gaule.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 4",
+                "bullet": 3,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_HIST_33_D5",
+          "code": "Depth topic 5",
+          "title": "Cotton Mather and the Salem witch hunt, 1692–93",
+          "points": [
+            {
+              "id": "EDX_HIST_33_D5_D.5.1",
+              "code": "D.5.1",
+              "title": "The social, economic and political context of Salem",
+              "content": "The social, economic and political context of Salem: weakened authority following the 1688 Revolution; economic crisis and threats from Indigenous people; social tensions.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 5",
+                "bullet": 1,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D5_D.5.2",
+              "code": "D.5.2",
+              "title": "The influence of Cotton Mather",
+              "content": "The influence of Cotton Mather, including Memorable Providences relating to Witchcraft and Possessions; instigators, including the roles of Samuel Parris, children and Tituba; the nature of the victims; the trials and executions.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 5",
+                "bullet": 2,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            },
+            {
+              "id": "EDX_HIST_33_D5_D.5.3",
+              "code": "D.5.3",
+              "title": "Reasons for the ending of the witch hunt",
+              "content": "Reasons for the ending of the witch hunt: the roles of Cotton Mather's father and Governor Phips; the general pardon.",
+              "official_reference": {
+                "option": "33",
+                "topic": "Depth topic 5",
+                "bullet": 3,
+                "source_pages": [
+                  101
+                ],
+                "numbering": "Pearson prints bullets unnumbered; code is the printed position"
+              }
+            }
           ]
         }
       ]

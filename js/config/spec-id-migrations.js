@@ -274,6 +274,68 @@ export const LEGACY_SPEC_IDS = Object.freeze({
   "AQA_POL_OTHER_6.5": [
     "AQA_POL_3.3.2.5"
   ],
+  "EDX_HIST_1H_INT_5.1": [
+    "EDX_HIST_1H_INT_INT.1",
+    "EDX_HIST_1H_INT_INT.2",
+    "EDX_HIST_1H_INT_INT.3",
+    "EDX_HIST_1H_INT_INT.4"
+  ],
+  "EDX_HIST_33_B_B.1": [
+    "EDX_HIST_33_B1_B.1.1",
+    "EDX_HIST_33_B1_B.1.2"
+  ],
+  "EDX_HIST_33_B": [
+    "EDX_HIST_33_B1_B.1.1",
+    "EDX_HIST_33_B1_B.1.2",
+    "EDX_HIST_33_B2_B.2.1",
+    "EDX_HIST_33_B2_B.2.2"
+  ],
+  "EDX_HIST_33_B_B.2": [
+    "EDX_HIST_33_B2_B.2.1",
+    "EDX_HIST_33_B2_B.2.2"
+  ],
+  "EDX_HIST_33_D_D.1": [
+    "EDX_HIST_33_D1_D.1.1",
+    "EDX_HIST_33_D1_D.1.2",
+    "EDX_HIST_33_D1_D.1.3"
+  ],
+  "EDX_HIST_33_D": [
+    "EDX_HIST_33_D1_D.1.1",
+    "EDX_HIST_33_D1_D.1.2",
+    "EDX_HIST_33_D1_D.1.3",
+    "EDX_HIST_33_D2_D.2.1",
+    "EDX_HIST_33_D2_D.2.2",
+    "EDX_HIST_33_D2_D.2.3",
+    "EDX_HIST_33_D3_D.3.1",
+    "EDX_HIST_33_D3_D.3.2",
+    "EDX_HIST_33_D3_D.3.3",
+    "EDX_HIST_33_D4_D.4.1",
+    "EDX_HIST_33_D4_D.4.2",
+    "EDX_HIST_33_D4_D.4.3",
+    "EDX_HIST_33_D5_D.5.1",
+    "EDX_HIST_33_D5_D.5.2",
+    "EDX_HIST_33_D5_D.5.3"
+  ],
+  "EDX_HIST_33_D_D.2": [
+    "EDX_HIST_33_D2_D.2.1",
+    "EDX_HIST_33_D2_D.2.2",
+    "EDX_HIST_33_D2_D.2.3"
+  ],
+  "EDX_HIST_33_D_D.3": [
+    "EDX_HIST_33_D3_D.3.1",
+    "EDX_HIST_33_D3_D.3.2",
+    "EDX_HIST_33_D3_D.3.3"
+  ],
+  "EDX_HIST_33_D_D.4": [
+    "EDX_HIST_33_D4_D.4.1",
+    "EDX_HIST_33_D4_D.4.2",
+    "EDX_HIST_33_D4_D.4.3"
+  ],
+  "EDX_HIST_33_D_D.5": [
+    "EDX_HIST_33_D5_D.5.1",
+    "EDX_HIST_33_D5_D.5.2",
+    "EDX_HIST_33_D5_D.5.3"
+  ],
   "EDX_PHYS_M1_1.1": [
     "EDX_PHYS_S001",
     "EDX_PHYS_S003"
