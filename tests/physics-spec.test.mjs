@@ -29,9 +29,10 @@ test('every earlier Physics skill id migrates to the official statements of its 
   const thermo = spec.sections.find(s => s.code === 'Topic 9');
   assert(thermo.topics.some(t => t.id === old[2]));
   const index = createSpecIndex(); index.add(spec);
-  for (const [id, statements] of Object.entries(LEGACY_SPEC_IDS)) {
+  const physics = Object.entries(LEGACY_SPEC_IDS).filter(([id]) => id.startsWith('EDX_PHYS_'));
+  for (const [id, statements] of physics) {
     assert(statements.length && statements.every(s => index.get(s)?.type === 'point'), id);
     if (index.has(id)) assert.deepEqual([...index.expand([id])], statements);
   }
-  assert.equal(Object.keys(LEGACY_SPEC_IDS).length, 65);
+  assert.equal(physics.length, 65);
 });
