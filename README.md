@@ -8,6 +8,7 @@ Plain HTML5, CSS3 and vanilla JavaScript modules. No build step and no dependenc
 PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.config.js`.
 
 **Maths release:** [60-source A-level and AS bank, coverage and handover](docs/MATHS-HANDOVER.md).
+**Biology A release:** [52-source 9BN0/8BN0 bank, coverage and handover](docs/BIOLOGY-HANDOVER.md).
 
 **Reuse this workflow for another subject:** [Subject question-bank agent prompt](docs/prompts/SUBJECT-QUESTION-BANK-AGENT.md).
 
@@ -57,6 +58,7 @@ each session, ready for AI marking in Phase 4.
   on the board's site, sits it here against the clock and logs the mark.
 - **Demo records (249, in 40 historical demo papers).** Hidden from all question and paper discovery. Their IDs remain available only so old saved sessions and marks still resolve. `CONTENT.showSampleContent` is false; official sample assessments use a separate flag and remain available.
 - **Edexcel Maths source bank:** 32 A-level and 23 AS public exam booklets (2018–2025), plus five official samples: 602 original source questions / 1,110 scored units. Source images, schemes, reviewed tags and year scope are active. Recent restricted 2026 sources are excluded. See [coverage and limitations](docs/MATHS-HANDOVER.md).
+- **Edexcel Biology A (Salters-Nuffield) source bank:** 27 A-level and 20 AS public exam booklets (2016–2025), plus five official samples: 458 original source questions / 1,951 model-reviewed scored units on the official Issue 4 specification, with Paper 3 article context. Restricted 2026 sources are excluded. See [coverage and limitations](docs/BIOLOGY-HANDOVER.md).
 
 ### Adding real papers and questions
 

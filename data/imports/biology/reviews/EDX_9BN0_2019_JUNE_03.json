@@ -1,0 +1,604 @@
+{
+  "paper_id": "EDX_9BN0_2019_JUNE_03",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "5354ed07a6344383b64019b3c64052f16f2d216421bb11cbd33bcaecc8700268",
+  "questions": [
+    {
+      "number": "1",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T7_7.8"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.0.1",
+            "EDX_BIOL_OFF_MS_A.0.3"
+          ],
+          "tag_basis": "Scheme credits calculating heart rate in bpm from the ECG interval.",
+          "difficulty": "easy",
+          "difficulty_basis": "One-step calculation from a trace.",
+          "summary": "Work out heart rate from an ECG trace.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.8"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T7_7.15"
+          ],
+          "tag_basis": "Scheme credits lower ejection fraction in users and proportion below 55%.",
+          "difficulty": "medium",
+          "difficulty_basis": "Routine data analysis from scatter plot.",
+          "summary": "Compare heart function between steroid users and non-users.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.13"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits staged testing from healthy subjects to patients with increasing dose.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applying drug testing protocol.",
+          "summary": "How a safe drug dose could be established.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.4.1",
+            "EDX_BIOL_OFF_MS_A.0.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.3"
+          ],
+          "tag_basis": "Scheme credits area from diameter then percentage increase.",
+          "difficulty": "medium",
+          "difficulty_basis": "Two-step calculation.",
+          "summary": "Percentage change in vessel lumen area.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.3"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits more elastic tissue, collagen and muscle in the aorta.",
+          "difficulty": "medium",
+          "difficulty_basis": "Application of knowledge to the given context.",
+          "summary": "Why artery and vein walls differ in thickness.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP8"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.3"
+          ],
+          "tag_basis": "Scheme credits cutting a strip, adding masses until splitting and force per area, matching the tensile strength practical method.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applies a practical method to a new tissue.",
+          "summary": "How to measure tensile strength of artery wall.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP17"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.3.5",
+            "EDX_BIOL_OFF_MS_A.0.1"
+          ],
+          "tag_basis": "Scheme credits drawing a slope on the spirometer trace and calculating rate of oxygen use.",
+          "difficulty": "medium",
+          "difficulty_basis": "Reading a trace and calculating rate.",
+          "summary": "Rate of oxygen consumption from spirometer trace.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T7_7.3",
+            "EDX_BIOL_OFF_T7_7.7"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP17"
+          ],
+          "tag_basis": "Scheme credits aerobic respiration, ATP need and oxygen to remove lactate afterwards.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation of exercise response.",
+          "summary": "Explain oxygen consumption changes with exercise.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T7_7.9"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits impulses to the ventilation centre then to intercostal muscles and diaphragm.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation of control pathway.",
+          "summary": "How exercise raises breathing rate.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.2"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.2"
+          ],
+          "tag_basis": "Scheme credits comparing worm number and mass in different soil pH.",
+          "difficulty": "medium",
+          "difficulty_basis": "Interpreting table data.",
+          "summary": "Deduce effect of soil pH on earthworm populations.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP10"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits random quadrats of stated area, standard collection and recording number and mass.",
+          "difficulty": "medium",
+          "difficulty_basis": "Sampling design.",
+          "summary": "Sampling method for earthworm populations.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP10"
+          ],
+          "tag_basis": "Scheme credits means, t-test and comparing with critical value at 0.05.",
+          "difficulty": "medium",
+          "difficulty_basis": "Statistical test reasoning.",
+          "summary": "How to test whether mass differences are significant.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.13",
+            "EDX_BIOL_OFF_MS_A.1.9"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits no weary F1, 1:3 ratio in F2 and chi-squared below critical value.",
+          "difficulty": "hard",
+          "difficulty_basis": "Combines inheritance and chi-squared interpretation.",
+          "summary": "Justify recessive inheritance using ratios and chi-squared.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T8_8.6"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits plants responding to light so darkness isolates gravity.",
+          "difficulty": "medium",
+          "difficulty_basis": "Experimental control reasoning.",
+          "summary": "Why plants were kept in darkness.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.3.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T8_8.6"
+          ],
+          "tag_basis": "Scheme credits reading values from graphs and dividing by time.",
+          "difficulty": "medium",
+          "difficulty_basis": "Rate calculation from a graph.",
+          "summary": "Rate of curvature of weary lettuce from graphs.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T8_8.6"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.13"
+          ],
+          "tag_basis": "Scheme credits no auxin response, so no elongation on lower stem side.",
+          "difficulty": "hard",
+          "difficulty_basis": "Unfamiliar context requiring inference.",
+          "summary": "Why weary stems do not respond to gravity.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.10"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits biological catalyst lowering activation energy.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall or single-step selection.",
+          "summary": "Define an enzyme.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T7_7.4",
+            "EDX_BIOL_OFF_T5_5.6"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits ATP hydrolysis giving energy and phosphate for phosphorylation.",
+          "difficulty": "medium",
+          "difficulty_basis": "Application of knowledge to the given context.",
+          "summary": "Why ATP is needed in a glycolysis step.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP4",
+            "EDX_BIOL_OFF_T7_7.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T7_7.11"
+          ],
+          "tag_basis": "Scheme credits rate rising with F-6-P and F-2,6-BP to a maximum, with activator lowering F-6-P needed.",
+          "difficulty": "hard",
+          "difficulty_basis": "Multi-variable graph interpretation.",
+          "summary": "Interpret how substrate and activator concentration affect glycolysis rate.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP4"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.10",
+            "EDX_BIOL_OFF_T7_7.4"
+          ],
+          "tag_basis": "Scheme credits buffers at several pH values, excess ATP, set F-6-P and measuring product per unit time.",
+          "difficulty": "hard",
+          "difficulty_basis": "Designing a controlled enzyme investigation.",
+          "summary": "Plan an investigation of acidity on enzyme rate.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T4_4.4",
+            "EDX_BIOL_OFF_T4_4.5",
+            "EDX_BIOL_OFF_T5_5.19"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits mutation, selection, inheritance of alleles, reduced gene flow and speciation.",
+          "difficulty": "medium",
+          "difficulty_basis": "Extended recall linked to context.",
+          "summary": "How cichlid species could have evolved in separate habitats.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T5_5.17",
+            "EDX_BIOL_OFF_T4_4.6",
+            "EDX_BIOL_OFF_T3_3.12"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.12",
+            "EDX_BIOL_OFF_T4_4.4"
+          ],
+          "tag_basis": "Indicative content links mutation rates, gene duplication and regulatory changes to rapid evolution.",
+          "difficulty": "hard",
+          "difficulty_basis": "Extended analysis of several data sets (levels marked).",
+          "summary": "Discuss genomic data explaining rapid cichlid evolution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "exceptions": [
+        "Q8(f): no spec statement covers Zika or viral damage to neural cells directly; 6.6 (viral infection of cells) used as closest.",
+        "Q8(h): tissue culture growth is not explicit in spec; CP13 (temperature and development) chosen with CP9 aseptic technique as crossover."
+      ],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.11"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits unlimited division and ability to give specialised cells.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall or single-step selection.",
+          "summary": "Define stem cell.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.12"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.10"
+          ],
+          "tag_basis": "Scheme credits mitosis and differential gene expression giving different proteins.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation of differentiation.",
+          "summary": "How one fertilised egg gives many cell types.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T7_7.8"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits myogenic.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall or single-step selection.",
+          "summary": "Name the property of spontaneously beating cardiac tissue.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.13"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits crossing heterozygotes and selecting homozygous recessives.",
+          "difficulty": "medium",
+          "difficulty_basis": "Application of knowledge to the given context.",
+          "summary": "Breeding a mouse line for a recessive trait.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T7_7.16",
+            "EDX_BIOL_OFF_T3_3.12"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits transcription factor action on regulatory DNA allowing mRNA production.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation of gene regulation.",
+          "summary": "How chemicals alter gene expression.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.6"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.12"
+          ],
+          "tag_basis": "Scheme credits virus binding receptors, entry and replication killing neural cells.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applies viral infection to unfamiliar condition.",
+          "summary": "How a virus could cause a developmental brain condition.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(g)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T6_6.8",
+            "EDX_BIOL_OFF_T6_6.9"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits antigen presentation, T helper activation and T killer or B cell responses destroying graft.",
+          "difficulty": "medium",
+          "difficulty_basis": "Multi-step immune explanation.",
+          "summary": "Immune basis of transplant rejection.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(h)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP13"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP9",
+            "EDX_BIOL_OFF_T5_5.16"
+          ],
+          "tag_basis": "Scheme credits controlled temperatures, other variables, nutrients, aseptic technique and growth measurement.",
+          "difficulty": "hard",
+          "difficulty_basis": "Open-ended practical design.",
+          "summary": "Plan a cell culture temperature experiment.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.11"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.12"
+          ],
+          "tag_basis": "Scheme credits gastruloids showing more differentiation, germ layers and axes than organoids.",
+          "difficulty": "medium",
+          "difficulty_basis": "Comparison using article content.",
+          "summary": "How gastruloids differ from organoids.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(j)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.11"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits embryo potential for life and inability to consent.",
+          "difficulty": "medium",
+          "difficulty_basis": "Discussion of ethical issues.",
+          "summary": "Ethical issues of embryonic stem cell research.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(k)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T3_3.11"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Scheme credits fewer ethical issues, matching antigens and availability with iPSCs.",
+          "difficulty": "medium",
+          "difficulty_basis": "Evaluative explanation using article.",
+          "summary": "Advantages of iPSCs over ESCs.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

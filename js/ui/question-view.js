@@ -12,6 +12,8 @@ export function questionBody(question, { contextOpen = false } = {}) {
   const { question_html: markup, question_image_url: url } = question.content || {};
   const context = question.context || {};
   const fullQuestion = context.full_question_html || (context.full_question_image_url && isSafeUrl(context.full_question_image_url));
+  const article = context.article;
+  const articlePages = (article?.page_image_urls || []).filter(isSafeUrl);
   return html`<div class="stack">
     ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
     ${context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
@@ -23,6 +25,14 @@ export function questionBody(question, { contextOpen = false } = {}) {
         <div class="qcontent">${sanitizeHtml(context.full_question_html)}${image(context.full_question_image_url, 'Full question for context only')}</div>
       </div>
     </details>` : ''}
+    ${article ? articlePages.length ? html`<details class="question-context" data-article-context="${question.question_id}">
+      <summary>Pre-release scientific article (unscored context)</summary>
+      <div class="stack" style="margin-top:12px">
+        <p class="small muted">Pearson issued this article to candidates before the exam. It is context only and carries no marks.</p>
+        ${articlePages.map((page, index) => html`<div class="qcontent">${image(page, `Scientific article page ${index + 1}`)}</div>`)}
+        ${article.url && /^https:/i.test(article.url) ? html`<p class="small"><a href="${article.url}" target="_blank" rel="noopener">Open the official article PDF</a></p>` : ''}
+      </div>
+    </details>` : html`<p class="small muted">This question uses the pre-release scientific article for its paper. Pearson has not made that article publicly available, so it is not reproduced here.</p>` : ''}
   </div>`;
 }
 

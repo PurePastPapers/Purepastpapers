@@ -1,0 +1,680 @@
+{
+  "paper_id": "EDX_8BN0_2025_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "8d1dfeaaa55a124cb8a9877e394b6e6c0e8008da2c7cee08b776c2614de7734a",
+  "questions": [
+    {
+      "number": "1",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.5"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits uracil as the base found in RNA but not DNA.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Identifying the base unique to RNA.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.5"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits DNA as double-stranded and mRNA as single-stranded.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Comparing strand number in DNA and mRNA.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.5"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits phosphodiester as the bond joining mononucleotides.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Bond linking nucleotides in a strand.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.11",
+            "EDX_BIOL_OFF_T2_2.6"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits DNA vs RNA nucleotides, DNA vs RNA polymerase, both strands vs template strand, double helix vs single strand.",
+          "difficulty": "medium",
+          "difficulty_basis": "Comparison of two processes needing accurate recall of both.",
+          "summary": "Contrasting replication with transcription.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.4"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits ATP as energy source for active transport through a carrier protein.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Role of ATP at a membrane protein.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.4"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits facilitated diffusion through a channel down a concentration gradient.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applies transport knowledge to an annotated diagram.",
+          "summary": "How ions cross through a channel protein.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.3"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits osmosis as water movement across the membrane.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Naming water movement across a membrane.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.2",
+            "EDX_BIOL_OFF_T1_1.14"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits saturated versus unsaturated fatty acids and double-bond kinks.",
+          "difficulty": "medium",
+          "difficulty_basis": "Links molecular structure to shape using the diagram.",
+          "summary": "Why membrane phospholipids differ in shape.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits increased fluidity or permeability from more of the labelled phospholipid.",
+          "difficulty": "medium",
+          "difficulty_basis": "Prediction from membrane structure.",
+          "summary": "Predicting a change in membrane properties.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.13"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T3_3.14"
+          ],
+          "tag_basis": "Credits genotype as the alleles present and phenotype as observable characteristics from genes and environment.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Defining genotype and phenotype.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.13"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits incomplete dominance or codominance because both alleles are expressed.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applies terminology to the given cross.",
+          "summary": "Naming the inheritance pattern shown.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.13"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits gametes, offspring genotypes and 1:2:1 phenotype ratio.",
+          "difficulty": "medium",
+          "difficulty_basis": "Routine genetic diagram for a heterozygous cross.",
+          "summary": "Genetic diagram for a cross of two heterozygotes.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.13"
+          ],
+          "tag_basis": "Credits chi-squared as the test for observed against expected frequencies.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Choosing a statistical test for genetic data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.0.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_CP2",
+            "EDX_BIOL_OFF_MS_A.0.3"
+          ],
+          "tag_basis": "Credits unit conversion and division to give volume in dm3.",
+          "difficulty": "medium",
+          "difficulty_basis": "Multi-step calculation with unit conversions.",
+          "summary": "Unit-conversion calculation using vitamin C data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP2"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.2",
+            "EDX_BIOL_OFF_T1_1.9"
+          ],
+          "tag_basis": "Credits controlled variables, valid vitamin C measurement (e.g. DCPIP), repeats and comparison with uncooked sample.",
+          "difficulty": "medium",
+          "difficulty_basis": "Design of a valid investigation from the practical method.",
+          "summary": "Planning a cooking-method comparison for vitamin C loss.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.8"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits higher vitamin C intake linked to lower risk of coronary heart disease.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Interpreting a negative correlation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.4"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.3.1"
+          ],
+          "tag_basis": "Credits a right ventricle trace of same shape but lower pressure over the systole period.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applies cardiac cycle knowledge to sketch on a graph.",
+          "summary": "Sketching right ventricle pressure on the graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.3.1"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.4"
+          ],
+          "tag_basis": "Credits 60 divided by cycle time to give 75 beats per minute.",
+          "difficulty": "easy",
+          "difficulty_basis": "One-step calculation from the graph.",
+          "summary": "Heart rate from a pressure trace.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.4"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits oxygenated blood pumped into the aorta.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Blood leaving the left ventricle.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(iv)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.4"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits atrial systole filling the ventricle and ventricular systole reducing volume.",
+          "difficulty": "medium",
+          "difficulty_basis": "Links graph phases to cardiac events.",
+          "summary": "Explaining ventricular pressure changes.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.5"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.18"
+          ],
+          "tag_basis": "Credits narrowed lumen from atheroma reducing blood and oxygen supply to cardiac muscle.",
+          "difficulty": "medium",
+          "difficulty_basis": "Application of disease knowledge to a treatment.",
+          "summary": "Why angioplasty with a stent may be needed.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.6"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.18"
+          ],
+          "tag_basis": "Credits complementary antithrombin shape, inactivating thrombin so fibrinogen is not converted to fibrin.",
+          "difficulty": "hard",
+          "difficulty_basis": "Unfamiliar diagram needs multi-step reasoning about the clotting cascade.",
+          "summary": "How an anticoagulant complex stops clots.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.9"
+          ],
+          "tag_basis": "Credits collagen in the walls of both aorta and vena cava.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Which vessels contain collagen.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.9"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits fibrous protein, triple helix of three chains, hydrogen bonds, glycine repeats.",
+          "difficulty": "easy",
+          "difficulty_basis": "Recall of structure.",
+          "summary": "Describing collagen structure.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.9"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits high tensile strength as a property of collagen.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "A property of collagen.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.2"
+          ],
+          "tag_basis": "Credits large non-polar molecule with hydrophobic R groups preventing hydrogen bonding with water.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation linking structure to property.",
+          "summary": "Why collagen is poorly soluble.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.10"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits both catalysing reactions and intracellular versus extracellular location.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Comparing intracellular and extracellular enzymes.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T2_2.10"
+          ],
+          "tag_basis": "Credits concentration-inhibition trend and chemical C as most effective from the bar chart.",
+          "difficulty": "medium",
+          "difficulty_basis": "Routine interpretation of a bar chart.",
+          "summary": "Drawing conclusions from enzyme inhibition data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP4"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.3.6"
+          ],
+          "tag_basis": "Credits excess substrate, regular measurement and tangent or gradient at time zero.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applies initial-rate method.",
+          "summary": "Finding the initial rate of an enzyme reaction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "exceptions": [],
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T1_1.1"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits small surface area to volume ratio, so diffusion is insufficient to supply oxygen for respiration.",
+          "difficulty": "medium",
+          "difficulty_basis": "Explanation of mass transport need.",
+          "summary": "Why a small animal needs a heart.",
+          "context_basis": "independent",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP1"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_T1_1.17"
+          ],
+          "tag_basis": "Credits a Daphnia feature (e.g. transparent body) with explanation (heart visible, non-invasive).",
+          "difficulty": "medium",
+          "difficulty_basis": "Evaluating organism suitability for a practical.",
+          "summary": "Why Daphnia suits a heart-rate investigation.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP1"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits water or pond water as control solution.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Choosing a control solution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP1"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits acclimatisation, microscope observation, controlled variable and accurate counting method.",
+          "difficulty": "medium",
+          "difficulty_basis": "Describing valid practical technique.",
+          "summary": "Collecting valid heart-rate data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(iv)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_CP1"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.10"
+          ],
+          "tag_basis": "Credits decrease against control, fall then rise, and use of SD bars for significance.",
+          "difficulty": "hard",
+          "difficulty_basis": "Multi-feature graph evaluation including error bars.",
+          "summary": "Commenting on alcohol and heart rate data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "exceptions": [
+        "Indicative content for 8(c) also mentions aerobic/anaerobic respiration and lactate (Topic 7 ideas); tagged only AS-appropriate Topic 2 statements."
+      ],
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits oxygen concentration difference as Y in Fick's Law.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Identifying a term in Fick's Law.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits all three layers as diffusion distance.",
+          "difficulty": "easy",
+          "difficulty_basis": "Direct recall of a single fact.",
+          "summary": "Layers making up diffusion distance.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "tag_basis": "Credits reduced alveolar surface area lowering diffusion rate.",
+          "difficulty": "medium",
+          "difficulty_basis": "Applies Fick's Law to a disease diagram.",
+          "summary": "Why emphysema leads to hypoxia.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_MS_A.0.3"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.1.1"
+          ],
+          "tag_basis": "Credits percentage increase from the graph applied to haemoglobin mass and two significant figure answer.",
+          "difficulty": "medium",
+          "difficulty_basis": "Multi-step percentage calculation.",
+          "summary": "Haemoglobin mass after altitude training.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_BIOL_OFF_T2_2.1",
+            "EDX_BIOL_OFF_T2_2.9"
+          ],
+          "crossover_spec_points": [
+            "EDX_BIOL_OFF_MS_A.0.3"
+          ],
+          "tag_basis": "Credits Fick's Law, concentration gradient, haemoglobin saturation and weight drawbacks.",
+          "difficulty": "hard",
+          "difficulty_basis": "Levels-marked extended evaluation of multiple data sources.",
+          "summary": "Weighing up oxygen supply for climbers.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}
