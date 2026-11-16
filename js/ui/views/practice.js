@@ -23,7 +23,9 @@ import { mountCurriculumSelector } from '../curriculum-selector.js';
 import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { scStyle, tintPage } from '../subject-colours.js';
+import { zoomButton } from '../zoom.js';
 import { banner, difficultyBadge, emptyState, pageHead, soonBadge, toast } from '../ui.js';
+import { links, routeOf } from '../../core/links.js';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
 const SOURCE_CHOICES = [
@@ -103,7 +105,7 @@ export async function mount(element, context) {
     pageHead({
       title: 'Find questions',
       sub: 'Browse questions or build a test',
-      crumbs: [{ label: 'Home', href: '#/' }, { label: 'Practice', href: '#/practice' }, ...(crumb ? [{ label: crumb }] : [])],
+      crumbs: [{ label: 'Home', href: links.home() }, { label: 'Practice', href: links.practice() }, ...(crumb ? [{ label: crumb }] : [])],
     });
 
   if (!enrolled.length) {
@@ -113,7 +115,7 @@ export async function mount(element, context) {
         iconName: 'cap',
         title: 'Add a subject first',
         text: 'Practice is built from the subjects you study and the topics you have ticked as learned.',
-        action: html`<a class="btn btn--primary" href="#/subjects">Choose subjects</a>`,
+        action: html`<a class="btn btn--primary" href="${links.subjects()}">Choose subjects</a>`,
       })}`,
     );
     return;
@@ -123,6 +125,14 @@ export async function mount(element, context) {
   const bundle = enrolled.find((candidate) => candidate.subject.subject_id === wanted) || enrolled[0];
   const { subject, spec, textbooks } = bundle;
   const subjectId = subject.subject_id;
+  // Subjects whose scored units carry a reviewed introduced_year use it for the
+  // Year 12 / Year 13-only filters, and treat Year 13 as cumulative.
+  const unitContentYears = subject.content_year_source === 'introduced_year';
+  const qualificationOptions = subject.qualifications || [];
+  const qualificationLabel = (code) => {
+    const option = qualificationOptions.find((item) => item.code === code);
+    return option ? `${option.label} papers` : `${code} papers`;
+  };
   const curriculum = await getCurriculum(subjectId);
   let curriculumPoints = null;
   if (progress.preferences.lastSubject !== subjectId) api.setPreference('lastSubject', subjectId);
@@ -260,7 +270,7 @@ export async function mount(element, context) {
     learnedNamespace: textbookMode() ? 'textbook' : 'official',
     qualificationCodes: state.qualifications,
     curriculumPoints,
-    contentYear: subjectId === 'EDX_ALEVEL_MATH_9MA0' ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
+    contentYear: unitContentYears ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
     years: state.years.length ? state.years.map(Number) : null,
     series: state.series ? [state.series] : null,
     tiers: state.tier ? [state.tier] : null,
@@ -285,13 +295,8 @@ export async function mount(element, context) {
       ${tiers.length || state.tier ? select('tier', 'Tier', tiers, 'Any tier') : ''}
       <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
     `;
-    const qualifications = subjectId === 'EDX_ALEVEL_MATH_9MA0' ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${[['9MA0', 'A-Level'], ['8MA0', 'AS']].map(([value, label]) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
+    const qualifications = qualificationOptions.length > 1 ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${qualificationOptions.map(({code: value, label}) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
-      <label class="field browser-sort"><span class="field__label">Sort</span><select class="select" data-sort aria-label="Sort questions">
-        <option value="" disabled ${state.shuffled ? 'selected' : ''}>Choose sort order</option>
-        ${Object.entries(SORTS).map(([id, label]) => html`<option value="${id}" ${!state.shuffled && state.sort === id ? 'selected' : ''}>${label}</option>`)}
-      </select></label>
-      <label class="field browser-search"><span class="field__label">Search questions</span><span class="searchbox">${icon('search', { size: 16 })}<input class="input" type="search" placeholder="Search text or spec code" value="${state.search}" data-search aria-label="Search text or spec code" /></span></label>
     </div>${sourceControl()}`
       : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper ? 'open' : ''}><summary>Paper filters</summary><div class="stack">${papersAndYears}</div></details>`;
   }
@@ -314,11 +319,11 @@ export async function mount(element, context) {
     return html`<fieldset class="field ${browser ? 'browser-topics' : ''}">
       <legend class="field__label">Topics</legend>
       ${topicOrganisationControl(state.topicOrganisation, {available: Boolean(textbooks)})}
-      <p class="field__hint">${textbookMode() ? 'Book numbers follow your supplied contents pages. For example, Pure 1 · 6.2 is Equation of a circle.' : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
+      <p class="field__hint">${textbookMode() ? `Book numbers follow your supplied contents pages.${subject.textbook_example ? ` ${subject.textbook_example}` : ''}` : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
       ${curriculum.years.length ? html`<div data-curriculum></div>` : ''}
       ${browser && user ? html`<div class="topics-choice">
         <label class="check checkpoint"><input type="checkbox" data-flag="learnedOnly" ${state.learnedOnly ? 'checked' : ''} /><span>Only content I’ve covered</span></label>
-        <a class="small" href="#/subject/${subjectId}">Edit learned topics</a>
+        <a class="small" href="${links.subject(subjectId)}">Edit learned topics</a>
       </div>${state.learnedOnly ? html`<p class="field__hint">Using the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'official point')} you’ve ticked in this view. Untick to choose your own topics.</p>` : ''}` : ''}
       <div class="stack stack--sm" data-topic-picker ${browser && state.learnedOnly ? 'hidden' : ''}>
         <p class="small muted" data-focus-summary>${focusSummary(browser)}</p>
@@ -354,9 +359,9 @@ export async function mount(element, context) {
     const curriculumTarget = $('[data-curriculum]', element);
     if (curriculumTarget) {
       let mounting = true;
-      mountCurriculumSelector(curriculumTarget, { curriculum: textbooks ? {...curriculum, books: []} : curriculum, specIndex, cumulativeYear13: subjectId === 'EDX_ALEVEL_MATH_9MA0', initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
+      mountCurriculumSelector(curriculumTarget, { curriculum: textbooks ? {...curriculum, books: []} : curriculum, specIndex, cumulativeYear13: unitContentYears, initial: state.curriculum, onChange: ({ visible, partial, state: next }) => {
         state.curriculum = next;
-        curriculumPoints = subjectId === 'EDX_ALEVEL_MATH_9MA0' && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
+        curriculumPoints = unitContentYears && !next.bookId && !next.chapterId ? null : visible ? [...visible] : null;
         if (partial.size) {
           const note = document.createElement('p');
           note.className = 'small muted';
@@ -515,45 +520,43 @@ export async function mount(element, context) {
 
   function browserFilters(base) {
     const count = (predicate) => base.filter(predicate).length;
-    return html`<div class="card stack question-filters" aria-labelledby="question-filters-title">
+    const focus = manualFocus();
+    const topicsValue = state.learnedOnly && user ? 'Covered only' : focus === null ? 'All' : !focus.length ? 'None' : `${focus.length} chosen`;
+    const pick = (values, labelOf) => (values.length ? (values.length > 2 ? `${values.length} chosen` : values.map(labelOf).join(', ')) : 'Any');
+    const difficultyValue = pick(state.difficulties, (id) => DIFFICULTIES.find((d) => d.id === id)?.label || id);
+    const marksValue = state.markMin !== '' || state.markMax !== '' ? `${state.markMin || 0}–${state.markMax || 'any'}` : pick(state.bands, (id) => bandOptions.find((b) => b.id === id)?.label || id);
+    const progressValue = pick(state.markStatuses, (id) => PROGRESS_FILTERS[id]);
+    const moreCount = state.years.length + state.qualifications.length + [state.series, state.tier, state.paper].filter(Boolean).length;
+    const pop = (key, label, value, body, wide = false) => html`<details class="fpop" data-section="fpop-${key}">
+        <summary class="fpop__btn"><span class="fpop__label">${label}</span><span class="fpop__value ${['Any', 'All', 'Year, paper'].includes(value) ? '' : 'is-set'}">${value}</span>${icon('chevronDown', { size: 14 })}</summary>
+        <div class="fpop__panel ${wide ? 'fpop__panel--wide' : ''}">${body}</div>
+      </details>`;
+    return html`<div class="card question-filters fbar" aria-labelledby="question-filters-title">
       <i class="tape tape--c" aria-hidden="true"></i>
-      <div class="filter-heading"><div><h2 class="builder__title" id="question-filters-title">Filter questions</h2><p class="small muted">Choose your topics, then narrow down your practice.</p></div><button type="button" class="btn btn--sm filter-reset" data-reset-filters>Reset filters</button></div>
-      ${topicsControl(true)}
-      <div class="browser-filter-options">
-      <fieldset class="field browser-filter-row">
-        <legend class="field__label">Difficulty</legend>
-        <div class="chips">
-          ${DIFFICULTIES.map(
-            (d) =>
-              html`<button type="button" class="chip" data-multi="difficulties" data-value="${d.id}" aria-pressed="${state.difficulties.includes(d.id)}" title="${d.description}">
-                ${d.label}<span class="chip__count">${count((q) => q.difficulty === d.id)}</span>
-              </button>`,
-          )}
-        </div>
-        ${state.difficulties.length ? html`<button type="button" class="linkbtn small" data-clear-group="difficulties">Clear difficulty</button>` : ''}
-      </fieldset>
-      <fieldset class="field browser-filter-row">
-        <legend class="field__label">${exactTariffs ? 'Marks (essay length)' : 'Marks'}</legend>
-        <div class="chips">
-          ${bandOptions.map(
-            (band) =>
-              html`<button type="button" class="chip" data-multi="bands" data-value="${band.id}" aria-pressed="${state.bands.includes(band.id)}">
-                ${band.label}<span class="chip__count">${count((q) => q.marks >= band.min && q.marks <= band.max)}</span>
-              </button>`,
-          )}
-        </div>
-        ${state.bands.length ? html`<button type="button" class="linkbtn small" data-clear-group="bands">Clear marks</button>` : ''}
-        <details class="filter-details" ${state.markMin !== '' || state.markMax !== '' ? 'open' : ''}><summary>Custom mark range</summary>
-          <p class="field__hint">Use an exact range instead of the bands above.</p>
-          <div class="filter-grid filter-grid--two">${[['markMin', 'Minimum marks'], ['markMax', 'Maximum marks']].map(([key, label]) => html`<label class="field"><span class="field__label">${label}</span><input type="number" class="input" min="0" step="1" value="${state[key]}" data-filter="${key}" /></label>`)}</div>
+      <h2 class="sr-only" id="question-filters-title">Filter questions</h2>
+      <div class="fbar__row">
+        ${pop('topics', 'Topics', topicsValue, topicsControl(true), true)}
+        ${pop('difficulty', 'Difficulty', difficultyValue, html`<fieldset class="field"><legend class="field__label">Difficulty</legend><div class="chips">
+          ${DIFFICULTIES.map((d) => html`<button type="button" class="chip" data-multi="difficulties" data-value="${d.id}" aria-pressed="${state.difficulties.includes(d.id)}" title="${d.description}">${d.label}<span class="chip__count">${count((q) => q.difficulty === d.id)}</span></button>`)}
+        </div>${state.difficulties.length ? html`<button type="button" class="linkbtn small" data-clear-group="difficulties">Clear difficulty</button>` : ''}</fieldset>`)}
+        ${pop('marks', exactTariffs ? 'Marks' : 'Marks', marksValue, html`<fieldset class="field"><legend class="field__label">${exactTariffs ? 'Marks (essay length)' : 'Marks'}</legend><div class="chips">
+          ${bandOptions.map((band) => html`<button type="button" class="chip" data-multi="bands" data-value="${band.id}" aria-pressed="${state.bands.includes(band.id)}">${band.label}<span class="chip__count">${count((q) => q.marks >= band.min && q.marks <= band.max)}</span></button>`)}
+        </div>${state.bands.length ? html`<button type="button" class="linkbtn small" data-clear-group="bands">Clear marks</button>` : ''}
+          <p class="field__hint">Or use an exact range:</p>
+          <div class="filter-grid filter-grid--two">${[['markMin', 'Minimum'], ['markMax', 'Maximum']].map(([key, label]) => html`<label class="field"><span class="field__label">${label}</span><input type="number" class="input" min="0" step="1" value="${state[key]}" data-filter="${key}" /></label>`)}</div>
           ${state.markMin !== '' && state.markMax !== '' && Number(state.markMin) > Number(state.markMax) ? html`<p class="form-error" role="status">Minimum must not exceed maximum. No questions match this range.</p>` : ''}
-        </details>
-      </fieldset>
-      <fieldset class="field browser-filter-row"><legend class="field__label">My progress</legend><div class="progress-checkpoints">
-        ${Object.entries(PROGRESS_FILTERS).map(([value, label]) => html`<label class="check checkpoint"><input type="checkbox" data-progress="${value}" ${state.markStatuses.includes(value) ? 'checked' : ''} /><span>${label}</span></label>`)}
-      </div><p class="field__hint">Tick any that apply. Leave all unticked to see every question.</p></fieldset>
+        </fieldset>`)}
+        ${pop('progress', 'Progress', progressValue, html`<fieldset class="field"><legend class="field__label">My progress</legend><div class="progress-checkpoints">
+          ${Object.entries(PROGRESS_FILTERS).map(([value, label]) => html`<label class="check checkpoint"><input type="checkbox" data-progress="${value}" ${state.markStatuses.includes(value) ? 'checked' : ''} /><span>${label}</span></label>`)}
+        </div><p class="field__hint">Leave all unticked to see every question.</p></fieldset>`)}
+        ${pop('more', 'More', moreCount ? `${moreCount} set` : 'Year, paper', html`<div class="stack">${metadataControls(true)}</div>`, true)}
+        <label class="fbar__sort"><span class="sr-only">Sort</span><select class="select select--sm" data-sort aria-label="Sort questions">
+          <option value="" disabled ${state.shuffled ? 'selected' : ''}>Sort</option>
+          ${Object.entries(SORTS).map(([id, label]) => html`<option value="${id}" ${!state.shuffled && state.sort === id ? 'selected' : ''}>${label}</option>`)}
+        </select></label>
+        <label class="fbar__search searchbox">${icon('search', { size: 16 })}<input class="input input--sm" type="search" placeholder="Search text or spec code" value="${state.search}" data-search aria-label="Search text or spec code" /></label>
+        <button type="button" class="linkbtn small fbar__reset" data-reset-filters>Reset</button>
       </div>
-      ${metadataControls(true)}
     </div>`;
   }
 
@@ -585,22 +588,30 @@ export async function mount(element, context) {
         <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
-        ${open ? html`<div class="stack" style="margin-top:16px">
-          <div class="row row--tight"><button type="button" class="btn btn--sm" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? 'Hide mark scheme' : 'Show mark scheme'}</button>
-            ${paper ? html`<a class="btn btn--sm" href="#/paper/${subjectId}/${question.paper_id}">View full paper</a>` : html`<span class="small muted">Full paper unavailable</span>`}</div>
-          ${questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
-          <label class="field"><span class="field__label">Your notes or answer (optional)</span><textarea class="textarea" rows="3" data-answer="${question.question_id}" placeholder="You can also answer on paper">${draft.answer || ''}</textarea></label>
-          ${paper?.examiner_report_url ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Open official examiner’s report (whole booklet)</a>` : html`<p class="small muted">A verified examiner’s report has not been linked to this question.</p>`}
-          ${schemeOpen ? html`<section class="card stack stack--sm"><h3>Mark scheme</h3>${markSchemeBody(question)}
-            <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
-              ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}
-            </label>
-            <details class="small muted"><summary>About saving marks</summary><p>Save deliberately. Zero is valid; leaving this blank records nothing.</p></details>
-            <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? 'Save mark' : 'Create free account to save mark'}</button>
-              ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as new attempt</button>` : ''}
-              ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
-            <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>
-          </section>` : ''}
+        ${open ? html`<div class="qsplit">
+          <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Question'} · ${questionRef(question, bundle.papersById)}">
+            ${zoomButton(schemeOpen ? 'mark scheme' : 'question')}
+            ${schemeOpen
+              ? html`<p class="qsplit__label">${icon('eye', { size: 15 })} Mark scheme</p>${markSchemeBody(question)}`
+              : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
+          </div>
+          <div class="qsplit__side stack stack--sm">
+            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${draft.answer || ''}</textarea></label>
+            ${schemeOpen ? html`<section class="markbox stack stack--sm">
+              <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
+                ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}
+              </label>
+              <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? 'Save mark' : 'Create free account to save mark'}</button>
+                ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as new attempt</button>` : ''}
+                ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
+              <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>
+            </section>` : ''}
+            <div class="row row--tight">
+              <button type="button" class="btn btn--sm ${schemeOpen ? '' : 'btn--primary'}" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? html`${icon('chevronLeft', { size: 15 })} Back to question` : html`${icon('eye', { size: 15 })} Show mark scheme`}</button>
+              ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, question.paper_id)}">View full paper</a>` : ''}
+            </div>
+            ${paper?.examiner_report_url ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report</a>` : ''}
+          </div>
         </div>` : ''}
       </div>
       <div class="qcard__side">${marksPill(question.marks)}<button type="button" class="btn btn--sm" data-open="${question.question_id}" aria-expanded="${open}">${open ? 'Hide question' : 'Show question'}</button></div>
@@ -631,7 +642,7 @@ export async function mount(element, context) {
       ...(activeFocus() !== null ? [{key: 'focus', label: `${activeFocus().length} spec points selected`}] : []),
       ...(activeTextbookFocus() !== null ? [{key: 'textbookFocus', label: `${activeTextbookFocus().length} textbook subsections selected`}] : []),
       ...(state.learnedOnly ? [{key: 'learnedOnly', label: 'Topics I’ve learned'}] : []),
-      ...state.qualifications.map(value => ({key: 'qualifications', value, label: value === '8MA0' ? 'AS papers' : 'A-Level papers'})),
+      ...state.qualifications.map(value => ({key: 'qualifications', value, label: qualificationLabel(value)})),
       ...state.markStatuses.map((value) => ({key: 'markStatuses', value, label: PROGRESS_FILTERS[value]})),
       ...(state.sampleMode !== 'all' ? [{key: 'sampleMode', label: state.sampleMode === 'hide' ? 'Hide demo content' : 'Demo content only'}] : []),
       ...state.difficulties.map((value) => ({key: 'difficulties', value, label: value.replaceAll('_', ' ')})),
@@ -672,14 +683,14 @@ export async function mount(element, context) {
             text: !learnedLeaves.length && state.learnedOnly
               ? 'Tick the topics you have learned and questions will appear here.'
               : 'Change the filters to see more questions.',
-            action: !learnedLeaves.length && state.learnedOnly ? html`<a class="btn btn--primary" href="#/subject/${subjectId}">Tick learned topics</a>` : null,
+            action: !learnedLeaves.length && state.learnedOnly ? html`<a class="btn btn--primary" href="${links.subject(subjectId)}">Tick learned topics</a>` : null,
           })}
       ${sorted.length > PAGE_SIZE ? html`<nav class="row row--between filter-pagination" aria-label="Question results pages"><button type="button" class="btn btn--sm" data-page="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>Previous</button><span class="small muted" role="status">Page ${state.page} of ${pageCount} · ${(state.page - 1) * PAGE_SIZE + 1}–${Math.min(state.page * PAGE_SIZE, sorted.length)} of ${sorted.length}</span><button type="button" class="btn btn--sm" data-page="${state.page + 1}" ${state.page >= pageCount ? 'disabled' : ''}>Next</button></nav>` : ''}
       ${locked.length
         ? html`<details class="locked">
             <summary>${icon('lock', { size: 16 })} ${plural(locked.length, 'more question')} ${locked.length === 1 ? 'needs' : 'need'} topics you have not ticked as learned</summary>
             <div class="qlist" style="margin-top:12px">${locked.slice(0, 40).map((entry) => questionCard(entry.question, { locked: entry.missing }))}</div>
-            <p class="small" style="margin-top:10px"><a href="#/subject/${subjectId}">Update your covered topics</a>, or turn off the covered-content filter to browse them.</p>
+            <p class="small" style="margin-top:10px"><a href="${links.subject(subjectId)}">Update your covered topics</a>, or turn off the covered-content filter to browse them.</p>
           </details>`
         : ''}`;
   }
@@ -797,10 +808,10 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${head(subject.subject)}
-      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="#/signup?next=%2Fpractice">Create a free account</a> to save it in this browser.`) : ''}
+      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="${links.signup('/practice')}">Create a free account</a> to save it in this browser.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
-        ${subjectPills(enrolled, subjectId, (id) => `#/practice?subject=${id}`)}
+        ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
         ${modes.length > 1
           ? html`<div class="seg mode-switch" role="tablist">
               ${[...modes].sort((a, b) => (a === 'timed_test') - (b === 'timed_test')).map(
@@ -824,6 +835,24 @@ export async function mount(element, context) {
     save();
     update(options);
   };
+
+  // Filter bar: one dropdown open at a time; a click outside or Escape closes it.
+  element.addEventListener('toggle', (event) => {
+    const opened = event.target;
+    if (!opened.matches?.('.fpop') || !opened.open) return;
+    for (const other of element.querySelectorAll('.fpop[open]')) if (other !== opened) other.open = false;
+  }, true);
+  on(element, 'click', '.fpop__btn', (event, summary) => {
+    for (const other of element.querySelectorAll('.fpop[open]')) if (other !== summary.parentElement) other.open = false;
+  });
+  const closePops = (event) => {
+    if (!element.isConnected) { document.removeEventListener('click', closePops); document.removeEventListener('keydown', closePops); return; }
+    if (event.type === 'keydown' && event.key !== 'Escape') return;
+    if (event.type === 'click' && event.target.closest?.('.fbar')) return;
+    for (const pop of element.querySelectorAll('.fpop[open]')) pop.open = false;
+  };
+  document.addEventListener('click', closePops);
+  document.addEventListener('keydown', closePops);
 
   on(element, 'click', '[data-mode]', (event, button) => {
     state.mode = button.dataset.mode;
@@ -972,7 +1001,7 @@ export async function mount(element, context) {
     }
     if (!user) {
       save();
-      return context.navigate(`/signup?next=${encodeURIComponent(`/practice?subject=${subjectId}`)}`);
+      return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
     }
     pendingMarks.add(id);
     for (const button of card.querySelectorAll('[data-save-mark], [data-reattempt]')) button.disabled = true;
@@ -1053,6 +1082,6 @@ export async function mount(element, context) {
     await api.saveSession(session, { silent: true });
     state.seed = Math.floor(Math.random() * 1e9); // a fresh test next time
     save();
-    context.navigate(`/session/${session.session_id}`);
+    context.navigate(routeOf(links.session(session.session_id)));
   });
 }
