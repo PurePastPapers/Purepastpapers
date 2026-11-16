@@ -22,7 +22,15 @@ async function resolve(path) {
     if (!response.ok) throw new Error('Source image bundle is unavailable');
     return response.json();
   }).catch(error => { bundles.delete(key); throw error; }));
-  const bundle = await bundles.get(key);
+  let bundle = await bundles.get(key);
+  if (!bundle.assets[name]) {
+    // A page left open across a deploy can hold the previous catalogue: fetch it afresh once.
+    bundles.set(key, fetch(`data/${slug}-assets/${paper}.json`, {cache: 'reload'}).then(response => {
+      if (!response.ok) throw new Error('Source image bundle is unavailable');
+      return response.json();
+    }).catch(error => { bundles.delete(key); throw error; }));
+    bundle = await bundles.get(key);
+  }
   const asset = bundle.assets[name];
   if (!asset || !asset.base64) throw new Error('Source image is unavailable');
   const bytes = Uint8Array.from(atob(asset.base64), char => char.charCodeAt(0));
