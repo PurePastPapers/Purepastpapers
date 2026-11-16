@@ -11,6 +11,7 @@ import * as shell from './ui/shell.js';
 import { tintPage } from './ui/subject-colours.js';
 import { revealOnScroll } from './ui/motion.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
+import { links } from './core/links.js';
 
 const papersView = () => import('./ui/views/papers.js');
 const comingSoonView = () => import('./ui/views/coming-soon.js');
@@ -62,8 +63,48 @@ function parseLocation() {
 export function navigate(target, { replace = false } = {}) {
   const hash = `#${target}`;
   if (location.hash === hash) return void handleRoute();
+  replacing = replace;
   if (replace) location.replace(hash);
   else location.hash = hash;
+}
+
+// ── this tab's history, so "Back" buttons can return to the page a student came from ──
+// Each history entry is stamped with its position; `trail[position]` is the route shown there.
+const trail = [];
+let position = -1;
+let replacing = false;
+
+function recordHistory(full) {
+  let index = history.state?.pppIndex;
+  if (!Number.isInteger(index)) {
+    index = replacing ? Math.max(position, 0) : position + 1;
+    trail.length = index; // a new entry drops any forward history
+    try {
+      history.replaceState({ ...(history.state || {}), pppIndex: index }, '');
+    } catch {}
+  }
+  replacing = false;
+  trail[index] = full;
+  position = index;
+}
+
+/** Routes that make no sense to return to with a Back button. */
+const notReturnable = (route) => !route || route.startsWith('/session/') || route.startsWith('/login') || route.startsWith('/signup');
+
+/** Where `back(fallback)` will go: the previous page in this tab if there is a sensible one, else `fallback`. */
+export function backTarget(fallback) {
+  const previous = trail[position - 1];
+  return notReturnable(previous) ? fallback : previous;
+}
+
+/**
+ * Leaves the current page: steps back through browser history when the previous page is a
+ * sensible place to return to, otherwise replaces this entry with `fallback`. Either way the
+ * page being left does not stay in the way of the browser's own Back button.
+ */
+export function back(fallback) {
+  if (!notReturnable(trail[position - 1])) history.back();
+  else navigate(fallback, { replace: true });
 }
 
 let cleanup = null;
@@ -73,6 +114,7 @@ let afterAuth = null; // where to go once a log-in or sign-up succeeds
 async function handleRoute() {
   const ticket = ++navigation;
   const { route, path, query, params, full } = parseLocation();
+  recordHistory(full);
   const signedIn = api.isSignedIn();
 
   let load = route?.load;
@@ -112,6 +154,8 @@ async function handleRoute() {
     params,
     options,
     navigate,
+    back,
+    backTarget,
     refresh: handleRoute,
     /** Call before signing in or up to choose where the student lands afterwards. */
     afterAuth: (target) => {
@@ -130,7 +174,7 @@ async function handleRoute() {
         html`<div class="empty">
           <h1 class="empty__title">That page does not exist</h1>
           <p class="empty__text">The link may be out of date.</p>
-          <a class="btn btn--primary" href="#/">Go to the home page</a>
+          <a class="btn btn--primary" href="${links.home()}">Go to the home page</a>
         </div>`,
       );
       return;

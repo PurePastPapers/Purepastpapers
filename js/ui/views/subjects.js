@@ -11,6 +11,7 @@ import { subjectDialog } from '../subject-dialog.js';
 import { coverageDialog } from '../coverage-dialog.js';
 import { loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
 import { banner, emptyState, pageHead, toast } from '../ui.js';
+import { links } from '../../core/links.js';
 
 const LEVELS = [
   { id: 'gcse', label: 'GCSE', level: 'GCSE' },
@@ -73,7 +74,7 @@ export async function mount(element, context) {
               ${enrolledIds.has(subject.subject_id)
                 ? html`<span class="btn btn--sm is-added" aria-disabled="true">${icon('check', { size: 15 })} Added</span>`
                 : html`<button type="button" class="btn btn--sm btn--primary" data-enrol="${subject.subject_id}">+ Add subject</button>`}
-              <a class="btn btn--sm" href="#/subject/${subject.subject_id}">View topics</a>
+              <a class="btn btn--sm" href="${links.subject(subject.subject_id)}">View topics</a>
             </footer>
           </article>`,
       )}
@@ -92,12 +93,12 @@ export async function mount(element, context) {
       html`${pageHead({
           title: 'My subjects',
           sub: 'what you study, your target grades and the topics you’ve learned',
-          crumbs: [{ label: 'Home', href: '#/' }, { label: 'My subjects' }],
+          crumbs: [{ label: 'Home', href: links.home() }, { label: 'My subjects' }],
         })}
         ${context.query.welcome && !enrolled.length
           ? banner(html`<strong>Welcome.</strong> Start by adding your subjects below. Next you will tick the topics you have learned so far.`)
           : ''}
-        ${!api.isSignedIn() ? banner(html`Browse and filter for free. Your guest choices last until you refresh or close this page. <a href="#/signup">Create a free account</a> to save progress in this browser.`) : ''}
+        ${!api.isSignedIn() ? banner(html`Browse and filter for free. Your guest choices last until you refresh or close this page. <a href="${links.signup()}">Create a free account</a> to save progress in this browser.`) : ''}
         <section class="dash-block" style="margin-top:10px" aria-labelledby="now-title">
           <div class="section-title">
             <h2 id="now-title">Studying now</h2>
@@ -111,7 +112,7 @@ export async function mount(element, context) {
                 <h3 class="empty__title">No subjects yet</h3>
                 <p class="empty__text">Pick the subjects you study from the list below. Each one is matched to its exam board and specification.</p>
               </div>`}
-          ${enrolled.length ? html`<div class="row" style="margin-top:16px"><a class="btn" href="#add-title" data-add-another>Add another subject</a><a class="btn btn--primary" href="#/practice?mode=individual">Finish setup · Find questions</a></div>` : ''}
+          ${enrolled.length ? html`<div class="row" style="margin-top:16px"><button type="button" class="btn" data-add-another>Add another subject</button><a class="btn btn--primary" href="${links.practice({ mode: 'individual' })}">Finish setup · Find questions</a></div>` : ''}
         </section>
 
         <section class="dash-block" aria-labelledby="add-title">

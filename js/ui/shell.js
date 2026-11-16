@@ -8,11 +8,12 @@ import * as api from '../data/api.js';
 import { icon } from './icons.js';
 import { SUBJECT_SWATCHES } from './subject-colours.js';
 import { activeTheme, toggleTheme } from './theme.js';
+import { links } from '../core/links.js';
 
 let root = null;
 
 export const brand = () =>
-  html`<a class="brand" href="#/" aria-label="PurePastPapers home"><span class="brand__mark" aria-hidden="true">P</span><span class="brand__name">PurePastPapers</span></a>`;
+  html`<a class="brand" href="${links.home()}" aria-label="PurePastPapers home"><span class="brand__mark" aria-hidden="true">P</span><span class="brand__name">PurePastPapers</span></a>`;
 
 const navLink = (item, className) =>
   html`<a class="${className}" href="#${item.path}" data-nav="${item.path}" data-match="${(item.match || []).join(' ')}">${item.label}${item.feature && !isEnabled(item.feature) ? html`<span class="badge badge--soon">Soon</span>` : ''}</a>`;
@@ -47,7 +48,7 @@ function frame() {
         ? html`<nav class="topnav__tabs" aria-label="Main navigation">${main.map((item) => navLink(item, 'topnav__tab'))}</nav>
             <div class="topnav__right">
               ${user.is_demo ? html`<button type="button" class="btn btn--sm topnav__leave" data-logout>${icon('logout', { size: 15 })} Sign out of demo</button>` : ''}
-              <a class="tag topnav__count" href="#/hub" data-answered>${answeredCount()} answered</a>
+              <a class="tag topnav__count" href="${links.hub()}" data-answered>${answeredCount()} answered</a>
               <details class="menu" data-menu>
                 <summary class="avatar" style="--sc:${avatarHex()}" aria-label="Account menu for ${user.display_name}">${initials}</summary>
                 <div class="menu__panel card">
@@ -55,7 +56,7 @@ function frame() {
                   <nav class="menu__links" aria-label="More">
                     <span class="menu__tabs">${main.map((item) => navLink(item, 'menu__item'))}</span>
                     ${more.map((item) => navLink(item, 'menu__item'))}
-                    <a class="menu__item" href="#/account" data-nav="/account">Account and settings</a>
+                    <a class="menu__item" href="${links.account()}" data-nav="/account">Account and settings</a>
                   </nav>
                   <div class="menu__foot">
                     <button type="button" class="btn btn--sm" data-theme-toggle>${icon(activeTheme() === 'dark' ? 'sun' : 'moon')}<span>${themeLabel()}</span></button>
@@ -65,12 +66,12 @@ function frame() {
               </details>
             </div>`
         : html`<nav class="topnav__links" aria-label="On this page">
-              <a href="#/" data-jump="features">Features</a><a href="#/" data-jump="subjects">Subjects</a><a href="#/" data-jump="how">How it works</a>
+              <a href="${links.home('features')}" data-jump="features">Features</a><a href="${links.home('subjects')}" data-jump="subjects">Subjects</a><a href="${links.home('how')}" data-jump="how">How it works</a>
             </nav>
             <div class="topnav__right">
               <button type="button" class="iconbtn" data-theme-toggle aria-label="${themeLabel()}">${icon(activeTheme() === 'dark' ? 'sun' : 'moon')}</button>
-              <a class="btn btn--sm" href="#/login">Log in</a>
-              <a class="btn btn--sm btn--primary" href="#/signup">Sign up</a>
+              <a class="btn btn--sm" href="${links.login()}">Log in</a>
+              <a class="btn btn--sm btn--primary" href="${links.signup()}">Sign up</a>
             </div>`}
     </header>
     <main id="outlet"></main>
@@ -97,7 +98,7 @@ export function mountShell(container) {
   on(root, 'click', '[data-logout]', () => api.signOut());
   on(root, 'click', '[data-jump]', (event, link) => {
     const target = document.getElementById(link.dataset.jump);
-    if (!target) return; // not on the landing page: let the link go home
+    if (!target) return; // not on the landing page: the link goes home and scrolls there
     event.preventDefault();
     target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   });

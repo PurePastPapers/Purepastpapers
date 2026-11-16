@@ -60,7 +60,8 @@ Chromium, isolated temporary profiles, against the local static server:
   249 demo questions, zero errors/warnings. `git diff --check` passes.
 
 Browser regressions are in `tools/browser-regression.cjs`,
-`tools/browser-fixtures.cjs` and `tools/browser-parts.cjs`. Run a local server first.
+`tools/browser-fixtures.cjs`, `tools/browser-parts.cjs` and `tools/browser-navigation.cjs`
+(back buttons, restart/abandon, link hygiene). Run a local server first.
 They require an optional development Playwright installation; the published site
 still has no runtime dependencies. Set `PLAYWRIGHT_MODULE` to an installed module
 path and optionally `CHROME_PATH` to a Chrome executable, then run each with Node.
