@@ -31,7 +31,7 @@ Implemented on the feature branch:
 - Supabase setup notes in docs/supabase-setup.md.
 
 Code exists, but production readiness is not verified:
-- The SQL migration has not been confirmed as applied in Supabase.
+- User's SQL Editor screenshot on 2026-11-17 shows table_exists=false, rls_enabled=false, policies=[], and authenticated_grants=[]. This confirms public.user_progress is absent; migration application is pending. No existing user_progress rows can be overwritten by the first application.
 - User reports the Site URL and redirect URLs were set and saved on 2026-11-17. A screenshot of Authentication → Sign In / Providers shows Allow new users to sign up, Confirm email, and the Email provider enabled; the user subsequently confirmed all three dashboard tasks, including saving settings and replacing the SMTP key, are done. These settings remain user-reported, not independently verified through admin access.
 - User reports Resend custom SMTP was saved in Supabase with sender no-reply@purepastpapers.com and the SMTP key was rotated/replaced directly in Supabase; delivery through Supabase has not been tested or independently checked.
 - The Edge Function has not been confirmed deployed.
@@ -62,7 +62,7 @@ User reports setting and saving Site URL and redirect URLs after the screenshot 
 Required dashboard work:
 1. Authentication → URL Configuration: user reports setting and saving the Site URL and four exact redirect URLs on 2026-11-17. The values still require independent verification through admin access.
 2. Authentication → Sign In / Providers: the 2026-11-17 screenshot shows Allow new users to sign up, Confirm email, and the Email provider enabled. User reports saving these settings; independently verify when Supabase admin access is available.
-3. SQL Editor: apply the migration file above.
+3. SQL Editor: the user's read-only preflight on 2026-11-17 showed public.user_progress absent with no policies or grants. Apply the migration file above once, then rerun the preflight to verify the table, RLS, three policies, and authenticated grants.
 4. Deploy delete-account. The documented CLI commands from the repository root are:
    ~~~sh
    git fetch origin codex/supabase-account-sync-2026-11-16
@@ -137,7 +137,7 @@ Completed/observed:
 
 Not completed:
 - Full repository npm test / npm run validate; the workspace has no full checkout or large /data test bank. No complete build/lint run.
-- Supabase Auth settings verification, safe migration-state inspection, migration application, RLS cross-user denial test, SMTP delivery, function deployment, and authenticated deletion.
+- Supabase Auth settings have been reported complete but are not independently verified. The user's read-only migration preflight showed the table absent; migration application, post-migration RLS/grant verification, cross-user denial test, SMTP delivery, function deployment, and authenticated deletion are outstanding.
 - Production signup, confirmation, login, password reset, guest progress restoration, cross-device sync, export/import, deletion, and post-deploy exam-paper regression testing.
 
 ## 8. Known problems, blockers and risks
@@ -145,7 +145,7 @@ Not completed:
 - This environment lacks authenticated Supabase admin access: no Supabase connector, CLI executable/session, or Management API credentials. GitHub access and the browser publishable key are not Supabase admin access.
 - User reports SMTP settings and key rotation completed, but Supabase email delivery is untested. Test delivery without exposing the SMTP key.
 - Auth sign-up, email confirmation and Email provider are shown on in a 2026-11-17 screenshot; user reports saving these and URL settings and rotating the SMTP key. Those settings remain user-reported. SMTP delivery, migration state and Edge Function deployment remain unverified.
-- The migration is not idempotent. It uses CREATE TABLE and CREATE POLICY without guards; inspect whether the table and all three policies already exist before applying. If partial or mismatched schema exists, stop and repair deliberately rather than rerunning.
+- The migration is not idempotent. It uses CREATE TABLE and CREATE POLICY without guards. The user's 2026-11-17 preflight screenshot showed table_exists=false and no policies/grants, so applying once is safe. If it errors or partially applies, stop and inspect state rather than rerunning.
 - The feature code head was 42 commits behind main at the last comparison. PR base metadata is stale; recheck mergeability and paths.
 - Full repository validation cannot run from this partial workspace.
 - End-to-end tests do not establish production readiness. Progress snapshots use last-save-wins on concurrent devices.
@@ -157,7 +157,7 @@ Not completed:
 2. If an authenticated Supabase connector/CLI becomes available, first read current Auth settings, schema/policies and function deployment status; do not rewrite already-correct settings. None was available in the 2026-11-17 workspace check.
 3. User reports rotating/replacing the Resend SMTP API key directly in Supabase with a restricted sending key on 2026-11-17. Do not repeat; verify email delivery without exposing the key.
 4. User reports setting and saving Supabase Authentication → URL Configuration with Site URL https://purepastpapers.com and redirects https://purepastpapers.com/auth-callback.html, https://www.purepastpapers.com/auth-callback.html, http://localhost:5173/auth-callback.html, http://127.0.0.1:5173/auth-callback.html. The screenshot shows sign-ups, email confirmation and Email provider enabled. Independently verify saved settings when admin access becomes available.
-5. Before applying SQL, run this read-only inspection in SQL Editor:
+5. A read-only inspection was run by the user in SQL Editor on 2026-11-17. The screenshot result was table_exists=false, rls_enabled=false, policies=[], authenticated_grants=[]. Therefore apply the migration once, then rerun the same inspection below and verify table_exists=true, rls_enabled=true, three owner-scoped policies, and authenticated select/insert/update grants. If migration errors, stop and share the error; do not rerun blindly. The inspection query is retained here for post-migration verification:
    ~~~sql
    select
      to_regclass('public.user_progress') is not null as table_exists,
