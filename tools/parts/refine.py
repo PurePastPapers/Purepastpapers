@@ -43,6 +43,7 @@ _spec = importlib.util.spec_from_file_location('qbank_render', ROOT / 'tools' / 
 _render = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_render)
 
+MARK_CODES = False  # set for GCSE Mathematics (mark-code column)
 ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
 GRAPHIC_NOUNS = ['figure', 'fig', 'table', 'graph', 'diagram', 'photograph', 'photo', 'chart', 'flow chart',
                  'micrograph', 'image', 'drawing', 'map', 'key', 'circuit', 'grid', 'histogram', 'curve',
@@ -507,7 +508,9 @@ def scheme_blocks(doc, regions, number):
         ws = sorted(lines[key], key=lambda w: w['x0'])
         picked = [ws[0]]
         for w in ws[1:]:
-            if w['x0'] - picked[-1]['x1'] < 7 and re.fullmatch(r'\*?\(?[a-z0-9]{1,4}\)?\*?(\([a-z]{1,4}\))*', w['text']):
+            # GCSE 1MA1 tables set "5   (a)" with a wider gap between number and part.
+            gap = 34 if re.fullmatch(r'(\(([a-h]|[ivx]{1,4})\))+', w['text']) else 7
+            if w['x0'] - picked[-1]['x1'] < gap and re.fullmatch(r'\*?\(?[a-z0-9]{1,4}\)?\*?(\([a-z]{1,4}\))*', w['text']):
                 picked.append(w)
             else:
                 break
@@ -531,7 +534,14 @@ def scheme_blocks(doc, regions, number):
             row = [v for v in words if v['page'] == ws[0]['page'] and abs(v['top'] - ws[0]['top']) < 3 and v['x0'] > ws[-1]['x1']]
             if not row:
                 continue
+            # ...and in the reference column: an answer such as "9" in the next column is not a row label
+            column = min(v['x0'] for v in words if v['page'] == ws[0]['page'])
+            if ws[0]['x0'] > column + 30:
+                continue
         tokens = ([m.group(2)] if m.group(2) else []) + re.findall(r'\(([ivx]{1,4})\)', m.group(3))
+        if tokens and not m.group(2) and anchors and anchors[-1]['tokens'][:1] and anchors[-1]['tokens'][0] not in ROMAN:
+            # "(ii)" on its own row under "(a)(i)" continues part (a)
+            tokens = anchors[-1]['tokens'][:1] + tokens
         anchors.append({'word': ws[0], 'tokens': tokens})
     if not anchors:
         return None
@@ -584,7 +594,16 @@ def scheme_blocks(doc, regions, number):
         first_anchor = anchors[0]['word']
         if (h['page'], h['top']) < (first_anchor['page'], first_anchor['top']):
             H = doc.size(h['page'])[1]
-            header = clip(regions, (h['page'], (h['top'] - 5) / H), (first_anchor['page'], (first_anchor['top'] - 6) / doc.size(first_anchor['page'])[1]))
+            end_y = first_anchor['top'] - 6
+            if first_anchor['page'] == h['page']:
+                # never cut through the header row itself (GCSE 1MA1 rows sit close under it)
+                line = [v['bottom'] for v in words if v['page'] == h['page'] and abs(v['top'] - h['top']) < 3]
+                end_y = max(end_y, min(max(line) + 1.5, first_anchor['top'] - 1))
+            start_y = h['top'] - 5
+            bar = [v['top'] for v in words if v['page'] == h['page'] and v['text'] == 'Paper:' and 0 < h['top'] - v['top'] < 25]
+            if bar:
+                start_y = min(bar) - 4  # include the whole "Paper: 1MA1/2H" bar, not a sliver of it
+            header = clip(regions, (h['page'], start_y / H), (first_anchor['page'], end_y / doc.size(first_anchor['page'])[1]))
             if header and sum(r['bbox'][3] - r['bbox'][1] for r in header) > 0.12:
                 header = None
     # the last block stops before a following question's table header
@@ -636,7 +655,22 @@ def scheme_for_unit(doc, parsed, unit, marks):
     counted = [r for b in chosen if not b['notes'] for r in b['regions']]
     total = 0
     total_lines = {(w['page'], round(w['top'] / 3)) for w in parsed['words'] if re.match(r'^\(?Total', w['text'])}
+    mark_column = {}
+    if MARK_CODES:
+        # GCSE 1MA1 tables carry a narrow "Mark" column of codes (M1, A1, B2, P1, C1);
+        # guidance prose to the right is full of numbers, so count only that column.
+        for page in {w['page'] for w in parsed['words']}:
+            heads = [w for w in doc.words(page) if w['text'] == 'Mark' and w['top'] < doc.size(page)[1] * 0.3]
+            if heads:
+                mark_column[page] = min(h['x0'] for h in heads)
     for w in parsed['words']:
+        if MARK_CODES:
+            x = mark_column.get(w['page'])
+            m = re.fullmatch(r'[MABPC](\d)', w['text'])
+            if x is not None and m and x - 6 <= w['x0'] <= x + 25 and \
+                    any(r['page'] == w['page'] and r['bbox'][1] * doc.size(w['page'])[1] <= w['top'] < r['bbox'][3] * doc.size(w['page'])[1] for r in counted):
+                total += int(m.group(1))
+            continue
         if (w['page'], round(w['top'] / 3)) in total_lines or (w['page'], round(w['top'] / 3) - 1) in total_lines or (w['page'], round(w['top'] / 3) + 1) in total_lines:
             continue
         W, H = doc.size(w['page'])
@@ -927,7 +961,7 @@ def open_doc(sources, alias, sha, original_sha, offset, cropbox=False):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths'])
+    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths'])
     ap.add_argument('--sources', type=Path, required=True)
     ap.add_argument('--paper')
     ap.add_argument('--dry', action='store_true')
@@ -939,6 +973,8 @@ def main():
     alias_path = args.sources.parent / 'alias.json'
     alias = json.loads(alias_path.read_text()) if alias_path.exists() else {}
     slug = args.subject
+    global MARK_CODES
+    MARK_CODES = slug == 'gcsemaths'
     stats = defaultdict(int)
     report = []
     shard, shards = (int(v) for v in args.shard.split('/'))
@@ -964,7 +1000,7 @@ def main():
         for q in pack['questions']:
             groups[q['parent_question_id']].append(q)
         p0 = pack['questions'][0]['provenance']
-        crop = slug == 'physics'  # tools/physics renders the CropBox
+        crop = slug in ('physics', 'gcsemaths')  # tools/physics and tools/gcsemaths render the CropBox
         qdoc = open_doc(args.sources, alias, p0['question_source_sha256'], p0['original_question_source_sha256'], p0['question_page_offset'], crop)
         sdoc = open_doc(args.sources, alias, p0['scheme_source_sha256'], p0['original_scheme_source_sha256'], p0['scheme_page_offset'], crop)
         new_assets = {}

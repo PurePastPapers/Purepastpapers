@@ -942,6 +942,205 @@ export const LEGACY_SPEC_IDS = Object.freeze({
     "EDX_PHYS_S149",
     "EDX_PHYS_S152"
   ],
+  "EDX_GCSE_MATH_NUM_1.1": [
+    "EDX_GCSE_MATH_N1",
+    "EDX_GCSE_MATH_N2",
+    "EDX_GCSE_MATH_N3"
+  ],
+  "EDX_GCSE_MATH_NUM_1.2": [
+    "EDX_GCSE_MATH_N10",
+    "EDX_GCSE_MATH_N12"
+  ],
+  "EDX_GCSE_MATH_NUM_1.3": [
+    "EDX_GCSE_MATH_N4",
+    "EDX_GCSE_MATH_N5"
+  ],
+  "EDX_GCSE_MATH_NUM_1.4": [
+    "EDX_GCSE_MATH_N6",
+    "EDX_GCSE_MATH_N7"
+  ],
+  "EDX_GCSE_MATH_NUM_1.5": [
+    "EDX_GCSE_MATH_N9"
+  ],
+  "EDX_GCSE_MATH_NUM_1.6": [
+    "EDX_GCSE_MATH_N14",
+    "EDX_GCSE_MATH_N15",
+    "EDX_GCSE_MATH_N16"
+  ],
+  "EDX_GCSE_MATH_NUM_1.7": [
+    "EDX_GCSE_MATH_N8",
+    "EDX_GCSE_MATH_N10"
+  ],
+  "EDX_GCSE_MATH_NUM_1.8": [
+    "EDX_GCSE_MATH_N7"
+  ],
+  "EDX_GCSE_MATH_ALG_2.1": [
+    "EDX_GCSE_MATH_A1",
+    "EDX_GCSE_MATH_A3",
+    "EDX_GCSE_MATH_A4"
+  ],
+  "EDX_GCSE_MATH_ALG_2.2": [
+    "EDX_GCSE_MATH_A2",
+    "EDX_GCSE_MATH_A5"
+  ],
+  "EDX_GCSE_MATH_ALG_2.3": [
+    "EDX_GCSE_MATH_A17",
+    "EDX_GCSE_MATH_A21",
+    "EDX_GCSE_MATH_A22"
+  ],
+  "EDX_GCSE_MATH_ALG_2.4": [
+    "EDX_GCSE_MATH_A23",
+    "EDX_GCSE_MATH_A24",
+    "EDX_GCSE_MATH_A25"
+  ],
+  "EDX_GCSE_MATH_ALG_2.5": [
+    "EDX_GCSE_MATH_A9",
+    "EDX_GCSE_MATH_A10"
+  ],
+  "EDX_GCSE_MATH_ALG_2.6": [
+    "EDX_GCSE_MATH_A4",
+    "EDX_GCSE_MATH_A11",
+    "EDX_GCSE_MATH_A18"
+  ],
+  "EDX_GCSE_MATH_ALG_2.7": [
+    "EDX_GCSE_MATH_A19"
+  ],
+  "EDX_GCSE_MATH_ALG_2.8": [
+    "EDX_GCSE_MATH_A12",
+    "EDX_GCSE_MATH_A14"
+  ],
+  "EDX_GCSE_MATH_ALG_2.9": [
+    "EDX_GCSE_MATH_A11",
+    "EDX_GCSE_MATH_A18"
+  ],
+  "EDX_GCSE_MATH_ALG_2.10": [
+    "EDX_GCSE_MATH_A4"
+  ],
+  "EDX_GCSE_MATH_ALG_2.11": [
+    "EDX_GCSE_MATH_A7"
+  ],
+  "EDX_GCSE_MATH_ALG_2.12": [
+    "EDX_GCSE_MATH_A13",
+    "EDX_GCSE_MATH_A15",
+    "EDX_GCSE_MATH_A16"
+  ],
+  "EDX_GCSE_MATH_ALG_2.13": [
+    "EDX_GCSE_MATH_A20"
+  ],
+  "EDX_GCSE_MATH_ALG_2.14": [
+    "EDX_GCSE_MATH_A6"
+  ],
+  "EDX_GCSE_MATH_RATIO_3.1": [
+    "EDX_GCSE_MATH_R4",
+    "EDX_GCSE_MATH_R5",
+    "EDX_GCSE_MATH_R6",
+    "EDX_GCSE_MATH_R8"
+  ],
+  "EDX_GCSE_MATH_RATIO_3.2": [
+    "EDX_GCSE_MATH_R7",
+    "EDX_GCSE_MATH_R10",
+    "EDX_GCSE_MATH_R13"
+  ],
+  "EDX_GCSE_MATH_RATIO_3.3": [
+    "EDX_GCSE_MATH_R9"
+  ],
+  "EDX_GCSE_MATH_RATIO_3.4": [
+    "EDX_GCSE_MATH_R11",
+    "EDX_GCSE_MATH_N13"
+  ],
+  "EDX_GCSE_MATH_RATIO_3.5": [
+    "EDX_GCSE_MATH_R1",
+    "EDX_GCSE_MATH_R2"
+  ],
+  "EDX_GCSE_MATH_RATIO_3.6": [
+    "EDX_GCSE_MATH_R16"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.1": [
+    "EDX_GCSE_MATH_G1",
+    "EDX_GCSE_MATH_G3"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.2": [
+    "EDX_GCSE_MATH_G4",
+    "EDX_GCSE_MATH_G5",
+    "EDX_GCSE_MATH_G6",
+    "EDX_GCSE_MATH_G19"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.3": [
+    "EDX_GCSE_MATH_G16",
+    "EDX_GCSE_MATH_G17",
+    "EDX_GCSE_MATH_G18"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.4": [
+    "EDX_GCSE_MATH_G12",
+    "EDX_GCSE_MATH_G16",
+    "EDX_GCSE_MATH_G17"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.5": [
+    "EDX_GCSE_MATH_G7",
+    "EDX_GCSE_MATH_G8",
+    "EDX_GCSE_MATH_G24"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.6": [
+    "EDX_GCSE_MATH_G2",
+    "EDX_GCSE_MATH_G15"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.7": [
+    "EDX_GCSE_MATH_G20"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.8": [
+    "EDX_GCSE_MATH_G20",
+    "EDX_GCSE_MATH_G21"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.9": [
+    "EDX_GCSE_MATH_G25"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.10": [
+    "EDX_GCSE_MATH_G10"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.11": [
+    "EDX_GCSE_MATH_G22",
+    "EDX_GCSE_MATH_G23"
+  ],
+  "EDX_GCSE_MATH_GEOM_4.12": [
+    "EDX_GCSE_MATH_G20"
+  ],
+  "EDX_GCSE_MATH_PROB_5.1": [
+    "EDX_GCSE_MATH_P1",
+    "EDX_GCSE_MATH_P2",
+    "EDX_GCSE_MATH_P3",
+    "EDX_GCSE_MATH_P4",
+    "EDX_GCSE_MATH_P5"
+  ],
+  "EDX_GCSE_MATH_PROB_5.2": [
+    "EDX_GCSE_MATH_P6",
+    "EDX_GCSE_MATH_P7"
+  ],
+  "EDX_GCSE_MATH_PROB_5.3": [
+    "EDX_GCSE_MATH_P8"
+  ],
+  "EDX_GCSE_MATH_PROB_5.4": [
+    "EDX_GCSE_MATH_P9"
+  ],
+  "EDX_GCSE_MATH_STAT_6.1": [
+    "EDX_GCSE_MATH_S1"
+  ],
+  "EDX_GCSE_MATH_STAT_6.2": [
+    "EDX_GCSE_MATH_S4"
+  ],
+  "EDX_GCSE_MATH_STAT_6.3": [
+    "EDX_GCSE_MATH_S2",
+    "EDX_GCSE_MATH_S3"
+  ],
+  "EDX_GCSE_MATH_STAT_6.4": [
+    "EDX_GCSE_MATH_S6"
+  ],
+  "EDX_GCSE_MATH_STAT_6.5": [
+    "EDX_GCSE_MATH_S3",
+    "EDX_GCSE_MATH_S4"
+  ],
+  "EDX_GCSE_MATH_STAT_6.6": [
+    "EDX_GCSE_MATH_S3"
+  ],
   "OCR_CS_1.1.1": [
     "OCR_CS_1.1.1a",
     "OCR_CS_1.1.1b",

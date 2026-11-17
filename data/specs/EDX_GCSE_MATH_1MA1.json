@@ -1,107 +1,2555 @@
 {
   "subject_id": "EDX_GCSE_MATH_1MA1",
+  "specification_version": "pearson-1ma1-issue2-2015-06",
+  "official_source_url": "https://qualifications.pearson.com/content/dam/pdf/GCSE/mathematics/2015/specification-and-sample-assesment/gcse-maths-2015-specification.pdf",
+  "order_status": "verified",
+  "official_source": {
+    "title": "Pearson Edexcel Level 1/Level 2 GCSE (9-1) in Mathematics (1MA1) specification",
+    "issue": "Issue 2",
+    "issue_date": "June 2015",
+    "first_certification": 2017,
+    "url": "https://qualifications.pearson.com/content/dam/pdf/GCSE/mathematics/2015/specification-and-sample-assesment/gcse-maths-2015-specification.pdf",
+    "sha256": "c30745f274663c5f910e3706ea836c6f7e95e0a00ff38eac860622232ed84f8b",
+    "verified_at": "2026-11-17",
+    "tiers": {
+      "Foundation": "Grades 1-5; content on printed pages 5-11",
+      "Higher": "Grades 4-9; content on printed pages 12-20 (Higher-only content in bold)"
+    },
+    "components": {
+      "1F": {
+        "title": "Paper 1 (Non-Calculator) Foundation",
+        "marks": 80,
+        "minutes": 90,
+        "calculator": false
+      },
+      "2F": {
+        "title": "Paper 2 (Calculator) Foundation",
+        "marks": 80,
+        "minutes": 90,
+        "calculator": true
+      },
+      "3F": {
+        "title": "Paper 3 (Calculator) Foundation",
+        "marks": 80,
+        "minutes": 90,
+        "calculator": true
+      },
+      "1H": {
+        "title": "Paper 1 (Non-Calculator) Higher",
+        "marks": 80,
+        "minutes": 90,
+        "calculator": false
+      },
+      "2H": {
+        "title": "Paper 2 (Calculator) Higher",
+        "marks": 80,
+        "minutes": 90,
+        "calculator": true
+      },
+      "3H": {
+        "title": "Paper 3 (Calculator) Higher",
+        "marks": 80,
+        "minutes": 90,
+        "calculator": true
+      }
+    },
+    "notes": "Codes are strings. 86 statements are in both tiers; 11 are Higher-only (tier \"Higher\"). All content is assessed across all three papers of a tier."
+  },
+  "legacy_ids": {
+    "EDX_GCSE_MATH_NUM_1.1": [
+      "EDX_GCSE_MATH_N1",
+      "EDX_GCSE_MATH_N2",
+      "EDX_GCSE_MATH_N3"
+    ],
+    "EDX_GCSE_MATH_NUM_1.2": [
+      "EDX_GCSE_MATH_N10",
+      "EDX_GCSE_MATH_N12"
+    ],
+    "EDX_GCSE_MATH_NUM_1.3": [
+      "EDX_GCSE_MATH_N4",
+      "EDX_GCSE_MATH_N5"
+    ],
+    "EDX_GCSE_MATH_NUM_1.4": [
+      "EDX_GCSE_MATH_N6",
+      "EDX_GCSE_MATH_N7"
+    ],
+    "EDX_GCSE_MATH_NUM_1.5": [
+      "EDX_GCSE_MATH_N9"
+    ],
+    "EDX_GCSE_MATH_NUM_1.6": [
+      "EDX_GCSE_MATH_N14",
+      "EDX_GCSE_MATH_N15",
+      "EDX_GCSE_MATH_N16"
+    ],
+    "EDX_GCSE_MATH_NUM_1.7": [
+      "EDX_GCSE_MATH_N8",
+      "EDX_GCSE_MATH_N10"
+    ],
+    "EDX_GCSE_MATH_NUM_1.8": [
+      "EDX_GCSE_MATH_N7"
+    ],
+    "EDX_GCSE_MATH_ALG_2.1": [
+      "EDX_GCSE_MATH_A1",
+      "EDX_GCSE_MATH_A3",
+      "EDX_GCSE_MATH_A4"
+    ],
+    "EDX_GCSE_MATH_ALG_2.2": [
+      "EDX_GCSE_MATH_A2",
+      "EDX_GCSE_MATH_A5"
+    ],
+    "EDX_GCSE_MATH_ALG_2.3": [
+      "EDX_GCSE_MATH_A17",
+      "EDX_GCSE_MATH_A21",
+      "EDX_GCSE_MATH_A22"
+    ],
+    "EDX_GCSE_MATH_ALG_2.4": [
+      "EDX_GCSE_MATH_A23",
+      "EDX_GCSE_MATH_A24",
+      "EDX_GCSE_MATH_A25"
+    ],
+    "EDX_GCSE_MATH_ALG_2.5": [
+      "EDX_GCSE_MATH_A9",
+      "EDX_GCSE_MATH_A10"
+    ],
+    "EDX_GCSE_MATH_ALG_2.6": [
+      "EDX_GCSE_MATH_A4",
+      "EDX_GCSE_MATH_A11",
+      "EDX_GCSE_MATH_A18"
+    ],
+    "EDX_GCSE_MATH_ALG_2.7": [
+      "EDX_GCSE_MATH_A19"
+    ],
+    "EDX_GCSE_MATH_ALG_2.8": [
+      "EDX_GCSE_MATH_A12",
+      "EDX_GCSE_MATH_A14"
+    ],
+    "EDX_GCSE_MATH_ALG_2.9": [
+      "EDX_GCSE_MATH_A11",
+      "EDX_GCSE_MATH_A18"
+    ],
+    "EDX_GCSE_MATH_ALG_2.10": [
+      "EDX_GCSE_MATH_A4"
+    ],
+    "EDX_GCSE_MATH_ALG_2.11": [
+      "EDX_GCSE_MATH_A7"
+    ],
+    "EDX_GCSE_MATH_ALG_2.12": [
+      "EDX_GCSE_MATH_A13",
+      "EDX_GCSE_MATH_A15",
+      "EDX_GCSE_MATH_A16"
+    ],
+    "EDX_GCSE_MATH_ALG_2.13": [
+      "EDX_GCSE_MATH_A20"
+    ],
+    "EDX_GCSE_MATH_ALG_2.14": [
+      "EDX_GCSE_MATH_A6"
+    ],
+    "EDX_GCSE_MATH_RATIO_3.1": [
+      "EDX_GCSE_MATH_R4",
+      "EDX_GCSE_MATH_R5",
+      "EDX_GCSE_MATH_R6",
+      "EDX_GCSE_MATH_R8"
+    ],
+    "EDX_GCSE_MATH_RATIO_3.2": [
+      "EDX_GCSE_MATH_R7",
+      "EDX_GCSE_MATH_R10",
+      "EDX_GCSE_MATH_R13"
+    ],
+    "EDX_GCSE_MATH_RATIO_3.3": [
+      "EDX_GCSE_MATH_R9"
+    ],
+    "EDX_GCSE_MATH_RATIO_3.4": [
+      "EDX_GCSE_MATH_R11",
+      "EDX_GCSE_MATH_N13"
+    ],
+    "EDX_GCSE_MATH_RATIO_3.5": [
+      "EDX_GCSE_MATH_R1",
+      "EDX_GCSE_MATH_R2"
+    ],
+    "EDX_GCSE_MATH_RATIO_3.6": [
+      "EDX_GCSE_MATH_R16"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.1": [
+      "EDX_GCSE_MATH_G1",
+      "EDX_GCSE_MATH_G3"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.2": [
+      "EDX_GCSE_MATH_G4",
+      "EDX_GCSE_MATH_G5",
+      "EDX_GCSE_MATH_G6",
+      "EDX_GCSE_MATH_G19"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.3": [
+      "EDX_GCSE_MATH_G16",
+      "EDX_GCSE_MATH_G17",
+      "EDX_GCSE_MATH_G18"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.4": [
+      "EDX_GCSE_MATH_G12",
+      "EDX_GCSE_MATH_G16",
+      "EDX_GCSE_MATH_G17"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.5": [
+      "EDX_GCSE_MATH_G7",
+      "EDX_GCSE_MATH_G8",
+      "EDX_GCSE_MATH_G24"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.6": [
+      "EDX_GCSE_MATH_G2",
+      "EDX_GCSE_MATH_G15"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.7": [
+      "EDX_GCSE_MATH_G20"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.8": [
+      "EDX_GCSE_MATH_G20",
+      "EDX_GCSE_MATH_G21"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.9": [
+      "EDX_GCSE_MATH_G25"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.10": [
+      "EDX_GCSE_MATH_G10"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.11": [
+      "EDX_GCSE_MATH_G22",
+      "EDX_GCSE_MATH_G23"
+    ],
+    "EDX_GCSE_MATH_GEOM_4.12": [
+      "EDX_GCSE_MATH_G20"
+    ],
+    "EDX_GCSE_MATH_PROB_5.1": [
+      "EDX_GCSE_MATH_P1",
+      "EDX_GCSE_MATH_P2",
+      "EDX_GCSE_MATH_P3",
+      "EDX_GCSE_MATH_P4",
+      "EDX_GCSE_MATH_P5"
+    ],
+    "EDX_GCSE_MATH_PROB_5.2": [
+      "EDX_GCSE_MATH_P6",
+      "EDX_GCSE_MATH_P7"
+    ],
+    "EDX_GCSE_MATH_PROB_5.3": [
+      "EDX_GCSE_MATH_P8"
+    ],
+    "EDX_GCSE_MATH_PROB_5.4": [
+      "EDX_GCSE_MATH_P9"
+    ],
+    "EDX_GCSE_MATH_STAT_6.1": [
+      "EDX_GCSE_MATH_S1"
+    ],
+    "EDX_GCSE_MATH_STAT_6.2": [
+      "EDX_GCSE_MATH_S4"
+    ],
+    "EDX_GCSE_MATH_STAT_6.3": [
+      "EDX_GCSE_MATH_S2",
+      "EDX_GCSE_MATH_S3"
+    ],
+    "EDX_GCSE_MATH_STAT_6.4": [
+      "EDX_GCSE_MATH_S6"
+    ],
+    "EDX_GCSE_MATH_STAT_6.5": [
+      "EDX_GCSE_MATH_S3",
+      "EDX_GCSE_MATH_S4"
+    ],
+    "EDX_GCSE_MATH_STAT_6.6": [
+      "EDX_GCSE_MATH_S3"
+    ]
+  },
+  "point_order": [
+    "EDX_GCSE_MATH_N1",
+    "EDX_GCSE_MATH_N2",
+    "EDX_GCSE_MATH_N3",
+    "EDX_GCSE_MATH_N4",
+    "EDX_GCSE_MATH_N5",
+    "EDX_GCSE_MATH_N6",
+    "EDX_GCSE_MATH_N7",
+    "EDX_GCSE_MATH_N8",
+    "EDX_GCSE_MATH_N9",
+    "EDX_GCSE_MATH_N10",
+    "EDX_GCSE_MATH_N11",
+    "EDX_GCSE_MATH_N12",
+    "EDX_GCSE_MATH_N13",
+    "EDX_GCSE_MATH_N14",
+    "EDX_GCSE_MATH_N15",
+    "EDX_GCSE_MATH_N16",
+    "EDX_GCSE_MATH_A1",
+    "EDX_GCSE_MATH_A2",
+    "EDX_GCSE_MATH_A3",
+    "EDX_GCSE_MATH_A4",
+    "EDX_GCSE_MATH_A5",
+    "EDX_GCSE_MATH_A6",
+    "EDX_GCSE_MATH_A7",
+    "EDX_GCSE_MATH_A8",
+    "EDX_GCSE_MATH_A9",
+    "EDX_GCSE_MATH_A10",
+    "EDX_GCSE_MATH_A11",
+    "EDX_GCSE_MATH_A12",
+    "EDX_GCSE_MATH_A13",
+    "EDX_GCSE_MATH_A14",
+    "EDX_GCSE_MATH_A15",
+    "EDX_GCSE_MATH_A16",
+    "EDX_GCSE_MATH_A17",
+    "EDX_GCSE_MATH_A18",
+    "EDX_GCSE_MATH_A19",
+    "EDX_GCSE_MATH_A20",
+    "EDX_GCSE_MATH_A21",
+    "EDX_GCSE_MATH_A22",
+    "EDX_GCSE_MATH_A23",
+    "EDX_GCSE_MATH_A24",
+    "EDX_GCSE_MATH_A25",
+    "EDX_GCSE_MATH_R1",
+    "EDX_GCSE_MATH_R2",
+    "EDX_GCSE_MATH_R3",
+    "EDX_GCSE_MATH_R4",
+    "EDX_GCSE_MATH_R5",
+    "EDX_GCSE_MATH_R6",
+    "EDX_GCSE_MATH_R7",
+    "EDX_GCSE_MATH_R8",
+    "EDX_GCSE_MATH_R9",
+    "EDX_GCSE_MATH_R10",
+    "EDX_GCSE_MATH_R11",
+    "EDX_GCSE_MATH_R12",
+    "EDX_GCSE_MATH_R13",
+    "EDX_GCSE_MATH_R14",
+    "EDX_GCSE_MATH_R15",
+    "EDX_GCSE_MATH_R16",
+    "EDX_GCSE_MATH_G1",
+    "EDX_GCSE_MATH_G2",
+    "EDX_GCSE_MATH_G3",
+    "EDX_GCSE_MATH_G4",
+    "EDX_GCSE_MATH_G5",
+    "EDX_GCSE_MATH_G6",
+    "EDX_GCSE_MATH_G7",
+    "EDX_GCSE_MATH_G8",
+    "EDX_GCSE_MATH_G9",
+    "EDX_GCSE_MATH_G10",
+    "EDX_GCSE_MATH_G11",
+    "EDX_GCSE_MATH_G12",
+    "EDX_GCSE_MATH_G13",
+    "EDX_GCSE_MATH_G14",
+    "EDX_GCSE_MATH_G15",
+    "EDX_GCSE_MATH_G16",
+    "EDX_GCSE_MATH_G17",
+    "EDX_GCSE_MATH_G18",
+    "EDX_GCSE_MATH_G19",
+    "EDX_GCSE_MATH_G20",
+    "EDX_GCSE_MATH_G21",
+    "EDX_GCSE_MATH_G22",
+    "EDX_GCSE_MATH_G23",
+    "EDX_GCSE_MATH_G24",
+    "EDX_GCSE_MATH_G25",
+    "EDX_GCSE_MATH_P1",
+    "EDX_GCSE_MATH_P2",
+    "EDX_GCSE_MATH_P3",
+    "EDX_GCSE_MATH_P4",
+    "EDX_GCSE_MATH_P5",
+    "EDX_GCSE_MATH_P6",
+    "EDX_GCSE_MATH_P7",
+    "EDX_GCSE_MATH_P8",
+    "EDX_GCSE_MATH_P9",
+    "EDX_GCSE_MATH_S1",
+    "EDX_GCSE_MATH_S2",
+    "EDX_GCSE_MATH_S3",
+    "EDX_GCSE_MATH_S4",
+    "EDX_GCSE_MATH_S5",
+    "EDX_GCSE_MATH_S6"
+  ],
   "sections": [
     {
-      "id": "EDX_GCSE_MATH_SEC_CONTENT",
-      "title": "Subject content",
-      "note": "Assessed across all three papers",
+      "id": "EDX_GCSE_MATH_NUM",
+      "code": "1",
+      "title": "Number",
       "topics": [
         {
-          "id": "EDX_GCSE_MATH_NUM",
-          "code": "1",
-          "title": "Number",
-          "kind": "topic",
+          "id": "EDX_GCSE_MATH_NUM_G1",
+          "code": "N1–N9",
+          "title": "Structure and calculation",
+          "kind": "group",
           "points": [
-            {"id":"EDX_GCSE_MATH_NUM_1.1","code":"1.1","title":"Place value, ordering and the four operations"},
-            {"id":"EDX_GCSE_MATH_NUM_1.2","code":"1.2","title":"Fractions, decimals and percentages"},
-            {"id":"EDX_GCSE_MATH_NUM_1.3","code":"1.3","title":"Factors, multiples, primes, HCF and LCM"},
-            {"id":"EDX_GCSE_MATH_NUM_1.4","code":"1.4","title":"Powers, roots and the laws of indices"},
-            {"id":"EDX_GCSE_MATH_NUM_1.5","code":"1.5","title":"Standard form"},
-            {"id":"EDX_GCSE_MATH_NUM_1.6","code":"1.6","title":"Rounding, estimation, bounds and error intervals"},
-            {"id":"EDX_GCSE_MATH_NUM_1.7","code":"1.7","title":"Surds and recurring decimals","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_NUM_1.8","code":"1.8","title":"Fractional and negative indices","tier":"Higher"}
+            {
+              "id": "EDX_GCSE_MATH_N1",
+              "code": "N1",
+              "title": "Ordering numbers; inequality symbols",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N1",
+                "code": "N1",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "order positive and negative integers, decimals and fractions; use the symbols =, ≠, <, >, ≤, ≥",
+                "foundation_text": "order positive and negative integers, decimals and fractions; use the symbols =, ≠, <, >, ≤, ≥",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N2",
+              "code": "N2",
+              "title": "Four operations and place value",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N2",
+                "code": "N2",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "apply the four operations, including formal written methods, to integers, decimals and simple fractions (proper and improper), and mixed numbers – all both positive and negative; understand and use place value (e.g. when working with very large or very small numbers, and when calculating with decimals)",
+                "foundation_text": "apply the four operations, including formal written methods, to integers, decimals and simple fractions (proper and improper), and mixed numbers – all both positive and negative; understand and use place value (e.g. when working with very large or very small numbers, and when calculating with decimals)",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N3",
+              "code": "N3",
+              "title": "Inverse operations and order of operations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N3",
+                "code": "N3",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "recognise and use relationships between operations, including inverse operations (e.g. cancellation to simplify calculations and expressions); use conventional notation for priority of operations, including brackets, powers, roots and reciprocals",
+                "foundation_text": "recognise and use relationships between operations, including inverse operations (e.g. cancellation to simplify calculations and expressions); use conventional notation for priority of operations, including brackets, powers, roots and reciprocals",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N4",
+              "code": "N4",
+              "title": "Primes, factors, multiples, HCF and LCM",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N4",
+                "code": "N4",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "use the concepts and vocabulary of prime numbers, factors (divisors), multiples, common factors, common multiples, highest common factor, lowest common multiple, prime factorisation, including using product notation and the unique factorisation theorem",
+                "foundation_text": "use the concepts and vocabulary of prime numbers, factors (divisors), multiples, common factors, common multiples, highest common factor, lowest common multiple, prime factorisation, including using product notation and the unique factorisation theorem",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N5",
+              "code": "N5",
+              "title": "Systematic listing",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N5",
+                "code": "N5",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "apply systematic listing strategies, including use of the product rule for counting (i.e. if there are m ways of doing one task and for each of these, there are n ways of doing another task, then the total number of ways the two tasks can be done is m × n ways)",
+                "foundation_text": "apply systematic listing strategies",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_N6",
+              "code": "N6",
+              "title": "Powers and roots",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N6",
+                "code": "N6",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "use positive integer powers and associated real roots (square, cube and higher), recognise powers of 2, 3, 4, 5; estimate powers and roots of any given positive number",
+                "foundation_text": "use positive integer powers and associated real roots (square, cube and higher), recognise powers of 2, 3, 4, 5",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_N7",
+              "code": "N7",
+              "title": "Calculating with roots and indices",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N7",
+                "code": "N7",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "calculate with roots, and with integer and fractional indices",
+                "foundation_text": "calculate with roots, and with integer indices",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_N8",
+              "code": "N8",
+              "title": "Exact calculation with fractions, π and surds",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N8",
+                "code": "N8",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "calculate exactly with fractions, surds and multiples of π; simplify surd expressions involving squares (e.g. √12 = √(4 × 3) = √4 × √3 = 2√3) and rationalise denominators n",
+                "foundation_text": "calculate exactly with fractions and multiples of π n",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_N9",
+              "code": "N9",
+              "title": "Standard form",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N9",
+                "code": "N9",
+                "content_heading": "1. Number",
+                "subheading": "Structure and calculation",
+                "higher_text": "calculate with and interpret standard form A × 10 , where 1 ≤ A < 10 and n is an integer",
+                "foundation_text": "calculate with and interpret standard form A × 10 , where 1 ≤ A < 10 and n is an integer",
+                "source_pages": [
+                  17,
+                  24
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_MATH_ALG",
-          "code": "2",
-          "title": "Algebra",
-          "kind": "topic",
+          "id": "EDX_GCSE_MATH_NUM_G2",
+          "code": "N10–N12",
+          "title": "Fractions, decimals and percentages",
+          "kind": "group",
           "points": [
-            {"id":"EDX_GCSE_MATH_ALG_2.1","code":"2.1","title":"Notation, simplifying, expanding and factorising"},
-            {"id":"EDX_GCSE_MATH_ALG_2.2","code":"2.2","title":"Substitution, formulae and rearranging"},
-            {"id":"EDX_GCSE_MATH_ALG_2.3","code":"2.3","title":"Linear equations and inequalities"},
-            {"id":"EDX_GCSE_MATH_ALG_2.4","code":"2.4","title":"Sequences and the nth term"},
-            {"id":"EDX_GCSE_MATH_ALG_2.5","code":"2.5","title":"Straight-line graphs: gradient and y = mx + c"},
-            {"id":"EDX_GCSE_MATH_ALG_2.6","code":"2.6","title":"Quadratics: expanding, factorising and solving"},
-            {"id":"EDX_GCSE_MATH_ALG_2.7","code":"2.7","title":"Simultaneous equations"},
-            {"id":"EDX_GCSE_MATH_ALG_2.8","code":"2.8","title":"Quadratic, cubic, reciprocal and real-life graphs"},
-            {"id":"EDX_GCSE_MATH_ALG_2.9","code":"2.9","title":"Quadratic formula and completing the square","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_ALG_2.10","code":"2.10","title":"Algebraic fractions","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_ALG_2.11","code":"2.11","title":"Functions, composite and inverse functions","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_ALG_2.12","code":"2.12","title":"Graph transformations, circles and gradients of curves","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_ALG_2.13","code":"2.13","title":"Iteration","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_ALG_2.14","code":"2.14","title":"Algebraic proof","tier":"Higher"}
+            {
+              "id": "EDX_GCSE_MATH_N10",
+              "code": "N10",
+              "title": "Fractions and decimals, including recurring decimals",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N10",
+                "code": "N10",
+                "content_heading": "1. Number",
+                "subheading": "Fractions, decimals and percentages",
+                "higher_text": "work interchangeably with terminating decimals and their corresponding fractions (such as 3.5 and 7 or 0.375 or 3 ); change recurring decimals 2 8 into their corresponding fractions and vice versa",
+                "foundation_text": "work interchangeably with terminating decimals and their corresponding 7 3 fractions (such as 3.5 and or 0.375 or ) 2 8",
+                "source_pages": [
+                  17,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_N11",
+              "code": "N11",
+              "title": "Fractions in ratio problems",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N11",
+                "code": "N11",
+                "content_heading": "1. Number",
+                "subheading": "Fractions, decimals and percentages",
+                "higher_text": "identify and work with fractions in ratio problems",
+                "foundation_text": "identify and work with fractions in ratio problems",
+                "source_pages": [
+                  17,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N12",
+              "code": "N12",
+              "title": "Fractions and percentages as operators",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N12",
+                "code": "N12",
+                "content_heading": "1. Number",
+                "subheading": "Fractions, decimals and percentages",
+                "higher_text": "interpret fractions and percentages as operators",
+                "foundation_text": "interpret fractions and percentages as operators",
+                "source_pages": [
+                  17,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_MATH_RATIO",
-          "code": "3",
+          "id": "EDX_GCSE_MATH_NUM_G3",
+          "code": "N13–N16",
+          "title": "Measures and accuracy",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_GCSE_MATH_N13",
+              "code": "N13",
+              "title": "Standard units and compound measures",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N13",
+                "code": "N13",
+                "content_heading": "1. Number",
+                "subheading": "Measures and accuracy",
+                "higher_text": "use standard units of mass, length, time, money and other measures (including standard compound measures) using decimal quantities where appropriate",
+                "foundation_text": "use standard units of mass, length, time, money and other measures (including standard compound measures) using decimal quantities where appropriate",
+                "source_pages": [
+                  18,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N14",
+              "code": "N14",
+              "title": "Estimation and checking",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N14",
+                "code": "N14",
+                "content_heading": "1. Number",
+                "subheading": "Measures and accuracy",
+                "higher_text": "estimate answers; check calculations using approximation and estimation, including answers obtained using technology",
+                "foundation_text": "estimate answers; check calculations using approximation and estimation, including answers obtained using technology",
+                "source_pages": [
+                  18,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N15",
+              "code": "N15",
+              "title": "Rounding and error intervals",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N15",
+                "code": "N15",
+                "content_heading": "1. Number",
+                "subheading": "Measures and accuracy",
+                "higher_text": "round numbers and measures to an appropriate degree of accuracy (e.g. to a specified number of decimal places or significant figures); use inequality notation to specify simple error intervals due to truncation or rounding",
+                "foundation_text": "round numbers and measures to an appropriate degree of accuracy (e.g. to a specified number of decimal places or significant figures); use inequality notation to specify simple error intervals due to truncation or rounding",
+                "source_pages": [
+                  18,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_N16",
+              "code": "N16",
+              "title": "Limits of accuracy and bounds",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-N16",
+                "code": "N16",
+                "content_heading": "1. Number",
+                "subheading": "Measures and accuracy",
+                "higher_text": "apply and interpret limits of accuracy, including upper and lower bounds",
+                "foundation_text": "apply and interpret limits of accuracy",
+                "source_pages": [
+                  18,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_GCSE_MATH_ALG",
+      "code": "2",
+      "title": "Algebra",
+      "topics": [
+        {
+          "id": "EDX_GCSE_MATH_ALG_G1",
+          "code": "A1–A7",
+          "title": "Notation, vocabulary and manipulation",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_GCSE_MATH_A1",
+              "code": "A1",
+              "title": "Algebraic notation",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A1",
+                "code": "A1",
+                "content_heading": "2. Algebra",
+                "subheading": "Notation, vocabulary and manipulation",
+                "higher_text": "use and interpret algebraic manipulation, including: • ab in place of a × b • 3y in place of y + y + y and 3 × y • a2 in place of a × a, a3 in place of a × a × a, a2b in place of a × a × b a • in place of a ÷ b b ● coefficients written as fractions rather than as decimals ● brackets",
+                "foundation_text": "use and interpret algebraic manipulation, including: • ab in place of a × b • 3y in place of y + y + y and 3 × y • a2 in place of a × a, a3 in place of a × a × a, a2b in place of a × a × b a • in place of a ÷ b b • coefficients written as fractions rather than as decimals • brackets",
+                "source_pages": [
+                  18,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A2",
+              "code": "A2",
+              "title": "Substitution into formulae",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A2",
+                "code": "A2",
+                "content_heading": "2. Algebra",
+                "subheading": "Notation, vocabulary and manipulation",
+                "higher_text": "substitute numerical values into formulae and expressions, including scientific formulae",
+                "foundation_text": "substitute numerical values into formulae and expressions, including scientific formulae",
+                "source_pages": [
+                  18,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A3",
+              "code": "A3",
+              "title": "Expressions, equations, formulae and identities",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A3",
+                "code": "A3",
+                "content_heading": "2. Algebra",
+                "subheading": "Notation, vocabulary and manipulation",
+                "higher_text": "understand and use the concepts and vocabulary of expressions, equations, formulae, identities, inequalities, terms and factors",
+                "foundation_text": "understand and use the concepts and vocabulary of expressions, equations, formulae, identities, inequalities, terms and factors",
+                "source_pages": [
+                  18,
+                  25
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A4",
+              "code": "A4",
+              "title": "Simplifying, expanding and factorising",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A4",
+                "code": "A4",
+                "content_heading": "2. Algebra",
+                "subheading": "Notation, vocabulary and manipulation",
+                "higher_text": "simplify and manipulate algebraic expressions (including those involving surds and algebraic fractions) by: ● collecting like terms ● multiplying a single term over a bracket ● taking out common factors ● expanding products of two or more binomials ● factorising quadratic expressions of the form x2 + bx + c, including the difference of two squares; factorising quadratic expressions of the form ax2 + bx + c ● simplifying expressions involving sums, products and powers, including the laws of indices",
+                "foundation_text": "simplify and manipulate algebraic expressions (including those involving surds) by: ● collecting like terms ● multiplying a single term over a bracket ● taking out common factors ● expanding products of two binomials ● factorising quadratic expressions of the form x2 + bx + c, including the difference of two squares; ● simplifying expressions involving sums, products and powers, including the laws of indices",
+                "source_pages": [
+                  18,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A5",
+              "code": "A5",
+              "title": "Using and rearranging formulae",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A5",
+                "code": "A5",
+                "content_heading": "2. Algebra",
+                "subheading": "Notation, vocabulary and manipulation",
+                "higher_text": "understand and use standard mathematical formulae; rearrange formulae to change the subject",
+                "foundation_text": "understand and use standard mathematical formulae; rearrange formulae to change the subject",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A6",
+              "code": "A6",
+              "title": "Identities and algebraic proof",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A6",
+                "code": "A6",
+                "content_heading": "2. Algebra",
+                "subheading": "Notation, vocabulary and manipulation",
+                "higher_text": "know the difference between an equation and an identity; argue mathematically to show algebraic expressions are equivalent, and use algebra to support and construct arguments and proofs",
+                "foundation_text": "know the difference between an equation and an identity; argue mathematically to show algebraic expressions are equivalent, and use algebra to support and construct arguments",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A7",
+              "code": "A7",
+              "title": "Functions, inverse and composite functions",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A7",
+                "code": "A7",
+                "content_heading": "2. Algebra",
+                "subheading": "Notation, vocabulary and manipulation",
+                "higher_text": "where appropriate, interpret simple expressions as functions with inputs and outputs; interpret the reverse process as the ‘inverse function’; interpret the succession of two functions as a ‘composite function’ (the use of formal function notation is expected)",
+                "foundation_text": "where appropriate, interpret simple expressions as functions with inputs and outputs.",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            }
+          ]
+        },
+        {
+          "id": "EDX_GCSE_MATH_ALG_G2",
+          "code": "A8–A16",
+          "title": "Graphs",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_GCSE_MATH_A8",
+              "code": "A8",
+              "title": "Coordinates in four quadrants",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A8",
+                "code": "A8",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "work with coordinates in all four quadrants",
+                "foundation_text": "work with coordinates in all four quadrants",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A9",
+              "code": "A9",
+              "title": "Straight-line graphs and y = mx + c",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A9",
+                "code": "A9",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "plot graphs of equations that correspond to straight-line graphs in the coordinate plane; use the form y = mx + c to identify parallel and perpendicular lines; find the equation of the line through two given points or through one point with a given gradient",
+                "foundation_text": "plot graphs of equations that correspond to straight-line graphs in the coordinate plane; use the form y = mx + c to identify parallel lines; find the equation of the line through two given points or through one point with a given gradient",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A10",
+              "code": "A10",
+              "title": "Gradients and intercepts",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A10",
+                "code": "A10",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "identify and interpret gradients and intercepts of linear functions graphically and algebraically",
+                "foundation_text": "identify and interpret gradients and intercepts of linear functions graphically and algebraically",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A11",
+              "code": "A11",
+              "title": "Roots and turning points of quadratics",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A11",
+                "code": "A11",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "identify and interpret roots, intercepts, turning points of quadratic functions graphically; deduce roots algebraically and turning points by completing the square",
+                "foundation_text": "identify and interpret roots, intercepts, turning points of quadratic functions graphically; deduce roots algebraically",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A12",
+              "code": "A12",
+              "title": "Graphs of standard functions",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A12",
+                "code": "A12",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "recognise, sketch and interpret graphs of linear functions, quadratic functions, simple cubic functions, the reciprocal function y= with x ≠ 0, x exponential functions y = kx for positive values of k, and the trigonometric functions (with arguments in degrees) y = sin x, y = cos x and y = tan x for angles of any size",
+                "foundation_text": "recognise, sketch and interpret graphs of linear functions, quadratic functions, simple cubic functions, the reciprocal function y= with x ≠ 0 x",
+                "source_pages": [
+                  19,
+                  26
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A13",
+              "code": "A13",
+              "title": "Translations and reflections of graphs",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A13",
+                "code": "A13",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "sketch translations and reflections of a given function",
+                "foundation_text": null,
+                "source_pages": [
+                  26
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_A14",
+              "code": "A14",
+              "title": "Real-life graphs",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A14",
+                "code": "A14",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "plot and interpret graphs (including reciprocal graphs and exponential graphs) and graphs of non-standard functions in real contexts to find approximate solutions to problems such as simple kinematic problems involving distance, speed and acceleration",
+                "foundation_text": "plot and interpret graphs (including reciprocal graphs) and graphs of non-standard functions in real contexts to find approximate solutions to problems such as simple kinematic problems involving distance, speed and acceleration",
+                "source_pages": [
+                  19,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A15",
+              "code": "A15",
+              "title": "Gradients and areas under graphs",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A15",
+                "code": "A15",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "calculate or estimate gradients of graphs and areas under graphs (including quadratic and other non-linear graphs), and interpret results in cases such as distance-time graphs, velocity-time graphs and graphs in financial contexts (this does not include calculus)",
+                "foundation_text": null,
+                "source_pages": [
+                  27
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_A16",
+              "code": "A16",
+              "title": "Equation of a circle and tangents",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A16",
+                "code": "A16",
+                "content_heading": "2. Algebra",
+                "subheading": "Graphs",
+                "higher_text": "recognise and use the equation of a circle with centre at the origin; find the equation of a tangent to a circle at a given point",
+                "foundation_text": null,
+                "source_pages": [
+                  27
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            }
+          ]
+        },
+        {
+          "id": "EDX_GCSE_MATH_ALG_G3",
+          "code": "A17–A22",
+          "title": "Solving equations and inequalities",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_GCSE_MATH_A17",
+              "code": "A17",
+              "title": "Linear equations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A17",
+                "code": "A17",
+                "content_heading": "2. Algebra",
+                "subheading": "Solving equations and inequalities",
+                "higher_text": "solve linear equations in one unknown algebraically (including those with the unknown on both sides of the equation); find approximate solutions using a graph",
+                "foundation_text": "solve linear equations in one unknown algebraically (including those with the unknown on both sides of the equation); find approximate solutions using a graph",
+                "source_pages": [
+                  19,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A18",
+              "code": "A18",
+              "title": "Quadratic equations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A18",
+                "code": "A18",
+                "content_heading": "2. Algebra",
+                "subheading": "Solving equations and inequalities",
+                "higher_text": "solve quadratic equations (including those that require rearrangement) algebraically by factorising, by completing the square and by using the quadratic formula; find approximate solutions using a graph",
+                "foundation_text": "solve quadratic equations algebraically by factorising; find approximate solutions using a graph",
+                "source_pages": [
+                  19,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A19",
+              "code": "A19",
+              "title": "Simultaneous equations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A19",
+                "code": "A19",
+                "content_heading": "2. Algebra",
+                "subheading": "Solving equations and inequalities",
+                "higher_text": "solve two simultaneous equations in two variables (linear/linear or linear/quadratic) algebraically; find approximate solutions using a graph",
+                "foundation_text": "solve two simultaneous equations in two variables (linear/linear algebraically; find approximate solutions using a graph",
+                "source_pages": [
+                  19,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A20",
+              "code": "A20",
+              "title": "Iteration",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A20",
+                "code": "A20",
+                "content_heading": "2. Algebra",
+                "subheading": "Solving equations and inequalities",
+                "higher_text": "find approximate solutions to equations numerically using iteration",
+                "foundation_text": null,
+                "source_pages": [
+                  27
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_A21",
+              "code": "A21",
+              "title": "Forming and solving equations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A21",
+                "code": "A21",
+                "content_heading": "2. Algebra",
+                "subheading": "Solving equations and inequalities",
+                "higher_text": "translate simple situations or procedures into algebraic expressions or formulae; derive an equation (or two simultaneous equations), solve the equation(s) and interpret the solution",
+                "foundation_text": "translate simple situations or procedures into algebraic expressions or formulae; derive an equation (or two simultaneous equations), solve the equation(s) and interpret the solution",
+                "source_pages": [
+                  19,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A22",
+              "code": "A22",
+              "title": "Linear and quadratic inequalities",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A22",
+                "code": "A22",
+                "content_heading": "2. Algebra",
+                "subheading": "Solving equations and inequalities",
+                "higher_text": "solve linear inequalities in one or two variable(s), and quadratic inequalities in one variable; represent the solution set on a number line, using set notation and on a graph",
+                "foundation_text": "solve linear inequalities in one variable; represent the solution set on a number line",
+                "source_pages": [
+                  19,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            }
+          ]
+        },
+        {
+          "id": "EDX_GCSE_MATH_ALG_G4",
+          "code": "A23–A25",
+          "title": "Sequences",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_GCSE_MATH_A23",
+              "code": "A23",
+              "title": "Generating sequences",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A23",
+                "code": "A23",
+                "content_heading": "2. Algebra",
+                "subheading": "Sequences",
+                "higher_text": "generate terms of a sequence from either a term-to-term or a position-to- term rule",
+                "foundation_text": "generate terms of a sequence from either a term-to-term or a position-to- term rule",
+                "source_pages": [
+                  20,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_A24",
+              "code": "A24",
+              "title": "Recognising and using sequences",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A24",
+                "code": "A24",
+                "content_heading": "2. Algebra",
+                "subheading": "Sequences",
+                "higher_text": "recognise and use sequences of triangular, square and cube numbers, simple arithmetic progressions, Fibonacci type sequences, quadratic sequences, and simple geometric progressions (rn where n is an integer, and r is a rational number > 0 or a surd) and other sequences",
+                "foundation_text": "recognise and use sequences of triangular, square and cube numbers, simple arithmetic progressions, Fibonacci type sequences, quadratic sequences, and simple geometric progressions (rn where n is an integer, and r is a rational number > 0)",
+                "source_pages": [
+                  20,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_A25",
+              "code": "A25",
+              "title": "nth term of sequences",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-A25",
+                "code": "A25",
+                "content_heading": "2. Algebra",
+                "subheading": "Sequences",
+                "higher_text": "deduce expressions to calculate the nth term of linear and quadratic sequences",
+                "foundation_text": "deduce expressions to calculate the nth term of linear sequences",
+                "source_pages": [
+                  20,
+                  27
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_GCSE_MATH_RATIO",
+      "code": "3",
+      "title": "Ratio, proportion and rates of change",
+      "topics": [
+        {
+          "id": "EDX_GCSE_MATH_RATIO_G1",
+          "code": "R1–R16",
           "title": "Ratio, proportion and rates of change",
-          "kind": "topic",
+          "kind": "group",
           "points": [
-            {"id":"EDX_GCSE_MATH_RATIO_3.1","code":"3.1","title":"Ratio notation and sharing in a ratio"},
-            {"id":"EDX_GCSE_MATH_RATIO_3.2","code":"3.2","title":"Direct and inverse proportion"},
-            {"id":"EDX_GCSE_MATH_RATIO_3.3","code":"3.3","title":"Percentage change, reverse percentages and interest"},
-            {"id":"EDX_GCSE_MATH_RATIO_3.4","code":"3.4","title":"Compound measures: speed, density and pressure"},
-            {"id":"EDX_GCSE_MATH_RATIO_3.5","code":"3.5","title":"Units, conversions and scale"},
-            {"id":"EDX_GCSE_MATH_RATIO_3.6","code":"3.6","title":"Growth, decay and compound interest"}
+            {
+              "id": "EDX_GCSE_MATH_R1",
+              "code": "R1",
+              "title": "Converting units and measures",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R1",
+                "code": "R1",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "change freely between related standard units (e.g. time, length, area, volume/capacity, mass) and compound units (e.g. speed, rates of pay, prices, density, pressure) in numerical and algebraic contexts",
+                "foundation_text": "change freely between related standard units (e.g. time, length, area, volume/capacity, mass) and compound units (e.g. speed, rates of pay, prices, density, pressure) in numerical and algebraic contexts",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R2",
+              "code": "R2",
+              "title": "Scale factors, diagrams and maps",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R2",
+                "code": "R2",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "use scale factors, scale diagrams and maps",
+                "foundation_text": "use scale factors, scale diagrams and maps",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R3",
+              "code": "R3",
+              "title": "One quantity as a fraction of another",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R3",
+                "code": "R3",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "express one quantity as a fraction of another, where the fraction is less than 1 or greater than 1",
+                "foundation_text": "express one quantity as a fraction of another, where the fraction is less than 1 or greater than 1",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R4",
+              "code": "R4",
+              "title": "Ratio notation and simplifying",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R4",
+                "code": "R4",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "use ratio notation, including reduction to simplest form",
+                "foundation_text": "use ratio notation, including reduction to simplest form",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R5",
+              "code": "R5",
+              "title": "Sharing in a ratio",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R5",
+                "code": "R5",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "divide a given quantity into two parts in a given part:part or part:whole ratio; express the division of a quantity into two parts as a ratio; apply ratio to real contexts and problems (such as those involving conversion, comparison, scaling, mixing, concentrations)",
+                "foundation_text": "divide a given quantity into two parts in a given part:part or part:whole ratio; express the division of a quantity into two parts as a ratio; apply ratio to real contexts and problems (such as those involving conversion, comparison, scaling, mixing, concentrations)",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R6",
+              "code": "R6",
+              "title": "Ratio as a fraction or linear function",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R6",
+                "code": "R6",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "express a multiplicative relationship between two quantities as a ratio or a fraction",
+                "foundation_text": "express a multiplicative relationship between two quantities as a ratio or a fraction",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R7",
+              "code": "R7",
+              "title": "Proportion as equality of ratios",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R7",
+                "code": "R7",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "understand and use proportion as equality of ratios",
+                "foundation_text": "understand and use proportion as equality of ratios",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R8",
+              "code": "R8",
+              "title": "Relating ratios to fractions",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R8",
+                "code": "R8",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "relate ratios to fractions and to linear functions",
+                "foundation_text": "relate ratios to fractions and to linear functions",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R9",
+              "code": "R9",
+              "title": "Percentages and percentage change",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R9",
+                "code": "R9",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "define percentage as ‘number of parts per hundred’; interpret percentages and percentage changes as a fraction or a decimal, and interpret these multiplicatively; express one quantity as a percentage of another; compare two quantities using percentages; work with percentages greater than 100%; solve problems involving percentage change, including percentage increase/decrease and original value problems, and simple interest including in financial mathematics",
+                "foundation_text": "define percentage as ‘number of parts per hundred’; interpret percentages and percentage changes as a fraction or a decimal, and interpret these multiplicatively; express one quantity as a percentage of another; compare two quantities using percentages; work with percentages greater than 100%; solve problems involving percentage change, including percentage increase/decrease and original value problems, and simple interest including in financial mathematics",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R10",
+              "code": "R10",
+              "title": "Direct and inverse proportion",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R10",
+                "code": "R10",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "solve problems involving direct and inverse proportion, including graphical and algebraic representations",
+                "foundation_text": "solve problems involving direct and inverse proportion, including graphical and algebraic representations",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R11",
+              "code": "R11",
+              "title": "Compound units: speed, rates, density and pressure",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R11",
+                "code": "R11",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "use compound units such as speed, rates of pay, unit pricing, density and pressure",
+                "foundation_text": "use compound units such as speed, rates of pay, unit pricing, density and pressure",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R12",
+              "code": "R12",
+              "title": "Comparing lengths, areas and volumes using ratio",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R12",
+                "code": "R12",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "compare lengths, areas and volumes using ratio notation; make links to similarity (including trigonometric ratios) and scale factors",
+                "foundation_text": "compare lengths, areas and volumes using ratio notation; make links to similarity (including trigonometric ratios) and scale factors",
+                "source_pages": [
+                  20,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R13",
+              "code": "R13",
+              "title": "Proportion and inverse proportion graphically",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R13",
+                "code": "R13",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "understand that X is inversely proportional to Y is equivalent to X is proportional to ; construct and interpret equations that describe direct Y and inverse proportion",
+                "foundation_text": "understand that X is inversely proportional to Y is equivalent to X is proportional to ; interpret equations that describe direct and inverse Y proportion",
+                "source_pages": [
+                  21,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_R14",
+              "code": "R14",
+              "title": "Gradient of a graph as a rate of change",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R14",
+                "code": "R14",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "interpret the gradient of a straight line graph as a rate of change; recognise and interpret graphs that illustrate direct and inverse proportion",
+                "foundation_text": "interpret the gradient of a straight line graph as a rate of change; recognise and interpret graphs that illustrate direct and inverse proportion",
+                "source_pages": [
+                  21,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_R15",
+              "code": "R15",
+              "title": "Instantaneous and average rates of change",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R15",
+                "code": "R15",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "interpret the gradient at a point on a curve as the instantaneous rate of change; apply the concepts of average and instantaneous rate of change (gradients of chords and tangents) in numerical, algebraic and graphical contexts (this does not include calculus)",
+                "foundation_text": null,
+                "source_pages": [
+                  28
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_R16",
+              "code": "R16",
+              "title": "Growth, decay and compound interest",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-R16",
+                "code": "R16",
+                "content_heading": "3. Ratio, proportion and rates of change",
+                "subheading": null,
+                "higher_text": "set up, solve and interpret the answers in growth and decay problems, including compound interest and work with general iterative processes",
+                "foundation_text": "set up, solve and interpret the answers in growth and decay problems, including compound interest",
+                "source_pages": [
+                  21,
+                  28
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_GCSE_MATH_GEOM",
+      "code": "4",
+      "title": "Geometry and measures",
+      "topics": [
+        {
+          "id": "EDX_GCSE_MATH_GEOM_G1",
+          "code": "G1–G13",
+          "title": "Properties and constructions",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_GCSE_MATH_G1",
+              "code": "G1",
+              "title": "Geometric terms and notation",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G1",
+                "code": "G1",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "use conventional terms and notations: points, lines, vertices, edges, planes, parallel lines, perpendicular lines, right angles, polygons, regular polygons and polygons with reflection and/or rotation symmetries; use the standard conventions for labelling and referring to the sides and angles of triangles; draw diagrams from written description",
+                "foundation_text": "use conventional terms and notation: points, lines, vertices, edges, planes, parallel lines, perpendicular lines, right angles, polygons, regular polygons and polygons with reflection and/or rotation symmetries; use the standard conventions for labelling and referring to the sides and angles of triangles; draw diagrams from written description",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G2",
+              "code": "G2",
+              "title": "Constructions and loci",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G2",
+                "code": "G2",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "use the standard ruler and compass constructions (perpendicular bisector of a line segment, constructing a perpendicular to a given line from/at a given point, bisecting a given angle); use these to construct given figures and solve loci problems; know that the perpendicular distance from a point to a line is the shortest distance to the line",
+                "foundation_text": "use the standard ruler and compass constructions (perpendicular bisector of a line segment, constructing a perpendicular to a given line from/at a given point, bisecting a given angle); use these to construct given figures and solve loci problems; know that the perpendicular distance from a point to a line is the shortest distance to the line",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G3",
+              "code": "G3",
+              "title": "Angle facts and polygons",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G3",
+                "code": "G3",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "apply the properties of angles at a point, angles at a point on a straight line, vertically opposite angles; understand and use alternate and corresponding angles on parallel lines; derive and use the sum of angles in a triangle (e.g. to deduce and use the angle sum in any polygon, and to derive properties of regular polygons)",
+                "foundation_text": "apply the properties of angles at a point, angles at a point on a straight line, vertically opposite angles; understand and use alternate and corresponding angles on parallel lines; derive and use the sum of angles in a triangle (e.g. to deduce and use the angle sum in any polygon, and to derive properties of regular polygons)",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G4",
+              "code": "G4",
+              "title": "Properties of quadrilaterals and triangles",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G4",
+                "code": "G4",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "derive and apply the properties and definitions of: special types of quadrilaterals, including square, rectangle, parallelogram, trapezium, kite and rhombus; and triangles and other plane figures using appropriate language",
+                "foundation_text": "derive and apply the properties and definitions of special types of quadrilaterals, including square, rectangle, parallelogram, trapezium, kite and rhombus; and triangles and other plane figures using appropriate language",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G5",
+              "code": "G5",
+              "title": "Congruence criteria for triangles",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G5",
+                "code": "G5",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "use the basic congruence criteria for triangles (SSS, SAS, ASA, RHS)",
+                "foundation_text": "use the basic congruence criteria for triangles (SSS, SAS, ASA, RHS)",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G6",
+              "code": "G6",
+              "title": "Geometric reasoning and simple proofs",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G6",
+                "code": "G6",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "apply angle facts, triangle congruence, similarity and properties of quadrilaterals to conjecture and derive results about angles and sides, including Pythagoras’ theorem and the fact that the base angles of an isosceles triangle are equal, and use known results to obtain simple proofs",
+                "foundation_text": "apply angle facts, triangle congruence, similarity and properties of quadrilaterals to conjecture and derive results about angles and sides, including Pythagoras’ theorem and the fact that the base angles of an isosceles triangle are equal, and use known results to obtain simple proofs",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G7",
+              "code": "G7",
+              "title": "Transformations and similar shapes",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G7",
+                "code": "G7",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "identify, describe and construct congruent and similar shapes, including on coordinate axes, by considering rotation, reflection, translation and enlargement (including fractional and negative scale factors)",
+                "foundation_text": "identify, describe and construct congruent and similar shapes, including on coordinate axes, by considering rotation, reflection, translation and enlargement (including fractional scale factors)",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_G8",
+              "code": "G8",
+              "title": "Combinations of transformations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G8",
+                "code": "G8",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "describe the changes and invariance achieved by combinations of rotations, reflections and translations",
+                "foundation_text": null,
+                "source_pages": [
+                  29
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_G9",
+              "code": "G9",
+              "title": "Circle definitions and properties",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G9",
+                "code": "G9",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "identify and apply circle definitions and properties, including: centre, radius, chord, diameter, circumference, tangent, arc, sector and segment",
+                "foundation_text": "identify and apply circle definitions and properties, including: centre, radius, chord, diameter, circumference, tangent, arc, sector and segment",
+                "source_pages": [
+                  21,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G10",
+              "code": "G10",
+              "title": "Circle theorems",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G10",
+                "code": "G10",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "apply and prove the standard circle theorems concerning angles, radii, tangents and chords, and use them to prove related results",
+                "foundation_text": null,
+                "source_pages": [
+                  29
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_G11",
+              "code": "G11",
+              "title": "Geometry on coordinate axes",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G11",
+                "code": "G11",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "solve geometrical problems on coordinate axes",
+                "foundation_text": "solve geometrical problems on coordinate axes",
+                "source_pages": [
+                  22,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G12",
+              "code": "G12",
+              "title": "Properties of 3D shapes",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G12",
+                "code": "G12",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "identify properties of the faces, surfaces, edges and vertices of: cubes, cuboids, prisms, cylinders, pyramids, cones and spheres",
+                "foundation_text": "identify properties of the faces, surfaces, edges and vertices of: cubes, cuboids, prisms, cylinders, pyramids, cones and spheres",
+                "source_pages": [
+                  22,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G13",
+              "code": "G13",
+              "title": "Plans and elevations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G13",
+                "code": "G13",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Properties and constructions",
+                "higher_text": "construct and interpret plans and elevations of 3D shapes",
+                "foundation_text": "construct and interpret plans and elevations of 3D shapes",
+                "source_pages": [
+                  22,
+                  29
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_MATH_GEOM",
-          "code": "4",
-          "title": "Geometry and measures",
-          "kind": "topic",
+          "id": "EDX_GCSE_MATH_GEOM_G2",
+          "code": "G14–G23",
+          "title": "Mensuration and calculation",
+          "kind": "group",
           "points": [
-            {"id":"EDX_GCSE_MATH_GEOM_4.1","code":"4.1","title":"Angles in lines, parallel lines and polygons"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.2","code":"4.2","title":"Properties of shapes; congruence and similarity"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.3","code":"4.3","title":"Perimeter and area, including circles and sectors"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.4","code":"4.4","title":"Volume and surface area"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.5","code":"4.5","title":"Transformations"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.6","code":"4.6","title":"Constructions, loci and bearings"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.7","code":"4.7","title":"Pythagoras' theorem"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.8","code":"4.8","title":"Right-angled trigonometry and exact values"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.9","code":"4.9","title":"Vectors"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.10","code":"4.10","title":"Circle theorems","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.11","code":"4.11","title":"Sine rule, cosine rule and area of a triangle","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_GEOM_4.12","code":"4.12","title":"Pythagoras and trigonometry in 3D","tier":"Higher"}
+            {
+              "id": "EDX_GCSE_MATH_G14",
+              "code": "G14",
+              "title": "Standard units of measure",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G14",
+                "code": "G14",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "use standard units of measure and related concepts (length, area, volume/capacity, mass, time, money, etc.)",
+                "foundation_text": "use standard units of measure and related concepts (length, area, volume/capacity, mass, time, money, etc.)",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G15",
+              "code": "G15",
+              "title": "Measuring, scale drawings and bearings",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G15",
+                "code": "G15",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "measure line segments and angles in geometric figures, including interpreting maps and scale drawings and use of bearings",
+                "foundation_text": "measure line segments and angles in geometric figures, including interpreting maps and scale drawings and use of bearings",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G16",
+              "code": "G16",
+              "title": "Area of 2D shapes and volume of prisms",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G16",
+                "code": "G16",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "know and apply formulae to calculate: area of triangles, parallelograms, trapezia; volume of cuboids and other right prisms (including cylinders)",
+                "foundation_text": "know and apply formulae to calculate: area of triangles, parallelograms, trapezia; volume of cuboids and other right prisms (including cylinders)",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G17",
+              "code": "G17",
+              "title": "Circles, surface area and volume of solids",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G17",
+                "code": "G17",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "know the formulae: circumference of a circle = 2πr = πd , area of a circle = πr2; calculate: perimeters of 2D shapes, including circles; areas of circles and composite shapes; surface area and volume of spheres, pyramids, cones and composite solids",
+                "foundation_text": "know the formulae: circumference of a circle = 2πr = πd , area of a circle = πr2; calculate: perimeters of 2D shapes, including circles; areas of circles and composite shapes; surface area and volume of spheres, pyramids, cones and composite solids",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G18",
+              "code": "G18",
+              "title": "Arcs and sectors",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G18",
+                "code": "G18",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "calculate arc lengths, angles and areas of sectors of circles",
+                "foundation_text": "calculate arc lengths, angles and areas of sectors of circles",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G19",
+              "code": "G19",
+              "title": "Congruence and similarity: lengths, areas and volumes",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G19",
+                "code": "G19",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "apply the concepts of congruence and similarity, including the relationships between lengths, areas and volumes in similar figures",
+                "foundation_text": "apply the concepts of congruence and similarity, including the relationships between lengths, in similar figures",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_G20",
+              "code": "G20",
+              "title": "Pythagoras' theorem and trigonometry",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G20",
+                "code": "G20",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "know the formulae for: Pythagoras’ theorem a2 + b2 = c2, and the opposite adjacent trigonometric ratios, sin θ = , cos θ = and hypotenuse hypotenuse opposite tan θ = ; apply them to find angles and lengths in right-angled adjacent triangles and, where possible, general triangles in two and three dimensional figures",
+                "foundation_text": "know the formulae for: Pythagoras’ theorem a2 + b2 = c2, and the opposite adjacent trigonometric ratios, sin θ = , cos θ = hypotenuse hypotenuse opposite and tan θ = ; apply them to find angles and lengths in adjacent right-angled triangles in two-dimensional figures",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_G21",
+              "code": "G21",
+              "title": "Exact trigonometric values",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G21",
+                "code": "G21",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "know the exact values of sin θ and cos θ for θ = 0°, 30°, 45°, 60° and 90°; know the exact value of tan θ for θ = 0°, 30°, 45° and 60° a b c",
+                "foundation_text": "know the exact values of sin θ and cos θ for θ = 0°, 30°, 45°, 60° and 90°; know the exact value of tan θ for θ = 0°, 30°, 45° and 60°",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_G22",
+              "code": "G22",
+              "title": "Sine rule and cosine rule",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G22",
+                "code": "G22",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "know and apply the sine rule = = , sin A sin B sin C and cosine rule a2 = b2 + c2– 2bc cos A, to find unknown lengths and angles",
+                "foundation_text": null,
+                "source_pages": [
+                  30
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_G23",
+              "code": "G23",
+              "title": "Area of a triangle using ½ab sin C",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G23",
+                "code": "G23",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Mensuration and calculation",
+                "higher_text": "know and apply Area = ab sin C to calculate the area, sides or angles of any triangle",
+                "foundation_text": null,
+                "source_pages": [
+                  30
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_MATH_PROB",
-          "code": "5",
+          "id": "EDX_GCSE_MATH_GEOM_G3",
+          "code": "G24–G25",
+          "title": "Vectors",
+          "kind": "group",
+          "points": [
+            {
+              "id": "EDX_GCSE_MATH_G24",
+              "code": "G24",
+              "title": "Translations as vectors",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G24",
+                "code": "G24",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Vectors",
+                "higher_text": "describe translations as 2D vectors",
+                "foundation_text": "describe translations as 2D vectors",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_G25",
+              "code": "G25",
+              "title": "Vector arithmetic and proofs",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-G25",
+                "code": "G25",
+                "content_heading": "4. Geometry and measures",
+                "subheading": "Vectors",
+                "higher_text": "apply addition and subtraction of vectors, multiplication of vectors by a scalar, and diagrammatic and column representations of vectors; use vectors to construct geometric arguments and proofs",
+                "foundation_text": "apply addition and subtraction of vectors, multiplication of vectors by a scalar, and diagrammatic and column representations of vectors",
+                "source_pages": [
+                  22,
+                  30
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_GCSE_MATH_PROB",
+      "code": "5",
+      "title": "Probability",
+      "topics": [
+        {
+          "id": "EDX_GCSE_MATH_PROB_G1",
+          "code": "P1–P9",
           "title": "Probability",
-          "kind": "topic",
+          "kind": "group",
           "points": [
-            {"id":"EDX_GCSE_MATH_PROB_5.1","code":"5.1","title":"Probability scale, single events and relative frequency"},
-            {"id":"EDX_GCSE_MATH_PROB_5.2","code":"5.2","title":"Sample spaces, two-way tables and Venn diagrams"},
-            {"id":"EDX_GCSE_MATH_PROB_5.3","code":"5.3","title":"Tree diagrams and independent events"},
-            {"id":"EDX_GCSE_MATH_PROB_5.4","code":"5.4","title":"Conditional probability","tier":"Higher"}
+            {
+              "id": "EDX_GCSE_MATH_P1",
+              "code": "P1",
+              "title": "Frequency of outcomes and frequency trees",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P1",
+                "code": "P1",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "record, describe and analyse the frequency of outcomes of probability experiments using tables and frequency trees",
+                "foundation_text": "record, describe and analyse the frequency of outcomes of probability experiments using tables and frequency trees",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P2",
+              "code": "P2",
+              "title": "Randomness, fairness and expected outcomes",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P2",
+                "code": "P2",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "apply ideas of randomness, fairness and equally likely events to calculate expected outcomes of multiple future experiments",
+                "foundation_text": "apply ideas of randomness, fairness and equally likely events to calculate expected outcomes of multiple future experiments",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P3",
+              "code": "P3",
+              "title": "Relative frequency and the probability scale",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P3",
+                "code": "P3",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "relate relative expected frequencies to theoretical probability, using appropriate language and the 0-1 probability scale",
+                "foundation_text": "relate relative expected frequencies to theoretical probability, using appropriate language and the 0-1 probability scale",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P4",
+              "code": "P4",
+              "title": "Exhaustive and mutually exclusive outcomes",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P4",
+                "code": "P4",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "apply the property that the probabilities of an exhaustive set of outcomes sum to one; apply the property that the probabilities of an exhaustive set of mutually exclusive events sum to one",
+                "foundation_text": "apply the property that the probabilities of an exhaustive set of outcomes sum to one; apply the property that the probabilities of an exhaustive set of mutually exclusive events sum to one",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P5",
+              "code": "P5",
+              "title": "Samples tending towards theoretical probability",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P5",
+                "code": "P5",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "understand that empirical unbiased samples tend towards theoretical probability distributions, with increasing sample size",
+                "foundation_text": "understand that empirical unbiased samples tend towards theoretical probability distributions, with increasing sample size",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P6",
+              "code": "P6",
+              "title": "Sets, Venn diagrams and tree diagrams",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P6",
+                "code": "P6",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "enumerate sets and combinations of sets systematically, using tables, grids, Venn diagrams and tree diagrams",
+                "foundation_text": "enumerate sets and combinations of sets systematically, using tables, grids, Venn diagrams and tree diagrams",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P7",
+              "code": "P7",
+              "title": "Sample spaces and theoretical probability",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P7",
+                "code": "P7",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "construct theoretical possibility spaces for single and combined experiments with equally likely outcomes and use these to calculate theoretical probabilities",
+                "foundation_text": "construct theoretical possibility spaces for single and combined experiments with equally likely outcomes and use these to calculate theoretical probabilities",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P8",
+              "code": "P8",
+              "title": "Independent and dependent combined events",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P8",
+                "code": "P8",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "calculate the probability of independent and dependent combined events, including using tree diagrams and other representations, and know the underlying assumptions",
+                "foundation_text": "calculate the probability of independent and dependent combined events, including using tree diagrams and other representations, and know the underlying assumptions",
+                "source_pages": [
+                  23,
+                  31
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_P9",
+              "code": "P9",
+              "title": "Conditional probability",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-P9",
+                "code": "P9",
+                "content_heading": "5. Probability",
+                "subheading": null,
+                "higher_text": "calculate and interpret conditional probabilities through representation using expected frequencies with two-way tables, tree diagrams and Venn diagrams",
+                "foundation_text": null,
+                "source_pages": [
+                  31
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "EDX_GCSE_MATH_STAT",
+      "code": "6",
+      "title": "Statistics",
+      "topics": [
         {
-          "id": "EDX_GCSE_MATH_STAT",
-          "code": "6",
+          "id": "EDX_GCSE_MATH_STAT_G1",
+          "code": "S1–S6",
           "title": "Statistics",
-          "kind": "topic",
+          "kind": "group",
           "points": [
-            {"id":"EDX_GCSE_MATH_STAT_6.1","code":"6.1","title":"Sampling and data collection"},
-            {"id":"EDX_GCSE_MATH_STAT_6.2","code":"6.2","title":"Averages and range"},
-            {"id":"EDX_GCSE_MATH_STAT_6.3","code":"6.3","title":"Charts, time series and frequency polygons"},
-            {"id":"EDX_GCSE_MATH_STAT_6.4","code":"6.4","title":"Scatter graphs and correlation"},
-            {"id":"EDX_GCSE_MATH_STAT_6.5","code":"6.5","title":"Cumulative frequency and box plots","tier":"Higher"},
-            {"id":"EDX_GCSE_MATH_STAT_6.6","code":"6.6","title":"Histograms","tier":"Higher"}
+            {
+              "id": "EDX_GCSE_MATH_S1",
+              "code": "S1",
+              "title": "Sampling and populations",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-S1",
+                "code": "S1",
+                "content_heading": "6. Statistics",
+                "subheading": null,
+                "higher_text": "infer properties of populations or distributions from a sample, while knowing the limitations of sampling",
+                "foundation_text": "infer properties of populations or distributions from a sample, while knowing the limitations of sampling",
+                "source_pages": [
+                  23,
+                  32
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_S2",
+              "code": "S2",
+              "title": "Tables, charts and diagrams",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-S2",
+                "code": "S2",
+                "content_heading": "6. Statistics",
+                "subheading": null,
+                "higher_text": "interpret and construct tables, charts and diagrams, including frequency tables, bar charts, pie charts and pictograms for categorical data, vertical line charts for ungrouped discrete numerical data, tables and line graphs for time series data and know their appropriate use",
+                "foundation_text": "interpret and construct tables, charts and diagrams, including frequency tables, bar charts, pie charts and pictograms for categorical data, vertical line charts for ungrouped discrete numerical data, tables and line graphs for time series data and know their appropriate use",
+                "source_pages": [
+                  23,
+                  32
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_S3",
+              "code": "S3",
+              "title": "Histograms and cumulative frequency",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-S3",
+                "code": "S3",
+                "content_heading": "6. Statistics",
+                "subheading": null,
+                "higher_text": "construct and interpret diagrams for grouped discrete data and continuous data, i.e. histograms with equal and unequal class intervals and cumulative frequency graphs, and know their appropriate use",
+                "foundation_text": null,
+                "source_pages": [
+                  32
+                ],
+                "tiers": [
+                  "Higher"
+                ]
+              },
+              "tier": "Higher"
+            },
+            {
+              "id": "EDX_GCSE_MATH_S4",
+              "code": "S4",
+              "title": "Averages, spread and box plots",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-S4",
+                "code": "S4",
+                "content_heading": "6. Statistics",
+                "subheading": null,
+                "higher_text": "interpret, analyse and compare the distributions of data sets from univariate empirical distributions through: ● appropriate graphical representation involving discrete, continuous and grouped data, including box plots ● appropriate measures of central tendency (median, mean, mode and modal class) and spread (range, including consideration of outliers, quartiles and inter-quartile range)",
+                "foundation_text": "interpret, analyse and compare the distributions of data sets from univariate empirical distributions through: ● appropriate graphical representation involving discrete, continuous and grouped data ● appropriate measures of central tendency (median, mean, mode and modal class) and spread (range, including consideration of outliers)",
+                "source_pages": [
+                  23,
+                  32
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              },
+              "higher_extension": true
+            },
+            {
+              "id": "EDX_GCSE_MATH_S5",
+              "code": "S5",
+              "title": "Applying statistics to a population",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-S5",
+                "code": "S5",
+                "content_heading": "6. Statistics",
+                "subheading": null,
+                "higher_text": "apply statistics to describe a population",
+                "foundation_text": "apply statistics to describe a population",
+                "source_pages": [
+                  23,
+                  32
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            },
+            {
+              "id": "EDX_GCSE_MATH_S6",
+              "code": "S6",
+              "title": "Scatter graphs and correlation",
+              "official_reference": {
+                "reference_id": "1MA1-ISSUE2-S6",
+                "code": "S6",
+                "content_heading": "6. Statistics",
+                "subheading": null,
+                "higher_text": "use and interpret scatter graphs of bivariate data; recognise correlation and know that it does not indicate causation; draw estimated lines of best fit; make predictions; interpolate and extrapolate apparent trends while knowing the dangers of so doing",
+                "foundation_text": "use and interpret scatter graphs of bivariate data; recognise correlation and know that it does not indicate causation; draw estimated lines of best fit; make predictions; interpolate and extrapolate apparent trends while knowing the dangers of so doing",
+                "source_pages": [
+                  23,
+                  32
+                ],
+                "tiers": [
+                  "Foundation",
+                  "Higher"
+                ]
+              }
+            }
           ]
         }
       ]
