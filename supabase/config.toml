@@ -1,0 +1,5 @@
+project_id = "spjlnvjdstxdajcsljvq"
+
+[functions.delete-account]
+# Keep the platform JWT check enabled; the handler also requires auth: 'user'.
+verify_jwt = true

@@ -29,6 +29,8 @@ export const links = {
   /** `next` is a route ("/hub"), not an href. */
   login: (next = null) => `#/login${query({ next })}`,
   signup: (next = null) => `#/signup${query({ next })}`,
+  legacyLogin: () => '#/legacy-login',
+  forgotPassword: () => '#/forgot-password',
 };
 
 /** "#/paper/x/y" → "/paper/x/y" (for context.navigate). */

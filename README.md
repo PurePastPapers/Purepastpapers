@@ -4,7 +4,7 @@ Phase 1 of the four-phase PRD (v2.1): official past papers, topic and crossover 
 difficulty selection, customisable practice, user accounts and the Data Hub. Phases 2–4 are
 wired in behind feature flags and show as "Coming soon".
 
-Plain HTML5, CSS3 and vanilla JavaScript modules. No build step and no dependencies.
+Plain HTML5, CSS3 and vanilla JavaScript modules. No build step or installed site dependencies.
 PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.config.js`.
 
 **Maths release:** [60-source A-level and AS bank, coverage and handover](docs/MATHS-HANDOVER.md).
@@ -26,7 +26,7 @@ npm start
 
 Then open http://localhost:5173. Any static host works for deployment (GitHub Pages, Netlify, Vercel).
 
-Browse real questions without an account. Demo questions are hidden; official sample assessments remain clearly labelled. Create a free account to retain progress in this browser.
+Browse real questions without an account. Demo questions are hidden; official sample assessments remain clearly labelled. Create a free account to sync progress across devices.
 
 | Command | What it does |
 | --- | --- |
@@ -124,16 +124,17 @@ navigation, stays separate from official papers, and its questions join the prac
 
 ## Accounts and storage
 
-`js/data/api.js` is the only module the UI uses for user data. It talks to an adapter:
+`js/data/api.js` is the only module the UI uses for user data. It selects an adapter:
 
-- `js/data/adapters/local-adapter.js` (default) keeps accounts and progress in the browser's
-  localStorage. Passwords are stored as salted PBKDF2 hashes. Accounts exist only in that
-  browser on that device and do not sync; Account → Export/Import moves data between devices.
-- To sync across devices, write an adapter with the same methods (Supabase, Firebase or
-  your own API) and change the one `adapter` line in `api.js`. No UI code changes.
+- `js/data/adapters/supabase-adapter.js` uses Supabase Auth and syncs one progress document per user through `public.user_progress`. Row-level security limits each account to its own progress.
+- `js/data/adapters/local-adapter.js` remains available for older browser-only accounts and the disposable demo account. Existing local accounts can export their data from Account and import it after signing in to Supabase.
+- Signup uses email confirmation, with password reset and account deletion supported. Account deletion runs through a Supabase Edge Function; the server secret is never sent to the browser.
+- The Supabase project URL and publishable key are in `js/config/supabase.config.js`. These are public values; do not add a secret key to the site.
+- Setup instructions, SQL migration, redirect URLs, and function deployment are in [docs/supabase-setup.md](docs/supabase-setup.md).
 
-Content is read through `js/data/content-repository.js`, the equivalent seam for moving the
-question database server-side.
+The site has no bundler, so the browser loads `supabase-js` from esm.sh the first time an auth or sync operation is used. No npm install is needed for the static site.
+
+Content is read through `js/data/content-repository.js`, the equivalent seam for moving the question database server-side.
 
 ## Project map
 
