@@ -97,12 +97,12 @@ Verified on 2026-11-17 through GitHub:
 - Active feature branch: codex/supabase-account-sync-2026-11-16.
 - Pull request: #6, https://github.com/PurePastPapers/Purepastpapers/pull/6.
 - PR title: Add Supabase accounts and cross-device progress sync.
-- PR is open, not merged, and reported mergeable.
+- PR is open and unmerged. On 2026-11-17 GitHub reported mergeable=false after the handoff commits. Current main SHA is c40a4cf29044a04714099bb47c533a66145333eb; branch merge base is 516243dcefa8e0a9be4e26ed6209703c3322947f, so the feature branch is 40 commits behind main. Comparing those 40 main commits found no paths overlapping the PR's changed paths; investigate the false mergeability result before merging.
 - Feature implementation commit: 14e237bffade89ecc34c08cc8b810d345506742f.
-- PR base branch: main; base SHA observed: c3530261bb9a8673f7d7b07daee2e098b788c091.
-- The last combined status query for the feature commit returned no status entries; recheck before merging.
+- PR base branch: main; previous observed base SHA: c3530261bb9a8673f7d7b07daee2e098b788c091; current main SHA: c40a4cf29044a04714099bb47c533a66145333eb.
+- The latest combined status query for head efb8e77de58fc529e6c3f5c9d80b90bf23bcd333 returned no status entries; recheck before merging.
 - No source changes were made in this handoff session before this file.
-- Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
+- Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. Metadata update commit: efb8e77de58fc529e6c3f5c9d80b90bf23bcd333. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
 
 The PR body says project setup should be completed before merge. Do not merge or publish until required Supabase setup is applied and checks are completed.
 
@@ -138,7 +138,7 @@ Completed/observed:
 
 Not completed:
 - No local repository checkout was available in the agent workspace during the previous session; no local test/build/lint command ran.
-- GitHub combined status query returned no status rows; recheck current checks.
+- GitHub combined status query for latest head efb8e77de58fc529e6c3f5c9d80b90bf23bcd333 returned no status rows; recheck current checks.
 - Migration execution and cross-user RLS denial test.
 - Dashboard URL/provider/email-confirmation verification.
 - Supabase SMTP send/receive tests.
