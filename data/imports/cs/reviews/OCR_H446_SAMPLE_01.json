@@ -1,0 +1,795 @@
+{
+  "paper_id": "OCR_H446_SAMPLE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "81681c9d31172b86997ee0c5a17a9183bcb4fe322201c51b7de4a0ef43ffd830",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)",
+      "sections": [
+        "OCR_CS_1.2.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what a utility is.",
+      "difficulty_basis": "2-mark AO1.1 definition-style description.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_1.4.2c",
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1e"
+      ],
+      "codes": [
+        "1.4.2(c)",
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "State the order files are visited in a depth-first traversal of a directory tree.",
+      "difficulty_basis": "3-mark AO2.1 trace of a tree traversal.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(i)",
+      "sections": [
+        "OCR_CS_1.3.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain two characteristics wanted in a hashing algorithm for finding duplicate files.",
+      "difficulty_basis": "4-mark paired identification plus explanation applied to context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(ii)",
+      "sections": [
+        "OCR_CS_1.3.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why apparent duplicate images might survive a hash-based duplicate search.",
+      "difficulty_basis": "2-mark AO2.1 reasoning about bit-level identity.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)",
+      "sections": [
+        "OCR_CS_1.2.3a",
+        "OCR_CS_1.2.3b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.3(a)",
+        "1.2.3(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss extreme programming and waterfall for a project and justify a recommendation.",
+      "difficulty_basis": "12-mark extended response (*) with evaluation and justified judgement.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State a data structure suited to representing flights between cities.",
+      "difficulty_basis": "1-mark AO1.1 recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(i)",
+      "sections": [
+        "OCR_CS_1.2.3c",
+        "OCR_CS_1.4.2a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a",
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "1.2.3(c)",
+        "1.4.2(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)",
+        "2.2.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a program summing flight costs along a journey held in a cities array.",
+      "difficulty_basis": "5-mark AO3.2 algorithm combining iteration over an array and a function call.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2b",
+        "OCR_CS_1.4.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)",
+        "1.4.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe one difference between an array and a linked list.",
+      "difficulty_basis": "2-mark AO1.2 recall of a familiar contrast.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)",
+      "sections": [
+        "OCR_CS_1.4.2a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.3.1f",
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.4.2(a)"
+      ],
+      "prerequisite_codes": [
+        "2.3.1(f)",
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write a program looking up an airport name by code in a 2D array.",
+      "difficulty_basis": "6-mark AO3.2 search algorithm over a two-dimensional array.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_1.3.4a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe one advantage of storing CSS in an external file.",
+      "difficulty_basis": "3-mark describe developed with consequences.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_1.3.4d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.4a"
+      ],
+      "codes": [
+        "1.3.4(d)"
+      ],
+      "prerequisite_codes": [
+        "1.3.4(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why an email is checked by both client JavaScript and the server.",
+      "difficulty_basis": "3-mark explain of client and server side validation roles.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)(i)",
+      "sections": [
+        "OCR_CS_1.3.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.2a"
+      ],
+      "codes": [
+        "1.3.2(c)"
+      ],
+      "prerequisite_codes": [
+        "1.3.2(a)"
+      ],
+      "difficulty": "easy",
+      "summary": "Identify a reason a many-to-many structure is unsuitable.",
+      "difficulty_basis": "1-mark AO1.2 recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)(ii)",
+      "sections": [
+        "OCR_CS_1.3.2c",
+        "OCR_CS_1.3.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(c)",
+        "1.3.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Draw a revised structure resolving a many-to-many relationship.",
+      "difficulty_basis": "3-mark AO3.1 design using a linking table and one-to-many relations.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)(i)",
+      "sections": [
+        "OCR_CS_1.3.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what a primary key is.",
+      "difficulty_basis": "2-mark AO1.1 definition with identification.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)(ii)",
+      "sections": [
+        "OCR_CS_1.3.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Write an SQL query selecting two fields for videos on a given topic.",
+      "difficulty_basis": "4-mark AO3.2 SQL writing with condition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what a class is.",
+      "difficulty_basis": "2-mark AO1.1 definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify an attribute of the Lizard class.",
+      "difficulty_basis": "1-mark identification from given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(c)(i)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe what inheritance means.",
+      "difficulty_basis": "3-mark description of parent and child class relationship.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(c)(ii)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain one way a game could use inheritance for lizard types.",
+      "difficulty_basis": "3-mark explain applying inheritance to a game context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(d)",
+      "sections": [
+        "OCR_CS_1.2.2f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.2d"
+      ],
+      "codes": [
+        "1.2.2(f)"
+      ],
+      "prerequisite_codes": [
+        "1.2.2(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why a linker is needed after compilation when using a graphics library.",
+      "difficulty_basis": "3-mark explain applying linker role to a given scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_1.2.2d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4c"
+      ],
+      "codes": [
+        "1.2.2(d)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(c)"
+      ],
+      "difficulty": "easy",
+      "summary": "State which translator converts assembly code to machine code.",
+      "difficulty_basis": "1-mark recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3c"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe what a faulty LMC program does for given inputs.",
+      "difficulty_basis": "2-mark AO2.1 trace and interpretation of a flawed program.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3c"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain how to correct the LMC program to output the higher number.",
+      "difficulty_basis": "2-mark AO2.1 debugging of branch logic.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)",
+      "sections": [
+        "OCR_CS_1.2.3c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.2.3(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write pseudocode taking two numbers and outputting the higher.",
+      "difficulty_basis": "4-mark AO3.2 algorithm with input and selection.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(e)(i)",
+      "sections": [
+        "OCR_CS_1.1.1a",
+        "OCR_CS_1.1.1b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.4c"
+      ],
+      "codes": [
+        "1.1.1(a)",
+        "1.1.1(b)"
+      ],
+      "prerequisite_codes": [
+        "1.2.4(c)"
+      ],
+      "difficulty": "easy",
+      "summary": "Identify an LMC instruction that changes the program counter differently.",
+      "difficulty_basis": "1-mark AO2.1 identification from given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(e)(ii)",
+      "sections": [
+        "OCR_CS_1.1.1a",
+        "OCR_CS_1.1.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(a)",
+        "1.1.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State which register receives the program counter contents.",
+      "difficulty_basis": "1-mark recall of fetch stage transfer.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_1.1.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe a sensor a calorie tracking device might use.",
+      "difficulty_basis": "2-mark AO1.2 knowledge applied to the device.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)",
+      "sections": [
+        "OCR_CS_1.1.3b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.3a"
+      ],
+      "codes": [
+        "1.1.3(b)"
+      ],
+      "prerequisite_codes": [
+        "1.1.3(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why flash storage suits the device better than a magnetic hard drive.",
+      "difficulty_basis": "3-mark explain applied to a worn, moving device.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(c)",
+      "sections": [
+        "OCR_CS_1.5.1a",
+        "OCR_CS_1.5.2_whole"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.5.1(a)",
+        "1.5.2"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss legal and ethical issues of collecting personal health data for meal plans.",
+      "difficulty_basis": "9-mark extended response (*) with evaluation of both legal and ethical dimensions.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)",
+      "sections": [
+        "OCR_CS_1.4.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1b"
+      ],
+      "codes": [
+        "1.4.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(b)"
+      ],
+      "difficulty": "easy",
+      "summary": "Add two equal unsigned 8-bit binary numbers showing working.",
+      "difficulty_basis": "2-mark routine binary addition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)",
+      "sections": [
+        "OCR_CS_1.4.1i"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(i)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State which bitwise manipulation matches doubling a number.",
+      "difficulty_basis": "1-mark recall of shift effect.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(c)",
+      "sections": [
+        "OCR_CS_1.4.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Convert a negative denary number to 8-bit two's complement.",
+      "difficulty_basis": "2-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(d)",
+      "sections": [
+        "OCR_CS_1.4.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe why two's complement may be preferred to sign and magnitude.",
+      "difficulty_basis": "2-mark AO1.2 recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(e)",
+      "sections": [
+        "OCR_CS_1.4.1h"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1g"
+      ],
+      "codes": [
+        "1.4.1(h)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(g)"
+      ],
+      "difficulty": "hard",
+      "summary": "Add two floating point numbers and give a normalised 4-bit mantissa and exponent result.",
+      "difficulty_basis": "3-mark multi-stage addition with exponent matching and normalisation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(f)",
+      "sections": [
+        "OCR_CS_1.4.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1c"
+      ],
+      "codes": [
+        "1.4.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Show 47 minus 23 by 8-bit two's complement addition with working.",
+      "difficulty_basis": "4-mark multi-step subtraction via negation and addition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(a)",
+      "sections": [
+        "OCR_CS_1.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe two functions an operating system performs on a games console.",
+      "difficulty_basis": "4-mark paired identification plus description.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(b)",
+      "sections": [
+        "OCR_CS_1.2.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how open source Linux benefits the games company.",
+      "difficulty_basis": "2-mark explain applied to a company context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(c)",
+      "sections": [
+        "OCR_CS_1.1.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why a GPU suits 3D graphics better than a CPU.",
+      "difficulty_basis": "3-mark explain of GPU parallelism for graphics.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(d)",
+      "sections": [
+        "OCR_CS_1.2.2d",
+        "OCR_CS_1.1.2a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.1a"
+      ],
+      "codes": [
+        "1.2.2(d)",
+        "1.1.2(a)"
+      ],
+      "prerequisite_codes": [
+        "1.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain two reasons games for other consoles may not run on this machine.",
+      "difficulty_basis": "4-mark two reasons each explained with architecture or protection context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8(e)",
+      "sections": [
+        "OCR_CS_1.5.2_whole"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.5.2"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss whether video games have a negative effect on players.",
+      "difficulty_basis": "9-mark extended response (*) with balanced evaluation of both viewpoints.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "9(a)",
+      "sections": [
+        "OCR_CS_1.3.3b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.3a"
+      ],
+      "codes": [
+        "1.3.3(b)"
+      ],
+      "prerequisite_codes": [
+        "1.3.3(a)"
+      ],
+      "difficulty": "easy",
+      "summary": "Describe what a LAN is.",
+      "difficulty_basis": "2-mark AO1.2 definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "9(b)",
+      "sections": [
+        "OCR_CS_1.3.3b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.3(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain what packet switching means.",
+      "difficulty_basis": "4-mark explain of packet structure and routing.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.3e",
+        "OCR_CS_1.4.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(e)",
+        "1.4.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Write the logic expression for output S from a truth table.",
+      "difficulty_basis": "1-mark AO2.2 reading a half adder sum.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.3e",
+        "OCR_CS_1.4.3a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(e)",
+        "1.4.3(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Write the logic expression for output C from a truth table.",
+      "difficulty_basis": "1-mark AO2.2 reading a half adder carry.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(a)(iii)",
+      "sections": [
+        "OCR_CS_1.4.3e",
+        "OCR_CS_1.4.3d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(e)",
+        "1.4.3(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Draw a logic circuit from the expressions for S and C.",
+      "difficulty_basis": "2-mark AO2.2 drawing two gates.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "10(b)",
+      "sections": [
+        "OCR_CS_1.4.3c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Simplify a Boolean expression using algebra rules.",
+      "difficulty_basis": "4-mark multi-step simplification with several rules.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

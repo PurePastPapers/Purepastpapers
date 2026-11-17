@@ -1,188 +1,1409 @@
 {
-  "subject_id": "OCR_ALEVEL_CHEM_H432",
-  "sections": [
+ "subject_id": "OCR_ALEVEL_CHEM_H432",
+ "sections": [
+  {
+   "id": "OCR_CHEM_SEC_M1",
+   "title": "Module 1: Development of practical skills",
+   "topics": [
     {
-      "id": "OCR_CHEM_SEC_M1",
-      "title": "Module 1: Development of practical skills",
-      "topics": [
-        {
-          "id": "OCR_CHEM_1.1",
-          "code": "1.1",
-          "title": "Practical skills assessed in a written examination",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_1.1.1","code":"1.1.1","title":"Planning"},
-            {"id":"OCR_CHEM_1.1.2","code":"1.1.2","title":"Implementing"},
-            {"id":"OCR_CHEM_1.1.3","code":"1.1.3","title":"Analysis"},
-            {"id":"OCR_CHEM_1.1.4","code":"1.1.4","title":"Evaluation"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "OCR_CHEM_SEC_M2",
-      "title": "Module 2: Foundations in chemistry",
-      "topics": [
-        {
-          "id": "OCR_CHEM_2.1",
-          "code": "2.1",
-          "title": "Atoms and reactions",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_2.1.1","code":"2.1.1","title":"Atomic structure and isotopes"},
-            {"id":"OCR_CHEM_2.1.2","code":"2.1.2","title":"Compounds, formulae and equations"},
-            {"id":"OCR_CHEM_2.1.3","code":"2.1.3","title":"Amount of substance"},
-            {"id":"OCR_CHEM_2.1.4","code":"2.1.4","title":"Acids"},
-            {"id":"OCR_CHEM_2.1.5","code":"2.1.5","title":"Redox"}
-          ]
-        },
-        {
-          "id": "OCR_CHEM_2.2",
-          "code": "2.2",
-          "title": "Electrons, bonding and structure",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_2.2.1","code":"2.2.1","title":"Electron structure"},
-            {"id":"OCR_CHEM_2.2.2","code":"2.2.2","title":"Bonding and structure"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "OCR_CHEM_SEC_M3",
-      "title": "Module 3: Periodic table and energy",
-      "topics": [
-        {
-          "id": "OCR_CHEM_3.1",
-          "code": "3.1",
-          "title": "The periodic table",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_3.1.1","code":"3.1.1","title":"Periodicity"},
-            {"id":"OCR_CHEM_3.1.2","code":"3.1.2","title":"Group 2"},
-            {"id":"OCR_CHEM_3.1.3","code":"3.1.3","title":"The halogens"},
-            {"id":"OCR_CHEM_3.1.4","code":"3.1.4","title":"Qualitative analysis"}
-          ]
-        },
-        {
-          "id": "OCR_CHEM_3.2",
-          "code": "3.2",
-          "title": "Physical chemistry",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_3.2.1","code":"3.2.1","title":"Enthalpy changes"},
-            {"id":"OCR_CHEM_3.2.2","code":"3.2.2","title":"Reaction rates"},
-            {"id":"OCR_CHEM_3.2.3","code":"3.2.3","title":"Chemical equilibrium"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "OCR_CHEM_SEC_M4",
-      "title": "Module 4: Core organic chemistry",
-      "topics": [
-        {
-          "id": "OCR_CHEM_4.1",
-          "code": "4.1",
-          "title": "Basic concepts and hydrocarbons",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_4.1.1","code":"4.1.1","title":"Basic concepts of organic chemistry"},
-            {"id":"OCR_CHEM_4.1.2","code":"4.1.2","title":"Alkanes"},
-            {"id":"OCR_CHEM_4.1.3","code":"4.1.3","title":"Alkenes"}
-          ]
-        },
-        {
-          "id": "OCR_CHEM_4.2",
-          "code": "4.2",
-          "title": "Alcohols, haloalkanes and analysis",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_4.2.1","code":"4.2.1","title":"Alcohols"},
-            {"id":"OCR_CHEM_4.2.2","code":"4.2.2","title":"Haloalkanes"},
-            {"id":"OCR_CHEM_4.2.3","code":"4.2.3","title":"Organic synthesis"},
-            {"id":"OCR_CHEM_4.2.4","code":"4.2.4","title":"Analytical techniques (IR and mass spectrometry)"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "OCR_CHEM_SEC_M5",
-      "title": "Module 5: Physical chemistry and transition elements",
-      "topics": [
-        {
-          "id": "OCR_CHEM_5.1",
-          "code": "5.1",
-          "title": "Rates, equilibrium and pH",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_5.1.1","code":"5.1.1","title":"How fast? Rate equations, orders and the Arrhenius equation"},
-            {"id":"OCR_CHEM_5.1.2","code":"5.1.2","title":"How far? Equilibrium constants Kc and Kp"},
-            {"id":"OCR_CHEM_5.1.3","code":"5.1.3","title":"Acids, bases and buffers"}
-          ]
-        },
-        {
-          "id": "OCR_CHEM_5.2",
-          "code": "5.2",
-          "title": "Energy",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_5.2.1","code":"5.2.1","title":"Lattice enthalpy"},
-            {"id":"OCR_CHEM_5.2.2","code":"5.2.2","title":"Enthalpy and entropy"},
-            {"id":"OCR_CHEM_5.2.3","code":"5.2.3","title":"Redox and electrode potentials"}
-          ]
-        },
-        {
-          "id": "OCR_CHEM_5.3",
-          "code": "5.3",
-          "title": "Transition elements",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_5.3.1","code":"5.3.1","title":"Transition elements"},
-            {"id":"OCR_CHEM_5.3.2","code":"5.3.2","title":"Qualitative analysis"}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "OCR_CHEM_SEC_M6",
-      "title": "Module 6: Organic chemistry and analysis",
-      "topics": [
-        {
-          "id": "OCR_CHEM_6.1",
-          "code": "6.1",
-          "title": "Aromatic compounds, carbonyls and acids",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_6.1.1","code":"6.1.1","title":"Aromatic compounds"},
-            {"id":"OCR_CHEM_6.1.2","code":"6.1.2","title":"Carbonyl compounds"},
-            {"id":"OCR_CHEM_6.1.3","code":"6.1.3","title":"Carboxylic acids and esters"}
-          ]
-        },
-        {
-          "id": "OCR_CHEM_6.2",
-          "code": "6.2",
-          "title": "Nitrogen compounds, polymers and synthesis",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_6.2.1","code":"6.2.1","title":"Amines"},
-            {"id":"OCR_CHEM_6.2.2","code":"6.2.2","title":"Amino acids, amides and chirality"},
-            {"id":"OCR_CHEM_6.2.3","code":"6.2.3","title":"Polyesters and polyamides"},
-            {"id":"OCR_CHEM_6.2.4","code":"6.2.4","title":"Carbon–carbon bond formation"},
-            {"id":"OCR_CHEM_6.2.5","code":"6.2.5","title":"Organic synthesis"}
-          ]
-        },
-        {
-          "id": "OCR_CHEM_6.3",
-          "code": "6.3",
-          "title": "Analysis",
-          "kind": "topic",
-          "points": [
-            {"id":"OCR_CHEM_6.3.1","code":"6.3.1","title":"Chromatography and qualitative analysis"},
-            {"id":"OCR_CHEM_6.3.2","code":"6.3.2","title":"Spectroscopy (NMR and combined techniques)"}
-          ]
-        }
-      ]
+     "id": "OCR_CHEM_1.1",
+     "code": "1.1",
+     "title": "Practical skills assessed in a written examination",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_1.1.1",
+       "code": "1.1.1",
+       "title": "Planning",
+       "content": [
+        "(a) experimental design, including to solve problems set in a practical context",
+        "(b) identification of variables that must be controlled, where appropriate",
+        "(c) evaluation that an experimental method is appropriate to meet the expected outcomes."
+       ],
+       "official_reference": {
+        "section": "1.1.1",
+        "component": "H432",
+        "source_page": 14
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_1.1.2",
+       "code": "1.1.2",
+       "title": "Implementing",
+       "content": [
+        "(a) how to use a wide range of practical apparatus and techniques correctly",
+        "(b) appropriate units for measurements",
+        "(c) presenting observations and data in an appropriate format."
+       ],
+       "official_reference": {
+        "section": "1.1.2",
+        "component": "H432",
+        "source_page": 14
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_1.1.3",
+       "code": "1.1.3",
+       "title": "Analysis",
+       "content": [
+        "(a) processing, analysing and interpreting qualitative and quantitative experimental results",
+        "(b) use of appropriate mathematical skills for analysis of quantitative data",
+        "(c) appropriate use of significant figures",
+        "(d) plotting and interpreting suitable graphs from experimental results, including:",
+        "(i) selection and labelling of axes with appropriate scales, quantities and units (ii) measurement of gradients and intercepts."
+       ],
+       "official_reference": {
+        "section": "1.1.3",
+        "component": "H432",
+        "source_page": 15
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_1.1.4",
+       "code": "1.1.4",
+       "title": "Evaluation",
+       "content": [
+        "(a) how to evaluate results and draw conclusions",
+        "(b) the identification of anomalies in experimental measurements",
+        "(c) the limitations in experimental procedures",
+        "(d) precision and accuracy of measurements and data, including margins of error, percentage errors and uncertainties in apparatus",
+        "(e) refining experimental design by suggestion of improvements to the procedures and apparatus. 1.2 Practical skills assessed in the practical endorsement A range of practical experiences is a vital part of a learner’s development as part of this course. practical skills throughout the course as preparation for the Practical Endorsement, as well as for the written examinations. The experiments and skills required for the Practical Endorsement will allow learners to develop and"
+       ],
+       "official_reference": {
+        "section": "1.1.4",
+        "component": "H432",
+        "source_page": 15
+       },
+       "as_reference": true,
+       "a_level_only": false
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "OCR_CHEM_SEC_M2",
+   "title": "Module 2: Foundations in chemistry",
+   "topics": [
+    {
+     "id": "OCR_CHEM_2.1",
+     "code": "2.1",
+     "title": "Atoms and reactions",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_2.1.1",
+       "code": "2.1.1",
+       "title": "Atomic structure and isotopes",
+       "content": [
+        "Atomic structure and isotopes",
+        "(a) isotopes as atoms of the same element with different numbers of neutrons and different masses",
+        "(b) atomic structure in terms of the numbers of protons, neutrons and electrons for atoms and ions, given the atomic number, mass number and any ionic charge Relative mass",
+        "(c) explanation of the terms relative isotopic mass (mass compared with 1/12th mass of carbon-12) and relative atomic mass (weighted mean mass compared with 1/12th mass of carbon-12), based on the mass of a 12C atom, the standard for atomic masses",
+        "(d) use of mass spectrometry in:",
+        "(i) the determination of relative isotopic masses and relative abundances of the isotope, (ii) calculation of the relative atomic mass of an element from the relative abundances of its isotopes",
+        "(e) use of the terms relative molecular mass, M, and r relative formula mass and their calculation from relative atomic masses."
+       ],
+       "official_reference": {
+        "section": "2.1.1",
+        "component": "H432",
+        "source_page": 19
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_2.1.2",
+       "code": "2.1.2",
+       "title": "Compounds, formulae and equations",
+       "content": [
+        "Formulae and equations",
+        "(a) the writing of formulae of ionic compounds from ionic charges, including:",
+        "(i) prediction of ionic charge from the position of an element in the periodic table (ii) recall of the names and formulae for the following ions: NO –, CO 2–, SO 2–, OH–, 3 3 4 NH +, Zn2+ and Ag+",
+        "(b) construction of balanced chemical equations (including ionic equations), including state symbols, for reactions studied and for unfamiliar reactions given appropriate information."
+       ],
+       "official_reference": {
+        "section": "2.1.2",
+        "component": "H432",
+        "source_page": 20
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_2.1.3",
+       "code": "2.1.3",
+       "title": "Amount of substance",
+       "content": [
+        "The mole",
+        "(a) explanation and use of the terms:",
+        "(i) amount of substance (ii) mole (symbol ‘mol’), as the unit for amount of substance (iii) the Avogadro constant, N (the number of A 1023 mol–1) particles per mole, 6.02 × (iv) molar mass (mass per mole, units g mol–1),",
+        "(v) molar gas volume (gas volume per mole, units dm3 mol–1) Determination of formulae",
+        "(b) use of the terms:",
+        "(i) empirical formula (the simplest whole number ratio of atoms of each element present in a compound) (ii) molecular formula (the number and type of atoms of each element in a molecule)",
+        "(c) calculations of empirical and molecular formulae, from composition by mass or percentage compositions by mass and relative molecular mass",
+        "(d) the terms anhydrous, hydrated and water of crystallisation and calculation of the formula of a hydrated salt from given percentage composition, mass composition or based on experimental results Calculation of reacting masses, gas volumes and mole concentrations",
+        "(e) calculations, using amount of substance in mol, involving:",
+        "(i) mass (ii) gas volume (iii) solution volume and concentration",
+        "(f) the ideal gas equation: pV = nRT",
+        "(g) use of stoichiometric relationships in calculations Percentage yields and atom economy",
+        "(h) calculations to determine:",
+        "(i) the percentage yield of a reaction or related quantities (ii) the atom economy of a reaction",
+        "(i) the techniques and procedures required during experiments requiring the measurement of mass, volumes of solutions and gas volumes",
+        "(j) the benefits for sustainability of developing chemical processes with a high atom economy."
+       ],
+       "official_reference": {
+        "section": "2.1.3",
+        "component": "H432",
+        "source_page": 21
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_2.1.4",
+       "code": "2.1.4",
+       "title": "Acids",
+       "content": [
+        "Acids, bases, alkalis and neutralisation",
+        "(a) the formulae of the common acids (HCl, H SO , 2 4 HNO and CH COOH) and the common alkalis 3 3 (NaOH, KOH and NH ) and explanation that acids release H+ ions in aqueous solution and alkalis release OH– ions in aqueous solution",
+        "(b) qualitative explanation of strong and weak acids in terms of relative dissociations",
+        "(c) neutralisation as the reaction of:",
+        "(i) H+ and OH– to form H O (ii) acids with bases, including carbonates, metal oxides and alkalis (water-soluble bases), to form salts, including full equations Acid–base titrations",
+        "(d) the techniques and procedures used when preparing a standard solution of required concentration and carrying out acid–base titrations",
+        "(e) structured and non-structured titration calculations, based on experimental results of familiar and non-familiar acids and bases."
+       ],
+       "official_reference": {
+        "section": "2.1.4",
+        "component": "H432",
+        "source_page": 22
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_2.1.5",
+       "code": "2.1.5",
+       "title": "Redox",
+       "content": [
+        "Oxidation number",
+        "(a) rules for assigning and calculating oxidation number for atoms in elements, compounds and ions",
+        "(b) writing formulae using oxidation numbers",
+        "(c) use of a Roman numeral to indicate the magnitude of the oxidation number when an element may have compounds/ions with different oxidation numbers Redox reactions",
+        "(d) oxidation and reduction in terms of:",
+        "(i) electron transfer (ii) changes in oxidation number",
+        "(e) redox reactions of metals with acids to form salts, including full equations (see also 2.1.4 c)",
+        "(f) interpretation of redox equations in (e), and unfamiliar redox reactions, to make predictions in terms of oxidation numbers and electron loss/ gain. 2.2 Electrons, bonding and structure This section introduces the concept of atomic orbitals and develops a deeper understanding of electron configurations linked to the periodic table. The central role of electrons in ionic and covalent bonding is then studied. The important role of"
+       ],
+       "official_reference": {
+        "section": "2.1.5",
+        "component": "H432",
+        "source_page": 23
+       },
+       "as_reference": true,
+       "a_level_only": false
+      }
+     ]
+    },
+    {
+     "id": "OCR_CHEM_2.2",
+     "code": "2.2",
+     "title": "Electrons, bonding and structure",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_2.2.1",
+       "code": "2.2.1",
+       "title": "Electron structure",
+       "content": [
+        "Energy levels, shells, sub-shells, atomic orbitals, electron",
+        "(a) the number of electrons that can fill the first four shells",
+        "(b) atomic orbitals, including:",
+        "(i) as a region around the nucleus that can hold up to two electrons, with opposite spins (ii) the shapes of s- and p-orbitals (iii) the number of orbitals making up s-, p- and d-sub-shells, and the number of electrons that can fill s-, p- and d-sub-shells",
+        "(c) filling of orbitals:",
+        "(i) for the first three shells and the 4s and 4p orbitals in order of increasing energy (ii) for orbitals with the same energy, occupation singly before pairing",
+        "(d) deduction of the electron configurations of:",
+        "(i) atoms, given the atomic number, up to Z = 36 (ii) ions, given the atomic number and ionic charge, limited to s- and p-blocks up to Z = 36."
+       ],
+       "official_reference": {
+        "section": "2.2.1",
+        "component": "H432",
+        "source_page": 24
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_2.2.2",
+       "code": "2.2.2",
+       "title": "Bonding and structure",
+       "content": [
+        "Ionic bonding",
+        "(a) ionic bonding as electrostatic attraction between positive and negative ions, and the construction of 'dot-and-cross' diagrams",
+        "(b) explanation of the solid structures of giant ionic lattices, resulting from oppositely charged ions strongly attracted in all directions e.g. NaCl",
+        "(c) explanation of the effect of structure and bonding on the physical properties of ionic compounds, including melting and boiling points, solubility and electrical conductivity in solid, liquid and aqueous states Covalent bonding",
+        "(d) covalent bond as the strong electrostatic attraction between a shared pair of electrons and the nuclei of the bonded atoms",
+        "(e) construction of ‘dot-and-cross’ diagrams of molecules and ions to describe:",
+        "(i) single covalent bonding (ii) multiple covalent bonding (iii) dative covalent (coordinate) bonding",
+        "(f) use of the term average bond enthalpy as a measurement of covalent bond strength The shapes of simple molecules and ions",
+        "(g) the shapes of, and bond angles in, molecules and ions with up to six electron pairs (including lone pairs) surrounding the central atom as predicted by electron pair repulsion, including the relative repulsive strengths of bonded pairs and lone pairs of electrons",
+        "(h) electron pair repulsion to explain the following shapes of molecules and ions: linear, non-linear, trigonal planar, pyramidal, tetrahedral and octahedral Electronegativity and bond polarity",
+        "(i) electronegativity as the ability of an atom to attract the bonding electrons in a covalent bond; interpretation of Pauling electronegativity values",
+        "(j) explanation of:",
+        "(i) a polar bond and permanent dipole within molecules containing covalently-bonded atoms with different electronegativities (ii) a polar molecule and overall dipole in terms of permanent dipole(s) and molecular shape Intermolecular forces",
+        "(k) intermolecular forces based on permanent dipole–dipole interactions and induced dipole– dipole interactions",
+        "(l) hydrogen bonding as intermolecular bonding between molecules containing N, O or F and the H atom of –NH, –OH or HF",
+        "(m) explanation of anomalous properties of H O resulting from hydrogen bonding, e.g.:",
+        "(i) the density of ice compared with water (ii) its relatively high melting and boiling points",
+        "(n) explanation of the solid structures of simple molecular lattices, as covalently bonded molecules attracted by intermolecular forces, e.g. I , ice",
+        "(o) explanation of the effect of structure and bonding on the physical properties of covalent compounds with simple molecular lattice structures including melting and boiling points, solubility and electrical conductivity. Module 3: Periodic table and energy The focus of this module is inorganic and physical chemistry, the applications of energy use to everyday life and industrial processes, and current environmental concerns associated with sustainability. The content within this module assumes knowledge and understanding of the chemical concepts developed in Module 2: Foundations in chemistry. This module provides learners with a knowledge and understanding of the important chemical ideas that underpin the study of inorganic and physical chemistry: • the periodic table: periodic and group properties • enthalpy changes and their determination • rates of reaction • reversible reactions and chemical equilibrium • consideration of energy and yield in improving sustainability. This module allows learners to develop important qualitative practical skills, especially observational skills required for analysis, and accurate quantitative 3.1 The periodic table Periodic trends are first studied to extend the understanding of structure and bonding. Group properties are then studied using Group 2 and the halogens as typical metal and non-metal groups respectively, allowing an understanding of redox reactions to be developed further."
+       ],
+       "official_reference": {
+        "section": "2.2.2",
+        "component": "H432",
+        "source_page": 25
+       },
+       "as_reference": true,
+       "a_level_only": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "OCR_CHEM_SEC_M3",
+   "title": "Module 3: Periodic table and energy",
+   "topics": [
+    {
+     "id": "OCR_CHEM_3.1",
+     "code": "3.1",
+     "title": "The periodic table",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_3.1.1",
+       "code": "3.1.1",
+       "title": "Periodicity",
+       "content": [
+        "The structure of the periodic table",
+        "(a) the periodic table as the arrangement of elements:",
+        "(i) by increasing atomic (proton) number (ii) in periods showing repeating trends in physical and chemical properties (periodicity) (iii) in groups having similar chemical properties Periodic trend in electron configuration and ionisation energy",
+        "(b) (i) the periodic trend in electron configurations across Periods 2 and 3 (see also 2.2.1 d) (ii) classification of elements into s-, p- and d-blocks",
+        "(c) first ionisation energy (removal of 1 mol of electrons from 1 mol of gaseous atoms) and successive ionisation energy, and:",
+        "(i) explanation of the trend in first ionisation energies across Periods 2 and 3, and down a group, in terms of attraction, nuclear charge and atomic radius (ii) prediction from successive ionisation energies of the number of electrons in each shell of an atom and the group of an element Periodic trend in structure and melting point",
+        "(d) explanation of:",
+        "(i) metallic bonding as strong electrostatic attraction between cations (positive ions) and delocalised electrons (ii) a giant metallic lattice structure, e.g. all metals",
+        "(e) explanation of the solid giant covalent lattices of carbon (diamond, graphite and graphene) and silicon as networks of atoms bonded by strong covalent bonds",
+        "(f) explanation of physical properties of giant metallic and giant covalent lattices, including melting and boiling points, solubility and electrical conductivity in terms of structure and bonding",
+        "(g) explanation of the variation in melting points across Periods 2 and 3 in terms of structure and bonding (see also 2.2.2 o)."
+       ],
+       "official_reference": {
+        "section": "3.1.1",
+        "component": "H432",
+        "source_page": 28
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_3.1.2",
+       "code": "3.1.2",
+       "title": "Group 2",
+       "content": [
+        "Redox reactions and reactivity of Group 2 metals",
+        "(a) the outer shell s2 electron configuration and the loss of these electrons in redox reactions to form 2+ ions",
+        "(b) the relative reactivities of the Group 2 elements Mg → Ba shown by their redox reactions with:",
+        "(i) oxygen (ii) water (iii) dilute acids",
+        "(c) the trend in reactivity in terms of the first and second ionisation energies of Group 2 elements down the group (see also 3.1.1 c) Reactions of Group 2 compounds",
+        "(d) the action of water on Group 2 oxides and the approximate pH of any resulting solutions, including the trend of increasing alkalinity",
+        "(e) uses of some Group 2 compounds as bases, including equations, for example (but not limited to):",
+        "(i) Ca(OH) in agriculture to neutralise acid soils (ii) Mg(OH) and CaCO as ‘antacids’ in treating 2 3 indigestion."
+       ],
+       "official_reference": {
+        "section": "3.1.2",
+        "component": "H432",
+        "source_page": 29
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_3.1.3",
+       "code": "3.1.3",
+       "title": "The halogens",
+       "content": [
+        "Characteristic physical properties",
+        "(a) existence of halogens as diatomic molecules and explanation of the trend in the boiling points of Cl , Br and I , in terms of induced dipole–dipole 2 2 2 interactions (London forces) (see also 2.2.2 k) Redox reactions and reactivity of halogens and their compounds",
+        "(b) the outer shell s2p5 electron configuration and the gaining of one electron in many redox reactions to form 1– ions",
+        "(c) the trend in reactivity of the halogens Cl , Br 2 2 and I , illustrated by reaction with other halide ions",
+        "(d) explanation of the trend in reactivity shown in",
+        "(c), from the decreasing ease of forming 1– ions, in terms of attraction, atomic radius and electron shielding",
+        "(e) explanation of the term disproportionation as oxidation and reduction of the same element, illustrated by:",
+        "(i) the reaction of chlorine with water as used in water treatment (ii) the reaction of chlorine with cold, dilute aqueous sodium hydroxide, as used to form bleach (iii) reactions analogous to those specified in (i) and (ii)",
+        "(f) the benefits of chlorine use in water treatment (killing bacteria) contrasted with associated risks (e.g. hazards of toxic chlorine gas and possible risks from formation of chlorinated hydrocarbons) Characteristic reactions of halide ions",
+        "(g) the precipitation reactions, including ionic equations, of the aqueous anions Cl–, Br– and I– with aqueous silver ions, followed by aqueous ammonia, and their use as a test for different halide ions."
+       ],
+       "official_reference": {
+        "section": "3.1.3",
+        "component": "H432",
+        "source_page": 30
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_3.1.4",
+       "code": "3.1.4",
+       "title": "Qualitative analysis",
+       "content": [
+        "Tests for ions",
+        "(a) qualitative analysis of ions on a test-tube scale; processes and techniques needed to identify the following ions in an unknown compound:",
+        "(i) anions: 2–, H+(aq) • CO by reaction with forming CO (g) (see 2.1.4 c) • SO 2–, by precipitation with Ba2+(aq) • Cl–, Br–, I– (see 3.1.3 g) (ii) cations: NH +, by reaction with warm NaOH(aq) forming NH . 3.2 Physical chemistry This section introduces physical chemistry within the general theme of energy. Learners first learn about the importance of enthalpy changes, their uses and determination from experimental results including enthalpy cycles. This section then investigates the ways in which a change in conditions can affect the rate of a chemical reaction, in terms of activation energy, the Boltzmann distribution and catalysis."
+       ],
+       "official_reference": {
+        "section": "3.1.4",
+        "component": "H432",
+        "source_page": 31
+       },
+       "as_reference": true,
+       "a_level_only": false
+      }
+     ]
+    },
+    {
+     "id": "OCR_CHEM_3.2",
+     "code": "3.2",
+     "title": "Physical chemistry",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_3.2.1",
+       "code": "3.2.1",
+       "title": "Enthalpy changes",
+       "content": [
+        "Enthalpy changes: ∆∆H of reaction, formation, combustion",
+        "(a) explanation that some chemical reactions are accompanied by enthalpy changes that are exothermic (∆H, negative) or endothermic (∆H, positive)",
+        "(b) construction of enthalpy profile diagrams to show the difference in the enthalpy of reactants compared with products",
+        "(c) qualitative explanation of the term activation energy, including use of enthalpy profile diagrams",
+        "(d) explanation and use of the terms:",
+        "(i) standard conditions and standard states (physical states under standard conditions) (ii) enthalpy change of reaction (enthalpy change associated with a stated equation, ∆H) r (iii) enthalpy change of formation (formation of 1 mol of a compound from its elements, ∆H) f (iv) enthalpy change of combustion (complete combustion of 1 mol of a substance, ∆ H) c",
+        "(v) enthalpy change of neutralisation (formation of 1 mol of water from neutralisation, ∆ H) neut",
+        "(e) determination of enthalpy changes directly from appropriate experimental results, including use of the relationship: q = mc∆T Bond enthalpies",
+        "(f) (i) explanation of the term average bond enthalpy (as the breaking of 1 mol of bonds in gaseous molecules) (ii) explanation of exothermic and endothermic reactions in terms of enthalpy changes associated with the breaking and making of chemical bonds (iii) use of average bond enthalpies to calculate enthalpy changes and related quantities (see also 2.2.2 f) Hess’ law and enthalpy cycles",
+        "(g) Hess’ law for construction of enthalpy cycles and calculations to determine indirectly:",
+        "(i) an enthalpy change of reaction from enthalpy changes of combustion (ii) an enthalpy change of reaction from enthalpy changes of formation (iii) enthalpy changes from unfamiliar enthalpy cycles",
+        "(h) the techniques and procedures used to determine enthalpy changes directly and indirectly."
+       ],
+       "official_reference": {
+        "section": "3.2.1",
+        "component": "H432",
+        "source_page": 31
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_3.2.2",
+       "code": "3.2.2",
+       "title": "Reaction rates",
+       "content": [
+        "Simple collision theory",
+        "(a) the effect of concentration, including the pressure of gases, on the rate of a reaction, in terms of frequency of collisions",
+        "(b) calculation of reaction rate from the gradients of graphs measuring how a physical quantity changes with time Catalysts",
+        "(c) explanation of the role of a catalyst:",
+        "(i) in increasing reaction rate without being used up by the overall reaction (ii) in allowing a reaction to proceed via a different route with lower activation energy, as shown by enthalpy profile diagrams",
+        "(d) (i) explanation of the terms homogeneous and heterogeneous catalysts (ii) explanation that catalysts have great economic importance and benefits for increased sustainability by lowering temperatures and reducing energy demand from combustion of fossil fuels with resulting reduction in CO emissions",
+        "(e) the techniques and procedures used to investigate reaction rates including the measurement of mass, gas volumes and time The Boltzmann distribution",
+        "(f) qualitative explanation of the Boltzmann distribution and its relationship with activation energy (see also 3.2.1 c)",
+        "(g) explanation, using Boltzmann distributions, of the qualitative effect on the proportion of molecules exceeding the activation energy and hence the reaction rate, for:",
+        "(i) temperature changes (ii) catalytic behaviour (see also 3.2.2 c)."
+       ],
+       "official_reference": {
+        "section": "3.2.2",
+        "component": "H432",
+        "source_page": 33
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_3.2.3",
+       "code": "3.2.3",
+       "title": "Chemical equilibrium",
+       "content": [
+        "Dynamic equilibrium and le Chatelier’s principle",
+        "(a) explanation that a dynamic equilibrium exists in a closed system when the rate of the forward reaction is equal to the rate of the reverse reaction and the concentrations of reactants and products do not change",
+        "(b) le Chatelier’s principle and its application for homogeneous equilibria to deduce qualitatively the effect of a change in temperature, pressure or concentration on the position of equilibrium",
+        "(c) explanation that a catalyst increases the rate of both forward and reverse reactions in an equilibrium by the same amount resulting in an unchanged position of equilibrium",
+        "(d) the techniques and procedures used to investigate changes to the position of equilibrium for changes in concentration and temperature.",
+        "(e) explanation of the importance to the chemical industry of a compromise between chemical equilibrium and reaction rate in deciding the operational conditions The equilibrium constant, K c",
+        "(f) expressions for the equilibrium constant, K , c for homogeneous reactions and calculations K of the equilibrium constant, , from provided c equilibrium concentrations",
+        "(g) estimation of the position of equilibrium from the magnitude of K . c Module 4: Core organic chemistry This module introduces organic chemistry and its important applications to everyday life, including current environmental concerns associated with sustainability. The module assumes knowledge and understanding of the chemical concepts developed in Module 2: Foundations in chemistry. The module provides learners with a knowledge and understanding of the important chemical ideas that underpin the study of organic chemistry: • nomenclature and formula representation, functional groups, organic reactions and isomerism • aliphatic hydrocarbons • alcohols and haloalkanes • organic practical skills and organic synthesis • instrumental analytical techniques to provide evidence of structural features in molecules. 4.1 Basic concepts and hydrocarbons This section is fundamental to the study of organic chemistry. This section introduces the various types of structures used routinely in organic chemistry, nomenclature, and the important concepts of homologous series,"
+       ],
+       "official_reference": {
+        "section": "3.2.3",
+        "component": "H432",
+        "source_page": 34
+       },
+       "as_reference": true,
+       "a_level_only": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "OCR_CHEM_SEC_M4",
+   "title": "Module 4: Core organic chemistry",
+   "topics": [
+    {
+     "id": "OCR_CHEM_4.1",
+     "code": "4.1",
+     "title": "Basic concepts and hydrocarbons",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_4.1.1",
+       "code": "4.1.1",
+       "title": "Basic concepts of organic chemistry",
+       "content": [
+        "Naming and representing the formulae of organic compounds",
+        "(a) application of IUPAC rules of nomenclature for systematically naming organic compounds",
+        "(b) interpretation and use of the terms:",
+        "(i) general formula (the simplest algebraic formula of a member of a homologous series) e.g. for an alkane: C H n 2n+2 (ii) structural formula (the minimal detail that shows the arrangement of atoms in a molecule) e.g. for butane: CH CH CH CH or 3 2 2 3 CH (CH ) CH 3 2 2 3 (iii) displayed formula (the relative positioning of atoms and the bonds between them) e.g. for ethanol: H H H C C O H H H (iv) skeletal formula (the simplified organic formula, shown by removing hydrogen atoms from alkyl chains, leaving just a carbon skeleton and associated functional groups) e.g. for butan-2-ol: OH Functional groups",
+        "(c) interpretation and use of the terms:",
+        "(i) homologous series (a series of organic compounds having the same functional group but with each successive member differing by CH ) (ii) functional group (a group of atoms responsible for the characteristic reactions of a compound) (iii) alkyl group (of formula C H ) n 2n+1 (iv) aliphatic (a compound containing carbon and hydrogen joined together in straight chains, branched chains or non-aromatic rings)",
+        "(v) alicyclic (an aliphatic compound arranged in non-aromatic rings with or without side chains) (vi) aromatic (a compound containing a benzene ring) (vii) saturated (single carbon–carbon bonds only) and unsaturated (the presence of multiple carbon–carbon bonds, including C=C, C/C and aromatic rings)",
+        "(d) use of the general formula of a homologous series to predict the formula of any member of the series Isomerism",
+        "(e) explanation of the term structural isomers (compounds with the same molecular formula but different structural formulae) and determination of possible structural formulae of an organic molecule, given its molecular formula Reaction mechanisms",
+        "(f) the different types of covalent bond fission:",
+        "(i) homolytic fission (in terms of each bonding atom receiving one electron from the bonded pair, forming two radicals) (ii) heterolytic fission (in terms of one bonding atom receiving both electrons from the bonded pair)",
+        "(g) the term radical (a species with an unpaired electron) and use of ‘dots’ to represent species that are radicals in mechanisms",
+        "(h) a ‘curly arrow’ described as the movement of an electron pair, showing either heterolytic fission or formation of a covalent bond",
+        "(i) reaction mechanisms, using diagrams, to show clearly the movement of an electron pair with ‘curly arrows’ and relevant dipoles."
+       ],
+       "official_reference": {
+        "section": "4.1.1",
+        "component": "H432",
+        "source_page": 36
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_4.1.2",
+       "code": "4.1.2",
+       "title": "Alkanes",
+       "content": [
+        "Properties of alkanes",
+        "(a) alkanes as saturated hydrocarbons containing single C–C and C–H bonds as σ-bonds (overlap of orbitals directly between the bonding atoms); free rotation of the σ-bond",
+        "(b) explanation of the tetrahedral shape and bond angle around each carbon atom in alkanes in terms of electron pair repulsion (see also 2.2.2 g–h)",
+        "(c) explanation of the variations in boiling points of alkanes with different carbon-chain length and branching, in terms of induced dipole–dipole interactions (London forces) (see also 2.2.2 k) Reactions of alkanes",
+        "(d) the low reactivity of alkanes with many reagents in terms of the high bond enthalpy and very low polarity of the σ-bonds present (see also 2.2.2 j)",
+        "(e) complete combustion of alkanes, as used in fuels, and the incomplete combustion of alkane fuels in a limited supply of oxygen with the resulting potential dangers from CO",
+        "(f) the reaction of alkanes with chlorine and bromine by radical substitution using ultraviolet radiation, including a mechanism involving homolytic fission and radical reactions in terms of initiation, propagation and termination (see also 4.1.1 f–g)",
+        "(g) the limitations of radical substitution in synthesis by the formation of a mixture of organic products, in terms of further substitution and reactions at different positions in a carbon chain."
+       ],
+       "official_reference": {
+        "section": "4.1.2",
+        "component": "H432",
+        "source_page": 39
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_4.1.3",
+       "code": "4.1.3",
+       "title": "Alkenes",
+       "content": [
+        "Properties of alkenes",
+        "(a) alkenes as unsaturated hydrocarbons containing a C=C bond comprising a π-bond (sideways overlap of adjacent p-orbitals above and below the bonding C atoms) and a σ-bond (overlap of orbitals directly between the bonding atoms) (see also 4.1.2 a); restricted rotation of the π-bond",
+        "(b) explanation of the trigonal planar shape and bond angle around each carbon in the C=C of alkenes in terms of electron pair repulsion (see also 2.2.2 g–h, 4.1.2 b) Stereoisomerism in alkenes",
+        "(c) (i) explanation of the terms: • stereoisomers (compounds with the same structural formula but with a different arrangement in space) • E/Z isomerism (an example of stereoisomerism, in terms of restricted rotation about a double bond and the requirement for two different groups to be attached to each carbon atom of the C=C group) • cis–trans isomerism (a special case of E/Z isomerism in which two of the substituent groups attached to each carbon atom of the C=C group are the same) (ii) use of Cahn–Ingold–Prelog (CIP) priority rules to identify the E and Z stereoisomers",
+        "(d) determination of possible E/Z or cis–trans stereoisomers of an organic molecule, given its structural formula Addition reactions of alkenes",
+        "(e) the reactivity of alkenes in terms of the relatively low bond enthalpy of the π-bond",
+        "(f) addition reactions of alkenes with:",
+        "(i) hydrogen in the presence of a suitable catalyst, e.g. Ni, to form alkanes (ii) halogens to form dihaloalkanes, including the use of bromine to detect the presence of a double C=C bond as a test for unsaturation in a carbon chain (iii) hydrogen halides to form haloalkanes (iv) steam in the presence of an acid catalyst, e.g. H PO , to form alcohols 3 4",
+        "(g) definition and use of the term electrophile (an electron pair acceptor)",
+        "(h) the mechanism of electrophilic addition in alkenes by heterolytic fission (see also 4.1.1 h–i)",
+        "(i) use of Markownikoff’s rule to predict formation of a major organic product in addition reactions of H–X to unsymmetrical alkenes, e.g. H–Br to propene, in terms of the relative stabilities of carbocation intermediates in the mechanism Polymers from alkenes",
+        "(j) addition polymerisation of alkenes and substituted alkenes, including:",
+        "(i) the repeat unit of an addition polymer deduced from a given monomer (ii) identification of the monomer that would produce a given section of an addition polymer Waste polymers and alternatives",
+        "(k) the benefits for sustainability of processing waste polymers by:",
+        "(i) combustion for energy production (ii) use as an organic feedstock for the production of plastics and other organic chemicals (iii) removal of toxic waste products, e.g. removal of HCl formed during disposal by combustion of halogenated plastics (e.g. PVC)",
+        "(l) the benefits to the environment of development of biodegradable and photodegradable polymers. 4.2 Alcohols, haloalkanes and analysis This section introduces two further functional groups: alcohols and haloalkanes, and considers the importance of polarity and bond enthalpy to organic reactions. Throughout this section, there are many opportunities for developing organic practical skills, including preparation and purification of organic liquids."
+       ],
+       "official_reference": {
+        "section": "4.1.3",
+        "component": "H432",
+        "source_page": 40
+       },
+       "as_reference": true,
+       "a_level_only": false
+      }
+     ]
+    },
+    {
+     "id": "OCR_CHEM_4.2",
+     "code": "4.2",
+     "title": "Alcohols, haloalkanes and analysis",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_4.2.1",
+       "code": "4.2.1",
+       "title": "Alcohols",
+       "content": [
+        "Properties of alcohols",
+        "(a) (i) the polarity of alcohols and an explanation, in terms of hydrogen bonding, of the water solubility and the relatively low volatility of alcohols compared with alkanes (see also 2.2.2 l and 4.1.2 c) (ii) classification of alcohols into primary, secondary and tertiary alcohols Reactions of alcohols",
+        "(b) combustion of alcohols",
+        "(c) oxidation of alcohols by an oxidising agent, e.g. Cr O 2–/H+ (i.e. K Cr O /H SO ), including: 2 7 2 2 7 2 4",
+        "(i) the oxidation of primary alcohols to form aldehydes and carboxylic acids; the control of the oxidation product using different reaction conditions (ii) the oxidation of secondary alcohols to form ketones (iii) the resistance to oxidation of tertiary alcohols",
+        "(d) elimination of H O from alcohols in the presence of an acid catalyst (e.g. H PO or H SO ) and heat 3 4 2 4 to form alkenes",
+        "(e) substitution with halide ions in the presence of acid (e.g. NaBr/H SO ) to form haloalkanes. 2 4"
+       ],
+       "official_reference": {
+        "section": "4.2.1",
+        "component": "H432",
+        "source_page": 42
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_4.2.2",
+       "code": "4.2.2",
+       "title": "Haloalkanes",
+       "content": [
+        "Substitution reactions of haloalkanes",
+        "(a) hydrolysis of haloalkanes in a substitution reaction:",
+        "(i) by aqueous alkali (ii) by water in the presence of AgNO and ethanol to compare experimentally the rates of hydrolysis of different carbon– halogen bonds",
+        "(b) definition and use of the term nucleophile (an electron pair donor)",
+        "(c) the mechanism of nucleophilic substitution in the hydrolysis of primary haloalkanes with aqueous alkali (see also 4.1.1 h–i)",
+        "(d) explanation of the trend in the rates of hydrolysis of primary haloalkanes in terms of the bond enthalpies of carbon–halogen bonds (C–F, C–Cl, C–Br and C–I) Environmental concerns from use of organohalogen compounds",
+        "(e) production of halogen radicals by the action of ultraviolet (UV) radiation on CFCs in the upper atmosphere and the resulting catalysed breakdown of the Earth’s protective ozone layer, including equations to represent:",
+        "(i) the production of halogen radicals (ii) the catalysed breakdown of ozone by Cl• and other radicals e.g. •NO."
+       ],
+       "official_reference": {
+        "section": "4.2.2",
+        "component": "H432",
+        "source_page": 43
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_4.2.3",
+       "code": "4.2.3",
+       "title": "Organic synthesis",
+       "content": [
+        "Practical skills",
+        "(a) the techniques and procedures for:",
+        "(i) use of Quickfit apparatus including for distillation and heating under reflux (ii) preparation and purification of an organic liquid including: • use of a separating funnel to remove an organic layer from an aqueous layer • d rying with an anhydrous salt (e.g. MgSO , CaCl ) 4 2 • redistillation Synthetic routes",
+        "(b) for an organic molecule containing several functional groups:",
+        "(i) identification of individual functional groups (ii) prediction of properties and reactions",
+        "(c) two-stage synthetic routes for preparing organic compounds."
+       ],
+       "official_reference": {
+        "section": "4.2.3",
+        "component": "H432",
+        "source_page": 44
+       },
+       "as_reference": true,
+       "a_level_only": false
+      },
+      {
+       "id": "OCR_CHEM_4.2.4",
+       "code": "4.2.4",
+       "title": "Analytical techniques (IR and mass spectrometry)",
+       "content": [
+        "Infrared spectroscopy",
+        "(a) infrared (IR) radiation causes covalent bonds to vibrate more and absorb energy",
+        "(b) absorption of infrared radiation by atmospheric gases containing C=O, O–H and C–H bonds (e.g. CO , H O and CH ), the suspected link to 2 2 4 global warming and resulting changes to energy usage",
+        "(c) use of an infrared spectrum of an organic compound to identify:",
+        "(i) an alcohol from an absorption peak of the O–H bond (ii) an aldehyde or ketone from an absorption peak of the C=O bond (iii) a carboxylic acid from an absorption peak of the C=O bond and a broad absorption peak of the O–H bond",
+        "(d) interpretations and predictions of an infrared spectrum of familiar or unfamiliar substances using supplied data",
+        "(e) use of infrared spectroscopy to monitor gases causing air pollution (e.g. CO and NO from car emissions) and in modern breathalysers to measure ethanol in the breath Mass spectrometry",
+        "(f) use of a mass spectrum of an organic compound to identify the molecular ion peak and hence to determine molecular mass",
+        "(g) analysis of fragmentation peaks in a mass spectrum to identify parts of structures. Combined techniques",
+        "(h) deduction of the structures of organic compounds from different analytical data including:",
+        "(i) elemental analysis (see also 2.1.3c) (ii) mass spectra (iii) IR spectra. Module 5: Physical chemistry and transition elements The content within this module assumes knowledge and understanding of the chemical concepts developed in Module 2: Foundations in chemistry and Module 3: Periodic table and energy. This module extends the study of energy, reaction rates and equilibria, and the periodic table. The main areas of physical chemistry studied include: • rate equations, orders of reaction, the rate- determining step • equilibrium constants, K and K c p • acid–base equilibria including pH, K and buffer a solutions • lattice enthalpy and Born–Haber cycles • entropy and free energy • electrochemical cells. The main areas of inorganic chemistry studied include: • redox chemistry • transition elements. 5.1 Rates, equilibrium and pH The largely qualitative treatment of reaction rates and equilibria encountered in Module 3 is developed within a quantitative and graphical context. This section also allows learners to develop practical quantitative techniques involved in the determination of reaction rates and pH. This section demonstrates how analytical techniques introduced in Module 4 (infrared spectroscopy, mass spectrometry and elemental analysis) may be used in combination with NMR spectroscopy to provide evidence of structural features in molecules."
+       ],
+       "official_reference": {
+        "section": "4.2.4",
+        "component": "H432",
+        "source_page": 45
+       },
+       "as_reference": true,
+       "a_level_only": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "OCR_CHEM_SEC_M5",
+   "title": "Module 5: Physical chemistry and transition elements",
+   "topics": [
+    {
+     "id": "OCR_CHEM_5.1",
+     "code": "5.1",
+     "title": "Rates, equilibrium and pH",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_5.1.1",
+       "code": "5.1.1",
+       "title": "How fast? Rate equations, orders and the Arrhenius equation",
+       "content": [
+        "Orders, rate equations and rate constants",
+        "(a) explanation and use of the terms: rate of reaction, order, overall order, rate constant, half- life, rate-determining step",
+        "(b) deduction of:",
+        "(i) orders from experimental data (ii) a rate equation from orders of the form: rate = k[A]m[B]n, where m and n are 0, 1 or 2",
+        "(c) calculation of the rate constant, k, and related quantities, from a rate equation including determination of units Rate graphs and orders",
+        "(d) from a concentration–time graph:",
+        "(i) deduction of the order (0 or 1) with respect to a reactant from the shape of the graph (ii) calculation of reaction rates from the measurement of gradients (see also 3.2.2 b)",
+        "(e) from a concentration–time graph of a first order reaction, measurement of constant half-life, t 1/2",
+        "(f) for a first order reaction, determination of the rate constant, k, from the constant half-life, t , 1/2 k 2/t using the relationship: = ln 1/2",
+        "(g) from a rate–concentration graph:",
+        "(i) deduction of the order (0, 1 or 2) with respect to a reactant from the shape of the graph (ii) determination of rate constant for a first order reaction from the gradient",
+        "(h) the techniques and procedures used to investigate reaction rates by the initial rates method and by continuous monitoring, including use of colorimetry (see also 3.2.2 e) Rate-determining step",
+        "(i) for a multi-step reaction, prediction of,",
+        "(i) a rate equation that is consistent with the rate-determining step (ii) possible steps in a reaction mechanism from the rate equation and the balanced equation for the overall reaction Effect of temperature on rate constants",
+        "(j) a qualitative explanation of the effect of temperature change on the rate of a reaction and hence the rate constant (see 3.2.2 f–g)",
+        "(k) the Arrhenius equation:",
+        "(i) the exponential relationship between the rate constant, k and temperature, T given by the Arrhenius equation, k = Ae–Ea/RT (ii) determination of E and A graphically a using: ln k = –E /RT + ln A derived from the a Arrhenius equation."
+       ],
+       "official_reference": {
+        "section": "5.1.1",
+        "component": "H432",
+        "source_page": 48
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_5.1.2",
+       "code": "5.1.2",
+       "title": "How far? Equilibrium constants Kc and Kp",
+       "content": [
+        "Equilibrium",
+        "(a) use of the terms mole fraction and partial pressure",
+        "(b) calculation of quantities present at equilibrium, given appropriate data",
+        "(c) the techniques and procedures used to determine quantities present at equilibrium",
+        "(d) expressions for K and K for homogeneous and c p heterogeneous equilibria (see also 3.2.3 f)",
+        "(e) calculations of K and K , or related quantities, c p including determination of units (see also 3.2.3 f)",
+        "(f) (i) the qualitative effect on equilibrium constants of changing temperature for exothermic and endothermic reactions (ii) the constancy of equilibrium constants with changes in concentration, pressure or in the presence of a catalyst",
+        "(g) explanation of how an equilibrium constant controls the position of equilibrium on changing concentration, pressure and temperature",
+        "(h) application of the above principles in 5.1.2 How far? for K , K to other equilibrium constants, c p where appropriate (see also 5.1.3 c etc.)."
+       ],
+       "official_reference": {
+        "section": "5.1.2",
+        "component": "H432",
+        "source_page": 50
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_5.1.3",
+       "code": "5.1.3",
+       "title": "Acids, bases and buffers",
+       "content": [
+        "Brønsted–Lowry acids and bases",
+        "(a) (i) a Brønsted–Lowry acid as a species that donates a proton and a Brønsted–Lowry base as a species that accepts a proton (see also 2.1.4 Acids) (ii) use of the term conjugate acid–base pairs (iii) monobasic, dibasic and tribasic acids",
+        "(b) the role of H+ in the reactions of acids with metals and bases (including carbonates, metal oxides and alkalis), using ionic equations (see also 2.1.4 c, 2.1.5 e)",
+        "(c) (i) the acid dissociation constant, K , for the a extent of acid dissociation (see also 2.1.4 b) (ii) the relationship between K and pK a a pH and [H+(aq)]",
+        "(d) use of the expression for pH as: pH = –log[H+] [H+] = 10–pH",
+        "(e) use of the expression for the ionic product of water, K w",
+        "(f) calculations of pH, or related quantities, for:",
+        "(i) strong monobasic acids (ii) strong bases, using K w",
+        "(g) calculations of pH, K or related quantities, for a a weak monobasic acid using approximations",
+        "(h) limitations of using approximations to K related a calculations for ‘stronger’ weak acids Buffers: action, uses and calculations",
+        "(i) a buffer solution as a system that minimises pH changes on addition of small amounts of an acid or a base",
+        "(j) formation of a buffer solution from:",
+        "(i) a weak acid and a salt of the weak acid, e.g. CH COOH/CH COONa 3 3 (ii) excess of a weak acid and a strong alkali, e.g. excess CH COOH/NaOH",
+        "(k) explanation of the role of the conjugate acid–base pair in an acid buffer solution, e.g. CH COOH/CH COO–, in the control of pH 3 3",
+        "(l) calculation of the pH of a buffer solution, from the K value of a weak acid and the equilibrium a concentrations of the conjugate acid–base pair; calculations of related quantities",
+        "(m) explanation of the control of blood pH by the carbonic acid–hydrogencarbonate buffer system Neutralisation",
+        "(n) pH titration curves for combinations of strong and weak acids with strong and weak bases, including:",
+        "(i) sketch and interpretation of their shapes (ii) explanation of the choice of suitable indicators, given the pH range of the indicator (iii) explanation of indicator colour changes in terms of equilibrium shift between the HA and A– forms of the indicator",
+        "(o) the techniques and procedures used when measuring pH with a pH meter. 5.2 Energy Born–Haber cycles are used as a theoretical model to illustrate the energy changes associated with ionic bonding. Entropy and free energy are then introduced as concepts used to predict quantitatively the feasibility of chemical change."
+       ],
+       "official_reference": {
+        "section": "5.1.3",
+        "component": "H432",
+        "source_page": 51
+       },
+       "as_reference": false,
+       "a_level_only": true
+      }
+     ]
+    },
+    {
+     "id": "OCR_CHEM_5.2",
+     "code": "5.2",
+     "title": "Energy",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_5.2.1",
+       "code": "5.2.1",
+       "title": "Lattice enthalpy",
+       "content": [
+        "Lattice enthalpy",
+        "(a) explanation of the term lattice enthalpy (formation of 1 mol of ionic lattice from gaseous ions, ∆ H) and use as a measure of the strength LE of ionic bonding in a giant ionic lattice (see also 2.2.2 b–c) Born–Haber and related enthalpy cycles",
+        "(b) use of the lattice enthalpy of a simple ionic solid (e.g. NaCl, MgCl ) and relevant energy terms for:",
+        "(i) the construction of Born–Haber cycles (ii) related calculations",
+        "(c) explanation and use of the terms:",
+        "(i) enthalpy change of solution (dissolving of 1 mol of solute, ∆ H) sol (ii) enthalpy change of hydration (dissolving of 1 mol of gaseous ions in water, ∆ H) hyd",
+        "(d) use of the enthalpy change of solution of a simple ionic solid (e.g. NaCl, MgCl ) and relevant (enthalpy change of hydration energy terms and lattice enthalpy) for:",
+        "(i) the construction of enthalpy cycles (ii) related calculations",
+        "(e) qualitative explanation of the effect of ionic charge and ionic radius on the exothermic value of a lattice enthalpy and enthalpy change of hydration."
+       ],
+       "official_reference": {
+        "section": "5.2.1",
+        "component": "H432",
+        "source_page": 53
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_5.2.2",
+       "code": "5.2.2",
+       "title": "Enthalpy and entropy",
+       "content": [
+        "Entropy",
+        "(a) explanation that entropy is a measure of the dispersal of energy in a system which is greater, the more disordered a system",
+        "(b) explanation of the difference in magnitude of the entropy of a system:",
+        "(i) of solids, liquids and gases (ii) for a reaction in which there is a change in the number of gaseous molecules",
+        "(c) calculation of the entropy change of a system, ∆S, and related quantities for a reaction given the entropies of the reactants and products Free energy",
+        "(d) explanation that the feasibility of a process depends upon the entropy change and temperature in the system, T∆S, and the enthalpy change of the system, ∆H",
+        "(e) explanation, and related calculations, of the free energy change, ∆G, as: ∆G = ∆H – T∆S (the Gibbs’ equation) and that a process is feasible when ∆G has a negative value",
+        "(f) the limitations of predictions made by ∆G about feasibility, in terms of kinetics."
+       ],
+       "official_reference": {
+        "section": "5.2.2",
+        "component": "H432",
+        "source_page": 54
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_5.2.3",
+       "code": "5.2.3",
+       "title": "Redox and electrode potentials",
+       "content": [
+        "Redox",
+        "(a) explanation and use of the terms oxidising agent and reducing agent (see also 2.1.5 Redox)",
+        "(b) construction of redox equations using half- equations and oxidation numbers",
+        "(c) interpretation and prediction of reactions involving electron transfer Redox titrations",
+        "(d) the techniques and procedures used when carrying out redox titrations including those involving Fe2+/MnO – and I /S O 2− 4 2 2 3 (see also 2.1.5 e–f)",
+        "(e) structured and non-structured titration calculations, based on experimental results of redox titrations involving:",
+        "(i) Fe2+/MnO – and I /S O 2− 4 2 2 3 (ii) non-familiar redox systems Electrode potentials use of the term standard electrode (redox)",
+        "(f) potential, E ,o including its measurement using a hydrogen electrode",
+        "(g) the techniques and procedures used for the measurement of cell potentials of:",
+        "(i) metals or non-metals in contact with their ions in aqueous solution (ii) ions of the same element in different oxidation states in contact with a Pt electrode",
+        "(h) calculation of a standard cell potential by combining two standard electrode potentials",
+        "(i) prediction of the feasibility of a reaction using standard cell potentials and the limitations of such predictions in terms of kinetics and concentration Storage and fuel cells",
+        "(j) application of principles of electrode potentials to modern storage cells",
+        "(k) explanation that a fuel cell uses the energy from the reaction of a fuel with oxygen to create a voltage and the changes that take place at each electrode. 5.3 Transition elements This section provides learners with a deeper knowledge and understanding of the periodic table within the context of the transition elements."
+       ],
+       "official_reference": {
+        "section": "5.2.3",
+        "component": "H432",
+        "source_page": 55
+       },
+       "as_reference": false,
+       "a_level_only": true
+      }
+     ]
+    },
+    {
+     "id": "OCR_CHEM_5.3",
+     "code": "5.3",
+     "title": "Transition elements",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_5.3.1",
+       "code": "5.3.1",
+       "title": "Transition elements",
+       "content": [
+        "Properties",
+        "(a) the electron configuration of atoms and ions of the d-block elements of Period 4 (Sc–Zn), given the atomic number and charge (see also 2.2.1 d)",
+        "(b) the elements Ti–Cu as transition elements i.e. d-block elements that have an ion with an incomplete d-sub-shell",
+        "(c) illustration, using at least two transition elements, of:",
+        "(i) the existence of more than one oxidation state for each element in its compounds (see also 5.3.1 k) (ii) the formation of coloured ions (see also 5.3.1 h, j–k) (iii) the catalytic behaviour of the elements and their compounds and their importance in the manufacture of chemicals by industry (see 3.2.2 d) Ligands and complex ions",
+        "(d) explanation and use of the term ligand in terms of coordinate (dative covalent) bonding to a metal ion or metal, including bidentate ligands",
+        "(e) use of the terms complex ion and coordination number and examples of complexes with:",
+        "(i) six-fold coordination with an octahedral shape (ii) four-fold coordination with either a planar or tetrahedral shape (see also 2.2.2 g–h)",
+        "(f) types of stereoisomerism shown by complexes, including those associated with bidentate and multidentate ligands:",
+        "(i) cis–trans isomerism e.g. Pt(NH ) Cl 3 2 2 (see also 4.1.3 c–d) (ii) optical isomerism e.g. [Ni(NH CH CH NH ) ]2+ (see also 6.2.2 c) 2 2 2 2 3",
+        "(g) use of cis-platin as an anti-cancer drug and its action by binding to DNA preventing cell division Ligand substitution",
+        "(h) ligand substitution reactions and the accompanying colour changes in the formation of:",
+        "(i) [Cu(NH ) (H O) ]2+ and [CuCl ]2– from 3 4 2 2 4 [Cu(H O) ]2+ 2 6 (ii) [Cr(NH ) ]3+ from [Cr(H O) ]3+ 3 6 2 6 (see also 5.3.1 j)",
+        "(i) explanation of the biochemical importance of iron in haemoglobin, including ligand substitution involving O and CO Precipitation reactions",
+        "(j) reactions, including ionic equations, and the accompanying colour changes of aqueous Cu2+, Fe2+, Fe3+, Mn2+ and Cr3+ with aqueous sodium hydroxide and aqueous ammonia, including:",
+        "(i) precipitation reactions (ii) complex formation with excess aqueous sodium hydroxide and aqueous ammonia Redox reactions",
+        "(k) redox reactions and accompanying colour changes for:",
+        "(i) interconversions between Fe2+ and Fe3+ (ii) interconversions between Cr3+ and Cr O 2– 2 7 (iii) reduction of Cu2+ to Cu+ and disproportionation of Cu+ to Cu2+ and Cu",
+        "(l) interpretation and prediction of unfamiliar reactions including ligand substitution, precipitation, redox."
+       ],
+       "official_reference": {
+        "section": "5.3.1",
+        "component": "H432",
+        "source_page": 56
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_5.3.2",
+       "code": "5.3.2",
+       "title": "Qualitative analysis",
+       "content": [
+        "Tests for ions",
+        "(a) qualitative analysis of ions on a test-tube scale: processes and techniques needed to identify the following ions in an unknown compound:",
+        "(i) anions: CO 2–, Cl–, Br–, I–, SO 2– 3 4 (see 3.1.4 a) (ii) cations: NH +; Cu2+, Fe2+, Fe3+, Mn2+, Cr3+ (see 3.1.4 a, 5.3.1 j). Module 6: Organic chemistry and analysis The content within this module assumes knowledge and understanding of the chemical concepts developed in Module 2: Foundations in chemistry and Module 4: Core organic chemistry. This module introduces several new functional groups and emphasises the importance of organic synthesis. This module also adds NMR spectroscopy to the instrumentation techniques used in organic and forensic analysis. The main areas of organic chemistry studied include: • aromatic compounds • carboxylic acids and esters • organic nitrogen compounds: amines and amino acids • polymerisation: addition polymers and condensation polymers • synthetic organic chemistry and further development of practical skills • the importance of modern analytical techniques in organic analysis. 6.1 Aromatic compounds, carbonyls and acids This section extends the range of functional groups encountered in Module 4. Aromatic compounds are first introduced, including the central role of delocalisation within the chemistry of arenes and phenols. Directing groups are also introduced, including their importance to organic synthesis."
+       ],
+       "official_reference": {
+        "section": "5.3.2",
+        "component": "H432",
+        "source_page": 58
+       },
+       "as_reference": false,
+       "a_level_only": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "OCR_CHEM_SEC_M6",
+   "title": "Module 6: Organic chemistry and analysis",
+   "topics": [
+    {
+     "id": "OCR_CHEM_6.1",
+     "code": "6.1",
+     "title": "Aromatic compounds, carbonyls and acids",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_6.1.1",
+       "code": "6.1.1",
+       "title": "Aromatic compounds",
+       "content": [
+        "Benzene and aromatic compounds",
+        "(a) the comparison of the Kekulé model of benzene with the subsequent delocalised models for benzene in terms of p-orbital overlap forming a delocalised π-system",
+        "(b) the experimental evidence for a delocalised, rather than Kekulé, model for benzene in terms of bond lengths, enthalpy change of hydrogenation and resistance to reaction (see also 6.1.1 f)",
+        "(c) use of IUPAC rules of nomenclature for systematically naming substituted aromatic compounds Electrophilic substitution",
+        "(d) the electrophilic substitution of aromatic compounds with:",
+        "(i) concentrated nitric acid in the presence of concentrated sulfuric acid (ii) a halogen in the presence of a halogen carrier (iii) a haloalkane or acyl chloride in the presence of a halogen carrier (Friedel–Crafts reaction) and its importance to synthesis by formation of a C–C bond to an aromatic ring (see also 6.2.4 d)",
+        "(e) the mechanism of electrophilic substitution in arenes for nitration and halogenation (see also 4.1.1 h–i)",
+        "(f) the explanation of the relative resistance to bromination of benzene, compared with alkenes, in terms of the delocalised electron density of the π-system in benzene compared with the localised electron density of the π-bond in alkenes (see also 4.1.3 a, 6.1.1 a)",
+        "(g) the interpretation of unfamiliar electrophilic substitution reactions of aromatic compounds, including prediction of mechanisms Phenols",
+        "(h) the weak acidity of phenols shown by the neutralisation reaction with NaOH but absence of reaction with carbonates (see also 5.1.3 b)",
+        "(i) the electrophilic substitution reactions of phenol:",
+        "(i) with bromine to form 2,4,6-tribromophenol (ii) with dilute nitric acid to form a mixture of 2-nitrophenol and 4-nitrophenol",
+        "(j) the relative ease of electrophilic substitution of phenol compared with benzene, in terms of electron pair donation to the π-system from an oxygen p-orbital in phenol (see also 4.1.3 a)",
+        "(k) the 2- and 4-directing effect of electron- donating groups (OH, NH ) and the 3-directing effect of electron-withdrawing groups (NO ) in electrophilic substitution of aromatic compounds",
+        "(l) the prediction of substitution products of aromatic compounds by directing effects and the importance to organic synthesis (see also 6.2.5 Organic Synthesis)."
+       ],
+       "official_reference": {
+        "section": "6.1.1",
+        "component": "H432",
+        "source_page": 60
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_6.1.2",
+       "code": "6.1.2",
+       "title": "Carbonyl compounds",
+       "content": [
+        "Reactions of carbonyl compounds",
+        "(a) oxidation of aldehydes using Cr O 2–/H+ 2 7 (i.e. K Cr O /H SO ) to form carboxylic acids 2 2 7 2 4",
+        "(b) nucleophilic addition reactions of carbonyl compounds with:",
+        "(i) NaBH to form alcohols (ii) HCN [i.e. NaCN(aq)/H+(aq)], to form hydroxynitriles (see also 6.2.4 b)",
+        "(c) the mechanism for nucleophilic addition reactions of aldehydes and ketones with NaBH and HCN Characteristic tests for carbonyl compounds",
+        "(d) use of 2,4-dinitrophenylhydrazine to:",
+        "(i) detect the presence of a carbonyl group in an organic compound (ii) identify a carbonyl compound from the melting point of the derivative",
+        "(e) use of Tollens’ reagent (ammoniacal silver nitrate) to:",
+        "(i) detect the presence of an aldehyde group (ii) distinguish between aldehydes and ketones, explained in terms of the oxidation of aldehydes to carboxylic acids with reduction of silver ions to silver."
+       ],
+       "official_reference": {
+        "section": "6.1.2",
+        "component": "H432",
+        "source_page": 61
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_6.1.3",
+       "code": "6.1.3",
+       "title": "Carboxylic acids and esters",
+       "content": [
+        "Properties of carboxylic acids",
+        "(a) explanation of the water solubility of carboxylic acids in terms of hydrogen bonding",
+        "(b) reactions in aqueous conditions of carboxylic acids with metals and bases (including carbonates, metal oxides and alkalis) Esters",
+        "(c) esterification of:",
+        "(i) carboxylic acids with alcohols in the presence of an acid catalyst (e.g. concentrated H SO ) 2 4 (ii) acid anhydrides with alcohols",
+        "(d) hydrolysis of esters:",
+        "(i) in hot aqueous acid to form carboxylic acids and alcohols (ii) in hot aqueous alkali to form carboxylate salts and alcohols Acyl chlorides",
+        "(e) the formation of acyl chlorides from carboxylic acids using SOCl",
+        "(f) use of acyl chlorides in synthesis in formation of esters, carboxylic acids and primary and secondary amides. 6.2 Nitrogen compounds, polymers and synthesis This section focuses on organic nitrogen compounds, including amines, amides and amino acids. Chirality and optical isomerism is also introduced. Condensation polymerisation is also introduced and compared with addition polymerisation. The importance of carbon–carbon bond formation in organic synthesis is stressed. Learners are also able"
+       ],
+       "official_reference": {
+        "section": "6.1.3",
+        "component": "H432",
+        "source_page": 62
+       },
+       "as_reference": false,
+       "a_level_only": true
+      }
+     ]
+    },
+    {
+     "id": "OCR_CHEM_6.2",
+     "code": "6.2",
+     "title": "Nitrogen compounds, polymers and synthesis",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_6.2.1",
+       "code": "6.2.1",
+       "title": "Amines",
+       "content": [
+        "Basicity and preparation of amines",
+        "(a) the basicity of amines in terms of proton acceptance by the nitrogen lone pair and the reactions of amines with dilute acids, e.g. HCl(aq), to form salts",
+        "(b) the preparation of:",
+        "(i) aliphatic amines by substitution of haloalkanes with excess ethanolic ammonia and amines (ii) aromatic amines by reduction of nitroarenes using tin and concentrated hydrochloric acid."
+       ],
+       "official_reference": {
+        "section": "6.2.1",
+        "component": "H432",
+        "source_page": 63
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_6.2.2",
+       "code": "6.2.2",
+       "title": "Amino acids, amides and chirality",
+       "content": [
+        "Reactions of amino acids",
+        "(a) the general formula for an α-amino acid as RCH(NH )COOH and the following reactions of amino acids:",
+        "(i) reaction of the carboxylic acid group with alkalis and in the formation of esters (see also 6.1.3 c) (ii) reaction of the amine group with acids Amides",
+        "(b) structures of primary and secondary amides (see also 6.1.3 f, 6.2.3 a–b) Chirality",
+        "(c) optical isomerism (an example of stereoisomerism, in terms of non- superimposable mirror images about a chiral centre) (see also 4.1.3 c–d)",
+        "(d) identification of chiral centres in a molecule of any organic compound."
+       ],
+       "official_reference": {
+        "section": "6.2.2",
+        "component": "H432",
+        "source_page": 64
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_6.2.3",
+       "code": "6.2.3",
+       "title": "Polyesters and polyamides",
+       "content": [
+        "Condensation polymers",
+        "(a) condensation polymerisation to form:",
+        "(i) polyesters (ii) polyamides",
+        "(b) the acid and base hydrolysis of:",
+        "(i) the ester groups in polyesters (ii) the amide groups in polyamides",
+        "(c) prediction from addition and condensation polymerisation of:",
+        "(i) the repeat unit from a given monomer(s) (ii) the monomer(s) required for a given section of a polymer molecule (iii) the type of polymerisation."
+       ],
+       "official_reference": {
+        "section": "6.2.3",
+        "component": "H432",
+        "source_page": 65
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_6.2.4",
+       "code": "6.2.4",
+       "title": "Carbon–carbon bond formation",
+       "content": [
+        "Extending carbon chain length",
+        "(a) the use of C–C bond formation in synthesis to increase the length of a carbon chain (see also 6.1.1 d, 6.1.2 b)",
+        "(b) formation of C–C/N by reaction of:",
+        "(i) haloalkanes with CN– and ethanol, including nucleophilic substitution mechanism (see also 4.2.2 c) (ii) carbonyl compounds with HCN, including nucleophilic addition mechanism (see also 6.1.2 b–c)",
+        "(c) reaction of nitriles from (b):",
+        "(i) by reduction (e.g. with H /Ni) to form amines (ii) by acid hydrolysis to form carboxylic acids",
+        "(d) formation of a substituted aromatic C–C by alkylation (using a haloalkane) and acylation (using an acyl chloride) in the presence of a halogen carrier (Friedel–Crafts reaction) (see also 6.1.1 d)."
+       ],
+       "official_reference": {
+        "section": "6.2.4",
+        "component": "H432",
+        "source_page": 65
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_6.2.5",
+       "code": "6.2.5",
+       "title": "Organic synthesis",
+       "content": [
+        "Practical skills",
+        "(a) the techniques and procedures used for the preparation and purification of organic solids involving use of a range of techniques (see also 4.2.3 a) including:",
+        "(i) organic preparation • use of Quickfit apparatus • distillation and heating under reflux (ii) purification of an organic solid • filtration under reduced pressure • recrystallisation • measurement of melting points Synthetic routes",
+        "(b) for an organic molecule containing several functional groups:",
+        "(i) identification of individual functional groups (ii) prediction of properties and reactions",
+        "(c) multi-stage synthetic routes for preparing organic compounds. 6.3 Analysis This section develops and complements the spectroscopic areas of organic chemistry previously encountered (see Module 4: Core organic chemistry;"
+       ],
+       "official_reference": {
+        "section": "6.2.5",
+        "component": "H432",
+        "source_page": 66
+       },
+       "as_reference": false,
+       "a_level_only": true
+      }
+     ]
+    },
+    {
+     "id": "OCR_CHEM_6.3",
+     "code": "6.3",
+     "title": "Analysis",
+     "kind": "topic",
+     "points": [
+      {
+       "id": "OCR_CHEM_6.3.1",
+       "code": "6.3.1",
+       "title": "Chromatography and qualitative analysis",
+       "content": [
+        "Types of chromatography",
+        "(a) interpretation of one-way TLC chromatograms in terms of R values f",
+        "(b) interpretation of gas chromatograms in terms of:",
+        "(i) retention times (ii) the amounts and proportions of the components in a mixture. Tests for organic functional groups",
+        "(c) qualitative analysis of organic functional groups on a test-tube scale; processes and techniques needed to identify the following functional groups in an unknown compound:",
+        "(i) alkenes by reaction with bromine (see also 4.1.3 f) (ii) haloalkanes by reaction with aqueous silver nitrate in ethanol (see also 4.2.2 a) (iii) phenols by weak acidity but no reaction with CO 2– (see also 6.1.1 h) (iv) carbonyl compounds by reaction with 2,4- DNP (see also 6.1.2 d)",
+        "(v) aldehydes by reaction with Tollens’ reagent (see also 6.1.2 e) (vi) primary and secondary alcohols and aldehydes by reaction with acidified dichromate (see also 4.2.1 c, 6.1.2a) (vii) carboxylic acids by reaction with CO 2– (see also 6.1.3 b)."
+       ],
+       "official_reference": {
+        "section": "6.3.1",
+        "component": "H432",
+        "source_page": 67
+       },
+       "as_reference": false,
+       "a_level_only": true
+      },
+      {
+       "id": "OCR_CHEM_6.3.2",
+       "code": "6.3.2",
+       "title": "Spectroscopy (NMR and combined techniques)",
+       "content": [
+        "NMR Spectroscopy",
+        "(a) analysis of a carbon-13 NMR spectrum of an organic molecule to make predictions about:",
+        "(i) the number of carbon environments in the molecule (ii) the different types of carbon environment present, from chemical shift values (iii) possible structures for the molecule",
+        "(b) analysis of a high resolution proton NMR spectrum of an organic molecule to make predictions about:",
+        "(i) the number of proton environments in the molecule (ii) the different types of proton environment present, from chemical shift values (iii) the relative numbers of each type of proton present from relative peak areas, using integration traces or ratio numbers, when required (iv) the number of non-equivalent protons adjacent to a given proton from the spin– spin splitting pattern, using the n + 1 rule",
+        "(v) possible structures for the molecule",
+        "(c) prediction of a carbon-13 or proton NMR spectrum for a given molecule",
+        "(d) (i) the use of tetramethylsilane, TMS, as the standard for chemical shift measurements (ii) the need for deuterated solvents, e.g. CDCl , when running an NMR spectrum (iii) the identification of O–H and N–H protons by proton exchange using D O Combined techniques",
+        "(e) deduction of the structures of organic compounds from different analytical data including:",
+        "(i) elemental analysis (see also 2.1.3 c) (ii) mass spectra (see also 4.2.4 f–g) (iii) IR spectra (see also 4.2.4 d–e) (iv) NMR spectra. 2d. Prior knowledge, learning and progression This specification has been developed for learners who wish to continue with a study of chemistry at Level in the National Qualifications Framework (NQF). The A level specification has been written to provide progression from GCSE Science, GCSE Additional Science, GCSE Further Additional Science, GCSE Chemistry or from AS Level Chemistry. Learners who have successfully taken other Level 2 qualifications in Science or Applied Science with appropriate chemistry content may also have acquired sufficient knowledge and understanding to begin the A Level Chemistry course. There is no formal requirement for prior knowledge of chemistry for entry onto this qualification. Other learners without formal qualifications may have acquired sufficient knowledge of chemistry to enable progression onto the course. 3a. Forms of assessment All three externally assessed components (01–03) contain some synoptic assessment, some extended response questions and some stretch and challenge questions. Stretch and challenge questions are designed to allow the most able learners the opportunity to demonstrate the full extent of their knowledge and skills. Periodic table, elements and physical chemistry (Component This component is worth 100 marks and is split into two sections and assesses content from teaching modules 1, 2, 3 and 5. Learners answer all questions. Section A contains multiple choice questions. This section of the paper is worth 15 marks. Synthesis and analytical techniques (Component 02) This component is worth 100 marks and is split into two sections and assesses content from teaching modules 1, 2, 4 and 6. Learners answer all questions. Section A contains multiple choice questions. This section of the paper is worth 15 marks. Unified chemistry (Component 03) This component assesses content from across all teaching modules 1 to 6. Learners answer all questions. This component is worth 70 marks. Practical Endorsement in chemistry (Component 04) Performance in this component is reported separately to the performance in the A level as measured through externally assessed components 01 to 03. This non-exam assessment component rewards the development of practical competency in chemistry and is teacher assessed. Learners demonstrate competence in the range of skills and techniques specified in Section 1.2 of the specification by carrying out a minimum of 12 assessed practical activities. The Practical Endorsement is teacher assessed against the Common Practical Assessment Criteria as specified in Section 5g. 3b. Assessment objectives (AO) There are three assessment objectives in OCR’s A Level in Chemistry A. These are detailed in the table below. Assessment Demonstrate knowledge and understanding AO1 procedures. Apply knowledge and understanding of scientific • in a theoretical context AO2 • in a practical context • when handling qualitative data • when handling quantitative data. Analyse, interpret and evaluate scientific to issues, to: AO3 • make judgements and reach conclusions • develop and refine practical design AO weightings in A Level in Chemistry A The relationship between the assessment objectives and the components are shown in the following table: Component Periodic table, elements and physical chemistry (H432/01) Synthesis and analytical techniques (H432/02) Unified chemistry (H432/03) Practical endorsement in chemistry (H432/04)* Total * The Practical Endorsement is assessed and reported separately 3c. Total qualification time Total qualification time (TQT) is the total amount of time, in hours, expected to be spent by a learner to achieve a qualification. It includes both guided learning hours and hours spent in preparation, study, and 3d. Qualification availability outside of This qualification is available in England. For Wales and Northern Ireland please check the Qualifications in Wales Portal (QIW) or the Northern Ireland Department of Education Performance Measures / 3e. Language This qualification is available in English only. All assessment materials are available in English only and all candidate work must be in English. 3f. Assessment availability There will be one examination series available each year in May/June to all learners. All examined components must be taken in the same examination series at the end of the course. 3g. Retaking the qualification Learners can retake the qualification as many times as they wish. Learners must retake all examined components but they can choose to either retake the Practical Endorsement or carry forward their most recent result (see Section 4d). Candidates can choose either to retake the Practical Endorsement or to carry forward their result for the Practical Endorsement by using the carry forward entry option (see Section 4a). The result for the Practical 3h. Assessment of extended response The assessment materials for this qualification provide learners with the opportunity to demonstrate their ability to construct and develop a sustained and coherent line of reasoning and marks for extended responses are integrated into the marking criteria. 3i. Synoptic assessment Synoptic assessment tests the learners’ understanding of the connections between different elements of the subject. Synoptic assessment involves the explicit drawing together of knowledge, understanding and skills learned in different parts of the A level course. The emphasis of synoptic assessment is to encourage the development of the understanding of the subject as a discipline. All components within Chemistry A contain an element of synoptic assessment. 3j. Calculating qualification results A learner’s overall qualification grade for A Level in Chemistry A will be calculated by adding together their marks from the three examined components taken to give their total weighted mark. This mark will then be compared to the qualification level grade boundaries for the entry option taken The information in this section is designed to give an overview of the processes involved in administering this qualification so that you can speak to your exams officer. All of the following processes require you to submit something to OCR by a specific deadline. 4a. Pre-assessment Updated arrangements for monitoring the Practical Endorsement Full details on the monitoring and the implementation of the practical endorsement are available on the Positive about Practical pages at https://www.ocr.org. uk/subjects/science/positive-about-practical. Lead teachers are required to have undertaken the free online training for A level science teachers, available here: https://practicalendorsement.ocr.org.uk/login/ index.php. The lead teacher should also ensure that all other teachers of that science within the centre are familiar with the requirements so that standards are applied consistently. The awarding organisations (AOs) use information from centre entries for the A levels in biology, chemistry and physics from the previous summer examination Final entries Final entries provide OCR with detailed data for each learner, showing each assessment to be taken. It is essential that you use the correct entry code, considering the relevant entry rules. Entry option Component Entry code Title Code Title H432A Chemistry A 01 Periodic table, elements 02 Synthesis and analytical 03 Unified chemistry 04 Practical Endorsement H432C Chemistry A 01 Periodic table, elements 02 Synthesis and analytical 03 Unified chemistry 80 Practical Endorsement Forward* *The carry forward option will be available for the first time Private candidates Private candidates may enter for OCR assessments. A private candidate is someone who pursues a course of study independently but takes an examination or assessment at an approved examination centre. A private candidate may be a part-time student, someone taking a distance learning course, or someone being tutored privately. They must be based in the UK. The A Level Chemistry A qualification requires learners to complete a Practical Endorsement incorporating a minimum of 12 practical activities, allowing them to demonstrate a range of practical skills, use of apparatus and techniques to fulfil the Common Practical Assessment Criteria. Head of Centre Annual Declaration The practical science statement is contained within the NEA Centre Declaration Form which can be found on the OCR website at www.ocr.org.uk/formsfinder. By signing the form, the centre is confirming that they are meeting all the requirements detailed in the specification, including that they have provided all candidates the opportunity to undertake the prescribed practical activities. NEA Centre Declaration Form: Practical Science Statement Centres must provide a written practical science statement confirming that reasonable opportunities have been provided to all learners being submitted for entry for assessment to undertake at least twelve appropriate practical activities. The practical science statement is contained within the NEA Centre Declaration Form, this form can be found on the OCR website at www.ocr.org.uk/formsfinder. By signing the form, the centre is confirming that:",
+        "a) At least twelve practical activities have been completed by each candidate enabling them to demonstrate competence in all skills, apparatus and techniques as specified in OCR’s A Level science specifications. Collecting evidence of student performance to ensure Regulators have published guidance on collecting evidence of student performance as part of long- term contingency arrangements to improve the resilience of the qualifications system. You should review and consider this guidance when delivering this qualification to students at your centre. 4b. Accessibility and special consideration Reasonable adjustments and access arrangements allow learners with special educational needs, disabilities or temporary injuries to access the assessment and show what they know and can do, without changing the demands of the assessment. Applications for these should be made before the examination series. Detailed information about eligibility for access arrangements can be found in the JCQ Access Arrangements and Reasonable Adjustments. 4c. External assessment arrangements Regulations governing examination arrangements are contained in the JCQ Instructions for conducting examinations. Carrying forward the Practical Endorsement in Chemistry Learners who are retaking the qualification can choose to either retake the endorsement or carry forward their most recent result for that component (even if it was awarded by another awarding organisation or if it was awarded for an alternative suite). To carry forward the result, you must use the carry forward entry option (see table in Section 4a). 4d. Admin of non-exam assessment Regulations governing arrangements for internal assessments are contained in the JCQ Instructions for conducting non-examination assessments. Appendix 1 of this document gives specific details for the Practical Skills Endorsement for A Level sciences designed for use in England. 4e. AI use in the Practical Endorsements Teachers delivering NEA components must follow the JCQ guidelines: AI Use in Assessments: Your role in protecting the integrity of qualifications. Teachers are responsible for monitoring students’ progress to ensure that: • work meets the Practical Endorsement assessment criteria • work can be confidently authenticated as the student’s own • the student is not rewarded if they have used AI tools in such a way that means they have not independently demonstrated competency. 4f. Results and certificates Grade scale A level qualifications are graded on the scale: A*, A, B, C, D, E, where A* is the highest. Learners who fail to reach the minimum standard for E will be Unclassified (U). Only subjects in which grades A* to E are attained will be recorded on certificates. Results Results are released to centres and learners for information and to allow any queries to be resolved certificates are issued. before Centres will have access to the following results information for each learner: • the grade for the qualification • the raw mark for each component • the total weighted mark for the qualification. 4g. Post-results services A number of post-results services are available: • Review of results – If you are not happy with the outcome of a learner’s results, centres may request a review of marking. • Missing and incomplete results – This service should be used if an individual subject result for a learner is missing, or the learner has been omitted entirely from the results supplied. 4h. Malpractice Any breach of the regulations for the conduct of examinations and coursework may constitute malpractice (which includes maladministration) and must be reported to OCR as soon as it is detected. 5a. Overlap with other qualifications There is a small degree of overlap between the content of this specification and those for other AS level/A level Sciences. Examples of overlap include: Biology • Amino acids, proteins, chromatography, buffers, pH, catalysis. Geology • The atmosphere. 5b. Avoidance of bias The A level qualification and subject criteria have been reviewed in order to identify any feature which could disadvantage learners who share a protected 5c. Chemistry A data sheet Data Sheet for GCE Advanced Subsidiary Chemistry A (H032 The information in this sheet is for the use of candidates Copies of this sheet may General Information Molar gas volume = 24.0 dm3 mol–1 at room temperature Avogadro constant, N = 6.02 × 1023 mol–1 A Specific heat capacity of water, c = 4.18 J g–1 K–1 Ionic product of water, K = 1.00 × 10–14 mol2 dm–6 at 298 w tonne = 106 g Arrhenius equation: k = Ae–Ea/RT or ln k = –E /RT + ln A a Gas constant, R = 8.314 J mol–1 K–1 Characteristic infrared absorptions in organic molecules Bond Location C–C Alkanes, alkyl chains C–X Haloalkanes (X = Cl, Br, I) C–F Fluoroalkanes C–O Alcohols, esters, carboxylic acids C=C Alkenes Aldehydes, ketones, carboxylic acids, esters, C=O chlorides and acid anhydrides aromatic Arenes C=C C/N Nitriles C–H Alkyl groups, alkenes, arenes O–H Carboxylic acids N–H Amines, amides O–H Alcohols, phenols 3.1 13C NMR chemical shifts relative to TMS OCR © Cambridge Level Advanced OCR 2026 GCE in Chemistry C O C O A 220 200 180 160 220 200 180 160 1H NMR chemical shifts relative to TMS O O O O C C H C H C O H O H 12 11 10 9 12 11 10 9 Chemical shifts are variable and can vary depending on OH and NH chemical shifts are very variable and are often 77 Note that CH bonded to ‘shifting groups’ on either side, (1) (2) 1 Key 1 atomic number H Symbol hydrogen name 1.0 relative atomic mass 3 4 Li Be lithium beryllium 6.9 9.0 11 12 Na Mg sodium magnesium 23.0 24.3 3 4 5 6 19 20 21 22 23 24 K Ca Sc Ti V Cr potassium calcium scandium titanium vanadium chromium 39.1 40.1 45.0 47.9 50.9 52.0 37 38 39 40 41 42 Rb Sr Y Zr Nb Mo rubidium strontium yttrium zirconium niobium molybdenum 85.5 87.6 88.9 91.2 92.9 95.9 55 56 72 73 74 • 57–71 Cs Ba Hf Ta W caesium barium lanthanoids hafnium tantalum tungsten 132.9 137.3 178.5 180.9 183.8 87 88 • 104 105 106 89–103 Fr Ra • Rf Db Sg Cambridge francium radium actinoids rutherfordium dubnium seaborgium OCR Level Version 57 58 59 60 Advanced 3.1 • La Ce Pr Nd © lanthanum cerium praseodymium neodymium 138.9 140.1 140.9 144.2 Cambridge GCE 89 90 91 92 in • Chemistry Ac Th Pa U OCR • actinium thorium protactinium uranium 232.0 238.1 2026 A 5d. How Science Works (HSW) How Science Works was conceived as being a wider view of science in context, rather than just straightforward scientific enquiry. It was intended to develop learners as critical and creative thinkers, able to solve problems in a variety of contexts. Developing ideas and theories to explain the operation of matter and how its composition, structure, properties and changes it undergoes, constitutes the basis of life and all nature. How Science Works develops the critical analysis and linking of evidence to support or refute ideas and theories. Learners should be aware of the importance that peer review and repeatability have in giving confidence to this evidence. Learners are expected to understand the variety of sources of data available for critical analysis to provide evidence and the uncertainty involved in its measurement. They should also be able to link that evidence to contexts influenced by culture, politics and ethics. Understanding How Science Works requires an understanding of how scientific evidence can influence ideas and decisions for individuals and society, which is linked to the necessary skills of communication for audience and for purpose with appropriate scientific terminology. Incorporating Section 8 (the skills, knowledge and understanding of How Science Works) of the DfE criteria for science into the specification. The examples given within the specification are not exhaustive but give a flavour of opportunities for integrating HSW within the course. References in this specification to How Science Works (HSW) are to the following statements: • HSW1 Use theories, models and ideas to develop scientific explanations 5e. Mathematical requirements In order to be able to develop their skills, knowledge and understanding in A Level Chemistry, learners need to have been taught, and to have acquired competence in, the appropriate areas of mathematics relevant to the subject as indicated in the table of coverage below. The assessment of quantitative skills will include at least 20% Level 2 (or above) mathematical skills for chemistry (see later for a definition of ‘Level 2’ mathematics). These skills will be applied in the context of the relevant chemistry. Exemplification mathematical Mathematical skill to be of A Level Chemistry assessed is not limited below) M0 – Arithmetic and numerical computation M0.0 Recognise and make use Learners may be of appropriate units in ability to: calculations • convert between e.g. cm3 to volumetric • give units constant or • understand units are used areas, so that may be necessary entropy in enthalpy changes Exemplification mathematical Mathematical skill to be of A Level Chemistry assessed is not limited below) M0.1 Recognise and use Learners may be expressions in decimal and ability to: ordinary form • use an appropriate of decimal calculations • carry out calculations numbers in ordinary form Avogadro • understand when applied as (but not • understand figures need making conversions standard and e.g. 0.0050 equivalent 5.0 × 10–3 M0.2 Use ratios, fractions and Learners may be percentages ability to: • calculate percentage • calculate the of a reaction • construct and/or equations M0.3 Estimate results Learners may be ability to: • evaluate the changing experimental parameters values e.g. of K would c temperature specified conditions. Exemplification mathematical Mathematical skill to be of A Level Chemistry assessed is not limited below) M0.4 Use calculators to find and Learners may be use power, exponential and ability to: logarithmic functions • carry out calculations the Avogadro • carry out pH calculations • make appropriate mathematical approximations calculations. M1 – Handling data M1.1 Use an appropriate number Learners may be of significant figures ability to: • report calculations appropriate significant raw data quoted numbers of • understand results can to the limits accurate measurement. M1.2 Find arithmetic means Learners may be ability to: • calculate weighted e.g. calculation mass based isotopic abundances • select appropriate data (i.e. identification outliers) in mean titres. M1.3 Identify uncertainties in Learners may be measurements and use ability to: simple techniques to • determine determine uncertainty when two burette data are combined used to calculate Exemplification mathematical Mathematical skill to be of A Level Chemistry assessed is not limited below) M2 – Algebra M2.1 Understand and use the No exemplification symbols: =, 1, %, &, 2, \\, +, ? M2.2 Change the subject of an Learners may be equation ability to: • carry out structured and unstructured calculations • calculate a from a rate M2.3 Substitute numerical values Learners may be into algebraic equations ability to: using appropriate units for • carry out enthalpy physical quantities calculations • calculate the equilibrium • carry out rate M2.4 Solve algebraic equations Learners may be ability to: • carry out Hess’ calculations • calculate a from a rate M2.5 Use logarithms in relation Learners may be to quantities that range ability to: over several orders of • carry out pH magnitude calculations. M3 – Graphs M3.1 Translate information Learners may be between graphical, ability to: numerical and algebraic • interpret and forms • determine reaction from derive rate Exemplification mathematical Mathematical skill to be of A Level Chemistry assessed is not limited below) M3.2 Plot two variables from Learners may be experimental or other data ability to: • plot graphs supplied data course of a • draw lines • extrapolate • construct M3.3 Determine the slope and Learners may be intercept of a linear graph ability to: • calculate values A from the intercept of the Arrhenius M3.4 Calculate rate of change Learners may be from a graph showing a ability to: linear relationship • calculate the of a first-order by determination the gradient concentration M3.5 Draw and use the slope of Learners may be a tangent to a curve as a ability to: measure of rate of change • calculate the reaction from a concentration–time for a first or reaction. M4 – Geometry and trigonometry M4.1 Use angles and shapes Learners may be in regular 2-D and 3-D ability to: structures • predict/identify and bond with and without pair(s), for H O etc. Exemplification mathematical Mathematical skill to be of A Level Chemistry assessed is not limited below) M4.2 Visualise and represent 2-D Learners may be and 3-D forms including ability to: 2-D representations of 3-D • draw different objects isomers • identify chiral 2-D or 3-D M4.3 Understand the symmetry Learners may be of 2-D and 3-D shapes ability to: • describe the stereoisomerism molecules/complexes • identify chiral 2-D or 3-D Definition of Level 2 mathematics Within A Level Chemistry, 20% of the marks available within written examinations will be for assessment of mathematics (in the context of chemistry) at a Level 2 standard, or higher. Lower level mathematical skills will still be assessed within examination papers but will not count within the 20% weighting for chemistry. The following will be counted as Level 2 (or higher) mathematics: • application and understanding requiring choice of data or equation to be used • problem solving involving use of mathematics from different areas of maths and decisions about direction to proceed 5f. Health and Safety In UK law, health and safety is primarily the responsibility of the employer. In a school or college the employer could be a local education authority, the governing body or board of trustees. Employees (teachers/lecturers, technicians etc), have a legal duty to cooperate with their employer on health and safety matters. Various regulations, but especially the COSHH Regulations 2002 (as amended) and the Management of Health and Safety at Work Regulations 1999, require that before any activity involving a hazardous procedure or harmful microorganisms is carried out, or hazardous chemicals are used or made, the employer must carry out a risk assessment. A useful summary of the requirements for risk assessment in school or college science can be found at http://www.ase. org.uk/resources/health-and-safety-resources/ risk-assessments/ PS90, Making and For members, the CLEAPSS® guide, recording risk assessments in school science1 offers appropriate advice. Most education employers have adopted nationally available publications as the basis for their Model Risk Assessments. 1These, and other CLEAPSS® publications, are on the CLEAPSS® Science CLEAPSS® publications are only available to members. For more 5g. Practical endorsement The Practical Endorsement is common across Chemistry A and Chemistry B (Salters). It requires a minimum of 12 practical activities to be completed Investigative Research Rates of reaction – Unscaffolded initial rates method 6 7 Qualitative analysis of 2nd year practicals Synthesis of an organic organic solid functional groups 1 2 3 1st year Moles Acid–base Enthalpy practicals determination titration determination Fig. 1 OCR’s Practical Activity Groups Table 1 Practical activity requirements for the OCR Chemistry Practical activity group Techniques/skills covered (PAG) 1 Moles determination • Measurement of mass • Measurement of volume 2 Acid–base titration • Measurement of volume • Use of volumetric flask, for making up a standard • Titration, using burette • Use of acid–base indicators strong acids with weak/strong 3 Enthalpy determination • Measurement of temperature 4 Qualitative analysis of • Use of apparatus for ions • Make and record qualitative 5 Synthesis of an organic • Heating under reflux1 liquid • Purification using a • Distillation • Risk assessment Cambridge 6 Synthesis of an organic • Purification by recrystallisation solid • Use of melting point • Use of thin layer or OCR • Filtration Level reflux1 Version • Heating under • Risk assessment Advanced 3.1 © 7 Qualitative analysis of • Use of apparatus for Cambridge GCE organic functional groups functional groups in • Heating using water Chemistry OCR • Make and record observations 2026 A 3.1 OCR © Practical activity group Techniques/skills covered Cambridge Level (PAG) Advanced OCR 2026 8 Electrochemical cells • Set up of electrochemical GCE voltages in Chemistry 9 Rates of reaction – • Measurement of rate continuous monitoring monitoring method A method • Measurement of time • Use of appropriate 10 Rates of reaction – • Measurement of rate initial rates method method • Use of appropriate • Identify and control 11 pH measurement • Measurement of pH 12 Research skills • Apply investigative • Use online and offline • Correctly cite sources 1,2 These techniques/skills may be covered in either of the The technique, ‘Safely and carefully handling solids and selection of activities. It is expected that the following skills will be developed • safely and correctly use a range of practical equipment • follow written instructions (1.2.1 c) • make and record observations/measurements (1.2.1 • keep appropriate records of experimental activities • present information and data in a scientific way (1.2.1 • use a wide range of experimental and practical instruments, The practical activities can be completed at any point during the two year A level course at the discretion of the centre. Candidates starting from a standalone AS can count A level practical activities carried out during the AS year towards the A level Practical Endorsement provided that they are appropriately recorded. It is recommended therefore that candidates starting AS maintain a record of practical activities carried out (e.g. this could be in the form of a ‘log book’ or ‘practical portfolio’) that could be counted towards the Practical Endorsement. For candidates who then decide to follow a full A level, having started from AS, they can carry this record with them into their A level study. The assessment of practical skills is a compulsory requirement of the course of study for A level qualifications in chemistry. It will appear on all students’ certificates as a separately reported result, alongside the overall grade for the qualification. The arrangements for the assessment of practical skills are common to all awarding organisations. These arrangements include: • A minimum of 12 practical activities to be carried out by each student which, together, meet the requirements of Appendices 5b (Practical skills identified for direct assessment and developed through teaching and learning, covered in Section 1.2.1) and 5c (Use of apparatus and techniques, covered in Section 1.2.2) from the prescribed subject content, published by the Department for Education. The required practical activities are defined by each awarding organisation (see Fig. 1 and Table 1) • Teachers will assess students against Common Practical Assessment Criteria (CPAC) issued by the awarding organisations. The CPAC (see Table 2) are based on the requirements of Appendices 5b and 5c of the subject content requirements published by the Department for Education, and define the minimum standard required for the achievement of a pass. • Each student will keep an appropriate record of their practical work, including their assessed practical activities • Students who demonstrate the required standard across all the requirements of the CPAC, incorporating all the skills, apparatus and techniques (as defined in Sections 1.2.1 and Table 2 Common Practical Assessment Criteria (CPAC) for the sciences Competency In order to be awarded a Pass assessment, consistently and competency listed below. A Learner practical activity undertaken study. Learners may undertake practical generated by each Learner must the criteria outlined below in",
+        "a) will comprise both the Learner’s his or her contemporaneous during that activity, and",
+        "b) must include evidence of independent and methods to practical work. (1) Follows written a) Correctly follows instructions procedures procedures. (2) Applies investigative a) Correctly uses appropriate approaches and ICT) to carry out investigative methods when using with minimal assistance or prompting. instruments and",
+        "b) Carries out techniques or procedures equipment combination, identifying practical",
+        "c) Identifies and controls significant plans approaches to take account",
+        "d) Selects appropriate equipment suitably accurate results. (3) Safely uses a range of a) Identifies hazards and assesses practical equipment and safety adjustments as necessary, materials procedures in the lab or field.",
+        "b) Uses appropriate safety equipment minimal prompting. (4) Makes and records a) Makes accurate observations observations procedure.",
+        "b) Obtains accurate, precise and procedures and records this methodically (5) Researches, a) Uses appropriate software references and reports report findings.",
+        "b) Cites sources of information, supporting planning and conclusions. Choice of activity Centres can include additional skills, apparatus and techniques within an activity (PAG) beyond those listed as the minimum in Table 1 or in the published practical activities. They may also carry out more than the minimum 12 practical activities required to meet the Practical Endorsement. To achieve a Pass within the Practical Endorsement, candidates must have demonstrated competence in all the skills, apparatus and techniques detailed in Sections 1.2.1 and 1.2.2 of the specification by carrying out a minimum of 12 assessed practical activities (covering all of PAG1 to PAG12) and achieved the level of competence defined within the Common Practical Assessment Criteria (Table 2). The minimum of 12 activities can be met by:",
+        "(i) using OCR suggested activities (provided as resources from Interchange, or by contacting pass@ocr.org.uk should you be unable to access Interchange) (ii) modifying OCR suggested activities to match available equipment whilst fulfilling the same skills, apparatus and techniques and CPAC 5h. Revision of the requirements for practical OCR will review the Practical Endorsement detailed in Section 5g of this specification following any revision by the Secretary of State of the skills, apparatus or techniques specified in respect of A Level Chemistry A. OCR will revise the Practical Endorsement if appropriate. Summary of updates Date Version Section Title of section Dec 2017 2 Multiple April 2018 2.1 2c Content of modules 1 to 6 May 2018 2.2 4a Head of Centre Annual Declaration August 2.3 3d Retaking the 2018 qualification 4d Admin of non-exam assessment January 2.4 2c Content of 2019 modules 1 to 6 May 2020 2.5 1d How do I find out more information? 4d Post-results services December 2.6 4a Pre-assessment 2020 April 2023 2.7 3c Total qualification time March 2.8 3d, 3e Qualification 2024 availability, Language 4a Pre-assessment Checklist Date Version Section Title of section June 2025 2.9 4a Pre-assessment November 3.0 Covers, 2025 page footers, section 1a and 4e May 2026 3.1 4a, 4e Pre-assessment Contact the team at: 01223 553998 scienceGCE@ocr.org.uk ocr.org.uk To stay up to date with all the relevant news about our for email updates at ocr.org.uk/updates Visit our Online Support Centre at support.ocr.org.uk Sign up for Teach Cambridge to access your planning, assessment support material. Registered office: The Triangle Building, Shaftesbury Road, Cambridge, CB2 8EA. Registered company We operate academic and vocational qualifications regulated by Ofqual, Qualifications Wales We are committed to providing a fully accessible experience across all our products, platforms, © Cambridge OCR 2025. All rights reserved. We retain the copyright on all our publications. However, own internal use, in line with any specific restrictions detailed in the publication. Find out more We update our publications regularly so please check you have the most up-to-date version. We cannot be held responsible for the persistence or accuracy of URLs for external or third-party content on such websites is, or will remain, accurate or appropriate. When we update our specifications, you’ll see a new version number and a summary of the changes. Teach Cambridge, if you notice any discrepancies, please refer to the latest specification on our"
+       ],
+       "official_reference": {
+        "section": "6.3.2",
+        "component": "H432",
+        "source_page": 68
+       },
+       "as_reference": false,
+       "a_level_only": true
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "specification_version": "ocr-h432-v3.1-2026-05",
+ "official_source_url": "https://www.ocr.org.uk/Images/171720-specification-accredited-a-level-gce-chemistry-a-h432.pdf",
+ "order_status": "verified",
+ "official_source": {
+  "title": "OCR A Level Chemistry A (H432) specification",
+  "version": "Version 3.1",
+  "issue_date": "May 2026",
+  "first_teaching": 2015,
+  "first_exams": 2017,
+  "url": "https://www.ocr.org.uk/Images/171720-specification-accredited-a-level-gce-chemistry-a-h432.pdf",
+  "sha256": "83d7a5c69b585fdae3bbffe223b3cd9c9fca03086c87308cdba17964adf43245",
+  "as_qualification": {
+   "code": "H032",
+   "title": "OCR AS Level Chemistry A (H032) specification",
+   "url": "https://www.ocr.org.uk/Images/171750-specification-accredited-as-level-gce-chemistry-a-h032.pdf",
+   "sha256": "1ebea562a6849691588110a3d3348675f2e87be899a63bcc38707ad7e1c33cdb"
+  }
+ },
+ "approach": "Official OCR content order (numbered sections). No textbook organisation has been supplied.",
+ "components": {
+  "H432/01": {
+   "title": "Periodic table, elements and physical chemistry",
+   "marks": 100,
+   "minutes": 135,
+   "sections": [
+    "1.1",
+    "2.1",
+    "2.2",
+    "3.1",
+    "3.2",
+    "5.1",
+    "5.2"
+   ],
+   "note": "Modules 1, 2, 3 and 5 (OCR also allows Module 1 skills and earlier content throughout)."
+  },
+  "H432/02": {
+   "title": "Synthesis and analytical techniques",
+   "marks": 100,
+   "minutes": 135,
+   "sections": [
+    "1.1",
+    "2.1",
+    "2.2",
+    "4.1",
+    "4.2",
+    "6.1",
+    "6.2",
+    "6.3"
+   ],
+   "note": "Modules 1, 2, 4 and 6; synoptic."
+  },
+  "H432/03": {
+   "title": "Unified chemistry",
+   "marks": 70,
+   "minutes": 90,
+   "sections": [
+    "all"
+   ],
+   "note": "All modules; synoptic."
+  },
+  "H032/01": {
+   "title": "Breadth in chemistry",
+   "marks": 70,
+   "minutes": 90,
+   "sections": [
+    "1.1",
+    "2.1",
+    "2.2",
+    "3.1",
+    "3.2",
+    "4.1",
+    "4.2"
+   ]
+  },
+  "H032/02": {
+   "title": "Depth in chemistry",
+   "marks": 70,
+   "minutes": 90,
+   "sections": [
+    "1.1",
+    "2.1",
+    "2.2",
+    "3.1",
+    "3.2",
+    "4.1",
+    "4.2"
+   ]
+  }
+ },
+ "as_section_map": {
+  "AS 1.1.1": {
+   "leaf": "OCR_CHEM_1.1.1",
+   "similarity": 1.0
+  },
+  "AS 1.1.2": {
+   "leaf": "OCR_CHEM_1.1.2",
+   "similarity": 1.0
+  },
+  "AS 1.1.3": {
+   "leaf": "OCR_CHEM_1.1.3",
+   "similarity": 1.0
+  },
+  "AS 1.1.4": {
+   "leaf": "OCR_CHEM_1.1.4",
+   "similarity": 1.0
+  },
+  "AS 2.1.1": {
+   "leaf": "OCR_CHEM_2.1.1",
+   "similarity": 1.0
+  },
+  "AS 2.1.2": {
+   "leaf": "OCR_CHEM_2.1.2",
+   "similarity": 1.0
+  },
+  "AS 2.1.3": {
+   "leaf": "OCR_CHEM_2.1.3",
+   "similarity": 1.0
+  },
+  "AS 2.1.4": {
+   "leaf": "OCR_CHEM_2.1.4",
+   "similarity": 1.0
+  },
+  "AS 2.1.5": {
+   "leaf": "OCR_CHEM_2.1.5",
+   "similarity": 1.0
+  },
+  "AS 2.2.1": {
+   "leaf": "OCR_CHEM_2.2.1",
+   "similarity": 1.0
+  },
+  "AS 2.2.2": {
+   "leaf": "OCR_CHEM_2.2.2",
+   "similarity": 1.0
+  },
+  "AS 3.1.1": {
+   "leaf": "OCR_CHEM_3.1.1",
+   "similarity": 1.0
+  },
+  "AS 3.1.2": {
+   "leaf": "OCR_CHEM_3.1.2",
+   "similarity": 1.0
+  },
+  "AS 3.1.3": {
+   "leaf": "OCR_CHEM_3.1.3",
+   "similarity": 1.0
+  },
+  "AS 3.1.4": {
+   "leaf": "OCR_CHEM_3.1.4",
+   "similarity": 1.0
+  },
+  "AS 3.2.1": {
+   "leaf": "OCR_CHEM_3.2.1",
+   "similarity": 1.0
+  },
+  "AS 3.2.2": {
+   "leaf": "OCR_CHEM_3.2.2",
+   "similarity": 1.0
+  },
+  "AS 3.2.3": {
+   "leaf": "OCR_CHEM_3.2.3",
+   "similarity": 1.0
+  },
+  "AS 4.1.1": {
+   "leaf": "OCR_CHEM_4.1.1",
+   "similarity": 1.0
+  },
+  "AS 4.1.2": {
+   "leaf": "OCR_CHEM_4.1.2",
+   "similarity": 1.0
+  },
+  "AS 4.1.3": {
+   "leaf": "OCR_CHEM_4.1.3",
+   "similarity": 1.0
+  },
+  "AS 4.2.1": {
+   "leaf": "OCR_CHEM_4.2.1",
+   "similarity": 1.0
+  },
+  "AS 4.2.2": {
+   "leaf": "OCR_CHEM_4.2.2",
+   "similarity": 1.0
+  },
+  "AS 4.2.3": {
+   "leaf": "OCR_CHEM_4.2.3",
+   "similarity": 1.0
+  },
+  "AS 4.2.4": {
+   "leaf": "OCR_CHEM_4.2.4",
+   "similarity": 1.0
+  }
+ },
+ "a_level_only_sections": [
+  "5.1.1",
+  "5.1.2",
+  "5.1.3",
+  "5.2.1",
+  "5.2.2",
+  "5.2.3",
+  "5.3.1",
+  "5.3.2",
+  "6.1.1",
+  "6.1.2",
+  "6.1.3",
+  "6.2.1",
+  "6.2.2",
+  "6.2.3",
+  "6.2.4",
+  "6.2.5",
+  "6.3.1",
+  "6.3.2"
+ ],
+ "notes": "Leaves are OCR numbered sections (OCR_CHEM_2.1.3, printed 2.1.3) with their lettered learning outcomes as content. AS H032 Modules 1 to 4 use the same section numbers and titles as H432, so AS sections map one to one. Modules 5 and 6 are A-level only. Practical endorsement (1.2, H432/04) is not written-exam content.",
+ "point_order": [
+  "OCR_CHEM_1.1.1",
+  "OCR_CHEM_1.1.2",
+  "OCR_CHEM_1.1.3",
+  "OCR_CHEM_1.1.4",
+  "OCR_CHEM_2.1.1",
+  "OCR_CHEM_2.1.2",
+  "OCR_CHEM_2.1.3",
+  "OCR_CHEM_2.1.4",
+  "OCR_CHEM_2.1.5",
+  "OCR_CHEM_2.2.1",
+  "OCR_CHEM_2.2.2",
+  "OCR_CHEM_3.1.1",
+  "OCR_CHEM_3.1.2",
+  "OCR_CHEM_3.1.3",
+  "OCR_CHEM_3.1.4",
+  "OCR_CHEM_3.2.1",
+  "OCR_CHEM_3.2.2",
+  "OCR_CHEM_3.2.3",
+  "OCR_CHEM_4.1.1",
+  "OCR_CHEM_4.1.2",
+  "OCR_CHEM_4.1.3",
+  "OCR_CHEM_4.2.1",
+  "OCR_CHEM_4.2.2",
+  "OCR_CHEM_4.2.3",
+  "OCR_CHEM_4.2.4",
+  "OCR_CHEM_5.1.1",
+  "OCR_CHEM_5.1.2",
+  "OCR_CHEM_5.1.3",
+  "OCR_CHEM_5.2.1",
+  "OCR_CHEM_5.2.2",
+  "OCR_CHEM_5.2.3",
+  "OCR_CHEM_5.3.1",
+  "OCR_CHEM_5.3.2",
+  "OCR_CHEM_6.1.1",
+  "OCR_CHEM_6.1.2",
+  "OCR_CHEM_6.1.3",
+  "OCR_CHEM_6.2.1",
+  "OCR_CHEM_6.2.2",
+  "OCR_CHEM_6.2.3",
+  "OCR_CHEM_6.2.4",
+  "OCR_CHEM_6.2.5",
+  "OCR_CHEM_6.3.1",
+  "OCR_CHEM_6.3.2"
+ ]
 }

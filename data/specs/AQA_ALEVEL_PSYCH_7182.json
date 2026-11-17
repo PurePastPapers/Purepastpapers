@@ -1,150 +1,2532 @@
 {
   "subject_id": "AQA_ALEVEL_PSYCH_7182",
+  "specification_version": "aqa-7181-7182-v1.4-2025-09-01",
+  "official_source_url": "https://www.aqa.org.uk/subjects/psychology/a-level/psychology-7182/specification",
+  "order_status": "verified",
+  "official_source": {
+    "title": "AQA AS and A-level Psychology (7181, 7182) specification",
+    "version": "Version 1.4",
+    "issue_date": "1 September 2025",
+    "first_teaching": 2025,
+    "first_exams": 2026,
+    "first_alevel_exams": 2027,
+    "url": "https://cdn.sanity.io/files/p28bar15/green/661250c1cb8bd3586f93ddb48c89a3218a3913ca.pdf",
+    "page": "https://www.aqa.org.uk/subjects/psychology/a-level/psychology-7182/specification",
+    "sha256": "db561ba9c36a9109830bcb03bb16d138b85907f068620cce01eff70fdee6ad4d",
+    "verified_at": "2026-11-16",
+    "note": "Updated specification: AS exams June 2026 onwards, A-level exams June 2027 onwards. Public past papers (2017-2025) were set on the earlier version; questions on content this version no longer includes are excluded from the bank and listed (owner decision 16 Nov 2026)."
+  },
+  "approach": "Official AQA content order. No textbook organisation has been supplied.",
+  "route": {
+    "paper_3_options": {
+      "B": "Cognition and development (4.3.4)",
+      "C": "Schizophrenia (4.3.5)",
+      "D": "Forensic psychology (4.3.9)"
+    },
+    "evidence": "The Reach Free School Sixth Form Prospectus 2025/26 (owner-supplied source, 16 Nov 2026)"
+  },
+  "options_not_in_scope": {
+    "4.3.2": "Relationships",
+    "4.3.3": "Gender",
+    "4.3.6": "Eating behaviour",
+    "4.3.7": "Stress",
+    "4.3.8": "Aggression",
+    "4.3.10": "Addiction"
+  },
+  "components": {
+    "7182/1": {
+      "title": "Introductory topics in psychology",
+      "marks": 96,
+      "minutes": 120,
+      "structure": "A social influence, B memory, C attachment, D clinical psychology and mental health (24 each)"
+    },
+    "7182/2": {
+      "title": "Psychology in context",
+      "marks": 96,
+      "minutes": 120,
+      "structure": "A approaches (24), B biopsychology (24), C research methods (48)"
+    },
+    "7182/3": {
+      "title": "Issues and options in psychology",
+      "marks": 96,
+      "minutes": 120,
+      "structure": "A issues and debates (24, compulsory); B, C, D one topic each from options 1-3 (24 each)"
+    },
+    "7181/1": {
+      "title": "AS Introductory topics in psychology",
+      "marks": 72,
+      "minutes": 90,
+      "structure": "A social influence, B memory, C attachment (24 each)"
+    },
+    "7181/2": {
+      "title": "AS Psychology in context",
+      "marks": 72,
+      "minutes": 90,
+      "structure": "A approaches in psychology (incl. biopsychology), B clinical psychology and mental health, C research methods (24 each)"
+    }
+  },
+  "as_section_map": {
+    "3.1.1 (1)": "AQA_PSYCH_4.1.1_b1",
+    "3.1.1 (2)": "AQA_PSYCH_4.1.1_b2",
+    "3.1.1 (3)": "AQA_PSYCH_4.1.1_b3",
+    "3.1.1 (4)": "AQA_PSYCH_4.1.1_b4",
+    "3.1.2 (1)": "AQA_PSYCH_4.1.2_b1",
+    "3.1.2 (2)": "AQA_PSYCH_4.1.2_b2",
+    "3.1.2 (3)": "AQA_PSYCH_4.1.2_b3",
+    "3.1.2 (4)": "AQA_PSYCH_4.1.2_b4",
+    "3.1.3 (1)": "AQA_PSYCH_4.1.3_b1",
+    "3.1.3 (2)": "AQA_PSYCH_4.1.3_b2",
+    "3.1.3 (3)": "AQA_PSYCH_4.1.3_b3",
+    "3.1.3 (4)": "AQA_PSYCH_4.1.3_b4",
+    "3.1.3 (5)": "AQA_PSYCH_4.1.3_b5",
+    "3.2.2 (1)": "AQA_PSYCH_4.1.4_b1",
+    "3.2.2 (2)": "AQA_PSYCH_4.1.4_b2",
+    "3.2.2 (3)": "AQA_PSYCH_4.1.4_b3",
+    "3.2.2 (4)": "AQA_PSYCH_4.1.4_b4",
+    "3.2.2 (5)": "AQA_PSYCH_4.1.4_b5",
+    "3.2.1 (1)": "AQA_PSYCH_4.2.1_b1",
+    "3.2.1 (2)": "AQA_PSYCH_4.2.1_b2",
+    "3.2.1 (3)": "AQA_PSYCH_4.2.1_b3",
+    "3.2.1.1 (1)": "AQA_PSYCH_4.2.2_b1",
+    "3.2.1.1 (2)": "AQA_PSYCH_4.2.2_b2",
+    "3.2.1.1 (3)": "AQA_PSYCH_4.2.2_b3",
+    "3.2.1.1 (4)": "AQA_PSYCH_4.2.2_b4",
+    "3.2.3 (1)": "AQA_PSYCH_4.2.3_b1",
+    "3.2.3 (2)": "AQA_PSYCH_4.2.3_b2",
+    "3.2.3 (3)": "AQA_PSYCH_4.2.3_b3",
+    "3.2.3 (4)": "AQA_PSYCH_4.2.3_b4",
+    "3.2.3.1 (1)": "AQA_PSYCH_4.2.3.1_b1",
+    "3.2.3.1 (2)": "AQA_PSYCH_4.2.3.1_b2",
+    "3.2.3.1 (3)": "AQA_PSYCH_4.2.3.1_b3",
+    "3.2.3.1 (4)": "AQA_PSYCH_4.2.3.1_b4",
+    "3.2.3.1 (5)": "AQA_PSYCH_4.2.3.1_b5",
+    "3.2.3.1 (6)": "AQA_PSYCH_4.2.3.1_b6",
+    "3.2.3.1 (7)": "AQA_PSYCH_4.2.3.1_b7",
+    "3.2.3.1 (8)": "AQA_PSYCH_4.2.3.1_b8",
+    "3.2.3.1 (9)": "AQA_PSYCH_4.2.3.1_b9",
+    "3.2.3.1 (10)": "AQA_PSYCH_4.2.3.1_b10",
+    "3.2.3.1 (11)": "AQA_PSYCH_4.2.3.1_b11",
+    "3.2.3.1 (12)": "AQA_PSYCH_4.2.3.1_b12",
+    "3.2.3.1 (13)": "AQA_PSYCH_4.2.3.1_b13",
+    "3.2.3.2 (1)": "AQA_PSYCH_4.2.3.2_b1",
+    "3.2.3.2 (2)": "AQA_PSYCH_4.2.3.2_b2",
+    "3.2.3.2 (3)": "AQA_PSYCH_4.2.3.2_b3",
+    "3.2.3.2 (4)": "AQA_PSYCH_4.2.3.2_b4",
+    "3.2.3.2 (5)": "AQA_PSYCH_4.2.3.2_b5",
+    "3.2.3.2 (6)": "AQA_PSYCH_4.2.3.3_b1"
+  },
+  "year_12_points": [
+    "AQA_PSYCH_4.1.1_b1",
+    "AQA_PSYCH_4.1.1_b2",
+    "AQA_PSYCH_4.1.1_b3",
+    "AQA_PSYCH_4.1.1_b4",
+    "AQA_PSYCH_4.1.2_b1",
+    "AQA_PSYCH_4.1.2_b2",
+    "AQA_PSYCH_4.1.2_b3",
+    "AQA_PSYCH_4.1.2_b4",
+    "AQA_PSYCH_4.1.3_b1",
+    "AQA_PSYCH_4.1.3_b2",
+    "AQA_PSYCH_4.1.3_b3",
+    "AQA_PSYCH_4.1.3_b4",
+    "AQA_PSYCH_4.1.3_b5",
+    "AQA_PSYCH_4.1.4_b1",
+    "AQA_PSYCH_4.1.4_b2",
+    "AQA_PSYCH_4.1.4_b3",
+    "AQA_PSYCH_4.1.4_b4",
+    "AQA_PSYCH_4.1.4_b5",
+    "AQA_PSYCH_4.2.1_b1",
+    "AQA_PSYCH_4.2.1_b2",
+    "AQA_PSYCH_4.2.1_b3",
+    "AQA_PSYCH_4.2.2_b1",
+    "AQA_PSYCH_4.2.2_b2",
+    "AQA_PSYCH_4.2.2_b3",
+    "AQA_PSYCH_4.2.2_b4",
+    "AQA_PSYCH_4.2.3_b1",
+    "AQA_PSYCH_4.2.3_b2",
+    "AQA_PSYCH_4.2.3_b3",
+    "AQA_PSYCH_4.2.3_b4",
+    "AQA_PSYCH_4.2.3.1_b1",
+    "AQA_PSYCH_4.2.3.1_b2",
+    "AQA_PSYCH_4.2.3.1_b3",
+    "AQA_PSYCH_4.2.3.1_b4",
+    "AQA_PSYCH_4.2.3.1_b5",
+    "AQA_PSYCH_4.2.3.1_b6",
+    "AQA_PSYCH_4.2.3.1_b7",
+    "AQA_PSYCH_4.2.3.1_b8",
+    "AQA_PSYCH_4.2.3.1_b9",
+    "AQA_PSYCH_4.2.3.1_b10",
+    "AQA_PSYCH_4.2.3.1_b11",
+    "AQA_PSYCH_4.2.3.1_b12",
+    "AQA_PSYCH_4.2.3.1_b13",
+    "AQA_PSYCH_4.2.3.2_b1",
+    "AQA_PSYCH_4.2.3.2_b2",
+    "AQA_PSYCH_4.2.3.2_b3",
+    "AQA_PSYCH_4.2.3.2_b4",
+    "AQA_PSYCH_4.2.3.2_b5",
+    "AQA_PSYCH_4.2.3.3_b1"
+  ],
+  "notes": "Leaves are the bullets of AQA content sections, numbered by position (\"4.1.1 (2)\"). content is AQA wording. Options are kind \"option\" with their Paper 3 section. Linear A level: AQA prints no Year 12/13 order; the AS 7181 bullets (spec section 3) give the co-teaching Year 12 subset.",
+  "legacy_ids": {
+    "AQA_PSYCH_SOCIAL_1.1": [
+      "AQA_PSYCH_4.1.1_b1"
+    ],
+    "AQA_PSYCH_SOCIAL_1.2": [
+      "AQA_PSYCH_4.1.1_b2"
+    ],
+    "AQA_PSYCH_SOCIAL_1.3": [
+      "AQA_PSYCH_4.1.1_b3"
+    ],
+    "AQA_PSYCH_SOCIAL_1.4": [
+      "AQA_PSYCH_4.1.1_b4"
+    ],
+    "AQA_PSYCH_MEMORY_2.1": [
+      "AQA_PSYCH_4.1.2_b1"
+    ],
+    "AQA_PSYCH_MEMORY_2.2": [
+      "AQA_PSYCH_4.1.2_b2"
+    ],
+    "AQA_PSYCH_MEMORY_2.3": [
+      "AQA_PSYCH_4.1.2_b3"
+    ],
+    "AQA_PSYCH_MEMORY_2.4": [
+      "AQA_PSYCH_4.1.2_b4"
+    ],
+    "AQA_PSYCH_ATTACH_3.2": [
+      "AQA_PSYCH_4.1.3_b1",
+      "AQA_PSYCH_4.1.3_b2"
+    ],
+    "AQA_PSYCH_ATTACH_3.3": [
+      "AQA_PSYCH_4.1.3_b3"
+    ],
+    "AQA_PSYCH_ATTACH_3.4": [
+      "AQA_PSYCH_4.1.3_b4",
+      "AQA_PSYCH_4.1.3_b5"
+    ],
+    "AQA_PSYCH_PSYCHOPATH_4.1": [
+      "AQA_PSYCH_4.1.4_b1"
+    ],
+    "AQA_PSYCH_PSYCHOPATH_4.2": [
+      "AQA_PSYCH_4.1.4_b2",
+      "AQA_PSYCH_4.1.4_b3"
+    ],
+    "AQA_PSYCH_PSYCHOPATH_4.3": [
+      "AQA_PSYCH_4.1.4_b2",
+      "AQA_PSYCH_4.1.4_b4"
+    ],
+    "AQA_PSYCH_PSYCHOPATH_4.4": [
+      "AQA_PSYCH_4.1.4_b2",
+      "AQA_PSYCH_4.1.4_b5"
+    ],
+    "AQA_PSYCH_APPROACH_5.1": [
+      "AQA_PSYCH_4.2.1_b1"
+    ],
+    "AQA_PSYCH_APPROACH_5.2": [
+      "AQA_PSYCH_4.2.1_b2"
+    ],
+    "AQA_PSYCH_APPROACH_5.3": [
+      "AQA_PSYCH_4.2.1_b3"
+    ],
+    "AQA_PSYCH_APPROACH_5.4": [
+      "AQA_PSYCH_4.2.1_b4",
+      "AQA_PSYCH_4.2.1_b5",
+      "AQA_PSYCH_4.2.1_b6"
+    ],
+    "AQA_PSYCH_BIO_6.1": [
+      "AQA_PSYCH_4.2.2_b1",
+      "AQA_PSYCH_4.2.2_b2"
+    ],
+    "AQA_PSYCH_BIO_6.2": [
+      "AQA_PSYCH_4.2.2_b3",
+      "AQA_PSYCH_4.2.2_b4"
+    ],
+    "AQA_PSYCH_BIO_6.3": [
+      "AQA_PSYCH_4.2.2_b6"
+    ],
+    "AQA_PSYCH_BIO_6.4": [
+      "AQA_PSYCH_4.2.2_b5",
+      "AQA_PSYCH_4.2.2_b6"
+    ],
+    "AQA_PSYCH_RM_7.1": [
+      "AQA_PSYCH_4.2.3_b1",
+      "AQA_PSYCH_4.2.3_b2",
+      "AQA_PSYCH_4.2.3_b3",
+      "AQA_PSYCH_4.2.3_b4",
+      "AQA_PSYCH_4.2.3_b5",
+      "AQA_PSYCH_4.2.3_b6"
+    ],
+    "AQA_PSYCH_RM_7.2": [
+      "AQA_PSYCH_4.2.3.1_b1",
+      "AQA_PSYCH_4.2.3.1_b2",
+      "AQA_PSYCH_4.2.3.1_b3",
+      "AQA_PSYCH_4.2.3.1_b4",
+      "AQA_PSYCH_4.2.3.1_b5",
+      "AQA_PSYCH_4.2.3.1_b6",
+      "AQA_PSYCH_4.2.3.1_b7",
+      "AQA_PSYCH_4.2.3.1_b8",
+      "AQA_PSYCH_4.2.3.1_b9",
+      "AQA_PSYCH_4.2.3.1_b10",
+      "AQA_PSYCH_4.2.3.1_b11",
+      "AQA_PSYCH_4.2.3.1_b12",
+      "AQA_PSYCH_4.2.3.1_b13",
+      "AQA_PSYCH_4.2.3.1_b14",
+      "AQA_PSYCH_4.2.3.1_b15",
+      "AQA_PSYCH_4.2.3.1_b16",
+      "AQA_PSYCH_4.2.3.1_b17"
+    ],
+    "AQA_PSYCH_RM_7.3": [
+      "AQA_PSYCH_4.2.3.2_b1",
+      "AQA_PSYCH_4.2.3.2_b2",
+      "AQA_PSYCH_4.2.3.2_b3",
+      "AQA_PSYCH_4.2.3.2_b4",
+      "AQA_PSYCH_4.2.3.2_b5",
+      "AQA_PSYCH_4.2.3.2_b6",
+      "AQA_PSYCH_4.2.3.2_b7",
+      "AQA_PSYCH_4.2.3.2_b8"
+    ],
+    "AQA_PSYCH_RM_7.4": [
+      "AQA_PSYCH_4.2.3.3_b1",
+      "AQA_PSYCH_4.2.3.3_b2",
+      "AQA_PSYCH_4.2.3.3_b3"
+    ],
+    "AQA_PSYCH_ISSUES_8.1": [
+      "AQA_PSYCH_4.3.1_b1"
+    ],
+    "AQA_PSYCH_ISSUES_8.2": [
+      "AQA_PSYCH_4.3.1_b2",
+      "AQA_PSYCH_4.3.1_b3"
+    ],
+    "AQA_PSYCH_ISSUES_8.3": [
+      "AQA_PSYCH_4.3.1_b4",
+      "AQA_PSYCH_4.3.1_b5"
+    ],
+    "AQA_PSYCH_ISSUES_8.4": [
+      "AQA_PSYCH_4.3.1_b6"
+    ],
+    "AQA_PSYCH_OPT1_9.3": [
+      "AQA_PSYCH_4.3.4_b1",
+      "AQA_PSYCH_4.3.4_b2",
+      "AQA_PSYCH_4.3.4_b3",
+      "AQA_PSYCH_4.3.4_b4"
+    ],
+    "AQA_PSYCH_OPT2_10.1": [
+      "AQA_PSYCH_4.3.5_b1",
+      "AQA_PSYCH_4.3.5_b2",
+      "AQA_PSYCH_4.3.5_b3",
+      "AQA_PSYCH_4.3.5_b4",
+      "AQA_PSYCH_4.3.5_b5",
+      "AQA_PSYCH_4.3.5_b6"
+    ],
+    "AQA_PSYCH_OPT3_11.2": [
+      "AQA_PSYCH_4.3.9_b1",
+      "AQA_PSYCH_4.3.9_b2",
+      "AQA_PSYCH_4.3.9_b3",
+      "AQA_PSYCH_4.3.9_b4"
+    ]
+  },
+  "point_order": [
+    "AQA_PSYCH_4.1.1_b1",
+    "AQA_PSYCH_4.1.1_b2",
+    "AQA_PSYCH_4.1.1_b3",
+    "AQA_PSYCH_4.1.1_b4",
+    "AQA_PSYCH_4.1.2_b1",
+    "AQA_PSYCH_4.1.2_b2",
+    "AQA_PSYCH_4.1.2_b3",
+    "AQA_PSYCH_4.1.2_b4",
+    "AQA_PSYCH_4.1.3_b1",
+    "AQA_PSYCH_4.1.3_b2",
+    "AQA_PSYCH_4.1.3_b3",
+    "AQA_PSYCH_4.1.3_b4",
+    "AQA_PSYCH_4.1.3_b5",
+    "AQA_PSYCH_4.1.4_b1",
+    "AQA_PSYCH_4.1.4_b2",
+    "AQA_PSYCH_4.1.4_b3",
+    "AQA_PSYCH_4.1.4_b4",
+    "AQA_PSYCH_4.1.4_b5",
+    "AQA_PSYCH_4.2.1_b1",
+    "AQA_PSYCH_4.2.1_b2",
+    "AQA_PSYCH_4.2.1_b3",
+    "AQA_PSYCH_4.2.1_b4",
+    "AQA_PSYCH_4.2.1_b5",
+    "AQA_PSYCH_4.2.1_b6",
+    "AQA_PSYCH_4.2.2_b1",
+    "AQA_PSYCH_4.2.2_b2",
+    "AQA_PSYCH_4.2.2_b3",
+    "AQA_PSYCH_4.2.2_b4",
+    "AQA_PSYCH_4.2.2_b5",
+    "AQA_PSYCH_4.2.2_b6",
+    "AQA_PSYCH_4.2.3_b1",
+    "AQA_PSYCH_4.2.3_b2",
+    "AQA_PSYCH_4.2.3_b3",
+    "AQA_PSYCH_4.2.3_b4",
+    "AQA_PSYCH_4.2.3_b5",
+    "AQA_PSYCH_4.2.3_b6",
+    "AQA_PSYCH_4.2.3.1_b1",
+    "AQA_PSYCH_4.2.3.1_b2",
+    "AQA_PSYCH_4.2.3.1_b3",
+    "AQA_PSYCH_4.2.3.1_b4",
+    "AQA_PSYCH_4.2.3.1_b5",
+    "AQA_PSYCH_4.2.3.1_b6",
+    "AQA_PSYCH_4.2.3.1_b7",
+    "AQA_PSYCH_4.2.3.1_b8",
+    "AQA_PSYCH_4.2.3.1_b9",
+    "AQA_PSYCH_4.2.3.1_b10",
+    "AQA_PSYCH_4.2.3.1_b11",
+    "AQA_PSYCH_4.2.3.1_b12",
+    "AQA_PSYCH_4.2.3.1_b13",
+    "AQA_PSYCH_4.2.3.1_b14",
+    "AQA_PSYCH_4.2.3.1_b15",
+    "AQA_PSYCH_4.2.3.1_b16",
+    "AQA_PSYCH_4.2.3.1_b17",
+    "AQA_PSYCH_4.2.3.2_b1",
+    "AQA_PSYCH_4.2.3.2_b2",
+    "AQA_PSYCH_4.2.3.2_b3",
+    "AQA_PSYCH_4.2.3.2_b4",
+    "AQA_PSYCH_4.2.3.2_b5",
+    "AQA_PSYCH_4.2.3.2_b6",
+    "AQA_PSYCH_4.2.3.2_b7",
+    "AQA_PSYCH_4.2.3.2_b8",
+    "AQA_PSYCH_4.2.3.3_b1",
+    "AQA_PSYCH_4.2.3.3_b2",
+    "AQA_PSYCH_4.2.3.3_b3",
+    "AQA_PSYCH_4.3.1_b1",
+    "AQA_PSYCH_4.3.1_b2",
+    "AQA_PSYCH_4.3.1_b3",
+    "AQA_PSYCH_4.3.1_b4",
+    "AQA_PSYCH_4.3.1_b5",
+    "AQA_PSYCH_4.3.1_b6",
+    "AQA_PSYCH_4.3.4_b1",
+    "AQA_PSYCH_4.3.4_b2",
+    "AQA_PSYCH_4.3.4_b3",
+    "AQA_PSYCH_4.3.4_b4",
+    "AQA_PSYCH_4.3.5_b1",
+    "AQA_PSYCH_4.3.5_b2",
+    "AQA_PSYCH_4.3.5_b3",
+    "AQA_PSYCH_4.3.5_b4",
+    "AQA_PSYCH_4.3.5_b5",
+    "AQA_PSYCH_4.3.5_b6",
+    "AQA_PSYCH_4.3.9_b1",
+    "AQA_PSYCH_4.3.9_b2",
+    "AQA_PSYCH_4.3.9_b3",
+    "AQA_PSYCH_4.3.9_b4"
+  ],
   "sections": [
     {
       "id": "AQA_PSYCH_SEC_P1",
+      "code": "Paper 1",
       "title": "Paper 1: Introductory topics in psychology",
+      "official_reference": {
+        "component": "7182/1"
+      },
       "topics": [
         {
           "id": "AQA_PSYCH_SOCIAL",
           "code": "4.1.1",
           "title": "Social influence",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 1 Section A (compulsory)",
           "points": [
-            {"id":"AQA_PSYCH_SOCIAL_1.1","code":"1.1","title":"Types of and explanations for conformity; conformity to social roles"},
-            {"id":"AQA_PSYCH_SOCIAL_1.2","code":"1.2","title":"Explanations for obedience and situational variables"},
-            {"id":"AQA_PSYCH_SOCIAL_1.3","code":"1.3","title":"Resistance to social influence"},
-            {"id":"AQA_PSYCH_SOCIAL_1.4","code":"1.4","title":"Minority influence and social change"}
+            {
+              "id": "AQA_PSYCH_4.1.1_b1",
+              "code": "4.1.1 (1)",
+              "title": "Types of conformity",
+              "official_reference": {
+                "section": "4.1.1",
+                "section_title": "Social influence",
+                "bullet": 1,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Types of conformity: internalisation, and compliance. Explanations for conformity: informational social influence and normative social influence, and variables affecting conformity including group size, unanimity and task difficulty as investigated by Asch."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.1",
+                "bullet": 1,
+                "title": "Social influence",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.1_b2",
+              "code": "4.1.1 (2)",
+              "title": "Explanations for obedience",
+              "official_reference": {
+                "section": "4.1.1",
+                "section_title": "Social influence",
+                "bullet": 2,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Explanations for obedience: agentic state and legitimacy of authority, and situational variables affecting obedience including proximity and location, as investigated by Milgram, and uniform. Dispositional explanation for obedience: the Authoritarian Personality."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.1",
+                "bullet": 2,
+                "title": "Social influence",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.1_b3",
+              "code": "4.1.1 (3)",
+              "title": "Explanations of resistance to social influence, including social support and locus of control",
+              "official_reference": {
+                "section": "4.1.1",
+                "section_title": "Social influence",
+                "bullet": 3,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Explanations of resistance to social influence, including social support and locus of control."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.1",
+                "bullet": 3,
+                "title": "Social influence",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.1_b4",
+              "code": "4.1.1 (4)",
+              "title": "Minority influence including reference to consistency, commitment and flexibility",
+              "official_reference": {
+                "section": "4.1.1",
+                "section_title": "Social influence",
+                "bullet": 4,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section A (compulsory)"
+              },
+              "content": [
+                "Minority influence including reference to consistency, commitment and flexibility."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.1",
+                "bullet": 4,
+                "title": "Social influence",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
           "id": "AQA_PSYCH_MEMORY",
           "code": "4.1.2",
           "title": "Memory",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 1 Section B (compulsory)",
           "points": [
-            {"id":"AQA_PSYCH_MEMORY_2.1","code":"2.1","title":"The multi-store model and types of long-term memory"},
-            {"id":"AQA_PSYCH_MEMORY_2.2","code":"2.2","title":"The working memory model"},
-            {"id":"AQA_PSYCH_MEMORY_2.3","code":"2.3","title":"Explanations for forgetting"},
-            {"id":"AQA_PSYCH_MEMORY_2.4","code":"2.4","title":"Eyewitness testimony and the cognitive interview"}
+            {
+              "id": "AQA_PSYCH_4.1.2_b1",
+              "code": "4.1.2 (1)",
+              "title": "The multi-store model of memory",
+              "official_reference": {
+                "section": "4.1.2",
+                "section_title": "Memory",
+                "bullet": 1,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section B (compulsory)"
+              },
+              "content": [
+                "The multi-store model of memory: sensory register, short-term memory and long-term memory. Features of each store: coding, capacity and duration."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.2",
+                "bullet": 1,
+                "title": "Memory",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.2_b2",
+              "code": "4.1.2 (2)",
+              "title": "The working memory model",
+              "official_reference": {
+                "section": "4.1.2",
+                "section_title": "Memory",
+                "bullet": 2,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section B (compulsory)"
+              },
+              "content": [
+                "The working memory model: central executive, phonological loop, visuo-spatial sketchpad and episodic buffer. Features of the model: coding and capacity."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.2",
+                "bullet": 2,
+                "title": "Memory",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.2_b3",
+              "code": "4.1.2 (3)",
+              "title": "Explanations for forgetting",
+              "official_reference": {
+                "section": "4.1.2",
+                "section_title": "Memory",
+                "bullet": 3,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section B (compulsory)"
+              },
+              "content": [
+                "Explanations for forgetting: proactive and retroactive interference and retrieval failure due to absence of cues."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.2",
+                "bullet": 3,
+                "title": "Memory",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.2_b4",
+              "code": "4.1.2 (4)",
+              "title": "Factors affecting the accuracy of eyewitness testimony",
+              "official_reference": {
+                "section": "4.1.2",
+                "section_title": "Memory",
+                "bullet": 4,
+                "component": "7182/1",
+                "source_pages": [
+                  17
+                ],
+                "route": "Paper 1 Section B (compulsory)"
+              },
+              "content": [
+                "Factors affecting the accuracy of eyewitness testimony: leading questions, post-event discussion, and anxiety; the use of the cognitive interview."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.2",
+                "bullet": 4,
+                "title": "Memory",
+                "source_pages": [
+                  13
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
           "id": "AQA_PSYCH_ATTACH",
           "code": "4.1.3",
           "title": "Attachment",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 1 Section C (compulsory)",
           "points": [
-            {"id":"AQA_PSYCH_ATTACH_3.1","code":"3.1","title":"Caregiver–infant interactions and stages of attachment"},
-            {"id":"AQA_PSYCH_ATTACH_3.2","code":"3.2","title":"Animal studies and explanations of attachment (learning theory and Bowlby)"},
-            {"id":"AQA_PSYCH_ATTACH_3.3","code":"3.3","title":"Ainsworth's Strange Situation and cultural variations"},
-            {"id":"AQA_PSYCH_ATTACH_3.4","code":"3.4","title":"Maternal deprivation, institutionalisation and later relationships"}
+            {
+              "id": "AQA_PSYCH_4.1.3_b1",
+              "code": "4.1.3 (1)",
+              "title": "Animal studies of attachment",
+              "official_reference": {
+                "section": "4.1.3",
+                "section_title": "Attachment",
+                "bullet": 1,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C (compulsory)"
+              },
+              "content": [
+                "Animal studies of attachment: Lorenz and Harlow."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.3",
+                "bullet": 1,
+                "title": "Attachment",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.3_b2",
+              "code": "4.1.3 (2)",
+              "title": "Explanations of attachment",
+              "official_reference": {
+                "section": "4.1.3",
+                "section_title": "Attachment",
+                "bullet": 2,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C (compulsory)"
+              },
+              "content": [
+                "Explanations of attachment: learning theory and Bowlby’s monotropic theory. The concepts of a critical period and an internal working model."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.3",
+                "bullet": 2,
+                "title": "Attachment",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.3_b3",
+              "code": "4.1.3 (3)",
+              "title": "Ainsworth’s ‘Strange Situation’. Types of attachment",
+              "official_reference": {
+                "section": "4.1.3",
+                "section_title": "Attachment",
+                "bullet": 3,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C (compulsory)"
+              },
+              "content": [
+                "Ainsworth’s ‘Strange Situation’. Types of attachment: secure, insecure-avoidant and insecure-resistant. Cultural variations in attachment, including van Ijzendoorn."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.3",
+                "bullet": 3,
+                "title": "Attachment",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.3_b4",
+              "code": "4.1.3 (4)",
+              "title": "Bowlby’s theory of maternal deprivation",
+              "official_reference": {
+                "section": "4.1.3",
+                "section_title": "Attachment",
+                "bullet": 4,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C (compulsory)"
+              },
+              "content": [
+                "Bowlby’s theory of maternal deprivation. Effects of institutionalisation, including the English and Romanian Adoptees project."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.3",
+                "bullet": 4,
+                "title": "Attachment",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.3_b5",
+              "code": "4.1.3 (5)",
+              "title": "The influence of early attachment on childhood and adult relationships, including the role of an internal working model",
+              "official_reference": {
+                "section": "4.1.3",
+                "section_title": "Attachment",
+                "bullet": 5,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section C (compulsory)"
+              },
+              "content": [
+                "The influence of early attachment on childhood and adult relationships, including the role of an internal working model."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.1.3",
+                "bullet": 5,
+                "title": "Attachment",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         },
         {
           "id": "AQA_PSYCH_PSYCHOPATH",
           "code": "4.1.4",
-          "title": "Psychopathology",
-          "kind": "topic",
+          "title": "Clinical psychology and mental health",
+          "kind": "group",
+          "route": "Paper 1 Section D (compulsory)",
           "points": [
-            {"id":"AQA_PSYCH_PSYCHOPATH_4.1","code":"4.1","title":"Definitions of abnormality"},
-            {"id":"AQA_PSYCH_PSYCHOPATH_4.2","code":"4.2","title":"Phobias: characteristics, explanations and treatments"},
-            {"id":"AQA_PSYCH_PSYCHOPATH_4.3","code":"4.3","title":"Depression: characteristics, explanations and treatments"},
-            {"id":"AQA_PSYCH_PSYCHOPATH_4.4","code":"4.4","title":"OCD: characteristics, explanations and treatments"}
+            {
+              "id": "AQA_PSYCH_4.1.4_b1",
+              "code": "4.1.4 (1)",
+              "title": "Definitions in the field of mental health",
+              "official_reference": {
+                "section": "4.1.4",
+                "section_title": "Clinical psychology and mental health",
+                "bullet": 1,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section D (compulsory)"
+              },
+              "content": [
+                "Definitions in the field of mental health; deviation from ideal mental health, deviation from social/cultural norms, failure to function adequately and statistical infrequency."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.2",
+                "bullet": 1,
+                "title": "Clinical Psychology and Mental Health",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.4_b2",
+              "code": "4.1.4 (2)",
+              "title": "The behavioural, emotional and cognitive characteristics of phobias, depression and obsessive-compulsive disorder (OCD)",
+              "official_reference": {
+                "section": "4.1.4",
+                "section_title": "Clinical psychology and mental health",
+                "bullet": 2,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section D (compulsory)"
+              },
+              "content": [
+                "The behavioural, emotional and cognitive characteristics of phobias, depression and obsessive-compulsive disorder (OCD)."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.2",
+                "bullet": 2,
+                "title": "Clinical Psychology and Mental Health",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.4_b3",
+              "code": "4.1.4 (3)",
+              "title": "The behavioural approach to explaining and treating phobias",
+              "official_reference": {
+                "section": "4.1.4",
+                "section_title": "Clinical psychology and mental health",
+                "bullet": 3,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section D (compulsory)"
+              },
+              "content": [
+                "The behavioural approach to explaining and treating phobias: the two-process model, including classical and operant conditioning; systematic desensitisation, including relaxation and use of hierarchy; flooding."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.2",
+                "bullet": 3,
+                "title": "Clinical Psychology and Mental Health",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.4_b4",
+              "code": "4.1.4 (4)",
+              "title": "The cognitive approach to explaining and treating depression",
+              "official_reference": {
+                "section": "4.1.4",
+                "section_title": "Clinical psychology and mental health",
+                "bullet": 4,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section D (compulsory)"
+              },
+              "content": [
+                "The cognitive approach to explaining and treating depression: Beck’s negative triad and Ellis’s ABC model; cognitive behaviour therapy (CBT), including challenging irrational thoughts."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.2",
+                "bullet": 4,
+                "title": "Clinical Psychology and Mental Health",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.1.4_b5",
+              "code": "4.1.4 (5)",
+              "title": "The biological approach to explaining and treating OCD: genetic and neural explanations",
+              "official_reference": {
+                "section": "4.1.4",
+                "section_title": "Clinical psychology and mental health",
+                "bullet": 5,
+                "component": "7182/1",
+                "source_pages": [
+                  18
+                ],
+                "route": "Paper 1 Section D (compulsory)"
+              },
+              "content": [
+                "The biological approach to explaining and treating OCD: genetic and neural explanations; drug therapy."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.2",
+                "bullet": 5,
+                "title": "Clinical Psychology and Mental Health",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "AQA_PSYCH_SEC_P2",
+      "code": "Paper 2",
       "title": "Paper 2: Psychology in context",
+      "official_reference": {
+        "component": "7182/2"
+      },
       "topics": [
         {
           "id": "AQA_PSYCH_APPROACH",
           "code": "4.2.1",
           "title": "Approaches in psychology",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 2 Section A (compulsory)",
           "points": [
-            {"id":"AQA_PSYCH_APPROACH_5.1","code":"5.1","title":"Origins of psychology and the learning approaches"},
-            {"id":"AQA_PSYCH_APPROACH_5.2","code":"5.2","title":"The cognitive approach"},
-            {"id":"AQA_PSYCH_APPROACH_5.3","code":"5.3","title":"The biological approach"},
-            {"id":"AQA_PSYCH_APPROACH_5.4","code":"5.4","title":"The psychodynamic and humanistic approaches; comparison of approaches"}
+            {
+              "id": "AQA_PSYCH_4.2.1_b1",
+              "code": "4.2.1 (1)",
+              "title": "Learning approaches",
+              "official_reference": {
+                "section": "4.2.1",
+                "section_title": "Approaches in psychology",
+                "bullet": 1,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The basic assumptions of the following approaches: Learning approaches: i) the behaviourist approach, including classical conditioning and Pavlov’s research, operant conditioning, types of reinforcement and Skinner’s research; ii) social learning theory including imitation, identification, vicarious reinforcement, the role of mediational processes and Bandura’s research."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.1",
+                "bullet": 1,
+                "title": "Approaches in Psychology",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.1_b2",
+              "code": "4.2.1 (2)",
+              "title": "The cognitive approach",
+              "official_reference": {
+                "section": "4.2.1",
+                "section_title": "Approaches in psychology",
+                "bullet": 2,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The basic assumptions of the following approaches: The cognitive approach: the study of internal mental processes, the role of schema, the use of models to explain and make inferences about mental processes."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.1",
+                "bullet": 2,
+                "title": "Approaches in Psychology",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.1_b3",
+              "code": "4.2.1 (3)",
+              "title": "The biological approach",
+              "official_reference": {
+                "section": "4.2.1",
+                "section_title": "Approaches in psychology",
+                "bullet": 3,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The basic assumptions of the following approaches: The biological approach: the genetic basis of behaviour: genotype, phenotype and evolution. Influence of biological structures and neurochemistry on behaviour. Cognitive neuroscience."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.1",
+                "bullet": 3,
+                "title": "Approaches in Psychology",
+                "source_pages": [
+                  14
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.1_b4",
+              "code": "4.2.1 (4)",
+              "title": "The psychodynamic approach",
+              "official_reference": {
+                "section": "4.2.1",
+                "section_title": "Approaches in psychology",
+                "bullet": 4,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The basic assumptions of the following approaches: The psychodynamic approach: the role of the unconscious, the structure of personality, that is Id, Ego and Superego, defence mechanisms including repression, denial and displacement, psychosexual stages."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.1_b5",
+              "code": "4.2.1 (5)",
+              "title": "Humanistic Psychology",
+              "official_reference": {
+                "section": "4.2.1",
+                "section_title": "Approaches in psychology",
+                "bullet": 5,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The basic assumptions of the following approaches: Humanistic Psychology: free will, self-actualisation and Maslow’s hierarchy of needs, congruence, the role of conditions of worth."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.1_b6",
+              "code": "4.2.1 (6)",
+              "title": "Comparison of approaches",
+              "official_reference": {
+                "section": "4.2.1",
+                "section_title": "Approaches in psychology",
+                "bullet": 6,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section A (compulsory)"
+              },
+              "content": [
+                "The basic assumptions of the following approaches: Comparison of approaches."
+              ]
+            }
           ]
         },
         {
           "id": "AQA_PSYCH_BIO",
           "code": "4.2.2",
           "title": "Biopsychology",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 2 Section B (compulsory)",
           "points": [
-            {"id":"AQA_PSYCH_BIO_6.1","code":"6.1","title":"The nervous system, neurons and synaptic transmission"},
-            {"id":"AQA_PSYCH_BIO_6.2","code":"6.2","title":"The endocrine system and the fight or flight response"},
-            {"id":"AQA_PSYCH_BIO_6.3","code":"6.3","title":"Localisation of function, lateralisation and split-brain research"},
-            {"id":"AQA_PSYCH_BIO_6.4","code":"6.4","title":"Plasticity and ways of studying the brain"},
-            {"id":"AQA_PSYCH_BIO_6.5","code":"6.5","title":"Biological rhythms"}
+            {
+              "id": "AQA_PSYCH_4.2.2_b1",
+              "code": "4.2.2 (1)",
+              "title": "The divisions of the nervous system",
+              "official_reference": {
+                "section": "4.2.2",
+                "section_title": "Biopsychology",
+                "bullet": 1,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "The divisions of the nervous system: central and peripheral (somatic and autonomic)."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.1.1",
+                "bullet": 1,
+                "title": "Biopsychology",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.2_b2",
+              "code": "4.2.2 (2)",
+              "title": "The structure and function of sensory, relay and motor neurons",
+              "official_reference": {
+                "section": "4.2.2",
+                "section_title": "Biopsychology",
+                "bullet": 2,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "The structure and function of sensory, relay and motor neurons. The process of synaptic transmission, including reference to neurotransmitters, excitation and inhibition."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.1.1",
+                "bullet": 2,
+                "title": "Biopsychology",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.2_b3",
+              "code": "4.2.2 (3)",
+              "title": "The function of the endocrine system",
+              "official_reference": {
+                "section": "4.2.2",
+                "section_title": "Biopsychology",
+                "bullet": 3,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "The function of the endocrine system: glands and hormones."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.1.1",
+                "bullet": 3,
+                "title": "Biopsychology",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.2_b4",
+              "code": "4.2.2 (4)",
+              "title": "The fight or flight response including the role of adrenaline",
+              "official_reference": {
+                "section": "4.2.2",
+                "section_title": "Biopsychology",
+                "bullet": 4,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "The fight or flight response including the role of adrenaline."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.1.1",
+                "bullet": 4,
+                "title": "Biopsychology",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.2_b5",
+              "code": "4.2.2 (5)",
+              "title": "Ways of studying the brain",
+              "official_reference": {
+                "section": "4.2.2",
+                "section_title": "Biopsychology",
+                "bullet": 5,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "Ways of studying the brain: scanning techniques, including functional magnetic resonance imaging (fMRI); electroencephalogram (EEGs) and event-related potentials (ERPs); post- mortem examinations."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.2_b6",
+              "code": "4.2.2 (6)",
+              "title": "Localisation of function in the brain and hemispheric lateralisation",
+              "official_reference": {
+                "section": "4.2.2",
+                "section_title": "Biopsychology",
+                "bullet": 6,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section B (compulsory)"
+              },
+              "content": [
+                "Localisation of function in the brain and hemispheric lateralisation: motor, somatosensory, visual, auditory and language centres; Broca’s and Wernicke’s areas, split brain research. Plasticity and functional recovery of the brain after trauma."
+              ]
+            }
           ]
         },
         {
           "id": "AQA_PSYCH_RM",
           "code": "4.2.3",
           "title": "Research methods",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3",
           "points": [
-            {"id":"AQA_PSYCH_RM_7.1","code":"7.1","title":"Experimental method, observational techniques and self-report"},
-            {"id":"AQA_PSYCH_RM_7.2","code":"7.2","title":"Scientific processes: hypotheses, sampling, design, ethics, reliability and validity"},
-            {"id":"AQA_PSYCH_RM_7.3","code":"7.3","title":"Data handling and analysis"},
-            {"id":"AQA_PSYCH_RM_7.4","code":"7.4","title":"Inferential testing"}
+            {
+              "id": "AQA_PSYCH_4.2.3_b1",
+              "code": "4.2.3 (1)",
+              "title": "Experimental method",
+              "official_reference": {
+                "section": "4.2.3",
+                "section_title": "Research methods",
+                "bullet": 1,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Experimental method. Types of experiment, laboratory and field experiments; natural and quasi-experiments."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3",
+                "bullet": 1,
+                "title": "Research methods",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3_b2",
+              "code": "4.2.3 (2)",
+              "title": "Observational techniques",
+              "official_reference": {
+                "section": "4.2.3",
+                "section_title": "Research methods",
+                "bullet": 2,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Observational techniques. Types of observation: naturalistic and controlled observation; covert and overt observation; participant and non-participant observation."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3",
+                "bullet": 2,
+                "title": "Research methods",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3_b3",
+              "code": "4.2.3 (3)",
+              "title": "Self-report techniques",
+              "official_reference": {
+                "section": "4.2.3",
+                "section_title": "Research methods",
+                "bullet": 3,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Self-report techniques. Questionnaires; interviews, structured and unstructured."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3",
+                "bullet": 3,
+                "title": "Research methods",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3_b4",
+              "code": "4.2.3 (4)",
+              "title": "Correlations",
+              "official_reference": {
+                "section": "4.2.3",
+                "section_title": "Research methods",
+                "bullet": 4,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Correlations. Analysis of the relationship between co-variables. The difference between correlations and experiments."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3",
+                "bullet": 4,
+                "title": "Research methods",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3_b5",
+              "code": "4.2.3 (5)",
+              "title": "Content analysis",
+              "official_reference": {
+                "section": "4.2.3",
+                "section_title": "Research methods",
+                "bullet": 5,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Content analysis."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3_b6",
+              "code": "4.2.3 (6)",
+              "title": "Case studies",
+              "official_reference": {
+                "section": "4.2.3",
+                "section_title": "Research methods",
+                "bullet": 6,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Case studies."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b1",
+              "code": "4.2.3.1 (1)",
+              "title": "Aims",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 1,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Aims: stating aims, the difference between aims and hypotheses."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 1,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b2",
+              "code": "4.2.3.1 (2)",
+              "title": "Hypotheses",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 2,
+                "component": "7182/2",
+                "source_pages": [
+                  19
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Hypotheses: directional and non-directional."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 2,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b3",
+              "code": "4.2.3.1 (3)",
+              "title": "Sampling",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 3,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Sampling: the difference between population and sample; sampling methods including: random, systematic, stratified, opportunity and volunteer; implications of sampling methods, including bias and generalisation."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 3,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b4",
+              "code": "4.2.3.1 (4)",
+              "title": "Pilot studies and the aims of piloting",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 4,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Pilot studies and the aims of piloting."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 4,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b5",
+              "code": "4.2.3.1 (5)",
+              "title": "Experimental designs",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 5,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Experimental designs: repeated measures, independent groups, matched pairs."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 5,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b6",
+              "code": "4.2.3.1 (6)",
+              "title": "Observational design",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 6,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Observational design: behavioural categories; event sampling; time sampling."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 6,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b7",
+              "code": "4.2.3.1 (7)",
+              "title": "Questionnaire construction, including use of open and closed questions",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 7,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Questionnaire construction, including use of open and closed questions; design of interviews."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 7,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b8",
+              "code": "4.2.3.1 (8)",
+              "title": "Variables",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 8,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Variables: manipulation and control of variables, including independent, dependent, extraneous; operationalisation of variables."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 8,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b9",
+              "code": "4.2.3.1 (9)",
+              "title": "Control",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 9,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Control: random allocation and counterbalancing, randomisation, standardisation and control groups."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 9,
+                "title": "Scientific processes",
+                "source_pages": [
+                  15
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b10",
+              "code": "4.2.3.1 (10)",
+              "title": "Demand characteristics and investigator effects",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 10,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Demand characteristics and investigator effects."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 10,
+                "title": "Scientific processes",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b11",
+              "code": "4.2.3.1 (11)",
+              "title": "Ethics, including the role of the British Psychological Society’s code of ethics",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 11,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Ethics, including the role of the British Psychological Society’s code of ethics; ethical issues in the design and conduct of psychological studies; dealing with ethical issues in research."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 11,
+                "title": "Scientific processes",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b12",
+              "code": "4.2.3.1 (12)",
+              "title": "The role of peer review in the scientific process",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 12,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "The role of peer review in the scientific process."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 12,
+                "title": "Scientific processes",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b13",
+              "code": "4.2.3.1 (13)",
+              "title": "The implications of psychological research for the economy",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 13,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "The implications of psychological research for the economy."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.1",
+                "bullet": 13,
+                "title": "Scientific processes",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b14",
+              "code": "4.2.3.1 (14)",
+              "title": "Reliability across all methods of investigation",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 14,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Reliability across all methods of investigation. Ways of measuring reliability: test-retest and inter-observer; improving reliability."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b15",
+              "code": "4.2.3.1 (15)",
+              "title": "Types of validity across all methods of investigation",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 15,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Types of validity across all methods of investigation: face validity, concurrent validity, ecological validity and temporal validity. Measurement of validity. Improving validity."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b16",
+              "code": "4.2.3.1 (16)",
+              "title": "Features of science",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 16,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Features of science: objectivity and the empirical method; replicability and falsifiability; theory construction and hypothesis testing; paradigms and paradigm shifts."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.1_b17",
+              "code": "4.2.3.1 (17)",
+              "title": "Reporting psychological investigations",
+              "official_reference": {
+                "section": "4.2.3.1",
+                "section_title": "Scientific processes",
+                "bullet": 17,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Reporting psychological investigations. Sections of a scientific report: abstract, introduction, method, results, discussion and referencing."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b1",
+              "code": "4.2.3.2 (1)",
+              "title": "Quantitative and qualitative data",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 1,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Quantitative and qualitative data; the distinction between qualitative and quantitative data collection techniques."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.2",
+                "bullet": 1,
+                "title": "Data handling and analysis",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b2",
+              "code": "4.2.3.2 (2)",
+              "title": "Primary and secondary data, including meta-analysis",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 2,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Primary and secondary data, including meta-analysis."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.2",
+                "bullet": 2,
+                "title": "Data handling and analysis",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b3",
+              "code": "4.2.3.2 (3)",
+              "title": "Descriptive statistics",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 3,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Descriptive statistics: measures of central tendency – mean, median, mode; calculation of mean, median and mode; measures of dispersion; range and standard deviation; calculation of range; calculation of percentages; positive, negative and zero correlations."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.2",
+                "bullet": 3,
+                "title": "Data handling and analysis",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b4",
+              "code": "4.2.3.2 (4)",
+              "title": "Presentation and display of quantitative data",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 4,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Presentation and display of quantitative data: graphs, tables, scattergrams, bar charts, histograms."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.2",
+                "bullet": 4,
+                "title": "Data handling and analysis",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 0.957
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b5",
+              "code": "4.2.3.2 (5)",
+              "title": "Distributions",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 5,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Distributions: normal and skewed distributions; characteristics of normal and skewed distributions."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.2",
+                "bullet": 5,
+                "title": "Data handling and analysis",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b6",
+              "code": "4.2.3.2 (6)",
+              "title": "Analysis and interpretation of correlation, including correlation coefficients",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 6,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Analysis and interpretation of correlation, including correlation coefficients."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b7",
+              "code": "4.2.3.2 (7)",
+              "title": "Levels of measurement",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 7,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Levels of measurement: nominal, ordinal and interval."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.2_b8",
+              "code": "4.2.3.2 (8)",
+              "title": "Coding in content analysis",
+              "official_reference": {
+                "section": "4.2.3.2",
+                "section_title": "Data handling and analysis",
+                "bullet": 8,
+                "component": "7182/2",
+                "source_pages": [
+                  20
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Coding in content analysis."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.3_b1",
+              "code": "4.2.3.3 (1)",
+              "title": "Introduction to statistical testing",
+              "official_reference": {
+                "section": "4.2.3.3",
+                "section_title": "Inferential testing",
+                "bullet": 1,
+                "component": "7182/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Introduction to statistical testing; the sign test. When to use the sign test; calculation of the sign test."
+              ],
+              "as_reference": {
+                "qualification": "7181",
+                "section": "3.2.3.2",
+                "bullet": 6,
+                "title": "Data handling and analysis",
+                "source_pages": [
+                  16
+                ],
+                "text_similarity": 1.0
+              }
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.3_b2",
+              "code": "4.2.3.3 (2)",
+              "title": "Probability and significance",
+              "official_reference": {
+                "section": "4.2.3.3",
+                "section_title": "Inferential testing",
+                "bullet": 2,
+                "component": "7182/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Probability and significance: use of statistical tables and critical values in interpretation of significance; Type I and Type II errors."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.2.3.3_b3",
+              "code": "4.2.3.3 (3)",
+              "title": "Factors affecting the choice of statistical test, including level of measurement and experimental design",
+              "official_reference": {
+                "section": "4.2.3.3",
+                "section_title": "Inferential testing",
+                "bullet": 3,
+                "component": "7182/2",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 2 Section C (compulsory); also assessed in Papers 1 and 3"
+              },
+              "content": [
+                "Factors affecting the choice of statistical test, including level of measurement and experimental design. When to use the following tests: Spearman’s rho, Pearson’s r, Wilcoxon, Mann-Whitney, related t-test, unrelated t-test and Chi-Squared test."
+              ]
+            }
           ]
         }
       ]
     },
     {
       "id": "AQA_PSYCH_SEC_P3",
+      "code": "Paper 3",
       "title": "Paper 3: Issues and options in psychology",
+      "official_reference": {
+        "component": "7182/3"
+      },
       "topics": [
         {
           "id": "AQA_PSYCH_ISSUES",
           "code": "4.3.1",
           "title": "Issues and debates in psychology",
-          "kind": "topic",
+          "kind": "group",
+          "route": "Paper 3 Section A (compulsory)",
           "points": [
-            {"id":"AQA_PSYCH_ISSUES_8.1","code":"8.1","title":"Gender and culture bias"},
-            {"id":"AQA_PSYCH_ISSUES_8.2","code":"8.2","title":"Free will and determinism; the nature–nurture debate"},
-            {"id":"AQA_PSYCH_ISSUES_8.3","code":"8.3","title":"Holism and reductionism; idiographic and nomothetic approaches"},
-            {"id":"AQA_PSYCH_ISSUES_8.4","code":"8.4","title":"Ethical implications of research"}
+            {
+              "id": "AQA_PSYCH_4.3.1_b1",
+              "code": "4.3.1 (1)",
+              "title": "Gender and culture in Psychology – universality and bias",
+              "official_reference": {
+                "section": "4.3.1",
+                "section_title": "Issues and debates in psychology",
+                "bullet": 1,
+                "component": "7182/3",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 3 Section A (compulsory)"
+              },
+              "content": [
+                "Gender and culture in Psychology – universality and bias. Gender bias including androcentrism and alpha and beta bias; cultural bias, including ethnocentrism and cultural relativism."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.1_b2",
+              "code": "4.3.1 (2)",
+              "title": "Free will and determinism",
+              "official_reference": {
+                "section": "4.3.1",
+                "section_title": "Issues and debates in psychology",
+                "bullet": 2,
+                "component": "7182/3",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 3 Section A (compulsory)"
+              },
+              "content": [
+                "Free will and determinism: hard determinism and soft determinism; biological, environmental and psychic determinism. The scientific emphasis on causal explanations."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.1_b3",
+              "code": "4.3.1 (3)",
+              "title": "The nature-nurture debate",
+              "official_reference": {
+                "section": "4.3.1",
+                "section_title": "Issues and debates in psychology",
+                "bullet": 3,
+                "component": "7182/3",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 3 Section A (compulsory)"
+              },
+              "content": [
+                "The nature-nurture debate: the relative importance of heredity and environment in determining behaviour; the interactionist approach."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.1_b4",
+              "code": "4.3.1 (4)",
+              "title": "Holism and reductionism",
+              "official_reference": {
+                "section": "4.3.1",
+                "section_title": "Issues and debates in psychology",
+                "bullet": 4,
+                "component": "7182/3",
+                "source_pages": [
+                  21
+                ],
+                "route": "Paper 3 Section A (compulsory)"
+              },
+              "content": [
+                "Holism and reductionism: levels of explanation in Psychology. Biological reductionism and environmental (stimulus-response) reductionism."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.1_b5",
+              "code": "4.3.1 (5)",
+              "title": "Idiographic and nomothetic approaches to psychological investigation",
+              "official_reference": {
+                "section": "4.3.1",
+                "section_title": "Issues and debates in psychology",
+                "bullet": 5,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section A (compulsory)"
+              },
+              "content": [
+                "Idiographic and nomothetic approaches to psychological investigation."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.1_b6",
+              "code": "4.3.1 (6)",
+              "title": "Social sensitivity in psychological research",
+              "official_reference": {
+                "section": "4.3.1",
+                "section_title": "Issues and debates in psychology",
+                "bullet": 6,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section A (compulsory)"
+              },
+              "content": [
+                "Social sensitivity in psychological research."
+              ]
+            }
           ]
         },
         {
-          "id": "AQA_PSYCH_OPT1",
-          "code": "4.3.2–4",
-          "title": "Option 1 (one studied)",
+          "id": "AQA_PSYCH_COGDEV",
+          "code": "4.3.4",
+          "title": "Cognition and development",
           "kind": "option",
+          "route": "Paper 3 Section B option (one of relationships, gender, cognition and development)",
           "points": [
-            {"id":"AQA_PSYCH_OPT1_9.1","code":"9.1","title":"Relationships"},
-            {"id":"AQA_PSYCH_OPT1_9.2","code":"9.2","title":"Gender"},
-            {"id":"AQA_PSYCH_OPT1_9.3","code":"9.3","title":"Cognition and development"}
+            {
+              "id": "AQA_PSYCH_4.3.4_b1",
+              "code": "4.3.4 (1)",
+              "title": "Piaget’s theory of cognitive development",
+              "official_reference": {
+                "section": "4.3.4",
+                "section_title": "Cognition and development",
+                "bullet": 1,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section B option (one of relationships, gender, cognition and development)"
+              },
+              "content": [
+                "Piaget’s theory of cognitive development: schemas, assimilation, accommodation, equilibration, stages of intellectual development. Characteristics of these stages, including object permanence, conservation, egocentrism and class inclusion."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.4_b2",
+              "code": "4.3.4 (2)",
+              "title": "Vygotsky’s theory of cognitive development, including the zone of proximal development and scaffolding",
+              "official_reference": {
+                "section": "4.3.4",
+                "section_title": "Cognition and development",
+                "bullet": 2,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section B option (one of relationships, gender, cognition and development)"
+              },
+              "content": [
+                "Vygotsky’s theory of cognitive development, including the zone of proximal development and scaffolding."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.4_b3",
+              "code": "4.3.4 (3)",
+              "title": "Baillargeon’s explanation of early infant abilities, including knowledge of the physical world",
+              "official_reference": {
+                "section": "4.3.4",
+                "section_title": "Cognition and development",
+                "bullet": 3,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section B option (one of relationships, gender, cognition and development)"
+              },
+              "content": [
+                "Baillargeon’s explanation of early infant abilities, including knowledge of the physical world; violation of expectation research."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.4_b4",
+              "code": "4.3.4 (4)",
+              "title": "The development of social cognition",
+              "official_reference": {
+                "section": "4.3.4",
+                "section_title": "Cognition and development",
+                "bullet": 4,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section B option (one of relationships, gender, cognition and development)"
+              },
+              "content": [
+                "The development of social cognition: Selman’s levels of perspective-taking; theory of mind; the Sally-Anne study. The role of the mirror neuron system in social cognition."
+              ]
+            }
           ]
         },
         {
-          "id": "AQA_PSYCH_OPT2",
-          "code": "4.3.5–7",
-          "title": "Option 2 (one studied)",
+          "id": "AQA_PSYCH_SCHIZ",
+          "code": "4.3.5",
+          "title": "Schizophrenia",
           "kind": "option",
+          "route": "Paper 3 Section C option (one of schizophrenia, eating behaviour, stress)",
           "points": [
-            {"id":"AQA_PSYCH_OPT2_10.1","code":"10.1","title":"Schizophrenia"},
-            {"id":"AQA_PSYCH_OPT2_10.2","code":"10.2","title":"Eating behaviour"},
-            {"id":"AQA_PSYCH_OPT2_10.3","code":"10.3","title":"Stress"}
+            {
+              "id": "AQA_PSYCH_4.3.5_b1",
+              "code": "4.3.5 (1)",
+              "title": "Positive symptoms of schizophrenia, including hallucinations and delusions",
+              "official_reference": {
+                "section": "4.3.5",
+                "section_title": "Schizophrenia",
+                "bullet": 1,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section C option (one of schizophrenia, eating behaviour, stress)"
+              },
+              "content": [
+                "Positive symptoms of schizophrenia, including hallucinations and delusions. Negative symptoms of schizophrenia, including speech poverty and avolition. Issues in diagnosis: co- morbidity, culture and gender bias and symptom overlap."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.5_b2",
+              "code": "4.3.5 (2)",
+              "title": "Biological explanations for schizophrenia",
+              "official_reference": {
+                "section": "4.3.5",
+                "section_title": "Schizophrenia",
+                "bullet": 2,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section C option (one of schizophrenia, eating behaviour, stress)"
+              },
+              "content": [
+                "Biological explanations for schizophrenia: genetics and neural correlates, including the dopamine hypothesis."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.5_b3",
+              "code": "4.3.5 (3)",
+              "title": "Psychological explanations for schizophrenia",
+              "official_reference": {
+                "section": "4.3.5",
+                "section_title": "Schizophrenia",
+                "bullet": 3,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section C option (one of schizophrenia, eating behaviour, stress)"
+              },
+              "content": [
+                "Psychological explanations for schizophrenia: family dysfunction and cognitive explanations, including dysfunctional thought processing."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.5_b4",
+              "code": "4.3.5 (4)",
+              "title": "Drug therapy",
+              "official_reference": {
+                "section": "4.3.5",
+                "section_title": "Schizophrenia",
+                "bullet": 4,
+                "component": "7182/3",
+                "source_pages": [
+                  22
+                ],
+                "route": "Paper 3 Section C option (one of schizophrenia, eating behaviour, stress)"
+              },
+              "content": [
+                "Drug therapy: typical and atypical antipsychotics."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.5_b5",
+              "code": "4.3.5 (5)",
+              "title": "Cognitive behaviour therapy and family therapy as used in the treatment of schizophrenia",
+              "official_reference": {
+                "section": "4.3.5",
+                "section_title": "Schizophrenia",
+                "bullet": 5,
+                "component": "7182/3",
+                "source_pages": [
+                  23
+                ],
+                "route": "Paper 3 Section C option (one of schizophrenia, eating behaviour, stress)"
+              },
+              "content": [
+                "Cognitive behaviour therapy and family therapy as used in the treatment of schizophrenia."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.5_b6",
+              "code": "4.3.5 (6)",
+              "title": "The importance of an interactionist approach in explaining and treating schizophrenia",
+              "official_reference": {
+                "section": "4.3.5",
+                "section_title": "Schizophrenia",
+                "bullet": 6,
+                "component": "7182/3",
+                "source_pages": [
+                  23
+                ],
+                "route": "Paper 3 Section C option (one of schizophrenia, eating behaviour, stress)"
+              },
+              "content": [
+                "The importance of an interactionist approach in explaining and treating schizophrenia; the diathesis-stress model."
+              ]
+            }
           ]
         },
         {
-          "id": "AQA_PSYCH_OPT3",
-          "code": "4.3.8–10",
-          "title": "Option 3 (one studied)",
+          "id": "AQA_PSYCH_FORENSIC",
+          "code": "4.3.9",
+          "title": "Forensic psychology",
           "kind": "option",
+          "route": "Paper 3 Section D option (one of aggression, forensic psychology, addiction)",
           "points": [
-            {"id":"AQA_PSYCH_OPT3_11.1","code":"11.1","title":"Aggression"},
-            {"id":"AQA_PSYCH_OPT3_11.2","code":"11.2","title":"Forensic psychology"},
-            {"id":"AQA_PSYCH_OPT3_11.3","code":"11.3","title":"Addiction"}
+            {
+              "id": "AQA_PSYCH_4.3.9_b1",
+              "code": "4.3.9 (1)",
+              "title": "Offender profiling",
+              "official_reference": {
+                "section": "4.3.9",
+                "section_title": "Forensic psychology",
+                "bullet": 1,
+                "component": "7182/3",
+                "source_pages": [
+                  23
+                ],
+                "route": "Paper 3 Section D option (one of aggression, forensic psychology, addiction)"
+              },
+              "content": [
+                "Offender profiling: the typology approach, including organised and disorganised types; the data-driven approach, including investigative Psychology; geographical profiling."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.9_b2",
+              "code": "4.3.9 (2)",
+              "title": "Biological explanations of offending behaviour",
+              "official_reference": {
+                "section": "4.3.9",
+                "section_title": "Forensic psychology",
+                "bullet": 2,
+                "component": "7182/3",
+                "source_pages": [
+                  23
+                ],
+                "route": "Paper 3 Section D option (one of aggression, forensic psychology, addiction)"
+              },
+              "content": [
+                "Biological explanations of offending behaviour: genetics and neural explanations."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.9_b3",
+              "code": "4.3.9 (3)",
+              "title": "Psychological explanations of offending behaviour",
+              "official_reference": {
+                "section": "4.3.9",
+                "section_title": "Forensic psychology",
+                "bullet": 3,
+                "component": "7182/3",
+                "source_pages": [
+                  24
+                ],
+                "route": "Paper 3 Section D option (one of aggression, forensic psychology, addiction)"
+              },
+              "content": [
+                "Psychological explanations of offending behaviour: Eysenck’s theory of the criminal personality; cognitive explanations; level of moral reasoning and cognitive distortions, including hostile attribution bias and minimalisation; differential association theory."
+              ]
+            },
+            {
+              "id": "AQA_PSYCH_4.3.9_b4",
+              "code": "4.3.9 (4)",
+              "title": "Dealing with offending behaviour",
+              "official_reference": {
+                "section": "4.3.9",
+                "section_title": "Forensic psychology",
+                "bullet": 4,
+                "component": "7182/3",
+                "source_pages": [
+                  24
+                ],
+                "route": "Paper 3 Section D option (one of aggression, forensic psychology, addiction)"
+              },
+              "content": [
+                "Dealing with offending behaviour: the aims of custodial sentencing and the psychological effects of custodial sentencing. Behaviour modification in custody. Anger management and restorative justice programmes."
+              ]
+            }
           ]
         }
       ]

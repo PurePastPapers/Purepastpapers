@@ -90,6 +90,22 @@ test('learned gate never leaks a question needing an unlearned topic', () => {
   for (const question of result.matches) assert.deepEqual(missingSpecPoints(question, new Set(learned), specIndex), []);
 });
 
+test('test-only topic choices cover selected content without saving learning or unlocking unselected crossovers', () => {
+  const savedLearning = new Set(['P_M2_2.1']);
+  let result = filterQuestions(pool, {
+    focus: ['P_M2_2.2'], selectionMode: 'crossover', learnedOnly: true, testTopicSelectionOnly: true,
+  }, {specIndex, learned: savedLearning});
+  assert.ok(!ids(result).includes('Q2'), 'an unselected crossover requirement stays locked');
+  assert.deepEqual(result.locked.find((entry) => entry.question.question_id === 'Q2').missing.sort(), ['M_TRIG_1', 'M_TRIG_2']);
+
+  result = filterQuestions(pool, {
+    focus: ['P_M2_2.2', 'M_TRIG'], selectionMode: 'crossover', learnedOnly: true, testTopicSelectionOnly: true,
+  }, {specIndex, learned: savedLearning});
+  assert.ok(ids(result).includes('Q2'), 'explicitly selected topics count for this test');
+  assert.ok(!ids(result).includes('Q3'), 'unselected topics stay outside the test');
+  assert.deepEqual([...savedLearning], ['P_M2_2.1'], 'the engine never changes saved learning');
+});
+
 test('learnedOnly: false shows everything in the pool', () => {
   const result = filterQuestions(pool, { learnedOnly: false, sourceTypes: ['real_past_paper'] }, ctx([]));
   assert.deepEqual(ids(result), ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']);

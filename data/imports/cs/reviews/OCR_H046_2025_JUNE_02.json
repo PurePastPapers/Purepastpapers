@@ -1,0 +1,356 @@
+{
+  "paper_id": "OCR_H046_2025_JUNE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "d94d0daf385b52a38df7bfbf549208c4d5633e477c667d58c5d225a2fa92d6cc",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)",
+      "sections": [
+        "OCR_CS_2.1.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two inputs and two outputs for the class booking program.",
+      "difficulty_basis": "4 marks of simple identification from a short scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_2.1.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why the programmer should create reusable program components.",
+      "difficulty_basis": "3-mark explanation with expansion of benefits.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_1.4.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two characteristics of the given two-dimensional array declaration.",
+      "difficulty_basis": "2-mark identification from a declaration.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State why the value empty is in speech marks.",
+      "difficulty_basis": "1-mark recall that it is a string.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2a"
+      ],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Rewrite a while loop that initialises a 2D array as a for loop.",
+      "difficulty_basis": "2-mark rewrite of iteration over a 2D array.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)(iii)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State one reason the array is passed by reference rather than by value.",
+      "difficulty_basis": "1-mark recall of parameter passing reason.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2c",
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(c)",
+        "2.2.1(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write an algorithm outputting each collected item name from a 2D array, or a message if none.",
+      "difficulty_basis": "6-mark original algorithm combining loop, condition, array access and flag logic.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.2b"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.3.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a trace table for an insertion sort algorithm on a five-element array.",
+      "difficulty_basis": "6-mark trace of a nested-loop algorithm with array state.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)",
+      "sections": [
+        "OCR_CS_1.2.3a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3b"
+      ],
+      "codes": [
+        "1.2.3(a)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(b)"
+      ],
+      "difficulty": "hard",
+      "summary": "Compare agile methodologies and the waterfall lifecycle for a student team project.",
+      "difficulty_basis": "9-mark extended response requiring features, benefits and drawbacks.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_AS_2.2.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "AS 2.2.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give one difference between black-box and white-box testing.",
+      "difficulty_basis": "1-mark recall of test strategies.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two subroutines called in the pseudocode algorithm.",
+      "difficulty_basis": "2-mark identification from given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_2.2.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Name the programming constructs beginning on two given lines.",
+      "difficulty_basis": "2-mark identification of iteration and selection.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_1.4.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the purpose of a type-casting line.",
+      "difficulty_basis": "1-mark recall of casting to integer.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)(i)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a linear search function written in pseudocode.",
+      "difficulty_basis": "5 marks completing a standard algorithm.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)(ii)",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe the steps in a binary search.",
+      "difficulty_basis": "4-mark description of a standard algorithm.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe one difference between a queue and a stack.",
+      "difficulty_basis": "2-mark recall comparing data structures.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(i)",
+      "sections": [
+        "OCR_CS_1.4.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2c"
+      ],
+      "codes": [
+        "1.4.2(b)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(c)"
+      ],
+      "difficulty": "easy",
+      "summary": "State the purpose of the top pointer in the stack.",
+      "difficulty_basis": "1-mark recall of pointer role.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe the steps to remove an item from the array-based stack.",
+      "difficulty_basis": "3-mark description of a pop operation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(iii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Complete a push function for an array-based stack.",
+      "difficulty_basis": "3 marks completing code with overflow check and pointer update.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a",
+        "OCR_CS_2.2.1d"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)",
+        "2.2.1(d)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write an algorithm using string extraction and a helper function to output a person's future age and birthday date.",
+      "difficulty_basis": "8-mark original algorithm with substring handling, casting and formatted output.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "8",
+      "sections": [
+        "OCR_CS_2.3.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.3.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Show each pass of a bubble sort on string data in descending order.",
+      "difficulty_basis": "4-mark trace of a standard algorithm on string data.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

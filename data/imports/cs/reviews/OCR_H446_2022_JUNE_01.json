@@ -1,0 +1,789 @@
+{
+  "paper_id": "OCR_H446_2022_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "495d977b4259fa7e79547612cebbd83a699e4390af30c208b16bfe9457fe3a7a",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)(i)",
+      "sections": [
+        "OCR_CS_1.1.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what is meant by Von Neumann architecture.",
+      "difficulty_basis": "2-mark AO1 recall of a named architecture's defining features.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(a)(ii)",
+      "sections": [
+        "OCR_CS_1.1.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give one difference between Harvard and Von Neumann architectures.",
+      "difficulty_basis": "1-mark AO1 recall of a single contrast.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_1.1.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give two processor features that would raise the computer's performance.",
+      "difficulty_basis": "2-mark AO1 recall of clock speed, cores or cache.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(i)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3c"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Give the totals output by an LMC program for three given inputs.",
+      "difficulty_basis": "3-mark trace of a branching LMC program with a bonus path.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(ii)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Write LMC code to reset a memory location to zero then halt.",
+      "difficulty_basis": "4-mark LMC code writing needing a zero value, store and halt ordering.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(iii)",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.1.1b"
+      ],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.1.1(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Define pipelining.",
+      "difficulty_basis": "3-mark define item needing overlapping fetch, decode and execute stages.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(c)(iv)",
+      "sections": [
+        "OCR_CS_1.1.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain one benefit to the charity of a pipelined processor.",
+      "difficulty_basis": "2-mark explain with benefit applied to the charity context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(i)",
+      "sections": [
+        "OCR_CS_1.1.1a",
+        "OCR_CS_1.1.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(a)",
+        "1.1.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe how the accumulator is used during the fetch-decode-execute cycle.",
+      "difficulty_basis": "2-mark AO1 recall of one register's role.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(ii)",
+      "sections": [
+        "OCR_CS_1.1.1a",
+        "OCR_CS_1.1.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(a)",
+        "1.1.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe how the program counter is used during the fetch-decode-execute cycle.",
+      "difficulty_basis": "2-mark AO1 recall of one register's role.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(d)(iii)",
+      "sections": [
+        "OCR_CS_1.1.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Name three other registers used in the fetch-decode-execute cycle.",
+      "difficulty_basis": "3-mark AO1 recall of register names.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(e)",
+      "sections": [
+        "OCR_CS_1.1.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss whether mobile devices should use CISC or RISC processors, covering differences and suitability.",
+      "difficulty_basis": "12-mark extended response (*) with AO3.3 evaluation applied to mobile use.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(i)",
+      "sections": [
+        "OCR_CS_1.3.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State what a primary key is.",
+      "difficulty_basis": "1-mark AO1 definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(ii)",
+      "sections": [
+        "OCR_CS_1.3.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the foreign key and the table it appears in.",
+      "difficulty_basis": "2-mark identification from a two-table extract.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(iii)",
+      "sections": [
+        "OCR_CS_1.4.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the data type of a cost field.",
+      "difficulty_basis": "1-mark recall of primitive type.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)(iv)",
+      "sections": [
+        "OCR_CS_1.4.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Name the field suited to a Boolean type.",
+      "difficulty_basis": "1-mark identification from the table.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)",
+      "sections": [
+        "OCR_CS_1.3.2d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.2a"
+      ],
+      "codes": [
+        "1.3.2(d)"
+      ],
+      "prerequisite_codes": [
+        "1.3.2(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write SQL returning two fields for customers who see adverts, joining two tables.",
+      "difficulty_basis": "5-mark SQL writing requiring a join across tables plus a condition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(i)",
+      "sections": [
+        "OCR_CS_1.3.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Identify a method of capturing customer data and describe why it is suitable.",
+      "difficulty_basis": "3-mark identification plus justification applied to a context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(ii)",
+      "sections": [
+        "OCR_CS_1.3.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two methods of exchanging data between systems.",
+      "difficulty_basis": "2-mark AO1 recall of formats or interfaces.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(i)",
+      "sections": [
+        "OCR_CS_1.3.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what it means for a transaction to be durable.",
+      "difficulty_basis": "2-mark AO1 recall of an ACID property.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(ii)",
+      "sections": [
+        "OCR_CS_1.3.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give one way durability can be achieved.",
+      "difficulty_basis": "1-mark recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(iii)",
+      "sections": [
+        "OCR_CS_1.3.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how record locking achieves isolation between concurrent transactions.",
+      "difficulty_basis": "3-mark explain linking locking to the isolation property.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(d)(iv)",
+      "sections": [
+        "OCR_CS_1.3.2f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.2(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give one disadvantage of record locking.",
+      "difficulty_basis": "1-mark recall of delay or deadlock.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(e)",
+      "sections": [
+        "OCR_CS_1.5.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.5.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how copyright law applies to streamed videos.",
+      "difficulty_basis": "2-mark explain applying legislation to a streaming context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(f)",
+      "sections": [
+        "OCR_CS_1.3.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain how choosing lossy or lossless compression affects a customer streaming video.",
+      "difficulty_basis": "5-mark applied explain comparing quality, size and buffering.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(g)(i)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "medium",
+      "summary": "Write code declaring a class with private attributes and a constructor setting initial values.",
+      "difficulty_basis": "7-mark code writing across class, private attributes and constructor.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(g)(ii)",
+      "sections": [
+        "OCR_CS_1.2.4e"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1f"
+      ],
+      "codes": [
+        "1.2.4(e)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(f)"
+      ],
+      "difficulty": "easy",
+      "summary": "Write a public method that increases a view count by one.",
+      "difficulty_basis": "2-mark short method definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.1f"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1e"
+      ],
+      "codes": [
+        "1.4.1(f)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(e)"
+      ],
+      "difficulty": "easy",
+      "summary": "Convert a hexadecimal value to binary.",
+      "difficulty_basis": "1-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Convert a sign and magnitude binary number to denary.",
+      "difficulty_basis": "1-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)(iii)",
+      "sections": [
+        "OCR_CS_1.4.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1c"
+      ],
+      "codes": [
+        "1.4.1(d)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Subtract two 8-bit two's complement numbers with working.",
+      "difficulty_basis": "3-mark multi-step binary subtraction with working shown.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_1.4.1g"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1c"
+      ],
+      "codes": [
+        "1.4.1(g)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Convert a normalised floating point number with negative mantissa to denary showing working.",
+      "difficulty_basis": "4-mark multi-step conversion with negative exponent and mantissa.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)",
+      "sections": [
+        "OCR_CS_1.4.1g"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(g)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Decide for four floating point numbers whether each is normalised.",
+      "difficulty_basis": "4-mark application of normalisation rule to several values.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4",
+      "sections": [
+        "OCR_CS_1.5.2_whole"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.5.2"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss the extent to which AI systems inherit programmer bias, with examples and prevention measures.",
+      "difficulty_basis": "9-mark extended response (*) with AO3.3 evaluation of AI ethics.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)(i)",
+      "sections": [
+        "OCR_CS_1.2.3c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.2.3(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "State the output of a looping function for a given call.",
+      "difficulty_basis": "1-mark trace of a loop with two variables.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)(ii)",
+      "sections": [
+        "OCR_CS_1.2.3c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.2.3(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "easy",
+      "summary": "State the output of the function for a call that skips the loop.",
+      "difficulty_basis": "1-mark trace where the loop does not run.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)(iii)",
+      "sections": [
+        "OCR_CS_1.2.3c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.2.3(c)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "State the output of the function for a call needing several iterations.",
+      "difficulty_basis": "1-mark but multi-iteration trace.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(i)",
+      "sections": [
+        "OCR_CS_1.2.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the purpose of a translator.",
+      "difficulty_basis": "1-mark AO1 recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)(ii)",
+      "sections": [
+        "OCR_CS_1.2.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain two differences between a compiler and an interpreter.",
+      "difficulty_basis": "4-mark explain two paired contrasts.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_1.2.2e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Tick which compilation stage performs each of five actions.",
+      "difficulty_basis": "5-mark classification across three stages needing precise knowledge.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(d)",
+      "sections": [
+        "OCR_CS_1.2.2e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe the purpose of code optimisation.",
+      "difficulty_basis": "2-mark AO1 recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(e)(i)",
+      "sections": [
+        "OCR_CS_1.4.1j"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "1.4.1(j)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Complete a function that counts capital letters using ASCII ranges.",
+      "difficulty_basis": "3-mark code completion combining character codes, condition and counter.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(e)(ii)",
+      "sections": [
+        "OCR_CS_1.4.1j"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(j)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give one similarity between ASCII and Unicode.",
+      "difficulty_basis": "1-mark recall.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(e)(iii)",
+      "sections": [
+        "OCR_CS_1.4.1j"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(j)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Give two differences between ASCII and Unicode.",
+      "difficulty_basis": "2-mark recall of two contrasts.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(f)",
+      "sections": [
+        "OCR_CS_1.2.3a",
+        "OCR_CS_1.2.3b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.3(a)",
+        "1.2.3(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Compare the spiral and waterfall methodologies for a complex program, covering use, benefits and drawbacks.",
+      "difficulty_basis": "9-mark extended response (*) with AO3.3 comparative evaluation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(i)",
+      "sections": [
+        "OCR_CS_1.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why first come first served is used for printing documents.",
+      "difficulty_basis": "2-mark explain applying algorithm to printer context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(ii)",
+      "sections": [
+        "OCR_CS_1.2.1d",
+        "OCR_CS_1.2.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(d)",
+        "1.2.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why round-robin is used to allocate processor time.",
+      "difficulty_basis": "3-mark explain linking scheduling to multitasking.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(iii)",
+      "sections": [
+        "OCR_CS_1.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe one other scheduling algorithm.",
+      "difficulty_basis": "2-mark recall of name plus description.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(i)",
+      "sections": [
+        "OCR_CS_1.3.3b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.3c"
+      ],
+      "codes": [
+        "1.3.3(b)"
+      ],
+      "prerequisite_codes": [
+        "1.3.3(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain what happens at the application layer of the TCP/IP stack in a messaging program.",
+      "difficulty_basis": "5-mark explain of layer behaviour in a given scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(ii)",
+      "sections": [
+        "OCR_CS_1.3.3b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.3(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain what happens at the link layer of the TCP/IP stack.",
+      "difficulty_basis": "2-mark explain of layer behaviour with wireless context.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

@@ -1,7 +1,5 @@
 # Maths corpus: release and continuation notes
 
-> **Part display (2026-11-16):** the packs have since been post-processed by `tools/parts/refine.py`. Each part shows its own crop, only the context it needs and its own mark-scheme rows, and parts that build on an earlier answer are gated. The "preceding context" and full-question-scheme descriptions below describe the subject build only. After rebuilding this subject, re-run the refiner (see [PART-DISPLAY.md](PART-DISPLAY.md)).
-
 Updated 15 November 2026. This release activates all **60 verified public
 current-specification Edexcel Maths sources** found in the audited inventories:
 55 exam booklets from 2018–2025 and five official sample assessment components.
@@ -318,3 +316,30 @@ year views, cancel/save, account reload, both cover-all namespace paths, retaine
 hidden-year selections, non-textbook fallback, and320/390/768/1440 modal layouts.
 Desktop and mobile popup screenshots were visually inspected in the private
 outputs/top-filters/covered-topics-textbooks*.png evidence.
+
+## Test-builder topic selection (16 November)
+
+The timed-test topic tree now opens expanded and starts with exactly the
+student's learned IDs checked in the active textbook or official numbering
+system. Test selections live in their own browser-state fields, separately from
+individual-practice focus and both saved learned lists; each numbering system
+keeps its own test draft. Reset returns to the active learned set. The tree can
+be closed and reopened, and selections survive reloads and mode switches.
+
+Students can add or remove topics for one test without changing saved mastery.
+For that generation only, explicit test selections satisfy the learned gate;
+any other unlearned primary/crossover requirements remain locked. Thus a
+student can deliberately include a new subsection for this test without
+accidentally receiving crossovers they neither learned nor selected. An empty
+topic list yields no test questions instead of reverting to the full syllabus.
+The preview explains how to widen the test, and its topic link still opens the
+saved coverage page. Guests have no learned IDs to preselect, so their empty
+tree lets them choose topics explicitly.
+
+Implementation: `js/ui/views/practice.js` owns the private test-scope state and
+open/close behavior; `js/engine/filter-engine.js` temporarily treats only the
+active test's chosen topics as covered. The reusable subject prompt records this
+rule for future subject work. Verification: all69 unit tests pass, including
+official and textbook test-scope gates. The isolated browser-test-builder-topics
+script passes defaults, list open/close, separate mode state, reload persistence,
+unchanged saved learning and320/390/768/1440px layouts. `git diff --check` is clean.

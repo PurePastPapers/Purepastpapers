@@ -1,0 +1,2217 @@
+{
+  "pack_id": "ocr_h046_2025_june_01",
+  "papers": [
+    {
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "paper_type": "real_past_paper",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "year": 2025,
+      "series": "June",
+      "paper_code": "01",
+      "title": "June 2025 · AS H046/01: Computing principles",
+      "total_marks": 70,
+      "duration_minutes": 75,
+      "qualification_code": "H046",
+      "is_as": true,
+      "question_ids": [
+        "OCR_H046_2025_JUNE_01_Q01_a",
+        "OCR_H046_2025_JUNE_01_Q01_b_i",
+        "OCR_H046_2025_JUNE_01_Q01_b_ii",
+        "OCR_H046_2025_JUNE_01_Q02_W",
+        "OCR_H046_2025_JUNE_01_Q03_a",
+        "OCR_H046_2025_JUNE_01_Q03_b",
+        "OCR_H046_2025_JUNE_01_Q04_W",
+        "OCR_H046_2025_JUNE_01_Q05_a",
+        "OCR_H046_2025_JUNE_01_Q05_b",
+        "OCR_H046_2025_JUNE_01_Q05_c",
+        "OCR_H046_2025_JUNE_01_Q05_d",
+        "OCR_H046_2025_JUNE_01_Q06_a",
+        "OCR_H046_2025_JUNE_01_Q06_b_i",
+        "OCR_H046_2025_JUNE_01_Q06_b_ii",
+        "OCR_H046_2025_JUNE_01_Q06_c",
+        "OCR_H046_2025_JUNE_01_Q07_a",
+        "OCR_H046_2025_JUNE_01_Q07_b",
+        "OCR_H046_2025_JUNE_01_Q08_a",
+        "OCR_H046_2025_JUNE_01_Q08_b_i",
+        "OCR_H046_2025_JUNE_01_Q08_b_ii",
+        "OCR_H046_2025_JUNE_01_Q09_a",
+        "OCR_H046_2025_JUNE_01_Q09_b"
+      ],
+      "is_official_sample": false,
+      "full_paper_pdf_url": "https://www.ocr.org.uk/Images/752626-question-paper-computer-principles.pdf",
+      "full_mark_scheme_pdf_url": "https://www.ocr.org.uk/Images/752716-mark-scheme-computing-principles.pdf",
+      "official_source_url": "https://www.ocr.org.uk/Images/752626-question-paper-computer-principles.pdf",
+      "examiner_report_url": "https://www.ocr.org.uk/Images/752591-examiners-report-computing-principles.pdf"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q01_a",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q01",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "1",
+      "part_label": "(a)",
+      "marks": 4,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.1.1b"
+      ],
+      "crossover_spec_points": [
+        "OCR_CS_1.1.1a"
+      ],
+      "preview_text": "Name the four registers described in the steps of the fetch stage.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q01_a.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q01_a_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "1(a)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 1",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q01.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.255493,
+              0.958003,
+              0.474156
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.023755,
+              0.162938,
+              0.976245,
+              0.421622
+            ]
+          }
+        ],
+        "original_parts": [
+          "1(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "4-mark: identify registers from behaviour descriptions rather than direct recall.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.1.1(b)"
+        ],
+        "prerequisite_codes": [
+          "1.1.1(a)"
+        ],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q01_b_i",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q01",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "1",
+      "part_label": "(b)(i)",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.1.1c"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Describe the effect on the cycle of increasing the number of cores.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q01_b_i.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q01_b_i_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "1(b)(i)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 1",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q01.webp"
+          },
+          {
+            "label": "Part 1(b)",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q01_b.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.510988,
+              0.958003,
+              0.597707
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.023755,
+              0.418262,
+              0.976245,
+              0.493852
+            ]
+          }
+        ],
+        "original_parts": [
+          "1(b)(i)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "1-mark AO1 recall of a performance factor.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.1.1(c)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q01_b_ii",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q01",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "1",
+      "part_label": "(b)(ii)",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.1.1c"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Describe the effect on the cycle of increasing clock speed.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q01_b_ii.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q01_b_ii_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "1(b)(ii)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 1",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q01.webp"
+          },
+          {
+            "label": "Part 1(b)",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q01_b.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.603651,
+              0.958003,
+              0.69037
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.023755,
+              0.490493,
+              0.976245,
+              0.567762
+            ]
+          }
+        ],
+        "original_parts": [
+          "1(b)(ii)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "1-mark AO1 recall of a performance factor.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.1.1(c)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q02_W",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q02",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "2",
+      "marks": 9,
+      "estimated_minutes": 10,
+      "difficulty": "hard",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.2.1a"
+      ],
+      "crossover_spec_points": [
+        "OCR_CS_1.2.1b"
+      ],
+      "preview_text": "Discuss operating system functions and why they are essential for managing a firm's single server.",
+      "include_in_custom_pool": true,
+      "extended_response": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q02.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q02_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "2",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.072862,
+              0.958003,
+              0.314019
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.023755,
+              0.564402,
+              0.976245,
+              0.907075
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.023755,
+              0.094067,
+              0.976245,
+              0.905395
+            ]
+          },
+          {
+            "page": 9,
+            "bbox": [
+              0.023755,
+              0.094067,
+              0.976245,
+              0.851643
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.023755,
+              0.094067,
+              0.976245,
+              0.472015
+            ]
+          }
+        ],
+        "original_parts": [
+          "2"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "9-mark extended response requiring a range of functions applied to a server scenario.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.2.1(a)"
+        ],
+        "prerequisite_codes": [
+          "1.2.1(b)"
+        ],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q03_a",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q03",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "3",
+      "part_label": "(a)",
+      "marks": 4,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.3.2b"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Identify two data capture methods for surveys and a benefit of each.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q03_a.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q03_a_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "3(a)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 3",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q03.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.134637,
+              0.958003,
+              0.483901
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.023755,
+              0.468656,
+              0.976245,
+              0.900356
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.023755,
+              0.094067,
+              0.976245,
+              0.497212
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.023755,
+              0.104146,
+              0.976245,
+              0.134382
+            ]
+          }
+        ],
+        "original_parts": [
+          "3(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "4-mark: two methods each with matched benefit, in context.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.3.2(b)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q03_b",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q03",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "3",
+      "part_label": "(b)",
+      "marks": 7,
+      "estimated_minutes": 8,
+      "difficulty": "hard",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.2a"
+      ],
+      "crossover_spec_points": [
+        "OCR_CS_2.2.1a"
+      ],
+      "preview_text": "Write code to find and output the most popular option and its count in a 2D Boolean array.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q03_b.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q03_b_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "3(b)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 3",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q03.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.489845,
+              0.958003,
+              0.906791
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.072195,
+              0.958003,
+              0.205246
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.85983,
+              0.958003,
+              0.88544
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.023755,
+              0.131022,
+              0.976245,
+              0.908755
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.023755,
+              0.080629,
+              0.976245,
+              0.549284
+            ]
+          }
+        ],
+        "original_parts": [
+          "3(b)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "7-mark program design with nested iteration, counting and comparison logic.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.2(a)"
+        ],
+        "prerequisite_codes": [
+          "2.2.1(a)"
+        ],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q04_W",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q04",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "4",
+      "marks": 9,
+      "estimated_minutes": 10,
+      "difficulty": "hard",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.5.2_whole"
+      ],
+      "crossover_spec_points": [
+        "OCR_CS_1.5.1c"
+      ],
+      "preview_text": "Discuss drawbacks of using drones and self-driving vehicles for delivery.",
+      "include_in_custom_pool": true,
+      "extended_response": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q04.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q04_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "4",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.072862,
+              0.958003,
+              0.298575
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.023755,
+              0.545925,
+              0.976245,
+              0.912114
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.023755,
+              0.080629,
+              0.976245,
+              0.896997
+            ]
+          }
+        ],
+        "original_parts": [
+          "4"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "9-mark extended response across moral, legal and environmental considerations.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.5.2"
+        ],
+        "prerequisite_codes": [
+          "1.5.1(c)"
+        ],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q05_a",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q05",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "5",
+      "part_label": "(a)",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.1f"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Convert denary 183 to hexadecimal.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_a.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_a_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "5(a)",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.088305,
+              0.958003,
+              0.113249
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.21119,
+              0.958003,
+              0.2368
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.023755,
+              0.080629,
+              0.976245,
+              0.125983
+            ]
+          }
+        ],
+        "original_parts": [
+          "5(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "1-mark routine conversion.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.1(f)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q05_b",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q05",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "5",
+      "part_label": "(b)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.1d"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Add two 8-bit unsigned binary numbers showing working.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_b.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_b_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "5(b)",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.242744,
+              0.958003,
+              0.459618
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.023755,
+              0.122623,
+              0.976245,
+              0.441779
+            ]
+          }
+        ],
+        "original_parts": [
+          "5(b)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark routine binary addition with overflow.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.1(d)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q05_c",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q05",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "5",
+      "part_label": "(c)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.1d"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Subtract two 8-bit unsigned binary numbers showing working.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_c.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_c_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "5(c)",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.464895,
+              0.958003,
+              0.682457
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.023755,
+              0.43842,
+              0.976245,
+              0.762615
+            ]
+          }
+        ],
+        "original_parts": [
+          "5(c)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark binary subtraction requiring borrowing across several columns.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.1(d)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q05_d",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q05",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "5",
+      "part_label": "(d)",
+      "marks": 3,
+      "estimated_minutes": 3,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.1a"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Tick whether each value is a string, float or character.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_d.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q05_d_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "5(d)",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.686245,
+              0.958003,
+              0.85893
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.023755,
+              0.080629,
+              0.976245,
+              0.263724
+            ]
+          }
+        ],
+        "original_parts": [
+          "5(d)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "3-mark AO1 recall of primitive types.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.1(a)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q06_a",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q06",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "6",
+      "part_label": "(a)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.1a"
+      ],
+      "crossover_spec_points": [
+        "OCR_CS_2.2.1a"
+      ],
+      "preview_text": "State the data type needed for file values and why.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_a.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_a_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "6(a)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 6",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q06.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.211425,
+              0.958003,
+              0.406917
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.023755,
+              0.260364,
+              0.976245,
+              0.43338
+            ]
+          }
+        ],
+        "original_parts": [
+          "6(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark recall that text must be cast numeric for calculations.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.1(a)"
+        ],
+        "prerequisite_codes": [
+          "2.2.1(a)"
+        ],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q06_b_i",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q06",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "6",
+      "part_label": "(b)(i)",
+      "marks": 4,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.2a"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Describe two differences between a list and an array.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_b_i.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_b_i_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "6(b)(i)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 6",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q06.webp"
+          },
+          {
+            "label": "Part 6(b)",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q06_b.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.547778,
+              0.958003,
+              0.634497
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.733103,
+              0.958003,
+              0.758047
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.841876,
+              0.958003,
+              0.86682
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.023755,
+              0.430021,
+              0.976245,
+              0.554324
+            ]
+          }
+        ],
+        "original_parts": [
+          "6(b)(i)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "4-mark: two differences each stated and explained.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.2(a)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q06_b_ii",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q06",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "6",
+      "part_label": "(b)(ii)",
+      "marks": 5,
+      "estimated_minutes": 5,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.2a"
+      ],
+      "crossover_spec_points": [
+        "OCR_CS_2.2.1d"
+      ],
+      "preview_text": "Write a function returning the average of values in an array.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_b_ii.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_b_ii_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "6(b)(ii)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 6",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q06.webp"
+          },
+          {
+            "label": "Part 6(b)",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q06_b.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.072862,
+              0.958003,
+              0.143471
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.427403,
+              0.958003,
+              0.453013
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.023755,
+              0.550964,
+              0.976245,
+              0.900356
+            ]
+          }
+        ],
+        "original_parts": [
+          "6(b)(ii)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "5-mark AO3 function with loop, accumulation and return.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.2(a)"
+        ],
+        "prerequisite_codes": [
+          "2.2.1(d)"
+        ],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q06_c",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q06",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "6",
+      "part_label": "(c)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.2.2d"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Describe one benefit of a compiler over an interpreter.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_c.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q06_c_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "6(c)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 6",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q06.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.458957,
+              0.958003,
+              0.514789
+            ]
+          },
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.612729,
+              0.958003,
+              0.638339
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.023755,
+              0.080629,
+              0.976245,
+              0.351072
+            ]
+          }
+        ],
+        "original_parts": [
+          "6(c)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark AO2 reasoned benefit in context.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.2.2(d)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q07_a",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q07",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "7",
+      "part_label": "(a)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.1j"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Explain one benefit of Unicode over ASCII.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q07_a.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q07_a_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "7(a)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 7",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q07.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.119193,
+              0.958003,
+              0.144137
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.242077,
+              0.958003,
+              0.267687
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.023755,
+              0.347712,
+              0.976245,
+              0.472015
+            ]
+          }
+        ],
+        "original_parts": [
+          "7(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark explanation not mere statement.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.1(j)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q07_b",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q07",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "7",
+      "part_label": "(b)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.1j"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Explain one drawback of Unicode over ASCII.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q07_b.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q07_b_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "7(b)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 7",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q07.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.273631,
+              0.958003,
+              0.298575
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.396515,
+              0.958003,
+              0.422126
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.023755,
+              0.468656,
+              0.976245,
+              0.544245
+            ]
+          }
+        ],
+        "original_parts": [
+          "7(b)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark explanation not mere statement.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.1(j)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q08_a",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q08",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "8",
+      "part_label": "(a)",
+      "marks": 4,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.3b"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Complete a Karnaugh map, group the cells and give the simplified expression.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q08_a.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q08_a_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "8(a)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 8",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q08.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.502636,
+              0.958003,
+              0.932342
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.023755,
+              0.658469,
+              0.976245,
+              0.848283
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.023755,
+              0.080629,
+              0.976245,
+              0.36283
+            ]
+          }
+        ],
+        "original_parts": [
+          "8(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "4-mark multi-step: table, two groups, simplified expression.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.3(b)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q08_b_i",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q08",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "8",
+      "part_label": "(b)(i)",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.3d"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "State the name of a given logic gate.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q08_b_i.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q08_b_i_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "8(b)(i)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 8",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q08.webp"
+          },
+          {
+            "label": "Part 8(b)",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q08_b.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.253498,
+              0.958003,
+              0.309996
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.023755,
+              0.359471,
+              0.976245,
+              0.43506
+            ]
+          }
+        ],
+        "original_parts": [
+          "8(b)(i)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "1-mark recall of gate name.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.3(d)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q08_b_ii",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q08",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "8",
+      "part_label": "(b)(ii)",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.4.3d"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Complete the truth table for the logic gate.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q08_b_ii.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q08_b_ii_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "8(b)(ii)",
+      "context": {
+        "intros": [
+          {
+            "label": "Question 8",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q08.webp"
+          },
+          {
+            "label": "Part 8(b)",
+            "image_url": "assets/cs/OCR_H046_2025_JUNE_01/CTX_Q08_b.webp"
+          }
+        ]
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.315274,
+              0.958003,
+              0.560889
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.023755,
+              0.431701,
+              0.976245,
+              0.58288
+            ]
+          }
+        ],
+        "original_parts": [
+          "8(b)(ii)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "1-mark routine truth table for a two-input gate.",
+        "context_basis": "question stem and part lead-in attached as unscored context",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.4.3(d)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q09_a",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q09",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "9",
+      "part_label": "(a)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.3.3a"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Explain the importance of protocols when transmitting data.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q09_a.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q09_a_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "9(a)",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.088305,
+              0.958003,
+              0.143471
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.242077,
+              0.958003,
+              0.267687
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.023755,
+              0.57952,
+              0.976245,
+              0.849963
+            ]
+          }
+        ],
+        "original_parts": [
+          "9(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark AO1 recall of standard reasoning.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.3.3(a)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    },
+    {
+      "question_id": "OCR_H046_2025_JUNE_01_Q09_b",
+      "parent_question_id": "OCR_H046_2025_JUNE_01_Q09",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "OCR_H046_2025_JUNE_01",
+      "subject_id": "OCR_ALEVEL_CS_H446",
+      "board": "OCR",
+      "level": "AS",
+      "subject": "Computer Science",
+      "spec_code": "H046",
+      "qualification_code": "H046",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2025,
+      "series": "June",
+      "component": "01",
+      "question_number": "9",
+      "part_label": "(b)",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "easy",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "OCR_CS_1.3.3b"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Describe the purpose of the transport layer in TCP/IP.",
+      "include_in_custom_pool": true,
+      "extended_response": false,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q09_b.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/cs/OCR_H046_2025_JUNE_01/Q09_b_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "9(b)",
+      "context": {},
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "3928a8405b4436514b364f35a88c0929e35e317d1dbd40a3cbae10b9a46bba74",
+        "scheme_source_sha256": "fc11e2eb874fdc4cbb1b22986fbefad84727579e8dcb08b2ab6ee4ea282229d5",
+        "source_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.273631,
+              0.958003,
+              0.329463
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.427403,
+              0.958003,
+              0.453013
+            ]
+          }
+        ],
+        "scheme_regions": [
+          {
+            "page": 19,
+            "bbox": [
+              0.023755,
+              0.080629,
+              0.976245,
+              0.413223
+            ]
+          }
+        ],
+        "original_parts": [
+          "9(b)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "2-mark AO1 recall of layer role.",
+        "context_basis": "independent",
+        "content_year_basis": "AS H046 unit",
+        "official_codes": [
+          "1.3.3(b)"
+        ],
+        "prerequisite_codes": [],
+        "qualification_code": "H046",
+        "extraction_version": "ocr-cs-layout-v3"
+      }
+    }
+  ],
+  "build_signature": "2da3c69227cefdb316735cb22caef93f4def0ac57b3605994d4ab06863a673b4"
+}

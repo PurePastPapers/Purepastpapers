@@ -942,7 +942,8 @@
 }
 .zoom-btn:hover { background: var(--surface-2); }
 .qsplit__main { position: relative; }
-.qsplit__main > .zoom-btn { position: absolute; top: 8px; right: 8px; z-index: 2; }
+.qsplit__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.qsplit__head .field__label { display: inline-flex; align-items: center; gap: 6px; }
 .qsplit__answerfield .field__label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 [data-zoom-src] img { cursor: zoom-in; }
 .modal.zoom {

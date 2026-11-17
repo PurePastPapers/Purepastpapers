@@ -176,7 +176,7 @@ export async function mount(element, context) {
     const choice = await subjectDialog({ subject, mode: 'add', leaves: learningIds.length, learningUnit:textbookMode ? 'textbook sections' : 'spec points', coveredCount:learningIds.filter(id=>api.learnedSet().has(id)).length });
     if (!choice) return;
     await api.setEnrolled(subject.subject_id, true);
-    await saveSubjectSettings(subject.subject_id, { swatch: choice.swatch, target: choice.target });
+    await saveSubjectSettings(subject.subject_id, { swatch: choice.swatch, target: choice.target, tier: choice.tier });
     if (choice.learned === 'all') {
       if (textbookMode) {
         await api.setTextbookLearned(learningIds,true);
@@ -201,7 +201,7 @@ export async function mount(element, context) {
     const subject = subjects.find((candidate) => candidate.subject_id === button.dataset.edit);
     const choice = await subjectDialog({ subject, mode: 'edit' });
     if (!choice) return;
-    await saveSubjectSettings(subject.subject_id, { swatch: choice.swatch, target: choice.target });
+    await saveSubjectSettings(subject.subject_id, { swatch: choice.swatch, target: choice.target, tier: choice.tier });
     await draw();
   });
   on(element, 'click', '[data-unenrol]', async (event, button) => {

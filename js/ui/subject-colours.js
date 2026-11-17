@@ -77,9 +77,21 @@ export function targetGrade(subject) {
   return progressOrNull()?.preferences?.targetGrades?.[id] || null;
 }
 
-/** Saves a subject's colour and target grade together. `target` null clears it. */
-export async function saveSubjectSettings(subjectId, { swatch = null, target } = {}) {
+/** The tier ('Foundation' | 'Higher') chosen for a tiered subject, or null for both tiers. */
+export function subjectTier(subject) {
+  const id = typeof subject === 'string' ? subject : subject?.subject_id;
+  return progressOrNull()?.preferences?.tiers?.[id] || null;
+}
+
+/** Saves a subject's colour, tier and target grade together. `target`/`tier` null clears it. */
+export async function saveSubjectSettings(subjectId, { swatch = null, target, tier } = {}) {
   if (swatch) await setSubjectColour(subjectId, swatch);
+  if (tier !== undefined) {
+    const current = { ...(api.getProgress().preferences.tiers || {}) };
+    if (tier) current[subjectId] = tier;
+    else delete current[subjectId];
+    await api.setPreference('tiers', current);
+  }
   if (target !== undefined) {
     const current = { ...(api.getProgress().preferences.targetGrades || {}) };
     if (target) current[subjectId] = target;

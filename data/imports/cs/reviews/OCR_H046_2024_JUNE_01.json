@@ -1,0 +1,325 @@
+{
+  "paper_id": "OCR_H046_2024_JUNE_01",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "3b0127f3f08c630440e10989031f3604b094fad340c9b1577741421d33b4aeab",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1",
+      "sections": [
+        "OCR_CS_1.1.1a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify five labelled components on a CPU and memory diagram.",
+      "difficulty_basis": "5-mark AO1 recall of named registers and bus, one mark each.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2",
+      "sections": [
+        "OCR_CS_1.1.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.1.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Discuss differences between Von Neumann and Harvard architecture and their benefits.",
+      "difficulty_basis": "9-mark extended response comparing storage approaches and benefits of both.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)(i)",
+      "sections": [
+        "OCR_CS_1.2.1h"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(h)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe one advantage of virtual machines in a thin client school setup.",
+      "difficulty_basis": "2-mark AO2 application to a given context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)(ii)",
+      "sections": [
+        "OCR_CS_1.2.1h"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.3.3e"
+      ],
+      "codes": [
+        "1.2.1(h)"
+      ],
+      "prerequisite_codes": [
+        "1.3.3(e)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe one disadvantage of virtual machines in a thin client school setup.",
+      "difficulty_basis": "2-mark AO2 application, marked in pairs.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_1.2.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Describe two types of operating system with an example use of each.",
+      "difficulty_basis": "6-mark: two types each with description and example.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)(i)",
+      "sections": [
+        "OCR_CS_1.2.2b"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.2a"
+      ],
+      "codes": [
+        "1.2.2(b)"
+      ],
+      "prerequisite_codes": [
+        "1.2.2(a)"
+      ],
+      "difficulty": "easy",
+      "summary": "Describe the difference between utility and application software.",
+      "difficulty_basis": "2-mark AO1 recall of two definitions.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)(ii)",
+      "sections": [
+        "OCR_CS_1.2.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Name two application software types and an example student use of each.",
+      "difficulty_basis": "4-mark: two types each with a context-specific use.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)(iii)",
+      "sections": [
+        "OCR_CS_1.2.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain one advantage to the school of open source software.",
+      "difficulty_basis": "2-mark AO2 application of a benefit to the school.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)",
+      "sections": [
+        "OCR_CS_1.2.2b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Name three types of utility software.",
+      "difficulty_basis": "3-mark AO1 recall of examples.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)",
+      "sections": [
+        "OCR_CS_1.2.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Tick which translator type matches each of four statements.",
+      "difficulty_basis": "4-mark table completion distinguishing compiler, interpreter and assembler.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_1.2.2d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.2.2(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Identify the most suitable translator for a commercial game and give a reason.",
+      "difficulty_basis": "2-mark AO2 choice justified in context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(c)",
+      "sections": [
+        "OCR_CS_1.2.4c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.2.3c"
+      ],
+      "codes": [
+        "1.2.4(c)"
+      ],
+      "prerequisite_codes": [
+        "1.2.3(c)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write an algorithm that multiplies by repeated addition in Little Man Computer assembly.",
+      "difficulty_basis": "6-mark AO3 program writing in LMC with loop, branching and variable storage.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5",
+      "sections": [
+        "OCR_CS_1.3.4a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.3.4(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "hard",
+      "summary": "Write a JavaScript function validating password length and displaying an error message in the page.",
+      "difficulty_basis": "5-mark AO3 code writing combining DOM access, conditions and output.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Convert an 8-bit binary value to positive denary.",
+      "difficulty_basis": "1-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Convert an 8-bit binary value to negative denary using two's complement.",
+      "difficulty_basis": "1-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)(iii)",
+      "sections": [
+        "OCR_CS_1.4.1f"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.1(f)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Convert an 8-bit binary value to hexadecimal.",
+      "difficulty_basis": "1-mark routine conversion.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)",
+      "sections": [
+        "OCR_CS_1.4.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1j"
+      ],
+      "codes": [
+        "1.4.1(a)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(j)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss the types of data stored in binary and why computers use binary.",
+      "difficulty_basis": "9-mark extended response needing wide range of data representations and reasoning.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)(i)",
+      "sections": [
+        "OCR_CS_1.4.3d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Complete a truth table for a logic gate diagram.",
+      "difficulty_basis": "2-mark tracing multi-gate circuit outputs for four rows.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(a)(ii)",
+      "sections": [
+        "OCR_CS_1.4.3d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the single gate equivalent to a logic diagram.",
+      "difficulty_basis": "1-mark AO1 recall of gate name.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "7(b)",
+      "sections": [
+        "OCR_CS_1.4.3d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.3(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Draw a logic gate diagram for a given expression.",
+      "difficulty_basis": "3-mark AO3 construction using OR, NOT and AND gates.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

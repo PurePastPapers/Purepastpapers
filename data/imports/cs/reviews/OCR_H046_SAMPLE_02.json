@@ -1,0 +1,377 @@
+{
+  "paper_id": "OCR_H046_SAMPLE_02",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "2aa1352fb124f36753d85dd616d055a6449da7de70d18a9f4760d798bce3bfdf",
+  "tagging_basis": "OCR H446 lettered specification points",
+  "units": [
+    {
+      "label": "1(a)",
+      "sections": [
+        "OCR_CS_2.2.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what an integrated development environment is.",
+      "difficulty_basis": "2-mark recall of a definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "1(b)",
+      "sections": [
+        "OCR_CS_2.2.1e"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(e)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Identify and describe three IDE features that help programmers find bugs.",
+      "difficulty_basis": "6 marks; three features each identified and described.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(a)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify the parameter passed to the queue add procedure.",
+      "difficulty_basis": "1-mark identification from given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(b)",
+      "sections": [
+        "OCR_CS_2.1.4a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4b"
+      ],
+      "codes": [
+        "2.1.4(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe the logical decision made in the add-to-queue algorithm.",
+      "difficulty_basis": "2-mark interpretation of a condition in given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(i)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.2b"
+      ],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [
+        "1.4.2(b)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain the logic mistake in the algorithm that adds an item to a queue.",
+      "difficulty_basis": "2-mark reasoning about pointer misuse in a queue operation.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "2(c)(ii)",
+      "sections": [
+        "OCR_CS_1.4.2c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "1.4.2(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Rewrite the add-to-queue algorithm to correct the mistake.",
+      "difficulty_basis": "2-mark correction of queue pointer handling.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(a)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe one difference between a global and a local variable.",
+      "difficulty_basis": "2-mark recall of scope definitions.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(b)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain with an example why global variables are sometimes used.",
+      "difficulty_basis": "3 marks; explanation plus a suitable example.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(c)",
+      "sections": [
+        "OCR_CS_2.2.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why good practice generally avoids global variables.",
+      "difficulty_basis": "2-mark explanation of drawbacks of global scope.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "3(d)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.2.1c"
+      ],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [
+        "2.2.1(c)"
+      ],
+      "difficulty": "medium",
+      "summary": "Explain why passing parameters can be better than using global variables.",
+      "difficulty_basis": "2-mark explanation relating parameters to side effects.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(a)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Describe what a function is.",
+      "difficulty_basis": "2-mark recall of a definition.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(b)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Compare a procedure with a function.",
+      "difficulty_basis": "2-mark comparison of two subroutine types.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(c)(i)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two other functions used in the given code besides the user-defined ones.",
+      "difficulty_basis": "2-mark identification from given code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(c)(ii)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State the output of the given code for the input 3.",
+      "difficulty_basis": "2-mark routine trace of short code.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "4(d)",
+      "sections": [
+        "OCR_CS_2.2.1d"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.2d",
+        "OCR_CS_2.2.1c"
+      ],
+      "codes": [
+        "2.2.1(d)"
+      ],
+      "prerequisite_codes": [
+        "2.1.2(d)",
+        "2.2.1(c)"
+      ],
+      "difficulty": "hard",
+      "summary": "Discuss reasons why a company enforces standard rules on how functions are written.",
+      "difficulty_basis": "9-mark extended response needing application of several rules to context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(a)",
+      "sections": [
+        "OCR_CS_2.1.2a"
+      ],
+      "prerequisites": [
+        "OCR_CS_1.4.1a"
+      ],
+      "codes": [
+        "2.1.2(a)"
+      ],
+      "prerequisite_codes": [
+        "1.4.1(a)"
+      ],
+      "difficulty": "medium",
+      "summary": "Identify four inputs for the engine management feature and suggest a data type for each.",
+      "difficulty_basis": "8 marks; inputs and types from an unfamiliar scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(b)",
+      "sections": [
+        "OCR_CS_2.1.2a"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.2(a)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "Identify two outputs from the engine management feature.",
+      "difficulty_basis": "2-mark identification from a scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "5(c)",
+      "sections": [
+        "OCR_CS_2.3.1a"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4c",
+        "OCR_CS_2.2.1a"
+      ],
+      "codes": [
+        "2.3.1(a)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(c)",
+        "2.2.1(a)"
+      ],
+      "difficulty": "hard",
+      "summary": "Write an algorithm for the engine stop-start feature with several overriding conditions.",
+      "difficulty_basis": "8-mark original algorithm with endless loop and multiple combined conditions in an unfamiliar scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(a)",
+      "sections": [
+        "OCR_CS_2.1.1b"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.1(b)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "medium",
+      "summary": "Explain why the developers need to use abstraction.",
+      "difficulty_basis": "2-mark explanation of the need for abstraction in a scenario.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(i)",
+      "sections": [
+        "OCR_CS_2.1.1c"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.1d"
+      ],
+      "codes": [
+        "2.1.1(c)"
+      ],
+      "prerequisite_codes": [
+        "2.1.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "State two similarities between the virtual and real town and explain why each exists.",
+      "difficulty_basis": "4 marks; identification plus explanation in context.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(b)(ii)",
+      "sections": [
+        "OCR_CS_2.1.1c"
+      ],
+      "prerequisites": [],
+      "codes": [
+        "2.1.1(c)"
+      ],
+      "prerequisite_codes": [],
+      "difficulty": "easy",
+      "summary": "State two differences between the virtual and real town.",
+      "difficulty_basis": "2-mark identification of abstraction differences.",
+      "review_status": "model_reviewed"
+    },
+    {
+      "label": "6(c)",
+      "sections": [
+        "OCR_CS_2.1.4b"
+      ],
+      "prerequisites": [
+        "OCR_CS_2.1.4c",
+        "OCR_CS_2.1.1d"
+      ],
+      "codes": [
+        "2.1.4(b)"
+      ],
+      "prerequisite_codes": [
+        "2.1.4(c)",
+        "2.1.1(d)"
+      ],
+      "difficulty": "medium",
+      "summary": "Describe how the simulator would check the driver obeys a no overtaking sign.",
+      "difficulty_basis": "3-mark description of decision logic for a scenario.",
+      "review_status": "model_reviewed"
+    }
+  ]
+}

@@ -50,6 +50,9 @@ const defaults = () => ({
   source: 'official',
   focus: null, // null = unrestricted; [] = no selected points
   textbookFocus: null,
+  testFocus: null,
+  testTextbookFocus: null,
+  testFocusVersion: 0,
   topicOrganisation: null,
   difficulties: [],
   qualifications: [],
@@ -86,7 +89,7 @@ const defaults = () => ({
   referenceQuestions: [],
   drafts: {},
   stopwatch: false,
-  showTree: false,
+  showTree: true,
   curriculum: {},
 });
 
@@ -147,6 +150,10 @@ export async function mount(element, context) {
   if (!Array.isArray(state.years)) state.years = [];
   if (state.year && !state.years.length) state.years = [String(state.year)];
   state.year = '';
+  // A tiered GCSE starts on the tier chosen when the subject was added (subject settings).
+  // Changing that choice resets the tier filter once; the student can still pick "Any tier" here.
+  const tierPref = (Array.isArray(subject.tiers) && progress.preferences.tiers?.[subjectId]) || '';
+  if ((state.tierPref ?? '') !== tierPref) { state.tier = tierPref; state.tierPref = tierPref; }
   const save = () => {
     try {
       storage.setItem(storageKey, JSON.stringify(state));
@@ -174,9 +181,6 @@ export async function mount(element, context) {
   delete state.openQuestion;
   if (!Array.isArray(state.contextQuestions)) state.contextQuestions = [];
   if (!Array.isArray(state.referenceQuestions)) state.referenceQuestions = [];
-  if (!textbooks || !['textbook', 'official'].includes(state.topicOrganisation)) {
-    state.topicOrganisation = textbooks && state.focus === null ? 'textbook' : 'official';
-  }
   if (state.textbookFocus !== null && !Array.isArray(state.textbookFocus)) state.textbookFocus = null;
   if (textbooks) { state.curriculum.bookId = ''; state.curriculum.chapterId = ''; }
   if (!['any', 'all'].includes(state.focusMode)) state.focusMode = 'any';
@@ -189,6 +193,33 @@ export async function mount(element, context) {
   const learned = api.learnedSet();
   const subjectLeaves = specIndex.subjectLeaves(subjectId);
   const learnedLeaves = subjectLeaves.filter((id) => learned.has(id));
+  if (!textbooks) state.topicOrganisation = 'official';
+  else {
+    const savedLearningView = progress.preferences[`coveredView:${subjectId}`];
+    const hasTextbookLearning = textbooks.ids.some((id) => learned.has(id));
+    const hasOfficialLearning = subjectLeaves.some((id) => learned.has(id));
+    if (!['textbook', 'official'].includes(state.topicOrganisation)) {
+      const useOfficial = savedLearningView === 'official' ||
+        (!savedLearningView && (state.focus !== null || (!hasTextbookLearning && hasOfficialLearning)));
+      state.topicOrganisation = useOfficial ? 'official' : 'textbook';
+    } else if (state.testFocusVersion !== 1 && (
+      savedLearningView === 'official' ||
+      (!savedLearningView && state.topicOrganisation === 'textbook' && !hasTextbookLearning && hasOfficialLearning)
+    )) {
+      // Correct the old practice default once so official-only learners see
+      // their checks when the test checklist is first seeded.
+      state.topicOrganisation = 'official';
+    }
+  }
+  const validTestFocus = state.testFocusVersion === 1 && Array.isArray(state.testFocus) && (!textbooks || Array.isArray(state.testTextbookFocus));
+  if (!validTestFocus) {
+    // The test's topic scope is a private draft, seeded once from the matching
+    // learned namespace. It never writes to either saved learned-topic list.
+    state.testFocus = subjectLeaves.filter((id) => learned.has(id));
+    state.testTextbookFocus = textbooks ? textbooks.ids.filter((id) => learned.has(id)) : null;
+    state.testFocusVersion = 1;
+    state.showTree = true;
+  }
   if (context.query.topic) {
     // "Practise this topic" links arrive here with a topic or spec point id.
     const wantedLeaves = specIndex.leavesOf(context.query.topic).filter((id) => subjectLeaves.includes(id));
@@ -224,7 +255,9 @@ export async function mount(element, context) {
     : MARK_BANDS;
 
   const textbookMode = () => Boolean(textbooks && state.topicOrganisation === 'textbook');
-  const focusKey = () => textbookMode() ? 'textbookFocus' : 'focus';
+  const focusKey = () => timed()
+    ? textbookMode() ? 'testTextbookFocus' : 'testFocus'
+    : textbookMode() ? 'textbookFocus' : 'focus';
   const labelPoint = id => textbooks?.points.has(id) ? `${textbooks.points.get(id).book.short_title} · ${textbooks.points.get(id).code} ${textbooks.points.get(id).title}` : specIndex.label(id);
   const manualFocus = () => state[focusKey()];
   const chosenFocus = () => !timed() && state.learnedOnly ? null : manualFocus();
@@ -248,6 +281,7 @@ export async function mount(element, context) {
     paperIds: state.paper ? [state.paper] : null,
     sampleMode: state.sampleMode,
     learnedOnly: timed() ? true : state.learnedOnly,
+    testTopicSelectionOnly: timed(),
     sortBy: !timed() && state.shuffled ? 'shuffle' : state.sort,
     shuffleSeed: state.seed,
     ...extra,
@@ -363,7 +397,7 @@ export async function mount(element, context) {
         return html`<span>${count} ${count === 1 ? 'question' : 'questions'}</span><span>${selected} chosen</span>`;
       },
       onChange: (selected) => {
-        state[focusKey()] = selected.size === all.length ? null : [...selected];
+        state[focusKey()] = timed() ? [...selected] : selected.size === all.length ? null : [...selected];
         state.page = 1;
         save();
         update({ keepControls: true }); // leave the tree as the student has it open
@@ -410,7 +444,7 @@ export async function mount(element, context) {
         <i class="tape tape--l" aria-hidden="true"></i>
         <h2 class="builder__title">Topics</h2>
         <button type="button" class="btn btn--sm filter-reset" data-reset-filters>Reset filters</button>
-        <p class="hand builder__note">only topics you’ve ticked as learned are used, change them on the subject page</p>
+        <p class="hand builder__note">Starts with topics you’ve marked as learned. Add or remove topics below for this test only; your saved learning won’t change. <a class="small" href="#/subject/${subjectId}">Edit saved topics</a></p>
         <div class="stack">${topicsControl()} ${metadataControls()} ${sourceControl()}</div>
       </div>
       <fieldset class="card ruled builder__card tilt-1">
@@ -438,12 +472,11 @@ export async function mount(element, context) {
         ${emptyState({
           iconName: 'filter',
           title: 'No questions match yet',
-          text: !learnedLeaves.length
-            ? 'Tick the topics you have learned and questions will appear here.'
+          text: !manualFocus()?.length
+            ? 'Choose one or more topics in the list to build this test. Your saved learned topics will stay unchanged.'
             : lockedCount
-              ? `${plural(lockedCount, 'question')} in this subject need topics you have not ticked. Try another difficulty or widen your topics.`
+              ? `${plural(lockedCount, 'question')} need topics you haven’t learned or selected for this test. Add those topics to this test or widen your selection.`
               : 'Try another difficulty, widen your topics, or add questions for this subject.',
-          action: html`<a class="btn btn--primary" href="${links.subject(subjectId)}">Tick learned topics</a>`,
         })}
       </div>`;
     }
@@ -561,9 +594,9 @@ export async function mount(element, context) {
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
         ${open ? html`<div class="qsplit">
           <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Question'} · ${questionRef(question, bundle.papersById)}">
-            ${zoomButton(schemeOpen ? 'mark scheme' : 'question')}
+            <div class="qsplit__head"><span class="field__label">${schemeOpen ? html`${icon('eye', { size: 14 })} Mark scheme` : 'Question'}</span>${zoomButton(schemeOpen ? 'mark scheme' : 'question')}</div>
             ${schemeOpen
-              ? html`<p class="qsplit__label">${icon('eye', { size: 15 })} Mark scheme</p>${markSchemeBody(question)}`
+              ? markSchemeBody(question)
               : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
           </div>
           <div class="qsplit__side stack stack--sm">
@@ -838,8 +871,11 @@ export async function mount(element, context) {
   }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
-    const kept = { mode: state.mode, topicOrganisation: textbooks ? 'textbook' : 'official', selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
-    state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept };
+    const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
+    state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept, tier: tierPref, tierPref };
+    state.testFocus = subjectLeaves.filter((id) => learned.has(id));
+    state.testTextbookFocus = textbooks ? textbooks.ids.filter((id) => learned.has(id)) : null;
+    state.testFocusVersion = 1;
   }, { resetControls: true }));
   on(element, 'click', '[data-clear-chip]', (event, button) => change(() => {
     const key = button.dataset.clearChip;
