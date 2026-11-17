@@ -1,6 +1,5 @@
 project_id = "spjlnvjdstxdajcsljvq"
 
 [functions.delete-account]
-# The function validates the user's JWT with @supabase/server. This also supports
-# projects using the newer sb_publishable_ / sb_secret_ API keys.
-verify_jwt = false
+# Keep the platform JWT check enabled; the handler also requires auth: 'user'.
+verify_jwt = true
