@@ -102,7 +102,7 @@ Verified on 2026-11-17 through GitHub:
 - PR base branch: main; base SHA observed: c3530261bb9a8673f7d7b07daee2e098b788c091.
 - The last combined status query for the feature commit returned no status entries; recheck before merging.
 - No source changes were made in this handoff session before this file.
-- This file is being added to the feature branch in its own commit; see GitHub commit history for that commit SHA.
+- Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
 
 The PR body says project setup should be completed before merge. Do not merge or publish until required Supabase setup is applied and checks are completed.
 
