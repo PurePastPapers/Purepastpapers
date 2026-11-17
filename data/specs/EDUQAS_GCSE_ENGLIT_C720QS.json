@@ -1,64 +1,441 @@
 {
   "subject_id": "EDUQAS_GCSE_ENGLIT_C720QS",
+  "specification_version": "eduqas-c720qs-version-4-2024-08",
+  "official_source_url": "https://www.eduqas.co.uk/qualifications/english-literature-gcse/",
+  "order_status": "verified",
+  "official_source": {
+    "title": "WJEC Eduqas GCSE (9-1) in English Literature specification (teaching from 2015)",
+    "version": "Version 4",
+    "issue_date": "August 2024",
+    "first_teaching": 2015,
+    "first_assessment": 2017,
+    "url": "https://www.eduqas.co.uk/media/x2zpzwgt/eduqas-gcse-english-lit-spec-from-2015-e.pdf",
+    "page": "https://www.eduqas.co.uk/qualifications/english-literature-gcse/",
+    "sha256": "4ffb7a979f4d16ac4bb8e5ad35c6be74742636ef19cf7ffa220f13db07cf543f",
+    "verified_at": "2026-11-17",
+    "note": "Version 4 replaces the Component 1 Section B poetry anthology with a new anthology assessed for the first time in 2027."
+  },
+  "anthology_source": {
+    "title": "WJEC Eduqas GCSE (9-1) English Literature Poetry Anthology (C720) for first assessment from 2027",
+    "url": "https://www.eduqas.co.uk/media/zd1b4ii5/new-poetry-anthology-for-first-examination.pdf",
+    "sha256": "d1fd0b9a783f34f1d8d79706a03ad74e124f8daaba96d56c42fd00fa046171da",
+    "verified_at": "2026-11-17"
+  },
+  "approach": "Official Eduqas prescribed texts, scoped to the owner’s route. No textbook organisation has been supplied.",
+  "route": {
+    "component_1": "Macbeth (Section A) and the Poetry Anthology for assessment from 2027 (Section B)",
+    "component_2": "An Inspector Calls (Section A), A Christmas Carol (Section B) and unseen poetry (Section C)",
+    "evidence": "Owner’s answers, 16 November 2026 (recorded in project memory)"
+  },
+  "options_not_in_scope": {
+    "Component 1 Section A": "Romeo and Juliet, Othello, Much Ado About Nothing, Twelfth Night, The Merchant of Venice (Henry V in earlier papers)",
+    "Component 2 Section A": "Lord of the Flies, Anita and Me, Boys Don’t Cry, The Woman in Black, Oranges are not the Only Fruit, The Curious Incident of the Dog in the Night-Time, Leave Taking, The History Boys, Blood Brothers (Never Let Me Go and A Taste of Honey in earlier papers)",
+    "Component 2 Section B": "Silas Marner, War of the Worlds, Pride and Prejudice, Jane Eyre, The Strange Case of Dr Jekyll and Mr Hyde",
+    "Poetry anthology examined until 2026": "The Manhunt, Sonnet 43, London, The Soldier, She Walks in Beauty, Living Space, As Imperceptibly as Grief, Cozy Apologia, Valentine, A Wife in London, Death of a Naturalist, Hawk Roosting, To Autumn, Afternoons, Dulce et Decorum Est, Ozymandias, Mametz Wood, Excerpt from The Prelude"
+  },
+  "components": {
+    "C720U10-1": {
+      "title": "Shakespeare and Poetry",
+      "marks": 80,
+      "minutes": 120,
+      "structure": "A Shakespeare: extract question (15) and essay (25) on one play; B anthology poetry: one poem (15) and a comparison (25)"
+    },
+    "C720U20-1": {
+      "title": "Post-1914 Prose/Drama, 19th Century Prose and Unseen Poetry",
+      "marks": 120,
+      "minutes": 150,
+      "structure": "A post-1914 text (40), B 19th century novel (40), C unseen poem (15) and comparison (25)"
+    }
+  },
+  "notes": "Leaves are the route’s set texts and the 2027 anthology poems in Eduqas’s printed order. Eduqas prints no codes; codes are positional.",
+  "legacy_ids": {
+    "EDUQAS_GCSE_ENGLIT_ANTH_B.1": [
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.1",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.2",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.3",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.4",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.5",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.6",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.7",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.8",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.9",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.10",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.11",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.12",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.13",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.14",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.15"
+    ],
+    "EDUQAS_GCSE_ENGLIT_ANTH_B.2": [
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.1",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.2",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.3",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.4",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.5",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.6",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.7",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.8",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.9",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.10",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.11",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.12",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.13",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.14",
+      "EDUQAS_GCSE_ENGLIT_ANTH_P.15"
+    ]
+  },
+  "point_order": [
+    "EDUQAS_GCSE_ENGLIT_SHAKES_A.2",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.1",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.2",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.3",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.4",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.5",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.6",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.7",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.8",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.9",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.10",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.11",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.12",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.13",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.14",
+    "EDUQAS_GCSE_ENGLIT_ANTH_P.15",
+    "EDUQAS_GCSE_ENGLIT_POST1914_A.1",
+    "EDUQAS_GCSE_ENGLIT_C19_B.1",
+    "EDUQAS_GCSE_ENGLIT_UNSEEN_C.1",
+    "EDUQAS_GCSE_ENGLIT_UNSEEN_C.2"
+  ],
   "sections": [
     {
       "id": "EDUQAS_GCSE_ENGLIT_SEC_C1",
+      "code": "Component 1",
       "title": "Component 1: Shakespeare and Poetry",
+      "official_reference": {
+        "component": "C720U10-1",
+        "marks": 80,
+        "minutes": 120
+      },
       "topics": [
         {
           "id": "EDUQAS_GCSE_ENGLIT_SHAKES",
           "code": "A",
-          "title": "Section A: Shakespeare",
+          "title": "Section A: Shakespeare: Macbeth",
           "kind": "set_text",
+          "route": "Component 1 Section A (one play from the prescribed list)",
           "points": [
-            {"id":"EDUQAS_GCSE_ENGLIT_SHAKES_A.1","code":"A.1","title":"Romeo and Juliet"},
-            {"id":"EDUQAS_GCSE_ENGLIT_SHAKES_A.2","code":"A.2","title":"Macbeth"},
-            {"id":"EDUQAS_GCSE_ENGLIT_SHAKES_A.3","code":"A.3","title":"Othello"},
-            {"id":"EDUQAS_GCSE_ENGLIT_SHAKES_A.4","code":"A.4","title":"Much Ado About Nothing"},
-            {"id":"EDUQAS_GCSE_ENGLIT_SHAKES_A.5","code":"A.5","title":"Henry V"},
-            {"id":"EDUQAS_GCSE_ENGLIT_SHAKES_A.6","code":"A.6","title":"The Merchant of Venice"}
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_SHAKES_A.2",
+              "code": "A.2",
+              "title": "Macbeth",
+              "content": [
+                "Macbeth, William Shakespeare.",
+                "One extract-based question (15 marks) and one essay on the play as a whole (25 marks, including 5 for spelling, punctuation and the use of vocabulary and sentence structures). Assesses AO1, AO2 and AO4."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section A",
+                "source_pages": [
+                  4,
+                  14
+                ]
+              }
+            }
           ]
         },
         {
           "id": "EDUQAS_GCSE_ENGLIT_ANTH",
-          "code": "B",
-          "title": "Section B: Poetry from 1789 to the present day",
-          "kind": "skill",
+          "code": "P",
+          "title": "Section B: Poetry Anthology (for assessment from 2027)",
+          "kind": "set_text",
+          "route": "Component 1 Section B (one named anthology poem, then a comparison with a second anthology poem)",
           "points": [
-            {"id":"EDUQAS_GCSE_ENGLIT_ANTH_B.1","code":"B.1","title":"Anthology poem: single poem response"},
-            {"id":"EDUQAS_GCSE_ENGLIT_ANTH_B.2","code":"B.2","title":"Anthology poems: comparison"}
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.1",
+              "code": "P.1",
+              "title": "The Schoolboy (William Blake)",
+              "content": [
+                "The Schoolboy, William Blake (Eduqas Poetry Anthology for assessment from 2027, page 4)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 4
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.2",
+              "code": "P.2",
+              "title": "I Wandered Lonely as a Cloud (William Wordsworth)",
+              "content": [
+                "I Wandered Lonely as a Cloud, William Wordsworth (Eduqas Poetry Anthology for assessment from 2027, page 5)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 5
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.3",
+              "code": "P.3",
+              "title": "Sonnet 29 (Elizabeth Barrett Browning)",
+              "content": [
+                "Sonnet 29, Elizabeth Barrett Browning (Eduqas Poetry Anthology for assessment from 2027, page 8)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 8
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.4",
+              "code": "P.4",
+              "title": "Cousin Kate (Christina Rossetti)",
+              "content": [
+                "Cousin Kate, Christina Rossetti (Eduqas Poetry Anthology for assessment from 2027, page 6)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 6
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.5",
+              "code": "P.5",
+              "title": "Drummer Hodge (Thomas Hardy)",
+              "content": [
+                "Drummer Hodge, Thomas Hardy (Eduqas Poetry Anthology for assessment from 2027, page 9)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 9
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.6",
+              "code": "P.6",
+              "title": "I Shall Return (Claude McKay)",
+              "content": [
+                "I Shall Return, Claude McKay (Eduqas Poetry Anthology for assessment from 2027, page 12)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 12
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.7",
+              "code": "P.7",
+              "title": "Disabled (Wilfred Owen)",
+              "content": [
+                "Disabled, Wilfred Owen (Eduqas Poetry Anthology for assessment from 2027, page 10)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 10
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.8",
+              "code": "P.8",
+              "title": "Decomposition (Zulfikar Ghose)",
+              "content": [
+                "Decomposition, Zulfikar Ghose (Eduqas Poetry Anthology for assessment from 2027, page 13)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 13
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.9",
+              "code": "P.9",
+              "title": "Catrin (Gillian Clarke)",
+              "content": [
+                "Catrin, Gillian Clarke (Eduqas Poetry Anthology for assessment from 2027, page 14)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 14
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.10",
+              "code": "P.10",
+              "title": "Blackberry Picking (Seamus Heaney)",
+              "content": [
+                "Blackberry Picking, Seamus Heaney (Eduqas Poetry Anthology for assessment from 2027, page 15)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 15
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.11",
+              "code": "P.11",
+              "title": "War Photographer (Carol Ann Duffy)",
+              "content": [
+                "War Photographer, Carol Ann Duffy (Eduqas Poetry Anthology for assessment from 2027, page 18)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 18
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.12",
+              "code": "P.12",
+              "title": "Dusting the Phone (Jackie Kay)",
+              "content": [
+                "Dusting the Phone, Jackie Kay (Eduqas Poetry Anthology for assessment from 2027, page 19)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 19
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.13",
+              "code": "P.13",
+              "title": "Kamikaze (Beatrice Garland)",
+              "content": [
+                "Kamikaze, Beatrice Garland (Eduqas Poetry Anthology for assessment from 2027, page 16)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 16
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.14",
+              "code": "P.14",
+              "title": "Remains (Simon Armitage)",
+              "content": [
+                "Remains, Simon Armitage (Eduqas Poetry Anthology for assessment from 2027, page 20)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 20
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_ANTH_P.15",
+              "code": "P.15",
+              "title": "Origin Story (Eve L Ewing)",
+              "content": [
+                "Origin Story, Eve L Ewing (Eduqas Poetry Anthology for assessment from 2027, page 21)."
+              ],
+              "official_reference": {
+                "component": "C720U10-1 Section B",
+                "source_pages": [
+                  15
+                ],
+                "anthology_page": 21
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "EDUQAS_GCSE_ENGLIT_SEC_C2",
+      "code": "Component 2",
       "title": "Component 2: Post-1914 Prose/Drama, 19th Century Prose and Unseen Poetry",
+      "official_reference": {
+        "component": "C720U20-1",
+        "marks": 120,
+        "minutes": 150
+      },
       "topics": [
         {
           "id": "EDUQAS_GCSE_ENGLIT_POST1914",
           "code": "A",
-          "title": "Section A: Post-1914 prose/drama",
+          "title": "Section A: Post-1914 drama: An Inspector Calls",
           "kind": "set_text",
+          "route": "Component 2 Section A (one prose or drama text from the prescribed list)",
           "points": [
-            {"id":"EDUQAS_GCSE_ENGLIT_POST1914_A.1","code":"A.1","title":"An Inspector Calls"},
-            {"id":"EDUQAS_GCSE_ENGLIT_POST1914_A.2","code":"A.2","title":"Blood Brothers"},
-            {"id":"EDUQAS_GCSE_ENGLIT_POST1914_A.3","code":"A.3","title":"Lord of the Flies"},
-            {"id":"EDUQAS_GCSE_ENGLIT_POST1914_A.4","code":"A.4","title":"Never Let Me Go"}
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_POST1914_A.1",
+              "code": "A.1",
+              "title": "An Inspector Calls",
+              "content": [
+                "An Inspector Calls, J B Priestley.",
+                "One source-based question using an extract and the play as a whole (40 marks, including 5 for spelling, punctuation and the use of vocabulary and sentence structures). Assesses AO1, AO2 and AO4."
+              ],
+              "official_reference": {
+                "component": "C720U20-1 Section A",
+                "source_pages": [
+                  4,
+                  14
+                ]
+              }
+            }
           ]
         },
         {
           "id": "EDUQAS_GCSE_ENGLIT_C19",
           "code": "B",
-          "title": "Section B: 19th century prose",
+          "title": "Section B: 19th century prose: A Christmas Carol",
           "kind": "set_text",
+          "route": "Component 2 Section B (one novel from the prescribed list)",
           "points": [
-            {"id":"EDUQAS_GCSE_ENGLIT_C19_B.1","code":"B.1","title":"A Christmas Carol"},
-            {"id":"EDUQAS_GCSE_ENGLIT_C19_B.2","code":"B.2","title":"The Strange Case of Dr Jekyll and Mr Hyde"},
-            {"id":"EDUQAS_GCSE_ENGLIT_C19_B.3","code":"B.3","title":"Jane Eyre"},
-            {"id":"EDUQAS_GCSE_ENGLIT_C19_B.4","code":"B.4","title":"Pride and Prejudice"},
-            {"id":"EDUQAS_GCSE_ENGLIT_C19_B.5","code":"B.5","title":"Silas Marner"},
-            {"id":"EDUQAS_GCSE_ENGLIT_C19_B.6","code":"B.6","title":"The War of the Worlds"}
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_C19_B.1",
+              "code": "B.1",
+              "title": "A Christmas Carol",
+              "content": [
+                "A Christmas Carol, Charles Dickens.",
+                "One source-based question using an extract and the novel as a whole (40 marks). Assesses AO1, AO2 and AO3."
+              ],
+              "official_reference": {
+                "component": "C720U20-1 Section B",
+                "source_pages": [
+                  4,
+                  14
+                ]
+              }
+            }
           ]
         },
         {
@@ -66,9 +443,36 @@
           "code": "C",
           "title": "Section C: Unseen poetry",
           "kind": "skill",
+          "route": "Component 2 Section C (compulsory: two unseen 20th or 21st century poems)",
           "points": [
-            {"id":"EDUQAS_GCSE_ENGLIT_UNSEEN_C.1","code":"C.1","title":"Unseen poem: single poem response"},
-            {"id":"EDUQAS_GCSE_ENGLIT_UNSEEN_C.2","code":"C.2","title":"Unseen poems: comparison"}
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_UNSEEN_C.1",
+              "code": "C.1",
+              "title": "Unseen poem: single poem response",
+              "content": [
+                "Write about a previously unseen poem from the 20th or 21st century and its effect (15 marks; AO1, AO2)."
+              ],
+              "official_reference": {
+                "component": "C720U20-1 Section C",
+                "source_pages": [
+                  4
+                ]
+              }
+            },
+            {
+              "id": "EDUQAS_GCSE_ENGLIT_UNSEEN_C.2",
+              "code": "C.2",
+              "title": "Unseen poems: comparison",
+              "content": [
+                "Write about a second unseen poem and compare it with the first (25 marks; AO1, AO2)."
+              ],
+              "official_reference": {
+                "component": "C720U20-1 Section C",
+                "source_pages": [
+                  4
+                ]
+              }
+            }
           ]
         }
       ]
