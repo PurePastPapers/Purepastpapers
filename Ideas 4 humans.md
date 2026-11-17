@@ -16,4 +16,4 @@ STREAKS SO LIKE LITTLE ANIMATIONS THAT OCCUR AFTER THE USER GETS A HIGH STREAK S
 6. AI + Harder Questions (Madasmaths for Maths and Olympiad practice for other subjects)
 7. Maybe this is too much fluff - useful links for students? Like uni websites and shit.
 8. Bar chart for progress - In the data hub displaying previous results combined with new mock results would either instill fear, build confidence or motivate the users - win win either way.
-9. 
+9. test
