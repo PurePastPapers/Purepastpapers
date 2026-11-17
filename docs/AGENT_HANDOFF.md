@@ -83,7 +83,7 @@ User-reported status (2026-11-17; not independently checked in Resend or Names.c
 - Desired From address is no-reply@purepastpapers.com.
 
 Still outstanding/unverified:
-- Supabase custom SMTP has not been confirmed configured.
+- Supabase custom SMTP has not been confirmed configured. docs/supabase-setup.md was expanded in commit 7efde9949e12ff6f681109407385650093711a64 with Resend values: smtp.resend.com:465, username resend, a domain-restricted Sending-access API key as password, and sender no-reply@purepastpapers.com (PurePastPapers).
 - SMTP host, port, username, password and sender identity must be entered in Supabase Authentication → Emails → SMTP Settings. Do not request or store the password in chat or GitHub.
 - Confirm the sender address is authorized by the verified domain and send signup-confirmation and password-reset test emails after configuring SMTP.
 - Supabase built-in mail sender is not suitable for public signup; setup notes warn it is restricted to project team addresses and 2 emails/hour.
@@ -97,12 +97,12 @@ Verified on 2026-11-17 through GitHub:
 - Active feature branch: codex/supabase-account-sync-2026-11-16.
 - Pull request: #6, https://github.com/PurePastPapers/Purepastpapers/pull/6.
 - PR title: Add Supabase accounts and cross-device progress sync.
-- PR is open and unmerged. GitHub first reported mergeable=false after handoff commits, then a repeat query reported mergeable=true. Current main SHA observed through compare is c40a4cf29044a04714099bb47c533a66145333eb; branch merge base is 516243dcefa8e0a9be4e26ed6209703c3322947f, so the feature branch is 40 commits behind main. Comparing those 40 main commits found no paths overlapping PR-changed paths. Recheck mergeability and checks before merging.
+- PR is open and unmerged. On head a20aac234faebbadcddeff4ebf84bda262c4b390, raw GitHub PR API reported mergeable=true and mergeable_state=clean, while the normalized get_pr_info response reported false. PR raw base.sha was c3530261bb9a8673f7d7b07daee2e098b788c091, but compare_commits resolves current main to c40a4cf29044a04714099bb47c533a66145333eb. The branch merge base is 516243dcefa8e0a9be4e26ed6209703c3322947f, so the feature branch is 40 commits behind main. Comparing those 40 main commits found no paths overlapping PR-changed paths. Recheck raw mergeability, base/head SHAs and checks before merging.
 - Feature implementation commit: 14e237bffade89ecc34c08cc8b810d345506742f.
 - PR base branch: main; previous observed base SHA: c3530261bb9a8673f7d7b07daee2e098b788c091; current main SHA: c40a4cf29044a04714099bb47c533a66145333eb.
 - The last combined status query for head 065ef8feae0580a856cf8207de4d7e0ed1c5310a returned no status entries; recheck the latest head before merging.
 - No source changes were made in this handoff session before this file.
-- Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. Metadata update commit: efb8e77de58fc529e6c3f5c9d80b90bf23bcd333. Mergeability update commit: 065ef8feae0580a856cf8207de4d7e0ed1c5310a. Security config commit: ee6869d4bbc868960e3f7e09907447f7da8a8008. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
+- Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. Metadata update commit: efb8e77de58fc529e6c3f5c9d80b90bf23bcd333. Mergeability update commit: 065ef8feae0580a856cf8207de4d7e0ed1c5310a. Security config commit: ee6869d4bbc868960e3f7e09907447f7da8a8008. Resend setup documentation commit: 7efde9949e12ff6f681109407385650093711a64. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
 
 The PR body says project setup should be completed before merge. Do not merge or publish until required Supabase setup is applied and checks are completed.
 
