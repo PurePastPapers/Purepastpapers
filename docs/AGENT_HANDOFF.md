@@ -32,8 +32,8 @@ Implemented on the feature branch:
 
 Code exists, but production readiness is not verified:
 - The SQL migration has not been confirmed as applied in Supabase.
-- User reports the Site URL and redirect URLs were updated on 2026-11-17; the post-save values have not been independently verified. A screenshot of Authentication → Sign In / Providers on 2026-11-17 shows Allow new users to sign up, Confirm email, and the Email provider enabled. The screenshot also shows a Save changes control, so persistence is not independently verified.
-- User reports Resend custom SMTP was saved in Supabase with sender no-reply@purepastpapers.com; delivery through Supabase has not been tested and was not independently checked.
+- User reports the Site URL and redirect URLs were set and saved on 2026-11-17. A screenshot of Authentication → Sign In / Providers shows Allow new users to sign up, Confirm email, and the Email provider enabled; the user subsequently confirmed all three dashboard tasks, including saving settings and replacing the SMTP key, are done. These settings remain user-reported, not independently verified through admin access.
+- User reports Resend custom SMTP was saved in Supabase with sender no-reply@purepastpapers.com and the SMTP key was rotated/replaced directly in Supabase; delivery through Supabase has not been tested or independently checked.
 - The Edge Function has not been confirmed deployed.
 - End-to-end signup, confirmation, login, password reset, cross-device sync and deletion have not been verified on production.
 
@@ -57,11 +57,11 @@ Verified repository configuration:
   - http://localhost:5173/auth-callback.html
   - http://127.0.0.1:5173/auth-callback.html
 
-User reports updating Site URL and redirects after the screenshot showed localhost:3000 and an empty redirect list; no post-save URL screenshot is available. A 2026-11-17 screenshot shows Allow new users to sign up, Confirm email, and the Email provider enabled, with Save changes visible; treat persistence as unverified until saved. In this agent workspace, no Supabase admin connector or Management API credential is available; the Supabase CLI is not installed and no Supabase auth environment variable or CLI session was found. The public publishable key in the website cannot change Auth settings, run owner SQL, inspect migration state, or deploy functions. The user is on iPad and cannot use Desktop Take Over. Do not ask for tokens or passwords in chat; guide the user through only actions that cannot be done from the available integrations.
+User reports setting and saving Site URL and redirect URLs after the screenshot showed localhost:3000 and an empty redirect list. A 2026-11-17 screenshot shows Allow new users to sign up, Confirm email, and the Email provider enabled. The user reports all three dashboard tasks are complete; settings are user-reported, not independently verified because no Supabase admin access is connected. In this agent workspace, no Supabase admin connector or Management API credential is available; the Supabase CLI is not installed and no Supabase auth environment variable or CLI session was found. The public publishable key in the website cannot change Auth settings, run owner SQL, inspect migration state, or deploy functions. The user is on iPad and cannot use Desktop Take Over. Do not ask for tokens or passwords in chat; guide the user through only actions that cannot be done from the available integrations.
 
 Required dashboard work:
-1. Authentication → URL Configuration: user reports setting Site URL and the four exact redirect URLs on 2026-11-17; verify the saved values from a post-save view before treating this as confirmed.
-2. Authentication → Sign In / Providers: a 2026-11-17 screenshot shows Allow new users to sign up, Confirm email, and the Email provider enabled. If these toggles were edited, tap Save changes and reopen the page to confirm the saved state.
+1. Authentication → URL Configuration: user reports setting and saving the Site URL and four exact redirect URLs on 2026-11-17. The values still require independent verification through admin access.
+2. Authentication → Sign In / Providers: the 2026-11-17 screenshot shows Allow new users to sign up, Confirm email, and the Email provider enabled. User reports saving these settings; independently verify when Supabase admin access is available.
 3. SQL Editor: apply the migration file above.
 4. Deploy delete-account. The documented CLI commands from the repository root are:
    ~~~sh
@@ -77,13 +77,13 @@ Required dashboard work:
 
 User-reported status on 2026-11-17 (not independently checked in Resend or Supabase):
 - purepastpapers.com is verified in Resend.
-- The user reports the Supabase custom SMTP configuration was saved with sender no-reply@purepastpapers.com.
+- The user reports the Supabase custom SMTP configuration was saved with sender no-reply@purepastpapers.com and the SMTP key was rotated/replaced directly in Supabase on 2026-11-17; this is not independently verified.
 - Email delivery through Supabase has not yet been tested.
 - Earlier Resend DNS and delivery details in the previous checkpoint were also user-reported.
 
-Security action before testing auth email:
-- Replace the currently saved SMTP API key with a fresh Resend API key restricted to Sending access and the purepastpapers.com domain. Do not reuse the previous key. Enter the replacement directly in Supabase and never put it in chat, GitHub, logs or this document.
-- Confirm the sender address remains no-reply@purepastpapers.com and send signup-confirmation and password-reset test emails after rotation.
+Security status before testing auth email:
+- User reports replacing the previously saved SMTP API key with a fresh Resend key restricted to Sending access and the purepastpapers.com domain, entered directly in Supabase. Do not request or record the key.
+- Confirm the sender address remains no-reply@purepastpapers.com and test signup-confirmation and password-reset email delivery.
 
 ## 5. GitHub status
 
@@ -133,7 +133,7 @@ Completed/observed:
   The three failure-injection scripts are temporary and are not part of the PR. They cover guest progress after failed login, progress restore failure and recovery callbacks that must skip progress reads.
 - Independent code review at functional head fb9ce73 found no P1 issue; its recovery callback issue was fixed in that commit.
 - Live production check at https://purepastpapers.com on 2026-11-17: June 2025 AS Pure Mathematics 01 loaded with 22 questions and 100 marks. The live signup page explicitly says progress is saved only in this browser and on this device, confirming PR #6 is not yet published. No signup form was submitted and no account was created.
-- User reports Resend domain verification and Supabase SMTP settings saved; Supabase email delivery has not been tested.
+- User reports Resend domain verification, SMTP settings and SMTP key rotation completed; Supabase email delivery has not been tested.
 
 Not completed:
 - Full repository npm test / npm run validate; the workspace has no full checkout or large /data test bank. No complete build/lint run.
@@ -143,8 +143,8 @@ Not completed:
 ## 8. Known problems, blockers and risks
 
 - This environment lacks authenticated Supabase admin access: no Supabase connector, CLI executable/session, or Management API credentials. GitHub access and the browser publishable key are not Supabase admin access.
-- User reports SMTP was saved, but Supabase email delivery is untested. Rotate the SMTP API key before testing; use a new domain-restricted Sending-only key entered directly in Supabase.
-- Auth sign-up, email confirmation and Email provider toggles are shown on in a 2026-11-17 screenshot, but the screenshot still shows Save changes; confirm persistence. Site URL/redirect values, migration state and Edge Function deployment remain unverified.
+- User reports SMTP settings and key rotation completed, but Supabase email delivery is untested. Test delivery without exposing the SMTP key.
+- Auth sign-up, email confirmation and Email provider are shown on in a 2026-11-17 screenshot; user reports saving these and URL settings and rotating the SMTP key. Those settings remain user-reported. SMTP delivery, migration state and Edge Function deployment remain unverified.
 - The migration is not idempotent. It uses CREATE TABLE and CREATE POLICY without guards; inspect whether the table and all three policies already exist before applying. If partial or mismatched schema exists, stop and repair deliberately rather than rerunning.
 - The feature code head was 42 commits behind main at the last comparison. PR base metadata is stale; recheck mergeability and paths.
 - Full repository validation cannot run from this partial workspace.
@@ -155,8 +155,8 @@ Not completed:
 
 1. At session start, read this file and docs/supabase-setup.md. Refresh PR #6, main head, feature head and checks.
 2. If an authenticated Supabase connector/CLI becomes available, first read current Auth settings, schema/policies and function deployment status; do not rewrite already-correct settings. None was available in the 2026-11-17 workspace check.
-3. Have the user rotate the Resend SMTP API key: create a fresh key with Sending access restricted to purepastpapers.com, then replace the SMTP password directly in Supabase. Never request the key in chat.
-4. Verify/set Supabase Authentication → URL Configuration: Site URL https://purepastpapers.com and redirects https://purepastpapers.com/auth-callback.html, https://www.purepastpapers.com/auth-callback.html, http://localhost:5173/auth-callback.html, http://127.0.0.1:5173/auth-callback.html. The 2026-11-17 screenshot shows sign-ups, email confirmation and Email provider enabled; if edited, save and reopen to verify persistence.
+3. User reports rotating/replacing the Resend SMTP API key directly in Supabase with a restricted sending key on 2026-11-17. Do not repeat; verify email delivery without exposing the key.
+4. User reports setting and saving Supabase Authentication → URL Configuration with Site URL https://purepastpapers.com and redirects https://purepastpapers.com/auth-callback.html, https://www.purepastpapers.com/auth-callback.html, http://localhost:5173/auth-callback.html, http://127.0.0.1:5173/auth-callback.html. The screenshot shows sign-ups, email confirmation and Email provider enabled. Independently verify saved settings when admin access becomes available.
 5. Before applying SQL, run this read-only inspection in SQL Editor:
    ~~~sql
    select
