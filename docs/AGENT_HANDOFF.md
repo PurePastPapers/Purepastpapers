@@ -33,7 +33,7 @@ Implemented on the feature branch:
 Code exists, but production readiness is not verified:
 - The SQL migration has not been confirmed as applied in Supabase.
 - Auth URL settings and email confirmation have not been confirmed in the dashboard.
-- Custom SMTP has not been confirmed configured in Supabase.
+- User reports Resend custom SMTP was saved in Supabase with sender no-reply@purepastpapers.com; delivery through Supabase has not been tested and was not independently checked.
 - The Edge Function has not been confirmed deployed.
 - End-to-end signup, confirmation, login, password reset, cross-device sync and deletion have not been verified on production.
 
@@ -45,7 +45,7 @@ Verified repository configuration:
 - Project ref: spjlnvjdstxdajcsljvq.
 - Public URL and publishable key are already present in js/config/supabase.config.js. Do not copy credentials into this document.
 - Migration file: supabase/migrations/20261116180000_user_progress.sql.
-- The migration creates public.user_progress with user_id as the auth.users foreign key and primary key, progress JSONB and updated_at.
+- The migration creates public.user_progress with user_id as the auth.users foreign key and primary key, progress JSONB and updated_at. It uses plain CREATE TABLE and CREATE POLICY statements without IF NOT EXISTS, so do not rerun blindly; inspect current table/RLS/policy state first.
 - RLS is enabled. Grants give authenticated users select/insert/update; policies compare user_id with auth.uid() for each operation. No delete policy is granted; deleting an auth user cascades the row.
 - Function source: supabase/functions/delete-account/index.ts.
 - Supabase CLI config: supabase/config.toml. Commit ee6869d4bbc868960e3f7e09907447f7da8a8008 sets verify_jwt = true for delete-account. The handler uses withSupabase({ auth: 'user' }) and commit ff2db8fd0b9dcf9c88914a681ab3b0cbfabdccbd reads context.userClaims.id for the authenticated user.
@@ -57,7 +57,7 @@ Verified repository configuration:
   - http://localhost:5173/auth-callback.html
   - http://127.0.0.1:5173/auth-callback.html
 
-Dashboard state is unknown/unverified. In the prior agent session the shared Supabase browser was signed out. The user is on iPad and cannot use Desktop Take Over. Guide them through the Supabase dashboard on iPad or provide exact click-by-click steps; do not depend on the shared desktop session.
+Dashboard state is otherwise unknown/unverified. In this agent workspace, no Supabase admin connector or Management API credential is available; the Supabase CLI is not installed and no Supabase auth environment variable or CLI session was found. The public publishable key in the website cannot change Auth settings, run owner SQL, inspect migration state, or deploy functions. The user is on iPad and cannot use Desktop Take Over. Do not ask for tokens or passwords in chat; guide the user through only actions that cannot be done from the available integrations.
 
 Required dashboard work:
 1. Authentication → URL Configuration: set Site URL and the four exact redirect URLs above.
@@ -75,20 +75,15 @@ Required dashboard work:
 
 ## 4. Resend integration
 
-User-reported status (2026-11-17; not independently checked in Resend or Names.co.uk):
-- Resend domain purepastpapers.com is verified.
-- DNS provider is Names.co.uk.
-- DKIM, SPF-related CNAME records and DMARC are configured.
-- A test email was successfully delivered.
-- Desired From address is no-reply@purepastpapers.com.
+User-reported status on 2026-11-17 (not independently checked in Resend or Supabase):
+- purepastpapers.com is verified in Resend.
+- The user reports the Supabase custom SMTP configuration was saved with sender no-reply@purepastpapers.com.
+- Email delivery through Supabase has not yet been tested.
+- Earlier Resend DNS and delivery details in the previous checkpoint were also user-reported.
 
-Still outstanding/unverified:
-- Supabase custom SMTP has not been confirmed configured. docs/supabase-setup.md was expanded in commit 7efde9949e12ff6f681109407385650093711a64 with Resend values: smtp.resend.com:465, username resend, a domain-restricted Sending-access API key as password, and sender no-reply@purepastpapers.com (PurePastPapers).
-- SMTP host, port, username, password and sender identity must be entered in Supabase Authentication → Emails → SMTP Settings. Do not request or store the password in chat or GitHub.
-- Confirm the sender address is authorized by the verified domain and send signup-confirmation and password-reset test emails after configuring SMTP.
-- Supabase built-in mail sender is not suitable for public signup; setup notes warn it is restricted to project team addresses and 2 emails/hour.
-
-On iPad, have the user open Supabase Dashboard → project → Authentication → Emails → SMTP Settings. They can enter Resend's SMTP connection values directly there. Ask them to report only whether settings saved and whether a test email arrived; never ask for SMTP credentials.
+Security action before testing auth email:
+- Replace the currently saved SMTP API key with a fresh Resend API key restricted to Sending access and the purepastpapers.com domain. Do not reuse the previous key. Enter the replacement directly in Supabase and never put it in chat, GitHub, logs or this document.
+- Confirm the sender address remains no-reply@purepastpapers.com and send signup-confirmation and password-reset test emails after rotation.
 
 ## 5. GitHub status
 
@@ -96,14 +91,14 @@ Verified through GitHub on 2026-11-17:
 - Repository: PurePastPapers/Purepastpapers.
 - Active feature branch: codex/supabase-account-sync-2026-11-16.
 - Pull request: #6, https://github.com/PurePastPapers/Purepastpapers/pull/6.
-- Latest branch head before this handoff refresh: 9f35c5394106a7430b8b887e87e4a5ba925b5b4a (19 commits, 16 changed files). It contains the final reviewed code at fb9ce73f65bec771b3770a857bb444b825d3249d plus handoff updates. This update adds a documentation-only commit.
-- Current main head: 07d072319b534db5f1cc63bdd652377cd9fbc108. Comparing current main with the branch head reports 19 commits ahead and 42 behind, merge base 516243dcefa8e0a9be4e26ed6209703c3322947f.
-- PR metadata records base SHA c3530261bb9a8673f7d7b07daee2e098b788c091, which is stale relative to current main. The GitHub connector reports mergeable=false; a direct GitHub REST PR response reports mergeable=true / mergeable_state=clean against the recorded base SHA. Treat mergeability as unresolved until refreshed against current main.
-- All 16 PR-changed paths were individually compared between merge base 516243d and current main 07d072; none changed on main since that merge base. This supports a clean path-level integration but does not replace a refreshed GitHub merge check.
+- Latest branch head before this handoff update: 4072ba0a05f8dce946d5423562a72eae5f10f948 (20 commits, 16 changed files). This handoff refresh adds a documentation-only commit.
+- Current main head: 07d072319b534db5f1cc63bdd652377cd9fbc108. Comparing current main with branch head 4072 reports 20 commits ahead and 42 behind, merge base 516243dcefa8e0a9be4e26ed6209703c3322947f.
+- PR is open and unmerged. The latest GitHub connector response reports mergeable=true, but the PR metadata's base SHA c3530261bb9a8673f7d7b07daee2e098b788c091 is stale relative to current main. Earlier calls returned inconsistent mergeability values. Recheck against current main before merging.
+- All 16 PR-changed paths were individually compared between merge base 516243d and current main 07d072; none changed on main since that merge base.
 - Latest commit status query returned no status entries; GitHub Actions workflow-run query returned no PR workflow runs. Main reports branch protection disabled and no required checks.
-- Significant feature commits (in order): initial implementation 14e237bffade89ecc34c08cc8b810d345506742f; JWT configuration ee6869d4bbc868960e3f7e09907447f7da8a8008; Resend setup documentation 7efde9949e12ff6f681109407385650093711a64; handoff/progress update 2b6a43b0d9a4975f6a45df06573b0746bd0c4b39; deletion identity fix ff2db8fd0b9dcf9c88914a681ab3b0cbfabdccbd; startup progress-read fallback b241c263d97eac6f2a406341aef962b97b78cba0; failed-login guest-state preservation bd07f2b364229c5c67c02593a7419b543d828524; iPad dashboard function-deployment instructions 7618b03d241da8101c4c3f26df930b34191de416; first recovery gate fix a587fd5ccd46aedefb0815fda59a6cb4377cb46a; prior handoff checkpoint d210828966b07b16633e8982ae3b7690ea97ea58; recovery-callback fix fb9ce73f65bec771b3770a857bb444b825d3249d; previous handoff refresh 9f35c5394106a7430b8b887e87e4a5ba925b5b4a.
-- Initial handoff commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. Use GitHub branch history to identify this refresh's commit SHA.
-- Do not merge or publish until Supabase setup, full available checks, review, and end-to-end tests are complete.
+- Significant implementation/review commits: initial implementation 14e237bffade89ecc34c08cc8b810d345506742f; JWT configuration ee6869d4bbc868960e3f7e09907447f7da8a8008; Resend setup documentation 7efde9949e12ff6f681109407385650093711a64; deletion identity fix ff2db8fd0b9dcf9c88914a681ab3b0cbfabdccbd; startup progress-read fallback b241c263d97eac6f2a406341aef962b97b78cba0; failed-login guest-state preservation bd07f2b364229c5c67c02593a7419b543d828524; dashboard function-deployment instructions 7618b03d241da8101c4c3f26df930b34191de416; recovery fixes a587fd5ccd46aedefb0815fda59a6cb4377cb46a and fb9ce73f65bec771b3770a857bb444b825d3249d.
+- Prior handoff commits: initial 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4; 2b6a43b0d9a4975f6a45df06573b0746bd0c4b39; d210828966b07b16633e8982ae3b7690ea97ea58; 9f35c5394106a7430b8b887e87e4a5ba925b5b4; 4072ba0a05f8dce946d5423562a72eae5f10f948.
+- Do not merge or publish until the remote setup, checks, review and required end-to-end tests are complete.
 
 ## 6. Files and architecture
 
@@ -128,68 +123,69 @@ The app is plain browser JavaScript; there is no site-side npm install/build ste
 ## 7. Testing
 
 Completed/observed:
-- PR #6 head, changed-file list, current main SHA, commit status and workflow runs were refreshed through GitHub on 2026-11-17.
-- The migration was statically inspected: RLS is enabled; authenticated select/insert/update policies bind user_id to auth.uid(); no delete policy is granted; deleting an auth user cascades the progress row. This is source inspection, not an executed database test.
-- The function source was reviewed. JWT verification remains enabled, and the handler resolves the authenticated user through the normalized userClaims.id field.
-- Final independent static review of code head fb9ce73 found no P1. It confirmed the P2 recovery callback finding was closed by skipping pending-signup restoration on recovery links.
-- Live production smoke check at https://purepastpapers.com on 2026-11-17 tested only existing public behavior: guest Mathematics selection, the practice page (1,110 matching questions) and June 2025 AS Pure Mathematics 01 (22 questions, 100 marks). PR #6 is not deployed, so this does not test Supabase auth or sync.
-- The user reports that Resend domain verification and a test email succeeded. This was not independently verified in Resend.
-- In the temporary partial checkout at /tmp/ppp-check, Node v24.22.1 syntax checks passed for the latest js/data/adapters/supabase-adapter.js and js/data/api.js.
-- Focused tests passed: 47 pass, 0 fail. Tests include existing data-independent repository tests and temporary uncommitted failure-injection checks for failed-login guest progress preservation, progress restoration failure, a password recovery marker surviving progress-read failure, and a mocked recovery callback skipping pending signup/progress reads. Exact command, run from /tmp/ppp-check:
+- On 2026-11-17, reran focused tests from the temporary partial checkout at /tmp/ppp-check using Node v24.22.1. Result: 47 pass, 0 fail. Node syntax checks passed for the current supabase-adapter.js and api.js mirrors.
+- Exact command, run from /tmp/ppp-check:
   ~~~sh
   node --check js/data/adapters/supabase-adapter.js
   node --check js/data/api.js
   node --test tests/guest-access.test.mjs tests/inline-marking.test.mjs tests/content-years.test.mjs tests/curriculum-map.test.mjs tests/spec-filtering.test.mjs tests/target-grades.test.mjs tests/question-parts.test.mjs tests/progress-failure-check.mjs tests/recovery-session-check.mjs tests/recovery-callback-check.mjs
   ~~~
-  The three failure-injection scripts are temporary files and are not part of the PR.
-- Earlier nine changed JavaScript modules passed node syntax checks in a temporary copy during the previous session; the latest API and adapter edits were separately checked above.
+  The three failure-injection scripts are temporary and are not part of the PR. They cover guest progress after failed login, progress restore failure and recovery callbacks that must skip progress reads.
+- Independent code review at functional head fb9ce73 found no P1 issue; its recovery callback issue was fixed in that commit.
+- Live production check at https://purepastpapers.com on 2026-11-17: June 2025 AS Pure Mathematics 01 loaded with 22 questions and 100 marks. The live signup page explicitly says progress is saved only in this browser and on this device, confirming PR #6 is not yet published. No signup form was submitted and no account was created.
+- User reports Resend domain verification and Supabase SMTP settings saved; Supabase email delivery has not been tested.
 
 Not completed:
-- The agent workspace does not contain a full repository checkout or the large /data test bank. npm test and npm run validate have not been run; no full build/lint suite has completed. Node v24.22.1 and npm 11.9.0 are available, but no Deno or psql executable.
-- One earlier syntax-check attempt referenced js/ui/views/recovery.js, which was not present in the partial temporary mirror; it failed with a missing-file error, not a source syntax error. That file was unchanged by the latest recovery fix.
-- Migration execution and an actual two-user RLS denial test.
-- Dashboard URL/provider/email-confirmation verification; SMTP send/receive from Supabase.
-- Edge Function deployment and authenticated account-deletion test.
-- Production signup, confirmation, login, password reset, sync across two devices, guest-progress restoration, export/import, deletion, and post-deployment paper-flow regression testing.
+- Full repository npm test / npm run validate; the workspace has no full checkout or large /data test bank. No complete build/lint run.
+- Supabase Auth settings verification, safe migration-state inspection, migration application, RLS cross-user denial test, SMTP delivery, function deployment, and authenticated deletion.
+- Production signup, confirmation, login, password reset, guest progress restoration, cross-device sync, export/import, deletion, and post-deploy exam-paper regression testing.
 
 ## 8. Known problems, blockers and risks
 
-- Supabase dashboard configuration, migration execution and function deployment remain unconfirmed. The user is on iPad and cannot use Desktop Take Over; guide them through dashboard screens or use the documented editor path.
-- The user must enter SMTP credentials directly into Supabase. Never request or store the Resend API key in chat, repository, or handoff.
-- Resend domain verification does not itself configure Supabase custom SMTP.
-- The feature code head is 42 commits behind main. GitHub's mergeability indicators disagree, and the PR's reported base SHA is stale. All 16 PR paths were verified unchanged on current main since the merge base; still refresh GitHub's mergeability against latest main before integration.
-- Full repository validation cannot run from this partial workspace; the large /data test bank is absent.
-- End-to-end production verification has not established that account creation or sync is ready for students.
-- Progress sync writes complete snapshots; simultaneous edits on two devices are last-save-wins.
-- Guest restoration requires the original browser's staged local snapshot to remain available, or logging in from that browser after confirming on another device.
-- Supabase Dashboard's Edge Function editor does not sync with GitHub and has no version history or rollback. Keep the branch source of truth and redeploy if the function changes.
+- This environment lacks authenticated Supabase admin access: no Supabase connector, CLI executable/session, or Management API credentials. GitHub access and the browser publishable key are not Supabase admin access.
+- User reports SMTP was saved, but Supabase email delivery is untested. Rotate the SMTP API key before testing; use a new domain-restricted Sending-only key entered directly in Supabase.
+- Auth Site URL, redirects, Email provider/confirmation, migration state and Edge Function deployment remain unverified.
+- The migration is not idempotent. It uses CREATE TABLE and CREATE POLICY without guards; inspect whether the table and all three policies already exist before applying. If partial or mismatched schema exists, stop and repair deliberately rather than rerunning.
+- The feature code head was 42 commits behind main at the last comparison. PR base metadata is stale; recheck mergeability and paths.
+- Full repository validation cannot run from this partial workspace.
+- End-to-end tests do not establish production readiness. Progress snapshots use last-save-wins on concurrent devices.
+- Supabase Dashboard's Edge Function editor does not sync with GitHub; redeploy from the branch if function code changes.
 
 ## 9. Exact next steps
 
-1. At session start, read this file and docs/supabase-setup.md. Refresh PR #6, feature head, main head, checks and changed paths.
-2. Guide the user on iPad to Supabase project → Authentication → URL Configuration. Set Site URL to https://purepastpapers.com and allow:
-   - https://purepastpapers.com/auth-callback.html
-   - https://www.purepastpapers.com/auth-callback.html
-   - http://localhost:5173/auth-callback.html
-   - http://127.0.0.1:5173/auth-callback.html
-3. In Authentication → Providers → Email, verify Email is enabled and confirmation is on.
-4. In Authentication → Emails → SMTP Settings, have the user enter Resend SMTP values directly: host smtp.resend.com, port 465, username resend, a restricted Sending-access Resend API key as password, sender no-reply@purepastpapers.com, sender name PurePastPapers. Do not ask them to share the key. Confirm settings saved and an auth email reaches the inbox.
-5. Apply supabase/migrations/20261116180000_user_progress.sql in SQL Editor and confirm success.
-6. Deploy delete-account from the current branch. The user has no repository terminal on iPad; docs/supabase-setup.md includes the Dashboard → Edge Functions → Deploy a new function → Via Editor steps and current source link. Keep JWT verification enabled.
-7. Re-review the complete PR at its latest head against main; resolve any findings. Run all checks available in a full checkout if one becomes available, plus a cross-user RLS test using two test accounts and no real student data.
-8. Test signup and confirmation, login, password reset, guest progress preservation, progress sync on a second device, export/import, and account deletion against the configured project.
-9. Check existing exam-paper functionality for regressions. Confirm the latest PR branch can be integrated with current main safely.
-10. Only after prerequisites and tests pass, merge PR #6, verify GitHub Pages publishes it, and repeat the auth/sync/paper flows at https://purepastpapers.com.
-11. Update and commit this handoff after every significant milestone, including exact commands, outcomes, errors and SHAs. If work is interrupted, leave the next specific action here.
+1. At session start, read this file and docs/supabase-setup.md. Refresh PR #6, main head, feature head and checks.
+2. If an authenticated Supabase connector/CLI becomes available, first read current Auth settings, schema/policies and function deployment status; do not rewrite already-correct settings. None was available in the 2026-11-17 workspace check.
+3. Have the user rotate the Resend SMTP API key: create a fresh key with Sending access restricted to purepastpapers.com, then replace the SMTP password directly in Supabase. Never request the key in chat.
+4. Verify/set Supabase Authentication → URL Configuration: Site URL https://purepastpapers.com and redirects https://purepastpapers.com/auth-callback.html, https://www.purepastpapers.com/auth-callback.html, http://localhost:5173/auth-callback.html, http://127.0.0.1:5173/auth-callback.html. Verify Authentication → Providers → Email is enabled and confirmation is on.
+5. Before applying SQL, run this read-only inspection in SQL Editor:
+   ~~~sql
+   select
+     to_regclass('public.user_progress') is not null as table_exists,
+     coalesce((select relrowsecurity from pg_class where oid = to_regclass('public.user_progress')), false) as rls_enabled,
+     coalesce((
+       select jsonb_agg(jsonb_build_object('policy', policyname, 'command', cmd, 'roles', roles, 'using', qual, 'check', with_check) order by policyname)
+       from pg_policies where schemaname = 'public' and tablename = 'user_progress'
+     ), '[]'::jsonb) as policies,
+     coalesce((
+       select jsonb_agg(jsonb_build_object('grantee', grantee, 'privilege', privilege_type) order by privilege_type)
+       from information_schema.role_table_grants
+       where table_schema = 'public' and table_name = 'user_progress' and grantee = 'authenticated'
+     ), '[]'::jsonb) as authenticated_grants;
+   ~~~
+   If table_exists is false, apply supabase/migrations/20261116180000_user_progress.sql. If the table exists, compare RLS/policies/grants to the migration and do not rerun it. If partial or unexpected, stop and repair safely.
+6. Deploy delete-account from the current branch via CLI if authenticated CLI access becomes available; otherwise use the documented dashboard editor and leave JWT verification enabled.
+7. Test Supabase confirmation and password-reset email delivery after key rotation. Then test signup, confirmation, login, password reset, guest progress, cross-device progress sync, export/import, RLS isolation with two test users, and deletion.
+8. Recheck latest main/PR mergeability and all available validation; resolve any conflicts.
+9. Merge only after verified prerequisites/checks, publish through GitHub Pages, then run the required production flows and confirm paper browsing still works.
+10. Commit this handoff after each significant milestone with exact commands, outcomes, failures and SHAs.
 
 ## 10. Completion criteria
 
 Do not mark complete until all are true:
-- Supabase Site URL, exact redirects, Email provider and email-confirmation settings are confirmed.
-- Resend custom SMTP is configured in Supabase and signup-confirmation/reset email delivery is verified.
-- The migration is applied and cross-user RLS denial is verified with separate test accounts.
-- delete-account is deployed and account deletion is tested end-to-end.
-- The latest PR diff is reviewed against current main; all available checks pass and no blocker remains.
-- PR #6 is merged and GitHub Pages has published the change.
-- Live production tests confirm signup, confirmation, login, password reset, guest-progress preservation, cross-device sync, own-row isolation, account deletion, and unaffected exam-paper functionality.
-- This file records exact verified results, user-reported facts, relevant commit/deployment SHAs and outstanding limitations.
+- Site URL, redirects, Email provider and confirmation are verified in Supabase.
+- A fresh restricted Resend key is saved and signup/reset emails are received through Supabase.
+- The migration's resulting table, grants and RLS policies are verified; cross-user access is denied.
+- delete-account is deployed with JWT verification and deletion works end-to-end.
+- The latest PR is reviewed against current main and all available checks pass.
+- PR #6 is merged, GitHub Pages publishes, and production signup, confirmation, login, reset, guest-progress preservation, cross-device sync, RLS isolation, account deletion and existing paper flows all pass.
+- The handoff records the exact final commit/deployment SHAs and distinguishes verified from user-reported facts.
