@@ -55,7 +55,9 @@ export async function mount(element, context) {
   const inProgress = new Set(api.resumableSessions().map((session) => session.paper_id).filter(Boolean));
   const years = [...new Set(papers.map((paper) => paper.year).filter(Boolean))].sort((a, b) => b - a);
   const codes = [...new Set(papers.filter((paper) => !paper.is_sample).map((paper) => paper.paper_code))].sort(naturalCompare);
-  const filters = { year: 'all', code: 'all', status: 'all' };
+  const tiers = [...new Set(papers.map((paper) => paper.tier).filter(Boolean))];
+  const chosenTier = progress.preferences.tiers?.[subject.subject_id];
+  const filters = { year: 'all', code: 'all', status: 'all', tier: tiers.includes(chosenTier) ? chosenTier : 'all' };
 
   const statusOf = (paper) => {
     const summary = summaries.get(paper.paper_id);
@@ -99,7 +101,7 @@ export async function mount(element, context) {
     const visible = papers.filter(
       (paper) =>
         (filters.status === 'all' || statusOf(paper) === filters.status) &&
-        (paper.is_sample || ((filters.year === 'all' || String(paper.year) === filters.year) && (filters.code === 'all' || paper.paper_code === filters.code))),
+        (paper.is_sample || ((filters.year === 'all' || String(paper.year) === filters.year) && (filters.code === 'all' || paper.paper_code === filters.code) && (filters.tier === 'all' || paper.tier === filters.tier))),
     );
     const demo = visible.filter((paper) => paper.is_sample);
     const bySeries = groupBy(visible.filter((paper) => !paper.is_sample), (paper) => `${paper.year}|${paper.series || ''}`);
@@ -157,6 +159,7 @@ export async function mount(element, context) {
     <div class="card tilt-2 side-filters">
       <i class="tape tape--l" aria-hidden="true"></i>
       <h2 class="h3">Find a paper</h2>
+      ${tiers.length > 1 ? filterGroup('tier', 'Tier', [['all', 'Both'], ...tiers.map((tier) => [tier, tier])]) : ''}
       ${filterGroup('year', 'Year', [['all', 'All'], ...years.map((year) => [String(year), String(year)])])}
       ${codes.length > 1 ? filterGroup('code', 'Paper', [['all', 'All'], ...codes.map((code) => [code, /^P\d+$/.test(code) ? `Paper ${code.slice(1)}` : code])]) : ''}
       ${filterGroup('status', 'Status', [['all', 'All'], ['todo', 'Not started'], ['progress', 'In progress'], ['done', 'Completed']])}

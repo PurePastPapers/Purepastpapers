@@ -127,3 +127,13 @@ Q9(b). They show the correct scheme, just with the other part's rows too.
 - Tier choice when adding the subject (UI, needs approval of mock-ups first).
 - Official SAMs (optional), Nov 2025 and June 2026 when Pearson publishes them.
 - Teacher review of model tags if wanted.
+
+## Tier picker (17 November 2026)
+
+William chose option A (tier cards). A subject with `"tiers"` in `data/subjects.json`
+(GCSE Maths so far) shows a "Choose your tier" step in the add/edit subject window:
+Foundation, Higher or Not decided yet. The choice is saved in
+`preferences.tiers[subject_id]`. Practice starts with its Tier filter on that tier (Reset
+keeps it; changing the setting resets the filter once) and Past papers gets a Tier
+filter defaulting to it. Other tiered GCSEs only need `"tiers": ["Foundation", "Higher"]`
+in the registry and `tier` on their papers/questions. Check: `node tools/browser-tier-picker.cjs`.

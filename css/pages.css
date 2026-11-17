@@ -1596,3 +1596,43 @@
   .account-col > .card { padding: 22px 18px; }
   .split > .tilt-4 { transform: none; }
 }
+/* Tier choice for tiered GCSEs (add/edit subject window) */
+.tier-picks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.tier-pick input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.tier-pick__card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  height: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 14px;
+  cursor: pointer;
+}
+.tier-pick__card b {
+  font-size: 16px;
+}
+.tier-pick__card small {
+  color: var(--ink-2);
+}
+.tier-pick input:checked + .tier-pick__card {
+  background: var(--highlight);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.tier-pick input:focus-visible + .tier-pick__card {
+  outline: 2.5px solid var(--ink);
+  outline-offset: 4px;
+}
+:root[data-theme='dark'] .tier-pick input:checked + .tier-pick__card {
+  color: #2a2723;
+}

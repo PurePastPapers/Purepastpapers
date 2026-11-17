@@ -150,6 +150,10 @@ export async function mount(element, context) {
   if (!Array.isArray(state.years)) state.years = [];
   if (state.year && !state.years.length) state.years = [String(state.year)];
   state.year = '';
+  // A tiered GCSE starts on the tier chosen when the subject was added (subject settings).
+  // Changing that choice resets the tier filter once; the student can still pick "Any tier" here.
+  const tierPref = (Array.isArray(subject.tiers) && progress.preferences.tiers?.[subjectId]) || '';
+  if ((state.tierPref ?? '') !== tierPref) { state.tier = tierPref; state.tierPref = tierPref; }
   const save = () => {
     try {
       storage.setItem(storageKey, JSON.stringify(state));
@@ -868,7 +872,7 @@ export async function mount(element, context) {
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
     const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
-    state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept };
+    state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept, tier: tierPref, tierPref };
     state.testFocus = subjectLeaves.filter((id) => learned.has(id));
     state.testTextbookFocus = textbooks ? textbooks.ids.filter((id) => learned.has(id)) : null;
     state.testFocusVersion = 1;

@@ -44,6 +44,7 @@ _render = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_render)
 
 MARK_CODES = False  # set for GCSE Mathematics (mark-code column)
+MARK_COLUMN = False  # set for GCSE sciences: count tariffs in the Mark column only
 ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
 GRAPHIC_NOUNS = ['figure', 'fig', 'table', 'graph', 'diagram', 'photograph', 'photo', 'chart', 'flow chart',
                  'micrograph', 'image', 'drawing', 'map', 'key', 'circuit', 'grid', 'histogram', 'curve',
@@ -493,6 +494,10 @@ def wpos(doc, w, pad=4):
 ANCHOR = re.compile(r'^\*?Q?(\d{1,2})?\*?(?:\(?([a-h])\)?)?((?:\([ivx]{1,4}\))*)\*?$')
 
 
+LOOSE = re.compile(r'^\*?Q?(\d{1,2})\*?\(?([a-h])\)?\(?([ivx]{1,4})?\)?\*?$')
+STACKED = re.compile(r'^\(?([a-h])\)?\(?([ivx]{1,4})?\)?$')
+
+
 def scheme_blocks(doc, regions, number):
     """Split one question's scheme regions into blocks keyed by their reference."""
     words = region_words(doc, regions)
@@ -510,7 +515,7 @@ def scheme_blocks(doc, regions, number):
         for w in ws[1:]:
             # GCSE 1MA1 tables set "5   (a)" with a wider gap between number and part.
             gap = 34 if re.fullmatch(r'(\(([a-h]|[ivx]{1,4})\))+', w['text']) else 7
-            if w['x0'] - picked[-1]['x1'] < gap and re.fullmatch(r'\*?\(?[a-z0-9]{1,4}\)?\*?(\([a-z]{1,4}\))*', w['text']):
+            if w['x0'] - picked[-1]['x1'] < gap and re.fullmatch(r'\*?\(?[a-z0-9]{1,4}\)?\*?(\([a-z]{1,4}\))*[ivx]{0,4}', w['text']):
                 picked.append(w)
             else:
                 break
@@ -521,6 +526,17 @@ def scheme_blocks(doc, regions, number):
         if re.match(r'^Question', text, re.I):
             headers.append(ws[0])
             continue
+        stacked = STACKED.match(text)
+        if stacked and anchors and not anchors[-1]['tokens']:
+            # GCSE science tables stack the reference in a narrow column: "1" over "(b)(ii)", "a(ii)", "(b)ii"
+            prev = anchors[-1]['word']
+            if prev['page'] == ws[0]['page'] and 0 < ws[0]['top'] - prev['top'] < 30 and abs(prev['x0'] - ws[0]['x0']) < 22:
+                anchors[-1]['tokens'] = [stacked.group(1)] + ([stacked.group(2)] if stacked.group(2) else [])
+                continue
+        loose = None if ANCHOR.match(text) else LOOSE.match(text)
+        if loose:
+            # "2bii", "3 a(ii)": a reference with its numeral unbracketed
+            text = f"{loose.group(1)}({loose.group(2)})" + (f"({loose.group(3)})" if loose.group(3) else '')
         m = ANCHOR.match(text)
         if not m or not (m.group(1) or m.group(2) or m.group(3)):
             continue
@@ -674,6 +690,17 @@ def scheme_for_unit(doc, parsed, unit, marks):
         if (w['page'], round(w['top'] / 3)) in total_lines or (w['page'], round(w['top'] / 3) - 1) in total_lines or (w['page'], round(w['top'] / 3) + 1) in total_lines:
             continue
         W, H = doc.size(w['page'])
+        if MARK_COLUMN:
+            # GCSE science tables put "(1)" after each marking point in the Answer and
+            # guidance columns; only the right-hand "Mark" column holds the tariff.
+            heads = [h for h in doc.words(w['page']) if h['text'] == 'Mark' and h['x0'] > W * 0.6 and h['top'] <= w['top']]
+            x = max(heads, key=lambda h: h['top'])['x0'] - 8 if heads else W * 0.76
+            if w['x0'] < x:
+                continue
+        if MARK_COLUMN and re.fullmatch(r'\d{1,2}', w['text']) and any(
+                a['page'] == w['page'] and abs(a['top'] - w['top']) < 3 and 0 <= w['x0'] - a['x1'] < 12 and re.fullmatch(r'AO\d', a['text'])
+                for a in parsed['words']):
+            continue  # "AO2 1" is an assessment-objective code split in two, not a tariff
         if (w['x0'] > W * 0.70 and TARIFF.match(w['text'])) or (w['x0'] > W * 0.86 and re.fullmatch(r'\d{1,2}', w['text'])):
             if any(r['page'] == w['page'] and r['bbox'][1] * H <= w['top'] < r['bbox'][3] * H for r in counted):
                 total += int(w['text'].strip('()'))
@@ -961,7 +988,7 @@ def open_doc(sources, alias, sha, original_sha, offset, cropbox=False):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths'])
+    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths', 'gcsebio', 'gcsechem', 'gcsephys'])
     ap.add_argument('--sources', type=Path, required=True)
     ap.add_argument('--paper')
     ap.add_argument('--dry', action='store_true')
@@ -973,8 +1000,9 @@ def main():
     alias_path = args.sources.parent / 'alias.json'
     alias = json.loads(alias_path.read_text()) if alias_path.exists() else {}
     slug = args.subject
-    global MARK_CODES
+    global MARK_CODES, MARK_COLUMN
     MARK_CODES = slug == 'gcsemaths'
+    MARK_COLUMN = slug in ('gcsebio', 'gcsechem', 'gcsephys')
     stats = defaultdict(int)
     report = []
     shard, shards = (int(v) for v in args.shard.split('/'))
@@ -1000,7 +1028,7 @@ def main():
         for q in pack['questions']:
             groups[q['parent_question_id']].append(q)
         p0 = pack['questions'][0]['provenance']
-        crop = slug in ('physics', 'gcsemaths')  # tools/physics and tools/gcsemaths render the CropBox
+        crop = slug in ('physics', 'gcsemaths', 'gcsebio', 'gcsechem', 'gcsephys')  # tools/physics, gcsemaths, gcsebio, gcsechem and gcsephys render the CropBox
         qdoc = open_doc(args.sources, alias, p0['question_source_sha256'], p0['original_question_source_sha256'], p0['question_page_offset'], crop)
         sdoc = open_doc(args.sources, alias, p0['scheme_source_sha256'], p0['original_scheme_source_sha256'], p0['scheme_page_offset'], crop)
         new_assets = {}

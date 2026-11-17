@@ -304,7 +304,7 @@ export async function mount(element, context) {
   on(element, 'click', '[data-settings-edit]', async () => {
     const choice = await subjectDialog({ subject, mode: 'edit' });
     if (!choice) return;
-    await saveSubjectSettings(subjectId, { swatch: choice.swatch, target: choice.target });
+    await saveSubjectSettings(subjectId, { swatch: choice.swatch, target: choice.target, tier: choice.tier });
     context.refresh();
   });
   on(element, 'click', '[data-unenrol]', async () => {
