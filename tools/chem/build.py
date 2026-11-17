@@ -18,6 +18,7 @@ import argparse
 import concurrent.futures
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -44,6 +45,43 @@ def sha(path):
 def slug(label):
     q, *rest = label.replace(')', '').split('(')
     return f'Q{int(q):02}' + ''.join(f'_{x}' for x in rest)
+
+
+DEPENDENCY = re.compile(
+    r'\b(use|using|from|with|apply|applying|in terms of|based on) (your|their) (answer|answers|value|values|result|results|graph|calculation|'
+    r'expression|sketch|line|curve|plot|table|equation|estimate|calculated|structure|structures|formula|formulae)\b|'
+    r'\b(your|their) (answer|value|result|calculation|graph|sketch|expression|equation|structure|formula)s? (to|from|in|for|of) (part |question )?\(|'
+    r'\byou (calculated|found|obtained|derived|drew|plotted|completed|sketched|determined|wrote down|deduced|identified)\b|'
+    r'^hence\b(?! or otherwise)|[.;:?)] hence\b(?! or otherwise)', re.I)
+
+
+def dependencies(units):
+    """Units whose wording builds on an earlier part's answer of the same question -> {label: [earlier labels]}."""
+    out = {}
+    for i, u in enumerate(units):
+        body = re.sub(r'\s+', ' ', re.sub(r'^\s*\*?\d{0,2}\s*\*?\([a-z]{1,4}\)(\s*\([a-z]{1,4}\))?', '', u['text'] or ''))
+        if '(' not in u['label'] or not DEPENDENCY.search(body):
+            continue
+        earlier = [e for e in units[:i] if e['question'] == u['question'] and e['label'] != u['label']]
+        own_part = re.findall(r'\(([a-z]+)\)', u['label'])[0]
+        named = []
+        for m in re.finditer(r'(?:part\s+)?\(([a-h])\)\s*(?:\((i{1,3}|iv|v|vi|vii|viii)\))?', body):
+            letter, roman = m.group(1), m.group(2)
+            if letter == own_part and roman is None:
+                continue
+            hits = [e for e in earlier if re.findall(r'\(([a-z]+)\)', e['label'])[:1] == [letter]
+                    and (roman is None or re.findall(r'\(([a-z]+)\)', e['label'])[1:2] == [roman])]
+            if hits:
+                named.append(hits[-1]['label'])
+        for m in re.finditer(r'(?:answer|value|result|part|in|from|to) \((i{1,3}|iv|v|vi|vii|viii)\)', body):   # "your answer to (ii)"
+            hits = [e for e in earlier if re.findall(r'\(([a-z]+)\)', e['label'])[:2] == [own_part, m.group(1)]]
+            if hits:
+                named.append(hits[-1]['label'])
+        if not named and earlier:
+            named = [earlier[-1]['label']]   # "Hence" / "your answer" without a named part: the part printed just before
+        if named:
+            out[u['label']] = sorted(set(named), key=lambda l: [x['label'] for x in units].index(l))
+    return out
 
 
 def build_paper(paper, research, spec):
@@ -78,6 +116,7 @@ def build_paper(paper, research, spec):
     rel = lambda p: p.relative_to(REPO).as_posix()
     qual, is_as = paper['qualification_code'], paper['is_as']
     rendered_ctx, records = {}, []
+    deps = dependencies(cand['units'])
     excluded = []
     for u in cand['units']:
         if u['question'] in withdrawn:
@@ -115,7 +154,7 @@ def build_paper(paper, research, spec):
             'preview_text': rv['summary'], 'include_in_custom_pool': True, 'extended_response': bool(u['extended_response']),
             'content': {'question_html': '', 'question_image_url': rel(image), 'mark_scheme_html': '',
                         'mark_scheme_image_url': rel(scheme_image)},
-            'scheme_scope': 'part' if schemes[u['label']]['scope'] == 'unit' else 'parent_part',
+            'scheme_scope': {'unit': 'part', 'parent': 'parent_part', 'question': 'full_question'}[schemes[u['label']]['scope']],
             'scheme_question_number': u['label'], 'context': {'intros': intros} if intros else {},
             'provenance': {'review_status': 'model_reviewed', 'reviewer_type': 'model',
                            'question_source_sha256': cand['source_sha256'], 'scheme_source_sha256': ms_sha,
@@ -129,6 +168,14 @@ def build_paper(paper, research, spec):
                            **({'lead_note': rv['lead_note']} if rv.get('lead_note') else {}),
                            **({'board_erratum': paper['erratum_note']} if paper.get('erratum_note') and u['label'] in paper.get('erratum_units', []) else {})},
         }
+        if u['label'] in deps:   # earlier information the part needs: its introductions then the earlier parts, as unscored context
+            by_label_units = {x['label']: x for x in cand['units']}
+            keys = list(dict.fromkeys(list(u.get('context', [])) + [k for d in deps[u['label']] for k in by_label_units[d].get('context', [])]))
+            regs = [r for k in keys for r in cand['context'][k]['regions']] + [r for d in deps[u['label']] for r in by_label_units[d]['regions']]
+            target = root / f"CTX_{name}_earlier.webp"
+            qr.render(regs, target)
+            record['context'] = {'stem_image_url': rel(target)}
+            record['depends_on_question_ids'] = [f"{pid}_{slug(l)}" + ('' if '(' in l else '_W') for l in deps[u['label']]]
         if record['scheme_scope'] == 'parent_part':
             record['scheme_part'] = u['label'].rsplit('(', 1)[0]
         records.append(record)
@@ -161,7 +208,8 @@ def build_job(job):
         return {'paper_id': pid, 'status': 'awaiting_review_or_source'}
     target = REPO / 'data/packs/chem' / f'{pid}.json'
     signature = hashlib.sha256(SIGNATURE + cand.read_bytes() + review.read_bytes() +
-                               (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes()).hexdigest()
+                               (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes() + (HERE / 'schemes.py').read_bytes() + Path(__file__).read_bytes() +
+                               json.dumps(paper, sort_keys=True).encode()).hexdigest()
     try:
         if target.exists() and json.loads(target.read_text()).get('build_signature') == signature and (REPO / 'assets/chem' / pid).exists():
             return {'paper_id': pid, 'status': 'built', 'units': len(json.loads(target.read_text())['questions']), 'resumed': True}

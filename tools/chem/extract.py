@@ -20,7 +20,7 @@ import json
 import re
 from pathlib import Path
 
-VERSION = 'ocr-chem-layout-v1'
+VERSION = 'ocr-chem-layout-v2'
 ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
 TARIFF = re.compile(r'\[(\d{1,2})\]$')
 DOTS = re.compile(r'^[.…\s]{8,}(\[\d{1,2}\])?$')
@@ -197,6 +197,12 @@ def extract(path):
             if REMOVED.search(text):
                 entry['copyright_removed_content'] = True
             out.append(entry)
+        # A crop never runs into the first line of the next unit (tight sample-paper spacing, graphics padding).
+        for a_, b_ in zip(out, out[1:]):
+            la, fb = a_['regions'][-1], b_['regions'][0]
+            if la['page'] == fb['page'] and la['bbox'][3] > fb['bbox'][1] - 0.002:
+                tariff_bottom = (a_['tariff']['top'] + 11) / pdf.pages[la['page'] - 1].height
+                la['bbox'][3] = round(max(min(la['bbox'][3], fb['bbox'][1] - 0.002), min(tariff_bottom, la['bbox'][3])), 6)
         context = {}
         for key, n in list(stems.items()) + list(leads.items()):
             if n['rows']:

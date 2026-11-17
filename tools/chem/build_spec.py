@@ -142,6 +142,27 @@ def main():
         'point_order': [p['id'] for s in spec['sections'] for t in s['topics'] for p in t['points']],
     })
     TARGET.write_text(json.dumps(spec, ensure_ascii=False, indent=1) + '\n')
+    # Content-year view (teaching year, not exam entry): OCR designs the A level to be co-teachable with AS
+    # (Modules 1 to 4 in the first year); Modules 5 and 6 are the second year.
+    index_path = REPO / 'data/curriculum/index.json'
+    index = json.loads(index_path.read_text())
+    ids = [p['id'] for s_ in spec['sections'] for t in s_['topics'] for p in t['points']]
+    shared = [p['id'] for s_ in spec['sections'] for t in s_['topics'] for p in t['points'] if p['as_reference']]
+    mapping_id = 'ocr-h432-h032-co-teaching-years'
+    index['mappings'] = [m for m in index['mappings'] if m.get('id') != mapping_id] + [{
+        'subject_id': 'OCR_ALEVEL_CHEM_H432', 'id': mapping_id, 'type': 'year', 'status': 'verified',
+        'source_url': spec['official_source_url'], 'reviewed_at': '2026-11-17', 'review_status': 'model_reviewed',
+        'specification_version': spec['specification_version'], 'source_sha256': spec['official_source']['sha256'],
+        'as_source_url': spec['official_source']['as_qualification']['url'], 'as_source_sha256': spec['official_source']['as_qualification']['sha256'],
+        'evidence_note': 'OCR H432 specification (Version 3.1): the A Level "is co-teachable with the AS level" and its topics are split over modules to facilitate co-teaching. '
+                         'Year 12 is Modules 1 to 4, the content AS H032 assesses (same section numbers and titles in both specifications); Year 13 is Modules 5 and 6, A-level only. '
+                         'This is a co-teaching basis, not an OCR-prescribed teaching order: schools may sequence differently.',
+        'years': [
+            {'id': 'ocr-h432-year-12', 'title': 'Year 12 (AS H032 shared content, Modules 1 to 4)', 'year': 12,
+             'coverage': [{'point_id': i, 'extent': 'full'} for i in shared]},
+            {'id': 'ocr-h432-year-13', 'title': 'Year 13 (A-level-only content, Modules 5 and 6)', 'year': 13,
+             'coverage': [{'point_id': i, 'extent': 'full'} for i in ids if i not in shared]}]}]
+    index_path.write_text(json.dumps(index, ensure_ascii=False, indent=2) + '\n')
     print(len(leaves), 'sections verified;', len(as_map), 'AS-shared;', len(a_only), 'A-level only')
     for c, p in leaves.items():
         print(c, len(p['content']), 'outcomes')

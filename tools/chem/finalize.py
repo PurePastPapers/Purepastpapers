@@ -54,6 +54,7 @@ def main():
     for qual in ('H432', 'H032'):
         inv = read(target / 'inventory' / f'{qual}-inventory.json')
         not_public += inv.get('not_public', [])
+        not_public += [{'paper_id': p['paper_id'], 'missing': p['unavailable']} for p in inv['papers'] if p.get('unavailable')]
         for paper in inv['papers']:
             pid = paper['paper_id']
             pack_path = REPO / 'data/packs/chem' / f'{pid}.json'
@@ -106,7 +107,7 @@ def main():
     write(registry_path, {'format': 'chem-assessment-identity-v1', 'units': identities})
     coverage = {'checked_at': '2026-11-17', 'reviewer_type': 'model', 'subject_id': 'OCR_ALEVEL_CHEM_H432',
                 'status': ('complete' if a.activate else 'built_awaiting_rights_confirmation') if not queue else 'partial',
-                'published': bool(a.activate), 'rights_basis': ('Owner confirmed on 16 November 2026 that their permission covers republishing OCR Chemistry A H446/H046 papers and mark schemes.'
+                'published': bool(a.activate), 'rights_basis': ('Owner confirmed on 17 November 2026 (decision card; the earlier OCR confirmation named Computer Science only) that republishing OCR Chemistry A H432/H032 papers and mark schemes is permitted.'
                                  if a.activate else 'NOT CONFIRMED: built and verified but kept out of the live index until the owner confirms OCR permission.'),
                 'groups': {k: dict(v) for k, v in sorted(groups.items())}, 'totals': dict(sum(groups.values(), Counter())),
                 'difficulty': dict(difficulty), 'content_years': {str(k): v for k, v in sorted(years.items())},

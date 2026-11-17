@@ -84,6 +84,11 @@ def scheme_regions(path, labels, start_page=0):
             for y in sorted(y for y, w in span.items() if w > 0.4 * page.width):
                 if not rules or y - rules[-1] > 3:   # double-drawn rules are one boundary
                     rules.append(y)
+            # A page whose last row has no closing rule (a long row ending the table) still has content below
+            # the last rule: close it at the lowest printed word above the footer.
+            body = [w for w in words if w['top'] < page.height - 45]
+            if rules and body and max(w['bottom'] for w in body) - rules[-1] > 12:
+                rules.append(max(w['bottom'] for w in body) + 3)
             pairs = [(t, b) for t, b in zip(rules, rules[1:]) if b - t >= 6]
             # A label row starts with label-shaped cells ("3", "(a)", "(i)" or "1aii"); its first other
             # word marks where the answer column begins. Column widths change from page to page,
@@ -110,7 +115,8 @@ def scheme_regions(path, labels, start_page=0):
                     if not (w['x0'] < zone and LABEL.match(w['text']) and w['text'] not in ('(', ')')):
                         continue
                     t = w['text'].rstrip('*').lower()
-                    if prev_digit is not None and t.isdigit() and abs(w['top'] - prev_digit['top']) < 3 and 0 <= w['x0'] - prev_digit['x1'] < 6:
+                    if prev_digit is not None and t.isdigit() and (abs(w['top'] - prev_digit['top']) < 3 and 0 <= w['x0'] - prev_digit['x1'] < 6
+                                                                   or abs(w['x0'] - prev_digit['x0']) < 2 and 0 < w['top'] - prev_digit['top'] < 18):   # also digits stacked in a narrow column
                         tokens[-1] += t   # a two-digit question number split by kerning: "1" "8"
                     else:
                         tokens.append(t)
