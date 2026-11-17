@@ -20,28 +20,25 @@ PurePastPapers is a static vanilla-JavaScript exam-paper and practice-question s
 
 ## 2. Current implementation status
 
-Implemented on PR #6:
-- Email/password registration and login, confirmation callback, password recovery, profile/password updates.
-- Cloud progress load/save; guest-progress staging and restoration without replacing existing cloud progress.
-- Legacy browser-only login and JSON export/import.
-- Account deletion client flow and authenticated `delete-account` Edge Function.
+Implemented and merged:
+- PR #6 adds Supabase email/password registration/login, confirmation callback, recovery, profile/password updates, cloud progress, guest-progress recovery, legacy browser login, JSON backup import/export, and account deletion.
+- PR #13 clarifies signup sync messaging for configured cloud accounts, legacy accounts, and local-only mode.
 
 Verified:
-- Supabase migration and RLS are applied (details below).
-- The deletion function is ACTIVE with JWT verification enabled.
+- PR #6 is merged as `2840caa82752a4fc1d6e499455a3073b2f8e4f93`; PR #13 is merged as `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
+- GitHub Pages deployment for PR #6 succeeded (run 81, `44199928570`); deployment for PR #13 succeeded (run 82, `44201030653`, build/deploy/report jobs all successful).
+- A fresh production tab shows the signup message “After you confirm your email, your progress syncs across your devices.” The login page shows the forgot-password and legacy-account links; the password-reset page renders.
+- Production paper browse still works: the A-Level Edexcel Mathematics archive lists 60 papers; June 2025 AS Pure Mathematics 01 opened with 22 questions and 100 marks.
+- Supabase migration, owner-scoped RLS, grants, and authenticated deletion function are deployed and verified below.
 - Resend reports the domain verified and sending enabled.
-- A final independent review of PR head `6e8f2cda27daa0a67831a160c39f240578b77d7d` found no blocking defect in auth, callback recovery, sync, RLS usage, or deletion.
-- 47 focused tests passed on 2026-11-17. No application code changed after those tests; later branch changes were docs and a non-conflicting sync with main.
 
-User-reported, not independently inspected through the connected tools:
-- Supabase Site URL and redirect URLs were saved.
-- Email provider, signups, and email confirmation are enabled (a dashboard screenshot showed the provider and toggles enabled).
-- Custom SMTP was saved using `no-reply@purepastpapers.com`; the prior SMTP key was replaced with a fresh restricted sending key.
-- Supabase SMTP delivery has not yet been proven by receiving an Auth confirmation or password-reset email.
+User-reported (not independently inspectable through connected settings tools):
+- Supabase Site URL and redirect allow-list saved.
+- Email provider, signups, and email confirmation enabled.
+- Custom SMTP saved with `no-reply@purepastpapers.com`, and the previous SMTP key replaced by a domain-restricted key.
 
-Not yet end-to-end tested in production:
-- Signup and confirmation, login, password recovery, guest-progress restoration, cross-device sync, export/import, real two-user RLS isolation, and account deletion.
-- Production paper browsing after the account change.
+Still unverified end-to-end:
+- Supabase confirmation/reset email delivery, successful account signup/confirmation/login, guest progress restoration, cross-device sync, backup import/export, real two-user RLS reads/updates, and account deletion. These require at least one user-controlled inbox and disposable test accounts.
 
 ## 3. Supabase setup
 
@@ -94,14 +91,14 @@ User-reported:
 ## 5. GitHub status
 
 - Repository: `PurePastPapers/Purepastpapers`.
-- PR #6: https://github.com/PurePastPapers/Purepastpapers/pull/6
-- Feature branch: `codex/supabase-account-sync-2026-11-16`.
-- Main SHA used for branch sync: `25db8b895e7b311178e9f7749f3b9f9f23a13355`.
-- A two-parent sync commit `e1fb3c83bf29c039c833be846cf60d4afa004ed1` brought main into the feature branch. Comparing the 16 PR paths against 300 changed main paths since the merge base showed no overlap.
-- PR head before this handoff update: `6e8f2cda27daa0a67831a160c39f240578b77d7d`; PR was open, non-draft, and mergeable with 16 changed files.
-- No GitHub status rows or PR workflow runs were returned for the head. The connector could not read branch-protection settings (403), so do not claim required checks passed; no CI checks were reported.
-- Code review: final independent review at `6e8f2cda...` found no blocker. Earlier review fixes are in `a587fd5ccd46aedefb0815fda59a6cb4377cb46a` and `fb9ce73f65bec771b3770a857bb444b825d3249d`.
-- The PR description's original setup checklist is stale and should be refreshed before merge.
+- PR #6: https://github.com/PurePastPapers/Purepastpapers/pull/6; merged squash commit `2840caa82752a4fc1d6e499455a3073b2f8e4f93`.
+- PR #13: https://github.com/PurePastPapers/Purepastpapers/pull/13; merged squash commit `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
+- Current main SHA: `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
+- PR #6 feature branch: `codex/supabase-account-sync-2026-11-16`; final branch head before squash was `c95378aef9736401b85ff2a32226f7a9e87ba8a6`. It contained the main sync commit `e1fb3c83bf29c039c833be846cf60d4afa004ed1`.
+- PR #13 branch: `codex/account-sync-copy-2026-11-17`; head `400b557cecb5bf3a2dbedc049c0cfca356e73bad).
+- PR #6 code review found no blocking issue. PR #13 review found no blocking issue; the changed auth view passed Node syntax validation.
+- No application CI/test workflow or PR status checks were reported. GitHub Pages deployment did run for both main commits and succeeded. Main has no required status checks configured (branch API response).
+- PR #6 earlier reviews fixed issues in `a587fd5ccd46aedefb0815fda59a6cb4377cb46a` and `fb9ce73f65bec771b3770a857bb444b825d3249d`.
 
 ## 6. Files and architecture
 
@@ -128,49 +125,53 @@ Completed:
 - Node v24.22.1 syntax checks passed:
   `node --check js/data/adapters/supabase-adapter.js`
   `node --check js/data/api.js`
-- Exact focused test command:
+- Focused automated test command:
   ```sh
   node --test tests/guest-access.test.mjs tests/inline-marking.test.mjs tests/content-years.test.mjs tests/curriculum-map.test.mjs tests/spec-filtering.test.mjs tests/target-grades.test.mjs tests/question-parts.test.mjs tests/progress-failure-check.mjs tests/recovery-session-check.mjs tests/recovery-callback-check.mjs
   ```
-  Result: 47 passed, 0 failed. These ran from a temporary partial checkout `/tmp/ppp-check`; the current workspace does not contain the full repository checkout.
-- Supabase schema/RLS/grants/migration checks passed; cross-user INSERT was denied; security advisor had no lints.
-- Edge Function metadata confirms ACTIVE and JWT verification.
-- Resend domain verification/sending status confirmed.
-- Live paper smoke check on 2026-11-17: June 2025 AS Pure Mathematics 01 loaded with 22 questions and 100 marks.
-- Independent code review found no blocking defect.
+  Result on 2026-11-17: 47 passed, 0 failed. Ran from temporary partial checkout `/tmp/ppp-check`; this workspace has no complete repository checkout.
+- Follow-up auth view content passed `node --check /tmp/ppp-auth-view.js`; the temporary file was created from the updated branch's `js/ui/views/auth.js`.
+- Supabase migration/table/RLS/grant checks passed. A rollback-only cross-user INSERT attempt was denied. Security advisor returned no lints.
+- `delete-account` is ACTIVE with JWT verification enabled.
+- Resend domain status verified.
+- Production UI check after Pages deployments: signup, login, and password-reset pages render; the fresh signup page indicates cross-device sync after confirmation.
+- Production exam-paper smoke check: Mathematics archive loaded 60 papers; June 2025 AS Pure Mathematics 01 opened with 22 questions / 100 marks.
+- Independent reviews of PR #6 and PR #13 found no blocking defects.
 
 Not completed:
-- No CI runs/status checks were available at the latest PR head. Branch-protection required-check settings could not be read with the connector.
-- Full repository `npm test`/validation was not available in the partial checkout.
-- Actual Auth emails and signup/login/recovery/sync/deletion flows have not been exercised.
-- Real two-user SELECT/UPDATE RLS and production paper regression checks remain.
+- The full repository `npm test` and `npm run validate` scripts were not run; no full checkout exists in this workspace. `package.json` defines `test` as `node --test "tests/**/*.test.mjs"` and `validate` as `node tools/validate-data.mjs`.
+- No application CI workflow or PR test checks are configured/reported; only the GitHub Pages builds ran.
+- Auth emails and full signup/recovery/progress/account-deletion flows have not been exercised. UI presence is not proof of email delivery.
+- Real two-user SELECT/UPDATE RLS isolation remains to be checked after creating disposable accounts.
+- Paper browse is verified, but paper scoring/save under an account is not yet checked.
 
 ## 8. Known problems and risks
 
-- SMTP and Auth URLs/providers are user-reported; the connector cannot inspect those settings. Verify by actual confirmation and reset email delivery.
-- The live auth end-to-end tests require a mailbox controlled by the user and confirmation-link interaction. Do not request mailbox passwords or Supabase/Resend secrets.
-- Real two-user RLS read/update isolation needs two registered test accounts; use disposable accounts only.
-- Account deletion has not been exercised with a real signed-in test account.
-- Last-save-wins snapshot writes may overwrite concurrent edits made simultaneously on two devices.
-- No CI/status checks were reported; branch protection could not be queried.
+- Site URL, redirect allow-list, provider and custom SMTP settings are user-reported. The Supabase connector cannot read these Auth settings; verify them through actual confirmation/reset email delivery.
+- The signup/authentication and recovery screens render in production. No real mailbox was used, so the SMTP delivery path remains untested.
+- Do not ask the user for mailbox passwords, account passwords, SMTP credentials, or Supabase keys. The user must control the signup inbox and click the confirmation link.
+- The rollback-only attempt to test SELECT/UPDATE with synthetic UUIDs stopped at the `auth.users` foreign key because those UUIDs were not real users; no changes were made. Real two-user isolation still needs disposable accounts.
+- Account deletion has not been exercised with a real signed-in disposable account.
+- The old browser tab initially showed cached pre-deployment copy; a fresh tab loaded the new signup message. If the user's existing tab shows old wording, close/reopen the site or refresh it.
+- Progress snapshots are last-save-wins if the same account is edited simultaneously on two devices.
 
 ## 9. Exact next steps
 
-1. Refresh PR #6 head and status. Review was completed at `6e8f2cda...`; focused tests passed; there are no reported CI checks. Refresh the PR description so completed Supabase setup is no longer listed as outstanding.
-2. Merge PR #6 only while it remains open and mergeable at the reviewed head. The code is reviewed and focused checks passed; merging is needed to exercise the production callback and Auth flows.
-3. Confirm GitHub Pages publishes the merge commit, then smoke-test the live signup/login/account UI and existing exam-paper flow.
-4. Ask the user to create one disposable test account using an inbox they control, click the confirmation link, and report when signed in. Never ask for their password or email-provider secret.
-5. Test reset email, guest-progress restore, login on a second device, export/import, and two-user row isolation. Test deletion only on a disposable account.
-6. Update this handoff with the merge SHA, Pages deployment result, test results, exact remaining blockers, and commit it.
+1. Ask the user to complete one test signup with an inbox they control at https://purepastpapers.com/#/signup. They should enter their password only in the site, never in chat.
+2. Have them click the confirmation email on the same device/browser used to stage any guest progress. Confirm the callback finishes and that progress appears after sign-in.
+3. Test login, request a password-reset email from the login page, open the link, set a new password, then log in with it.
+4. Sign into the same account on a second device, make one progress change, and confirm it appears on the other device. Test JSON export/import.
+5. Create a second disposable test account and verify it cannot read/update the first user's row. Test account deletion only on a disposable account.
+6. Record the user's email-delivery and auth-flow results here; do not record the email address or any credentials. Continue with a production paper-score/save regression check.
 
 ## 10. Completion criteria
 
-Do not mark complete until:
-- Auth Site URL, redirect allow-list, email provider, signups and confirmation are saved and verified.
-- Supabase Auth confirmation and password-reset messages reach the user through Resend SMTP.
-- Migration is recorded; table, grants and owner-scoped RLS are verified; cross-user reads/writes are denied using real accounts.
-- `delete-account` is deployed with JWT verification and deletion succeeds for a disposable test account.
-- PR #6 is reviewed and merged after available code checks; GitHub Pages publishes the merge.
-- Production signup, confirmation, login, reset, guest-progress preservation, cross-device sync and backup flows pass.
-- Existing exam-paper functionality remains available.
-- The final handoff records exact tested commits/deployment and separates verified facts from user reports.
+Do not mark the integration complete until all are true:
+- The Supabase Auth Site URL, exact redirect allow-list, Email provider, signups and confirmation setting are saved and verified.
+- Supabase Auth confirmation and password-reset emails reach the user through Resend SMTP.
+- The migration is recorded; table, grants and owner-scoped RLS are verified; cross-user reads/writes are denied using real accounts.
+- `delete-account` is ACTIVE with JWT verification and deletion succeeds for a disposable signed-in account.
+- PR #6 and PR #13 are merged; the corresponding GitHub Pages deployments succeeded.
+- Production signup, confirmation, login, reset, guest-progress preservation, cross-device sync, backup import/export and paper-score persistence pass.
+- Existing exam-paper browsing remains available.
+- This handoff records the exact deployment/test SHAs and distinguishes verified facts from user reports.
