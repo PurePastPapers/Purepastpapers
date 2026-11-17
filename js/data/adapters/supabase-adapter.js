@@ -282,7 +282,7 @@ export const supabaseAdapter = {
     const { data, error } = await client.auth.getSession();
     if (error) throw new Error(error.message);
     if (!data.session?.user) throw new Error('This link is invalid or has expired. Return to the site and try again.');
-    const pendingSignup = await applyPendingSignup(data.session);
+    const pendingSignup = recovery ? null : await applyPendingSignup(data.session);
     if (recovery) {
       try { sessionStorage.setItem(recoverySessionKey, JSON.stringify({ userId: data.session.user.id, at: Date.now() })); } catch {}
     } else {
