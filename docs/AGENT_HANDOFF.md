@@ -48,7 +48,7 @@ Verified repository configuration:
 - The migration creates public.user_progress with user_id as the auth.users foreign key and primary key, progress JSONB and updated_at.
 - RLS is enabled. Grants give authenticated users select/insert/update; policies compare user_id with auth.uid() for each operation. No delete policy is granted; deleting an auth user cascades the row.
 - Function source: supabase/functions/delete-account/index.ts.
-- Supabase CLI config: supabase/config.toml; delete-account sets verify_jwt = false because the handler uses @supabase/server with auth: 'user' to validate the caller.
+- Supabase CLI config: supabase/config.toml. The current delete-account config sets verify_jwt = false while the handler uses withSupabase({ auth: 'user' }); review flagged this as unnecessary loss of the platform JWT check. Supabase's current guidance says to leave verification on for user-token functions. Set verify_jwt = true (or remove the override), then deploy and test.
 - Auth callback page: auth-callback.html and js/auth-callback.js.
 - Desired Site URL: https://purepastpapers.com.
 - Required redirect allow-list:
@@ -97,12 +97,12 @@ Verified on 2026-11-17 through GitHub:
 - Active feature branch: codex/supabase-account-sync-2026-11-16.
 - Pull request: #6, https://github.com/PurePastPapers/Purepastpapers/pull/6.
 - PR title: Add Supabase accounts and cross-device progress sync.
-- PR is open and unmerged. On 2026-11-17 GitHub reported mergeable=false after the handoff commits. Current main SHA is c40a4cf29044a04714099bb47c533a66145333eb; branch merge base is 516243dcefa8e0a9be4e26ed6209703c3322947f, so the feature branch is 40 commits behind main. Comparing those 40 main commits found no paths overlapping the PR's changed paths; investigate the false mergeability result before merging.
+- PR is open and unmerged. GitHub first reported mergeable=false after handoff commits, then a repeat query reported mergeable=true. Current main SHA observed through compare is c40a4cf29044a04714099bb47c533a66145333eb; branch merge base is 516243dcefa8e0a9be4e26ed6209703c3322947f, so the feature branch is 40 commits behind main. Comparing those 40 main commits found no paths overlapping PR-changed paths. Recheck mergeability and checks before merging.
 - Feature implementation commit: 14e237bffade89ecc34c08cc8b810d345506742f.
 - PR base branch: main; previous observed base SHA: c3530261bb9a8673f7d7b07daee2e098b788c091; current main SHA: c40a4cf29044a04714099bb47c533a66145333eb.
-- The latest combined status query for head efb8e77de58fc529e6c3f5c9d80b90bf23bcd333 returned no status entries; recheck before merging.
+- The latest combined status query for head 065ef8feae0580a856cf8207de4d7e0ed1c5310a returned no status entries; recheck before merging.
 - No source changes were made in this handoff session before this file.
-- Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. Metadata update commit: efb8e77de58fc529e6c3f5c9d80b90bf23bcd333. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
+- Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. Metadata update commit: efb8e77de58fc529e6c3f5c9d80b90bf23bcd333. Mergeability update commit: 065ef8feae0580a856cf8207de4d7e0ed1c5310a. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
 
 The PR body says project setup should be completed before merge. Do not merge or publish until required Supabase setup is applied and checks are completed.
 
@@ -137,8 +137,21 @@ Completed/observed:
 - User reports a Resend test email was delivered.
 
 Not completed:
-- No local repository checkout was available in the agent workspace during the previous session; no local test/build/lint command ran.
-- GitHub combined status query for latest head efb8e77de58fc529e6c3f5c9d80b90bf23bcd333 returned no status rows; recheck current checks.
+- No repository checkout is present in the agent workspace. npm test and npm run validate have not run; package.json declares both scripts. The workspace has Node v24.22.1 and npm 11.9.0, but no Deno or psql executable. No full local test/build/lint run has completed.
+- Nine changed JavaScript files passed Node syntax checks on 2026-11-17 using Node v24.22.1. Exact checks run:
+  ~~~sh
+  node --check /tmp/ppp-auth-review/js/auth-callback.mjs
+  node --check /tmp/ppp-auth-review/js/config/supabase.config.mjs
+  node --check /tmp/ppp-auth-review/js/core/links.mjs
+  node --check /tmp/ppp-auth-review/js/data/adapters/supabase-adapter.mjs
+  node --check /tmp/ppp-auth-review/js/data/api.mjs
+  node --check /tmp/ppp-auth-review/js/main.mjs
+  node --check /tmp/ppp-auth-review/js/ui/views/account.mjs
+  node --check /tmp/ppp-auth-review/js/ui/views/auth.mjs
+  node --check /tmp/ppp-auth-review/js/ui/views/recovery.mjs
+  ~~~
+  These were temporary copies fetched from the branch, not a full checkout. The status query for head 065ef8feae0580a856cf8207de4d7e0ed1c5310a returned no status rows.
+
 - Migration execution and cross-user RLS denial test.
 - Dashboard URL/provider/email-confirmation verification.
 - Supabase SMTP send/receive tests.
@@ -162,7 +175,7 @@ Priority order:
 2. On the user's iPad, guide them to Supabase project → Authentication → URL Configuration, then set the Site URL and exact redirect allow-list above. Confirm email confirmation is enabled.
 3. Guide the user to Authentication → Emails → SMTP Settings and have them enter Resend SMTP values directly. Do not ask for the password. Confirm saved status and successful inbox delivery.
 4. Apply supabase/migrations/20261116180000_user_progress.sql in SQL Editor. Capture the success result without exposing secrets.
-5. Deploy delete-account from the feature branch using the CLI commands above, or a verified dashboard alternative if terminal login is unavailable.
+5. Change supabase/config.toml to keep verify_jwt enabled for the user-authenticated delete-account function, then deploy the function from the feature branch using the CLI commands above, or a verified dashboard alternative if terminal login is unavailable.
 6. Review the complete PR diff against current main; run all checks available. Fix issues on the same feature branch and update this document after each milestone.
 7. Verify RLS with two test accounts: each can access their own row; another account cannot select, insert or update the first user's row. Do not use real student data.
 8. Test signup and confirmation, login, password reset, staged guest progress preservation, progress sync across devices, export/import and deletion against the configured project.
