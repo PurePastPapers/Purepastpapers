@@ -189,6 +189,10 @@ export async function discardDemo(details) {
 }
 
 export async function signIn(details) {
+  const previousUser = user;
+  const previousAdapter = activeAdapter;
+  const previousProgress = progress || emptyProgress('guest');
+  const previousLearnedCache = learnedCache;
   activeAdapter = backendAdapter;
   try {
     user = await activeAdapter.signIn(details);
@@ -203,11 +207,11 @@ export async function signIn(details) {
     events.emit('auth', user);
     return user;
   } catch (error) {
-    // Do not expose a partially restored account or allow writes from an empty snapshot.
-    user = null;
-    activeAdapter = backendAdapter;
-    progress = emptyProgress('guest');
-    learnedCache = null;
+    // Restore the prior guest/account state on a failed login or progress read.
+    user = previousUser;
+    activeAdapter = previousAdapter;
+    progress = previousProgress;
+    learnedCache = previousLearnedCache;
     throw error;
   }
 }
