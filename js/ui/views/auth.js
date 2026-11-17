@@ -65,9 +65,15 @@ export async function mount(element, context) {
         <p class="muted small" style="text-align:center">Have an older browser-only account? <a href="${links.legacyLogin()}">Log in to it to export your progress</a>.</p>` : ''}
       ${legacy ? html`<p class="muted small" style="text-align:center">After logging in, download your progress, log out, then import it into your cloud account.</p>` : ''}
       <p class="hand auth__note">
-        ${backend.syncsAcrossDevices
-          ? 'Saved to your account, so it’s there on your phone and laptop too.'
-          : 'Saved in this browser on this device. It doesn’t sync to other devices yet.'}
+        ${signup
+          ? backend.cloudConfigured
+            ? 'After you confirm your email, your progress syncs across your devices.'
+            : 'Cloud account sync is not configured yet; progress stays in this browser.'
+          : legacy
+            ? 'This older account stays in this browser. Export its progress to move it to a cloud account.'
+            : backend.syncsAcrossDevices
+              ? 'Your account progress syncs across your devices.'
+              : 'This browser-only account does not sync across devices.'}
       </p>
     </div>`;
 
