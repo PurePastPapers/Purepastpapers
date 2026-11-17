@@ -231,6 +231,15 @@
   font-size: 14px;
   white-space: nowrap;
   text-decoration: none;
+  max-width: 100%;
+}
+/* A long name (e.g. "GCSE Biology (Triple / Separate Science)") wraps inside its chip
+   instead of running off a narrow phone screen. Short chips are unaffected. */
+@media (max-width: 480px) {
+  .chip {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 .chip:hover {
   border-color: var(--ink-3);

@@ -109,6 +109,5 @@ full-question scheme and 4 labels were not found. One question
 - `npm run validate`: 0 errors.
 - `node tools/browser-gcsebio-bank.cjs` against `npm start` checks both subjects: unit
   counts, tier filter counts, part crops and part schemes load, no console errors, and page
-  width at 320, 390, 768 and 1440px. Known item: at 320px the long subject chip
-  ("GCSE Biology (Triple / Separate Science)") runs 12–16px past the edge. It comes from the
-  existing subject names and CSS, so fixing it is a UI change for approval; the check reports it.
+  width at 320, 390, 768 and 1440px. Long subject chips wrap onto two lines below 480px
+  (`css/components.css`), so nothing overflows at 320px.

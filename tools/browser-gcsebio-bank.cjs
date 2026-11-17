@@ -53,15 +53,7 @@ async function check(browser, subject) {
     await loaded('.ms img');
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
-      const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
-      // Known, pre-existing: at 320px the long subject chip "GCSE Biology (Triple / Separate Science)"
-      // runs 12px past the edge. Fixing it is a UI change awaiting approval, so it is reported, not failed.
-      if (width === 320 && scrollWidth > width) {
-        const chipOnly = await page.evaluate(w => [...document.querySelectorAll('body *')]
-          .filter(e => e.getBoundingClientRect().right > w + 1).every(e => e.matches('a.chip, a.chip *')), width);
-        assert.ok(chipOnly, 'overflow at 320px beyond the subject chip');
-        console.warn(`${subject}: 320px subject chip overflows by ${scrollWidth - width}px (known UI item)`);
-      } else assert.equal(scrollWidth, width);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/${subject}-${width}.png`});
     }
     assert.equal(await page.getByText('Demo content', {exact: true}).count(), 0);
