@@ -1,10 +1,11 @@
 // The "Add <subject>" / "Edit <subject>" dialog (My subjects mockups): pick a colour,
-// set a target grade, and (when adding) choose what to do about learned topics.
+// choose a tier (tiered GCSEs, owner choice 2026-11-17: option A cards), set a target
+// grade, and (when adding) choose what to do about learned topics.
 // A small preview card on the right shows how the subject will look.
 
 import { html, setHtml } from '../core/dom.js';
 import { gradesIn } from '../engine/analytics.js';
-import { SUBJECT_SWATCHES, subjectSwatchId, targetGrade } from './subject-colours.js';
+import { SUBJECT_SWATCHES, subjectSwatchId, subjectTier, targetGrade } from './subject-colours.js';
 import { openModal } from './ui.js';
 
 const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount) =>
@@ -21,13 +22,22 @@ const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount)
 
 /**
  * @param {{ subject: object, mode: 'add'|'edit', leaves?: number, learningUnit?: string, coveredCount?: number }} options
- * @returns {Promise<null | { swatch: string, target: string|null, learned: 'tick'|'all'|'skip' }>}
+ * @returns {Promise<null | { swatch: string, tier: string|null|undefined, target: string|null, learned: 'tick'|'all'|'skip' }>}
  */
 export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec points', coveredCount = 0 }) {
   const grades = gradesIn(subject.grade_scheme).filter((grade) => grade !== 'U');
   const startSwatch = subjectSwatchId(subject) || SUBJECT_SWATCHES[0].id;
   const startTarget = mode === 'edit' ? targetGrade(subject) : null;
   const target = startTarget || '';
+  const tiers = Array.isArray(subject.tiers) ? subject.tiers : [];
+  const startTier = mode === 'edit' ? subjectTier(subject) || '' : '';
+  const TIER_INFO = {
+    Foundation: { grades: 'Grades 1 to 5', papers: 'F' },
+    Higher: { grades: 'Grades 4 to 9', papers: 'H' },
+  };
+  const tierCard = (value, title, line1, line2) =>
+    html`<label class="tier-pick"><input type="radio" name="tier" value="${value}" ${value === startTier ? 'checked' : ''} /><span class="tier-pick__card"><b>${title}</b><span>${line1}</span><small>${line2}</small></span></label>`;
+  let step = 1;
   const below = (grade, steps) => grades[grades.indexOf(grade) + steps];
   const key = (grade) =>
     html`<ul class="band-key">
@@ -41,7 +51,7 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
     <div class="subject-dialog__steps">
       <p class="muted">${subject.level} · ${subject.board} ${subject.spec_code}. You can change all of this later.</p>
       <fieldset class="step">
-        <legend><i>1</i>Pick a colour</legend>
+        <legend><i>${step++}</i>Pick a colour</legend>
         <p class="step__hint">Used for the subject’s header, its tint and its charts.</p>
         <div class="swatches swatches--row" role="radiogroup" aria-label="Colour">
           ${SUBJECT_SWATCHES.map(
@@ -50,8 +60,18 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
           )}
         </div>
       </fieldset>
+      ${tiers.length
+        ? html`<fieldset class="step">
+            <legend><i>${step++}</i>Choose your tier</legend>
+            <p class="step__hint">Practice and past papers start with this tier’s questions. Questions printed on both tiers appear in both.</p>
+            <div class="tier-picks" role="radiogroup" aria-label="Tier">
+              ${tiers.map((tier) => tierCard(tier, tier, TIER_INFO[tier]?.grades || '', TIER_INFO[tier] ? `Papers ${[1, 2, 3].map((n) => `${n}${TIER_INFO[tier].papers}`).join(', ')}` : ''))}
+              ${tierCard('', 'Not decided yet', 'Both tiers', 'You can choose later')}
+            </div>
+          </fieldset>`
+        : ''}
       <fieldset class="step">
-        <legend><i>2</i>Set your target grade</legend>
+        <legend><i>${step++}</i>Set your target grade</legend>
         <p class="step__hint">Your papers are rated against this instead of fixed percentages.</p>
         <div class="grade-picks" role="radiogroup" aria-label="Target grade">
           ${grades.map((grade) => html`<label class="grade-pick"><input type="radio" name="target" value="${grade}" ${grade === target ? 'checked' : ''} /><span>${grade}</span></label>`)}
@@ -61,7 +81,7 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
       </fieldset>
       ${mode === 'add' && subject.has_written_exam
         ? html`<fieldset class="step">
-            <legend><i>3</i>What have you learned so far?</legend>
+            <legend><i>${step++}</i>What have you learned so far?</legend>
             <p class="step__hint">Use the learned-topic filter in practice to limit questions to the topics you’ve ticked.</p>
             <div class="opts">
               <label class="opt"><input type="radio" name="learned" value="tick" checked /><span>Choose what I’ve covered</span><small>opens the topic list next</small></label>
@@ -85,6 +105,7 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
         variant: 'primary',
         collect: (dialog) => ({
           swatch: dialog.querySelector('input[name="swatch"]:checked')?.value || startSwatch,
+          tier: tiers.length ? dialog.querySelector('input[name="tier"]:checked')?.value || null : undefined,
           target: dialog.querySelector('input[name="target"]:checked')?.value || null,
           learned: dialog.querySelector('input[name="learned"]:checked')?.value || 'skip',
         }),
