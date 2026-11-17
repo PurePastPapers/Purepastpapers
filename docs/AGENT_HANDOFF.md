@@ -32,7 +32,7 @@ Implemented on the feature branch:
 
 Code exists, but production readiness is not verified:
 - The SQL migration has not been confirmed as applied in Supabase.
-- Auth URL settings and email confirmation have not been confirmed in the dashboard.
+- User reports the Site URL and redirect URLs were updated on 2026-11-17. The post-save values have not been independently verified; Email provider and confirmation remain unverified.
 - User reports Resend custom SMTP was saved in Supabase with sender no-reply@purepastpapers.com; delivery through Supabase has not been tested and was not independently checked.
 - The Edge Function has not been confirmed deployed.
 - End-to-end signup, confirmation, login, password reset, cross-device sync and deletion have not been verified on production.
@@ -57,10 +57,10 @@ Verified repository configuration:
   - http://localhost:5173/auth-callback.html
   - http://127.0.0.1:5173/auth-callback.html
 
-Dashboard state is otherwise unknown/unverified. In this agent workspace, no Supabase admin connector or Management API credential is available; the Supabase CLI is not installed and no Supabase auth environment variable or CLI session was found. The public publishable key in the website cannot change Auth settings, run owner SQL, inspect migration state, or deploy functions. The user is on iPad and cannot use Desktop Take Over. Do not ask for tokens or passwords in chat; guide the user through only actions that cannot be done from the available integrations.
+User reports updating Site URL and redirects after the screenshot showed localhost:3000 and an empty redirect list; no post-save screenshot is available, so treat the values as user-reported only. Email provider/confirmation is still unverified. In this agent workspace, no Supabase admin connector or Management API credential is available; the Supabase CLI is not installed and no Supabase auth environment variable or CLI session was found. The public publishable key in the website cannot change Auth settings, run owner SQL, inspect migration state, or deploy functions. The user is on iPad and cannot use Desktop Take Over. Do not ask for tokens or passwords in chat; guide the user through only actions that cannot be done from the available integrations.
 
 Required dashboard work:
-1. Authentication → URL Configuration: set Site URL and the four exact redirect URLs above.
+1. Authentication → URL Configuration: user reports setting Site URL and the four exact redirect URLs on 2026-11-17; verify the saved values from a post-save view before treating this as confirmed.
 2. Authentication → Providers → Email: verify the provider is enabled and email confirmation remains enabled.
 3. SQL Editor: apply the migration file above.
 4. Deploy delete-account. The documented CLI commands from the repository root are:
@@ -91,13 +91,13 @@ Verified through GitHub on 2026-11-17:
 - Repository: PurePastPapers/Purepastpapers.
 - Active feature branch: codex/supabase-account-sync-2026-11-16.
 - Pull request: #6, https://github.com/PurePastPapers/Purepastpapers/pull/6.
-- Latest branch head before this handoff refresh: e58c1421908250693072dc169e593536e078ca7e (21 commits, 16 changed files). It includes the reviewed code at fb9ce73f65bec771b3770a857bb444b825d3249d plus handoff updates. This refresh adds a documentation-only commit.
-- Current main head: 07d072319b534db5f1cc63bdd652377cd9fbc108. Comparing current main with branch head e58 reports 21 commits ahead and 42 behind, merge base 516243dcefa8e0a9be4e26ed6209703c3322947f.
-- PR is open and unmerged. The latest GitHub connector reports mergeable=false; the direct GitHub REST response reports mergeable=true / mergeable_state=clean. Both responses use the stale PR base SHA c3530261bb9a8673f7d7b07daee2e098b788c091 rather than current main. Treat mergeability as unresolved and refresh before merging.
+- Latest branch head before this handoff refresh: 253836050f308c0859362c4c72c05b232eba08cc (22 commits, 16 changed files), with reviewed code at fb9ce73f65bec771b3770a857bb444b825d3249d. This refresh adds a documentation-only commit.
+- Current main head: 07d072319b534db5f1cc63bdd652377cd9fbc108. Comparing current main with branch head 2538360 gives 22 commits ahead and 42 behind, with merge base 516243dcefa8e0a9be4e26ed6209703c3322947f.
+- PR is open and unmerged. The latest GitHub connector reports mergeable=false. The PR base SHA c3530261bb9a8673f7d7b07daee2e098b788c091 is stale relative to current main; an earlier direct REST response returned mergeable=true/clean against that stale base. Treat mergeability as unresolved and refresh before merging.
 - All 16 PR-changed paths were individually compared between merge base 516243d and current main 07d072; none changed on main since that merge base.
-- Latest commit status query returned no status entries; the GitHub Actions workflow-run query returned no PR workflow runs. Main reports branch protection disabled and no required checks.
+- At the last checked PR head e58c142, no status rows or GitHub Actions workflow runs were returned. Main reports branch protection disabled and no required checks.
 - Significant implementation/review commits: initial implementation 14e237bffade89ecc34c08cc8b810d345506742f; JWT configuration ee6869d4bbc868960e3f7e09907447f7da8a8008; Resend setup documentation 7efde9949e12ff6f681109407385650093711a64; deletion identity fix ff2db8fd0b9dcf9c88914a681ab3b0cbfabdccbd; startup progress-read fallback b241c263d97eac6f2a406341aef962b97b78cba0; failed-login guest-state preservation bd07f2b364229c5c67c02593a7419b543d828524; dashboard function-deployment instructions 7618b03d241da8101c4c3f26df930b34191de416; recovery fixes a587fd5ccd46aedefb0815fda59a6cb4377cb46a and fb9ce73f65bec771b3770a857bb444b825d3249d.
-- Prior handoff commits: initial 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4; 2b6a43b0d9a4975f6a45df06573b0746bd0c4b39; d210828966b07b16633e8982ae3b7690ea97ea58; 9f35c5394106a7430b8b887e87e4a5ba925b5b4; 4072ba0a05f8dce946d5423562a72eae5f10f948; e58c1421908250693072dc169e593536e078ca7e.
+- Prior handoff commits: initial 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4; 2b6a43b0d9a4975f6a45df06573b0746bd0c4b39; d210828966b07b16633e8982ae3b7690ea97ea58; 9f35c5394106a7430b8b887e87e4a5ba925b5b4; 4072ba0a05f8dce946d5423562a72eae5f10f948; e58c1421908250693072dc169e593536e078ca7e; 253836050f308c0859362c4c72c05b232eba08cc.
 - Do not merge or publish until remote setup, checks, review and required end-to-end tests are complete.
 
 ## 6. Files and architecture
