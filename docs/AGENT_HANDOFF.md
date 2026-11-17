@@ -32,7 +32,7 @@ Implemented on the feature branch:
 
 Code exists, but production readiness is not verified:
 - The SQL migration has not been confirmed as applied in Supabase.
-- User reports the Site URL and redirect URLs were updated on 2026-11-17. The post-save values have not been independently verified; Email provider and confirmation remain unverified.
+- User reports the Site URL and redirect URLs were updated on 2026-11-17; the post-save values have not been independently verified. A screenshot of Authentication → Sign In / Providers on 2026-11-17 shows Allow new users to sign up, Confirm email, and the Email provider enabled. The screenshot also shows a Save changes control, so persistence is not independently verified.
 - User reports Resend custom SMTP was saved in Supabase with sender no-reply@purepastpapers.com; delivery through Supabase has not been tested and was not independently checked.
 - The Edge Function has not been confirmed deployed.
 - End-to-end signup, confirmation, login, password reset, cross-device sync and deletion have not been verified on production.
@@ -57,11 +57,11 @@ Verified repository configuration:
   - http://localhost:5173/auth-callback.html
   - http://127.0.0.1:5173/auth-callback.html
 
-User reports updating Site URL and redirects after the screenshot showed localhost:3000 and an empty redirect list; no post-save screenshot is available, so treat the values as user-reported only. Email provider/confirmation is still unverified. In this agent workspace, no Supabase admin connector or Management API credential is available; the Supabase CLI is not installed and no Supabase auth environment variable or CLI session was found. The public publishable key in the website cannot change Auth settings, run owner SQL, inspect migration state, or deploy functions. The user is on iPad and cannot use Desktop Take Over. Do not ask for tokens or passwords in chat; guide the user through only actions that cannot be done from the available integrations.
+User reports updating Site URL and redirects after the screenshot showed localhost:3000 and an empty redirect list; no post-save URL screenshot is available. A 2026-11-17 screenshot shows Allow new users to sign up, Confirm email, and the Email provider enabled, with Save changes visible; treat persistence as unverified until saved. In this agent workspace, no Supabase admin connector or Management API credential is available; the Supabase CLI is not installed and no Supabase auth environment variable or CLI session was found. The public publishable key in the website cannot change Auth settings, run owner SQL, inspect migration state, or deploy functions. The user is on iPad and cannot use Desktop Take Over. Do not ask for tokens or passwords in chat; guide the user through only actions that cannot be done from the available integrations.
 
 Required dashboard work:
 1. Authentication → URL Configuration: user reports setting Site URL and the four exact redirect URLs on 2026-11-17; verify the saved values from a post-save view before treating this as confirmed.
-2. Authentication → Providers → Email: verify the provider is enabled and email confirmation remains enabled.
+2. Authentication → Sign In / Providers: a 2026-11-17 screenshot shows Allow new users to sign up, Confirm email, and the Email provider enabled. If these toggles were edited, tap Save changes and reopen the page to confirm the saved state.
 3. SQL Editor: apply the migration file above.
 4. Deploy delete-account. The documented CLI commands from the repository root are:
    ~~~sh
@@ -144,7 +144,7 @@ Not completed:
 
 - This environment lacks authenticated Supabase admin access: no Supabase connector, CLI executable/session, or Management API credentials. GitHub access and the browser publishable key are not Supabase admin access.
 - User reports SMTP was saved, but Supabase email delivery is untested. Rotate the SMTP API key before testing; use a new domain-restricted Sending-only key entered directly in Supabase.
-- Auth Site URL, redirects, Email provider/confirmation, migration state and Edge Function deployment remain unverified.
+- Auth sign-up, email confirmation and Email provider toggles are shown on in a 2026-11-17 screenshot, but the screenshot still shows Save changes; confirm persistence. Site URL/redirect values, migration state and Edge Function deployment remain unverified.
 - The migration is not idempotent. It uses CREATE TABLE and CREATE POLICY without guards; inspect whether the table and all three policies already exist before applying. If partial or mismatched schema exists, stop and repair deliberately rather than rerunning.
 - The feature code head was 42 commits behind main at the last comparison. PR base metadata is stale; recheck mergeability and paths.
 - Full repository validation cannot run from this partial workspace.
@@ -156,7 +156,7 @@ Not completed:
 1. At session start, read this file and docs/supabase-setup.md. Refresh PR #6, main head, feature head and checks.
 2. If an authenticated Supabase connector/CLI becomes available, first read current Auth settings, schema/policies and function deployment status; do not rewrite already-correct settings. None was available in the 2026-11-17 workspace check.
 3. Have the user rotate the Resend SMTP API key: create a fresh key with Sending access restricted to purepastpapers.com, then replace the SMTP password directly in Supabase. Never request the key in chat.
-4. Verify/set Supabase Authentication → URL Configuration: Site URL https://purepastpapers.com and redirects https://purepastpapers.com/auth-callback.html, https://www.purepastpapers.com/auth-callback.html, http://localhost:5173/auth-callback.html, http://127.0.0.1:5173/auth-callback.html. Verify Authentication → Providers → Email is enabled and confirmation is on.
+4. Verify/set Supabase Authentication → URL Configuration: Site URL https://purepastpapers.com and redirects https://purepastpapers.com/auth-callback.html, https://www.purepastpapers.com/auth-callback.html, http://localhost:5173/auth-callback.html, http://127.0.0.1:5173/auth-callback.html. The 2026-11-17 screenshot shows sign-ups, email confirmation and Email provider enabled; if edited, save and reopen to verify persistence.
 5. Before applying SQL, run this read-only inspection in SQL Editor:
    ~~~sql
    select
