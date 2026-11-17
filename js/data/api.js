@@ -82,22 +82,36 @@ export async function init() {
   try {
     user = await activeAdapter.currentUser();
   } catch (error) {
-    // Keep public browsing available if the auth CDN or network is temporarily unavailable.
+    // Keep public browsing available if Auth or the network is temporarily unavailable.
     console.warn('Supabase session could not be restored:', error);
     user = null;
   }
   if (!user && SUPABASE_CONFIGURED && isLegacyMode()) {
-    user = await localAdapter.currentUser();
-    if (user) activeAdapter = localAdapter;
-    else setLegacyMode(false);
+    try {
+      user = await localAdapter.currentUser();
+      if (user) activeAdapter = localAdapter;
+      else setLegacyMode(false);
+    } catch (error) {
+      console.warn('Legacy browser account could not be restored:', error);
+      user = null;
+      setLegacyMode(false);
+    }
   }
   if (user) {
-    let saved = await activeAdapter.loadProgress(user.user_id);
-    if (!saved && activeAdapter === supabaseAdapter) {
-      await supabaseAdapter.restorePendingSignup(user.email, user.user_id);
-      saved = await activeAdapter.loadProgress(user.user_id);
+    try {
+      let saved = await activeAdapter.loadProgress(user.user_id);
+      if (!saved && activeAdapter === supabaseAdapter) {
+        await supabaseAdapter.restorePendingSignup(user.email, user.user_id);
+        saved = await activeAdapter.loadProgress(user.user_id);
+      }
+      progress = normalise(saved, user.user_id);
+    } catch (error) {
+      // Never replace a cloud snapshot with an empty guest document after a read failure.
+      console.warn('Saved progress could not be restored; continuing with public browsing:', error);
+      user = null;
+      activeAdapter = backendAdapter;
+      progress = emptyProgress('guest');
     }
-    progress = normalise(saved, user.user_id);
   } else {
     progress = emptyProgress('guest');
   }
@@ -176,17 +190,26 @@ export async function discardDemo(details) {
 
 export async function signIn(details) {
   activeAdapter = backendAdapter;
-  user = await activeAdapter.signIn(details);
-  setLegacyMode(false);
-  let saved = await activeAdapter.loadProgress(user.user_id);
-  if (!saved && activeAdapter === supabaseAdapter) {
-    await supabaseAdapter.restorePendingSignup(user.email, user.user_id);
-    saved = await activeAdapter.loadProgress(user.user_id);
+  try {
+    user = await activeAdapter.signIn(details);
+    setLegacyMode(false);
+    let saved = await activeAdapter.loadProgress(user.user_id);
+    if (!saved && activeAdapter === supabaseAdapter) {
+      await supabaseAdapter.restorePendingSignup(user.email, user.user_id);
+      saved = await activeAdapter.loadProgress(user.user_id);
+    }
+    progress = normalise(saved, user.user_id);
+    learnedCache = null;
+    events.emit('auth', user);
+    return user;
+  } catch (error) {
+    // Do not expose a partially restored account or allow writes from an empty snapshot.
+    user = null;
+    activeAdapter = backendAdapter;
+    progress = emptyProgress('guest');
+    learnedCache = null;
+    throw error;
   }
-  progress = normalise(saved, user.user_id);
-  learnedCache = null;
-  events.emit('auth', user);
-  return user;
 }
 
 export async function signInLegacy(details) {
