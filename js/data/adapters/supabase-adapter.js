@@ -45,10 +45,11 @@ function validatePassword(password) {
   }
 }
 
-function hasRecoverySession(userId) {
+function hasRecoverySession(userId = null) {
   try {
     const record = JSON.parse(sessionStorage.getItem(recoverySessionKey) || 'null');
-    return Boolean(record && record.userId === userId && Date.now() - record.at < 30 * 60 * 1000);
+    const age = Date.now() - record?.at;
+    return Boolean(record && (!userId || record.userId === userId) && age >= 0 && age < 30 * 60 * 1000);
   } catch {
     return false;
   }
