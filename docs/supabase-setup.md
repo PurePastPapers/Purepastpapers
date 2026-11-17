@@ -33,9 +33,20 @@ git switch codex/supabase-account-sync-2026-11-16
    ```
    The function uses Supabase's injected publishable and secret key maps through
    `@supabase/server`; you do not need to paste a secret key into GitHub or the app.
-5. Configure custom SMTP in **Authentication → Emails → SMTP Settings** and verify your
-   sending domain before opening signup to everyone. Supabase's built-in sender only
-   reaches project team addresses and is limited to 2 emails per hour.
+5. Configure custom SMTP in **Authentication → Emails → SMTP Settings** before opening signup
+   to everyone. For Resend, create a separate API key with **Sending access** and restrict it
+   to the verified `purepastpapers.com` domain. Enter these values in Supabase:
+   - SMTP host: `smtp.resend.com`
+   - Port: `465`
+   - Username: `resend`
+   - Password: the domain-restricted Resend API key (enter it directly in Supabase; never put
+     it in this repository or chat)
+   - Sender email: `no-reply@purepastpapers.com`
+   - Sender name: `PurePastPapers`
+   Keep click/link tracking off for authentication emails if it would rewrite the Supabase
+   confirmation or recovery URL; [Supabase warns](https://supabase.com/docs/guides/deployment/going-into-prod)
+   some SMTP providers' link tracking can deform auth links. Supabase's built-in sender only
+   reaches project team addresses and is currently limited to 2 emails per hour.
 6. Confirm the project has the email provider enabled. The website URL and publishable
    key are already set in `js/config/supabase.config.js`; both are public values.
 7. After the feature branch is merged and GitHub Pages publishes it, test signup with a
