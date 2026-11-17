@@ -33,6 +33,15 @@ git switch codex/supabase-account-sync-2026-11-16
    ```
    The function uses Supabase's injected publishable and secret key maps through
    `@supabase/server`; you do not need to paste a secret key into GitHub or the app.
+
+   If you are deploying from an iPad without a repository terminal, Supabase's
+   dashboard also supports **Edge Functions → Deploy a new function → Via Editor**.
+   Create a function named `delete-account`, paste the current source from
+   [the feature branch](https://github.com/PurePastPapers/Purepastpapers/blob/codex/supabase-account-sync-2026-11-16/supabase/functions/delete-account/index.ts),
+   and deploy with JWT verification left enabled. The dashboard editor does not sync
+   with GitHub and has no version history or rollback; the repository file remains the
+   source of truth, so later code changes must be redeployed from the branch or pasted
+   into the editor. See [Supabase's dashboard deployment guide](https://supabase.com/docs/guides/functions/quickstart-dashboard).
 5. Configure custom SMTP in **Authentication → Emails → SMTP Settings** before opening signup
    to everyone. For Resend, create a separate API key with **Sending access** and restrict it
    to the verified `purepastpapers.com` domain. Enter these values in Supabase:
