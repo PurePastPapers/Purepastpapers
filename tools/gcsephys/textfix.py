@@ -1,0 +1,41 @@
+"""Printed wordings of 1PH0/1SC0 physics statements whose equations the PDF text layer scrambles.
+
+Each was checked against the rendered specification page. The symbol form is given after a
+semicolon, written in plain text (v = x/t), because the PDF lays it out as a stacked formula.
+"""
+TEXT_FIX = {
+    '2.8': 'Recall and use the equation: acceleration (metre per second squared, m/s²) = change in velocity (metre per second, m/s) ÷ time taken (second, s); a = (v − u) / t',
+    '2.9': 'Use the equation: (final velocity)² ((metre/second)², (m/s)²) − (initial velocity)² ((metre/second)², (m/s)²) = 2 × acceleration (metre per second squared, m/s²) × distance (metre, m); v² − u² = 2 × a × x',
+    '2.13': 'Recall that the acceleration, g, in free fall is 10 m/s² and be able to estimate the magnitudes of everyday accelerations',
+    '2.15': 'Recall and use Newton’s second law as: force (newton, N) = mass (kilogram, kg) × acceleration (metre per second squared, m/s²); F = m × a',
+    '2.16': 'Define weight, recall and use the equation: weight (newton, N) = mass (kilogram, kg) × gravitational field strength (newton per kilogram, N/kg); W = m × g',
+    '2.24': 'Define momentum, recall and use the equation: momentum (kilogram metre per second, kg m/s) = mass (kilogram, kg) × velocity (metre per second, m/s); p = m × v',
+    '2.26': 'Use Newton’s second law as: force (newton, N) = change in momentum (kilogram metre per second, kg m/s) ÷ time (second, s); F = (mv − mu) / t',
+    '3.1': 'Recall and use the equation to calculate the change in gravitational PE when an object is raised above the ground: change in gravitational potential energy (joule, J) = mass (kilogram, kg) × gravitational field strength (newton per kilogram, N/kg) × change in vertical height (metre, m); ΔGPE = m × g × Δh',
+    '3.2': 'Recall and use the equation to calculate the amounts of energy associated with a moving object: kinetic energy (joule, J) = ½ × mass (kilogram, kg) × (speed)² ((metre/second)², (m/s)²); KE = ½ × m × v²',
+    '3.11': 'Recall and use the equation: efficiency = (useful energy transferred by the device) ÷ (total energy supplied to the device)',
+    '4.6': 'Recall and use both the equations below for all waves: wave speed (metre/second, m/s) = frequency (hertz, Hz) × wavelength (metre, m); v = f × λ. wave speed (metre/second, m/s) = distance (metre, m) ÷ time (second, s); v = x / t',
+    '6.10': 'Recall that alpha, β– (beta minus), β+ (positron), gamma rays and neutron radiation are emitted from unstable nuclei in a random process',
+    '8.6': 'Recall and use the equation: work done (joule, J) = force (newton, N) × distance moved in the direction of the force (metre, m); E = F × d',
+    '8.8': 'Recall and use the equation to calculate the change in gravitational PE when an object is raised above the ground: change in gravitational potential energy (joule, J) = mass (kilogram, kg) × gravitational field strength (newton per kilogram, N/kg) × change in vertical height (metre, m); ΔGPE = m × g × Δh',
+    '8.9': 'Recall and use the equation to calculate the amounts of energy associated with a moving object: kinetic energy (joule, J) = ½ × mass (kilogram, kg) × (speed)² ((metre/second)², (m/s)²); KE = ½ × m × v²',
+    '8.13': 'Recall and use the equation: power (watt, W) = work done (joule, J) ÷ time taken (second, s); P = E / t',
+    '8.15': 'Recall and use the equation: efficiency = (useful energy transferred by the device) ÷ (total energy supplied to the device)',
+    '10.6': 'Recall and use the equation: energy transferred (joule, J) = charge moved (coulomb, C) × potential difference (volt, V); E = Q × V',
+    '10.9': 'Recall and use the equation: charge (coulomb, C) = current (ampere, A) × time (second, s); Q = I × t',
+    '10.13': 'Recall and use the equation: potential difference (volt, V) = current (ampere, A) × resistance (ohm, Ω); V = I × R',
+    '10.27': 'Use the equation: energy transferred (joule, J) = current (ampere, A) × potential difference (volt, V) × time (second, s); E = I × V × t',
+    '10.29': 'Recall and use the equation: power (watt, W) = energy transferred (joule, J) ÷ time taken (second, s); P = E / t',
+    '10.31': 'Recall and use the equations: electrical power (watt, W) = current (ampere, A) × potential difference (volt, V); P = I × V. electrical power (watt, W) = current squared (ampere², A²) × resistance (ohm, Ω); P = I² × R',
+    '12.13': 'Use the equation: force on a conductor at right angles to a magnetic field carrying a current (newton, N) = magnetic flux density (tesla, T or newton per ampere metre, N/A m) × current (ampere, A) × length (metre, m); F = B × I × l',
+    '13.7P': 'Use the turns ratio equation for transformers to calculate either the missing voltage or the missing number of turns: Vp / Vs = Np / Ns',
+    '13.10': 'Use the power equation (for transformers with 100% efficiency): potential difference across primary coil (volt, V) × current in primary coil (ampere, A) = potential difference across secondary coil (volt, V) × current in secondary coil (ampere, A); Vp × Ip = Vs × Is',
+    '14.2': 'Recall and use the equation: density (kilogram per cubic metre, kg/m³) = mass (kilogram, kg) ÷ volume (cubic metre, m³); ρ = m / V',
+    '14.8': 'Use the equation: change in thermal energy (joule, J) = mass (kilogram, kg) × specific heat capacity (joule per kilogram degree Celsius, J/kg °C) × change in temperature (degree Celsius, °C); ΔQ = m × c × Δθ',
+    '14.9': 'Use the equation: thermal energy for a change of state (joule, J) = mass (kilogram, kg) × specific latent heat (joule per kilogram, J/kg); Q = m × L',
+    '14.19P': 'Use the equation: P1 × V1 = P2 × V2 to calculate pressure or volume for gases of fixed mass at constant temperature',
+    '15.3': 'Recall and use the equation for linear elastic distortion including calculating the spring constant: force exerted on a spring (newton, N) = spring constant (newton per metre, N/m) × extension (metre, m); F = k × x',
+    '15.4': 'Use the equation to calculate the work done in stretching a spring: energy transferred in stretching (joules, J) = 0.5 × spring constant (newton per metre, N/m) × (extension (metre, m))²; E = ½ × k × x²',
+    '15.11P': 'Recall and use the equation: pressure (pascal, Pa) = force normal to surface (newton, N) ÷ area of surface (square metre, m²); P = F / A',
+    '15.14P': 'Use the equation to calculate the magnitude of the pressure in liquids and calculate the differences in pressure at different depths in a liquid: pressure due to a column of liquid (pascal, Pa) = height of column (metre, m) × density of liquid (kilogram per cubic metre, kg/m³) × gravitational field strength (newton per kilogram, N/kg); P = h × ρ × g',
+}
