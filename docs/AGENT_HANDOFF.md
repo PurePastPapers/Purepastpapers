@@ -97,11 +97,12 @@ Verified on 2026-11-17 through GitHub:
 - Active feature branch: codex/supabase-account-sync-2026-11-16.
 - Pull request: #6, https://github.com/PurePastPapers/Purepastpapers/pull/6.
 - PR title: Add Supabase accounts and cross-device progress sync.
-- PR is open and unmerged. On head a20aac234faebbadcddeff4ebf84bda262c4b390, raw GitHub PR API reported mergeable=true and mergeable_state=clean, while the normalized get_pr_info response reported false. PR raw base.sha was c3530261bb9a8673f7d7b07daee2e098b788c091, but compare_commits resolves current main to c40a4cf29044a04714099bb47c533a66145333eb. The branch merge base is 516243dcefa8e0a9be4e26ed6209703c3322947f, so the feature branch is 40 commits behind main. Comparing those 40 main commits found no paths overlapping PR-changed paths. Recheck raw mergeability, base/head SHAs and checks before merging.
+- PR is open and unmerged. Current head: 0a91db05456599b45c03b323498f8013e0437b60 (9 commits on the PR). The PR metadata endpoint reports base SHA c3530261bb9a8673f7d7b07daee2e098b788c091 and mergeable=false. A separate raw GitHub API response for PR #6 reported mergeable=true and mergeable_state=clean against that same reported base SHA; this conflicts with the current branch comparison.
+- Current main was independently verified as c40a4cf29044a04714099bb47c533a66145333eb. Comparing main to the feature branch reports diverged: 9 commits ahead, 40 behind, with merge base 516243dcefa8e0a9be4e26ed6209703c3322947f. Recheck and resolve the stale/inconsistent mergeability state before merging. Do not merge while Supabase setup and end-to-end tests remain incomplete.
+- The combined status query for latest head 0a91db05456599b45c03b323498f8013e0437b60 returned no status entries. Repository metadata reports branch protection/status checks are not enabled; run the repository's own validation commands before merging.
 - Feature implementation commit: 14e237bffade89ecc34c08cc8b810d345506742f.
-- PR base branch: main; previous observed base SHA: c3530261bb9a8673f7d7b07daee2e098b788c091; current main SHA: c40a4cf29044a04714099bb47c533a66145333eb.
-- The last combined status query for head 065ef8feae0580a856cf8207de4d7e0ed1c5310a returned no status entries; recheck the latest head before merging.
-- No source changes were made in this handoff session before this file.
+- PR base branch: main; current main SHA: c40a4cf29044a04714099bb47c533a66145333eb.
+- No application source code changed in the latest handoff/production-smoke-test session. The existing live website was checked; details are in Testing below.
 - Initial handoff document commit: 67aec1cdd0c1c80e4cbc760f7e4070000590c1b4. Metadata update commit: efb8e77de58fc529e6c3f5c9d80b90bf23bcd333. Mergeability update commit: 065ef8feae0580a856cf8207de4d7e0ed1c5310a. Security config commit: ee6869d4bbc868960e3f7e09907447f7da8a8008. Resend setup documentation commit: 7efde9949e12ff6f681109407385650093711a64. The current handoff revision is always the latest docs/AGENT_HANDOFF.md on the feature branch; use GitHub commit history for later handoff updates.
 
 The PR body says project setup should be completed before merge. Do not merge or publish until required Supabase setup is applied and checks are completed.
@@ -129,12 +130,13 @@ The app is plain browser JavaScript; there is no site-side npm install/build ste
 ## 7. Testing
 
 Completed/observed:
-- The feature branch and PR metadata were fetched from GitHub.
+- The feature branch, PR metadata, changed-file list, current main SHA, and combined status for the latest PR head were fetched from GitHub on 2026-11-17.
 - The public Supabase config was checked against the project URL and publishable key supplied by the user.
 - The migration and Edge Function source were inspected.
 - The migration's policies constrain rows to auth.uid() = user_id by static inspection.
-- A prior static review found no blocker after code fixes.
+- A prior static review found no code blocker after fixes to recovery-route checks, local-only signout, guest snapshot handling, local practice-draft cleanup, and function JWT validation.
 - User reports a Resend test email was delivered.
+- Live production smoke check at https://purepastpapers.com on 2026-11-17: a disposable guest browser state showed the existing live site, adding Mathematics was accepted, the practice page loaded 1,110 matching questions, and the June 2025 AS Pure Mathematics 01 paper page loaded with 22 questions and 100 marks. This verifies a basic existing paper-browsing route on the currently published site only. The auth feature from PR #6 is not yet deployed, and this did not test any Supabase account flow.
 
 Not completed:
 - No repository checkout is present in the agent workspace. npm test and npm run validate have not run; package.json declares both scripts. The workspace has Node v24.22.1 and npm 11.9.0, but no Deno or psql executable. No full local test/build/lint run has completed.
@@ -150,13 +152,13 @@ Not completed:
   node --check /tmp/ppp-auth-review/js/ui/views/auth.mjs
   node --check /tmp/ppp-auth-review/js/ui/views/recovery.mjs
   ~~~
-  These were temporary copies fetched from the branch, not a full checkout. The status query for head 065ef8feae0580a856cf8207de4d7e0ed1c5310a returned no status rows.
+  These were temporary copies fetched from the branch, not a full checkout. The status query for latest head 0a91db05456599b45c03b323498f8013e0437b60 returned no status rows.
 
 - Migration execution and cross-user RLS denial test.
 - Dashboard URL/provider/email-confirmation verification.
 - Supabase SMTP send/receive tests.
 - Edge Function deployment and authenticated deletion test.
-- Production signup, confirmation, login, reset, sync across two devices, guest progress preservation, export/import, deletion and existing paper-flow regression tests.
+- Production signup, confirmation, login, reset, sync across two devices, guest progress preservation, export/import, deletion, and post-deployment existing paper-flow regression tests.
 
 ## 8. Known problems, blockers and risks
 
