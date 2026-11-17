@@ -44,6 +44,7 @@ _render = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_render)
 
 MARK_CODES = False  # set for GCSE Mathematics (mark-code column)
+MARK_COLUMN = False  # set for GCSE sciences: count tariffs in the Mark column only
 ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
 GRAPHIC_NOUNS = ['figure', 'fig', 'table', 'graph', 'diagram', 'photograph', 'photo', 'chart', 'flow chart',
                  'micrograph', 'image', 'drawing', 'map', 'key', 'circuit', 'grid', 'histogram', 'curve',
@@ -674,6 +675,13 @@ def scheme_for_unit(doc, parsed, unit, marks):
         if (w['page'], round(w['top'] / 3)) in total_lines or (w['page'], round(w['top'] / 3) - 1) in total_lines or (w['page'], round(w['top'] / 3) + 1) in total_lines:
             continue
         W, H = doc.size(w['page'])
+        if MARK_COLUMN:
+            # GCSE science tables put "(1)" after each marking point in the Answer and
+            # guidance columns; only the right-hand "Mark" column holds the tariff.
+            heads = [h for h in doc.words(w['page']) if h['text'] == 'Mark' and h['x0'] > W * 0.6 and h['top'] <= w['top']]
+            x = max(heads, key=lambda h: h['top'])['x0'] - 8 if heads else W * 0.76
+            if w['x0'] < x:
+                continue
         if (w['x0'] > W * 0.70 and TARIFF.match(w['text'])) or (w['x0'] > W * 0.86 and re.fullmatch(r'\d{1,2}', w['text'])):
             if any(r['page'] == w['page'] and r['bbox'][1] * H <= w['top'] < r['bbox'][3] * H for r in counted):
                 total += int(w['text'].strip('()'))
@@ -961,7 +969,7 @@ def open_doc(sources, alias, sha, original_sha, offset, cropbox=False):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths'])
+    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths', 'gcsebio'])
     ap.add_argument('--sources', type=Path, required=True)
     ap.add_argument('--paper')
     ap.add_argument('--dry', action='store_true')
@@ -973,8 +981,9 @@ def main():
     alias_path = args.sources.parent / 'alias.json'
     alias = json.loads(alias_path.read_text()) if alias_path.exists() else {}
     slug = args.subject
-    global MARK_CODES
+    global MARK_CODES, MARK_COLUMN
     MARK_CODES = slug == 'gcsemaths'
+    MARK_COLUMN = slug == 'gcsebio'
     stats = defaultdict(int)
     report = []
     shard, shards = (int(v) for v in args.shard.split('/'))
@@ -1000,7 +1009,7 @@ def main():
         for q in pack['questions']:
             groups[q['parent_question_id']].append(q)
         p0 = pack['questions'][0]['provenance']
-        crop = slug in ('physics', 'gcsemaths')  # tools/physics and tools/gcsemaths render the CropBox
+        crop = slug in ('physics', 'gcsemaths', 'gcsebio')  # tools/physics, gcsemaths and gcsebio render the CropBox
         qdoc = open_doc(args.sources, alias, p0['question_source_sha256'], p0['original_question_source_sha256'], p0['question_page_offset'], crop)
         sdoc = open_doc(args.sources, alias, p0['scheme_source_sha256'], p0['original_scheme_source_sha256'], p0['scheme_page_offset'], crop)
         new_assets = {}

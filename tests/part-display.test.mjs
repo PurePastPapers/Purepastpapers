@@ -10,7 +10,7 @@ import {validateBundle} from '../js/data/schema.js';
 
 const read = path => JSON.parse(readFileSync(new URL('../' + path, import.meta.url), 'utf8'));
 const index = read('data/packs/index.json').packs;
-const SUBJECTS = ['biology', 'physics', 'maths', 'gcsemaths'];
+const SUBJECTS = ['biology', 'physics', 'maths', 'gcsemaths', 'gcsebio'];
 const packsOf = slug => index.filter(p => p.file.startsWith(slug + '/')).map(p => read('data/packs/' + p.file));
 
 for (const slug of SUBJECTS) {
