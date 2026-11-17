@@ -24,7 +24,7 @@ function json(body: unknown, status: number, origin: string) {
 }
 
 const authenticatedDelete = withSupabase({ auth: 'user' }, async (_request, context) => {
-  const userId = context.userClaims?.sub;
+  const userId = context.userClaims?.id;
   if (!userId) return new Response(JSON.stringify({ error: 'Authentication required.' }), { status: 401 });
 
   const { error } = await context.supabaseAdmin.auth.admin.deleteUser(userId);
