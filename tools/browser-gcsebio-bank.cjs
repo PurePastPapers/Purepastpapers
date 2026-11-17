@@ -8,8 +8,9 @@ const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
 const root = path.join(__dirname, '..');
 const read = file => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
-const allPacks = read('data/packs/index.json').packs.filter(p => p.file.startsWith('gcsebio/')).map(p => read('data/packs/' + p.file));
 const subjects = ['EDX_GCSE_BIOL_1BI0', 'EDX_GCSE_COMBSCI_1SC0'];
+// Every pack of the subject, whatever import added it (1SC0 has biology and chemistry packs).
+const allPacks = read('data/packs/index.json').packs.filter(p => subjects.includes(p.subject_id)).map(p => read('data/packs/' + p.file));
 
 async function check(browser, subject) {
   const packs = allPacks.filter(p => p.questions[0].subject_id === subject);

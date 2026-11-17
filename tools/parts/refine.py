@@ -682,6 +682,10 @@ def scheme_for_unit(doc, parsed, unit, marks):
             x = max(heads, key=lambda h: h['top'])['x0'] - 8 if heads else W * 0.76
             if w['x0'] < x:
                 continue
+        if MARK_COLUMN and re.fullmatch(r'\d{1,2}', w['text']) and any(
+                a['page'] == w['page'] and abs(a['top'] - w['top']) < 3 and 0 <= w['x0'] - a['x1'] < 12 and re.fullmatch(r'AO\d', a['text'])
+                for a in parsed['words']):
+            continue  # "AO2 1" is an assessment-objective code split in two, not a tariff
         if (w['x0'] > W * 0.70 and TARIFF.match(w['text'])) or (w['x0'] > W * 0.86 and re.fullmatch(r'\d{1,2}', w['text'])):
             if any(r['page'] == w['page'] and r['bbox'][1] * H <= w['top'] < r['bbox'][3] * H for r in counted):
                 total += int(w['text'].strip('()'))
@@ -969,7 +973,7 @@ def open_doc(sources, alias, sha, original_sha, offset, cropbox=False):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths', 'gcsebio'])
+    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths', 'gcsebio', 'gcsechem'])
     ap.add_argument('--sources', type=Path, required=True)
     ap.add_argument('--paper')
     ap.add_argument('--dry', action='store_true')
@@ -983,7 +987,7 @@ def main():
     slug = args.subject
     global MARK_CODES, MARK_COLUMN
     MARK_CODES = slug == 'gcsemaths'
-    MARK_COLUMN = slug == 'gcsebio'
+    MARK_COLUMN = slug in ('gcsebio', 'gcsechem')
     stats = defaultdict(int)
     report = []
     shard, shards = (int(v) for v in args.shard.split('/'))
@@ -1009,7 +1013,7 @@ def main():
         for q in pack['questions']:
             groups[q['parent_question_id']].append(q)
         p0 = pack['questions'][0]['provenance']
-        crop = slug in ('physics', 'gcsemaths', 'gcsebio')  # tools/physics, gcsemaths and gcsebio render the CropBox
+        crop = slug in ('physics', 'gcsemaths', 'gcsebio', 'gcsechem')  # tools/physics, gcsemaths, gcsebio and gcsechem render the CropBox
         qdoc = open_doc(args.sources, alias, p0['question_source_sha256'], p0['original_question_source_sha256'], p0['question_page_offset'], crop)
         sdoc = open_doc(args.sources, alias, p0['scheme_source_sha256'], p0['original_scheme_source_sha256'], p0['scheme_page_offset'], crop)
         new_assets = {}
