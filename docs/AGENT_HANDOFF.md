@@ -93,7 +93,7 @@ User-reported:
 - Repository: `PurePastPapers/Purepastpapers`.
 - PR #6: https://github.com/PurePastPapers/Purepastpapers/pull/6; merged squash commit `2840caa82752a4fc1d6e499455a3073b2f8e4f93`.
 - PR #13: https://github.com/PurePastPapers/Purepastpapers/pull/13; merged squash commit `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
-- Current main SHA: `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
+- Latest application/deployment SHA (PR #13 merge): `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`. The handoff was subsequently refreshed in docs-only commit `5b7a8053bc46626e7c8f5b2dff76e6ed875ca0eb`.
 - PR #6 feature branch: `codex/supabase-account-sync-2026-11-16`; final branch head before squash was `c95378aef9736401b85ff2a32226f7a9e87ba8a6`. It contained the main sync commit `e1fb3c83bf29c039c833be846cf60d4afa004ed1`.
 - PR #13 branch: `codex/account-sync-copy-2026-11-17`; head `400b557cecb5bf3a2dbedc049c0cfca356e73bad).
 - PR #6 code review found no blocking issue. PR #13 review found no blocking issue; the changed auth view passed Node syntax validation.
