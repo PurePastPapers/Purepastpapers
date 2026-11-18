@@ -434,7 +434,7 @@ export async function mount(element, context) {
         <div class="chips" role="radiogroup" aria-label="Difficulty">
           ${levels.map((level) => {
             const count = level.id === 'mixed' ? mixedCount : perLevel(level.id);
-            return html`<button type="button" class="chip" role="radio" aria-checked="${state.difficulty === level.id}" data-difficulty="${level.id}" title="${level.description}">
+            return html`<button type="button" class="chip chip--difficulty chip--difficulty-${level.id}" role="radio" aria-checked="${state.difficulty === level.id}" data-difficulty="${level.id}" title="${level.description}">
               ${level.label}<span class="chip__count">${count}</span>
             </button>`;
           })}
@@ -542,7 +542,7 @@ export async function mount(element, context) {
       <div class="fbar__row">
         ${pop('topics', 'Topics', topicsValue, topicsControl(true), true)}
         ${pop('difficulty', 'Difficulty', difficultyValue, html`<fieldset class="field"><legend class="field__label">Difficulty</legend><div class="chips">
-          ${DIFFICULTIES.map((d) => html`<button type="button" class="chip" data-multi="difficulties" data-value="${d.id}" aria-pressed="${state.difficulties.includes(d.id)}" title="${d.description}">${d.label}<span class="chip__count">${count((q) => q.difficulty === d.id)}</span></button>`)}
+          ${DIFFICULTIES.map((d) => html`<button type="button" class="chip chip--difficulty chip--difficulty-${d.id}" data-multi="difficulties" data-value="${d.id}" aria-pressed="${state.difficulties.includes(d.id)}" title="${d.description}">${d.label}<span class="chip__count">${count((q) => q.difficulty === d.id)}</span></button>`)}
         </div>${state.difficulties.length ? html`<button type="button" class="linkbtn small" data-clear-group="difficulties">Clear difficulty</button>` : ''}</fieldset>`)}
         ${pop('marks', exactTariffs ? 'Marks' : 'Marks', marksValue, html`<fieldset class="field"><legend class="field__label">${exactTariffs ? 'Marks (essay length)' : 'Marks'}</legend><div class="chips">
           ${bandOptions.map((band) => html`<button type="button" class="chip" data-multi="bands" data-value="${band.id}" aria-pressed="${state.bands.includes(band.id)}">${band.label}<span class="chip__count">${count((q) => q.marks >= band.min && q.marks <= band.max)}</span></button>`)}
