@@ -103,7 +103,8 @@ test('Single question: Flag and Mark scheme pinned, then Go back and Finish', { 
 
   await nav.getByRole('button', { name: /Mark scheme/ }).click();
   await page.waitForSelector('.qview--scheme');
-  assert.match(await page.locator('.runner__grid > :first-child').textContent(), /Mark scheme/, 'scheme takes the question’s place');
+  assert.doesNotMatch(await page.locator('.runner__grid > :first-child').textContent(), /Mark scheme/, 'the question stays in place');
+  assert.ok(await page.locator('.runner__grid--compare .qview--scheme').isVisible(), 'the scheme sits beside the question');
   assert.ok(await page.locator('[data-markpick]').isVisible());
   assert.ok(await nav.getByRole('button', { name: /Go back/ }).isVisible());
   assert.ok(await nav.getByRole('button', { name: /^Finish$/ }).isVisible());

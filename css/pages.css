@@ -1650,3 +1650,174 @@
 :root[data-theme='dark'] .tier-pick input:checked + .tier-pick__card {
   color: #2a2723;
 }
+
+/* ── runner modes: exam (timed) vs practice ───────────────────────────────────────────────
+   One self-contained block, added in a single commit so it can be reverted on its own.
+   Exam  = austere: flat white, hairlines, one big clock, nothing that is not the paper.
+   Practice = keeps the warm notebook look, minus the tape, tilt and captions. */
+.runner--exam .tape,
+.runner--practice .tape,
+.runner--exam .tilt-1,
+.runner--exam .tilt-3,
+.runner--practice .tilt-1,
+.runner--practice .tilt-3 {
+  transform: none;
+}
+.runner--exam .tape,
+.runner--practice .tape {
+  display: none;
+}
+/* the "…" menu holds Restart / Abandon / Stopwatch so they are never one stray click away */
+.runner__more {
+  position: relative;
+}
+.runner__more > summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+.runner__more > summary::-webkit-details-marker {
+  display: none;
+}
+.runner__more-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 20;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+}
+.runner__more-menu .btn {
+  justify-content: flex-start;
+}
+.runner__more-menu [data-abandon] {
+  color: var(--crit);
+}
+
+/* exam */
+.app[data-layout='focus']:has(.runner--exam) {
+  background: #ececea;
+  background-image: none;
+}
+.runner--exam .runner__bar.card {
+  position: sticky;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--surface);
+  padding: 10px 18px;
+  margin-top: 0;
+}
+.runner--exam .runner__title,
+.runner--exam .runner__bar .spacer {
+  display: none;
+}
+.runner--exam .runner__bar .timer {
+  margin: 0 auto;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+.runner--exam .runner__bar .timer__value {
+  font-size: 34px;
+  letter-spacing: 0.02em;
+}
+.runner--exam .runner__bar .timer.is-warn .timer__value {
+  color: #b45309;
+}
+.runner--exam .runner__bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 3px;
+  width: calc(var(--elapsed, 0) * 100%);
+  background: var(--ink);
+}
+.runner--exam .runner__bar:has(.timer.is-warn)::after {
+  background: #b45309;
+}
+.runner--exam .card,
+.runner--exam .palette__item {
+  box-shadow: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background-color: var(--surface);
+  background-image: none;
+}
+.runner--exam .palette__item.is-current {
+  background: var(--ink);
+}
+.runner--exam .palette__item.is-answered {
+  background: #9cc3e6;
+}
+.runner--exam .runner__grid {
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+.runner--exam .answer-card .textarea {
+  min-height: 120px;
+}
+
+/* practice */
+.runner--practice .runner__bar.card {
+  border-width: 0 0 1px;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 6px 0 10px;
+  margin-top: 0;
+}
+.runner--practice .runner__title .small {
+  font-size: 14px;
+}
+.runner--practice .answer-card .textarea {
+  min-height: 110px;
+}
+.runner--practice .runner__grid {
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+/* after "Mark scheme": question and scheme side by side so they can be compared */
+.runner--practice .runner__grid--compare {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.runner--practice .runner__grid--compare .answer-card .textarea {
+  min-height: 90px;
+}
+@media (max-width: 900px) {
+  .runner--exam .runner__grid,
+  .runner--practice .runner__grid,
+  .runner--practice .runner__grid--compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.runner--exam .answer-card .card__title,
+.runner--practice .answer-card .card__title {
+  flex-wrap: nowrap;
+  font-size: 17px;
+}
+
+/* Results: plain "needs improvement" note when a score is under target */
+.improve-note {
+  border: 2px solid var(--ink);
+  padding: 16px 22px;
+}
+.improve-note[data-band='developing'] {
+  background: var(--warn-wash);
+}
+.improve-note[data-band='needs_work'] {
+  background: var(--crit-wash);
+}
+.improve-note__title {
+  font: 400 22px/1.2 var(--font-display);
+  margin-bottom: 6px;
+}

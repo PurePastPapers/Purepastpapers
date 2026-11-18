@@ -177,6 +177,24 @@ export async function signUp({ initialProgress = null, redirectTo = null, ...det
   return user;
 }
 
+/** Sends the sign-up confirmation email again (cloud accounts only). */
+export async function resendConfirmation(email) {
+  if (!backendAdapter.resendConfirmation) throw new Error('Confirmation emails are not used for this account type.');
+  return backendAdapter.resendConfirmation(email);
+}
+
+/** Watches for the confirmation link being opened in this browser. Returns a stop function. */
+export function watchConfirmation(email, onConfirmed) {
+  return backendAdapter.watchConfirmation?.(email, onConfirmed) || (() => {});
+}
+
+/** Loads the newly confirmed account and its progress, then tells the app it is signed in. */
+export async function finishConfirmedSignup() {
+  await init();
+  events.emit('auth', user);
+  return user;
+}
+
 /** Deletes a leftover demo profile (for example from a tab closed without leaving the demo). */
 export async function discardDemo(details) {
   try {
