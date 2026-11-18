@@ -625,6 +625,32 @@ a.tag {
   border-color: var(--ink);
   color: var(--surface);
 }
+.chip--difficulty[aria-pressed='true'],
+.chip--difficulty[aria-checked='true'] {
+  color: #342b14;
+}
+.chip--difficulty-easy[aria-pressed='true'],
+.chip--difficulty-easy[aria-checked='true'] {
+  background: #f6df83;
+  border-color: #b28c13;
+}
+.chip--difficulty-medium[aria-pressed='true'],
+.chip--difficulty-medium[aria-checked='true'] {
+  background: #f4b66c;
+  border-color: #bd681b;
+}
+.chip--difficulty-hard[aria-pressed='true'],
+.chip--difficulty-hard[aria-checked='true'] {
+  background: #d85c4f;
+  border-color: #a9362c;
+  color: #fffaf5;
+}
+.chip--difficulty-extra_hard[aria-pressed='true'],
+.chip--difficulty-extra_hard[aria-checked='true'] {
+  background: #70507f;
+  border-color: #50325f;
+  color: #fffaf5;
+}
 .seg {
   padding: 0;
   gap: 0;

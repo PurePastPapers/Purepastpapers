@@ -207,7 +207,7 @@ export async function mount(element, context) {
   function questionsTab() {
     const weak = latestList.filter((attempt) => scoreOf(attempt) < RAG.green && find(attempt.question_id));
     const chip = (group, value, label) =>
-      html`<button type="button" class="chip" data-qfilter="${group}" data-value="${value}" aria-pressed="${questionFilters[group] === value}">${label}</button>`;
+      html`<button type="button" class="chip ${group === 'difficulty' && value !== 'all' ? `chip--difficulty chip--difficulty-${value}` : ''}" data-qfilter="${group}" data-value="${value}" aria-pressed="${questionFilters[group] === value}">${label}</button>`;
     return html`<section class="card ruled tilt-2">
           <i class="tape tape--l" aria-hidden="true"></i>
       <div class="card__head">
