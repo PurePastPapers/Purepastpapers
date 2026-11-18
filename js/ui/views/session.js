@@ -12,6 +12,7 @@ import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, p
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { zoomButton } from '../zoom.js';
+import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { targetGrade } from '../subject-colours.js';
@@ -143,30 +144,8 @@ export async function mount(element, context) {
 
   function marksInput(question) {
     const value = session.marks[question.question_id];
-    const half = Math.round(question.marks / 2);
     return html`<div class="markbox" data-markbox="${question.question_id}">
-      <span class="field__label">Marks awarded</span>
-      <div class="row row--tight row--nowrap">
-        <button type="button" class="btn btn--icon btn--sm" data-step="-1" aria-label="One mark fewer">${icon('minus', { size: 16 })}</button>
-        <input
-          class="input input--num"
-          type="number"
-          min="0"
-          max="${question.marks}"
-          step="1"
-          inputmode="numeric"
-          value="${value ?? ''}"
-          data-marks="${question.question_id}"
-          aria-label="Marks awarded out of ${question.marks}"
-        />
-        <button type="button" class="btn btn--icon btn--sm" data-step="1" aria-label="One mark more">${icon('plus', { size: 16 })}</button>
-        <span class="muted nowrap">out of ${question.marks}</span>
-      </div>
-      <div class="chips">
-        <button type="button" class="chip" data-set="0">0</button>
-        ${question.marks > 2 ? html`<button type="button" class="chip" data-set="${half}">${half}</button>` : ''}
-        <button type="button" class="chip" data-set="${question.marks}">Full marks</button>
-      </div>
+      ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'marks' })}
     </div>`;
   }
 
@@ -665,13 +644,11 @@ export async function mount(element, context) {
     persist();
     draw({ focus: false });
   });
-  on(element, 'click', '[data-step], [data-set]', (event, button) => {
-    const input = $('[data-marks]', button.closest('[data-markbox]'));
-    const next = button.dataset.set != null ? Number(button.dataset.set) : (Number(input.value) || 0) + Number(button.dataset.step);
-    setMarks(input, next);
+  bindMarkPickers(element);
+  on(element, 'change', '[data-marks]', (event, input) => {
+    setMarks(input, input.value);
     if (each && session.status === 'in_progress') advanceAfterMark();
   });
-  on(element, 'change', '[data-marks]', (event, input) => setMarks(input, input.value));
   on(element, 'input', '[data-total]', (event, input) => {
     session.total_awarded = input.value === '' ? null : clamp(Math.round(Number(input.value) || 0), 0, session.total_marks);
     const line = $('[data-markbar]', element);

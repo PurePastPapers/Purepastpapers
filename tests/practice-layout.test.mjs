@@ -80,7 +80,7 @@ test('Find questions: question left, answer right, mark scheme replaces the ques
   assert.ok(await opened.locator('.qsplit__main .ms').isVisible(), 'mark scheme is on the left');
   assert.equal(await opened.locator('.qsplit__main .qcontent').count() >= 1, true);
   assert.equal(await opened.locator('.qsplit__answer').inputValue(), 'My answer', 'answer is kept');
-  assert.ok(await opened.locator('[data-mark]').isVisible(), 'marks can be entered beside the scheme');
+  assert.ok(await opened.locator('[data-markpick]').isVisible(), 'marks can be entered beside the scheme');
 
   await opened.locator('[data-scheme]').click();
   await page.waitForFunction(() => !document.querySelector('.qsplit__main.is-scheme'));
@@ -105,7 +105,7 @@ test('Single question: Flag and Mark scheme pinned, then Go back and Finish', { 
   await page.waitForSelector('.qview--scheme');
   assert.doesNotMatch(await page.locator('.runner__grid > :first-child').textContent(), /Mark scheme/, 'the question stays in place');
   assert.ok(await page.locator('.runner__grid--compare .qview--scheme').isVisible(), 'the scheme sits beside the question');
-  assert.ok(await page.locator('[data-marks]').isVisible());
+  assert.ok(await page.locator('[data-markpick]').isVisible());
   assert.ok(await nav.getByRole('button', { name: /Go back/ }).isVisible());
   assert.ok(await nav.getByRole('button', { name: /^Finish$/ }).isVisible());
 
@@ -186,6 +186,37 @@ test('Enlarge on a phone: the question can be dragged around or fitted to the sc
   assert.equal((await dialog.locator('[data-zoom-fit]').textContent()).trim(), 'Zoom in');
   await dialog.locator('[data-zoom-fit]').click();
   assert.ok(await body.evaluate((node) => node.scrollWidth > node.clientWidth));
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
+test('Marks: buttons for 1-6 mark questions, a slider for 7 or more', { skip }, async () => {
+  const { page, errors } = await demoPage({ width: 1366, height: 900 });
+  const small = page.locator('.qcard').filter({ has: page.locator('.marks-pill', { hasText: /^3 marks$/ }) }).first();
+  await small.locator('[data-scheme]').click();
+  const picker = page.locator('.qcard [data-markpick]').first();
+  await picker.waitFor();
+  assert.deepEqual(await picker.locator('[data-pick]').allTextContents(), ['0', '1', '2', '3']);
+  await picker.locator('[data-pick="2"]').click();
+  assert.equal(await picker.locator('[data-pick="2"]').getAttribute('aria-checked'), 'true');
+  assert.equal(await picker.locator('input[type="hidden"]').inputValue(), '2');
+  await page.locator('.qcard [data-scheme][aria-expanded="true"]').first().click();
+
+  await page.locator('[data-section="fpop-marks"] > summary').click();
+  await page.locator('[data-filter="markMin"]').fill('7');
+  await page.locator('[data-filter="markMin"]').press('Tab');
+  await page.keyboard.press('Escape');
+  const big = page.locator('.qcard:not(.is-locked)').filter({ has: page.locator('.marks-pill', { hasText: /^(\d{2}|[7-9]) marks$/ }) }).first();
+  await big.locator('[data-scheme]').click();
+  const slider = page.locator('.qcard .markpick--slider').first();
+  await slider.waitFor();
+  const max = Number(await slider.getAttribute('data-max'));
+  assert.ok(max >= 7);
+  await slider.locator('[data-pick-range]').fill('5');
+  assert.equal(await slider.locator('input[type="hidden"]').inputValue(), '5');
+  await slider.locator('[data-nudge="1"]').click();
+  assert.equal(await slider.locator('input[type="hidden"]').inputValue(), '6');
+  assert.match(await slider.locator('[data-pick-value]').textContent(), new RegExp(`6 / ${max}`));
   assert.deepEqual(errors, []);
   await page.close();
 });
