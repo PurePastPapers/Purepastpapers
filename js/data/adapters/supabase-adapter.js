@@ -139,6 +139,58 @@ export const supabaseAdapter = {
     return publicUser(data.session.user);
   },
 
+  async resendConfirmation(email) {
+    const client = await getClient();
+    const { error } = await client.auth.resend({
+      type: 'signup',
+      email: validEmail(email),
+      options: { emailRedirectTo: callbackUrl() },
+    });
+    if (error) throw new Error(error.message);
+  },
+
+  /**
+   * Calls onConfirmed(user) once this browser has a confirmed session for `email`, for example
+   * after the confirmation link was opened in another tab. Returns a function that stops watching.
+   */
+  watchConfirmation(email, onConfirmed) {
+    const address = String(email || '').trim().toLowerCase();
+    let stopped = false;
+    let subscription = null;
+    const check = async () => {
+      if (stopped) return;
+      try {
+        const client = await getClient();
+        const { data } = await client.auth.getSession();
+        const found = data.session?.user;
+        if (stopped || !found || String(found.email || '').toLowerCase() !== address || !found.email_confirmed_at) return;
+        stop();
+        onConfirmed(publicUser(found));
+      } catch {
+        // Keep waiting; the next check may succeed.
+      }
+    };
+    const onVisible = () => { if (document.visibilityState === 'visible') check(); };
+    const timer = setInterval(check, 4000);
+    window.addEventListener('storage', check);
+    window.addEventListener('focus', check);
+    document.addEventListener('visibilitychange', onVisible);
+    getClient().then((client) => {
+      if (stopped) return;
+      // Supabase tells other tabs about a new session; check outside its callback to avoid a lock.
+      subscription = client.auth.onAuthStateChange((event, session) => { if (session?.user) setTimeout(check, 0); }).data.subscription;
+    }).catch(() => {});
+    function stop() {
+      stopped = true;
+      clearInterval(timer);
+      window.removeEventListener('storage', check);
+      window.removeEventListener('focus', check);
+      document.removeEventListener('visibilitychange', onVisible);
+      subscription?.unsubscribe();
+    }
+    return stop;
+  },
+
   async signIn({ email, password }) {
     const client = await getClient();
     const { data, error } = await client.auth.signInWithPassword({ email: validEmail(email), password });
