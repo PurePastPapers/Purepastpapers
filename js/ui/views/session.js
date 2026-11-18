@@ -406,6 +406,14 @@ export async function mount(element, context) {
     }
     const target = targetGrade(subject);
     const band = target && result.grade ? targetBand(result.grade, target, subject.grade_scheme) : null;
+    // Below target (or, with no target/grade, a red score) is flagged plainly as needing improvement.
+    const belowTarget = band === 'developing' || band === 'needs_work';
+    const needsImprovement = belowTarget || (!band && rag === 'red');
+    const weakTopics = [...topics]
+      .map(([name, entry]) => ({ name, share: percent(entry.awarded, entry.max) }))
+      .filter((topic) => topic.share < 60)
+      .sort((x, y) => x.share - y.share)
+      .slice(0, 3);
     const history = session.paper_id
       ? paperHistory(api.getProgress().paper_attempts).filter((attempt) => attempt.paper_id === session.paper_id).reverse().slice(-5)
       : [];
@@ -450,6 +458,16 @@ export async function mount(element, context) {
             <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? 'Saved in this browser and added to your Data Hub.' : 'Temporary guest result; create an account to save it in this browser.'}</p>
           </div>
         </section>
+        ${needsImprovement
+          ? html`<section class="card improve-note" data-band="${band || 'needs_work'}" role="note">
+              <h2 class="improve-note__title">${belowTarget ? `Below your target of ${target}: this needs improvement` : 'This score needs improvement'}</h2>
+              <p>${belowTarget
+                ? `You got grade ${result.grade}, ${band === 'developing' ? 'one grade' : 'two or more grades'} under your target. `
+                : ''}${weakTopics.length
+                ? html`Focus on: ${weakTopics.map((topic, i) => html`${i ? ', ' : ''}<b>${topic.name}</b> (${fmtPercent(topic.share)})`)}. Re-read the mark scheme for the questions you dropped marks on, then try them again.`
+                : 'Go through the mark scheme for the questions you dropped marks on, then try them again.'}</p>
+            </section>`
+          : ''}
         ${scored.length > 1 || history.length > 1
           ? html`<div class="result-cards">
               ${scored.length > 1

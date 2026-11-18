@@ -1805,3 +1805,19 @@
   flex-wrap: nowrap;
   font-size: 17px;
 }
+
+/* Results: plain "needs improvement" note when a score is under target */
+.improve-note {
+  border: 2px solid var(--ink);
+  padding: 16px 22px;
+}
+.improve-note[data-band='developing'] {
+  background: var(--warn-wash);
+}
+.improve-note[data-band='needs_work'] {
+  background: var(--crit-wash);
+}
+.improve-note__title {
+  font: 400 22px/1.2 var(--font-display);
+  margin-bottom: 6px;
+}
