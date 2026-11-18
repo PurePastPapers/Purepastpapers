@@ -285,6 +285,14 @@ export const supabaseAdapter = {
     }
   },
 
+  /** Whether the signed-in account is listed in public.site_owners (checked by row-level security). */
+  async isSiteOwner() {
+    const client = await getClient();
+    const { data, error } = await client.rpc('is_site_owner');
+    if (error) throw new Error(`Could not check owner access: ${error.message}`);
+    return data === true;
+  },
+
   async loadProgress(userId) {
     const client = await getClient();
     const { data, error } = await client.from('user_progress')

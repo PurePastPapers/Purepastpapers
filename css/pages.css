@@ -1821,3 +1821,45 @@
   font: 400 22px/1.2 var(--font-display);
   margin-bottom: 6px;
 }
+
+/* Content Studio: shown to accounts that are not site owners */
+.studio-lock {
+  max-width: 760px;
+  margin: 70px auto 0;
+  padding: 44px 48px 40px;
+  text-align: center;
+}
+.studio-lock__mark {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  border: 2.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--plane);
+  font-family: var(--font-display);
+  font-size: 58px;
+  line-height: 1;
+}
+.studio-lock__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 4vw, 38px);
+  line-height: 1.15;
+}
+.studio-lock p {
+  margin-top: 10px;
+  font-size: 16.5px;
+  line-height: 1.5;
+}
+.studio-lock__actions {
+  justify-content: center;
+  margin-top: 26px;
+}
+@media (max-width: 600px) {
+  .studio-lock {
+    margin-top: 30px;
+    padding: 32px 22px 28px;
+  }
+}
