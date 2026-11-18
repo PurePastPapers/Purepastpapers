@@ -17,7 +17,7 @@ import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '..
 import { targetGrade } from '../subject-colours.js';
 import { icon } from '../icons.js';
 import { markSchemeBody, marksPill, questionBody } from '../question-view.js';
-import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, sourceBadge, toast } from '../ui.js';
+import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
 
 const KIND_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Single question' };
 
@@ -81,6 +81,10 @@ export async function mount(element, context) {
     const wrap = display.closest('.timer');
     wrap.classList.toggle('is-warn', remaining !== null && remaining > 0 && remaining <= 300);
     wrap.classList.toggle('is-over', remaining !== null && remaining <= 0);
+    if (session.time_limit_minutes) {
+      const used = clamp(elapsedMs(session) / (session.time_limit_minutes * 60000), 0, 1);
+      wrap.closest('.runner')?.style.setProperty('--elapsed', used.toFixed(4));
+    }
     if (remaining !== null && remaining <= 0 && !session.time_up_noted) {
       session.time_up_noted = true;
       persist();
@@ -96,15 +100,20 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── pieces ─────────────────────────────────
 
-  function bar({ stage }) {
+  function bar({ stage, question = null, position = 0 }) {
     const running = isRunning(session);
     const timed = session.timer.mode !== 'off';
     return html`<header class="card runner__bar">
       <a class="btn btn--sm" href="${exitHref}" data-exit>${icon('chevronLeft', { size: 16 })} ${stage === 'result' ? backLabel(exitRoute) : 'Save and exit'}</a>
-      <div class="runner__title">
-        <p class="h3">${session.title}</p>
-        <p class="small muted">${subject.level} ${subject.subject} · ${KIND_LABELS[session.kind]}</p>
-      </div>
+      ${stage === 'run' && question && !timed
+        ? html`<div class="runner__title">
+            <p class="h3">${questions.length > 1 ? html`Question ${position + 1}<span class="muted"> of ${questions.length}</span>` : html`Question ${question.question_number}`}</p>
+            <p class="small muted row row--tight">${topicOf(question)} ${difficultyBadge(question.difficulty)}</p>
+          </div>`
+        : html`<div class="runner__title">
+            <p class="h3">${session.title}</p>
+            <p class="small muted">${subject.level} ${subject.subject} · ${KIND_LABELS[session.kind]}</p>
+          </div>`}
       <span class="spacer"></span>
       ${stage === 'run' && timed
         ? html`<div class="timer ${running ? '' : 'is-paused'}">
@@ -116,14 +125,15 @@ export async function mount(element, context) {
             </button>
           </div>`
         : ''}
-      ${stage === 'run' && !timed && !wholePaper
-        ? html`<button type="button" class="btn btn--sm" data-stopwatch>${icon('stopwatch', { size: 16 })} Start stopwatch</button>`
-        : ''}
       ${stage !== 'result'
-        ? html`<div class="row row--tight row--nowrap runner__attempt" role="group" aria-label="This attempt">
-            <button type="button" class="btn btn--sm btn--ghost" data-restart title="Clear everything and start this attempt again">${icon('refresh', { size: 15 })}<span class="runner__attempt-label">Restart</span></button>
-            <button type="button" class="btn btn--sm btn--ghost" data-abandon title="Leave without saving anything from this attempt">${icon('x', { size: 15 })}<span class="runner__attempt-label">Abandon</span></button>
-          </div>`
+        ? html`<details class="runner__more">
+            <summary class="btn btn--sm btn--ghost" aria-label="More options">⋯</summary>
+            <div class="runner__more-menu" role="group" aria-label="This attempt">
+              ${stage === 'run' && !timed && !wholePaper ? html`<button type="button" class="btn btn--sm btn--ghost" data-stopwatch>${icon('stopwatch', { size: 15 })} Start stopwatch</button>` : ''}
+              <button type="button" class="btn btn--sm btn--ghost" data-restart title="Clear everything and start this attempt again">${icon('refresh', { size: 15 })} Restart attempt</button>
+              <button type="button" class="btn btn--sm btn--ghost" data-abandon title="Leave without saving anything from this attempt">${icon('x', { size: 15 })} Abandon attempt</button>
+            </div>
+          </details>`
         : ''}
       ${stage === 'run' && !wholePaper
         ? html`<button type="button" class="btn btn--sm btn--primary" data-finish>${each ? 'Finish' : 'Finish and mark'}</button>`
@@ -194,11 +204,13 @@ export async function mount(element, context) {
     const id = question.question_id;
     const last = index === questions.length - 1;
     const revealed = Boolean(session.revealed[id]);
+    const exam = session.timer.mode === 'countdown';
+    const compare = each && revealed; // question and mark scheme side by side
 
     setHtml(
       element,
-      html`<div class="runner">
-        ${bar({ stage: 'run' })}
+      html`<div class="runner ${exam ? 'runner--exam' : 'runner--practice'}">
+        ${bar({ stage: 'run', question, position: index })}
         ${questions.length > 1
           ? html`<nav class="palette" aria-label="Questions">
               ${questions.map((item, position) => {
@@ -213,22 +225,12 @@ export async function mount(element, context) {
                   ${position + 1}
                 </button>`;
               })}
-              <span class="hand palette__key">blue = answered, red dot = flagged</span>
             </nav>`
           : ''}
         ${paused()
           ? pausedPanel()
-          : html`<div class="runner__grid">
-        ${each && revealed
-          ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? index + 1 : question.question_number}">
-              <i class="tape tape--c" aria-hidden="true"></i>
-              <header class="qview__head">
-                <h1 class="qview__num" tabindex="-1">Mark scheme <span class="small muted qview__for">for question ${questions.length > 1 ? index + 1 : question.question_number}</span></h1>
-                <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('mark scheme')}</div>
-              </header>
-              <div data-zoom-body>${markSchemeBody(question)}</div>
-            </article>`
-          : html`<article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? index + 1 : question.question_number}">
+          : html`<div class="runner__grid ${compare ? 'runner__grid--compare' : ''}">
+        <article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? index + 1 : question.question_number}">
           <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
             <h1 class="qview__num" tabindex="-1">
@@ -236,22 +238,30 @@ export async function mount(element, context) {
                 ? html`Question ${index + 1}<span class="muted"> of ${questions.length}</span>`
                 : html`Question ${question.question_number}`}
             </h1>
-            <div class="row row--tight">${marksPill(question.marks)} ${difficultyBadge(question.difficulty)} ${sourceBadge(question)} ${zoomButton('question')}</div>
+            <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('question')}</div>
           </header>
           <div data-zoom-body>${questionBody(question)}</div>
-        </article>`}
+        </article>
         <div class="stack">
+        ${compare
+          ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? index + 1 : question.question_number}">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <header class="qview__head">
+                <h1 class="qview__num" tabindex="-1">Mark scheme</h1>
+                <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('mark scheme')}</div>
+              </header>
+              <div data-zoom-body>${markSchemeBody(question)}</div>
+            </article>
+            <section class="card stack">${marksInput(question)} ${aiMarkingNote()}</section>`
+          : ''}
         <section class="card ruled tilt-3 answer-card" data-zoom-src="Your answer">
           <i class="tape tape--c" aria-hidden="true"></i>
           <label class="field">
-            <span class="card__title row row--between">Your answer ${zoomButton('answer box')}</span>
-            <span class="hand">${api.isSignedIn() ? 'optional: type here, it saves as you go, or answer on paper' : 'optional: type here or answer on paper; guest answers are temporary'}</span>
-            <textarea class="textarea" data-answer="${id}" placeholder="Type your working or essay here.">${session.answers[id] || ''}</textarea>
+            <span class="card__title row row--between">Your answer <span class="muted">(optional)</span> ${zoomButton('answer box')}</span>
+            ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
+            <textarea class="textarea" data-answer="${id}" placeholder="Type your working here, or answer on paper.">${session.answers[id] || ''}</textarea>
           </label>
         </section>
-        ${each && revealed
-          ? html`<section class="card stack">${marksInput(question)} ${aiMarkingNote()}</section>`
-          : ''}
         </div>
         </div>
         ${each
