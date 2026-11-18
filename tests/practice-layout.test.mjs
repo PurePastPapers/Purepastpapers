@@ -142,6 +142,20 @@ test('Enlarge: question, mark scheme and answer box open large over the page', {
   assert.match(await dialog.locator('.zoom__title').textContent(), /^Question/);
   const big = await dialog.locator('img').first().boundingBox();
   assert.ok(big.width > small.width * 1.5, `enlarged image is ${big.width}px wide (was ${small.width}px)`);
+  assert.equal(await dialog.locator('a').count(), 0, 'the enlarged image is not a link');
+  await dialog.locator('[data-zoom-step="1"]').click();
+  await dialog.locator('[data-zoom-step="1"]').click();
+  const popups = [];
+  page.context().on('page', (opened) => popups.push(opened.url()));
+  const at = await dialog.locator('.zoom__body').boundingBox();
+  await page.mouse.move(at.x + at.width / 2, at.y + at.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(at.x + at.width / 2 - 150, at.y + at.height / 2 - 40, { steps: 8 });
+  await page.mouse.up();
+  await page.mouse.click(at.x + at.width / 2, at.y + at.height / 2);
+  await page.waitForTimeout(300);
+  assert.deepEqual(popups, [], 'dragging or clicking the enlarged question opens nothing');
+  assert.ok(await dialog.locator('.zoom__body').evaluate((node) => node.scrollLeft > 0), 'dragging moved the view');
   await page.keyboard.press('Escape');
   assert.equal(await page.locator('dialog.zoom').count(), 0, 'Escape closes it');
 
