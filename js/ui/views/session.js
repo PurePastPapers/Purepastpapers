@@ -15,7 +15,7 @@ import { zoomButton } from '../zoom.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
-import { targetGrade } from '../subject-colours.js';
+import { targetGrade, tintPage } from '../subject-colours.js';
 import { icon } from '../icons.js';
 import { markSchemeBody, marksPill, questionBody } from '../question-view.js';
 import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
@@ -46,6 +46,9 @@ export async function mount(element, context) {
   session.revealed ||= {};
   context.setTitle(session.title);
   element.classList.add('view--runner');
+  tintPage(subject); // the page takes a soft tint of the subject's colour
+  // Papers and timed tests marked at the end show every question in one scrolling list.
+  const scrollMode = !each && questions.length > 0;
 
   // Leaving returns to the page the student came from (the paper, practice, the dashboard…),
   // falling back to the paper or practice when the runner was opened directly.
@@ -105,7 +108,7 @@ export async function mount(element, context) {
     const running = isRunning(session);
     const timed = session.timer.mode !== 'off';
     return html`<header class="card runner__bar">
-      <a class="btn btn--sm" href="${exitHref}" data-exit>${icon('chevronLeft', { size: 16 })} ${stage === 'result' ? backLabel(exitRoute) : 'Save and exit'}</a>
+      <a class="btn btn--sm" href="${exitHref}" data-exit>${icon('chevronLeft', { size: 16 })} <span class="runner__exit-text">${stage === 'result' ? backLabel(exitRoute) : 'Save and exit'}</span></a>
       ${stage === 'run' && question && !timed
         ? html`<div class="runner__title">
             <p class="h3">${questions.length > 1 ? html`Question ${position + 1}<span class="muted"> of ${questions.length}</span>` : html`Question ${question.question_number}`}</p>
@@ -132,12 +135,12 @@ export async function mount(element, context) {
             <div class="runner__more-menu" role="group" aria-label="This attempt">
               ${stage === 'run' && !timed && !wholePaper ? html`<button type="button" class="btn btn--sm btn--ghost" data-stopwatch>${icon('stopwatch', { size: 15 })} Start stopwatch</button>` : ''}
               <button type="button" class="btn btn--sm btn--ghost" data-restart title="Clear everything and start this attempt again">${icon('refresh', { size: 15 })} Restart attempt</button>
-              <button type="button" class="btn btn--sm btn--ghost" data-abandon title="Leave without saving anything from this attempt">${icon('x', { size: 15 })} Abandon attempt</button>
             </div>
-          </details>`
+          </details>
+          <button type="button" class="btn btn--sm runner__abandon" data-abandon title="Leave without saving anything from this attempt">Abandon</button>`
         : ''}
       ${stage === 'run' && !wholePaper
-        ? html`<button type="button" class="btn btn--sm btn--primary" data-finish>${each ? 'Finish' : 'Finish and mark'}</button>`
+        ? html`<button type="button" class="btn btn--sm btn--primary" data-finish>${each ? 'Finish' : html`<span class="runner__finish-long">Finish and mark</span><span class="runner__finish-short">Finish</span>`}</button>`
         : ''}
     </header>`;
   }
@@ -178,6 +181,7 @@ export async function mount(element, context) {
 
   function drawRun() {
     if (wholePaper) return drawWholePaper();
+    if (scrollMode) return drawScroll();
     const index = clamp(session.current_index, 0, questions.length - 1);
     const question = questions[index];
     const id = question.question_id;
@@ -273,6 +277,155 @@ export async function mount(element, context) {
       </div>`,
     );
     return undefined;
+  }
+
+  // ── scrolling list (papers and timed tests marked at the end) ──
+
+  const flagButton = (id) => html`<button type="button" class="btn btn--sm runner__flag" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
+    ${icon('flag', { size: 15 })} <span data-flag-label>${session.flagged[id] ? 'Flagged' : 'Flag for review'}</span>
+  </button>`;
+
+  function paletteItem(item, position, current) {
+    const state = [
+      position === current ? 'is-current' : '',
+      session.answers[item.question_id] ? 'is-answered' : '',
+      session.flagged[item.question_id] ? 'is-flagged' : '',
+    ].join(' ');
+    return html`<button type="button" class="palette__item ${state}" data-jump="${position}" aria-label="Question ${position + 1}${session.flagged[item.question_id] ? ' (flagged)' : ''}" aria-current="${position === current ? 'true' : 'false'}">${position + 1}</button>`;
+  }
+
+  function drawScroll() {
+    const current = clamp(session.current_index, 0, questions.length - 1);
+    const many = questions.length > 1;
+    setHtml(
+      element,
+      html`<div class="runner runner--scroll">
+        <div class="runner__top">
+          ${bar({ stage: 'run' })}
+          ${many ? html`<nav class="palette" aria-label="Jump to a question">${questions.map((item, position) => paletteItem(item, position, current))}</nav>` : ''}
+        </div>
+        ${paused()
+          ? pausedPanel()
+          : html`<div class="runner__list">
+              ${questions.map((question, position) => {
+                const id = question.question_id;
+                const label = many ? `Question ${position + 1}` : `Question ${question.question_number}`;
+                return html`<section class="runner__item" data-item="${position}" id="runner-q${position + 1}" aria-label="${label}">
+                  <div class="runner__grid">
+                    <article class="card ruled qview" data-zoom-src="${label}">
+                      <i class="tape tape--c" aria-hidden="true"></i>
+                      <header class="qview__head">
+                        ${position === 0 ? html`<h1 class="sr-only" tabindex="-1">${session.title}</h1>` : ''}
+                        <h2 class="qview__num">
+                          ${many ? html`Question ${position + 1}<span class="muted"> of ${questions.length}</span>` : html`Question ${question.question_number}`}${question.part_label ? html`<span class="muted"> · Part ${question.part_label}</span>` : ''}
+                        </h2>
+                        <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('question')}</div>
+                      </header>
+                      <div data-zoom-body data-fit>${questionBody(question)}</div>
+                    </article>
+                    <div class="stack runner__side">
+                      <section class="card ruled answer-card" data-zoom-src="Your answer · ${label.toLowerCase()}">
+                        <i class="tape tape--c" aria-hidden="true"></i>
+                        <label class="field">
+                          <span class="card__title row row--between">Your answer ${zoomButton('answer box')}</span>
+                          ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
+                          <textarea class="textarea" data-answer="${id}" placeholder="Optional. Type your working here, or answer on paper.">${session.answers[id] || ''}</textarea>
+                        </label>
+                      </section>
+                      ${flagButton(id)}
+                    </div>
+                  </div>
+                </section>`;
+              })}
+              <footer class="runner__end">
+                <p class="muted">That’s the last question.</p>
+                <button type="button" class="btn btn--primary" data-finish>Finish and mark</button>
+              </footer>
+            </div>`}
+      </div>`,
+    );
+    if (!paused()) {
+      fitQuestions();
+      if (current > 0) requestAnimationFrame(() => scrollToItem(current, 'auto'));
+    }
+    return undefined;
+  }
+
+  const topOffset = () => ($('.runner__top', element)?.offsetHeight || 0) + 12;
+
+  function scrollToItem(position, behavior = 'smooth') {
+    const target = $(`[data-item="${position}"]`, element);
+    if (!target) return;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - topOffset(), behavior });
+  }
+
+  // Scale each question's printed images so the whole question fits on one screen, without
+  // going above a comfortable reading size or below a legible one. Phones fit the width only.
+  const READ_MAX = 0.9; // share of an image's natural width
+  const READ_MIN = 0.48;
+  // Source images get their src after the bundle loads (data-math-image), so wait for it first.
+  function loaded(img) {
+    const ready = () => (img.decode ? img.decode().catch(() => null) : null);
+    if (img.getAttribute('src')) return ready();
+    return new Promise((resolve) => {
+      const done = () => { observer.disconnect(); clearTimeout(timer); resolve(ready()); };
+      const observer = new MutationObserver(() => { if (img.getAttribute('src')) done(); });
+      const timer = setTimeout(done, 10_000);
+      observer.observe(img, { attributes: true, attributeFilter: ['src'] });
+    });
+  }
+
+  function fitQuestions() {
+    const phone = window.matchMedia('(max-width: 900px)').matches;
+    return Promise.all($$('[data-fit]', element).map((body) => fitOne(body, phone)));
+  }
+  async function fitOne(body, phone) {
+    const images = $$('img', body).filter((img) => !img.closest('details'));
+    if (!images.length) return;
+    await Promise.all(images.map(loaded));
+    if (!body.isConnected) return;
+    if (phone) { images.forEach((img) => { img.style.width = ''; }); return; }
+    const width = body.clientWidth;
+    const setScale = (k) => images.forEach((img) => { img.style.width = `${Math.min(width, (img.naturalWidth || width / READ_MAX) * k)}px`; });
+    const head = body.closest('.qview')?.querySelector('.qview__head')?.offsetHeight || 0;
+    const available = window.innerHeight - topOffset() - head - 90;
+    let lo = READ_MIN;
+    let hi = READ_MAX;
+    setScale(hi);
+    if (body.scrollHeight <= available) return;
+    for (let step = 0; step < 14; step++) {
+      const mid = (lo + hi) / 2;
+      setScale(mid);
+      if (body.scrollHeight > available) hi = mid; else lo = mid;
+    }
+    setScale(lo);
+  }
+
+  // The number row follows the question in view, and remembers it for when the student returns.
+  let scrollFrame = 0;
+  const onScroll = () => {
+    if (scrollFrame || !scrollMode || session.status !== 'in_progress') return;
+    scrollFrame = requestAnimationFrame(() => {
+      scrollFrame = 0;
+      const items = $$('[data-item]', element);
+      if (!items.length) return;
+      const line = topOffset() + window.innerHeight * 0.25;
+      let current = 0;
+      items.forEach((item, position) => { if (item.getBoundingClientRect().top <= line) current = position; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = items.length - 1;
+      if (current === session.current_index) return;
+      session.current_index = current;
+      persist();
+      $$('.palette__item', element).forEach((button, position) => {
+        button.classList.toggle('is-current', position === current);
+        button.setAttribute('aria-current', position === current ? 'true' : 'false');
+      });
+    });
+  };
+  const onResize = debounce(() => { if (scrollMode && session.status === 'in_progress') fitQuestions(); }, 250);
+  if (scrollMode) {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
   }
 
   function drawWholePaper() {
@@ -610,16 +763,36 @@ export async function mount(element, context) {
     draw();
     window.scrollTo(0, 0);
   });
+  on(element, 'click', '[data-jump]', (event, button) => {
+    const position = clamp(Number(button.dataset.jump), 0, questions.length - 1);
+    session.current_index = position;
+    persist();
+    $$('.palette__item', element).forEach((item, index) => {
+      item.classList.toggle('is-current', index === position);
+      item.setAttribute('aria-current', index === position ? 'true' : 'false');
+    });
+    scrollToItem(position);
+  });
+  const paletteFor = (id) => $$('.palette__item', element)[questions.findIndex((question) => question.question_id === id)];
   on(element, 'input', '[data-answer]', (event, area) => {
     if (area.value.trim()) session.answers[area.dataset.answer] = area.value;
     else delete session.answers[area.dataset.answer];
     persist();
+    if (scrollMode) paletteFor(area.dataset.answer)?.classList.toggle('is-answered', Boolean(session.answers[area.dataset.answer]));
   });
   on(element, 'click', '[data-flag]', (event, button) => {
     const id = button.dataset.flag;
     if (session.flagged[id]) delete session.flagged[id];
     else session.flagged[id] = true;
     persist();
+    if (scrollMode) {
+      // Update in place so the page keeps its scroll position.
+      button.setAttribute('aria-pressed', String(Boolean(session.flagged[id])));
+      const label = $('[data-flag-label]', button);
+      if (label) label.textContent = session.flagged[id] ? 'Flagged' : 'Flag for review';
+      paletteFor(id)?.classList.toggle('is-flagged', Boolean(session.flagged[id]));
+      return;
+    }
     draw({ focus: false });
   });
   on(element, 'click', '[data-pause]', () => {
@@ -764,6 +937,9 @@ export async function mount(element, context) {
 
   return () => {
     clearInterval(interval);
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onResize);
+    if (scrollFrame) cancelAnimationFrame(scrollFrame);
     document.removeEventListener('visibilitychange', saveOnHide);
     window.removeEventListener('pagehide', pauseOnLeave);
     // Skip if it was deleted, or the student signed out (it then belongs to another progress record).

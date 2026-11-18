@@ -64,21 +64,31 @@ const BASE = process.env.AUDIT_URL || 'http://localhost:5173';
   await settle();
   assert.equal(await page.locator('[data-discard-open]').count(), 0, 'no leftover attempt to resume');
 
-  // 3. Restart clears the attempt; Abandon leaves without recording anything.
+  // 3. A paper is one scrolling list: the number row jumps to a question and follows the scroll.
   await page.locator('[data-start="untimed"]').click();
   await settle();
-  await page.locator('[data-answer]').fill('working');
-  await page.locator('[data-flag]').click();
+  assert(await page.locator('.runner__item').count() > 1, 'every question is on the page');
+  await page.locator('.palette__item').nth(4).click();
+  await page.waitForTimeout(900);
+  assert(Math.abs(await page.evaluate(() => document.querySelector('[data-item="4"]').getBoundingClientRect().top - document.querySelector('.runner__top').offsetHeight)) < 40, 'jumped to question 5');
+  assert.equal((await page.locator('.palette__item.is-current').innerText()).trim(), '5');
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(300);
+  assert.equal((await page.locator('.palette__item.is-current').innerText()).trim(), '1', 'the number row follows the scroll');
+
+  // Restart clears the attempt; Abandon leaves without recording anything.
+  await page.locator('[data-answer]').first().fill('working');
+  await page.locator('[data-flag]').first().click();
   await settle();
   await page.locator(".runner__more > summary").click();
   await page.locator('[data-restart]').click();
   await confirm('Restart');
-  assert.equal(await page.locator('[data-answer]').inputValue(), '', 'Restart clears typed answers');
-  assert.equal(await page.locator('[data-flag]').getAttribute('aria-pressed'), 'false', 'Restart clears flags');
+  assert.equal(await page.locator('[data-answer]').first().inputValue(), '', 'Restart clears typed answers');
+  assert.equal(await page.locator('[data-flag]').first().getAttribute('aria-pressed'), 'false', 'Restart clears flags');
   const before = await sessionCount();
   const attemptsBefore = await page.evaluate(async () => (await import('/js/data/api.js')).getProgress().question_attempts.length);
-  await page.locator('[data-answer]').fill('more working');
-  await page.locator(".runner__more > summary").click();
+  await page.locator('[data-answer]').first().fill('more working');
+  assert(await page.locator('.runner__bar [data-abandon]').isVisible(), 'Abandon is always visible on the questions');
   await page.locator('[data-abandon]').click();
   await confirm('Abandon');
   assert.equal(hash(), paperHash, 'Abandon returns to the paper');
@@ -88,11 +98,10 @@ const BASE = process.env.AUDIT_URL || 'http://localhost:5173';
   // 4. Abandon is also offered while marking.
   await page.locator('[data-start="untimed"]').click();
   await settle();
-  await page.locator('[data-answer]').fill('x');
+  await page.locator('[data-answer]').first().fill('x');
   await page.locator('.runner__bar [data-finish]').click();
   await confirm('Finish');
   assert.equal(await page.locator('.mark-head').count(), 1);
-  await page.locator(".runner__more > summary").click();
   await page.locator('[data-abandon]').click();
   await confirm('Abandon');
   assert.equal(hash(), paperHash);
@@ -100,7 +109,7 @@ const BASE = process.env.AUDIT_URL || 'http://localhost:5173';
   // 5. A kept unfinished attempt can be discarded from the paper page.
   await page.locator('[data-start="untimed"]').click();
   await settle();
-  await page.locator('[data-answer]').fill('keep me');
+  await page.locator('[data-answer]').first().fill('keep me');
   await page.waitForTimeout(500); // debounced save
   await page.locator('.runner__bar [data-exit]').click();
   await settle();
@@ -112,7 +121,7 @@ const BASE = process.env.AUDIT_URL || 'http://localhost:5173';
   // 6. Resuming from the dashboard returns to the dashboard.
   await page.locator('[data-start="untimed"]').click();
   await settle();
-  await page.locator('[data-answer]').fill('resume me');
+  await page.locator('[data-answer]').first().fill('resume me');
   await page.waitForTimeout(500);
   await page.goto(`${BASE}/#/`);
   await settle();
