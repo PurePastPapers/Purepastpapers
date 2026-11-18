@@ -150,28 +150,28 @@ Attempted but incomplete because the local checkout was intentionally sparse:
 
 ## 8. Known problems and risks
 
-- Site URL, redirect allow-list, provider and custom SMTP settings are user-reported. The Supabase connector cannot read these Auth settings; verify them through actual confirmation/reset email delivery.
-- The signup/authentication and recovery screens render in production. No real mailbox was used, so the SMTP delivery path remains untested.
-- Do not ask the user for mailbox passwords, account passwords, SMTP credentials, or Supabase keys. The user must control the signup inbox and click the confirmation link.
-- The rollback-only attempt to test SELECT/UPDATE with synthetic UUIDs stopped at the `auth.users` foreign key because those UUIDs were not real users; no changes were made. Real two-user isolation still needs disposable accounts.
+- The Supabase connector cannot read dashboard Site URL, redirect allow-list or SMTP fields. Email provider, signup and confirmation flags were verified using the public Auth settings endpoint; Site URL and the redirect list remain user-reported until a confirmation callback succeeds.
+- Supabase Auth confirmation/reset delivery is untested because no inbox was submitted. Production UI rendering and public Auth settings do not prove delivery.
+- Do not ask the user for mailbox passwords, account passwords, SMTP credentials, confirmation tokens or Supabase keys. The user must control the inbox and click the confirmation link.
+- The rollback-only SELECT/UPDATE probe with synthetic UUIDs stopped at the `auth.users` foreign key; no changes were made. Real two-user isolation needs disposable accounts.
 - Account deletion has not been exercised with a real signed-in disposable account.
-- The old browser tab initially showed cached pre-deployment copy; a fresh tab loaded the new signup message. If the user's existing tab shows old wording, close/reopen the site or refresh it.
+- The old browser tab initially showed cached pre-deployment copy; after reload, the latest signup copy appeared. If a student's tab shows old wording, refresh it.
 - Progress snapshots are last-save-wins if the same account is edited simultaneously on two devices.
 
 ## 9. Exact next steps
 
-1. Ask the user to complete one test signup with an inbox they control at https://purepastpapers.com/#/signup. They should enter their password only in the site, never in chat.
-2. Have them click the confirmation email on the same device/browser used to stage any guest progress. Confirm the callback finishes and that progress appears after sign-in.
-3. Test login, request a password-reset email from the login page, open the link, set a new password, then log in with it.
-4. Sign into the same account on a second device, make one progress change, and confirm it appears on the other device. Test JSON export/import.
-5. Create a second disposable test account and verify it cannot read/update the first user's row. Test account deletion only on a disposable account.
-6. Record the user's email-delivery and auth-flow results here; do not record the email address or any credentials. Continue with a production paper-score/save regression check.
+1. The user opens `https://purepastpapers.com/#/signup` on the iPad and creates one account with an inbox they control. They enter the password only on the site and share no credentials or email address in chat.
+2. Check inbox/spam and click the confirmation link in the same browser/device used to stage any guest progress. Report only whether the email arrived and the callback succeeded. If not, capture the non-sensitive error text.
+3. After confirmation, test login and password reset from the live site. The user enters any password only into the site.
+4. Sign into the same account on a second device/browser, make one progress change on each device in turn, and confirm sync; verify JSON export/import and guest-progress restoration.
+5. Create a second disposable account for real two-user RLS tests. Verify it cannot read/update the first user's progress. Test account deletion only with a disposable signed-in account.
+6. Check a saved paper score with the test account, record pass/fail outcomes and cleanup status here, and never record email addresses, passwords, tokens or keys.
 
 ## 10. Completion criteria
 
 Do not mark the integration complete until all are true:
-- The Supabase Auth Site URL, exact redirect allow-list, Email provider, signups and confirmation setting are saved and verified.
-- Supabase Auth confirmation and password-reset emails reach the user through Resend SMTP.
+- The public Auth settings endpoint shows email enabled, signups allowed and confirmation required; the Site URL and exact redirect allow-list are confirmed in Supabase dashboard or by successful production callback tests.
+- Supabase Auth confirmation and password-reset emails reach the user through the configured Resend SMTP.
 - The migration is recorded; table, grants and owner-scoped RLS are verified; cross-user reads/writes are denied using real accounts.
 - `delete-account` is ACTIVE with JWT verification and deletion succeeds for a disposable signed-in account.
 - PR #6 and PR #13 are merged; the corresponding GitHub Pages deployments succeeded.
