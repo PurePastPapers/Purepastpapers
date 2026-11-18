@@ -244,6 +244,26 @@ export async function signInLegacy(details) {
   return user;
 }
 
+/**
+ * Whether the signed-in account may open the Content Studio. Owners are listed in the
+ * Supabase table public.site_owners; browser-only and demo accounts are never owners.
+ * The answer is cached per account for this visit.
+ */
+let ownerCheck = null;
+export function isSiteOwner() {
+  if (!user || user.is_demo || activeAdapter !== supabaseAdapter) return Promise.resolve(false);
+  if (ownerCheck?.userId !== user.user_id) {
+    const userId = user.user_id;
+    const promise = supabaseAdapter.isSiteOwner().catch((error) => {
+      console.warn(error);
+      if (ownerCheck?.promise === promise) ownerCheck = null; // try again next time
+      return false;
+    });
+    ownerCheck = { userId, promise };
+  }
+  return ownerCheck.promise;
+}
+
 export const requestPasswordReset = (email) => backendAdapter.requestPasswordReset(email);
 export const setNewPassword = (password) => backendAdapter.setNewPassword(password);
 export const isPasswordRecoverySession = () => activeAdapter === supabaseAdapter && supabaseAdapter.hasPasswordRecoverySession(user?.user_id);

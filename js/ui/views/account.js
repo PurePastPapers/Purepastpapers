@@ -17,6 +17,7 @@ export async function mount(element, context) {
   const progress = api.getProgress();
   const backend = api.backendInfo();
   const theme = getThemePreference();
+  const isOwner = await api.isSiteOwner();
 
   const avatarColour = progress.preferences.avatarColour || 'yellow';
   const studying = progress.preferences.studyLevel || '';
@@ -150,11 +151,13 @@ export async function mount(element, context) {
               )}
             </ol>
           </section>
-          <section class="card card--soon">
-            <h2 class="card__title">For the site owner</h2>
-            <p class="muted small" style="margin:6px 0 14px">Check the question and paper database and prepare new content.</p>
-            <div class="row"><a class="btn btn--sm" href="${links.studio()}">Open the Content Studio</a><span class="small muted">version ${APP.version}</span></div>
-          </section>
+          ${isOwner
+            ? html`<section class="card card--soon">
+                <h2 class="card__title">For the site owner</h2>
+                <p class="muted small" style="margin:6px 0 14px">Check the question and paper database and prepare new content.</p>
+                <div class="row"><a class="btn btn--sm" href="${links.studio()}">Open the Content Studio</a><span class="small muted">version ${APP.version}</span></div>
+              </section>`
+            : ''}
         </div>
       </div>`,
   );

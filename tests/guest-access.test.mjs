@@ -43,3 +43,11 @@ test('guest progress transfers on signup, while login preserves an existing acco
   assert.deepEqual(api.getProgress().enrolled_subjects, ['existing-subject']);
   assert.deepEqual(api.getProgress().paper_attempts, []);
 });
+
+test('only Supabase site owners can open the Content Studio', async () => {
+  await api.init();
+  assert.equal(await api.isSiteOwner(), false, 'guests are not owners');
+  await api.signUp({ email: 'not-owner@example.test', password: 'test-password', displayName: 'Student' });
+  assert.equal(await api.isSiteOwner(), false, 'browser-only accounts are never owners');
+  await api.signOut();
+});
