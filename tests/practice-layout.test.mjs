@@ -161,13 +161,13 @@ test('Enlarge: question, mark scheme and answer box open large over the page', {
   const opened = page.locator('.qcard').filter({ has: page.locator('.qsplit__main.is-scheme') }).first();
   await opened.locator('.qsplit__main [data-zoom]').click();
   assert.match(await dialog.locator('.zoom__title').textContent(), /^Mark scheme/);
-  assert.equal(await dialog.locator('.qsplit__label, button:not([data-zoom-close]):not([data-zoom-fit])').count(), 0);
+  assert.equal(await dialog.locator('.qsplit__label, button:not([data-zoom-close]):not([data-zoom-step]):not([data-zoom-reset])').count(), 0);
   await page.keyboard.press('Escape');
   assert.deepEqual(errors, []);
   await page.close();
 });
 
-test('Enlarge on a phone: the question can be dragged around or fitted to the screen', { skip }, async () => {
+test('Enlarge on a phone: opens zoomed in, and the magnifying glasses zoom in and out', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 390, height: 844 });
   await page.locator('[data-select]').first().check();
   await page.locator('[data-start-set]').click();
@@ -177,15 +177,20 @@ test('Enlarge on a phone: the question can be dragged around or fitted to the sc
   const box = await dialog.boundingBox();
   assert.ok(box.width >= 389 && box.height >= 840, 'fills the phone screen');
   const body = dialog.locator('.zoom__body');
-  const scrollable = await body.evaluate((node) => node.scrollWidth > node.clientWidth);
-  assert.ok(scrollable, 'the enlarged question is wider than the screen and scrolls sideways');
+  const pct = dialog.locator('[data-zoom-reset]');
+  assert.equal((await pct.textContent()).trim(), '200%');
+  assert.ok(await body.evaluate((node) => node.scrollWidth > node.clientWidth), 'wider than the screen, scrolls sideways');
   assert.equal((await dialog.locator('.zoom__hint').textContent()).trim(), 'Drag to move around');
 
-  await dialog.locator('[data-zoom-fit]').click();
-  assert.ok(await body.evaluate((node) => node.scrollWidth <= node.clientWidth + 1), 'Fit to screen shows the whole width');
-  assert.equal((await dialog.locator('[data-zoom-fit]').textContent()).trim(), 'Zoom in');
-  await dialog.locator('[data-zoom-fit]').click();
-  assert.ok(await body.evaluate((node) => node.scrollWidth > node.clientWidth));
+  await pct.click();
+  assert.equal((await pct.textContent()).trim(), '100%');
+  assert.ok(await body.evaluate((node) => node.scrollWidth <= node.clientWidth + 1), '100% shows the whole width');
+  assert.ok(!(await dialog.locator('.zoom__hint').isVisible()));
+  await dialog.locator('[data-zoom-step="1"]').click();
+  assert.equal((await pct.textContent()).trim(), '125%');
+  for (let i = 0; i < 10; i++) await dialog.locator('[data-zoom-step="-1"]').click({ force: true });
+  assert.equal((await pct.textContent()).trim(), '50%');
+  assert.ok(await dialog.locator('[data-zoom-step="-1"]').isDisabled(), 'stops at the smallest zoom');
   assert.deepEqual(errors, []);
   await page.close();
 });
