@@ -25,20 +25,21 @@ Implemented and merged:
 - PR #13 clarifies signup sync messaging for configured cloud accounts, legacy accounts, and local-only mode.
 
 Verified:
-- PR #6 is merged as `2840caa82752a4fc1d6e499455a3073b2f8e4f93`; PR #13 is merged as `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
-- GitHub Pages deployment for PR #6 succeeded (run 81, `44199928570`); deployment for PR #13 succeeded (run 82, `44201030653`, build/deploy/report jobs all successful).
-- A fresh production tab shows the signup message “After you confirm your email, your progress syncs across your devices.” The login page shows the forgot-password and legacy-account links; the password-reset page renders.
-- Production paper browse still works: the A-Level Edexcel Mathematics archive lists 60 papers; June 2025 AS Pure Mathematics 01 opened with 22 questions and 100 marks.
-- Supabase migration, owner-scoped RLS, grants, and authenticated deletion function are deployed and verified below.
-- Resend reports the domain verified and sending enabled.
+- PR #6 merged as `2840caa82752a4fc1d6e499455a3073b2f8e4f93`; PR #13 merged as `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
+- GitHub Pages deployments succeeded for PR #6 (run 81, `44199928570`) and PR #13 (run 82, `44201030653`).
+- Supabase project is ACTIVE_HEALTHY; the user_progress migration/table/RLS and delete-account function remain deployed and verified below.
+- Public Supabase Auth settings endpoint returned HTTP 200 on 2026-11-17: email provider enabled (`external.email=true`), new signups allowed (`disable_signup=false`), email confirmation required (`mailer_autoconfirm=false`). Google and Apple are disabled; they are optional and not needed for email/password accounts.
+- Resend reports `purepastpapers.com` verified with sending enabled, click tracking off.
+- Production pages were refreshed in Chromium on 2026-11-17: signup shows that progress syncs after confirmation; login and password reset forms render. No signup or reset form was submitted.
+- Production exam-paper browse still works: A-Level Edexcel Mathematics lists 60 papers; June 2025 AS Pure Mathematics 01 opened with 22 questions and 100 marks.
 
-User-reported (not independently inspectable through connected settings tools):
-- Supabase Site URL and redirect allow-list saved.
-- Email provider, signups, and email confirmation enabled.
-- Custom SMTP saved with `no-reply@purepastpapers.com`, and the previous SMTP key replaced by a domain-restricted key.
+User-reported, not independently inspectable through connected settings tools:
+- Site URL is `https://purepastpapers.com` and the four redirect URLs in section 3 were saved.
+- Supabase custom SMTP was saved with sender `no-reply@purepastpapers.com`; previous SMTP key was replaced by a domain-restricted key.
 
 Still unverified end-to-end:
-- Supabase confirmation/reset email delivery, successful account signup/confirmation/login, guest progress restoration, cross-device sync, backup import/export, real two-user RLS reads/updates, and account deletion. These require at least one user-controlled inbox and disposable test accounts.
+- SMTP delivery from Supabase Auth, signup/confirmation/login, password reset, guest-progress restoration, sync on another device, backup import/export, two-user SELECT/UPDATE isolation, account deletion, and paper-score persistence.
+- `auth.users` count and `user_progress` row count were both zero at the last read-only check. A user-controlled inbox and disposable accounts are needed for end-to-end testing.
 
 ## 3. Supabase setup
 
@@ -52,6 +53,8 @@ Migration:
 - RLS is enabled. Three policies scope SELECT, INSERT, and UPDATE to `auth.uid() = user_id`; UPDATE uses both `USING` and `WITH CHECK`. Authenticated has SELECT/INSERT/UPDATE grants; anon has no grants and there is no client DELETE policy.
 - A rollback-only authenticated-role test confirmed cross-user INSERT is rejected. No row was written.
 - A follow-up attempt to seed two synthetic UUID rows for SELECT/UPDATE testing stopped at the FK to `auth.users` because those fake users do not exist; no database changes were made. Real two-account SELECT/UPDATE isolation still requires registered test accounts.
+- A read-only SQL recheck on 2026-11-17 confirmed RLS enabled (not forced), three authenticated-only policies scoped to `auth.uid() = user_id` for SELECT/INSERT/UPDATE, no anon SELECT/INSERT grant, authenticated SELECT/INSERT/UPDATE grants, no authenticated DELETE grant, and zero progress rows.
+- `auth.users` count was 0 at the last check.
 - Security advisor returned no lints after migration.
 
 Edge Function:
@@ -68,7 +71,7 @@ Auth URLs/settings:
   - `https://www.purepastpapers.com/auth-callback.html`
   - `http://localhost:5173/auth-callback.html`
   - `http://127.0.0.1:5173/auth-callback.html`
-- The connected Supabase tools do not expose Auth URL/provider/SMTP configuration. Treat the above dashboard settings as user-reported until live auth-email tests pass.
+- The Supabase connector does not expose dashboard Site URL, redirect allow-list, or SMTP settings. Public `GET /auth/v1/settings` verified email provider enabled, signups allowed, and confirmation required; the endpoint does not return Site URL or redirect allow-list. Those values remain user-reported until live auth flows pass.
 - Google/Apple OAuth are not part of PR #6 and are not configured by this change.
 
 Operations performed:
@@ -93,7 +96,7 @@ User-reported:
 - Repository: `PurePastPapers/Purepastpapers`.
 - PR #6: https://github.com/PurePastPapers/Purepastpapers/pull/6; merged squash commit `2840caa82752a4fc1d6e499455a3073b2f8e4f93`.
 - PR #13: https://github.com/PurePastPapers/Purepastpapers/pull/13; merged squash commit `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`.
-- Latest application/deployment SHA (PR #13 merge): `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`. The handoff was subsequently refreshed in docs-only commit `5b7a8053bc46626e7c8f5b2dff76e6ed875ca0eb`.
+- Latest application/deployment SHA (PR #13 merge): `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27`. The predecessor handoff was refreshed in docs-only commit `4d98be9d4956a4692320d17bc73d28e91766c27`; this session adds a documentation-only update.
 - PR #6 feature branch: `codex/supabase-account-sync-2026-11-16`; final branch head before squash was `c95378aef9736401b85ff2a32226f7a9e87ba8a6`. It contained the main sync commit `e1fb3c83bf29c039c833be846cf60d4afa004ed1`.
 - PR #13 branch: `codex/account-sync-copy-2026-11-17`; head `400b557cecb5bf3a2dbedc049c0cfca356e73bad).
 - PR #6 code review found no blocking issue. PR #13 review found no blocking issue; the changed auth view passed Node syntax validation.
@@ -121,29 +124,29 @@ The app has no bundler. Supabase JS is loaded from esm.sh on first cloud-account
 
 ## 7. Testing
 
-Completed:
-- Node v24.22.1 syntax checks passed:
-  `node --check js/data/adapters/supabase-adapter.js`
-  `node --check js/data/api.js`
-- Focused automated test command:
+Completed on latest main application commit `18ceb5e3c6b6f99433a892ae523ccbd460bc1b27` (checkout head before this handoff refresh was `4d98be9d4956a4692320d17bc73d28e91766c27`):
+- Focused regression command:
   ```sh
-  node --test tests/guest-access.test.mjs tests/inline-marking.test.mjs tests/content-years.test.mjs tests/curriculum-map.test.mjs tests/spec-filtering.test.mjs tests/target-grades.test.mjs tests/question-parts.test.mjs tests/progress-failure-check.mjs tests/recovery-session-check.mjs tests/recovery-callback-check.mjs
+  node --test tests/guest-access.test.mjs tests/inline-marking.test.mjs tests/content-years.test.mjs tests/curriculum-map.test.mjs tests/spec-filtering.test.mjs tests/target-grades.test.mjs tests/question-parts.test.mjs tests/progress-failure-check.test.mjs tests/recovery-session-check.test.mjs tests/recovery-callback-check.test.mjs
   ```
-  Result on 2026-11-17: 47 passed, 0 failed. Ran from temporary partial checkout `/tmp/ppp-check`; this workspace has no complete repository checkout.
-- Follow-up auth view content passed `node --check /tmp/ppp-auth-view.js`; the temporary file was created from the updated branch's `js/ui/views/auth.js`.
-- Supabase migration/table/RLS/grant checks passed. A rollback-only cross-user INSERT attempt was denied. Security advisor returned no lints.
-- `delete-account` is ACTIVE with JWT verification enabled.
-- Resend domain status verified.
-- Production UI check after Pages deployments: signup, login, and password-reset pages render; the fresh signup page indicates cross-device sync after confirmation.
-- Production exam-paper smoke check: Mathematics archive loaded 60 papers; June 2025 AS Pure Mathematics 01 opened with 22 questions / 100 marks.
+  Result: 44 passed, 0 failed.
+- Node v24.22.1 syntax checks passed:
+  ```sh
+  node --check js/data/adapters/supabase-adapter.js && node --check js/data/api.js && node --check js/ui/views/auth.js && node --check js/auth-callback.js && node --check js/ui/views/recovery.js && node --check js/ui/views/account.js
+  ```
+- Supabase schema/RLS/grants/migration/function/security checks and production page/paper checks passed as recorded in sections 2 and 3.
 - Independent reviews of PR #6 and PR #13 found no blocking defects.
 
-Not completed:
-- The full repository `npm test` and `npm run validate` scripts were not run; no full checkout exists in this workspace. `package.json` defines `test` as `node --test "tests/**/*.test.mjs"` and `validate` as `node tools/validate-data.mjs`.
-- No application CI workflow or PR test checks are configured/reported; only the GitHub Pages builds ran.
-- Auth emails and full signup/recovery/progress/account-deletion flows have not been exercised. UI presence is not proof of email delivery.
-- Real two-user SELECT/UPDATE RLS isolation remains to be checked after creating disposable accounts.
-- Paper browse is verified, but paper scoring/save under an account is not yet checked.
+Attempted but incomplete because the local checkout was intentionally sparse:
+- `npm test` exited 1 because sparse checkout omitted required `data/packs/index.json`, `data/imports/...`, and `data/specs/...`; Playwright layout tests also lacked the Playwright-managed Chromium executable. This is not a full-suite result or a confirmed application failure.
+- `npm run validate` exited 1 because `data/subjects.json` was omitted.
+- Temporary checkout commands:
+  ```sh
+  git clone --filter=blob:none --no-checkout --depth 1 --sparse https://github.com/PurePastPapers/Purepastpapers.git /tmp/ppp-final-check
+  git sparse-checkout set --no-cone '/package.json' '/tests/' '/tools/' '/js/' '/supabase/'
+  git checkout -f main
+  ```
+- GitHub reported no status checks for the application commit; the Pages deployment for PR #13 succeeded.
 
 ## 8. Known problems and risks
 
