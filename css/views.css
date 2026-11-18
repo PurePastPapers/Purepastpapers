@@ -977,3 +977,31 @@
   .zoom--image .zoom__head { flex-wrap: wrap; }
   .zoom__title { font-size: 20px; }
 }
+
+/* "Check your email" popup after signing up (js/ui/verify-email.js), styled like Enlarge. */
+.modal.verify { width: min(540px, calc(100vw - 28px)); overflow: visible; }
+.modal.verify::backdrop { background: rgba(30, 22, 14, 0.55); backdrop-filter: blur(2px); }
+.verify .modal__head { padding: 16px 20px 12px; border-bottom: 1px dashed var(--line-strong); }
+.verify .modal__title { font: 400 26px/1.2 var(--font-display); }
+.verify .modal__body { padding: 22px 24px 8px; text-align: center; }
+.verify__tape { top: -13px; }
+.verify__art { display: block; margin: 4px auto 14px; }
+.verify__lead { margin: 0 0 8px; color: var(--ink-2); font-size: 16px; }
+.verify__email { display: inline-block; max-width: 100%; font-weight: 700; font-size: 17px; padding: 6px 14px; border: 2px solid var(--ink); border-radius: 6px; background: var(--surface-2); overflow-wrap: anywhere; }
+.verify--done .verify__email { border-color: var(--good-ink); }
+.verify__text { margin: 16px auto 0; max-width: 38ch; font-size: 15.5px; line-height: 1.55; }
+.verify__hint { margin: 18px 0 6px; padding: 10px 14px; border: 1.5px dashed var(--line-strong); border-radius: 6px; font-size: 14px; color: var(--ink-2); text-align: left; display: flex; gap: 10px; align-items: flex-start; }
+.verify__hint svg { flex: none; margin-top: 1px; }
+.verify__hint b { color: var(--ink); }
+.verify__error { margin: 12px 0 4px; color: var(--crit-ink); font-weight: 550; font-size: 14px; }
+.verify .modal__foot { flex-wrap: nowrap; justify-content: space-between; align-items: center; border-top: 1px dashed var(--line-strong); padding: 14px 20px 18px; }
+.verify__resend { display: flex; gap: 12px; align-items: center; flex-wrap: nowrap; white-space: nowrap; justify-content: center; }
+.verify__sent { font-weight: 600; font-size: 14px; color: var(--good-ink); }
+.verify__sent[hidden] { display: none; }
+@media (max-width: 520px) {
+  .verify .modal__title { font-size: 23px; }
+  .verify .modal__body { padding: 20px 18px 6px; }
+  .verify .modal__foot { flex-direction: column-reverse; align-items: stretch; gap: 10px; }
+  .verify .modal__foot .btn, .verify__resend .btn { justify-content: center; width: 100%; }
+  .verify__resend { flex-direction: column; gap: 6px; }
+}

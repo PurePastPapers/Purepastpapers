@@ -6,6 +6,7 @@ import * as api from '../../data/api.js';
 import { getSubjects } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
 import { links } from '../../core/links.js';
+import { openVerifyEmail } from '../verify-email.js';
 
 export async function mount(element, context) {
   const signup = context.options.mode === 'signup';
@@ -129,6 +130,7 @@ export async function mount(element, context) {
     });
   }
 
+  let closeVerify = null;
   const form = $('[data-form]', element);
   const errorLine = $('[data-error]', element);
   const fail = (message) => {
@@ -150,11 +152,17 @@ export async function mount(element, context) {
         if (studying) await api.setPreference('studyLevel', studying);
         await api.signUp({ ...data, redirectTo: destination });
         if (!api.isSignedIn()) {
-          form.reset();
-          const statusLine = $('[data-status]', element);
-          statusLine.textContent = `We’ve sent a confirmation link to ${String(data.email).trim()}. Open it to finish creating your account.`;
-          statusLine.hidden = false;
           button.disabled = false;
+          const email = String(data.email).trim();
+          closeVerify = openVerifyEmail({
+            email,
+            name: String(data.displayName || '').trim(),
+            onChangeEmail: () => {
+              const input = $('input[name="email"]', form);
+              input.focus();
+              input.select();
+            },
+          });
           return;
         }
       } else {
@@ -169,4 +177,5 @@ export async function mount(element, context) {
     }
   });
 
+  return () => closeVerify?.();
 }
