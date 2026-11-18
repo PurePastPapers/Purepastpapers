@@ -43,6 +43,9 @@ function open(source) {
     copy.removeAttribute('data-zoom-body');
     copy.removeAttribute('data-zoom-src');
     copy.querySelectorAll('.zoom-btn, .qsplit__label, .qsplit__head, button, input, select, textarea').forEach((node) => node.remove());
+    // Question images are links to the full-size image; inside Enlarge a click or the end of a
+    // drag would follow them and open it in a new tab, so keep just the image.
+    copy.querySelectorAll('a:has(img)').forEach((link) => link.replaceWith(...link.childNodes));
     copy.classList.add('zoom__content');
     body.append(copy);
     if (copy.querySelector('img')) dialog.classList.add('zoom--image');
@@ -82,6 +85,8 @@ function open(source) {
     addEventListener('pointermove', move);
     addEventListener('pointerup', up);
   });
+
+  body.addEventListener('dragstart', (event) => event.preventDefault());
 
   const close = () => { dialog.close(); dialog.remove(); };
   dialog.addEventListener('click', (event) => {
