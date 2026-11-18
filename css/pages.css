@@ -1174,21 +1174,35 @@
 }
 .runner__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 32px;
+  grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+  gap: 28px;
   align-items: start;
 }
 .qview {
-  padding: 32px 32px 30px;
+  padding: 20px 22px 22px;
 }
 .qview__head {
   border-bottom: 1px dashed var(--line);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  flex-wrap: nowrap;
 }
 .qview__num {
-  font-size: 34px;
+  font-size: 20px;
+}
+.qview__num .muted {
+  font-size: 15px;
+}
+/* The question is the focus: images fill the card width. */
+.qview .qcontent img {
+  width: 100%;
+  max-width: none;
+}
+.qview .small.muted {
+  font-size: 13px;
 }
 .answer-card {
-  padding: 30px 30px 28px;
+  padding: 22px 20px 20px;
 }
 .answer-card .field {
   gap: 4px;
@@ -1199,7 +1213,7 @@
   margin-bottom: 10px;
 }
 .answer-card .textarea {
-  min-height: 280px;
+  min-height: 220px;
   font: 16px/1.7 var(--font);
 }
 .runner__nav {
