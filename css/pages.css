@@ -1861,5 +1861,171 @@
   .studio-lock {
     margin-top: 30px;
     padding: 32px 22px 28px;
+
+/* ── scrolling paper (papers and timed tests marked at the end; approved 2026-11-18) ──
+   Every question in one list, each sized to fit a screen. Site buttons and cards, a plain
+   subject-colour tint behind, no grid, no tilt. The bar and number row stay pinned. */
+:root[data-tint]:has(.runner--scroll) body {
+  background-image: none;
+}
+.runner__abandon {
+  color: var(--crit);
+}
+.runner--scroll {
+  max-width: 1360px;
+  margin: 0 auto;
+  gap: 0;
+}
+.runner--scroll .tilt-1,
+.runner--scroll .tilt-3 {
+  transform: none;
+}
+.runner__top {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: 10px 0 12px;
+}
+.runner__top::before {
+  content: '';
+  position: absolute;
+  inset: 0 -100vw;
+  z-index: -1;
+  background: var(--plane);
+}
+:root[data-tint] .runner__top::before {
+  background: color-mix(in srgb, var(--page-sc) 42%, var(--plane));
+}
+:root[data-theme='dark'][data-tint] .runner__top::before {
+  background: color-mix(in srgb, var(--page-sc) 15%, #3a342e);
+}
+.runner--scroll .runner__bar.card {
+  position: static;
+  margin: 0;
+  padding: 10px 16px;
+  flex-wrap: nowrap;
+}
+.runner--scroll .runner__bar .runner__title,
+.runner--scroll .runner__bar .spacer {
+  display: none;
+}
+.runner--scroll .runner__bar .timer {
+  margin-inline: auto;
+}
+.runner--scroll .palette {
+  margin-top: 12px;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.runner--scroll .palette__item {
+  min-width: 30px;
+  height: 30px;
+  padding: 0 4px;
+  font-size: 14px;
+  border-width: 1.5px;
+}
+.runner__list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 6px 0 24px;
+}
+.runner--scroll .runner__grid {
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 22px;
+  align-items: stretch;
+}
+.runner--scroll .qview {
+  padding: 22px 26px 24px;
+}
+.runner--scroll .qview .qcontent img {
+  width: auto;
+  max-width: 100%;
+}
+.runner--scroll .question-resources > p.small.muted {
+  display: none;
+}
+.runner__side {
+  display: flex;
+  flex-direction: column;
+}
+.runner--scroll .answer-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.runner--scroll .answer-card .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.runner--scroll .answer-card .textarea {
+  flex: 1;
+  min-height: 200px;
+}
+.runner__flag {
+  align-self: flex-start;
+}
+.runner__flag[aria-pressed='true'] {
+  color: var(--crit);
+}
+.runner__end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0 60px;
+}
+@media (max-width: 900px) {
+  .runner--scroll .runner__bar.card {
+    flex-wrap: nowrap;
+    gap: 4px;
+    padding: 8px 6px;
+  }
+  .runner--scroll .runner__bar [data-exit] .runner__exit-text,
+  .runner--scroll .runner__bar .timer__left,
+  .runner--scroll .runner__bar .timer > svg:first-child,
+  .runner--scroll .runner__bar .runner__more {
+    display: none;
+  }
+  .runner--scroll .runner__bar .timer {
+    padding: 4px 6px 4px 10px;
+    gap: 4px;
+  }
+  .runner--scroll .runner__bar .timer__value {
+    font-size: 18px;
+  }
+  .runner--scroll .runner__bar .btn {
+    padding: 5px 9px;
+    font-size: 14px;
+  }
+  .runner--scroll .palette {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .runner--scroll .runner__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .runner--scroll .qview {
+    padding: 14px 10px 16px;
+  }
+  .runner--scroll .answer-card .textarea {
+    min-height: 130px;
+  }
+}
+/* the part is named in the heading, so the "Part (b) only" line is not repeated */
+.runner--scroll [data-fit] > .stack > p.small.muted:first-child {
+  display: none;
+}
+.runner__finish-short {
+  display: none;
+}
+@media (max-width: 900px) {
+  .runner--scroll .runner__finish-long {
+    display: none;
+  }
+  .runner--scroll .runner__finish-short {
+    display: inline;
   }
 }
