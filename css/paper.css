@@ -1401,3 +1401,157 @@ input[type='radio'] {
   .menu__tabs { display: flex; padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1.5px dashed var(--line-strong); }
   .tape--r, .tape--br { right: 12px; }
 }
+
+/* ── Mark picker (js/ui/mark-picker.js): buttons for 1-6 marks, a slider for 7+ ── */
+.markpick {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.markpick__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.markpick__btn {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--btn-shadow);
+  font: 400 21px/1 var(--font-display);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.12s;
+}
+.markpick__btn:hover {
+  background: var(--surface-2);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.markpick__btn[aria-checked='true'] {
+  background: var(--ink);
+  color: var(--surface);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.markpick__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.markpick__value {
+  font-family: var(--font-display);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.markpick__value b {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--ink);
+}
+.markpick__value span {
+  font-size: 17px;
+}
+.markpick__value .markpick__hint {
+  font: 500 14px/1.2 var(--font-body, inherit);
+  color: var(--ink-3);
+}
+.markpick__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.markpick__track > .btn {
+  flex: none;
+}
+.markpick__rail {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 0 12px;
+}
+.markpick__range {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: calc(100% + 24px);
+  height: 36px;
+  margin: 0 -12px;
+  background: transparent;
+  cursor: pointer;
+}
+.markpick__range::-webkit-slider-runnable-track {
+  height: 14px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--scf, var(--ink-3)) 0 var(--fill), var(--surface) var(--fill) 100%);
+}
+.markpick__range::-moz-range-track {
+  height: 10px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--scf, var(--ink-3)) 0 var(--fill), var(--surface) var(--fill) 100%);
+}
+.markpick__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -9px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: var(--btn-shadow);
+}
+.markpick__range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: var(--btn-shadow);
+}
+.markpick.is-unset .markpick__range::-webkit-slider-thumb {
+  border-style: dashed;
+}
+.markpick.is-unset .markpick__range::-moz-range-thumb {
+  border-style: dashed;
+}
+.markpick__range:focus-visible {
+  outline: 2.5px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+.markpick__ticks {
+  position: relative;
+  height: 18px;
+  margin: 0 2px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+.markpick__ticks span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-variant-numeric: tabular-nums;
+}
+.markbox .markpick + .row {
+  margin-top: 6px;
+}
+@media (max-width: 640px) {
+  .markpick__ticks .is-minor {
+    font-size: 0;
+  }
+  .markpick__ticks .is-minor::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 6px;
+    margin-top: 3px;
+    border-radius: 1px;
+    background: var(--ink-3);
+  }
+}

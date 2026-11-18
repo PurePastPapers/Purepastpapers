@@ -24,6 +24,7 @@ import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { scStyle, tintPage } from '../subject-colours.js';
 import { zoomButton } from '../zoom.js';
+import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, pageHead, soonBadge, toast } from '../ui.js';
 import { links, routeOf } from '../../core/links.js';
 
@@ -602,9 +603,7 @@ export async function mount(element, context) {
           <div class="qsplit__side stack stack--sm">
             <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${draft.answer || ''}</textarea></label>
             ${schemeOpen ? html`<section class="markbox stack stack--sm">
-              <label class="field"><span class="field__label">Marks awarded out of ${question.marks}</span>
-                ${question.marks <= 10 ? html`<select class="select" data-mark="${question.question_id}"><option value="">Choose marks</option>${Array.from({length: question.marks + 1}, (_, n) => html`<option value="${n}" ${String(n) === value ? 'selected' : ''}>${n}</option>`)}</select>` : html`<input class="input" type="number" min="0" max="${question.marks}" step="1" inputmode="numeric" value="${value}" data-mark="${question.question_id}" />`}
-              </label>
+              ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'mark' })}
               <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? 'Save mark' : 'Create free account to save mark'}</button>
                 ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as new attempt</button>` : ''}
                 ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
@@ -982,6 +981,7 @@ export async function mount(element, context) {
     (state.drafts[input.dataset.answer] ||= {}).answer = input.value;
     save();
   });
+  bindMarkPickers(element);
   on(element, 'input', '[data-mark]', (event, input) => {
     (state.drafts[input.dataset.mark] ||= {}).mark = input.value;
     save();
