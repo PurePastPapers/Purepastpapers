@@ -17,7 +17,8 @@ export async function mount(element, context) {
   const progress = api.getProgress();
   const backend = api.backendInfo();
   const theme = getThemePreference();
-  const isOwner = await api.isSiteOwner();
+  // A tab opened before an update can still hold an older api.js without this check; treat that as not an owner.
+  const isOwner = typeof api.isSiteOwner === 'function' ? await api.isSiteOwner().catch(() => false) : false;
 
   const avatarColour = progress.preferences.avatarColour || 'yellow';
   const studying = progress.preferences.studyLevel || '';
