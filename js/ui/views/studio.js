@@ -38,7 +38,9 @@ const TABS = [
 
 export async function mount(element, context) {
   context.setTitle('Content Studio');
-  if (!(await api.isSiteOwner())) return void showNotOwner(element);
+  // A tab opened before an update can still hold an older api.js without this check; treat that as not an owner.
+  const isOwner = typeof api.isSiteOwner === 'function' ? await api.isSiteOwner().catch(() => false) : false;
+  if (!isOwner) return void showNotOwner(element);
   const subjects = (await getSubjects()).filter((subject) => subject.has_written_exam);
 
   setHtml(
