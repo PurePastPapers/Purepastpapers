@@ -79,7 +79,8 @@ const LOGS_PAPER = new Set(['full_paper', 'custom_test']);
 
 /**
  * Completes a session and records the results in the Data Hub.
- * Only deliberate marks create attempts; unmarked questions are left out.
+ * Only deliberate marks create attempts; unmarked questions are left out of the score,
+ * but their typed answers are saved to mark later.
  * @param {object} session
  * @param {{ questions: object[], subject: object, paper?: object, totalAwarded?: number }} context
  */
@@ -101,6 +102,8 @@ export async function finishSession(session, { questions, subject, paper = null,
     questionAttempts.push({
       // PRD 8.4 fields
       question_id: question.question_id,
+      // A go saved earlier and opened to be marked keeps its id, so marking it replaces the waiting copy.
+      ...(session.attempt_ids?.[question.question_id] ? { attempt_id: session.attempt_ids[question.question_id] } : {}),
       source_type: question.source_type,
       difficulty: question.difficulty,
       marks_awarded: mark.marks_awarded,
@@ -110,6 +113,7 @@ export async function finishSession(session, { questions, subject, paper = null,
       subject_id: session.subject_id,
       session_id: session.session_id,
       marked_by: mark.marked_by,
+      ...(String(session.answers?.[question.question_id] || '').trim() ? { answer: session.answers[question.question_id] } : {}),
     });
   }
 
@@ -156,6 +160,13 @@ export async function finishSession(session, { questions, subject, paper = null,
       }
     : null;
 
-  await api.commitSessionResult(session, questionAttempts, paperAttempt);
+  // Typed answers left unmarked are kept, so they show as answered and can be marked later.
+  const scoredIds = new Set(scored.map((question) => question.question_id));
+  const unmarkedAnswers = questions
+    .filter((question) => !scoredIds.has(question.question_id) && String(session.answers?.[question.question_id] || '').trim())
+    .map((question) => ({ attempt_id: session.attempt_ids?.[question.question_id] || null, question_id: question.question_id, subject_id: session.subject_id, answer: session.answers[question.question_id], session_id: session.session_id }));
+  session.result.answers_saved_unmarked = unmarkedAnswers.length;
+
+  await api.commitSessionResult(session, questionAttempts, paperAttempt, unmarkedAnswers);
   return session.result;
 }

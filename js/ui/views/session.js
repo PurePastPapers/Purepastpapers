@@ -12,6 +12,7 @@ import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, p
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { zoomButton } from '../zoom.js';
+import { ANSWER_MIN, placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
@@ -19,7 +20,7 @@ import { targetGrade, tintPage } from '../subject-colours.js';
 import { icon } from '../icons.js';
 import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody } from '../question-view.js';
 import { groupEntry, runnerItems } from '../../engine/linked-parts.js';
-import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
+import { banner, confirmDialog, openModal, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
 
 const KIND_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Single question' };
 
@@ -219,7 +220,7 @@ export async function mount(element, context) {
         ${eachPalette(position)}
         ${paused()
           ? pausedPanel()
-          : html`<div class="runner__grid ${compare ? 'runner__grid--compare' : ''}">
+          : html`<div class="runner__grid ${compare ? 'runner__grid--compare' : ''}" ${compare ? '' : 'data-qfit'}>
         <article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? position + 1 : question.question_number}">
           <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
@@ -230,9 +231,9 @@ export async function mount(element, context) {
             </h1>
             <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('question')}</div>
           </header>
-          <div data-zoom-body>${questionBody(question)}</div>
+          <div data-zoom-body ${compare ? '' : 'data-fit'}>${questionBody(question)}</div>
         </article>
-        <div class="stack">
+        <div class="stack runner__side">
         ${compare
           ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? position + 1 : question.question_number}">
               <i class="tape tape--c" aria-hidden="true"></i>
@@ -283,6 +284,7 @@ export async function mount(element, context) {
         </footer>`}`}
       </div>`,
     );
+    if (!compare && !paused()) fitQuestions();
     return undefined;
   }
 
@@ -480,46 +482,27 @@ export async function mount(element, context) {
     window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - topOffset(), behavior });
   }
 
-  // Scale each question's printed images so the whole question fits on one screen, without
-  // going above a comfortable reading size or below a legible one. Phones fit the width only.
-  const READ_MAX = 0.9; // share of an image's natural width
-  const READ_MIN = 0.48;
-  // Source images get their src after the bundle loads (data-math-image), so wait for it first.
-  function loaded(img) {
-    const ready = () => (img.decode ? img.decode().catch(() => null) : null);
-    if (img.getAttribute('src')) return ready();
-    return new Promise((resolve) => {
-      const done = () => { observer.disconnect(); clearTimeout(timer); resolve(ready()); };
-      const observer = new MutationObserver(() => { if (img.getAttribute('src')) done(); });
-      const timer = setTimeout(done, 10_000);
-      observer.observe(img, { attributes: true, attributeFilter: ['src'] });
-    });
-  }
-
+  // Answer box below short questions and beside long ones, each question sized to fit one
+  // screen (js/ui/question-fit.js). Scrolling papers fit every item; one-at-a-time runners
+  // fit the current question above the pinned footer.
   function fitQuestions() {
-    const phone = window.matchMedia('(max-width: 900px)').matches;
-    return Promise.all($$('[data-fit]', element).map((body) => fitOne(body, phone)));
-  }
-  async function fitOne(body, phone) {
-    const images = $$('img', body).filter((img) => !img.closest('details'));
-    if (!images.length) return;
-    await Promise.all(images.map(loaded));
-    if (!body.isConnected) return;
-    if (phone) { images.forEach((img) => { img.style.width = ''; }); return; }
-    const width = body.clientWidth;
-    const setScale = (k) => images.forEach((img) => { img.style.width = `${Math.min(width, (img.naturalWidth || width / READ_MAX) * k)}px`; });
-    const head = body.closest('.qview')?.querySelector('.qview__head')?.offsetHeight || 0;
-    const available = window.innerHeight - topOffset() - head - 90;
-    let lo = READ_MIN;
-    let hi = READ_MAX;
-    setScale(hi);
-    if (body.scrollHeight <= available) return;
-    for (let step = 0; step < 14; step++) {
-      const mid = (lo + hi) / 2;
-      setScale(mid);
-      if (body.scrollHeight > available) hi = mid; else lo = mid;
+    if (scrollMode) {
+      return Promise.all($$('.runner__grid', element).map((grid) => placeQuestion(grid, {
+        body: $('[data-fit]', grid),
+        card: $('.qview', grid),
+        available: () => window.innerHeight - topOffset() - 16,
+        answer: ANSWER_MIN + 22 + 46, // gap, then the flag button under the answer card
+      })));
     }
-    setScale(lo);
+    const grid = $('.runner__grid[data-qfit]', element);
+    if (!grid) return Promise.resolve();
+    const footer = $('.runner__nav', element);
+    return placeQuestion(grid, {
+      body: $('[data-fit]', grid),
+      card: $('.qview', grid),
+      available: () => window.innerHeight - (grid.getBoundingClientRect().top + window.scrollY) - (footer ? footer.offsetHeight + 28 : 24),
+      answer: ANSWER_MIN + 28,
+    });
   }
 
   // The number row follows the question in view, and remembers it for when the student returns.
@@ -543,11 +526,9 @@ export async function mount(element, context) {
       });
     });
   };
-  const onResize = debounce(() => { if (scrollMode && session.status === 'in_progress') fitQuestions(); }, 250);
-  if (scrollMode) {
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
-  }
+  const onResize = debounce(() => { if (session.status === 'in_progress') fitQuestions(); }, 250);
+  window.addEventListener('resize', onResize);
+  if (scrollMode) window.addEventListener('scroll', onScroll, { passive: true });
 
   function drawWholePaper() {
     const pdf = isSafeUrl(paper?.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
@@ -683,7 +664,7 @@ export async function mount(element, context) {
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="result-hero__left">
             <p class="hand">${KIND_LABELS[session.kind].toLowerCase()} complete</p>
-            ${result.questions_unmarked ? html`<p class="small muted">${plural(result.questions_unmarked, 'question')} left unmarked. This score covers marked questions only and is not a full paper result.</p>` : ''}
+            ${result.questions_unmarked ? html`<p class="small muted">${plural(result.questions_unmarked, 'question')} left unmarked. This score covers marked questions only and is not a full paper result.${result.answers_saved_unmarked && api.isSignedIn() ? ` ${result.answers_saved_unmarked === 1 ? 'Your typed answer was' : `${result.answers_saved_unmarked} typed answers were`} saved to mark later in Practice.` : ''}</p>` : ''}
             <h1 class="result-hero__score" tabindex="-1">
               <span class="result-hero__value">${result.marks_awarded}</span><span class="result-hero__max"> / ${result.max_marks}</span>
             </h1>
@@ -802,6 +783,14 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── actions ─────────────────────────────────
 
+  /** Unmarked questions with a typed answer: these are saved to mark later when the session ends. */
+  const typedUnmarked = () => questions.filter((question) => !Number.isInteger(session.marks[question.question_id]) && String(session.answers[question.question_id] || '').trim());
+  const unmarkedMessage = (unmarked, typed) => {
+    const left = `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} no mark and will be left out of the score.`;
+    if (!typed || !api.isSignedIn()) return left;
+    return `${left} Your typed ${typed === 1 ? 'answer is' : `answers to ${typed} of them are`} saved as answered, not marked, so you can mark ${typed === 1 ? 'it' : 'them'} later in Practice.`;
+  };
+
   async function complete() {
     await finishSession(session, { questions, subject, paper, totalAwarded: session.total_awarded });
     draw();
@@ -811,13 +800,31 @@ export async function mount(element, context) {
 
   async function finishAnswering() {
     if (each) {
+      const typed = typedUnmarked();
       if (markedCount() === 0) {
-        const leave = await confirmDialog({
-          title: 'Nothing has been marked',
-          message: 'No marks have been saved in this session, so nothing will be recorded. Leave anyway?',
-          confirmLabel: 'Leave',
-        });
-        if (!leave) return;
+        // Typed answers can be kept without a mark: they count as done and can be marked later.
+        const choice = typed.length && api.isSignedIn()
+          ? await openModal({
+              title: 'Nothing has been marked',
+              body: html`<p>You can save your ${typed.length === 1 ? 'answer' : `${typed.length} answers`} without a mark. ${typed.length === 1 ? 'It counts' : 'They count'} as done and you can mark ${typed.length === 1 ? 'it' : 'them'} later in Practice.</p>`,
+              actions: [
+                { label: 'Keep going', cancel: true },
+                { label: 'Leave without saving', value: 'discard' },
+                { label: typed.length === 1 ? 'Save answer, mark later' : 'Save answers, mark later', value: 'save', variant: 'primary' },
+              ],
+            })
+          : (await confirmDialog({
+              title: 'Nothing has been marked',
+              message: 'No marks have been saved in this session, so nothing will be recorded. Leave anyway?',
+              confirmLabel: 'Leave',
+            })) && 'discard';
+        if (choice === 'save') {
+          await finishSession(session, { questions, subject, paper });
+          toast(typed.length === 1 ? 'Answer saved. Mark it later in Practice.' : 'Answers saved. Mark them later in Practice.', { type: 'success' });
+          leave();
+          return;
+        }
+        if (choice !== 'discard') return;
         removed = true;
         await api.deleteSession(session.session_id);
         leave();
@@ -827,7 +834,7 @@ export async function mount(element, context) {
       if (unmarked > 0) {
         const proceed = await confirmDialog({
           title: 'Finish now?',
-          message: `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} not been marked and will be left out of your results.`,
+          message: unmarkedMessage(unmarked, typed.length),
           confirmLabel: 'Finish',
         });
         if (!proceed) return;
@@ -967,7 +974,7 @@ export async function mount(element, context) {
     if (unmarked > 0) {
       const proceed = await confirmDialog({
         title: 'Some questions are not marked',
-        message: `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} no marks entered and will be left out of the results.`,
+        message: unmarkedMessage(unmarked, typedUnmarked().length),
         confirmLabel: 'Save results',
       });
       if (!proceed) return undefined;

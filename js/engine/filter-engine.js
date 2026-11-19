@@ -165,17 +165,18 @@ function sortMatches(matches, sortBy, specIndex, papersById, shuffleSeed) {
  *                 required assessed/crossover point to be inside each active selection.
  *   curriculumPoints Iterable<string> primary assessed points covered by a verified
  *                 year/chapter view; ANDed with any explicit search selection.
- *   markStatuses  Iterable<string>   unmarked | marked | lost | full; any may match, empty = all
+ *   markStatuses  Iterable<string>   unmarked | answered | marked | lost | full; any may match, empty = all.
+ *                 'unmarked' is not tried yet; 'answered' has an answer saved to mark later.
  *   markStatus    'all' | 'unmarked' | 'marked' | 'lost' | 'full' (legacy single selection)
  *   sortBy        'newest' | 'oldest' | 'shuffle' | 'paper_order' | 'spec' | 'difficulty' | 'marks_asc' | 'marks_desc'
  *   shuffleSeed   stable seed for the shuffle order
  *   search        string             matches question text, number and paper id
- * @param {object} context  { specIndex, learned:Set, latestAttempts:Map, papersById?:Map }
+ * @param {object} context  { specIndex, learned:Set, latestAttempts:Map, savedAnswers?:Map|Set, papersById?:Map }
  * @returns {{ matches: object[], locked: {question, missing}[], total: number }}
  *   `locked` holds questions that pass every other filter but need unlearned spec points.
  */
 export function filterQuestions(questions, criteria = {}, context) {
-  const { specIndex, learned = new Set(), latestAttempts = new Map(), papersById = new Map() } = context;
+  const { specIndex, learned = new Set(), latestAttempts = new Map(), savedAnswers = new Map(), papersById = new Map() } = context;
   const qualificationCodes = nonEmpty(toSet(criteria.qualificationCodes));
   const sourceTypes = nonEmpty(toSet(criteria.sourceTypes));
   const difficulties = nonEmpty(toSet(criteria.difficulties));
@@ -238,7 +239,11 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (statuses && !statuses.has(questionStatus(question, latestAttempts))) continue;
     if (markStatuses) {
       const status = markStatus(question, latestAttempts);
-      if (!markStatuses.has(status) && !(markStatuses.has('marked') && status !== 'unmarked')) continue;
+      const waiting = savedAnswers.has(question.question_id);
+      const matches = (markStatuses.has('answered') && waiting) ||
+        (markStatuses.has('unmarked') && status === 'unmarked' && !waiting) ||
+        (status !== 'unmarked' && (markStatuses.has(status) || markStatuses.has('marked')));
+      if (!matches) continue;
     }
     if (search) {
       const specText = [...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]

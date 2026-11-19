@@ -76,16 +76,26 @@ test('Find questions: the filter is one compact bar of dropdowns', { skip }, asy
   await page.close();
 });
 
-test('Find questions: question left, answer right, mark scheme replaces the question', { skip }, async () => {
+test('Find questions: answer box beside or below the question, mark scheme replaces the question', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 1366, height: 900 });
-  const card = page.locator('.qcard').filter({ has: page.locator('.qsplit') }).first();
+  await page.waitForSelector('.qsplit[data-qlayout]');
+  const card = page.locator('.qcard').filter({ has: page.locator('.qsplit[data-qlayout]') }).first();
+  const layout = await card.locator('.qsplit').getAttribute('data-qlayout');
   const main = await card.locator('.qsplit__main').boundingBox();
   const side = await card.locator('.qsplit__side').boundingBox();
-  assert.ok(main.x + main.width <= side.x, 'question sits to the left of the answer box');
+  if (layout === 'below') assert.ok(main.y + main.height <= side.y, 'a short question sits above the answer box');
+  else assert.ok(main.x + main.width <= side.x, 'a long question sits to the left of the answer box');
   assert.ok(await card.locator('.qsplit__side [data-answer]').isVisible());
 
-  await card.locator('.qsplit__answer').fill('My answer');
-  await card.locator('[data-scheme]').click();
+  // The demo account has done some questions before: the popup asks which attempt this is.
+  await card.locator('.qsplit__answer').click();
+  const popup = page.locator('dialog.modal');
+  if (await popup.isVisible().catch(() => false) || await popup.waitFor({ timeout: 800 }).then(() => true, () => false)) {
+    await popup.getByRole('button', { name: 'Start a new attempt' }).click();
+  }
+  const fresh = page.locator('.qcard').filter({ has: page.locator('.qsplit[data-qlayout]') }).first();
+  await fresh.locator('.qsplit__answer').fill('My answer');
+  await fresh.locator('[data-scheme]').click();
   const opened = page.locator('.qcard').filter({ has: page.locator('.qsplit__main.is-scheme') }).first();
   await opened.waitFor();
   assert.ok(await opened.locator('.qsplit__main .ms').isVisible(), 'mark scheme is on the left');

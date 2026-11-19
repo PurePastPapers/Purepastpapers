@@ -46,6 +46,8 @@ function open(source) {
     // Question images are links to the full-size image; inside Enlarge a click or the end of a
     // drag would follow them and open it in a new tab, so keep just the image.
     copy.querySelectorAll('a:has(img)').forEach((link) => link.replaceWith(...link.childNodes));
+    // The page sizes question images to fit the screen (question-fit.js); Enlarge has its own scale.
+    copy.querySelectorAll('img').forEach((img) => img.style.removeProperty('width'));
     copy.classList.add('zoom__content');
     body.append(copy);
     if (copy.querySelector('img')) dialog.classList.add('zoom--image');

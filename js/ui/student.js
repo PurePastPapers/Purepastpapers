@@ -223,7 +223,7 @@ export function subjectPills(bundles, activeId, hrefFor) {
 // ── starting sessions ──
 
 /** Opens one question for practice (marked straight away against its mark scheme). */
-export async function startSingle(question, navigate) {
+export async function startSingle(question, navigate, { attempts = null } = {}) {
   // A part of a linked question opens with the rest of it: they are one question.
   const ids = question.linked_group?.question_ids || [question.question_id];
   const session = createSession({
@@ -233,6 +233,14 @@ export async function startSingle(question, navigate) {
     question_ids: ids,
     mark_mode: 'each',
   });
+  // Marking a go saved earlier: it opens with that answer in the box, and marking it marks that go.
+  if (attempts) {
+    session.attempt_ids = {};
+    for (const [id, attempt] of Object.entries(attempts)) {
+      session.attempt_ids[id] = attempt.attempt_id;
+      if (attempt.answer) session.answers[id] = attempt.answer;
+    }
+  }
   await api.saveSession(session, { silent: true });
   navigate(routeOf(links.session(session.session_id)));
 }

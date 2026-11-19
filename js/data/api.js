@@ -4,6 +4,7 @@
 
 import { APP, LIMITS } from '../config/app.config.js';
 import { createBus } from '../core/bus.js';
+import { uid } from '../core/utils.js';
 import { latestByQuestion } from '../engine/analytics.js';
 import { localAdapter } from './adapters/local-adapter.js';
 import { supabaseAdapter } from './adapters/supabase-adapter.js';
@@ -42,6 +43,7 @@ const emptyProgress = (userId) => ({
   learned_textbook_sections: [],
   question_attempts: [],
   paper_attempts: [],
+  saved_answers: [], // goes saved to mark later: { attempt_id, question_id, subject_id, answer, timestamp, updated_at, session_id?, group_attempt_id? }
   custom_tests: [],
   sessions: [],
   preferences: {},
@@ -50,10 +52,13 @@ const emptyProgress = (userId) => ({
 function normalise(document, userId) {
   const base = emptyProgress(userId);
   const merged = { ...base, ...(document || {}), user_id: userId };
-  for (const key of ['enrolled_subjects', 'learned_spec_points', 'learned_textbook_sections', 'question_attempts', 'paper_attempts', 'custom_tests', 'sessions']) {
+  for (const key of ['enrolled_subjects', 'learned_spec_points', 'learned_textbook_sections', 'question_attempts', 'paper_attempts', 'saved_answers', 'custom_tests', 'sessions']) {
     if (!Array.isArray(merged[key])) merged[key] = [];
   }
   if (!merged.preferences || typeof merged.preferences !== 'object') merged.preferences = {};
+  // Every go at a question has an id, so any one of them can be changed later.
+  // Older records get a stable id from their question and date, so it is the same on every load.
+  for (const entry of [...merged.question_attempts, ...merged.saved_answers]) entry.attempt_id ||= `att_${entry.question_id}_${entry.timestamp}`;
   merged.learned_spec_points = migrateLearnedIds(merged.learned_spec_points);
   return merged;
 }
@@ -421,44 +426,166 @@ export async function deleteSession(sessionId) {
 }
 
 /** Stores a finished session and logs its results in one write (PRD 4.4). */
-export async function commitSessionResult(session, questionAttempts = [], paperAttempt = null) {
+export async function commitSessionResult(session, questionAttempts = [], paperAttempt = null, unmarkedAnswers = []) {
   const doc = requireProgress();
+  for (const attempt of questionAttempts) {
+    attempt.attempt_id ||= uid('att');
+    absorbWaiting(doc, attempt);
+  }
   doc.question_attempts.push(...questionAttempts);
+  for (const entry of unmarkedAnswers) keepWaiting(doc, entry);
   if (paperAttempt) doc.paper_attempts.push(paperAttempt);
   upsertSession(session);
   await persist();
 }
 
-/** Save an intentional inline mark. Editing preserves the attempt's original date and count. */
-export async function saveQuestionMark(question, marks, { reattempt = false } = {}) {
-  if (!Number.isInteger(marks) || marks < 0 || marks > question.marks) throw new Error('Enter a whole number within the available marks.');
-  const doc = requireProgress();
-  const previous = latestByQuestion(doc.question_attempts).get(question.question_id);
-  if (previous && !reattempt) {
-    if (previous.marks_awarded === marks) return previous;
-    previous.mark_edits = [...(previous.mark_edits || []), { marks_awarded: previous.marks_awarded, max_marks: previous.max_marks }];
-    previous.marks_awarded = marks;
-    previous.max_marks = question.marks;
-    await persist();
-    return previous;
+// ───────────────────────────── attempts at a question ─────────────────────────────
+// Every go at a question is kept, with its answer. A marked go lives in question_attempts;
+// a go saved to mark later lives in saved_answers until it is marked, keeping its attempt_id.
+// A student can have any number of each, and can change any answer or mark afterwards.
+
+const hasText = (answer) => typeof answer === 'string' && answer.trim() !== '';
+const validMark = (marks, max) => Number.isInteger(marks) && marks >= 0 && marks <= max;
+const waitingIndex = (doc, attemptId) => (attemptId ? doc.saved_answers.findIndex((entry) => entry.attempt_id === attemptId) : -1);
+const markedAttempt = (doc, attemptId) => (attemptId ? doc.question_attempts.find((entry) => entry.attempt_id === attemptId) : null);
+
+/** Adds a go saved to mark later, or updates one when its attempt_id is already waiting. */
+function keepWaiting(doc, { attempt_id = null, question_id, subject_id, answer = '', session_id = null, group_attempt_id = null }, now = new Date().toISOString()) {
+  const index = waitingIndex(doc, attempt_id);
+  if (index >= 0) {
+    Object.assign(doc.saved_answers[index], { answer, updated_at: now }, session_id ? { session_id } : {});
+    return doc.saved_answers[index];
   }
-  const attempt = { question_id: question.question_id, subject_id: question.subject_id, source_type: question.source_type,
+  const entry = { attempt_id: attempt_id || uid('att'), question_id, subject_id, answer, timestamp: now, updated_at: now };
+  if (session_id) entry.session_id = session_id;
+  if (group_attempt_id) entry.group_attempt_id = group_attempt_id;
+  doc.saved_answers.push(entry);
+  return entry;
+}
+
+/** A waiting go that gets its mark leaves the waiting list; its answer and date move onto the attempt. */
+function absorbWaiting(doc, attempt) {
+  const index = waitingIndex(doc, attempt.attempt_id);
+  if (index < 0) return;
+  const [entry] = doc.saved_answers.splice(index, 1);
+  if (hasText(entry.answer) && !hasText(attempt.answer)) attempt.answer = entry.answer;
+  attempt.answered_at = entry.timestamp;
+  if (entry.group_attempt_id && !attempt.group_attempt_id) attempt.group_attempt_id = entry.group_attempt_id;
+  if (attempt.inline) attempt.saved_answer = entry;
+}
+
+/** Every go at a question, newest first: { ...entry, waiting } (waiting = saved, not marked yet). */
+export function attemptsFor(questionId) {
+  const doc = progress;
+  if (!doc) return [];
+  const when = (entry) => entry.answered_at || entry.timestamp;
+  return [
+    ...doc.question_attempts.filter((entry) => entry.question_id === questionId && hasValidMarkLike(entry)).map((entry) => ({ ...entry, waiting: false })),
+    ...doc.saved_answers.filter((entry) => entry.question_id === questionId).map((entry) => ({ ...entry, waiting: true })),
+  ].sort((a, b) => (when(a) < when(b) ? 1 : -1));
+}
+const hasValidMarkLike = (entry) => Number.isFinite(entry.marks_awarded) && Number.isFinite(entry.max_marks);
+
+/** question_id → that question's newest go saved to mark later (shown as "Answered, not marked"). */
+export function savedAnswers() {
+  const map = new Map();
+  for (const entry of progress?.saved_answers || []) {
+    const current = map.get(entry.question_id);
+    if (!current || entry.updated_at >= current.updated_at) map.set(entry.question_id, entry);
+  }
+  return map;
+}
+
+/** The answer text of the newest go at a question (waiting or marked). */
+export function answerFor(questionId) {
+  return attemptsFor(questionId).find((entry) => hasText(entry.answer))?.answer || '';
+}
+
+/**
+ * Save an answer without a mark. With an attemptId it changes that go's answer (a marked
+ * go keeps its mark); without one it starts a new go that waits to be marked.
+ */
+export async function saveAnswerUnmarked(question, answer = '', { attemptId = null, groupAttemptId = null } = {}) {
+  const doc = requireProgress();
+  const text = String(answer || '');
+  const marked = markedAttempt(doc, attemptId);
+  if (marked) {
+    marked.answer = text;
+    marked.answer_edited_at = new Date().toISOString();
+    await persist();
+    return { ...marked, waiting: false };
+  }
+  const entry = keepWaiting(doc, { attempt_id: attemptId, question_id: question.question_id, subject_id: question.subject_id, answer: text, group_attempt_id: groupAttemptId });
+  await persist();
+  return { ...entry, waiting: true };
+}
+
+/**
+ * Save a mark. attemptId picks the go: a marked one has its mark changed (edits can be undone),
+ * a waiting one is marked. With no attemptId, `reattempt` starts a new go; otherwise the latest
+ * marked go is changed (kept for older callers).
+ */
+export async function saveQuestionMark(question, marks, { reattempt = false, answer = null, attemptId = null, groupAttemptId = null } = {}) {
+  if (!validMark(marks, question.marks)) throw new Error('Enter a whole number within the available marks.');
+  const doc = requireProgress();
+  const target = markedAttempt(doc, attemptId) || (!attemptId && !reattempt ? latestByQuestion(doc.question_attempts).get(question.question_id) : null);
+  if (target) {
+    if (hasText(answer)) target.answer = answer;
+    if (target.marks_awarded !== marks) {
+      target.mark_edits = [...(target.mark_edits || []), { marks_awarded: target.marks_awarded, max_marks: target.max_marks }];
+      target.marks_awarded = marks;
+      target.max_marks = question.marks;
+      target.edited_at = new Date().toISOString();
+    }
+    await persist();
+    return target;
+  }
+  const attempt = { attempt_id: attemptId || uid('att'), question_id: question.question_id, subject_id: question.subject_id, source_type: question.source_type,
     difficulty: question.difficulty, marks_awarded: marks, max_marks: question.marks, timestamp: new Date().toISOString(), marked_by: 'self', inline: true };
+  if (hasText(answer)) attempt.answer = answer;
+  if (groupAttemptId) attempt.group_attempt_id = groupAttemptId;
+  absorbWaiting(doc, attempt);
   doc.question_attempts.push(attempt);
   await persist();
   return attempt;
 }
 
-/** Undo the most recent score edit, or remove a newly saved inline attempt. */
-export async function undoQuestionMark(questionId) {
+/** Change the mark on any marked go (by attempt_id), or on the latest go at a question. */
+export async function changeQuestionMark(attemptOrQuestionId, marks) {
   const doc = requireProgress();
-  const index = doc.question_attempts.indexOf(latestByQuestion(doc.question_attempts).get(questionId));
+  const attempt = markedAttempt(doc, attemptOrQuestionId) || latestByQuestion(doc.question_attempts).get(attemptOrQuestionId);
+  if (!attempt) throw new Error('There is no mark to change yet.');
+  if (!validMark(marks, attempt.max_marks)) throw new Error('Enter a whole number within the available marks.');
+  if (attempt.marks_awarded === marks) return attempt;
+  attempt.mark_edits = [...(attempt.mark_edits || []), { marks_awarded: attempt.marks_awarded, max_marks: attempt.max_marks }];
+  attempt.marks_awarded = marks;
+  attempt.edited_at = new Date().toISOString();
+  await persist();
+  return attempt;
+}
+
+/** Undo the most recent mark change on a go (by attempt_id, else the latest go at the question). */
+export async function undoQuestionMark(questionId, { attemptId = null } = {}) {
+  const doc = requireProgress();
+  const attempt = markedAttempt(doc, attemptId) || latestByQuestion(doc.question_attempts).get(questionId);
+  const index = doc.question_attempts.indexOf(attempt);
   if (index < 0) return;
-  const attempt = doc.question_attempts[index];
   const previous = attempt.mark_edits?.pop();
   if (previous) Object.assign(attempt, previous);
-  else if (attempt.inline) doc.question_attempts.splice(index, 1);
-  else return;
+  else if (attempt.inline) {
+    doc.question_attempts.splice(index, 1);
+    // Marking a go saved for later is undone by putting it back, still unmarked.
+    if (attempt.saved_answer) doc.saved_answers.push(attempt.saved_answer);
+  } else return;
+  await persist();
+}
+
+/** Remove a go saved to mark later. */
+export async function removeSavedAnswer(attemptId) {
+  const doc = requireProgress();
+  const index = waitingIndex(doc, attemptId);
+  if (index < 0) return;
+  doc.saved_answers.splice(index, 1);
   await persist();
 }
 

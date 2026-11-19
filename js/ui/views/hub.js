@@ -16,7 +16,8 @@ import { icon } from '../icons.js';
 import { questionRef, questionSnippet } from '../question-view.js';
 import { attemptInSubject, loadStudent, startQuestionSet, startSingle } from '../student.js';
 import { tintPage } from '../subject-colours.js';
-import { difficultyBadge, emptyState, fmtPercent, groupDot, meter, pageHead, ragBadge, soonBadge, subjectName } from '../ui.js';
+import { difficultyBadge, emptyState, fmtPercent, groupDot, meter, openModal, pageHead, ragBadge, soonBadge, subjectName, toast } from '../ui.js';
+import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { links } from '../../core/links.js';
 
 const TABS = [
@@ -55,6 +56,10 @@ export async function mount(element, context) {
   const attempts = progress.question_attempts.filter((attempt) => scope.some((bundle) => attemptInSubject(attempt, bundle)));
   const latest = latestByQuestion(attempts);
   const latestList = [...latest.values()].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
+  // Answers saved to mark later: done, but with no score yet.
+  const waitingList = (progress.saved_answers || []).filter((entry) => scope.some((bundle) => attemptInSubject(entry, bundle)))
+    .sort((a, b) => (a.updated_at < b.updated_at ? 1 : -1));
+  const answeredCount = new Set([...latest.keys(), ...waitingList.map((entry) => entry.question_id)]).size;
   const paperAttempts = paperHistory(progress.paper_attempts, { subjectId: subjectId === 'all' ? null : subjectId });
   const find = (questionId) => {
     for (const bundle of scope) {
@@ -70,10 +75,11 @@ export async function mount(element, context) {
   function overview() {
     const score = totals(latestList);
     const levels = byDifficulty(latestList).filter((level) => level.count);
-    const recent = [...attempts].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1)).slice(0, 8);
+    const recent = [...attempts, ...waitingList.map((entry) => ({ ...entry, waiting: true, timestamp: entry.updated_at }))]
+      .sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1)).slice(0, 8);
     return html`<div class="stack stack--lg">
       <section class="grid grid--stats" aria-label="Summary">
-        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Questions answered</span><span class="stat__value">${latest.size}</span><span class="stat__note">${plural(attempts.length, 'attempt')} in total</span></div>
+        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Questions answered</span><span class="stat__value">${answeredCount}</span><span class="stat__note">${plural(attempts.length, 'marked attempt')}${waitingList.length ? html` · <a href="${links.hub({ tab: 'questions', subject: subjectId === 'all' ? null : subjectId, show: 'waiting' })}">${waitingList.length} not marked yet</a>` : ''}</span></div>
         <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i>
           <span class="stat__label">Average score</span><span class="stat__value">${fmtPercent(score.percentage)}</span>
           <span class="stat__note">${score.count ? ragBadge(ragFor(score.percentage)) : 'latest attempt at each question'}</span>
@@ -137,7 +143,9 @@ export async function mount(element, context) {
               <span class="activity__what">
                 ${found ? html`${found.bundle.subject.subject} · ${questionRef(found.question, found.bundle.papersById)}` : 'Question no longer in the bank'}
               </span>
-              ${ragBadge(ragFor(scoreOf(attempt)), null, { label: false })}<span class="num small">${attempt.marks_awarded}/${attempt.max_marks}</span>
+              ${attempt.waiting
+                ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Not marked yet</span>`
+                : html`${ragBadge(ragFor(scoreOf(attempt)), null, { label: false })}<span class="num small">${attempt.marks_awarded}/${attempt.max_marks}</span>`}
             </li>`;
           })}
         </ul>
@@ -164,13 +172,23 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── questions ─────────────────────────────────
 
-  const questionFilters = { status: 'all', difficulty: 'all' };
+  const questionFilters = { status: context.query.show === 'waiting' && waitingList.length ? 'waiting' : 'all', difficulty: 'all' };
 
   function questionsTable() {
     const counts = attemptCounts(attempts);
-    const rows = latestList.filter(
+    const difficultyOf = (entry) => entry.difficulty ?? find(entry.question_id)?.question.difficulty;
+    // A question answered again and saved to mark later shows once, as waiting for its mark.
+    const newestWaiting = new Map();
+    for (const entry of waitingList) if (!newestWaiting.has(entry.question_id)) newestWaiting.set(entry.question_id, entry);
+    const waitingCounts = new Map();
+    for (const entry of waitingList) waitingCounts.set(entry.question_id, (waitingCounts.get(entry.question_id) || 0) + 1);
+    const all = [
+      ...[...newestWaiting.values()].map((entry) => ({ ...entry, waiting: true, timestamp: entry.updated_at, difficulty: difficultyOf(entry) })),
+      ...latestList.filter((attempt) => !newestWaiting.has(attempt.question_id)),
+    ].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
+    const rows = all.filter(
       (attempt) =>
-        (questionFilters.status === 'all' || ragFor(scoreOf(attempt)) === questionFilters.status) &&
+        (questionFilters.status === 'all' || (questionFilters.status === 'waiting' ? attempt.waiting : !attempt.waiting && ragFor(scoreOf(attempt)) === questionFilters.status)) &&
         (questionFilters.difficulty === 'all' || attempt.difficulty === questionFilters.difficulty),
     );
     if (!rows.length) return html`<p class="muted" style="padding:16px 0">No questions match these filters.</p>`;
@@ -192,10 +210,14 @@ export async function mount(element, context) {
                 </td>
                 <td>${found ? html`<span class="tag">${specIndex.topicOf(found.question.primary_spec_points[0])?.title || '—'}</span>` : ''}</td>
                 <td>${difficultyBadge(attempt.difficulty)}</td>
-                <td class="nowrap">${ragBadge(ragFor(score), score, { label: false })} <span class="small muted num">${attempt.marks_awarded}/${attempt.max_marks}</span></td>
-                <td class="num">${counts.get(attempt.question_id)}</td>
+                <td class="nowrap">${attempt.waiting
+                  ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Not marked yet</span>`
+                  : html`${ragBadge(ragFor(score), score, { label: false })} <span class="small muted num">${attempt.marks_awarded}/${attempt.max_marks}</span>`}</td>
+                <td class="num">${(counts.get(attempt.question_id) || 0) + (waitingCounts.get(attempt.question_id) || 0)}</td>
                 <td class="nowrap small">${fmtRelative(attempt.timestamp)}</td>
-                <td class="right">${found ? html`<button type="button" class="btn btn--sm" data-retry="${attempt.question_id}">Retry</button>` : ''}</td>
+                <td class="right">${found ? (attempt.waiting
+                  ? html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm btn--primary" data-mark-later="${attempt.attempt_id}">Mark it</button><button type="button" class="btn btn--sm" data-attempts="${attempt.question_id}">All attempts</button></span>`
+                  : html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm" data-attempts="${attempt.question_id}">All attempts</button><button type="button" class="btn btn--sm" data-retry="${attempt.question_id}" title="Answer it again and save a new score">Retry</button></span>`) : ''}</td>
               </tr>`;
             })}
           </tbody>
@@ -220,7 +242,7 @@ export async function mount(element, context) {
       </div>
       <div class="stack stack--sm" style="margin-bottom:14px">
         <div class="chips" role="group" aria-label="Filter by result">
-          ${chip('status', 'all', 'All results')} ${chip('status', 'red', RAG_LABELS.red)} ${chip('status', 'amber', RAG_LABELS.amber)} ${chip('status', 'green', RAG_LABELS.green)}
+          ${chip('status', 'all', 'All results')} ${waitingList.length ? chip('status', 'waiting', `Not marked yet (${waitingList.length})`) : ''} ${chip('status', 'red', RAG_LABELS.red)} ${chip('status', 'amber', RAG_LABELS.amber)} ${chip('status', 'green', RAG_LABELS.green)}
         </div>
         <div class="chips" role="group" aria-label="Filter by difficulty">
           ${chip('difficulty', 'all', 'All difficulties')} ${DIFFICULTIES.map((difficulty) => chip('difficulty', difficulty.id, difficulty.label))}
@@ -405,7 +427,7 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── page ─────────────────────────────────
 
-  const hasData = progress.question_attempts.length > 0 || progress.paper_attempts.length > 0;
+  const hasData = progress.question_attempts.length > 0 || progress.paper_attempts.length > 0 || (progress.saved_answers || []).length > 0;
   const body = !hasData
     ? emptyState({
         iconName: 'chart',
@@ -454,6 +476,78 @@ export async function mount(element, context) {
     for (const chip of element.querySelectorAll('[data-history]')) chip.setAttribute('aria-pressed', String(chip === button));
     setHtml($('[data-history-table]', element), historyTable());
   });
+  // Every go at a question, with its answer: change any mark, or mark a go saved for later.
+  const reload = () => context.navigate(location.hash.slice(1) || '/hub', { replace: true });
+  const clock = (iso) => new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  const whenLabel = (iso) => `${fmtRelative(iso)} at ${clock(iso)}`;
+  const markLater = (attemptId) => {
+    const entry = (progress.saved_answers || []).find((candidate) => candidate.attempt_id === attemptId);
+    const found = entry && find(entry.question_id);
+    if (found) startSingle(found.question, context.navigate, { attempts: { [entry.question_id]: entry } });
+  };
+  async function changeMark(attempt, found) {
+    const value = await openModal({
+      title: `Change your mark for ${questionRef(found.question, found.bundle.papersById)}`,
+      body: html`<p class="small muted">Your attempt from ${whenLabel(attempt.answered_at || attempt.timestamp).toLowerCase()} is marked ${attempt.marks_awarded}/${attempt.max_marks}. Changing it corrects that attempt; your other attempts stay as they are.</p>
+        ${attempt.answer ? html`<p class="attempt-answer small">${attempt.answer}</p>` : ''}
+        <div style="margin-top:14px">${markPicker({ id: 'change', max: attempt.max_marks, value: attempt.marks_awarded, attr: 'change-mark-value' })}</div>`,
+      onOpen: (dialog) => bindMarkPickers(dialog),
+      actions: [
+        { label: 'Cancel', cancel: true },
+        { label: 'Save new mark', variant: 'primary', collect: (dialog) => Number(dialog.querySelector('[data-change-mark-value]').value) },
+      ],
+    });
+    if (value == null || Number.isNaN(value)) return;
+    await api.changeQuestionMark(attempt.attempt_id, value);
+    toast(`Mark changed to ${value}/${attempt.max_marks}.`, { type: 'success' });
+    reload();
+  }
+  on(element, 'click', '[data-attempts]', async (event, button) => {
+    const questionId = button.dataset.attempts;
+    const found = find(questionId);
+    if (!found) return;
+    const list = api.attemptsFor(questionId);
+    const picked = await openModal({
+      title: `Your attempts at ${questionRef(found.question, found.bundle.papersById)}`,
+      wide: true,
+      body: html`<p class="small muted">Every attempt is kept with your answer. Your progress uses the newest marked one.</p>
+        <ol class="attempt-list-full">
+          ${list.map((attempt, index) => html`<li class="attempt-full">
+            <div class="attempt-full__head">
+              <b>Attempt ${list.length - index}</b><span class="small muted">${whenLabel(attempt.answered_at || attempt.timestamp)}</span>
+              ${attempt.waiting
+                ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Not marked yet</span>`
+                : html`${ragBadge(ragFor(scoreOf(attempt)), null, { label: false })}<span class="num small">${attempt.marks_awarded}/${attempt.max_marks}</span>${attempt.mark_edits?.length ? html`<span class="small muted">(changed)</span>` : ''}`}
+              <span class="attempt-full__actions">${attempt.waiting
+                ? html`<button type="submit" class="btn btn--sm btn--primary" name="pick" value="mark:${attempt.attempt_id}">Mark it</button>`
+                : html`<button type="submit" class="btn btn--sm" name="pick" value="change:${attempt.attempt_id}">Change mark</button>`}</span>
+            </div>
+            <p class="attempt-answer small">${attempt.answer || html`<span class="muted">No typed answer (done on paper)</span>`}</p>
+          </li>`)}
+        </ol>`,
+      onOpen: (dialog) => {
+        // The buttons in the list close the dialog with their own choice.
+        dialog.addEventListener('click', (clickEvent) => {
+          const pick = clickEvent.target.closest('button[name="pick"]');
+          if (!pick) return;
+          clickEvent.preventDefault();
+          dialog.dataset.pick = pick.value;
+          dialog.querySelector('.modal__foot button[type="submit"]').click();
+        });
+      },
+      actions: [
+        { label: 'Close', cancel: true },
+        { label: 'Answer it again', variant: 'primary', collect: (dialog) => dialog.dataset.pick || 'retry' },
+      ],
+    });
+    if (!picked) return;
+    const [kind, attemptId] = picked.split(':');
+    if (kind === 'retry') return startSingle(found.question, context.navigate);
+    if (kind === 'mark') return markLater(attemptId);
+    const attempt = list.find((candidate) => candidate.attempt_id === attemptId);
+    if (attempt) changeMark(attempt, found);
+  });
+  on(element, 'click', '[data-mark-later]', (event, button) => markLater(button.dataset.markLater));
   on(element, 'click', '[data-retry]', (event, button) => {
     const found = find(button.dataset.retry);
     if (found) startSingle(found.question, context.navigate);
