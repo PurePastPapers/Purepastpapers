@@ -12,6 +12,7 @@ import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, p
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { zoomButton } from '../zoom.js';
+import { ANSWER_MIN, placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
@@ -219,7 +220,7 @@ export async function mount(element, context) {
         ${eachPalette(position)}
         ${paused()
           ? pausedPanel()
-          : html`<div class="runner__grid ${compare ? 'runner__grid--compare' : ''}">
+          : html`<div class="runner__grid ${compare ? 'runner__grid--compare' : ''}" ${compare ? '' : 'data-qfit'}>
         <article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? position + 1 : question.question_number}">
           <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
@@ -230,9 +231,9 @@ export async function mount(element, context) {
             </h1>
             <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('question')}</div>
           </header>
-          <div data-zoom-body>${questionBody(question)}</div>
+          <div data-zoom-body ${compare ? '' : 'data-fit'}>${questionBody(question)}</div>
         </article>
-        <div class="stack">
+        <div class="stack runner__side">
         ${compare
           ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? position + 1 : question.question_number}">
               <i class="tape tape--c" aria-hidden="true"></i>
@@ -283,6 +284,7 @@ export async function mount(element, context) {
         </footer>`}`}
       </div>`,
     );
+    if (!compare && !paused()) fitQuestions();
     return undefined;
   }
 
@@ -480,46 +482,27 @@ export async function mount(element, context) {
     window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - topOffset(), behavior });
   }
 
-  // Scale each question's printed images so the whole question fits on one screen, without
-  // going above a comfortable reading size or below a legible one. Phones fit the width only.
-  const READ_MAX = 0.9; // share of an image's natural width
-  const READ_MIN = 0.48;
-  // Source images get their src after the bundle loads (data-math-image), so wait for it first.
-  function loaded(img) {
-    const ready = () => (img.decode ? img.decode().catch(() => null) : null);
-    if (img.getAttribute('src')) return ready();
-    return new Promise((resolve) => {
-      const done = () => { observer.disconnect(); clearTimeout(timer); resolve(ready()); };
-      const observer = new MutationObserver(() => { if (img.getAttribute('src')) done(); });
-      const timer = setTimeout(done, 10_000);
-      observer.observe(img, { attributes: true, attributeFilter: ['src'] });
-    });
-  }
-
+  // Answer box below short questions and beside long ones, each question sized to fit one
+  // screen (js/ui/question-fit.js). Scrolling papers fit every item; one-at-a-time runners
+  // fit the current question above the pinned footer.
   function fitQuestions() {
-    const phone = window.matchMedia('(max-width: 900px)').matches;
-    return Promise.all($$('[data-fit]', element).map((body) => fitOne(body, phone)));
-  }
-  async function fitOne(body, phone) {
-    const images = $$('img', body).filter((img) => !img.closest('details'));
-    if (!images.length) return;
-    await Promise.all(images.map(loaded));
-    if (!body.isConnected) return;
-    if (phone) { images.forEach((img) => { img.style.width = ''; }); return; }
-    const width = body.clientWidth;
-    const setScale = (k) => images.forEach((img) => { img.style.width = `${Math.min(width, (img.naturalWidth || width / READ_MAX) * k)}px`; });
-    const head = body.closest('.qview')?.querySelector('.qview__head')?.offsetHeight || 0;
-    const available = window.innerHeight - topOffset() - head - 90;
-    let lo = READ_MIN;
-    let hi = READ_MAX;
-    setScale(hi);
-    if (body.scrollHeight <= available) return;
-    for (let step = 0; step < 14; step++) {
-      const mid = (lo + hi) / 2;
-      setScale(mid);
-      if (body.scrollHeight > available) hi = mid; else lo = mid;
+    if (scrollMode) {
+      return Promise.all($$('.runner__grid', element).map((grid) => placeQuestion(grid, {
+        body: $('[data-fit]', grid),
+        card: $('.qview', grid),
+        available: () => window.innerHeight - topOffset() - 16,
+        answer: ANSWER_MIN + 22 + 46, // gap, then the flag button under the answer card
+      })));
     }
-    setScale(lo);
+    const grid = $('.runner__grid[data-qfit]', element);
+    if (!grid) return Promise.resolve();
+    const footer = $('.runner__nav', element);
+    return placeQuestion(grid, {
+      body: $('[data-fit]', grid),
+      card: $('.qview', grid),
+      available: () => window.innerHeight - (grid.getBoundingClientRect().top + window.scrollY) - (footer ? footer.offsetHeight + 28 : 24),
+      answer: ANSWER_MIN + 28,
+    });
   }
 
   // The number row follows the question in view, and remembers it for when the student returns.
@@ -543,11 +526,9 @@ export async function mount(element, context) {
       });
     });
   };
-  const onResize = debounce(() => { if (scrollMode && session.status === 'in_progress') fitQuestions(); }, 250);
-  if (scrollMode) {
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
-  }
+  const onResize = debounce(() => { if (session.status === 'in_progress') fitQuestions(); }, 250);
+  window.addEventListener('resize', onResize);
+  if (scrollMode) window.addEventListener('scroll', onScroll, { passive: true });
 
   function drawWholePaper() {
     const pdf = isSafeUrl(paper?.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
