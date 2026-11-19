@@ -1,15 +1,16 @@
 // "Check your email": the popup shown after signing up while Supabase waits for the account
 // to be confirmed. Styled like the Enlarge popup (js/ui/zoom.js). The student can type the
-// 6-digit code from the email (works when the email is opened on another device, and email
+// code from the email (SIGNUP_CODE_LENGTH digits) (works when the email is opened on another device, and email
 // link scanners can't use it up) or press the link in the email, which this popup notices by
 // itself. It offers a resend (Supabase allows one every 60 seconds) and lets the student go
 // back and fix the address.
 
 import { esc } from '../core/dom.js';
 import * as api from '../data/api.js';
+import { SIGNUP_CODE_LENGTH } from '../config/supabase.config.js';
 
 const RESEND_WAIT = 60;
-const CODE_LENGTH = 6;
+const CODE_LENGTH = SIGNUP_CODE_LENGTH;
 
 const infoIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>';
 
@@ -39,9 +40,9 @@ export function openVerifyEmail({ email, name = '', onChangeEmail = () => {}, on
       <button type="button" class="btn btn--sm" data-verify-close>Close</button></header>
     <div class="modal__body" data-verify-body>
       ${signupSteps(2)}
-      <p class="verify__lead">We’ve sent a ${CODE_LENGTH}-digit code to</p><span class="verify__email">${esc(email)}</span>
+      <p class="verify__lead">We’ve sent ${CODE_LENGTH === 8 ? 'an' : 'a'} ${CODE_LENGTH}-digit code to</p><span class="verify__email">${esc(email)}</span>
       <div class="otp" role="group" aria-label="${CODE_LENGTH}-digit code" data-otp>
-        ${Array.from({ length: CODE_LENGTH }, (_, index) => `${index === CODE_LENGTH / 2 ? '<i aria-hidden="true"></i>' : ''}<input class="otp__box" inputmode="numeric" autocomplete="${index === 0 ? 'one-time-code' : 'off'}" maxlength="${CODE_LENGTH}" aria-label="Digit ${index + 1}" data-otp-box />`).join('')}
+        ${Array.from({ length: CODE_LENGTH }, (_, index) => `${index === Math.floor(CODE_LENGTH / 2) ? '<i aria-hidden="true"></i>' : ''}<input class="otp__box" inputmode="numeric" autocomplete="${index === 0 ? 'one-time-code' : 'off'}" maxlength="${CODE_LENGTH}" aria-label="Digit ${index + 1}" data-otp-box />`).join('')}
       </div>
       <p class="verify__error" data-verify-error role="alert" hidden></p>
       <p class="verify__text verify__text--tight">Type the code from the email. You can open the email on your phone, it still works here.</p>

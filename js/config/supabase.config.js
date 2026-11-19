@@ -3,6 +3,10 @@
 export const SUPABASE_URL = 'https://spjlnvjdstxdajcsljvq.supabase.co';
 export const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_PhvNjl0vIPebOieiK_esUQ_2ZTqzQTC';
 
+// Digits in the sign-up confirmation code. Must match Supabase: Authentication → Sign In /
+// Providers → Email → Email OTP Length (this project sends 8).
+export const SIGNUP_CODE_LENGTH = 8;
+
 // Keep local Node-based tooling on the local adapter; browser production uses Supabase.
 export const SUPABASE_CONFIGURED =
   typeof window !== 'undefined' &&

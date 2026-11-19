@@ -1022,13 +1022,13 @@
 .verify__or::before, .verify__or::after { content: ""; flex: 1; border-top: 1px dashed var(--line-strong); }
 .otp { display: flex; gap: 8px; justify-content: center; margin: 16px 0 4px; }
 .otp > i { width: 10px; }
-.otp__box { width: 48px; height: 58px; padding: 0; text-align: center; border: 2px solid var(--ink); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 26px/1 var(--font-display); box-shadow: 2px 2px 0 var(--ink); caret-color: var(--ink); }
+.otp__box { width: 46px; height: 56px; min-width: 0; flex: 0 1 46px; padding: 0; text-align: center; border: 2px solid var(--ink); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 26px/1 var(--font-display); box-shadow: 2px 2px 0 var(--ink); caret-color: var(--ink); }
 .otp__box:focus { outline: 3px solid var(--accent-wash); outline-offset: 1px; }
 .otp__box:disabled { opacity: 0.6; }
 @media (max-width: 520px) {
-  .otp { gap: 6px; }
+  .otp { gap: 4px; }
   .otp > i { width: 4px; }
-  .otp__box { width: 40px; height: 50px; font-size: 22px; }
+  .otp__box { width: 34px; height: 46px; flex-basis: 34px; font-size: 20px; border-radius: 6px; }
   .verify .modal__title { font-size: 23px; }
   .verify .modal__body { padding: 20px 18px 6px; }
   .verify .modal__foot { flex-direction: column-reverse; align-items: stretch; gap: 10px; }

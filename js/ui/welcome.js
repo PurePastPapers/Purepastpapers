@@ -26,7 +26,7 @@ const TILES = [
   {
     ic: 'user',
     title: 'Free account',
-    text: 'Optional: you can browse and practise without one. It saves your subjects, topics and marks. Three quick steps: your details, the 6-digit code we email you, then pick your subjects.',
+    text: 'Optional: you can browse and practise without one. It saves your subjects, topics and marks. Three quick steps: your details, the code we email you, then pick your subjects.',
     where: 'Sign up, top right',
   },
 ];
