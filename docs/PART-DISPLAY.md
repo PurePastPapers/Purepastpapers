@@ -130,3 +130,14 @@ content, with a separate answer box for each part.
   the unit with your answer" and graphs or equations made in the same part. Both regexes
   now skip those; `tools/parts/drop-false-dependencies.py` removed the 17 committed false
   links (each checked against its crop).
+
+## Equation sheets cut off last questions
+
+The last part of a paper used to be cropped to the end of the PDF, so its picture ran on
+into the insert cover, the physics equation list or formulae sheet, the periodic table or
+the maths formula sheet. `tools/parts/trim-booklet-pages.py` cuts those pages off (82 last
+questions across 1CH0, 1SC0, 1MA1, 1PH0, 8PH0 and 9PH0). A page counts as a booklet page
+when it is near-identical to a page ending another paper's last part in other exam series
+(papers of the same series share questions, so they are not compared). The part's
+`source_regions` are cut to match and `provenance.booklet_pages_trimmed` is set. A few
+cases the matching gets wrong are fixed by hand in `KEEP`. Re-running changes nothing.
