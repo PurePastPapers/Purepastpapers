@@ -16,8 +16,9 @@ import { createSession } from '../../data/sessions.js';
 import { countByNode, filterQuestions } from '../../engine/filter-engine.js';
 import { latestByQuestion } from '../../engine/analytics.js';
 import { buildTest, minutesOf } from '../../engine/test-builder.js';
+import { collapseLinked, collapseLocked, expandLinkedIds, groupEntry } from '../../engine/linked-parts.js';
 import { icon } from '../icons.js';
-import { markSchemeBody, marksPill, questionBody, questionMeta, questionRef, questionSnippet } from '../question-view.js';
+import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody, questionMeta, questionRef, questionSnippet } from '../question-view.js';
 import { mountSpecTree } from '../spec-tree.js';
 import { mountCurriculumSelector } from '../curriculum-selector.js';
 import { topicOrganisationControl } from '../topic-organisation.js';
@@ -251,7 +252,9 @@ export async function mount(element, context) {
     state.topicOrganisation = 'official';
   }
   migrateBrowserRange();
-  state.selected = state.selected.filter((id) => bundle.questionsById.has(id));
+  // A linked group is selected by its group id (engine/linked-parts.js).
+  const entryOf = (id) => bundle.questionsById.get(id) || (id.startsWith('LINKED_') ? groupEntry(id, bundle.questionsById) : null);
+  state.selected = state.selected.filter((id) => entryOf(id));
   save();
 
   const pool = practicePool(bundle);
@@ -495,7 +498,9 @@ export async function mount(element, context) {
     </div>`;
   }
 
-  function testPreview(matches, lockedCount) {
+  function testPreview(unitMatches, lockedCount) {
+    // A linked group goes into a test whole or not at all, and counts as one question.
+    const matches = collapseLinked(unitMatches, bundle.questionsById);
     currentTest = buildTest(matches, {
       minutes: state.minutes,
       difficulty: state.difficulty,
@@ -505,6 +510,7 @@ export async function mount(element, context) {
       prioritiseWeak: state.prioritiseWeak,
       topicOf: (question) => specIndex.topicOf(question.primary_spec_points[0])?.id || '',
     });
+    currentTest.question_ids = expandLinkedIds(currentTest.question_ids, bundle.questionsById);
     const test = currentTest;
     if (!test.questions.length) {
       return html`<div class="card">
@@ -540,7 +546,7 @@ export async function mount(element, context) {
             (question, index) =>
               html`<li>
                 <span class="testlist__num">${index + 1}</span>
-                <span class="testlist__topic">${specIndex.topicOf(question.primary_spec_points[0])?.title || 'Topic'}</span>
+                <span class="testlist__topic">${specIndex.topicOf(question.primary_spec_points[0])?.title || 'Topic'}${question.is_linked_group ? html` <span class="small muted">· ${question.parts.length} linked parts</span>` : ''}</span>
                 ${difficultyBadge(question.difficulty)}
                 <span class="small muted nowrap">${plural(question.marks, 'mark')}</span>
               </li>`,
@@ -604,7 +610,8 @@ export async function mount(element, context) {
     </div>`;
   }
 
-  function questionCard(question, { locked = null } = {}) {
+  function questionCard(question, { locked = null, partsMissing = null } = {}) {
+    if (question.is_linked_group) return linkedCard(question, { locked, partsMissing });
     const attempt = latest.get(question.question_id);
     const selected = state.selected.includes(question.question_id);
     if (locked) {
@@ -660,6 +667,94 @@ export async function mount(element, context) {
     </article>`;
   }
 
+  /**
+   * A linked group (engine/linked-parts.js): the question's introduction once, then every
+   * part with its own crop and answer box. The mark scheme view gives each part its own
+   * scheme and marks; one button saves them all, as an attempt on each part.
+   */
+  function linkedCard(entry, { locked = null, partsMissing = null } = {}) {
+    const id = entry.question_id;
+    const ref = linkedRef(entry, bundle.papersById);
+    const label = (part) => linkedPartLabel(part, entry);
+    if (locked) {
+      return html`<article class="qcard is-locked qgroup">
+        <span class="qcard__select muted">${icon('lock', { size: 16, label: 'Locked' })}</span>
+        <div style="min-width:0">
+          <p class="qcard__ref">${ref} <span class="tag">${entry.parts.length} linked parts</span></p>
+          <p class="small">Shown as one question, so every part has to be on a topic you have learned.</p>
+          <div class="qgroup__lockparts">${entry.parts.map((part) => {
+            const missing = partsMissing?.get(part.question_id) || [];
+            const own = missing.filter((point) => specIndex.expand([...(part.primary_spec_points || []), ...(part.crossover_spec_points || [])]).has(point));
+            return own.length
+              ? html`<span class="is-missing">${label(part)} needs: ${own.slice(0, 2).map((point) => specIndex.label(point)).join(' · ')}${own.length > 2 ? ` and ${own.length - 2} more` : ''}</span>`
+              : html`<span class="is-ok">${label(part)} learned</span>`;
+          })}</div>
+        </div>
+        <div class="qcard__side">${marksPill(entry.marks)}</div>
+      </article>`;
+    }
+    const selected = state.selected.includes(id);
+    const open = !state.closedQuestions.includes(id);
+    const schemeOpen = state.schemeQuestions.includes(id);
+    const attempts = entry.parts.map((part) => latest.get(part.question_id));
+    const saved = attempts.every(Boolean);
+    const paper = bundle.papersById.get(entry.paper_id);
+    const markOf = (part) => {
+      const attempt = latest.get(part.question_id);
+      return state.drafts[part.question_id]?.mark ?? (attempt ? String(attempt.marks_awarded) : '');
+    };
+    const total = entry.parts.reduce((sum, part) => sum + (markOf(part) === '' ? 0 : Number(markOf(part))), 0);
+    const canUndo = entry.parts.some((part) => latest.get(part.question_id)?.inline || latest.get(part.question_id)?.mark_edits?.length);
+    return html`<article class="qcard qgroup ${selected ? 'is-selected' : ''}" data-group="${id}">
+      <span class="qcard__select">
+        <input type="checkbox" class="tree__check" data-select="${id}" ${selected ? 'checked' : ''} aria-label="Add ${ref} to set" />
+      </span>
+      <div style="min-width:0">
+        <p class="qcard__ref">${ref} ${saved
+          ? html`<span class="tag">Saved ${attempts.reduce((sum, attempt) => sum + attempt.marks_awarded, 0)}/${entry.marks}</span>`
+          : attempts.some(Boolean) ? html`<span class="tag">Partly marked</span>` : html`<span class="tag">Unmarked</span>`}</p>
+        <p class="small muted">${subject.board} · ${subject.subject} · ${entry.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
+        ${questionMeta(entry, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(id) })}
+        ${!open ? html`<p class="qcard__text">${entry.parts.length} linked parts: ${entry.parts.map((part) => questionSnippet(part, 60)).join(' · ')}</p>` : ''}
+        ${open ? html`${linkedNote(entry)}
+          <div class="qgroup__intro">${linkedIntro(entry)}</div>
+          ${entry.parts.map((part) => {
+            const uses = linkedUses(part, entry);
+            const partId = part.question_id;
+            return html`<section class="qgroup__part" aria-label="Part ${label(part)}">
+              <div class="qsplit">
+                <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Part'} ${label(part)} · ${ref}">
+                  <div class="qsplit__head"><span class="field__label qgroup__partlabel"><b>${schemeOpen ? html`${icon('eye', { size: 14 })} Mark scheme ${label(part)}` : html`Part ${label(part)}`}</b><span class="small muted">${plural(part.marks, 'mark')}</span>${uses.length && !schemeOpen ? html`<span class="qgroup__uses">${icon('chevronLeft', { size: 12 })} uses your answer to ${uses.join(' and ')}</span>` : ''}</span>${zoomButton(schemeOpen ? 'mark scheme' : 'question')}</div>
+                  ${schemeOpen ? markSchemeBody(part, { wholeQuestion: false }) : linkedPartBody(part)}
+                </div>
+                <div class="qsplit__side stack stack--sm">
+                  <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${state.drafts[partId]?.answer || ''}</textarea></label>
+                  ${schemeOpen ? html`<section class="markbox">${markPicker({ id: partId, max: part.marks, value: markOf(part), attr: 'mark', label: `Marks for ${label(part)}, out of ${part.marks}` })}</section>` : ''}
+                </div>
+              </div>
+            </section>`;
+          })}
+          <div class="qgroup__foot">
+            ${schemeOpen
+              ? html`<p class="qgroup__total" data-group-total>Total <b>${total}</b> / ${entry.marks}</p>
+                <div class="row row--tight">
+                  <button type="button" class="btn btn--primary btn--sm" data-save-group="${id}">${user ? `Save marks for all ${entry.parts.length} parts` : 'Create free account to save marks'}</button>
+                  ${saved ? html`<button type="button" class="btn btn--sm" data-reattempt-group="${id}">Save as new attempt</button>` : ''}
+                  ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo-group="${id}">Undo last save</button>` : ''}
+                  <button type="button" class="btn btn--sm" data-scheme="${id}" aria-expanded="true">${icon('chevronLeft', { size: 15 })} Back to question</button>
+                </div>
+                <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>`
+              : html`<p class="small muted">Answer all ${entry.parts.length} parts, then check them together.</p>
+                <div class="row row--tight">
+                  <button type="button" class="btn btn--primary btn--sm" data-scheme="${id}" aria-expanded="false">${icon('eye', { size: 15 })} Show mark scheme for all parts</button>
+                  ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, entry.paper_id)}">View full paper</a>` : ''}
+                </div>`}
+          </div>` : ''}
+      </div>
+      <div class="qcard__side">${marksPill(entry.marks)}<button type="button" class="btn btn--sm" data-open="${id}" aria-expanded="${open}">${open ? 'Hide question' : 'Show question'}</button></div>
+    </article>`;
+  }
+
   function browserResults() {
     const customMarks = state.markMin !== '' || state.markMax !== '';
     const min = state.markMin === '' ? 0 : Number(state.markMin);
@@ -667,18 +762,21 @@ export async function mount(element, context) {
     const valid = Number.isInteger(min) && min >= 0 && (max === Infinity || Number.isInteger(max)) && max >= min;
     const bands = customMarks ? [{ min: valid ? min : Infinity, max: valid ? max : -Infinity }]
       : bandOptions.filter((band) => state.bands.includes(band.id));
-    const { matches, locked } = filterQuestions(
+    const filtered = filterQuestions(
       scopedPool(),
       criteria({ difficulties: state.difficulties, markBands: bands, markStatuses: state.markStatuses, search: state.search }),
       engineContext,
     );
+    // Linked parts are one question: one card, locked unless every part is learned.
+    const matches = collapseLinked(filtered.matches, bundle.questionsById);
+    const locked = collapseLocked(filtered.locked, bundle.questionsById);
     const sorted = matches;
     const pageCount = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
     state.page = Math.min(pageCount, state.page);
     const matchIds = new Set(matches.map((question) => question.question_id));
     save();
     const visible = sorted.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
-    const chosen = state.selected.map((id) => bundle.questionsById.get(id)).filter(Boolean);
+    const chosen = state.selected.map(entryOf).filter(Boolean);
     const picker = state.mode === 'picker';
     const active = [
       ...(activeFocus() !== null ? [{key: 'focus', label: `${activeFocus().length} spec points selected`}] : []),
@@ -705,7 +803,7 @@ export async function mount(element, context) {
               <strong>${plural(chosen.length, 'question')} chosen</strong>
               <span class="muted"> · ${sum(chosen, (q) => q.marks)} marks · about ${fmtMinutes(sum(chosen, minutesOf))} · ${chosen.filter((q) => !matchIds.has(q.question_id)).length} outside current filters</span>
             </p>
-            <details><summary>Review selected questions</summary><ul>${chosen.map((q) => html`<li>${questionRef(q, bundle.papersById)} · ${q.marks} marks <button type="button" class="linkbtn small" data-remove-selected="${q.question_id}">Remove</button></li>`)}</ul></details>
+            <details><summary>Review selected questions</summary><ul>${chosen.map((q) => html`<li>${q.is_linked_group ? linkedRef(q, bundle.papersById) : questionRef(q, bundle.papersById)} · ${q.marks} marks <button type="button" class="linkbtn small" data-remove-selected="${q.question_id}">Remove</button></li>`)}</ul></details>
             <div class="row row--tight">
               <label class="check small"><input type="checkbox" data-flag="stopwatch" ${state.stopwatch ? 'checked' : ''} /><span>Run a stopwatch</span></label>
               <button type="button" class="btn btn--sm btn--ghost" data-clear-selection>Clear</button>
@@ -731,7 +829,7 @@ export async function mount(element, context) {
       ${locked.length
         ? html`<details class="locked">
             <summary>${icon('lock', { size: 16 })} ${plural(locked.length, 'more question')} ${locked.length === 1 ? 'needs' : 'need'} topics you have not ticked as learned</summary>
-            <div class="qlist" style="margin-top:12px">${locked.slice(0, 40).map((entry) => questionCard(entry.question, { locked: entry.missing }))}</div>
+            <div class="qlist" style="margin-top:12px">${locked.slice(0, 40).map((entry) => questionCard(entry.question, { locked: entry.missing, partsMissing: entry.partsMissing }))}</div>
             <p class="small" style="margin-top:10px"><a href="${links.subject(subjectId)}">Update your covered topics</a>, or turn off the covered-content filter to browse them.</p>
           </details>`
         : ''}`;
@@ -774,7 +872,7 @@ export async function mount(element, context) {
         $('[data-body]', element),
         html`<div class="split split--wide-aside">
           <div data-controls>${builderControls(matches)}</div>
-          <aside class="sticky" data-output>${testPreview(matches, locked.length)}</aside>
+          <aside class="sticky" data-output>${testPreview(matches, collapseLocked(locked, bundle.questionsById).length)}</aside>
         </div>`,
       );
     } else {
@@ -792,7 +890,7 @@ export async function mount(element, context) {
     // result list immediately, without remounting the controls.
     if (timed()) {
       const { matches, locked } = filterQuestions(scopedPool(), criteria(), engineContext);
-      setHtml($('[data-output]', element), testPreview(matches, locked.length));
+      setHtml($('[data-output]', element), testPreview(matches, collapseLocked(locked, bundle.questionsById).length));
     } else {
       setHtml($('[data-output]', element), browserResults());
     }
@@ -816,7 +914,7 @@ export async function mount(element, context) {
     if (keepControls) {
       if (timed()) {
         const { matches, locked } = filterQuestions(scopedPool(), criteria(), engineContext);
-        setHtml($('[data-output]', element), testPreview(matches, locked.length));
+        setHtml($('[data-output]', element), testPreview(matches, collapseLocked(locked, bundle.questionsById).length));
       } else {
         setHtml($('[data-output]', element), browserResults());
       }
@@ -984,12 +1082,16 @@ export async function mount(element, context) {
     }, 300),
   );
   on(element, 'change', '[data-select]', (event, box) => change(() => {
-    const question = bundle.questionsById.get(box.dataset.select);
+    const question = entryOf(box.dataset.select);
     if (!box.checked) { state.selected = state.selected.filter((id) => id !== question.question_id); return; }
     // A full parent and one of its parts must not both contribute marks.
     const conflicts = state.selected.filter((id) => {
-      const existing = bundle.questionsById.get(id);
-      return existing && (existing.question_id === question.parent_question_id || existing.parent_question_id === question.question_id);
+      const existing = entryOf(id);
+      if (!existing) return false;
+      // A linked group and one of its own parts must not both be in the set.
+      if (question.is_linked_group && question.part_ids.includes(id)) return true;
+      if (existing.is_linked_group && existing.part_ids.includes(question.question_id)) return true;
+      return existing.question_id === question.parent_question_id || existing.parent_question_id === question.question_id;
     });
     const retained = state.selected.filter((id) => !conflicts.includes(id) && id !== question.question_id);
     if (retained.length >= LIMITS.questionSetMax) {
@@ -1071,6 +1173,74 @@ export async function mount(element, context) {
   };
   on(element, 'click', '[data-save-mark]', (event, button) => saveMark(button.dataset.saveMark));
   on(element, 'click', '[data-reattempt]', (event, button) => saveMark(button.dataset.reattempt, true));
+  // A linked group saves one attempt per part, after checking every part has a mark.
+  const saveGroup = async (groupId, reattempt = false) => {
+    if (pendingMarks.has(groupId)) return;
+    const entry = groupEntry(groupId, bundle.questionsById);
+    const card = element.querySelector(`[data-group="${CSS.escape(groupId)}"]`);
+    if (!entry || !card) return;
+    const error = card.querySelector('[data-mark-error]');
+    const values = entry.parts.map((part) => {
+      const value = card.querySelector(`[data-mark="${CSS.escape(part.question_id)}"]`)?.value ?? state.drafts[part.question_id]?.mark;
+      (state.drafts[part.question_id] ||= {}).mark = value;
+      return value;
+    });
+    const missing = entry.parts.filter((part, index) => {
+      const value = values[index];
+      return value == null || value === '' || !Number.isInteger(Number(value)) || Number(value) < 0 || Number(value) > part.marks;
+    });
+    if (missing.length) {
+      error.hidden = false;
+      error.textContent = `Choose a mark for ${missing.map((part) => linkedPartLabel(part, entry)).join(', ')}.`;
+      return;
+    }
+    if (!user) {
+      save();
+      return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
+    }
+    pendingMarks.add(groupId);
+    for (const button of card.querySelectorAll('[data-save-group], [data-reattempt-group]')) button.disabled = true;
+    try {
+      for (const [index, part] of entry.parts.entries()) await api.saveQuestionMark(part, Number(values[index]), { reattempt });
+      const total = values.reduce((sum, value) => sum + Number(value), 0);
+      const confirmation = card.querySelector('[data-mark-confirmation]');
+      if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${total}/${entry.marks}.`; }
+      save();
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+      if (!element.isConnected) return;
+      refreshLatest();
+      update({ keepControls: true, keepPage: true });
+      toast(`Saved ${total}/${entry.marks}.`, { type: 'success' });
+    } catch (failure) {
+      error.hidden = false;
+      error.textContent = failure.message;
+    } finally {
+      pendingMarks.delete(groupId);
+      for (const button of card.querySelectorAll('[data-save-group], [data-reattempt-group]')) button.disabled = false;
+    }
+  };
+  on(element, 'click', '[data-save-group]', (event, button) => saveGroup(button.dataset.saveGroup));
+  on(element, 'click', '[data-reattempt-group]', (event, button) => saveGroup(button.dataset.reattemptGroup, true));
+  on(element, 'click', '[data-undo-group]', async (event, button) => {
+    const entry = groupEntry(button.dataset.undoGroup, bundle.questionsById);
+    for (const part of entry?.parts || []) {
+      const attempt = latest.get(part.question_id);
+      if (!attempt?.inline && !attempt?.mark_edits?.length) continue;
+      await api.undoQuestionMark(part.question_id);
+      delete state.drafts[part.question_id]?.mark;
+    }
+    refreshLatest();
+    save();
+    update({ keepControls: true, keepPage: true });
+    toast('Last mark save undone.', { type: 'success' });
+  });
+  // The running total follows the mark buttons.
+  on(element, 'input', '[data-group] [data-mark]', (event, input) => {
+    const card = input.closest('[data-group]');
+    const totalEl = card?.querySelector('[data-group-total] b');
+    if (!totalEl) return;
+    totalEl.textContent = [...card.querySelectorAll('[data-mark]')].reduce((sum, field) => sum + (field.value === '' ? 0 : Number(field.value)), 0);
+  });
   on(element, 'click', '[data-undo]', async (event, button) => {
     const id = button.dataset.undo;
     await api.undoQuestionMark(id);
@@ -1082,7 +1252,9 @@ export async function mount(element, context) {
   });
 
   on(element, 'click', '[data-start-set]', async () => {
-    const questions = state.selected.map((id) => bundle.questionsById.get(id)).filter(Boolean);
+    // A linked group starts as all of its parts, together and in printed order.
+    const questions = expandLinkedIds(state.selected.flatMap((id) => entryOf(id)?.part_ids || (entryOf(id) ? [id] : [])), bundle.questionsById)
+      .map((id) => bundle.questionsById.get(id)).filter(Boolean);
     if (!questions.length) return;
     const stopwatch = state.stopwatch;
     state.selected = [];

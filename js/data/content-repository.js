@@ -12,6 +12,7 @@ import { naturalCompare } from '../core/utils.js';
 import { createSpecIndex } from '../engine/spec-index.js';
 import { createCurriculumMap } from '../engine/curriculum-map.js';
 import { createTextbookIndex } from '../engine/textbook-index.js';
+import { linkGroups } from '../engine/linked-parts.js';
 
 const DATA_ROOT = new URL('../../data/', import.meta.url);
 const LOCAL_PACK_KEY = `${APP.storageNamespace}:content-pack`;
@@ -168,24 +169,9 @@ async function loadBundle(subjectId) {
     questionsById.set(id, textbooks.index.attach(question, textbooks.links[id]));
   }
 
-  // A part that builds on an earlier part's answer (depends_on_question_ids) also
-  // needs that part's topics: it is only offered once those are learnt too.
-  for (const [id, question] of questionsById) {
-    if (!question.depends_on_question_ids?.length) continue;
-    const points = new Set();
-    const requirements = { ...(question.textbook_requirements || {}) };
-    const seen = new Set([id]);
-    const queue = [...question.depends_on_question_ids];
-    while (queue.length) {
-      const dependency = questionsById.get(queue.shift());
-      if (!dependency || seen.has(dependency.question_id)) continue;
-      seen.add(dependency.question_id);
-      for (const point of [...(dependency.primary_spec_points || []), ...(dependency.crossover_spec_points || [])]) points.add(point);
-      for (const [point, requirement] of Object.entries(dependency.textbook_requirements || {})) requirements[point] ??= requirement;
-      queue.push(...(dependency.depends_on_question_ids || []));
-    }
-    questionsById.set(id, { ...question, dependency_spec_points: [...points], ...(Object.keys(requirements).length ? { textbook_requirements: requirements } : {}) });
-  }
+  // Parts that build on each other's answers are offered together as one question, and
+  // only once every part's topics are learned (engine/linked-parts.js).
+  linkGroups(questionsById);
 
   // Keep papers and questions consistent: a question that names a paper belongs to it.
   for (const question of questionsById.values()) {
