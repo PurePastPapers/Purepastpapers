@@ -143,6 +143,36 @@ paths out of the public repository. The original Maths research cache may not
 exist on your machine; reconstruct it from public provenance instead of treating
 a local path in an old note as a required external dependency.
 
+### Qualification identity and AS/A-Level labels (mandatory)
+
+Paper cards once showed AS Biology and AS Physics papers with no level and with the
+A-Level code (9BN0, 9PH0), because the code came from the subject and `shortTitle()`
+removes the "AS …:" prefix. Do not repeat this:
+
+- Every paper and question keeps its own exact `level` (`AS`/`A-Level`),
+  `qualification_code` and `spec_code` in data. Declare every qualification in the
+  subject's `qualifications` list (`{code, label, is_as}`).
+- If a subject holds AS and A-Level papers, every paper card and paper/session header
+  must visibly label each paper AS or A-Level with that paper's own code (8PH0 vs 9PH0).
+- Render labels only through `js/engine/paper-identity.js` (`levelOf`, `paperCode`,
+  `levelLabel`), from per-paper metadata: never from the parent subject's code, a title
+  (cards shorten it), a year, a paper number or a digit swap. `is_as` is compatible
+  metadata, not the sole source. A single-qualification subject gets no level label.
+- Acceptance: add the subject to `DUAL_BANKS` in `tests/paper-labels.test.mjs` and run
+  `node tools/browser-paper-labels.cjs`; both must show at least one AS and one A-Level
+  card with the right codes. The test fails if a new dual-level bank is not listed.
+- AS/A-Level is separate from teaching year, exam year, paper/module route and topic
+  coverage; do not derive one from another.
+
+### Optional-module routes
+
+Where students sit a fixed set of option routes (Further Mathematics), declare
+`module_routes` in the registry (modules, official routes per qualification, rules)
+and give papers/questions `module_ids`/`module_id`. `js/engine/module-routes.js`
+validates routes and scopes the tree, papers and questions; route choices live in
+`preferences.moduleRoutes` and never clear learned ticks. See
+`docs/FURTHER-MATHS-HANDOVER.md`.
+
 ## 4. Maintain two clearly separate topic organisations
 
 Verify the target's actual official specification, issue and authored order.
