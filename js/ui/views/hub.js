@@ -16,7 +16,7 @@ import { icon } from '../icons.js';
 import { questionRef, questionSnippet } from '../question-view.js';
 import { attemptInSubject, loadStudent, startQuestionSet, startSingle } from '../student.js';
 import { tintPage } from '../subject-colours.js';
-import { difficultyBadge, emptyState, fmtPercent, groupDot, meter, openModal, pageHead, ragBadge, soonBadge, subjectName, toast } from '../ui.js';
+import { confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, meter, openModal, pageHead, ragBadge, soonBadge, subjectName, toast } from '../ui.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { links } from '../../core/links.js';
 
@@ -520,7 +520,8 @@ export async function mount(element, context) {
                 : html`${ragBadge(ragFor(scoreOf(attempt)), null, { label: false })}<span class="num small">${attempt.marks_awarded}/${attempt.max_marks}</span>${attempt.mark_edits?.length ? html`<span class="small muted">(changed)</span>` : ''}`}
               <span class="attempt-full__actions">${attempt.waiting
                 ? html`<button type="submit" class="btn btn--sm btn--primary" name="pick" value="mark:${attempt.attempt_id}">Mark it</button>`
-                : html`<button type="submit" class="btn btn--sm" name="pick" value="change:${attempt.attempt_id}">Change mark</button>`}</span>
+                : html`<button type="submit" class="btn btn--sm" name="pick" value="change:${attempt.attempt_id}">Change mark</button>`}
+                <button type="submit" class="btn btn--sm btn--ghost attempt-full__remove" name="pick" value="remove:${attempt.attempt_id}" aria-label="Remove attempt ${list.length - index}">${icon('trash', { size: 15 })} Remove</button></span>
             </div>
             <p class="attempt-answer small">${attempt.answer || html`<span class="muted">No typed answer (done on paper)</span>`}</p>
           </li>`)}
@@ -545,6 +546,19 @@ export async function mount(element, context) {
     if (kind === 'retry') return startSingle(found.question, context.navigate);
     if (kind === 'mark') return markLater(attemptId);
     const attempt = list.find((candidate) => candidate.attempt_id === attemptId);
+    if (kind === 'remove' && attempt) {
+      const number = list.length - list.indexOf(attempt);
+      const sure = await confirmDialog({
+        title: `Remove attempt ${number}?`,
+        message: `Your attempt from ${whenLabel(attempt.answered_at || attempt.timestamp).toLowerCase()} ${attempt.waiting ? '(not marked yet)' : `(${attempt.marks_awarded}/${attempt.max_marks})`} and its answer will be deleted. Your other attempts stay. This can’t be undone.`,
+        confirmLabel: 'Remove attempt',
+        danger: true,
+      });
+      if (!sure) return;
+      await api.removeAttempt(attempt.attempt_id);
+      toast(`Attempt ${number} removed.`, { type: 'success' });
+      return reload();
+    }
     if (attempt) changeMark(attempt, found);
   });
   on(element, 'click', '[data-mark-later]', (event, button) => markLater(button.dataset.markLater));
