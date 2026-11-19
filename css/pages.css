@@ -1861,6 +1861,8 @@
   .studio-lock {
     margin-top: 30px;
     padding: 32px 22px 28px;
+  }
+}
 
 /* ── scrolling paper (papers and timed tests marked at the end; approved 2026-11-18) ──
    Every question in one list, each sized to fit a screen. Site buttons and cards, a plain
@@ -2028,4 +2030,84 @@
   .runner--scroll .runner__finish-short {
     display: inline;
   }
+}
+
+/* ── Bigger tick boxes, site-wide ──
+   One drawn box for every checkbox except switches: 26px with a thick ink border,
+   a chunky tick when ticked and a dash when part of a group is ticked. */
+input[type='checkbox']:not([role='switch']) {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: none;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  display: inline-grid;
+  place-content: center;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background-color 0.12s, box-shadow 0.12s;
+}
+input[type='checkbox']:not([role='switch'])::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: var(--surface);
+  clip-path: polygon(14% 50%, 0 65%, 38% 100%, 100% 22%, 86% 8%, 37% 70%);
+  transform: scale(0);
+  transition: transform 0.12s ease-out;
+}
+input[type='checkbox']:not([role='switch']):hover:not(:disabled) {
+  box-shadow: 2px 2px 0 var(--ink);
+}
+input[type='checkbox']:not([role='switch']):checked,
+input[type='checkbox']:not([role='switch']):indeterminate {
+  background: var(--ink);
+}
+input[type='checkbox']:not([role='switch']):checked::before {
+  transform: scale(1);
+}
+input[type='checkbox']:not([role='switch']):indeterminate::before {
+  width: 12px;
+  height: 3px;
+  border-radius: 2px;
+  clip-path: none;
+  transform: scale(1);
+}
+input[type='checkbox']:not([role='switch']):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+input[type='checkbox']:not([role='switch']):disabled {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+  cursor: not-allowed;
+}
+.check { align-items: center; gap: 12px; }
+.check input { margin: 0; }
+.tree__topic > summary { grid-template-columns: 16px 26px auto minmax(0, 1fr); gap: 4px 10px; }
+.tree__topic > summary .tree__caret { margin-top: 5px; }
+.tree__topic > summary .tree__check,
+.tree__point .tree__check { margin-top: 0; }
+.tree__point label { grid-template-columns: 26px auto minmax(0, 1fr); }
+.tree__point .tree__code, .tree__point .tree__title, .tree__topic > summary .tree__code, .tree__topic > summary .tree__title { padding-top: 1px; }
+.tree__points { padding-left: 34px; }
+/* in the narrow topic cards the score sits under the spec point, so the title keeps its width */
+.tree__topics .tree__point { flex-wrap: wrap; row-gap: 4px; }
+.tree__topics .tree__point label { flex: 1 1 100%; }
+.tree__topics .tree__point > .tree__meta { padding-left: 74px; }
+.tree__topics .tree__point > .tree__meta:empty { display: none; }
+.tree__section--filter > summary { grid-template-columns: 26px minmax(0, 1fr) auto 18px; }
+.checkpoint input, .tree__section-check { width: 26px; height: 26px; }
+@media (max-width: 700px) {
+  input[type='checkbox']:not([role='switch']) { width: 28px; height: 28px; }
+  input[type='checkbox']:not([role='switch'])::before { width: 15px; height: 15px; }
+  .tree__topic > summary { grid-template-columns: 16px 28px auto minmax(0, 1fr); }
+  .tree__point label { grid-template-columns: 28px auto minmax(0, 1fr); }
+  .tree__section--filter > summary { grid-template-columns: 28px minmax(0, 1fr) auto 18px; }
+  .checkpoint input, .tree__section-check { width: 28px; height: 28px; }
 }
