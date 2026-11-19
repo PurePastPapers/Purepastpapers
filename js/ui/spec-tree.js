@@ -15,20 +15,25 @@ const KIND_TAGS = { option: 'Option', set_text: 'Set text', skill: 'Skill' };
  *   enabled     Set of ids that may be ticked (null = all). Others render disabled.
  *   noun        word for the counter, e.g. "learned" → "34 of 90 learned"
  *   disabledHint  tooltip for disabled rows
+ *   hideDisabled  leave out rows that are not enabled (and topics/sections left empty)
  *   pointMeta   (pointId) → markup shown at the end of a spec point row
  *   topicMeta   (topic, { selected, total }) → markup shown at the end of a topic row
  *   filterLayout  use collapsible section rows in the question-browser filter panel
  *   onChange    (selected: Set, changedIds: string[], checked: boolean) → void
  * @returns {{ getSelected(): Set<string>, refreshMeta(): void, setSelected(ids): void }}
  */
-export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'selected', disabledHint = '', pointMeta = null, topicMeta = null, filterLayout = false, onChange = () => {} }) {
+export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'selected', disabledHint = '', pointMeta = null, topicMeta = null, filterLayout = false, hideDisabled = false, onChange = () => {} }) {
   const state = new Set(selected);
   const usable = (id) => !enabled || enabled.has(id);
   const leavesOf = (topic) => (topic.points.length ? topic.points.map((point) => point.id) : [topic.id]);
   const topics = spec.sections.flatMap((section) => section.topics);
   const usableLeaves = topics.flatMap(leavesOf).filter(usable);
+  // With hideDisabled, rows that cannot be ticked are not drawn at all.
+  const shown = (id) => !hideDisabled || usable(id);
+  const topicShown = (topic) => leavesOf(topic).some(shown);
+  const sectionShown = (section) => section.topics.some(topicShown);
 
-  const sectionTopics = (section) => section.topics.map(
+  const sectionTopics = (section) => section.topics.filter(topicShown).map(
     (topic) => html`<details class="tree__topic" data-topic="${topic.id}">
       <summary>
         <span class="tree__caret">${icon('chevronRight', { size: 16 })}</span>
@@ -40,7 +45,7 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
         <span class="tree__meta" data-topic-meta="${topic.id}"></span>
       </summary>
       <ul class="tree__points">
-        ${topic.points.map((point) => html`<li class="tree__point ${usable(point.id) ? '' : 'is-disabled'}" data-point-row="${point.id}" title="${usable(point.id) ? '' : disabledHint}">
+        ${topic.points.filter((point) => shown(point.id)).map((point) => html`<li class="tree__point ${usable(point.id) ? '' : 'is-disabled'}" data-point-row="${point.id}" title="${usable(point.id) ? '' : disabledHint}">
           <label>
             <input type="checkbox" class="tree__check" data-point="${point.id}" ${usable(point.id) ? '' : 'disabled'} />
             <span class="tree__code">${point.code}</span>
@@ -66,13 +71,14 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
         <button type="button" class="btn btn--sm" data-tree-bulk="none">Clear</button>
         <span class="tree__count" data-tree-count></span>
       </div>
-      ${spec.sections.map(
+      ${hideDisabled && !usableLeaves.length ? html`<p class="small muted tree__empty">Nothing to show here yet.</p>` : ''}
+      ${spec.sections.filter(sectionShown).map(
         (section) =>
           filterLayout ? html`<details class="tree__section tree__section--filter" data-section="${section.id}">
             <summary>
               <input type="checkbox" class="tree__check tree__section-check" data-section-check="${section.id}" aria-label="${section.title}: select every spec point" />
               <span class="tree__section-title">${section.title}</span>
-              <span class="tree__section-count">${section.topics.length} ${section.topics.length === 1 ? 'topic' : 'topics'}</span>
+              <span class="tree__section-count">${section.topics.filter(topicShown).length} ${section.topics.filter(topicShown).length === 1 ? 'topic' : 'topics'}</span>
               <span class="tree__section-caret">${icon('chevronRight', { size: 16 })}</span>
             </summary>
             ${section.note ? html`<p class="small muted">${section.note}</p>` : ''}
@@ -92,7 +98,7 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
 
   function sync() {
     for (const box of $$('[data-point]', root)) box.checked = state.has(box.dataset.point);
-    if (filterLayout) for (const section of spec.sections) {
+    if (filterLayout) for (const section of spec.sections.filter(sectionShown)) {
       const leaves = section.topics.flatMap(leavesOf).filter(usable);
       const count = leaves.filter((id) => state.has(id)).length;
       const box = $(`[data-section-check="${CSS.escape(section.id)}"]`, root);
@@ -100,7 +106,7 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
       box.indeterminate = count > 0 && count < leaves.length;
       box.disabled = leaves.length === 0;
     }
-    for (const topic of topics) {
+    for (const topic of topics.filter(topicShown)) {
       const leaves = leavesOf(topic).filter(usable);
       const count = leaves.filter((id) => state.has(id)).length;
       const box = $(`[data-topic-check="${CSS.escape(topic.id)}"]`, root);
@@ -149,16 +155,16 @@ export function mountSpecTree(root, { spec, selected, enabled = null, noun = 'se
     const query = input.value.trim().toLowerCase();
     const terms = query.split(/\s+/).filter(Boolean);
     const hits = text => terms.every(term => text.toLowerCase().includes(term));
-    for (const section of spec.sections) {
+    for (const section of spec.sections.filter(sectionShown)) {
       const sectionText = `${section.title} ${(section.search_aliases || []).join(' ')}`;
       const sectionHit = query && hits(sectionText);
       let sectionVisible = false;
-      for (const topic of section.topics) {
+      for (const topic of section.topics.filter(topicShown)) {
         const element = $(`[data-topic="${CSS.escape(topic.id)}"]`, root);
         const topicText = `${sectionText} ${topic.code} ${topic.title}`;
         const topicHit = !query || sectionHit || hits(topicText);
         let anyPoint = false;
-        for (const point of topic.points) {
+        for (const point of topic.points.filter((candidate) => shown(candidate.id))) {
           const hit = topicHit || hits(`${topicText} ${point.code} ${point.title} ${(point.search_aliases || []).join(' ')}`);
           $(`[data-point-row="${CSS.escape(point.id)}"]`, root).hidden = !hit;
           anyPoint ||= hit;

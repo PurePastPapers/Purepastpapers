@@ -200,7 +200,6 @@ export async function mount(element, context) {
 
   const learned = api.learnedSet();
   const subjectLeaves = specIndex.subjectLeaves(subjectId);
-  const learnedLeaves = subjectLeaves.filter((id) => learned.has(id));
   if (!textbooks) state.topicOrganisation = 'official';
   else {
     const savedLearningView = progress.preferences[`coveredView:${subjectId}`];
@@ -265,7 +264,9 @@ export async function mount(element, context) {
   const timed = () => state.mode === 'timed_test';
   const sourceTypes = () => SOURCE_CHOICES.find((choice) => choice.id === state.source).types.filter((type) => enabledSourceTypes().includes(type));
   const scopedPool = () => pool.filter((question) => sourceTypes().includes(question.source_type));
-  const treeEnabled = () => null; // Choosing a focus and knowing a topic are independent filters.
+  // With "Only topics I've covered" on, the topic list holds only the covered points, so
+  // the student narrows within what they have learned. Off, it holds every point.
+  const treeEnabled = () => (coveredOnly() ? new Set((textbookMode() ? textbooks.ids : subjectLeaves).filter((id) => learned.has(id))) : null);
   const setTexts = spec.sections.flatMap((section) => section.topics.filter((topic) => topic.kind === 'set_text').flatMap((topic) => topic.points));
   const exactTariffs = !modes.includes('individual'); // essay subjects filter by exact mark tariff
   const bandOptions = exactTariffs
@@ -279,7 +280,7 @@ export async function mount(element, context) {
   const labelPoint = id => textbooks?.points.has(id) ? `${textbooks.points.get(id).book.short_title} · ${textbooks.points.get(id).code} ${textbooks.points.get(id).title}` : specIndex.label(id);
   const manualFocus = () => state[focusKey()];
   const coveredOnly = () => coveredFor(textbookMode());
-  const chosenFocus = () => !timed() && coveredOnly() ? null : manualFocus();
+  const chosenFocus = () => manualFocus();
   const activeFocus = () => textbookMode() ? null : chosenFocus();
   const activeTextbookFocus = () => textbookMode() ? chosenFocus() : null;
 
@@ -369,8 +370,8 @@ export async function mount(element, context) {
       ${topicOrganisationControl(state.topicOrganisation, {available: Boolean(textbooks)})}
       <p class="field__hint">${textbookMode() ? `Book numbers follow your supplied contents pages.${subject.textbook_example ? ` ${subject.textbook_example}` : ''}` : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
       ${curriculum.years.length ? html`<div data-curriculum></div>` : ''}
-      ${browser && user && coveredOnly() ? html`<p class="field__hint">Showing questions on the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'official point')} you’ve ticked as covered. Turn off <b>Only topics I’ve covered</b> to choose your own. <a href="${links.subject(subjectId)}">Edit covered topics</a></p>` : ''}
-      <div class="stack stack--sm" data-topic-picker ${browser && coveredOnly() ? 'hidden' : ''}>
+      ${browser && user && coveredOnly() ? html`<p class="field__hint">Showing the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'spec point')} you’ve covered. Untick any you want to leave out. Turn off <b>Only topics I’ve covered</b> to see every topic. <a href="${links.subject(subjectId)}">Edit covered topics</a></p>` : ''}
+      <div class="stack stack--sm" data-topic-picker>
         <p class="small muted" data-focus-summary>${focusSummary(browser)}</p>
         <div data-selected-points>${selectedPoints()}</div>
         ${!textbookMode() && setTexts.length ? html`<div class="chips" role="group" aria-label="Set texts">${setTexts.map(point => html`<button type="button" class="chip" data-text="${point.id}" aria-pressed="${state.focus?.includes(point.id) || false}">${point.title}</button>`)}</div>` : ''}
@@ -423,14 +424,15 @@ export async function mount(element, context) {
       return;
     }
     const enabledSet = treeEnabled();
-    const all = textbookMode() ? textbooks.ids : enabledSet ? learnedLeaves : subjectLeaves;
+    const all = enabledSet ? [...enabledSet] : textbookMode() ? textbooks.ids : subjectLeaves;
     const counts = countByNode(scopedPool(), specIndex);
     const textbookCounts = textbookMode() ? textbooks.counts(scopedPool()) : null;
     tree = mountSpecTree(target, {
       spec: textbookMode() ? textbooks.tree : spec,
       filterLayout: !timed(),
-      selected: manualFocus() === null ? all : manualFocus(),
+      selected: manualFocus() === null ? all : manualFocus().filter((id) => !enabledSet || enabledSet.has(id)),
       enabled: enabledSet,
+      hideDisabled: Boolean(enabledSet),
       noun: 'chosen',
       disabledHint: 'Not ticked as learned yet',
       topicMeta: (topic, { selected }) => {
@@ -570,7 +572,7 @@ export async function mount(element, context) {
   function browserFilters(base) {
     const count = (predicate) => base.filter(predicate).length;
     const focus = manualFocus();
-    const topicsValue = coveredOnly() ? 'Covered only' : focus === null ? 'All' : !focus.length ? 'None' : `${focus.length} chosen`;
+    const topicsValue = focus === null ? (coveredOnly() ? 'Covered' : 'All') : !focus.length ? 'None' : `${focus.length} chosen`;
     const pick = (values, labelOf) => (values.length ? (values.length > 2 ? `${values.length} chosen` : values.map(labelOf).join(', ')) : 'Any');
     const difficultyValue = pick(state.difficulties, (id) => DIFFICULTIES.find((d) => d.id === id)?.label || id);
     const marksValue = state.markMin !== '' || state.markMax !== '' ? `${state.markMin || 0}–${state.markMax || 'any'}` : pick(state.bands, (id) => bandOptions.find((b) => b.id === id)?.label || id);
@@ -1054,6 +1056,7 @@ export async function mount(element, context) {
   on(element, 'change', '[data-covered]', (event, box) => change(() => {
     state.learnedOnly = box.checked;
     if (timed()) seedTestFocus();
+    else { state.focus = null; state.textbookFocus = null; }
   }));
   on(element, 'change', '[data-flag]', (event, box) =>
     change(() => (state[box.dataset.flag] = box.checked), { keepControls: box.dataset.flag === 'stopwatch' || box.dataset.flag === 'preferUnseen' || box.dataset.flag === 'prioritiseWeak', keepPage: box.dataset.flag === 'stopwatch' }),
