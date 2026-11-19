@@ -1,24 +1,36 @@
-// "Check your email": the popup shown after signing up while Supabase waits for the
-// confirmation link. Styled like the Enlarge popup (js/ui/zoom.js). It offers a resend
-// (Supabase allows one every 60 seconds), lets the student go back and fix the address,
-// and turns into "You're in!" by itself once the link is opened in this browser.
+// "Check your email": the popup shown after signing up while Supabase waits for the account
+// to be confirmed. Styled like the Enlarge popup (js/ui/zoom.js). The student can type the
+// 6-digit code from the email (works when the email is opened on another device, and email
+// link scanners can't use it up) or press the link in the email, which this popup notices by
+// itself. It offers a resend (Supabase allows one every 60 seconds) and lets the student go
+// back and fix the address.
 
 import { esc } from '../core/dom.js';
 import * as api from '../data/api.js';
 
 const RESEND_WAIT = 60;
-
-const envelope = (done) => `<svg class="verify__art" width="96" height="74" viewBox="0 0 96 74" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
-  <rect x="6" y="14" width="76" height="52" rx="4" fill="var(--surface-2)"/><path d="M6 18l38 28 38-28"/><path d="M6 62l28-22M82 62L54 40"/>
-  ${done ? '<circle cx="78" cy="16" r="13" fill="var(--surface)"/><path d="M72 16l4.5 4.5L85 12"/>' : '<path d="M86 6l4-4M90 14h5M78 4l2-4"/>'}</svg>`;
+const CODE_LENGTH = 6;
 
 const infoIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>';
 
+/** The three sign-up steps; `current` is 1, 2 or 3 (4 = all done). */
+export function signupSteps(current) {
+  const names = ['Your details', 'Confirm email', 'Pick subjects'];
+  return `<ol class="signup-steps" aria-label="Sign-up steps">${names
+    .map((name, index) => {
+      const step = index + 1;
+      const state = step < current ? 'done' : step === current ? 'on' : '';
+      return `<li class="${state}"${state === 'on' ? ' aria-current="step"' : ''}><b aria-hidden="true">${state === 'done' ? '✓' : step}</b><span>${name}</span></li>`;
+    })
+    .join('')}</ol>`;
+}
+
 /**
- * Opens the popup. `onChangeEmail` runs when the student wants to fix the address.
+ * Opens the popup. `onChangeEmail` runs when the student wants to fix the address, and
+ * `onClose` whenever the popup closes without the account being confirmed.
  * Returns a function that closes it.
  */
-export function openVerifyEmail({ email, name = '', onChangeEmail = () => {} }) {
+export function openVerifyEmail({ email, name = '', onChangeEmail = () => {}, onClose = () => {} }) {
   const dialog = document.createElement('dialog');
   dialog.className = 'modal verify';
   dialog.setAttribute('aria-labelledby', 'verify-title');
@@ -26,22 +38,33 @@ export function openVerifyEmail({ email, name = '', onChangeEmail = () => {} }) 
     <header class="modal__head"><h2 class="modal__title" id="verify-title">Check your email</h2>
       <button type="button" class="btn btn--sm" data-verify-close>Close</button></header>
     <div class="modal__body" data-verify-body>
-      ${envelope(false)}
-      <p class="verify__lead">We’ve sent a link to</p><span class="verify__email">${esc(email)}</span>
-      <p class="verify__text">Open the email and press <b>Confirm my email</b> to finish creating your account. This popup will update on its own once you have.</p>
-      <p class="verify__hint">${infoIcon}<span><b>Can’t see it?</b> It can take a minute to arrive. Check your spam or junk folder too.</span></p>
+      ${signupSteps(2)}
+      <p class="verify__lead">We’ve sent a ${CODE_LENGTH}-digit code to</p><span class="verify__email">${esc(email)}</span>
+      <div class="otp" role="group" aria-label="${CODE_LENGTH}-digit code" data-otp>
+        ${Array.from({ length: CODE_LENGTH }, (_, index) => `${index === CODE_LENGTH / 2 ? '<i aria-hidden="true"></i>' : ''}<input class="otp__box" inputmode="numeric" autocomplete="${index === 0 ? 'one-time-code' : 'off'}" maxlength="${CODE_LENGTH}" aria-label="Digit ${index + 1}" data-otp-box />`).join('')}
+      </div>
       <p class="verify__error" data-verify-error role="alert" hidden></p>
+      <p class="verify__text verify__text--tight">Type the code from the email. You can open the email on your phone, it still works here.</p>
+      <p class="verify__or">or</p>
+      <p class="verify__text verify__text--small">Press <b>Confirm my email</b> in the email. This popup updates on its own.</p>
+      <p class="verify__hint">${infoIcon}<span><b>Can’t see it?</b> It can take a minute. Check spam or junk. School emails can be slow, so a personal email is often quicker.</span></p>
     </div>
     <footer class="modal__foot" data-verify-foot>
       <button type="button" class="btn btn--ghost" data-verify-change>Wrong email? Change it</button>
       <span class="verify__resend"><span class="verify__sent" data-verify-sent hidden>✓ Sent again</span>
-        <button type="button" class="btn" data-verify-resend>Resend email</button></span>
+        <button type="button" class="btn" data-verify-resend>Resend code</button></span>
     </footer></div>`;
 
   let timer = null;
   let confirmed = false;
+  let checking = false;
   const resendButton = dialog.querySelector('[data-verify-resend]');
-  const errorLine = dialog.querySelector('[data-verify-error]');
+  const boxes = [...dialog.querySelectorAll('[data-otp-box]')];
+  const showError = (message) => {
+    const line = dialog.querySelector('[data-verify-error]');
+    line.textContent = message;
+    line.hidden = !message;
+  };
 
   const countdown = (seconds) => {
     clearInterval(timer);
@@ -50,7 +73,7 @@ export function openVerifyEmail({ email, name = '', onChangeEmail = () => {} }) 
       if (left <= 0) {
         clearInterval(timer);
         resendButton.disabled = false;
-        resendButton.textContent = 'Resend email';
+        resendButton.textContent = 'Resend code';
         return;
       }
       resendButton.disabled = true;
@@ -61,27 +84,76 @@ export function openVerifyEmail({ email, name = '', onChangeEmail = () => {} }) 
     timer = setInterval(tick, 1000);
   };
 
-  const stopWatching = api.watchConfirmation(email, (user) => {
+  const showConfirmed = (user) => {
+    if (confirmed) return;
     confirmed = true;
+    stopWatching();
     clearInterval(timer);
     const first = String(name || user?.display_name || '').trim();
     dialog.classList.add('verify--done');
     dialog.querySelector('#verify-title').textContent = 'You’re in!';
-    dialog.querySelector('[data-verify-body]').innerHTML = `${envelope(true)}
+    dialog.querySelector('[data-verify-body]').innerHTML = `${signupSteps(3)}
       <p class="verify__lead">Email confirmed</p><span class="verify__email">${esc(email)}</span>
       <p class="verify__text">You’re all set${first ? `, ${esc(first)}` : ''}. Your progress now saves to your account and syncs across your devices.</p>
       <p class="verify__error" data-verify-error role="alert" hidden></p>`;
     dialog.querySelector('[data-verify-foot]').innerHTML = '<span></span><button type="button" class="btn btn--primary" data-verify-continue>Choose my subjects</button>';
     dialog.querySelector('[data-verify-continue]').focus();
+  };
+
+  const stopWatching = api.watchConfirmation(email, showConfirmed);
+
+  const code = () => boxes.map((box) => box.value).join('');
+  const checkCode = async () => {
+    if (checking || confirmed || code().length < CODE_LENGTH) return;
+    checking = true;
+    showError('');
+    boxes.forEach((box) => { box.disabled = true; });
+    try {
+      const user = await api.verifySignupCode(email, code());
+      showConfirmed(user);
+    } catch (error) {
+      boxes.forEach((box) => { box.disabled = false; box.value = ''; });
+      showError(error.message || 'That code didn’t work. Try again.');
+      boxes[0].focus();
+    } finally {
+      checking = false;
+    }
+  };
+
+  // Spread typed or pasted digits across the boxes, then check the code once all are filled.
+  const fillFrom = (index, text) => {
+    const digits = String(text).replace(/\D/g, '').slice(0, CODE_LENGTH - index).split('');
+    digits.forEach((digit, offset) => { boxes[index + offset].value = digit; });
+    const next = boxes[Math.min(index + digits.length, CODE_LENGTH - 1)];
+    next.focus();
+    checkCode();
+  };
+  boxes.forEach((box, index) => {
+    box.addEventListener('input', () => {
+      const typed = box.value;
+      box.value = '';
+      if (typed) fillFrom(index, typed);
+    });
+    box.addEventListener('paste', (event) => {
+      event.preventDefault();
+      fillFrom(index, event.clipboardData?.getData('text') || '');
+    });
+    box.addEventListener('keydown', (event) => {
+      if (event.key === 'Backspace' && !box.value && index > 0) {
+        boxes[index - 1].value = '';
+        boxes[index - 1].focus();
+        event.preventDefault();
+      } else if (event.key === 'ArrowLeft' && index > 0) boxes[index - 1].focus();
+      else if (event.key === 'ArrowRight' && index < CODE_LENGTH - 1) boxes[index + 1].focus();
+    });
+    box.addEventListener('focus', () => box.select());
   });
 
   const finish = async () => {
     try {
       await api.finishConfirmedSignup();
     } catch (error) {
-      const line = dialog.querySelector('[data-verify-error]');
-      line.textContent = error.message || 'Something went wrong. Try logging in.';
-      line.hidden = false;
+      showError(error.message || 'Something went wrong. Try logging in.');
       return false;
     }
     return true;
@@ -104,7 +176,9 @@ export function openVerifyEmail({ email, name = '', onChangeEmail = () => {} }) 
     }
     if (target === dialog || target.closest('[data-verify-close]')) {
       if (confirmed) { await finish(); close(); return; }
-      return close();
+      close();
+      onClose();
+      return;
     }
     if (target.closest('[data-verify-change]')) {
       close();
@@ -112,22 +186,17 @@ export function openVerifyEmail({ email, name = '', onChangeEmail = () => {} }) 
       return;
     }
     if (target.closest('[data-verify-resend]')) {
-      errorLine.hidden = true;
+      showError('');
       resendButton.disabled = true;
       try {
         await api.resendConfirmation(email);
+        api.setAwaitingConfirmation({ email, name });
         dialog.querySelector('[data-verify-sent]').hidden = false;
         countdown(RESEND_WAIT);
       } catch (error) {
-        const wait = Number(/(\d+)\s*seconds?/.exec(error.message || '')?.[1]);
-        if (wait) {
-          countdown(wait);
-          errorLine.textContent = `You can send another email in ${wait} seconds.`;
-        } else {
-          resendButton.disabled = false;
-          errorLine.textContent = error.message || 'The email could not be sent. Try again.';
-        }
-        errorLine.hidden = false;
+        if (error.wait) countdown(error.wait);
+        else resendButton.disabled = false;
+        showError(error.message || 'The email could not be sent. Try again.');
       }
     }
   });
@@ -138,6 +207,6 @@ export function openVerifyEmail({ email, name = '', onChangeEmail = () => {} }) 
 
   document.body.append(dialog);
   dialog.showModal();
-  dialog.querySelector('[data-verify-close]').focus();
+  boxes[0].focus();
   return close;
 }

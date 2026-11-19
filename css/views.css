@@ -1015,10 +1015,46 @@
 .verify__resend { display: flex; gap: 12px; align-items: center; flex-wrap: nowrap; white-space: nowrap; justify-content: center; }
 .verify__sent { font-weight: 600; font-size: 14px; color: var(--good-ink); }
 .verify__sent[hidden] { display: none; }
+.verify .signup-steps { margin: 0 0 16px; }
+.verify__text--tight { margin-top: 8px; }
+.verify__text--small { margin-top: 6px; font-size: 14.5px; }
+.verify__or { display: flex; align-items: center; gap: 10px; margin: 14px 0 0; color: var(--ink-3); font-size: 13px; }
+.verify__or::before, .verify__or::after { content: ""; flex: 1; border-top: 1px dashed var(--line-strong); }
+.otp { display: flex; gap: 8px; justify-content: center; margin: 16px 0 4px; }
+.otp > i { width: 10px; }
+.otp__box { width: 48px; height: 58px; padding: 0; text-align: center; border: 2px solid var(--ink); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 26px/1 var(--font-display); box-shadow: 2px 2px 0 var(--ink); caret-color: var(--ink); }
+.otp__box:focus { outline: 3px solid var(--accent-wash); outline-offset: 1px; }
+.otp__box:disabled { opacity: 0.6; }
 @media (max-width: 520px) {
+  .otp { gap: 6px; }
+  .otp > i { width: 4px; }
+  .otp__box { width: 40px; height: 50px; font-size: 22px; }
   .verify .modal__title { font-size: 23px; }
   .verify .modal__body { padding: 20px 18px 6px; }
   .verify .modal__foot { flex-direction: column-reverse; align-items: stretch; gap: 10px; }
   .verify .modal__foot .btn, .verify__resend .btn { justify-content: center; width: 100%; }
   .verify__resend { flex-direction: column; gap: 6px; }
 }
+
+/* Sign-up steps (Your details → Confirm email → Pick subjects), on the form and in the popup. */
+.signup-steps { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: 13.5px; text-align: left; }
+.signup-steps li { flex: 1; display: flex; align-items: center; gap: 7px; padding: 7px 9px; border: 1.5px dashed var(--line-strong); border-radius: 6px; color: var(--ink-3); }
+.signup-steps li b { display: inline-grid; place-items: center; flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid currentColor; font-size: 12px; }
+.signup-steps li.on { border: 2px solid var(--ink); color: var(--ink); font-weight: 650; background: var(--surface-2); }
+.signup-steps li.done { border-style: solid; border-color: var(--good-ink); color: var(--good-ink); }
+.signup-steps li.done b { background: var(--good-ink); border-color: var(--good-ink); color: var(--surface); }
+@media (max-width: 520px) {
+  .signup-steps { font-size: 12.5px; }
+  .signup-steps li { padding: 6px; gap: 5px; }
+  .signup-steps li:not(.on) span { display: none; }
+}
+
+/* Boxes on the log-in and sign-up forms that explain a problem and offer the fix. */
+.auth-notice { display: flex; gap: 10px; align-items: flex-start; margin: 0; padding: 12px 14px; border: 2px solid var(--ink); border-radius: 6px; background: var(--surface-2); font-size: 14.5px; line-height: 1.5; text-align: left; }
+.auth-notice > span:first-child { flex: none; margin-top: 2px; }
+.auth-notice b { display: block; margin-bottom: 2px; }
+.auth-notice b.auth-notice__inline { display: inline; }
+.auth-notice--warn { border-color: var(--warn-ink); background: var(--warn-wash); }
+.auth-notice__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.auth-notice .form-error { margin: 8px 0 0; }
+.input.input--bad { border-color: var(--crit-ink); }
