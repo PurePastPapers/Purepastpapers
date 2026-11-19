@@ -21,7 +21,7 @@ const TILES = [
     ic: 'stopwatch',
     title: 'Test builder',
     text: 'Choose how long you have, the difficulty and your topics. We build a timed mini-paper from real exam questions.',
-    where: 'Practice → Timed test',
+    where: 'Practice → Build a test',
   },
   {
     ic: 'user',
