@@ -9,7 +9,7 @@ import { icon } from '../icons.js';
 import { saveSubjectSettings } from '../subject-colours.js';
 import { subjectDialog } from '../subject-dialog.js';
 import { coverageDialog } from '../coverage-dialog.js';
-import { loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
+import { addSubjectButton, addSubjectTile, loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
 import { banner, emptyState, pageHead, toast } from '../ui.js';
 import { links } from '../../core/links.js';
 
@@ -102,11 +102,13 @@ export async function mount(element, context) {
         <section class="dash-block" style="margin-top:10px" aria-labelledby="now-title">
           <div class="section-title">
             <h2 id="now-title">Studying now</h2>
+            ${enrolled.length ? addSubjectButton('#add-title') : ''}
             ${enrolled.length ? html`<span class="hand">tap the dot to change a subject’s colour</span>` : ''}
           </div>
           ${enrolled.length
             ? html`<div class="dash-subjects">
                 ${enrolled.map((bundle, index) => manageCard(bundle, subjectSummary(bundle, student), student.progress, { tilt: [1, 2, 3, 4][index % 4] }))}
+                ${addSubjectTile('#add-title', { tilt: [1, 2, 3, 4][enrolled.length % 4] })}
               </div>`
             : html`<div class="empty">
                 <h3 class="empty__title">No subjects yet</h3>
@@ -163,9 +165,13 @@ export async function mount(element, context) {
     search = input.value;
     redrawCatalogue();
   });
-  on(element, 'click', '[data-add-another]', (event) => {
+  const goToAdd = () => {
+    $('#add-title', element)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $('[data-search]', element)?.focus({ preventScroll: true });
+  };
+  on(element, 'click', '[data-add-another], [data-add-subject]', (event) => {
     event.preventDefault();
-    $('[data-search]', element)?.focus();
+    goToAdd();
   });
   on(element, 'click', '[data-enrol]', async (event, button) => {
     const subject = subjects.find((candidate) => candidate.subject_id === button.dataset.enrol);
@@ -213,5 +219,6 @@ export async function mount(element, context) {
   });
 
   await draw();
+  if (context.query.add) requestAnimationFrame(goToAdd);
   return () => stopPicker?.();
 }
