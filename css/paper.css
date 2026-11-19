@@ -1582,16 +1582,7 @@ input[type='radio'] {
   }
 }
 
-/* ── "+" to add a subject: round button by the heading, dashed tile after the cards ── */
-.section-title > .add-subject-btn,
-.add-subject-btn {
-  margin-left: 0;
-  align-self: center;
-  border-radius: 50%;
-  width: 40px;
-  min-height: 40px;
-  height: 40px;
-}
+/* ── dashed "+ Add a subject" tile after the subject cards ── */
 .add-subject-tile {
   display: flex;
   flex-direction: column;

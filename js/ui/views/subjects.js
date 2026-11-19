@@ -9,7 +9,7 @@ import { icon } from '../icons.js';
 import { saveSubjectSettings } from '../subject-colours.js';
 import { subjectDialog } from '../subject-dialog.js';
 import { coverageDialog } from '../coverage-dialog.js';
-import { addSubjectButton, addSubjectTile, loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
+import { addSubjectTile, loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
 import { banner, emptyState, pageHead, toast } from '../ui.js';
 import { links } from '../../core/links.js';
 
@@ -102,7 +102,6 @@ export async function mount(element, context) {
         <section class="dash-block" style="margin-top:10px" aria-labelledby="now-title">
           <div class="section-title">
             <h2 id="now-title">Studying now</h2>
-            ${enrolled.length ? addSubjectButton('#add-title') : ''}
             ${enrolled.length ? html`<span class="hand">tap the dot to change a subject’s colour</span>` : ''}
           </div>
           ${enrolled.length
