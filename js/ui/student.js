@@ -137,7 +137,10 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
   </article>`;
 }
 
-/** The dashed "+ Add a subject" tile after the subject cards; it opens Add subjects. */
+/** The round "+" next to a subjects heading and the dashed tile after the cards: both open Add subjects. */
+export function addSubjectButton(href) {
+  return html`<a class="btn btn--icon add-subject-btn" href="${href}" data-add-subject aria-label="Add a subject" title="Add a subject">${icon('plus', { size: 20 })}</a>`;
+}
 export function addSubjectTile(href, { tilt = 0 } = {}) {
   return html`<a class="add-subject-tile ${tilt ? `tilt-${tilt}` : ''}" href="${href}" data-add-subject>
     <span class="add-subject-tile__plus" aria-hidden="true">${icon('plus', { size: 26 })}</span>
