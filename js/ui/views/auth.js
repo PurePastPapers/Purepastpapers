@@ -34,7 +34,7 @@ export async function mount(element, context) {
         <label class="field">
           <span class="field__label">Email</span>
           <input class="input" type="email" name="email" autocomplete="email" inputmode="email" required value="${context.query.email || ''}" />
-          ${signup ? html`<span class="field__hint">Use an email you can open now. We send a 6-digit code to it.</span>` : ''}
+          ${signup ? html`<span class="field__hint">Use an email you can open now. We send a code to it.</span>` : ''}
         </label>
         <label class="field">
           <span class="field__label">Password</span>

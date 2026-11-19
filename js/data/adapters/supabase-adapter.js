@@ -187,11 +187,11 @@ export const supabaseAdapter = {
     if (error) throw friendlyAuthError(error);
   },
 
-  /** Confirms a new account with the 6-digit code from the confirmation email. */
+  /** Confirms a new account with the code from the confirmation email. */
   async verifySignupCode(email, code) {
     const client = await getClient();
     const token = String(code || '').replace(/\D/g, '');
-    if (token.length < 6) throw new Error('Enter the 6-digit code from the email.');
+    if (token.length < 6) throw new Error('Enter the code from the email.');
     const { data, error } = await client.auth.verifyOtp({ email: validEmail(email), token, type: 'signup' });
     if (error) throw friendlyAuthError(error);
     if (!data.session?.user) throw new Error('That code didn’t work. Try the link in the email instead.');

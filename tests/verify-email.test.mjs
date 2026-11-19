@@ -33,7 +33,7 @@ export function createClient() {
       async signInWithPassword() { return { data: {}, error: { code: 'email_not_confirmed', message: 'Email not confirmed' } }; },
       async verifyOtp({ email, token }) {
         window.__verified = token;
-        if (token !== '123456') return { data: {}, error: { code: 'otp_expired', message: 'Token has expired or is invalid' } };
+        if (token !== '12345678') return { data: {}, error: { code: 'otp_expired', message: 'Token has expired or is invalid' } };
         window.__fakeSession = { user: { id: 'u1', email, email_confirmed_at: new Date().toISOString(), user_metadata: { display_name: 'Sam' } } };
         return { data: { session: window.__fakeSession }, error: null };
       },
@@ -133,20 +133,20 @@ test('the popup turns into You’re in! once the link is opened, then goes to My
   await page.close();
 });
 
-test('typing the 6-digit code confirms the account; a wrong code says so', { skip }, async () => {
+test('typing the code confirms the account; a wrong code says so', { skip }, async () => {
   const { page, errors } = await signUp({ width: 1366, height: 860 });
-  await page.keyboard.type('999999');
+  await page.keyboard.type('99999999');
   await page.waitForSelector('[data-verify-error]:not([hidden])');
   assert.match(await page.locator('[data-verify-error]').textContent(), /isn’t right or has expired/);
   // Pasting the whole code into the first box fills every box.
   await page.locator('[data-otp-box]').first().focus();
   await page.evaluate(() => {
     const data = new DataTransfer();
-    data.setData('text', '123 456');
+    data.setData('text', '1234 5678');
     document.activeElement.dispatchEvent(new ClipboardEvent('paste', { clipboardData: data, bubbles: true, cancelable: true }));
   });
   await page.waitForSelector('dialog.verify.verify--done');
-  assert.equal(await page.evaluate(() => window.__verified), '123456');
+  assert.equal(await page.evaluate(() => window.__verified), '12345678');
   await page.locator('[data-verify-continue]').click();
   await page.waitForFunction(() => location.hash.startsWith('#/subjects'));
   assert.equal(await page.evaluate(() => Object.keys(localStorage).some((key) => key.endsWith(':awaiting-confirmation'))), false);
