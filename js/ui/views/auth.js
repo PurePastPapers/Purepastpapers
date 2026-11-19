@@ -204,9 +204,11 @@ export async function mount(element, context) {
     waiting.hidden = false;
     waiting.innerHTML = `<div class="auth-notice"><span>${INFO}</span><div><b>Waiting for you to confirm your email</b>We sent a code to <b class="auth-notice__inline">${esc(pending.email)}</b> at ${esc(sent)}. Pressing Create account again would cancel that code, so we’ve paused it.
       <div class="auth-notice__actions"><button type="button" class="btn btn--primary" data-wait-code>Enter the code</button><button type="button" class="btn" data-wait-resend>Resend code</button><button type="button" class="btn btn--ghost" data-wait-change>Use a different email</button></div>
+      <p class="small" style="margin:10px 0 0">Already confirmed, or already have an account? <a href="${esc(links.login(next, { email: pending.email }))}" data-wait-login>Log in</a></p>
       <p class="form-error" role="alert" data-wait-error hidden></p></div></div>
       <p class="hand auth__note">Only the newest code works. If an email link says it has already been used, just log in.</p>`;
     $('[data-wait-code]', waiting).addEventListener('click', () => openCode(pending.email, pending.name));
+    $('[data-wait-login]', waiting).addEventListener('click', () => api.setAwaitingConfirmation(null));
     $('[data-wait-change]', waiting).addEventListener('click', () => {
       api.setAwaitingConfirmation(null);
       emailInput.value = pending.email;

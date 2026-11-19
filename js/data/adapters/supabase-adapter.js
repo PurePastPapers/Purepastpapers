@@ -59,7 +59,7 @@ export function friendlyAuthError(error) {
     return make('That email and password don’t match. Check them, or reset your password.', 'invalid_credentials');
   }
   if (code === 'otp_expired' || /token has expired|invalid or has expired|otp/i.test(raw)) {
-    return make('That code isn’t right or has expired. Check the newest email, or send a new code.', 'bad_code');
+    return make('That code isn’t right or has expired. Check the newest email, or send a new code. If you’ve already confirmed this email, just log in.', 'bad_code');
   }
   if (code === 'weak_password') return make(raw || 'Choose a stronger password.');
   if (code === 'email_address_invalid') return make('That email address can’t be used. Check it for typos.');
