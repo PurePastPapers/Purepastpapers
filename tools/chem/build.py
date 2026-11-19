@@ -47,12 +47,15 @@ def slug(label):
     return f'Q{int(q):02}' + ''.join(f'_{x}' for x in rest)
 
 
+# "help with your answer" and "the unit with your answer" are instructions, not links to an earlier part.
 DEPENDENCY = re.compile(
-    r'\b(use|using|from|with|apply|applying|in terms of|based on) (your|their) (answer|answers|value|values|result|results|graph|calculation|'
+    r'(?<!help )(?<!unit )(?<!units )\b(use|using|from|with|apply|applying|in terms of|based on) (your|their) (answer|answers|value|values|result|results|graph|calculation|'
     r'expression|sketch|line|curve|plot|table|equation|estimate|calculated|structure|structures|formula|formulae)\b|'
     r'\b(your|their) (answer|value|result|calculation|graph|sketch|expression|equation|structure|formula)s? (to|from|in|for|of) (part |question )?\(|'
     r'\byou (calculated|found|obtained|derived|drew|plotted|completed|sketched|determined|wrote down|deduced|identified)\b|'
     r'^hence\b(?! or otherwise)|[.;:?)] hence\b(?! or otherwise)', re.I)
+# "Plot a graph ... Use your graph": the graph, curve or equation is made in the same part.
+SELF_MADE = re.compile(r'\b(plot|draw|sketch|construct|complete)\b', re.I)
 
 
 def dependencies(units):
@@ -77,6 +80,8 @@ def dependencies(units):
             hits = [e for e in earlier if re.findall(r'\(([a-z]+)\)', e['label'])[:2] == [own_part, m.group(1)]]
             if hits:
                 named.append(hits[-1]['label'])
+        if not named and SELF_MADE.search(body[:DEPENDENCY.search(body).start()]):
+            continue   # the graph, curve or equation it uses is made in this same part
         if not named and earlier:
             named = [earlier[-1]['label']]   # "Hence" / "your answer" without a named part: the part printed just before
         if named:

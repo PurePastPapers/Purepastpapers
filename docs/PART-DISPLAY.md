@@ -101,3 +101,32 @@ HEAD.
   - the dependency gate holds a part back until the earlier part is learnt.
 - The subject bank tests still check that every catalogue holds exactly the
   referenced assets, with RIFF/WEBP bytes and SHA256.
+
+## Linked parts: one question, an answer box per part (2026-11-19)
+
+Owner request: where a part cannot be answered without an earlier part ("Use your graph
+to ...", "Hence ..."), show the parts as one question, only when every part is learned
+content, with a separate answer box for each part.
+
+- `js/engine/linked-parts.js` `linkGroups` runs when a subject loads
+  (`content-repository.js`). Every part of a question in which some part has
+  `depends_on_question_ids` joins one group, as do parts those links reach in a
+  neighbouring question (AQA Psychology "Using your answer to question 21"). Each member
+  gets `linked_group` and `dependency_spec_points` holding the other parts' topics, which
+  `requiredSpecPoints` includes. With "only topics I've learned" the parts are therefore
+  offered all together or not at all.
+- Find questions and the question picker show one card per group (`collapseLinked`):
+  the introduction once, each part's crop with its own answer box, one "Show mark scheme
+  for all parts", a mark picker per part and one save that records an attempt on each
+  part. Locked groups say which parts still need which topics (`collapseLocked`).
+- The test builder treats a group as one question (`buildTest` gets the group entries;
+  `expandLinkedIds` turns them back into parts). Selecting a group adds all its parts.
+- The session runner (`runnerItems`) shows consecutive linked parts as one numbered
+  question in both the scrolling list and mark-as-you-go mode.
+- A part's own crop starts at its label, so text printed between the previous part's
+  answer space and the label would be lost in a group. `tools/parts/lead-ins.py` cuts it
+  out of the part's context image as `context.lead_in_image_url` (same pixels).
+- The dependency check matched "You may draw a diagram to help with your answer", "State
+  the unit with your answer" and graphs or equations made in the same part. Both regexes
+  now skip those; `tools/parts/drop-false-dependencies.py` removed the 17 committed false
+  links (each checked against its crop).

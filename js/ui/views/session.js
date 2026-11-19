@@ -17,7 +17,8 @@ import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remaini
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { targetGrade, tintPage } from '../subject-colours.js';
 import { icon } from '../icons.js';
-import { markSchemeBody, marksPill, questionBody } from '../question-view.js';
+import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody } from '../question-view.js';
+import { groupEntry, runnerItems } from '../../engine/linked-parts.js';
 import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
 
 const KIND_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Single question' };
@@ -68,6 +69,25 @@ export async function mount(element, context) {
   }, 400);
   const topicOf = (question) => specIndex.topicOf(question.primary_spec_points[0])?.title || 'Other';
   const markedCount = () => questions.filter((question) => session.marks[question.question_id] != null).length;
+  // Linked parts that follow each other are one question in the runner (engine/linked-parts.js):
+  // one item, numbered once, with an answer box and marks for each part.
+  const items = runnerItems(questions);
+  const itemIndexOf = new Map();
+  items.forEach((item, position) => {
+    if (item.group) item.entry = groupEntry(item.group.id, bundle.questionsById);
+    if (item.group && !item.entry) item.group = null;
+    item.questions.forEach((question) => itemIndexOf.set(question.question_id, position));
+  });
+  const itemAt = (questionIndex) => itemIndexOf.get(questions[questionIndex]?.question_id) ?? 0;
+  const partOf = (question) => {
+    const item = items[itemIndexOf.get(question.question_id)];
+    return item?.group ? linkedPartLabel(question, item.entry) : '';
+  };
+  /** "Question 3", or "Question 3 (b)" for a part of a linked question. */
+  const numberOf = (question) => {
+    const part = partOf(question);
+    return `Question ${(itemIndexOf.get(question.question_id) ?? 0) + 1}${part ? ` ${part}` : ''}`;
+  };
 
   // ───────────────────────────────── timer ─────────────────────────────────
 
@@ -111,7 +131,7 @@ export async function mount(element, context) {
       <a class="btn btn--sm" href="${exitHref}" data-exit>${icon('chevronLeft', { size: 16 })} <span class="runner__exit-text">${stage === 'result' ? backLabel(exitRoute) : 'Save and exit'}</span></a>
       ${stage === 'run' && question && !timed
         ? html`<div class="runner__title">
-            <p class="h3">${questions.length > 1 ? html`Question ${position + 1}<span class="muted"> of ${questions.length}</span>` : html`Question ${question.question_number}`}</p>
+            <p class="h3">${items.length > 1 ? html`Question ${position + 1}<span class="muted"> of ${items.length}</span>` : html`Question ${question.question_number}`}</p>
             <p class="small muted row row--tight">${topicOf(question)} ${difficultyBadge(question.difficulty)}</p>
           </div>`
         : html`<div class="runner__title">
@@ -145,10 +165,10 @@ export async function mount(element, context) {
     </header>`;
   }
 
-  function marksInput(question) {
+  function marksInput(question, label) {
     const value = session.marks[question.question_id];
     return html`<div class="markbox" data-markbox="${question.question_id}">
-      ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'marks' })}
+      ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'marks', label })}
     </div>`;
   }
 
@@ -183,9 +203,11 @@ export async function mount(element, context) {
     if (wholePaper) return drawWholePaper();
     if (scrollMode) return drawScroll();
     const index = clamp(session.current_index, 0, questions.length - 1);
+    const position = itemAt(index);
+    if (items[position].group) return drawLinkedRun(position);
     const question = questions[index];
     const id = question.question_id;
-    const last = index === questions.length - 1;
+    const last = position === items.length - 1;
     const revealed = Boolean(session.revealed[id]);
     const exam = session.timer.mode === 'countdown';
     const compare = each && revealed; // question and mark scheme side by side
@@ -193,32 +215,17 @@ export async function mount(element, context) {
     setHtml(
       element,
       html`<div class="runner ${exam ? 'runner--exam' : 'runner--practice'}">
-        ${bar({ stage: 'run', question, position: index })}
-        ${questions.length > 1
-          ? html`<nav class="palette" aria-label="Questions">
-              ${questions.map((item, position) => {
-                const state = [
-                  position === index ? 'is-current' : '',
-                  session.answers[item.question_id] ? 'is-answered' : '',
-                  session.flagged[item.question_id] ? 'is-flagged' : '',
-                  session.marks[item.question_id] != null ? 'is-marked' : '',
-                ].join(' ');
-                const notes = [session.flagged[item.question_id] ? 'flagged' : '', session.marks[item.question_id] != null ? 'marked' : ''].filter(Boolean).join(', ');
-                return html`<button type="button" class="palette__item ${state}" data-go="${position}" aria-label="Question ${position + 1}${notes ? ` (${notes})` : ''}" aria-current="${position === index ? 'true' : 'false'}">
-                  ${position + 1}
-                </button>`;
-              })}
-            </nav>`
-          : ''}
+        ${bar({ stage: 'run', question, position })}
+        ${eachPalette(position)}
         ${paused()
           ? pausedPanel()
           : html`<div class="runner__grid ${compare ? 'runner__grid--compare' : ''}">
-        <article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? index + 1 : question.question_number}">
+        <article class="card ruled tilt-1 qview" data-zoom-src="Question ${questions.length > 1 ? position + 1 : question.question_number}">
           <i class="tape tape--c" aria-hidden="true"></i>
           <header class="qview__head">
             <h1 class="qview__num" tabindex="-1">
               ${questions.length > 1
-                ? html`Question ${index + 1}<span class="muted"> of ${questions.length}</span>`
+                ? html`Question ${position + 1}<span class="muted"> of ${items.length}</span>`
                 : html`Question ${question.question_number}`}
             </h1>
             <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('question')}</div>
@@ -227,7 +234,7 @@ export async function mount(element, context) {
         </article>
         <div class="stack">
         ${compare
-          ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? index + 1 : question.question_number}">
+          ? html`<article class="card ruled tilt-1 qview qview--scheme" data-zoom-src="Mark scheme · question ${questions.length > 1 ? position + 1 : question.question_number}">
               <i class="tape tape--c" aria-hidden="true"></i>
               <header class="qview__head">
                 <h1 class="qview__num" tabindex="-1">Mark scheme</h1>
@@ -254,12 +261,12 @@ export async function mount(element, context) {
                     <span class="spacer"></span>
                     ${last
                       ? html`<button type="button" class="btn btn--primary" data-finish>Finish</button>`
-                      : html`<button type="button" class="btn btn--primary" data-go="${index + 1}">Next question ${icon('chevronRight', { size: 16 })}</button>`}`
+                      : html`<button type="button" class="btn btn--primary" data-go="${items[position + 1]?.start}">Next question ${icon('chevronRight', { size: 16 })}</button>`}`
                 : html`<button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
                       ${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag question'}
                     </button>
                     <span class="spacer"></span>
-                    ${questions.length > 1 && index > 0 ? html`<button type="button" class="btn" data-go="${index - 1}">${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
+                    ${position > 0 ? html`<button type="button" class="btn" data-go="${items[position - 1].start}">${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
                     <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Mark scheme</button>`}
             </footer>`
           : html`<footer class="runner__nav">
@@ -268,12 +275,107 @@ export async function mount(element, context) {
           </button>
           <span class="spacer"></span>
           ${questions.length > 1
-            ? html`<button type="button" class="btn" data-go="${index - 1}" ${index === 0 ? 'disabled' : ''}>${icon('chevronLeft', { size: 16 })} Previous</button>`
+            ? html`<button type="button" class="btn" data-go="${items[position - 1]?.start ?? 0}" ${position === 0 ? 'disabled' : ''}>${icon('chevronLeft', { size: 16 })} Previous</button>`
             : ''}
           ${last
             ? html`<button type="button" class="btn btn--primary" data-finish>${each ? 'Finish' : 'Finish and mark'}</button>`
-            : html`<button type="button" class="btn btn--primary" data-go="${index + 1}">Next ${icon('chevronRight', { size: 16 })}</button>`}
+            : html`<button type="button" class="btn btn--primary" data-go="${items[position + 1]?.start}">Next ${icon('chevronRight', { size: 16 })}</button>`}
         </footer>`}`}
+      </div>`,
+    );
+    return undefined;
+  }
+
+  /** The number row in mark-as-you-go sessions: one button per question (a linked question is one). */
+  function eachPalette(current) {
+    if (items.length < 2) return '';
+    return html`<nav class="palette" aria-label="Questions">
+      ${items.map((item, position) => {
+        const ids = item.questions.map((question) => question.question_id);
+        const state = [
+          position === current ? 'is-current' : '',
+          ids.some((id) => session.answers[id]) ? 'is-answered' : '',
+          ids.some((id) => session.flagged[id]) ? 'is-flagged' : '',
+          ids.every((id) => session.marks[id] != null) ? 'is-marked' : '',
+        ].join(' ');
+        const notes = [ids.some((id) => session.flagged[id]) ? 'flagged' : '', ids.every((id) => session.marks[id] != null) ? 'marked' : ''].filter(Boolean).join(', ');
+        return html`<button type="button" class="palette__item ${state}" data-go="${item.start}" aria-label="Question ${position + 1}${notes ? ` (${notes})` : ''}" aria-current="${position === current ? 'true' : 'false'}">
+          ${position + 1}
+        </button>`;
+      })}
+    </nav>`;
+  }
+
+  /** One linked question's parts, each with its own answer box (and, once revealed, scheme and marks). */
+  function linkedParts(item, { scheme = false, fit = false, placeholder = 'Type your working here, or answer on paper.' } = {}) {
+    const { entry } = item;
+    return html`${linkedNote(entry)}
+      <div data-zoom-body ${fit ? 'data-fit' : ''}>
+        <div class="qgroup__intro">${linkedIntro(entry)}</div>
+        ${item.questions.map((part) => {
+          const label = linkedPartLabel(part, entry);
+          const uses = linkedUses(part, entry);
+          return html`<section class="runner__part qgroup__part" aria-label="Part ${label}">
+            <div class="qsplit__head"><span class="field__label qgroup__partlabel"><b>${scheme ? 'Mark scheme ' : 'Part '}${label}</b><span class="small muted">${plural(part.marks, 'mark')}</span>${uses.length && !scheme ? html`<span class="qgroup__uses">${icon('chevronLeft', { size: 12 })} uses your answer to ${uses.join(' and ')}</span>` : ''}</span></div>
+            ${scheme ? markSchemeBody(part, { wholeQuestion: false }) : linkedPartBody(part)}
+            ${scheme && session.answers[part.question_id] ? html`<div><p class="label">Your answer</p><div class="answer-text">${session.answers[part.question_id]}</div></div>` : ''}
+            ${scheme
+              ? marksInput(part, `Marks for ${label}, out of ${part.marks}`)
+              : html`<label class="field"><span class="field__label">Your answer to ${label}</span>
+                  <textarea class="textarea" data-answer="${part.question_id}" placeholder="${placeholder}">${session.answers[part.question_id] || ''}</textarea></label>`}
+          </section>`;
+        })}
+      </div>`;
+  }
+
+  function drawLinkedRun(position) {
+    const item = items[position];
+    const id = item.questions[0].question_id;
+    const ref = linkedRef(item.entry, bundle.papersById);
+    const revealed = Boolean(session.revealed[id]);
+    const last = position === items.length - 1;
+    const exam = session.timer.mode === 'countdown';
+    const total = sum(item.questions, (part) => part.marks);
+    setHtml(
+      element,
+      html`<div class="runner ${exam ? 'runner--exam' : 'runner--practice'}">
+        ${bar({ stage: 'run', question: item.questions[0], position })}
+        ${eachPalette(position)}
+        ${paused()
+          ? pausedPanel()
+          : html`<article class="card ruled tilt-1 qview qgroup ${revealed ? 'qview--scheme' : ''}" data-zoom-src="Question ${position + 1} · ${ref}">
+              <i class="tape tape--c" aria-hidden="true"></i>
+              <header class="qview__head">
+                <h1 class="qview__num" tabindex="-1">${items.length > 1 ? html`Question ${position + 1}<span class="muted"> of ${items.length}</span>` : html`Question ${item.questions[0].question_number}`}<span class="muted"> · ${ref}</span></h1>
+                <div class="row row--tight">${marksPill(total)} ${zoomButton('question')}</div>
+              </header>
+              ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
+              ${linkedParts(item, { scheme: revealed && each })}
+              ${revealed && each ? aiMarkingNote() : ''}
+            </article>`}
+        ${each
+          ? html`<footer class="runner__nav runner__nav--pinned">
+              ${revealed
+                ? html`<button type="button" class="btn" data-unreveal="${id}">${icon('chevronLeft', { size: 16 })} Go back</button>
+                    <span class="spacer"></span>
+                    ${last
+                      ? html`<button type="button" class="btn btn--primary" data-finish>Finish</button>`
+                      : html`<button type="button" class="btn btn--primary" data-go="${items[position + 1].start}">Next question ${icon('chevronRight', { size: 16 })}</button>`}`
+                : html`<button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">
+                      ${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag question'}
+                    </button>
+                    <span class="spacer"></span>
+                    ${position > 0 ? html`<button type="button" class="btn" data-go="${items[position - 1].start}">${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
+                    <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Mark scheme for all parts</button>`}
+            </footer>`
+          : html`<footer class="runner__nav">
+              <button type="button" class="btn" data-flag="${id}" aria-pressed="${Boolean(session.flagged[id])}">${icon('flag', { size: 16 })} ${session.flagged[id] ? 'Flagged' : 'Flag for review'}</button>
+              <span class="spacer"></span>
+              ${items.length > 1 ? html`<button type="button" class="btn" data-go="${items[position - 1]?.start ?? 0}" ${position === 0 ? 'disabled' : ''}>${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
+              ${last
+                ? html`<button type="button" class="btn btn--primary" data-finish>Finish and mark</button>`
+                : html`<button type="button" class="btn btn--primary" data-go="${items[position + 1].start}">Next ${icon('chevronRight', { size: 16 })}</button>`}
+            </footer>`}
       </div>`,
     );
     return undefined;
@@ -286,30 +388,49 @@ export async function mount(element, context) {
   </button>`;
 
   function paletteItem(item, position, current) {
+    const ids = item.questions.map((question) => question.question_id);
+    const flagged = ids.some((id) => session.flagged[id]);
     const state = [
       position === current ? 'is-current' : '',
-      session.answers[item.question_id] ? 'is-answered' : '',
-      session.flagged[item.question_id] ? 'is-flagged' : '',
+      ids.some((id) => session.answers[id]) ? 'is-answered' : '',
+      flagged ? 'is-flagged' : '',
     ].join(' ');
-    return html`<button type="button" class="palette__item ${state}" data-jump="${position}" aria-label="Question ${position + 1}${session.flagged[item.question_id] ? ' (flagged)' : ''}" aria-current="${position === current ? 'true' : 'false'}">${position + 1}</button>`;
+    return html`<button type="button" class="palette__item ${state}" data-jump="${position}" aria-label="Question ${position + 1}${flagged ? ' (flagged)' : ''}" aria-current="${position === current ? 'true' : 'false'}">${position + 1}</button>`;
   }
 
   function drawScroll() {
-    const current = clamp(session.current_index, 0, questions.length - 1);
-    const many = questions.length > 1;
+    // In the scrolling list the remembered position counts questions as shown (a linked question is one).
+    const current = clamp(session.current_index, 0, items.length - 1);
+    const many = items.length > 1;
     setHtml(
       element,
       html`<div class="runner runner--scroll">
         <div class="runner__top">
           ${bar({ stage: 'run' })}
-          ${many ? html`<nav class="palette" aria-label="Jump to a question">${questions.map((item, position) => paletteItem(item, position, current))}</nav>` : ''}
+          ${many ? html`<nav class="palette" aria-label="Jump to a question">${items.map((item, position) => paletteItem(item, position, current))}</nav>` : ''}
         </div>
         ${paused()
           ? pausedPanel()
           : html`<div class="runner__list">
-              ${questions.map((question, position) => {
+              ${items.map((item, position) => {
+                const question = item.questions[0];
                 const id = question.question_id;
                 const label = many ? `Question ${position + 1}` : `Question ${question.question_number}`;
+                if (item.group) {
+                  return html`<section class="runner__item" data-item="${position}" id="runner-q${position + 1}" aria-label="${label}">
+                    <article class="card ruled qview qgroup" data-zoom-src="${label}">
+                      <i class="tape tape--c" aria-hidden="true"></i>
+                      <header class="qview__head">
+                        ${position === 0 ? html`<h1 class="sr-only" tabindex="-1">${session.title}</h1>` : ''}
+                        <h2 class="qview__num">${many ? html`Question ${position + 1}<span class="muted"> of ${items.length}</span>` : html`Question ${question.question_number}`}<span class="muted"> · ${linkedRef(item.entry, bundle.papersById)}</span></h2>
+                        <div class="row row--tight">${marksPill(sum(item.questions, (part) => part.marks))} ${zoomButton('question')}</div>
+                      </header>
+                      ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
+                      ${linkedParts(item, { placeholder: 'Optional. Type your working here, or answer on paper.' })}
+                      <div class="row" style="margin-top:12px">${flagButton(id)}</div>
+                    </article>
+                  </section>`;
+                }
                 return html`<section class="runner__item" data-item="${position}" id="runner-q${position + 1}" aria-label="${label}">
                   <div class="runner__grid">
                     <article class="card ruled qview" data-zoom-src="${label}">
@@ -317,7 +438,7 @@ export async function mount(element, context) {
                       <header class="qview__head">
                         ${position === 0 ? html`<h1 class="sr-only" tabindex="-1">${session.title}</h1>` : ''}
                         <h2 class="qview__num">
-                          ${many ? html`Question ${position + 1}<span class="muted"> of ${questions.length}</span>` : html`Question ${question.question_number}`}${question.part_label ? html`<span class="muted"> · Part ${question.part_label}</span>` : ''}
+                          ${many ? html`Question ${position + 1}<span class="muted"> of ${items.length}</span>` : html`Question ${question.question_number}`}${question.part_label ? html`<span class="muted"> · Part ${question.part_label}</span>` : ''}
                         </h2>
                         <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('question')}</div>
                       </header>
@@ -503,7 +624,7 @@ export async function mount(element, context) {
               (question, index) =>
                 html`<article class="card ruled stack markcard">
                   <header class="row row--between">
-                    <h2 class="h2">Question ${index + 1}</h2>
+                    <h2 class="h2">${numberOf(question)}</h2>
                     <div class="row row--tight">${session.flagged[question.question_id] ? html`<span class="tag">${icon('flag', { size: 13 })} Flagged</span>` : ''} ${marksPill(question.marks)}</div>
                   </header>
                   <details class="fold">
@@ -654,7 +775,7 @@ export async function mount(element, context) {
                 const share = marks == null ? null : percent(marks, question.marks);
                 return html`<details class="fold fold--row" ${questions.length === 1 ? 'open' : ''}>
                   <summary>
-                    <span class="fold__title">Question ${index + 1}</span>
+                    <span class="fold__title">${numberOf(question)}</span>
                     <span class="tag">${topicOf(question)}</span>
                     ${session.answers[question.question_id] ? '' : html`<span class="small muted">not typed</span>`}
                     <span class="spacer"></span>
@@ -715,7 +836,7 @@ export async function mount(element, context) {
     }
     const remaining = remainingSeconds(session);
     const clockLine = remaining !== null && remaining > 0 ? `The clock stops with ${fmtClock(remaining)} left` : 'The clock stops';
-    const numbers = (list) => list.map((question) => `Q${questions.indexOf(question) + 1}`).join(', ');
+    const numbers = (list) => list.map((question) => numberOf(question).replace('Question ', 'Q').replace(' ', '')).join(', ');
     const unanswered = questions.filter((question) => !session.answers[question.question_id]);
     const flagged = questions.filter((question) => session.flagged[question.question_id]);
     const proceed = await confirmDialog({
@@ -764,7 +885,7 @@ export async function mount(element, context) {
     window.scrollTo(0, 0);
   });
   on(element, 'click', '[data-jump]', (event, button) => {
-    const position = clamp(Number(button.dataset.jump), 0, questions.length - 1);
+    const position = clamp(Number(button.dataset.jump), 0, items.length - 1);
     session.current_index = position;
     persist();
     $$('.palette__item', element).forEach((item, index) => {
@@ -773,7 +894,7 @@ export async function mount(element, context) {
     });
     scrollToItem(position);
   });
-  const paletteFor = (id) => $$('.palette__item', element)[questions.findIndex((question) => question.question_id === id)];
+  const paletteFor = (id) => $$('.palette__item', element)[itemIndexOf.get(id) ?? -1];
   on(element, 'input', '[data-answer]', (event, area) => {
     if (area.value.trim()) session.answers[area.dataset.answer] = area.value;
     else delete session.answers[area.dataset.answer];
@@ -833,7 +954,8 @@ export async function mount(element, context) {
   /** In mark-as-you-go mode, show a "Next" prompt once the current question has marks. */
   function advanceAfterMark() {
     const palette = $$('.palette__item', element);
-    palette[session.current_index]?.classList.add('is-marked');
+    const item = items[itemAt(session.current_index)];
+    if (item.questions.every((question) => session.marks[question.question_id] != null)) palette[itemAt(session.current_index)]?.classList.add('is-marked');
   }
 
   on(element, 'click', '[data-save-results]', async () => {

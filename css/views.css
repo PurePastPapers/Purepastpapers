@@ -1022,3 +1022,30 @@
   .verify .modal__foot .btn, .verify__resend .btn { justify-content: center; width: 100%; }
   .verify__resend { flex-direction: column; gap: 6px; }
 }
+
+/* Linked parts (engine/linked-parts.js): one question, every part with its own answer box */
+.qgroup__note { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 4px; padding: 10px 14px; border: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--subject, #7aa7d6) 10%, var(--surface)); font-size: 14px; line-height: 1.5; }
+.qgroup__note svg { flex: none; margin-top: 2px; }
+.qgroup__intro { margin-top: 16px; max-width: 680px; }
+.qgroup__intro:empty { display: none; }
+.qgroup__part { border-top: 2px dashed color-mix(in srgb, var(--ink) 18%, transparent); padding-top: 4px; margin-top: 18px; }
+.qgroup__part .qsplit { margin-top: 10px; }
+.qgroup__part .qsplit__answer { min-height: 96px; }
+.qgroup__part .qsplit__side { position: static; }
+.qgroup .qgroup__partlabel, .qgroup .qgroup__uses, .runner .qgroup__partlabel { text-transform: none; letter-spacing: 0; }
+.qgroup__partlabel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.qgroup__partlabel b { font-family: var(--font-display, inherit); font-size: 17px; }
+.qgroup__uses { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--surface); }
+.qgroup__lead { margin-bottom: 6px; }
+.qgroup__foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 22px; padding-top: 16px; border-top: 2px solid var(--ink); }
+.qgroup__foot .form-error, .qgroup__foot [data-mark-confirmation] { flex-basis: 100%; margin: 0; }
+.qgroup__total { font-size: 18px; margin: 0; }
+.qgroup__total b { font-size: 22px; }
+.qgroup__lockparts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.qgroup__lockparts span { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1.5px solid var(--ink); }
+.qgroup__lockparts .is-ok { background: color-mix(in srgb, #5fae7a 22%, var(--surface)); }
+.qgroup__lockparts .is-missing { border-style: dashed; opacity: .85; }
+.runner__part { border-top: 2px dashed color-mix(in srgb, var(--ink) 18%, transparent); padding-top: 12px; margin-top: 16px; }
+.runner__part:first-of-type { border-top: 0; margin-top: 8px; padding-top: 0; }
+.runner__part .textarea { min-height: 110px; }
+.runner .qgroup .qcontent { max-width: 760px; }

@@ -213,11 +213,13 @@ export function subjectPills(bundles, activeId, hrefFor) {
 
 /** Opens one question for practice (marked straight away against its mark scheme). */
 export async function startSingle(question, navigate) {
+  // A part of a linked question opens with the rest of it: they are one question.
+  const ids = question.linked_group?.question_ids || [question.question_id];
   const session = createSession({
     kind: 'single',
     subject_id: question.subject_id,
     title: `Question ${question.question_number}`,
-    question_ids: [question.question_id],
+    question_ids: ids,
     mark_mode: 'each',
   });
   await api.saveSession(session, { silent: true });
