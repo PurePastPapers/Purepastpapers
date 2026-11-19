@@ -1022,3 +1022,16 @@
   .verify .modal__foot .btn, .verify__resend .btn { justify-content: center; width: 100%; }
   .verify__resend { flex-direction: column; gap: 6px; }
 }
+
+/* "Only topics I've covered" switch: a pill on the question filter bar, a row in the test builder. */
+.covered-pill { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 4px 12px 4px 6px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--surface); font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.covered-pill.is-on { background: var(--good-wash); }
+.covered-pill .switch span[aria-hidden] { width: 40px; height: 24px; }
+.covered-pill .switch span[aria-hidden]::after { width: 14px; height: 14px; }
+.covered-pill .switch input:checked + span::after { left: 19px; }
+.covered-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: 4px 0 10px; padding: 10px 12px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--surface); }
+.covered-switch.is-on { background: var(--good-wash); }
+.covered-switch__label { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+.covered-switch__text { font-weight: 700; font-size: 15px; }
+.covered-switch__hint { margin: 0; color: var(--ink-2); flex: 1 1 260px; }
+@media (max-width: 640px) { .covered-pill { grid-column: 1 / -1; } .covered-switch__hint { flex-basis: 100%; } }
