@@ -93,3 +93,18 @@ test('the progress filter tells "answered, not marked" apart from "not tried yet
   assert.deepEqual(ids({ markStatuses: ['unmarked'] }), ['a']);
   assert.deepEqual(ids({ markStatuses: ['marked'] }), ['c']);
 });
+
+test('one attempt can be removed, marked or waiting, leaving the others', async () => {
+  globalThis.localStorage = makeStorage();
+  await api.init();
+  await api.signUp({ email: 'remove@example.test', password: 'password123', displayName: 'Remove' });
+  const a = await api.saveQuestionMark(q, 2, { reattempt: true, answer: 'one' });
+  const b = await api.saveQuestionMark(q, 4, { reattempt: true, answer: 'two' });
+  const c = await api.saveAnswerUnmarked(q, 'three');
+  assert.equal(await api.removeAttempt(b.attempt_id), true);
+  assert.deepEqual(api.attemptsFor('q1').map((go) => go.attempt_id).sort(), [a.attempt_id, c.attempt_id].sort());
+  assert.equal(latestByQuestion(api.getProgress().question_attempts).get('q1').marks_awarded, 2);
+  await api.removeAttempt(c.attempt_id);
+  assert.equal(api.getProgress().saved_answers.length, 0);
+  assert.equal(await api.removeAttempt('nope'), false);
+});

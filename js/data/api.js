@@ -580,6 +580,17 @@ export async function undoQuestionMark(questionId, { attemptId = null } = {}) {
   await persist();
 }
 
+/** Delete one go at a question, marked or waiting: its answer and mark are gone for good. */
+export async function removeAttempt(attemptId) {
+  const doc = requireProgress();
+  const before = doc.question_attempts.length + doc.saved_answers.length;
+  doc.question_attempts = doc.question_attempts.filter((entry) => entry.attempt_id !== attemptId);
+  doc.saved_answers = doc.saved_answers.filter((entry) => entry.attempt_id !== attemptId);
+  if (doc.question_attempts.length + doc.saved_answers.length === before) return false;
+  await persist();
+  return true;
+}
+
 /** Remove a go saved to mark later. */
 export async function removeSavedAnswer(attemptId) {
   const doc = requireProgress();
