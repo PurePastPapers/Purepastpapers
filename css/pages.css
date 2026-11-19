@@ -2147,12 +2147,28 @@ input[type='checkbox']:not([role='switch']):disabled {
   grid-template-columns: minmax(0, max-content) minmax(360px, 1fr);
   align-items: start;
 }
-.runner .runner__grid[data-qlayout='long'] .runner__side {
-  position: sticky;
-  top: 12px;
+/* too long for one screen: the question and the answer box each scroll on their own,
+   both exactly one screen tall, so neither runs off the page */
+.runner .runner__grid[data-qlayout='long'] .qview,
+.qsplit[data-qlayout='long'] .qsplit__main {
+  max-height: var(--qfit-room);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
-.runner--scroll .runner__grid[data-qlayout='long'] .runner__side {
-  top: 150px; /* under the pinned bar and number row */
+.runner .runner__grid[data-qlayout='long'] .qview .qview__head {
+  position: sticky;
+  top: -20px;
+  z-index: 2;
+  background: var(--surface);
+}
+.runner .runner__grid[data-qlayout='long'] .answer-card {
+  height: var(--qfit-room);
+}
+.runner .runner__grid[data-qlayout='long'] .answer-card .textarea {
+  overflow-y: auto;
+}
+.qsplit[data-qlayout='long'] .qsplit__answer {
+  max-height: calc(var(--qfit-room) - 160px);
 }
 .qsplit[data-qlayout='beside'],
 .qsplit[data-qlayout='long'] {

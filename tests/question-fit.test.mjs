@@ -79,14 +79,21 @@ test('Blank working space in a crop is shortened, so a one-line maths question s
   await page.close();
 });
 
-test('A tall question keeps the answer box beside it, never squeezed, and the question fits or the box stays pinned', { skip }, async () => {
+test('A tall question keeps the answer box beside it, never squeezed, and the question fits or scrolls on its own', { skip }, async () => {
   const { page, errors } = await session({ width: 1440, height: 900 }, 'EDX_ALEVEL_HIST_9HI0', '2H_Q02_');
   const { question, answer, layout } = await boxes(page);
   assert.ok(['beside', 'long'].includes(layout), `layout is ${layout}`);
   assert.ok(question.right <= answer.left, 'answer box is to the right of the question');
   assert.ok(answer.width >= 360, `answer box is ${answer.width}px wide`);
   if (layout === 'beside') assert.ok(question.bottom <= 900, 'question fits the screen');
-  else assert.equal(await page.locator('.runner__grid .runner__side').evaluate((node) => getComputedStyle(node).position), 'sticky');
+  else {
+    // too long to fit legibly: question and answer box each scroll on their own, inside the screen
+    const scroll = await page.locator('.runner__grid .qview').evaluate((node) => ({ overflow: getComputedStyle(node).overflowY, inner: node.scrollHeight, outer: node.clientHeight }));
+    assert.equal(scroll.overflow, 'auto');
+    assert.ok(scroll.inner > scroll.outer, 'the question scrolls inside its card');
+    const nav = await page.locator('.runner__nav').boundingBox();
+    assert.ok(question.bottom <= nav.y + 1 && answer.bottom <= nav.y + 1, 'both end above the pinned buttons');
+  }
   assert.deepEqual(errors, []);
   await page.close();
 });

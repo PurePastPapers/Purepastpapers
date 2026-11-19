@@ -8,8 +8,8 @@
 //    the whole question fits the screen height, but never below a legible size (long
 //    questions: diagrams, graphs, multi-line data).
 // 3. A question too long to fit even then (a page of sources, a printed extract) is drawn
-//    at an easy reading size instead, and the answer box stays pinned beside it while the
-//    student scrolls through it.
+//    at an easy reading size instead, in its own one-screen scroll area beside an answer box
+//    of the same height that scrolls separately.
 // Phones always stack and fit the width only.
 //
 // Printed crops often carry the paper's blank working space (a one-line maths question can
