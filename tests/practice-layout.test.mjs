@@ -52,10 +52,16 @@ test('Find questions: the filter is one compact bar of dropdowns', { skip }, asy
   // Covered topics are on by default for a student who has ticked topics; the topic
   // list appears once the switch is turned off.
   assert.ok(await page.locator('.fbar [data-covered]').isChecked(), 'covered topics are on by default');
+  // With the switch on, the Topics dropdown lists only covered spec points, each one tickable.
+  await page.locator('[data-section="fpop-topics"] > summary').click();
+  const coveredRows = await page.locator('[data-section="fpop-topics"] [data-point]').count();
+  assert.ok(coveredRows > 0, 'covered spec points are listed');
+  await page.locator('[data-section="fpop-topics"] > summary').click();
   await page.locator('.fbar .covered-pill').click();
   await page.waitForSelector('.fbar .covered-pill:not(.is-on)');
   await page.locator('[data-section="fpop-topics"] > summary').click();
   assert.ok(await page.locator('[data-section="fpop-topics"] [data-tree]').isVisible());
+  assert.ok(await page.locator('[data-section="fpop-topics"] [data-point]').count() > coveredRows, 'every spec point is listed once the switch is off');
   await page.locator('[data-section="fpop-difficulty"] > summary').click();
   assert.equal(await page.locator('.fpop[open]').count(), 1, 'only one dropdown open at a time');
 
