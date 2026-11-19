@@ -76,12 +76,15 @@ test('Find questions: the filter is one compact bar of dropdowns', { skip }, asy
   await page.close();
 });
 
-test('Find questions: question left, answer right, mark scheme replaces the question', { skip }, async () => {
+test('Find questions: answer box beside or below the question, mark scheme replaces the question', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 1366, height: 900 });
-  const card = page.locator('.qcard').filter({ has: page.locator('.qsplit') }).first();
+  await page.waitForSelector('.qsplit[data-qlayout]');
+  const card = page.locator('.qcard').filter({ has: page.locator('.qsplit[data-qlayout]') }).first();
+  const layout = await card.locator('.qsplit').getAttribute('data-qlayout');
   const main = await card.locator('.qsplit__main').boundingBox();
   const side = await card.locator('.qsplit__side').boundingBox();
-  assert.ok(main.x + main.width <= side.x, 'question sits to the left of the answer box');
+  if (layout === 'below') assert.ok(main.y + main.height <= side.y, 'a short question sits above the answer box');
+  else assert.ok(main.x + main.width <= side.x, 'a long question sits to the left of the answer box');
   assert.ok(await card.locator('.qsplit__side [data-answer]').isVisible());
 
   await card.locator('.qsplit__answer').fill('My answer');

@@ -25,6 +25,7 @@ import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { scStyle, tintPage } from '../subject-colours.js';
 import { zoomButton } from '../zoom.js';
+import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, pageHead, soonBadge, toast } from '../ui.js';
 import { links, routeOf } from '../../core/links.js';
@@ -655,7 +656,7 @@ export async function mount(element, context) {
         <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
-        ${open ? html`<div class="qsplit">
+        ${open ? html`<div class="qsplit" data-qfit>
           <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Question'} · ${questionRef(question, bundle.papersById)}">
             <div class="qsplit__head"><span class="field__label">${schemeOpen ? html`${icon('eye', { size: 14 })} Mark scheme` : 'Question'}</span>${zoomButton(schemeOpen ? 'mark scheme' : 'question')}</div>
             ${schemeOpen
@@ -884,6 +885,19 @@ export async function mount(element, context) {
     if (tree) tree.scrollTop = snapshot.treeScroll;
   }
 
+  // Answer box below short questions and beside long ones, each question sized to fit the
+  // screen (js/ui/question-fit.js).
+  function fitOpenQuestions() {
+    for (const grid of element.querySelectorAll('.qsplit[data-qfit]')) {
+      placeQuestion(grid, {
+        body: grid.querySelector('.qsplit__main'),
+        card: grid.querySelector('.qsplit__main'),
+        side: grid.querySelector('.qsplit__side'),
+        available: () => window.innerHeight - 110,
+      });
+    }
+  }
+
   function draw() {
     if (timed()) {
       const { matches, locked } = filterQuestions(scopedPool(), criteria(), engineContext);
@@ -956,11 +970,13 @@ export async function mount(element, context) {
       }
       restoreControls(controls);
       restore();
+      fitOpenQuestions();
       return;
     }
     draw();
     restoreControls(controls);
     restore();
+    fitOpenQuestions();
   }
 
   tintPage(subject);
@@ -985,6 +1001,9 @@ export async function mount(element, context) {
       </div>`,
   );
   draw();
+  fitOpenQuestions();
+  const onResize = debounce(() => { if (element.isConnected) fitOpenQuestions(); else window.removeEventListener('resize', onResize); }, 250);
+  window.addEventListener('resize', onResize);
 
   // ───────────────────────────────── events ─────────────────────────────────
 

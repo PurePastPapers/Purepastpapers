@@ -2132,3 +2132,76 @@ input[type='checkbox']:not([role='switch']):disabled {
 .qgroup__foot .later { flex-basis: 100%; }
 .progress-checkpoints .checkpoint { min-width: 0; }
 .progress-checkpoints .checkpoint span { min-width: 0; overflow-wrap: anywhere; }
+
+/* ── question and answer box: below short questions, beside long ones (js/ui/question-fit.js) ──
+   The script measures each question against the screen, sets data-qlayout, and sets
+   --qfit-room to the height the answer card may fill. */
+.runner .runner__grid[data-qlayout='below'],
+.qsplit[data-qlayout='below'] {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+.runner .runner__grid[data-qlayout='beside'],
+.runner .runner__grid[data-qlayout='long'] {
+  /* the question column is as wide as the sized question, the answer box takes the rest */
+  grid-template-columns: minmax(0, max-content) minmax(360px, 1fr);
+  align-items: start;
+}
+/* too long for one screen: the question and the answer box each scroll on their own,
+   both exactly one screen tall, so neither runs off the page */
+.runner .runner__grid[data-qlayout='long'] .qview,
+.qsplit[data-qlayout='long'] .qsplit__main {
+  max-height: var(--qfit-room);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.runner .runner__grid[data-qlayout='long'] .qview .qview__head {
+  position: sticky;
+  top: -20px;
+  z-index: 2;
+  background: var(--surface);
+}
+.runner .runner__grid[data-qlayout='long'] .answer-card {
+  height: var(--qfit-room);
+}
+.runner .runner__grid[data-qlayout='long'] .answer-card .textarea {
+  overflow-y: auto;
+}
+.qsplit[data-qlayout='long'] .qsplit__answer {
+  max-height: calc(var(--qfit-room) - 160px);
+}
+.qsplit[data-qlayout='beside'],
+.qsplit[data-qlayout='long'] {
+  grid-template-columns: minmax(0, max-content) minmax(360px, 1fr);
+}
+.runner .runner__grid[data-qlayout] .qview .qcontent img {
+  width: auto;
+  max-width: 100%;
+}
+.runner .runner__grid[data-qlayout] .answer-card {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--qfit-room, auto);
+}
+.runner .runner__grid[data-qlayout] .answer-card .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.runner .runner__grid[data-qlayout] .answer-card .textarea {
+  flex: 1;
+  min-height: 130px;
+}
+.runner .runner__grid[data-qlayout] .answer-card .card__title {
+  justify-content: flex-start;
+  gap: 10px;
+}
+.runner .runner__grid[data-qlayout] .answer-card .card__title .zoom-btn {
+  margin-left: auto;
+}
+.qsplit[data-qlayout='below'] .qsplit__side {
+  position: static;
+}
+.qsplit[data-qlayout='below'] .qsplit__answer {
+  min-height: 160px;
+}
