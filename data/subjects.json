@@ -27,7 +27,7 @@
     "subject": "Further Mathematics",
     "board": "Edexcel",
     "spec_code": "9FM0",
-    "spec_notes": "Core Pure 1 & 2, Further Pure/Stats/Mech/Decision",
+    "spec_notes": "A-Level 9FM0: Core Pure 1 & 2 plus two optional papers; AS 8FM0: Core Pure plus one Paper 2 option route (Further Pure, Statistics, Mechanics, Decision)",
     "subject_category": "STEM",
     "sp_prefix": "EDX_FMATH",
     "id_stem": "EDX_9FM0",
@@ -37,7 +37,49 @@
     "practice_modes": ["timed_test","individual"],
     "grade_scheme": "alevel",
     "has_written_exam": true,
-    "has_catalogue": true
+    "has_catalogue": true,
+    "qualifications": [{"code": "9FM0", "label": "A-Level"}, {"code": "8FM0", "label": "AS", "is_as": true}],
+    "module_routes": {
+      "source": "Pearson Edexcel 9FM0 specification Issue 4 (June 2023) and 8FM0 specification Issue 5 (July 2025)",
+      "modules": [
+        {"id": "CP", "title": "Core Pure Mathematics", "mandatory": true, "papers": {"9FM0": ["01", "02"], "8FM0": ["01"]}, "sections": {"9FM0": "EDX_FMATH_SEC_CP", "8FM0": "EDX_FMATH_SEC_CP"}},
+        {"id": "FP1", "title": "Further Pure Mathematics 1", "papers": {"9FM0": ["3A"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FP1", "8FM0": "EDX_FMATH_SEC_AS_FP1"}},
+        {"id": "FS1", "title": "Further Statistics 1", "papers": {"9FM0": ["3B"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FS1", "8FM0": "EDX_FMATH_SEC_AS_FS1"}},
+        {"id": "FM1", "title": "Further Mechanics 1", "papers": {"9FM0": ["3C"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FM1", "8FM0": "EDX_FMATH_SEC_AS_FM1"}},
+        {"id": "D1", "title": "Decision Mathematics 1", "papers": {"9FM0": ["3D"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_D1", "8FM0": "EDX_FMATH_SEC_AS_D1"}},
+        {"id": "FP2", "title": "Further Pure Mathematics 2", "papers": {"9FM0": ["4A"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FP2", "8FM0": "EDX_FMATH_SEC_AS_FP2"}},
+        {"id": "FS2", "title": "Further Statistics 2", "papers": {"9FM0": ["4B"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FS2", "8FM0": "EDX_FMATH_SEC_AS_FS2"}},
+        {"id": "FM2", "title": "Further Mechanics 2", "papers": {"9FM0": ["4C"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FM2", "8FM0": "EDX_FMATH_SEC_AS_FM2"}},
+        {"id": "D2", "title": "Decision Mathematics 2", "papers": {"9FM0": ["4D"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_D2", "8FM0": "EDX_FMATH_SEC_AS_D2"}}
+      ],
+      "routes": {
+        "8FM0": [
+          {"code": "2A", "label": "8FM0/2A", "modules": ["FP1", "FP2"]},
+          {"code": "2B", "label": "8FM0/2B", "modules": ["FP1", "FS1"]},
+          {"code": "2C", "label": "8FM0/2C", "modules": ["FP1", "FM1"]},
+          {"code": "2D", "label": "8FM0/2D", "modules": ["FP1", "D1"]},
+          {"code": "2E", "label": "8FM0/2E", "modules": ["FS1", "FM1"]},
+          {"code": "2F", "label": "8FM0/2F", "modules": ["FS1", "D1"]},
+          {"code": "2G", "label": "8FM0/2G", "modules": ["FS1", "FS2"]},
+          {"code": "2H", "label": "8FM0/2H", "modules": ["FM1", "D1"]},
+          {"code": "2J", "label": "8FM0/2J", "modules": ["FM1", "FM2"]},
+          {"code": "2K", "label": "8FM0/2K", "modules": ["D1", "D2"]}
+        ],
+        "9FM0": [
+          {"code": "3A+4A", "label": "9FM0/3A + 9FM0/4A", "modules": ["FP1", "FP2"]},
+          {"code": "3A+3B", "label": "9FM0/3A + 9FM0/3B", "modules": ["FP1", "FS1"]},
+          {"code": "3A+3C", "label": "9FM0/3A + 9FM0/3C", "modules": ["FP1", "FM1"]},
+          {"code": "3A+3D", "label": "9FM0/3A + 9FM0/3D", "modules": ["FP1", "D1"]},
+          {"code": "3B+3C", "label": "9FM0/3B + 9FM0/3C", "modules": ["FS1", "FM1"]},
+          {"code": "3B+3D", "label": "9FM0/3B + 9FM0/3D", "modules": ["FS1", "D1"]},
+          {"code": "3B+4B", "label": "9FM0/3B + 9FM0/4B", "modules": ["FS1", "FS2"]},
+          {"code": "3C+3D", "label": "9FM0/3C + 9FM0/3D", "modules": ["FM1", "D1"]},
+          {"code": "3C+4C", "label": "9FM0/3C + 9FM0/4C", "modules": ["FM1", "FM2"]},
+          {"code": "3D+4D", "label": "9FM0/3D + 9FM0/4D", "modules": ["D1", "D2"]}
+        ]
+      },
+      "rules": {"8FM0": "Paper 1 Core Pure plus exactly one of the ten Paper 2 options 2A–2K (there is no 2I).", "9FM0": "Core Pure Papers 1 and 2 plus either any two Option 1 papers (3A–3D) or one Option 1 paper with its matching Option 2 paper. Students may sit more optional papers; the combination giving the best grade is used, out of 300 marks."}
+    }
   },
   {
     "subject_id": "EDX_ALEVEL_BIOL_9BN0",

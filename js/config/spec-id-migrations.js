@@ -591,6 +591,467 @@ export const LEGACY_SPEC_IDS = Object.freeze({
     "EDX_ENGLIT_POET_R.18",
     "EDX_ENGLIT_POET_R.19"
   ],
+  "EDX_FMATH_CP_PROOF_1.1": [
+    "EDX_FMATH_CP_1.1"
+  ],
+  "EDX_FMATH_CP_COMPLEX_2.1": [
+    "EDX_FMATH_CP_2.1",
+    "EDX_FMATH_CP_2.3"
+  ],
+  "EDX_FMATH_CP_COMPLEX_2.2": [
+    "EDX_FMATH_CP_2.2"
+  ],
+  "EDX_FMATH_CP_COMPLEX_2.3": [
+    "EDX_FMATH_CP_2.4",
+    "EDX_FMATH_CP_2.5",
+    "EDX_FMATH_CP_2.6"
+  ],
+  "EDX_FMATH_CP_COMPLEX_2.4": [
+    "EDX_FMATH_CP_2.7"
+  ],
+  "EDX_FMATH_CP_COMPLEX_2.5": [
+    "EDX_FMATH_CP_2.8"
+  ],
+  "EDX_FMATH_CP_COMPLEX_2.6": [
+    "EDX_FMATH_CP_2.9",
+    "EDX_FMATH_CP_2.10",
+    "EDX_FMATH_CP_2.11"
+  ],
+  "EDX_FMATH_CP_MATRICES_3.1": [
+    "EDX_FMATH_CP_3.1",
+    "EDX_FMATH_CP_3.2"
+  ],
+  "EDX_FMATH_CP_MATRICES_3.2": [
+    "EDX_FMATH_CP_3.3",
+    "EDX_FMATH_CP_3.4"
+  ],
+  "EDX_FMATH_CP_MATRICES_3.3": [
+    "EDX_FMATH_CP_3.5",
+    "EDX_FMATH_CP_3.6"
+  ],
+  "EDX_FMATH_CP_MATRICES_3.4": [
+    "EDX_FMATH_CP_3.7",
+    "EDX_FMATH_CP_3.8"
+  ],
+  "EDX_FMATH_CP_ALG_4.1": [
+    "EDX_FMATH_CP_4.1"
+  ],
+  "EDX_FMATH_CP_ALG_4.2": [
+    "EDX_FMATH_CP_4.2"
+  ],
+  "EDX_FMATH_CP_ALG_4.3": [
+    "EDX_FMATH_CP_4.3"
+  ],
+  "EDX_FMATH_CP_ALG_4.4": [
+    "EDX_FMATH_CP_4.4"
+  ],
+  "EDX_FMATH_CP_ALG_4.5": [
+    "EDX_FMATH_CP_4.5",
+    "EDX_FMATH_CP_4.6"
+  ],
+  "EDX_FMATH_CP_CALC_5.1": [
+    "EDX_FMATH_CP_5.2"
+  ],
+  "EDX_FMATH_CP_CALC_5.2": [
+    "EDX_FMATH_CP_5.1"
+  ],
+  "EDX_FMATH_CP_CALC_5.3": [
+    "EDX_FMATH_CP_5.3"
+  ],
+  "EDX_FMATH_CP_CALC_5.4": [
+    "EDX_FMATH_CP_5.4"
+  ],
+  "EDX_FMATH_CP_CALC_5.5": [
+    "EDX_FMATH_CP_5.5",
+    "EDX_FMATH_CP_5.6"
+  ],
+  "EDX_FMATH_CP_VECTORS_6.1": [
+    "EDX_FMATH_CP_6.1"
+  ],
+  "EDX_FMATH_CP_VECTORS_6.2": [
+    "EDX_FMATH_CP_6.2"
+  ],
+  "EDX_FMATH_CP_VECTORS_6.3": [
+    "EDX_FMATH_CP_6.3",
+    "EDX_FMATH_CP_6.4"
+  ],
+  "EDX_FMATH_CP_VECTORS_6.4": [
+    "EDX_FMATH_CP_6.5"
+  ],
+  "EDX_FMATH_CP_POLAR_7.1": [
+    "EDX_FMATH_CP_7.1"
+  ],
+  "EDX_FMATH_CP_POLAR_7.2": [
+    "EDX_FMATH_CP_7.2"
+  ],
+  "EDX_FMATH_CP_POLAR_7.3": [
+    "EDX_FMATH_CP_7.3"
+  ],
+  "EDX_FMATH_CP_HYP_8.1": [
+    "EDX_FMATH_CP_8.1"
+  ],
+  "EDX_FMATH_CP_HYP_8.2": [
+    "EDX_FMATH_CP_8.2"
+  ],
+  "EDX_FMATH_CP_HYP_8.3": [
+    "EDX_FMATH_CP_8.3",
+    "EDX_FMATH_CP_8.4"
+  ],
+  "EDX_FMATH_CP_HYP_8.4": [
+    "EDX_FMATH_CP_8.5"
+  ],
+  "EDX_FMATH_CP_DE_9.1": [
+    "EDX_FMATH_CP_9.1",
+    "EDX_FMATH_CP_9.2"
+  ],
+  "EDX_FMATH_CP_DE_9.2": [
+    "EDX_FMATH_CP_9.4",
+    "EDX_FMATH_CP_9.6"
+  ],
+  "EDX_FMATH_CP_DE_9.3": [
+    "EDX_FMATH_CP_9.5"
+  ],
+  "EDX_FMATH_CP_DE_9.4": [
+    "EDX_FMATH_CP_9.7",
+    "EDX_FMATH_CP_9.8"
+  ],
+  "EDX_FMATH_CP_DE_9.5": [
+    "EDX_FMATH_CP_9.9"
+  ],
+  "EDX_FMATH_FP1_TRIG_1.1": [
+    "EDX_FMATH_FP1_1.1",
+    "EDX_FMATH_FP1_1.2",
+    "EDX_FMATH_FP1_1.3"
+  ],
+  "EDX_FMATH_FP1_CALC_2.1": [
+    "EDX_FMATH_FP1_2.1"
+  ],
+  "EDX_FMATH_FP1_CALC_2.2": [
+    "EDX_FMATH_FP1_2.2",
+    "EDX_FMATH_FP1_2.4"
+  ],
+  "EDX_FMATH_FP1_CALC_2.3": [
+    "EDX_FMATH_FP1_2.3"
+  ],
+  "EDX_FMATH_FP1_CALC_2.4": [
+    "EDX_FMATH_FP1_2.5"
+  ],
+  "EDX_FMATH_FP1_DE_3.1": [
+    "EDX_FMATH_FP1_3.1"
+  ],
+  "EDX_FMATH_FP1_DE_3.2": [
+    "EDX_FMATH_FP1_3.2"
+  ],
+  "EDX_FMATH_FP1_CONICS_4.1": [
+    "EDX_FMATH_FP1_4.1"
+  ],
+  "EDX_FMATH_FP1_CONICS_4.2": [
+    "EDX_FMATH_FP1_4.1",
+    "EDX_FMATH_FP1_4.2"
+  ],
+  "EDX_FMATH_FP1_CONICS_4.3": [
+    "EDX_FMATH_FP1_4.3",
+    "EDX_FMATH_FP1_4.4"
+  ],
+  "EDX_FMATH_FP1_VEC_5.1": [
+    "EDX_FMATH_FP1_5.1"
+  ],
+  "EDX_FMATH_FP1_VEC_5.2": [
+    "EDX_FMATH_FP1_5.2"
+  ],
+  "EDX_FMATH_FP1_VEC_5.3": [
+    "EDX_FMATH_FP1_5.3"
+  ],
+  "EDX_FMATH_FP1_NUM_6.1": [
+    "EDX_FMATH_FP1_6.1"
+  ],
+  "EDX_FMATH_FP1_NUM_6.2": [
+    "EDX_FMATH_FP1_6.2"
+  ],
+  "EDX_FMATH_FP1_INEQ_7.1": [
+    "EDX_FMATH_FP1_7.1"
+  ],
+  "EDX_FMATH_FS1_DRV_1.1": [
+    "EDX_FMATH_FS1_1.1"
+  ],
+  "EDX_FMATH_FS1_POISSON_2.1": [
+    "EDX_FMATH_FS1_2.1",
+    "EDX_FMATH_FS1_2.2"
+  ],
+  "EDX_FMATH_FS1_POISSON_2.2": [
+    "EDX_FMATH_FS1_2.3"
+  ],
+  "EDX_FMATH_FS1_GEO_3.1": [
+    "EDX_FMATH_FS1_3.1",
+    "EDX_FMATH_FS1_3.2",
+    "EDX_FMATH_FS1_3.3"
+  ],
+  "EDX_FMATH_FS1_HYP_4.1": [
+    "EDX_FMATH_FS1_4.1",
+    "EDX_FMATH_FS1_4.2"
+  ],
+  "EDX_FMATH_FS1_CLT_5.1": [
+    "EDX_FMATH_FS1_5.1"
+  ],
+  "EDX_FMATH_FS1_CHI_6.1": [
+    "EDX_FMATH_FS1_6.1"
+  ],
+  "EDX_FMATH_FS1_CHI_6.2": [
+    "EDX_FMATH_FS1_6.1"
+  ],
+  "EDX_FMATH_FS1_PGF_7.1": [
+    "EDX_FMATH_FS1_7.1",
+    "EDX_FMATH_FS1_7.2",
+    "EDX_FMATH_FS1_7.3"
+  ],
+  "EDX_FMATH_FS1_QUAL_8.1": [
+    "EDX_FMATH_FS1_8.1"
+  ],
+  "EDX_FMATH_FM1_MOM_1.1": [
+    "EDX_FMATH_FM1_1.1",
+    "EDX_FMATH_FM1_1.2"
+  ],
+  "EDX_FMATH_FM1_WEP_2.1": [
+    "EDX_FMATH_FM1_2.1"
+  ],
+  "EDX_FMATH_FM1_WEP_2.2": [
+    "EDX_FMATH_FM1_2.1"
+  ],
+  "EDX_FMATH_FM1_ELASTIC_3.1": [
+    "EDX_FMATH_FM1_3.1",
+    "EDX_FMATH_FM1_3.2"
+  ],
+  "EDX_FMATH_FM1_COLL1_4.1": [
+    "EDX_FMATH_FM1_4.1",
+    "EDX_FMATH_FM1_4.2"
+  ],
+  "EDX_FMATH_FM1_COLL2_5.1": [
+    "EDX_FMATH_FM1_5.1",
+    "EDX_FMATH_FM1_5.2"
+  ],
+  "EDX_FMATH_D1_ALG_1.1": [
+    "EDX_FMATH_D1_1.1",
+    "EDX_FMATH_D1_1.2"
+  ],
+  "EDX_FMATH_D1_ALG_1.2": [
+    "EDX_FMATH_D1_1.3",
+    "EDX_FMATH_D1_1.4"
+  ],
+  "EDX_FMATH_D1_GRAPHS_2.1": [
+    "EDX_FMATH_D1_2.1"
+  ],
+  "EDX_FMATH_D1_GRAPHS_2.2": [
+    "EDX_FMATH_D1_2.2"
+  ],
+  "EDX_FMATH_D1_GRAPHS_2.3": [
+    "EDX_FMATH_D1_3.1",
+    "EDX_FMATH_D1_3.2"
+  ],
+  "EDX_FMATH_D1_CPA_3.1": [
+    "EDX_FMATH_D1_4.1",
+    "EDX_FMATH_D1_4.2",
+    "EDX_FMATH_D1_4.3",
+    "EDX_FMATH_D1_4.4",
+    "EDX_FMATH_D1_4.5",
+    "EDX_FMATH_D1_4.6"
+  ],
+  "EDX_FMATH_D1_LP_4.1": [
+    "EDX_FMATH_D1_5.1",
+    "EDX_FMATH_D1_5.2"
+  ],
+  "EDX_FMATH_D1_LP_4.2": [
+    "EDX_FMATH_D1_5.3",
+    "EDX_FMATH_D1_5.4"
+  ],
+  "EDX_FMATH_FP2_GROUPS_1.1": [
+    "EDX_FMATH_FP2_1.1",
+    "EDX_FMATH_FP2_1.2",
+    "EDX_FMATH_FP2_1.3",
+    "EDX_FMATH_FP2_1.4",
+    "EDX_FMATH_FP2_1.5"
+  ],
+  "EDX_FMATH_FP2_CALC_2.1": [
+    "EDX_FMATH_FP2_2.1"
+  ],
+  "EDX_FMATH_FP2_CALC_2.2": [
+    "EDX_FMATH_FP2_2.2"
+  ],
+  "EDX_FMATH_FP2_MATRIX_3.1": [
+    "EDX_FMATH_FP2_3.1",
+    "EDX_FMATH_FP2_3.2"
+  ],
+  "EDX_FMATH_FP2_MATRIX_3.2": [
+    "EDX_FMATH_FP2_3.3"
+  ],
+  "EDX_FMATH_FP2_COMPLEX_4.1": [
+    "EDX_FMATH_FP2_4.1",
+    "EDX_FMATH_FP2_4.2"
+  ],
+  "EDX_FMATH_FP2_NUMBER_5.1": [
+    "EDX_FMATH_FP2_5.1",
+    "EDX_FMATH_FP2_5.2",
+    "EDX_FMATH_FP2_5.3",
+    "EDX_FMATH_FP2_5.6"
+  ],
+  "EDX_FMATH_FP2_NUMBER_5.2": [
+    "EDX_FMATH_FP2_5.4",
+    "EDX_FMATH_FP2_5.7"
+  ],
+  "EDX_FMATH_FP2_RECUR_6.1": [
+    "EDX_FMATH_FP2_6.1",
+    "EDX_FMATH_FP2_6.2",
+    "EDX_FMATH_FP2_6.3"
+  ],
+  "EDX_FMATH_FS2_REG_1.1": [
+    "EDX_FMATH_FS2_1.1",
+    "EDX_FMATH_FS2_1.2"
+  ],
+  "EDX_FMATH_FS2_CONT_2.1": [
+    "EDX_FMATH_FS2_2.1",
+    "EDX_FMATH_FS2_2.2",
+    "EDX_FMATH_FS2_2.3",
+    "EDX_FMATH_FS2_2.4"
+  ],
+  "EDX_FMATH_FS2_CORR_3.1": [
+    "EDX_FMATH_FS2_3.1",
+    "EDX_FMATH_FS2_3.2",
+    "EDX_FMATH_FS2_3.3"
+  ],
+  "EDX_FMATH_FS2_COMB_4.1": [
+    "EDX_FMATH_FS2_4.1"
+  ],
+  "EDX_FMATH_FS2_EST_5.1": [
+    "EDX_FMATH_FS2_5.1",
+    "EDX_FMATH_FS2_5.2",
+    "EDX_FMATH_FS2_5.3",
+    "EDX_FMATH_FS2_5.4",
+    "EDX_FMATH_FS2_5.5",
+    "EDX_FMATH_FS2_6.1",
+    "EDX_FMATH_FS2_6.2",
+    "EDX_FMATH_FS2_7.1",
+    "EDX_FMATH_FS2_7.2",
+    "EDX_FMATH_FS2_7.3"
+  ],
+  "EDX_FMATH_FM2_CIRC_1.1": [
+    "EDX_FMATH_FM2_1.1",
+    "EDX_FMATH_FM2_1.2"
+  ],
+  "EDX_FMATH_FM2_COM_2.1": [
+    "EDX_FMATH_FM2_2.1",
+    "EDX_FMATH_FM2_2.2"
+  ],
+  "EDX_FMATH_FM2_COM_2.2": [
+    "EDX_FMATH_FM2_3.1",
+    "EDX_FMATH_FM2_3.3"
+  ],
+  "EDX_FMATH_FM2_DYN_3.1": [
+    "EDX_FMATH_FM2_4.1",
+    "EDX_FMATH_FM2_4.2"
+  ],
+  "EDX_FMATH_FM2_KIN_4.1": [
+    "EDX_FMATH_FM2_5.1"
+  ],
+  "EDX_FMATH_D2_TRANS_1.1": [
+    "EDX_FMATH_D2_1.1",
+    "EDX_FMATH_D2_1.2",
+    "EDX_FMATH_D2_1.3"
+  ],
+  "EDX_FMATH_D2_TRANS_1.2": [
+    "EDX_FMATH_D2_2.1",
+    "EDX_FMATH_D2_2.2"
+  ],
+  "EDX_FMATH_D2_FLOWS_2.1": [
+    "EDX_FMATH_D2_3.1",
+    "EDX_FMATH_D2_3.2",
+    "EDX_FMATH_D2_3.3",
+    "EDX_FMATH_D2_3.4",
+    "EDX_FMATH_D2_3.5"
+  ],
+  "EDX_FMATH_D2_DP_3.1": [
+    "EDX_FMATH_D2_4.1"
+  ],
+  "EDX_FMATH_D2_DP_3.2": [
+    "EDX_FMATH_D2_5.1",
+    "EDX_FMATH_D2_5.2",
+    "EDX_FMATH_D2_5.3",
+    "EDX_FMATH_D2_5.4",
+    "EDX_FMATH_D2_5.5"
+  ],
+  "EDX_FMATH_D2_REC_4.1": [
+    "EDX_FMATH_D2_6.1",
+    "EDX_FMATH_D2_6.2"
+  ],
+  "EDX_FMATH_D2_REC_4.2": [
+    "EDX_FMATH_D2_7.1",
+    "EDX_FMATH_D2_7.2"
+  ],
+  "EDX_FMATH_FM2_DYN": [
+    "EDX_FMATH_FM2_4.1",
+    "EDX_FMATH_FM2_4.2"
+  ],
+  "EDX_FMATH_FM2_KIN": [
+    "EDX_FMATH_FM2_5.1"
+  ],
+  "EDX_FMATH_FS2_EST": [
+    "EDX_FMATH_FS2_5.1",
+    "EDX_FMATH_FS2_5.2",
+    "EDX_FMATH_FS2_5.3",
+    "EDX_FMATH_FS2_5.4",
+    "EDX_FMATH_FS2_5.5",
+    "EDX_FMATH_FS2_6.1",
+    "EDX_FMATH_FS2_6.2",
+    "EDX_FMATH_FS2_7.1",
+    "EDX_FMATH_FS2_7.2",
+    "EDX_FMATH_FS2_7.3"
+  ],
+  "EDX_FMATH_D1_GRAPHS": [
+    "EDX_FMATH_D1_2.1",
+    "EDX_FMATH_D1_2.2",
+    "EDX_FMATH_D1_3.1",
+    "EDX_FMATH_D1_3.2"
+  ],
+  "EDX_FMATH_D1_CPA": [
+    "EDX_FMATH_D1_4.1",
+    "EDX_FMATH_D1_4.2",
+    "EDX_FMATH_D1_4.3",
+    "EDX_FMATH_D1_4.4",
+    "EDX_FMATH_D1_4.5",
+    "EDX_FMATH_D1_4.6"
+  ],
+  "EDX_FMATH_D1_LP": [
+    "EDX_FMATH_D1_5.1",
+    "EDX_FMATH_D1_5.2",
+    "EDX_FMATH_D1_5.3",
+    "EDX_FMATH_D1_5.4"
+  ],
+  "EDX_FMATH_D2_TRANS": [
+    "EDX_FMATH_D2_1.1",
+    "EDX_FMATH_D2_1.2",
+    "EDX_FMATH_D2_1.3",
+    "EDX_FMATH_D2_2.1",
+    "EDX_FMATH_D2_2.2"
+  ],
+  "EDX_FMATH_D2_FLOWS": [
+    "EDX_FMATH_D2_3.1",
+    "EDX_FMATH_D2_3.2",
+    "EDX_FMATH_D2_3.3",
+    "EDX_FMATH_D2_3.4",
+    "EDX_FMATH_D2_3.5"
+  ],
+  "EDX_FMATH_D2_DP": [
+    "EDX_FMATH_D2_4.1",
+    "EDX_FMATH_D2_5.1",
+    "EDX_FMATH_D2_5.2",
+    "EDX_FMATH_D2_5.3",
+    "EDX_FMATH_D2_5.4",
+    "EDX_FMATH_D2_5.5"
+  ],
+  "EDX_FMATH_D2_REC": [
+    "EDX_FMATH_D2_6.1",
+    "EDX_FMATH_D2_6.2",
+    "EDX_FMATH_D2_7.1",
+    "EDX_FMATH_D2_7.2"
+  ],
   "EDX_HIST_1H_INT_5.1": [
     "EDX_HIST_1H_INT_INT.1",
     "EDX_HIST_1H_INT_INT.2",
