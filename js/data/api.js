@@ -42,6 +42,7 @@ const emptyProgress = (userId) => ({
   learned_textbook_sections: [],
   question_attempts: [],
   paper_attempts: [],
+  saved_answers: [], // answers kept without a mark yet: { question_id, subject_id, answer, timestamp, updated_at, session_id? }
   custom_tests: [],
   sessions: [],
   preferences: {},
@@ -50,7 +51,7 @@ const emptyProgress = (userId) => ({
 function normalise(document, userId) {
   const base = emptyProgress(userId);
   const merged = { ...base, ...(document || {}), user_id: userId };
-  for (const key of ['enrolled_subjects', 'learned_spec_points', 'learned_textbook_sections', 'question_attempts', 'paper_attempts', 'custom_tests', 'sessions']) {
+  for (const key of ['enrolled_subjects', 'learned_spec_points', 'learned_textbook_sections', 'question_attempts', 'paper_attempts', 'saved_answers', 'custom_tests', 'sessions']) {
     if (!Array.isArray(merged[key])) merged[key] = [];
   }
   if (!merged.preferences || typeof merged.preferences !== 'object') merged.preferences = {};
@@ -421,30 +422,51 @@ export async function deleteSession(sessionId) {
 }
 
 /** Stores a finished session and logs its results in one write (PRD 4.4). */
-export async function commitSessionResult(session, questionAttempts = [], paperAttempt = null) {
+export async function commitSessionResult(session, questionAttempts = [], paperAttempt = null, unmarkedAnswers = []) {
   const doc = requireProgress();
+  for (const attempt of questionAttempts) absorbSavedAnswer(doc, attempt);
   doc.question_attempts.push(...questionAttempts);
+  for (const entry of unmarkedAnswers) keepAnswer(doc, entry);
   if (paperAttempt) doc.paper_attempts.push(paperAttempt);
   upsertSession(session);
   await persist();
 }
 
 /** Save an intentional inline mark. Editing preserves the attempt's original date and count. */
-export async function saveQuestionMark(question, marks, { reattempt = false } = {}) {
+export async function saveQuestionMark(question, marks, { reattempt = false, answer = null } = {}) {
   if (!Number.isInteger(marks) || marks < 0 || marks > question.marks) throw new Error('Enter a whole number within the available marks.');
   const doc = requireProgress();
   const previous = latestByQuestion(doc.question_attempts).get(question.question_id);
-  if (previous && !reattempt) {
+  // An answer saved to mark later becomes this attempt, keeping the date it was answered.
+  const waiting = savedAnswerIndex(doc, question.question_id) >= 0;
+  if (previous && !reattempt && !waiting) {
     if (previous.marks_awarded === marks) return previous;
     previous.mark_edits = [...(previous.mark_edits || []), { marks_awarded: previous.marks_awarded, max_marks: previous.max_marks }];
     previous.marks_awarded = marks;
     previous.max_marks = question.marks;
+    if (typeof answer === 'string' && answer.trim()) previous.answer = answer;
     await persist();
     return previous;
   }
   const attempt = { question_id: question.question_id, subject_id: question.subject_id, source_type: question.source_type,
     difficulty: question.difficulty, marks_awarded: marks, max_marks: question.marks, timestamp: new Date().toISOString(), marked_by: 'self', inline: true };
+  if (typeof answer === 'string' && answer.trim()) attempt.answer = answer;
+  absorbSavedAnswer(doc, attempt);
   doc.question_attempts.push(attempt);
+  await persist();
+  return attempt;
+}
+
+/** Change the score on the latest marked attempt at a question (a mistake when marking). */
+export async function changeQuestionMark(questionId, marks) {
+  const doc = requireProgress();
+  const attempt = latestByQuestion(doc.question_attempts).get(questionId);
+  if (!attempt) throw new Error('There is no mark to change yet.');
+  if (!Number.isInteger(marks) || marks < 0 || marks > attempt.max_marks) throw new Error('Enter a whole number within the available marks.');
+  if (attempt.marks_awarded === marks) return attempt;
+  attempt.mark_edits = [...(attempt.mark_edits || []), { marks_awarded: attempt.marks_awarded, max_marks: attempt.max_marks }];
+  attempt.marks_awarded = marks;
+  attempt.edited_at = new Date().toISOString();
   await persist();
   return attempt;
 }
@@ -457,8 +479,70 @@ export async function undoQuestionMark(questionId) {
   const attempt = doc.question_attempts[index];
   const previous = attempt.mark_edits?.pop();
   if (previous) Object.assign(attempt, previous);
-  else if (attempt.inline) doc.question_attempts.splice(index, 1);
-  else return;
+  else if (attempt.inline) {
+    doc.question_attempts.splice(index, 1);
+    // Marking an answer saved for later is undone by putting it back, still unmarked.
+    if (attempt.saved_answer) doc.saved_answers.push(attempt.saved_answer);
+  } else return;
+  await persist();
+}
+
+// ───────────────────── answers saved to mark later ─────────────────────
+
+const savedAnswerIndex = (doc, questionId) => doc.saved_answers.findIndex((entry) => entry.question_id === questionId);
+
+/** Adds or updates the one waiting answer for a question; the first save's date is kept. */
+function keepAnswer(doc, { question_id, subject_id, answer = '', session_id = null }, now = new Date().toISOString()) {
+  const index = savedAnswerIndex(doc, question_id);
+  if (index >= 0) {
+    Object.assign(doc.saved_answers[index], { answer, updated_at: now }, session_id ? { session_id } : {});
+    return doc.saved_answers[index];
+  }
+  const entry = { question_id, subject_id, answer, timestamp: now, updated_at: now };
+  if (session_id) entry.session_id = session_id;
+  doc.saved_answers.push(entry);
+  return entry;
+}
+
+/** When a waiting answer gets its mark, it leaves the waiting list and its text and date move onto the attempt. */
+function absorbSavedAnswer(doc, attempt) {
+  const index = savedAnswerIndex(doc, attempt.question_id);
+  if (index < 0) return;
+  const [entry] = doc.saved_answers.splice(index, 1);
+  if (entry.answer && !attempt.answer) attempt.answer = entry.answer;
+  attempt.answered_at = entry.timestamp;
+  if (attempt.inline) attempt.saved_answer = entry;
+}
+
+/** question_id → the answer saved without a mark (shown as "Answered, not marked"). */
+export function savedAnswers() {
+  return new Map((progress?.saved_answers || []).map((entry) => [entry.question_id, entry]));
+}
+
+/** The latest answer text for a question: a waiting one, otherwise the one kept with its last mark. */
+export function answerFor(questionId) {
+  const waiting = (progress?.saved_answers || []).find((entry) => entry.question_id === questionId);
+  if (waiting) return waiting.answer || '';
+  let found = null;
+  for (const attempt of progress?.question_attempts || []) {
+    if (attempt.question_id === questionId && attempt.answer && (!found || attempt.timestamp >= found.timestamp)) found = attempt;
+  }
+  return found?.answer || '';
+}
+
+/** Save an answer (typed, or done on paper) without marking it; it can be marked later. */
+export async function saveAnswerUnmarked(question, answer = '') {
+  const doc = requireProgress();
+  const entry = keepAnswer(doc, { question_id: question.question_id, subject_id: question.subject_id, answer: String(answer || '') });
+  await persist();
+  return entry;
+}
+
+export async function removeSavedAnswer(questionId) {
+  const doc = requireProgress();
+  const index = savedAnswerIndex(doc, questionId);
+  if (index < 0) return;
+  doc.saved_answers.splice(index, 1);
   await persist();
 }
 

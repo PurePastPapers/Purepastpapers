@@ -223,7 +223,7 @@ export function subjectPills(bundles, activeId, hrefFor) {
 // ── starting sessions ──
 
 /** Opens one question for practice (marked straight away against its mark scheme). */
-export async function startSingle(question, navigate) {
+export async function startSingle(question, navigate, { withSavedAnswers = false } = {}) {
   // A part of a linked question opens with the rest of it: they are one question.
   const ids = question.linked_group?.question_ids || [question.question_id];
   const session = createSession({
@@ -233,6 +233,8 @@ export async function startSingle(question, navigate) {
     question_ids: ids,
     mark_mode: 'each',
   });
+  // Marking an answer saved earlier: it opens with that answer already in the box.
+  if (withSavedAnswers) for (const id of ids) { const text = api.answerFor(id); if (text) session.answers[id] = text; }
   await api.saveSession(session, { silent: true });
   navigate(routeOf(links.session(session.session_id)));
 }

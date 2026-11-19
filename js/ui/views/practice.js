@@ -9,7 +9,7 @@ import {
 } from '../../config/app.config.js';
 import { FEATURES, enabledSourceTypes, isEnabled } from '../../config/phases.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
-import { debounce, fmtMinutes, plural, sum, uid } from '../../core/utils.js';
+import { debounce, fmtMinutes, fmtRelative, plural, sum, uid } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getCurriculum, specIndex } from '../../data/content-repository.js';
 import { createSession } from '../../data/sessions.js';
@@ -45,7 +45,7 @@ const SORTS = {
   difficulty: 'Difficulty',
 };
 
-const PROGRESS_FILTERS = { unmarked: 'Unmarked', marked: 'Marked', lost: 'Lost marks', full: 'Full marks' };
+const PROGRESS_FILTERS = { unmarked: 'Not tried yet', answered: 'Answered, not marked', marked: 'Marked', lost: 'Lost marks', full: 'Full marks' };
 
 const defaults = () => ({
   mode: null,
@@ -259,7 +259,10 @@ export async function mount(element, context) {
   const pool = practicePool(bundle);
   const representedParents = new Set(pool.map((question) => question.parent_question_id).filter(Boolean));
   const suppressedParents = bundle.questions.filter((question) => !question.part_label && representedParents.has(question.question_id) && question.include_in_custom_pool !== false && enabledSourceTypes().includes(question.source_type)).length;
-  const engineContext = { specIndex, learned, latestAttempts: latest, papersById: bundle.papersById };
+  // Answers saved to mark later (kept in the account, so they follow the student between devices).
+  const waiting = user ? api.savedAnswers() : new Map();
+  const answerOf = (id) => state.drafts[id]?.answer ?? (user ? api.answerFor(id) : '');
+  const engineContext = { specIndex, learned, latestAttempts: latest, savedAnswers: waiting, papersById: bundle.papersById };
   const PAGE_SIZE = 30;
   const timed = () => state.mode === 'timed_test';
   const sourceTypes = () => SOURCE_CHOICES.find((choice) => choice.id === state.source).types.filter((type) => enabledSourceTypes().includes(type));
@@ -612,6 +615,17 @@ export async function mount(element, context) {
     </div>`;
   }
 
+  /** "Save answer, mark later": keeps the answer and records the question as done but not marked. */
+  function laterRow(parts, { group = null } = {}) {
+    const many = parts.length > 1;
+    const saved = parts.filter((part) => waiting.has(part.question_id));
+    const when = saved.length ? saved.map((part) => waiting.get(part.question_id).updated_at).sort().at(-1) : null;
+    return html`<div class="later">
+      <button type="button" class="btn btn--sm later__btn" ${group ? html`data-save-later-group="${group}"` : html`data-save-later="${parts[0].question_id}"`}>${icon('clock', { size: 15 })} ${user ? (saved.length ? (many ? 'Update saved answers' : 'Update saved answer') : (many ? 'Save answers, mark later' : 'Save answer, mark later')) : (many ? 'Create free account to save answers' : 'Create free account to save answer')}</button>
+      ${when ? html`<span class="small muted later__note" data-later-note>Saved ${fmtRelative(when).toLowerCase()}, not marked yet</span>` : html`<span class="small muted later__note" data-later-note>${user ? 'Counts as done. Mark it whenever you like.' : ''}</span>`}
+    </div>`;
+  }
+
   function questionCard(question, { locked = null, partsMissing = null } = {}) {
     if (question.is_linked_group) return linkedCard(question, { locked, partsMissing });
     const attempt = latest.get(question.question_id);
@@ -637,7 +651,7 @@ export async function mount(element, context) {
         <input type="checkbox" class="tree__check" data-select="${question.question_id}" ${selected ? 'checked' : ''} aria-label="Add ${questionRef(question, bundle.papersById)} to set" />
       </span>
       <div style="min-width:0">
-        <p class="qcard__ref">${questionRef(question, bundle.papersById)} ${attempt ? html`<span class="tag">Saved ${attempt.marks_awarded}/${attempt.max_marks}</span>` : html`<span class="tag">Unmarked</span>`}</p>
+        <p class="qcard__ref">${questionRef(question, bundle.papersById)} ${attempt ? html`<span class="tag">Saved ${attempt.marks_awarded}/${attempt.max_marks}</span>` : ''}${waiting.has(question.question_id) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : attempt ? '' : html`<span class="tag">Not tried yet</span>`}</p>
         <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
@@ -649,11 +663,12 @@ export async function mount(element, context) {
               : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
           </div>
           <div class="qsplit__side stack stack--sm">
-            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${draft.answer || ''}</textarea></label>
+            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${answerOf(question.question_id)}</textarea></label>
+            ${laterRow([question])}
             ${schemeOpen ? html`<section class="markbox stack stack--sm">
               ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'mark' })}
-              <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? 'Save mark' : 'Create free account to save mark'}</button>
-                ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as new attempt</button>` : ''}
+              <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? (attempt && !waiting.has(question.question_id) ? 'Change mark' : 'Save mark') : 'Create free account to save mark'}</button>
+                ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as a new attempt</button>` : ''}
                 ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
               <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>
             </section>` : ''}
@@ -714,7 +729,7 @@ export async function mount(element, context) {
       <div style="min-width:0">
         <p class="qcard__ref">${ref} ${saved
           ? html`<span class="tag">Saved ${attempts.reduce((sum, attempt) => sum + attempt.marks_awarded, 0)}/${entry.marks}</span>`
-          : attempts.some(Boolean) ? html`<span class="tag">Partly marked</span>` : html`<span class="tag">Unmarked</span>`}</p>
+          : attempts.some(Boolean) ? html`<span class="tag">Partly marked</span>` : entry.parts.some((part) => waiting.has(part.question_id)) ? '' : html`<span class="tag">Not tried yet</span>`}${entry.parts.some((part) => waiting.has(part.question_id)) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : ''}</p>
         <p class="small muted">${subject.board} · ${subject.subject} · ${entry.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(entry, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(id) })}
         ${!open ? html`<p class="qcard__text">${entry.parts.length} linked parts: ${entry.parts.map((part) => questionSnippet(part, 60)).join(' · ')}</p>` : ''}
@@ -730,7 +745,7 @@ export async function mount(element, context) {
                   ${schemeOpen ? markSchemeBody(part, { wholeQuestion: false }) : linkedPartBody(part)}
                 </div>
                 <div class="qsplit__side stack stack--sm">
-                  <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${state.drafts[partId]?.answer || ''}</textarea></label>
+                  <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${answerOf(partId)}</textarea></label>
                   ${schemeOpen ? html`<section class="markbox">${markPicker({ id: partId, max: part.marks, value: markOf(part), attr: 'mark', label: `Marks for ${label(part)}, out of ${part.marks}` })}</section>` : ''}
                 </div>
               </div>
@@ -740,17 +755,19 @@ export async function mount(element, context) {
             ${schemeOpen
               ? html`<p class="qgroup__total" data-group-total>Total <b>${total}</b> / ${entry.marks}</p>
                 <div class="row row--tight">
-                  <button type="button" class="btn btn--primary btn--sm" data-save-group="${id}">${user ? `Save marks for all ${entry.parts.length} parts` : 'Create free account to save marks'}</button>
-                  ${saved ? html`<button type="button" class="btn btn--sm" data-reattempt-group="${id}">Save as new attempt</button>` : ''}
+                  <button type="button" class="btn btn--primary btn--sm" data-save-group="${id}">${user ? (saved && !entry.parts.some((part) => waiting.has(part.question_id)) ? 'Change marks' : `Save marks for all ${entry.parts.length} parts`) : 'Create free account to save marks'}</button>
+                  ${saved ? html`<button type="button" class="btn btn--sm" data-reattempt-group="${id}">Save as a new attempt</button>` : ''}
                   ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo-group="${id}">Undo last save</button>` : ''}
                   <button type="button" class="btn btn--sm" data-scheme="${id}" aria-expanded="true">${icon('chevronLeft', { size: 15 })} Back to question</button>
                 </div>
+                ${laterRow(entry.parts, { group: id })}
                 <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>`
               : html`<p class="small muted">Answer all ${entry.parts.length} parts, then check them together.</p>
                 <div class="row row--tight">
                   <button type="button" class="btn btn--primary btn--sm" data-scheme="${id}" aria-expanded="false">${icon('eye', { size: 15 })} Show mark scheme for all parts</button>
                   ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, entry.paper_id)}">View full paper</a>` : ''}
-                </div>`}
+                </div>
+                ${laterRow(entry.parts, { group: id })}`}
           </div>` : ''}
       </div>
       <div class="qcard__side">${marksPill(entry.marks)}<button type="button" class="btn btn--sm" data-open="${id}" aria-expanded="${open}">${open ? 'Hide question' : 'Show question'}</button></div>
@@ -1135,6 +1152,8 @@ export async function mount(element, context) {
   const refreshLatest = () => {
     latest.clear();
     for (const [id, attempt] of latestByQuestion(api.getProgress().question_attempts)) latest.set(id, attempt);
+    waiting.clear();
+    if (user) for (const [id, entry] of api.savedAnswers()) waiting.set(id, entry);
   };
   const pendingMarks = new Set();
   const saveMark = async (id, reattempt = false) => {
@@ -1156,7 +1175,7 @@ export async function mount(element, context) {
     pendingMarks.add(id);
     for (const button of card.querySelectorAll('[data-save-mark], [data-reattempt]')) button.disabled = true;
     try {
-      await api.saveQuestionMark(question, Number(value), { reattempt });
+      await api.saveQuestionMark(question, Number(value), { reattempt, answer: answerOf(id) });
       const confirmation = card?.querySelector('[data-mark-confirmation]');
       if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${value}/${question.marks}.`; }
       // Persist drafts before any delayed refresh. Do not redraw another route
@@ -1204,7 +1223,7 @@ export async function mount(element, context) {
     pendingMarks.add(groupId);
     for (const button of card.querySelectorAll('[data-save-group], [data-reattempt-group]')) button.disabled = true;
     try {
-      for (const [index, part] of entry.parts.entries()) await api.saveQuestionMark(part, Number(values[index]), { reattempt });
+      for (const [index, part] of entry.parts.entries()) await api.saveQuestionMark(part, Number(values[index]), { reattempt, answer: answerOf(part.question_id) });
       const total = values.reduce((sum, value) => sum + Number(value), 0);
       const confirmation = card.querySelector('[data-mark-confirmation]');
       if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${total}/${entry.marks}.`; }
@@ -1252,6 +1271,34 @@ export async function mount(element, context) {
     save();
     update({ keepControls: true, keepPage: true });
     toast('Last mark save undone.', { type: 'success' });
+  });
+
+  const saveLater = async (parts, button) => {
+    if (!user) {
+      save();
+      return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
+    }
+    button.disabled = true;
+    try {
+      for (const part of parts) {
+        const text = element.querySelector(`[data-answer="${CSS.escape(part.question_id)}"]`)?.value ?? answerOf(part.question_id);
+        await api.saveAnswerUnmarked(part, text);
+      }
+      save();
+      refreshLatest();
+      update({ keepControls: true, keepPage: true });
+      toast(parts.length > 1 ? 'Answers saved. They count as done, and you can mark them later.' : 'Answer saved. It counts as done, and you can mark it later.', { type: 'success' });
+    } finally {
+      button.disabled = false;
+    }
+  };
+  on(element, 'click', '[data-save-later]', (event, button) => {
+    const question = bundle.questionsById.get(button.dataset.saveLater);
+    if (question) saveLater([question], button);
+  });
+  on(element, 'click', '[data-save-later-group]', (event, button) => {
+    const entry = groupEntry(button.dataset.saveLaterGroup, bundle.questionsById);
+    if (entry) saveLater(entry.parts, button);
   });
 
   on(element, 'click', '[data-start-set]', async () => {
