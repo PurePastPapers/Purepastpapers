@@ -11,6 +11,7 @@ PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.confi
 **Biology A release:** [52-source 9BN0/8BN0 bank, coverage and handover](docs/BIOLOGY-HANDOVER.md).
 
 **Reuse this workflow for another subject:** [Subject question-bank agent prompt](docs/prompts/SUBJECT-QUESTION-BANK-AGENT.md).
+**Before any question-bank import or rebuild:** [Problems hit so far, and how not to repeat them](docs/QUESTION-BANK-PITFALLS.md).
 
 **Start here for future agents:** [Curriculum and question tagging](docs/curriculum-and-question-tagging.md), with links to the Phase 1 and import plans.
 

@@ -6,6 +6,8 @@ target subject using the working Maths implementation as the reference. Complete
 the implementation, validation, publication and handover. Do not stop at a plan,
 a list of links, a generated paper catalogue or a small demonstration batch.
 
+Before anything else, read `docs/QUESTION-BANK-PITFALLS.md` and follow its checklist.
+
 Set these run parameters before starting:
 
 ```text
