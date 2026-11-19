@@ -10,6 +10,7 @@ import { getBundle, specIndex } from '../../data/content-repository.js';
 import { createSession } from '../../data/sessions.js';
 import { gradeFor, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js';
+import { levelLabel, qualificationCode } from '../../engine/paper-identity.js';
 import { icon } from '../icons.js';
 import { marksPill, questionSnippet } from '../question-view.js';
 import { startSingle } from '../student.js';
@@ -97,7 +98,7 @@ export async function mount(element, context) {
         : ''}`;
   }
 
-  const facts = [subject.board, `${paper.spec_code || subject.spec_code}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.year ? `${paper.series} ${paper.year}` : null, `${paper.total_marks} marks`, fmtMinutes(paper.duration_minutes), paper.tier ? `${paper.tier} tier` : null]
+  const facts = [levelLabel(paper, subject, bundle.papers), subject.board, paper.official_paper_code || `${qualificationCode(paper, subject)}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.year ? `${paper.series} ${paper.year}` : null, `${paper.total_marks} marks`, fmtMinutes(paper.duration_minutes), paper.tier ? `${paper.tier} tier` : null]
     .filter(Boolean)
     .join(' · ');
 

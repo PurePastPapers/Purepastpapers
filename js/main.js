@@ -11,6 +11,8 @@ import * as shell from './ui/shell.js';
 import { tintPage } from './ui/subject-colours.js';
 import { revealOnScroll } from './ui/motion.js';
 import { installZoom } from './ui/zoom.js';
+import { installModuleScopeHandlers } from './ui/module-scope.js';
+import { getBundle, getSubjects } from './data/content-repository.js';
 import { closeWelcome, maybeWelcome } from './ui/welcome.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 import { links } from './core/links.js';
@@ -216,6 +218,10 @@ async function handleRoute() {
 async function start() {
   observeSourceImages();
   installZoom();
+  installModuleScopeHandlers({
+    getSubject: async (id) => (await getSubjects()).find((subject) => subject.subject_id === id) || null,
+    getSpec: async (id) => (await getBundle(id)).spec,
+  });
   await api.init();
   shell.mountShell(document.getElementById('app'));
   api.events.on('auth', (user) => {

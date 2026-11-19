@@ -9,11 +9,12 @@ import {openModal} from './ui.js';
 import {specForTier, tierLeaves} from '../engine/tiers.js';
 
 // `tier` (tiered GCSEs) shows only that tier's points. Ticks on points of the other tier are
-// kept as they are: they are hidden, never cleared.
+// kept as they are: they are hidden, never cleared. Scoped bundles (Further Maths routes)
+// likewise list only visible points, so ticks in hidden modules are never in the delta.
 export async function coverageDialog({bundle, tier = null}) {
   const {subject, textbooks} = bundle;
   const spec = specForTier(bundle.spec, tier);
-  const officialIds = tierLeaves(specIndex, subject.subject_id, tier);
+  const officialIds = bundle.scopeLeaves || tierLeaves(specIndex, subject.subject_id, tier);
   const textbookIds = textbooks?.ids || [];
   const learned = api.learnedSet();
   const original = {

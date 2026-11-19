@@ -14,6 +14,8 @@ import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
 import { isTiered, savedTier, tierRequired, validTier } from '../../engine/tiers.js';
 import { banner, emptyState, meter, pageHead, ragBadge, sourceBadge } from '../ui.js';
 import { links } from '../../core/links.js';
+import { isMultiLevel, levelOf, paperCode } from '../../engine/paper-identity.js';
+import { moduleScopeBanner } from '../module-scope.js';
 
 const INTRO = {
   real_past_paper: 'every exam series for your subjects, sit one against the clock',
@@ -63,7 +65,8 @@ export async function mount(element, context) {
   const chosenTier = savedTier(subject, progress);
   const needsTier = tieredSubject && tierRequired(subject) && !chosenTier;
   const linkTier = context.query.tier === 'all' ? 'all' : validTier(subject, context.query.tier);
-  const filters = { year: 'all', code: 'all', status: 'all', tier: linkTier || (tiers.includes(chosenTier) ? chosenTier : 'all') };
+  const levels = [...new Set(papers.filter((paper) => !paper.is_sample).map((paper) => levelOf(paper, subject)).filter(Boolean))];
+  const filters = { year: 'all', code: 'all', status: 'all', level: 'all', tier: linkTier || (tiers.includes(chosenTier) ? chosenTier : 'all') };
   const codesFor = (tier) => [...new Set(papers.filter((paper) => !paper.is_sample && (tier === 'all' || paper.tier === tier)).map((paper) => paper.paper_code))].sort(naturalCompare);
   let codes = codesFor(filters.tier);
 
@@ -76,8 +79,15 @@ export async function mount(element, context) {
   const resumeFor = new Map(api.resumableSessions().filter((session) => session.paper_id).map((session) => [session.paper_id, session]));
   const paperHref = (paper) => links.paper(subject.subject_id, paper.paper_id);
   const shortTitle = (paper) => (paper.title.includes(': ') ? paper.title.split(': ').slice(1).join(': ') : paper.title);
+  // Level and code come from each paper's own metadata (AS 8PH0 vs A-Level 9PH0), so they
+  // survive title shortening and never borrow the subject's A-Level code.
+  const multiLevel = isMultiLevel(subject, papers);
+  const levelTag = (paper) => {
+    const level = multiLevel && !paper.is_sample ? levelOf(paper, subject) : '';
+    return level ? html`<span class="paper-card__level" data-level="${level}">${level}</span> ` : '';
+  };
   const codeLine = (paper) =>
-    paper.is_sample ? 'Demo paper' : `${subject.spec_code} · ${/^P\d+$/.test(paper.paper_code) ? `Paper ${paper.paper_code.slice(1)}` : paper.paper_code}${paper.tier ? ` · ${paper.tier}` : ''}`;
+    paper.is_sample ? 'Demo paper' : html`${levelTag(paper)}${paperCode(paper, subject)}${paper.tier ? ` · ${paper.tier}` : ''}`;
 
   function card(paper, index) {
     const summary = summaries.get(paper.paper_id);
@@ -109,7 +119,7 @@ export async function mount(element, context) {
     const visible = papers.filter(
       (paper) =>
         (filters.status === 'all' || statusOf(paper) === filters.status) &&
-        (paper.is_sample || ((filters.year === 'all' || String(paper.year) === filters.year) && (filters.code === 'all' || paper.paper_code === filters.code) && (filters.tier === 'all' || paper.tier === filters.tier))),
+        (paper.is_sample || ((filters.level === 'all' || levelOf(paper, subject) === filters.level) && (filters.year === 'all' || String(paper.year) === filters.year) && (filters.code === 'all' || paper.paper_code === filters.code) && (filters.tier === 'all' || paper.tier === filters.tier))),
     );
     const demo = visible.filter((paper) => paper.is_sample);
     const bySeries = groupBy(visible.filter((paper) => !paper.is_sample), (paper) => `${paper.year}|${paper.series || ''}`);
@@ -168,9 +178,10 @@ export async function mount(element, context) {
     <div class="card tilt-2 side-filters">
       <i class="tape tape--l" aria-hidden="true"></i>
       <h2 class="h3">Find a paper</h2>
+      ${levels.length > 1 ? filterGroup('level', 'Level', [['all', 'Both'], ...levels.map((level) => [level, level])]) : ''}
       ${tiers.length > 1 && !tieredSubject ? filterGroup('tier', 'Tier', [['all', 'Both'], ...tiers.map((tier) => [tier, tier])]) : ''}
       ${filterGroup('year', 'Year', [['all', 'All'], ...years.map((year) => [String(year), String(year)])])}
-      ${codes.length > 1 ? filterGroup('code', 'Paper', [['all', 'All'], ...codes.map((code) => [code, /^P\d+$/.test(code) ? `Paper ${code.slice(1)}` : code])]) : ''}
+      ${codes.length > 1 ? filterGroup('code', 'Paper', [['all', 'All'], ...codes.map((code) => [code, papers.find((paper) => paper.paper_code === code)?.official_paper_code?.split('/')[1] || (/^P\d+$/.test(code) ? `Paper ${code.slice(1)}` : code)])]) : ''}
       ${filterGroup('status', 'Status', [['all', 'All'], ['todo', 'Not started'], ['progress', 'In progress'], ['done', 'Completed']])}
     </div>
     <div class="card tilt-1 side-progress">
@@ -209,6 +220,7 @@ export async function mount(element, context) {
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subject.subject_id, (id) => links.papers(id, paperType))}
         ${subject.catalogue_note ? banner(subject.catalogue_note) : ''}
+        ${moduleScopeBanner(bundle)}
         <div class="with-side">
           <aside class="with-side__side" data-side>${sidebar()}</aside>
           <div class="stack" style="min-width:0">${tierBar() ? html`<div data-tier-holder>${tierBar()}</div>` : ''}<div data-list>${needsTier ? tierPrompt() : list()}</div></div>

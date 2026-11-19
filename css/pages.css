@@ -90,6 +90,20 @@
   text-transform: uppercase;
   color: var(--ink-2);
 }
+/* AS / A-Level label from each paper's own metadata (multi-qualification subjects). */
+.paper-card__level {
+  display: inline-block;
+  padding: 0 7px;
+  margin-right: 2px;
+  border: 1.5px solid currentColor;
+  border-radius: 6px;
+  color: var(--ink);
+  background: var(--surface-2);
+  line-height: 1.5;
+}
+.paper-card__level[data-level='AS'] {
+  background: var(--accent-wash);
+}
 .paper-card h3 {
   font-size: 21px;
   line-height: 1.2;

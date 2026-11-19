@@ -8,6 +8,7 @@ import { getBundles, specIndex } from '../data/content-repository.js';
 import { createSession } from '../data/sessions.js';
 import { TARGET_BANDS, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../engine/analytics.js';
 import { filterQuestions } from '../engine/filter-engine.js';
+import { paperInScope, questionInScope, scopeLeaves, scopeOf, scopeSpec } from '../engine/module-routes.js';
 import { textbookMasteryByNode } from '../engine/textbook-index.js';
 import { isTiered, questionsForTier, savedTier, tierLeaves, tierRequired } from '../engine/tiers.js';
 import { icon } from './icons.js';
@@ -22,8 +23,39 @@ import { links, routeOf } from '../core/links.js';
 export async function loadStudent(subjectIds = null) {
   const progress = api.getProgress();
   const bundles = await getBundles(subjectIds || progress.enrolled_subjects);
+  for (const [id, bundle] of bundles) bundles.set(id, scopeBundle(bundle, progress));
   return { progress, bundles, latest: latestByQuestion(progress.question_attempts), learned: api.learnedSet() };
 }
+
+/**
+ * For subjects with optional-module routes (Further Mathematics), the student's view:
+ * the spec tree, papers and questions of their qualification(s), Core Pure and chosen
+ * modules only. papersById/questionsById stay complete so saved sessions still resolve.
+ * Other subjects are returned unchanged.
+ */
+export function scopeBundle(bundle, progress = null) {
+  let preferences = null;
+  try {
+    preferences = (progress || api.getProgress()).preferences;
+  } catch {
+    preferences = null;
+  }
+  const scope = scopeOf(bundle.subject, preferences?.moduleRoutes?.[bundle.subject.subject_id]);
+  if (!scope) return bundle;
+  const leaves = scopeLeaves(bundle.spec, scope);
+  const visible = new Set(leaves);
+  return {
+    ...bundle,
+    scope,
+    scopeLeaves: leaves,
+    spec: scopeSpec(bundle.spec, scope),
+    papers: bundle.papers.filter((paper) => paperInScope(paper, scope)),
+    questions: bundle.questions.filter((question) => questionInScope(question, bundle.papersById.get(question.paper_id), scope, visible)),
+  };
+}
+
+/** The official leaves a learned-topic list should offer: the scoped ones when a route applies. */
+export const bundleLeaves = (bundle, tier = null) => bundle.scopeLeaves || tierLeaves(specIndex, bundle.subject.subject_id, tier);
 
 /** Does this attempt belong to the subject? (Older exports may lack subject_id.) */
 export const attemptInSubject = (attempt, bundle) =>
@@ -69,9 +101,10 @@ export function tierLabel(subject, progress) {
 
 export function subjectSummary(bundle, { progress, latest, learned }) {
   const textbookMode = bundle.textbooks && progress.preferences[`coveredView:${bundle.subject.subject_id}`] !== 'official';
-  // A tiered subject counts only its chosen tier's spec points and questions.
+  // A tiered subject counts only its chosen tier's spec points and questions; a subject with
+  // module routes counts only its chosen modules (bundleLeaves).
   const tier = savedTier(bundle.subject, progress);
-  const leaves = textbookMode ? bundle.textbooks.ids : tierLeaves(specIndex, bundle.subject.subject_id, tier);
+  const leaves = textbookMode ? bundle.textbooks.ids : bundleLeaves(bundle, tier);
   const pool = questionsForTier(practicePool(bundle), tier, bundle.papersById);
   const { matches } = filterQuestions(pool, {learnedNamespace:textbookMode ? 'textbook' : 'official'}, { specIndex, learned, latestAttempts: latest });
   const answered = [...latest.values()].filter((attempt) => attemptInSubject(attempt, bundle));

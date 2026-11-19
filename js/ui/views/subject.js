@@ -11,7 +11,8 @@ import { icon } from '../icons.js';
 import { mountSpecTree } from '../spec-tree.js';
 import { topicOrganisationControl } from '../topic-organisation.js';
 import { textbookMasteryByNode } from '../../engine/textbook-index.js';
-import { attemptInSubject, practicePool } from '../student.js';
+import { attemptInSubject, practicePool, scopeBundle } from '../student.js';
+import { moduleScopeBanner } from '../module-scope.js';
 import { saveSubjectSettings, scStyle, targetGrade, tintPage } from '../subject-colours.js';
 import { addSubject, editSubject } from '../enrol.js';
 import { isTiered, questionsForTier, savedTier, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
@@ -19,7 +20,9 @@ import { banner, confirmDialog, emptyState, fmtPercent, meter, pageHead, ragBadg
 import { links } from '../../core/links.js';
 
 export async function mount(element, context) {
-  const [bundle, subjects] = await Promise.all([getBundle(context.params.subjectId), getSubjects()]);
+  const [fullBundle, subjects] = await Promise.all([getBundle(context.params.subjectId), getSubjects()]);
+  // Further Maths: Core Pure plus the student's chosen modules (ticks elsewhere are kept).
+  const bundle = scopeBundle(fullBundle);
   const { subject, spec, textbooks } = bundle;
   const subjectId = subject.subject_id;
   const subjectById = new Map(subjects.map((candidate) => [candidate.subject_id, candidate]));
@@ -38,7 +41,8 @@ export async function mount(element, context) {
   const pool = questionsForTier(practicePool(bundle), viewTier, bundle.papersById);
   const questionCounts = countByNode(pool, specIndex);
   const foreign = foreignSpecPoints(pool, subjectId, specIndex); // spec points owned by other subjects
-  const leaves = tierLeaves(specIndex, subjectId, viewTier);
+  // Module routes (Further Maths) list Core Pure plus chosen modules; tiers list one tier.
+  const leaves = bundle.scopeLeaves || tierLeaves(specIndex, subjectId, viewTier);
   const textbookCounts = textbooks?.counts(pool);
   let organisation = textbooks ? progress.preferences[`coveredView:${subjectId}`] || 'textbook' : 'official';
   if (!['textbook', 'official'].includes(organisation)) organisation = 'textbook';
@@ -94,6 +98,7 @@ export async function mount(element, context) {
       <div class="stack stack--lg" style="${scStyle(subject)}">
         <div class="row row--tight subject-settings" data-settings></div>
         <div data-enrol-banner></div>
+        ${moduleScopeBanner(bundle)}
         ${subject.board_note ? banner(subject.board_note, { type: 'warn' }) : ''}
         ${tierControl()}
         ${subject.has_written_exam && needsTier
@@ -128,6 +133,7 @@ export async function mount(element, context) {
       enrolled()
         ? html`<button type="button" class="tag tag--btn" data-settings-edit><span class="cdot cdot--sm" aria-hidden="true"></span>Colour</button>
             <button type="button" class="tag tag--btn" data-settings-edit>Target grade <b>${target || 'not set'}</b> ▾</button>
+            ${bundle.scope ? html`<button type="button" class="tag tag--btn" data-module-routes="${subjectId}">Modules <b>${bundle.scope.configured ? 'chosen' : 'not set'}</b> ▾</button>` : ''}
             <button type="button" class="tag tag--btn" data-unenrol>Remove subject</button>`
         : '',
     );

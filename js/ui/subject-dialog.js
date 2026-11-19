@@ -10,6 +10,8 @@ import { gradesIn } from '../engine/analytics.js';
 import { SUBJECT_SWATCHES, subjectSwatchId, subjectTier, targetGrade } from './subject-colours.js';
 import { openModal } from './ui.js';
 import { tierRequired } from '../engine/tiers.js';
+import { hasModuleRoutes } from '../engine/module-routes.js';
+import { readRouteFields, routeFields, savedModuleChoice, wireRouteFields } from './module-scope.js';
 
 const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount, tier) =>
   html`<p class="hand subject-dialog__how">how it will look</p>
@@ -26,13 +28,16 @@ const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount,
 /**
  * @param {{ subject: object, mode: 'add'|'edit', leaves?: number, learningUnit?: string, coveredCount?: number,
  *   initialTier?: string|null, papers?: object[],
- *   tierCounts?: Record<string, { leaves: number, covered: number }> }} options
+ *   tierCounts?: Record<string, { leaves: number, covered: number }>, spec?: object }} options
  *   initialTier  preselected tier (e.g. chosen on the subject page before adding)
  *   papers       the subject's papers, to list each tier's paper codes
  *   tierCounts   learning counts per tier ('' = every tier), so the counts follow the tier picked
- * @returns {Promise<null | { swatch: string, tier: string|null|undefined, target: string|null, learned: 'tick'|'all'|'skip' }>}
+ *   spec         the full specification, for subjects with module routes (live topic counts)
+ * @returns {Promise<null | { swatch: string, tier: string|null|undefined, target: string|null, learned: 'tick'|'all'|'skip', modules?: object }>}
  */
-export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec points', coveredCount = 0, initialTier = null, papers = null, tierCounts = null }) {
+export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec points', coveredCount = 0, initialTier = null, papers = null, tierCounts = null, spec = null }) {
+  const routed = hasModuleRoutes(subject);
+  const startModules = routed ? savedModuleChoice(subject) || { levels: [], routes: {}, extra: {} } : null;
   const grades = gradesIn(subject.grade_scheme).filter((grade) => grade !== 'U');
   const startSwatch = subjectSwatchId(subject) || SUBJECT_SWATCHES[0].id;
   const startTarget = mode === 'edit' ? targetGrade(subject) : null;
@@ -89,6 +94,13 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
             </div>
           </fieldset>`
         : ''}
+      ${routed
+        ? html`<fieldset class="step">
+            <legend><i>${step++}</i>Choose your qualification and modules</legend>
+            <p class="step__hint">Only Pearson’s permitted combinations can be chosen. Your topic list and questions show Core Pure plus these modules; ticks in other modules are kept if you change later.</p>
+            ${routeFields(subject, startModules)}
+          </fieldset>`
+        : ''}
       <fieldset class="step">
         <legend><i>${step++}</i>Set your target grade</legend>
         <p class="step__hint">Your papers are rated against this instead of fixed percentages.</p>
@@ -104,7 +116,7 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
             <p class="step__hint">Use the learned-topic filter in practice to limit questions to the topics you’ve ticked.</p>
             <div class="opts">
               <label class="opt"><input type="radio" name="learned" value="tick" checked /><span>Choose what I’ve covered</span><small>opens the topic list next</small></label>
-              <label class="opt"><input type="radio" name="learned" value="all" /><span>I’ve covered everything</span><small>ticks all <span data-all-count>${countsFor(startTier).leaves}</span> ${learningUnit}${tiers.length ? html`<span data-all-tier>${startTier ? ` on ${startTier}` : ''}</span>` : ''}</small></label>
+              <label class="opt"><input type="radio" name="learned" value="all" /><span>I’ve covered everything</span><small>ticks all <span data-all-count>${countsFor(startTier).leaves}</span> ${learningUnit}${tiers.length ? html`<span data-all-tier>${startTier ? ` on ${startTier}` : ''}</span>` : ''}${routed ? ' in your chosen modules' : ''}</small></label>
               <label class="opt"><input type="radio" name="learned" value="skip" /><span>Skip for now</span></label>
             </div>
           </fieldset>`
@@ -130,11 +142,16 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
           tier: tiers.length ? dialog.querySelector('input[name="tier"]:checked')?.value || null : undefined,
           target: dialog.querySelector('input[name="target"]:checked')?.value || null,
           learned: dialog.querySelector('input[name="learned"]:checked')?.value || 'skip',
+          ...(routed ? { modules: readRouteFields(dialog, subject, startModules) } : {}),
         }),
       },
     ],
     onOpen: (dialog) => {
       dialog.classList.add('modal--subject');
+      if (routed) wireRouteFields(dialog, subject, spec, (choice, scope, count) => {
+        const counter = dialog.querySelector('[data-all-count]');
+        if (counter && spec) counter.textContent = String(count);
+      });
       dialog.addEventListener('change', (event) => {
         const input = event.target;
         if (input.name === 'swatch') {

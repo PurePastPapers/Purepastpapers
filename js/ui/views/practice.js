@@ -30,6 +30,8 @@ import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, toast } from '../ui.js';
 import { links, routeOf } from '../../core/links.js';
+import { levelLabel } from '../../engine/paper-identity.js';
+import { moduleScopeBanner } from '../module-scope.js';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
 const SOURCE_CHOICES = [
@@ -130,6 +132,11 @@ export async function mount(element, context) {
   const wanted = context.query.subject || progress.preferences.lastSubject;
   const bundle = enrolled.find((candidate) => candidate.subject.subject_id === wanted) || enrolled[0];
   const { subject, spec, textbooks } = bundle;
+  // Paper choices name their level when the subject holds AS and A-Level papers.
+  const paperOptionLabel = (paper) => {
+    const level = levelLabel(paper, subject, bundle.papers);
+    return level && !paper.title.split(/[\s·:]+/).includes(level) ? `${level} · ${paper.title}` : paper.title;
+  };
   const subjectId = subject.subject_id;
   // Subjects whose scored units carry a reviewed introduced_year use it for the
   // Year 12 / Year 13-only filters, and treat Year 13 as cumulative.
@@ -256,7 +263,8 @@ export async function mount(element, context) {
   if (!SOURCE_CHOICES.some((choice) => choice.id === state.source && (!choice.feature || isEnabled(choice.feature)))) state.source = 'official';
 
   const learned = api.learnedSet();
-  const subjectLeaves = tierLeaves(specIndex, subjectId, viewTier);
+  // Module routes (Further Maths) scope the leaves first; tiered GCSEs use the viewed tier.
+  const subjectLeaves = bundle.scopeLeaves || tierLeaves(specIndex, subjectId, viewTier);
   if (viewTier && Array.isArray(state.focus) && state.focus.length) {
     // A topic choice made on the other tier keeps only this tier's points.
     const inTier = new Set(subjectLeaves);
@@ -450,7 +458,7 @@ export async function mount(element, context) {
       ${years.length || state.years.length ? html`<fieldset class="field"><legend class="field__label">Exam years</legend><div class="chips">${[...new Set([...state.years, ...years.map(String)])].map((year) => html`<button type="button" class="chip" data-multi="years" data-value="${year}" aria-pressed="${state.years.includes(year)}">${year}${years.includes(Number(year)) ? '' : ' (unavailable)'}</button>`)}</div>${state.years.length ? html`<button type="button" class="linkbtn small" data-clear-group="years">Clear exam years</button>` : ''}</fieldset>` : ''}
       ${series.length || state.series ? select('series', 'Exam series', series, 'Any series') : ''}
       ${!tiered && (tiers.length || state.tier) ? select('tier', 'Tier', tiers, 'Any tier') : ''}
-      <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
+      <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paperOptionLabel(paper)}</option>`)}</select></label>
     `;
     const qualifications = qualificationOptions.length > 1 ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${qualificationOptions.map(({code: value, label}) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
@@ -803,7 +811,7 @@ export async function mount(element, context) {
       <div style="min-width:0">
         <p class="qcard__ref">${questionRef(question, bundle.papersById)} ${attempt ? html`<span class="tag">Saved ${attempt.marks_awarded}/${attempt.max_marks}</span>` : ''}${waiting.has(qid) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : attempt ? '' : html`<span class="tag">Not tried yet</span>`}${goes > 1 ? html`<span class="tag">${goes} attempts</span>` : ''}</p>
         <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
-        ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
+        ${questionMeta(question, { specIndex, level: levelLabel(question, subject, bundle.papers), organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
         ${open ? html`<div class="qsplit" data-qfit>
           <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Question'} · ${questionRef(question, bundle.papersById)}">
@@ -881,7 +889,7 @@ export async function mount(element, context) {
           ? html`<span class="tag">Saved ${attempts.reduce((sum, attempt) => sum + attempt.marks_awarded, 0)}/${entry.marks}</span>`
           : attempts.some(Boolean) ? html`<span class="tag">Partly marked</span>` : entry.parts.some((part) => waiting.has(part.question_id)) ? '' : html`<span class="tag">Not tried yet</span>`}${entry.parts.some((part) => waiting.has(part.question_id)) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : ''}${goes > 1 ? html`<span class="tag">${goes} attempts</span>` : ''}</p>
         <p class="small muted">${subject.board} · ${subject.subject} · ${entry.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
-        ${questionMeta(entry, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(id) })}
+        ${questionMeta(entry, { specIndex, level: levelLabel(entry, subject, bundle.papers), organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(id) })}
         ${!open ? html`<p class="qcard__text">${entry.parts.length} linked parts: ${entry.parts.map((part) => questionSnippet(part, 60)).join(' · ')}</p>` : ''}
         ${open ? html`${linkedNote(entry)}
           ${goLine(id)}
@@ -1154,6 +1162,7 @@ export async function mount(element, context) {
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
         ${tiered ? tierBar() : ''}
+        ${moduleScopeBanner(bundle)}
         ${modes.length > 1
           ? html`<div class="seg mode-switch" role="tablist">
               ${[...modes].sort((a, b) => (a === 'timed_test') - (b === 'timed_test')).map(

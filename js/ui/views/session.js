@@ -11,6 +11,7 @@ import { backLabel, links, routeOf } from '../../core/links.js';
 import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, plural, sum } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
+import { isMultiLevel, levelOf, qualificationCode } from '../../engine/paper-identity.js';
 import { zoomButton } from '../zoom.js';
 import { ANSWER_MIN, placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
@@ -125,6 +126,10 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── pieces ─────────────────────────────────
 
+  // A paper session names the paper's own qualification (AS 8BN0, A-Level 9BN0), not the subject's.
+  const sessionPaper = session.paper_id ? bundle.papersById.get(session.paper_id) : null;
+  const sessionLevel = sessionPaper ? levelOf(sessionPaper, subject) || subject.level : subject.level;
+  const sessionCode = sessionPaper && isMultiLevel(subject, bundle.papers) ? qualificationCode(sessionPaper, subject) : '';
   function bar({ stage, question = null, position = 0 }) {
     const running = isRunning(session);
     const timed = session.timer.mode !== 'off';
@@ -137,7 +142,7 @@ export async function mount(element, context) {
           </div>`
         : html`<div class="runner__title">
             <p class="h3">${session.title}</p>
-            <p class="small muted">${subject.level} ${subject.subject} · ${KIND_LABELS[session.kind]}</p>
+            <p class="small muted">${sessionLevel} ${subject.subject}${sessionCode ? ` · ${sessionCode}` : ''} · ${KIND_LABELS[session.kind]}</p>
           </div>`}
       <span class="spacer"></span>
       ${stage === 'run' && timed

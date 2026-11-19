@@ -106,7 +106,7 @@ export function questionRef(question, papersById) {
 export const marksPill = (marks) => html`<span class="marks-pill">${marks} ${marks === 1 ? 'mark' : 'marks'}</span>`;
 
 /** Marks, time, difficulty, source and (optionally) the topics a question is tagged with. */
-export function questionMeta(question, { specIndex = null, topics = true, organisation = 'textbook', referencesOpen = false } = {}) {
+export function questionMeta(question, { specIndex = null, topics = true, organisation = 'textbook', referencesOpen = false, level = '' } = {}) {
   const primary = question.primary_spec_points || [];
   const crossover = question.crossover_spec_points || [];
   const labelOf = (id) => {
@@ -124,7 +124,9 @@ export function questionMeta(question, { specIndex = null, topics = true, organi
   const textbook = question.textbook_references || [];
   const bookTags = [...new Set(textbook.filter(ref => ref.role === 'Assessed').map(ref => `${ref.book} · ${ref.chapter}`))];
   return html`<div class="qcard__meta">
-    ${difficultyBadge(question.difficulty)}${question.is_as ? html`<span class="tag">AS · ${question.qualification_code || 'AS'}</span>` : ''}
+    ${difficultyBadge(question.difficulty)}${level
+      ? html`<span class="tag" data-level="${level}">${level} · ${question.qualification_code || question.spec_code || ''}</span>`
+      : question.is_as ? html`<span class="tag">AS · ${question.qualification_code || 'AS'}</span>` : ''}
     <span class="small muted">about ${fmtMinutes(question.estimated_minutes || 1)}</span>
     ${sourceBadge(question)} ${organisation === 'textbook' && bookTags.length
       ? bookTags.map(title => html`<span class="tag">${title}</span>`)
