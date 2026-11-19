@@ -183,6 +183,33 @@ export async function resendConfirmation(email) {
   return backendAdapter.resendConfirmation(email);
 }
 
+/** Confirms a new cloud account with the code from its confirmation email. */
+export async function verifySignupCode(email, code) {
+  if (!backendAdapter.verifySignupCode) throw new Error('Confirmation codes are not used for this account type.');
+  return backendAdapter.verifySignupCode(email, code);
+}
+
+// The email this browser is waiting to see confirmed, so the sign-up form can pause instead of
+// sending another email (a new email cancels the code and link in the previous one).
+const awaitingKey = `${APP.storageNamespace}:awaiting-confirmation`;
+const AWAIT_FOR = 24 * 60 * 60 * 1000;
+
+/** { email, name, sentAt } while a sign-up confirmation is pending in this browser, else null. */
+export function awaitingConfirmation() {
+  try {
+    const record = JSON.parse(localStorage.getItem(awaitingKey) || 'null');
+    if (record?.email && Date.now() - record.sentAt < AWAIT_FOR) return record;
+  } catch { /* storage blocked or bad JSON */ }
+  return null;
+}
+
+export function setAwaitingConfirmation(record) {
+  try {
+    if (record) localStorage.setItem(awaitingKey, JSON.stringify({ ...record, sentAt: record.sentAt || Date.now() }));
+    else localStorage.removeItem(awaitingKey);
+  } catch { /* the form still works, it just can't pause after a reload */ }
+}
+
 /** Watches for the confirmation link being opened in this browser. Returns a stop function. */
 export function watchConfirmation(email, onConfirmed) {
   return backendAdapter.watchConfirmation?.(email, onConfirmed) || (() => {});
@@ -190,6 +217,7 @@ export function watchConfirmation(email, onConfirmed) {
 
 /** Loads the newly confirmed account and its progress, then tells the app it is signed in. */
 export async function finishConfirmedSignup() {
+  setAwaitingConfirmation(null);
   await init();
   events.emit('auth', user);
   return user;
@@ -214,6 +242,7 @@ export async function signIn(details) {
   activeAdapter = backendAdapter;
   try {
     user = await activeAdapter.signIn(details);
+    setAwaitingConfirmation(null);
     setLegacyMode(false);
     let saved = await activeAdapter.loadProgress(user.user_id);
     if (!saved && activeAdapter === supabaseAdapter) {

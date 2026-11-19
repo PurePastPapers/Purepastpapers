@@ -29,7 +29,7 @@ export async function mount(element, context) {
         ${resetting
           ? html`<label class="field"><span class="field__label">New password</span><input class="input" name="password" type="password" autocomplete="new-password" minlength="${LIMITS.minPasswordLength}" required /><span class="field__hint">At least ${LIMITS.minPasswordLength} characters.</span></label>
               <label class="field"><span class="field__label">Confirm password</span><input class="input" name="confirm" type="password" autocomplete="new-password" required /></label>`
-          : html`<label class="field"><span class="field__label">Email</span><input class="input" name="email" type="email" autocomplete="email" inputmode="email" required /></label>`}
+          : html`<label class="field"><span class="field__label">Email</span><input class="input" name="email" type="email" autocomplete="email" inputmode="email" required value="${context.query.email || ''}" /></label>`}
         <p class="form-error" role="alert" data-error hidden></p>
         <p class="field__hint" role="status" data-status hidden></p>
         <button type="submit" class="btn btn--primary btn--lg btn--block">${resetting ? 'Save new password' : 'Send reset link'}</button>

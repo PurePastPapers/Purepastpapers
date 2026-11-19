@@ -27,10 +27,11 @@ export const links = {
   account: () => '#/account',
   studio: () => '#/studio',
   /** `next` is a route ("/hub"), not an href. */
-  login: (next = null) => `#/login${query({ next })}`,
+  /** `email` pre-fills the form; `newcode` explains how to get a new confirmation code. */
+  login: (next = null, { email = null, newcode = false } = {}) => `#/login${query({ next, email, newcode: newcode ? 1 : null })}`,
   signup: (next = null) => `#/signup${query({ next })}`,
   legacyLogin: () => '#/legacy-login',
-  forgotPassword: () => '#/forgot-password',
+  forgotPassword: (email = null) => `#/forgot-password${query({ email })}`,
 };
 
 /** "#/paper/x/y" → "/paper/x/y" (for context.navigate). */

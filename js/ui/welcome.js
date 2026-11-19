@@ -26,7 +26,7 @@ const TILES = [
   {
     ic: 'user',
     title: 'Free account',
-    text: 'Save your subjects, the topics you’ve covered and every mark in the Data Hub. Just a name, email and password, then confirm the email we send you.',
+    text: 'Optional: you can browse and practise without one. It saves your subjects, topics and marks. Three quick steps: your details, the 6-digit code we email you, then pick your subjects.',
     where: 'Sign up, top right',
   },
 ];
