@@ -207,3 +207,32 @@ test('logging in before confirming offers to enter the code or send a new one', 
   assert.deepEqual(errors, []);
   await page.close();
 });
+
+test('an account confirmed elsewhere does not leave the sign-up form stuck waiting for a code', { skip }, async () => {
+  const page = await browser.newPage({ viewport: { width: 1366, height: 860 } });
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.route('https://esm.sh/**', (route) => route.fulfill({ contentType: 'application/javascript', body: FAKE_SUPABASE }));
+  // This browser still remembers a sign-up from earlier.
+  await page.addInitScript(() => {
+    if (!sessionStorage.getItem('seeded')) {
+      sessionStorage.setItem('seeded', '1');
+      localStorage.setItem('onspec:awaiting-confirmation', JSON.stringify({ email: 'sam@example.com', name: 'Sam', sentAt: Date.now() }));
+    }
+  });
+  await page.goto(`${BASE}#/signup`);
+  // The waiting card offers Log in for people who have already confirmed.
+  await page.waitForSelector('[data-waiting]:not([hidden])');
+  assert.equal(await page.locator('[data-wait-login]').count(), 1);
+  // The account was then confirmed via the email link in another tab: once that confirmed
+  // session loads here, the remembered sign-up is cleared.
+  const cleared = await page.evaluate(async () => {
+    window.__fakeSession = { user: { id: 'u1', email: 'sam@example.com', email_confirmed_at: new Date().toISOString(), user_metadata: { display_name: 'Sam' } } };
+    const api = await import('/js/data/api.js');
+    await api.init();
+    return [api.awaitingConfirmation(), localStorage.getItem('onspec:awaiting-confirmation')];
+  });
+  assert.deepEqual(cleared, [null, null]);
+  assert.deepEqual(errors, []);
+  await page.close();
+});

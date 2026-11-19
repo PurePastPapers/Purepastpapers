@@ -102,6 +102,9 @@ export async function init() {
       setLegacyMode(false);
     }
   }
+  // A confirmed session means nothing is waiting any more (for example the email link was
+  // opened in another tab), so the sign-up form must not stay paused for this browser.
+  if (user) setAwaitingConfirmation(null);
   if (user) {
     try {
       let saved = await activeAdapter.loadProgress(user.user_id);
@@ -197,7 +200,8 @@ export async function verifySignupCode(email, code) {
 // The email this browser is waiting to see confirmed, so the sign-up form can pause instead of
 // sending another email (a new email cancels the code and link in the previous one).
 const awaitingKey = `${APP.storageNamespace}:awaiting-confirmation`;
-const AWAIT_FOR = 24 * 60 * 60 * 1000;
+// Codes and links last an hour, so after that the form stops waiting.
+const AWAIT_FOR = 60 * 60 * 1000;
 
 /** { email, name, sentAt } while a sign-up confirmation is pending in this browser, else null. */
 export function awaitingConfirmation() {
