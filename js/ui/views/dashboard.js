@@ -9,7 +9,7 @@ import * as api from '../../data/api.js';
 import { elapsedMs } from '../../data/sessions.js';
 import { currentStreak, totals } from '../../engine/analytics.js';
 import { icon } from '../icons.js';
-import { loadStudent, subjectCard, subjectSummary, wireColourPicker } from '../student.js';
+import { addSubjectButton, addSubjectTile, loadStudent, subjectCard, subjectSummary, wireColourPicker } from '../student.js';
 import { confirmDialog, fmtPercent } from '../ui.js';
 import { links } from '../../core/links.js';
 
@@ -97,10 +97,11 @@ export async function mount(element, context) {
       <section class="dash-block" aria-labelledby="subjects-title">
         <div class="section-title">
           <h2 id="subjects-title">Your subjects</h2>
+          ${enrolled.length ? addSubjectButton(links.subjects({ add: 1 })) : ''}
           ${enrolled.length ? html`<span class="hand">tap the dot to change a subject’s colour</span>` : ''}
         </div>
         ${enrolled.length
-          ? html`<div class="dash-subjects">${enrolled.map((bundle, index) => subjectCard(bundle, subjectSummary(bundle, student), { tilt: [1, 2, 3, 4][index % 4] }))}</div>`
+          ? html`<div class="dash-subjects">${enrolled.map((bundle, index) => subjectCard(bundle, subjectSummary(bundle, student), { tilt: [1, 2, 3, 4][index % 4] }))}${addSubjectTile(links.subjects({ add: 1 }), { tilt: [1, 2, 3, 4][enrolled.length % 4] })}</div>`
           : html`<div class="empty">
               <h3 class="empty__title">No subjects yet</h3>
               <p class="empty__text">Pick your subjects to see their papers, practice and progress here.</p>

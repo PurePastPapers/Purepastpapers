@@ -1581,3 +1581,42 @@ input[type='radio'] {
     background: var(--ink-3);
   }
 }
+
+/* ── "+" to add a subject: round button by the heading, dashed tile after the cards ── */
+.section-title > .add-subject-btn,
+.add-subject-btn {
+  margin-left: 0;
+  align-self: center;
+  border-radius: 50%;
+  width: 40px;
+  min-height: 40px;
+  height: 40px;
+}
+.add-subject-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 180px;
+  border: 2.5px dashed var(--line-strong);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--surface) 45%, transparent);
+  color: var(--ink-2);
+  font: 400 20px/1.2 var(--font-display);
+  text-decoration: none;
+}
+.add-subject-tile:hover,
+.add-subject-tile:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: var(--surface);
+}
+.add-subject-tile__plus {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
