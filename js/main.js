@@ -11,6 +11,7 @@ import * as shell from './ui/shell.js';
 import { tintPage } from './ui/subject-colours.js';
 import { revealOnScroll } from './ui/motion.js';
 import { installZoom } from './ui/zoom.js';
+import { maybeWelcome } from './ui/welcome.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 import { links } from './core/links.js';
 
@@ -199,6 +200,7 @@ async function handleRoute() {
       }
     };
     $('h1', view)?.focus({ preventScroll: true });
+    maybeWelcome({ path, signedIn: api.isSignedIn(), navigate });
   } catch (error) {
     console.error(error);
     if (ticket !== navigation) return;

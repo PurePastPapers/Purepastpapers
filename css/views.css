@@ -1022,3 +1022,42 @@
   .verify .modal__foot .btn, .verify__resend .btn { justify-content: center; width: 100%; }
   .verify__resend { flex-direction: column; gap: 6px; }
 }
+
+/* ── First-visit welcome popup (js/ui/welcome.js) ── */
+.modal.welcome { width: min(860px, calc(100vw - 28px)); overflow: visible; max-height: none; }
+.modal.welcome::backdrop { background: rgba(30, 22, 14, 0.55); backdrop-filter: blur(2px); }
+.welcome .modal__box { max-height: calc(100dvh - 40px); overflow: auto; }
+.welcome .modal__head { padding: 18px 24px 12px; border-bottom: 1px dashed var(--line-strong); align-items: flex-start; }
+.welcome .modal__title { font: 400 30px/1.15 var(--font-display); }
+.welcome__sub { margin: 4px 0 0; font-size: 21px; line-height: 1.25; color: var(--ink-2); }
+.welcome .modal__body { padding: 26px 24px 18px; }
+.welcome__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; list-style: none; margin: 0; padding: 0; }
+.welcome__tile { padding: 30px 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+.welcome__tile .tape { width: 70px; margin-left: -35px; }
+.welcome__num { position: absolute; top: -15px; left: 14px; z-index: 3; width: 30px; height: 30px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--surface); font: 400 15px/1 var(--font-display); }
+.welcome__ic { width: 44px; height: 44px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--surface-2); }
+.welcome__tile h3 { font: 400 21px/1.2 var(--font-display); margin: 4px 0 0; }
+.welcome__tile p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.welcome__tile .welcome__where { margin-top: auto; padding-top: 6px; font-size: 13px; color: var(--ink); font-weight: 600; }
+.welcome__where span { border-bottom: 2px solid var(--tape); }
+.welcome .modal__foot { justify-content: space-between; align-items: center; border-top: 1px dashed var(--line-strong); padding: 14px 24px 18px; gap: 12px; flex-wrap: wrap; }
+.welcome__note { font-size: 13.5px; color: var(--ink-2); margin: 0; }
+.welcome__btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.welcome__tape { position: absolute; top: -13px; left: 50%; margin-left: -55px; width: 110px; transform: rotate(-2deg); }
+.lp-tour { margin-top: 18px; text-align: center; }
+@media (max-width: 640px) {
+  .welcome__grid { grid-template-columns: 1fr; gap: 20px; }
+  .welcome__tile { padding: 20px 14px 12px 66px; gap: 5px; }
+  .welcome__tile p { font-size: 14px; line-height: 1.45; }
+  .welcome__tile h3 { font-size: 19px; margin: 0; }
+  .welcome__tile .tape { display: none; }
+  .welcome__tile .welcome__ic { position: absolute; left: 12px; top: 18px; width: 40px; height: 40px; }
+  .welcome__tile .welcome__where { padding-top: 2px; }
+  .welcome .modal__title { font-size: 25px; }
+  .welcome__sub { font-size: 19px; }
+  .welcome .modal__body { padding: 22px 16px 12px; }
+  .welcome .modal__foot { flex-direction: column-reverse; align-items: stretch; padding: 12px 16px 16px; }
+  .welcome__btns { flex-direction: column-reverse; }
+  .welcome__btns .btn { justify-content: center; width: 100%; }
+  .welcome__note { text-align: center; }
+}
