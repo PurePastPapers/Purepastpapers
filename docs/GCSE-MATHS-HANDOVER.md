@@ -124,7 +124,7 @@ Q9(b). They show the correct scheme, just with the other part's rows too.
 
 ## Follow-ups
 
-- Tier choice when adding the subject (UI, needs approval of mock-ups first).
+- ~~Tier choice when adding the subject~~ done: see *Tier picker* below.
 - Official SAMs (optional), Nov 2025 and June 2026 when Pearson publishes them.
 - Teacher review of model tags if wanted.
 
@@ -137,3 +137,8 @@ Foundation, Higher or Not decided yet. The choice is saved in
 keeps it; changing the setting resets the filter once) and Past papers gets a Tier
 filter defaulting to it. Other tiered GCSEs only need `"tiers": ["Foundation", "Higher"]`
 in the registry and `tier` on their papers/questions. Check: `node tools/browser-tier-picker.cjs`.
+
+Update 19 November 2026: the GCSE sciences (1SC0, 1BI0, 1CH0, 1PH0) use the same picker with
+`"tier_required": true`, which removes "Not decided yet". Practice now shows the Tier as a
+visible control (Foundation / Higher / Both tiers) beside the mode switch instead of a select
+under *More*, for Maths too; Maths otherwise behaves as before. See the science handovers.

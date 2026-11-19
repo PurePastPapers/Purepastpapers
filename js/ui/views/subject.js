@@ -13,7 +13,8 @@ import { topicOrganisationControl } from '../topic-organisation.js';
 import { textbookMasteryByNode } from '../../engine/textbook-index.js';
 import { attemptInSubject, practicePool } from '../student.js';
 import { saveSubjectSettings, scStyle, targetGrade, tintPage } from '../subject-colours.js';
-import { subjectDialog } from '../subject-dialog.js';
+import { addSubject, editSubject } from '../enrol.js';
+import { isTiered, questionsForTier, savedTier, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
 import { banner, confirmDialog, emptyState, fmtPercent, meter, pageHead, ragBadge, subjectName, toast } from '../ui.js';
 import { links } from '../../core/links.js';
 
@@ -25,10 +26,19 @@ export async function mount(element, context) {
   context.setTitle(subject.subject);
 
   const progress = api.getProgress();
-  const pool = practicePool(bundle);
+  const enrolled = () => progress.enrolled_subjects.includes(subjectId);
+  // Tiered GCSEs (owner request 2026-11-19): the page shows one tier's spec points, counts and
+  // questions. An enrolled student sees their saved tier; anyone else picks one here first.
+  // A science (`tier_required`) with no tier shows a "Choose a tier" prompt instead of content.
+  const tiered = isTiered(subject);
+  const required = tierRequired(subject);
+  const viewTier = tiered ? (enrolled() ? savedTier(subject, progress) : validTier(subject, context.query.tier)) : null;
+  const needsTier = tiered && required && !viewTier;
+  const tierSpec = specForTier(spec, viewTier);
+  const pool = questionsForTier(practicePool(bundle), viewTier, bundle.papersById);
   const questionCounts = countByNode(pool, specIndex);
   const foreign = foreignSpecPoints(pool, subjectId, specIndex); // spec points owned by other subjects
-  const leaves = specIndex.subjectLeaves(subjectId);
+  const leaves = tierLeaves(specIndex, subjectId, viewTier);
   const textbookCounts = textbooks?.counts(pool);
   let organisation = textbooks ? progress.preferences[`coveredView:${subjectId}`] || 'textbook' : 'official';
   if (!['textbook', 'official'].includes(organisation)) organisation = 'textbook';
@@ -54,7 +64,19 @@ export async function mount(element, context) {
   }
   compute();
 
-  const enrolled = () => progress.enrolled_subjects.includes(subjectId);
+  // The tier control: Foundation / Higher (plus Both tiers where a choice is optional).
+  const tierOptions = tiered ? [...subject.tiers.map((tier) => [tier, tier]), ...(required ? [] : [['', 'Both tiers']])] : [];
+  const tierControl = () => (tiered
+    ? html`<div class="tier-switch" data-tier-switch>
+        <span class="tier-switch__label" id="tier-switch-label">${viewTier ? 'Tier' : 'Choose a tier'}</span>
+        <div class="seg" role="radiogroup" aria-labelledby="tier-switch-label">
+          ${tierOptions.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${(viewTier || '') === value && !(needsTier && !value)}" data-set-tier="${value}">${label}</button>`)}
+        </div>
+        <span class="small muted tier-switch__note">${viewTier
+          ? enrolled() ? `Saved for ${subject.spec_code}. Changing it keeps your ticks and scores.` : 'Add the subject to save this tier.'
+          : required ? 'Pick Foundation or Higher to see its specification points and questions.' : 'Showing both tiers.'}</span>
+      </div>`
+    : '');
 
   tintPage(subject);
   setHtml(
@@ -73,7 +95,14 @@ export async function mount(element, context) {
         <div class="row row--tight subject-settings" data-settings></div>
         <div data-enrol-banner></div>
         ${subject.board_note ? banner(subject.board_note, { type: 'warn' }) : ''}
-        ${subject.has_written_exam
+        ${tierControl()}
+        ${subject.has_written_exam && needsTier
+          ? html`<section class="card ruled tier-prompt" data-tier-prompt>
+              <h2 class="card__title">Choose Foundation or Higher</h2>
+              <p class="muted">${subject.subject} is sat at Foundation (grades 1 to 5) or Higher (grades 4 to 9). Your tier sets the specification points, questions, tests and past papers shown${enrolled() ? '. Your saved ticks, marks and history are kept.' : '.'}</p>
+              <div class="row row--tight">${subject.tiers.map((tier) => html`<button type="button" class="btn" data-set-tier="${tier}">${tier}</button>`)}</div>
+            </section>`
+          : subject.has_written_exam
           ? html`<p class="muted">Find questions: browse individual questions by topic, specification point, difficulty and exam year. Full past papers opens original papers by year, series and paper.</p><section class="grid grid--stats" data-stats aria-label="Summary"></section>
               <div class="split">
                 ${api.currentUser() ? html`<details class="card ruled tilt-4" open>
@@ -251,7 +280,7 @@ export async function mount(element, context) {
   function mountCoveredTree() {
     if (!treeElement) return;
     tree = mountSpecTree(treeElement, {
-      spec: textbookMode() ? textbooks.tree : spec,
+      spec: textbookMode() ? textbooks.tree : tierSpec,
       filterLayout: true,
       selected: viewLeaves().filter(id => derived.learned.has(id)),
       noun: 'learned',
@@ -302,10 +331,20 @@ export async function mount(element, context) {
     refresh();
   });
   on(element, 'click', '[data-settings-edit]', async () => {
-    const choice = await subjectDialog({ subject, mode: 'edit' });
-    if (!choice) return;
-    await saveSubjectSettings(subjectId, { swatch: choice.swatch, target: choice.target, tier: choice.tier });
-    context.refresh();
+    if (await editSubject(subject)) context.refresh();
+  });
+  on(element, 'click', '[data-set-tier]', async (event, button) => {
+    const tier = validTier(subject, button.dataset.setTier);
+    if ((tier || '') === (viewTier || '') && !needsTier) return;
+    if (needsTier && !tier) return;
+    if (enrolled()) {
+      // Only the preference changes: learned ticks, attempts and history stay as they are.
+      await saveSubjectSettings(subjectId, { tier });
+      toast(tier ? `${subject.subject}: ${tier} tier.` : `${subject.subject}: both tiers.`, { type: 'success' });
+      context.refresh();
+    } else {
+      context.navigate(`/subject/${encodeURIComponent(subjectId)}${tier ? `?tier=${encodeURIComponent(tier)}` : ''}`);
+    }
   });
   on(element, 'click', '[data-unenrol]', async () => {
     const confirmed = await confirmDialog({
@@ -319,6 +358,14 @@ export async function mount(element, context) {
     context.navigate('/subjects');
   });
   on(element, 'click', '[data-enrol]', async () => {
+    if (tiered) {
+      // A tiered GCSE is added through the same window as My subjects, with the tier
+      // chosen here already selected.
+      if (!(await addSubject(subject, { initialTier: viewTier }))) return;
+      toast(`${subject.subject} added to your subjects.`, { type: 'success' });
+      context.refresh();
+      return;
+    }
     await api.setEnrolled(subjectId, true);
     drawSettings();
     drawSide();

@@ -9,6 +9,7 @@ import { createSession } from '../data/sessions.js';
 import { TARGET_BANDS, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../engine/analytics.js';
 import { filterQuestions } from '../engine/filter-engine.js';
 import { textbookMasteryByNode } from '../engine/textbook-index.js';
+import { isTiered, questionsForTier, savedTier, tierLeaves, tierRequired } from '../engine/tiers.js';
 import { icon } from './icons.js';
 import { SUBJECT_SWATCHES, scStyle, setSubjectColour, subjectColour, subjectSwatchId, targetGrade } from './subject-colours.js';
 import { fmtPercent, groupDot } from './ui.js';
@@ -40,10 +41,38 @@ export function practicePool(bundle) {
   return available.filter((question) => !parents.has(question.question_id) && !(hasRealSource && question.is_sample));
 }
 
+/**
+ * Learning counts for each tier of a tiered subject ('' = every tier), so the add/edit window
+ * can show the right number for the tier picked. Null for an untiered subject.
+ */
+export function tierLearningCounts(subject, learned = api.learnedSet()) {
+  if (!isTiered(subject)) return null;
+  return Object.fromEntries(['', ...subject.tiers].map((tier) => {
+    const ids = tierLeaves(specIndex, subject.subject_id, tier || null);
+    return [tier, { leaves: ids.length, covered: ids.filter((id) => learned.has(id)).length }];
+  }));
+}
+
+/** The tier a student studies a subject at: saved tier, or whether a required choice is missing. */
+export function tierStatus(subject, progress = api.getProgress()) {
+  const tier = savedTier(subject, progress);
+  return { tiered: isTiered(subject), required: tierRequired(subject), tier, missing: tierRequired(subject) && !tier };
+}
+
+/** A short tier label for subject cards ("Foundation tier", "Tier not chosen"), or ''. */
+export function tierLabel(subject, progress) {
+  const status = tierStatus(subject, progress);
+  if (!status.tiered) return '';
+  if (status.tier) return html` · <span class="tier-label">${status.tier} tier</span>`;
+  return status.required ? html` · <span class="tier-label tier-label--missing">Tier not chosen</span>` : html` · <span class="tier-label">Both tiers</span>`;
+}
+
 export function subjectSummary(bundle, { progress, latest, learned }) {
   const textbookMode = bundle.textbooks && progress.preferences[`coveredView:${bundle.subject.subject_id}`] !== 'official';
-  const leaves = textbookMode ? bundle.textbooks.ids : specIndex.subjectLeaves(bundle.subject.subject_id);
-  const pool = practicePool(bundle);
+  // A tiered subject counts only its chosen tier's spec points and questions.
+  const tier = savedTier(bundle.subject, progress);
+  const leaves = textbookMode ? bundle.textbooks.ids : tierLeaves(specIndex, bundle.subject.subject_id, tier);
+  const pool = questionsForTier(practicePool(bundle), tier, bundle.papersById);
   const { matches } = filterQuestions(pool, {learnedNamespace:textbookMode ? 'textbook' : 'official'}, { specIndex, learned, latestAttempts: latest });
   const answered = [...latest.values()].filter((attempt) => attemptInSubject(attempt, bundle));
   const score = totals(answered);
@@ -65,6 +94,7 @@ export function subjectSummary(bundle, { progress, latest, learned }) {
     rag: ragFor(score.percentage),
     segments,
     papers: progress.paper_attempts.filter((attempt) => attempt.subject_id === bundle.subject.subject_id).length,
+    tier,
   };
 }
 
@@ -78,7 +108,7 @@ export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) 
       <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
     </header>
     <div class="subject-card__body">
-      <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}${subject.has_written_exam ? ` · ${summary.learned}/${summary.leaves} learned` : ''}</p>
+      <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}${tierLabel(subject)}${subject.has_written_exam ? ` · ${summary.learned}/${summary.leaves} learned` : ''}</p>
       ${subject.has_written_exam
         ? html`${summary.segments.length
               ? html`<span class="segbar" role="img" aria-label="Topic scores">${summary.segments.map((segment) => html`<i data-rag="${segment.rag}" title="${segment.title}"></i>`)}</span>`
@@ -121,7 +151,8 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
       <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
     </header>
     <div class="subject-card__body">
-      <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}</p>
+      <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}${tierLabel(subject, progress)}</p>
+      ${tierStatus(subject, progress).missing ? html`<p class="small tier-missing"><button type="button" class="linkbtn" data-edit="${id}">Choose Foundation or Higher</button> to see this subject’s topics, questions and papers.</p>` : ''}
       ${targetLine(subject, progress)}
       ${subject.has_written_exam
         ? html`<span class="segbar" role="img" aria-label="Topic scores">${summary.segments.map((segment) => html`<i data-rag="${segment.rag}" title="${segment.title}"></i>`)}</span>

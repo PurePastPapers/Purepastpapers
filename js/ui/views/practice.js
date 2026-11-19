@@ -23,7 +23,8 @@ import { mountSpecTree } from '../spec-tree.js';
 import { mountCurriculumSelector } from '../curriculum-selector.js';
 import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
-import { scStyle, tintPage } from '../subject-colours.js';
+import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
+import { isTiered, questionsForTier, savedTier, searchTierIntent, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
 import { zoomButton } from '../zoom.js';
 import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
@@ -142,6 +143,50 @@ export async function mount(element, context) {
   let curriculumPoints = null;
   if (progress.preferences.lastSubject !== subjectId) api.setPreference('lastSubject', subjectId);
 
+  // ── tiers (owner request 2026-11-19) ──
+  // A tiered GCSE starts on the student's saved tier. A science with no saved tier asks for one
+  // before showing questions. The visible Tier control can switch to the other tier or both
+  // tiers for this browser tab only; it never changes the saved tier.
+  const tiered = isTiered(subject);
+  const savedSubjectTier = savedTier(subject, progress);
+  if (tiered && tierRequired(subject) && !savedSubjectTier) {
+    tintPage(subject);
+    setHtml(
+      element,
+      html`${head(subject.subject)}
+        <div class="stack stack--lg" style="${scStyle(subject)}">
+          ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
+          <section class="card ruled tier-prompt" data-tier-prompt>
+            <h2 class="card__title">Choose Foundation or Higher for ${subject.subject}</h2>
+            <p class="muted">Questions and tests are built from one tier’s papers. Choose yours to start; you can change it later in the subject’s settings. Your saved ticks, marks and history are kept.</p>
+            <div class="row row--tight">${subject.tiers.map((tier) => html`<button type="button" class="btn" data-save-tier="${tier}">${tier}</button>`)}</div>
+          </section>
+        </div>`,
+    );
+    on(element, 'click', '[data-save-tier]', async (event, button) => {
+      await saveSubjectSettings(subjectId, { tier: validTier(subject, button.dataset.saveTier) });
+      context.refresh();
+    });
+    return;
+  }
+  const tierOverrideKey = `${APP.storageNamespace}:practice-tier:${subjectId}`;
+  const readTierOverride = () => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(tierOverrideKey) || 'null');
+      return saved && saved.pref === (savedSubjectTier || '') && (saved.tier === '' || validTier(subject, saved.tier)) ? saved.tier : null;
+    } catch {
+      return null;
+    }
+  };
+  const writeTierOverride = (tier) => {
+    try {
+      if (tier === null) sessionStorage.removeItem(tierOverrideKey);
+      else sessionStorage.setItem(tierOverrideKey, JSON.stringify({ pref: savedSubjectTier || '', tier }));
+    } catch {
+      /* not essential */
+    }
+  };
+
   // ── state (kept for the browser tab, so filters survive opening a question and coming back) ──
   const storageKey = `${APP.storageNamespace}:practice:${user?.user_id || 'guest'}:${subjectId}`;
   let state = { ...defaults(), mode: subject.practice_modes.includes('individual') ? 'individual' : subject.practice_modes.includes('picker') ? 'picker' : subject.practice_modes[0] };
@@ -159,10 +204,18 @@ export async function mount(element, context) {
   if (!Array.isArray(state.years)) state.years = [];
   if (state.year && !state.years.length) state.years = [String(state.year)];
   state.year = '';
-  // A tiered GCSE starts on the tier chosen when the subject was added (subject settings).
-  // Changing that choice resets the tier filter once; the student can still pick "Any tier" here.
-  const tierPref = (Array.isArray(subject.tiers) && progress.preferences.tiers?.[subjectId]) || '';
-  if ((state.tierPref ?? '') !== tierPref) { state.tier = tierPref; state.tierPref = tierPref; }
+  // A tiered GCSE starts on the tier chosen when the subject was added (subject settings):
+  // every visit starts there unless this tab switched tier on purpose. Changing the saved tier
+  // drops that switch, so the new tier is the default for every later visit and test.
+  const tierPref = savedSubjectTier || '';
+  if (tiered) {
+    const override = readTierOverride();
+    state.tier = override ?? tierPref;
+    state.tierPref = tierPref;
+  } else if ((state.tierPref ?? '') !== tierPref) { state.tier = tierPref; state.tierPref = tierPref; }
+  // The tier whose spec points are shown (null = every point).
+  const viewTier = tiered ? validTier(subject, state.tier) : null;
+  const tierSpec = specForTier(spec, viewTier);
   const save = () => {
     try {
       storage.setItem(storageKey, JSON.stringify(state));
@@ -203,7 +256,13 @@ export async function mount(element, context) {
   if (!SOURCE_CHOICES.some((choice) => choice.id === state.source && (!choice.feature || isEnabled(choice.feature)))) state.source = 'official';
 
   const learned = api.learnedSet();
-  const subjectLeaves = specIndex.subjectLeaves(subjectId);
+  const subjectLeaves = tierLeaves(specIndex, subjectId, viewTier);
+  if (viewTier && Array.isArray(state.focus) && state.focus.length) {
+    // A topic choice made on the other tier keeps only this tier's points.
+    const inTier = new Set(subjectLeaves);
+    state.focus = state.focus.filter((id) => specIndex.leavesOf(id).some((leaf) => inTier.has(leaf)));
+    if (!state.focus.length) state.focus = null;
+  }
   if (!textbooks) state.topicOrganisation = 'official';
   else {
     const savedLearningView = progress.preferences[`coveredView:${subjectId}`];
@@ -324,10 +383,24 @@ export async function mount(element, context) {
   const timed = () => state.mode === 'timed_test';
   const sourceTypes = () => SOURCE_CHOICES.find((choice) => choice.id === state.source).types.filter((type) => enabledSourceTypes().includes(type));
   const scopedPool = () => pool.filter((question) => sourceTypes().includes(question.source_type));
+  // Tiers in force: a search naming a tier or one of its paper codes ("higher", "1BH") is an
+  // explicit choice of that tier; otherwise the Tier control (saved tier by default).
+  const subjectPapers = [...bundle.papersById.values()].filter((paper) => paper.subject_id === subjectId);
+  const searchIntent = () => (tiered && !timed() ? searchTierIntent(state.search, subjectPapers) : { tiers: [], search: state.search });
+  const activeTiers = () => {
+    const named = searchIntent().tiers;
+    if (named.length) return named;
+    return state.tier ? [state.tier] : null;
+  };
+  // The pool for counts and lists: the tiers in force only.
+  const tierPool = () => {
+    const tiers = activeTiers();
+    return tiers ? scopedPool().filter((question) => tiers.includes(question.tier !== undefined ? question.tier : bundle.papersById.get(question.paper_id)?.tier)) : scopedPool();
+  };
   // With "Only topics I've covered" on, the topic list holds only the covered points, so
   // the student narrows within what they have learned. Off, it holds every point.
   const treeEnabled = () => (coveredOnly() ? new Set((textbookMode() ? textbooks.ids : subjectLeaves).filter((id) => learned.has(id))) : null);
-  const setTexts = spec.sections.flatMap((section) => section.topics.filter((topic) => topic.kind === 'set_text').flatMap((topic) => topic.points));
+  const setTexts = tierSpec.sections.flatMap((section) => section.topics.filter((topic) => topic.kind === 'set_text').flatMap((topic) => topic.points));
   const exactTariffs = !modes.includes('individual'); // essay subjects filter by exact mark tariff
   const bandOptions = exactTariffs
     ? [...new Set(pool.map((question) => question.marks))].sort((a, b) => a - b).map((marks) => ({ id: `=${marks}`, label: `${marks} marks`, min: marks, max: marks }))
@@ -357,7 +430,7 @@ export async function mount(element, context) {
     contentYear: unitContentYears ? (state.curriculum.year === '12' ? 12 : state.curriculum.year === '13' && state.curriculum.year13Only ? 13 : null) : null,
     years: state.years.length ? state.years.map(Number) : null,
     series: state.series ? [state.series] : null,
-    tiers: state.tier ? [state.tier] : null,
+    tiers: activeTiers(),
     paperIds: state.paper ? [state.paper] : null,
     sampleMode: state.sampleMode,
     learnedOnly: timed() ? true : coveredOnly(),
@@ -368,7 +441,7 @@ export async function mount(element, context) {
   });
 
   function metadataControls(browser = false) {
-    const papers = [...new Set(scopedPool().map((question) => question.paper_id))].map((id) => bundle.papersById.get(id)).filter(Boolean);
+    const papers = [...new Set(tierPool().map((question) => question.paper_id))].map((id) => bundle.papersById.get(id)).filter(Boolean);
     const years = [...new Set(papers.map((paper) => paper.year).filter(Number.isInteger))].sort((a, b) => b - a);
     const series = [...new Set(papers.map((paper) => paper.series).filter(Boolean))];
     const tiers = [...new Set(scopedPool().map((question) => question.tier !== undefined ? question.tier : bundle.papersById.get(question.paper_id)?.tier).filter(Boolean))];
@@ -376,7 +449,7 @@ export async function mount(element, context) {
     const papersAndYears = html`
       ${years.length || state.years.length ? html`<fieldset class="field"><legend class="field__label">Exam years</legend><div class="chips">${[...new Set([...state.years, ...years.map(String)])].map((year) => html`<button type="button" class="chip" data-multi="years" data-value="${year}" aria-pressed="${state.years.includes(year)}">${year}${years.includes(Number(year)) ? '' : ' (unavailable)'}</button>`)}</div>${state.years.length ? html`<button type="button" class="linkbtn small" data-clear-group="years">Clear exam years</button>` : ''}</fieldset>` : ''}
       ${series.length || state.series ? select('series', 'Exam series', series, 'Any series') : ''}
-      ${tiers.length || state.tier ? select('tier', 'Tier', tiers, 'Any tier') : ''}
+      ${!tiered && (tiers.length || state.tier) ? select('tier', 'Tier', tiers, 'Any tier') : ''}
       <label class="field"><span class="field__label">Paper</span><select class="select" data-filter="paper"><option value="">Any paper</option>${state.paper && !papers.some((paper) => paper.paper_id === state.paper) ? html`<option value="${state.paper}" selected>Saved paper unavailable — clear this filter</option>` : ''}${papers.map((paper) => html`<option value="${paper.paper_id}" ${state.paper === paper.paper_id ? 'selected' : ''}>${paper.title}</option>`)}</select></label>
     `;
     const qualifications = qualificationOptions.length > 1 ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${qualificationOptions.map(({code: value, label}) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
@@ -485,10 +558,10 @@ export async function mount(element, context) {
     }
     const enabledSet = treeEnabled();
     const all = enabledSet ? [...enabledSet] : textbookMode() ? textbooks.ids : subjectLeaves;
-    const counts = countByNode(scopedPool(), specIndex);
-    const textbookCounts = textbookMode() ? textbooks.counts(scopedPool()) : null;
+    const counts = countByNode(tierPool(), specIndex);
+    const textbookCounts = textbookMode() ? textbooks.counts(tierPool()) : null;
     tree = mountSpecTree(target, {
-      spec: textbookMode() ? textbooks.tree : spec,
+      spec: textbookMode() ? textbooks.tree : tierSpec,
       filterLayout: !timed(),
       selected: manualFocus() === null ? all : manualFocus().filter((id) => !enabledSet || enabledSet.has(id)),
       enabled: enabledSet,
@@ -637,7 +710,7 @@ export async function mount(element, context) {
     const difficultyValue = pick(state.difficulties, (id) => DIFFICULTIES.find((d) => d.id === id)?.label || id);
     const marksValue = state.markMin !== '' || state.markMax !== '' ? `${state.markMin || 0}–${state.markMax || 'any'}` : pick(state.bands, (id) => bandOptions.find((b) => b.id === id)?.label || id);
     const progressValue = pick(state.markStatuses, (id) => PROGRESS_FILTERS[id]);
-    const moreCount = state.years.length + state.qualifications.length + [state.series, state.tier, state.paper].filter(Boolean).length;
+    const moreCount = state.years.length + state.qualifications.length + [state.series, tiered ? '' : state.tier, state.paper].filter(Boolean).length;
     const pop = (key, label, value, body, wide = false) => html`<details class="fpop" data-section="fpop-${key}">
         <summary class="fpop__btn"><span class="fpop__label">${label}</span><span class="fpop__value ${['Any', 'All', 'Year, paper'].includes(value) ? '' : 'is-set'}">${value}</span>${icon('chevronDown', { size: 14 })}</summary>
         <div class="fpop__panel ${wide ? 'fpop__panel--wide' : ''}">${body}</div>
@@ -860,7 +933,7 @@ export async function mount(element, context) {
       : bandOptions.filter((band) => state.bands.includes(band.id));
     const filtered = filterQuestions(
       scopedPool(),
-      criteria({ difficulties: state.difficulties, markBands: bands, markStatuses: state.markStatuses, search: state.search }),
+      criteria({ difficulties: state.difficulties, markBands: bands, markStatuses: state.markStatuses, search: searchIntent().search }),
       engineContext,
     );
     // Linked parts are one question: one card, locked unless every part is learned.
@@ -885,10 +958,13 @@ export async function mount(element, context) {
       ...(customMarks ? [{key: 'markRange', label: `Marks: ${state.markMin || '0'}–${state.markMax || 'any'}`}] : []),
       ...state.bands.map((value) => ({key: 'bands', value, label: bandOptions.find((b) => b.id === value)?.label || value})),
       ...state.years.map((value) => ({key: 'years', value, label: `Year: ${value}`})),
-      ...['series', 'tier', 'paper'].filter((key) => state[key]).map((key) => ({key, label: `${key}: ${state[key]}`})),
+      ...['series', ...(tiered ? [] : ['tier']), 'paper'].filter((key) => state[key]).map((key) => ({key, label: `${key}: ${state[key]}`})),
       ...(state.search ? [{key: 'search', label: `Search: ${state.search}`}] : []),
     ];
-    return html`${active.length ? html`<div class="chips" aria-label="Active filters">${active.map((chip) => html`<button type="button" class="chip" data-clear-chip="${chip.key}" data-chip-value="${chip.value || ''}" aria-label="Remove filter ${chip.label}">${chip.label} ×</button>`)}</div>` : ''}<div class="row row--between browser-results-heading">
+    const namedTiers = searchIntent().tiers;
+    const searchTierNote = namedTiers.length && namedTiers.join() !== (state.tier || '')
+      ? html`<p class="small muted tier-search-note" role="status">Your search names ${namedTiers.join(' and ')}, so ${namedTiers.join(' and ')} questions are shown.</p>` : '';
+    return html`${searchTierNote}${active.length ? html`<div class="chips" aria-label="Active filters">${active.map((chip) => html`<button type="button" class="chip" data-clear-chip="${chip.key}" data-chip-value="${chip.value || ''}" aria-label="Remove filter ${chip.label}">${chip.label} ×</button>`)}</div>` : ''}<div class="row row--between browser-results-heading">
         <p role="status" aria-live="polite"><strong>${plural(sorted.length, 'question')}</strong> <span class="muted">match</span></p>
         <button class="btn btn--primary btn--sm" type="button" data-shuffle-questions>${icon('shuffle', { size: 16 })} ${state.shuffled ? 'Shuffle again' : 'Shuffle questions'}</button>
       </div>
@@ -1055,6 +1131,20 @@ export async function mount(element, context) {
     fitOpenQuestions();
   }
 
+  // The Tier control: saved tier by default, the other tier or both tiers on purpose.
+  function tierBar() {
+    const options = [...subject.tiers.map((tier) => [tier, tier]), ['', 'Both tiers']];
+    return html`<div class="tier-switch" data-tier-bar>
+      <span class="tier-switch__label" id="practice-tier-label">Tier</span>
+      <div class="seg" role="radiogroup" aria-labelledby="practice-tier-label">
+        ${options.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${(state.tier || '') === value}" data-practice-tier="${value}">${label}</button>`)}
+      </div>
+      <span class="small muted tier-switch__note">${savedSubjectTier
+        ? (state.tier || '') === savedSubjectTier ? `Your saved tier. Questions and tests use ${savedSubjectTier} papers.` : `Your saved tier is ${savedSubjectTier}. This switch lasts for this tab.`
+        : 'No tier saved. Choose one in the subject’s settings to start on it.'}</span>
+    </div>`;
+  }
+
   tintPage(subject);
   setHtml(
     element,
@@ -1063,6 +1153,7 @@ export async function mount(element, context) {
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
+        ${tiered ? tierBar() : ''}
         ${modes.length > 1
           ? html`<div class="seg mode-switch" role="tablist">
               ${[...modes].sort((a, b) => (a === 'timed_test') - (b === 'timed_test')).map(
@@ -1108,6 +1199,18 @@ export async function mount(element, context) {
   document.addEventListener('click', closePops);
   document.addEventListener('keydown', closePops);
 
+  on(element, 'click', '[data-practice-tier]', (event, button) => {
+    const tier = button.dataset.practiceTier === '' ? '' : validTier(subject, button.dataset.practiceTier);
+    if (tier === null || tier === (state.tier || '')) return;
+    // A tab-only switch: the saved tier is unchanged. A test already running keeps its questions.
+    writeTierOverride(tier === tierPref ? null : tier);
+    state.tier = tier;
+    state.page = 1;
+    state.paper = '';
+    state.testFocusVersion = 0; // the topic list is seeded again for the new tier
+    save();
+    context.refresh();
+  });
   on(element, 'click', '[data-mode]', (event, button) => {
     state.mode = button.dataset.mode;
     migrateBrowserRange();
@@ -1121,8 +1224,16 @@ export async function mount(element, context) {
   }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
-    const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
+    const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, goes: state.goes, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
     state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept, tier: tierPref, tierPref };
+    if (tiered && (readTierOverride() ?? tierPref) !== tierPref) {
+      // Reset returns to the saved tier; its spec points need the page drawn again.
+      writeTierOverride(null);
+      seedTestFocus();
+      save();
+      context.refresh();
+      return;
+    }
     seedTestFocus();
   }, { resetControls: true }));
   on(element, 'click', '[data-clear-chip]', (event, button) => change(() => {

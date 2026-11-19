@@ -2,35 +2,52 @@
 // choose a tier (tiered GCSEs, owner choice 2026-11-17: option A cards), set a target
 // grade, and (when adding) choose what to do about learned topics.
 // A small preview card on the right shows how the subject will look.
+// Subjects with `tier_required` (the GCSE sciences) must be saved with Foundation or Higher:
+// there is no "Not decided yet" card and no silent default.
 
 import { html, setHtml } from '../core/dom.js';
 import { gradesIn } from '../engine/analytics.js';
 import { SUBJECT_SWATCHES, subjectSwatchId, subjectTier, targetGrade } from './subject-colours.js';
 import { openModal } from './ui.js';
+import { tierRequired } from '../engine/tiers.js';
 
-const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount) =>
+const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount, tier) =>
   html`<p class="hand subject-dialog__how">how it will look</p>
     <div class="card subject-card" style="--sc:${swatchHex}" data-preview>
       <header class="subject-card__band"><h3>${subject.subject}</h3><span class="cdot" aria-hidden="true"></span></header>
       <div class="subject-card__body">
-        <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}</p>
+        <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}${Array.isArray(subject.tiers) ? html` · <span data-preview-tier>${tier ? `${tier} tier` : 'Tier not chosen'}</span>` : ''}</p>
         <div class="target"><span class="target__grade" data-preview-grade>${target || '–'}</span><span><span class="target__label">Target grade</span>Last paper: <b>none yet</b></span></div>
         <span class="segbar" aria-hidden="true">${Array.from({ length: 8 }, () => html`<i></i>`)}</span>
-        ${subject.has_written_exam && leaves ? html`<p class="subject-card__meta">${coveredCount}/${leaves} ${learningUnit} learned</p>` : ''}
+        ${subject.has_written_exam && leaves ? html`<p class="subject-card__meta"><span data-preview-covered>${coveredCount}</span>/<span data-preview-leaves>${leaves}</span> ${learningUnit} learned</p>` : ''}
       </div>
     </div>`;
 
 /**
- * @param {{ subject: object, mode: 'add'|'edit', leaves?: number, learningUnit?: string, coveredCount?: number }} options
+ * @param {{ subject: object, mode: 'add'|'edit', leaves?: number, learningUnit?: string, coveredCount?: number,
+ *   initialTier?: string|null, papers?: object[],
+ *   tierCounts?: Record<string, { leaves: number, covered: number }> }} options
+ *   initialTier  preselected tier (e.g. chosen on the subject page before adding)
+ *   papers       the subject's papers, to list each tier's paper codes
+ *   tierCounts   learning counts per tier ('' = every tier), so the counts follow the tier picked
  * @returns {Promise<null | { swatch: string, tier: string|null|undefined, target: string|null, learned: 'tick'|'all'|'skip' }>}
  */
-export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec points', coveredCount = 0 }) {
+export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec points', coveredCount = 0, initialTier = null, papers = null, tierCounts = null }) {
   const grades = gradesIn(subject.grade_scheme).filter((grade) => grade !== 'U');
   const startSwatch = subjectSwatchId(subject) || SUBJECT_SWATCHES[0].id;
   const startTarget = mode === 'edit' ? targetGrade(subject) : null;
   const target = startTarget || '';
   const tiers = Array.isArray(subject.tiers) ? subject.tiers : [];
-  const startTier = mode === 'edit' ? subjectTier(subject) || '' : '';
+  const required = tierRequired(subject);
+  const savedTier = subjectTier(subject);
+  const startTier = [initialTier, mode === 'edit' || required ? savedTier : null].find((tier) => tiers.includes(tier)) || '';
+  const countsFor = (tier) => tierCounts?.[tier || ''] || { leaves, covered: coveredCount };
+  // Paper codes for each tier, from the subject's own papers when they are known.
+  const tierCodes = (tier) => {
+    const codes = [...new Set((papers || []).filter((paper) => paper.tier === tier && !paper.is_sample).map((paper) => paper.paper_code))]
+      .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
+    return codes.length ? `Papers ${codes.join(', ')}` : null;
+  };
   const TIER_INFO = {
     Foundation: { grades: 'Grades 1 to 5', papers: 'F' },
     Higher: { grades: 'Grades 4 to 9', papers: 'H' },
@@ -63,10 +80,12 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
       ${tiers.length
         ? html`<fieldset class="step">
             <legend><i>${step++}</i>Choose your tier</legend>
-            <p class="step__hint">Practice and past papers start with this tier’s questions. Questions printed on both tiers appear in both.</p>
-            <div class="tier-picks" role="radiogroup" aria-label="Tier">
-              ${tiers.map((tier) => tierCard(tier, tier, TIER_INFO[tier]?.grades || '', TIER_INFO[tier] ? `Papers ${[1, 2, 3].map((n) => `${n}${TIER_INFO[tier].papers}`).join(', ')}` : ''))}
-              ${tierCard('', 'Not decided yet', 'Both tiers', 'You can choose later')}
+            <p class="step__hint">${required
+              ? 'Choose Foundation or Higher. It sets the specification points, questions, tests and past papers you see. You can change it later.'
+              : 'Practice and past papers start with this tier’s questions. Questions printed on both tiers appear in both.'}</p>
+            <div class="tier-picks" role="radiogroup" aria-label="Tier" ${required ? 'aria-required="true"' : ''}>
+              ${tiers.map((tier) => tierCard(tier, tier, TIER_INFO[tier]?.grades || '', tierCodes(tier) || (TIER_INFO[tier] ? `Papers ${[1, 2, 3].map((n) => `${n}${TIER_INFO[tier].papers}`).join(', ')}` : '')))}
+              ${required ? '' : tierCard('', 'Not decided yet', 'Both tiers', 'You can choose later')}
             </div>
           </fieldset>`
         : ''}
@@ -85,13 +104,13 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
             <p class="step__hint">Use the learned-topic filter in practice to limit questions to the topics you’ve ticked.</p>
             <div class="opts">
               <label class="opt"><input type="radio" name="learned" value="tick" checked /><span>Choose what I’ve covered</span><small>opens the topic list next</small></label>
-              <label class="opt"><input type="radio" name="learned" value="all" /><span>I’ve covered everything</span><small>ticks all ${leaves} ${learningUnit}</small></label>
+              <label class="opt"><input type="radio" name="learned" value="all" /><span>I’ve covered everything</span><small>ticks all <span data-all-count>${countsFor(startTier).leaves}</span> ${learningUnit}${tiers.length ? html`<span data-all-tier>${startTier ? ` on ${startTier}` : ''}</span>` : ''}</small></label>
               <label class="opt"><input type="radio" name="learned" value="skip" /><span>Skip for now</span></label>
             </div>
           </fieldset>`
         : ''}
     </div>
-    <aside class="subject-dialog__preview">${preview(subject, SUBJECT_SWATCHES.find((s) => s.id === startSwatch).hex, startTarget, leaves, learningUnit, coveredCount)}</aside>
+    <aside class="subject-dialog__preview">${preview(subject, SUBJECT_SWATCHES.find((s) => s.id === startSwatch).hex, startTarget, countsFor(startTier).leaves, learningUnit, countsFor(startTier).covered, startTier)}</aside>
   </div>`;
 
   return openModal({
@@ -103,6 +122,9 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
       {
         label: mode === 'add' ? `Add ${subject.subject}` : 'Save',
         variant: 'primary',
+        validate: (dialog) => (required && !dialog.querySelector('input[name="tier"]:checked')?.value
+          ? 'Choose Foundation or Higher for this subject.'
+          : null),
         collect: (dialog) => ({
           swatch: dialog.querySelector('input[name="swatch"]:checked')?.value || startSwatch,
           tier: tiers.length ? dialog.querySelector('input[name="tier"]:checked')?.value || null : undefined,
@@ -117,6 +139,17 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
         const input = event.target;
         if (input.name === 'swatch') {
           dialog.querySelector('[data-preview]').style.setProperty('--sc', SUBJECT_SWATCHES.find((s) => s.id === input.value).hex);
+        }
+        if (input.name === 'tier') {
+          const counts = countsFor(input.value);
+          const set = (selector, text) => { const node = dialog.querySelector(selector); if (node) node.textContent = text; };
+          set('[data-preview-tier]', input.value ? `${input.value} tier` : 'Tier not chosen');
+          set('[data-preview-leaves]', String(counts.leaves));
+          set('[data-preview-covered]', String(counts.covered));
+          set('[data-all-count]', String(counts.leaves));
+          set('[data-all-tier]', input.value ? ` on ${input.value}` : '');
+          const error = dialog.querySelector('.modal__error');
+          if (error && input.value) error.hidden = true;
         }
         if (input.name === 'target') {
           dialog.querySelector('[data-preview-grade]').textContent = input.value || '–';

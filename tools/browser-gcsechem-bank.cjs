@@ -26,18 +26,26 @@ async function check(browser, subject) {
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
-      await (await import('/js/data/api.js')).setEnrolled(id, true);
+      const api = await import('/js/data/api.js');
+      await api.setEnrolled(id, true);
+      // GCSE sciences need a saved tier before practice opens (2026-11-19).
+      await api.setPreference('tiers', {...(api.getProgress().preferences.tiers || {}), [id]: 'Foundation'});
     }, subject);
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     const count = async () => Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
+    // The visible Tier control (2026-11-19): Both tiers, then each tier on its own.
+    const pickTier = async value => {
+      await page.locator(`[data-practice-tier="${value}"]`).click();
+      await page.waitForSelector(`[data-practice-tier="${value}"][aria-checked="true"]`);
+      await page.waitForSelector('[data-output] [role="status"]');
+    };
+    await pickTier('');
     assert.equal(await count(), units.length);
-    const tier = page.locator('[data-filter="tier"]').first();
-    if (!(await tier.isVisible())) await page.locator('summary.fpop__btn', {hasText: 'More'}).first().click();
-    await tier.selectOption('Foundation');
+    await pickTier('Foundation');
     assert.equal(await count(), foundation);
-    await tier.selectOption('Higher');
+    await pickTier('Higher');
     assert.equal(await count(), higher);
     await page.locator('[data-reset-filters]').click();
     async function loaded(selector) {

@@ -10,7 +10,8 @@ import * as api from '../../data/api.js';
 import { paperSummaries, ragFor } from '../../engine/analytics.js';
 import { icon } from '../icons.js';
 import { loadStudent, subjectPills } from '../student.js';
-import { scStyle, tintPage } from '../subject-colours.js';
+import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
+import { isTiered, savedTier, tierRequired, validTier } from '../../engine/tiers.js';
 import { banner, emptyState, meter, pageHead, ragBadge, sourceBadge } from '../ui.js';
 import { links } from '../../core/links.js';
 
@@ -54,10 +55,17 @@ export async function mount(element, context) {
   const summaries = paperSummaries(progress.paper_attempts);
   const inProgress = new Set(api.resumableSessions().map((session) => session.paper_id).filter(Boolean));
   const years = [...new Set(papers.map((paper) => paper.year).filter(Boolean))].sort((a, b) => b - a);
-  const codes = [...new Set(papers.filter((paper) => !paper.is_sample).map((paper) => paper.paper_code))].sort(naturalCompare);
   const tiers = [...new Set(papers.map((paper) => paper.tier).filter(Boolean))];
-  const chosenTier = progress.preferences.tiers?.[subject.subject_id];
-  const filters = { year: 'all', code: 'all', status: 'all', tier: tiers.includes(chosenTier) ? chosenTier : 'all' };
+  // Tiered GCSEs list the student's saved tier by default (owner request 2026-11-19). The other
+  // tier appears only when they switch the visible Tier control (or a link names a tier).
+  // A science with no saved tier asks for one before listing papers.
+  const tieredSubject = isTiered(subject) && tiers.length > 1;
+  const chosenTier = savedTier(subject, progress);
+  const needsTier = tieredSubject && tierRequired(subject) && !chosenTier;
+  const linkTier = context.query.tier === 'all' ? 'all' : validTier(subject, context.query.tier);
+  const filters = { year: 'all', code: 'all', status: 'all', tier: linkTier || (tiers.includes(chosenTier) ? chosenTier : 'all') };
+  const codesFor = (tier) => [...new Set(papers.filter((paper) => !paper.is_sample && (tier === 'all' || paper.tier === tier)).map((paper) => paper.paper_code))].sort(naturalCompare);
+  let codes = codesFor(filters.tier);
 
   const statusOf = (paper) => {
     const summary = summaries.get(paper.paper_id);
@@ -132,7 +140,8 @@ export async function mount(element, context) {
         : ''}`;
   }
 
-  const completed = papers.filter((paper) => summaries.has(paper.paper_id)).length;
+  // Progress counts the papers of the tier on show.
+  const tierPapers = () => papers.filter((paper) => filters.tier === 'all' || paper.tier === filters.tier);
   const hasCatalogue = papers.some((paper) => paper.catalogue_generated);
   const filterGroup = (key, label, options) =>
     html`<div class="filter-group" role="radiogroup" aria-label="${label}">
@@ -159,7 +168,7 @@ export async function mount(element, context) {
     <div class="card tilt-2 side-filters">
       <i class="tape tape--l" aria-hidden="true"></i>
       <h2 class="h3">Find a paper</h2>
-      ${tiers.length > 1 ? filterGroup('tier', 'Tier', [['all', 'Both'], ...tiers.map((tier) => [tier, tier])]) : ''}
+      ${tiers.length > 1 && !tieredSubject ? filterGroup('tier', 'Tier', [['all', 'Both'], ...tiers.map((tier) => [tier, tier])]) : ''}
       ${filterGroup('year', 'Year', [['all', 'All'], ...years.map((year) => [String(year), String(year)])])}
       ${codes.length > 1 ? filterGroup('code', 'Paper', [['all', 'All'], ...codes.map((code) => [code, /^P\d+$/.test(code) ? `Paper ${code.slice(1)}` : code])]) : ''}
       ${filterGroup('status', 'Status', [['all', 'All'], ['todo', 'Not started'], ['progress', 'In progress'], ['done', 'Completed']])}
@@ -167,9 +176,31 @@ export async function mount(element, context) {
     <div class="card tilt-1 side-progress">
       <i class="tape tape--r" aria-hidden="true"></i>
       <h2 class="h3">Completed</h2>
-      <p class="side-progress__row"><span class="muted small">papers sat</span><b>${completed} <span>of ${papers.length}</span></b></p>
-      ${meter(papers.length ? (completed / papers.length) * 100 : 0, 'accent', `${completed} of ${papers.length} papers completed`)}
+      ${(() => {
+        const shown = tierPapers();
+        const completed = shown.filter((paper) => summaries.has(paper.paper_id)).length;
+        return html`<p class="side-progress__row"><span class="muted small">papers sat${tieredSubject && filters.tier !== 'all' ? ` · ${filters.tier}` : ''}</span><b>${completed} <span>of ${shown.length}</span></b></p>
+          ${meter(shown.length ? (completed / shown.length) * 100 : 0, 'accent', `${completed} of ${shown.length} papers completed`)}`;
+      })()}
     </div>`;
+
+  // The visible tier control above the list (tiered GCSEs).
+  const tierBar = () => (tieredSubject && !needsTier
+    ? html`<div class="tier-switch tier-switch--papers" data-tier-bar>
+        <span class="tier-switch__label" id="papers-tier-label">Tier</span>
+        <div class="seg" role="radiogroup" aria-labelledby="papers-tier-label">
+          ${[...tiers.map((tier) => [tier, tier]), ['all', 'Both tiers']].map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${filters.tier === value}" data-filter="tier" data-value="${value}">${label}</button>`)}
+        </div>
+        <span class="small muted tier-switch__note">${chosenTier
+          ? filters.tier === chosenTier ? `Showing your saved tier. Switch to see ${tiers.filter((tier) => tier !== chosenTier).join(' or ')} papers.` : `Your saved tier is ${chosenTier}.`
+          : 'Choose a tier in your subject settings to start on it.'}</span>
+      </div>`
+    : '');
+  const tierPrompt = () => html`<section class="card ruled tier-prompt" data-tier-prompt>
+      <h2 class="card__title">Choose Foundation or Higher</h2>
+      <p class="muted">${subject.subject} papers are set at Foundation (grades 1 to 5) and Higher (grades 4 to 9). Choose your tier to list its papers. Your saved marks and history are kept.</p>
+      <div class="row row--tight">${subject.tiers.map((tier) => html`<button type="button" class="btn" data-save-tier="${tier}">${tier}</button>`)}</div>
+    </section>`;
 
   tintPage(subject);
   setHtml(
@@ -180,14 +211,27 @@ export async function mount(element, context) {
         ${subject.catalogue_note ? banner(subject.catalogue_note) : ''}
         <div class="with-side">
           <aside class="with-side__side" data-side>${sidebar()}</aside>
-          <div data-list>${list()}</div>
+          <div class="stack" style="min-width:0">${tierBar() ? html`<div data-tier-holder>${tierBar()}</div>` : ''}<div data-list>${needsTier ? tierPrompt() : list()}</div></div>
         </div>
       </div>`,
   );
 
   on(element, 'click', '[data-filter]', (event, chip) => {
     filters[chip.dataset.filter] = chip.dataset.value;
-    for (const other of element.querySelectorAll(`[data-filter="${chip.dataset.filter}"]`)) other.setAttribute('aria-checked', String(other === chip));
+    if (chip.dataset.filter === 'tier') {
+      // Paper codes follow the tier; a code from the other tier no longer applies.
+      codes = codesFor(filters.tier);
+      if (!codes.includes(filters.code)) filters.code = 'all';
+      setHtml($('[data-side]', element), sidebar());
+      const holder = $('[data-tier-holder]', element);
+      if (holder) setHtml(holder, tierBar());
+      $(`[data-tier-bar] [data-value="${CSS.escape(filters.tier)}"]`, element)?.focus();
+    }
+    for (const other of element.querySelectorAll(`[data-filter="${chip.dataset.filter}"]`)) other.setAttribute('aria-checked', String(other.dataset.value === filters[chip.dataset.filter]));
     setHtml($('[data-list]', element), list());
+  });
+  on(element, 'click', '[data-save-tier]', async (event, button) => {
+    await saveSubjectSettings(subject.subject_id, { tier: validTier(subject, button.dataset.saveTier) });
+    context.refresh();
   });
 }

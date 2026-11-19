@@ -29,9 +29,22 @@ released yet). Combined Science chemistry and physics papers are out of scope fo
 ## Tiers
 
 Foundation and Higher are kept apart, as for Maths: each paper and unit has
-`tier: "Foundation" | "Higher"`. The practice page already filters by **Tier** under *More*.
-A tier choice when **adding a subject** is a UI change waiting on William's approval of
-mock-ups (GCSE Maths thread); it has not been touched.
+`tier: "Foundation" | "Higher"`.
+
+Tier chooser (owner request 19 November 2026, implemented): 1SC0, 1BI0, 1CH0 and 1PH0 each
+have `"tiers": ["Foundation", "Higher"]` and `"tier_required": true` in `data/subjects.json`
+(still one registry record per qualification). Adding the subject requires Foundation or
+Higher (no "Not decided yet" card); the choice is saved per subject in
+`preferences.tiers[subject_id]`, so each separate science and Combined Science keep their own
+tier. The subject page, Practice (individual questions and Build a test) and Past papers show a
+visible **Tier** control. The saved tier sets the spec tree and learned-topic counts
+(`tier: "Higher"` points are hidden at Foundation, never unticked; `higher_extension`
+statements stay at Foundation), the question pool, tests and the default paper list. Both
+tiers or the other tier appear only when the student switches the control (Practice: for that
+tab only) or searches for "higher"/"foundation" or a paper code such as `1BH`. An account with
+the subject but no tier is asked to choose before tier-filtered content; ticks and history are
+kept. Logic: `js/engine/tiers.js`; tests: `tests/gcse-science-tiers.test.mjs`; browser check:
+`node tools/browser-tier-picker.cjs`.
 
 ## Specification
 

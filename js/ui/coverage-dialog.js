@@ -6,10 +6,14 @@ import {filterSpecForCurriculum, mountCurriculumSelector} from './curriculum-sel
 import {mountSpecTree} from './spec-tree.js';
 import {topicOrganisationControl} from './topic-organisation.js';
 import {openModal} from './ui.js';
+import {specForTier, tierLeaves} from '../engine/tiers.js';
 
-export async function coverageDialog({bundle}) {
-  const {subject, spec, textbooks} = bundle;
-  const officialIds = specIndex.subjectLeaves(subject.subject_id);
+// `tier` (tiered GCSEs) shows only that tier's points. Ticks on points of the other tier are
+// kept as they are: they are hidden, never cleared.
+export async function coverageDialog({bundle, tier = null}) {
+  const {subject, textbooks} = bundle;
+  const spec = specForTier(bundle.spec, tier);
+  const officialIds = tierLeaves(specIndex, subject.subject_id, tier);
   const textbookIds = textbooks?.ids || [];
   const learned = api.learnedSet();
   const original = {
@@ -32,7 +36,7 @@ export async function coverageDialog({bundle}) {
     title:`Covered topics · ${subject.subject}`,
     wide:true,
     body:html`<div class="stack">
-      <p class="muted">${subject.level} · ${subject.board} ${subject.spec_code}. Choose the chapters and points you have covered. Changes are applied only when you save.</p>
+      <p class="muted">${subject.level} · ${subject.board} ${subject.spec_code}${tier ? ` · ${tier} tier` : ''}. Choose the chapters and points you have covered. Changes are applied only when you save.</p>
       ${topicOrganisationControl(organisation,{available:Boolean(textbooks),name:'coverage-organisation'})}
       ${textbooks ? html`<p class="field__hint">Textbook chapters use each book’s own numbering.${subject.textbook_example ? ` ${subject.textbook_example}` : ''} Textbook and official-spec ticks are saved separately.</p>` : ''}
       <div data-coverage-curriculum></div>

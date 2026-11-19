@@ -1650,6 +1650,49 @@
 :root[data-theme='dark'] .tier-pick input:checked + .tier-pick__card {
   color: #2a2723;
 }
+/* Tier control on the subject page, practice and past papers (GCSE sciences and Maths) */
+.tier-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  max-width: 100%;
+  min-width: 0;
+}
+.tier-switch__label {
+  font: 700 14px/1.2 var(--font);
+}
+.tier-switch .seg {
+  max-width: 100%;
+}
+.tier-switch .seg__opt[aria-checked='true'] {
+  background: var(--highlight);
+  color: var(--ink);
+  box-shadow: 0 0 0 1.5px var(--ink);
+}
+:root[data-theme='dark'] .tier-switch .seg__opt[aria-checked='true'] {
+  color: #2a2723;
+}
+.tier-switch .seg__opt:focus-visible {
+  outline: 2.5px solid var(--ink);
+  outline-offset: 2px;
+}
+.tier-switch__note {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.tier-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tier-label--missing,
+.tier-missing .linkbtn {
+  font-weight: 700;
+}
+.tier-missing {
+  margin: 6px 0 2px;
+}
 
 /* ── runner modes: exam (timed) vs practice ───────────────────────────────────────────────
    One self-contained block, added in a single commit so it can be reverted on its own.

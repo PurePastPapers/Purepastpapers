@@ -14,7 +14,8 @@ export const links = {
   /** `section` scrolls the signed-out home page to one of its sections. */
   home: (section = null) => `#/${query({ section })}`,
   subjects: (params) => `#/subjects${query(params)}`,
-  subject: (subjectId) => `#/subject/${enc(subjectId)}`,
+  /** `params.tier` opens a tiered GCSE on one tier before it is added. */
+  subject: (subjectId, params) => `#/subject/${enc(subjectId)}${query(params)}`,
   /** A paper list (official by default), optionally opened on one subject. */
   papers: (subjectId = null, paperType = 'real_past_paper') => `#${PAPER_LISTS[paperType] || '/papers'}${query({ subject: subjectId })}`,
   paper: (subjectId, paperId) => `#/paper/${enc(subjectId)}/${enc(paperId)}`,

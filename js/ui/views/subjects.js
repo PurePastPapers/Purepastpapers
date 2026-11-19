@@ -4,11 +4,9 @@
 import { CATEGORY_GROUPS } from '../../config/app.config.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
 import * as api from '../../data/api.js';
-import { getBundle, getSubjects, specIndex } from '../../data/content-repository.js';
+import { getSubjects } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
-import { saveSubjectSettings } from '../subject-colours.js';
-import { subjectDialog } from '../subject-dialog.js';
-import { coverageDialog } from '../coverage-dialog.js';
+import { addSubject, editSubject } from '../enrol.js';
 import { addSubjectButton, addSubjectTile, loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
 import { banner, emptyState, pageHead, toast } from '../ui.js';
 import { links } from '../../core/links.js';
@@ -175,39 +173,14 @@ export async function mount(element, context) {
   });
   on(element, 'click', '[data-enrol]', async (event, button) => {
     const subject = subjects.find((candidate) => candidate.subject_id === button.dataset.enrol);
-    const bundle = subject.has_written_exam ? await getBundle(subject.subject_id) : null;
-    const leaves = bundle ? specIndex.subjectLeaves(subject.subject_id) : [];
-    const textbookMode=Boolean(bundle?.textbooks && api.getProgress().preferences[`coveredView:${subject.subject_id}`] !== 'official');
-    const learningIds=textbookMode ? bundle.textbooks.ids : leaves;
-    const choice = await subjectDialog({ subject, mode: 'add', leaves: learningIds.length, learningUnit:textbookMode ? 'textbook sections' : 'spec points', coveredCount:learningIds.filter(id=>api.learnedSet().has(id)).length });
-    if (!choice) return;
-    await api.setEnrolled(subject.subject_id, true);
-    await saveSubjectSettings(subject.subject_id, { swatch: choice.swatch, target: choice.target, tier: choice.tier });
-    if (choice.learned === 'all') {
-      if (textbookMode) {
-        await api.setTextbookLearned(learningIds,true);
-        await api.setPreference(`coveredView:${subject.subject_id}`,'textbook');
-      } else await api.setLearned(leaves,true);
-    }
-    if (choice.learned === 'tick') {
-      const selected = await coverageDialog({bundle});
-      if (selected) {
-        if (selected.official.added.length) await api.setLearned(selected.official.added,true);
-        if (selected.official.removed.length) await api.setLearned(selected.official.removed,false);
-        if (selected.textbook.added.length) await api.setTextbookLearned(selected.textbook.added,true);
-        if (selected.textbook.removed.length) await api.setTextbookLearned(selected.textbook.removed,false);
-        await api.setPreference(`coveredView:${subject.subject_id}`,selected.organisation);
-      }
-    }
+    if (!(await addSubject(subject, { initialTier: context.query.subject === subject.subject_id ? context.query.tier || null : null }))) return;
     await draw();
     $('[data-search]', element)?.focus();
     toast(`${subject.subject} added.`, { type: 'success' });
   });
   on(element, 'click', '[data-edit]', async (event, button) => {
     const subject = subjects.find((candidate) => candidate.subject_id === button.dataset.edit);
-    const choice = await subjectDialog({ subject, mode: 'edit' });
-    if (!choice) return;
-    await saveSubjectSettings(subject.subject_id, { swatch: choice.swatch, target: choice.target, tier: choice.tier });
+    if (!(await editSubject(subject))) return;
     await draw();
   });
   on(element, 'click', '[data-unenrol]', async (event, button) => {
