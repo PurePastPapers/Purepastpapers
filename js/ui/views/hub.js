@@ -16,7 +16,8 @@ import { icon } from '../icons.js';
 import { questionRef, questionSnippet } from '../question-view.js';
 import { attemptInSubject, loadStudent, startQuestionSet, startSingle } from '../student.js';
 import { tintPage } from '../subject-colours.js';
-import { difficultyBadge, emptyState, fmtPercent, groupDot, meter, pageHead, ragBadge, soonBadge, subjectName } from '../ui.js';
+import { difficultyBadge, emptyState, fmtPercent, groupDot, meter, openModal, pageHead, ragBadge, soonBadge, subjectName, toast } from '../ui.js';
+import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { links } from '../../core/links.js';
 
 const TABS = [
@@ -213,7 +214,7 @@ export async function mount(element, context) {
                 <td class="nowrap small">${fmtRelative(attempt.timestamp)}</td>
                 <td class="right">${found ? (attempt.waiting
                   ? html`<button type="button" class="btn btn--sm btn--primary" data-mark-later="${attempt.question_id}">Mark it</button>`
-                  : html`<button type="button" class="btn btn--sm" data-retry="${attempt.question_id}">Retry</button>`) : ''}</td>
+                  : html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm" data-change-mark="${attempt.question_id}">Change mark</button><button type="button" class="btn btn--sm" data-retry="${attempt.question_id}" title="Answer it again and save a new score">Retry</button></span>`) : ''}</td>
               </tr>`;
             })}
           </tbody>
@@ -471,6 +472,27 @@ export async function mount(element, context) {
     historyType = button.dataset.history;
     for (const chip of element.querySelectorAll('[data-history]')) chip.setAttribute('aria-pressed', String(chip === button));
     setHtml($('[data-history-table]', element), historyTable());
+  });
+  // Change the score on the latest attempt (a marking mistake). Retry still adds a new score.
+  on(element, 'click', '[data-change-mark]', async (event, button) => {
+    const questionId = button.dataset.changeMark;
+    const attempt = latest.get(questionId);
+    const found = find(questionId);
+    if (!attempt || !found) return;
+    const value = await openModal({
+      title: `Change your mark for ${questionRef(found.question, found.bundle.papersById)}`,
+      body: html`<p class="small muted">You marked this ${attempt.marks_awarded}/${attempt.max_marks} ${fmtRelative(attempt.timestamp).toLowerCase()}. Changing it corrects that attempt. To record a new go at the question, use Retry instead.</p>
+        <div style="margin-top:14px">${markPicker({ id: 'change', max: attempt.max_marks, value: attempt.marks_awarded, attr: 'change-mark-value' })}</div>`,
+      onOpen: (dialog) => bindMarkPickers(dialog),
+      actions: [
+        { label: 'Cancel', cancel: true },
+        { label: 'Save new mark', variant: 'primary', collect: (dialog) => Number(dialog.querySelector('[data-change-mark-value]').value) },
+      ],
+    });
+    if (value == null || Number.isNaN(value)) return;
+    await api.changeQuestionMark(questionId, value);
+    toast(`Mark changed to ${value}/${attempt.max_marks}.`, { type: 'success' });
+    context.navigate(location.hash.slice(1) || '/hub', { replace: true });
   });
   on(element, 'click', '[data-mark-later]', (event, button) => {
     const found = find(button.dataset.markLater);
