@@ -58,12 +58,21 @@ SCENARIO_NOUNS = ['student', 'students', 'scientist', 'scientists', 'investigati
                   'resistor', 'lens', 'mass', 'trolley', 'sphere', 'rocket', 'skydiver', 'boat', 'pendulum',
                   'curve', 'line', 'circle', 'triangle', 'function', 'sequence', 'series', 'model', 'woman', 'man',
                   'child', 'family', 'farmer', 'athlete', 'runner', 'volunteer', 'volunteers', 'mouse', 'mice']
+# "help with your answer" and "the unit with your answer" are instructions, not links to an earlier part.
 DEPENDENCY = re.compile(
-    r'\b(use|using|from|with|apply|applying) (your|their) (answer|answers|value|values|result|results|graph|calculation|'
+    r'(?<!help )(?<!unit )(?<!units )\b(use|using|from|with|apply|applying) (your|their) (answer|answers|value|values|result|results|graph|calculation|'
     r'expression|sketch|line|curve|plot|table|equation|estimate)\b|'
     r'\b(your|their) (answer|value|result|calculation|graph|sketch|expression|equation)s? (to|from|in|for) (part |question )?\(|'
     r'\byou (calculated|found|obtained|derived|drew|plotted|completed|sketched|determined|wrote down)\b|'
     r'^hence\b(?! or otherwise)|[.;:?)] hence\b(?! or otherwise)', re.I)
+# "Plot a graph ... Use your graph": the graph, curve or equation is made in the same part.
+SELF_MADE = re.compile(r'\b(plot|draw|sketch|construct|complete)\b', re.I)
+
+
+def builds_on_earlier(body, named_parts):
+    """True when the wording uses an earlier answer (not one made earlier in the same part)."""
+    match = DEPENDENCY.search(body)
+    return bool(match) and (bool(named_parts) or not SELF_MADE.search(body[:match.start()]))
 
 
 def tariff_order(units, ui, pi):
@@ -853,9 +862,9 @@ def refine_question(qdoc, sdoc, units, stats):
         for m in re.finditer(r'(?:part\s+)?\(([a-h])\)\s*(?:\((i{1,3}|iv|v|vi)\))?|\bpart\s+([a-h])\b', body):
             letter = m.group(1) or m.group(3)
             refs.append((letter, m.group(2)))
-        explicit_dep = bool(DEPENDENCY.search(body))
         own_letters = {norm_label(p)[0] for p in unit['provenance']['original_parts']}
         refs = [(l, r) for l, r in refs if l not in own_letters]
+        explicit_dep = builds_on_earlier(body, refs)
         before = len(included)
         for letter, roman in refs:
             targets = [s for s in earlier if s['kind'] == 'part' and s['label'][0] == letter and (roman is None or s['label'][1] == roman)]

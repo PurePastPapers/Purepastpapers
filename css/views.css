@@ -1015,10 +1015,125 @@
 .verify__resend { display: flex; gap: 12px; align-items: center; flex-wrap: nowrap; white-space: nowrap; justify-content: center; }
 .verify__sent { font-weight: 600; font-size: 14px; color: var(--good-ink); }
 .verify__sent[hidden] { display: none; }
+.verify .signup-steps { margin: 0 0 16px; }
+.verify__text--tight { margin-top: 8px; }
+.verify__text--small { margin-top: 6px; font-size: 14.5px; }
+.verify__or { display: flex; align-items: center; gap: 10px; margin: 14px 0 0; color: var(--ink-3); font-size: 13px; }
+.verify__or::before, .verify__or::after { content: ""; flex: 1; border-top: 1px dashed var(--line-strong); }
+.otp { display: flex; gap: 8px; justify-content: center; margin: 16px 0 4px; }
+.otp > i { width: 10px; }
+.otp__box { width: 48px; height: 58px; padding: 0; text-align: center; border: 2px solid var(--ink); border-radius: 8px; background: var(--surface); color: var(--ink); font: 600 26px/1 var(--font-display); box-shadow: 2px 2px 0 var(--ink); caret-color: var(--ink); }
+.otp__box:focus { outline: 3px solid var(--accent-wash); outline-offset: 1px; }
+.otp__box:disabled { opacity: 0.6; }
 @media (max-width: 520px) {
+  .otp { gap: 6px; }
+  .otp > i { width: 4px; }
+  .otp__box { width: 40px; height: 50px; font-size: 22px; }
   .verify .modal__title { font-size: 23px; }
   .verify .modal__body { padding: 20px 18px 6px; }
   .verify .modal__foot { flex-direction: column-reverse; align-items: stretch; gap: 10px; }
   .verify .modal__foot .btn, .verify__resend .btn { justify-content: center; width: 100%; }
   .verify__resend { flex-direction: column; gap: 6px; }
 }
+
+/* ── First-visit welcome popup (js/ui/welcome.js) ── */
+.modal.welcome { width: min(860px, calc(100vw - 28px)); overflow: visible; max-height: none; }
+.modal.welcome::backdrop { background: rgba(30, 22, 14, 0.55); backdrop-filter: blur(2px); }
+.welcome .modal__box { max-height: calc(100dvh - 40px); overflow: auto; }
+.welcome .modal__head { padding: 18px 24px 12px; border-bottom: 1px dashed var(--line-strong); align-items: flex-start; }
+.welcome .modal__title { font: 400 30px/1.15 var(--font-display); }
+.welcome__sub { margin: 4px 0 0; font-size: 21px; line-height: 1.25; color: var(--ink-2); }
+.welcome .modal__body { padding: 26px 24px 18px; }
+.welcome__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; list-style: none; margin: 0; padding: 0; }
+.welcome__tile { padding: 30px 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+.welcome__tile .tape { width: 70px; margin-left: -35px; }
+.welcome__num { position: absolute; top: -15px; left: 14px; z-index: 3; width: 30px; height: 30px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--surface); font: 400 15px/1 var(--font-display); }
+.welcome__ic { width: 44px; height: 44px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--surface-2); }
+.welcome__tile h3 { font: 400 21px/1.2 var(--font-display); margin: 4px 0 0; }
+.welcome__tile p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.welcome__tile .welcome__where { margin-top: auto; padding-top: 6px; font-size: 13px; color: var(--ink); font-weight: 600; }
+.welcome__where span { border-bottom: 2px solid var(--tape); }
+.welcome .modal__foot { justify-content: space-between; align-items: center; border-top: 1px dashed var(--line-strong); padding: 14px 24px 18px; gap: 12px; flex-wrap: wrap; }
+.welcome__note { font-size: 13.5px; color: var(--ink-2); margin: 0; }
+.welcome__btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.welcome__tape { position: absolute; top: -13px; left: 50%; margin-left: -55px; width: 110px; transform: rotate(-2deg); }
+.lp-tour { margin-top: 18px; text-align: center; }
+@media (max-width: 640px) {
+  .welcome__grid { grid-template-columns: 1fr; gap: 20px; }
+  .welcome__tile { padding: 20px 14px 12px 66px; gap: 5px; }
+  .welcome__tile p { font-size: 14px; line-height: 1.45; }
+  .welcome__tile h3 { font-size: 19px; margin: 0; }
+  .welcome__tile .tape { display: none; }
+  .welcome__tile .welcome__ic { position: absolute; left: 12px; top: 18px; width: 40px; height: 40px; }
+  .welcome__tile .welcome__where { padding-top: 2px; }
+  .welcome .modal__title { font-size: 25px; }
+  .welcome__sub { font-size: 19px; }
+  .welcome .modal__body { padding: 22px 16px 12px; }
+  .welcome .modal__foot { flex-direction: column-reverse; align-items: stretch; padding: 12px 16px 16px; }
+  .welcome__btns { flex-direction: column-reverse; }
+  .welcome__btns .btn { justify-content: center; width: 100%; }
+  .welcome__note { text-align: center; }
+}
+
+/* Sign-up steps (Your details → Confirm email → Pick subjects), on the form and in the popup. */
+.signup-steps { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: 13.5px; text-align: left; }
+.signup-steps li { flex: 1; display: flex; align-items: center; gap: 7px; padding: 7px 9px; border: 1.5px dashed var(--line-strong); border-radius: 6px; color: var(--ink-3); }
+.signup-steps li b { display: inline-grid; place-items: center; flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid currentColor; font-size: 12px; }
+.signup-steps li.on { border: 2px solid var(--ink); color: var(--ink); font-weight: 650; background: var(--surface-2); }
+.signup-steps li.done { border-style: solid; border-color: var(--good-ink); color: var(--good-ink); }
+.signup-steps li.done b { background: var(--good-ink); border-color: var(--good-ink); color: var(--surface); }
+@media (max-width: 520px) {
+  .signup-steps { font-size: 12.5px; }
+  .signup-steps li { padding: 6px; gap: 5px; }
+  .signup-steps li:not(.on) span { display: none; }
+}
+
+/* Boxes on the log-in and sign-up forms that explain a problem and offer the fix. */
+.auth-notice { display: flex; gap: 10px; align-items: flex-start; margin: 0; padding: 12px 14px; border: 2px solid var(--ink); border-radius: 6px; background: var(--surface-2); font-size: 14.5px; line-height: 1.5; text-align: left; }
+.auth-notice > span:first-child { flex: none; margin-top: 2px; }
+.auth-notice b { display: block; margin-bottom: 2px; }
+.auth-notice b.auth-notice__inline { display: inline; }
+.auth-notice--warn { border-color: var(--warn-ink); background: var(--warn-wash); }
+.auth-notice__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.auth-notice .form-error { margin: 8px 0 0; }
+.input.input--bad { border-color: var(--crit-ink); }
+
+/* "Only topics I've covered" switch: a pill on the question filter bar, a row in the test builder. */
+.covered-pill { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 4px 12px 4px 6px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--surface); font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.covered-pill.is-on { background: var(--good-wash); }
+.covered-pill .switch span[aria-hidden] { width: 40px; height: 24px; }
+.covered-pill .switch span[aria-hidden]::after { width: 14px; height: 14px; }
+.covered-pill .switch input:checked + span::after { left: 19px; }
+.covered-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: 4px 0 10px; padding: 10px 12px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--surface); }
+.covered-switch.is-on { background: var(--good-wash); }
+.covered-switch__label { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+.covered-switch__text { font-weight: 700; font-size: 15px; }
+.covered-switch__hint { margin: 0; color: var(--ink-2); flex: 1 1 260px; }
+@media (max-width: 640px) { .covered-pill { grid-column: 1 / -1; } .covered-switch__hint { flex-basis: 100%; } }
+
+/* Linked parts (engine/linked-parts.js): one question, every part with its own answer box */
+.qgroup__note { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 4px; padding: 10px 14px; border: 2px dashed color-mix(in srgb, var(--ink) 35%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--subject, #7aa7d6) 10%, var(--surface)); font-size: 14px; line-height: 1.5; }
+.qgroup__note svg { flex: none; margin-top: 2px; }
+.qgroup__intro { margin-top: 16px; max-width: 680px; }
+.qgroup__intro:empty { display: none; }
+.qgroup__part { border-top: 2px dashed color-mix(in srgb, var(--ink) 18%, transparent); padding-top: 4px; margin-top: 18px; }
+.qgroup__part .qsplit { margin-top: 10px; }
+.qgroup__part .qsplit__answer { min-height: 96px; }
+.qgroup__part .qsplit__side { position: static; }
+.qgroup .qgroup__partlabel, .qgroup .qgroup__uses, .runner .qgroup__partlabel { text-transform: none; letter-spacing: 0; }
+.qgroup__partlabel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.qgroup__partlabel b { font-family: var(--font-display, inherit); font-size: 17px; }
+.qgroup__uses { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--surface); }
+.qgroup__lead { margin-bottom: 6px; }
+.qgroup__foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 22px; padding-top: 16px; border-top: 2px solid var(--ink); }
+.qgroup__foot .form-error, .qgroup__foot [data-mark-confirmation] { flex-basis: 100%; margin: 0; }
+.qgroup__total { font-size: 18px; margin: 0; }
+.qgroup__total b { font-size: 22px; }
+.qgroup__lockparts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.qgroup__lockparts span { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1.5px solid var(--ink); }
+.qgroup__lockparts .is-ok { background: color-mix(in srgb, #5fae7a 22%, var(--surface)); }
+.qgroup__lockparts .is-missing { border-style: dashed; opacity: .85; }
+.runner__part { border-top: 2px dashed color-mix(in srgb, var(--ink) 18%, transparent); padding-top: 12px; margin-top: 16px; }
+.runner__part:first-of-type { border-top: 0; margin-top: 8px; padding-top: 0; }
+.runner__part .textarea { min-height: 110px; }
+.runner .qgroup .qcontent { max-width: 760px; }

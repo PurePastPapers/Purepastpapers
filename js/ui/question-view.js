@@ -5,6 +5,7 @@ import { html, isSafeUrl, sanitizeHtml } from '../core/dom.js';
 import { sourceImage } from '../data/source-images.js';
 import { fmtMinutes } from '../core/utils.js';
 import { difficultyBadge, sourceBadge } from './ui.js';
+import { icon } from './icons.js';
 
 const image = sourceImage;
 
@@ -57,10 +58,10 @@ function resources(question) {
   </section>`;
 }
 
-export function markSchemeBody(question) {
+export function markSchemeBody(question, { wholeQuestion = true } = {}) {
   const { mark_scheme_html: markup, mark_scheme_image_url: url } = question.content || {};
   if (!markup && !url) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
-  const full = question.scheme_scope === 'part' && question.context?.full_scheme_image_url && isSafeUrl(question.context.full_scheme_image_url) ? question.context.full_scheme_image_url : null;
+  const full = wholeQuestion && question.scheme_scope === 'part' && question.context?.full_scheme_image_url && isSafeUrl(question.context.full_scheme_image_url) ? question.context.full_scheme_image_url : null;
   return html`<div class="ms">${question.scheme_scope === 'full_question' ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : question.scheme_scope === 'parent_part' ? html`<p class="small muted">The board prints this scheme for the whole part${question.scheme_part ? ` ${question.scheme_part}` : ''}. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, question.part_label ? `Mark scheme for part ${question.part_label}` : 'Mark scheme')}</div>
     ${full ? html`<details class="question-context" data-full-scheme="${question.question_id}"><summary>Show the mark scheme for the whole question</summary><div class="qcontent" style="margin-top:12px">${image(full, 'Mark scheme for the whole question, context only')}</div></details>` : ''}</div>`;
 }
@@ -136,4 +137,53 @@ export function questionMeta(question, { specIndex = null, topics = true, organi
         ${textbook.length ? html`<p class="small muted">Textbook subsection numbers and official specification numbers are separate references.</p>` : ''}
       </div></details>` : ''}
   </div>`;
+}
+
+// ── linked parts (engine/linked-parts.js): one question, every part with its own answer ──
+
+/** "June 2022 Paper 1H · Q10(a)–(d)", or "… · Q21–22" when the group spans questions. */
+export function linkedRef(entry, papersById) {
+  const numbers = [...new Set(entry.parts.map((part) => String(part.question_number)))];
+  if (numbers.length > 1) {
+    const paper = papersById?.get(entry.paper_id);
+    return [paper ? paper.title.replace(/:.*/, '') : '', `Q${numbers[0]}–${numbers.at(-1)}`].filter(Boolean).join(' · ');
+  }
+  return questionRef({ ...entry.parts[0], part_label: entry.part_label }, papersById);
+}
+
+/** A part's own label: "(c)", or "Q22" for a group that spans questions. */
+export function linkedPartLabel(part, entry) {
+  const spans = new Set(entry.parts.map((item) => String(item.question_number))).size > 1;
+  return spans ? `Q${part.question_number}${part.part_label && !/^\d/.test(part.part_label) ? part.part_label : ''}` : (part.part_label || `Q${part.question_number}`);
+}
+
+/** The earlier parts of the group whose answers this part uses. */
+export function linkedUses(part, entry) {
+  return (part.depends_on_question_ids || [])
+    .map((id) => entry.parts.find((item) => item.question_id === id))
+    .filter(Boolean)
+    .map((item) => linkedPartLabel(item, entry));
+}
+
+export function linkedNote(entry) {
+  const users = entry.parts.filter((part) => linkedUses(part, entry).length);
+  const join = (labels) => labels.length > 1 ? `${labels.slice(0, -1).join(', ')} and ${labels.at(-1)}` : labels[0];
+  const usedBy = users.map((part) => linkedPartLabel(part, entry));
+  const used = [...new Set(users.flatMap((part) => linkedUses(part, entry)))];
+  return html`<p class="qgroup__note">${icon('layers', { size: 18 })}<span><strong>${entry.parts.length} linked parts, shown as one question.</strong>
+    ${usedBy.length === 1 ? `Part ${usedBy[0]} uses your answer to ${join(used)}, so answer them in order.` : usedBy.length ? `Parts ${join(usedBy)} build on your earlier answers, so answer them in order.` : 'Answer them in order.'}
+    Each part has its own answer box and its own marks.</span></p>`;
+}
+
+/** The question's introduction and printed resources, shown once above the parts. */
+export function linkedIntro(entry) {
+  return resources({ ...entry.parts[0], part_label: '' });
+}
+
+/** One part's own printed text: anything printed just before its label, then its crop. */
+export function linkedPartBody(part) {
+  const { question_html: markup, question_image_url: url } = part.content || {};
+  const lead = part.context?.lead_in_image_url;
+  return html`${lead && isSafeUrl(lead) ? html`<div class="qcontent qgroup__lead">${image(lead, `Text printed before part ${part.part_label || ''}`)}</div>` : ''}
+    <div class="qcontent">${sanitizeHtml(markup)}${image(url, `${part.preview_text || 'Question part'}. Part ${part.part_label || part.question_number}`)}</div>`;
 }

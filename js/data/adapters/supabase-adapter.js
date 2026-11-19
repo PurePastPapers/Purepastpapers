@@ -33,6 +33,39 @@ function publicUser(user) {
   };
 }
 
+/**
+ * Turns a Supabase Auth error into one a student can act on. The returned Error keeps
+ * Supabase's code (e.g. email_not_confirmed) in `code`, and `wait` holds the seconds left
+ * when an email was asked for too soon.
+ */
+export function friendlyAuthError(error) {
+  const raw = String(error?.message || '');
+  const code = error?.code || error?.error_code || '';
+  const wait = Number(/(\d+)\s*seconds?/.exec(raw)?.[1]) || 0;
+  const make = (message, kind = code) => Object.assign(new Error(message), { code: kind, wait, raw });
+  if (code === 'email_not_confirmed' || /email not confirmed/i.test(raw)) {
+    return make('You haven’t confirmed your email yet.', 'email_not_confirmed');
+  }
+  if (code === 'user_already_exists' || code === 'email_exists' || /already registered|already exists/i.test(raw)) {
+    return make('You already have an account with this email.', 'account_exists');
+  }
+  if (code === 'over_email_send_rate_limit' || wait) {
+    return make(wait ? `Please wait ${wait} seconds before asking for another email.` : 'Too many emails were sent. Wait a few minutes and try again.', 'rate_limited');
+  }
+  if (code === 'over_request_rate_limit' || /rate limit/i.test(raw)) {
+    return make('Too many tries in a row. Wait a few minutes and try again.', 'rate_limited');
+  }
+  if (code === 'invalid_credentials' || /invalid login credentials/i.test(raw)) {
+    return make('That email and password don’t match. Check them, or reset your password.', 'invalid_credentials');
+  }
+  if (code === 'otp_expired' || /token has expired|invalid or has expired|otp/i.test(raw)) {
+    return make('That code isn’t right or has expired. Check the newest email, or send a new code.', 'bad_code');
+  }
+  if (code === 'weak_password') return make(raw || 'Choose a stronger password.');
+  if (code === 'email_address_invalid') return make('That email address can’t be used. Check it for typos.');
+  return make(raw || 'Something went wrong. Try again.');
+}
+
 function validEmail(email) {
   const address = String(email || '').trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address)) throw new Error('Enter a valid email address.');
@@ -134,7 +167,12 @@ export const supabaseAdapter = {
         emailRedirectTo: callbackUrl(),
       },
     });
-    if (error) throw new Error(error.message);
+    if (error) throw friendlyAuthError(error);
+    // With email confirmation on, Supabase answers a sign-up for an email that already has a
+    // confirmed account with a stand-in user that has no identities, and sends no email.
+    if (!data.session && Array.isArray(data.user?.identities) && data.user.identities.length === 0) {
+      throw friendlyAuthError({ code: 'user_already_exists' });
+    }
     if (!data.session) return { pendingConfirmation: true, email: address };
     return publicUser(data.session.user);
   },
@@ -146,7 +184,18 @@ export const supabaseAdapter = {
       email: validEmail(email),
       options: { emailRedirectTo: callbackUrl() },
     });
-    if (error) throw new Error(error.message);
+    if (error) throw friendlyAuthError(error);
+  },
+
+  /** Confirms a new account with the 6-digit code from the confirmation email. */
+  async verifySignupCode(email, code) {
+    const client = await getClient();
+    const token = String(code || '').replace(/\D/g, '');
+    if (token.length < 6) throw new Error('Enter the 6-digit code from the email.');
+    const { data, error } = await client.auth.verifyOtp({ email: validEmail(email), token, type: 'signup' });
+    if (error) throw friendlyAuthError(error);
+    if (!data.session?.user) throw new Error('That code didn’t work. Try the link in the email instead.');
+    return publicUser(data.session.user);
   },
 
   /**
@@ -194,7 +243,7 @@ export const supabaseAdapter = {
   async signIn({ email, password }) {
     const client = await getClient();
     const { data, error } = await client.auth.signInWithPassword({ email: validEmail(email), password });
-    if (error) throw new Error(error.message);
+    if (error) throw friendlyAuthError(error);
     return publicUser(data.user);
   },
 

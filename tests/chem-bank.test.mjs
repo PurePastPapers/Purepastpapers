@@ -83,7 +83,9 @@ test('units are model-reviewed source pixels with unscored context and their own
 test('parts that build on an earlier answer are held back behind it', () => {
   const byId = new Map(units.map(q => [q.question_id, q]));
   const gated = units.filter(q => q.depends_on_question_ids?.length);
-  assert.equal(gated.length, 7);
+  // Four more matched by mistake (graph or equation made in the same part) and were removed
+  // by tools/parts/drop-false-dependencies.py; tools/chem/build.py now skips them.
+  assert.equal(gated.length, 3);
   for (const q of gated) for (const id of q.depends_on_question_ids) {
     const earlier = byId.get(id);
     assert(earlier && earlier.paper_id === q.paper_id && earlier.question_number === q.question_number, q.question_id);

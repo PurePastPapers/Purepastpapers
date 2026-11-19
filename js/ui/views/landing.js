@@ -7,6 +7,7 @@ import { getSubjects } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
 import { SUBJECT_SWATCHES } from '../subject-colours.js';
 import { liveBadge } from '../ui.js';
+import { openWelcome } from '../welcome.js';
 import { links } from '../../core/links.js';
 
 /** The four phases, used on the Account and coming-soon pages. */
@@ -142,6 +143,7 @@ export async function mount(element, context) {
           <span class="hand">pick a colour for each subject →</span>
           ${SUBJECT_SWATCHES.slice(0, 6).map((swatch) => html`<i style="--sc:${swatch.hex}"></i>`)}
         </p>
+        <p class="lp-tour"><button type="button" class="btn btn--sm" data-open-welcome>Show the quick tour again</button></p>
       </section>
 
       <section class="lp-section" id="subjects" aria-labelledby="subjects-title">
@@ -192,5 +194,6 @@ export async function mount(element, context) {
   // Arriving from a top-bar link on another page ("Features", "Subjects", "How it works").
   const section = context.query.section && document.getElementById(context.query.section);
   if (section) requestAnimationFrame(() => section.scrollIntoView({ block: 'start' }));
+  element.querySelector('[data-open-welcome]')?.addEventListener('click', () => openWelcome({ navigate: context.navigate }));
 
 }

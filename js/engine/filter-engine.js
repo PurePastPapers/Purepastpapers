@@ -10,9 +10,17 @@ import { RAG } from '../config/app.config.js';
 import { hasValidMark } from './analytics.js';
 import { matchesTextbookSelection } from './textbook-index.js';
 
-/** Every leaf spec point a student must have learned to be given this question. */
+/**
+ * Every leaf spec point a student must have learned to be given this question. A part
+ * linked to other parts of its question (content-repository adds `dependency_spec_points`)
+ * also needs their topics, because the linked parts are only offered together.
+ */
 export function requiredSpecPoints(question, specIndex) {
-  return specIndex.expand([...(question.primary_spec_points || []), ...(question.crossover_spec_points || [])]);
+  return specIndex.expand([
+    ...(question.primary_spec_points || []),
+    ...(question.crossover_spec_points || []),
+    ...(question.dependency_spec_points || []),
+  ]);
 }
 
 /** The required spec points that are NOT yet learned (empty array = question is available). */

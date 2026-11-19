@@ -1,0 +1,12 @@
+<!-- Paste into Supabase: Authentication → Emails → Templates → "Confirm signup".
+     Subject: Your PurePastPapers code: {{ .Token }}
+     The code ({{ .Token }}) is what students type into the "Check your email" popup;
+     the button still works for anyone who prefers to click. -->
+<div style="font-family:system-ui,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#292722">
+  <h2 style="margin:0 0 12px">Confirm your email</h2>
+  <p style="margin:0 0 16px">Type this code on PurePastPapers to finish creating your account:</p>
+  <p style="font-size:32px;font-weight:700;letter-spacing:8px;margin:0 0 20px">{{ .Token }}</p>
+  <p style="margin:0 0 12px">Or press the button:</p>
+  <p style="margin:0 0 24px"><a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:12px 22px;background:#292722;color:#fffdf8;border-radius:8px;text-decoration:none;font-weight:600">Confirm my email</a></p>
+  <p style="margin:0;font-size:13px;color:#635e54">Only the newest email works. If you didn’t sign up, you can ignore this email.</p>
+</div>
