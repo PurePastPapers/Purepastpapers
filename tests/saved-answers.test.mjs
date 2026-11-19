@@ -11,38 +11,55 @@ const makeStorage = () => {
 };
 const q = { question_id: 'q1', subject_id: 's', marks: 5, source_type: 'real_past_paper', difficulty: 'easy' };
 
-test('an answer saved without a mark is kept, survives reload, and becomes the attempt when marked', async () => {
+test('every go is kept with its answer; many can wait for a mark; any mark can change', async () => {
   globalThis.localStorage = makeStorage();
   await api.init();
   await api.signUp({ email: 'later@example.test', password: 'password123', displayName: 'Later' });
-  await api.saveAnswerUnmarked(q, 'F = ma');
-  await api.saveAnswerUnmarked(q, 'F = ma, so 12 N');
-  assert.equal(api.getProgress().saved_answers.length, 1);
+  const first = await api.saveAnswerUnmarked(q, 'F = ma');
+  await api.saveAnswerUnmarked(q, 'F = ma, so 12 N', { attemptId: first.attempt_id });
+  const second = await api.saveAnswerUnmarked(q, 'second go');
+  assert.equal(api.getProgress().saved_answers.length, 2, 'two goes waiting to be marked');
   assert.equal(api.getProgress().question_attempts.length, 0);
   await api.init();
-  assert.equal(api.answerFor('q1'), 'F = ma, so 12 N');
-  assert.ok(api.savedAnswers().has('q1'));
-  const answeredAt = api.getProgress().saved_answers[0].timestamp;
+  assert.equal(api.attemptsFor('q1').length, 2);
+  assert.equal(api.attemptsFor('q1').find((go) => go.attempt_id === first.attempt_id).answer, 'F = ma, so 12 N');
 
-  await api.saveQuestionMark(q, 3, { answer: 'F = ma, so 12 N' });
-  assert.equal(api.getProgress().saved_answers.length, 0);
-  const attempt = latestByQuestion(api.getProgress().question_attempts).get('q1');
-  assert.equal(attempt.marks_awarded, 3);
-  assert.equal(attempt.answer, 'F = ma, so 12 N');
-  assert.equal(attempt.answered_at, answeredAt);
-  assert.equal(api.answerFor('q1'), 'F = ma, so 12 N');
-
-  // Undo puts it back as answered, not marked.
-  await api.undoQuestionMark('q1');
-  assert.equal(api.getProgress().question_attempts.length, 0);
+  // Marking the first go moves it out of the waiting list, keeping its answer, id and date.
+  const marked = await api.saveQuestionMark(q, 3, { attemptId: first.attempt_id });
+  assert.equal(marked.attempt_id, first.attempt_id);
+  assert.equal(marked.answer, 'F = ma, so 12 N');
+  assert.equal(marked.answered_at, first.timestamp);
   assert.equal(api.getProgress().saved_answers.length, 1);
 
-  // Answering again after a mark and saving for later does not change the old mark.
-  await api.saveQuestionMark(q, 4);
-  await api.saveAnswerUnmarked(q, 'second go');
-  assert.equal(latestByQuestion(api.getProgress().question_attempts).get('q1').marks_awarded, 4);
-  await api.saveQuestionMark(q, 5);
-  assert.equal(api.getProgress().question_attempts.length, 2, 'marking the waiting answer makes a new attempt');
+  // Undo puts it back, still waiting.
+  await api.undoQuestionMark('q1', { attemptId: first.attempt_id });
+  assert.equal(api.getProgress().saved_answers.length, 2);
+  await api.saveQuestionMark(q, 3, { attemptId: first.attempt_id });
+
+  // A new marked go, then change the OLDER go's mark and answer: the newer go is untouched.
+  const third = await api.saveQuestionMark(q, 5, { reattempt: true, answer: 'third go' });
+  await api.changeQuestionMark(first.attempt_id, 1);
+  await api.saveAnswerUnmarked(q, 'F = ma, so 12 N (fixed)', { attemptId: first.attempt_id });
+  const goes = api.attemptsFor('q1');
+  assert.equal(goes.length, 3);
+  assert.equal(goes.find((go) => go.attempt_id === first.attempt_id).marks_awarded, 1);
+  assert.equal(goes.find((go) => go.attempt_id === first.attempt_id).answer, 'F = ma, so 12 N (fixed)');
+  assert.equal(goes.find((go) => go.attempt_id === third.attempt_id).marks_awarded, 5);
+  assert.ok(goes.find((go) => go.attempt_id === second.attempt_id).waiting);
+  assert.equal(latestByQuestion(api.getProgress().question_attempts).get('q1').marks_awarded, 5);
+});
+
+test('older records get stable ids', async () => {
+  globalThis.localStorage = makeStorage();
+  await api.init();
+  await api.signUp({ email: 'old@example.test', password: 'password123', displayName: 'Old' });
+  await api.mergeProgress({ question_attempts: [{ question_id: 'q1', marks_awarded: 2, max_marks: 5, timestamp: '2026-01-01T10:00:00.000Z' }] });
+  await api.init();
+  const id = api.attemptsFor('q1')[0].attempt_id;
+  await api.init();
+  assert.equal(api.attemptsFor('q1')[0].attempt_id, id);
+  await api.changeQuestionMark(id, 4);
+  assert.equal(api.attemptsFor('q1')[0].marks_awarded, 4);
 });
 
 test('tests keep typed answers to unmarked questions without counting them in the score', async () => {

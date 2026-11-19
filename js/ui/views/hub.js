@@ -178,10 +178,13 @@ export async function mount(element, context) {
     const counts = attemptCounts(attempts);
     const difficultyOf = (entry) => entry.difficulty ?? find(entry.question_id)?.question.difficulty;
     // A question answered again and saved to mark later shows once, as waiting for its mark.
-    const waitingIds = new Set(waitingList.map((entry) => entry.question_id));
+    const newestWaiting = new Map();
+    for (const entry of waitingList) if (!newestWaiting.has(entry.question_id)) newestWaiting.set(entry.question_id, entry);
+    const waitingCounts = new Map();
+    for (const entry of waitingList) waitingCounts.set(entry.question_id, (waitingCounts.get(entry.question_id) || 0) + 1);
     const all = [
-      ...waitingList.map((entry) => ({ ...entry, waiting: true, timestamp: entry.updated_at, difficulty: difficultyOf(entry) })),
-      ...latestList.filter((attempt) => !waitingIds.has(attempt.question_id)),
+      ...[...newestWaiting.values()].map((entry) => ({ ...entry, waiting: true, timestamp: entry.updated_at, difficulty: difficultyOf(entry) })),
+      ...latestList.filter((attempt) => !newestWaiting.has(attempt.question_id)),
     ].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
     const rows = all.filter(
       (attempt) =>
@@ -210,11 +213,11 @@ export async function mount(element, context) {
                 <td class="nowrap">${attempt.waiting
                   ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Not marked yet</span>`
                   : html`${ragBadge(ragFor(score), score, { label: false })} <span class="small muted num">${attempt.marks_awarded}/${attempt.max_marks}</span>`}</td>
-                <td class="num">${(counts.get(attempt.question_id) || 0) + (attempt.waiting ? 1 : 0)}</td>
+                <td class="num">${(counts.get(attempt.question_id) || 0) + (waitingCounts.get(attempt.question_id) || 0)}</td>
                 <td class="nowrap small">${fmtRelative(attempt.timestamp)}</td>
                 <td class="right">${found ? (attempt.waiting
-                  ? html`<button type="button" class="btn btn--sm btn--primary" data-mark-later="${attempt.question_id}">Mark it</button>`
-                  : html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm" data-change-mark="${attempt.question_id}">Change mark</button><button type="button" class="btn btn--sm" data-retry="${attempt.question_id}" title="Answer it again and save a new score">Retry</button></span>`) : ''}</td>
+                  ? html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm btn--primary" data-mark-later="${attempt.attempt_id}">Mark it</button><button type="button" class="btn btn--sm" data-attempts="${attempt.question_id}">All attempts</button></span>`
+                  : html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm" data-attempts="${attempt.question_id}">All attempts</button><button type="button" class="btn btn--sm" data-retry="${attempt.question_id}" title="Answer it again and save a new score">Retry</button></span>`) : ''}</td>
               </tr>`;
             })}
           </tbody>
@@ -473,15 +476,20 @@ export async function mount(element, context) {
     for (const chip of element.querySelectorAll('[data-history]')) chip.setAttribute('aria-pressed', String(chip === button));
     setHtml($('[data-history-table]', element), historyTable());
   });
-  // Change the score on the latest attempt (a marking mistake). Retry still adds a new score.
-  on(element, 'click', '[data-change-mark]', async (event, button) => {
-    const questionId = button.dataset.changeMark;
-    const attempt = latest.get(questionId);
-    const found = find(questionId);
-    if (!attempt || !found) return;
+  // Every go at a question, with its answer: change any mark, or mark a go saved for later.
+  const reload = () => context.navigate(location.hash.slice(1) || '/hub', { replace: true });
+  const clock = (iso) => new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  const whenLabel = (iso) => `${fmtRelative(iso)} at ${clock(iso)}`;
+  const markLater = (attemptId) => {
+    const entry = (progress.saved_answers || []).find((candidate) => candidate.attempt_id === attemptId);
+    const found = entry && find(entry.question_id);
+    if (found) startSingle(found.question, context.navigate, { attempts: { [entry.question_id]: entry } });
+  };
+  async function changeMark(attempt, found) {
     const value = await openModal({
       title: `Change your mark for ${questionRef(found.question, found.bundle.papersById)}`,
-      body: html`<p class="small muted">You marked this ${attempt.marks_awarded}/${attempt.max_marks} ${fmtRelative(attempt.timestamp).toLowerCase()}. Changing it corrects that attempt. To record a new go at the question, use Retry instead.</p>
+      body: html`<p class="small muted">Your attempt from ${whenLabel(attempt.answered_at || attempt.timestamp).toLowerCase()} is marked ${attempt.marks_awarded}/${attempt.max_marks}. Changing it corrects that attempt; your other attempts stay as they are.</p>
+        ${attempt.answer ? html`<p class="attempt-answer small">${attempt.answer}</p>` : ''}
         <div style="margin-top:14px">${markPicker({ id: 'change', max: attempt.max_marks, value: attempt.marks_awarded, attr: 'change-mark-value' })}</div>`,
       onOpen: (dialog) => bindMarkPickers(dialog),
       actions: [
@@ -490,14 +498,56 @@ export async function mount(element, context) {
       ],
     });
     if (value == null || Number.isNaN(value)) return;
-    await api.changeQuestionMark(questionId, value);
+    await api.changeQuestionMark(attempt.attempt_id, value);
     toast(`Mark changed to ${value}/${attempt.max_marks}.`, { type: 'success' });
-    context.navigate(location.hash.slice(1) || '/hub', { replace: true });
+    reload();
+  }
+  on(element, 'click', '[data-attempts]', async (event, button) => {
+    const questionId = button.dataset.attempts;
+    const found = find(questionId);
+    if (!found) return;
+    const list = api.attemptsFor(questionId);
+    const picked = await openModal({
+      title: `Your attempts at ${questionRef(found.question, found.bundle.papersById)}`,
+      wide: true,
+      body: html`<p class="small muted">Every attempt is kept with your answer. Your progress uses the newest marked one.</p>
+        <ol class="attempt-list-full">
+          ${list.map((attempt, index) => html`<li class="attempt-full">
+            <div class="attempt-full__head">
+              <b>Attempt ${list.length - index}</b><span class="small muted">${whenLabel(attempt.answered_at || attempt.timestamp)}</span>
+              ${attempt.waiting
+                ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Not marked yet</span>`
+                : html`${ragBadge(ragFor(scoreOf(attempt)), null, { label: false })}<span class="num small">${attempt.marks_awarded}/${attempt.max_marks}</span>${attempt.mark_edits?.length ? html`<span class="small muted">(changed)</span>` : ''}`}
+              <span class="attempt-full__actions">${attempt.waiting
+                ? html`<button type="submit" class="btn btn--sm btn--primary" name="pick" value="mark:${attempt.attempt_id}">Mark it</button>`
+                : html`<button type="submit" class="btn btn--sm" name="pick" value="change:${attempt.attempt_id}">Change mark</button>`}</span>
+            </div>
+            <p class="attempt-answer small">${attempt.answer || html`<span class="muted">No typed answer (done on paper)</span>`}</p>
+          </li>`)}
+        </ol>`,
+      onOpen: (dialog) => {
+        // The buttons in the list close the dialog with their own choice.
+        dialog.addEventListener('click', (clickEvent) => {
+          const pick = clickEvent.target.closest('button[name="pick"]');
+          if (!pick) return;
+          clickEvent.preventDefault();
+          dialog.dataset.pick = pick.value;
+          dialog.querySelector('.modal__foot button[type="submit"]').click();
+        });
+      },
+      actions: [
+        { label: 'Close', cancel: true },
+        { label: 'Answer it again', variant: 'primary', collect: (dialog) => dialog.dataset.pick || 'retry' },
+      ],
+    });
+    if (!picked) return;
+    const [kind, attemptId] = picked.split(':');
+    if (kind === 'retry') return startSingle(found.question, context.navigate);
+    if (kind === 'mark') return markLater(attemptId);
+    const attempt = list.find((candidate) => candidate.attempt_id === attemptId);
+    if (attempt) changeMark(attempt, found);
   });
-  on(element, 'click', '[data-mark-later]', (event, button) => {
-    const found = find(button.dataset.markLater);
-    if (found) startSingle(found.question, context.navigate, { withSavedAnswers: true });
-  });
+  on(element, 'click', '[data-mark-later]', (event, button) => markLater(button.dataset.markLater));
   on(element, 'click', '[data-retry]', (event, button) => {
     const found = find(button.dataset.retry);
     if (found) startSingle(found.question, context.navigate);

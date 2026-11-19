@@ -27,7 +27,7 @@ import { scStyle, tintPage } from '../subject-colours.js';
 import { zoomButton } from '../zoom.js';
 import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
-import { banner, difficultyBadge, emptyState, pageHead, soonBadge, toast } from '../ui.js';
+import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, toast } from '../ui.js';
 import { links, routeOf } from '../../core/links.js';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
@@ -184,6 +184,9 @@ export async function mount(element, context) {
   state.markStatuses = [...new Set(state.markStatuses)].filter((id) => PROGRESS_FILTERS[id]);
   delete state.markStatus;
   if (!state.drafts || typeof state.drafts !== 'object') state.drafts = {};
+  // Which go is open on each question is chosen fresh on each visit (the "done this before?" popup).
+  state.goes = {};
+  if (user) for (const id of Object.keys(state.drafts)) if (api.attemptsFor(id).length) delete state.drafts[id];
   if (!Array.isArray(state.schemeQuestions)) state.schemeQuestions = state.showScheme && state.openQuestion ? [state.openQuestion] : [];
   if (!Array.isArray(state.closedQuestions)) state.closedQuestions = [];
   delete state.openQuestions;
@@ -262,7 +265,60 @@ export async function mount(element, context) {
   const suppressedParents = bundle.questions.filter((question) => !question.part_label && representedParents.has(question.question_id) && question.include_in_custom_pool !== false && enabledSourceTypes().includes(question.source_type)).length;
   // Answers saved to mark later (kept in the account, so they follow the student between devices).
   const waiting = user ? api.savedAnswers() : new Map();
-  const answerOf = (id) => state.drafts[id]?.answer ?? (user ? api.answerFor(id) : '');
+  // ── goes (attempts) at a question ──
+  // Every go is kept, with its answer. state.goes[cardId] is undefined until the student
+  // chooses, 'new' for a new go, or the key of the earlier go being changed. A linked
+  // question's go spans all of its parts (grouped by group_attempt_id, or by the minute
+  // they were saved for older records).
+  const partsOf = (cardId) => {
+    const single = bundle.questionsById.get(cardId);
+    return single ? [single] : groupEntry(cardId, bundle.questionsById)?.parts || [];
+  };
+  const whenOf = (attempt) => attempt.answered_at || attempt.timestamp;
+  function goOptions(cardId) {
+    if (!user) return [];
+    const parts = partsOf(cardId);
+    const linked = !bundle.questionsById.has(cardId);
+    const options = new Map();
+    for (const part of parts) {
+      for (const attempt of api.attemptsFor(part.question_id)) {
+        const key = linked ? attempt.group_attempt_id || `at:${String(whenOf(attempt)).slice(0, 16)}` : attempt.attempt_id;
+        if (!options.has(key)) options.set(key, { key, when: whenOf(attempt), parts: new Map() });
+        const option = options.get(key);
+        if (!option.parts.has(part.question_id)) option.parts.set(part.question_id, attempt);
+        if (whenOf(attempt) > option.when) option.when = whenOf(attempt);
+      }
+    }
+    return [...options.values()].map((option) => {
+      const marked = [...option.parts.values()].filter((attempt) => !attempt.waiting);
+      return {
+        ...option,
+        waiting: [...option.parts.values()].some((attempt) => attempt.waiting),
+        markedCount: marked.length,
+        complete: marked.length === parts.length,
+        awarded: sum(marked, (attempt) => attempt.marks_awarded),
+        max: sum(parts, (part) => part.marks),
+      };
+    }).sort((a, b) => (a.when < b.when ? 1 : -1));
+  }
+  const currentGo = (cardId) => {
+    const key = state.goes[cardId];
+    return key && key !== 'new' ? goOptions(cardId).find((option) => option.key === key) || null : null;
+  };
+  const needsChoice = (cardId) => Boolean(user) && goOptions(cardId).length > 0 &&
+    (state.goes[cardId] === undefined || (state.goes[cardId] !== 'new' && !currentGo(cardId)));
+  const partAttempt = (cardId, partId) => currentGo(cardId)?.parts.get(partId) || null;
+  const answerOf = (cardId, partId = cardId) => state.drafts[partId]?.answer ?? (partAttempt(cardId, partId)?.answer || '');
+  const markOfPart = (cardId, partId = cardId) => {
+    const attempt = partAttempt(cardId, partId);
+    return state.drafts[partId]?.mark ?? (attempt && !attempt.waiting ? String(attempt.marks_awarded) : '');
+  };
+  const cardOf = (node) => node.closest('[data-group]')?.dataset.group || node.closest('[data-card]')?.dataset.card;
+  const clock = (iso) => new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  const whenLabel = (iso) => `${fmtRelative(iso)} at ${clock(iso)}`;
+  const goScore = (option) => (option.complete
+    ? html`<span class="tag">${option.awarded}/${option.max}</span>`
+    : option.markedCount ? html`<span class="tag">Partly marked</span>` : html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Not marked yet</span>`);
   const engineContext = { specIndex, learned, latestAttempts: latest, savedAnswers: waiting, papersById: bundle.papersById };
   const PAGE_SIZE = 30;
   const timed = () => state.mode === 'timed_test';
@@ -616,14 +672,31 @@ export async function mount(element, context) {
     </div>`;
   }
 
-  /** "Save answer, mark later": keeps the answer and records the question as done but not marked. */
-  function laterRow(parts, { group = null } = {}) {
-    const many = parts.length > 1;
-    const saved = parts.filter((part) => waiting.has(part.question_id));
-    const when = saved.length ? saved.map((part) => waiting.get(part.question_id).updated_at).sort().at(-1) : null;
+  /** Which go is open: a new one, or an earlier one being changed. */
+  function goLine(cardId) {
+    const options = goOptions(cardId);
+    if (!options.length) return '';
+    const go = currentGo(cardId);
+    const text = needsChoice(cardId)
+      ? html`You have done this ${options.length === 1 ? 'once' : `${options.length} times`} before.`
+      : go ? html`<b>Changing your attempt from ${whenLabel(go.when)}</b> ${goScore(go)}` : html`<b>New attempt</b> <span class="muted">· your ${options.length === 1 ? 'earlier attempt is' : `${options.length} earlier attempts are`} kept</span>`;
+    return html`<p class="goline small">${icon('refresh', { size: 14 })}<span>${text}</span><button type="button" class="linkbtn small" data-choose-go="${cardId}">${needsChoice(cardId) ? 'Choose an attempt' : 'Switch'}</button></p>`;
+  }
+
+  /** "Save answer, mark later": keeps the answer and records the go as done but not marked. */
+  function laterRow(cardId) {
+    const many = partsOf(cardId).length > 1;
+    const go = currentGo(cardId);
+    const marked = go && go.markedCount > 0 && !go.waiting;
+    const label = !user ? (many ? 'Create free account to save answers' : 'Create free account to save answer')
+      : marked ? (many ? 'Save changed answers' : 'Save changed answer')
+      : go ? (many ? 'Update saved answers' : 'Update saved answer')
+      : (many ? 'Save answers, mark later' : 'Save answer, mark later');
+    const note = !user ? '' : marked ? 'Your mark stays the same.'
+      : go ? `Saved ${whenLabel(go.when).toLowerCase()}, not marked yet.` : 'Counts as done. Mark it whenever you like.';
     return html`<div class="later">
-      <button type="button" class="btn btn--sm later__btn" ${group ? html`data-save-later-group="${group}"` : html`data-save-later="${parts[0].question_id}"`}>${icon('clock', { size: 15 })} ${user ? (saved.length ? (many ? 'Update saved answers' : 'Update saved answer') : (many ? 'Save answers, mark later' : 'Save answer, mark later')) : (many ? 'Create free account to save answers' : 'Create free account to save answer')}</button>
-      ${when ? html`<span class="small muted later__note" data-later-note>Saved ${fmtRelative(when).toLowerCase()}, not marked yet</span>` : html`<span class="small muted later__note" data-later-note>${user ? 'Counts as done. Mark it whenever you like.' : ''}</span>`}
+      <button type="button" class="btn btn--sm later__btn" data-save-later="${cardId}">${icon('clock', { size: 15 })} ${label}</button>
+      <span class="small muted later__note">${note}</span>
     </div>`;
   }
 
@@ -643,16 +716,19 @@ export async function mount(element, context) {
     }
     const open = !state.closedQuestions.includes(question.question_id);
     const schemeOpen = state.schemeQuestions.includes(question.question_id);
-    const draft = state.drafts[question.question_id] || {};
-    const value = draft.mark ?? (attempt ? String(attempt.marks_awarded) : '');
-    const canUndo = Boolean(attempt?.inline || attempt?.mark_edits?.length);
+    const qid = question.question_id;
+    const value = markOfPart(qid);
+    const current = partAttempt(qid, qid);
+    const changing = Boolean(current && !current.waiting);
+    const canUndo = changing && Boolean(current.inline || current.mark_edits?.length);
+    const goes = goOptions(qid).length;
     const paper = bundle.papersById.get(question.paper_id);
-    return html`<article class="qcard ${selected ? 'is-selected' : ''}">
+    return html`<article class="qcard ${selected ? 'is-selected' : ''}" data-card="${qid}">
       <span class="qcard__select">
         <input type="checkbox" class="tree__check" data-select="${question.question_id}" ${selected ? 'checked' : ''} aria-label="Add ${questionRef(question, bundle.papersById)} to set" />
       </span>
       <div style="min-width:0">
-        <p class="qcard__ref">${questionRef(question, bundle.papersById)} ${attempt ? html`<span class="tag">Saved ${attempt.marks_awarded}/${attempt.max_marks}</span>` : ''}${waiting.has(question.question_id) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : attempt ? '' : html`<span class="tag">Not tried yet</span>`}</p>
+        <p class="qcard__ref">${questionRef(question, bundle.papersById)} ${attempt ? html`<span class="tag">Saved ${attempt.marks_awarded}/${attempt.max_marks}</span>` : ''}${waiting.has(qid) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : attempt ? '' : html`<span class="tag">Not tried yet</span>`}${goes > 1 ? html`<span class="tag">${goes} attempts</span>` : ''}</p>
         <p class="small muted">${subject.board} · ${subject.subject} · ${question.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(question, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(question.question_id) })}
         ${!open ? html`<p class="qcard__text">${questionSnippet(question)}</p>` : ''}
@@ -664,12 +740,12 @@ export async function mount(element, context) {
               : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
           </div>
           <div class="qsplit__side stack stack--sm">
-            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${answerOf(question.question_id)}</textarea></label>
-            ${laterRow([question])}
+            ${goLine(qid)}
+            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${answerOf(qid)}</textarea></label>
+            ${laterRow(qid)}
             ${schemeOpen ? html`<section class="markbox stack stack--sm">
               ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'mark' })}
-              <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${question.question_id}">${user ? (attempt && !waiting.has(question.question_id) ? 'Change mark' : 'Save mark') : 'Create free account to save mark'}</button>
-                ${attempt ? html`<button type="button" class="btn btn--sm" data-reattempt="${question.question_id}">Save as a new attempt</button>` : ''}
+              <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${qid}">${user ? (changing ? 'Change mark' : 'Save mark') : 'Create free account to save mark'}</button>
                 ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
               <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>
             </section>` : ''}
@@ -717,12 +793,12 @@ export async function mount(element, context) {
     const attempts = entry.parts.map((part) => latest.get(part.question_id));
     const saved = attempts.every(Boolean);
     const paper = bundle.papersById.get(entry.paper_id);
-    const markOf = (part) => {
-      const attempt = latest.get(part.question_id);
-      return state.drafts[part.question_id]?.mark ?? (attempt ? String(attempt.marks_awarded) : '');
-    };
+    const markOf = (part) => markOfPart(id, part.question_id);
     const total = entry.parts.reduce((sum, part) => sum + (markOf(part) === '' ? 0 : Number(markOf(part))), 0);
-    const canUndo = entry.parts.some((part) => latest.get(part.question_id)?.inline || latest.get(part.question_id)?.mark_edits?.length);
+    const go = currentGo(id);
+    const changing = Boolean(go?.complete);
+    const canUndo = entry.parts.some((part) => { const attempt = go?.parts.get(part.question_id); return attempt && !attempt.waiting && (attempt.inline || attempt.mark_edits?.length); });
+    const goes = goOptions(id).length;
     return html`<article class="qcard qgroup ${selected ? 'is-selected' : ''}" data-group="${id}">
       <span class="qcard__select">
         <input type="checkbox" class="tree__check" data-select="${id}" ${selected ? 'checked' : ''} aria-label="Add ${ref} to set" />
@@ -730,11 +806,12 @@ export async function mount(element, context) {
       <div style="min-width:0">
         <p class="qcard__ref">${ref} ${saved
           ? html`<span class="tag">Saved ${attempts.reduce((sum, attempt) => sum + attempt.marks_awarded, 0)}/${entry.marks}</span>`
-          : attempts.some(Boolean) ? html`<span class="tag">Partly marked</span>` : entry.parts.some((part) => waiting.has(part.question_id)) ? '' : html`<span class="tag">Not tried yet</span>`}${entry.parts.some((part) => waiting.has(part.question_id)) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : ''}</p>
+          : attempts.some(Boolean) ? html`<span class="tag">Partly marked</span>` : entry.parts.some((part) => waiting.has(part.question_id)) ? '' : html`<span class="tag">Not tried yet</span>`}${entry.parts.some((part) => waiting.has(part.question_id)) ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Answered, not marked</span>` : ''}${goes > 1 ? html`<span class="tag">${goes} attempts</span>` : ''}</p>
         <p class="small muted">${subject.board} · ${subject.subject} · ${entry.level || subject.level}${Number.isInteger(paper?.year) ? ` · ${paper.year}` : ''}${paper?.series && paper.series !== 'Demo' ? ` · ${paper.series}` : ''}</p>
         ${questionMeta(entry, { specIndex, organisation: state.topicOrganisation, referencesOpen: state.referenceQuestions.includes(id) })}
         ${!open ? html`<p class="qcard__text">${entry.parts.length} linked parts: ${entry.parts.map((part) => questionSnippet(part, 60)).join(' · ')}</p>` : ''}
         ${open ? html`${linkedNote(entry)}
+          ${goLine(id)}
           <div class="qgroup__intro">${linkedIntro(entry)}</div>
           ${entry.parts.map((part) => {
             const uses = linkedUses(part, entry);
@@ -746,7 +823,7 @@ export async function mount(element, context) {
                   ${schemeOpen ? markSchemeBody(part, { wholeQuestion: false }) : linkedPartBody(part)}
                 </div>
                 <div class="qsplit__side stack stack--sm">
-                  <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${answerOf(partId)}</textarea></label>
+                  <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${answerOf(id, partId)}</textarea></label>
                   ${schemeOpen ? html`<section class="markbox">${markPicker({ id: partId, max: part.marks, value: markOf(part), attr: 'mark', label: `Marks for ${label(part)}, out of ${part.marks}` })}</section>` : ''}
                 </div>
               </div>
@@ -756,19 +833,18 @@ export async function mount(element, context) {
             ${schemeOpen
               ? html`<p class="qgroup__total" data-group-total>Total <b>${total}</b> / ${entry.marks}</p>
                 <div class="row row--tight">
-                  <button type="button" class="btn btn--primary btn--sm" data-save-group="${id}">${user ? (saved && !entry.parts.some((part) => waiting.has(part.question_id)) ? 'Change marks' : `Save marks for all ${entry.parts.length} parts`) : 'Create free account to save marks'}</button>
-                  ${saved ? html`<button type="button" class="btn btn--sm" data-reattempt-group="${id}">Save as a new attempt</button>` : ''}
+                  <button type="button" class="btn btn--primary btn--sm" data-save-group="${id}">${user ? (changing ? 'Change marks' : `Save marks for all ${entry.parts.length} parts`) : 'Create free account to save marks'}</button>
                   ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo-group="${id}">Undo last save</button>` : ''}
                   <button type="button" class="btn btn--sm" data-scheme="${id}" aria-expanded="true">${icon('chevronLeft', { size: 15 })} Back to question</button>
                 </div>
-                ${laterRow(entry.parts, { group: id })}
+                ${laterRow(id)}
                 <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>`
               : html`<p class="small muted">Answer all ${entry.parts.length} parts, then check them together.</p>
                 <div class="row row--tight">
                   <button type="button" class="btn btn--primary btn--sm" data-scheme="${id}" aria-expanded="false">${icon('eye', { size: 15 })} Show mark scheme for all parts</button>
                   ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, entry.paper_id)}">View full paper</a>` : ''}
                 </div>
-                ${laterRow(entry.parts, { group: id })}`}
+                ${laterRow(id)}`}
           </div>` : ''}
       </div>
       <div class="qcard__side">${marksPill(entry.marks)}<button type="button" class="btn btn--sm" data-open="${id}" aria-expanded="${open}">${open ? 'Hide question' : 'Show question'}</button></div>
@@ -1175,7 +1251,81 @@ export async function mount(element, context) {
     if (user) for (const [id, entry] of api.savedAnswers()) waiting.set(id, entry);
   };
   const pendingMarks = new Set();
-  const saveMark = async (id, reattempt = false) => {
+  const redraw = () => { save(); refreshLatest(); update({ keepControls: true, keepPage: true }); };
+
+  /** "You've done this question before": change an earlier go, or start a new one. */
+  let choosing = false;
+  async function chooseGo(cardId) {
+    if (choosing) return false;
+    choosing = true;
+    try {
+      const options = goOptions(cardId);
+      const parts = partsOf(cardId);
+      const answerText = (option) => {
+        const texts = parts.map((part) => option.parts.get(part.question_id)?.answer || '').filter((text) => text.trim());
+        const joined = texts.join(' · ');
+        return joined ? (joined.length > 140 ? `${joined.slice(0, 140)}…` : joined) : 'No typed answer (done on paper)';
+      };
+      const choice = await openModal({
+        title: 'You’ve done this question before',
+        body: html`<p>Do you want to change one of your answers, or start a new attempt? Every attempt is kept.</p>
+          <div class="golist" role="radiogroup" aria-label="Your attempts">
+            ${options.map((option, index) => html`<label class="golist__item">
+              <input type="radio" name="go" value="${option.key}" ${index === 0 ? 'checked' : ''} />
+              <span class="golist__body"><span class="golist__head"><b>${whenLabel(option.when)}</b> ${goScore(option)}</span>
+              <span class="golist__answer small muted">${answerText(option)}</span></span>
+            </label>`)}
+          </div>`,
+        actions: [
+          { label: 'Change this answer', collect: (dialog) => dialog.querySelector('input[name="go"]:checked')?.value || null },
+          { label: 'Start a new attempt', value: 'new', variant: 'primary' },
+        ],
+      });
+      if (!choice) return false;
+      state.goes[cardId] = choice;
+      const go = choice === 'new' ? null : options.find((option) => option.key === choice);
+      for (const part of parts) {
+        const draft = (state.drafts[part.question_id] ||= {});
+        const attempt = go?.parts.get(part.question_id);
+        draft.answer = attempt?.answer || (go ? '' : draft.answer || '');
+        if (attempt && !attempt.waiting) draft.mark = String(attempt.marks_awarded);
+        else delete draft.mark;
+      }
+      return true;
+    } finally {
+      choosing = false;
+    }
+  }
+  // Clicking into the answer box of a question done before asks which go this is.
+  on(element, 'focusin', '[data-answer]', async (event, input) => {
+    const cardId = cardOf(input);
+    if (!cardId || !needsChoice(cardId)) return;
+    input.blur();
+    if (!(await chooseGo(cardId))) return;
+    redraw();
+    element.querySelector(`[data-answer="${CSS.escape(input.dataset.answer)}"]`)?.focus();
+  });
+  on(element, 'click', '[data-choose-go]', async (event, button) => {
+    if (await chooseGo(button.dataset.chooseGo)) redraw();
+  });
+  /** Before saving, a question done before must have its go chosen. Returns true to carry on. */
+  const goChosen = async (cardId) => {
+    if (!needsChoice(cardId)) return true;
+    if (await chooseGo(cardId)) redraw();
+    return false;
+  };
+  /** The id a linked question's new go shares across its parts (kept once the go exists). */
+  const groupGoId = (cardId) => {
+    const go = currentGo(cardId);
+    if (go) return go.key.startsWith('at:') ? null : go.key;
+    return (state.goes[cardId] = uid('go'));
+  };
+  const goToSignup = () => {
+    save();
+    return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
+  };
+
+  const saveMark = async (id) => {
     if (pendingMarks.has(id)) return;
     const question = bundle.questionsById.get(id);
     const value = element.querySelector(`[data-mark="${CSS.escape(id)}"]`)?.value ?? state.drafts[id]?.mark;
@@ -1187,14 +1337,14 @@ export async function mount(element, context) {
       error.textContent = `Choose a whole number from 0 to ${question.marks}.`;
       return;
     }
-    if (!user) {
-      save();
-      return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
-    }
+    if (!user) return goToSignup();
+    if (!(await goChosen(id))) return;
     pendingMarks.add(id);
-    for (const button of card.querySelectorAll('[data-save-mark], [data-reattempt]')) button.disabled = true;
+    for (const button of card.querySelectorAll('[data-save-mark]')) button.disabled = true;
     try {
-      await api.saveQuestionMark(question, Number(value), { reattempt, answer: answerOf(id) });
+      const attempt = partAttempt(id, id);
+      const saved = await api.saveQuestionMark(question, Number(value), { attemptId: attempt?.attempt_id, reattempt: !attempt, answer: answerOf(id) });
+      state.goes[id] = saved.attempt_id;
       const confirmation = card?.querySelector('[data-mark-confirmation]');
       if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${value}/${question.marks}.`; }
       // Persist drafts before any delayed refresh. Do not redraw another route
@@ -1202,20 +1352,18 @@ export async function mount(element, context) {
       save();
       await new Promise((resolve) => setTimeout(resolve, 1200));
       if (!element.isConnected) return;
-      refreshLatest();
-      update({ keepControls: true, keepPage: true });
+      redraw();
       toast(`Saved ${value}/${question.marks}.`, { type: 'success' });
     } catch (failure) {
       if (error) { error.hidden = false; error.textContent = failure.message; }
     } finally {
       pendingMarks.delete(id);
-      for (const button of card.querySelectorAll('[data-save-mark], [data-reattempt]')) button.disabled = false;
+      for (const button of card.querySelectorAll('[data-save-mark]')) button.disabled = false;
     }
   };
   on(element, 'click', '[data-save-mark]', (event, button) => saveMark(button.dataset.saveMark));
-  on(element, 'click', '[data-reattempt]', (event, button) => saveMark(button.dataset.reattempt, true));
   // A linked group saves one attempt per part, after checking every part has a mark.
-  const saveGroup = async (groupId, reattempt = false) => {
+  const saveGroup = async (groupId) => {
     if (pendingMarks.has(groupId)) return;
     const entry = groupEntry(groupId, bundle.questionsById);
     const card = element.querySelector(`[data-group="${CSS.escape(groupId)}"]`);
@@ -1235,44 +1383,45 @@ export async function mount(element, context) {
       error.textContent = `Choose a mark for ${missing.map((part) => linkedPartLabel(part, entry)).join(', ')}.`;
       return;
     }
-    if (!user) {
-      save();
-      return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
-    }
+    if (!user) return goToSignup();
+    if (!(await goChosen(groupId))) return;
     pendingMarks.add(groupId);
-    for (const button of card.querySelectorAll('[data-save-group], [data-reattempt-group]')) button.disabled = true;
+    for (const button of card.querySelectorAll('[data-save-group]')) button.disabled = true;
     try {
-      for (const [index, part] of entry.parts.entries()) await api.saveQuestionMark(part, Number(values[index]), { reattempt, answer: answerOf(part.question_id) });
+      const go = currentGo(groupId);
+      const shared = groupGoId(groupId);
+      for (const [index, part] of entry.parts.entries()) {
+        const attempt = go?.parts.get(part.question_id);
+        await api.saveQuestionMark(part, Number(values[index]), { attemptId: attempt?.attempt_id, reattempt: !attempt, answer: answerOf(groupId, part.question_id), groupAttemptId: shared });
+      }
+      state.goes[groupId] = shared || go.key;
       const total = values.reduce((sum, value) => sum + Number(value), 0);
       const confirmation = card.querySelector('[data-mark-confirmation]');
       if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${total}/${entry.marks}.`; }
       save();
       await new Promise((resolve) => setTimeout(resolve, 1200));
       if (!element.isConnected) return;
-      refreshLatest();
-      update({ keepControls: true, keepPage: true });
+      redraw();
       toast(`Saved ${total}/${entry.marks}.`, { type: 'success' });
     } catch (failure) {
       error.hidden = false;
       error.textContent = failure.message;
     } finally {
       pendingMarks.delete(groupId);
-      for (const button of card.querySelectorAll('[data-save-group], [data-reattempt-group]')) button.disabled = false;
+      for (const button of card.querySelectorAll('[data-save-group]')) button.disabled = false;
     }
   };
   on(element, 'click', '[data-save-group]', (event, button) => saveGroup(button.dataset.saveGroup));
-  on(element, 'click', '[data-reattempt-group]', (event, button) => saveGroup(button.dataset.reattemptGroup, true));
   on(element, 'click', '[data-undo-group]', async (event, button) => {
-    const entry = groupEntry(button.dataset.undoGroup, bundle.questionsById);
-    for (const part of entry?.parts || []) {
-      const attempt = latest.get(part.question_id);
-      if (!attempt?.inline && !attempt?.mark_edits?.length) continue;
-      await api.undoQuestionMark(part.question_id);
+    const groupId = button.dataset.undoGroup;
+    const go = currentGo(groupId);
+    for (const part of partsOf(groupId)) {
+      const attempt = go?.parts.get(part.question_id);
+      if (!attempt || attempt.waiting || (!attempt.inline && !attempt.mark_edits?.length)) continue;
+      await api.undoQuestionMark(part.question_id, { attemptId: attempt.attempt_id });
       delete state.drafts[part.question_id]?.mark;
     }
-    refreshLatest();
-    save();
-    update({ keepControls: true, keepPage: true });
+    redraw();
     toast('Last mark save undone.', { type: 'success' });
   });
   // The running total follows the mark buttons.
@@ -1284,40 +1433,37 @@ export async function mount(element, context) {
   });
   on(element, 'click', '[data-undo]', async (event, button) => {
     const id = button.dataset.undo;
-    await api.undoQuestionMark(id);
+    await api.undoQuestionMark(id, { attemptId: partAttempt(id, id)?.attempt_id });
     delete state.drafts[id]?.mark;
-    refreshLatest();
-    save();
-    update({ keepControls: true, keepPage: true });
+    redraw();
     toast('Last mark save undone.', { type: 'success' });
   });
 
-  const saveLater = async (parts, button) => {
-    if (!user) {
-      save();
-      return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
-    }
+  // "Save answer, mark later" (or save a changed answer on an earlier go).
+  on(element, 'click', '[data-save-later]', async (event, button) => {
+    const cardId = button.dataset.saveLater;
+    const parts = partsOf(cardId);
+    if (!parts.length) return;
+    if (!user) return goToSignup();
+    if (!(await goChosen(cardId))) return;
     button.disabled = true;
     try {
+      const go = currentGo(cardId);
+      const linked = !bundle.questionsById.has(cardId);
+      const shared = linked ? groupGoId(cardId) : null;
+      let saved = null;
       for (const part of parts) {
-        const text = element.querySelector(`[data-answer="${CSS.escape(part.question_id)}"]`)?.value ?? answerOf(part.question_id);
-        await api.saveAnswerUnmarked(part, text);
+        const text = element.querySelector(`[data-answer="${CSS.escape(part.question_id)}"]`)?.value ?? answerOf(cardId, part.question_id);
+        saved = await api.saveAnswerUnmarked(part, text, { attemptId: go?.parts.get(part.question_id)?.attempt_id, groupAttemptId: shared });
       }
-      save();
-      refreshLatest();
-      update({ keepControls: true, keepPage: true });
-      toast(parts.length > 1 ? 'Answers saved. They count as done, and you can mark them later.' : 'Answer saved. It counts as done, and you can mark it later.', { type: 'success' });
+      state.goes[cardId] = linked ? shared || go.key : saved.attempt_id;
+      redraw();
+      const kept = go && !go.waiting && go.markedCount;
+      toast(kept ? 'Answer changed. Your mark stays the same.'
+        : parts.length > 1 ? 'Answers saved. They count as done, and you can mark them later.' : 'Answer saved. It counts as done, and you can mark it later.', { type: 'success' });
     } finally {
       button.disabled = false;
     }
-  };
-  on(element, 'click', '[data-save-later]', (event, button) => {
-    const question = bundle.questionsById.get(button.dataset.saveLater);
-    if (question) saveLater([question], button);
-  });
-  on(element, 'click', '[data-save-later-group]', (event, button) => {
-    const entry = groupEntry(button.dataset.saveLaterGroup, bundle.questionsById);
-    if (entry) saveLater(entry.parts, button);
   });
 
   on(element, 'click', '[data-start-set]', async () => {

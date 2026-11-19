@@ -87,8 +87,15 @@ test('Find questions: answer box beside or below the question, mark scheme repla
   else assert.ok(main.x + main.width <= side.x, 'a long question sits to the left of the answer box');
   assert.ok(await card.locator('.qsplit__side [data-answer]').isVisible());
 
-  await card.locator('.qsplit__answer').fill('My answer');
-  await card.locator('[data-scheme]').click();
+  // The demo account has done some questions before: the popup asks which attempt this is.
+  await card.locator('.qsplit__answer').click();
+  const popup = page.locator('dialog.modal');
+  if (await popup.isVisible().catch(() => false) || await popup.waitFor({ timeout: 800 }).then(() => true, () => false)) {
+    await popup.getByRole('button', { name: 'Start a new attempt' }).click();
+  }
+  const fresh = page.locator('.qcard').filter({ has: page.locator('.qsplit[data-qlayout]') }).first();
+  await fresh.locator('.qsplit__answer').fill('My answer');
+  await fresh.locator('[data-scheme]').click();
   const opened = page.locator('.qcard').filter({ has: page.locator('.qsplit__main.is-scheme') }).first();
   await opened.waitFor();
   assert.ok(await opened.locator('.qsplit__main .ms').isVisible(), 'mark scheme is on the left');

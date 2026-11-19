@@ -2205,3 +2205,40 @@ input[type='checkbox']:not([role='switch']):disabled {
 .qsplit[data-qlayout='below'] .qsplit__answer {
   min-height: 160px;
 }
+
+/* ── attempts: which go is open, and the "done this before?" chooser ── */
+.goline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0;
+  padding: 6px 10px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.goline > span { min-width: 0; }
+.goline .tag { margin-left: 4px; }
+.qgroup .goline { margin-top: 12px; }
+.golist { display: grid; gap: 8px; margin-top: 14px; max-height: 50vh; overflow-y: auto; }
+.golist__item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  cursor: pointer;
+}
+.golist__item:has(input:checked) { border-color: var(--ink); background: var(--highlight); }
+.golist__item input { width: 18px; height: 18px; margin-top: 2px; flex: none; accent-color: var(--ink); }
+.golist__body { display: grid; gap: 4px; min-width: 0; }
+.golist__head { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.golist__answer { overflow-wrap: anywhere; }
+.attempt-list-full { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; max-height: 60vh; overflow-y: auto; }
+.attempt-full { padding: 10px 12px; border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); }
+.attempt-full__head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.attempt-full__actions { margin-left: auto; }
+.attempt-answer { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--surface-2); }
