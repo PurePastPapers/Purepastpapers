@@ -49,6 +49,11 @@ test('Find questions: the filter is one compact bar of dropdowns', { skip }, asy
   assert.deepEqual(await page.locator('.fpop__label').allTextContents(), ['Topics', 'Difficulty', 'Marks', 'Progress', 'More']);
   assert.equal(await page.locator('.fpop[open]').count(), 0);
 
+  // Covered topics are on by default for a student who has ticked topics; the topic
+  // list appears once the switch is turned off.
+  assert.ok(await page.locator('.fbar [data-covered]').isChecked(), 'covered topics are on by default');
+  await page.locator('.fbar .covered-pill').click();
+  await page.waitForSelector('.fbar .covered-pill:not(.is-on)');
   await page.locator('[data-section="fpop-topics"] > summary').click();
   assert.ok(await page.locator('[data-section="fpop-topics"] [data-tree]').isVisible());
   await page.locator('[data-section="fpop-difficulty"] > summary').click();

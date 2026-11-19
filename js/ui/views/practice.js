@@ -61,7 +61,9 @@ const defaults = () => ({
   markMin: '',
   markMax: '',
   statuses: [],
-  learnedOnly: false,
+  // null = automatic: on when the student has ticked topics in this view.
+  learnedOnly: null,
+  coveredDefaultVersion: 1,
   search: '',
   sort: 'newest',
   shuffled: false,
@@ -143,7 +145,11 @@ export async function mount(element, context) {
   let state = { ...defaults(), mode: subject.practice_modes.includes('individual') ? 'individual' : subject.practice_modes.includes('picker') ? 'picker' : subject.practice_modes[0] };
   const storage = user ? localStorage : sessionStorage;
   try {
-    state = { ...state, ...JSON.parse(storage.getItem(storageKey) || '{}') };
+    const saved = JSON.parse(storage.getItem(storageKey) || '{}');
+    // Covered topics became the default in Nov 2026. Filters saved before then
+    // had it off by default, so those return to the automatic setting once.
+    if (saved.coveredDefaultVersion !== 1) { delete saved.learnedOnly; delete saved.testFocusVersion; }
+    state = { ...state, ...saved, coveredDefaultVersion: 1 };
   } catch {
     /* start from defaults */
   }
@@ -212,13 +218,21 @@ export async function mount(element, context) {
       state.topicOrganisation = 'official';
     }
   }
+  // Whether "Only topics I've covered" is on for one topic view. Automatic means
+  // on as soon as the student has ticked something in that view.
+  const hasLearning = (textbookView) => (textbookView ? textbooks.ids : subjectLeaves).some((id) => learned.has(id));
+  const coveredFor = (textbookView) => Boolean(user) && (state.learnedOnly === null ? hasLearning(textbookView) : state.learnedOnly);
+  // The test's topic list is a draft: covered topics when the switch is on, every topic when off.
+  function seedTestFocus() {
+    state.testFocus = coveredFor(false) ? subjectLeaves.filter((id) => learned.has(id)) : [...subjectLeaves];
+    state.testTextbookFocus = textbooks ? coveredFor(true) ? textbooks.ids.filter((id) => learned.has(id)) : [...textbooks.ids] : null;
+    state.testFocusVersion = 1;
+  }
   const validTestFocus = state.testFocusVersion === 1 && Array.isArray(state.testFocus) && (!textbooks || Array.isArray(state.testTextbookFocus));
   if (!validTestFocus) {
     // The test's topic scope is a private draft, seeded once from the matching
     // learned namespace. It never writes to either saved learned-topic list.
-    state.testFocus = subjectLeaves.filter((id) => learned.has(id));
-    state.testTextbookFocus = textbooks ? textbooks.ids.filter((id) => learned.has(id)) : null;
-    state.testFocusVersion = 1;
+    seedTestFocus();
     state.showTree = true;
   }
   if (context.query.topic) {
@@ -261,7 +275,8 @@ export async function mount(element, context) {
     : textbookMode() ? 'textbookFocus' : 'focus';
   const labelPoint = id => textbooks?.points.has(id) ? `${textbooks.points.get(id).book.short_title} · ${textbooks.points.get(id).code} ${textbooks.points.get(id).title}` : specIndex.label(id);
   const manualFocus = () => state[focusKey()];
-  const chosenFocus = () => !timed() && state.learnedOnly ? null : manualFocus();
+  const coveredOnly = () => coveredFor(textbookMode());
+  const chosenFocus = () => !timed() && coveredOnly() ? null : manualFocus();
   const activeFocus = () => textbookMode() ? null : chosenFocus();
   const activeTextbookFocus = () => textbookMode() ? chosenFocus() : null;
 
@@ -281,7 +296,7 @@ export async function mount(element, context) {
     tiers: state.tier ? [state.tier] : null,
     paperIds: state.paper ? [state.paper] : null,
     sampleMode: state.sampleMode,
-    learnedOnly: timed() ? true : state.learnedOnly,
+    learnedOnly: timed() ? true : coveredOnly(),
     testTopicSelectionOnly: timed(),
     sortBy: !timed() && state.shuffled ? 'shuffle' : state.sort,
     shuffleSeed: state.seed,
@@ -318,6 +333,31 @@ export async function mount(element, context) {
     return focus?.length ? html`<details><summary>Review selected points</summary><div class="chips">${focus.map(id => html`<button type="button" class="chip" data-remove-focus="${id}" aria-label="Remove ${labelPoint(id)}">${labelPoint(id)} ×</button>`)}</div></details>` : '';
   }
 
+  // The "Only topics I've covered" switch shown on the filter bar and the test builder.
+  function coveredSwitch(builder) {
+    if (!user) return '';
+    const on = coveredOnly();
+    const ticked = hasLearning(textbookMode());
+    const hint = !ticked
+      ? html`You haven’t ticked any topics for ${subject.subject} yet. <a href="${links.subject(subjectId)}">Tick covered topics</a>`
+      : on
+        ? html`${builder ? 'Your test only uses' : 'Only showing questions on'} topics you’ve ticked in My subjects. <a href="${links.subject(subjectId)}">Edit covered topics</a>`
+        : html`${builder ? 'Your test can use' : 'Showing questions on'} every topic, including ones you haven’t covered yet.`;
+    if (!builder) {
+      return html`<label class="covered-pill ${on ? 'is-on' : ''}" title="${ticked ? 'Only show questions on topics you’ve ticked in My subjects' : `Tick topics for ${subject.subject} in My subjects first`}">
+        <span class="switch"><input type="checkbox" role="switch" data-covered ${on ? 'checked' : ''} /><span aria-hidden="true"></span></span>
+        <span class="covered-pill__text">Only topics I’ve covered</span>
+      </label>`;
+    }
+    return html`<div class="covered-switch ${on ? 'is-on' : ''} covered-switch--builder">
+      <label class="covered-switch__label">
+        <span class="switch"><input type="checkbox" role="switch" data-covered ${on ? 'checked' : ''} /><span aria-hidden="true"></span></span>
+        <span class="covered-switch__text">Only topics I’ve covered</span>
+      </label>
+      <p class="covered-switch__hint small">${hint}</p>
+    </div>`;
+  }
+
   function topicsControl(browser = false) {
     const learnedIds = textbookMode() ? textbooks.ids : subjectLeaves;
     const learnedCount = learnedIds.filter(id => learned.has(id)).length;
@@ -326,11 +366,8 @@ export async function mount(element, context) {
       ${topicOrganisationControl(state.topicOrganisation, {available: Boolean(textbooks)})}
       <p class="field__hint">${textbookMode() ? `Book numbers follow your supplied contents pages.${subject.textbook_example ? ` ${subject.textbook_example}` : ''}` : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
       ${curriculum.years.length ? html`<div data-curriculum></div>` : ''}
-      ${browser && user ? html`<div class="topics-choice">
-        <label class="check checkpoint"><input type="checkbox" data-flag="learnedOnly" ${state.learnedOnly ? 'checked' : ''} /><span>Only content I’ve covered</span></label>
-        <a class="small" href="${links.subject(subjectId)}">Edit learned topics</a>
-      </div>${state.learnedOnly ? html`<p class="field__hint">Using the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'official point')} you’ve ticked in this view. Untick to choose your own topics.</p>` : ''}` : ''}
-      <div class="stack stack--sm" data-topic-picker ${browser && state.learnedOnly ? 'hidden' : ''}>
+      ${browser && user && coveredOnly() ? html`<p class="field__hint">Showing questions on the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'official point')} you’ve ticked as covered. Turn off <b>Only topics I’ve covered</b> to choose your own. <a href="${links.subject(subjectId)}">Edit covered topics</a></p>` : ''}
+      <div class="stack stack--sm" data-topic-picker ${browser && coveredOnly() ? 'hidden' : ''}>
         <p class="small muted" data-focus-summary>${focusSummary(browser)}</p>
         <div data-selected-points>${selectedPoints()}</div>
         ${!textbookMode() && setTexts.length ? html`<div class="chips" role="group" aria-label="Set texts">${setTexts.map(point => html`<button type="button" class="chip" data-text="${point.id}" aria-pressed="${state.focus?.includes(point.id) || false}">${point.title}</button>`)}</div>` : ''}
@@ -445,7 +482,8 @@ export async function mount(element, context) {
         <i class="tape tape--l" aria-hidden="true"></i>
         <h2 class="builder__title">Topics</h2>
         <button type="button" class="btn btn--sm filter-reset" data-reset-filters>Reset filters</button>
-        <p class="hand builder__note">Starts with topics you’ve marked as learned. Add or remove topics below for this test only; your saved learning won’t change. <a class="small" href="#/subject/${subjectId}">Edit saved topics</a></p>
+        ${coveredSwitch(true)}
+        <p class="hand builder__note">${user && coveredOnly() ? 'Starts with the topics you’ve covered. Add or remove topics below for this test only; your saved topics won’t change.' : 'Starts with every topic. Add or remove topics below for this test only.'}</p>
         <div class="stack">${topicsControl()} ${metadataControls()} ${sourceControl()}</div>
       </div>
       <fieldset class="card ruled builder__card tilt-1">
@@ -526,7 +564,7 @@ export async function mount(element, context) {
   function browserFilters(base) {
     const count = (predicate) => base.filter(predicate).length;
     const focus = manualFocus();
-    const topicsValue = state.learnedOnly && user ? 'Covered only' : focus === null ? 'All' : !focus.length ? 'None' : `${focus.length} chosen`;
+    const topicsValue = coveredOnly() ? 'Covered only' : focus === null ? 'All' : !focus.length ? 'None' : `${focus.length} chosen`;
     const pick = (values, labelOf) => (values.length ? (values.length > 2 ? `${values.length} chosen` : values.map(labelOf).join(', ')) : 'Any');
     const difficultyValue = pick(state.difficulties, (id) => DIFFICULTIES.find((d) => d.id === id)?.label || id);
     const marksValue = state.markMin !== '' || state.markMax !== '' ? `${state.markMin || 0}–${state.markMax || 'any'}` : pick(state.bands, (id) => bandOptions.find((b) => b.id === id)?.label || id);
@@ -540,6 +578,7 @@ export async function mount(element, context) {
       <i class="tape tape--c" aria-hidden="true"></i>
       <h2 class="sr-only" id="question-filters-title">Filter questions</h2>
       <div class="fbar__row">
+        ${coveredSwitch(false)}
         ${pop('topics', 'Topics', topicsValue, topicsControl(true), true)}
         ${pop('difficulty', 'Difficulty', difficultyValue, html`<fieldset class="field"><legend class="field__label">Difficulty</legend><div class="chips">
           ${DIFFICULTIES.map((d) => html`<button type="button" class="chip chip--difficulty chip--difficulty-${d.id}" data-multi="difficulties" data-value="${d.id}" aria-pressed="${state.difficulties.includes(d.id)}" title="${d.description}">${d.label}<span class="chip__count">${count((q) => q.difficulty === d.id)}</span></button>`)}
@@ -644,7 +683,7 @@ export async function mount(element, context) {
     const active = [
       ...(activeFocus() !== null ? [{key: 'focus', label: `${activeFocus().length} spec points selected`}] : []),
       ...(activeTextbookFocus() !== null ? [{key: 'textbookFocus', label: `${activeTextbookFocus().length} textbook subsections selected`}] : []),
-      ...(state.learnedOnly ? [{key: 'learnedOnly', label: 'Topics I’ve learned'}] : []),
+      ...(coveredOnly() ? [{key: 'learnedOnly', label: 'Topics I’ve covered'}] : []),
       ...state.qualifications.map(value => ({key: 'qualifications', value, label: qualificationLabel(value)})),
       ...state.markStatuses.map((value) => ({key: 'markStatuses', value, label: PROGRESS_FILTERS[value]})),
       ...(state.sampleMode !== 'all' ? [{key: 'sampleMode', label: state.sampleMode === 'hide' ? 'Hide demo content' : 'Demo content only'}] : []),
@@ -683,10 +722,10 @@ export async function mount(element, context) {
         : emptyState({
             iconName: 'filter',
             title: 'No questions match',
-            text: !learnedLeaves.length && state.learnedOnly
+            text: !hasLearning(textbookMode()) && coveredOnly()
               ? 'Tick the topics you have learned and questions will appear here.'
               : 'Change the filters to see more questions.',
-            action: !learnedLeaves.length && state.learnedOnly ? html`<a class="btn btn--primary" href="${links.subject(subjectId)}">Tick learned topics</a>` : null,
+            action: !hasLearning(textbookMode()) && coveredOnly() ? html`<a class="btn btn--primary" href="${links.subject(subjectId)}">Tick learned topics</a>` : null,
           })}
       ${sorted.length > PAGE_SIZE ? html`<nav class="row row--between filter-pagination" aria-label="Question results pages"><button type="button" class="btn btn--sm" data-page="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>Previous</button><span class="small muted" role="status">Page ${state.page} of ${pageCount} · ${(state.page - 1) * PAGE_SIZE + 1}–${Math.min(state.page * PAGE_SIZE, sorted.length)} of ${sorted.length}</span><button type="button" class="btn btn--sm" data-page="${state.page + 1}" ${state.page >= pageCount ? 'disabled' : ''}>Next</button></nav>` : ''}
       ${locked.length
@@ -872,9 +911,7 @@ export async function mount(element, context) {
   on(element, 'click', '[data-reset-filters]', () => change(() => {
     const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
     state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept, tier: tierPref, tierPref };
-    state.testFocus = subjectLeaves.filter((id) => learned.has(id));
-    state.testTextbookFocus = textbooks ? textbooks.ids.filter((id) => learned.has(id)) : null;
-    state.testFocusVersion = 1;
+    seedTestFocus();
   }, { resetControls: true }));
   on(element, 'click', '[data-clear-chip]', (event, button) => change(() => {
     const key = button.dataset.clearChip;
@@ -915,6 +952,10 @@ export async function mount(element, context) {
   }));
   on(element, 'change', '[data-progress]', (event, box) => change(() => {
     state.markStatuses = toggle(state.markStatuses, box.dataset.progress);
+  }));
+  on(element, 'change', '[data-covered]', (event, box) => change(() => {
+    state.learnedOnly = box.checked;
+    if (timed()) seedTestFocus();
   }));
   on(element, 'change', '[data-flag]', (event, box) =>
     change(() => (state[box.dataset.flag] = box.checked), { keepControls: box.dataset.flag === 'stopwatch' || box.dataset.flag === 'preferUnseen' || box.dataset.flag === 'prioritiseWeak', keepPage: box.dataset.flag === 'stopwatch' }),
