@@ -91,9 +91,15 @@ export function openWelcome({ navigate } = {}) {
   open = dialog;
 }
 
+/** Closes the popup if it is open (for example once the visitor signs in). */
+export function closeWelcome() {
+  open?.close();
+}
+
 /** Shows the popup on a signed-out visitor's first visit. Call after each route renders. */
 export function maybeWelcome({ path, signedIn, navigate }) {
-  if (signedIn || seen() || SKIP.some((pattern) => pattern.test(path))) return;
+  if (signedIn) return closeWelcome();
+  if (seen() || SKIP.some((pattern) => pattern.test(path))) return;
   if (document.querySelector('dialog[open]')) return; // never stack on another popup
   openWelcome({ navigate });
 }

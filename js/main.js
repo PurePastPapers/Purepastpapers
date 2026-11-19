@@ -11,7 +11,7 @@ import * as shell from './ui/shell.js';
 import { tintPage } from './ui/subject-colours.js';
 import { revealOnScroll } from './ui/motion.js';
 import { installZoom } from './ui/zoom.js';
-import { maybeWelcome } from './ui/welcome.js';
+import { closeWelcome, maybeWelcome } from './ui/welcome.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 import { links } from './core/links.js';
 
@@ -219,6 +219,7 @@ async function start() {
   await api.init();
   shell.mountShell(document.getElementById('app'));
   api.events.on('auth', (user) => {
+    if (user) closeWelcome();
     shell.render();
     if (user) handleRoute(); // guest-only pages redirect onwards from here
     else navigate('/'); // signed out or account deleted
