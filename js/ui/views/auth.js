@@ -22,6 +22,7 @@ export async function mount(element, context) {
       <i class="tape tape--c" aria-hidden="true"></i>
       <h2 class="auth__title">${signup ? 'Create your account' : legacy ? 'Log in to this browser' : 'Log in'}</h2>
       ${signup ? raw(`<div data-steps>${signupSteps(1)}</div>`) : html`<p class="muted small">${legacy ? 'Open an older account saved only in this browser.' : 'Pick up where you left off.'}</p>`}
+      ${!signup && !legacy && context.query.linkused ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>That email link has already been used</b>If you’ve confirmed your email, just log in. If not, log in anyway and we’ll offer to send a new code.</span></p>` : ''}
       ${!signup && !legacy && context.query.newcode ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>Need a new code?</b>Log in with your email and password. If your email isn’t confirmed yet, we’ll offer to send a new code.</span></p>` : ''}
       ${signup ? html`<div data-waiting hidden></div>` : ''}
       <form class="stack" data-form novalidate>

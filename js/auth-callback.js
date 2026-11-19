@@ -25,10 +25,11 @@ function showUsedLink() {
     actions.innerHTML = `<a class="primary" href="${site.href}#/forgot-password">Send me a new reset link</a>`;
     return;
   }
-  status.textContent = 'This link has already been used';
-  detail.innerHTML = 'If you’ve already confirmed your email, you’re done. Just log in.<br><small>Pressed Create account more than once? Only the newest email works.</small>';
-  returnLink.hidden = true;
-  actions.innerHTML = `<a class="primary" href="${site.href}#/login">Log in</a><a href="${site.href}#/login?newcode=1">Send me a new code</a>`;
+  // Usually the account is already confirmed, so go straight to log in. The log in page
+  // explains the old link, and offers a new code if the email still isn't confirmed.
+  status.textContent = 'Taking you to log in…';
+  detail.textContent = 'That email link has already been used.';
+  location.replace(`${site.href}#/login?linkused=1`);
 }
 
 try {
