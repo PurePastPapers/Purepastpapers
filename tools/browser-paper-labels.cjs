@@ -58,6 +58,15 @@ const SINGLE = ['EDX_ALEVEL_HIST_9HI0', 'AQA_ALEVEL_POL_7152', 'EDX_GCSE_MATH_1M
       await page.screenshot({ path: `${out}/labels-${id}.png` });
     }
   }
+  // Official samples have no year: their group must not be headed "null" and comes last.
+  for (const id of Object.keys(DUAL)) {
+    await page.goto(`${base}/#/papers?subject=${id}`);
+    await page.waitForSelector('[data-list] .paper-card');
+    const heads = await page.locator('[data-list] .paper-group__head h2').allTextContents();
+    assert(!heads.some((h) => /null|undefined|NaN/.test(h)), `${id}: group headings ${heads.join(', ')}`);
+    const samples = heads.indexOf('Official samples');
+    if (samples >= 0) assert.equal(samples, heads.filter((h) => h !== 'Demo papers').length - 1, `${id}: samples not last`);
+  }
   for (const id of SINGLE) {
     const list = await cards(id);
     assert(list.length && list.every((card) => card.level === ''), `${id} must not be labelled`);

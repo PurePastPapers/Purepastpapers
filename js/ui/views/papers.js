@@ -130,15 +130,19 @@ export async function mount(element, context) {
         text: papers.length ? 'Change the filters to see more.' : subject.catalogue_note || 'Papers for this subject have not been added.',
       });
     }
+    // Undated official samples (year null) sort last under their own heading, never "null".
     const keys = [...bySeries.keys()].sort((a, b) => {
       const [yearA, seriesA] = a.split('|');
       const [yearB, seriesB] = b.split('|');
-      return yearB - yearA || seriesA.localeCompare(seriesB);
+      return (Number(yearB) || 0) - (Number(yearA) || 0) || seriesA.localeCompare(seriesB);
     });
     return html`${keys.map((key) => {
         const [year, series] = key.split('|');
+        const dated = Number(year) > 0;
+        const heading = dated ? year : 'Official samples';
+        const note = dated ? (series ? `${series} series` : '') : 'specimen papers from the board';
         return html`<section class="paper-group">
-          <div class="paper-group__head"><h2>${year}</h2>${series ? html`<span class="hand">${series} series</span>` : ''}</div>
+          <div class="paper-group__head"><h2>${heading}</h2>${note ? html`<span class="hand">${note}</span>` : ''}</div>
           <ul class="paper-cards">${bySeries.get(key).map(card)}</ul>
         </section>`;
       })}
