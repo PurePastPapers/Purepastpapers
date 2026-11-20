@@ -329,7 +329,8 @@ def says_show_that(unit, full, offsets, H):
         rows = [full[offsets[r['page']] + round(r['bbox'][1] * H):offsets[r['page']] + round(r['bbox'][3] * H)]
                 for r in unit['provenance']['source_regions'] if r['page'] in offsets]
         text = ' '.join(t for piece in rows if piece.shape[0] > 0 for _, _, t in ocr_lines(piece))
-        _show_that[key] = bool(re.search(r'show\s+that', text, re.I))
+        # the command itself, with a value: not "the test to show that a gas is oxygen"
+        _show_that[key] = bool(re.search(r"(?:^|[.)]\s+|\s{2,})Show that\b[^.]{0,160}?\d", text, re.M))
     return _show_that[key]
 
 
@@ -581,7 +582,8 @@ def process(pack_path, slug, dry, report):
                         if owner < me and (units[owner]['question_id'] in (u.get('depends_on_question_ids') or [])
                                            or is_named(units[owner].get('part_label'), named, owner == me - 1,
                                                        nearest_same_letter=nearest_same_letter(units, owner, me))
-                                           or (shows_that_used(pv) and says_show_that(units[owner], full, offsets, H))):
+                                           or (shows_that_used(pv) and (owner == me - 1 or nearest_same_letter(units, owner, me))
+                                               and says_show_that(units[owner], full, offsets, H))):
                             segments.append((a, b))
                             kept_parts.add(units[owner]['question_id'])
                         elif wanted:
