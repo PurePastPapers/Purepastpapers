@@ -63,15 +63,47 @@ def photo(rgb):
     return len(grey.getcolors(256) or range(257)) > 128 and float(((a > 40) & (a < 215)).mean()) > PHOTO_SHARE
 
 
+def grey_levels(grey, target):
+    """Map a grey crop onto `target` grey levels that keep its darkest ink.
+
+    PIL's median-cut quantize() represents each bucket by its average. In crops dominated
+    by light graph grids, black text shared a bucket with the grid and came out light grey
+    (darkest level 160-175 instead of about 30; audit 2026-11-19). A 1-D k-means over the
+    histogram, seeded evenly from the darkest pixel to white, keeps a near-black level.
+    """
+    a = np.asarray(grey)
+    hist = np.bincount(a.ravel(), minlength=256).astype(np.float64)
+    values = np.arange(256, dtype=np.float64)
+    lo, hi = int(a.min()), int(a.max())
+    centres = np.linspace(lo, hi, target)
+    for _ in range(50):
+        edges = (centres[:-1] + centres[1:]) / 2
+        bucket = np.searchsorted(edges, values)
+        new = centres.copy()
+        for k in range(target):
+            weight = hist[bucket == k]
+            if weight.sum():
+                new[k] = (values[bucket == k] * weight).sum() / weight.sum()
+        if np.allclose(new, centres):
+            break
+        centres = new
+    edges = (centres[:-1] + centres[1:]) / 2
+    lut = np.rint(centres[np.searchsorted(edges, values)]).astype(np.uint8)
+    return Image.fromarray(lut[a], 'L')
+
+
+def encode(grey):
+    out = io.BytesIO()
+    grey.convert('RGB').save(out, 'WEBP', lossless=True, quality=100, method=4)
+    return out.getvalue()
+
+
 def compact(rgb):
     grey = rgb.convert('L')
     target = levels(grey)
     if len(grey.getcolors(256) or range(257)) <= target:
         return None  # already compacted
-    quant = grey.quantize(target, dither=Image.Dither.NONE).convert('L').convert('RGB')
-    out = io.BytesIO()
-    quant.save(out, 'WEBP', lossless=True, quality=100, method=4)
-    return out.getvalue()
+    return encode(grey_levels(grey, target))
 
 
 def work(job):
