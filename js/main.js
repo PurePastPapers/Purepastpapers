@@ -3,6 +3,7 @@
 // Views are loaded on demand, so a problem in one view never stops the others loading.
 
 import { observeSourceImages } from './data/source-images.js';
+import { observeExaminerReports } from './data/examiner-reports.js';
 import { APP } from './config/app.config.js';
 import { isEnabled } from './config/phases.js';
 import { $, html, setHtml } from './core/dom.js';
@@ -217,6 +218,7 @@ async function handleRoute() {
 
 async function start() {
   observeSourceImages();
+  observeExaminerReports();
   installZoom();
   installModuleScopeHandlers({
     getSubject: async (id) => (await getSubjects()).find((subject) => subject.subject_id === id) || null,

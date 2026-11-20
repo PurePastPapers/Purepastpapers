@@ -12,6 +12,7 @@ import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, p
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { isMultiLevel, levelOf, qualificationCode } from '../../engine/paper-identity.js';
+import { loadReportIndex, reportFold } from '../../data/examiner-reports.js';
 import { zoomButton } from '../zoom.js';
 import { ANSWER_MIN, placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
@@ -40,7 +41,7 @@ export async function mount(element, context) {
     return undefined;
   }
 
-  const bundle = await getBundle(session.subject_id);
+  const [bundle] = await Promise.all([getBundle(session.subject_id), loadReportIndex()]);
   const { subject } = bundle;
   const paper = bundle.papersById.get(session.paper_id) || api.getCustomTest(session.paper_id) || null;
   const questions = session.question_ids.map((id) => bundle.questionsById.get(id)).filter(Boolean);
@@ -247,6 +248,7 @@ export async function mount(element, context) {
                 <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('mark scheme')}</div>
               </header>
               <div data-zoom-body>${markSchemeBody(question)}</div>
+              ${reportFold({ key: question.question_id, units: [question], paper: bundle.papersById.get(question.paper_id) })}
             </article>
             <section class="card stack">${marksInput(question)} ${aiMarkingNote()}</section>`
           : ''}
@@ -358,6 +360,7 @@ export async function mount(element, context) {
               </header>
               ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
               ${linkedParts(item, { scheme: revealed && each })}
+              ${revealed && each ? reportFold({ key: id, units: item.questions, paper: bundle.papersById.get(item.questions[0].paper_id), group: item.questions.length > 1 }) : ''}
               ${revealed && each ? aiMarkingNote() : ''}
             </article>`}
         ${each
@@ -619,6 +622,7 @@ export async function mount(element, context) {
                   </details>
                   ${answerBlock(question)}
                   <div><p class="label" style="margin-bottom:6px">Mark scheme</p>${markSchemeBody(question)}</div>
+                  ${reportFold({ key: question.question_id, units: [question], paper: bundle.papersById.get(question.paper_id) })}
                   ${marksInput(question)}
                 </article>`,
             )}
@@ -770,6 +774,7 @@ export async function mount(element, context) {
                   <div class="stack" style="padding-top:12px">
                     ${questionBody(question)} ${answerBlock(question)}
                     <div><p class="label" style="margin-bottom:6px">Mark scheme</p>${markSchemeBody(question)}</div>
+                    ${reportFold({ key: question.question_id, units: [question], paper: bundle.papersById.get(question.paper_id) })}
                   </div>
                 </details>`;
               })}

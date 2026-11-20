@@ -26,6 +26,7 @@ import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../st
 import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
 import { isTiered, questionsForTier, savedTier, searchTierIntent, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
 import { zoomButton } from '../zoom.js';
+import { hasExaminerReport, loadReportIndex, reportPanel, revealPanel } from '../../data/examiner-reports.js';
 import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, toast } from '../ui.js';
@@ -93,6 +94,7 @@ const defaults = () => ({
   selected: [],
   closedQuestions: [],
   schemeQuestions: [],
+  reportQuestions: [],
   contextQuestions: [],
   referenceQuestions: [],
   drafts: {},
@@ -105,7 +107,7 @@ const toggle = (list, value) => (list.includes(value) ? list.filter((item) => it
 
 export async function mount(element, context) {
   context.setTitle('Practice');
-  const student = await loadStudent();
+  const [student] = await Promise.all([loadStudent(), loadReportIndex()]);
   const { progress, bundles, latest } = student;
   const user = api.currentUser();
   const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.practice_modes.length);
@@ -249,6 +251,7 @@ export async function mount(element, context) {
   if (user) for (const id of Object.keys(state.drafts)) if (api.attemptsFor(id).length) delete state.drafts[id];
   if (!Array.isArray(state.schemeQuestions)) state.schemeQuestions = state.showScheme && state.openQuestion ? [state.openQuestion] : [];
   if (!Array.isArray(state.closedQuestions)) state.closedQuestions = [];
+  if (!Array.isArray(state.reportQuestions)) state.reportQuestions = [];
   delete state.openQuestions;
   delete state.openQuestion;
   if (!Array.isArray(state.contextQuestions)) state.contextQuestions = [];
@@ -780,6 +783,15 @@ export async function mount(element, context) {
     </div>`;
   }
 
+  /** The examiner's report toggle. It opens a panel under the question or mark scheme, whichever is showing. */
+  function reportButton(id, paper) {
+    if (!hasExaminerReport(paper)) return '';
+    const open = state.reportQuestions.includes(id);
+    return html`<button type="button" class="btn btn--sm ${open ? 'is-on' : ''}" data-report="${id}" aria-expanded="${open}">${icon('book', { size: 15 })} ${open ? 'Hide examiner’s report' : 'Examiner’s report'}</button>`;
+  }
+
+  const reportLabel = (question) => `Q${question.question_number}${question.part_label ? question.part_label.replace(/\s+/g, '') : ''}`;
+
   function questionCard(question, { locked = null, partsMissing = null } = {}) {
     if (question.is_linked_group) return linkedCard(question, { locked, partsMissing });
     const attempt = latest.get(question.question_id);
@@ -803,6 +815,7 @@ export async function mount(element, context) {
     const canUndo = changing && Boolean(current.inline || current.mark_edits?.length);
     const goes = goOptions(qid).length;
     const paper = bundle.papersById.get(question.paper_id);
+    const reportOpen = hasExaminerReport(paper) && state.reportQuestions.includes(qid);
     return html`<article class="qcard ${selected ? 'is-selected' : ''}" data-card="${qid}">
       <span class="qcard__select">
         <input type="checkbox" class="tree__check" data-select="${question.question_id}" ${selected ? 'checked' : ''} aria-label="Add ${questionRef(question, bundle.papersById)} to set" />
@@ -818,6 +831,7 @@ export async function mount(element, context) {
             ${schemeOpen
               ? markSchemeBody(question)
               : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
+            ${reportOpen ? reportPanel({ key: qid, units: [question], paper, view: schemeOpen ? 'scheme' : 'question', label: reportLabel(question), closeAttr: html`data-report="${qid}"` }) : ''}
           </div>
           <div class="qsplit__side stack stack--sm">
             ${goLine(qid)}
@@ -831,9 +845,10 @@ export async function mount(element, context) {
             </section>` : ''}
             <div class="row row--tight">
               <button type="button" class="btn btn--sm ${schemeOpen ? '' : 'btn--primary'}" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? html`${icon('chevronLeft', { size: 15 })} Back to question` : html`${icon('eye', { size: 15 })} Show mark scheme`}</button>
+              ${reportButton(qid, paper)}
               ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, question.paper_id)}">View full paper</a>` : ''}
             </div>
-            ${paper?.examiner_report_url ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report</a>` : ''}
+            ${paper?.examiner_report_url && !hasExaminerReport(paper) ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report</a>` : ''}
           </div>
         </div>` : ''}
       </div>
@@ -870,6 +885,7 @@ export async function mount(element, context) {
     const selected = state.selected.includes(id);
     const open = !state.closedQuestions.includes(id);
     const schemeOpen = state.schemeQuestions.includes(id);
+    const reportOpen = hasExaminerReport(bundle.papersById.get(entry.paper_id)) && state.reportQuestions.includes(id);
     const attempts = entry.parts.map((part) => latest.get(part.question_id));
     const saved = attempts.every(Boolean);
     const paper = bundle.papersById.get(entry.paper_id);
@@ -909,6 +925,7 @@ export async function mount(element, context) {
               </div>
             </section>`;
           })}
+          ${reportOpen ? reportPanel({ key: id, units: entry.parts, paper, view: schemeOpen ? 'scheme' : 'question', label: `${entry.parts.length} parts`, group: true, closeAttr: html`data-report="${id}"` }) : ''}
           <div class="qgroup__foot">
             ${schemeOpen
               ? html`<p class="qgroup__total" data-group-total>Total <b>${total}</b> / ${entry.marks}</p>
@@ -916,12 +933,14 @@ export async function mount(element, context) {
                   <button type="button" class="btn btn--primary btn--sm" data-save-group="${id}">${user ? (changing ? 'Change marks' : `Save marks for all ${entry.parts.length} parts`) : 'Create free account to save marks'}</button>
                   ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo-group="${id}">Undo last save</button>` : ''}
                   <button type="button" class="btn btn--sm" data-scheme="${id}" aria-expanded="true">${icon('chevronLeft', { size: 15 })} Back to question</button>
+                  ${reportButton(id, paper)}
                 </div>
                 ${laterRow(id)}
                 <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>`
               : html`<p class="small muted">Answer all ${entry.parts.length} parts, then check them together.</p>
                 <div class="row row--tight">
                   <button type="button" class="btn btn--primary btn--sm" data-scheme="${id}" aria-expanded="false">${icon('eye', { size: 15 })} Show mark scheme for all parts</button>
+                  ${reportButton(id, paper)}
                   ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, entry.paper_id)}">View full paper</a>` : ''}
                 </div>
                 ${laterRow(id)}`}
@@ -1093,7 +1112,7 @@ export async function mount(element, context) {
     const controls = resetControls ? null : controlSnapshot();
     const scroll = window.scrollY;
     const active = document.activeElement;
-    const focusKeys = ['open', 'scheme', 'saveMark', 'reattempt', 'undo', 'select', 'removeSelected', 'filter', 'flag', 'topicOrganisation', 'topicCoverage', 'multi', 'progress', 'sort', 'resetFilters', 'clearGroup', 'removeFocus', 'toggleTree', 'shuffleQuestions'];
+    const focusKeys = ['open', 'scheme', 'report', 'saveMark', 'reattempt', 'undo', 'select', 'removeSelected', 'filter', 'flag', 'topicOrganisation', 'topicCoverage', 'multi', 'progress', 'sort', 'resetFilters', 'clearGroup', 'removeFocus', 'toggleTree', 'shuffleQuestions'];
     const key = focusKeys.find((name) => active?.dataset?.[name] !== undefined);
     const value = key ? active.dataset[key] : null;
     const restore = () => {
@@ -1232,7 +1251,7 @@ export async function mount(element, context) {
   }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
-    const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, goes: state.goes, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
+    const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, goes: state.goes, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, reportQuestions: state.reportQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
     state = { ...defaults(), ...kept, tier: tierPref, tierPref };
     if (tiered && (readTierOverride() ?? tierPref) !== tierPref) {
       // Reset returns to the saved tier; its spec points need the page drawn again.
@@ -1341,6 +1360,13 @@ export async function mount(element, context) {
     state.closedQuestions = toggle(state.closedQuestions, button.dataset.open);
   }, { keepControls: true, keepPage: true }));
   on(element, 'click', '[data-scheme]', (event, button) => change(() => (state.schemeQuestions = toggle(state.schemeQuestions, button.dataset.scheme)), { keepControls: true, keepPage: true }));
+  // The report is independent of the mark scheme: it stays open under whichever is showing.
+  on(element, 'click', '[data-report]', (event, button) => {
+    const id = button.dataset.report;
+    const opening = !state.reportQuestions.includes(id);
+    change(() => (state.reportQuestions = toggle(state.reportQuestions, id)), { keepControls: true, keepPage: true });
+    if (opening) revealPanel(element, id);
+  });
   element.addEventListener('toggle', (event) => {
     const id = event.target?.dataset?.questionContext || event.target?.dataset?.questionReferences;
     if (!id) return;

@@ -58,6 +58,16 @@ minimum context, part-only scheme with a full-scheme fallback.
 | Part scheme clipped at a page boundary; rows of the other tier on shared F/H schemes | `part_scheme_check` is `verified`/`reference_matched`/`includes_sibling_rows`; GCSE `schemes.py` keeps only the scheme's own-tier reference | `refine.py`, `tools/gcse*/schemes.py` |
 | Withdrawn, copyright-removed or erratum content shown as complete | record it in the subject's coverage and handover; never redraw removed material | subject pipelines |
 
+## Examiner reports
+
+See [EXAMINER-REPORTS.md](EXAMINER-REPORTS.md). Report text is split per question at run time.
+
+| Failure | Check | Owner |
+| --- | --- | --- |
+| A button that opens nothing: report listed for a paper but not split | the button shows only for papers in `data/reports/index.json`; `tests/examiner-report.test.mjs` checks every file is indexed and well formed | `tools/reports/extract.py` |
+| Comments attached to the wrong part, or cover text, running headers and "Grade boundaries" kept | `extract.py --show`, then read three papers per subject against the PDF; `--self-test` | `tools/reports/extract.py` |
+| Report crops pushing the Pages artifact over 1 GB | reports are stored as text, not images | `docs/SITE-SIZE.md` |
+
 ## Images, size and deployment
 
 | Failure | Check | Owner |

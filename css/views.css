@@ -1139,3 +1139,55 @@
 .runner__part:first-of-type { border-top: 0; margin-top: 8px; padding-top: 0; }
 .runner__part .textarea { min-height: 110px; }
 .runner .qgroup .qcontent { max-width: 760px; }
+
+/* ── Examiner's report panel (js/data/examiner-reports.js) ──
+   Opens under whichever is showing, question or mark scheme, so a student can read the
+   scheme and the examiners' comments together. Text, not crops (docs/EXAMINER-REPORTS.md). */
+.btn.is-on { background: var(--accent-wash); }
+.erpanel {
+  margin-top: 14px;
+  padding: 12px 14px 10px;
+  border: 1px solid var(--line-strong);
+  border-left: 4px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  scroll-margin-top: 90px;
+}
+.erpanel:focus { outline: none; }
+.erpanel__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.erpanel__title { font-weight: 700; min-width: 0; }
+.erpanel__title svg, .er-sec__fig svg, .erpanel__warn svg { vertical-align: -2px; margin-right: 4px; }
+.erpanel__title .muted { font-weight: 600; }
+.erpanel__close {
+  flex: none; display: inline-grid; place-items: center; width: 32px; height: 32px; margin: -6px -6px -6px 0;
+  border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink-2); cursor: pointer;
+}
+.erpanel__close:hover, .erpanel__close:focus-visible { background: var(--surface-3); color: var(--ink); }
+.erpanel__warn { margin: 4px 0 0; color: var(--warn-ink); }
+.erpanel__body { margin-top: 8px; }
+.erpanel__body > * + * { margin-top: 8px; }
+.erpanel__body p, .erpanel__body ul { margin: 0; overflow-wrap: anywhere; }
+.erpanel__body ul { padding-left: 1.3em; list-style: disc; }
+.erpanel__body li + li { margin-top: 2px; }
+.er-sec + .er-sec { padding-top: 10px; border-top: 1px dashed var(--line-strong); }
+.er-sec > * + * { margin-top: 6px; }
+.er-sec__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-size: 0.85rem; font-weight: 700; color: var(--ink-2); }
+.er-sec__badge { padding: 0 6px; border-radius: 99px; background: var(--surface-3); font-size: 0.75rem; letter-spacing: 0; text-transform: none; }
+.er-sec__sub { font-weight: 700; }
+.er-sec__fig { color: var(--ink-2); }
+.er-part { font-weight: 700; padding-top: 6px; border-top: 1px solid var(--line-strong); }
+.er-general > summary { cursor: pointer; font-weight: 600; }
+.er-general[open] > summary { margin-bottom: 6px; }
+.er-general > p + p { margin-top: 6px; }
+.erpanel__src { padding-top: 8px; border-top: 1px solid var(--line); }
+.erpanel__src a { white-space: nowrap; }
+/* Inside a session the report is a fold under the mark scheme. */
+.erfold { margin-top: 12px; }
+.erfold > summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 700; }
+.erfold > .erpanel { margin-top: 8px; }
+@media (max-width: 600px) {
+  .erpanel { padding: 10px 11px 8px; font-size: 0.92rem; }
+  .qsplit__main.is-scheme > .erpanel { margin-left: -8px; margin-right: -8px; }
+}
