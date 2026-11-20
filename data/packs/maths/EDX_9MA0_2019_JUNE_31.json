@@ -137,9 +137,9 @@
             "page": 2,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.288008
+              0.28804751299183373
             ]
           }
         ],
@@ -200,7 +200,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.288008
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)–(b)–(c)"
     },
@@ -296,9 +308,9 @@
             "page": 2,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.288008
+              0.28804751299183373
             ]
           }
         ],
@@ -332,7 +344,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.288008
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)"
     },
@@ -427,9 +451,9 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.39676
+              0.39643652561247217
             ]
           }
         ],
@@ -454,7 +478,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.39676
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -548,9 +585,9 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.39676
+              0.39643652561247217
             ]
           }
         ],
@@ -575,7 +612,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.39676
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -669,9 +719,9 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.39676
+              0.39643652561247217
             ]
           }
         ],
@@ -705,7 +755,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.39676
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -799,18 +862,18 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.39676
+              0.39643652561247217
             ]
           },
           {
             "page": 6,
             "bbox": [
               0.041994,
-              0.598442,
+              0.5983667409057164,
               0.958006,
-              0.700637
+              0.7008166295471417
             ]
           }
         ],
@@ -846,9 +909,40 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_9MA0_2019_JUNE_31_Q02_U03"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.39676
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.598442,
+              0.958006,
+              0.700637
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "dependency_detected": {
+          "EDX_9MA0_2019_JUNE_31_Q02_U03": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(d)"
+      "part_label": "(d)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_2019_JUNE_31_Q02_U03"
+      ]
     },
     {
       "question_id": "EDX_9MA0_2019_JUNE_31_Q02_U05",
@@ -941,18 +1035,18 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.39676
+              0.39643652561247217
             ]
           },
           {
             "page": 6,
             "bbox": [
               0.041994,
-              0.598442,
+              0.643652561247216,
               0.958006,
-              0.700637
+              0.7008166295471417
             ]
           }
         ],
@@ -988,7 +1082,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.39676
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.598442,
+              0.958006,
+              0.700637
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(e)"
     },
@@ -1082,9 +1198,9 @@
             "page": 10,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.156452
+              0.15664439495174462
             ]
           }
         ],
@@ -1109,7 +1225,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.156452
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -1203,9 +1332,9 @@
             "page": 10,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.156452
+              0.15664439495174462
             ]
           }
         ],
@@ -1239,7 +1368,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.156452
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1334,9 +1476,9 @@
             "page": 10,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.156452
+              0.15664439495174462
             ]
           }
         ],
@@ -1370,7 +1512,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.156452
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -1464,9 +1619,9 @@
             "page": 14,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.224297
+              0.22420193021529325
             ]
           }
         ],
@@ -1491,7 +1646,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.224297
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -1589,9 +1757,9 @@
             "page": 14,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.224297
+              0.22420193021529325
             ]
           }
         ],
@@ -1661,7 +1829,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.224297
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)(i)–(c)"
     },
@@ -1759,18 +1940,18 @@
             "page": 14,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.224297
+              0.22420193021529325
             ]
           },
           {
             "page": 14,
             "bbox": [
               0.041994,
-              0.54485,
+              0.5449146250927989,
               0.958006,
-              0.676406
+              0.676317743132888
             ]
           }
         ],
@@ -1815,7 +1996,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.224297
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041994,
+              0.54485,
+              0.958006,
+              0.676406
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(d)–(e)"
     },
@@ -1918,9 +2121,9 @@
             "page": 18,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.145049
+              0.1447661469933185
             ]
           }
         ],
@@ -1945,7 +2148,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.145049
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -2050,9 +2266,9 @@
             "page": 18,
             "bbox": [
               0.041994,
-              0.045135,
+              0.04528582034149963,
               0.958006,
-              0.145049
+              0.1447661469933185
             ]
           }
         ],
@@ -2086,7 +2302,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041994,
+              0.045135,
+              0.958006,
+              0.145049
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -2190,13 +2419,26 @@
             "page": 18,
             "bbox": [
               0.041994,
+              0.04528582034149963,
+              0.958006,
+              0.1447661469933185
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "context_regions_refined": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041994,
               0.045135,
               0.958006,
               0.145049
             ]
           }
         ],
-        "context_reasons": []
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     }

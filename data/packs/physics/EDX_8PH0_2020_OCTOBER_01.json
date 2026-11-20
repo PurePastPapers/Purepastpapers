@@ -1000,9 +1000,9 @@
             "page": 7,
             "bbox": [
               0.041997,
-              0.174879,
+              0.17520415738678544,
               0.958003,
-              0.216459
+              0.2167780252412769
             ]
           }
         ],
@@ -1031,9 +1031,31 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_8PH0_2020_OCTOBER_01_Q09_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.174879,
+              0.958003,
+              0.216459
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "dependency_detected": {
+          "EDX_8PH0_2020_OCTOBER_01_Q09_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_8PH0_2020_OCTOBER_01_Q09_U01"
+      ]
     },
     {
       "question_id": "EDX_8PH0_2020_OCTOBER_01_Q09_U03",
@@ -1129,26 +1151,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "8PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 7,
-            "bbox": [
-              0.041997,
-              0.174879,
-              0.958003,
-              0.215271
-            ]
-          },
-          {
-            "page": 7,
-            "bbox": [
-              0.041997,
-              0.387313,
-              0.958003,
-              0.674782
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q09_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result",
@@ -1174,7 +1177,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.174879,
+              0.958003,
+              0.215271
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.387313,
+              0.958003,
+              0.674782
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -1538,17 +1563,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "8PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 8,
-            "bbox": [
-              0.041997,
-              0.547074,
-              0.958003,
-              0.605286
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q10_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result",
@@ -1583,7 +1598,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.547074,
+              0.958003,
+              0.605286
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)(ii)"
     },
@@ -2451,7 +2479,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -2581,7 +2610,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -2729,7 +2759,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -2847,7 +2878,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(d)"
     },
@@ -2951,17 +2983,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "8PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 17,
-            "bbox": [
-              0.041997,
-              0.068031,
-              0.958003,
-              0.193858
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q13_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
@@ -2986,7 +3008,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.068031,
+              0.958003,
+              0.193858
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(e)"
     },
@@ -3093,17 +3128,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "8PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 17,
-            "bbox": [
-              0.041997,
-              0.068031,
-              0.958003,
-              0.193858
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q13_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
@@ -3128,7 +3153,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.068031,
+              0.958003,
+              0.193858
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(f)"
     },

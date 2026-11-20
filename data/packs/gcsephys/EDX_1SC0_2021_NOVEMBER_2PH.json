@@ -1790,9 +1790,16 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "dependency_detected": {
+          "EDX_1SC0_2021_NOVEMBER_2PH_Q03_U03": "wording names (b)(i): \"in part (i)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_1SC0_2021_NOVEMBER_2PH_Q03_U03"
+      ]
     },
     {
       "question_id": "EDX_1SC0_2021_NOVEMBER_2PH_Q04_U01",

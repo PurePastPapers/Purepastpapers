@@ -91,7 +91,7 @@ test('GCSE part contexts hold the introduction and their own lead-in, never earl
     }
     for (const unit of units) {
       const url = unit.context?.stem_image_url;
-      if (!url || unit.provenance?.part_display !== 'refined' || !unit.provenance.context_includes_stem_image || unit.provenance.context_rows_from_full || unit.provenance.own_rows_from_full) continue;
+      if (!url || unit.provenance?.part_display !== 'refined' || !unit.provenance.context_includes_stem_image || unit.provenance.context_rows_from_full || unit.provenance.own_rows_from_full || unit.provenance.context_from_linked_part) continue; // the linked earlier part (link-dependencies.py), not an introduction
       const { height } = webpSize(asset(url).base64);
       // Lead-in regions are shown only below the introduction (rows above the first part),
       // so "3 (a) …" printed above "(i)" is not repeated (recut-from-full.py).

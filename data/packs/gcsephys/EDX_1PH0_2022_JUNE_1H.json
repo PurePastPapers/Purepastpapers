@@ -1766,7 +1766,17 @@
         "context_basis": "shared_stem",
         "qualification_code": "1PH0",
         "part_display": "refined",
-        "context_regions": [],
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.5360059391239792,
+              0.958003,
+              0.5760950259836675
+            ]
+          }
+        ],
         "context_includes_stem_image": "Q03_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
@@ -1804,9 +1814,19 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1PH0_2022_JUNE_1H_Q03_U02"
+        ],
+        "dependency_detected": {
+          "EDX_1PH0_2022_JUNE_1H_Q03_U02": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(a)(iii)"
+      "part_label": "(a)(iii)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2022_JUNE_1H_Q03_U02"
+      ]
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_1H_Q04_U01",
@@ -2956,7 +2976,8 @@
       "scheme_question_number": "5(a)(ii)",
       "context": {
         "full_question_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_full.webp",
-        "full_scheme_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_scheme.webp"
+        "full_scheme_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_scheme.webp",
+        "stem_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3031,7 +3052,17 @@
         "context_basis": "shared_stem",
         "qualification_code": "1PH0",
         "part_display": "refined",
-        "context_regions": [],
+        "context_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.06904231625835189,
+              0.958003,
+              0.21158129175946547
+            ]
+          }
+        ],
         "context_includes_stem_image": "Q05_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
@@ -3069,7 +3100,10 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1PH0_2022_JUNE_1H_Q05_U01"
+        ]
       },
       "part_label": "(a)(ii)"
     },
@@ -3119,7 +3153,8 @@
       "scheme_question_number": "5(a)(iii)",
       "context": {
         "full_question_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_full.webp",
-        "full_scheme_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_scheme.webp"
+        "full_scheme_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_scheme.webp",
+        "stem_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1H/Q05_U01.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3215,9 +3250,17 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_from_linked_part": "EDX_1PH0_2022_JUNE_1H_Q05_U01",
+        "dependency_detected": {
+          "EDX_1PH0_2022_JUNE_1H_Q05_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(a)(iii)"
+      "part_label": "(a)(iii)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2022_JUNE_1H_Q05_U01"
+      ]
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_1H_Q05_U04",
@@ -3930,7 +3973,7 @@
               0.041997,
               0.06904231625835189,
               0.958003,
-              0.5523385300668151
+              0.593170007423905
             ]
           }
         ],
@@ -3950,7 +3993,10 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1PH0_2022_JUNE_1H_Q06_U02"
+        ]
       },
       "part_label": "(b)(ii)"
     },

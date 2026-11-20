@@ -2,7 +2,7 @@
 // Requires Playwright. Run after `tools/cs/finalize.py --activate` (packs in the live index), with `npm start` serving.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
-const {reveal} = require('./browser-results.cjs'); // filters in a collapsed panel
+const {reveal, results} = require('./browser-results.cjs'); // filters in a collapsed panel
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -32,7 +32,7 @@ const units = packs.flatMap(p => p.questions);
       await page.waitForTimeout(250);
       return Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
     };
-    assert.equal(await count(), units.length, 'all units discoverable, demos hidden');
+    assert.equal(await count(), results(units), 'all units discoverable, demos hidden');
 
     // Qualification filter: AS H046 only. AUDIT_SKIP_QUALIFICATIONS=1 skips this step (and says
     // so) while the generic filter is missing from main (stale commit c353026).
@@ -40,9 +40,9 @@ const units = packs.flatMap(p => p.questions);
       console.log('SKIPPED: AS/A-level qualification filter (AUDIT_SKIP_QUALIFICATIONS)');
     } else {
       await (await reveal(page, '[data-multi="qualifications"][data-value="H046"]')).click();
-      assert.equal(await count(), units.filter(q => q.is_as).length, 'AS filter');
+      assert.equal(await count(), results(units, (q) => q.is_as), 'AS filter');
       await (await reveal(page, '[data-multi="qualifications"][data-value="H046"]')).click();
-      assert.equal(await count(), units.length);
+      assert.equal(await count(), results(units));
     }
 
     async function loaded(selector) {
@@ -56,7 +56,7 @@ const units = packs.flatMap(p => p.questions);
     // A paper whose parts carry a code-listing stem and part lead-ins: question, context and scheme pixels load.
     const insertPaper = 'OCR_H446_2024_JUNE_02';
     await (await reveal(page, '[data-filter="paper"]')).selectOption(insertPaper);
-    assert.equal(await count(), units.filter(q => q.paper_id === insertPaper).length);
+    assert.equal(await count(), results(units, (q) => q.paper_id === insertPaper));
     await loaded('.question-selected-part img');
     await loaded('[data-question-resources] img');
     assert(await page.getByText('Unscored context', {exact: false}).count() > 0);
@@ -66,7 +66,7 @@ const units = packs.flatMap(p => p.questions);
     // AS paper: printed introductions (question stems, part lead-ins) are labelled on their parts.
     const fieldPaper = 'OCR_H046_2024_JUNE_01';
     await (await reveal(page, '[data-filter="paper"]')).selectOption(fieldPaper);
-    assert.equal(await count(), units.filter(q => q.paper_id === fieldPaper).length);
+    assert.equal(await count(), results(units, (q) => q.paper_id === fieldPaper));
     assert(await page.locator('[data-question-resources] figcaption', {hasText: 'printed introduction'}).count() > 0, 'intro shown');
     await (await reveal(page, '[data-filter="paper"]')).selectOption('');
 

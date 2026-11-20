@@ -6736,9 +6736,16 @@
         "context_siblings_removed": "2026-11-20",
         "context_named_parts": [
           "EDX_1PH0_2022_JUNE_2F_Q09_U02"
-        ]
+        ],
+        "dependency_detected": {
+          "EDX_1PH0_2022_JUNE_2F_Q09_U02": "wording names (b): \"in part (b)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2022_JUNE_2F_Q09_U02"
+      ]
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_2F_Q09_U04",
@@ -7961,9 +7968,22 @@
           "EDX_1PH0_2022_JUNE_2F_Q10_U05",
           "EDX_1PH0_2022_JUNE_2F_Q10_U06"
         ],
-        "context_named_by": "printed wording \"The student repeats the investigation in part (b)\" (checked by eye, 2026-11-20)"
+        "context_named_by": "printed wording \"The student repeats the investigation in part (b)\" (checked by eye, 2026-11-20)",
+        "dependency_detected": {
+          "EDX_1PH0_2022_JUNE_2F_Q10_U03": "wording names (b)(i): \"in part (b)\"",
+          "EDX_1PH0_2022_JUNE_2F_Q10_U04": "wording names (b)(ii): \"in part (b)\"",
+          "EDX_1PH0_2022_JUNE_2F_Q10_U05": "wording names (b)(iii): \"in part (b)\"",
+          "EDX_1PH0_2022_JUNE_2F_Q10_U06": "wording names (b)(iv): \"in part (b)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2022_JUNE_2F_Q10_U03",
+        "EDX_1PH0_2022_JUNE_2F_Q10_U04",
+        "EDX_1PH0_2022_JUNE_2F_Q10_U05",
+        "EDX_1PH0_2022_JUNE_2F_Q10_U06"
+      ]
     }
   ],
   "build_signature": "6e9044317c6f9a7ace39989b470ce2d02b07a550abd2c5c22fc83ebe654a228e"

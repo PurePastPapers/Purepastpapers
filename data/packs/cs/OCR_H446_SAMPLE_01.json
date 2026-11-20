@@ -3281,7 +3281,9 @@
       },
       "scheme_scope": "part",
       "scheme_question_number": "7(b)",
-      "context": {},
+      "context": {
+        "stem_image_url": "assets/cs/OCR_H446_SAMPLE_01/Q07_a.webp"
+      },
       "provenance": {
         "review_status": "model_reviewed",
         "reviewer_type": "model",
@@ -3332,8 +3334,16 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "H446",
-        "extraction_version": "ocr-cs-layout-v3"
-      }
+        "extraction_version": "ocr-cs-layout-v3",
+        "context_from_linked_part": "OCR_H446_SAMPLE_01_Q07_a",
+        "dependency_detected": {
+          "OCR_H446_SAMPLE_01_Q07_a": "wording names (a): \"part (a)\""
+        },
+        "dependency_detected_on": "2026-11-20"
+      },
+      "depends_on_question_ids": [
+        "OCR_H446_SAMPLE_01_Q07_a"
+      ]
     },
     {
       "question_id": "OCR_H446_SAMPLE_01_Q07_c",

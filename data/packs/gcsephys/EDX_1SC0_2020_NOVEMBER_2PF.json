@@ -2672,6 +2672,15 @@
               0.958003,
               0.1544172234595397
             ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.2583518930957684,
+              0.958003,
+              0.4112843355605048
+            ]
           }
         ],
         "context_includes_stem_image": "Q04_stem.webp",
@@ -2711,9 +2720,19 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
+        ],
+        "dependency_detected": {
+          "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(iii)"
+      "part_label": "(b)(iii)",
+      "depends_on_question_ids": [
+        "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
+      ]
     },
     {
       "question_id": "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U05",
@@ -2895,9 +2914,16 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "dependency_detected": {
+          "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(iv)"
+      "part_label": "(b)(iv)",
+      "depends_on_question_ids": [
+        "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
+      ]
     },
     {
       "question_id": "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U06",
@@ -3071,9 +3097,16 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "dependency_detected": {
+          "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(v)"
+      "part_label": "(b)(v)",
+      "depends_on_question_ids": [
+        "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
+      ]
     },
     {
       "question_id": "EDX_1SC0_2020_NOVEMBER_2PF_Q05_U01",

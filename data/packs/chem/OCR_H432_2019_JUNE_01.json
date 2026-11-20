@@ -4113,7 +4113,8 @@
             "label": "Part 19(b)",
             "image_url": "assets/chem/OCR_H432_2019_JUNE_01/CTX_Q19_b.webp"
           }
-        ]
+        ],
+        "stem_image_url": "assets/chem/OCR_H432_2019_JUNE_01/Q19_b_ii.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -4165,8 +4166,16 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "H432",
-        "extraction_version": "ocr-chem-layout-v2"
-      }
+        "extraction_version": "ocr-chem-layout-v2",
+        "context_from_linked_part": "OCR_H432_2019_JUNE_01_Q19_b_ii",
+        "dependency_detected": {
+          "OCR_H432_2019_JUNE_01_Q19_b_ii": "wording names (b)(ii): \"the answer to (b)(ii)\""
+        },
+        "dependency_detected_on": "2026-11-20"
+      },
+      "depends_on_question_ids": [
+        "OCR_H432_2019_JUNE_01_Q19_b_ii"
+      ]
     },
     {
       "question_id": "OCR_H432_2019_JUNE_01_Q19_b_iv",

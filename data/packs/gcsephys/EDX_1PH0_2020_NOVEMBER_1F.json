@@ -4469,9 +4469,22 @@
           "EDX_1PH0_2020_NOVEMBER_1F_Q06_U02",
           "EDX_1PH0_2020_NOVEMBER_1F_Q06_U03",
           "EDX_1PH0_2020_NOVEMBER_1F_Q06_U05"
-        ]
+        ],
+        "dependency_detected": {
+          "EDX_1PH0_2020_NOVEMBER_1F_Q06_U01": "wording names (a)(i): \"in part (a)\"",
+          "EDX_1PH0_2020_NOVEMBER_1F_Q06_U02": "wording names (a)(ii): \"in part (a)\"",
+          "EDX_1PH0_2020_NOVEMBER_1F_Q06_U03": "wording names (a)(iii): \"in part (a)\"",
+          "EDX_1PH0_2020_NOVEMBER_1F_Q06_U05": "wording names (b)(ii): \"in part (b)(ii)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2020_NOVEMBER_1F_Q06_U01",
+        "EDX_1PH0_2020_NOVEMBER_1F_Q06_U02",
+        "EDX_1PH0_2020_NOVEMBER_1F_Q06_U03",
+        "EDX_1PH0_2020_NOVEMBER_1F_Q06_U05"
+      ]
     },
     {
       "question_id": "EDX_1PH0_2020_NOVEMBER_1F_Q07_U01",

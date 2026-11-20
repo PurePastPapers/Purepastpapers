@@ -1369,7 +1369,8 @@
             "label": "Part 2(b)",
             "image_url": "assets/cs/OCR_H446_2021_NOVEMBER_01/CTX_Q02_b.webp"
           }
-        ]
+        ],
+        "stem_image_url": "assets/cs/OCR_H446_2021_NOVEMBER_01/Q02_b_i.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1423,8 +1424,16 @@
           "1.4.1(c)"
         ],
         "qualification_code": "H446",
-        "extraction_version": "ocr-cs-layout-v3"
-      }
+        "extraction_version": "ocr-cs-layout-v3",
+        "context_from_linked_part": "OCR_H446_2021_NOVEMBER_01_Q02_b_i",
+        "dependency_detected": {
+          "OCR_H446_2021_NOVEMBER_01_Q02_b_i": "wording names (b)(i): \"your answer to part (i)\""
+        },
+        "dependency_detected_on": "2026-11-20"
+      },
+      "depends_on_question_ids": [
+        "OCR_H446_2021_NOVEMBER_01_Q02_b_i"
+      ]
     },
     {
       "question_id": "OCR_H446_2021_NOVEMBER_01_Q02_c",

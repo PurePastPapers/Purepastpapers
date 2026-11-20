@@ -1619,9 +1619,16 @@
         "context_siblings_removed": "2026-11-20",
         "context_named_parts": [
           "EDX_1MA1_2023_NOVEMBER_1H_Q09_U01"
-        ]
+        ],
+        "dependency_detected": {
+          "EDX_1MA1_2023_NOVEMBER_1H_Q09_U01": "wording names (a): \"in part (a)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(i)"
+      "part_label": "(b)(i)",
+      "depends_on_question_ids": [
+        "EDX_1MA1_2023_NOVEMBER_1H_Q09_U01"
+      ]
     },
     {
       "question_id": "EDX_1MA1_2023_NOVEMBER_1H_Q09_U03",

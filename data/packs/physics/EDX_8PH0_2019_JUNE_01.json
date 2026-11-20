@@ -1596,9 +1596,9 @@
             "page": 14,
             "bbox": [
               0.041994,
-              0.395762,
+              0.3956941351150705,
               0.958006,
-              0.509502
+              0.5092798812175204
             ]
           }
         ],
@@ -1626,9 +1626,32 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_8PH0_2019_JUNE_01_Q12_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041994,
+              0.395762,
+              0.958006,
+              0.509502
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19",
+        "dependency_detected": {
+          "EDX_8PH0_2019_JUNE_01_Q12_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_8PH0_2019_JUNE_01_Q12_U01"
+      ]
     },
     {
       "question_id": "EDX_8PH0_2019_JUNE_01_Q12_U03",
@@ -1734,26 +1757,7 @@
         "qualification_code": "8PH0",
         "part_display": "refined",
         "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
-        "context_regions": [
-          {
-            "page": 14,
-            "bbox": [
-              0.041994,
-              0.395762,
-              0.958006,
-              0.509502
-            ]
-          },
-          {
-            "page": 15,
-            "bbox": [
-              0.041994,
-              0.06908,
-              0.958006,
-              0.474867
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q12_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result",
@@ -1788,7 +1792,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041994,
+              0.395762,
+              0.958006,
+              0.509502
+            ]
+          },
+          {
+            "page": 15,
+            "bbox": [
+              0.041994,
+              0.06908,
+              0.958006,
+              0.474867
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -2417,17 +2443,7 @@
         "qualification_code": "8PH0",
         "part_display": "refined",
         "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
-        "context_regions": [
-          {
-            "page": 20,
-            "bbox": [
-              0.041994,
-              0.114405,
-              0.958006,
-              0.395762
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q14_stem.webp",
         "context_reasons": [
           "scenario (sphere)"
@@ -2452,7 +2468,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 20,
+            "bbox": [
+              0.041994,
+              0.114405,
+              0.958006,
+              0.395762
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -2686,9 +2715,9 @@
             "page": 22,
             "bbox": [
               0.041994,
-              0.480711,
+              0.48106904231625836,
               0.958006,
-              0.814804
+              0.8151447661469933
             ]
           }
         ],
@@ -2716,7 +2745,22 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_8PH0_2019_JUNE_01_Q15_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041994,
+              0.480711,
+              0.958006,
+              0.814804
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)"
     },

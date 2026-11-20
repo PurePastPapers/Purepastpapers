@@ -1295,7 +1295,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -1395,9 +1396,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.556778,
+              0.5567928730512249,
               0.958003,
-              0.614101
+              0.6139569413511508
             ]
           }
         ],
@@ -1425,7 +1426,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_9PH0_2020_OCTOBER_01_Q12_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.556778,
+              0.958003,
+              0.614101
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1536,7 +1553,8 @@
         "part_display": "refined",
         "context_regions": [],
         "context_includes_stem_image": "Q13_stem.webp",
-        "context_reasons": []
+        "context_reasons": [],
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -1653,14 +1671,27 @@
             "page": 10,
             "bbox": [
               0.041997,
+              0.6503340757238307,
+              0.958003,
+              0.7520415738678545
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q13_stem.webp",
+        "context_reasons": [],
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
               0.650189,
               0.958003,
               0.75226
             ]
           }
         ],
-        "context_includes_stem_image": "Q13_stem.webp",
-        "context_reasons": []
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)(i)"
     },
@@ -1768,18 +1799,41 @@
             "page": 10,
             "bbox": [
               0.041997,
-              0.650189,
+              0.6503340757238307,
               0.958003,
-              0.82143
+              0.8210838901262064
             ]
           }
         ],
         "context_includes_stem_image": "Q13_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
-        ]
+        ],
+        "context_named_parts": [
+          "EDX_9PH0_2020_OCTOBER_01_Q13_U02"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.650189,
+              0.958003,
+              0.82143
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19",
+        "dependency_detected": {
+          "EDX_9PH0_2020_OCTOBER_01_Q13_U02": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2020_OCTOBER_01_Q13_U02"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2020_OCTOBER_01_Q13_U04",
@@ -1884,17 +1938,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.75226,
-              0.958003,
-              0.82143
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q13_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
@@ -1919,7 +1963,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.75226,
+              0.958003,
+              0.82143
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -2034,7 +2091,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -2152,7 +2210,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -2392,14 +2451,26 @@
             "page": 15,
             "bbox": [
               0.041997,
+              0.06904231625835189,
+              0.958003,
+              0.09799554565701558
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q15_stem.webp",
+        "context_reasons": [],
+        "context_regions_refined": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
               0.069328,
               0.958003,
               0.097807
             ]
           }
         ],
-        "context_includes_stem_image": "Q15_stem.webp",
-        "context_reasons": []
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(i)"
     },
@@ -2516,14 +2587,26 @@
             "page": 15,
             "bbox": [
               0.041997,
+              0.06904231625835189,
+              0.958003,
+              0.09799554565701558
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q15_stem.webp",
+        "context_reasons": [],
+        "context_regions_refined": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
               0.069328,
               0.958003,
               0.097807
             ]
           }
         ],
-        "context_includes_stem_image": "Q15_stem.webp",
-        "context_reasons": []
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(ii)"
     },
@@ -2778,17 +2861,7 @@
         "context_basis": "independent",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.114441,
-              0.958003,
-              0.324098
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q16_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -2802,7 +2875,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.114441,
+              0.958003,
+              0.324098
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)(i)"
     },
@@ -2912,17 +2998,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.114441,
-              0.958003,
-              0.398055
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q16_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
@@ -2947,7 +3023,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.114441,
+              0.958003,
+              0.398055
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)(ii)"
     },
@@ -3065,7 +3154,12 @@
         "context_basis": "shared_stem",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [
+        "context_regions": [],
+        "context_includes_stem_image": "Q16_stem.webp",
+        "context_reasons": [
+          "earlier \"show that\" result"
+        ],
+        "context_regions_refined": [
           {
             "page": 16,
             "bbox": [
@@ -3085,10 +3179,8 @@
             ]
           }
         ],
-        "context_includes_stem_image": "Q16_stem.webp",
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ]
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)(iii)"
     },
@@ -3198,7 +3290,24 @@
         "context_basis": "shared_stem",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [
+        "context_regions": [],
+        "context_includes_stem_image": "Q16_stem.webp",
+        "context_reasons": [
+          "earlier \"show that\" result"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.023762,
+              0.521612,
+              0.976238,
+              0.690206
+            ]
+          }
+        ],
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
           {
             "page": 16,
             "bbox": [
@@ -3218,22 +3327,8 @@
             ]
           }
         ],
-        "context_includes_stem_image": "Q16_stem.webp",
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
-        "part_scheme_regions": [
-          {
-            "page": 16,
-            "bbox": [
-              0.023762,
-              0.521612,
-              0.976238,
-              0.690206
-            ]
-          }
-        ],
-        "part_scheme_check": "verified"
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -3460,9 +3555,9 @@
             "page": 21,
             "bbox": [
               0.041997,
-              0.069328,
+              0.06904231625835189,
               0.958003,
-              0.295108
+              0.29547141796585
             ]
           }
         ],
@@ -3488,7 +3583,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.295108
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(i)"
     },
@@ -3588,9 +3695,9 @@
             "page": 21,
             "bbox": [
               0.041997,
-              0.069328,
+              0.06904231625835189,
               0.958003,
-              0.391403
+              0.39123979213066074
             ]
           }
         ],
@@ -3618,9 +3725,32 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_9PH0_2020_OCTOBER_01_Q17_U02"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.391403
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19",
+        "dependency_detected": {
+          "EDX_9PH0_2020_OCTOBER_01_Q17_U02": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2020_OCTOBER_01_Q17_U02"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2020_OCTOBER_01_Q18_U01",
@@ -4006,17 +4136,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.619208,
-              0.958003,
-              0.661086
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q18_stem.webp",
         "context_reasons": [
           "scenario (particle)"
@@ -4041,7 +4161,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.619208,
+              0.958003,
+              0.661086
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },

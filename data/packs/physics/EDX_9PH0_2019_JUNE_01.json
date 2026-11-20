@@ -1308,9 +1308,9 @@
             "page": 9,
             "bbox": [
               0.041994,
-              0.06908,
+              0.06904231625835189,
               0.958006,
-              0.431395
+              0.43132887899034894
             ]
           }
         ],
@@ -1338,7 +1338,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_9PH0_2019_JUNE_01_Q11_U02"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041994,
+              0.06908,
+              0.958006,
+              0.431395
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -4543,9 +4559,9 @@
             "page": 21,
             "bbox": [
               0.041994,
-              0.572216,
+              0.5723830734966593,
               0.958006,
-              0.662438
+              0.6622123236822569
             ]
           }
         ],
@@ -4573,9 +4589,32 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_9PH0_2019_JUNE_01_Q17_U04"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041994,
+              0.572216,
+              0.958006,
+              0.662438
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19",
+        "dependency_detected": {
+          "EDX_9PH0_2019_JUNE_01_Q17_U04": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(e)"
+      "part_label": "(e)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2019_JUNE_01_Q17_U04"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2019_JUNE_01_Q17_U06",
@@ -4690,17 +4729,7 @@
         "qualification_code": "9PH0",
         "part_display": "refined",
         "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
-        "context_regions": [
-          {
-            "page": 21,
-            "bbox": [
-              0.041994,
-              0.572216,
-              0.958006,
-              0.662438
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q17_stem.webp",
         "context_reasons": [
           "earlier \"show that\" result"
@@ -4726,7 +4755,20 @@
           }
         ],
         "part_scheme_check": "verified",
-        "booklet_pages_trimmed": true
+        "booklet_pages_trimmed": true,
+        "context_regions_refined": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041994,
+              0.572216,
+              0.958006,
+              0.662438
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(f)"
     }

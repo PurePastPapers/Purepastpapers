@@ -85,7 +85,9 @@ test('parts that build on an earlier answer are held back behind it', () => {
   const gated = units.filter(q => q.depends_on_question_ids?.length);
   // Four more matched by mistake (graph or equation made in the same part) and were removed
   // by tools/parts/drop-false-dependencies.py; tools/chem/build.py now skips them.
-  assert.equal(gated.length, 3);
+  // tools/parts/link-dependencies.py adds links read from the printed wording (2026-11-20);
+  // the build's own links stay these three.
+  assert.equal(gated.filter(q => !q.provenance?.dependency_detected).length, 3);
   for (const q of gated) for (const id of q.depends_on_question_ids) {
     const earlier = byId.get(id);
     assert(earlier && earlier.paper_id === q.paper_id && earlier.question_number === q.question_number, q.question_id);

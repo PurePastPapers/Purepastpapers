@@ -1082,9 +1082,16 @@
         "context_siblings_removed": "2026-11-20",
         "context_named_parts": [
           "EDX_1SC0_2022_JUNE_2PH_Q02_U02"
-        ]
+        ],
+        "dependency_detected": {
+          "EDX_1SC0_2022_JUNE_2PH_Q02_U02": "wording names (b): \"in part (b)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_1SC0_2022_JUNE_2PH_Q02_U02"
+      ]
     },
     {
       "question_id": "EDX_1SC0_2022_JUNE_2PH_Q02_U04",
@@ -3102,7 +3109,7 @@
               0.041997,
               0.39346696362286565,
               0.958003,
-              0.4506310319227914
+              0.49072011878247956
             ]
           }
         ],
@@ -3134,9 +3141,19 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1SC0_2022_JUNE_2PH_Q04_U04"
+        ],
+        "dependency_detected": {
+          "EDX_1SC0_2022_JUNE_2PH_Q04_U04": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_1SC0_2022_JUNE_2PH_Q04_U04"
+      ]
     },
     {
       "question_id": "EDX_1SC0_2022_JUNE_2PH_Q05_U01",

@@ -2393,7 +2393,8 @@
       "scheme_question_number": "17(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_full.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_U01.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2483,9 +2484,17 @@
             538
           ]
         ],
-        "context_reviewed": "model review of the rendered question, 2026-11-20"
+        "context_reviewed": "model review of the rendered question, 2026-11-20",
+        "context_from_linked_part": "EDX_1MA1_2023_NOVEMBER_2H_Q17_U01",
+        "dependency_detected": {
+          "EDX_1MA1_2023_NOVEMBER_2H_Q17_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_1MA1_2023_NOVEMBER_2H_Q17_U01"
+      ]
     },
     {
       "question_id": "EDX_1MA1_2023_NOVEMBER_2H_Q17_U03",
@@ -2530,7 +2539,8 @@
       "scheme_question_number": "17(c)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_full.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2H/Q17_U02.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2638,9 +2648,17 @@
             1128
           ]
         ],
-        "context_reviewed": "model review of the rendered question, 2026-11-20"
+        "context_reviewed": "model review of the rendered question, 2026-11-20",
+        "context_from_linked_part": "EDX_1MA1_2023_NOVEMBER_2H_Q17_U02",
+        "dependency_detected": {
+          "EDX_1MA1_2023_NOVEMBER_2H_Q17_U02": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_1MA1_2023_NOVEMBER_2H_Q17_U02"
+      ]
     },
     {
       "question_id": "EDX_1MA1_2023_NOVEMBER_2H_Q18_U01",

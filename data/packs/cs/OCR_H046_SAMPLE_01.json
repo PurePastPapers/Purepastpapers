@@ -2174,7 +2174,8 @@
             "label": "Question 5",
             "image_url": "assets/cs/OCR_H046_SAMPLE_01/CTX_Q05.webp"
           }
-        ]
+        ],
+        "stem_image_url": "assets/cs/OCR_H046_SAMPLE_01/Q05_a_i.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2219,8 +2220,16 @@
           "2.2.1(a)"
         ],
         "qualification_code": "H046",
-        "extraction_version": "ocr-cs-layout-v3"
-      }
+        "extraction_version": "ocr-cs-layout-v3",
+        "context_from_linked_part": "OCR_H046_SAMPLE_01_Q05_a_i",
+        "dependency_detected": {
+          "OCR_H046_SAMPLE_01_Q05_a_i": "wording names (a)(i): \"part (i)\""
+        },
+        "dependency_detected_on": "2026-11-20"
+      },
+      "depends_on_question_ids": [
+        "OCR_H046_SAMPLE_01_Q05_a_i"
+      ]
     },
     {
       "question_id": "OCR_H046_SAMPLE_01_Q06_W",

@@ -326,9 +326,16 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "dependency_detected": {
+          "EDX_8MA0_2023_JUNE_21_Q01_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_8MA0_2023_JUNE_21_Q01_U01"
+      ]
     },
     {
       "question_id": "EDX_8MA0_2023_JUNE_21_Q02_U01",
@@ -419,9 +426,9 @@
             "page": 4,
             "bbox": [
               0.038345,
-              0.042289,
+              0.042316258351893093,
               0.961655,
-              0.509352
+              0.5092798812175204
             ]
           }
         ],
@@ -446,7 +453,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -539,9 +559,9 @@
             "page": 4,
             "bbox": [
               0.038345,
-              0.042289,
+              0.042316258351893093,
               0.961655,
-              0.509352
+              0.5092798812175204
             ]
           }
         ],
@@ -575,7 +595,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -668,18 +701,9 @@
             "page": 4,
             "bbox": [
               0.038345,
-              0.042289,
+              0.042316258351893093,
               0.961655,
-              0.509352
-            ]
-          },
-          {
-            "page": 5,
-            "bbox": [
-              0.038345,
-              0.123182,
-              0.961655,
-              0.177721
+              0.5092798812175204
             ]
           }
         ],
@@ -715,7 +739,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.038345,
+              0.123182,
+              0.961655,
+              0.177721
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -809,9 +855,9 @@
             "page": 4,
             "bbox": [
               0.038345,
-              0.042289,
+              0.042316258351893093,
               0.961655,
-              0.509352
+              0.5092798812175204
             ]
           }
         ],
@@ -845,7 +891,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.509352
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(d)"
     },
@@ -1121,9 +1180,9 @@
             "page": 10,
             "bbox": [
               0.038345,
-              0.042289,
+              0.042316258351893093,
               0.961655,
-              0.173675
+              0.17371937639198218
             ]
           }
         ],
@@ -1148,7 +1207,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.173675
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -1251,18 +1323,18 @@
             "page": 10,
             "bbox": [
               0.038345,
-              0.042289,
+              0.042316258351893093,
               0.961655,
-              0.173675
+              0.17371937639198218
             ]
           },
           {
             "page": 10,
             "bbox": [
               0.038345,
-              0.219253,
+              0.21900519673348182,
               0.961655,
-              0.269759
+              0.26948775055679286
             ]
           }
         ],
@@ -1298,7 +1370,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.173675
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.038345,
+              0.219253,
+              0.961655,
+              0.269759
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     }

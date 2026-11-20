@@ -324,17 +324,39 @@
             "page": 4,
             "bbox": [
               0.042017,
+              0.07201187824795843,
+              0.957983,
+              0.11210096510764662
+            ]
+          }
+        ],
+        "context_reasons": [
+          "earlier \"show that\" result"
+        ],
+        "context_named_parts": [
+          "EDX_8MA0_2018_JUNE_01_Q02_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 4,
+            "bbox": [
+              0.042017,
               0.071733,
               0.957983,
               0.112118
             ]
           }
         ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ]
+        "context_siblings_removed": "2026-11-20",
+        "dependency_detected": {
+          "EDX_8MA0_2018_JUNE_01_Q02_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(ii)"
+      "part_label": "(ii)",
+      "depends_on_question_ids": [
+        "EDX_8MA0_2018_JUNE_01_Q02_U01"
+      ]
     },
     {
       "question_id": "EDX_8MA0_2018_JUNE_01_Q03_U01",
@@ -592,9 +614,9 @@
             "page": 10,
             "bbox": [
               0.042017,
-              0.045131,
+              0.04528582034149963,
               0.957983,
-              0.289618
+              0.289532293986637
             ]
           }
         ],
@@ -619,7 +641,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.042017,
+              0.045131,
+              0.957983,
+              0.289618
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)"
     },
@@ -713,9 +747,9 @@
             "page": 10,
             "bbox": [
               0.042017,
-              0.045131,
+              0.04528582034149963,
               0.957983,
-              0.289618
+              0.289532293986637
             ]
           }
         ],
@@ -749,7 +783,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.042017,
+              0.045131,
+              0.957983,
+              0.289618
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)"
     },
@@ -929,9 +975,18 @@
             "page": 12,
             "bbox": [
               0.042017,
-              0.045131,
+              0.045252225519287835,
               0.957983,
-              0.620257
+              0.5534124629080118
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.042017,
+              0.594213649851632,
+              0.957983,
+              0.6201780415430267
             ]
           }
         ],
@@ -967,7 +1022,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_stem_from_parts": [
+          "EDX_8MA0_2018_JUNE_01_Q06_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 12,
+            "bbox": [
+              0.042017,
+              0.045131,
+              0.957983,
+              0.620257
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1062,9 +1133,9 @@
             "page": 12,
             "bbox": [
               0.042017,
-              0.668899,
+              0.6691394658753709,
               0.957983,
-              0.754324
+              0.7544510385756676
             ]
           }
         ],
@@ -1100,7 +1171,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 12,
+            "bbox": [
+              0.042017,
+              0.668899,
+              0.957983,
+              0.754324
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(c)"
     },
@@ -1299,13 +1382,25 @@
             "page": 18,
             "bbox": [
               0.042017,
+              0.045252225519287835,
+              0.957983,
+              0.24554896142433236
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "context_regions_refined": [
+          {
+            "page": 18,
+            "bbox": [
+              0.042017,
               0.045131,
               0.957983,
               0.245694
             ]
           }
         ],
-        "context_reasons": []
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)–(b)"
     },
@@ -1416,9 +1511,9 @@
             "page": 18,
             "bbox": [
               0.042017,
-              0.045131,
+              0.045252225519287835,
               0.957983,
-              0.188743
+              0.1884272997032641
             ]
           }
         ],
@@ -1452,7 +1547,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 18,
+            "bbox": [
+              0.042017,
+              0.045131,
+              0.957983,
+              0.188743
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(c)"
     },
@@ -1554,9 +1661,9 @@
             "page": 22,
             "bbox": [
               0.042017,
-              0.045131,
+              0.04528582034149963,
               0.957983,
-              0.09303
+              0.09279881217520415
             ]
           }
         ],
@@ -1581,7 +1688,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 22,
+            "bbox": [
+              0.042017,
+              0.045131,
+              0.957983,
+              0.09303
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)"
     },
@@ -1686,16 +1805,31 @@
             "page": 22,
             "bbox": [
               0.042017,
-              0.045131,
+              0.04528582034149963,
               0.957983,
-              0.138138
+              0.13808463251670378
             ]
           }
         ],
         "context_reasons": [
           "builds on the previous answer",
           "earlier \"show that\" result"
-        ]
+        ],
+        "context_named_parts": [
+          "EDX_8MA0_2018_JUNE_01_Q09_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 22,
+            "bbox": [
+              0.042017,
+              0.045131,
+              0.957983,
+              0.138138
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)–(c)",
       "depends_on_question_ids": [
@@ -2101,9 +2235,9 @@
             "page": 32,
             "bbox": [
               0.042017,
-              0.068076,
+              0.06829992576095026,
               0.957983,
-              0.214903
+              0.214550853749072
             ]
           }
         ],
@@ -2139,9 +2273,32 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_named_parts": [
+          "EDX_8MA0_2018_JUNE_01_Q12_U01"
+        ],
+        "context_regions_refined": [
+          {
+            "page": 32,
+            "bbox": [
+              0.042017,
+              0.068076,
+              0.957983,
+              0.214903
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_recut_from_full": "2026-11-19",
+        "dependency_detected": {
+          "EDX_8MA0_2018_JUNE_01_Q12_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_8MA0_2018_JUNE_01_Q12_U01"
+      ]
     },
     {
       "question_id": "EDX_8MA0_2018_JUNE_01_Q13_U01",
@@ -2345,6 +2502,27 @@
             "page": 40,
             "bbox": [
               0.042017,
+              0.045252225519287835,
+              0.957983,
+              0.12685459940652818
+            ]
+          },
+          {
+            "page": 40,
+            "bbox": [
+              0.042017,
+              0.1357566765578635,
+              0.957983,
+              0.19213649851632048
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "context_regions_refined": [
+          {
+            "page": 40,
+            "bbox": [
+              0.042017,
               0.045131,
               0.957983,
               0.126965
@@ -2360,7 +2538,7 @@
             ]
           }
         ],
-        "context_reasons": []
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)"
     },
@@ -2474,18 +2652,18 @@
             "page": 40,
             "bbox": [
               0.042017,
-              0.045131,
+              0.045252225519287835,
               0.957983,
-              0.126965
+              0.12685459940652818
             ]
           },
           {
             "page": 40,
             "bbox": [
               0.042017,
-              0.238087,
+              0.2381305637982196,
               0.957983,
-              0.263027
+              0.263353115727003
             ]
           }
         ],
@@ -2539,7 +2717,28 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 40,
+            "bbox": [
+              0.042017,
+              0.045131,
+              0.957983,
+              0.126965
+            ]
+          },
+          {
+            "page": 40,
+            "bbox": [
+              0.042017,
+              0.238087,
+              0.957983,
+              0.263027
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)"
     },

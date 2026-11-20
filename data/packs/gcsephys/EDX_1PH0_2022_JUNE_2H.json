@@ -1477,9 +1477,16 @@
         "context_siblings_removed": "2026-11-20",
         "context_named_parts": [
           "EDX_1PH0_2022_JUNE_2H_Q03_U02"
-        ]
+        ],
+        "dependency_detected": {
+          "EDX_1PH0_2022_JUNE_2H_Q03_U02": "wording names (b): \"in part (b)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2022_JUNE_2H_Q03_U02"
+      ]
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_2H_Q03_U04",
@@ -2891,9 +2898,22 @@
           "EDX_1PH0_2022_JUNE_2H_Q04_U05",
           "EDX_1PH0_2022_JUNE_2H_Q04_U06"
         ],
-        "context_named_by": "printed wording \"The student repeats the investigation in part (b)\" (checked by eye, 2026-11-20)"
+        "context_named_by": "printed wording \"The student repeats the investigation in part (b)\" (checked by eye, 2026-11-20)",
+        "dependency_detected": {
+          "EDX_1PH0_2022_JUNE_2H_Q04_U03": "wording names (b)(i): \"in part (b)\"",
+          "EDX_1PH0_2022_JUNE_2H_Q04_U04": "wording names (b)(ii): \"in part (b)\"",
+          "EDX_1PH0_2022_JUNE_2H_Q04_U05": "wording names (b)(iii): \"in part (b)\"",
+          "EDX_1PH0_2022_JUNE_2H_Q04_U06": "wording names (b)(iv): \"in part (b)\""
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2022_JUNE_2H_Q04_U03",
+        "EDX_1PH0_2022_JUNE_2H_Q04_U04",
+        "EDX_1PH0_2022_JUNE_2H_Q04_U05",
+        "EDX_1PH0_2022_JUNE_2H_Q04_U06"
+      ]
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_2H_Q05_U01",
@@ -4599,6 +4619,15 @@
               0.958003,
               0.6406829992576095
             ]
+          },
+          {
+            "page": 19,
+            "bbox": [
+              0.041997,
+              0.06904231625835189,
+              0.958003,
+              0.10987379361544172
+            ]
           }
         ],
         "context_includes_stem_image": "Q06_stem.webp",
@@ -4638,7 +4667,10 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1PH0_2022_JUNE_2H_Q06_U03"
+        ]
       },
       "part_label": "(b)(iii)"
     },
@@ -5545,7 +5577,7 @@
               0.041997,
               0.39346696362286565,
               0.958003,
-              0.4506310319227914
+              0.49072011878247956
             ]
           }
         ],
@@ -5577,9 +5609,19 @@
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1PH0_2022_JUNE_2H_Q07_U04"
+        ],
+        "dependency_detected": {
+          "EDX_1PH0_2022_JUNE_2H_Q07_U04": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_1PH0_2022_JUNE_2H_Q07_U04"
+      ]
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_2H_Q08_U01",

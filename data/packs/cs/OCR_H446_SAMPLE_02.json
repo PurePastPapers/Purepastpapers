@@ -3335,7 +3335,8 @@
             "label": "Part 10(d)",
             "image_url": "assets/cs/OCR_H446_SAMPLE_02/CTX_Q10_d.webp"
           }
-        ]
+        ],
+        "stem_image_url": "assets/cs/OCR_H446_SAMPLE_02/Q10_d_i.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3378,8 +3379,16 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "H446",
-        "extraction_version": "ocr-cs-layout-v3"
-      }
+        "extraction_version": "ocr-cs-layout-v3",
+        "context_from_linked_part": "OCR_H446_SAMPLE_02_Q10_d_i",
+        "dependency_detected": {
+          "OCR_H446_SAMPLE_02_Q10_d_i": "wording names (d)(i): \"part (i)\""
+        },
+        "dependency_detected_on": "2026-11-20"
+      },
+      "depends_on_question_ids": [
+        "OCR_H446_SAMPLE_02_Q10_d_i"
+      ]
     },
     {
       "question_id": "OCR_H446_SAMPLE_02_Q10_d_iii",

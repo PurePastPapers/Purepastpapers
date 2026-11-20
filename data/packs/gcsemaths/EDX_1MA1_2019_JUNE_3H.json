@@ -2451,7 +2451,8 @@
       "scheme_question_number": "18(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2019_JUNE_3H/Q18_full.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2019_JUNE_3H/Q18_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2019_JUNE_3H/Q18_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2019_JUNE_3H/Q18_U01.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2541,9 +2542,17 @@
             1201
           ]
         ],
-        "context_reviewed": "model review of the rendered question, 2026-11-20"
+        "context_reviewed": "model review of the rendered question, 2026-11-20",
+        "context_from_linked_part": "EDX_1MA1_2019_JUNE_3H_Q18_U01",
+        "dependency_detected": {
+          "EDX_1MA1_2019_JUNE_3H_Q18_U01": "uses the value of an earlier \"Show that\" part"
+        },
+        "dependency_detected_on": "2026-11-20"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_1MA1_2019_JUNE_3H_Q18_U01"
+      ]
     },
     {
       "question_id": "EDX_1MA1_2019_JUNE_3H_Q19_U01",
