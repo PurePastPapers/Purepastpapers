@@ -258,7 +258,6 @@ export async function mount(element, context) {
   if (!['any', 'all'].includes(state.focusMode)) state.focusMode = 'any';
   if (!['primary', 'primary_and_crossover'].includes(state.focusScope)) state.focusScope = 'primary';
   state.sampleMode = 'all';
-  if (!user) state.learnedOnly = false;
   state.page = Math.max(1, Math.floor(Number(state.page) || 1));
   if (!SOURCE_CHOICES.some((choice) => choice.id === state.source && (!choice.feature || isEnabled(choice.feature)))) state.source = 'official';
 
@@ -290,9 +289,10 @@ export async function mount(element, context) {
     }
   }
   // Whether "Only topics I've covered" is on for one topic view. Automatic means
-  // on as soon as the student has ticked something in that view.
+  // on as soon as the student has ticked something in that view. Guests can tick topics too
+  // (kept for the visit), so the switch works for them as well as for signed-in students.
   const hasLearning = (textbookView) => (textbookView ? textbooks.ids : subjectLeaves).some((id) => learned.has(id));
-  const coveredFor = (textbookView) => Boolean(user) && (state.learnedOnly === null ? hasLearning(textbookView) : state.learnedOnly);
+  const coveredFor = (textbookView) => (state.learnedOnly === null ? hasLearning(textbookView) : state.learnedOnly);
   // The test's topic list is a draft: covered topics when the switch is on, every topic when off.
   function seedTestFocus() {
     state.testFocus = coveredFor(false) ? subjectLeaves.filter((id) => learned.has(id)) : [...subjectLeaves];
@@ -480,7 +480,6 @@ export async function mount(element, context) {
 
   // The "Only topics I've covered" switch shown on the filter bar and the test builder.
   function coveredSwitch(builder) {
-    if (!user) return '';
     const on = coveredOnly();
     const ticked = hasLearning(textbookMode());
     const hint = !ticked
@@ -511,7 +510,7 @@ export async function mount(element, context) {
       ${topicOrganisationControl(state.topicOrganisation, {available: Boolean(textbooks)})}
       <p class="field__hint">${textbookMode() ? `Book numbers follow your supplied contents pages.${subject.textbook_example ? ` ${subject.textbook_example}` : ''}` : 'These are official exam-board references; textbook chapter numbers are separate.'}</p>
       ${curriculum.years.length ? html`<div data-curriculum></div>` : ''}
-      ${browser && user && coveredOnly() ? html`<p class="field__hint">Showing the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'spec point')} you’ve covered. Untick any you want to leave out. Turn off <b>Only topics I’ve covered</b> to see every topic. <a href="${links.subject(subjectId)}">Edit covered topics</a></p>` : ''}
+      ${browser && coveredOnly() ? html`<p class="field__hint">Showing the ${plural(learnedCount, textbookMode() ? 'textbook subsection' : 'spec point')} you’ve covered. Untick any you want to leave out. Turn off <b>Only topics I’ve covered</b> to see every topic. <a href="${links.subject(subjectId)}">Edit covered topics</a></p>` : ''}
       <div class="stack stack--sm" data-topic-picker>
         <p class="small muted" data-focus-summary>${focusSummary(browser)}</p>
         <div data-selected-points>${selectedPoints()}</div>
@@ -629,7 +628,7 @@ export async function mount(element, context) {
         <h2 class="builder__title">Topics</h2>
         <button type="button" class="btn btn--sm filter-reset" data-reset-filters>Reset filters</button>
         ${coveredSwitch(true)}
-        <p class="hand builder__note">${user && coveredOnly() ? 'Starts with the topics you’ve covered. Add or remove topics below for this test only; your saved topics won’t change.' : 'Starts with every topic. Add or remove topics below for this test only.'}</p>
+        <p class="hand builder__note">${coveredOnly() ? 'Starts with the topics you’ve covered. Add or remove topics below for this test only; your saved topics won’t change.' : 'Starts with every topic. Add or remove topics below for this test only.'}</p>
         <div class="stack">${topicsControl()} ${metadataControls()} ${sourceControl()}</div>
       </div>
       <fieldset class="card ruled builder__card tilt-1">
@@ -1234,7 +1233,7 @@ export async function mount(element, context) {
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
     const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, goes: state.goes, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
-    state = { ...defaults(), ...(user ? {} : { learnedOnly: false }), ...kept, tier: tierPref, tierPref };
+    state = { ...defaults(), ...kept, tier: tierPref, tierPref };
     if (tiered && (readTierOverride() ?? tierPref) !== tierPref) {
       // Reset returns to the saved tier; its spec points need the page drawn again.
       writeTierOverride(null);
