@@ -31,26 +31,36 @@ const testOnly='TB_MATH_P1_2.1';
     const tree=()=>page.locator('[data-tree]');
     assert(await tree().isVisible(),'topic checklist opens by default');
     assert(await page.locator('[data-topic-organisation="textbook"]').isChecked());
-    assert.equal(await page.locator('[data-point]').count(),251);
+    // "Topics I've covered" is on by default (97a9048): the checklist holds the learned
+    // subsections, all chosen.
+    assert(await page.locator('[data-covered]').isChecked(),'covered topics by default');
+    assert.equal(await page.locator('[data-point]').count(),2);
     assert(await page.locator(`[data-point="${learnedCircle}"]`).isChecked());
     assert(await page.locator(`[data-point="${learnedExtra}"]`).isChecked());
-    assert.equal(await page.locator('[data-tree-count]').innerText(),'2 of 251 chosen');
+    assert.equal(await page.locator('[data-tree-count]').innerText(),'2 of 2 chosen');
 
     await page.locator('[data-toggle-tree]').click();
     assert(await tree().isHidden(),'the checklist can be closed');
     await page.locator('[data-toggle-tree]').click();
     assert(await tree().isVisible(),'the checklist can be reopened');
 
-    await page.locator('[data-tree-search]').fill('6.1 pure1');
-    await page.locator(`[data-point="${learnedExtra}"]`).uncheck();
-    assert.equal(await page.locator('[data-tree-count]').innerText(),'1 of 251 chosen');
+    // Switched off, every subsection is offered (and chosen); the test can then be narrowed
+    // to a learned subsection plus one not yet learned.
+    await page.locator('[data-covered]').uncheck({force:true});
+    await page.waitForFunction(()=>document.querySelectorAll('[data-point]').length===251);
+    assert.equal(await page.locator('[data-tree-count]').innerText(),'251 of 251 chosen');
+    await page.locator('[data-tree-bulk="none"]').click();
+    assert.equal(await page.locator('[data-tree-count]').innerText(),'0 of 251 chosen');
+    await page.locator('[data-tree-search]').fill('6.2 pure1');
+    await page.locator(`[data-point="${learnedCircle}"]`).check();
     await page.locator('[data-tree-search]').fill('2.1 pure1');
     await page.locator(`[data-point="${testOnly}"]`).check();
+    assert.equal(await page.locator('[data-tree-count]').innerText(),'2 of 251 chosen');
     assert.deepEqual(await page.evaluate(async()=>{
       const key=Object.keys(localStorage).find(item=>item.includes(':practice:'));
       const state=JSON.parse(localStorage.getItem(key));
       return [...state.testTextbookFocus].sort();
-    }),[learnedCircle,testOnly].sort(),'test scope stores the learned subset plus test-only additions');
+    }),[learnedCircle,testOnly].sort(),'test scope stores the chosen learned subsection plus a test-only one');
 
     const after=await page.evaluate(async()=>{
       const p=(await import('/js/data/api.js')).getProgress();
@@ -78,9 +88,11 @@ const testOnly='TB_MATH_P1_2.1';
     assert.equal(await page.locator(`[data-point="${learnedExtra}"]`).isChecked(),false);
     for(const width of [320,390,768,1440]) {
       await page.setViewportSize({width,height:1000});
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width,`no horizontal overflow at ${width}px`);
     }
     assert.deepEqual(errors,[]);
-    console.log('Test builder: preselect learned textbook subsections; open/close checklist; per-test edits persist; saved learning unchanged: PASS');
+    console.log('Test builder: covered subsections by default, all on switch-off; open/close checklist; per-test edits persist; saved learning unchanged: PASS');
   } finally {await browser.close()}
 })().catch(error=>{console.error(error);process.exit(1)});

@@ -3,6 +3,7 @@
 // or against the deployed site with AUDIT_URL=https://purepastpapers.com (fresh profile; progress is browser-local).
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {results, allTopics, reveal, pickMark} = require('./browser-results.cjs'); // linked parts are one result
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -11,8 +12,8 @@ const root = path.join(__dirname, '..');
 const read = file => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
 const packs = read('data/packs/index.json').packs.filter(p => p.file.startsWith('chem/')).map(p => read('data/packs/' + p.file));
 const units = packs.flatMap(p => p.questions);
-const asUnits = units.filter(q => q.is_as).length;
-const year13 = units.filter(q => q.introduced_year === 13).length;
+const asUnits = results(units, (q) => q.is_as);
+const year13 = results(units, (q) => q.introduced_year === 13);
 
 (async () => {
   assert.equal(packs.length, 52, 'Chemistry packs are not all active in data/packs/index.json');
@@ -21,7 +22,7 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -30,6 +31,7 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
+    await allTopics(page);
     // Filters sit in popovers: open "More" (qualification, year, series, paper) before using its controls.
     const pop = async key => {
       if (!(await page.locator(`[data-section="fpop-${key}"]`).evaluate(el => el.open))) await page.locator(`[data-section="fpop-${key}"] > summary`).click();
@@ -39,12 +41,12 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
       await page.waitForTimeout(250);
       return Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
     };
-    assert.equal(await count(), units.length, 'all units discoverable, demos hidden');
+    assert.equal(await count(), results(units), 'all units discoverable, demos hidden');
 
     // Qualification chips and content-year logic (AS in Year 12 and cumulative Year 13; "Year 13 topics only").
     await more();
     assert.equal(await page.locator('[data-multi="qualifications"][data-value="H432"]').count(), 1);
-    await page.locator('[data-multi="qualifications"][data-value="H032"]').click();
+    await (await reveal(page, '[data-multi="qualifications"][data-value="H032"]')).click();
     assert.equal(await count(), asUnits, 'AS filter');
     await pop('topics'); await page.locator('[data-curriculum-year]').selectOption('13');
     assert.equal(await count(), asUnits, 'AS stays in the cumulative Year 13 pool');
@@ -57,7 +59,7 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     assert.equal(await count(), year13, 'Year 13 only');
     await pop('topics'); await page.locator('[data-year13-only]').uncheck();
     await pop('topics'); await page.locator('[data-curriculum-year]').selectOption('12');
-    assert.equal(await count(), units.length - year13, 'Year 12 pool');
+    assert.equal(await count(), results(units, (q) => q.introduced_year !== 13), 'Year 12 pool');
     await page.locator('[data-reset-filters]').click();
 
     async function loaded(selector) {
@@ -72,8 +74,8 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     const contextPaper = packs.find(p => p.questions.some(q => (q.context.intros || []).length && !p.papers[0].is_official_sample)).papers[0].paper_id;
     await page.locator('[data-reset-filters]').click();
     await more();
-    await page.locator('[data-filter="paper"]').selectOption(contextPaper);
-    assert.equal(await count(), units.filter(q => q.paper_id === contextPaper).length);
+    await (await reveal(page, '[data-filter="paper"]')).selectOption(contextPaper);
+    assert.equal(await count(), results(units, (q) => q.paper_id === contextPaper));
     await loaded('.question-selected-part img');
     await loaded('[data-question-resources] img');
     assert(await page.getByText('Unscored context', {exact: false}).count() > 0);
@@ -82,13 +84,23 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     await loaded('.ms img');
 
     // A deliberate zero survives reload.
-    await page.locator('[data-mark]').first().selectOption('0');
+    await pickMark(page, 0); // mark picker, not a dropdown
+    const markedId = await page.locator('[data-card]').first().getAttribute('data-card');
+    const zeros = () => page.evaluate(async (id) => ((await import('/js/data/api.js')).getProgress().question_attempts || []).filter((a) => a.question_id === id && a.marks_awarded === 0).length, markedId);
+    const zerosBefore = await zeros();
     await page.locator('[data-save-mark]').first().click();
-    await page.locator('[data-mark-confirmation]:visible').waitFor();
+    // an account that has tried the question before is asked whether to change that attempt (560c827)
+    const fresh = page.getByRole('button', {name: 'Start a new attempt'});
+    if (await fresh.waitFor({timeout: 2000}).then(() => true, () => false)) {
+      await fresh.click();
+      await pickMark(page, 0);
+      await page.locator('[data-save-mark]').first().click();
+    }
     await page.waitForTimeout(1400);
     await page.reload();
     await page.waitForSelector('[data-reset-filters]');
-    assert.equal(await page.locator('[data-mark]').first().inputValue(), '0');
+    // every attempt is kept (560c827): the zero is saved as its own attempt and survives the reload
+    assert.equal(await zeros(), zerosBefore + 1, 'a deliberate zero is saved');
     await page.locator('[data-reset-filters]').click();
 
     // Official sample paper keeps its distinct label.
@@ -101,6 +113,8 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
       await page.waitForTimeout(200);
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `overflow at ${width}`);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/chem-${width}.png`});
     }

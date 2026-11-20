@@ -84,6 +84,8 @@ const SINGLE = ['EDX_ALEVEL_HIST_9HI0', 'AQA_ALEVEL_POL_7152', 'EDX_GCSE_MATH_1M
     for (const id of ['EDX_ALEVEL_BIOL_9BN0', 'EDX_ALEVEL_PHYS_9PH0']) {
       await page.goto(`${base}/#/papers?subject=${id}`);
       await page.waitForSelector('[data-list] .paper-card');
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `${id} overflows at ${width}`);
     }
     if (width === 390) await page.screenshot({ path: `${out}/labels-biology-390.png` });

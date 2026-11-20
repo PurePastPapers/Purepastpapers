@@ -1127,6 +1127,8 @@
 .qgroup__lead { margin-bottom: 6px; }
 .qgroup__foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 22px; padding-top: 16px; border-top: 2px solid var(--ink); }
 .qgroup__foot .form-error, .qgroup__foot [data-mark-confirmation] { flex-basis: 100%; margin: 0; }
+/* "Show mark scheme for all parts" is wider than a 320 px phone's card: let the label wrap. */
+.qgroup__foot .btn { white-space: normal; max-width: 100%; text-align: center; }
 .qgroup__total { font-size: 18px; margin: 0; }
 .qgroup__total b { font-size: 22px; }
 .qgroup__lockparts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }

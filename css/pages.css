@@ -1945,6 +1945,12 @@
   z-index: 30;
   padding: 10px 0 12px;
 }
+/* The backdrop runs 100vw either side so it reaches the screen edges; the runner view
+   (always full width) clips it so the page never scrolls sideways. clip, not hidden: a
+   scroll container would stop .runner__top sticking. */
+.view--runner {
+  overflow-x: clip;
+}
 .runner__top::before {
   content: '';
   position: absolute;

@@ -3,6 +3,7 @@
 // source pixels, and the page fits at phone, tablet and desktop widths.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {results, allTopics} = require('./browser-results.cjs'); // linked parts are one result
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -15,14 +16,14 @@ const allPacks = read('data/packs/index.json').packs.filter(p => subjects.includ
 async function check(browser, subject) {
   const packs = allPacks.filter(p => p.questions[0].subject_id === subject);
   const units = packs.flatMap(p => p.questions);
-  const foundation = units.filter(q => q.tier === 'Foundation').length;
-  const higher = units.filter(q => q.tier === 'Higher').length;
-  assert.equal(foundation + higher, units.length);
+  const foundation = results(units, (q) => q.tier === 'Foundation');
+  const higher = results(units, (q) => q.tier === 'Higher');
+  assert.equal(units.filter(q => q.tier === 'Foundation' || q.tier === 'Higher').length, units.length);
   {
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -34,6 +35,7 @@ async function check(browser, subject) {
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
+    await allTopics(page);
     const count = async () => Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
     // The visible Tier control (2026-11-19): Both tiers, then each tier on its own.
     const pickTier = async value => {
@@ -42,7 +44,7 @@ async function check(browser, subject) {
       await page.waitForSelector('[data-output] [role="status"]');
     };
     await pickTier('');
-    assert.equal(await count(), units.length);
+    assert.equal(await count(), results(units));
     await pickTier('Foundation');
     assert.equal(await count(), foundation);
     await pickTier('Higher');
@@ -61,6 +63,8 @@ async function check(browser, subject) {
     await loaded('.ms img');
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
       // Known, pre-existing: at 320px the long subject chip "GCSE Chemistry (Triple / Separate Science)"
       // runs 12px past the edge. Fixing it is a UI change awaiting approval, so it is reported, not failed.

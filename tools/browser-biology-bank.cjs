@@ -2,6 +2,7 @@
 // and a running server (npm start). Counts come from the committed packs.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {results, allTopics, reveal, pickMark} = require('./browser-results.cjs'); // linked parts are one result
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -10,8 +11,8 @@ const root = path.join(__dirname, '..');
 const read = file => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
 const packs = read('data/packs/index.json').packs.filter(p => p.file.startsWith('biology/')).map(p => read('data/packs/' + p.file));
 const units = packs.flatMap(p => p.questions);
-const asUnits = units.filter(q => q.is_as).length;
-const year13 = units.filter(q => q.introduced_year === 13).length;
+const asUnits = results(units, (q) => q.is_as);
+const year13 = results(units, (q) => q.introduced_year === 13);
 const articlePaper = 'EDX_9BN0_2023_JUNE_03';
 
 (async () => {
@@ -21,7 +22,7 @@ const articlePaper = 'EDX_9BN0_2023_JUNE_03';
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -30,8 +31,9 @@ const articlePaper = 'EDX_9BN0_2023_JUNE_03';
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
+    await allTopics(page);
     const count = async () => Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
-    assert.equal(await count(), units.length);
+    assert.equal(await count(), results(units));
 
     // Generated seed placeholders are hidden; demo records remain only for historical lookups.
     const catalogue = await page.evaluate(async id => {
@@ -46,19 +48,19 @@ const articlePaper = 'EDX_9BN0_2023_JUNE_03';
 
     // Qualification chips and content-year logic (Year 13 cumulative; "Year 13 topics only").
     assert.equal(await page.locator('[data-multi="qualifications"][data-value="9BN0"]').count(), 1);
-    await page.locator('[data-multi="qualifications"][data-value="8BN0"]').click();
+    await (await reveal(page, '[data-multi="qualifications"][data-value="8BN0"]')).click();
     assert.equal(await count(), asUnits);
-    await page.locator('[data-curriculum-year]').selectOption('13');
+    await (await reveal(page, '[data-curriculum-year]')).selectOption('13');
     assert.equal(await count(), asUnits);
     await page.locator('[data-year13-only]').check();
     assert.equal(await count(), 0);
     await page.locator('[data-reset-filters]').click();
-    await page.locator('[data-curriculum-year]').selectOption('13');
+    await (await reveal(page, '[data-curriculum-year]')).selectOption('13');
     await page.locator('[data-year13-only]').check();
     assert.equal(await count(), year13);
     await page.locator('[data-year13-only]').uncheck();
-    await page.locator('[data-curriculum-year]').selectOption('12');
-    assert.equal(await count(), units.length - year13);
+    await (await reveal(page, '[data-curriculum-year]')).selectOption('12');
+    assert.equal(await count(), results(units, (q) => q.introduced_year !== 13));
     await page.locator('[data-reset-filters]').click();
 
     // Expanded questions, lazily resolved lossless pixels and the scheme on request.
@@ -77,16 +79,26 @@ const articlePaper = 'EDX_9BN0_2023_JUNE_03';
     await loaded('.ms img');
 
     // A deliberate zero survives reload.
-    await page.locator('[data-mark]').first().selectOption('0');
+    await pickMark(page, 0); // mark picker, not a dropdown
+    const markedId = await page.locator('[data-card]').first().getAttribute('data-card');
+    const zeros = () => page.evaluate(async (id) => ((await import('/js/data/api.js')).getProgress().question_attempts || []).filter((a) => a.question_id === id && a.marks_awarded === 0).length, markedId);
+    const zerosBefore = await zeros();
     await page.locator('[data-save-mark]').first().click();
-    await page.locator('[data-mark-confirmation]:visible').waitFor();
+    // an account that has tried the question before is asked whether to change that attempt (560c827)
+    const fresh = page.getByRole('button', {name: 'Start a new attempt'});
+    if (await fresh.waitFor({timeout: 2000}).then(() => true, () => false)) {
+      await fresh.click();
+      await pickMark(page, 0);
+      await page.locator('[data-save-mark]').first().click();
+    }
     await page.waitForTimeout(1400);
     await page.reload();
     await page.waitForSelector('[data-reset-filters]');
-    assert.equal(await page.locator('[data-mark]').first().inputValue(), '0');
+    // every attempt is kept (560c827): the zero is saved as its own attempt and survives the reload
+    assert.equal(await zeros(), zerosBefore + 1, 'a deliberate zero is saved');
 
     // Paper 3 pre-release article is available as unscored context.
-    await page.locator('[data-filter="paper"]').selectOption(articlePaper);
+    await (await reveal(page, '[data-filter="paper"]')).selectOption(articlePaper);
     const articleToggle = page.locator('[data-article-context] summary').first();
     for (let i = 0; i < 6 && !(await articleToggle.count()); i++) {
       const next = page.locator('[data-page-next], [data-next-page]').first();
@@ -101,6 +113,8 @@ const articlePaper = 'EDX_9BN0_2023_JUNE_03';
 
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/biology-${width}.png`});
     }

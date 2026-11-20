@@ -2,6 +2,7 @@
 // Requires Playwright. Run after `tools/cs/finalize.py --activate` (packs in the live index), with `npm start` serving.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {reveal} = require('./browser-results.cjs'); // filters in a collapsed panel
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -18,7 +19,7 @@ const units = packs.flatMap(p => p.questions);
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -38,9 +39,9 @@ const units = packs.flatMap(p => p.questions);
     if (process.env.AUDIT_SKIP_QUALIFICATIONS) {
       console.log('SKIPPED: AS/A-level qualification filter (AUDIT_SKIP_QUALIFICATIONS)');
     } else {
-      await page.locator('[data-multi="qualifications"][data-value="H046"]').click();
+      await (await reveal(page, '[data-multi="qualifications"][data-value="H046"]')).click();
       assert.equal(await count(), units.filter(q => q.is_as).length, 'AS filter');
-      await page.locator('[data-multi="qualifications"][data-value="H046"]').click();
+      await (await reveal(page, '[data-multi="qualifications"][data-value="H046"]')).click();
       assert.equal(await count(), units.length);
     }
 
@@ -54,7 +55,7 @@ const units = packs.flatMap(p => p.questions);
     }
     // A paper whose parts carry a code-listing stem and part lead-ins: question, context and scheme pixels load.
     const insertPaper = 'OCR_H446_2024_JUNE_02';
-    await page.locator('[data-filter="paper"]').selectOption(insertPaper);
+    await (await reveal(page, '[data-filter="paper"]')).selectOption(insertPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === insertPaper).length);
     await loaded('.question-selected-part img');
     await loaded('[data-question-resources] img');
@@ -64,14 +65,16 @@ const units = packs.flatMap(p => p.questions);
 
     // AS paper: printed introductions (question stems, part lead-ins) are labelled on their parts.
     const fieldPaper = 'OCR_H046_2024_JUNE_01';
-    await page.locator('[data-filter="paper"]').selectOption(fieldPaper);
+    await (await reveal(page, '[data-filter="paper"]')).selectOption(fieldPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === fieldPaper).length);
     assert(await page.locator('[data-question-resources] figcaption', {hasText: 'printed introduction'}).count() > 0, 'intro shown');
-    await page.locator('[data-filter="paper"]').selectOption('');
+    await (await reveal(page, '[data-filter="paper"]')).selectOption('');
 
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
       await page.waitForTimeout(200);
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `overflow at ${width}`);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/cs-${width}.png`});
     }

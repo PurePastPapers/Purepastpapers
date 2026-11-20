@@ -2,6 +2,7 @@
 // Requires Playwright. Run after `tools/psychology/finalize.py --activate`, with `npm start` serving.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {results, allTopics} = require('./browser-results.cjs'); // linked parts are one result
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -18,7 +19,7 @@ const units = packs.flatMap(p => p.questions);
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -27,11 +28,12 @@ const units = packs.flatMap(p => p.questions);
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
+    await allTopics(page);
     const count = async () => {
       await page.waitForTimeout(250);
       return Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
     };
-    assert.equal(await count(), units.length, 'all units discoverable, demos hidden');
+    assert.equal(await count(), results(units), 'all units discoverable, demos hidden');
 
     // The paper filter sits in the compact filter bar's "More" popover.
     const selectPaper = async id => {
@@ -51,10 +53,10 @@ const units = packs.flatMap(p => p.questions);
     // A Research methods paper: shared study information shown as unscored context; scheme pixels load.
     const itemPaper = 'AQA_7182_2025_JUNE_02';
     await selectPaper(itemPaper);
-    assert.equal(await count(), units.filter(q => q.paper_id === itemPaper).length);
+    assert.equal(await count(), results(units, (q) => q.paper_id === itemPaper));
     await loaded('.question-selected-part img');
     await selectPaper('AQA_7182_2025_JUNE_01');
-    assert.equal(await count(), units.filter(q => q.paper_id === 'AQA_7182_2025_JUNE_01').length);
+    assert.equal(await count(), results(units, (q) => q.paper_id === 'AQA_7182_2025_JUNE_01'));
     await loaded('.question-selected-part img');
     await page.locator('[data-scheme]').first().click();
     await loaded('.ms img');
@@ -62,12 +64,14 @@ const units = packs.flatMap(p => p.questions);
     // AS paper with a shared stem across parts.
     const stemPaper = 'AQA_7181_SAMPLE_02';
     await selectPaper(stemPaper);
-    assert.equal(await count(), units.filter(q => q.paper_id === stemPaper).length);
+    assert.equal(await count(), results(units, (q) => q.paper_id === stemPaper));
     await selectPaper('');
 
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
       await page.waitForTimeout(200);
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `overflow at ${width}`);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/psychology-${width}.png`});
     }

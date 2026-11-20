@@ -1,6 +1,7 @@
 // Real Physics source bank, isolated demo account/profile. Requires optional dev Playwright.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {results, allTopics, reveal} = require('./browser-results.cjs'); // linked parts are one result
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -9,8 +10,8 @@ const root = path.join(__dirname, '..');
 const read = file => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
 const packs = read('data/packs/index.json').packs.filter(p => p.file.startsWith('physics/')).map(p => read('data/packs/' + p.file));
 const units = packs.flatMap(p => p.questions);
-const asUnits = units.filter(q => q.is_as).length;
-const year13 = units.filter(q => q.introduced_year === 13).length;
+const asUnits = results(units, (q) => q.is_as);
+const year13 = results(units, (q) => q.introduced_year === 13);
 
 (async () => {
   const browser = await chromium.launch({headless: true,
@@ -19,24 +20,25 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async () => (await import('/js/data/demo.js')).enterDemoAccount());
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
+    await allTopics(page);
     const count = async () => Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
-    assert.equal(await count(), units.length);
+    assert.equal(await count(), results(units));
     assert.equal(await page.locator('[data-multi="qualifications"][data-value="9PH0"]').count(), 1);
     assert.equal(await page.locator('[data-multi="qualifications"][data-value="8PH0"]').count(), 1);
-    await page.locator('[data-curriculum-year]').selectOption('13');
+    await (await reveal(page, '[data-curriculum-year]')).selectOption('13');
     await page.locator('[data-year13-only]').check();
     assert.equal(await count(), year13);
     await page.locator('[data-year13-only]').uncheck();
-    await page.locator('[data-curriculum-year]').selectOption('12');
-    assert.equal(await count(), units.length - year13);
+    await (await reveal(page, '[data-curriculum-year]')).selectOption('12');
+    assert.equal(await count(), results(units, (q) => q.introduced_year !== 13));
     await page.locator('[data-reset-filters]').click();
-    await page.locator('[data-multi="qualifications"][data-value="8PH0"]').click();
+    await (await reveal(page, '[data-multi="qualifications"][data-value="8PH0"]')).click();
     assert.equal(await count(), asUnits);
     await page.locator('[data-reset-filters]').click();
     async function loaded(selector) {
@@ -52,6 +54,8 @@ const year13 = units.filter(q => q.introduced_year === 13).length;
     await loaded('.ms img');
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/physics-${width}.png`});
     }

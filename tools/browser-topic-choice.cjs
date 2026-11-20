@@ -112,6 +112,8 @@ const subject = 'EDX_ALEVEL_MATH_9MA0';
     await page.locator('[data-reset-filters]').click();
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
     }
     if (process.env.AUDIT_SCREENSHOT) {

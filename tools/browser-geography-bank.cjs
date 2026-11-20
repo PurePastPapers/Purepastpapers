@@ -2,6 +2,7 @@
 // Requires Playwright. Run after `tools/geography/finalize.py --activate`, with `npm start` serving.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {reveal, allTopics} = require('./browser-results.cjs'); // filters in a collapsed panel
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -18,7 +19,7 @@ const units = packs.flatMap(p => p.questions);
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -27,6 +28,7 @@ const units = packs.flatMap(p => p.questions);
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
+    await allTopics(page);
     const count = async () => {
       await page.waitForTimeout(250);
       return Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
@@ -34,9 +36,9 @@ const units = packs.flatMap(p => p.questions);
     assert.equal(await count(), units.length, 'all units discoverable, demos hidden');
 
     // Qualification filter: AS 7036 only.
-    await page.locator('[data-multi="qualifications"][data-value="7036"]').click();
+    await (await reveal(page, '[data-multi="qualifications"][data-value="7036"]')).click();
     assert.equal(await count(), units.filter(q => q.is_as).length, 'AS filter');
-    await page.locator('[data-multi="qualifications"][data-value="7036"]').click();
+    await (await reveal(page, '[data-multi="qualifications"][data-value="7036"]')).click();
     assert.equal(await count(), units.length);
 
     async function loaded(selector) {
@@ -49,7 +51,7 @@ const units = packs.flatMap(p => p.questions);
     }
     // An A-level paper whose parts use insert figures: question, figure and scheme pixels load.
     const insertPaper = 'AQA_7037_2024_JUNE_01';
-    await page.locator('[data-filter="paper"]').selectOption(insertPaper);
+    await (await reveal(page, '[data-filter="paper"]')).selectOption(insertPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === insertPaper).length);
     await loaded('.question-selected-part img');
     await loaded('[data-question-resources] img');
@@ -59,14 +61,16 @@ const units = packs.flatMap(p => p.questions);
 
     // AS fieldwork: the shared scenario is attached to its parts; multiple choice renders.
     const fieldPaper = 'AQA_7036_2024_JUNE_02';
-    await page.locator('[data-filter="paper"]').selectOption(fieldPaper);
+    await (await reveal(page, '[data-filter="paper"]')).selectOption(fieldPaper);
     assert.equal(await count(), units.filter(q => q.paper_id === fieldPaper).length);
-    assert(await page.locator('[data-question-resources] figcaption', {hasText: 'shared introduction'}).count() > 0, 'stem shown');
-    await page.locator('[data-filter="paper"]').selectOption('');
+    assert(await page.locator('[data-question-resources] figcaption', {hasText: /shared introduction|introduction and earlier material/}).count() > 0, 'stem shown');
+    await (await reveal(page, '[data-filter="paper"]')).selectOption('');
 
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
       await page.waitForTimeout(200);
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `overflow at ${width}`);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/geography-${width}.png`});
     }

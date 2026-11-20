@@ -3,6 +3,7 @@
 // source pixels, and the page fits at phone, tablet and desktop widths.
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
+const {results, allTopics} = require('./browser-results.cjs'); // linked parts are one result
 const {readFileSync} = require('node:fs');
 const path = require('node:path');
 const base = process.env.AUDIT_URL || 'http://localhost:5173';
@@ -11,18 +12,18 @@ const root = path.join(__dirname, '..');
 const read = file => JSON.parse(readFileSync(path.join(root, file), 'utf8'));
 const packs = read('data/packs/index.json').packs.filter(p => p.file.startsWith('gcsemaths/')).map(p => read('data/packs/' + p.file));
 const units = packs.flatMap(p => p.questions);
-const foundation = units.filter(q => q.tier === 'Foundation').length;
-const higher = units.filter(q => q.tier === 'Higher').length;
+const foundation = results(units, (q) => q.tier === 'Foundation');
+const higher = results(units, (q) => q.tier === 'Higher');
 
 (async () => {
-  assert.equal(foundation + higher, units.length);
+  assert.equal(units.filter(q => q.tier === 'Foundation' || q.tier === 'Higher').length, units.length);
   const browser = await chromium.launch({headless: true,
     ...(process.env.CHROME_PATH ? {executablePath: process.env.CHROME_PATH} : {})});
   try {
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async id => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -31,8 +32,9 @@ const higher = units.filter(q => q.tier === 'Higher').length;
     await page.goto(base + '/#/practice?subject=' + subject);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
+    await allTopics(page);
     const count = async () => Number((await page.locator('[data-output] [role="status"]').first().textContent()).match(/\d+/)[0]);
-    assert.equal(await count(), units.length);
+    assert.equal(await count(), results(units));
     // The visible Tier control (2026-11-19): Both tiers, then each tier on its own.
     const pickTier = async value => {
       await page.locator(`[data-practice-tier="${value}"]`).click();
@@ -57,6 +59,8 @@ const higher = units.filter(q => q.tier === 'Higher').length;
     await loaded('.ms img');
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({width, height: 1000});
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
       if (process.env.AUDIT_SCREENSHOT_DIR) await page.screenshot({path: `${process.env.AUDIT_SCREENSHOT_DIR}/gcsemaths-${width}.png`});
     }

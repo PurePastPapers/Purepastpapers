@@ -72,6 +72,8 @@ const section='TB_MATH_P1_6.2';
     await page.locator('[data-flag="learnedOnly"]').uncheck();
     for(const width of [320,390,768,1440]){
       await page.setViewportSize({width,height:1000});
+      // layout settles after a resize (js/ui/question-fit.js re-places the answer box)
+      await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),width);
     }
     if(process.env.AUDIT_DIR){
