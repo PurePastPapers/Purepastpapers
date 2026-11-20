@@ -110,6 +110,28 @@ build or scheme logic changes. Images go to the lazy catalogues
 note: 2023 Nov 3H Q18(b), 2023 Nov 1H Q11(a)(ii), 2024 Nov 1F Q11(b) and 2024 Nov 1H
 Q9(b). They show the correct scheme, just with the other part's rows too.
 
+
+## Part display audit (20 November 2026)
+
+See [PART-DISPLAY.md](PART-DISPLAY.md) ("GCSE contexts restored…") and
+[QUESTION-BANK-PITFALLS.md](QUESTION-BANK-PITFALLS.md). `finalize.py` now keeps refined
+assets from the catalogue, so re-finalizing no longer undoes `refine.py`. After any rebuild
+or refine, run the repairs in this order, then `finalize.py` again to recount:
+
+```
+python3 tools/parts/recut-from-full.py --slug gcsemaths       # own crops + minimum contexts, label-proved
+python3 tools/parts/manual-contexts.py                      # reviewed rows for questions OCR cannot prove
+python3 tools/parts/trim-booklet-pages.py --dry-run         # look at every proposed cut first
+python3 tools/parts/trim-scheme-tails.py --dry-run --slug gcsemaths
+python3 tools/parts/fix-scheme-regions.py                   # reviewed scheme splits (idempotent)
+python3 tools/parts/audit-part-display.py --slug gcsemaths --report /tmp/gcsemaths-display.json
+node --test tests/gcse-part-crops.test.mjs tests/gcsemaths-bank.test.mjs
+```
+
+Coverage `image_assets` totals fall when contexts are shared or dropped; update them from
+the catalogues when the bank test reports a new count.
+- Maths lead-ins printed before a part's label and fraction numerators above the label are inside the reviewed crops (`manual-contexts.py`).
+
 ## Checks
 
 - `node --test tests/gcsemaths-bank.test.mjs` (totals 80 per booklet, tier matches

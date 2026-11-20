@@ -118,6 +118,28 @@ and 110 fall back to the full-question scheme; 18 labels were not found (all Nov
 Some schemes print the assessment objective as "AO2 1" in the Mark column; `refine.py` now
 skips a number that directly follows an `AO<n>` word so it is not counted as a tariff.
 
+
+## Part display audit (20 November 2026)
+
+See [PART-DISPLAY.md](PART-DISPLAY.md) ("GCSE contexts restored…") and
+[QUESTION-BANK-PITFALLS.md](QUESTION-BANK-PITFALLS.md). `finalize.py` now keeps refined
+assets from the catalogue, so re-finalizing no longer undoes `refine.py`. After any rebuild
+or refine, run the repairs in this order, then `finalize.py` again to recount:
+
+```
+python3 tools/parts/recut-from-full.py --slug gcsechem       # own crops + minimum contexts, label-proved
+python3 tools/parts/manual-contexts.py                      # reviewed rows for questions OCR cannot prove
+python3 tools/parts/trim-booklet-pages.py --dry-run         # look at every proposed cut first
+python3 tools/parts/trim-scheme-tails.py --dry-run --slug gcsechem
+python3 tools/parts/fix-scheme-regions.py                   # reviewed scheme splits (idempotent)
+python3 tools/parts/audit-part-display.py --slug gcsechem --report /tmp/gcsechem-display.json
+node --test tests/gcse-part-crops.test.mjs tests/gcsechem-bank.test.mjs
+```
+
+Coverage `image_assets` totals fall when contexts are shared or dropped; update them from
+the catalogues when the bank test reports a new count.
+- `EDX_1SC0_2021_NOVEMBER_1CH`: Q1's scheme had stopped at the header of 1(c)(i) and Q2's opened with the rest of Q1; both now split at Q1's total (`fix-scheme-regions.py`).
+
 ## Checks
 
 - `npm test`: all pass except the known failure already on main

@@ -115,6 +115,28 @@ practical 1; extended 2), +1 for 3+ marks, +1 for 5+ marks, +1 on Higher, +1 in 
 full-question scheme and 4 labels were not found. One question
 (`EDX_1BI0_2022_JUNE_1F_Q07`) keeps its build crops. No crop is missing its text.
 
+
+## Part display audit (20 November 2026)
+
+See [PART-DISPLAY.md](PART-DISPLAY.md) ("GCSE contexts restored…") and
+[QUESTION-BANK-PITFALLS.md](QUESTION-BANK-PITFALLS.md). `finalize.py` now keeps refined
+assets from the catalogue, so re-finalizing no longer undoes `refine.py`. After any rebuild
+or refine, run the repairs in this order, then `finalize.py` again to recount:
+
+```
+python3 tools/parts/recut-from-full.py --slug gcsebio       # own crops + minimum contexts, label-proved
+python3 tools/parts/manual-contexts.py                      # reviewed rows for questions OCR cannot prove
+python3 tools/parts/trim-booklet-pages.py --dry-run         # look at every proposed cut first
+python3 tools/parts/trim-scheme-tails.py --dry-run --slug gcsebio
+python3 tools/parts/fix-scheme-regions.py                   # reviewed scheme splits (idempotent)
+python3 tools/parts/audit-part-display.py --slug gcsebio --report /tmp/gcsebio-display.json
+node --test tests/gcse-part-crops.test.mjs tests/gcsebio-bank.test.mjs
+```
+
+Coverage `image_assets` totals fall when contexts are shared or dropped; update them from
+the catalogues when the bank test reports a new count.
+- Combined Science shares this pipeline: the reported 1SC0 Q4(a)/(b) defect (contexts showing earlier parts and their marks) was `finalize.py` re-packaging stale build images over refined ones.
+
 ## Checks
 
 - `npm test`: all pass except the known failure already on main

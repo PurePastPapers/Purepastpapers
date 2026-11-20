@@ -141,3 +141,79 @@ when it is near-identical to a page ending another paper's last part in other ex
 (papers of the same series share questions, so they are not compared). The part's
 `source_regions` are cut to match and `provenance.booklet_pages_trimmed` is set. A few
 cases the matching gets wrong are fixed by hand in `KEEP`. Re-running changes nothing.
+
+## GCSE contexts restored from the full question (audit 2026-11-19)
+
+Owner report: Combined Science parts such as 4(a) and 4(b) showed the wrong material. Every
+GCSE pipeline (`gcsebio`, `gcsechem`, `gcsephys`, `gcsemaths`) runs `finalize.py` again after
+`refine.py` "to recount refined assets". `finalize.py` packaged each asset from the local
+build folder whenever that file existed, and `refine.py` writes under the build's names
+(`Q04_U02.webp`, `Q04_U02_context.webp`), so the second run put the build images back while
+the records kept refined regions. A part's context then showed everything printed before it:
+for 1SC0 June 2023 1BF Q4(b)(ii), part (a)'s options and part (b)(i)'s Punnett square with
+their marks. About 4,000 GCSE parts were affected (own crops in the three sciences, contexts
+in all four).
+
+- `finalize.py` now takes refined units' crops, contexts, lead-ins and part schemes from the
+  catalogue (`tools/gcse*/finalize.py`).
+- `tools/parts/recut-from-full.py` rebuilt them without the PDFs: `Qnn_full.webp` is the same
+  pages at the same scale, so each part's recorded `source_regions`, the introduction and its
+  `context_regions` are cut from it. Each page's row offset is proved by the part labels
+  (refine starts a part 4 px above its label); a question is rewritten only when every part
+  passes. Recut contexts carry `provenance.context_recut_from_full`.
+- `tests/gcse-part-crops.test.mjs` checks every refined GCSE crop against its recorded
+  regions and that contexts of one question share one introduction height.
+- `tools/browser-part-context.cjs` checks a part's own crop, its introduction and the
+  "Show full question for context" control (opening and closing it changes no result count,
+  scheme or saved progress).
+
+Follow-up checks (audit 2026-11-20, GCSE science display supplement):
+
+- **Label proof is mandatory.** A first recut accepted one wrong page offset (1BI0 June 2023
+  1F Q2, about 230 px off). `recut-from-full.py` now rewrites a question only when tesseract
+  reads each part's own printed label at its cut: label rows in the left 35%, words left of
+  20% of the width (an in-text "(a)" is ignored), roman numerals scoped to their letter, a
+  single-line fallback, and the letter itself accepted for a letter's first sub-part. Six
+  papers map at about 1437 px per page instead of 1347/1348; the page height is estimated
+  per paper. Result: 1,531 questions recut and verified; 9 more fail OCR proof and keep crops
+  that were checked by eye (2026-11-20).
+- **Contexts are the minimum.** The refine "scenario" rule had pulled the part above into a
+  context. Contexts now hold the introduction (rows above the first part) and the part's
+  own lead-in only. A context region carrying a marks "(n)" is kept only when its recorded
+  reason says the wording needs it (names an earlier part, builds on the previous answer, an
+  earlier "show that" result, or an earlier figure, table, graph or diagram); otherwise it
+  is dropped and listed in `provenance.context_regions_dropped`. Genuine answer
+  dependencies are linked parts, shown as one question (`js/engine/linked-parts.js`).
+- **Sibling rows removed (second pass).** The display audit still found 437 contexts with a
+  printed mark: refine.py's context regions are whole earlier parts, and its regex reasons
+  ("earlier figure or data", "earlier \"show that\" result") kept them even where the
+  wording uses nothing from that part (1BI0 June 2025 1H Q1(b)(ii) showed (b)(i)'s task;
+  1SC0 June 2025 1BF Q4(a)(iv) showed (a)(i)'s options). The recut now removes every row
+  that belongs to a part, keeping another part's rows only when the part's own printed
+  wording names it ("your answer to (b)(i)": `context_named_parts`; "Give your answer to two
+  decimal places" is not a reference) or, for a figure or table the part refers to that is
+  printed inside another part, down to its caption (`context_figure_from_parts`). refine.py's
+  regions stay in `context_regions_refined`; `tests/gcse-part-crops.test.mjs` fails on any
+  context row of another part that is not recorded as used. After this pass the audit finds
+  29 contexts with a printed mark, every one recorded (26 named or recorded dependencies, 2
+  reviewed, 1 stem), no empty context, and 80 "own label" flags, all OCR misses checked by
+  eye (6,996 multi-part units).
+- **Reviewed rows where OCR cannot prove a label** (95 questions, 348 parts: scans, labels
+  inside tables, numbered items such as "(a)(ii) 2"): `tools/parts/manual-contexts.py`
+  records reviewed row ranges of `Qnn_full.webp` (`provenance.own_rows_from_full`,
+  `context_rows_from_full`, `context_reviewed`: a model review of the rendered question,
+  not a teacher review) and corrects seven part labels to the printed ones (IDs unchanged).
+- **Schemes.** Two whole-question schemes were split one region late or early
+  (`tools/parts/fix-scheme-regions.py`; see QUESTION-BANK-PITFALLS.md); one scheme tail was
+  cut at "Total for Question 9" (`trim-scheme-tails.py`). Part schemes keep the scheme's
+  dual F/H reference column ("8(c)(ii)(F) 2(aii)(H)"), which is the printed reference, not
+  the other tier's rows.
+- **Audit tool.** `tools/parts/audit-part-display.py` reads only the published crops: each
+  part's crop starts with its own label, no context shows a printed mark, no context is
+  blank. Its flags are leads to inspect, not verdicts (OCR misreads labels on scans).
+- **Browser.** `tools/browser-part-context.cjs`: the part's own crop and introduction; the
+  context control opens and closes without changing the result count, the open scheme or
+  progress, and stays open across viewing the mark scheme ("Back to question"); the part
+  scheme is the part's own rows with the whole-question scheme separate; a dependent part
+  is offered only inside its linked question; a Foundation test draws Foundation papers
+  only; the session never scrolls sideways at 390 or 1280 px.

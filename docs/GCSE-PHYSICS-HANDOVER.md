@@ -132,6 +132,28 @@ still has to agree with the Mark column or a reference. Biology and Chemistry pa
 re-refined in this branch. The remaining fallbacks are mostly 2022 1H and November 2021 2H,
 where one table carries two alternative versions of a part.
 
+
+## Part display audit (20 November 2026)
+
+See [PART-DISPLAY.md](PART-DISPLAY.md) ("GCSE contexts restored…") and
+[QUESTION-BANK-PITFALLS.md](QUESTION-BANK-PITFALLS.md). `finalize.py` now keeps refined
+assets from the catalogue, so re-finalizing no longer undoes `refine.py`. After any rebuild
+or refine, run the repairs in this order, then `finalize.py` again to recount:
+
+```
+python3 tools/parts/recut-from-full.py --slug gcsephys       # own crops + minimum contexts, label-proved
+python3 tools/parts/manual-contexts.py                      # reviewed rows for questions OCR cannot prove
+python3 tools/parts/trim-booklet-pages.py --dry-run         # look at every proposed cut first
+python3 tools/parts/trim-scheme-tails.py --dry-run --slug gcsephys
+python3 tools/parts/fix-scheme-regions.py                   # reviewed scheme splits (idempotent)
+python3 tools/parts/audit-part-display.py --slug gcsephys --report /tmp/gcsephys-display.json
+node --test tests/gcse-part-crops.test.mjs tests/gcsephys-bank.test.mjs
+```
+
+Coverage `image_assets` totals fall when contexts are shared or dropped; update them from
+the catalogues when the bank test reports a new count.
+- `EDX_1PH0_2022_JUNE_2H` Q9's scheme ended with Q10(a)'s header (`fix-scheme-regions.py`); `EDX_1PH0_2021_NOVEMBER_1H` Q9's with Q10(a)(i)'s rows (`trim-scheme-tails.py`). Labels corrected to the print: 2020 Nov 1F Q9 (d); 2022 June 1F Q10 and 1H Q4 "(a)(ii) 1" / "(a)(ii) 2".
+
 ## Checks
 
 - `npm test`: all pass except the known failure already on main
