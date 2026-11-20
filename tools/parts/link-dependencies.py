@@ -42,8 +42,10 @@ NAMED = re.compile(
     r"(?:calculated|found|worked out|gave|obtained|derived|wrote|drew|plotted|showed) (?:in|for) (?:part |question )?" + LABEL + "|"
     r"(?:use|using) (?:the |your )?(?:value|result|answer|calculation|data)s? (?:from|in|of|to) (?:part |question )?" + LABEL,
     re.I)
+# Only second-person wording: "the value you calculated", "your answer above". "Explain the
+# results obtained" names data printed in the question, not an earlier answer.
 GENERIC = re.compile(
-    r"(?:the )?(?:value|result|answer|number|expression|equation)s? (?:you |that you )?(?:calculated|found|worked out|obtained|derived|gave)"
+    r"(?:value|result|answer|number|expression|equation)s? (?:that )?you (?:calculated|found|worked out|obtained|derived|gave)"
     r"(?! (?:in|for) (?:part|question))|your (?:previous )?answer above|from your previous answer", re.I)
 INSTRUCTION = re.compile(r"(give|state|write|show) (?:your |the )?(?:answer|unit|working)|to help (?:you )?with your answer|"
                          r"explain your answer|justify your answer|answer to \d+ (?:significant|decimal)", re.I)
@@ -131,9 +133,27 @@ def process(job):
                     # show that a gas is oxygen" is not one. The part using it is in the same
                     # lettered part or straight after it.
                     near = j == i - 1 or (letter(earlier.get('part_label')) and letter(earlier.get('part_label')) == letter(u.get('part_label')))
-                    if near and SHOW_THAT.search(text_of(earlier)):
+                    m = SHOW_THAT.search(text_of(earlier))
+                    value = re.search(r'(?:about|approximately|is|are|be)\s+(\d+(?:\.\d+)?)', m.group(0)) if m else None
+                    # a later part that prints the value itself does not need the earlier one
+                    # (9PH0 June 2019 Q11(c): "a horizontal velocity of 3.0 m s-1")
+                    restated = value and re.search(r'(?<![\d.])' + re.escape(value.group(1).rstrip('0').rstrip('.')) + r'(?:\.0+)?(?![\d])', text)
+                    if near and m and not restated:
                         found.setdefault(earlier['question_id'], 'uses the value of an earlier "Show that" part')
-            current = list(u.get('depends_on_question_ids') or [])
+            # links this tool added before are re-derived, so a corrected rule also removes them
+            pv0 = u.get('provenance') or {}
+            mine = set(pv0.get('dependency_detected') or {}) if pv0.get('dependency_detected_on') == TODAY else set()
+            current = [qid for qid in (u.get('depends_on_question_ids') or []) if qid not in mine]
+            if mine and not dry:
+                if current:
+                    u['depends_on_question_ids'] = current
+                else:
+                    u.pop('depends_on_question_ids', None)
+                pv0.pop('dependency_detected', None)
+                pv0.pop('dependency_detected_on', None)
+                if pv0.pop('context_from_linked_part', None):
+                    (u.get('context') or {}).pop('stem_image_url', None)
+                changed = True
             new = [qid for qid in found if qid not in current]
             if not new:
                 continue
@@ -142,6 +162,13 @@ def process(job):
             if not dry:
                 u['depends_on_question_ids'] = current + new
                 pv = u.setdefault('provenance', {})
+                ctx = u.setdefault('context', {})
+                if not ctx.get('stem_image_url') and not ctx.get('shared_stem_html'):
+                    # A dependent part carries the earlier information it uses (validate rule);
+                    # in practice it is shown inside its linked question with that part.
+                    earlier = next(x for x in units if x['question_id'] == new[0])
+                    ctx['stem_image_url'] = earlier['content']['question_image_url']
+                    pv['context_from_linked_part'] = new[0]
                 pv['dependency_detected'] = {qid: found[qid] for qid in new}
                 pv['dependency_detected_on'] = TODAY
                 changed = True
