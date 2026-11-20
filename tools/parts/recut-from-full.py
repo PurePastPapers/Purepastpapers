@@ -283,6 +283,14 @@ def needs_of(own, reasons):
         label = next((g for g in m.groups() if g), '')
         named.add(re.sub(r'\s+', '', label.lower()))
     wanted = {(k.lower(), n) for k, n in REFERENCE.findall(text)}
+    # Unnumbered material ("Use the graph", "the data in the table"), common in A-level papers:
+    # with refine.py's "earlier figure or data" reason, the part uses something printed in
+    # the part before it. '' marks the nearest earlier part of the same letter (else the one
+    # just before).
+    if any(r.lower().startswith('earlier figure or data') for r in reasons) and \
+            re.search(r'\b(the|this|these|your) (graph|diagram|table|data|results|photograph|chart|drawing|map|sketch|curve)', text, re.I) \
+            and not REFERENCE.search(text):
+        named.add('~')
     for reason in reasons:
         m = re.match(r'(figure|table) (\d{1,2})\b', reason.lower())
         if m:
@@ -290,16 +298,46 @@ def needs_of(own, reasons):
     return named, wanted
 
 
-def is_named(label, named, previous):
-    """Whether a sibling part is one the wording names ('' = the part just before)."""
+def is_named(label, named, previous, own_label=None, nearest_same_letter=False):
+    """Whether a sibling part is one the wording names ('' = the part just before; '~' =
+    unnumbered material: the nearest earlier part of the same letter, else the one before)."""
     label = re.sub(r'\s+', '', (label or '').lower())
-    for n in named:
+    if '~' in named and (nearest_same_letter or previous):
+        return True
+    for n in named - {'~'}:
         if not n:
             if previous:
                 return True
         elif label == n or label.endswith(n) or label.startswith(n):
             return True
     return False
+
+
+def shows_that_used(pv):
+    """refine.py found this part using an earlier "show that" value."""
+    return any(r.lower().startswith('earlier "show that" result') for r in pv.get('context_reasons') or [])
+
+
+_show_that = {}
+
+
+def says_show_that(unit, full, offsets, H):
+    """The unit's own printed task is a "Show that" (its result is then used later without
+    naming the part: 9PH0 "weight of base" after "Show that ... about 870 N")."""
+    key = (unit['question_id'], H, tuple(offsets.get(r['page']) for r in unit['provenance']['source_regions']))
+    if key not in _show_that:
+        rows = [full[offsets[r['page']] + round(r['bbox'][1] * H):offsets[r['page']] + round(r['bbox'][3] * H)]
+                for r in unit['provenance']['source_regions'] if r['page'] in offsets]
+        text = ' '.join(t for piece in rows if piece.shape[0] > 0 for _, _, t in ocr_lines(piece))
+        _show_that[key] = bool(re.search(r'show\s+that', text, re.I))
+    return _show_that[key]
+
+
+def nearest_same_letter(units, owner, me):
+    """owner is the closest earlier part sharing my letter ((a)(i) for (a)(ii))."""
+    mine = letter_of(units[me].get('part_label'))
+    same = [i for i in range(me) if letter_of(units[i].get('part_label')) == mine and mine]
+    return bool(same) and owner == same[-1]
 
 
 def subtract(top, bottom, spans):
@@ -408,6 +446,17 @@ def process(pack_path, slug, dry, report):
     multi = {p: sorted(u, key=lambda q: q['question_id']) for p, u in groups.items() if len(u) > 1
              and all(x['provenance'].get('part_display') == 'refined' for x in u)}
     estimate = page_height(multi, labels_of)
+    if not estimate or not 1200 < estimate < 1700:
+        # label pairs misread (8MA0 June 2018 Paper 1 gave 334): estimate from the part crops,
+        # whose heights are their regions at the paper's scale
+        spans = []
+        for units in multi.values():
+            for q in units:
+                rg = q['provenance'].get('source_regions') or []
+                name = q['content']['question_image_url'].rsplit('/', 1)[1]
+                if len(rg) == 1 and rg[0]['bbox'][3] - rg[0]['bbox'][1] > 0.1 and name in assets and not name.endswith('_full.webp'):
+                    spans.append(decode(assets[name]).shape[0] / (rg[0]['bbox'][3] - rg[0]['bbox'][1]))
+        estimate = float(np.median(spans)) if spans else None
     heights = HEIGHTS
     if estimate and abs(estimate - 1347.5) > 6:
         heights = tuple(range(round(estimate) - 2, round(estimate) + 3))
@@ -453,7 +502,14 @@ def process(pack_path, slug, dry, report):
                 own = cut(full, offsets, regions, H)
                 # Mandatory: the part starts on its own printed label. Blank-above/ink-below
                 # alone once passed a page offset 230 px out (1BI0 June 2023 1F Q2).
-                if own is None or start is None or not label_ok(full, start) \
+                # With --contexts-only the published crop itself proves the offset: it is cut
+                # unchanged (within a grey level) from the full image at this offset.
+                pixel_proved = CONTEXTS_ONLY and own is not None and how == 'crop match' and \
+                    (lambda cur: cur.shape == own.shape and float(np.abs(cur.astype(np.int16) - own).mean()) <= 2)(
+                        decode(assets[u['content']['question_image_url'].rsplit('/', 1)[1]]))
+                if pixel_proved:
+                    pass
+                elif own is None or start is None or not label_ok(full, start) \
                         or not label_at(labels, start, leaf(u.get('part_label')), full, letter_of(u.get('part_label')),
                                         first_of_letter=first_of_letter, span=own.shape[0]):
                     failures.append(u['question_id'])
@@ -523,7 +579,9 @@ def process(pack_path, slug, dry, report):
                             needs = needs_of(own, pv.get('context_reasons') or [])
                         named, wanted = needs
                         if owner < me and (units[owner]['question_id'] in (u.get('depends_on_question_ids') or [])
-                                           or is_named(units[owner].get('part_label'), named, owner == me - 1)):
+                                           or is_named(units[owner].get('part_label'), named, owner == me - 1,
+                                                       nearest_same_letter=nearest_same_letter(units, owner, me))
+                                           or (shows_that_used(pv) and says_show_that(units[owner], full, offsets, H))):
                             segments.append((a, b))
                             kept_parts.add(units[owner]['question_id'])
                         elif wanted:
@@ -588,8 +646,8 @@ def process(pack_path, slug, dry, report):
             name = u['content']['question_image_url'].rsplit('/', 1)[1]
             current = decode(assets[name])
             if current.shape != own.shape or float(np.abs(current.astype(np.int16) - own).mean()) > 2:
-                report['own_recut'].append(u['question_id'])
-                if not dry:
+                report['own_recut' if not CONTEXTS_ONLY else 'own_differs_kept'].append(u['question_id'])
+                if not dry and not CONTEXTS_ONLY:
                     assets[name] = encode(own)
                     changed_cat = True
             ctx = u.setdefault('context', {})
@@ -624,8 +682,12 @@ def process(pack_path, slug, dry, report):
             cat_path.write_text(json.dumps(catalogue, separators=(',', ':')) + newline)
 
 
+CONTEXTS_ONLY = False  # --contexts-only: own crops already verified elsewhere stay as they are
+
+
 def run_paper(job):
-    pack_path, slug, dry = job
+    global CONTEXTS_ONLY
+    pack_path, slug, dry, CONTEXTS_ONLY = job
     report = defaultdict(list)
     process(pack_path, slug, dry, report)
     return dict(report)
@@ -637,8 +699,10 @@ def main():
     ap.add_argument('--report', type=Path)
     ap.add_argument('--slug', action='append')
     ap.add_argument('--paper', action='append')
+    ap.add_argument('--contexts-only', action='store_true',
+                    help='rebuild contexts only; leave part crops (A-level banks, whose crops already match their regions)')
     a = ap.parse_args()
-    jobs = [(p, slug, a.dry_run) for slug in a.slug or SLUGS for p in sorted((ROOT / 'data/packs' / slug).glob('*.json'))
+    jobs = [(p, slug, a.dry_run, a.contexts_only) for slug in a.slug or SLUGS for p in sorted((ROOT / 'data/packs' / slug).glob('*.json'))
             if not a.paper or p.stem in a.paper]
     report = defaultdict(list)
     with ProcessPoolExecutor() as pool:  # one paper per worker: each owns its pack and catalogue
