@@ -909,10 +909,12 @@ def refine_question(qdoc, sdoc, units, stats):
                    and not re.search(r'\b(a|an|one|two|some)\s+(\w+\s+)?' + re.escape(n), own_text, re.I)}
         for n in sorted(s_nouns):
             hits = [s for s in earlier if re.search(r'\b' + re.escape(n), s['text'], re.I)]
-            if hits:
-                first = hits[0]
-                lead = [s for s in earlier if s['kind'] == 'leadin' and re.search(r'\b' + re.escape(n), s['text'], re.I)]
-                include(lead[0] if lead else first)
+            # Only a lead-in describes a scenario. An earlier scored part that merely mentions
+            # the noun ("this investigation") is not context: shown with its marks it looked
+            # like the task (audit 2026-11-20). The full question stays one click away.
+            lead = [s for s in earlier if s['kind'] == 'leadin' and re.search(r'\b' + re.escape(n), s['text'], re.I)]
+            if hits and lead:
+                include(lead[0])
                 reasons.append(f'scenario ({n})')
         # 5. "show that" results printed earlier are needed values
         for s in earlier:

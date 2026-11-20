@@ -35,10 +35,20 @@ def package(repo, pack_path, paper):
     assets = {}
     cat_path = repo / 'data/gcsebio-assets' / f'{paper}.json'
     previous = read(cat_path)['assets'] if cat_path.exists() else {}
+    # Part crops, contexts and part schemes of refined units are written by tools/parts/*.py
+    # straight into the catalogue, under the names the build also used (Q04_U02.webp,
+    # Q04_U02_context.webp). Those must come from the catalogue, never from a stale local
+    # build file: re-finalizing after refine.py put the build's "everything before this
+    # part" contexts back (audit 2026-11-19, docs/QUESTION-BANK-PITFALLS.md).
+    refined = set()
+    for unit in json.loads(text).get('questions', []):
+        if (unit.get('provenance') or {}).get('part_display'):
+            urls = [(unit.get('content') or {}).get('question_image_url'), (unit.get('content') or {}).get('mark_scheme_image_url')]
+            urls += [(unit.get('context') or {}).get(k) for k in ('stem_image_url', 'lead_in_image_url')]
+            refined |= {u.rsplit('/', 1)[1] for u in urls if u and not u.endswith(('_full.webp', '_scheme.webp')) or (u and re.search(r'_[UP]\d+_scheme\.webp$', u))}
     for name in names:
         local = repo / 'assets/gcsebio' / paper / name
-        if not local.exists() and name in previous:
-            # Written by tools/parts/refine.py straight into the catalogue.
+        if name in previous and (name in refined or not local.exists()):
             assets[name] = previous[name]
             continue
         data = local.read_bytes()
