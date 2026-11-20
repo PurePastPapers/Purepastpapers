@@ -30,6 +30,7 @@ import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, toast } from '../ui.js';
 import { links, routeOf } from '../../core/links.js';
+import { savedWhere } from '../device.js';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
 
@@ -701,7 +702,7 @@ export async function mount(element, context) {
         </div>
         <p class="hand testpreview__note">the clock starts when you press start</p>
         <p class="small muted">
-          ${user ? 'At the end you mark your answers against the mark scheme, and the result is saved to your Data Hub.' : 'At the end you mark your answers against the mark scheme. Create a free account to save your result in this browser.'}
+          ${user ? 'At the end you mark your answers against the mark scheme, and the result is saved to your Data Hub.' : `At the end you mark your answers against the mark scheme. Create a free account to save your result ${savedWhere()}.`}
           ${lockedCount ? html`${plural(lockedCount, 'question')} left out because ${lockedCount === 1 ? 'it needs' : 'they need'} topics you have not ticked.` : ''}
         </p>
       </div>
@@ -1157,7 +1158,7 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${head(subject.subject)}
-      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="${links.signup('/practice')}">Create a free account</a> to save it in this browser.`) : ''}
+      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="${links.signup('/practice')}">Create a free account</a> to save it ${savedWhere()}.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}

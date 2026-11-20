@@ -12,6 +12,7 @@ import { icon } from '../icons.js';
 import { addSubjectButton, addSubjectTile, loadStudent, subjectCard, subjectSummary, wireColourPicker } from '../student.js';
 import { confirmDialog, fmtPercent } from '../ui.js';
 import { links } from '../../core/links.js';
+import { bigScreenCard, wireBigScreenCard } from '../funnel.js';
 
 const SESSION_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Question' };
 
@@ -57,6 +58,8 @@ export async function mount(element, context) {
             </span>
           </p>`
         : ''}
+
+      ${bigScreenCard()}
 
       <nav class="dash-sections" aria-label="Sections">
         ${SECTIONS.map(
@@ -146,5 +149,10 @@ export async function mount(element, context) {
     await api.deleteSession(button.dataset.discard);
     context.refresh();
   });
-  return wireColourPicker(element);
+  const unwireBigScreen = wireBigScreenCard(element);
+  const unwireColours = wireColourPicker(element);
+  return () => {
+    unwireBigScreen();
+    if (typeof unwireColours === 'function') unwireColours();
+  };
 }

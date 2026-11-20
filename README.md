@@ -16,6 +16,8 @@ PPP stands for PurePastPapers.com. Shared branding lives in `js/config/app.confi
 
 See the [latest browser audit](docs/browser-audit-2026-11-14.md) for verified behavior, regression commands and remaining gaps.
 
+**Phones and tablets:** [tab bar, touch sizing and the phone → account → bigger-screen funnel](docs/mobile-and-tablet.md).
+
 ## Run it
 
 ES modules do not load from `file://`, so serve the folder:

@@ -9,6 +9,7 @@ import { SUBJECT_SWATCHES } from '../subject-colours.js';
 import { liveBadge } from '../ui.js';
 import { openWelcome } from '../welcome.js';
 import { links } from '../../core/links.js';
+import { savedWhere } from '../device.js';
 
 /** The four phases, used on the Account and coming-soon pages. */
 export function roadmap() {
@@ -27,7 +28,7 @@ const FEATURE_CARDS = [
   { icon: 'check', title: 'Filter by spec point', text: 'Choose the exact points you’ve covered, such as 2.1–2.6, and find questions tagged to them.' },
   { icon: 'clock', title: 'Customisable practice', text: 'Timed mini-papers for STEM, or pick essay questions by set text and marks for humanities.' },
   { icon: 'list', title: 'Difficulty levels', text: 'Easy, medium, hard or mixed, so practice matches where you are.' },
-  { icon: 'chart', title: 'Data Hub', text: 'With a free account, track marks, mistakes and progress in your browser.' },
+  { icon: 'chart', title: 'Data Hub', text: 'With a free account, track marks, mistakes and progress on your phone, laptop and tablet.' },
   { icon: 'target', title: 'Your subjects, your colours', text: 'Pick your subjects once, set up for your boards and specs, and give each one its own colour.' },
 ];
 
@@ -81,10 +82,12 @@ export async function mount(element, context) {
           <p class="lp-hero__lede">
             Find questions for the topics you’ve covered. Filter by specification point, exam board, subject, year and difficulty.
           </p>
-          <p class="lp-hero__reassurance">Browse questions and use filters for free. Create a free account to track marks, mistakes and progress in this browser.</p>
+          <p class="lp-hero__reassurance">Browse questions and use filters for free. A free account tracks your marks, mistakes and progress ${savedWhere()}.</p>
           <div class="lp-hero__actions">
             <a class="btn btn--primary btn--lg" href="${links.subjects({ welcome: 1 })}">Browse questions →</a>
+            <a class="btn btn--lg lp-hero__signup" href="${links.signup()}">Create a free account</a>
           </div>
+          <p class="lp-devices">${icon('phone', { size: 18 })}<span>Start on your phone.</span>${icon('laptop', { size: 20 })}<span>Sit full papers on your laptop or tablet. Same account, same progress.</span></p>
         </div>
         <div class="lp-art" aria-hidden="true">
           <div class="card ruled lp-art__learned tilt-1">
