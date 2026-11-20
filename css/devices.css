@@ -1,0 +1,543 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Phones and tablets. Loaded last, so it refines the layouts in the other sheets.
+   Breakpoints:  ≤ 620px phone · ≤ 1080px phone + tablet (bottom tab bar)
+                 1081–1279px small laptop / tablet landscape (tight top bar)
+   `pointer: coarse` covers touch screens of any width (iPad Pro landscape included).
+   Funnel pieces (tab bar "Sign up free", the guest sheet, the bigger-screen card) live
+   here too: js/ui/funnel.js.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --tabbar-h: 64px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+/* No double-tap zoom delay or grey flash on controls. */
+a,
+button,
+summary,
+label,
+.btn,
+.chip,
+.tag {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ── top bar on small laptops / landscape tablets: keep the tabs on one line ── */
+.topnav__tab {
+  white-space: nowrap;
+}
+@media (min-width: 1081px) and (max-width: 1279px) {
+  .topnav {
+    gap: 12px;
+  }
+  .topnav__tab {
+    font-size: 16px;
+    padding: 9px 11px;
+  }
+  .brand {
+    font-size: 21px;
+  }
+  .tag.topnav__count {
+    display: none;
+  }
+}
+
+/* ── bottom tab bar (phones and tablets) ── */
+.tabbar {
+  display: none;
+}
+@media (max-width: 1080px) {
+  .tabbar {
+    position: fixed;
+    z-index: 70;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px max(8px, env(safe-area-inset-left, 0px)) calc(6px + var(--safe-b)) max(8px, env(safe-area-inset-right, 0px));
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    border-top: 2px solid var(--ink);
+    backdrop-filter: saturate(1.2) blur(8px);
+    -webkit-backdrop-filter: saturate(1.2) blur(8px);
+  }
+  .tabbar__item {
+    flex: 1 1 0;
+    max-width: 150px;
+    min-height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 8px;
+    color: var(--ink-2);
+    text-decoration: none;
+    font: 700 12px/1.1 var(--font-body, inherit);
+    letter-spacing: 0.01em;
+  }
+  .tabbar__item .icon {
+    flex: none;
+  }
+  .tabbar__item.is-active {
+    color: var(--ink);
+    background: color-mix(in srgb, var(--ink) 9%, transparent);
+  }
+  .tabbar__item--cta,
+  .tabbar__item--cta.is-active {
+    color: var(--surface);
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+  .app[data-layout='focus'] .tabbar {
+    display: none;
+  }
+  /* Room for the bar under the footer and above toasts. */
+  .app:not([data-layout='focus']) {
+    padding-bottom: calc(var(--tabbar-h) + var(--safe-b));
+  }
+  .app:not([data-layout='focus']) ~ .toasts,
+  body:has(.app:not([data-layout='focus'])) .toasts {
+    bottom: calc(var(--tabbar-h) + var(--safe-b) + 12px);
+  }
+  /* The tab bar now holds the sections, so the account menu doesn't repeat them. */
+  .app:has(.tabbar) .menu__tabs {
+    display: none !important;
+  }
+  /* Guests: the bar has Sign up, so the top bar keeps just Log in (and the theme switch). */
+  .topnav__right .btn--primary[href^='#/signup'] {
+    display: none;
+  }
+}
+@media (min-width: 621px) and (max-width: 1080px) {
+  .tabbar {
+    gap: 10px;
+  }
+  .tabbar__item {
+    flex-direction: row;
+    gap: 8px;
+    font-size: 14px;
+    max-width: 190px;
+  }
+}
+
+/* ── forms: 16px text stops iOS zooming the page on focus ── */
+@media (max-width: 1080px), (pointer: coarse) {
+  .input,
+  .select,
+  .textarea,
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='search'],
+  input[type='number'],
+  input[type='tel'],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* ── touch targets: 44px minimum on touch screens ── */
+@media (pointer: coarse) {
+  .btn,
+  .btn--sm,
+  .chip,
+  a.tag,
+  button.tag,
+  summary.tag,
+  .fpop__btn,
+  .palette__item,
+  .iconbtn,
+  .menu__item {
+    min-height: 44px;
+  }
+  .btn--icon,
+  .btn--icon.btn--sm,
+  .iconbtn,
+  .palette__item {
+    min-width: 44px;
+  }
+  .btn--sm {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .chip,
+  a.tag,
+  button.tag,
+  summary.tag {
+    display: inline-flex;
+    align-items: center;
+  }
+  .linkbtn {
+    min-height: 44px;
+    padding: 0 6px;
+    margin: -12px -6px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .password .linkbtn {
+    margin: 0;
+  }
+  .brand__mark {
+    width: 44px;
+    height: 44px;
+  }
+  .runner--scroll .palette__item {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .crumbs a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+  }
+  .chips .chip--sm,
+  .chip--sm,
+  .zoom-btn,
+  .topnav__tab {
+    min-height: 44px;
+  }
+  .topnav__tab {
+    display: inline-flex;
+    align-items: center;
+  }
+  .zoom-btn {
+    min-width: 44px;
+    justify-content: center;
+  }
+  .topnav__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  /* Colour dots stay small to look at but get a finger-sized hit area. */
+  .cdot {
+    position: relative;
+  }
+  .cdot::after {
+    content: '';
+    position: absolute;
+    inset: -7px;
+  }
+}
+
+/* ── phones ── */
+@media (max-width: 620px) {
+  /* Home: the four big section cards become a compact list (the tab bar does navigation). */
+  .dash-sections {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .dash-section {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 14px;
+    padding: 14px 16px;
+    transform: none;
+  }
+  .dash-section .ic {
+    grid-row: span 2;
+    width: 40px;
+    height: 40px;
+  }
+  .dash-section h2 {
+    margin: 0;
+    font-size: 20px;
+    grid-column: 2;
+  }
+  .dash-section p {
+    margin: 2px 0 0;
+    font-size: 14px;
+    grid-column: 2;
+  }
+  .dash-section__arrow {
+    position: static;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+  .dash-section .tape {
+    display: none;
+  }
+  .dash-hello h1 {
+    font-size: 40px;
+  }
+  .dash-block {
+    margin-top: 40px;
+  }
+  .dash-block .section-title h2 {
+    font-size: 26px;
+  }
+  .dash-subjects {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .resume-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .auth-page:not(.auth-page--login) .auth-page__intro h1 {
+    font-size: 34px;
+  }
+  .auth-page:not(.auth-page--login) .auth-page__intro > .hand {
+    margin-bottom: 0;
+    font-size: 22px;
+  }
+
+  /* Landing hero buttons stack full width. */
+  .lp-hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .lp-hero__actions .btn {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Modals become bottom sheets that respect the home indicator. */
+  .modal:not(.welcome):not(.zoom) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border-left: 0;
+    border-right: 0;
+    margin: auto 0 0;
+    max-height: 88vh;
+    border-radius: 14px 14px 0 0;
+    border-bottom: 0;
+    padding-bottom: var(--safe-b);
+  }
+  .modal:not(.welcome):not(.zoom) .modal__foot {
+    flex-wrap: wrap;
+  }
+  .modal:not(.welcome):not(.zoom) .modal__foot .btn {
+    flex: 1 1 140px;
+    justify-content: center;
+  }
+
+  /* Wide tables become labelled cards instead of scrolling sideways. */
+  .table--stack thead {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .table--stack,
+  .table--stack tbody,
+  .table--stack tr,
+  .table--stack td {
+    display: block;
+    width: 100%;
+  }
+  .table--stack tr {
+    padding: 10px 0;
+    border-bottom: 1.5px dashed var(--line-strong);
+  }
+  .table--stack td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+    border: 0;
+    text-align: right;
+  }
+  .table--stack td:first-child {
+    text-align: left;
+    font-weight: 700;
+    justify-content: flex-start;
+  }
+  .table--stack td[data-label]:not([data-label='']):not(:first-child)::before {
+    content: attr(data-label);
+    color: var(--ink-2);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .table--stack td[data-label=''] {
+    justify-content: flex-end;
+  }
+  .table-wrap:has(> .table--stack) {
+    overflow: visible;
+  }
+
+  /* Exam runner: a little more room for the question. */
+  .runner__bar .btn {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* ── tablets (portrait and landscape) ── */
+@media (min-width: 621px) and (max-width: 1080px) {
+  .dash-sections {
+    gap: 22px;
+  }
+  .dash-section {
+    min-height: 150px;
+  }
+  .dash-subjects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* Sign-up on one column (phones, portrait tablets): heading, then the form, then the pitch,
+   so nobody has to scroll past "What you get" to find the fields. */
+@media (max-width: 900px) {
+  .auth-page:not(.auth-page--login) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .auth-page:not(.auth-page--login) .auth-page__intro {
+    display: contents;
+  }
+  .auth-page:not(.auth-page--login) .auth-page__intro > h1 {
+    order: -3;
+  }
+  .auth-page:not(.auth-page--login) .auth-page__intro > .hand {
+    order: -2;
+    margin: -16px 0 0;
+  }
+  .auth-page:not(.auth-page--login) > .auth {
+    order: -1;
+    width: 100%;
+    max-width: 560px;
+  }
+  .auth-page:not(.auth-page--login) .auth-page__get,
+  .auth-page:not(.auth-page--login) .auth-page__intro > .row {
+    margin-top: 12px !important;
+  }
+}
+
+/* ── landing: "start on your phone, finish on your laptop" line ── */
+.lp-devices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin-top: 18px;
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.lp-devices .icon {
+  color: var(--ink);
+}
+.lp-devices span + .icon {
+  margin-left: 6px;
+}
+
+/* ── Home: "Carry on on a bigger screen" ── */
+.bigscreen {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 26px;
+  padding: 20px 18px 18px;
+}
+.bigscreen__art {
+  flex: none;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 10px 8px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--plane);
+  font: 400 16px/1 var(--font-display);
+}
+.bigscreen__art > span {
+  transform: rotate(90deg);
+}
+.bigscreen h2 {
+  font-size: 22px;
+}
+.bigscreen p {
+  margin-top: 6px;
+  color: var(--ink-2);
+}
+.bigscreen p.small {
+  margin-bottom: 12px;
+}
+.bigscreen .btn .icon {
+  margin-right: 2px;
+}
+@media (max-width: 380px) {
+  .bigscreen__art {
+    display: none;
+  }
+}
+
+/* ── guest sheet above the tab bar (phones) ── */
+.nudge {
+  position: fixed;
+  z-index: 80;
+  left: 10px;
+  right: 10px;
+  bottom: calc(var(--tabbar-h) + var(--safe-b) + 10px);
+  padding: 18px 18px 16px;
+  animation: nudge-in 0.25s ease;
+}
+@media (min-width: 1081px) {
+  .nudge {
+    bottom: 16px;
+  }
+}
+.nudge__title {
+  font: 400 22px/1.15 var(--font-display);
+  padding-right: 36px;
+}
+.nudge__text {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.nudge__btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.nudge__btns .btn--primary {
+  flex: 1;
+  justify-content: center;
+}
+.nudge__x {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+@keyframes nudge-in {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+}
+:root[data-nudge] .toasts {
+  bottom: calc(var(--tabbar-h) + var(--safe-b) + 210px);
+}
+
+/* Tall full-width cards lean far enough to poke past a phone's edge; keep them straight. */
+@media (max-width: 620px) {
+  .paper-qs.tilt-1,
+  .paper-qs.tilt-2,
+  .paper-qs.tilt-3,
+  .paper-qs.tilt-4 {
+    transform: none;
+  }
+}

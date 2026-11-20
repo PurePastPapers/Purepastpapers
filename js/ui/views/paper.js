@@ -4,6 +4,8 @@
 import { GRADE_SCHEMES, PAPER_TYPES } from '../../config/app.config.js';
 import { $, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
 import { links, routeOf } from '../../core/links.js';
+import { savedWhere } from '../device.js';
+import { confirmLongPaperOnPhone } from '../funnel.js';
 import { fmtDate, fmtMinutes, localDayKey, percent, plural, round1 } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
@@ -184,6 +186,12 @@ export async function mount(element, context) {
   });
 
   async function start(timed) {
+    const here = await confirmLongPaperOnPhone({
+      minutes: timed ? paper.duration_minutes : null,
+      route: routeOf(links.paper(subject.subject_id, paper.paper_id)),
+      title: paper.title,
+    });
+    if (!here) return;
     const session = createSession({
       kind: 'full_paper',
       subject_id: subject.subject_id,
@@ -237,7 +245,7 @@ export async function mount(element, context) {
     const entry = await openModal({
       title: 'Log a score',
       body: html`<div class="stack">
-        <p class="muted">${api.isSignedIn() ? 'Already sat this paper on paper? Record your mark to add it to your Data Hub.' : 'Already sat this paper on paper? Record your mark temporarily, then create a free account to save it in this browser.'}</p>
+        <p class="muted">${api.isSignedIn() ? 'Already sat this paper on paper? Record your mark to add it to your Data Hub.' : `Already sat this paper on paper? Record your mark temporarily, then create a free account to save it ${savedWhere()}.`}</p>
         <label class="field">
           <span class="field__label">Marks out of ${paper.total_marks}</span>
           <input class="input" type="number" name="marks" min="0" max="${paper.total_marks}" step="1" inputmode="numeric" required />
