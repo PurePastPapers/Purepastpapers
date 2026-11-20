@@ -497,7 +497,6 @@
       "scheme_question_number": "4(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q04_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q04_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q04_scheme.webp"
       },
       "provenance": {
@@ -873,7 +872,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1378,7 +1378,6 @@
       "scheme_question_number": "12(a)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q12_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q12_U01_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q12_scheme.webp"
       },
       "provenance": {
@@ -1442,7 +1441,14 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            38,
+            362
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(a)"
     },
@@ -1573,7 +1579,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            362,
+            524
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            38,
+            362
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(b)",
       "depends_on_question_ids": [
@@ -1796,7 +1815,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(ii)"
     },
@@ -1906,7 +1926,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -2011,9 +2032,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.574893,
+              0.5746102449888641,
               0.958003,
-              0.599837
+              0.5998515219005197
             ]
           }
         ],
@@ -2032,7 +2053,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.574893,
+              0.958003,
+              0.599837
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_stem_from_parts": [
+          "EDX_1MA1_2021_NOVEMBER_2F_Q14_U01"
+        ]
       },
       "part_label": "(b)"
     },
@@ -2334,17 +2371,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.412258,
-              0.958003,
-              0.699136
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q16_stem.webp",
         "context_reasons": [
           "scenario (car)"
@@ -2369,7 +2396,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.412258,
+              0.958003,
+              0.699136
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)"
     },
@@ -2812,7 +2852,6 @@
       "scheme_question_number": "20(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q20_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q20_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q20_scheme.webp"
       },
       "provenance": {
@@ -3041,7 +3080,6 @@
       "scheme_question_number": "21(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q21_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q21_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q21_scheme.webp"
       },
       "provenance": {
@@ -3090,17 +3128,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.329814,
-              0.958003,
-              0.518005
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q21_stem.webp",
         "context_reasons": [
           "scenario (line)"
@@ -3116,7 +3144,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.329814,
+              0.958003,
+              0.518005
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)"
     },
@@ -3272,7 +3313,6 @@
       "scheme_question_number": "22(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q22_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q22_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q22_scheme.webp"
       },
       "provenance": {
@@ -3553,9 +3593,9 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.536199,
+              0.5360059391239792,
               0.958003,
-              0.561143
+              0.5612472160356348
             ]
           }
         ],
@@ -3583,7 +3623,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.536199,
+              0.958003,
+              0.561143
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_stem_from_parts": [
+          "EDX_1MA1_2021_NOVEMBER_2F_Q23_U01"
+        ]
       },
       "part_label": "(b)"
     },
@@ -3742,7 +3798,6 @@
       "scheme_question_number": "24(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_scheme.webp"
       },
       "provenance": {
@@ -3854,8 +3909,8 @@
       "scheme_question_number": "24(c)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_U03_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2021_NOVEMBER_2F/Q24_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3909,9 +3964,9 @@
             "page": 17,
             "bbox": [
               0.041997,
-              0.253695,
+              0.25389755011135856,
               0.958003,
-              0.804632
+              0.8047512991833704
             ]
           }
         ],
@@ -3930,7 +3985,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.253695,
+              0.958003,
+              0.804632
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1MA1_2021_NOVEMBER_2F_Q24_U02"
+        ]
       },
       "part_label": "(c)",
       "depends_on_question_ids": [
@@ -4136,7 +4207,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -4238,9 +4310,9 @@
             "page": 19,
             "bbox": [
               0.041997,
-              0.490287,
+              0.48997772828507796,
               0.958003,
-              0.673678
+              0.6733481811432813
             ]
           }
         ],
@@ -4259,7 +4331,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 19,
+            "bbox": [
+              0.041997,
+              0.490287,
+              0.958003,
+              0.673678
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_stem_from_parts": [
+          "EDX_1MA1_2021_NOVEMBER_2F_Q26_U01"
+        ]
       },
       "part_label": "(b)"
     },

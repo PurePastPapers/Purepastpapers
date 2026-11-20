@@ -18,10 +18,12 @@ import io
 import json
 import pathlib
 import re
+import sys
 
 from PIL import Image, ImageChops, ImageStat
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+DRY_RUN = '--dry-run' in sys.argv
 GAP = 12
 # Checked by eye. Regions to keep where the matching gets it wrong: half a page of the 2023
 # Foundation equation list and a 2023 formulae sheet printed at another scale (no other paper
@@ -33,6 +35,21 @@ KEEP = {
     'EDX_9PH0_2023_JUNE_02_Q18_U05': 1,
     'EDX_8MA0_2018_JUNE_01_Q15_U01': 0,
     'EDX_8MA0_2018_JUNE_02_Q05_U01': 0,
+    # 2026-11-19 audit, after widening candidates to two-page tails (each checked by eye).
+    # The question's last part and paper total are on the second page; the third is the list.
+    'EDX_1SC0_2020_NOVEMBER_1PF_Q06_U05': 2,
+    'EDX_1SC0_2021_NOVEMBER_2PH_Q06_U03': 2,
+    # "Question N continued" answer pages carrying the question and section totals, and an
+    # AQA sample figure page: not booklet pages.
+    'AQA_7037_SAMPLE_02_Q02_P02': 0,
+    'EDX_8MA0_2021_NOVEMBER_21_Q05_U01': 0,
+    'EDX_8MA0_2025_JUNE_21_Q05_U01': 0,
+    'EDX_8MA0_2025_JUNE_22_Q04_U01': 0,
+    'EDX_9MA0_2021_NOVEMBER_31_Q06_U01': 0,
+    'EDX_9MA0_2024_JUNE_32_Q06_U01': 0,
+    'EDX_9MA0_2025_JUNE_31_Q06_U01': 0,
+    'EDX_9MA0_SAMPLE_01_Q15_U01': 0,
+    'EDX_9MA0_SAMPLE_02_Q16_U01': 0,
 }
 
 
@@ -63,7 +80,8 @@ def signature(image):
 
 def series(paper):
     """'2024_JUNE' from 'EDX_1PH0_2024_JUNE_1H': papers of one series share questions."""
-    return re.match(r'[A-Z]+_\w+?_(\d{4}_[A-Z]+)_', paper).group(1)
+    match = re.match(r'[A-Z]+_\w+?_(\d{4}_[A-Z]+)_', paper)
+    return match.group(1) if match else 'SAMPLE'  # official samples have no year
 
 
 def differ(a, b):
@@ -71,13 +89,20 @@ def differ(a, b):
 
 
 def candidates():
-    """Last parts whose regions run over three or more pages."""
+    """Parts whose regions run over three or more pages.
+
+    The span was ">= 3" until the 2026-11-19 audit: a last part printed on one page and
+    followed by a two-page list (AS Physics 8PH0 "List of data, formulae and relationships")
+    spans only 2 and kept the list. Booklet pages are still decided by matching other series.
+    """
     for pack_path in sorted((ROOT / 'data/packs').glob('*/*.json')):
         pack = json.loads(pack_path.read_text())
         for question in pack.get('questions', []):
             regions = (question.get('provenance') or {}).get('source_regions') or []
             pages = [r['page'] for r in regions]
-            if len(regions) > 1 and max(pages) - min(pages) >= 3:
+            if (question.get('provenance') or {}).get('own_rows_from_full'):
+                continue  # reviewed rows (manual-contexts.py) already stop at the question total
+            if len(regions) > 1 and max(pages) - min(pages) >= 2:
                 yield pack_path, question['question_id']
 
 
@@ -176,6 +201,12 @@ def main():
                 assets[full_name] = encode(full.crop((0, 0, full.width, full.height - removed)))
         trimmed.append(question['question_id'])
 
+    if DRY_RUN:
+        print(f'{len(trimmed)} parts would be trimmed (dry run, nothing written)')
+        for unit in units:
+            if unit['cut'] is not None:
+                print(f"  {unit['question']['question_id']} keep {unit['cut']} of {len(unit['spans'])}")
+        return
     for path, value in loaded.items():
         if path.parent.name == 'packs' or path.parent.parent.name == 'packs':
             path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')

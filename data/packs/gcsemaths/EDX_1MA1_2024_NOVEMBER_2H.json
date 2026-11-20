@@ -365,7 +365,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -461,17 +462,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 3,
-            "bbox": [
-              0.041997,
-              0.619194,
-              0.958003,
-              0.689251
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q02_stem.webp",
         "context_reasons": [
           "builds on the previous answer"
@@ -487,7 +478,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.619194,
+              0.958003,
+              0.689251
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(c)",
       "depends_on_question_ids": [
@@ -829,7 +833,6 @@
       "scheme_question_number": "5(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_2H/Q05_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_2H/Q05_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_2H/Q05_scheme.webp"
       },
       "provenance": {
@@ -1775,7 +1778,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)(i)"
     },
@@ -1894,7 +1898,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)(ii)"
     },
@@ -2199,9 +2204,9 @@
             "page": 15,
             "bbox": [
               0.041997,
-              0.497839,
+              0.4981440237564959,
               0.958003,
-              0.570818
+              0.570898292501856
             ]
           }
         ],
@@ -2229,7 +2234,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.497839,
+              0.958003,
+              0.570818
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_stem_from_parts": [
+          "EDX_1MA1_2024_NOVEMBER_2H_Q15_U01"
+        ]
       },
       "part_label": "(b)"
     },

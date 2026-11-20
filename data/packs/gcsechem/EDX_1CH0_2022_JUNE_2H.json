@@ -195,17 +195,7 @@
         "context_basis": "independent",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 2,
-            "bbox": [
-              0.041997,
-              0.153835,
-              0.958003,
-              0.182313
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q01_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -219,7 +209,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.153835,
+              0.958003,
+              0.182313
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(i)"
     },
@@ -334,17 +337,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 2,
-            "bbox": [
-              0.041997,
-              0.153835,
-              0.958003,
-              0.182313
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q01_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -358,7 +351,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.153835,
+              0.958003,
+              0.182313
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(ii)"
     },
@@ -487,9 +493,9 @@
             "page": 2,
             "bbox": [
               0.041997,
-              0.432986,
+              0.4328136599851522,
               0.958003,
-              0.73881
+              0.7386785449146251
             ]
           }
         ],
@@ -506,7 +512,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.432986,
+              0.958003,
+              0.73881
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(i)"
     },
@@ -626,9 +645,9 @@
             "page": 2,
             "bbox": [
               0.041997,
-              0.432986,
+              0.4328136599851522,
               0.958003,
-              0.73881
+              0.7386785449146251
             ]
           }
         ],
@@ -645,7 +664,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 2,
+            "bbox": [
+              0.041997,
+              0.432986,
+              0.958003,
+              0.73881
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(ii)"
     },
@@ -774,7 +806,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -922,7 +955,24 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            914,
+            1255
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            0,
+            395
+          ],
+          [
+            395,
+            914
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(a)(i)"
     },
@@ -1070,7 +1120,24 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            1255,
+            1571
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            0,
+            395
+          ],
+          [
+            395,
+            914
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(a)(ii)"
     },
@@ -1218,7 +1285,24 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            1571,
+            1767
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            0,
+            395
+          ],
+          [
+            395,
+            914
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(a)(iii)"
     },
@@ -1369,7 +1453,24 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            1844,
+            1970
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            0,
+            395
+          ],
+          [
+            1767,
+            1844
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(b)(i)"
     },
@@ -1508,7 +1609,24 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            1970,
+            2301
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            0,
+            395
+          ],
+          [
+            1767,
+            1844
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(b)(ii)"
     },
@@ -1766,7 +1884,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1904,7 +2023,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -2024,9 +2144,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.313113
+              0.31328878990348924
             ]
           }
         ],
@@ -2043,7 +2163,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.313113
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)(i)"
     },
@@ -2172,9 +2305,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.313113
+              0.31328878990348924
             ]
           }
         ],
@@ -2191,7 +2324,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.313113
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)(ii)"
     },
@@ -2311,9 +2457,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.299472
+              0.2991833704528582
             ]
           }
         ],
@@ -2332,7 +2478,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.299472
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(e)"
     },
@@ -2447,17 +2606,7 @@
         "context_basis": "independent",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.380987
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q04_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -2471,7 +2620,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.380987
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(i)"
     },
@@ -2586,17 +2748,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.380987
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q04_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -2610,7 +2762,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.380987
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(ii)"
     },
@@ -2734,17 +2899,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.380987
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q04_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -2758,7 +2913,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.380987
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(iii)"
     },
@@ -2878,9 +3046,9 @@
             "page": 11,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.188227
+              0.18856718634001485
             ]
           }
         ],
@@ -2897,7 +3065,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.188227
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(i)"
     },
@@ -3025,14 +3206,27 @@
             "page": 11,
             "bbox": [
               0.041997,
+              0.06904231625835189,
+              0.958003,
+              0.18856718634001485
+            ]
+          }
+        ],
+        "context_includes_stem_image": "Q04_stem.webp",
+        "context_reasons": [],
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
               0.069323,
               0.958003,
               0.188227
             ]
           }
         ],
-        "context_includes_stem_image": "Q04_stem.webp",
-        "context_reasons": []
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(ii)"
     },
@@ -3148,7 +3342,8 @@
         "part_display": "refined",
         "context_regions": [],
         "context_includes_stem_image": "Q04_stem.webp",
-        "context_reasons": []
+        "context_reasons": [],
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -3266,17 +3461,7 @@
         "context_basis": "independent",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.450397
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q05_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -3290,7 +3475,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.450397
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(i)"
     },
@@ -3417,17 +3615,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.450397
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q05_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -3441,7 +3629,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.450397
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(ii)"
     },
@@ -3570,7 +3771,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)(i)"
     },
@@ -3688,17 +3890,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 15,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.237069
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q05_stem.webp",
         "context_reasons": [
           "scenario (series)"
@@ -3714,7 +3906,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.237069
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(ii)"
     },
@@ -3829,17 +4034,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 15,
-            "bbox": [
-              0.041997,
-              0.264179,
-              0.958003,
-              0.423018
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q05_stem.webp",
         "context_reasons": [
           "earlier figure or data"
@@ -3855,7 +4050,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.264179,
+              0.958003,
+              0.423018
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(iii)"
     },
@@ -4113,7 +4321,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -4251,7 +4460,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(c)"
     },
@@ -4368,21 +4578,12 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.427258,
-              0.958003,
-              0.837975
-            ]
-          },
-          {
             "page": 17,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.097802
+              0.09799554565701558
             ]
           }
         ],
@@ -4401,7 +4602,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.427258,
+              0.958003,
+              0.837975
+            ]
+          },
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.097802
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)(i)"
     },
@@ -4521,9 +4744,9 @@
             "page": 17,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.097802
+              0.09799554565701558
             ]
           }
         ],
@@ -4540,7 +4763,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.097802
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)(ii)"
     },
@@ -4657,21 +4893,12 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.427258,
-              0.958003,
-              0.837975
-            ]
-          },
-          {
             "page": 17,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.097802
+              0.09799554565701558
             ]
           }
         ],
@@ -4690,7 +4917,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.427258,
+              0.958003,
+              0.837975
+            ]
+          },
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.097802
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)(iii)"
     },
@@ -4819,7 +5068,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -4957,7 +5207,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -5084,17 +5335,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 18,
-            "bbox": [
-              0.041997,
-              0.326865,
-              0.958003,
-              0.629542
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q07_stem.webp",
         "context_reasons": [
           "scenario (mass)"
@@ -5110,7 +5351,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.326865,
+              0.958003,
+              0.629542
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(c)"
     },
@@ -5230,9 +5484,9 @@
             "page": 20,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.377094
+              0.3771343726800297
             ]
           }
         ],
@@ -5249,7 +5503,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 20,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.377094
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)(i)"
     },
@@ -5369,9 +5636,9 @@
             "page": 20,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.377094
+              0.3771343726800297
             ]
           }
         ],
@@ -5388,7 +5655,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 20,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.377094
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(d)(ii)"
     },
@@ -5521,17 +5801,7 @@
         "context_basis": "independent",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 21,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.114436
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q08_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -5545,7 +5815,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.114436
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(i)"
     },
@@ -5690,17 +5973,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 21,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.114436
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q08_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -5714,7 +5987,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.114436
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(ii)"
     },
@@ -5879,7 +6165,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -6012,17 +6299,7 @@
         "context_basis": "independent",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 24,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.114436
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q09_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -6036,7 +6313,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 24,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.114436
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(i)"
     },
@@ -6187,17 +6477,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 24,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.114436
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q09_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -6211,7 +6491,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 24,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.114436
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(ii)"
     },
@@ -6385,7 +6678,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -6491,17 +6785,7 @@
         "context_basis": "independent",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 28,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.245718
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q10_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -6515,7 +6799,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 28,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.245718
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(i)"
     },
@@ -6621,17 +6918,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 28,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.245718
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q10_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -6645,7 +6932,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 28,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.245718
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(ii)"
     },
@@ -6760,17 +7060,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1CH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 28,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.245718
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q10_stem.webp",
         "context_reasons": [],
         "part_scheme_regions": [
@@ -6784,7 +7074,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 28,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.245718
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(a)(iii)"
     },
@@ -6898,9 +7201,9 @@
             "page": 29,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.231037
+              0.23088344469190794
             ]
           }
         ],
@@ -6917,7 +7220,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 29,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.231037
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(i)"
     },
@@ -7028,9 +7344,9 @@
             "page": 29,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.231037
+              0.23088344469190794
             ]
           }
         ],
@@ -7047,7 +7363,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 29,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.231037
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(ii)"
     },
@@ -7167,9 +7496,9 @@
             "page": 29,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.231037
+              0.23088344469190794
             ]
           }
         ],
@@ -7186,7 +7515,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 29,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.231037
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)(iii)"
     },
@@ -7297,9 +7639,9 @@
             "page": 30,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.302326
+              0.3021529324424647
             ]
           }
         ],
@@ -7316,7 +7658,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 30,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.302326
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(c)(i)"
     },
@@ -7430,9 +7785,9 @@
             "page": 30,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.302326
+              0.3021529324424647
             ]
           }
         ],
@@ -7449,7 +7804,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 30,
+            "bbox": [
+              0.041997,
+              0.069323,
+              0.958003,
+              0.302326
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(c)(ii)"
     }

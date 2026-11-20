@@ -827,7 +827,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1210,7 +1211,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(a)"
     },
@@ -1320,7 +1322,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1625,9 +1628,9 @@
             "page": 7,
             "bbox": [
               0.041997,
-              0.437924,
+              0.43801039346696363,
               0.958003,
-              0.491347
+              0.4914625092798812
             ]
           }
         ],
@@ -1655,7 +1658,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041997,
+              0.437924,
+              0.958003,
+              0.491347
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_stem_from_parts": [
+          "EDX_1MA1_2023_NOVEMBER_2F_Q13_U01"
+        ]
       },
       "part_label": "(b)"
     },
@@ -2068,7 +2087,6 @@
       "scheme_question_number": "18(a)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q18_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q18_U01_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q18_scheme.webp"
       },
       "provenance": {
@@ -2131,7 +2149,14 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            40,
+            460
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(a)"
     },
@@ -2253,7 +2278,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            460,
+            641
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            40,
+            460
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(b)",
       "depends_on_question_ids": [
@@ -2508,7 +2546,6 @@
       "scheme_question_number": "20(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q20_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q20_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q20_scheme.webp"
       },
       "provenance": {
@@ -2826,7 +2863,6 @@
       "scheme_question_number": "22(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q22_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q22_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q22_scheme.webp"
       },
       "provenance": {
@@ -2936,7 +2972,6 @@
       "scheme_question_number": "22(c)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q22_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q22_U03_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_2F/Q22_scheme.webp"
       },
       "provenance": {

@@ -486,7 +486,6 @@
       "scheme_question_number": "4(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q04_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q04_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q04_scheme.webp"
       },
       "provenance": {
@@ -596,7 +595,6 @@
       "scheme_question_number": "4(c)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q04_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q04_U03_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q04_scheme.webp"
       },
       "provenance": {
@@ -908,7 +906,6 @@
       "scheme_question_number": "6(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_scheme.webp"
       },
       "provenance": {
@@ -1020,8 +1017,8 @@
       "scheme_question_number": "6(c)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_U03_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1H/Q06_U03_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1075,9 +1072,9 @@
             "page": 6,
             "bbox": [
               0.041997,
-              0.330527,
+              0.3303637713437268,
               0.958003,
-              0.712461
+              0.7126948775055679
             ]
           }
         ],
@@ -1096,7 +1093,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.330527,
+              0.958003,
+              0.712461
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1MA1_2022_JUNE_1H_Q06_U02"
+        ]
       },
       "part_label": "(c)",
       "depends_on_question_ids": [
@@ -1613,7 +1626,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1714,9 +1728,9 @@
             "page": 11,
             "bbox": [
               0.041997,
-              0.069328,
+              0.06904231625835189,
               0.958003,
-              0.53498
+              0.5352635486265775
             ]
           }
         ],
@@ -1744,7 +1758,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.53498
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1MA1_2022_JUNE_1H_Q10_U02"
+        ]
       },
       "part_label": "(c)",
       "depends_on_question_ids": [
@@ -1851,9 +1881,9 @@
             "page": 11,
             "bbox": [
               0.041997,
-              0.069328,
+              0.5382331106161841,
               0.958003,
-              0.630211
+              0.6302895322939867
             ]
           }
         ],
@@ -1882,7 +1912,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.069328,
+              0.958003,
+              0.630211
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_named_parts": [
+          "EDX_1MA1_2022_JUNE_1H_Q10_U03"
+        ]
       },
       "part_label": "(d)",
       "depends_on_question_ids": [
@@ -2387,7 +2433,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -2602,9 +2649,9 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.40026,
+              0.40014847809948034,
               0.958003,
-              0.482475
+              0.4825538233110616
             ]
           }
         ],
@@ -2632,7 +2679,23 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.40026,
+              0.958003,
+              0.482475
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20",
+        "context_stem_from_parts": [
+          "EDX_1MA1_2022_JUNE_1H_Q15_U01"
+        ]
       },
       "part_label": "(b)"
     },

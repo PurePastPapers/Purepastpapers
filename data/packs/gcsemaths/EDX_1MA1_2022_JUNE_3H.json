@@ -364,7 +364,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19"
       },
       "part_label": "(b)"
     },
@@ -1041,17 +1042,7 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 9,
-            "bbox": [
-              0.041997,
-              0.555772,
-              0.958003,
-              0.751524
-            ]
-          }
-        ],
+        "context_regions": [],
         "context_includes_stem_image": "Q08_stem.webp",
         "context_reasons": [
           "scenario (line)"
@@ -1076,7 +1067,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "context_regions_refined": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041997,
+              0.555772,
+              0.958003,
+              0.751524
+            ]
+          }
+        ],
+        "context_siblings_removed": "2026-11-20"
       },
       "part_label": "(b)"
     },
@@ -1123,7 +1127,6 @@
       "scheme_question_number": "9(a)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_3H/Q09_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_3H/Q09_U01_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_3H/Q09_scheme.webp"
       },
       "provenance": {
@@ -1186,7 +1189,14 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            44,
+            595
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(a)"
     },
@@ -1318,7 +1328,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            721,
+            947
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            595,
+            721
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(b)"
     },
@@ -1840,7 +1863,6 @@
       "scheme_question_number": "14(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_3H/Q14_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_3H/Q14_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_3H/Q14_scheme.webp"
       },
       "provenance": {
@@ -2205,7 +2227,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "own_rows_from_full": [
+          [
+            363,
+            1078
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            0,
+            363
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(a)"
     },
@@ -2337,7 +2372,25 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_recut_from_full": "2026-11-19",
+        "own_rows_from_full": [
+          [
+            1876,
+            2287
+          ]
+        ],
+        "context_rows_from_full": [
+          [
+            0,
+            363
+          ],
+          [
+            1078,
+            1876
+          ]
+        ],
+        "context_reviewed": "model review of the rendered question, 2026-11-20"
       },
       "part_label": "(b)"
     },
