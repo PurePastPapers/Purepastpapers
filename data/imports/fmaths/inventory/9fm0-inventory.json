@@ -2,13 +2,24 @@
  "qualification": "Pearson Edexcel A Level Further Mathematics 9FM0",
  "specification": "Issue 4, June 2023",
  "first_assessment": "June 2019",
- "checked_at": "2026-11-19",
- "blocked": {
-  "host": "qualifications.pearson.com",
-  "reason": "HTTP CONNECT 403 from the build host outbound proxy (policy denial); retried, not transient",
-  "checked_at": "2026-11-19"
+ "checked_at": "2026-11-21",
+ "retrieved_at": "2026-11-21T10:52:40.499Z",
+ "source_search": "https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html",
+ "evidence_method": "Listed by Pearson past-paper search (A Level > Mathematics (2017) > each exam series) and the Mathematics (2017) course materials; fetched only from qualifications.pearson.com in the Claude desktop built-in browser on the owner's computer; SHA-256 computed in the browser and re-verified on the build host. The build host's own proxy still refuses the domain (CONNECT 403).",
+ "restricted": {
+  "series": "June 2026",
+  "listed_files": 57,
+  "reason": "Listed by Pearson but served from /content/dam/secure/ (teacher-only for 12 months); the public fetch fails. Not downloaded; no access gate was bypassed."
  },
- "evidence_method": "Expected components from the official specification; catalogue sittings from the site catalogue. No Pearson file could be probed from this host.",
+ "official_samples": {
+  "availability": "verified_public",
+  "url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/as-al-maths-further-sams.zip",
+  "sha256": "c158f17ba92edd515d4fd2454756473ad1ecd98fe42318cab748446f5da7a40d",
+  "bytes": 9303599,
+  "zip_entry": "9FM0 A level Further Mathematics SAMs.pdf",
+  "pearson_label": "AS & A level Maths and AS & A level Further Maths Sample Assessment Materials",
+  "note": "One PDF per qualification holds every sample component; page ranges are taken at import."
+ },
  "papers": [
   {
    "paper_id": "EDX_9FM0_2019_JUNE_P1",
@@ -17,6 +28,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/01",
    "module_ids": [
     "CP"
@@ -24,24 +36,34 @@
    "component_title": "Core Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_que_20190604.pdf",
+     "sha256": "d16f808fd3124e9a155c00996a860c901b57addb1c1c9401579b6ba10bc2ded5",
+     "bytes": 315321,
+     "last_modified": "Sat, 21 Nov 2026 10:33:58 GMT",
+     "etag": "W/\"4cfb9-660c6e5ff1a65",
+     "pearson_label": "Question paper - A Level Paper 01 - June 2019 Paper 01"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_rms_20190815.pdf",
+     "sha256": "c2ced30cc0ee2cf6f847f2d215fc6f1bb3821c1f5ca273cfc2abb02895ca3759",
+     "bytes": 1234176,
+     "last_modified": "Fri, 20 Nov 2026 18:52:53 GMT",
+     "etag": "W/\"12d500-660b9c06b0f17",
+     "pearson_label": "Mark scheme - A Level Paper 01 - June 2019 Paper 01"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_pef_20190815.pdf",
+     "sha256": "ccadbdcab9e893bffde32bd636df78c5b2a9a641f8dab51a4542698075f9dfe7",
+     "bytes": 662074,
+     "last_modified": "Sat, 21 Nov 2026 06:18:06 GMT",
+     "etag": "W/\"a1a3a-660c352f0afa0",
+     "pearson_label": "Examiner report - A Level Paper 01 - June 2019 Paper 01"
     }
    },
    "imported": false
@@ -53,6 +75,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/02",
    "module_ids": [
     "CP"
@@ -60,24 +83,34 @@
    "component_title": "Core Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_que_20190607.pdf",
+     "sha256": "ce5f9e1ed3157ffdddd2d7bbfd31ba4f5ee3eccf55ab07c3f5b86d57c4468e17",
+     "bytes": 293281,
+     "last_modified": "Fri, 20 Nov 2026 18:52:53 GMT",
+     "etag": "W/\"479a1-660b9c06b0f17",
+     "pearson_label": "Question paper - A Level Paper 02 - June 2019 Paper 02"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_rms_20190815.pdf",
+     "sha256": "60ba12ba80aea2c828f9b76a917b99c74fd51d8c1ae7984c31298bd8561fec1d",
+     "bytes": 1217563,
+     "last_modified": "Fri, 20 Nov 2026 22:34:51 GMT",
+     "etag": "W/\"12941b-660bcda32499f",
+     "pearson_label": "Mark scheme - A Level Paper 02 - June 2019 Paper 02"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_pef_20190815.pdf",
+     "sha256": "0716240938ecef6e93154224748ed1da113dd1878977ac441f4730ea5f79a27d",
+     "bytes": 704817,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"ac131-660c7272a62e6",
+     "pearson_label": "Examiner report - A Level Paper 02 - June 2019 Paper 02"
     }
    },
    "imported": false
@@ -89,6 +122,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/3A",
    "module_ids": [
     "FP1"
@@ -96,24 +130,34 @@
    "component_title": "Further Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_que_20190614.pdf",
+     "sha256": "3fe289e7128bc0742e061c2d76680cf6848fe2c2a3ce1aecbe5bb6a0c19d2da6",
+     "bytes": 296151,
+     "last_modified": "Fri, 20 Nov 2026 18:52:53 GMT",
+     "etag": "W/\"484d7-660b9c06a72d7",
+     "pearson_label": "Question paper - A Level Paper 3A - June 2019 Paper 3A"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_rms_20190815.pdf",
+     "sha256": "296c5c216171f66390cd1a7c115e5d7f53a7e35a2f9f28f829271f7e8cb17a51",
+     "bytes": 1258004,
+     "last_modified": "Sat, 21 Nov 2026 06:23:31 GMT",
+     "etag": "W/\"133214-660c3664ac569",
+     "pearson_label": "Mark scheme - A Level Paper 3A - June 2019 Paper 3A"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_pef_20190815.pdf",
+     "sha256": "8724295d4ee9aaa8b3f105dcb7862b47b12d1bf9d7c58e808ec10ac38b7a4e84",
+     "bytes": 717040,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"af0f0-660c7272cd3e7",
+     "pearson_label": "Examiner report - A Level Paper 3B - June 2019 Paper 3B"
     }
    },
    "imported": false
@@ -125,6 +169,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/3B",
    "module_ids": [
     "FS1"
@@ -132,27 +177,50 @@
    "component_title": "Further Statistics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_que_20190619.pdf",
+     "sha256": "3ba9fb408ebeb3f2e3a925b82ced9a37cd3acc1dc3cbfa2b1a9ecc47a9fa8315",
+     "bytes": 255170,
+     "last_modified": "Fri, 20 Nov 2026 18:52:53 GMT",
+     "etag": "W/\"3e4c2-660b9c06c3966",
+     "pearson_label": "Question paper - A Level Paper 3B - June 2019 Paper 3B"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_rms_20190815.pdf",
+     "sha256": "dcded4440979a42f0c0d7a5b9b88478043fe05ff165ff5541504b68bdd871b0f",
+     "bytes": 619091,
+     "last_modified": "Fri, 20 Nov 2026 18:52:53 GMT",
+     "etag": "W/\"97253-660b9c06b39e5",
+     "pearson_label": "Mark scheme - A Level Paper 3B - June 2019 Paper 3B"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_pef_20190815.pdf",
+     "sha256": "624fbd571750a22fedaa2cc9dec3e9be6375870eaef125b535eec04dd369fd75",
+     "bytes": 444760,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"6c958-660c7272c37a7",
+     "pearson_label": "Examiner report - A Level Paper 3B - June 2019 Paper 3B"
     }
    },
-   "imported": false
+   "imported": false,
+   "alternate_listings": [
+    {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_msc_20190815.pdf",
+     "sha256": "dcded4440979a42f0c0d7a5b9b88478043fe05ff165ff5541504b68bdd871b0f",
+     "bytes": 619091,
+     "last_modified": "Sat, 21 Nov 2026 09:38:35 GMT",
+     "etag": "W/\"97253-660c61feee038",
+     "pearson_label": "Mark Scheme - Further Mathematics (9FM0) - June 2019 Paper 3B: Further Statistics 1",
+     "kind": "mark_scheme",
+     "identical_bytes": true
+    }
+   ]
   },
   {
    "paper_id": "EDX_9FM0_2019_JUNE_P3C",
@@ -161,6 +229,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/3C",
    "module_ids": [
     "FM1"
@@ -168,24 +237,34 @@
    "component_title": "Further Mechanics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_que_20190621.pdf",
+     "sha256": "efdc2bd8dfb2f3b0e85a76f323107af239aa18d75eee5f9a1320422fece6d92c",
+     "bytes": 1299257,
+     "last_modified": "Fri, 20 Nov 2026 18:52:53 GMT",
+     "etag": "W/\"13d339-660b9c06a8bb6",
+     "pearson_label": "Question paper - A Level Paper 3C - June 2019 Paper 3C"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_rms_20190815.pdf",
+     "sha256": "ad2367f3453b8373fbd07b3e99739f47b39c82c521e301cd775b45a8ced5cc08",
+     "bytes": 532042,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"81e4a-660c7272d42d9",
+     "pearson_label": "Mark scheme - A Level Paper 3C - June 2019 Paper 3C"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_pef_20190815.pdf",
+     "sha256": "d85fbecac3e32bc3bd96845cffbfb0d3d9eeee63d390c25ba63796bf2dd07489",
+     "bytes": 656662,
+     "last_modified": "Fri, 20 Nov 2026 17:15:17 GMT",
+     "etag": "W/\"a0516-660b863582dfc",
+     "pearson_label": "Examiner report - A Level Paper 3C - June 2019 Paper 3C"
     }
    },
    "imported": false
@@ -197,6 +276,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/3D",
    "module_ids": [
     "D1"
@@ -204,24 +284,34 @@
    "component_title": "Decision Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_que_20190625.pdf",
+     "sha256": "d79253244b301584fc6cf9a357e6bee96e10cb7768e89a58d60225ecb2a39109",
+     "bytes": 300454,
+     "last_modified": "Fri, 20 Nov 2026 18:26:36 GMT",
+     "etag": "W/\"495a6-660b96270227d",
+     "pearson_label": "Question paper - A Level Paper 3D - June 2019 Paper 3D"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_rms_20190815.pdf",
+     "sha256": "2d25959ccda08c0bb3eaa3a3d20b02b013c0bc8a1d1bdb606ef3842197521301",
+     "bytes": 981333,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"ef955-660c7272e7b59",
+     "pearson_label": "Mark scheme - A Level Paper 3D - June 2019 Paper 3D"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_pef_20190815.pdf",
+     "sha256": "731f5e691b335659bcf5d7ac1dbf5045941e9ec2286c49e34215336b2cc4a7d2",
+     "bytes": 466399,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"71ddf-660c7272ecfb7",
+     "pearson_label": "Examiner report - A Level Paper 3D - June 2019 Paper 3D"
     }
    },
    "imported": false
@@ -233,6 +323,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/4A",
    "module_ids": [
     "FP2"
@@ -240,24 +331,34 @@
    "component_title": "Further Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_que_20190626.pdf",
+     "sha256": "015c24b947abca791f062d83c291e8e576ce02843d7227ac550be84902c85218",
+     "bytes": 305378,
+     "last_modified": "Fri, 20 Nov 2026 18:52:58 GMT",
+     "etag": "W/\"4a8e2-660b9c0b191c0",
+     "pearson_label": "Question paper - A Level Paper 4A - June 2019 Paper 4A"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_rms_20190815.pdf",
+     "sha256": "5863e26c4607ec21a2ccd46dd69b1fc3a184baceea2704e9aaeb42a087059b5a",
+     "bytes": 1105405,
+     "last_modified": "Sat, 21 Nov 2026 10:41:50 GMT",
+     "etag": "W/\"10ddfd-660c702227fc4",
+     "pearson_label": "Mark scheme - A Level Paper 4A - June 2019 Paper 4A"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_pef_20190815.pdf",
+     "sha256": "1ef689b8454842356133fa2e6b57d3a6bedc83c10ac0f9411516bca3c8ea630d",
+     "bytes": 614777,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"96179-660c72730501a",
+     "pearson_label": "Examiner report - A Level Paper 4A - June 2019 Paper 4A"
     }
    },
    "imported": false
@@ -269,6 +370,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/4B",
    "module_ids": [
     "FS2"
@@ -276,24 +378,34 @@
    "component_title": "Further Statistics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_que_20190626.pdf",
+     "sha256": "520349c68f4bb475cda1e78ed5de0c7148db9910cf00001a9153be6858b2ea2f",
+     "bytes": 281703,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"44c67-660c727309e3a",
+     "pearson_label": "Question paper - A Level Paper 4B - June 2019 Paper 4B"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_rms_20190815.pdf",
+     "sha256": "6d0d0428e043c09bc245a3cfdc6ed75a676a650e51bcdaf92e5a920ba6f18884",
+     "bytes": 700259,
+     "last_modified": "Sat, 21 Nov 2026 10:33:27 GMT",
+     "etag": "W/\"aaf63-660c6e427fbd0",
+     "pearson_label": "Mark scheme - A Level Paper 4B - June 2019 Paper 4B"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_pef_20190815.pdf",
+     "sha256": "8a79f92223b51e87d629d304d913130bd28c833dd297f9934c3a6f760293d411",
+     "bytes": 476310,
+     "last_modified": "Fri, 20 Nov 2026 21:40:44 GMT",
+     "etag": "W/\"74496-660bc18ac5cfa",
+     "pearson_label": "Examiner report - A Level Paper 4B - June 2019 Paper 4B"
     }
    },
    "imported": false
@@ -305,6 +417,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/4C",
    "module_ids": [
     "FM2"
@@ -312,24 +425,34 @@
    "component_title": "Further Mechanics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_que_20190626.pdf",
+     "sha256": "dcf4ede2e6b08d56dcb17ce4993fcec05e7c112e330d43aca7e30b865ef69f2d",
+     "bytes": 279396,
+     "last_modified": "Fri, 20 Nov 2026 18:52:58 GMT",
+     "etag": "W/\"44364-660b9c0b166f8",
+     "pearson_label": "Question paper - A Level Paper 4C - June 2019 Paper 4C"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_rms_20190815.pdf",
+     "sha256": "9f92906b3d9e34d0ffc7ee5aad8595d4ee6154724be71dda2fa38b28fa00c4fb",
+     "bytes": 616365,
+     "last_modified": "Sat, 21 Nov 2026 10:33:47 GMT",
+     "etag": "W/\"967ad-660c6e5546df2",
+     "pearson_label": "Mark scheme - A Level Paper 4C - June 2019 Paper 4C"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_pef_20190815.pdf",
+     "sha256": "261b69da7a06fe7d7cfefcfcb0e179fe1f5878f9625016917220dba5036829e6",
+     "bytes": 439528,
+     "last_modified": "Sat, 21 Nov 2026 10:10:58 GMT",
+     "etag": "W/\"6b4e8-660c693bf9318",
+     "pearson_label": "Examiner report - A Level Paper 4C - June 2019 Paper 4C"
     }
    },
    "imported": false
@@ -341,6 +464,7 @@
    "is_as": false,
    "year": 2019,
    "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "9FM0/4D",
    "module_ids": [
     "D2"
@@ -348,24 +472,34 @@
    "component_title": "Decision Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_que_20190626.pdf",
+     "sha256": "b662e984cdc3ecf4d757eb37fd7f03639165c77d0cab4039797bc70e3cae1bf3",
+     "bytes": 308116,
+     "last_modified": "Fri, 20 Nov 2026 18:52:58 GMT",
+     "etag": "W/\"4b394-660b9c0b131a9",
+     "pearson_label": "Question paper - A Level Paper 4D - June 2019 Paper 4D"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_rms_20190815.pdf",
+     "sha256": "5a7ac83699d81fa161954ca31fdc81d8ff59a1a29cfba13286f648badaae7e2e",
+     "bytes": 890591,
+     "last_modified": "Fri, 20 Nov 2026 18:52:58 GMT",
+     "etag": "W/\"d96df-660b9c0b13fe8",
+     "pearson_label": "Mark scheme - A Level Paper 4D - June 2019 Paper 4D"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_pef_20190815.pdf",
+     "sha256": "86de48aea52da4363a26455b7f6c5a099f14c77480ade47ac409245b736605d8",
+     "bytes": 696786,
+     "last_modified": "Sat, 21 Nov 2026 06:39:20 GMT",
+     "etag": "W/\"aa1d2-660c39ed8f547",
+     "pearson_label": "Examiner report - A Level Paper 4D - June 2019 Paper 4D"
     }
    },
    "imported": false
@@ -377,6 +511,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/01",
    "module_ids": [
     "CP"
@@ -384,24 +519,34 @@
    "component_title": "Core Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_que_20201006.pdf",
+     "sha256": "babebccc9b77eb3ebe974e6f9d6142287148356cb109c2b6d40411a725c17fe1",
+     "bytes": 568439,
+     "last_modified": "Fri, 20 Nov 2026 20:02:52 GMT",
+     "etag": "W/\"8ac77-660babaa8699f",
+     "pearson_label": "9FM0-01 A Level Core Pure Mathematics 1 - October 2020 - question paper A Level Core Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_msc_20201217.pdf",
+     "sha256": "ae9de182ccfafa0a6f96de78ca2daec94ff22d40988ff50e00eb6ddda8ae61b0",
+     "bytes": 546031,
+     "last_modified": "Fri, 20 Nov 2026 22:31:27 GMT",
+     "etag": "W/\"854ef-660bcce0cd781",
+     "pearson_label": "9FM0-01 A Level Core Pure Mathematics 1 - October 2020 - mark scheme A Level Core Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_pef_20201217.pdf",
+     "sha256": "6e2100f165db5d2c0abbd9786f153890d2bacbf890b2da5102ac4bce82fd948f",
+     "bytes": 238441,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"3a369-660c72716ad93",
+     "pearson_label": "9FM0-01 A Level Core Pure Mathematics 1 - October 2020 - examiner report A Level Pure Core Mathematics 1"
     }
    },
    "imported": false
@@ -413,6 +558,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/02",
    "module_ids": [
     "CP"
@@ -420,24 +566,34 @@
    "component_title": "Core Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_que_20201009.pdf",
+     "sha256": "8aac80f65360eb6a03167086b14aa18f07153162aed023f4542d261706344231",
+     "bytes": 771503,
+     "last_modified": "Fri, 20 Nov 2026 18:52:43 GMT",
+     "etag": "W/\"bc5af-660b9bfd5ecd2",
+     "pearson_label": "9FM0-02 A Level Core Pure Mathematics 2 - October 2020 - question paper A Level Core Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_msc_20201217.pdf",
+     "sha256": "bdd96de95799b6cf80682c4f5ba52acce30f9552f74ef3bf4a97a610264fe9b4",
+     "bytes": 521889,
+     "last_modified": "Fri, 20 Nov 2026 18:52:39 GMT",
+     "etag": "W/\"7f6a1-660b9bf928934",
+     "pearson_label": "9FM0-02 A Level Core Pure Mathematics 2 - October 2020 - mark scheme A Level Core Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02-pef_20201217.pdf",
+     "sha256": "e057bcd93aac88b9e69a3faf9a6f564f4bb49b5401b77700b396e83d48444ed8",
+     "bytes": 206720,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"32780-660c7271ad286",
+     "pearson_label": "9FM0-02 A Level Core Pure Mathematics 2 - October 2020 - examiner report A Level Core Pure Mathematics 2"
     }
    },
    "imported": false
@@ -449,6 +605,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/3A",
    "module_ids": [
     "FP1"
@@ -456,24 +613,34 @@
    "component_title": "Further Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_que_20201016.pdf",
+     "sha256": "fc9436a496f32f4652b3ef4844c1e96ff93dfd81d52fdb04ccd5efa34f3cb951",
+     "bytes": 948226,
+     "last_modified": "Sat, 21 Nov 2026 10:34:03 GMT",
+     "etag": "W/\"e7802-660c6e6457246",
+     "pearson_label": "9FM0-3A A Level Further Pure Mathematics 1 - October 2020 - question paper A Level Further Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_msc_20201217.pdf",
+     "sha256": "b2441fe2aa3bbb353182cdee0bbf9d79bbb581933678732c2eeb1ad018cbcd51",
+     "bytes": 562458,
+     "last_modified": "Fri, 20 Nov 2026 18:52:39 GMT",
+     "etag": "W/\"8951a-660b9bf923ee3",
+     "pearson_label": "9FM0-3A A Level Further Pure Mathematics 1 - October 2020 - mark scheme A Level Further Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A-pef_20201217.pdf",
+     "sha256": "e3af34367e57d9c737ce92e9104c609f9f9306d3ed793526a5c2a10f3d881c6f",
+     "bytes": 180187,
+     "last_modified": "Fri, 20 Nov 2026 21:43:51 GMT",
+     "etag": "W/\"2bfdb-660bc23d1d064",
+     "pearson_label": "9FM0-3A A Level Further Pure Mathematics 1 - October 2020 - examiner report A Level Further Pure Mathematics 1"
     }
    },
    "imported": false
@@ -485,6 +652,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/3B",
    "module_ids": [
     "FS1"
@@ -492,24 +660,34 @@
    "component_title": "Further Statistics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_que_20201017.pdf",
+     "sha256": "fd6e7292c57ad7cf9e91a5f7766279a8fbceb56396da25c55834b02a0b37df0b",
+     "bytes": 349887,
+     "last_modified": "Sat, 21 Nov 2026 08:00:21 GMT",
+     "etag": "W/\"556bf-660c4c09c58c4",
+     "pearson_label": "9FM0-3B A Level Further Statistics 1 - October 2020 - question paper A Level Further Statistics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_msc_20201217.pdf",
+     "sha256": "5a4cd22e416e9e59b57972ce32cf0f02438cd24c1ce45531ee42c2a03c2cdc43",
+     "bytes": 357494,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"57476-660c7271d4386",
+     "pearson_label": "9FM0-3B A Level Further Statistics 1 - October 2020 - mark scheme A Level Further Statistics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B-pef_20201217.pdf",
+     "sha256": "74c3009320c4dbc5245b1162fa2d4f2df7b7c09a5d05d097e083812f94648cb8",
+     "bytes": 178618,
+     "last_modified": "Fri, 20 Nov 2026 18:45:51 GMT",
+     "etag": "W/\"2b9ba-660b9a747347a",
+     "pearson_label": "9FM0-3B A Level Further Statistics 1 - October 2020 - examiner report A Level Further Statistics 1"
     }
    },
    "imported": false
@@ -521,6 +699,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/3C",
    "module_ids": [
     "FM1"
@@ -528,24 +707,34 @@
    "component_title": "Further Mechanics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_que_20201021.pdf",
+     "sha256": "4d0de5de6c3e1a3e76e03663a31700cdb67af66c7fb426e8d7eb9924c84e5dc0",
+     "bytes": 833477,
+     "last_modified": "Fri, 20 Nov 2026 18:52:43 GMT",
+     "etag": "W/\"cb7c5-660b9bfc9b7d1",
+     "pearson_label": "9FM0-3C A Level Further Mechanics 1 - October 2020 - question paper A Level Further Mechanics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-msc-20201217.pdf",
+     "sha256": "ff5817615a54aeb2ad4da7e366a657c52777db91ed305d4c26b840679b89491a",
+     "bytes": 450597,
+     "last_modified": "Fri, 20 Nov 2026 18:52:43 GMT",
+     "etag": "W/\"6e025-660b9bfd5d3d4",
+     "pearson_label": "9FM0-3C A Level Further Mechanics 1 October 2020 - mark scheme A Level Further Mechanics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_pef_20201217.pdf",
+     "sha256": "5de201faf48a665491e788e6a5f2e45165087f92a9164a1e503421b752b1144c",
+     "bytes": 118733,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"1cfcd-660c7271e27a5",
+     "pearson_label": "9FM0-3C A Level Further Mechanics 1 - October 2020 - examiner report A Level Further Mechanics 1"
     }
    },
    "imported": false
@@ -557,6 +746,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/3D",
    "module_ids": [
     "D1"
@@ -564,24 +754,34 @@
    "component_title": "Decision Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_que_20201022.pdf",
+     "sha256": "704349cd0fe173f49ed7deadc4f4f3a0ad32300b514e386ac4ab4b4896b50db6",
+     "bytes": 782162,
+     "last_modified": "Fri, 20 Nov 2026 18:52:43 GMT",
+     "etag": "W/\"bef52-660b9bfd5d3d4",
+     "pearson_label": "9FM0-3D A Level Decision Mathematics 1 - October 2020 - question paper A Level Decision Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_msc_20201217.pdf",
+     "sha256": "573beff1766b90b9922582f634550226d863d82b19fee21b7070f0dbd4a2440e",
+     "bytes": 507189,
+     "last_modified": "Sat, 21 Nov 2026 10:33:42 GMT",
+     "etag": "W/\"7bd35-660c6e503b5dd",
+     "pearson_label": "9FM0-3D A Level Decision Mathematics 1 - October 2020 - mark scheme A Level Decision Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_pef_20201217.pdf",
+     "sha256": "0d39e744845cdf94e861d23cd81976d3dbe9dc5f76249075a6c3ae20f94a3c2a",
+     "bytes": 158517,
+     "last_modified": "Fri, 20 Nov 2026 17:06:36 GMT",
+     "etag": "W/\"26b35-660b8444b6500",
+     "pearson_label": "9FM0-3D A Level Decision Mathematics 1- October 2020 - examiner report A Level Decision Mathematics 1"
     }
    },
    "imported": false
@@ -593,6 +793,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/4A",
    "module_ids": [
     "FP2"
@@ -600,24 +801,34 @@
    "component_title": "Further Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_que_20201024.pdf",
+     "sha256": "cde2d9d11c9e3f3e8c3ddee0e3f8267126f936a0f77835ee17f5b730204eb331",
+     "bytes": 956496,
+     "last_modified": "Fri, 20 Nov 2026 20:34:42 GMT",
+     "etag": "W/\"e9850-660bb2c846ad8",
+     "pearson_label": "9FM0-4A A Level Further Pure 2 - October 2020 - question paper A Level Further Pure 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_msc_20201217.pdf",
+     "sha256": "e41fcc62d8d98439df38b31adf2ab14a0f079cd2a5c4545ef5ad9d47c80e82b6",
+     "bytes": 394854,
+     "last_modified": "Sat, 21 Nov 2026 06:52:22 GMT",
+     "etag": "W/\"60666-660c3cd7d0bc9",
+     "pearson_label": "9FM0-4A A Level Further Pure 2 - October 2020 - mark scheme A Level Further Pure 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_pef_20201217.pdf",
+     "sha256": "53d68a10f4ae02438db9e2110332823a4273d62cc9cbb754234dc4312745fbca",
+     "bytes": 59083,
+     "last_modified": "Sat, 21 Nov 2026 06:34:45 GMT",
+     "etag": "W/\"e6cb-660c38e75d95c",
+     "pearson_label": "9FM0-4A A Level Further Pure 2 - October 2020 - examiner report A Level Further Pure 2"
     }
    },
    "imported": false
@@ -629,6 +840,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/4B",
    "module_ids": [
     "FS2"
@@ -636,24 +848,34 @@
    "component_title": "Further Statistics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_que_20201024.pdf",
+     "sha256": "5ec2f0bae343e3d117b15a0e7cef3c435055c0395decd739192e4541ba38ed69",
+     "bytes": 1010901,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"f6cd5-660c727204a86",
+     "pearson_label": "9FM0-4B A Level Further Statistics 2 - October 2020 - question paper A Level Further Statistics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_msc_20201217.pdf",
+     "sha256": "c0482c67a4a7a15181d12b913b10850bba714d94e824733c1e28c6fdc1a302c2",
+     "bytes": 404215,
+     "last_modified": "Fri, 20 Nov 2026 19:05:23 GMT",
+     "etag": "W/\"62af7-660b9ed14839a",
+     "pearson_label": "9FM0 4B A Level Further Statistics 2 - October 2020 - mark scheme A Level Further Statistics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_pef_20201217.pdf",
+     "sha256": "b442bb975f0407ca15c06cb174c2ab4fa61777d7e863a562f848dd0fce390d07",
+     "bytes": 59104,
+     "last_modified": "Sat, 21 Nov 2026 03:12:50 GMT",
+     "etag": "W/\"e6e0-660c0bc55f1cc",
+     "pearson_label": "9FM0-4B A Level Further Statistics 2 - October 2020 - examiner report A Level Further Statistics 2"
     }
    },
    "imported": false
@@ -665,6 +887,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/4C",
    "module_ids": [
     "FM2"
@@ -672,24 +895,34 @@
    "component_title": "Further Mechanics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_que_20201024.pdf",
+     "sha256": "285b48fbb3e26c7f0a63c4703a7a15caff8781c0718b65a9dc56847c405166f0",
+     "bytes": 905264,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"dd030-660c72720c5f6",
+     "pearson_label": "9FM0-4C A Level Further Mechanics 2 - October 2020 - question paper A Level Further Mechanics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_msc_20201217.pdf",
+     "sha256": "6ca5faa776e9868ea268188eb77f213e65f216edc26ba57172d22f210d77bebf",
+     "bytes": 440973,
+     "last_modified": "Fri, 20 Nov 2026 18:52:47 GMT",
+     "etag": "W/\"6ba8d-660b9c006f600",
+     "pearson_label": "9FM0-4C A Level Further Mechanics 2 - October 2020 - mark scheme A Level Further Mechanics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_pef_20201217.pdf",
+     "sha256": "6c27eb922abd3c5eed64d15151921da1633f1ea841da1be9776e8ee5363cd266",
+     "bytes": 59100,
+     "last_modified": "Fri, 20 Nov 2026 21:01:14 GMT",
+     "etag": "W/\"e6dc-660bb8b6f9f7a",
+     "pearson_label": "9FM0-4C A Level Further Mechanics 2 - October 2020 - examiner report A Level Further Mechanics 2"
     }
    },
    "imported": false
@@ -701,6 +934,7 @@
    "is_as": false,
    "year": 2020,
    "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "9FM0/4D",
    "module_ids": [
     "D2"
@@ -708,24 +942,34 @@
    "component_title": "Decision Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_que_20201024.pdf",
+     "sha256": "b3ff2c9ecdc7a005e1345348ec5ad155f5cef964b0f1315742d53b02d1e5fd36",
+     "bytes": 610673,
+     "last_modified": "Fri, 20 Nov 2026 18:34:58 GMT",
+     "etag": "W/\"95171-660b980553535",
+     "pearson_label": "9FM0-4D A Level Decision Mathematics 2 - October 2020 - question paper A Level Decision Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_msc_20201217.pdf",
+     "sha256": "6408ef0ba47fb075b6e930798cf04c32aa37cc7cee512136b222419fbcd89b39",
+     "bytes": 398567,
+     "last_modified": "Sat, 21 Nov 2026 07:39:25 GMT",
+     "etag": "W/\"614e7-660c475bf26d0",
+     "pearson_label": "9FM0-4D A Level Decision Mathematics 2 - October 2020 - mark scheme A Level Decision Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_pef_20201217.pdf",
+     "sha256": "27ea9b98010a0a73e608ea467df4da58f41e62cf65b6b08ece1e40c52e15f9ad",
+     "bytes": 59107,
+     "last_modified": "Fri, 20 Nov 2026 17:56:53 GMT",
+     "etag": "W/\"e6e3-660b8f82375e9",
+     "pearson_label": "9FM0-4D A Level Decision Mathematics 2 - October 2020 - examiner report A Level Decision Mathematics 2"
     }
    },
    "imported": false
@@ -737,6 +981,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/01",
    "module_ids": [
     "CP"
@@ -744,24 +989,34 @@
    "component_title": "Core Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_que_20211005.pdf",
+     "sha256": "012c59dbeed3e3c92a3012c279f2e14ee8a3c1590026da400bae257a8b0b80c1",
+     "bytes": 1188038,
+     "last_modified": "Sat, 21 Nov 2026 10:33:57 GMT",
+     "etag": "W/\"1220c6-660c6e5efd822",
+     "pearson_label": "9FM0-01 A Level Core Pure Mathematics 1 - November 2021 - question paper A Level Core Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_rms_20211216.pdf",
+     "sha256": "e5d0fcc081d9aaa6fd2964cdceb9fb812701818aea315d50ddb6c37c11bcbeba",
+     "bytes": 492000,
+     "last_modified": "Fri, 20 Nov 2026 18:52:31 GMT",
+     "etag": "W/\"781e0-660b9bf18a200",
+     "pearson_label": "9FM0-01 A Level Core Pure Mathematics 1 - November 2021 - mark scheme A Level Core Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_01_pef_20211216.pdf",
+     "sha256": "cbe54bdc9feb42c2b490acd44b11c82973ba6fb6c85ebbe849266496f2bce21b",
+     "bytes": 143063,
+     "last_modified": "Sat, 21 Nov 2026 00:34:22 GMT",
+     "etag": "W/\"22ed7-660be85a9c711",
+     "pearson_label": "9FM0-01 A Level Core Pure Mathematics 1 - November 2021 - examiner report A Level Core Pure Mathematics 1"
     }
    },
    "imported": false
@@ -773,6 +1028,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/02",
    "module_ids": [
     "CP"
@@ -780,24 +1036,34 @@
    "component_title": "Core Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_que_20211008.pdf",
+     "sha256": "2ca30358a0bf4e7131d3ae1472dc122d984412725d06b2f9acf6bf6592c3fc6e",
+     "bytes": 973872,
+     "last_modified": "Sat, 21 Nov 2026 06:21:32 GMT",
+     "etag": "W/\"edc30-660c35f32d13b",
+     "pearson_label": "9FM0-02 A Level Core Pure Mathematics 2 - November 2021 - question paper A Level Core Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_rms_20211216.pdf",
+     "sha256": "6182f0808e86148c71725d6e698bcacaea0f894b9a71345e9083831a8247a534",
+     "bytes": 643332,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"9d104-660c7270c2641",
+     "pearson_label": "9FM0-02 A Level Core Pure Mathematics 2 - November 2021 - mark scheme A Level Core Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_02_pef_20211216.pdf",
+     "sha256": "8800819771c1db1bf436365d57d0c6237250664c671b81c686e45f719d254c86",
+     "bytes": 141715,
+     "last_modified": "Sat, 21 Nov 2026 00:47:25 GMT",
+     "etag": "W/\"22993-660beb45766f8",
+     "pearson_label": "9FM0-02 A Level Core Pure Mathematics 2 - November 2021 - examiner report A Level Core Pure Mathematics 2"
     }
    },
    "imported": false
@@ -809,6 +1075,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/3A",
    "module_ids": [
     "FP1"
@@ -816,24 +1083,34 @@
    "component_title": "Further Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_que_20211109.pdf",
+     "sha256": "d2487af9c21eea6695e2c4e9969d97a141d618776477f488c0cb5a8dabec0751",
+     "bytes": 1066165,
+     "last_modified": "Fri, 20 Nov 2026 18:52:35 GMT",
+     "etag": "W/\"1044b5-660b9bf571fdd",
+     "pearson_label": "9FM0-3A A Level Further Pure Mathematics 1 - November 2021 - question paper A Level Further Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_rms_20211216.pdf",
+     "sha256": "f7a9a37b9898188c0b0dca31f601d96e9ad5c21a6cd75f665b14a0afda3dba76",
+     "bytes": 503431,
+     "last_modified": "Fri, 20 Nov 2026 18:52:35 GMT",
+     "etag": "W/\"7ae87-660b9bf55f929",
+     "pearson_label": "9FM0-3A A Level Further Pure Mathematics 1 - November 2021 - mark scheme A Level Further Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3A_pef_20211216.pdf",
+     "sha256": "9d336e47b8110b9dd85dc8240f08ce04aaf1b5a95464a81e75e713514f0c305f",
+     "bytes": 113869,
+     "last_modified": "Sat, 21 Nov 2026 07:20:00 GMT",
+     "etag": "W/\"1bccd-660c43048bb7e",
+     "pearson_label": "9FM0-3A A Level Further Pure Mathematics 1 - November 2021 - examiner report A Level Further Pure Mathematics 1"
     }
    },
    "imported": false
@@ -845,6 +1122,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/3B",
    "module_ids": [
     "FS1"
@@ -852,24 +1130,34 @@
    "component_title": "Further Statistics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_que_20211016.pdf",
+     "sha256": "9073ba9999d71a56f43ad0aa1f5562753b509cbaaba532ff1f845c499fb76020",
+     "bytes": 655110,
+     "last_modified": "Sat, 21 Nov 2026 06:27:14 GMT",
+     "etag": "W/\"9ff06-660c373909b97",
+     "pearson_label": "9FM0-3B A Level Further Statistics 1 - November 2021 - question paper A Level Further Statistics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_rms_20211216.pdf",
+     "sha256": "24666b3f96e5001c2ce5f5abc2f190bc8b7bfb2f1a7e48609847de8b74b78695",
+     "bytes": 495317,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"78ed5-660c7270dda35",
+     "pearson_label": "9FM0-3B A Level Further Statistics 1 - November 2021 - mark scheme A Level Further Statistics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3B_pef_20211216.pdf",
+     "sha256": "ede6b5f650bfaa8f5e03b9898d7c94f3d58f46912836576cf1f4ab18ac9e20d2",
+     "bytes": 97276,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"17bfc-660c7270e7031",
+     "pearson_label": "9FM0-3B A Level Further Statistics 1 - November 2021 - examiner report A Level Further Statistics 1"
     }
    },
    "imported": false
@@ -881,6 +1169,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/3C",
    "module_ids": [
     "FM1"
@@ -888,24 +1177,34 @@
    "component_title": "Further Mechanics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_que_20211019.pdf",
+     "sha256": "2f2fb41c6719f93ffa59df60fa353593a52c6bfcc346398827d84ff3569a7646",
+     "bytes": 868318,
+     "last_modified": "Fri, 20 Nov 2026 18:52:35 GMT",
+     "etag": "W/\"d3fde-660b9bf550ec9",
+     "pearson_label": "9FM0-3C A Level Further Mechanics 1 - November 2021 - question paper A Level Further Mechanics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_rms_20211216.pdf",
+     "sha256": "de589cd30341391a97d4dc730ad23be3b611c6e8c6f4fe1b6d881a72a176ce5f",
+     "bytes": 417536,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"65f00-660c7270ee562",
+     "pearson_label": "9FM0-3C A Level Further Mechanics 1 - November 2021 - mark scheme A Level Further Mechanics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3C_pef_20211216.pdf",
+     "sha256": "d116a4d748ab525da86d97e4f684aa64013aeb6ffc539a7e738e586c1ac7d9a0",
+     "bytes": 89340,
+     "last_modified": "Sat, 21 Nov 2026 07:08:33 GMT",
+     "etag": "W/\"15cfc-660c4075aa303",
+     "pearson_label": "9FM0-3C A Level Further Mechanics 1 - November 2021 - examiner report A Level Further Mechanics 1"
     }
    },
    "imported": false
@@ -917,6 +1216,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/3D",
    "module_ids": [
     "D1"
@@ -924,24 +1224,34 @@
    "component_title": "Decision Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_que_20211021.pdf",
+     "sha256": "0b0b0bfee44072dbd9f91158143990982a41554a65e94cea22c8b5fcc7fed204",
+     "bytes": 1037853,
+     "last_modified": "Fri, 20 Nov 2026 18:52:35 GMT",
+     "etag": "W/\"fd61d-660b9bf54c0a9",
+     "pearson_label": "9FM0-3D A Level Decision Mathematics 1 - November 2021 - question paper A Level Decision Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_rms_20211216.pdf",
+     "sha256": "d1f5508ee58b592b4566729ff018431e5f034ad009062289b3db8ea5df5da1eb",
+     "bytes": 594577,
+     "last_modified": "Fri, 20 Nov 2026 18:52:35 GMT",
+     "etag": "W/\"91291-660b9bf553206",
+     "pearson_label": "9FM0-3D - A Level Decision Mathematics 1 - November 2021 - mark scheme A Level Decision Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_3D_pef_20211216.pdf",
+     "sha256": "8917a9c04b7f1a40422fa4e50b7cb2d48fcedcb55011064c288828d7969b00a2",
+     "bytes": 90623,
+     "last_modified": "Fri, 20 Nov 2026 21:01:58 GMT",
+     "etag": "W/\"161ff-660bb8e0e6657",
+     "pearson_label": "9FM0-3D A Level Decision Mathematics 1 - November 2021 - examiner report A Level Decision Mathematics 1"
     }
    },
    "imported": false
@@ -953,6 +1263,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/4A",
    "module_ids": [
     "FP2"
@@ -960,24 +1271,34 @@
    "component_title": "Further Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_que_20211023.pdf",
+     "sha256": "03a8c1fbb1fcaf04d6b685676a877fca4e21365fae67fbd093550361f32eec49",
+     "bytes": 889995,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"d948b-660c727107245",
+     "pearson_label": "9FM0-4A A Level Further Pure 2 - November 2021 - question paper A Level Further Pure 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_rms_20211216.pdf",
+     "sha256": "1156dd5e45f7a92c2c090f50c69913ab296f7733086efd88f582dab8c95350f5",
+     "bytes": 461514,
+     "last_modified": "Sat, 21 Nov 2026 06:49:17 GMT",
+     "etag": "W/\"70aca-660c3c2779465",
+     "pearson_label": "9FM0-4A A Level Further Pure 2 - November 2021 - mark scheme A Level Further Pure 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4A_pef_20211216.pdf",
+     "sha256": "c905815a1224ff636245e89d80fea7ad1de980bfd66bd2dbf98f0af177d85763",
+     "bytes": 49349,
+     "last_modified": "Fri, 20 Nov 2026 20:01:14 GMT",
+     "etag": "W/\"c0c5-660bab4ddfc02",
+     "pearson_label": "9FM0-4A A Level Further Pure 2 - November 2021 - examiner report A Level Further Pure 2"
     }
    },
    "imported": false
@@ -989,6 +1310,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/4B",
    "module_ids": [
     "FS2"
@@ -996,24 +1318,34 @@
    "component_title": "Further Statistics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_que_20211023.pdf",
+     "sha256": "655d41a8caccaa3ec487714a2f7bdd6ea9710d82e466d569a86db765c649fd68",
+     "bytes": 812703,
+     "last_modified": "Sat, 21 Nov 2026 00:06:21 GMT",
+     "etag": "W/\"c669f-660be21777dbb",
+     "pearson_label": "9FM0-4B A Level Further Statistics 2 - November 2021 - question paper A Level Further Statistics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_rms_20211216.pdf",
+     "sha256": "828eb02887c940f0523efd06150b62431fece645a76d65fe5e71dc313c1a7d7c",
+     "bytes": 342692,
+     "last_modified": "Fri, 20 Nov 2026 18:52:39 GMT",
+     "etag": "W/\"53aa4-660b9bf9177c4",
+     "pearson_label": "9FM0-4B A Level Further Statistics 2 - November 2021 - mark scheme A Level Further Statistics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4B_pef_20211216.pdf",
+     "sha256": "f587e922551b472e903a77cf07619865d045cd268bac88cb24fa5250178ed2b7",
+     "bytes": 49375,
+     "last_modified": "Fri, 20 Nov 2026 20:49:57 GMT",
+     "etag": "W/\"c0df-660bb630da260",
+     "pearson_label": "9FM0-4B A Level Further Statistics 2 - November 2021 - examiner report A Level Further Statistics 2"
     }
    },
    "imported": false
@@ -1025,6 +1357,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/4C",
    "module_ids": [
     "FM2"
@@ -1032,24 +1365,34 @@
    "component_title": "Further Mechanics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_que_20211023.pdf",
+     "sha256": "726c9c9655a8b0de3f44245b461b87de0b49273697b23b538d98d8ead984de5e",
+     "bytes": 1074788,
+     "last_modified": "Sat, 21 Nov 2026 04:37:49 GMT",
+     "etag": "W/\"106664-660c1ec465591",
+     "pearson_label": "9FM0-4C A Level Further Mechanics 2 - November 2021 - question paper A Level Further Mechanics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_rms_20211216.pdf",
+     "sha256": "8434ecf039ed75a1530d5b82d9a7bd314f0918cd31c2fb694230f2ea35cbf7bd",
+     "bytes": 364914,
+     "last_modified": "Sat, 21 Nov 2026 06:38:10 GMT",
+     "etag": "W/\"59172-660c39ab4c659",
+     "pearson_label": "9FM0-4C A Level Further Mechanics 2 - November 2021 - mark scheme A Level Further Mechanics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4C_pef_20211216.pdf",
+     "sha256": "b89e277442f6ab85aef6156b42be0c2ffd3fcdda134d997b4fd66433bf2f162b",
+     "bytes": 49369,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"c0d9-660c727135875",
+     "pearson_label": "9FM0-4C A Level Further Mechanics 2 - November 2021 - examiner report A Level Further Mechanics 2"
     }
    },
    "imported": false
@@ -1061,6 +1404,7 @@
    "is_as": false,
    "year": 2021,
    "series": "Autumn",
+   "pearson_series": "November 2021",
    "official_paper_code": "9FM0/4D",
    "module_ids": [
     "D2"
@@ -1068,24 +1412,34 @@
    "component_title": "Decision Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-que-20211023.pdf",
+     "sha256": "d5bc37f27a8b5c5974e737494491d6791b3cd482b1c25656a34a3b311fe700a2",
+     "bytes": 1001197,
+     "last_modified": "Sat, 21 Nov 2026 06:40:03 GMT",
+     "etag": "W/\"f46ed-660c3a1678fc1",
+     "pearson_label": "9FM0-4D A Level Decision Mathematics 2 - November 2021 - question paper A Level Decision Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_rms_20211216.pdf",
+     "sha256": "b062ee9b6cb53e2c18d4459e8deaaf81f3f32ca7a26458e60a89a5818b7a5a2c",
+     "bytes": 519075,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"7eba3-660c727130413",
+     "pearson_label": "9FM0-4D A Level Decision Mathematics 2 - November 2021 - mark scheme A Level Decision Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9FM0_4D_pef_20211216.pdf",
+     "sha256": "9e5b521e47f8e2dc16184517b656b265a308e51aa388a3b1f308d07ca3923add",
+     "bytes": 49381,
+     "last_modified": "Sat, 21 Nov 2026 06:40:11 GMT",
+     "etag": "W/\"c0e5-660c3a1eaf0a3",
+     "pearson_label": "9FM0-4D A Level Decision Mathematics 2 - November 2021 - examiner report A Level Decision Mathematics 2"
     }
    },
    "imported": false
@@ -1097,6 +1451,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/01",
    "module_ids": [
     "CP"
@@ -1104,24 +1459,34 @@
    "component_title": "Core Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-que-20220526.pdf",
+     "sha256": "1fa67dbe255525ae5f259189e18dc2bb89ffb5fcfe8add335f4b5d112cbc4673",
+     "bytes": 1189539,
+     "last_modified": "Sat, 21 Nov 2026 00:34:22 GMT",
+     "etag": "W/\"1226a3-660be85a61d91",
+     "pearson_label": "Question paper - 9FM0-01 A level Core Pure Mathematics 1 - June 2022 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-rms-20220818.pdf",
+     "sha256": "f9ec942f8aef7c93dbfd493a2177a4a17dfc7c1db003d9307c5f2a92b3e83a1a",
+     "bytes": 567784,
+     "last_modified": "Fri, 20 Nov 2026 23:29:32 GMT",
+     "etag": "W/\"8a9e8-660bd9dce48f1",
+     "pearson_label": "Mark scheme - 9FM0-01 A level Core Pure Mathematics 1 - June 2022 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-pef-20220818.pdf",
+     "sha256": "574595787377973423b75efa0283cebd5333eea92c1238540c99987b2c24b0be",
+     "bytes": 312172,
+     "last_modified": "Fri, 20 Nov 2026 19:33:19 GMT",
+     "etag": "W/\"4c36c-660ba5103ef66",
+     "pearson_label": "Examiner report - 9FM0-01 A level Core Pure Mathematics 1 - June 2022 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     }
    },
    "imported": false
@@ -1133,6 +1498,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/02",
    "module_ids": [
     "CP"
@@ -1140,24 +1506,34 @@
    "component_title": "Core Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-que-20220609.pdf",
+     "sha256": "64551aa36a56510912fc2979c468929dbcc07f6068fa452775ac2ad07266308a",
+     "bytes": 1355189,
+     "last_modified": "Sat, 21 Nov 2026 06:21:39 GMT",
+     "etag": "W/\"14adb5-660c35f99d07f",
+     "pearson_label": "Question paper - 9FM0-02 A level Core Pure Mathematics 2 - June 2022 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-rms-20220818.pdf",
+     "sha256": "25092394321b8c19222d3bafeeea3f4012575d113322e30566514f9377d0dda3",
+     "bytes": 566739,
+     "last_modified": "Fri, 20 Nov 2026 18:52:17 GMT",
+     "etag": "W/\"8a5d3-660b9be4588c5",
+     "pearson_label": "Mark scheme - 9FM0-02 A level Core Pure Mathematics 2 - June 2022 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-pef-20220818.pdf",
+     "sha256": "c0ed4fffa4870ecf020b1f1162fb0d5071350a5b07e669dbc40dbb43bf2c512a",
+     "bytes": 192127,
+     "last_modified": "Fri, 20 Nov 2026 18:42:29 GMT",
+     "etag": "W/\"2ee7f-660b99b336fd6",
+     "pearson_label": "Examiner report - 9FM0-02 A level Core Pure Mathematics 2 - June 2022 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     }
    },
    "imported": false
@@ -1169,6 +1545,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/3A",
    "module_ids": [
     "FP1"
@@ -1176,24 +1553,34 @@
    "component_title": "Further Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-que-20220616.pdf",
+     "sha256": "1413ff9bb4d9c55033fe53051948c4e1cea92abf4e2b57bdb6ac95f09fb80847",
+     "bytes": 968779,
+     "last_modified": "Fri, 20 Nov 2026 18:52:17 GMT",
+     "etag": "W/\"ec84b-660b9be460f9e",
+     "pearson_label": "Question paper - 9FM0-3A A Level Further Pure Mathematics 1 - June 2022 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-rms-20220818.pdf",
+     "sha256": "26e6b11821a7845323a1d3d7169e1f30865b22d342a60a6c58ee35b3e137f5ac",
+     "bytes": 487185,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"76f11-660c7276c6ec8",
+     "pearson_label": "Mark scheme - 9FM0-3A A Level Further Pure Mathematics 1 - June 2022 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-pef-20220818.pdf",
+     "sha256": "38c430da0cbdf6b700d0fdd2fad9794ca899c303e997f89ae238f5593b0a67b3",
+     "bytes": 232052,
+     "last_modified": "Sat, 21 Nov 2026 00:34:22 GMT",
+     "etag": "W/\"38a74-660be85ab4db1",
+     "pearson_label": "Examiner report - 9FM0-3A A Level Further Pure Mathematics 1 - June 2022 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     }
    },
    "imported": false
@@ -1205,6 +1592,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/3B",
    "module_ids": [
     "FS1"
@@ -1212,24 +1600,34 @@
    "component_title": "Further Statistics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-que-20220618.pdf",
+     "sha256": "85ed07f290e51dbb0628b07e8ca70d33b84b668355b2d96039ec9b5cd01d0448",
+     "bytes": 709001,
+     "last_modified": "Sat, 21 Nov 2026 10:33:44 GMT",
+     "etag": "W/\"ad189-660c6e525e3df",
+     "pearson_label": "Question paper - 9FM0-3B A Level Further Statistics 1 - June 2022 A Level Further Mathematics Paper 3B - Further Statistics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-rms-20220818.pdf",
+     "sha256": "abb2b9bb35e40a29641a40b4618303d964d283b95fcee4208368e87366dab147",
+     "bytes": 534200,
+     "last_modified": "Fri, 20 Nov 2026 18:52:22 GMT",
+     "etag": "W/\"826b8-660b9be8773c7",
+     "pearson_label": "Mark scheme - 9FM0-3B A Level Further Statistics 1 - June 2022 A Level Further Mathematics Paper 3B - Further Statistics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-pef-20220818.pdf",
+     "sha256": "9b58e6df4a6ae23c44c3cd2fd545dd085e0acd78eaa6c10598e007518de31360",
+     "bytes": 180963,
+     "last_modified": "Sat, 21 Nov 2026 10:21:21 GMT",
+     "etag": "W/\"2c2e3-660c6b8da82de",
+     "pearson_label": "Examiner report - 9FM0-3B A Level Further Statistics 1 - June 2022 A Level Further Mathematics Paper 3B - Further Statistics 1"
     }
    },
    "imported": false
@@ -1241,6 +1639,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/3C",
    "module_ids": [
     "FM1"
@@ -1248,24 +1647,34 @@
    "component_title": "Further Mechanics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-que-20220623.pdf",
+     "sha256": "6711c0685168a2d50c544aef8f2fd3b9bd70f8c58befb4d8a98690ea52b1493b",
+     "bytes": 1011799,
+     "last_modified": "Sat, 21 Nov 2026 00:56:23 GMT",
+     "etag": "W/\"f7057-660bed4660b14",
+     "pearson_label": "Question paper - 9FM0-3C A Level Further Mechanics 1 - June 2022 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-rms-20220818.pdf",
+     "sha256": "abad0145ed1fb4626a4d5032b20964e69553e11ed90e705d5294b0b949f436a0",
+     "bytes": 686316,
+     "last_modified": "Sat, 21 Nov 2026 00:56:25 GMT",
+     "etag": "W/\"a78ec-660bed486657f",
+     "pearson_label": "Mark scheme - 9FM0-3C A Level Further Mechanics 1 - June 2022 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-pef-20220818.pdf",
+     "sha256": "6e29ffde037b1cc63dd62865a6821096be6b5c3396d658e78e2a4b2019004f96",
+     "bytes": 206859,
+     "last_modified": "Fri, 20 Nov 2026 17:14:48 GMT",
+     "etag": "W/\"3280b-660b8619a29ee",
+     "pearson_label": "Examiner report - 9FM0-3C A Level Further Mechanics 1 - June 2022 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     }
    },
    "imported": false
@@ -1277,6 +1686,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/3D",
    "module_ids": [
     "D1"
@@ -1284,24 +1694,34 @@
    "component_title": "Decision Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-que-20220624.pdf",
+     "sha256": "742f10f46ba6328659c76c532c73c9b26835c479bbb133068e6139c076535d60",
+     "bytes": 1091670,
+     "last_modified": "Sat, 21 Nov 2026 06:32:25 GMT",
+     "etag": "W/\"10a856-660c38622f404",
+     "pearson_label": "Question paper - 9FM0-3D A Level Decision Mathematics 1 - June 2022 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-rms-20220818.pdf",
+     "sha256": "4150edff989ca2b315afd6de4e1d8f4ae3817d3e8f24df5ad80620df874142f8",
+     "bytes": 692781,
+     "last_modified": "Fri, 20 Nov 2026 18:52:22 GMT",
+     "etag": "W/\"a922d-660b9be87faa9",
+     "pearson_label": "Mark scheme - 9FM0-3D A Level Decision Mathematics 1 - June 2022 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-pef-20220818.pdf",
+     "sha256": "c5df4e51e92465e102580507f0ca4522e4bbbc45f7e06ddd8224ad1efe6d556b",
+     "bytes": 269610,
+     "last_modified": "Sat, 21 Nov 2026 06:40:21 GMT",
+     "etag": "W/\"41d2a-660c3a28259f3",
+     "pearson_label": "Examiner report - 9FM0-3D A Level Decision Mathematics 1 - June 2022 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     }
    },
    "imported": false
@@ -1313,6 +1733,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/4A",
    "module_ids": [
     "FP2"
@@ -1320,24 +1741,34 @@
    "component_title": "Further Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-que-20220628.pdf",
+     "sha256": "e26c039ec3c5b976ea298114786fe4712baec302895dcec626cf3da1a34c4bf1",
+     "bytes": 1148041,
+     "last_modified": "Fri, 20 Nov 2026 18:52:22 GMT",
+     "etag": "W/\"118489-660b9be873759",
+     "pearson_label": "Question paper - 9FM0-4A A Level Further Pure Mathematics 2 - June 2022 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-rms-20220818.pdf",
+     "sha256": "19325ac43b607b093ee20d59117b23822127ea5c02311e75efaa95054af3cfc2",
+     "bytes": 502510,
+     "last_modified": "Fri, 20 Nov 2026 18:52:22 GMT",
+     "etag": "W/\"7aaee-660b9be871049",
+     "pearson_label": "Mark scheme - 9FM0-4A A Level Further Pure Mathematics 2 - June 2022 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-pef-20220818.pdf",
+     "sha256": "7984e875bf74920ec75097cb20ad8433f878d9b901372c4de2fee894d54ebee1",
+     "bytes": 192944,
+     "last_modified": "Sat, 21 Nov 2026 06:35:06 GMT",
+     "etag": "W/\"2f1b0-660c38fb55e67",
+     "pearson_label": "Examiner report - 9FM0-4A A Level Further Pure Mathematics 2 - June 2022 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     }
    },
    "imported": false
@@ -1349,6 +1780,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/4B",
    "module_ids": [
     "FS2"
@@ -1356,24 +1788,34 @@
    "component_title": "Further Statistics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-que-20220628.pdf",
+     "sha256": "db20da6809dcfc55325a009b9532a1b6ece89497af8181eaf09f1faab27df1ec",
+     "bytes": 834175,
+     "last_modified": "Fri, 20 Nov 2026 18:52:21 GMT",
+     "etag": "W/\"cba7f-660b9be86fe97",
+     "pearson_label": "Question paper - 9FM0-4B A Level Further Statistics 2 - June 2022 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-rms-20220818.pdf",
+     "sha256": "ba1e55b70c1a45bf864998e23a4f718a291d77c98fca61dd89dd799accdef110",
+     "bytes": 455492,
+     "last_modified": "Sat, 21 Nov 2026 10:19:31 GMT",
+     "etag": "W/\"6f344-660c6b2466468",
+     "pearson_label": "Mark scheme - 9FM0-4B A Level Further Statistics 2 - June 2022 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-pef-20220818.pdf",
+     "sha256": "e552ad6baeff6e689e2d3789284c5c7cb41fd3ccb06254bf126ea6fe95330973",
+     "bytes": 219900,
+     "last_modified": "Sat, 21 Nov 2026 02:09:51 GMT",
+     "etag": "W/\"35afc-660bfdb1e17d7",
+     "pearson_label": "Examiner report - 9FM0-4B A Level Further Statistics 2 - June 2022 A Level Further Mathematics Paper 4B - Further Statistics 2"
     }
    },
    "imported": false
@@ -1385,6 +1827,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/4C",
    "module_ids": [
     "FM2"
@@ -1392,24 +1835,34 @@
    "component_title": "Further Mechanics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-que-20220628.pdf",
+     "sha256": "dfdd74d6499399bc4516774fd7c73e29880e09c3fbde21eebbd9646f511ff3c8",
+     "bytes": 1116503,
+     "last_modified": "Fri, 20 Nov 2026 18:52:22 GMT",
+     "etag": "W/\"110957-660b9be8844e6",
+     "pearson_label": "Question paper - 9FM0-4C A Level Further Mechanics 2 - June 2022 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-rms-20220818.pdf",
+     "sha256": "316ff572ad81d1bb24224afde051b010f6bda4c58a75aed7e07790394a5a97ed",
+     "bytes": 470741,
+     "last_modified": "Sat, 21 Nov 2026 10:18:55 GMT",
+     "etag": "W/\"72ed5-660c6b02ea773",
+     "pearson_label": "Mark scheme - 9FM0-4C A Level Further Mechanics 2 - June 2022 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-pef-20220818.pdf",
+     "sha256": "3f0172a844be0adf33f0a2e9c610d093adfb4e96baef5bbdcc51ee06daebcfed",
+     "bytes": 253199,
+     "last_modified": "Sat, 21 Nov 2026 09:55:27 GMT",
+     "etag": "W/\"3dd0f-660c65c3fc6de",
+     "pearson_label": "Examiner report - 9FM0-4C A Level Further Mechanics 2 - June 2022 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     }
    },
    "imported": false
@@ -1421,6 +1874,7 @@
    "is_as": false,
    "year": 2022,
    "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "9FM0/4D",
    "module_ids": [
     "D2"
@@ -1428,24 +1882,34 @@
    "component_title": "Decision Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-que-20220628.pdf",
+     "sha256": "fc08787e3212d0fc99a95c2f5cb202805dda974c7f2c3164882b5cc8aeb0f862",
+     "bytes": 780428,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"be88c-660c72772415b",
+     "pearson_label": "Question paper - 9FM0-4D A Level Decision Mathematics 2 - June 2022 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-rms-20220818.pdf",
+     "sha256": "2ccf90eeab918fdfa15e4b3e76216991a5692c5c70671c6273737f2fedc828cf",
+     "bytes": 547503,
+     "last_modified": "Fri, 20 Nov 2026 18:52:25 GMT",
+     "etag": "W/\"85aaf-660b9bec31d39",
+     "pearson_label": "Mark scheme - 9FM0-4D A Level Decision Mathematics 2 - June 2022 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-pef-20220818.pdf",
+     "sha256": "179ed833e83dfcd07c9c01aefa4e0525dbb0075b9fc2e42229e1bebe7376964c",
+     "bytes": 192849,
+     "last_modified": "Fri, 20 Nov 2026 23:27:48 GMT",
+     "etag": "W/\"2f151-660bd978debf8",
+     "pearson_label": "Examiner report - 9FM0-4D A Level Decision Mathematics 2 - June 2022 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     }
    },
    "imported": false
@@ -1457,6 +1921,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/01",
    "module_ids": [
     "CP"
@@ -1464,24 +1929,34 @@
    "component_title": "Core Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-que-20230526.pdf",
+     "sha256": "2d1b9effdfd732618bee9792e609a149619b0c3365058713a70f20a633c165b8",
+     "bytes": 497925,
+     "last_modified": "Fri, 20 Nov 2026 18:41:30 GMT",
+     "etag": "W/\"79905-660b997b71984",
+     "pearson_label": "Question paper - 9FM0-01 A level Core Pure Mathematics 1 - June 2023 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-rms-20230817.pdf",
+     "sha256": "d6a2131d600ddeb205643b35ce65a648d94299c59338206a86f8af67c9d80850",
+     "bytes": 612819,
+     "last_modified": "Fri, 20 Nov 2026 18:07:55 GMT",
+     "etag": "W/\"959d3-660b91f9bf94b",
+     "pearson_label": "Mark scheme - 9FM0-01 A level Core Mathematics 1 - June 2023 A Level Further Mathematics Paper 1 - Core Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-pef-20230817.pdf",
+     "sha256": "5d54bf9e27230418db9b5ea996c08861d6b386f4c86193bcfec3737cc52298f3",
+     "bytes": 352982,
+     "last_modified": "Fri, 20 Nov 2026 17:14:40 GMT",
+     "etag": "W/\"562d6-660b8612065f5",
+     "pearson_label": "Examiner report - 9FM0-01 A level Core Pure Mathematics 1 - June 2023 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     }
    },
    "imported": false
@@ -1493,6 +1968,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/02",
    "module_ids": [
     "CP"
@@ -1500,24 +1976,34 @@
    "component_title": "Core Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-que-20230606.pdf",
+     "sha256": "fdaad0ac79d7f23c2ee6f80003a01003a36dc1048eeeabc56e55d1087c0fb281",
+     "bytes": 683677,
+     "last_modified": "Fri, 20 Nov 2026 20:15:54 GMT",
+     "etag": "W/\"a6e9d-660bae948566c",
+     "pearson_label": "Question paper - 9FM0-02 A level Core Pure Mathematics 2 - June 2023 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-rms-20230817.pdf",
+     "sha256": "bb5554f543b907b00644b7901d78af9a9adcb83fe82e7e5a536d7b2cfe3457ba",
+     "bytes": 681394,
+     "last_modified": "Sat, 21 Nov 2026 04:54:29 GMT",
+     "etag": "W/\"a65b2-660c227dee4bb",
+     "pearson_label": "Mark scheme - 9FM0-02 A level Core Pure Mathematics 2 - June 2023 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-pef-20230817.pdf",
+     "sha256": "89e21d308f871267e737223cbc463a7c7aa3555937350e74ca0ae2827477fa60",
+     "bytes": 272094,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"426de-660c72760d605",
+     "pearson_label": "Examiner report - 9FM0-02 A level Core Pure Mathematics 2 - June 2023 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     }
    },
    "imported": false
@@ -1529,6 +2015,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/3A",
    "module_ids": [
     "FP1"
@@ -1536,24 +2023,34 @@
    "component_title": "Further Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-que-20230623.pdf",
+     "sha256": "91451befb9081bc597263be3aee29e7b0aadadd5fb4957abaf4a12f043ff6e37",
+     "bytes": 672511,
+     "last_modified": "Sat, 21 Nov 2026 06:33:58 GMT",
+     "etag": "W/\"a42ff-660c38bb3a416",
+     "pearson_label": "Question paper - 9FM0-3A A Level Further Pure Mathematics 1 - June 2023 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-rms-20230817.pdf",
+     "sha256": "868abbcce72286c98217149806275196d6ffaf34e2ae5a265f6d4afbf8748855",
+     "bytes": 532826,
+     "last_modified": "Sat, 21 Nov 2026 06:25:21 GMT",
+     "etag": "W/\"8215a-660c36cdd83ed",
+     "pearson_label": "Mark scheme - 9FM0-3A A Level Further Pure Mathematics 1 - June 2023 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-pef-20230817.pdf",
+     "sha256": "4e2486b26be5805f267c29c1965c97d1e057255fc20788b2749127e09717180e",
+     "bytes": 332296,
+     "last_modified": "Fri, 20 Nov 2026 17:14:37 GMT",
+     "etag": "W/\"51208-660b860fa404d",
+     "pearson_label": "Examiner report - 9FM0-3A A Level Further Pure Mathematics 1 - June 2023 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     }
    },
    "imported": false
@@ -1565,6 +2062,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/3B",
    "module_ids": [
     "FS1"
@@ -1572,24 +2070,34 @@
    "component_title": "Further Statistics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-que-20230617.pdf",
+     "sha256": "75bcb485da95e29555fe95ffb7b4dcfced8b1789b62c3edc74eceb47f4de1445",
+     "bytes": 446546,
+     "last_modified": "Sat, 21 Nov 2026 06:27:55 GMT",
+     "etag": "W/\"6d052-660c3760ee270",
+     "pearson_label": "Question paper - 9FM0-3B A Level Further Statistics 1 - June 2023 A Level Further Mathematics Paper 3B - Further Statistics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-rms-20230817.pdf",
+     "sha256": "e6850dcf0d36301fe929708a1aec9197a7bc72e73c45816a6ffa4babc0e923c0",
+     "bytes": 910184,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"de368-660c7276214ba",
+     "pearson_label": "Mark scheme - 9FM0-3B A Level Further Statistics 1 - June 2023 A Level Further Mathematics Paper 3B - Further Statistics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-pef-20230817.pdf",
+     "sha256": "701a3af3249401ce067ec76de9e46e31874fd0cfd7c33b7c49ac31bcfdf9ee1d",
+     "bytes": 235904,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"39980-660c7276283b6",
+     "pearson_label": "Examiner report - 9FM0-3B A Level Further Statistics 1 - June 2023 A Level Further Mathematics Paper 3B - Further Statistics 1"
     }
    },
    "imported": false
@@ -1601,6 +2109,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/3C",
    "module_ids": [
     "FM1"
@@ -1608,24 +2117,34 @@
    "component_title": "Further Mechanics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-que-20230615.pdf",
+     "sha256": "0b5117be5708029f0563a8ed88059e0825719f4bd6adee7374e2a49275a0b4f1",
+     "bytes": 616169,
+     "last_modified": "Fri, 20 Nov 2026 20:15:55 GMT",
+     "etag": "W/\"966e9-660bae956084e",
+     "pearson_label": "Question paper - 9FM0-3C A Level Further Mechanics 1 - June 2023 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-rms-20230817.pdf",
+     "sha256": "36f876efe283c1408857792d7e910a5a987c5ecf19ee54606fe50f0c7e4806e4",
+     "bytes": 627295,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"9925f-660c72762d1d6",
+     "pearson_label": "Mark scheme - 9FM0-3C A Level Further Mechanics 1 - June 2023 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-pef-20230817.pdf",
+     "sha256": "539c8466acb2d8d7a7f9aaae5937070e2360a39f8031a7a2bd8583f682f9f36d",
+     "bytes": 253281,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"3dd61-660c727636e16",
+     "pearson_label": "Examiner report - 9FM0-3C A Level Further Mechanics 1 - June 2023 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     }
    },
    "imported": false
@@ -1637,6 +2156,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/3D",
    "module_ids": [
     "D1"
@@ -1644,24 +2164,34 @@
    "component_title": "Decision Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-que-20230624.pdf",
+     "sha256": "193d1cc8eb06cb38bdae26a2a8455676c451ddf422d874aa72dcad7b6077d8df",
+     "bytes": 656134,
+     "last_modified": "Sat, 21 Nov 2026 06:32:39 GMT",
+     "etag": "W/\"a0306-660c386f426db",
+     "pearson_label": "Question paper - 9FM0-3D A Level Decision Mathematics 1 - June 2023 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-rms-20230817.pdf",
+     "sha256": "6626e1f19fbac1d22b02d6da4989c64125ac5f26f23d4897e28d09bd8f34ebfe",
+     "bytes": 1046817,
+     "last_modified": "Fri, 20 Nov 2026 18:41:30 GMT",
+     "etag": "W/\"ff921-660b997b8c124",
+     "pearson_label": "Mark scheme - 9FM0-3D A Level Decision Mathematics 1 - June 2023 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-pef-20230817.pdf",
+     "sha256": "a707cdd9ce9d1d4d1fdbb1714cb0773b7623cf6e4186d2941fb7dde2b40f0996",
+     "bytes": 247053,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"3c50d-660c727640a56",
+     "pearson_label": "Examiner report - 9FM0-3D A Level Decision Mathematics 1 - June 2023 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     }
    },
    "imported": false
@@ -1673,6 +2203,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/4A",
    "module_ids": [
     "FP2"
@@ -1680,24 +2211,34 @@
    "component_title": "Further Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-que-20230627.pdf",
+     "sha256": "9d4ef9fe0d23af0cecb548192de88b56c887f4bacda4aa98da3f2cae69d86b34",
+     "bytes": 680223,
+     "last_modified": "Sat, 21 Nov 2026 02:27:15 GMT",
+     "etag": "W/\"a611f-660c01958c482",
+     "pearson_label": "Question paper - 9FM0-4A A Level Further Pure Mathematics 2 - June 2023 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-rms-20230817.pdf",
+     "sha256": "326408f808422c495adf32f1ec721f2609fb154b02ddd57c2166d082ab7508c0",
+     "bytes": 397121,
+     "last_modified": "Fri, 20 Nov 2026 18:41:34 GMT",
+     "etag": "W/\"60f41-660b997f10f36",
+     "pearson_label": "Mark scheme - 9FM0-4A A Level Further Pure Mathematics 2 - June 2023 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-pef-20230817.pdf",
+     "sha256": "b7a005aac8af071c4dc40a61f7c9a5f4b219cb8346cefee207981ae3f9d57c48",
+     "bytes": 236132,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"39a64-660c72764cda6",
+     "pearson_label": "Examiner report - 9FM0-4A A Level Further Pure Mathematics 2 - June 2023 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     }
    },
    "imported": false
@@ -1709,6 +2250,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/4B",
    "module_ids": [
     "FS2"
@@ -1716,24 +2258,34 @@
    "component_title": "Further Statistics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-que-20230627.pdf",
+     "sha256": "0edec084e84a2f7c782def303cb04312fd78d7e6af9c4393ca72e9b90a2b38b6",
+     "bytes": 516244,
+     "last_modified": "Fri, 20 Nov 2026 18:41:34 GMT",
+     "etag": "W/\"7e094-660b997f0c116",
+     "pearson_label": "Question paper - 9FM0-4B A Level Further Statistics 2 - June 2023 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-rms-20230817.pdf",
+     "sha256": "bd8e793e01685ffa436e739f501c7198c4f363bce76334292eb7cb4d52c96182",
+     "bytes": 490980,
+     "last_modified": "Fri, 20 Nov 2026 18:41:34 GMT",
+     "etag": "W/\"77de4-660b997f26ec6",
+     "pearson_label": "Mark scheme - 9FM0-4B A Level Further Statistics 2 - June 2023 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-pef-20230817.pdf",
+     "sha256": "bf64b0622cac7042c898ea71ba71302ddb539b05e9bf2e2a86ec2a0d7f01de2a",
+     "bytes": 233497,
+     "last_modified": "Sat, 21 Nov 2026 06:36:54 GMT",
+     "etag": "W/\"39019-660c3962d4197",
+     "pearson_label": "Examiner report - 9FM0-4B A Level Further Statistics 2 - June 2023 A Level Further Mathematics Paper 4B - Further Statistics 2"
     }
    },
    "imported": false
@@ -1745,6 +2297,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/4C",
    "module_ids": [
     "FM2"
@@ -1752,24 +2305,34 @@
    "component_title": "Further Mechanics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-que-20230627.pdf",
+     "sha256": "75c35b75681062c59663871c152dfd9c5cccac526375cd841847fc73a42d3da8",
+     "bytes": 925535,
+     "last_modified": "Fri, 20 Nov 2026 20:15:55 GMT",
+     "etag": "W/\"e1f5f-660bae953703d",
+     "pearson_label": "Question paper - 9FM0-4C A Level Further Mechanics 2 - June 2023 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-rms-20230817.pdf",
+     "sha256": "70a70bf950db663bf15add80dbb6b196fc0e9532d9798beff8124eeca2b387af",
+     "bytes": 467108,
+     "last_modified": "Sat, 21 Nov 2026 06:38:46 GMT",
+     "etag": "W/\"720a4-660c39cd1170b",
+     "pearson_label": "Mark scheme - 9FM0-4C A Level Further Mechanics 2 - June 2023 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-pef-20230817.pdf",
+     "sha256": "53a1c6716e4581c304dc29044a681fc016754e113adac84bb61a8032414ed073",
+     "bytes": 194280,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"2f6e8-660c727665447",
+     "pearson_label": "Examiner report - 9FM0-4C A Level Further Mechanics 2 - June 2023 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     }
    },
    "imported": false
@@ -1781,6 +2344,7 @@
    "is_as": false,
    "year": 2023,
    "series": "June",
+   "pearson_series": "June 2023",
    "official_paper_code": "9FM0/4D",
    "module_ids": [
     "D2"
@@ -1788,24 +2352,34 @@
    "component_title": "Decision Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-que-20230627.pdf",
+     "sha256": "9ca5fc414e66662e563db6ba840e47f7fcbe5c9213bd4f1127c7f2c32bb8e4a5",
+     "bytes": 770626,
+     "last_modified": "Fri, 20 Nov 2026 18:41:34 GMT",
+     "etag": "W/\"bc242-660b997f295d6",
+     "pearson_label": "Question paper - 9FM0-4D A Level Decision Mathematics 2 - June 2023 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-rms-20230817.pdf",
+     "sha256": "372186fa5ac6a1b899ce764aff7218dbb50bd1da45fb8bf01d682725637d1d24",
+     "bytes": 760529,
+     "last_modified": "Sat, 21 Nov 2026 07:57:45 GMT",
+     "etag": "W/\"b9ad1-660c4b75245ff",
+     "pearson_label": "Mark scheme - 9FM0-4D A Level Decision Mathematics 2 - June 2023 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-pef-20230817.pdf",
+     "sha256": "260ff3e8b122e7b6e679d527428d249ed3743294354a90c3812aae173517e94d",
+     "bytes": 234561,
+     "last_modified": "Sat, 21 Nov 2026 10:24:39 GMT",
+     "etag": "W/\"39441-660c6c4afb27f",
+     "pearson_label": "Examiner report - 9FM0-4D A Level Decision Mathematics 2 - June 2023 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     }
    },
    "imported": false
@@ -1817,6 +2391,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/01",
    "module_ids": [
     "CP"
@@ -1824,24 +2399,34 @@
    "component_title": "Core Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-que-20240523.pdf",
+     "sha256": "74e1b1d4c256802c0817fdc942d7293197795f91beaa433a19b5a5f932d17f63",
+     "bytes": 562186,
+     "last_modified": "Fri, 20 Nov 2026 16:58:43 GMT",
+     "etag": "W/\"8940a-660b8281720ec",
+     "pearson_label": "Question paper - 9FM0-01 A level Core Pure Mathematics 1 - June 2024 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-rms-20240815.pdf",
+     "sha256": "f984b6b819d773127055fcc52857f8668b298f271d81aea842ba76278890f17e",
+     "bytes": 547189,
+     "last_modified": "Fri, 20 Nov 2026 18:41:24 GMT",
+     "etag": "W/\"85975-660b9975291bf",
+     "pearson_label": "Mark scheme - 9FM0-01 A level Core Pure Mathematics 1 - June 2024 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-pef-20240815.pdf",
+     "sha256": "0c809ca5a85a941c89ba25a0a970d2f244a9d11e5adc7548befc9a8cb8359d04",
+     "bytes": 331044,
+     "last_modified": "Fri, 20 Nov 2026 17:14:32 GMT",
+     "etag": "W/\"50d24-660b860b3e86e",
+     "pearson_label": "Examiner report - 9FM0-01 A level Core Pure Mathematics 1 - June 2024 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     }
    },
    "imported": false
@@ -1853,6 +2438,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/02",
    "module_ids": [
     "CP"
@@ -1860,24 +2446,34 @@
    "component_title": "Core Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-que-20240604.pdf",
+     "sha256": "351a82a1f66511de27172c3cabe8700dab26de6e76f6e2ac3101285ba4828910",
+     "bytes": 779006,
+     "last_modified": "Fri, 20 Nov 2026 18:41:24 GMT",
+     "etag": "W/\"be2fe-660b99751c7ec",
+     "pearson_label": "Question paper - 9FM0-02 A level Core Pure Mathematics 2 - June 2024 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-rms-20240815.pdf",
+     "sha256": "7d4b48ba17f2a419cff426cd38fb22158458726bfad4e2fbe96b43180047c4fe",
+     "bytes": 924975,
+     "last_modified": "Fri, 20 Nov 2026 21:32:53 GMT",
+     "etag": "W/\"e1d2f-660bbfc9f2b1c",
+     "pearson_label": "Mark scheme - 9FM0-02 A level Core Pure Mathematics 2 - June 2024 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-pef-20240815.pdf",
+     "sha256": "5c8fff912a265b4ad373850ba72e406a7914d50ef9f16dd45521d5d135a7be4f",
+     "bytes": 252274,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"3d972-660c727520f29",
+     "pearson_label": "Examiner report - 9FM0-02 A level Core Pure Mathematics 2 - June 2024 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     }
    },
    "imported": false
@@ -1889,6 +2485,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/3A",
    "module_ids": [
     "FP1"
@@ -1896,24 +2493,34 @@
    "component_title": "Further Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-que-20240620.pdf",
+     "sha256": "6effa8b56b839700fdc87da920ed19485ad693708e3d8c63140f0d321556c88e",
+     "bytes": 900936,
+     "last_modified": "Fri, 20 Nov 2026 18:41:24 GMT",
+     "etag": "W/\"dbf48-660b99752d360",
+     "pearson_label": "Question paper - 9FM0-3A A Level Further Pure Mathematics 1 - June 2024 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-rms-20240815.pdf",
+     "sha256": "ec4fc91c4983a82a5ad9ce12421e6580c3e9be3679d6d58283a1c9973dea49f0",
+     "bytes": 631096,
+     "last_modified": "Sat, 21 Nov 2026 01:32:09 GMT",
+     "etag": "W/\"9a138-660bf544ab2fe",
+     "pearson_label": "Mark scheme - 9FM0-3A A Level Further Pure Mathematics 1 - June 2024 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-pef-20240815.pdf",
+     "sha256": "656bb071a63034201a23c087e700e689f272221073bc93f75671b632018a0268",
+     "bytes": 292764,
+     "last_modified": "Fri, 20 Nov 2026 17:14:31 GMT",
+     "etag": "W/\"4779c-660b8609feb3a",
+     "pearson_label": "Examiner report - 9FM0-3A A Level Further Pure Mathematics 1 - June 2024 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     }
    },
    "imported": false
@@ -1925,6 +2532,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/3B",
    "module_ids": [
     "FS1"
@@ -1932,24 +2540,34 @@
    "component_title": "Further Statistics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-que-20240615.pdf",
+     "sha256": "95b932763b65e930e949939a87e1f9d5f042fb863340f74367fd461ece2fcd5d",
+     "bytes": 431146,
+     "last_modified": "Fri, 20 Nov 2026 18:41:24 GMT",
+     "etag": "W/\"6942a-660b997528b3d",
+     "pearson_label": "Question paper - 9FM0-3B A Level Further Statistics 1 - June 2024 A Level Further Mathematics Paper 3B - Further Statistics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-rms-20240815.pdf",
+     "sha256": "3b462be5662632519570d364f270b38238041265119ba61d9e3aa40c695bd8ee",
+     "bytes": 547524,
+     "last_modified": "Fri, 20 Nov 2026 18:41:24 GMT",
+     "etag": "W/\"85ac4-660b9975047cf",
+     "pearson_label": "Mark scheme - 9FM0-3B A Level Further Statistics 1 - June 2024 A Level Further Mathematics Paper 3B - Further Statistics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-pef-20240815.pdf",
+     "sha256": "85f68d950f9b2fb51a1a083383065a4a5c298031206fa739c7657e15c0012d14",
+     "bytes": 222892,
+     "last_modified": "Fri, 20 Nov 2026 22:19:27 GMT",
+     "etag": "W/\"366ac-660bca32c60f5",
+     "pearson_label": "Examiner report - 9FM0-3B A Level Further Statistics 1 - June 2024 A Level Further Mathematics Paper 3B - Further Statistics 1"
     }
    },
    "imported": false
@@ -1961,6 +2579,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/3C",
    "module_ids": [
     "FM1"
@@ -1968,24 +2587,34 @@
    "component_title": "Further Mechanics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-que-20240608.pdf",
+     "sha256": "2799035806e778fcafea62a1b20f192a76037dc89b57ce27bd5578037a0f0146",
+     "bytes": 489499,
+     "last_modified": "Sat, 21 Nov 2026 06:33:38 GMT",
+     "etag": "W/\"7781b-660c38a7fa197",
+     "pearson_label": "Question paper - 9FM0-3C A Level Further Mechanics 1 - June 2024 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-rms-20240815.pdf",
+     "sha256": "a97478ba162c51ecf161fa51f90f50a1e8f1e83829e7cc555ddbd4d993c1c7e3",
+     "bytes": 546250,
+     "last_modified": "Fri, 20 Nov 2026 22:19:29 GMT",
+     "etag": "W/\"855ca-660bca342a55f",
+     "pearson_label": "Mark scheme - 9FM0-3C A Level Further Mechanics 1 - June 2024 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-pef-20240815.pdf",
+     "sha256": "ff0816ce182d7b45ca89c36596f4e5d52a8a125d49bf4e4d8cd6fb1d63cbc9a1",
+     "bytes": 298979,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"48fe3-660c72754a739",
+     "pearson_label": "Examiner report - 9FM0-3C A Level Further Mechanics 1 - June 2024 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     }
    },
    "imported": false
@@ -1997,6 +2626,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/3D",
    "module_ids": [
     "D1"
@@ -2004,24 +2634,34 @@
    "component_title": "Decision Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-que-20240622.pdf",
+     "sha256": "727e2124127ba7e9dd1e7fb12614ca656bfd6de1f46a17ea47d29754a842a5d5",
+     "bytes": 623672,
+     "last_modified": "Fri, 20 Nov 2026 18:41:27 GMT",
+     "etag": "W/\"98438-660b99784c558",
+     "pearson_label": "Question paper - 9FM0-3D A Level Decision Mathematics 1 - June 2024 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-rms-20240815.pdf",
+     "sha256": "84cde1c2552ffde16c47bc121cb0cbdeeb8ce3749cbfa844d701c90740ad82e3",
+     "bytes": 914284,
+     "last_modified": "Fri, 20 Nov 2026 18:41:27 GMT",
+     "etag": "W/\"df36c-660b99784dfe2",
+     "pearson_label": "Mark scheme - 9FM0-3D A Level Decision Mathematics 1 - June 2024 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-pef-20240815.pdf",
+     "sha256": "f953cee0dd498dc6c3ffbc60fdbedc4dddce675239de268a4173533c21090194",
+     "bytes": 236402,
+     "last_modified": "Sat, 21 Nov 2026 00:52:24 GMT",
+     "etag": "W/\"39b72-660bec628f419",
+     "pearson_label": "Examiner report - 9FM0-3D A Level Decision Mathematics 1 - June 2024 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     }
    },
    "imported": false
@@ -2033,6 +2673,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/4A",
    "module_ids": [
     "FP2"
@@ -2040,24 +2681,34 @@
    "component_title": "Further Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-que-20240625.pdf",
+     "sha256": "7d233a0a5d4f67bb5c6d1cfd24865cbfe55d182c0aab33eb5d1e8e8411d56055",
+     "bytes": 708975,
+     "last_modified": "Sat, 21 Nov 2026 04:04:30 GMT",
+     "etag": "W/\"ad16f-660c17523adf4",
+     "pearson_label": "Question paper - 9FM0-4A A Level Further Pure Mathematics 2 - June 2024 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-rms-20240815.pdf",
+     "sha256": "ff956c26ab5314093456ba18dc2edf7a451f6917f7155a31529f6dd9b2a9ecc2",
+     "bytes": 497375,
+     "last_modified": "Fri, 20 Nov 2026 21:32:54 GMT",
+     "etag": "W/\"796df-660bbfca7bc5a",
+     "pearson_label": "Mark scheme - 9FM0-4A A Level Further Pure Mathematics 2 - June 2024 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-pef-20240815.pdf",
+     "sha256": "247193e7a40012864c10f7035a382451f504171323d0d01d0691cf2ef35298e5",
+     "bytes": 211135,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"338bf-660c7275654e9",
+     "pearson_label": "Examiner report - 9FM0-4A A Level Further Pure Mathematics 2 - June 2024 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     }
    },
    "imported": false
@@ -2069,6 +2720,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/4B",
    "module_ids": [
     "FS2"
@@ -2076,24 +2728,34 @@
    "component_title": "Further Statistics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-que-20240625.pdf",
+     "sha256": "5e8fc3cef97737f87d22fdbc144b8907e72ff16dae06a8825d59aedd2a49a674",
+     "bytes": 480242,
+     "last_modified": "Fri, 20 Nov 2026 21:32:54 GMT",
+     "etag": "W/\"753f2-660bbfcae1f3c",
+     "pearson_label": "Question paper - 9FM0-4B A Level Further Statistics 2 - June 2024 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-rms-20240815.pdf",
+     "sha256": "7d90248b936eabd65b0dc882b4e89b48e8f89311e571a025c0e2c79b6f46c593",
+     "bytes": 454808,
+     "last_modified": "Fri, 20 Nov 2026 18:41:27 GMT",
+     "etag": "W/\"6f098-660b99785f759",
+     "pearson_label": "Mark scheme - 9FM0-4B A Level Further Statistics 2 - June 2024 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-pef-20240815.pdf",
+     "sha256": "0362868932b64dcd9a42f63829d04cb94315d335915002e699f0f0afc005c727",
+     "bytes": 267552,
+     "last_modified": "Sat, 21 Nov 2026 03:53:23 GMT",
+     "etag": "W/\"41520-660c14d699720",
+     "pearson_label": "Examiner report - 9FM0-4B A Level Further Statistics 2 - June 2024 A Level Further Mathematics Paper 4B - Further Statistics 2"
     }
    },
    "imported": false
@@ -2105,6 +2767,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/4C",
    "module_ids": [
     "FM2"
@@ -2112,24 +2775,34 @@
    "component_title": "Further Mechanics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-que-20240625.pdf",
+     "sha256": "03631cb6f087f2710ed1dfebc91a58fe3e5016a408fbce9a416dfe1b7ad79998",
+     "bytes": 774962,
+     "last_modified": "Fri, 20 Nov 2026 18:41:27 GMT",
+     "etag": "W/\"bd332-660b9978756e9",
+     "pearson_label": "Question paper - 9FM0-4C A Level Further Mechanics 2 - June 2024 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-rms-20240815.pdf",
+     "sha256": "91b70922f16c389c7f5b7bc18562974e740ad1620438d34393f3f628a39d839b",
+     "bytes": 430981,
+     "last_modified": "Fri, 20 Nov 2026 21:32:54 GMT",
+     "etag": "W/\"69385-660bbfcab8ceb",
+     "pearson_label": "Mark scheme - 9FM0-4C A Level Further Mechanics 2 - June 2024 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-pef-20240815.pdf",
+     "sha256": "51d85854353a3cbc996b309ce0e8ae26605bd7d39ca909524f7ba08b51471aad",
+     "bytes": 214401,
+     "last_modified": "Sat, 21 Nov 2026 02:37:44 GMT",
+     "etag": "W/\"34581-660c03ed3f9cf",
+     "pearson_label": "Examiner report - 9FM0-4C A Level Further Mechanics 2 - June 2024 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     }
    },
    "imported": false
@@ -2141,6 +2814,7 @@
    "is_as": false,
    "year": 2024,
    "series": "June",
+   "pearson_series": "June 2024",
    "official_paper_code": "9FM0/4D",
    "module_ids": [
     "D2"
@@ -2148,24 +2822,34 @@
    "component_title": "Decision Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-que-20240625.pdf",
+     "sha256": "336b08a1e3e09125ec0371f22443c8940f419076250403b331bddeaaa23485c3",
+     "bytes": 610754,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"951c2-660c727580299",
+     "pearson_label": "Question paper - 9FM0-4D A Level Decision Mathematics 2 - June 2024 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-rms-20240815.pdf",
+     "sha256": "c0bda6010a09b76e22bb1c0f47f2070c9118fd5cecc21990d353dacc139fa705",
+     "bytes": 680166,
+     "last_modified": "Fri, 20 Nov 2026 18:41:27 GMT",
+     "etag": "W/\"a60e6-660b99784b8d2",
+     "pearson_label": "Mark scheme - 9FM0-4D A Level Decision Mathematics 2 - June 2024 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-pef-20240815.pdf",
+     "sha256": "385e66c02555a9e9edfd3a8b99334df00f95f03994cd3173cae5409bea4672b6",
+     "bytes": 226798,
+     "last_modified": "Fri, 20 Nov 2026 20:20:34 GMT",
+     "etag": "W/\"375ee-660baf9f48a87",
+     "pearson_label": "Examiner report - 9FM0-4D A Level Decision Mathematics 2 - June 2024 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     }
    },
    "imported": false
@@ -2177,6 +2861,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/01",
    "module_ids": [
     "CP"
@@ -2184,24 +2869,34 @@
    "component_title": "Core Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-que-20250521.pdf",
+     "sha256": "091a15121bf61d6f75941ab33b67dedeb22bd6204e96fddf543ad8e666d907b7",
+     "bytes": 659469,
+     "last_modified": "Fri, 20 Nov 2026 18:52:13 GMT",
+     "etag": "W/\"a100d-660b9be01fdc6",
+     "pearson_label": "Question paper - 9FM0-01 A level Core Pure Mathematics 1 - June 2025 A Level Further Mathematics Paper 1 - Core Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-rms-20250814.pdf",
+     "sha256": "bc0d3d97970d723b81348b95632ceab64a73b29aa89cad137c264c832efdc643",
+     "bytes": 585528,
+     "last_modified": "Fri, 20 Nov 2026 18:41:18 GMT",
+     "etag": "W/\"8ef38-660b996f88ad1",
+     "pearson_label": "Mark scheme - 9FM0-01 A level Core Pure Mathematics 1 - June 2025"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-01-pef-20250814.pdf",
+     "sha256": "534ca8036a7bece0a1e960c00196648bf4ac479767a043cf39b4daa1801070df",
+     "bytes": 270656,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"42140-660c72742035e",
+     "pearson_label": "Examiner report - 9FM0-01 A level Core Pure Mathematics 1 - June 2025"
     }
    },
    "imported": false
@@ -2213,6 +2908,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/02",
    "module_ids": [
     "CP"
@@ -2220,24 +2916,34 @@
    "component_title": "Core Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-que-20250523.pdf",
+     "sha256": "4c3d0c0578bca6da0671b4f864256e2c2a2ec3335152be432a468f5176562f3a",
+     "bytes": 596737,
+     "last_modified": "Fri, 20 Nov 2026 19:12:55 GMT",
+     "etag": "W/\"91b01-660ba080fe160",
+     "pearson_label": "Question paper - 9FM0-02 A level Core Pure Mathematics 2 - June 2025 A Level Further Mathematics Paper 2 - Core Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-rms-20250814.pdf",
+     "sha256": "b19e614f3add01db715f4a6d5f5c8b8db13a9e6014332d580738f70c8f75d3fb",
+     "bytes": 680934,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"a63e6-660c727427ec8",
+     "pearson_label": "Mark scheme - 9FM0-02 A level Core Pure Mathematics 2 - June 2025"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-02-pef-20250814.pdf",
+     "sha256": "65201403cf9389fa2556aac312a14a22929ea1fa8fad9dcd70a30170da79c753",
+     "bytes": 345208,
+     "last_modified": "Fri, 20 Nov 2026 18:23:19 GMT",
+     "etag": "W/\"54478-660b956a7a425",
+     "pearson_label": "Examiner report - 9FM0-02 A level Core Pure Mathematics 2 - June 2025"
     }
    },
    "imported": false
@@ -2249,6 +2955,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/3A",
    "module_ids": [
     "FP1"
@@ -2256,24 +2963,34 @@
    "component_title": "Further Pure Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-que-20250619.pdf",
+     "sha256": "e20405c6b2ac456815f09b9f808cac8935ba105a7ef2e9ff7c91611e7076888b",
+     "bytes": 551839,
+     "last_modified": "Fri, 20 Nov 2026 17:30:48 GMT",
+     "etag": "W/\"86b9f-660b89ad7aede",
+     "pearson_label": "Question paper - 9FM0-3A A Level Further Pure Mathematics 1 - June 2025 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-rms-20250814.pdf",
+     "sha256": "fa1f43c464fcb3bbab893ccf68bbe34f6fe759250e28a7259e866d60a004da72",
+     "bytes": 1140012,
+     "last_modified": "Fri, 20 Nov 2026 21:32:51 GMT",
+     "etag": "W/\"11652c-660bbfc836b72",
+     "pearson_label": "Mark scheme - 9FM0-3A A Level Further Pure Mathematics 1 - June 2025 A Level Further Mathematics Paper 3A - Further Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3a-pef-20250814.pdf",
+     "sha256": "4e706cc4a9bebb1f2eb70d80e5b3f53d58fb17608c8247acd2d9dcdc5df7b9d5",
+     "bytes": 387343,
+     "last_modified": "Fri, 20 Nov 2026 17:14:21 GMT",
+     "etag": "W/\"5e90f-660b8600c369b",
+     "pearson_label": "Examiner report - 9FM0-3A A Level Further Pure Mathematics 1 - June 2025"
     }
    },
    "imported": false
@@ -2285,6 +3002,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/3B",
    "module_ids": [
     "FS1"
@@ -2292,24 +3010,34 @@
    "component_title": "Further Statistics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-que-20250614.pdf",
+     "sha256": "76feef4dd471499c50d7565c08eb52585b0f206bddcdfb395745570999165409",
+     "bytes": 504198,
+     "last_modified": "Fri, 20 Nov 2026 22:19:26 GMT",
+     "etag": "W/\"7b186-660bca30f8762",
+     "pearson_label": "Question paper - 9FM0-3B A Level Further Statistics 1 - June 2025 A Level Further Mathematics Paper 3B - Further Statistics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-rms-20250814.pdf",
+     "sha256": "741b2c7f6d79d63f6a5de7b66c770ab221e38420f0f14626439d69951cf2ea61",
+     "bytes": 985373,
+     "last_modified": "Sat, 21 Nov 2026 01:33:59 GMT",
+     "etag": "W/\"f091d-660bf5ad39aee",
+     "pearson_label": "Mark scheme - 9FM0-3B A Level Further Statistics 1 - June 2025"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3b-pef-20250814.pdf",
+     "sha256": "2f877a2cc368b166316e7c46d5ae702db01d1060445edaa986db974f332f3dfb",
+     "bytes": 299854,
+     "last_modified": "Fri, 20 Nov 2026 20:36:57 GMT",
+     "etag": "W/\"4934e-660bb3490d15a",
+     "pearson_label": "Examiner report - 9FM0-3B A Level Further Statistics 1 - June 2025 A Level Further Mathematics Paper 3B - Further Statistics 1"
     }
    },
    "imported": false
@@ -2321,6 +3049,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/3C",
    "module_ids": [
     "FM1"
@@ -2328,24 +3057,34 @@
    "component_title": "Further Mechanics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-que-20250607.pdf",
+     "sha256": "d3d2952464ab5d400503f499b072bd07b0389415fca9ce0d4970a22bf38715fd",
+     "bytes": 844586,
+     "last_modified": "Fri, 20 Nov 2026 21:10:29 GMT",
+     "etag": "W/\"ce32a-660bbac7aa4de",
+     "pearson_label": "Question paper - 9FM0-3C A Level Further Mechanics 1 - June 2025 A Level Further Mathematics Paper 3C - Further Mechanics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-rms-20250814.pdf",
+     "sha256": "e1acbed33baa026b0133a9d68ae4fb5fed601cd2a4f021afb5edc1268e45292b",
+     "bytes": 733580,
+     "last_modified": "Sat, 21 Nov 2026 00:34:24 GMT",
+     "etag": "W/\"b318c-660be85c177ad",
+     "pearson_label": "Mark scheme - 9FM0-3C A Level Further Mechanics 1 - June 2025"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3c-pef-20250814.pdf",
+     "sha256": "571a5069db711a12c945b4aa1921a0512a5f20f22749dba6ff842aa553c02329",
+     "bytes": 344281,
+     "last_modified": "Fri, 20 Nov 2026 17:14:20 GMT",
+     "etag": "W/\"540d9-660b85ffca638",
+     "pearson_label": "Examiner report - 9FM0-3C A Level Further Mechanics 1 - June 2025"
     }
    },
    "imported": false
@@ -2357,6 +3096,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/3D",
    "module_ids": [
     "D1"
@@ -2364,24 +3104,34 @@
    "component_title": "Decision Mathematics 1",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-que-20250621.pdf",
+     "sha256": "62d00ef9a0e0432dca7f89d3e1099f5d64830f419894ea39ac127d3d758cd41e",
+     "bytes": 1198615,
+     "last_modified": "Fri, 20 Nov 2026 22:11:12 GMT",
+     "etag": "W/\"124a17-660bc85a98fd6",
+     "pearson_label": "Question paper - 9FM0-3D A Level Decision Mathematics 1 - June 2025 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-rms-20250814.pdf",
+     "sha256": "d5fab8da4be4a553d5a1feaec39b2a8a53716e601ffb3dbab9bff324ae8f059a",
+     "bytes": 879570,
+     "last_modified": "Fri, 20 Nov 2026 21:32:51 GMT",
+     "etag": "W/\"d6bd2-660bbfc831d52",
+     "pearson_label": "Mark scheme - 9FM0-3D A Level Decision Mathematics 1 - June 2025 A Level Further Mathematics Paper 3D - Decision Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-3d-pef-20250814.pdf",
+     "sha256": "92e9c5171f16fc9862c1cf65a9ad2ea318a5c8b169accb5d138592e42d5dd8ee",
+     "bytes": 254507,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"3e22b-660c72746220f",
+     "pearson_label": "Examiner report - 9FM0-3D A Level Decision Mathematics 1 - June 2025"
     }
    },
    "imported": false
@@ -2393,6 +3143,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/4A",
    "module_ids": [
     "FP2"
@@ -2400,24 +3151,34 @@
    "component_title": "Further Pure Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-que-20250624.pdf",
+     "sha256": "373bdf5537116f32f82fc8a02a423c060a7e7ac9766be3f48df460858e23868d",
+     "bytes": 649268,
+     "last_modified": "Fri, 20 Nov 2026 18:41:20 GMT",
+     "etag": "W/\"9e834-660b997202a9e",
+     "pearson_label": "Question paper - 9FM0-4A A Level Further Pure Mathematics 2 - June 2025 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-rms-20250814.pdf",
+     "sha256": "e8ddf04df9f65aaa4c9601687590e2da9acd794e707bd23f507c76df9645a4fa",
+     "bytes": 565356,
+     "last_modified": "Fri, 20 Nov 2026 21:32:52 GMT",
+     "etag": "W/\"8a06c-660bbfc8799a8",
+     "pearson_label": "Mark scheme - 9FM0-4A A Level Further Pure Mathematics 2 - June 2025 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4a-pef-20250814.pdf",
+     "sha256": "b44b6d9bcf28d981241ecf386a50f79c663a9519e6cd243c0e18ba48dc3eed44",
+     "bytes": 329882,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"5089a-660c72746be4f",
+     "pearson_label": "Examiner report - 9FM0-4A A Level Further Pure Mathematics 2 - June 2025 A Level Further Mathematics Paper 4A - Further Pure Mathematics 2"
     }
    },
    "imported": false
@@ -2429,6 +3190,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/4B",
    "module_ids": [
     "FS2"
@@ -2436,24 +3198,34 @@
    "component_title": "Further Statistics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-que-20250624.pdf",
+     "sha256": "a1d8bf9c05f3e6cbd7d4661c499641c187b2d7dcfffa5adf12995431d8925741",
+     "bytes": 474266,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"73c9a-660c7274712a8",
+     "pearson_label": "Question paper - 9FM0-4B A Level Further Statistics 2 - June 2025 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-rms-20250814.pdf",
+     "sha256": "49c6354c7a6b27dacbee328c5b448864d6e610fa3cd7cd43d0d3108ea92cd780",
+     "bytes": 470646,
+     "last_modified": "Fri, 20 Nov 2026 18:41:21 GMT",
+     "etag": "W/\"72e76-660b997219021",
+     "pearson_label": "Mark scheme - 9FM0-4B A Level Further Statistics 2 - June 2025 A Level Further Mathematics Paper 4B - Further Statistics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4b-pef-20250814.pdf",
+     "sha256": "70b6281a7b3c472467e55e02a29cdf6ff013d5e7635baedb9476450c08419aa3",
+     "bytes": 248914,
+     "last_modified": "Sat, 21 Nov 2026 08:26:31 GMT",
+     "etag": "W/\"3cc52-660c51e290b7e",
+     "pearson_label": "Examiner report - 9FM0-4B A Level Further Statistics 2 - June 2025"
     }
    },
    "imported": false
@@ -2465,6 +3237,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/4C",
    "module_ids": [
     "FM2"
@@ -2472,24 +3245,34 @@
    "component_title": "Further Mechanics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-que-20250624.pdf",
+     "sha256": "beaa53639ef421866b5dd8cbcd75d6759b8e02eaa1fa2aebb4e98608cd4e6132",
+     "bytes": 958460,
+     "last_modified": "Fri, 20 Nov 2026 17:15:46 GMT",
+     "etag": "W/\"e9ffc-660b86512af95",
+     "pearson_label": "Question paper - 9FM0-4C A Level Further Mechanics 2 - June 2025 A Level Further Mathematics Paper 4C - Further Mechanics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-rms-20250814.pdf",
+     "sha256": "7ea10f6831c6f34b2daa9c45fbfb22d27083ab0b767257ec1570ec8cd3d67ca8",
+     "bytes": 520020,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"7ef54-660c727487238",
+     "pearson_label": "Mark scheme - 9FM0-4C A Level Further Mechanics 2 - June 2025"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4c-pef-20250814.pdf",
+     "sha256": "6720c7b94830247563b24048a2d07462fee81d94ef48da27ff75fa1c8effb4c1",
+     "bytes": 271426,
+     "last_modified": "Sat, 21 Nov 2026 04:31:23 GMT",
+     "etag": "W/\"42442-660c1d54be77d",
+     "pearson_label": "Examiner report - 9FM0-4C A Level Further Mechanics 2 - June 2025"
     }
    },
    "imported": false
@@ -2501,6 +3284,7 @@
    "is_as": false,
    "year": 2025,
    "series": "June",
+   "pearson_series": "June 2025",
    "official_paper_code": "9FM0/4D",
    "module_ids": [
     "D2"
@@ -2508,277 +3292,45 @@
    "component_title": "Decision Mathematics 2",
    "max_marks": 75,
    "duration_minutes": 90,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-que-20250624.pdf",
+     "sha256": "26196eaff57cdeb3cdc506a22f74ddf47104ce3cbd971f00445271fe46b86e44",
+     "bytes": 813104,
+     "last_modified": "Sat, 21 Nov 2026 03:53:51 GMT",
+     "etag": "W/\"c6830-660c14f0e7fb4",
+     "pearson_label": "Question paper - 9FM0-4D A Level Decision Mathematics 2 - June 2025 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-rms-20250814.pdf",
+     "sha256": "37f29a0f7cb39cde0034435dd81ce40b327d7e1a5007188cdfacb14de123036e",
+     "bytes": 851811,
+     "last_modified": "Fri, 20 Nov 2026 18:41:24 GMT",
+     "etag": "W/\"cff63-660b9975020bf",
+     "pearson_label": "Mark scheme - 9FM0-4D A Level Decision Mathematics 2 - June 2025 A Level Further Mathematics Paper 4D - Decision Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9fm0-4d-pef-20250814.pdf",
+     "sha256": "b18438b8aef82740949d80b9f799a4fb128a2bfad0f3d90b8c4e284a3eb7a61a",
+     "bytes": 215918,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"34b6e-660c727490e78",
+     "pearson_label": "Examiner report - 9FM0-4D A Level Decision Mathematics 2 - June 2025"
     }
    },
    "imported": false
-  },
+  }
+ ],
+ "other_listed_documents": [
   {
-   "paper_id": "EDX_9FM0_SAMPLE_01",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/01",
-   "module_ids": [
-    "CP"
-   ],
-   "component_title": "Core Pure Mathematics 1",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_02",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/02",
-   "module_ids": [
-    "CP"
-   ],
-   "component_title": "Core Pure Mathematics 2",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_3A",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/3A",
-   "module_ids": [
-    "FP1"
-   ],
-   "component_title": "Further Pure Mathematics 1",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_3B",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/3B",
-   "module_ids": [
-    "FS1"
-   ],
-   "component_title": "Further Statistics 1",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_3C",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/3C",
-   "module_ids": [
-    "FM1"
-   ],
-   "component_title": "Further Mechanics 1",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_3D",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/3D",
-   "module_ids": [
-    "D1"
-   ],
-   "component_title": "Decision Mathematics 1",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_4A",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/4A",
-   "module_ids": [
-    "FP2"
-   ],
-   "component_title": "Further Pure Mathematics 2",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_4B",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/4B",
-   "module_ids": [
-    "FS2"
-   ],
-   "component_title": "Further Statistics 2",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_4C",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/4C",
-   "module_ids": [
-    "FM2"
-   ],
-   "component_title": "Further Mechanics 2",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
-  },
-  {
-   "paper_id": "EDX_9FM0_SAMPLE_4D",
-   "qualification_code": "9FM0",
-   "level": "A-Level",
-   "is_as": false,
-   "year": null,
-   "series": "Official sample",
-   "official_paper_code": "9FM0/4D",
-   "module_ids": [
-    "D2"
-   ],
-   "component_title": "Decision Mathematics 2",
-   "max_marks": 75,
-   "duration_minutes": 90,
-   "is_official_sample": true,
-   "documents": {
-    "sample_assessment": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   },
-   "imported": false
+   "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/P61181A_GCE_Fur_Maths_9FM0_3C_4C_Unused_Original.pdf",
+   "sha256": "59802dd8f927c2d52b675b85e919781fa317ad4d7bfd1978aa335b25b3aaf129",
+   "bytes": 840301,
+   "pearson_label": "Unused Original Question paper - A Level Further Mechanics 1 - June 2019 (PDF 820.6 KB) NEW"
   }
  ]
 }

@@ -31,6 +31,7 @@ const DUAL_BANKS = {
   EDX_ALEVEL_ENGLIT_9ET0: ['9ET0', '8ET0'],
   AQA_ALEVEL_PSYCH_7182: ['7182', '7181'],
   AQA_ALEVEL_SOC_7192: ['7192', '7191'],
+  EDX_ALEVEL_FMATH_9FM0: ['9FM0', '8FM0'],
 };
 
 test('the dual-level banks found in the data are exactly the audited list', () => {
@@ -88,11 +89,12 @@ for (const subject of subjects) {
   }
 }
 
-test('Further Mathematics labels its A-Level papers and would label AS 8FM0 papers as AS', () => {
+test('Further Mathematics labels its A-Level papers A-Level and its AS 8FM0 papers AS', () => {
   const subject = subjects.find((entry) => entry.subject_id === 'EDX_ALEVEL_FMATH_9FM0');
   const papers = papersOf(subject);
   assert(isMultiLevel(subject, papers), 'two qualifications are declared');
-  for (const paper of papers) assert.equal(levelLabel(paper, subject, papers), 'A-Level');
+  for (const paper of papers) assert.equal(levelLabel(paper, subject, papers), paper.qualification_code === '8FM0' ? 'AS' : 'A-Level', paper.paper_id);
+  assert(papers.some((paper) => paper.qualification_code === '8FM0'), 'verified AS component rows are present');
   const asPaper = { paper_id: 'fixture', level: 'AS', spec_code: '8FM0', qualification_code: '8FM0', paper_code: '01', title: 'June 2024 · AS Paper 1: Core Pure Mathematics' };
   assert.equal(levelLabel(asPaper, subject, papers), 'AS');
   assert.equal(paperCode(asPaper, subject), '8FM0 · 01');

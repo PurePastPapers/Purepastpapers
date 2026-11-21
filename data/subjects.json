@@ -40,17 +40,17 @@
     "has_catalogue": true,
     "qualifications": [{"code": "9FM0", "label": "A-Level"}, {"code": "8FM0", "label": "AS", "is_as": true}],
     "module_routes": {
-      "source": "Pearson Edexcel 9FM0 specification Issue 4 (June 2023) and 8FM0 specification Issue 5 (July 2025)",
+      "source": "Pearson Edexcel 9FM0 specification Issue 4 (June 2023) and 8FM0 specification Issue 5 (July 2025); AS Paper 2 component codes 21-28 verified from the printed covers of every published 8FM0 question paper (2026-11-21)",
       "modules": [
         {"id": "CP", "title": "Core Pure Mathematics", "mandatory": true, "papers": {"9FM0": ["01", "02"], "8FM0": ["01"]}, "sections": {"9FM0": "EDX_FMATH_SEC_CP", "8FM0": "EDX_FMATH_SEC_CP"}},
-        {"id": "FP1", "title": "Further Pure Mathematics 1", "papers": {"9FM0": ["3A"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FP1", "8FM0": "EDX_FMATH_SEC_AS_FP1"}},
-        {"id": "FS1", "title": "Further Statistics 1", "papers": {"9FM0": ["3B"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FS1", "8FM0": "EDX_FMATH_SEC_AS_FS1"}},
-        {"id": "FM1", "title": "Further Mechanics 1", "papers": {"9FM0": ["3C"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FM1", "8FM0": "EDX_FMATH_SEC_AS_FM1"}},
-        {"id": "D1", "title": "Decision Mathematics 1", "papers": {"9FM0": ["3D"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_D1", "8FM0": "EDX_FMATH_SEC_AS_D1"}},
-        {"id": "FP2", "title": "Further Pure Mathematics 2", "papers": {"9FM0": ["4A"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FP2", "8FM0": "EDX_FMATH_SEC_AS_FP2"}},
-        {"id": "FS2", "title": "Further Statistics 2", "papers": {"9FM0": ["4B"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FS2", "8FM0": "EDX_FMATH_SEC_AS_FS2"}},
-        {"id": "FM2", "title": "Further Mechanics 2", "papers": {"9FM0": ["4C"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FM2", "8FM0": "EDX_FMATH_SEC_AS_FM2"}},
-        {"id": "D2", "title": "Decision Mathematics 2", "papers": {"9FM0": ["4D"], "8FM0": ["02"]}, "sections": {"9FM0": "EDX_FMATH_SEC_D2", "8FM0": "EDX_FMATH_SEC_AS_D2"}}
+        {"id": "FP1", "title": "Further Pure Mathematics 1", "papers": {"9FM0": ["3A"], "8FM0": ["21"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FP1", "8FM0": "EDX_FMATH_SEC_AS_FP1"}},
+        {"id": "FS1", "title": "Further Statistics 1", "papers": {"9FM0": ["3B"], "8FM0": ["23"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FS1", "8FM0": "EDX_FMATH_SEC_AS_FS1"}},
+        {"id": "FM1", "title": "Further Mechanics 1", "papers": {"9FM0": ["3C"], "8FM0": ["25"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FM1", "8FM0": "EDX_FMATH_SEC_AS_FM1"}},
+        {"id": "D1", "title": "Decision Mathematics 1", "papers": {"9FM0": ["3D"], "8FM0": ["27"]}, "sections": {"9FM0": "EDX_FMATH_SEC_D1", "8FM0": "EDX_FMATH_SEC_AS_D1"}},
+        {"id": "FP2", "title": "Further Pure Mathematics 2", "papers": {"9FM0": ["4A"], "8FM0": ["22"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FP2", "8FM0": "EDX_FMATH_SEC_AS_FP2"}},
+        {"id": "FS2", "title": "Further Statistics 2", "papers": {"9FM0": ["4B"], "8FM0": ["24"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FS2", "8FM0": "EDX_FMATH_SEC_AS_FS2"}},
+        {"id": "FM2", "title": "Further Mechanics 2", "papers": {"9FM0": ["4C"], "8FM0": ["26"]}, "sections": {"9FM0": "EDX_FMATH_SEC_FM2", "8FM0": "EDX_FMATH_SEC_AS_FM2"}},
+        {"id": "D2", "title": "Decision Mathematics 2", "papers": {"9FM0": ["4D"], "8FM0": ["28"]}, "sections": {"9FM0": "EDX_FMATH_SEC_D2", "8FM0": "EDX_FMATH_SEC_AS_D2"}}
       ],
       "routes": {
         "8FM0": [
