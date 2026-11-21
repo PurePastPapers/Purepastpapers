@@ -1,0 +1,21 @@
+# Kept out of the published site on Cloudflare (still in the repo).
+# The site itself only needs: index.html, auth-callback.html, assets/, css/, data/, fonts/, js/
+.git
+.github
+.claude
+node_modules
+tests
+tools
+supabase
+docs
+designs
+*.md
+*.py
+package.json
+package-lock.json
+wrangler.jsonc
+.assetsignore
+.gitignore
+.nojekyll
+CNAME
+.DS_Store
