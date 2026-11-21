@@ -259,6 +259,8 @@ export const subjects = [
     subject_id: 'EDX_GCSE_COMBSCI_1SC0', level: 'GCSE', subject: 'Combined Science (Double Award)', board: 'Edexcel', spec_code: '1SC0',
     spec_notes: 'Biology, Chemistry & Physics (6 Papers, Foundation & Higher)', subject_category: 'STEM',
     sp_prefix: 'EDX_GCSE_COMBSCI', id_stem: 'EDX_1SC0',
+    // One subject with one double-award target grade; Practice can narrow to one science.
+    grade_scheme: 'gcse_combined', sciences: ['Biology', 'Chemistry', 'Physics'],
     official_url: `${PEARSON}/edexcel-gcses/sciences-2016${EXAM_MATERIALS}`,
     catalogue: { first: 2018, pattern: 'summer', papers: [
       ...tiered('1B', 'Paper 1: Biology 1', 60, 70), ...tiered('2B', 'Paper 2: Biology 2', 60, 70),

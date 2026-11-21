@@ -53,9 +53,10 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
       .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
     return codes.length ? `Papers ${codes.join(', ')}` : null;
   };
+  const combined = subject.grade_scheme === 'gcse_combined';
   const TIER_INFO = {
-    Foundation: { grades: 'Grades 1 to 5', papers: 'F' },
-    Higher: { grades: 'Grades 4 to 9', papers: 'H' },
+    Foundation: { grades: combined ? 'Grades 1-1 to 5-5' : 'Grades 1 to 5', papers: 'F' },
+    Higher: { grades: combined ? 'Grades 4-4 to 9-9' : 'Grades 4 to 9', papers: 'H' },
   };
   const tierCard = (value, title, line1, line2) =>
     html`<label class="tier-pick"><input type="radio" name="tier" value="${value}" ${value === startTier ? 'checked' : ''} /><span class="tier-pick__card"><b>${title}</b><span>${line1}</span><small>${line2}</small></span></label>`;
@@ -103,8 +104,10 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
         : ''}
       <fieldset class="step">
         <legend><i>${step++}</i>Set your target grade</legend>
-        <p class="step__hint">Your papers are rated against this instead of fixed percentages.</p>
-        <div class="grade-picks" role="radiogroup" aria-label="Target grade">
+        <p class="step__hint">${combined
+          ? 'Combined Science is one double award, so set one grade for all three sciences, from 9-9 down to 1-1. Your papers are rated against it.'
+          : 'Your papers are rated against this instead of fixed percentages.'}</p>
+        <div class="grade-picks${combined ? ' grade-picks--double' : ''}" role="radiogroup" aria-label="Target grade">
           ${grades.map((grade) => html`<label class="grade-pick"><input type="radio" name="target" value="${grade}" ${grade === target ? 'checked' : ''} /><span>${grade}</span></label>`)}
           <label class="grade-pick grade-pick--unsure"><input type="radio" name="target" value="" ${target ? '' : 'checked'} /><span>Not sure yet</span></label>
         </div>
