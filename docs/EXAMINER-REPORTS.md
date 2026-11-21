@@ -112,9 +112,15 @@ python3 tools/reports/extract.py --subject physics --pdf-dir ~/Downloads/pefs
 npm test && node tools/browser-examiner-report.cjs
 ```
 
-Expected volume: Maths 54 of 60 booklets, Physics 47 of 52, Biology 46 of 52. Official
-samples have no report; nor do 8MA0 October 2020 Paper 21 and 8BN0 June 2022 Paper 2.
-Papers without a report show no button.
+Published 21 November 2026: Maths 54 of 54 reports, Physics 43 of 47, Biology 42 of 46
+(139 papers). Not published, on purpose: 9PH0 Paper 1 2024 (text in fonts without a
+character map; OCR misread question numbers), and 2020-21 reports that give only general
+comments or say no report was produced (8PH0 October 2021 Papers 1 and 2, 9PH0 October 2020
+Paper 1, 8BN0 October 2020 Papers 1 and 2, 9BN0 November 2021 Papers 1 and 3). Official
+samples have no report. Papers without a report show no button.
+
+Parts without a comment are almost all multiple-choice items, which the reports cover
+only as a statistics table (Physics) or skip (Biology).
 
 `node tools/reports/coverage.mjs <slug> [--all]` lists, per paper, how many units get
 their own, a parent-part, a whole-question or no comment, and flags papers where most get
