@@ -5,9 +5,9 @@ live pack index.
 
 Usage: finalize.py --research DIR [--activate]
 Published identities are immutable: a changed mark meaning needs a new question id.
-OCR rights for GCSE J277 are NOT confirmed (the owner's 16 November 2026 confirmation names the
-A-level H446/H046 papers): --activate publishes the packs and writes the lazy crop catalogues only
-once the owner confirms. Without it, packs are verified but kept out of the index.
+The owner confirmed OCR permission for GCSE J277 on 21 November 2026 (the 16 November confirmation
+named only the A-level H446/H046 papers): --activate publishes the packs and writes the lazy crop
+catalogues. Without it, packs are verified but kept out of the index.
 """
 import argparse
 import base64
@@ -106,7 +106,7 @@ def main():
     write(registry_path, {'format': 'gcsecs-assessment-identity-v1', 'units': identities})
     coverage = {'checked_at': '2026-11-21', 'reviewer_type': 'model', 'subject_id': 'OCR_GCSE_CS_J277',
                 'status': ('complete' if a.activate else 'built_awaiting_rights_confirmation') if not queue else 'partial',
-                'published': bool(a.activate), 'rights_basis': ('Owner confirmed OCR permission for GCSE Computer Science J277.'
+                'published': bool(a.activate), 'rights_basis': ('Owner confirmed on 21 November 2026 that their permission covers republishing OCR GCSE Computer Science J277 papers and mark schemes.'
                                  if a.activate else 'NOT CONFIRMED: built and verified but kept out of the live index until the owner confirms OCR permission.'),
                 'groups': {k: dict(v) for k, v in sorted(groups.items())}, 'totals': dict(sum(groups.values(), Counter())),
                 'difficulty': dict(difficulty), 'units_per_leaf': {i: sections.get(i, 0) for i in ids},

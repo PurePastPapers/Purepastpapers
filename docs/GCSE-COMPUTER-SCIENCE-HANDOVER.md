@@ -6,28 +6,23 @@ adapted: one qualification, 80-mark papers, no AS, no tiers, no coursework.
 
 ## Status (21 November 2026)
 
-**Built and verified, NOT live.** All 10 public booklets are built: 8 exam papers (June 2022,
-2023, 2024, 2025; Papers 1 and 2) and the 2 official sample papers. 282 scored units, 800 marks,
-each booklet reconciled to its 80-mark cover total, every one of the 26 specification
-sub-topics has at least one primary unit. Tags and difficulty are **model-reviewed**
+**Live.** All 10 public booklets are built, verified and listed in `data/packs/index.json`: 8 exam
+papers (June 2022, 2023, 2024, 2025; Papers 1 and 2) and the 2 official sample papers. 282 scored
+units, 800 marks, each booklet reconciled to its 80-mark cover total, every one of the 26
+specification sub-topics has at least one primary unit. Tags and difficulty are **model-reviewed**
 (`reviewer_type: model`), not teacher-reviewed.
 
-Difficulty: 88 easy, 153 medium, 41 hard (`data/imports/gcsecs/coverage.json`).
+Difficulty: 88 easy, 153 medium, 41 hard (`data/imports/gcsecs/coverage.json`, status `complete`).
 
-**Rights: not confirmed for GCSE.** The owner's 16 November 2026 confirmation names OCR A-level
-Computer Science H446/H046 (and OCR Chemistry H432/H032). It does not name J277, so the packs
-are kept out of `data/packs/index.json` and no crop catalogue is committed. Coverage status is
-`built_awaiting_rights_confirmation`.
+**Rights: confirmed.** The owner confirmed on 21 November 2026 that their permission covers
+republishing OCR GCSE Computer Science J277 papers and mark schemes (the 16 November confirmation
+had named only A-level H446/H046). 663 lossless crops are packaged as lazy catalogues in
+`data/gcsecs-assets/` (11 MB).
 
-### To go live (only once the owner confirms OCR permission for GCSE J277)
-
-1. Recreate the research folder (below), then
-   `python3 tools/gcsecs/finalize.py --research ../gcsecs-research --activate`.
-   This lists the 10 packs in the index and writes `data/gcsecs-assets/<PAPER>.json`
-   (lazy lossless crop catalogues; the site serves `assets/gcsecs/...` crops from them).
-2. Set `rights_basis` wording in `tools/gcsecs/finalize.py` to the owner's confirmation.
-3. `npm test`, `npm run validate`, then add `tools/browser-gcsecs-bank.cjs` (copy of
-   `browser-cs-bank.cjs`) and run it against `npm start`.
+Checks before publishing: `npm test` all pass, `npm run validate` 0 errors, and
+`node tools/browser-gcsecs-bank.cjs` against `npm start` (282 units discoverable, question and scheme
+pixels load, paper page, 320 to 1440 px, no console errors). The browser test has not been run
+against production.
 
 ## Specification
 
@@ -88,4 +83,6 @@ The reviewers' line sheets live in `data/imports/gcsecs/reviews/` (compiled JSON
 
 - Model review only; no teacher review.
 - Examiners' reports are linked, not shown.
-- No browser test yet (`tools/browser-gcsecs-bank.cjs`), because the packs are not live.
+- Part-display tools in `tools/parts/` not run (see above); run `audit-part-display.py` and
+  look at representative crops.
+- June 2026 papers: add when OCR lists them (rerun from `inventory.py`).
