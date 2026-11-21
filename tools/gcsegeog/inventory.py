@@ -21,12 +21,12 @@ import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-NAME = re.compile(r'^AQA-(8035)([123])-(QP|SQP|MS|SMS|W-MS|INS[12]?|WRE|AC|EX|PM)-?(.*)\.PDF$', re.I)
+NAME = re.compile(r'^AQA-(8035)([123])-(QP|SQP|MS|SMS|W-MS|INS[12]?|WRE|AC|EX|PM|SIN|CM)-?(.*)\.PDF$', re.I)
 SERIES = re.compile(r'(JUN|NOV)(\d\d)')
 TITLES = {('8035', '1'): 'Living with the physical environment', ('8035', '2'): 'Challenges in the human environment',
           ('8035', '3'): 'Geographical applications'}
 KIND = {'QP': 'question_paper', 'SQP': 'question_paper', 'MS': 'mark_scheme', 'SMS': 'mark_scheme', 'W-MS': 'mark_scheme',
-        'INS': 'insert', 'INS1': 'insert', 'INS2': 'insert', 'PM': 'pre_release', 'WRE': 'examiner_report', 'AC': 'answers_and_commentary', 'EX': 'answers_and_commentary'}
+        'INS': 'insert', 'INS1': 'insert', 'INS2': 'insert', 'PM': 'pre_release', 'CM': 'pre_release', 'SIN': 'insert', 'WRE': 'examiner_report', 'AC': 'answers_and_commentary', 'EX': 'answers_and_commentary'}
 
 
 def cover(path):
@@ -41,6 +41,14 @@ def cover(path):
     return (int(marks.group(1) or marks.group(2)) if marks else None), minutes, text
 
 
+def resource_cover(path):
+    import pdfplumber
+    if not path.exists():
+        return False
+    with pdfplumber.open(path) as pdf:
+        return bool(re.search(r'Resources for Paper 3', pdf.pages[0].extract_text() or ''))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('records', type=Path)
@@ -53,7 +61,7 @@ def main():
             continue
         qual, comp, kind, rest = m.group(1), m.group(2), m.group(3).upper(), m.group(4).upper()
         s = SERIES.search(rest)
-        sample = kind in ('SQP', 'SMS', 'AC', 'EX')
+        sample = kind in ('SQP', 'SMS', 'AC', 'EX', 'SIN')
         if not s and not sample:
             continue
         key = (qual, comp, 'SAMPLE' if sample else f"{'June' if s.group(1) == 'JUN' else 'November'} 20{s.group(2)}")
@@ -92,12 +100,17 @@ def main():
                 continue
             max_marks, minutes, text = cover(a.sources / docs['question_paper']['file_name'])
             standard = [d for d in entry['insert_variants'] if 'variant' not in d]
+            # Paper 3's "resources booklet" is the pre-release booklet. AQA files it as PM, CM, or (some series, and the
+            # specimen) as an insert; the first page tells which. What remains is the OS map key or colour insert.
+            pre = [d for d in entry.get('pre_release', []) if 'variant' not in d]
+            resource = [d for d in pre + standard if resource_cover(a.sources / d['file_name'])]
+            standard = [d for d in standard if d not in resource]
             uses_insert = bool(re.search(r'in the insert|colour insert', text + ' '))
             paper = {'paper_id': pid, 'qualification_code': qual, 'is_as': False, 'component': f'0{comp}',
                      'assessment_paper': comp, 'component_title': TITLES[(qual, comp)], 'year': year,
                      'series': 'Sample' if sample else month, 'is_sample': sample, 'max_marks': max_marks,
                      'duration_minutes': minutes, 'documents': docs,
-                     'insert': standard[0] if standard else None, 'insert_variants': entry['insert_variants'], 'pre_release': entry.get('pre_release', []),
+                     'insert': standard[0] if standard else None, 'resource_booklet': resource[0] if resource else None, 'insert_variants': entry['insert_variants'], 'pre_release': entry.get('pre_release', []),
                      'copyright_removed': docs['question_paper']['copyright_removed'] or any(d['copyright_removed'] for d in standard)}
             if sample:
                 paper['sample_identity'] = 'AQA specimen papers for the 2016 specification (published 2015)'
@@ -118,7 +131,7 @@ def main():
         print(qual, len(papers), 'booklets;', 'missing', missing)
         for p in papers:
             print(' ', p['paper_id'], p['max_marks'], p['duration_minutes'], 'MS' if 'mark_scheme' in p['documents'] else '--',
-                  'ER' if 'examiner_report' in p['documents'] else '--', 'INS' if p['insert'] else ('ins-variants' if p['insert_variants'] else 'no-insert'),
+                  'ER' if 'examiner_report' in p['documents'] else '--', 'INS' if p['insert'] else ('ins-variants' if p['insert_variants'] else 'no-insert'), 'RES' if p['resource_booklet'] else '---',
                   'CR' if p['copyright_removed'] else '')
 
 

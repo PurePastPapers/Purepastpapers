@@ -111,13 +111,22 @@ export function validatePaper(paper, { questionsById, subjectId }) {
   // Optional questions ("answer one of"): the paper total counts one question per choice group.
   // A member is one question id, or an array of unit ids forming one option (AQA Geography
   // options are whole multi-part questions): the total counts the largest option.
-  for (const group of Array.isArray(paper.choice_groups) ? paper.choice_groups : []) {
+  // A paper may carry choice_choose, parallel to choice_groups, with how many options the candidate
+  // answers in each group (default 1; AQA GCSE Geography Paper 1 Section C is "answer two of three").
+  // The total then counts the best N options of the group.
+  const groups = Array.isArray(paper.choice_groups) ? paper.choice_groups : [];
+  const choose = Array.isArray(paper.choice_choose) ? paper.choice_choose : [];
+  groups.forEach((group, index) => {
     const options = group
       .map((member) => (Array.isArray(member) ? member : [member]).map((id) => questionsById.get(id)).filter(Boolean))
       .filter((units) => units.length)
       .map((units) => units.reduce((total, question) => total + question.marks, 0));
-    if (options.length > 1) marks -= options.reduce((total, value) => total + value, 0) - Math.max(...options);
-  }
+    const count = Number.isInteger(choose[index]) && choose[index] > 0 ? Math.min(choose[index], options.length) : 1;
+    if (options.length > 1) {
+      const best = [...options].sort((a, b) => b - a).slice(0, count).reduce((total, value) => total + value, 0);
+      marks -= options.reduce((total, value) => total + value, 0) - best;
+    }
+  });
   if (ids.length && marks !== paper.total_marks) {
     warning(`question marks add up to ${marks}, but total_marks is ${paper.total_marks} (fine while a paper is only partly extracted).`);
   }

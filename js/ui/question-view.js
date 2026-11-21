@@ -54,7 +54,7 @@ function resources(question) {
     <p class="small muted">Resources for this question. Unscored context: they carry no marks of their own.</p>
     ${stem ? html`<figure class="qcontent"><figcaption class="small">${question.part_label ? `Question ${question.question_number}: introduction and earlier material this part uses` : `Question ${question.question_number} (shared introduction)`}</figcaption>${image(stem, `Introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
     ${intros.map((intro) => html`<figure class="qcontent"><figcaption class="small">${intro.label} (printed introduction)</figcaption>${image(intro.image_url, `${intro.label}, unscored context`)}</figure>`)}
-    ${figures.map((figure) => html`<figure class="qcontent"><figcaption class="small">${figure.label} · ${figure.source === 'insert' ? 'from the insert' : 'printed earlier in the question paper'}</figcaption>${image(figure.image_url, `${figure.label}, unscored resource`)}</figure>`)}
+    ${figures.map((figure) => html`<figure class="qcontent"><figcaption class="small">${figure.label} · ${figure.source === 'insert' ? 'from the insert' : figure.source === 'resource_booklet' ? 'from the resources booklet' : 'printed earlier in the question paper'}</figcaption>${image(figure.image_url, `${figure.label}, unscored resource`)}</figure>`)}
   </section>`;
 }
 

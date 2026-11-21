@@ -26,6 +26,7 @@ from pathlib import Path
 VERSION = 'aqa-gcsegeog-layout-v1'
 TARIFF = re.compile(r'\[(\d{1,2}) marks?\]')
 LABEL = re.compile(r'^(\d) (\d)(?:(?: \.)? (\d))?(?: (\d))?(?=\s|$)')   # GCSE: "0 1 1", "0 1 1 0" (part 10); the 4th digit is read only when it continues the sequence
+LABEL2 = re.compile(r'^(\d) (\d) \. (1\d)(?=\s|$)(?:(Z)Z)?')   # specimen Paper 2 prints part 10 as "0 2 . 10" (group 4 never matches)
 SPAG = re.compile(r'^\[\+\s*(\d)\s*SPaG marks?\]$', re.I)
 OPTION = re.compile(r'^[A-D]\s+\S')
 FIGURE_REF = re.compile(r'\b(Figures?|Tables?)\s+((?:\d{1,2}[a-z]?)(?:(?:,\s*|\s+and\s+|\s*&\s*)\d{1,2}[a-z]?)*)')
@@ -157,7 +158,17 @@ def extract(path):
                     break
                 if not FOOTER.match(row['text']):
                     rows.append(row)
+            if any(re.match(r'Time allowed', r['text']) for r in rows):
+                for r in rows:
+                    r['cover'] = True
             bands = figure_bands(page, rows)
+            for k, b in enumerate(bands):
+                if not b['graphic']:
+                    # A chart drawn as vector lines has no image or box: run the band to the next figure heading, the next
+                    # part label or the page foot, so a part that cites the figure later gets the whole chart (not its title).
+                    stops = [x['top'] - 4 for x in bands if x['top'] > b['top'] + 4]
+                    stops += [r['top'] - 2 for r in rows if r['x0'] < 75 and LABEL.match(r['text']) and r['top'] > b['top'] + 2]
+                    b['bottom'] = max(b['bottom'], min(stops + [page.height - 45]))
             for b in bands:   # a figure never extends over the next part's label
                 labels = [r['top'] for r in rows if r['x0'] < 75 and LABEL.match(r['text']) and r['top'] > b['top'] + 2]
                 if labels and min(labels) < b['bottom']:
@@ -198,7 +209,7 @@ def extract(path):
                     units[-1]['rows'].append((pi, row))
                 i += 1
                 continue
-            label = LABEL.match(text) if row['x0'] < 75 else None
+            label = (LABEL2.match(text) or LABEL.match(text)) if row['x0'] < 75 else None
             if label:
                 number = str(int(label.group(1) + label.group(2)))
                 digit = label.group(3)
@@ -219,6 +230,9 @@ def extract(path):
                 if question_no is not None and number != question_no and int(number) != int(question_no) + 1:
                     exceptions.append({'type': 'unexpected_question_number', 'found': number, 'after': question_no})
                 question_no = number
+                # The cover (the page with "Time allowed") is never part of a question. Paper 3 prints question 1 at the foot
+                # of the cover: keep only its lead-in lines there; drop cover rows that reached the first label of a later page.
+                pending = [(p, r) for p, r in pending if not r.get('cover') or (p == pi and (r.get('figure') or row['top'] - r['top'] < 90))]
                 current = {'question': number, 'label': part, 'section': section, 'rows': list(pending) + [(pi, row)]}
                 pending = []
                 i += 1
@@ -298,6 +312,7 @@ def extract(path):
                 box = by_page.setdefault(pi, [row['top'], row['bottom']])
                 box[0], box[1] = min(box[0], row['top']), max(box[1], row['bottom'])
             out = []
+            last_page = max(by_page)
             for pi in sorted(by_page):
                 page = pdf.pages[pi]
                 top, bottom = by_page[pi]
@@ -305,6 +320,13 @@ def extract(path):
                     for g_top, g_bottom in graphics(page):
                         if top - 2 <= (g_top + g_bottom) / 2 <= bottom + 2:
                             top, bottom = min(top, g_top), max(bottom, g_bottom)
+                if pi != last_page:
+                    # The unit goes on to the next page, so photographs printed under its last text row (a caption
+                    # such as "Figure 12 - hot desert" sits above its picture) still belong to it: 2024 Paper 1 Q2.9.
+                    for _ in range(3):
+                        for g_top, g_bottom in graphics(page):
+                            if bottom - 2 <= g_top <= bottom + 40 and g_bottom > bottom and g_bottom < page.height - 40:
+                                bottom = g_bottom
                 out.append({'page': pi + 1, 'bbox': [round(20 / page.width, 6), round(max(36, top - 6) / page.height, 6),
                                                      round((page.width - 20) / page.width, 6), round(min(page.height - 40, bottom + 6) / page.height, 6)]})
             return out
