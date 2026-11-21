@@ -62,6 +62,8 @@ HEADING = re.compile(
     rf'\s*(?P<title>(?:[:–—-]\s*.{{0,60}}|\((?:Mean|Average|Total|Max)[^)]{{0,60}}\)?)?)\s*\.?\s*$',
     re.I,
 )
+# "Question 1(b)(i) Many students scored…": a heading run into its paragraph (short reports).
+RUN_IN = re.compile(rf'^(?P<head>{QWORD}\s*\d{{1,2}}(?:{PART_RUN})?)\s*(?P<rest>[A-Z][a-z].*)$')
 SUBPART = re.compile(rf'^(?P<parts>(?:{PART}\s*)+)\s*$', re.I)
 GENERAL_START = re.compile(r'^(Introduction|General [Cc]omments?|Overview|General [Ii]ntroduction)\b')
 SUMMARY_START = re.compile(r'^(Paper [Ss]ummary|Summary|Based on (their|the) performance on this paper)')
@@ -342,6 +344,11 @@ def split_report(pages):
                 break
             headingish = item['bold'] or item['size'] > body_size + 0.5
             targets = parse_heading(text) if (headingish or len(text) < 30) else None
+            run_in = None if targets else RUN_IN.match(text)
+            if run_in and abs(item['left'] - body_left[page['number'] % 2]) < 12:
+                start('section', heading=run_in['head'].strip(), targets=parse_heading(run_in['head']))
+                current['lines'].append({**item, 'text': run_in['rest'], 'page': page['number'], 'indent': False})
+                continue
             if targets and (headingish or not current or current['kind'] != 'section' or text.lower().startswith('q')):
                 start('section', heading=text, targets=targets)
             elif headingish and SUMMARY_START.match(text) and sections:
@@ -476,6 +483,8 @@ def crop_maths(split, pdf, slug, paper_id, whole=False):
         scale = image.width / max(1, PAGE_WIDTHS.get(page, image.width))
         box = [int(max(0, (x0 - 6) * scale)), int(max(0, (y0 - 8) * scale)),
                int(min(image.width, (x1 + 8) * scale)), int(min(image.height, (y1 + 10) * scale))]
+        if box[2] - box[0] < 20 or box[3] - box[1] < 8:
+            return None  # degenerate box (a stray glyph): keep the text instead
         crop = image.crop(box)
         crop.save(folder / name_out, 'WEBP', quality=CROP_QUALITY, method=6)
         return {'src': f'{slug}/img/{name_out}', 'w': round(crop.width / scale), 'h': round(crop.height / scale)}
@@ -486,7 +495,7 @@ def crop_maths(split, pdf, slug, paper_id, whole=False):
             continue
         regions = block.pop('_regions', {})
         if whole or (slug in WHOLE_SECTION_CROPS and any(p.get('_math') for p in block['paras'])):
-            block['img'] = [save(page, *box, f'{paper_id}_{name}_p{page}.webp') for page, box in sorted(regions.items())]
+            block['img'] = [img for page, box in sorted(regions.items()) if (img := save(page, *box, f'{paper_id}_{name}_p{page}.webp'))]
             for para in block['paras']:
                 if para['k'] == 'ex':  # the crop shows them in place
                     para['k'] = 'p'
@@ -499,8 +508,10 @@ def crop_maths(split, pdf, slug, paper_id, whole=False):
             images = []
             for page, box in sorted(boxes.items()):
                 count += 1
-                images.append(save(page, *box, f'{paper_id}_{name}_{count}.webp'))
-            para['img'] = images
+                if (img := save(page, *box, f'{paper_id}_{name}_{count}.webp')):
+                    images.append(img)
+            if images:
+                para['img'] = images
     for _, block in blocks:
         (block or {}).pop('_regions', None)
         for para in (block or {}).get('paras', []):
@@ -575,7 +586,11 @@ def main():
         if not pdf:
             missing.append(paper['paper_id'])
             continue
-        report = build_paper(paper, pdf, args.subject)
+        try:
+            report = build_paper(paper, pdf, args.subject)
+        except Exception as error:  # one bad PDF must not stop the run
+            failed.append((paper['paper_id'], f'{type(error).__name__}: {error}'))
+            continue
         target = REPO / 'data/reports' / args.subject / f"{paper['paper_id']}.json"
         if report is None:
             unreadable.append(paper['paper_id'])

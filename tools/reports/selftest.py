@@ -74,6 +74,7 @@ def make_pdf(path):
     y = para(780, ['Question 2 (b)(i) continued text runs onto this page and', 'should join the same section.'])
     y = para(y, ['Questions 3 and 4'], bold=True, size=12)
     y = para(y, ['Both questions tested graph skills.', '• Axes were often unlabelled.', '• Units were missing.'])
+    y = para(y, ['Question 4(c)(ii) Again, this run-in heading starts its own paragraph.'])
     y = para(y, ['Question 5'], bold=True, size=12)
     y = para(y, ['A multi-part question on fields.'])
     y = para(y, ['(a)'], bold=True)
@@ -112,7 +113,7 @@ def run_self_test(extract):
         make_pdf(pdf)
         split = extract.split_report(extract.read_layout(pdf))
     heads = [s['heading'] for s in split['sections']]
-    want = ['Question 1', 'Question 2 (a)', 'Question 2 (b)(i)', 'Questions 3 and 4', 'Question 5', 'Question 5(a)', 'Question 5(b)']
+    want = ['Question 1', 'Question 2 (a)', 'Question 2 (b)(i)', 'Questions 3 and 4', 'Question 4(c)(ii)', 'Question 5', 'Question 5(a)', 'Question 5(b)']
     if heads != want:
         failures.append(f'sections {heads} != {want}')
     by = {s['heading']: s for s in split['sections']}
@@ -133,6 +134,8 @@ def run_self_test(extract):
         ('bullets kept as list items', [p['k'] for p in by['Questions 3 and 4']['paras']] == ['p', 'li', 'li']),
         ('bold sub-part starts its own section', by.get('Question 5(b)', {}).get('targets') == [{'q': '5', 'part': '(b)'}]),
         ('indented script comment without a label', ('ex', 'This response scored full marks.') in [(p['k'], p['t']) for p in by['Question 5(b)']['paras']]),
+        ('run-in heading', by.get('Question 4(c)(ii)', {}).get('targets') == [{'q': '4', 'part': '(c)(ii)'}]
+         and text(by['Question 4(c)(ii)']).startswith('Again, this run-in')),
         ('summary separated', 'show all working' in ' '.join(p['t'] for p in split.get('summary', {}).get('paras', []))),
         ('summary not in last section', 'show all working' not in text(by['Question 5(b)'])),
         ('stops at grade boundaries', 'Grade boundaries' not in str(split)),
