@@ -230,16 +230,21 @@ test('Enlarge on a phone: opens zoomed in, and the magnifying glasses zoom in an
   await page.close();
 });
 
-test('Marks: buttons for 1-6 mark questions, a slider for 7 or more', { skip }, async () => {
+test('Marks: a coloured slider for questions over 1 mark', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 1366, height: 900 });
   const small = page.locator('.qcard').filter({ has: page.locator('.marks-pill', { hasText: /^3 marks$/ }) }).first();
   await small.locator('[data-scheme]').click();
   const picker = page.locator('.qcard [data-markpick]').first();
   await picker.waitFor();
-  assert.deepEqual(await picker.locator('[data-pick]').allTextContents(), ['0', '1', '2', '3']);
-  await picker.locator('[data-pick="2"]').click();
-  assert.equal(await picker.locator('[data-pick="2"]').getAttribute('aria-checked'), 'true');
-  assert.equal(await picker.locator('input[type="hidden"]').inputValue(), '2');
+  assert.equal(await picker.locator('[data-pick]').count(), 0, 'no buttons above 1 mark');
+  const range = picker.locator('[data-pick-range]');
+  await range.fill('1');
+  assert.equal(await picker.getAttribute('data-rag'), 'red');      // 1/3 = 33%
+  await range.fill('2');
+  assert.equal(await picker.getAttribute('data-rag'), 'amber');    // 2/3 = 67%
+  await range.fill('3');
+  assert.equal(await picker.getAttribute('data-rag'), 'green');    // 3/3 = 100%
+  assert.equal(await picker.locator('input[type="hidden"]').inputValue(), '3');
   await page.locator('.qcard [data-scheme][aria-expanded="true"]').first().click();
 
   await page.locator('[data-section="fpop-marks"] > summary').click();
