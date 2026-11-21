@@ -59,7 +59,7 @@ QWORD = r'(?:Questions?|Qu\.?|Q\.?)'
 HEADING = re.compile(
     rf'^{QWORD}\s*(?P<num>\d{{1,2}})(?P<parts>{PART_RUN})?'
     rf'(?P<more>(?:\s*(?:,|&|and|to|–|-)\s*(?:\d{{1,2}}(?:{PART_RUN})?|{PART_RUN}))*)'
-    rf'\s*(?P<title>(?:[:–—-]\s*.{{0,60}}|\((?:Mean|Average|Total|Max)[^)]{{0,60}}\)?)?)\s*$',
+    rf'\s*(?P<title>(?:[:–—-]\s*.{{0,60}}|\((?:Mean|Average|Total|Max)[^)]{{0,60}}\)?)?)\s*\.?\s*$',
     re.I,
 )
 SUBPART = re.compile(rf'^(?P<parts>(?:{PART}\s*)+)\s*$', re.I)
@@ -225,7 +225,7 @@ def running_lines(pages):
     for page in pages:
         seen = set()
         for line in page['lines']:
-            if line['top'] < page['height'] * 0.09 or line['top'] > page['height'] * 0.9:
+            if (line['top'] < page['height'] * 0.09 or line['top'] > page['height'] * 0.9) and not parse_heading(line['text']):
                 seen.add(re.sub(r'\d+', '#', line['text']))
         counts.update(seen)
     floor = max(2, len(pages) * 0.3)
@@ -234,7 +234,7 @@ def running_lines(pages):
 
 def is_margin_noise(line, page, running):
     in_margin = line['top'] < page['height'] * 0.09 or line['top'] > page['height'] * 0.9
-    if not in_margin:
+    if not in_margin or parse_heading(line['text']):
         return False
     key = re.sub(r'\d+', '#', line['text'])
     return key in running or re.fullmatch(r'(Page\s*)?\d{1,3}(\s*of\s*\d{1,3})?', line['text'], re.I) is not None
@@ -255,6 +255,22 @@ def repeated_images(pages):
 def split_report(pages):
     running = running_lines(pages)
     logos = repeated_images(pages)
+    # Body text's left edge per page parity (printed reports alternate margins). Comments on
+    # example scripts sit in boxes indented well to the right of it; their "Examiner
+    # Comments" label is often an image, so the indent is what marks them.
+    body_left = {}
+    heading_lefts = {0: [], 1: []}
+    for p in pages:
+        for l in p['lines']:
+            if parse_heading(l['text']):
+                heading_lefts[p['number'] % 2].append(l['left'])
+    for parity in (0, 1):
+        lefts = heading_lefts[parity] or heading_lefts[1 - parity]
+        if lefts:
+            body_left[parity] = Counter(round(x / 4) * 4 for x in lefts).most_common(1)[0][0]
+        else:
+            counts = Counter(round(l['left'] / 4) * 4 for p in pages for l in p['lines'] if len(l['text']) > 45)
+            body_left[parity] = min(counts) if counts else 0
     body_size = Counter(round(l['size']) for p in pages for l in p['lines']).most_common(1)
     body_size = body_size[0][0] if body_size else 11
     blocks = {'general': None, 'summary': None}
@@ -329,7 +345,10 @@ def split_report(pages):
                 part = norm_part(text)
                 start('section', heading=f"Question {parent['q']}{part}", targets=[{'q': parent['q'], 'part': part}])
             elif current:
-                current['lines'].append({**item, 'page': page['number']})
+                text_ok = len(item['text']) >= 25 or item['text'][:1].isupper()
+                indent = (item['left'] > body_left[page['number'] % 2] + 40 and not item.get('math')
+                          and not BULLET.match(item['text']) and text_ok)
+                current['lines'].append({**item, 'page': page['number'], 'indent': indent})
         close_box()
 
     out = {'sections': []}
@@ -359,11 +378,11 @@ def finish(block):
         gap = (line['top'] - previous['top']) if previous and previous['page'] == line['page'] else None
         in_maths = previous is not None and (line.get('math') or previous.get('math')) and gap is not None and -40 < gap < max(previous['height'], line['height']) * 3.2
         new = not in_maths and (
-            previous is None or bullet or (gap is not None and gap > max(previous['height'], line['height']) * 1.6)
+            previous is None or bullet or bool(line.get('indent')) != bool(previous.get('indent')) or (gap is not None and gap > max(previous['height'], line['height']) * 1.6)
             or (gap is not None and gap < 0) or line['bold'] != previous['bold']
             or (previous and previous['page'] != line['page'] and previous['text'].rstrip().endswith(('.', ':', '?'))))
         if new:
-            kind = 'li' if bullet else 'h' if line['bold'] and len(text) < 90 else 'p'
+            kind = 'ex' if line.get('indent') else 'li' if bullet else 'h' if line['bold'] and len(text) < 90 else 'p'
             paras.append({'k': kind, 't': BULLET.sub('', text) if bullet else text, '_math': False, '_boxes': {}})
         else:
             last = paras[-1]
@@ -459,6 +478,9 @@ def crop_maths(split, pdf, slug, paper_id):
         regions = block.pop('_regions', {})
         if slug in WHOLE_SECTION_CROPS and any(p.get('_math') for p in block['paras']):
             block['img'] = [save(page, *box, f'{paper_id}_{name}_p{page}.webp') for page, box in sorted(regions.items())]
+            for para in block['paras']:
+                if para['k'] == 'ex':  # the crop shows them in place
+                    para['k'] = 'p'
             continue
         count = 0
         for para in block['paras']:
@@ -530,7 +552,7 @@ def main():
     if not args.subject:
         parser.error('--subject is required')
     papers = [p for p in load_papers(args.subject) if not args.paper or p['paper_id'] in args.paper]
-    missing, failed, written = [], [], 0
+    missing, failed, written, empty = [], [], 0, []
     for paper in papers:
         try:
             pdf = locate_pdf(paper['examiner_report_url'], args.pdf_dir, args.fetch)
@@ -542,6 +564,11 @@ def main():
             continue
         report = build_paper(paper, pdf, args.subject)
         target = REPO / 'data/reports' / args.subject / f"{paper['paper_id']}.json"
+        if not report['sections']:
+            # e.g. "Pearson will not publish an Examiner's Report for this paper": no button.
+            empty.append(paper['paper_id'])
+            target.unlink(missing_ok=True)
+            continue
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(json.dumps(report, ensure_ascii=False, indent=1) + '\n')
         written += 1
@@ -550,6 +577,8 @@ def main():
     index = write_index()
     print(f'{args.subject}: {written} reports written, {len(missing)} PDFs not found, {len(failed)} failed; '
           f'{len(index["papers"])} papers in data/reports/index.json')
+    if empty:
+        print('  no question comments (not published, or headings not recognised):', ', '.join(empty))
     for pid, error in failed[:10]:
         print('  failed', pid, error[:120])
     if missing:

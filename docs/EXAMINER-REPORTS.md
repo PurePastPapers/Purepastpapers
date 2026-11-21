@@ -23,7 +23,10 @@ under whichever is showing and stays open until it is closed with its own button
 | Only a whole-question comment | "The report comments on the whole question, not this part on its own." |
 | No comment on this question | "The examiners didn't comment on this question" with the paper's general comments folded underneath. |
 | Linked question (parts shown together) | One panel for the group: the whole-question comment once, then each part's; a comment shared by two parts appears once with a pointer. |
-| Comment shows example scripts | "The report shows 2 example responses here: see page 7" (links to that PDF page). |
+| Comment shows example scripts | The report's "Examiner Comments" on them fold under "Comments on 2 example responses (2)", with a link to the PDF page where the scripts are printed. |
+| Report gives an "Examiner Tip" | Shown as a highlighted "Examiner tip" line under the comment. |
+| Comment contains equations (all Maths, some Physics/Biology) | The comment is shown as a crop of the printed report, so fractions, powers and brackets stay exact; the text is the image's alt text. |
+| Pearson published no report ("insufficient entries") | No button. |
 | Paper's report not split yet | No button; the small "Official examiner's report" PDF link shows as before. |
 | Report fails to load (offline) | Says so, with a link to the full PDF. |
 | Question set (test or mark-as-you-go) | Nothing while answering. After **Mark scheme** is revealed, and on the marking and review screens, a closed "Examiner's report" fold under the scheme. |
@@ -43,13 +46,25 @@ as printed. Open page 7", linking to the PDF at that page.
 | `tests/examiner-report.test.mjs` | Matching rules, every Maths/Physics/Biology unit's parts, report file shape. |
 | `tools/browser-examiner-report.cjs` | Browser check of every situation in the table, at 1280 and 390 px. Serves its own fixture report. |
 
-### Why text, not image crops
+### Text first, crops only for equations
 
-The image catalogues are 0.94 GB against the 1.15 GB test limit (`docs/SITE-SIZE.md`).
-Crops of ~160 reports would add roughly 130 MB and leave nothing for History and Geography.
-Text is about 20–40 KB a paper, reflows on a phone and is searchable. The cost: maths
-notation in pdftotext output is flattened (x² can read as x2) and example scripts are
-not reproduced, so every section links to its page in the official PDF.
+The image catalogues are about 0.92 GB against the 1.15 GB test limit (`docs/SITE-SIZE.md`),
+so whole-report crops (~130 MB) are out. Text is 20–40 KB a paper, reflows on a phone and
+is searchable. Equations do not survive as text (pdftotext turns a stacked fraction into
+"2 2 x x 4 4"), so:
+
+- **Maths** (`WHOLE_SECTION_CROPS` in `extract.py`): every question comment that contains
+  an equation is one crop per page of the printed comment (150 dpi greyscale WebP, about
+  0.7 MB a paper). Cutting at paragraph boundaries around displayed equations proved
+  unreliable on real reports; whole-comment crops never cut a line.
+- **Physics and Biology**: only paragraphs that contain an equation are cropped.
+
+An equation is found from the PDF itself: symbol fonts (Symbol, MT Extra, Cambria Math),
+private-use glyphs (stretchy brackets), small raised or lowered figures, and stray
+characters off the text baseline. Crops count towards `tests/site-size.test.mjs`.
+
+Example scripts (candidates' handwritten answers) are not reproduced: the panel links to
+the page they are printed on.
 
 ### Report file
 
@@ -69,8 +84,14 @@ not reproduced, so every section links to its page in the official PDF.
 }
 ```
 
-`k` is `p` (paragraph), `li` (bullet) or `h` (a bold line inside a section, such as
-"Example 1"). A heading such as "Questions 4 and 5" or "Question 2(a) and (b)" has several
+`k` is `p` (paragraph), `li` (bullet), `h` (a bold line inside a section, such as
+"Example 1"), `ex` (an "Examiner Comments" box about an example script) or `tip` (an
+"Examiner Tip" box). Those boxes print in two columns side by side; the extractor reads
+them as columns, not across. In newer reports the "Examiner Comments" label is an image, so
+a comment is recognised by its indent instead: text more than 40 pt right of the margin
+where that page side's "Question …" headings sit (odd and even pages differ). Tips there
+cannot be told from comments and fold with them. A paragraph or section with `img` is shown as those crops
+(`{"src": "maths/img/<PAPER>_s4_p5.webp", "w": 741, "h": 433}`, sizes in PDF points ×1.5). A heading such as "Questions 4 and 5" or "Question 2(a) and (b)" has several
 targets; it is shown with each.
 
 ## Running the extraction (needed before any report text appears)
@@ -95,8 +116,21 @@ Expected volume: Maths 54 of 60 booklets, Physics 47 of 52, Biology 46 of 52. Of
 samples have no report; nor do 8MA0 October 2020 Paper 21 and 8BN0 June 2022 Paper 2.
 Papers without a report show no button.
 
-**Check before publishing** (the extractor is tested on generated reports only; real
-Pearson layouts have not been seen in this pipeline yet):
+`node tools/reports/coverage.mjs <slug> [--all]` lists, per paper, how many units get
+their own, a parent-part, a whole-question or no comment, and flags papers where most get
+none (usually unrecognised headings).
+
+Getting the PDFs: Pearson is blocked in this repository's cloud sessions, and the Claude
+desktop app's browser asks where to save **every** download (147 Save dialogs). Use
+`--fetch` where Pearson is reachable, or `curl` in the owner's own Terminal into a folder
+(no dialogs), then `--pdf-dir`.
+
+Real-report quirks handled (seen 21 November 2026): "Question 1 (Mean Mark 2.6 out of 3)"
+and "Question 1." headings (Maths); "Question 18 (b) (i) - (ii)" ranges (Physics); a
+"Question N" heading at the very top of a page is not a running header; the 8PH0 Paper 2
+2021 PDF only says no report was published.
+
+**Check before publishing:**
 
 1. `--show` prints each paper's headings. Look for papers with no sections (headings not
    bold, or a new style such as "Q01 (a)") and for questions split mid-comment.
