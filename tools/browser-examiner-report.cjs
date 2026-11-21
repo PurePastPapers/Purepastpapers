@@ -21,7 +21,7 @@ const REPORT = {
   source_url: 'https://qualifications.pearson.com/fixture/9PH0_02_pef.pdf', source_sha256: '0'.repeat(64),
   general: {pages: [2], paras: [{k: 'p', t: 'FIXTURE general comment on the paper.'}]},
   sections: [
-    sec(1, 'Question 12 (a)', [{q: '12', part: '(a)'}], 'FIXTURE comment on 12(a).', {paras: [{k: 'p', t: 'FIXTURE comment on 12(a).'}, {k: 'li', t: 'FIXTURE bullet'}], figures: [{page: 2, count: 2}]}),
+    sec(1, 'Question 12 (a)', [{q: '12', part: '(a)'}], 'FIXTURE comment on 12(a).', {paras: [{k: 'p', t: 'FIXTURE comment on 12(a).'}, {k: 'li', t: 'FIXTURE bullet'}, {k: 'p', t: 'FIXTURE equation para', img: [{src: 'physics/img/FIXTURE_s1_1.webp', w: 600, h: 60}]}, {k: 'ex', t: 'FIXTURE example comment.'}, {k: 'tip', t: 'FIXTURE tip.'}, {k: 'tip', t: 'FIXTURE tip.'}], figures: [{page: 2, count: 2}]}),
     sec(2, 'Question 14', [{q: '14', part: ''}], 'FIXTURE whole question 14.'),
     sec(3, 'Question 14 (b)(i)', [{q: '14', part: '(b)(i)'}], 'FIXTURE comment on 14(b)(i).'),
     sec(4, 'Question 14 (b)(ii)', [{q: '14', part: '(b)(ii)'}], 'FIXTURE comment on 14(b)(ii).'),
@@ -38,6 +38,8 @@ const REPORT = {
     page.on('console', (m) => { if (m.type() === 'error' && !/net::ERR_|Failed to load resource/.test(m.text())) errors.push(m.text()); });
     await page.route('**/data/reports/index.json', (route) => route.fulfill({json: {format: 'examiner-report-index-v1', papers: {[PAPER]: {file: `physics/${PAPER}.json`, sections: 5}}}}));
     await page.route(`**/data/reports/physics/${PAPER}.json`, (route) => route.fulfill({json: REPORT}));
+    // A 1x1 WebP for the equation crop.
+    await page.route('**/data/reports/physics/img/*.webp', (route) => route.fulfill({contentType: 'image/webp', body: Buffer.from('UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA', 'base64')}));
     await page.goto(base);
     await page.evaluate(async (s) => { await (await import('/js/data/demo.js')).enterDemoAccount(); await (await import('/js/data/api.js')).setEnrolled(s, true); }, SUBJECT);
     await page.goto(`${base}/#/practice?subject=${SUBJECT}`);
@@ -65,9 +67,9 @@ const REPORT = {
     const panel = a.locator('.qsplit__main .erpanel');
     await panel.locator('.er-sec').first().waitFor();
     assert.match(await panel.textContent(), /FIXTURE comment on 12\(a\)/);
-    assert.equal(await panel.locator('li').count(), 1);
+    assert.equal(await panel.locator('.er-sec > ul > li').count(), 1);
     assert.ok(await panel.locator('.erpanel__warn').isVisible(), 'question view warns that answers are discussed');
-    assert.match(await panel.locator('.er-sec__fig a').getAttribute('href'), /#page=2$/);
+    assert.match(await panel.locator('details.er-ex a').getAttribute('href'), /#page=2$/);
     assert.equal(await a.locator(`.qsplit__side [data-report="${id(12, 1)}"]`).getAttribute('aria-expanded'), 'true');
     assert.ok(!/FIXTURE whole question 14|14\(b\)/.test(await panel.textContent()), 'no other question\'s comments');
 
@@ -82,6 +84,16 @@ const REPORT = {
     await a.locator('.erpanel__close').click();
     assert.equal(await a.locator('.erpanel').count(), 0);
     assert.match(await a.locator(`.qsplit__side [data-report="${id(12, 1)}"]`).textContent(), /^\s*Examiner’s report\s*$/);
+
+    // 2b. Tips once, example comments folded, equation paragraph as an image with its text as alt.
+    await a.locator(`.qsplit__side [data-report="${id(12, 1)}"]`).click();
+    await a.locator('.erpanel .er-sec').first().waitFor();
+    assert.equal(await a.locator('.erpanel .er-tip').count(), 1, 'duplicate tips shown once');
+    assert.equal(await a.locator('.erpanel details.er-ex').count(), 1);
+    assert.ok(!(await a.locator('.erpanel details.er-ex li').isVisible()), 'example comments start folded');
+    assert.equal(await a.locator('.erpanel img.er-crop').getAttribute('alt'), 'FIXTURE equation para');
+    assert.ok(!/FIXTURE equation para/.test(await a.locator('.erpanel .erpanel__body').innerText()), 'crop replaces the garbled text');
+    await a.locator('.erpanel__close').click();
 
     // 3. No comment on this part.
     const b = await goTo(`[data-card="${id(12, 2)}"]`);
@@ -127,7 +139,7 @@ const REPORT = {
     await page.locator('[data-reveal]').first().click();
     const fold = page.locator('.erfold').first();
     await fold.waitFor();
-    await fold.locator('summary').click();
+    await fold.locator(':scope > summary').click();
     await fold.locator('.er-sec').waitFor();
     assert.match(await fold.textContent(), /FIXTURE comment on 12\(a\)/);
     assert.deepEqual(errors, []);
