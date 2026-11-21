@@ -14,10 +14,13 @@ HEADINGS = [
     ('Question 10(b)(ii)', [{'q': '10', 'part': '(b)(ii)'}]),
     ('Question 6 – Vectors', [{'q': '6', 'part': ''}]),
     ('Question 2 (c) (iii)', [{'q': '2', 'part': '(c)(iii)'}]),
+    ('Question 4.', [{'q': '4', 'part': ''}]),
+    ('Question 1 (Mean Mark 2.6 out of 3)', [{'q': '1', 'part': ''}]),
+    ('Question 18 (b) (i) - (ii)', [{'q': '18', 'part': '(b)(i)'}, {'q': '18', 'part': '(b)(ii)'}]),
     ('Questions 8 to 10', [{'q': '8', 'part': ''}, {'q': '9', 'part': ''}, {'q': '10', 'part': ''}]),
 ]
 NOT_HEADINGS = ['Question 3 was answered well by most candidates.', 'Questions were generally well attempted',
-                'Q. How many marks', 'Question 4.']
+                'Q. How many marks']
 
 
 def make_pdf(path):
@@ -77,6 +80,9 @@ def make_pdf(path):
     y = para(y, ['Part (a) was well answered.'])
     y = para(y, ['(b)'], bold=True)
     y = para(y, ['Part (b) needed the inverse square law.'])
+    pdf.setFont('Helvetica', 10)
+    pdf.drawString(200, y, 'This response scored full marks.')  # an indented script comment, no label
+    y -= 24
     y = para(y, ['Paper Summary'], bold=True, size=12)
     y = para(y, ['Based on their performance on this paper, candidates are offered the following advice:',
                  '• show all working'])
@@ -120,12 +126,13 @@ def run_self_test(extract):
         ('section continues across a page', 'should join the same section' in text(by.get('Question 2 (b)(i)', {'paras': []}))),
         ('page list spans both pages', by.get('Question 2 (b)(i)', {}).get('pages') == [2, 3]),
         ('example script counted', by.get('Question 2 (b)(i)', {}).get('figures') == [{'page': 2, 'count': 1}]),
-        ('box comment kept whole', {'k': 'ex', 't': 'This response gained the first mark only.'} in by['Question 2 (b)(i)']['paras']),
-        ('box tip kept whole', {'k': 'tip', 't': 'Always convert to SI units first.'} in by['Question 2 (b)(i)']['paras']),
+        ('box comment kept whole', ('ex', 'This response gained the first mark only.') in [(p['k'], p['t']) for p in by['Question 2 (b)(i)']['paras']]),
+        ('box tip kept whole', ('tip', 'Always convert to SI units first.') in [(p['k'], p['t']) for p in by['Question 2 (b)(i)']['paras']]),
         ('section continues after a box', 'should join the same section' in text(by['Question 2 (b)(i)'])),
         ('running header dropped', 'Pearson Edexcel GCE' not in text(by.get('Question 2 (b)(i)', {'paras': []}))),
         ('bullets kept as list items', [p['k'] for p in by['Questions 3 and 4']['paras']] == ['p', 'li', 'li']),
         ('bold sub-part starts its own section', by.get('Question 5(b)', {}).get('targets') == [{'q': '5', 'part': '(b)'}]),
+        ('indented script comment without a label', ('ex', 'This response scored full marks.') in [(p['k'], p['t']) for p in by['Question 5(b)']['paras']]),
         ('summary separated', 'show all working' in ' '.join(p['t'] for p in split.get('summary', {}).get('paras', []))),
         ('summary not in last section', 'show all working' not in text(by['Question 5(b)'])),
         ('stops at grade boundaries', 'Grade boundaries' not in str(split)),

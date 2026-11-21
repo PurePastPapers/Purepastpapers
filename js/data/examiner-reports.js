@@ -107,7 +107,7 @@ function sectionBlock(section, report, { relation = 'own', note = '' } = {}) {
       : paragraphs(paras.filter((para) => para.k !== 'tip' && para.k !== 'ex'))}
     ${tips.map((tip) => html`<p class="er-tip"><strong>Examiner tip</strong> ${tip}</p>`)}
     ${examples.length
-      ? html`<details class="er-ex"><summary>Comments on ${scripts} (${examples.length})</summary>
+      ? html`<details class="er-ex"><summary>Comments on example responses (${examples.length})</summary>
           <ul>${examples.map((text) => html`<li>${text}</li>`)}</ul>
           ${link ? html`<p class="small muted">The responses themselves are images in the report: <a href="${link}" target="_blank" rel="noopener">see page ${figurePage}</a>.</p>` : ''}
         </details>`
