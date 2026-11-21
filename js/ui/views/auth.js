@@ -86,6 +86,7 @@ export async function mount(element, context) {
                   <li><i>1</i><div><h3>Your subjects, your colours</h3><p>Pick GCSE, A-Level or Level 3 subjects and set a target grade for each.</p></div></li>
                   <li><i>2</i><div><h3>Questions only on what you’ve learned</h3><p>Tick off topics as you cover them in class. Practice skips the rest.</p></div></li>
                   <li><i>3</i><div><h3>Every mark in the Data Hub</h3><p>See your papers rated against your target, and which topics need work.</p></div></li>
+                  ${backend.cloudConfigured ? html`<li><i>4</i><div><h3>Phone, laptop and tablet</h3><p>Tick off topics on your phone, then sit full papers on a bigger screen. One account, everything in sync.</p></div></li>` : ''}
                 </ol>
               </div>
               <p class="row row--tight" style="margin-top:28px">

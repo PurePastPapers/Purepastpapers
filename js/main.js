@@ -15,6 +15,8 @@ import { installZoom } from './ui/zoom.js';
 import { installModuleScopeHandlers } from './ui/module-scope.js';
 import { getBundle, getSubjects } from './data/content-repository.js';
 import { closeWelcome, maybeWelcome } from './ui/welcome.js';
+import { installFunnel, onRoute as funnelRoute } from './ui/funnel.js';
+import { installStackedTables } from './ui/device.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 import { links } from './core/links.js';
 
@@ -204,6 +206,7 @@ async function handleRoute() {
     };
     $('h1', view)?.focus({ preventScroll: true });
     maybeWelcome({ path, signedIn: api.isSignedIn(), navigate });
+    funnelRoute(path);
   } catch (error) {
     console.error(error);
     if (ticket !== navigation) return;
@@ -220,12 +223,14 @@ async function start() {
   observeSourceImages();
   observeExaminerReports();
   installZoom();
+  installStackedTables();
   installModuleScopeHandlers({
     getSubject: async (id) => (await getSubjects()).find((subject) => subject.subject_id === id) || null,
     getSpec: async (id) => (await getBundle(id)).spec,
   });
   await api.init();
   shell.mountShell(document.getElementById('app'));
+  installFunnel({ navigate });
   api.events.on('auth', (user) => {
     if (user) closeWelcome();
     shell.render();

@@ -8,6 +8,7 @@
 import { isEnabled } from '../../config/phases.js';
 import { $, $$, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
 import { backLabel, links, routeOf } from '../../core/links.js';
+import { savedWhere } from '../device.js';
 import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, plural, sum } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
@@ -202,7 +203,7 @@ export async function mount(element, context) {
       <h1 tabindex="-1">Paused</h1>
       <p>The clock stopped at ${at}. The questions are hidden while you’re paused, so the timing stays fair.</p>
       <button type="button" class="btn btn--primary btn--lg" data-pause>${icon('play', { size: 18 })} Resume</button>
-      <p class="small muted">${api.isSignedIn() ? 'Your answers are saved in this browser.' : 'Your guest answers last until you refresh or close this page.'}</p>
+      <p class="small muted">${api.isSignedIn() ? (api.backendInfo().syncsAcrossDevices ? 'Your answers are saved to your account.' : 'Your answers are saved in this browser.') : 'Your guest answers last until you refresh or close this page.'}</p>
     </section>`;
   };
 
@@ -674,7 +675,7 @@ export async function mount(element, context) {
       element,
       html`<div class="runner">
         ${bar({ stage: 'result' })}
-        ${!api.isSignedIn() ? banner(html`Your results are temporary. <a href="${links.signup('/hub')}">Create a free account</a> to save and track your marks and progress in this browser.`) : ''}
+        ${!api.isSignedIn() ? banner(html`Your results are temporary. <a href="${links.signup('/hub')}">Create a free account</a> to save and track your marks and progress ${savedWhere()}.`) : ''}
         <section class="card ruled result-hero">
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="result-hero__left">
@@ -704,7 +705,7 @@ export async function mount(element, context) {
               ${api.isSignedIn() ? html`<a class="btn" href="${links.hub()}">Open the Data Hub</a>` : html`<a class="btn" href="${links.signup('/hub')}">Create a free account</a>`}
               ${questions.length ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} ${session.kind === 'full_paper' ? 'Sit it again' : 'Try these again'}</button>` : ''}
             </div>
-            <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? 'Saved in this browser and added to your Data Hub.' : 'Temporary guest result; create an account to save it in this browser.'}</p>
+            <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? `Saved ${api.backendInfo().syncsAcrossDevices ? 'to your account' : 'in this browser'} and added to your Data Hub.` : `Temporary guest result; create an account to save it ${savedWhere()}.`}</p>
           </div>
         </section>
         ${needsImprovement

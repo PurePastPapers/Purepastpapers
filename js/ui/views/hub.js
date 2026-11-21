@@ -113,7 +113,7 @@ export async function mount(element, context) {
           <i class="tape tape--r" aria-hidden="true"></i>
             <div class="card__head"><h2 class="card__title">By subject</h2></div>
             <div class="table-wrap">
-              <table class="table">
+              <table class="table table--stack">
                 <thead><tr><th>Subject</th><th class="num">Questions</th><th>Average score</th><th class="num">Papers and tests</th><th><span class="sr-only">Open</span></th></tr></thead>
                 <tbody>
                   ${scope.map((bundle) => {
@@ -121,9 +121,9 @@ export async function mount(element, context) {
                     const result = totals(mine);
                     return html`<tr>
                       <td>${groupDot(bundle.subject)} <a href="${href({ subject: bundle.subject.subject_id })}">${subjectName(bundle.subject)}</a></td>
-                      <td class="num">${mine.length}</td>
-                      <td>${mine.length ? ragBadge(ragFor(result.percentage), result.percentage) : html`<span class="muted small">No attempts</span>`}</td>
-                      <td class="num">${progress.paper_attempts.filter((attempt) => attempt.subject_id === bundle.subject.subject_id).length}</td>
+                      <td class="num" data-label="Questions">${mine.length}</td>
+                      <td data-label="Average">${mine.length ? ragBadge(ragFor(result.percentage), result.percentage) : html`<span class="muted small">No attempts</span>`}</td>
+                      <td class="num" data-label="Papers and tests">${progress.paper_attempts.filter((attempt) => attempt.subject_id === bundle.subject.subject_id).length}</td>
                       <td class="right"><a class="btn btn--sm btn--ghost" href="${href({ tab: 'topics', subject: bundle.subject.subject_id })}">Topics</a></td>
                     </tr>`;
                   })}
@@ -193,7 +193,7 @@ export async function mount(element, context) {
     );
     if (!rows.length) return html`<p class="muted" style="padding:16px 0">No questions match these filters.</p>`;
     return html`<div class="table-wrap">
-        <table class="table">
+        <table class="table table--stack">
           <thead>
             <tr><th>Question</th><th>Topic</th><th>Difficulty</th><th>Latest score</th><th class="num">Tries</th><th>Last tried</th><th><span class="sr-only">Actions</span></th></tr>
           </thead>
@@ -354,7 +354,7 @@ export async function mount(element, context) {
     const rows = paperAttempts.filter((attempt) => historyType === 'all' || attempt.paper_type === historyType);
     if (!rows.length) return html`<p class="muted" style="padding:16px 0">Nothing here yet.</p>`;
     return html`<div class="table-wrap">
-      <table class="table">
+      <table class="table table--stack">
         <thead>
           <tr><th>Date</th><th>Paper or test</th><th>Type</th><th class="num">Score</th><th>Result</th><th>Time taken</th><th><span class="sr-only">Actions</span></th></tr>
         </thead>

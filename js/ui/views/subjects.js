@@ -10,6 +10,7 @@ import { addSubject, editSubject } from '../enrol.js';
 import { addSubjectButton, addSubjectTile, loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
 import { banner, emptyState, pageHead, toast } from '../ui.js';
 import { links } from '../../core/links.js';
+import { savedWhere } from '../device.js';
 
 const LEVELS = [
   { id: 'gcse', label: 'GCSE', level: 'GCSE' },
@@ -96,7 +97,7 @@ export async function mount(element, context) {
         ${context.query.welcome && !enrolled.length
           ? banner(html`<strong>Welcome.</strong> Start by adding your subjects below. Next you will tick the topics you have learned so far.`)
           : ''}
-        ${!api.isSignedIn() ? banner(html`Browse and filter for free. Your guest choices last until you refresh or close this page. <a href="${links.signup()}">Create a free account</a> to save progress in this browser.`) : ''}
+        ${!api.isSignedIn() ? banner(html`Browse and filter for free. Your guest choices last until you refresh or close this page. <a href="${links.signup()}">Create a free account</a> to save progress ${savedWhere()}.`) : ''}
         <section class="dash-block" style="margin-top:10px" aria-labelledby="now-title">
           <div class="section-title">
             <h2 id="now-title">Studying now</h2>

@@ -54,6 +54,10 @@ const PATHS = {
   filter: '<path d="M3 5h18l-7 8.500V20l-4-2v-4.500z"/>',
   pencil: '<path d="M4 20h4L19 9l-4-4L4 16z"/>',
   database: '<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.700 3.600 3 8 3s8-1.300 8-3V6"/><path d="M4 12v6c0 1.700 3.600 3 8 3s8-1.300 8-3v-6"/>',
+  phone: '<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>',
+  laptop: '<rect x="4.5" y="5" width="15" height="10" rx="1.5"/><path d="M2 19h20l-1.5-4h-17z"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/>',
+  share: '<path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 12v8h14v-8"/>',
 };
 
 /**

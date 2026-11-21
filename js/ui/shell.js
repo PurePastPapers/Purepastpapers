@@ -37,6 +37,27 @@ function avatarHex() {
   }
 }
 
+/** Bottom tab bar for phones and tablets (shown by CSS below 1080px; hidden while sitting a paper). */
+function tabbar(user, main) {
+  const items = user
+    ? main
+    : [
+        { path: '/', label: 'Home', icon: 'home' },
+        { path: '/papers', label: 'Papers', icon: 'file', match: ['/paper'] },
+        { path: '/practice', label: 'Practice', icon: 'sliders' },
+      ];
+  const short = { 'Past papers': 'Papers' };
+  return html`<nav class="tabbar" aria-label="${user ? 'Sections' : 'Browse'}">
+    ${items.map(
+      (item) =>
+        html`<a class="tabbar__item" href="#${item.path}" data-nav="${item.path}" data-match="${(item.match || []).join(' ')}">${icon(item.icon, { size: 22 })}<span>${short[item.label] || item.label}</span></a>`,
+    )}
+    ${user
+      ? ''
+      : html`<a class="tabbar__item tabbar__item--cta" href="${links.signup()}" data-nav="/signup">${icon('user', { size: 22 })}<span>Sign up free</span></a>`}
+  </nav>`;
+}
+
 function frame() {
   const user = api.currentUser();
   const initials = user ? user.display_name.trim().slice(0, 1).toUpperCase() : '';
@@ -75,6 +96,7 @@ function frame() {
             </div>`}
     </header>
     <main id="outlet"></main>
+    ${tabbar(user, main)}
     <footer class="site-foot">
       <p>
         PurePastPapers is an independent revision project. It is not affiliated with AQA, Pearson Edexcel, OCR or WJEC Eduqas. Past papers and mark
