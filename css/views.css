@@ -1200,5 +1200,7 @@
 .er-ex > p { margin-top: 6px; }
 /* Crops of the printed report where it uses equations (Maths). Scaled to the panel; the
    report text is the alt text. */
-.er-crops { display: grid; gap: 4px; }
+.er-crops { position: relative; }
+.er-crops > [data-zoom-body] { display: grid; gap: 4px; cursor: zoom-in; }
+.er-crops > .zoom-btn { margin-top: 4px; }
 .er-crop { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; background: #fff; }

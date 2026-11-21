@@ -123,6 +123,15 @@ def run(*args):
     return subprocess.run(args, check=True, capture_output=True, text=True).stdout
 
 
+def garbled(pages):
+    """Fonts without a usable character map extract as control characters."""
+    text = ''.join(l['text'] for p in pages for l in p['lines'])
+    if len(text) < 200:
+        return False
+    plain = sum(ch.isascii() and (ch.isalnum() or ch in ' .,;:()\'"-%') for ch in text)
+    return plain / len(text) < 0.75
+
+
 def read_layout(pdf):
     """Lines and images per page from pdftohtml -xml (positions in points)."""
     with tempfile.TemporaryDirectory() as tmp:
@@ -196,14 +205,14 @@ def mark_math_lines(lines):
             line['math'] = True
 
 
-def merge_lines(fragments):
+def merge_lines(fragments, gap=15):
     """Fragments on one baseline (±3 pt) become one line, read left to right."""
     fragments.sort(key=lambda f: (round(f['top']), f['left']))
     lines = []
     for frag in fragments:
         line = lines[-1] if lines else None
         # A wide gap is a second column (the "Examiner Comments | Examiner Tip" boxes), not one line.
-        if line and abs(line['top'] - frag['top']) <= 3 and line['right'] - 2 <= frag['left'] <= line['right'] + 15:
+        if line and abs(line['top'] - frag['top']) <= 3 and line['right'] - 2 <= frag['left'] <= line['right'] + gap:
             gap = frag['left'] - line['right']
             line['text'] += ('' if gap < 1.5 or line['text'].endswith(' ') else ' ') + frag['text']
             line['right'] = frag['left'] + frag['width']
@@ -328,7 +337,7 @@ def split_report(pages):
                     current['figures'][page['number']] += 1
                 continue
             text = item['text']
-            if STOP.search(text):
+            if STOP.search(text) and sections:  # back-page text; the cover can carry it too
                 stopped = True
                 break
             headingish = item['bold'] or item['size'] > body_size + 0.5
@@ -444,7 +453,7 @@ def locate_pdf(url, pdf_dirs, fetch):
 WHOLE_SECTION_CROPS = {'maths'}  # equations on most lines: crop each question's comment whole
 
 
-def crop_maths(split, pdf, slug, paper_id):
+def crop_maths(split, pdf, slug, paper_id, whole=False):
     """Paragraphs holding an equation become a crop of that paragraph (pdftotext flattens
     fractions, powers and brackets into nonsense). The text stays as 't' for search and alt."""
     from PIL import Image
@@ -476,7 +485,7 @@ def crop_maths(split, pdf, slug, paper_id):
         if not block:
             continue
         regions = block.pop('_regions', {})
-        if slug in WHOLE_SECTION_CROPS and any(p.get('_math') for p in block['paras']):
+        if whole or (slug in WHOLE_SECTION_CROPS and any(p.get('_math') for p in block['paras'])):
             block['img'] = [save(page, *box, f'{paper_id}_{name}_p{page}.webp') for page, box in sorted(regions.items())]
             for para in block['paras']:
                 if para['k'] == 'ex':  # the crop shows them in place
@@ -505,6 +514,10 @@ CROP_QUALITY = 45
 
 def build_paper(paper, pdf, slug):
     pages = read_layout(pdf)
+    if garbled(pages):
+        # Text in fonts without a character map. OCR was tried (Tesseract) and misread
+        # question numbers, so these papers get no button rather than wrong comments.
+        return None
     PAGE_WIDTHS.clear()
     PAGE_WIDTHS.update({page['number']: page['width'] for page in pages})
     split = split_report(pages)
@@ -552,7 +565,7 @@ def main():
     if not args.subject:
         parser.error('--subject is required')
     papers = [p for p in load_papers(args.subject) if not args.paper or p['paper_id'] in args.paper]
-    missing, failed, written, empty = [], [], 0, []
+    missing, failed, written, empty, unreadable = [], [], 0, [], []
     for paper in papers:
         try:
             pdf = locate_pdf(paper['examiner_report_url'], args.pdf_dir, args.fetch)
@@ -564,6 +577,10 @@ def main():
             continue
         report = build_paper(paper, pdf, args.subject)
         target = REPO / 'data/reports' / args.subject / f"{paper['paper_id']}.json"
+        if report is None:
+            unreadable.append(paper['paper_id'])
+            target.unlink(missing_ok=True)
+            continue
         if not report['sections']:
             # e.g. "Pearson will not publish an Examiner's Report for this paper": no button.
             empty.append(paper['paper_id'])
@@ -577,6 +594,8 @@ def main():
     index = write_index()
     print(f'{args.subject}: {written} reports written, {len(missing)} PDFs not found, {len(failed)} failed; '
           f'{len(index["papers"])} papers in data/reports/index.json')
+    if unreadable:
+        print('  text not extractable (fonts without a character map):', ', '.join(unreadable))
     if empty:
         print('  no question comments (not published, or headings not recognised):', ', '.join(empty))
     for pid, error in failed[:10]:
