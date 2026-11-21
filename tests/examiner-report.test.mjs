@@ -112,7 +112,7 @@ test('extracted report files are well formed and indexed', () => {
   const index = JSON.parse(readFileSync(path.join(dir, 'index.json'), 'utf8'));
   assert.equal(index.format, 'examiner-report-index-v1');
   const files = readdirSync(dir, { withFileTypes: true }).filter((entry) => entry.isDirectory())
-    .flatMap((entry) => readdirSync(path.join(dir, entry.name)).map((name) => `${entry.name}/${name}`));
+    .flatMap((entry) => readdirSync(path.join(dir, entry.name)).filter((name) => name.endsWith('.json')).map((name) => `${entry.name}/${name}`));
   assert.equal(Object.keys(index.papers).length, files.length, 'index.json lists every report file');
   for (const file of files) {
     const data = JSON.parse(readFileSync(path.join(dir, file), 'utf8'));
@@ -123,7 +123,7 @@ test('extracted report files are well formed and indexed', () => {
     assert.ok(Array.isArray(data.sections));
     for (const entry of data.sections) {
       assert.ok(entry.targets.length && entry.targets.every((target) => /^\d+$/.test(target.q)), `${file} ${entry.heading}`);
-      assert.ok(entry.paras.every((para) => ['p', 'li', 'h'].includes(para.k) && typeof para.t === 'string'));
+      assert.ok(entry.paras.every((para) => ['p', 'li', 'h', 'ex', 'tip'].includes(para.k) && typeof para.t === 'string'));
     }
   }
 });

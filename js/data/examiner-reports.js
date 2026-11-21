@@ -65,10 +65,22 @@ export function reportPanel({ key, units, paper, view = 'question', label = '', 
 
 const partName = (part) => (part.part_label ? `(${part.part_label.replace(/^\(|\)$/g, '')})` : `Question ${part.question_number}`);
 
+const SAFE_IMG = /^[a-z]+\/img\/[A-Za-z0-9_]+\.webp$/;
+
+/** A crop of the printed report, used where equations would not survive as text. */
+function crops(images, alt) {
+  return (images || []).filter((image) => SAFE_IMG.test(image.src)).map((image) => html`<img class="er-crop" src="data/reports/${image.src}" width="${image.w}" height="${image.h}" loading="lazy" decoding="async" alt="${alt}">`);
+}
+
 function paragraphs(paras) {
   const out = [];
   let list = null;
   for (const para of paras || []) {
+    if (para.img?.length) {
+      if (list) { out.push(html`<ul>${list}</ul>`); list = null; }
+      out.push(html`<div class="er-crops">${crops(para.img, para.t)}</div>`);
+      continue;
+    }
     if (para.k === 'li') { (list ||= []).push(html`<li>${para.t}</li>`); continue; }
     if (list) { out.push(html`<ul>${list}</ul>`); list = null; }
     out.push(para.k === 'h' ? html`<p class="er-sec__sub">${para.t}</p>` : html`<p>${para.t}</p>`);
@@ -78,15 +90,28 @@ function paragraphs(paras) {
 }
 
 function sectionBlock(section, report, { relation = 'own', note = '' } = {}) {
-  const page = section.pages?.[0];
+  const paras = section.paras || [];
+  const unique = (kind) => [...new Set(paras.filter((para) => para.k === kind).map((para) => para.t))];
+  const tips = unique('tip');
+  const examples = unique('ex');
   const figures = (section.figures || []).reduce((sum, figure) => sum + figure.count, 0);
-  const link = pageLink(report.source_url, page);
+  const figurePage = section.figures?.[0]?.page || section.pages?.[0];
+  const link = pageLink(report.source_url, figurePage);
   const badge = relation === 'whole' ? 'On the whole question' : relation === 'parent' ? 'On the whole part' : '';
+  const scripts = figures === 1 ? 'an example response' : figures ? `${figures} example responses` : 'example responses';
   return html`<article class="er-sec">
     <p class="er-sec__head">${section.heading}${badge ? html`<span class="er-sec__badge">${badge}</span>` : ''}</p>
     ${note ? html`<p class="small muted">${note}</p>` : ''}
-    ${paragraphs(section.paras)}
-    ${figures ? html`<p class="small er-sec__fig">${icon('file', { size: 13 })} The report shows ${figures === 1 ? 'an example response' : `${figures} example responses`} here${link ? html`: <a href="${link}" target="_blank" rel="noopener">see page ${page}</a>` : ''}.</p>` : ''}
+    ${section.img?.length
+      ? html`<div class="er-crops">${crops(section.img, paras.filter((para) => para.k !== 'tip' && para.k !== 'ex').map((para) => para.t).join(' '))}</div>`
+      : paragraphs(paras.filter((para) => para.k !== 'tip' && para.k !== 'ex'))}
+    ${tips.map((tip) => html`<p class="er-tip"><strong>Examiner tip</strong> ${tip}</p>`)}
+    ${examples.length
+      ? html`<details class="er-ex"><summary>Comments on ${scripts} (${examples.length})</summary>
+          <ul>${examples.map((text) => html`<li>${text}</li>`)}</ul>
+          ${link ? html`<p class="small muted">The responses themselves are images in the report: <a href="${link}" target="_blank" rel="noopener">see page ${figurePage}</a>.</p>` : ''}
+        </details>`
+      : figures ? html`<p class="small er-sec__fig">${icon('file', { size: 13 })} The report shows ${scripts} here${link ? html`: <a href="${link}" target="_blank" rel="noopener">see page ${figurePage}</a>` : ''}.</p>` : ''}
   </article>`;
 }
 
