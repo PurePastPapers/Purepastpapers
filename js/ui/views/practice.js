@@ -24,6 +24,7 @@ import { mountCurriculumSelector } from '../curriculum-selector.js';
 import { topicOrganisationControl } from '../topic-organisation.js';
 import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
+import { questionsForScience, scienceLeaves, sciencesOf, specForScience, validScience } from '../../engine/sciences.js';
 import { isTiered, questionsForTier, savedTier, searchTierIntent, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
 import { zoomButton } from '../zoom.js';
 import { hasExaminerReport, loadReportIndex, reportPanel, revealPanel } from '../../data/examiner-reports.js';
@@ -83,6 +84,7 @@ const defaults = () => ({
   years: [],
   series: '',
   tier: '',
+  science: '',
   paper: '',
   sampleMode: 'all',
   page: 1,
@@ -224,7 +226,11 @@ export async function mount(element, context) {
   } else if ((state.tierPref ?? '') !== tierPref) { state.tier = tierPref; state.tierPref = tierPref; }
   // The tier whose spec points are shown (null = every point).
   const viewTier = tiered ? validTier(subject, state.tier) : null;
-  const tierSpec = specForTier(spec, viewTier);
+  // Combined Science: '' = all three sciences, or one science's section, questions and papers.
+  const sciences = sciencesOf(subject);
+  state.science = validScience(subject, state.science) || '';
+  const viewScience = state.science || null;
+  const tierSpec = specForScience(specForTier(spec, viewTier), viewScience);
   const save = () => {
     try {
       storage.setItem(storageKey, JSON.stringify(state));
@@ -266,9 +272,9 @@ export async function mount(element, context) {
 
   const learned = api.learnedSet();
   // Module routes (Further Maths) scope the leaves first; tiered GCSEs use the viewed tier.
-  const subjectLeaves = bundle.scopeLeaves || tierLeaves(specIndex, subjectId, viewTier);
-  if (viewTier && Array.isArray(state.focus) && state.focus.length) {
-    // A topic choice made on the other tier keeps only this tier's points.
+  const subjectLeaves = scienceLeaves(bundle.scopeLeaves || tierLeaves(specIndex, subjectId, viewTier), spec, viewScience, specIndex);
+  if ((viewTier || viewScience) && Array.isArray(state.focus) && state.focus.length) {
+    // A topic choice made on the other tier (or another science) keeps only this view's points.
     const inTier = new Set(subjectLeaves);
     state.focus = state.focus.filter((id) => specIndex.leavesOf(id).some((leaf) => inTier.has(leaf)));
     if (!state.focus.length) state.focus = null;
@@ -330,7 +336,7 @@ export async function mount(element, context) {
   state.selected = state.selected.filter((id) => entryOf(id));
   save();
 
-  const pool = practicePool(bundle);
+  const pool = questionsForScience(practicePool(bundle), viewScience, spec, specIndex);
   const representedParents = new Set(pool.map((question) => question.parent_question_id).filter(Boolean));
   const suppressedParents = bundle.questions.filter((question) => !question.part_label && representedParents.has(question.question_id) && question.include_in_custom_pool !== false && enabledSourceTypes().includes(question.source_type)).length;
   // Answers saved to mark later (kept in the account, so they follow the student between devices).
@@ -1171,6 +1177,20 @@ export async function mount(element, context) {
     </div>`;
   }
 
+  // The Science control (Combined Science): all three sciences, or one of them.
+  function scienceBar() {
+    const options = [['', 'All three'], ...sciences.map((name) => [name, name])];
+    return html`<div class="tier-switch science-switch" data-science-bar>
+      <span class="tier-switch__label" id="practice-science-label">Science</span>
+      <div class="seg" role="radiogroup" aria-labelledby="practice-science-label">
+        ${options.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${state.science === value}" data-practice-science="${value}">${label}</button>`)}
+      </div>
+      <span class="small muted tier-switch__note">${state.science
+        ? `Only ${state.science} topics, questions and papers.`
+        : 'Biology, chemistry and physics questions together.'}</span>
+    </div>`;
+  }
+
   tintPage(subject);
   setHtml(
     element,
@@ -1180,6 +1200,7 @@ export async function mount(element, context) {
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
         ${tiered ? tierBar() : ''}
+        ${sciences.length ? scienceBar() : ''}
         ${moduleScopeBanner(bundle)}
         ${modes.length > 1
           ? html`<div class="seg mode-switch" role="tablist">
@@ -1238,6 +1259,16 @@ export async function mount(element, context) {
     save();
     context.refresh();
   });
+  on(element, 'click', '[data-practice-science]', (event, button) => {
+    const science = validScience(subject, button.dataset.practiceScience) || '';
+    if (science === state.science) return;
+    state.science = science;
+    state.page = 1;
+    state.paper = '';
+    state.testFocusVersion = 0; // the test's topic list is seeded again for the new science
+    save();
+    context.refresh();
+  });
   on(element, 'click', '[data-mode]', (event, button) => {
     state.mode = button.dataset.mode;
     migrateBrowserRange();
@@ -1251,7 +1282,7 @@ export async function mount(element, context) {
   }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
-    const kept = { mode: state.mode, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, goes: state.goes, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, reportQuestions: state.reportQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
+    const kept = { mode: state.mode, science: state.science, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, goes: state.goes, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, reportQuestions: state.reportQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
     state = { ...defaults(), ...kept, tier: tierPref, tierPref };
     if (tiered && (readTierOverride() ?? tierPref) !== tierPref) {
       // Reset returns to the saved tier; its spec points need the page drawn again.

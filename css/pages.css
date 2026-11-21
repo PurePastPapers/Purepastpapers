@@ -409,7 +409,10 @@
 }
 .target__grade {
   flex: none;
-  width: 46px;
+  min-width: 46px;
+  padding: 0 6px;
+  white-space: nowrap;
+  width: auto;
   height: 46px;
   display: grid;
   place-items: center;
@@ -2305,3 +2308,28 @@ input[type='checkbox']:not([role='switch']):disabled {
 .attempt-full__head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
 .attempt-full__actions { margin-left: auto; }
 .attempt-answer { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--surface-2); }
+
+/* Combined Science double grades (9-9 to 1-1): 17 choices plus "Not sure yet". */
+.grade-picks--double {
+  gap: 8px;
+}
+.grade-picks--double .grade-pick span {
+  min-width: 58px;
+  height: 44px;
+  font-size: 18px;
+}
+
+/* Science switch (Combined Science): four choices stay on one row on phones. */
+@media (max-width: 560px) {
+  .science-switch .seg {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    width: 100%;
+  }
+  .science-switch .seg__opt {
+    justify-content: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 15px;
+  }
+}

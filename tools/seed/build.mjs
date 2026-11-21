@@ -281,7 +281,7 @@ for (const subject of subjects) {
       ...rest,
       category_group: rules?.group,
       practice_modes: hasExam ? rules?.modes || [] : [],
-      grade_scheme: GRADE_SCHEME[subject.level],
+      grade_scheme: subject.grade_scheme || GRADE_SCHEME[subject.level],
       has_written_exam: hasExam,
       extra_hard: Boolean(subject.extra_hard),
       has_catalogue: Boolean(catalogue),

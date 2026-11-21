@@ -74,7 +74,10 @@ export function tintPage(subject) {
 /** The student's target grade for a subject, or null when not set ("Not sure yet"). */
 export function targetGrade(subject) {
   const id = typeof subject === 'string' ? subject : subject?.subject_id;
-  return progressOrNull()?.preferences?.targetGrades?.[id] || null;
+  const saved = progressOrNull()?.preferences?.targetGrades?.[id] || null;
+  // Combined Science targets saved before the double-grade scale (a single "7") read as "7-7".
+  if (saved && subject?.grade_scheme === 'gcse_combined' && /^[1-9]$/.test(saved)) return `${saved}-${saved}`;
+  return saved;
 }
 
 /** The tier ('Foundation' | 'Higher') chosen for a tiered subject, or null for both tiers. */

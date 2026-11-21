@@ -45,6 +45,14 @@ export const RAG_LABELS = { green: 'Secure', amber: 'Developing', red: 'Needs wo
 export const GRADE_SCHEMES = {
   alevel: { label: 'A-Level A*–E', fail: 'U', bands: [['A*', 80], ['A', 70], ['B', 60], ['C', 50], ['D', 40], ['E', 30]] },
   gcse: { label: 'GCSE 9–1', fail: 'U', bands: [['9', 85], ['8', 75], ['7', 65], ['6', 55], ['5', 45], ['4', 35], ['3', 25], ['2', 15], ['1', 8]] },
+  // Combined Science (Double Award) is graded on a 17-point double scale, 9-9 down to 1-1
+  // (owner request 2026-11-21). Bands sit between the single-grade GCSE bands.
+  gcse_combined: {
+    label: 'GCSE Combined Science 9-9 to 1-1',
+    fail: 'U',
+    bands: [['9-9', 85], ['9-8', 80], ['8-8', 75], ['8-7', 70], ['7-7', 65], ['7-6', 60], ['6-6', 55], ['6-5', 50], ['5-5', 45],
+      ['5-4', 40], ['4-4', 35], ['4-3', 30], ['3-3', 25], ['3-2', 20], ['2-2', 15], ['2-1', 11], ['1-1', 8]],
+  },
   level3: { label: 'Level 3 D*–P', fail: 'U', bands: [['D*', 85], ['D', 70], ['M', 55], ['P', 40]] },
 };
 
