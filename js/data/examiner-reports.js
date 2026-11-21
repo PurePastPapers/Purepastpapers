@@ -6,6 +6,7 @@
 import { html, isSafeUrl, setHtml } from '../core/dom.js';
 import { groupSections, pageLink, sectionsFor } from '../engine/examiner-report.js';
 import { icon } from '../ui/icons.js';
+import { zoomButton } from '../ui/zoom.js';
 
 let indexPromise = null;
 let indexed = null; // paper ids with a split report, once the index has loaded
@@ -67,9 +68,15 @@ const partName = (part) => (part.part_label ? `(${part.part_label.replace(/^\(|\
 
 const SAFE_IMG = /^[a-z]+\/img\/[A-Za-z0-9_]+\.webp$/;
 
-/** A crop of the printed report, used where equations would not survive as text. */
-function crops(images, alt) {
-  return (images || []).filter((image) => SAFE_IMG.test(image.src)).map((image) => html`<img class="er-crop" src="data/reports/${image.src}" width="${image.w}" height="${image.h}" loading="lazy" decoding="async" alt="${alt}">`);
+/** Crops of the printed report, used where equations would not survive as text. Tap or
+ *  "Enlarge" opens them in the site's zoom viewer (js/ui/zoom.js), which phones need. */
+function crops(images, alt, title = 'Examiner’s report') {
+  const shown = (images || []).filter((image) => SAFE_IMG.test(image.src));
+  if (!shown.length) return '';
+  return html`<div class="er-crops" data-zoom-src="${title}">
+    <div data-zoom-body>${shown.map((image) => html`<img class="er-crop" src="data/reports/${image.src}" width="${image.w}" height="${image.h}" loading="lazy" decoding="async" alt="${alt}">`)}</div>
+    ${zoomButton('examiner’s comment')}
+  </div>`;
 }
 
 function paragraphs(paras) {
@@ -78,7 +85,7 @@ function paragraphs(paras) {
   for (const para of paras || []) {
     if (para.img?.length) {
       if (list) { out.push(html`<ul>${list}</ul>`); list = null; }
-      out.push(html`<div class="er-crops">${crops(para.img, para.t)}</div>`);
+      out.push(crops(para.img, para.t));
       continue;
     }
     if (para.k === 'li') { (list ||= []).push(html`<li>${para.t}</li>`); continue; }
@@ -103,7 +110,7 @@ function sectionBlock(section, report, { relation = 'own', note = '' } = {}) {
     <p class="er-sec__head">${section.heading}${badge ? html`<span class="er-sec__badge">${badge}</span>` : ''}</p>
     ${note ? html`<p class="small muted">${note}</p>` : ''}
     ${section.img?.length
-      ? html`<div class="er-crops">${crops(section.img, paras.filter((para) => para.k !== 'tip' && para.k !== 'ex').map((para) => para.t).join(' '))}</div>`
+      ? crops(section.img, paras.filter((para) => para.k !== 'tip' && para.k !== 'ex').map((para) => para.t).join(' '), `Examiner’s report · ${section.heading}`)
       : paragraphs(paras.filter((para) => para.k !== 'tip' && para.k !== 'ex'))}
     ${tips.map((tip) => html`<p class="er-tip"><strong>Examiner tip</strong> ${tip}</p>`)}
     ${examples.length
