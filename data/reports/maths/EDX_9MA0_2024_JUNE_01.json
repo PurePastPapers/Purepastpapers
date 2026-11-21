@@ -1,0 +1,686 @@
+{
+ "format": "examiner-report-text-v1",
+ "extractor_version": 2,
+ "paper_id": "EDX_9MA0_2024_JUNE_01",
+ "subject_id": "EDX_ALEVEL_MATH_9MA0",
+ "source_url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9ma0-01-pef-20240815.pdf",
+ "source_sha256": "34d057e7c1e4da747f0448d68287bcc481858b733f9032c0d360ea3439720f32",
+ "source_pages": 20,
+ "extracted_on": "2026-11-21",
+ "review_status": "unreviewed",
+ "note": "Official examiner report text, split at the report's own question headings. Not rewritten.",
+ "sections": [
+  {
+   "id": "s1",
+   "heading": "Question 1",
+   "targets": [
+    {
+     "q": "1",
+     "part": ""
+    }
+   ],
+   "pages": [
+    4
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question was very accessible, familiar to candidates and of low demand, making it particularly suitable for the opening question of the paper. Candidates were required to determine the value of a constant, k, in a cubic expression, g(x), given that (x – 3) was a factor of this expression. The vast majority of candidates found this question straightforward and clearly understood that they should apply the factor theorem to the question, determining the value of k via a linear equation in k that followed from g(3) = 0. A small proportion of candidates made errors in setting up the linear equation, or in attempting to solve their linear equation, however method marks were available in these instances. Some candidates did not include an = 0 in their work, however they were able to recover and achieve the marks if the = 0 was implied by later work. Quite rarely, g(–3) = 0 was attempted but even in this case credit for attempting to solve a linear equation was available."
+    },
+    {
+     "k": "p",
+     "t": "A common alternative route was to attempt division of g(3) by (x – 3), which made this otherwise routine question significantly more challenging. A number of methods for setting out the division were seen but marks could not be awarded until their linear remainder, only in k, was set equal to zero. When algebraic division was applied it was rarely completed well enough to gain all the marks, although many made quite pleasing progress with this more complex algebra. Centres should ensure candidates consider which method is more appropriate for solving a given problem. A very small proportion of candidates attempted to factorise g(x) and then equated coefficients which only a handful of candidates completed successfully."
+    }
+   ],
+   "figures": []
+  },
+  {
+   "id": "s2",
+   "heading": "Question 2",
+   "targets": [
+    {
+     "q": "2",
+     "part": ""
+    }
+   ],
+   "pages": [
+    4,
+    5
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This was another question that was familiar to candidates, providing excellent access, with plenty of candidates scoring full marks and many more scoring 3 marks out of the available 4."
+    },
+    {
+     "k": "p",
+     "t": "In part (a), the presentation of the binomial structure was generally very good. Inconsistency with brackets or lack of attention to detail (often not simplifying correctly) were the main reasons why candidates who started correctly dropped accuracy marks for their final answer. A small minority attempted to use the version of the binomial expansion where the power is required to be a positive integer and made no progress, while some candidates ignored the coefficient of x, simplifying the problem and thus scored no marks. Candidates were able to recover these errors in subsequent work, but it was not common for this to happen. The most common error was using 9 instead of –9 which was allowed to score the method mark."
+    },
+    {
+     "k": "p",
+     "t": "A small number of candidates employed a Maclaurin expansion which was acceptable but should not be encouraged. Equally, although it was possible to use direct expansion to solve the problem these attempts by candidates were usually unsuccessful, particularly for those that tried to take out a factor of 9. Occasionally, candidates multiplied their correct simplified expansion by a constant such as 16 at the end, this could still achieve full marks as examiners could apply ISW. Finally, some candidates   1   attempted to use notation of the form but the majority using this did not evaluate it 2       2 to a suitable form to be able to score the method mark."
+    },
+    {
+     "k": "p",
+     "t": "Part (b) proved to be more challenging for candidates. Candidates who stated an 2 − acceptable range of validity were usually able to compare this to and correctly 9 conclude that the expansion was not valid. However, there were also incomplete attempts where the range of validity was found but without a correct comparison or conclusion. Candidates often struggled to correctly identify the range of validity giving 1  − answers such as x . Quite a few responses were blank, while those who attempted 9 it fell evenly between those who gave vague or incorrect responses, and those who recognised what the question was asking. Amongst those candidates, the mark was often missed due to a misunderstanding of the nature of the modulus function, leading to 1 1 2  − incorrect statements such as x > or . Many attempts to evaluate the 9 9 9 2 9 81 729 = − − − − 2 3 expansion by substituting x into 1 x x x to give 2, then stating 9 2 8 16  2 3 were seen and these did not score the mark."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s2_p4.webp",
+     "w": 655,
+     "h": 427
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s2_p5.webp",
+     "w": 656,
+     "h": 494
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "heading": "Question 3",
+   "targets": [
+    {
+     "q": "3",
+     "part": ""
+    }
+   ],
+   "pages": [
+    5,
+    6
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Many candidates were successful across all parts of this question demonstrating a good understanding of the Newton Raphson method, but this question did start to discriminate between the least confident and those who were more careful in their processing."
+    },
+    {
+     "k": "p",
+     "t": "Part (a) was attempted by almost all candidates, with the vast majority making good progress, able to find the values of f(3.6) and f(3.7) correctly and observe a sign change. A conclusion was required for the accuracy mark and had to include a reference to a sign change, continuity of the function and mention or indication of a root lying in the interval, as well as both values being correct to 1 significant figure. It appears that reference to continuity is included more frequently by candidates but there was still a good proportion of candidates who did not mention it or who made incorrect statements involving it. Common incorrect statements included “change in sign therefore x continuous”, “the interval is continuous” and “ is continuous”. Radians were required and most candidates recognised this, with very few candidates working in degrees."
+    },
+    {
+     "k": "p",
+     "t": "The differentiation in part (b) was generally well attempted with many candidates   1 achieving both marks. The first mark was awarded for recognising that   tan x   2   1  2   differentiated to sec x which many candidates were able to do successfully.   2 Incorrect derivatives were occasionally seen, and candidates should be advised to refer to the derivative of tan(kx) provided in the formula booklet. A common error was forgetting to differentiate the x to 1 or losing it entirely. There were some attempts at integrating and unfortunately some misread (or misinterpreted) the notation and attempted to find the inverse of the function. These responses were unable to score any marks in part (b), even if they went on to differentiate in part (c). Candidates who   1   sin x     1 2 converted tan  x  to were generally not successful at applying the quotient     1 2   cos x   2 rule correctly."
+    },
+    {
+     "k": "p",
+     "t": "Candidates had varying degrees of success in part (c). The Newton-Raphson formula   3.7 2 was generally well quoted or used, however, difficulty evaluating   led to the sec   2 accuracy mark being lost. Evidence of substitution into the formula was inconsistent across the cohort, with some clearly showing the substitution and some leaving it to the examiner to try to establish what they had done. Those that did not explicitly show the ( ) substitution of 3.7 in f(x) and f ' x often made calculation errors and thus scored no marks in this part. Candidates are encouraged to show their substitution into the formula ( ) f 3.7 − 3.7 (not just stating ) for this reason. Those candidates who did not obtain a ( )  f 3.7 correct derivative in part (b) were still able to achieve the method mark for using the Newton-Raphson formula correctly with their derivative. Those that did not differentiate in part (b) were able to go on and score both marks in part (c) if they restarted the differentiation at this stage."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s3_p5.webp",
+     "w": 654,
+     "h": 486
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s3_p6.webp",
+     "w": 655,
+     "h": 580
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "heading": "Question 4",
+   "targets": [
+    {
+     "q": "4",
+     "part": ""
+    }
+   ],
+   "pages": [
+    6,
+    7
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question was very similar to previous differentiation from first principles questions and many candidates scored full marks, being much better prepared than in previous ( ) ( ) + − f x h f x series. Most candidates used to find the gradient of the chord, although h ( ) ( ) − + a small number of candidates attempted to use f x f x h but failed to change the − denominator to h. Misunderstanding the definition of the derivative led to some ( ) ( ) + − f x h ² f x ² candidates losing some or all of the marks, by writing, for example h ( ) ( ) + − f x² h f x² ( ) + 2 or . Slips when expanding x h were condoned for the method h − 2 mark but the x was required. Most candidates were able to correctly expand and + 2 2xh h + proceed to or 2 x h to score the first two marks. Common errors included h incorrectly simplifying the fraction, failure to cancel h correctly or an incomplete lim 2x limiting argument (e.g. stopping at ), each of which led to the loss of the final → h 0 accuracy mark. Notation was generally good, and most candidates included a reference → to somewhere in their working. A significant minority of candidates failed to h dy = include or equivalent anywhere in their answer despite being asked to show dx dy = 2 x in the question, thereby losing the final mark. dx"
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s4_p6.webp",
+     "w": 653,
+     "h": 407
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s4_p7.webp",
+     "w": 626,
+     "h": 133
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "heading": "Question 5",
+   "targets": [
+    {
+     "q": "5",
+     "part": ""
+    }
+   ],
+   "pages": [
+    7,
+    8
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Most candidates attempted the differentiation in part (a) via the quotient rule and this was generally correctly applied with the majority scoring at least 2 marks out of the available 3. While many candidates were able to score full marks in this part of the question, a significant number of candidates lost the final accuracy mark due to either a ( ) − → − − 2 sign error from expanding brackets (most commonly this was 2x 2x 3 4x 6x ) ( ) = or to missing the f ' x or equivalent, a requirement for this ‘show that’ question. Candidates are advised to carefully check that their final result matches the one that they were asked to show. There were a very small number of candidates who incorrectly quoted the quotient rule and were unable to score any marks in this part of the question. A small proportion attempted to use the product rule, and while a good proportion managed this successfully, others made errors when rearranging to the required form. Some candidates broke down the original function into the sum of two fractions before differentiating and in this case a common error was a sign error between the two fractions. ( )  In part (b), candidates generally recognised the need to set their f ' x 0 to find values ( ) of x for which f ' x is decreasing and solve their three-term quadratic to find critical values. However, not all candidates observed the demand to use algebra and consequently those who used their calculator to solve the quadratic or gave an incorrect factorisation of their quadratic forfeited the first mark. Most candidates chose to simplify their quadratic before factorising and solving to find the critical values, but lack of rigour was evident in this part. Many candidates who factorised their quadratic − 2 2x jumped straight from a quadratic with a term to factorisation of the form 𝑥 𝑥 … ( ± … )( ± ) (possibly having used their calculator and attempting to work backwards), and consequently lost the B mark. A few used the quadratic formula and showed their working in full thus scoring the B mark, while attempts to complete the square were rarely seen."
+    },
+    {
+     "k": "p",
+     "t": "Once critical values had been obtained, candidates were required to identify the correct region and, while many candidates were successful, there were some who did not know how to proceed. It was common to see incorrect regions selected, particularly −   2 1 x 4 , not realising that their original quadratic had a negative coefficient of x and therefore the outside region was required."
+    },
+    {
+     "k": "p",
+     "t": "Candidates who sketched the graph generally performed better in identifying the correct region but again, many drew a positive graph instead of a negative. There was confusion observed in the use of 'and' and commas instead of 'or', indicating weaknesses in formal mathematical language. It was notable how many candidates did not accurately identify the correct region for their x coefficient and critical values, often stemming from dividing their quadratic by –2 but forgetting or not knowing to change the direction of the inequality sign. Other observations that were common to see in this part of the question that were not required or caused complications included: •"
+    },
+    {
+     "k": "p",
+     "t": "not recognising that the denominator would be positive due to the square"
+    },
+    {
+     "k": "p",
+     "t": "•"
+    },
+    {
+     "k": "p",
+     "t": "attempting to find a critical value for the denominator unnecessarily"
+    },
+    {
+     "k": "p",
+     "t": "•"
+    },
+    {
+     "k": "p",
+     "t": "trying to multiply the denominator and numerator and then work on the resulting"
+    },
+    {
+     "k": "p",
+     "t": "quadratic •"
+    },
+    {
+     "k": "p",
+     "t": "attempting to find turning points or second derivatives to identify the region,"
+    },
+    {
+     "k": "p",
+     "t": "often unsuccessfully."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s5_p7.webp",
+     "w": 656,
+     "h": 853
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s5_p8.webp",
+     "w": 654,
+     "h": 226
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "heading": "Question 6",
+   "targets": [
+    {
+     "q": "6",
+     "part": ""
+    }
+   ],
+   "pages": [
+    8,
+    9
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question on the modulus function provided plenty of access and there were very few blank responses to any part, although many found part (c) challenging."
+    },
+    {
+     "k": "p",
+     "t": "The overwhelming majority of candidates answered part (a) correctly, demonstrating a − = strong understanding that the minimum y value must occur when x 2 0 . The answer was often written down without working. Those candidates that did not gain full marks often achieved the method mark for one correct coordinate. The majority of candidates who scored no marks found the y intercept of the modulus curve instead. In part (b), the most common approach was to remove the modulus signs and to attempt ( ) ( ) − = − + − = − − + to solve two equations, usually 16 4x 3 x 2 5 and 16 4x 3 x 2 5 . The more confident candidates had already established that the line would only intersect the right-hand branch of the modulus graph. The most common error in processing was − + thinking that 3 x 2 was equivalent to , but, pleasingly, this was less common 3x 6 than in previous series. Some candidates kept the modulus signs in their equation throughout which made the equation difficult to manipulate. Disappointingly, a surprisingly large number of candidates rearranged their equations poorly by not performing inverse operations correctly. For those that lost the accuracy mark in part (b), the most frequent reason was because = they failed to reject the solution x 5 . Those using the diagram to aid visualisation of the problem were generally more successful in rejecting this extra “solution”. Some strong candidates demonstrated an excellent understanding of the relevant domains for each branch of the modulus graph and rejected x = 5 as they had established that an intersection with this branch required x < 2."
+    },
+    {
+     "k": "p",
+     "t": "Part (c) was found to be less accessible with few candidates scoring full marks for a correct range for k. The candidates that were the most successful in this part of the question were generally those who had adopted a visual approach in the earlier parts of the question and understood how to find the minimum and maximum value of k using their knowledge of gradients. There was more success in finding the correct lower critical value of 0.5 with the most efficient solutions using the coordinates of P with y = kx + 4, but many candidates failed to realise that there was an upper limit for k. There was a reluctance to use diagrammatic reasoning and most resorted to complicated algebra. Many set up simultaneous equations in x and k but did not appear to understand what they were attempting to achieve, failing to solve for k and therefore these attempts did not gain any marks. There were many erroneous attempts that fortuitously achieved k = 3 through an attempt to use a discriminant (despite starting with a non-quadratic equation), and these invalid approaches scored no marks on their own. A few attempted squaring both sides of the equation to form a quadratic equation and then using the discriminant, but this approach − often failed due to not isolating an appropriate term (such as x 2 ) before squaring. Relatively few candidates considered the gradient of the modulus graph and hence failed to obtain an upper bound for k, which meant many only achieved the method mark in this part. Overall, candidates' use of inequality notation was good and although set notation was not required, the vast majority of those that used it did so correctly."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s6_p8.webp",
+     "w": 657,
+     "h": 745
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s6_p9.webp",
+     "w": 657,
+     "h": 292
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "heading": "Question 7",
+   "targets": [
+    {
+     "q": "7",
+     "part": ""
+    }
+   ],
+   "pages": [
+    9,
+    10
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question was attempted by most candidates and the majority made a strong start. Many candidates wrote full solutions and were awarded full marks in all three parts. The question allowed candidates to score marks in later question parts even if previous parts had been incorrectly answered, and a good proportion went on from an incorrect part (a) to do so."
+    },
+    {
+     "k": "p",
+     "t": "In part (a), most candidates recognised the need to integrate the expression and were able to integrate an exponential function; various methods were seen here but the majority followed the main approach in the mark scheme. A significant minority of candidates multiplied by –0.2 instead of dividing, resulting in an incorrect model and marks being lost in (b) and (c) due to having an impossible equation to solve. The vast majority of candidates remembered to include the constant of integration and use the given information to find it, likely supported by the question giving the required form of the answer as a reminder. Occasionally candidates missed out on the second method mark as they used 1.5 as the constant of integration rather than finding the constant of integration by correctly substituting H = 1.5 and t = 0, but the majority managed this with success, obtaining correct values for their constant and gaining the second method mark. A common reason for the loss of the final accuracy mark was failing to write out the final version of the model, generally omitting H = , or simply stating the values of A and B. Some candidates opted to differentiate the given answer and compare coefficients to find the values of A before going on to find B in the usual way. This verification strategy was not in line with the requirement of the question but candidates that used this method were allowed to score all but the final mark."
+    },
+    {
+     "k": "p",
+     "t": "Candidates who had a correct answer in part (a) generally performed well in part (b), with the majority able to rearrange the equation and use logarithms correctly to find the value of t. If these candidates were not awarded full marks, it was often because they were unable to convert their decimal into hours and minutes correctly, and therefore lost the final accuracy mark. Candidates who did not have a correct answer to part (a) 0.2t generally gained the first method mark for making Ae the subject of the equation, but many were not able to achieve the second method mark due to the context of the model. Candidates with B > 1.2 reached the logarithm of a negative value which should have provided an indication that there must have been an earlier error in need of addressing but few re-traced their workings and tended to use incorrect methods to create a positive answer."
+    },
+    {
+     "k": "p",
+     "t": "Part (c) was generally less well attempted than parts (a) and (b) with some candidates failing to understand what the question was asking them to do. The most common error dH = was for candidates to attempt to solve 0 . A surprising proportion of candidates dt gave answers higher than the maximum height. For candidates with successful approaches, marks were frequently lost by forgetting units and therefore not satisfying the demand of the question and finding the height of the hole. Similarly, many decided to subtract an often correct 0.9 from the maximum height, which indicated a misunderstanding of the model."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s7_p9.webp",
+     "w": 655,
+     "h": 658
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s7_p10.webp",
+     "w": 649,
+     "h": 309
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "heading": "Question 8",
+   "targets": [
+    {
+     "q": "8",
+     "part": ""
+    }
+   ],
+   "pages": [
+    10,
+    11
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question was answered very well by the majority of candidates with many scoring upwards of 8 marks out of the available 11. It highlighted that candidates continue to struggle with identifying the domain and range of functions, and that in most cases candidates are not aware that they should state the domain when defining a function. There were a minority of candidates who attempted both fg(2) and gf(2) in part (a) and fg(x) and gf(x) in part (c), seemingly confused by the notation or attempting to cover both options. Candidates should be discouraged from doing this – examiners mark the final response, and, in effect, candidates are wasting valuable time by attempting both cases."
+    },
+    {
+     "k": "p",
+     "t": "In part (a), the vast majority of candidates scored full marks. Most candidates determined g(2) and then substituted the result, –1, into f(x). A few candidates attempted to substitute the expression for g(x) into f(x) to determine a general form for fg(x) before substituting x = 2 to determine the solution. Those who tried to expand the squared term before substituting often could not find the correct answer as they had errors in the expansion and/or in dealing with the negative coefficient of the squared expression. Some candidates evaluated gf(2) instead of fg(2), although this was fairly infrequent."
+    },
+    {
+     "k": "p",
+     "t": "In part (b), the majority of candidates scored 2 marks. Common errors included attempting to differentiate g(x) or attempting to find its reciprocal, both of which scored no marks, while sign errors with the 9y or 9x term meant that other candidates missed out on the first accuracy mark. The final accuracy mark was more demanding and was commonly not secured as candidates rarely attempted to write down the domain of ( ) − 1 g x , a point that has been referenced in many previous examiner reports. It was also ( ) −1 common that candidates did not use a suitable notation for their final answer for g x . In part (c)(i), the majority of candidates scored full marks. Where errors arose, this was often a result of attempting to simplify the final solution to another expression and with the errors being algebraic rather than arithmetical, ISW was not applied. It was surprising that some candidates who were successful in part (a) treated gf(x) as ( ) ( )  g x f x here and thus failed to score. Those who had constructed an expression in part (a) incorrectly through working out fg(x) made the same error here."
+    },
+    {
+     "k": "p",
+     "t": "Very few candidates scored the mark in part (c)(ii). There was some evidence of confusion between the domain and range and amongst those who did look for the range gf(𝑥) ⩾ −5 only one critical value was found by many candidates: often giving either ( )  or gf x 0 rather than the full interval. A small number of candidates who managed to identify both boundary conditions used x rather than y or gf(x) and thus did not score the mark."
+    },
+    {
+     "k": "p",
+     "t": "In part (d), some candidates were able to secure marks having found the previous parts challenging. Algebraic errors were not uncommon when equating the expressions and often the = 0 was “dropped” in favour of a stand-alone expression. Candidates generally progressed to determining the discriminant, but setting the discriminant greater than or equal to zero was often seen. Some candidates attempted to find the discriminant of a quadratic set = k which scored no marks. Some of those who attempted the correct inequalities lost the final mark due to slips when simplifying such as ( ) − − == − − 36 20 k 4 36 20k 80 or failure to reverse the inequality when dividing through by –20."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s8_p10.webp",
+     "w": 656,
+     "h": 673
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s8_p11.webp",
+     "w": 653,
+     "h": 443
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "heading": "Question 9",
+   "targets": [
+    {
+     "q": "9",
+     "part": ""
+    }
+   ],
+   "pages": [
+    11,
+    12
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Part (a) was a discriminatory question with many different approaches seen; the mix of algebraic indices coupled with a geometric sequence caused problems for many candidates and often work lacked structure. It was evident that many candidates are not as familiar with the laws of indices as they should be and are not practised in the set-up of proof questions. The layout of candidates work varied enormously and they should be encouraged to practice showing a proof that flows and that is not interrupted by their thought processes. Despite the challenges many faced in part (a), the majority of candidates found part (b) to be accessible due to the given answer in (a) providing a restart opportunity."
+    },
+    {
+     "k": "p",
+     "t": "In part (a), many candidates were able to achieve full marks by setting up an appropriate equation, changing to the common base of 3 and using the index laws to form a linear equation in k and then solving. The most common (and successful) method was using 2 ar ar = and then changing to the common base of 3, using the power law of indices a ar and, either subtracting the indices or by cross-multiplying and then adding the indices. The most common error, which was highly prevalent, was incorrect use of the division/subtraction law of indices – whereby they divided indices rather than subtracted and then formed quadratic equations in k, resulting in no further marks being awarded. Most initial difficulties arose from not understanding how to use the power law − 7 2k correctly for 9 or failing to notice that the bases needed changing at all and many simply subtracted the indices regardless of the differing bases. Changing the base to 9 was rarely seen and attempts at using logarithms were mostly unsuccessful as again, the laws were not generally adhered to. Some candidates demonstrated a lack of understanding of indices by multiplying the ( ) − = − 2 7 2k 6k 7 bases but adding the indices to achieve 81 9 . These were given some benefit of doubt and awarded one mark by a special case in the mark scheme, provided the rest of their processing was correct. Other candidates tried to verify the sequence being geometric by substituting in the given value of k, which did not satisfy the demand of the question. These attempts were allowed to score a maximum of 1 mark but were often unsuccessful as not enough of a conclusion was made. It is also worth noting that candidates should pay attention to the form of the given 35 = value and realise that this is what is required; an equivalent fraction was not k 14 accepted for the final mark."
+    },
+    {
+     "k": "p",
+     "t": "Part (b) was well attempted and generally candidates were highly successful even if part (a) was poorly attempted or not attempted at all. The majority of candidates were able to evaluate both a and r having used k to find the terms in the sequence first, they then used the sum to infinity formula correctly to achieve the answer, resulting in 3 marks. Unfortunately, some candidates found the reciprocal of the ratio which gave them a 5 = value of 3 and some mistakenly thought that r , neither of these values met the 2 limitations of the infinite sum formula but this was not spotted by candidates."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s9_p11.webp",
+     "w": 656,
+     "h": 520
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s9_p12.webp",
+     "w": 655,
+     "h": 506
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "heading": "Question 10",
+   "targets": [
+    {
+     "q": "10",
+     "part": ""
+    }
+   ],
+   "pages": [
+    12,
+    13
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question involved use of straight-line graphs and integration from the AS section of the course. For the most part, it was very well attempted by the majority of the candidates, but many struggled to find a complete strategy to find the area required in part (c)."
+    },
+    {
+     "k": "p",
+     "t": "Part (a) was accessible to most candidates although many did not recognise the difference between being asked to “verify” as opposed to “solve”. The most efficient = = method was to substitute x 4 and verify that y 0 and most did this succinctly. It 5 − = 8x x2 0 was equally common to see candidates attempt to solve . Correct processing 3 = = 2 to x 8 leading to was required for the mark. This approach was far less likely x 4 to score the mark due to errors with indices or incomplete processing."
+    },
+    {
+     "k": "p",
+     "t": "Part (b) was usually answered correctly with many candidates scoring full marks. As the instruction was to “show that”, candidates were required to present all their working and it was not acceptable to work back from the given answer. Most candidates found a = correct derivative and clearly substituted x 4 into this. It was common to see both ( ) − = − = + y y m x x and used to find the equation of the tangent. The former y mx c 1 1 = provided a more efficient solution with the latter required clear working to find c 48 = + which then needed to be substituted back into y mx c. A small number of candidates = − + failed to get to the required form, leaving their answer in the form y 12x 48 and hence lost the final mark. Others jumped directly to the given answer without evidence of a correct method for the equation of the straight-line and these candidates failed to score the method mark."
+    },
+    {
+     "k": "p",
+     "t": "The final part of the question proved more challenging and differentiated between the candidates, with many producing concise and fully correct answers. Most candidates realised it required the use of integration and often scored the B mark for integrating the curve. Many candidates failed to note that the question required an exact answer and use of algebraic integration. This meant that using a calculator to provide a decimal approximation was insufficient for the final method mark. The quality of notation in this part of the question was very varied with the dx often missing from integrals and spurious integral signs included throughout working. 1 = The majority of successful candidates used A bh or integration to find the area of 2 the triangle and then subtracted the area under the curve. However, a significant proportion of candidates made the question much more difficult than necessary, using a mixture of Pythagoras and trigonometry to find the area of the triangle-this often led to errors or premature rounding. Other common errors when finding the area of the triangle included assuming the triangle was isosceles, and therefore that the intersection = point was at , or splitting the triangle into two right-angled triangles and assuming x 2 they both had the same area. Candidates attempting to use the alternative method using lines – curve were more likely to make errors with signs, brackets or limits. They were also required to correctly 7 2 ( ) cancel the 2.4 terms to find an exact answer and so most often were unable to 2 7 score the final method and accuracy marks. The most common invalid method was attempting to combine the lines and curve before integrating using the limits 0 and 4, and this scored no marks unless the point of intersection had been found."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s10_p12.webp",
+     "w": 655,
+     "h": 454
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s10_p13.webp",
+     "w": 656,
+     "h": 637
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "heading": "Question 11",
+   "targets": [
+    {
+     "q": "11",
+     "part": ""
+    }
+   ],
+   "pages": [
+    13,
+    14
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question involved a badge in the shape of a semicircle, less the area within a circular arc of the same radius as the semicircle, centred at one end of its diameter. Many candidates did not spot that triangle AOB was in fact an equilateral triangle which  would have immediately provided the angle . It was not uncommon for candidates to 3 fail to find an appropriate angle, and these were unable to score any marks in this  question. A significant proportion of the candidates found the angle but it often came 3 from considerable work on the triangle, included use of Pythagoras and trigonometry, instead of the intended, more straightforward, deduction from AOB being equilateral."
+    },
+    {
+     "k": "p",
+     "t": "Many candidates that found an appropriate angle only progressed as far as finding the area of a sector, the area of triangle AOB or the area of the semicircle, for which no credit was available unless further progress was made. Some candidates used Pythagoras to calculate the area of the right-angled triangle and occasionally missed dividing by 2."
+    },
+    {
+     "k": "p",
+     "t": "Very often candidates were able to find a correct expression for one of the segments in the circular arc for the second mark, which was also available for finding the total area of the unshaded region AOB, the latter scoring the mark much less often. To get this far, candidates needed to identify and find the area of the equilateral triangle within the cut-out section defined by the circular arc. The third mark out of the available 4 marks was much harder to obtain as this required an attempt at the required area by correctly combining their correct attempts at the required smaller areas that made up the whole shaded region. Several expressions were valid here, all of which had to arrive at the sum of a sector and the triangle in exact form for the final accuracy mark. The most common route involved subtracting their expression for the area of a segment, and since the area of the segment involved subtracting the area of the equilateral triangle, this calculation led to sign errors in final answers, losing the final accuracy mark. Candidates resorted to decimals very infrequently, although calculators could well have been used to obtain exact forms of the areas."
+    },
+    {
+     "k": "p",
+     "t": "Communication of method was, at times, very clear, but often this clarity was lacking and in combination with poor algebra/manipulation and layout of solutions this could have cost some candidates method marks. It was quite surprising how many candidates attempted this question by an attempt at integration. Of these attempts, the most common involved use of polar coordinates, presumably by further mathematics candidates. This was a demanding route, and while there were many attempts that found appropriate polar equations for the relevant circles, the limits chosen were often incorrect, while others faltered with the integration itself. As a result, many candidates attempting this method either failed to set up the problem correctly or lost their way in their processing, and very few gave a completely correct = − 2 answer. Other attempts at integration, by writing e.g. y 25 x , required use of the  = substitution x sin and, again, issues with selecting appropriate limits or proceeding with the following integration caused these candidates problems. Centres should encourage candidates to explore other routes to solving problems such as this but must discuss which routes are likely to be the most concise."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s11_p13.webp",
+     "w": 654,
+     "h": 355
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s11_p14.webp",
+     "w": 655,
+     "h": 667
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "heading": "Question 12",
+   "targets": [
+    {
+     "q": "12",
+     "part": ""
+    }
+   ],
+   "pages": [
+    14,
+    15,
+    16
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This harmonic form question was seen to be relatively challenging, despite similar questions being seen on several previous exam papers. That said, many candidates were able to attempt all parts of the question, and many follow through marks were available to those that made errors early on in their attempt. It was pleasing that most candidates identified that this question used degrees rather than radians. It was also pleasing to see many candidates continue to work through all parts of this modelling question despite having errors or not attempting previous parts."
+    },
+    {
+     "k": "p",
+     "t": "Part (a) was, as usual, answered well, with most candidates being able to find both K and  correctly. Of those who failed to score all 3 marks for this part of the question, common   140 mistakes included using radians instead of degrees and calculating arctan   rather   480   480 than arctan   . There were very few responses that used trigonometric functions   140 other than tan."
+    },
+    {
+     "k": "p",
+     "t": "Responses to part (b)(i) suggested that candidates are not as confident at using the harmonic form as they are at forming it. Far too many candidates ignored their work from part (a) even if it was correct. Although given the maximum value for R, it was not uncommon to see candidates failing to use their harmonic form from part (a), but instead ( ) ( ) = = − = simultaneously setting R 1500 , cos 30t 1 and sin 30t 0 to obtain an incorrect = value for A. Most of those who correctly identified that A 1000 did then proceed to write down the full equation of the model, although many left this part with just a value for A. In part (b)(ii), some candidates struggled to calculate the value of R as they did not min recognise the link between their R and the values of K and A. There were a few who min added their values of A and K and hence did not score this B mark. Those who had found = the correct value, A 1000 , generally went on to identify the minimum value of R, but the follow through allowed those who understood the required method to gain this mark with an incorrect value for A."
+    },
+    {
+     "k": "p",
+     "t": "Most candidates were able to gain some credit for part (c) as the method mark was quite generous regarding the candidates’ interpretation of the phrasing “middle of April” in terms of the model. Approaches using a value of t condoned values in the range 3 ⩽ 𝑡 ⩽ 4.5 to be substituted into their model for R. The most common incorrect = = values used were or and were condoned for the method mark. t 4 t 4.5 However, for full marks in part (c) candidates were required to translate ‘mid-April’ into = = and substitute this into their model. A comparison with could then be t 3.5 R 500 made, and the model was seen to be reliable. = Another approach requiring more work was to set and solve for , via R 500 t ( ) + = − cos 30t 73.74 1 . This value of could then be used to identify the month in which t the model predicted would be minimum. A common mistake seen in this approach was R = to incorrectly identify t 3.54 as being ‘mid-March’ which led to mixed responses of the model being both reliable and unreliable for different candidates. Part (d) was accessible to most candidates and fully correct answers were not uncommon. ( ) + = − The simplest and most successful approach was to set sin 30t 70 1 and solve for t, then substitute this into their model for R. Some candidates incorrectly set ( ) + = + = sin 30t 70 1 or 0, leading to the equation 30t 70 90 or 180. To score full marks + = for this part of the question, candidates needed to find a value of t from 30t 70 270 , use it with sufficient accuracy when substituting into their expression for R and round their final answer to an integer. Some candidates obtained a correct decimal answer but then rounded to 3 significant figures, giving 1030 as their final answer rather than the required 1032 or 1033. 16 = − + = − Many candidates incorrectly found a value of t (coming from 30t 70 90 ) 3 which should have been an indication to restart this part having recognised that time cannot be negative. A significant proportion of candidates used 90 on the right-hand side, or even 0 or 180, which were not acceptable, and these failed to score any marks."
+    },
+    {
+     "k": "p",
+     "t": "There was also a minority of candidates who thought they were being asked to find the value of F. Another minority of candidates incorrectly assumed the question was asking when the populations of foxes and rabbits were the same and wrote down equations which they quickly concluded they could not solve."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s12_p14.webp",
+     "w": 657,
+     "h": 271
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s12_p15.webp",
+     "w": 657,
+     "h": 1059
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s12_p16.webp",
+     "w": 651,
+     "h": 97
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "heading": "Question 13",
+   "targets": [
+    {
+     "q": "13",
+     "part": ""
+    }
+   ],
+   "pages": [
+    16,
+    17
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question was very successful in distinguishing the most able mathematicians from the cohort. A significant proportion of candidates struggled, with many responses either left blank or only partially completed. The nature of a show that question ensured marks were available on both parts regardless of success in part (a) but many candidates who failed to prove the result in part (a) then went on to omit part (b) and missed out on this opportunity. However, it was not uncommon to see full marks in part (a) followed by no marks in part (b), and vice versa. dx Most candidates who attempted part (a) recognised the requirement to find and  d attempted to do so, with varying levels of success. Those who differentiated successfully generally went on to substitute into the expression correctly and gained at least the first 2 marks. The flexibility in the first method mark made this accessible to  d = most candidates who had tried at differentiation. dx appeared several   2 sin cos a times and benefited from the flexibility of the first method mark. The most common   2 incorrect derivatives were and a cos . In many cases the notation was 2 cos a dx particularly poor, although was very generously condoned provided the right-hand da side was correct. Candidates struggled with the rearrangement of the integrand into the form required to successfully use the double angle formula. Many were not able to work with or simplify the square root terms successfully, and even those that did sometimes  failed to recognise the need to use the double angle formula for . A minority of sin 2 candidates progressed correctly to the final answer, while some of those that achieved the final expression still lost the final mark for failing to address the limits, or for  missing the d or the integral sign. For those who did not achieve the first method mark this was commonly due to careless copying or premature simplification such as  −  − 2 2 a a sin instead of a a sin . Those who recognised the requirement for using double angle formulae to integrate a squared trigonometric function were generally successful in part (b) of this question.  − 1 cos 2   = 2 Occasionally candidates struggled to deal with 2 correctly, with sin 2 2 seen all too frequently. These candidates scored no marks following incorrect use of the double angle identity. The other main errors in this part were in sign errors in the double  − angle identity and in the integration of the trigonometric term: commonly cos 4 was 1  + integrated to sin 4 , and despite this still leading to the correct answer it was at the 4 expense of the two accuracy marks. A significant proportion of candidates incorrectly  sin attempted to increase the power and divide leading to a term in . Some 1 1 ( ) − unsuccessful attempts at restarting and integrating x 2 a x by parts were also seen. 2 There was also a significant proportion of candidates who attempted integration by parts which generally gained no credit. Candidates who were successful in using integration  2 by parts often had a succinct approach, while many reached cos 2 and at this point realised the use of double angle identity would help, where it would have been more concise to use the double angle identities in the first place."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s13_p16.webp",
+     "w": 655,
+     "h": 861
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s13_p17.webp",
+     "w": 655,
+     "h": 191
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "heading": "Question 14",
+   "targets": [
+    {
+     "q": "14",
+     "part": ""
+    }
+   ],
+   "pages": [
+    17,
+    18
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question involved a balloon modelled as a sphere such that its radius was increasing at a rate that was inversely proportional to the square root of the radius. Those that were unable to find a correct differential equation in part (a) were fairly limited in the number of marks that could be scored in part (b), but the given answer provided an excellent restart opportunity, and a significant proportion went on to score full marks in parts (c) and (d)."
+    },
+    {
+     "k": "p",
+     "t": "In part (a), 1 mark was available for writing down a correct differential equation to model the given situation. Very often this part was answered successfully. When the dr 1 = mark was not awarded it was usually because candidates had simply used dt r dr k = rather than . dt r In part (b) candidates were given some values for the model and were required to solve their differential equation and use the given values to show the given answer solved the differential equation from part (a). dr 1 = For those that offered an equation without a constant of proportionality, i.e. , dt r it was only possible to access two out of five marks in part (b). Generally, candidates seemed well practiced in separating the variables and integrating the resulting equation correctly. When attempted, the most common error was in the index of the radius, either by using an incorrect model or by separating variables incorrectly. The most successful responses found the constant of proportionality straight away, before integrating. Some of those who did not do this at the start struggled to know to go back to find it and therefore could not progress further by substituting for t and r in their integrated model as they had both k and c still to be found. Occasionally, dr candidates substituted 0.9 or another value for k, instead of substituting 0.9 for . dt The given answer to part (b) enabled many who were unsuccessful in the early parts of this question to go on and successfully answer part (c). This question was generally very well attempted, and most candidates used correct processing to calculate the correct value. However, some failed to do so with the required accuracy or made an error in unit conversion. Many did not give the correct units, or any units, forfeiting the final = mark. There was a significant minority who, having progressed to r 2 118 , failed to 3 1182 use correct processing to solve the equation, incorrectly finding and did not score the method mark as a result."
+    },
+    {
+     "k": "p",
+     "t": "A single mark was available in part (d), for suggesting a limitation to the model, and for some candidates this was the only mark gained in the question. Very many candidates scored the mark for pointing out that the balloon would eventually “pop”, or that the assumption that the balloon was perfectly spherical was unrealistic. Some candidates offered a more sophisticated response involving taking the limit for large times, although this was only acceptable if there was some reference to context such as the radius or volume. The most common incorrect response involved commenting on the “rate of inflation of the balloon being constant” as unrealistic, but this aspect had already been addressed in the model."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s14_p17.webp",
+     "w": 656,
+     "h": 770
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s14_p18.webp",
+     "w": 652,
+     "h": 306
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "heading": "Question 15",
+   "targets": [
+    {
+     "q": "15",
+     "part": ""
+    }
+   ],
+   "pages": [
+    18,
+    19
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "This question was a clear discriminator between the most secure and intermediate candidates with many making little or no progress in part (i), although many candidates made at least a respectable attempt at part (ii)."
+    },
+    {
+     "k": "p",
+     "t": "The most common techniques employed in part (i) were completing the square and using the discriminant. When completing the square, candidates often stated that squared numbers are always positive and gave no indication that they could also equal 0, which was a common error the last time a similar question was asked. When finding the discriminant, candidates often obtained the answer of –4, but very little explanation followed this, and notably many seemed to think this was sufficient to conclude that the 2 given quadratic was always positive with no reference to the coefficient of the k term. It was not uncommon to see attempts analysing even and odd number scenarios, but none were seen that recovered from only considering whole numbers and extended to the entire set of real numbers. A few candidates used differentiation to find the turning point and some of these candidates calculated the second derivative to prove that their turning point was a minimum, but they usually lost the final mark as they did not write a conclusion to complete their proof. The least confident candidates simply substituted a few integer values for k into the expression and attempted to draw a conclusion from the results, scoring no marks."
+    },
+    {
+     "k": "p",
+     "t": "In part (ii), many candidates did not fully appreciate what they were being asked to do, most likely due to the unfamiliar nature of the question. As a result, some attempted algebraic manipulation of the expression, such as expanding the brackets, and were unable to progress to a solution. Other candidates believed they were being asked simply to write out the proof by adding text to the information supplied or by detailing the working for the solutions of the simultaneous equations given."
+    },
+    {
+     "k": "p",
+     "t": "However, there was a good proportion of candidates who realised that the example given was just one of many possible scenarios and proceeded to attempt to find solutions to the remaining cases. It was rare to see all of the 11 other factor pairs examined, and, in most cases, candidates only considered simultaneous equations with a positive right-hand side. The mark scheme enabled all the marks to be scored for this approach given that the simultaneous equations with negative right-hand sides could be discarded quite trivially. Often candidates only determined x or y for a couple of factors of 28 securing 1 or 2 marks. A good proportion only dealt with factor pairs ‘one way round’ and gave no justification as to why, limiting themselves to 2 marks out of the available 4. Calculators could legitimately be used to solve the simultaneous equations and candidates who did this found, almost without exception, correct values for x and y as well as saving time. Full algebraic processing of the simultaneous equations was time-consuming and prone to error. A minority of candidates realised it was possible to 3𝑥 + 2𝑦 ⩾ 5 argue that and limited themselves to examining just cases A and B from the mark scheme, but it was nice to see the strongest candidates able to distinguish themselves in this manner. Most candidates identified the reasons for rejecting factor pairs as they went along whilst a few left the rejection of the solutions to the overall conclusion, and both approaches were acceptable. Sadly, some made no comment at all on the solutions they found and were unable to score either accuracy mark as a result."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s15_p18.webp",
+     "w": 655,
+     "h": 658
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2024_JUNE_01_s15_p19.webp",
+     "w": 650,
+     "h": 325
+    }
+   ]
+  }
+ ],
+ "general": {
+  "pages": [
+   3
+  ],
+  "paras": [
+   {
+    "k": "p",
+    "t": "Overall, this paper gave candidates plenty of access to marks and a good opportunity to show what they knew and understood. There were opportunities to distinguish between the strongest candidates, while less confident candidates were able to score a respectable number of marks on plenty of questions. Candidates also benefitted from being able to show what they could do using the many restart points in other questions. Modelling questions were well attempted and generally there were good responses to questions requiring some reference to the context of the problem, such as questions 7(c) and 14(d). However, many candidates were not considering whether the model they had created was viable – this was evident in question 7. It is also worth highlighting that candidates need to show full working to solve quadratic equations when instructions such as “using algebra” are present, for example in question 5(b). Some comments from previous examiner reports, for example, the requirement for the domain to be stated when asked for an inverse function, as well as the need to avoid incorrect statements such as “square numbers are always positive”, continue to be overlooked."
+   }
+  ],
+  "figures": []
+ }
+}

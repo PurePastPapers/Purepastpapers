@@ -1,0 +1,621 @@
+{
+ "format": "examiner-report-text-v1",
+ "extractor_version": 2,
+ "paper_id": "EDX_9MA0_2019_JUNE_02",
+ "subject_id": "EDX_ALEVEL_MATH_9MA0",
+ "source_url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/9MA0_02_pef_20190815.pdf",
+ "source_sha256": "ae3e2b736dcd47872f9b17ee163591473bfe54d140e8df6c4b18cb74b490f691",
+ "source_pages": 18,
+ "extracted_on": "2026-11-21",
+ "review_status": "unreviewed",
+ "note": "Official examiner report text, split at the report's own question headings. Not rewritten.",
+ "sections": [
+  {
+   "id": "s1",
+   "heading": "Question 1",
+   "targets": [
+    {
+     "q": "1",
+     "part": ""
+    }
+   ],
+   "pages": [
+    3,
+    4
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q01 proved challenging for a significant number of candidates. This was probably because of the more open-ended nature of the question, allowing candidates to select their own problem-solving strategy to express y as a function of x. It was not apparent to most candidates that y could be expressed as a linear function of x."
+    },
+    {
+     "k": "p",
+     "t": "More able candidates, however, were able to provide a concise solution. Other candidates were still able to achieve full marks but expressed y as a more complicated function of x. A few candidates attempted to express x as a function of y, suggesting a lack of understanding of the terminology."
+    },
+    {
+     "k": "p",
+     "t": "It appeared that most candidates failed to realise that Q01 could be solved purely using indices. Instead, most candidates chose to immediately take logarithms as their first   1   x y   log( 2 4 ) log , step towards a solution. A correct first step, e.g. was   2 2 rewarded by the mark scheme. Unfortunately, some candidates combined taking logarithms with an incorrect application of the addition law for logarithms as their first    x y x y step, therefore gaining no marks. E.g. 2 4 log 2 log 4 . Most candidates who had a correct first step of work went on to achieve full marks, with some only failing to do so by making an arithmetic error."
+    },
+    {
+     "k": "p",
+     "t": "Q01 highlighted some candidates’ weaker algebraic, indices and logarithms skills. 1 1       x y xy x y x y Common errors included 2 4 8 , 2 4 8 , , or x x 2 2 2 4 2 x 1 2     x y y 2 4 4 . 2 2 2 2    x 1 log log (2 )   1  2 2    The most common correct answers were y , y log 4 x log 4   2 2 2   ln 1 1 3 x     2 2 2 or y . Only a minority of candidates obtained a correct y x . ln 4 2 4"
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s1_p3.webp",
+     "w": 641,
+     "h": 344
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s1_p4.webp",
+     "w": 645,
+     "h": 401
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "heading": "Question 2",
+   "targets": [
+    {
+     "q": "2",
+     "part": ""
+    }
+   ],
+   "pages": [
+    4,
+    5
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q02 proved to be challenging, with a significant number of candidates struggling to realise that the length of the runway could be estimated by the area under the speed-time curve generated from the table of values given in the question."
+    },
+    {
+     "k": "p",
+     "t": "In Q02(a), only a minority of candidates estimated the length of the runway by applying the trapezium rule, which was considered the most appropriate method, with many of these giving the correct answer of 415 m. While the table of values clearly shows an  b a    interval width h 5, the application of the formula h with instead of n 6 n 25   n 5 led some candidates to use an incorrect strip width h . Other candidates 6 made calculation errors, bracketing errors or transcription errors."
+    },
+    {
+     "k": "p",
+     "t": "Some candidates used the equations of motion with constant acceleration (i.e. the suvat equations) to estimate the length. Many of the candidates who used this method applied    2 42     the calculation (25) to obtain an estimate of 550 m. A few used v u at   2 1   2 to find the acceleration, followed by s ut at to estimate the length. Some 2  candidates used u 0 in their suvat calculations, in contradiction to the table of values 1 2 m s . which indicated an initial speed of A few candidates used a method which was equivalent to the trapezium rule, of applying suvat to each of the 5 time-intervals, to give the correct answer of 415 m."
+    },
+    {
+     "k": "p",
+     "t": "Other methods seen included: summing up the area of rectangles which enclosed the area above the curve for each of the 5 time intervals; summing up areas of rectangles which enclosed the area below the curve for each of the 5 time intervals; and applying  (average speed) (total time).   The most common methods which were deemed incorrect included 25 42 1050; 1         (25)(42) 525; (speed)(time) (0)(2) (5)(5) (10)(10) ... (25)(42) 2005; 2 or a 6 rectangle approach (instead of 5 rectangles)."
+    },
+    {
+     "k": "p",
+     "t": "As for Q02(b), while many candidates who used a trapezium rule or suvat method in Q02(a) identified their estimate of the length as an overestimate, some found difficulty in articulating a reason for this. Those who were most successful drew a diagram which showed clearly the extra area generated by the trapezium rule in relation to the curve. Some candidates sketched the speed-time curve and explained that the curve was convex or that the acceleration was continually increasing. Only a few candidates who used a rectangle method were able to give a correct reason."
+    },
+    {
+     "k": "p",
+     "t": "Some candidates answered Q02(b) by finding an alternative estimate and comparing it with their estimate in Q02(a). For example, some found 415 in Q02(a) and 550 in Q02(b), and then concluded that ‘415 must be an underestimate’. Other candidates, who also received no credit, gave physical explanations about friction, air resistance or the shape of the aircraft, while others stated that ‘the jet accelerated smoothly’."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s2_p4.webp",
+     "w": 641,
+     "h": 593
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s2_p5.webp",
+     "w": 646,
+     "h": 457
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "heading": "Question 3",
+   "targets": [
+    {
+     "q": "3",
+     "part": ""
+    }
+   ],
+   "pages": [
+    5
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q03 proved to be the most accessible question on this paper with many candidates obtaining full marks.  In Q03(a), many candidates explained that the angle 40 should have been converted 1  2 to its equivalent in radians in order for it to be applied to the formula r . Some 2 candidates’ explanations lacked sufficient detail, e.g. they stated ‘the angle is in degrees’ but failed to mention that the angle used in the formula should have been expressed in radians. A few candidates did not give a reason in Q03(a), but correctly calculated the area of sector AOB in Q3(b).  Q03(b) was also well-answered. Most candidates converted 40 to radians and  2 1  2 applied a correct to the given formula r . Some candidates applied a correct 9 2     40      2   r formula with 40 . Errors included converting 40 to either or   360 360    1 2 9 1  2 2   ; applying (5 ) ; and applying incorrect formulae such as r sin or   2 2 9 2 1 25    2 r . Most candidates gave the correct answer in exact form as , and some 2 9 gave an answer 8.73 which was rounded to 3 significant figures, while others gave both 2 cm in their answer to exact and rounded answers. Most candidates gave the units Q03(b). On this occasion, a lack of units in their final answer was condoned."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s3_p5.webp",
+     "w": 647,
+     "h": 530
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "heading": "Question 4",
+   "targets": [
+    {
+     "q": "4",
+     "part": ""
+    }
+   ],
+   "pages": [
+    6
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q04 was well attempted by both medium ability and higher ability candidates. Lower ability candidates struggled to make progress, with most of them scoring no more than one mark."
+    },
+    {
+     "k": "p",
+     "t": "There were two common methods that were used by candidates. The first method, covered by Way 1 in the mark scheme, was the substitution of the parametric equations C C of into the Cartesian equation of to give an equation in t only; the trigonometric 1 2   2 2 2 2 sin t cos t 1 sin t cos t identity being used to obtain an equation in (or ) only, and a value for sin t (or cos )"
+    },
+    {
+     "k": "p",
+     "t": "t found. The second method, covered by Way 2 in the   2 2 mark scheme, was the application of the trigonometric identity sin t cos t 1 to the 2   2    x y      parametric equations of C to give 1, the Cartesian equation of C 1 2   10   4 2 2 2 y ) being used to obtain an equation in x (or only, and a value for x (or y) found. A few candidates used a correct method of progressing from     2 2 2 (10 cos ) t (4 2 sin ) t 66 to either tan t 1 or cos 2t 0. In all these methods, substituting back yielded their coordinates for S, with most candidates realising that   x 0 and y 0. Some candidates incorrectly stated S as (5 2 , 4 ). In the first S S   7   method, successful candidates used either t or t , and then applied 4 4   4 ) 4). symmetry to find the correct coordinates for S as either (5 2 , or (7.07 , An area of concern centred around arithmetical slips or errors in elementary algebra. 1  2 2 Examples of the former included (4 2) becoming 8 or 64; sin t becoming 2 2 2 1 x y      2 2 sin t ; and 1 becoming 32 x 100 y 1 or 100 or 32. Examples of 4 100 32     2 2 the latter included the invalid methods of y 66 x becoming y 66 x and 2 x x     2 sin t 1 becoming sin t 1 . Candidates who made no creditable progress 100 10 C , included those who differentiated the parametric equations for and those who 1         x x    2 2     obtained, e.g. y 4 2 sin arccos   leading to x 32sin  arccos  66.         10 10"
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s4_p6.webp",
+     "w": 645,
+     "h": 806
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "heading": "Question 5",
+   "targets": [
+    {
+     "q": "5",
+     "part": ""
+    }
+   ],
+   "pages": [
+    7
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q05 proved challenging for many candidates and some candidates were unfamiliar with the notation that was used. Most candidates scored either all three marks or zero marks in this question. There were a substantial number of blank responses."
+    },
+    {
+     "k": "p",
+     "t": "It is noted that section 8.4 (guidance) of the Pure Specification states ‘Recognise  b  b   ’. It is also noted that a similar question had not f ( ) d x x lim f ( ) x x   x 0 a  x a appeared on the 9MA0 June 2018 papers, the SAMs, the specimen papers or the mock papers.  9  Those candidates who recognised that lim x x was another way of writing   x 0  x 4  9 generally produced a correct solution to score all 3 marks. Only a few x x d 4 made errors in their integration of"
+    },
+    {
+     "k": "p",
+     "t": "x or in the application of the limits 4 and 1."
+    },
+    {
+     "k": "p",
+     "t": "Most candidates, however, made no creditable progress. Some applied the trapezium  9  h 1, rule with but did not link their trapezium rule attempt with a stated x x d . 4   x Other candidates attempted to sum using integer values from x 4 to x 9 ,      4 5 6 ... 9 ( 15.1597...). resulting in Some candidates mistakenly  ’ as a trigger to differentiate x , interpreted ‘ x with a few of these candidates x attempting to differentiate from first principles.  9        A few candidates applied the incorrect method 4 5 6 ... 9 x x d 4 to give an answer of 2.49 to 3 significant figures."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s5_p7.webp",
+     "w": 641,
+     "h": 709
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "heading": "Question 6",
+   "targets": [
+    {
+     "q": "6",
+     "part": ""
+    }
+   ],
+   "pages": [
+    7,
+    8
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q06 discriminated well between candidates of all abilities, with only a few candidates gaining full marks. There were some marks in Q06(b) and Q06(d) which were accessible to the majority of candidates.  In Q06(a), many candidates struggled with the split domain for g( ) x (i.e. for x 2 ,       2 g( ) x ( x 2) 1 x 2, g( ) x 4x 7 ) and for and only a minority gained both marks.  Many candidates found a correct g(0) 5, but a significant number used the incorrect     method of substituting ‘5’ to give 2 gg(0) (5 2) 1 10. Only a minority used a    correct method and found gg(0) 4(5) 3 13. Occasionally candidates found an algebraic expression for gg( ) , x although this was often incorrect. Very few obtained a      2 2 correct answer of 13 by substituting into or x 0 4((x 2) + 1) 7 4(x 2) 3.  In Q06(b), many candidates attempted to solve the inequality g( ) x 28 by finding the critical values for x. Most solved the linear equation to find a correct critical value 35    x , and many solved the quadratic equation to find x 2 3 3 . A minority 4     x 2 3 3 x 2 3 3 rejected and deduced that was the second critical value. Only a few candidates used the critical values and the diagram in Q6 to write down the correct 35 35      solution x 2 3 3 x . Some candidates, however, incorrectly gave x , 4 4 35       x 2 3 3 or gave x 2 3 3 x as their final answer. A few candidates 4 made no creditable progress in Q06(b) by using a method of equating both parts of     2 g( ) x and attempting to solve the equation ( x 2) 1 4x 7. Although Q6(c) required a comment for both functions, f and g, some candidates only wrote a comment about one of the two functions. A significant number of candidates believed that g did not have an inverse due to its being defined in ‘two parts’. Candidates who were successful in Q6(c) usually gave a reason such as, ‘g is a many-one function and h is a one-one function’. A few correctly stated that the inverse of g is one-many, which is not a function, whereas the inverse of h is one-one, which is a function. A few candidates incorrectly described g as a ‘one-many function’.   1  h   . In Q06(d), only a few candidates applied the method of finding x by applying   2 As this method was less prone to error, most candidates who used it scored full marks. 1 h ( ), x Most candidates applied a complete method of finding their inverse followed 1    1 by using their inverse to form and solve the equation h ( ) x . Many candidates 2  who found a correct answer x 7.25 lost the final mark in Q06(d). This was because     1 they used the incorrect inverse h ( ) x 2 x 1 (instead of the correct 1        1 h ( ) x 2 x 1 x 1 ) which led to their ‘solving’ the incorrect (which has 2  no solutions) to give x 7.25. A few candidates in Q06(d) incorrectly believed that 1 h ( ) x referred to the reciprocal of h, or even to the first derivative of h with respect to x."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s6_p7.webp",
+     "w": 650,
+     "h": 221
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s6_p8.webp",
+     "w": 646,
+     "h": 872
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "heading": "Question 7",
+   "targets": [
+    {
+     "q": "7",
+     "part": ""
+    }
+   ],
+   "pages": [
+    8,
+    9
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q07 discriminated well between the medium and higher ability candidates. Lower ability candidates struggled to make much progress with this modelling question and most of them scored no more than one mark."
+    },
+    {
+     "k": "p",
+     "t": "In Q07(a), most candidates wrote down a correct equation for the model in the form   y kx c , with constants k and c. A minority struggled to give a suitable form of the linear equation, with some omitting the fixed cost constant, c. Some candidates gave  incorrect answers, such as y x ; equations involving exponential models; or differential equations."
+    },
+    {
+     "k": "p",
+     "t": "Q07(b) proved challenging for those candidates who struggled to grasp the concept   ‘ profit ’, with many of them incorrectly assuming that the model from sales cost Q07(a) was for the profit made. Many of these candidates used (800, 500) and either  (300, 80) or (300 , 80) to form two linear equations, with some erroneously finding a gradient of 0.84."
+    },
+    {
+     "k": "p",
+     "t": "Those candidates who understood the link between profit and cost usually found the total cost to the factory of £1100 and £680 for 800 and 300 bars of soap respectively. Most used (800 , 1100) and (300, 680) to form two linear equations and proceeded to find the gradient, 0.84, and y-intercept, 428. A large proportion concluded by stating   the given equation y 0.84x 428. A few candidates, however, did not complete their analysis with a suitable conclusion, and so lost the final mark. Some candidates used   (800 , 1100) and (300, 680) to verify the model y 0.84x 428. Many of these were successful but often failed to give a suitable conclusion stating that the given model was true."
+    },
+    {
+     "k": "p",
+     "t": "Q07(c) gave a significant number of candidates their only creditable access to Q07. Some candidates gave a correct interpretation such as 0.84 represented ‘the cost of making an extra bar of soap’. Incorrect explanations included that 0.84 represented ‘the selling price of a bar of soap’ or ‘the profit per bar of soap made’."
+    },
+    {
+     "k": "p",
+     "t": "There was a mixed response to Q07(d). The most popular approach was to form and     solve a correct 2n 0.84n 428 or 2n 0.84n 428, which mostly led to the correct    answer n 369. A final answer left as an inequality such as or n 369, n 368 without reference to the statement that 369 was the number of bars required, was not   sufficient for the final mark. Some candidates used trials of both and n 368 n 369  in a complete trial and error method leading to a correct conclusion of n 369."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s7_p8.webp",
+     "w": 641,
+     "h": 76
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s7_p9.webp",
+     "w": 646,
+     "h": 733
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "heading": "Question 8",
+   "targets": [
+    {
+     "q": "8",
+     "part": ""
+    }
+   ],
+   "pages": [
+    9,
+    10,
+    11
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q08 was found challenging by many candidates, with Q08(i) more successfully answered than Q08(ii). The most successful candidates were the ones who listed the first few terms of the series. In other words, those candidates that wrote 4 5 6             3 4 5 1 1 1             20   20   20   ... and log log log ... gained a 5   5   5         2 2 2 2 3 4 better understanding of the series that they were required to sum. There were, however, many attempts that made no creditable progress and a significant number of blank responses to either one or both parts of Q08."
+    },
+    {
+     "k": "p",
+     "t": "In Q08(i), many candidates identified that a sum to infinity was required in their a 1  solution and attempted to apply the formula . Most used r in this formula,  1 r 2 1 1    although some used incorrect values such as r or r . Disappointingly, a 4 2  significant number of candidates used r 4 from the expression given in the question a and applied it to the formula , even though the formula only works when  1 r    1 r 1. There were a number of correct strategies that candidates could use. The 4   a 1 1     most successful strategy was to apply a 20 , r to , and many    2 2 1 r candidates who used this strategy achieved the correct answer of 2.5. Other complete    3 r r     1 1        strategies included applying 20 20 or     2 2   r 1 r 1    3 r r     1 1          20 20 which led to (20 17.5) or (40 37.5) respectively.     2 2   r 0 r 0 Some candidates applied an incorrect overall strategy by subtracting an incorrect number of terms from their sum to infinity. These candidates gave incorrect answers     such as (20 18.75) , (40 38.75) , (40 35) or (40 17.5). A few candidates obtained the correct answer of 2.5 by using their calculator."
+    },
+    {
+     "k": "p",
+     "t": "Only a few candidates produced a correct solution to Q08(ii). There were two main correct methods that were used by candidates in equal measure. One was to list the first few terms and the last few terms of the series and use the addition law of logarithms   3 4 50    log  ... . to achieve Many candidates used cancelling to complete their 5   2 3 49    50  proof correctly by writing   The other method was to use the log log (25) 2. 5   5 2  48    subtraction law of logarithms to give (log (n 2) log (n 1)) and list terms to 5 5  n 1        (log 3 log 4 ...... log 50) (log 2 log 3 ...... log 49). give Again many 5 5 5 5 5 5 candidates used cancelling and completed their proof by writing    A few candidates progressed by writing log (50) log (2) log (25) 2. 5 5 5        log (3 4 ....... 50) log (2 3 ....... 49) and used factorials to give 5 5      50! 50!          log log 49! log log (25) 2. 5 5 5 5     2 2(49!) Some candidates incorrectly assumed an arithmetic series and attempted to find its sum     n n 3 50           n 48, a log , l log by using (a l) or [2a (n 1) ] d with and 5 5     2 2 2 49     4 3       d log log . A few candidates incorrectly assumed a geometric series and 5   5   3 2 attempted to find its sum. Some candidates, who made no creditable progress, resorted to listing their terms as decimals, or attempted to add all 48 terms as decimals by writing      0.2519... 0.1787... 0.1386... ...... 0.0125... 2."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s8_p9.webp",
+     "w": 641,
+     "h": 194
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s8_p10.webp",
+     "w": 646,
+     "h": 1019
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s8_p11.webp",
+     "w": 641,
+     "h": 130
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "heading": "Question 9",
+   "targets": [
+    {
+     "q": "9",
+     "part": ""
+    }
+   ],
+   "pages": [
+    11,
+    12
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "In general, Q09 discriminated well between candidates of all abilities. Q09(b) and Q09(c) were more accessible to candidates than Q09(a). Some candidates left Q09(a) blank while others struggled to make any creditable progress."
+    },
+    {
+     "k": "p",
+     "t": "In Q09(a), many candidates wrote down a valid log equation as part of their explanation.   Those who used mathematical reasoning to progress from log d log k n log V 10 10 10  n to d kV (or vice versa) usually showed an intermediate step in their working and so were successful in their explanation. A few candidates made errors in progressing between these two equations, such as an incorrect method of combining logarithms (e.g.    c n log d n log kV ), or an incorrect use of powers (e.g. d 10 V ). Those who 10 10   made a direct comparison of their log equation with y mx c usually did so clearly   n enough but sometimes did not allude to d kV (if using 1.77 rather than log k in 10  1.77 their log equation). A significant number of candidates did not apply 10 or use  logarithms to show that k 0.017.    n In Q09(b), the majority of candidates substituted V 30 and d 20 into d kV and  n 2.08. applied logarithms correctly, leading to the correct value of A few  n candidates used the incorrect method of simplifying 20 0.017(30) to give  n 20 (0.51) . Some candidates substituted in V and d the wrong way around, usually  leading to n 2.50 , and a few used both V and d as 20. A small minority substituted   and into a correct log equation, while a few others correctly found n by V 30 d 20  (log 30, log 20). finding the gradient between the known points (0 , 1.77) and 10 10  2.08 d (0.017)V The most common mistake was not writing a complete equation or     log d 1.77 2.08log V after finding a correct n 2.08. 10 10  In Q09(c), most candidates applied V 60 to their exponential model and found the braking distance. Some then used the incorrect method of comparing this breaking distance with the overall stopping distance. The majority attempted to calculate the thinking distance and either added it to their breaking distance d or subtracted it from 100. The main error was due to the units. Some candidates did not attempt to convert   1 1 60 km h m s to and simply multiplied 60 by the thinking time of 0.8 seconds to obtain a thinking distance of 48 metres. Others only managed a partial conversion, with   1 1    instead of 13.3 m km some using metres as their thinking distance. In   75 75 some of the answers, candidates used an incorrect method of combining their values to give a dimensionally incorrect quantity. For example, they might add their breaking distance to either a speed or a time. Candidates who obtained a thinking distance of 13.3m usually reached a correct answer and conclusion. A few compared the maximum speed needed to stop at the puddle with the given 60, while even fewer  compared the maximum value of n needed to stop at the puddle with n 2.08; and with correct conclusions these were valid solutions."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s9_p11.webp",
+     "w": 650,
+     "h": 879
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s9_p12.webp",
+     "w": 641,
+     "h": 103
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "heading": "Question 10",
+   "targets": [
+    {
+     "q": "10",
+     "part": ""
+    }
+   ],
+   "pages": [
+    12,
+    13
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q10 discriminated well between the medium and higher ability candidates, with lower ability candidates struggling to gain any creditable access. Q10 increased in difficulty as the candidates progressed through the question, and only a small proportion of candidates scored full marks."
+    },
+    {
+     "k": "p",
+     "t": "In Q10(a), most candidates followed a correct method to achieve the correct answer 3 1    CM a b . Of the candidates who identified a suitable route from C to M, the 2 2 1     most common approach was CM CA AM CA AB . Less efficient routes such 2       as CM CO OB BM or even CM CO OA AM were also observed. Some candidates struggled to apply the vectors a and b to the routes they had chosen.    Incorrect methods included applying CA a (instead of CA a ) or applying     AB a b AB b a). (instead of There were a few candidates who incorrectly deduced the position of C to be in the opposite direction to OA and they were mostly 1       able to apply the approach, CM CO OA AM CO OA AB , to gain some 2 credit."
+    },
+    {
+     "k": "p",
+     "t": "Q10(b) proved to be demanding, with some candidates struggling to understand what the question required them to do, and many seemed to be confused by the introduction    CN CM of the scalar multiple . Only a minority deduced that and applied this   ON OC CN. deduction to the route Most of these candidates progressed well to the given answer unless they had found an incorrect CM in Q10(a). Many candidates        ON OC CM MB BN ON OA AB BN used or and made no creditable progress. These candidates usually produced solutions which led to the elimination of  from the a component of the resulting vector for ON. A few candidates used   ON OM MN and proceeded to obtain a correct expression   1 1 3 1           ON a b a b in terms (or ) , but only a few deduced that this   2 2 2 2          could lead to the stated solution by setting 1 (or ). 1 Q10(c) proved to be challenging with many candidates failing to make any creditable progress. The crucial step was to recognise that ON is parallel to OB and hence is a ON multiple of b with no a component. Only a few candidates set the a component      to zero to give the equation 2 0. Almost all of these candidates found , 2 3 2  with many finding ON b and giving a correct explanation of the given ratio. 3"
+    }
+   ],
+   "figures": [
+    {
+     "page": 12,
+     "count": 20
+    },
+    {
+     "page": 13,
+     "count": 1
+    }
+   ],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s10_p12.webp",
+     "w": 645,
+     "h": 851
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s10_p13.webp",
+     "w": 634,
+     "h": 102
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "heading": "Question 11",
+   "targets": [
+    {
+     "q": "11",
+     "part": ""
+    }
+   ],
+   "pages": [
+    13,
+    14
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "In general, Q11 discriminated well between candidates of all abilities. Q11(a) was demanding with most candidates scoring no more than one mark. Q11(b), Q11(c) and Q11(d) proved accessible to candidates of all abilities."
+    },
+    {
+     "k": "p",
+     "t": "In Q11(a), most candidates took logs, as advised by the question, and many obtained   y x ln x y x log . x either ln or log At this point a significant number of candidates made no further creditable progress. Some candidates used a complete method of applying the product rule on ln x x and implicit differentiation to obtain a correct dy 1 dy      1 x e . Most of these candidates then applied 0 to obtain Some 1 ln . x y x d dx  ’ method to obtain candidates, who received partial credit, used a ‘ log after x 0.1, 10 1 dy   finding A few candidates used logarithms without reference to a 1 log x. 10 y x d  base. Those who proceeded to obtain x 0.1 received partial credit and those who   1 obtained x e were allowed full marks. There were some alternative methods employed by a few candidates in Q11(a). A few dy      x xlnx xln x y x y e candidates rewrote as and applied (1 ln )e x 0 to give a dx    1 correct x e . Others differentiated both sides of the equation ln y x ln x with  1 respect to y and usually proceeded to find x e . A very few candidates applied the ln y  quotient rule to the equation x , but were rarely successful with this method. ln x    x x In Q11(b), most candidates evaluated either x or x 2 at both x 1.5 and x 1.6. Many candidates compared their values with either 2 or 0 (depending on whether they     x x evaluated x or x 2 ). Although many of these concluded that 1.5 1.6, only a few made any reference to the curve being continuous in this interval. A few candidates,  who made no creditable progress, used values of x outside the given range, e.g. x 1.4   and x 1.6. Very few candidates used values within the range e.g. and x 1.51  x 1.59, which meant that they were able to earn both marks.  x 1.673, x In Q11(c), most candidates found a correct although a few did not state 4 4 x , x x correct to 3 decimal places. Some wrote down the iterates and as part of their 1 2 3 x solution, while others stated with no intermediate work. 4 In Q11(d), some candidates gave correct descriptions such as ‘sequence oscillates between 1 and 2’ or ‘the sequence is periodic with period 2’. Other descriptions such as ‘alternates between 1 and 2’, ‘keep getting 1 and 2’ or ‘fluctuates between 1 and 2’ were condoned. Some credit was given for partial explanations such as ‘sequence is non-convergent’, ‘sequence oscillates’ or ‘sequence is divergent’."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s11_p13.webp",
+     "w": 646,
+     "h": 913
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s11_p14.webp",
+     "w": 641,
+     "h": 55
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "heading": "Question 12",
+   "targets": [
+    {
+     "q": "12",
+     "part": ""
+    }
+   ],
+   "pages": [
+    14,
+    15
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q12(a) discriminated well between the higher ability candidates and it was possible for candidates of all abilities to gain access to Q12(b)."
+    },
+    {
+     "k": "p",
+     "t": "In Q12(a), many candidates struggled to apply a complete strategy which would help   cos 3 sin 3  them to make significant progress in proceeding from , via an   sin cos         2 2 cos 2 (cos sin ) cos(3 ) cos 2 intermediate stage of , or , to the given       sin cos sin cos sin cos  result 2cot 2 . Candidates who used Way 1, as described in the mark scheme, gained some credit for        cos 3 sin 3 cos 3 cos sin 3 sin  . rationalising to give Of those candidates     sin cos sin cos 1     who correctly applied sin cos sin 2 to the denominator, only a few realised that 2  the numerator could be written as cos 2 . A common error in using Way 1 was to         2 2 cos 3 sin 3 cos 3 sin 3 cos 4 sin 4  simplify to give or .       sin cos sin cos sin cos Way 2, as described in the mark scheme (and variations of this), was the most popular approach among candidates who completed the proof successfully. Candidates only started to access the marks for Way 2 when they combined their fractions by rationalising the denominator. Errors using Way 2 included the incorrect expansion of       cos(2 ) ) or sin(2 , bracketing errors, manipulation errors or sign errors.  A few candidates started their proof from 2cot 2 . They usually progressed as far as    2 2 cos 2 2(1 tan )     writing either 2 cot 2 or 2 cot 2 , but could make no   sin 2 2 tan creditable progress until they applied a Way 3 method as described in the mark scheme."
+    },
+    {
+     "k": "p",
+     "t": "Some candidates spent a considerable amount of time attempting to write         3 3 cos 3 sin 3 4 cos 3cos 3sin 4sin    . in terms of to give e.g.     sin cos sin cos candidates only started to access the marks for this method when they combined their fractions by rationalising the denominator."
+    },
+    {
+     "k": "p",
+     "t": "In Q13(b), most candidates used the result given in Q13(a) to deduce the equation 1     2 cot 2 4. Most of these then attempted to solve tan 2 , and some obtained the 2      correct answer 103.3 . Common errors included attempting to solve tan 2 2     and finding more than one value for . A few candidates obtained by 103.3   2 2(1 tan )  solving the equation 4.  2 tan"
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s12_p14.webp",
+     "w": 646,
+     "h": 904
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s12_p15.webp",
+     "w": 641,
+     "h": 94
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "heading": "Question 13",
+   "targets": [
+    {
+     "q": "13",
+     "part": ""
+    }
+   ],
+   "pages": [
+    15,
+    16
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q13 discriminated well between the medium and higher ability candidates. Lower ability candidates, however, struggled to gain any creditable progress. It was obvious that some candidates had been well prepared for this ‘optimisation’ question and the quality of their responses reflected this. candidates who attempted this question generally found Q13(b) and Q13(c) accessible but some struggled to complete the proof in Q13(a). In a few cases, candidates who scored zero marks in Q13(a) went on to achieve full marks in the remainder of Q13 by using the given result for the surface area. There were, however, many instances where candidates who struggled with Q13(a) then gave up and did not attempt the remainder of the question."
+    },
+    {
+     "k": "p",
+     "t": "In Q13(a), successful candidates followed a correct strategy of forming an equation for the volume of the tank, rearranging their equation to give an expression for h in terms of r and substituting their expression for h into their formula for the surface area of the tank. Some candidates did not halve the given sphere formulae so that they could use these for the hemispherical shell. This led to errors in both their volume equation and surface area expression. Other candidates did not include the area of the circular base in their surface area expression. These errors led to an incorrect volume equation 4         2 3 2 6 r h r and incorrect surface area expressions A 5 r 2 rh and 3     2 In other cases, bracketing errors, manipulation errors, or using A 2 r 2 rh. incorrect formulae for the curved surface area of a cylinder, prevented candidates from achieving the given result."
+    },
+    {
+     "k": "p",
+     "t": "In Q13(b), many candidates who attempted this part applied a complete method to find dA   their value of r for which 0. Most successful candidates found r 1.05 metres, dr 18  with a few giving an exact answer r metres, which was condoned. Some 3  5 dA 10    candidates differentiated A incorrectly to give 12 ln r r , while others used dr 3 12 10     incorrect algebra when solving the correct equation r 0. A few 2 r 3 2 d A  candidates used the incorrect method of finding a value of r for which 0. 2 dr In Q13(c), most candidates who attempted this part correctly substituted their value of dA 12 5     2 r, found from solving 0 , into the model with equation A r , with dr r 3 2 many obtaining a correct minimum surface area of 17 m . A few candidates, who d A  made no creditable progress, substituted their value for r, found from solving 0, 2 dr into the model for A."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s13_p15.webp",
+     "w": 642,
+     "h": 876
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s13_p16.webp",
+     "w": 633,
+     "h": 80
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "heading": "Question 14",
+   "targets": [
+    {
+     "q": "14",
+     "part": ""
+    }
+   ],
+   "pages": [
+    16,
+    17
+   ],
+   "paras": [
+    {
+     "k": "p",
+     "t": "Q14 discriminated well between the higher ability candidates. Lower and medium ability candidates, however, found this question demanding with most of these candidates scoring no more than two marks. There were a few candidates who made no attempt at this question, either because the question was too demanding, or because their time had run out. Most higher ability candidates made good progress in Q14(a) and Q14(c) but they often struggled to make progress in Q14(b).   u 4 h In Q14(a), most candidates who attempted this part differentiated to give a 1 du 1  dh      2 correct h , with a few finding a correct 2(4 u) and some dh 2 du 1 du 1   2 differentiating incorrectly to give h . At this stage, some candidates failed to dh 2 make further creditable progress. Many candidates struggled to apply the substitution   k(4 u) completely to give an integral of the form d , u with some making sign errors u in the numerator of this integral. Those who progressed this far generally went on to    A    divide each term in the numerator by u to give an integral of the form B d , u   u    8     with many of them obtaining a correct 2 d . u Most integrated correctly and   u        u 4 h applied to obtain a correct 8ln 4 h 2(4 h ) c. Some  candidates could not deal with the transition from 8 c to k to achieve the given     and a large number of these candidates incorrectly stated 8ln 4 h 2 h k ,   2u 8  du k 8. Those few candidates who applied integration by parts on rarely u progressed to give a correct solution to this part. dh  In Q14(b), some candidates correctly set 0 but only a few deduced the equation dt    4 h 0. Some candidates used h 16 to state a correct allowable answer such as       0 h 16, h 16. h 4 0 h 16 or A common mistake was to solve to give  h 2. Material for Q14(c) was sometimes seen in Q14(b). Most candidates who attempted 0.25 t Q14(c) separated the variables correctly. Some candidates integrated incorrectly    0.25 0.75 1.25 to give t , t or t while others integrated without reference to  4 (4 h )   the result from Q14(a). Many candidates applied t 0, h 1 to find their constant of integration. Common errors at this stage included not applying a constant of integration     and using either t 0 , h 0 or t 1, h 1 to find their constant of integration. Most candidates who progressed this far applied a complete process of substituting their  constant of integration and into their integrated equation and solving this h 12 equation to find their value for t. In many cases, sign errors, bracketing errors,  1.25 manipulation errors or an incorrect method of solving a correct t 221.2795202...,  prevented candidates from obtaining the correct answer t 75.2 years."
+    }
+   ],
+   "figures": [],
+   "img": [
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s14_p16.webp",
+     "w": 645,
+     "h": 859
+    },
+    {
+     "src": "maths/img/EDX_9MA0_2019_JUNE_02_s14_p17.webp",
+     "w": 641,
+     "h": 242
+    }
+   ]
+  }
+ ],
+ "general": {
+  "pages": [
+   3
+  ],
+  "paras": [
+   {
+    "k": "p",
+    "t": "This is first time in many years that a full A-Level Mathematics cohort has sat linear papers. We therefore found that some candidates, especially those of lower ability, struggled to access to several questions on Paper 2."
+   },
+   {
+    "k": "p",
+    "t": "There were some parts of questions involving sector formulae, functions, iteration, trigonometry and differentiation where a typical E grade student could gain some marks. There were more testing questions involving indices, parametric equations, functions, mathematical modelling, geometric series, linearisation, the use of differentiation to solve minimisation problems, integration and differential equations, that allowed the paper to discriminate well between the higher grades."
+   },
+   {
+    "k": "p",
+    "t": "It was clear from looking at solutions to Q02(b), Q03(a), Q06(c), Q07(c) and Q011(d) that some candidates struggled to articulate their ideas in written form. Also, in some instances, candidates’ solutions, particularly to Q04, Q07(b), Q08(i), Q09(c), Q12(a), Q13(a) and Q14(c), were incoherent."
+   },
+   {
+    "k": "p",
+    "t": "In this new specification, more emphasis is placed on using mathematical models or formulating them from real-life situations in context. It was clear from looking at responses to Q07(a), Q07(b), Q07(d) and Q09(a) that a significant number of candidates struggled to formulate a correct mathematical model for each of the given situations."
+   },
+   {
+    "k": "p",
+    "t": "In summary, Q03, Q04, Q06(b), Q06(d), Q07(c), Q10(a), Q11(b), Q11(c), Q11(d), Q12(b), Q13(b) and Q13(c) were a good source of marks for the average student, mainly testing standard ideas and techniques, whereas Q01, Q06(a), Q06(c), Q07(a), Q7(b), Q07(d), Q08(i), Q09, Q10(b), Q12(a), Q13(a), Q14(a) and Q14(c) were discriminating at the higher grades. Q2, Q8(ii), Q10(c), Q11(a) and Q14(b) proved to be the most challenging questions on the paper."
+   },
+   {
+    "k": "h",
+    "t": "Report on individual questions"
+   }
+  ],
+  "figures": []
+ }
+}
