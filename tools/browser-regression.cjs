@@ -125,7 +125,7 @@ const assert = require('node:assert/strict');
   if (!await p.locator(`[data-answer="${uid}"]`).count()) await p.locator(`[data-open="${uid}"]`).click();
   if (!await p.locator(`[data-mark="${uid}"]`).count()) await p.locator(`[data-scheme="${uid}"]`).click();
   await p.locator(`[data-mark="${uid}"]`).selectOption('0');
-  await p.locator(`[data-save-mark="${uid}"]`).click();
+  await p.locator('[data-mark-confirmation]:not([hidden])').first().waitFor();   // marks save as the slider settles
   await p.locator('[data-mark-confirmation]:visible').waitFor();
   assert(await p.locator(`[data-open="${uid}"]`).count());
   await p.waitForTimeout(1400);
@@ -151,7 +151,7 @@ const assert = require('node:assert/strict');
   await p.locator('[data-progress="unmarked"]').uncheck();
   console.log('progress checkbox union persisted across reload; removing one chip preserved the other');
   await p.locator(`[data-mark="${uid}"]`).selectOption('1');
-  await p.locator(`[data-save-mark="${uid}"]`).click();
+  await p.locator('[data-mark-confirmation]:not([hidden])').first().waitFor();   // marks save as the slider settles
   await p.waitForTimeout(1300);
   await p.reload();
   await p.waitForSelector('[data-reset-filters]');

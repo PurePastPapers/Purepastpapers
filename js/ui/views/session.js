@@ -275,6 +275,9 @@ export async function mount(element, context) {
                     </button>
                     <span class="spacer"></span>
                     ${position > 0 ? html`<button type="button" class="btn" data-go="${items[position - 1].start}">${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
+                    ${last
+                      ? html`<button type="button" class="btn" data-finish>Finish</button>`
+                      : html`<button type="button" class="btn" data-go="${items[position + 1]?.start}">Next ${icon('chevronRight', { size: 16 })}</button>`}
                     <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Mark scheme</button>`}
             </footer>`
           : html`<footer class="runner__nav">
@@ -376,6 +379,9 @@ export async function mount(element, context) {
                     </button>
                     <span class="spacer"></span>
                     ${position > 0 ? html`<button type="button" class="btn" data-go="${items[position - 1].start}">${icon('chevronLeft', { size: 16 })} Previous</button>` : ''}
+                    ${last
+                      ? html`<button type="button" class="btn" data-finish>Finish</button>`
+                      : html`<button type="button" class="btn" data-go="${items[position + 1].start}">Next ${icon('chevronRight', { size: 16 })}</button>`}
                     <button type="button" class="btn btn--primary" data-reveal="${id}">${icon('eye', { size: 16 })} Mark scheme for all parts</button>`}
             </footer>`
           : html`<footer class="runner__nav">
@@ -673,7 +679,7 @@ export async function mount(element, context) {
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="result-hero__left">
             <p class="hand">${KIND_LABELS[session.kind].toLowerCase()} complete</p>
-            ${result.questions_unmarked ? html`<p class="small muted">${plural(result.questions_unmarked, 'question')} left unmarked. This score covers marked questions only and is not a full paper result.${result.answers_saved_unmarked && api.isSignedIn() ? ` ${result.answers_saved_unmarked === 1 ? 'Your typed answer was' : `${result.answers_saved_unmarked} typed answers were`} saved to mark later in Practice.` : ''}</p>` : ''}
+            ${result.questions_unmarked ? html`<p class="small muted">${plural(result.questions_unmarked, 'question')} left unmarked. This score covers marked questions only and is not a full paper result.</p>` : ''}
             <h1 class="result-hero__score" tabindex="-1">
               <span class="result-hero__value">${result.marks_awarded}</span><span class="result-hero__max"> / ${result.max_marks}</span>
             </h1>
@@ -795,11 +801,7 @@ export async function mount(element, context) {
 
   /** Unmarked questions with a typed answer: these are saved to mark later when the session ends. */
   const typedUnmarked = () => questions.filter((question) => !Number.isInteger(session.marks[question.question_id]) && String(session.answers[question.question_id] || '').trim());
-  const unmarkedMessage = (unmarked, typed) => {
-    const left = `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} no mark and will be left out of the score.`;
-    if (!typed || !api.isSignedIn()) return left;
-    return `${left} Your typed ${typed === 1 ? 'answer is' : `answers to ${typed} of them are`} saved as answered, not marked, so you can mark ${typed === 1 ? 'it' : 'them'} later in Practice.`;
-  };
+  const unmarkedMessage = (unmarked) => `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} no mark and will be left out of the score.`;
 
   async function complete() {
     await finishSession(session, { questions, subject, paper, totalAwarded: session.total_awarded });
@@ -812,29 +814,8 @@ export async function mount(element, context) {
     if (each) {
       const typed = typedUnmarked();
       if (markedCount() === 0) {
-        // Typed answers can be kept without a mark: they count as done and can be marked later.
-        const choice = typed.length && api.isSignedIn()
-          ? await openModal({
-              title: 'Nothing has been marked',
-              body: html`<p>You can save your ${typed.length === 1 ? 'answer' : `${typed.length} answers`} without a mark. ${typed.length === 1 ? 'It counts' : 'They count'} as done and you can mark ${typed.length === 1 ? 'it' : 'them'} later in Practice.</p>`,
-              actions: [
-                { label: 'Keep going', cancel: true },
-                { label: 'Leave without saving', value: 'discard' },
-                { label: typed.length === 1 ? 'Save answer, mark later' : 'Save answers, mark later', value: 'save', variant: 'primary' },
-              ],
-            })
-          : (await confirmDialog({
-              title: 'Nothing has been marked',
-              message: 'No marks have been saved in this session, so nothing will be recorded. Leave anyway?',
-              confirmLabel: 'Leave',
-            })) && 'discard';
-        if (choice === 'save') {
-          await finishSession(session, { questions, subject, paper });
-          toast(typed.length === 1 ? 'Answer saved. Mark it later in Practice.' : 'Answers saved. Mark them later in Practice.', { type: 'success' });
-          leave();
-          return;
-        }
-        if (choice !== 'discard') return;
+        // Nothing marked: nothing to record. A typed answer is not kept as a separate "mark later" record.
+        if (typed.length && !(await confirmDialog({ title: 'Leave without marking?', message: 'No marks were given, so nothing will be recorded.', confirmLabel: 'Leave' }))) return;
         removed = true;
         await api.deleteSession(session.session_id);
         leave();
@@ -844,7 +825,7 @@ export async function mount(element, context) {
       if (unmarked > 0) {
         const proceed = await confirmDialog({
           title: 'Finish now?',
-          message: unmarkedMessage(unmarked, typed.length),
+          message: unmarkedMessage(unmarked),
           confirmLabel: 'Finish',
         });
         if (!proceed) return;
@@ -984,7 +965,7 @@ export async function mount(element, context) {
     if (unmarked > 0) {
       const proceed = await confirmDialog({
         title: 'Some questions are not marked',
-        message: unmarkedMessage(unmarked, typedUnmarked().length),
+        message: unmarkedMessage(unmarked),
         confirmLabel: 'Save results',
       });
       if (!proceed) return undefined;

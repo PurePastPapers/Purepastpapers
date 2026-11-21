@@ -2188,14 +2188,18 @@ input[type='checkbox']:not([role='switch']):disabled {
   color: var(--warn-ink);
   font-weight: 600;
 }
-.later {
+.markfoot {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px 10px;
+  gap: 4px 12px;
+  min-height: 22px;
 }
-.later__note:empty { display: none; }
-.qgroup__foot .later { flex-basis: 100%; }
+.markfoot__saved {
+  color: var(--good-ink);
+  font-weight: 600;
+}
+.markfoot [hidden] { display: none; }
 .progress-checkpoints .checkpoint { min-width: 0; }
 .progress-checkpoints .checkpoint span { min-width: 0; overflow-wrap: anywhere; }
 

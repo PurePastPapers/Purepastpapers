@@ -160,12 +160,9 @@ export async function finishSession(session, { questions, subject, paper = null,
       }
     : null;
 
-  // Typed answers left unmarked are kept, so they show as answered and can be marked later.
-  const scoredIds = new Set(scored.map((question) => question.question_id));
-  const unmarkedAnswers = questions
-    .filter((question) => !scoredIds.has(question.question_id) && String(session.answers?.[question.question_id] || '').trim())
-    .map((question) => ({ attempt_id: session.attempt_ids?.[question.question_id] || null, question_id: question.question_id, subject_id: session.subject_id, answer: session.answers[question.question_id], session_id: session.session_id }));
-  session.result.answers_saved_unmarked = unmarkedAnswers.length;
+  // Answers left unmarked are not kept as separate "mark later" records: an unmarked question is just skipped.
+  const unmarkedAnswers = [];
+  session.result.answers_saved_unmarked = 0;
 
   await api.commitSessionResult(session, questionAttempts, paperAttempt, unmarkedAnswers);
   return session.result;

@@ -62,7 +62,7 @@ test('older records get stable ids', async () => {
   assert.equal(api.attemptsFor('q1')[0].marks_awarded, 4);
 });
 
-test('tests keep typed answers to unmarked questions without counting them in the score', async () => {
+test('unmarked questions are skipped: not scored, and no "mark later" record is created', async () => {
   globalThis.localStorage = makeStorage();
   await api.init();
   await api.signUp({ email: 'test@example.test', password: 'password123', displayName: 'Test' });
@@ -74,10 +74,10 @@ test('tests keep typed answers to unmarked questions without counting them in th
   s.answers.q2 = 'typed, not marked';
   const result = await finishSession(s, { questions: [q, second, third], subject: {} });
   assert.equal(result.questions_unmarked, 2);
-  assert.equal(result.answers_saved_unmarked, 1);
+  assert.equal(result.answers_saved_unmarked, 0);
   assert.equal(result.max_marks, 5);
   const progress = api.getProgress();
-  assert.deepEqual(progress.saved_answers.map((entry) => [entry.question_id, entry.answer, entry.session_id]), [['q2', 'typed, not marked', s.session_id]]);
+  assert.deepEqual(progress.saved_answers, []);
   assert.equal(progress.question_attempts[0].answer, 'marked one');
 });
 

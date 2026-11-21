@@ -772,21 +772,16 @@ export async function mount(element, context) {
     return html`<p class="goline small">${icon('refresh', { size: 14 })}<span>${text}</span><button type="button" class="linkbtn small" data-choose-go="${cardId}">${needsChoice(cardId) ? 'Choose an attempt' : 'Switch'}</button></p>`;
   }
 
-  /** "Save answer, mark later": keeps the answer and records the go as done but not marked. */
-  function laterRow(cardId) {
-    const many = partsOf(cardId).length > 1;
-    const go = currentGo(cardId);
-    const marked = go && go.markedCount > 0 && !go.waiting;
-    const label = !user ? (many ? 'Create free account to save answers' : 'Create free account to save answer')
-      : marked ? (many ? 'Save changed answers' : 'Save changed answer')
-      : go ? (many ? 'Update saved answers' : 'Update saved answer')
-      : (many ? 'Save answers, mark later' : 'Save answer, mark later');
-    const note = !user ? '' : marked ? 'Your mark stays the same.'
-      : go ? `Saved ${whenLabel(go.when).toLowerCase()}, not marked yet.` : 'Counts as done. Mark it whenever you like.';
-    return html`<div class="later">
-      <button type="button" class="btn btn--sm later__btn" data-save-later="${cardId}">${icon('clock', { size: 15 })} ${label}</button>
-      <span class="small muted later__note">${note}</span>
-    </div>`;
+  /** Under the slider: what happened to the mark (saved in place, no button), an undo, and a nudge for guests. */
+  function markFoot(cardId, { saved = '', canUndo = false, group = false } = {}) {
+    return html`<div class="markfoot small">
+      <span class="markfoot__saved" role="status" data-mark-confirmation ${saved ? '' : 'hidden'}>${saved}</span>
+      ${group
+        ? html`<button type="button" class="linkbtn small" data-undo-group="${cardId}" ${canUndo ? '' : 'hidden'}>Undo last save</button>`
+        : html`<button type="button" class="linkbtn small" data-undo="${cardId}" ${canUndo ? '' : 'hidden'}>Undo last save</button>`}
+      ${user ? '' : html`<span class="muted">Marks are not kept yet. <button type="button" class="linkbtn small" data-signup>Create a free account</button> to save your scores.</span>`}
+    </div>
+    <p class="small form-error" role="alert" data-mark-error hidden></p>`;
   }
 
   /** The examiner's report toggle. It opens a panel under the question or mark scheme, whichever is showing. */
@@ -842,15 +837,13 @@ export async function mount(element, context) {
           <div class="qsplit__side stack stack--sm">
             ${goLine(qid)}
             <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${answerOf(qid)}</textarea></label>
-            ${laterRow(qid)}
             ${schemeOpen ? html`<section class="markbox stack stack--sm">
               ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'mark' })}
-              <div class="row row--tight"><button type="button" class="btn btn--primary btn--sm" data-save-mark="${qid}">${user ? (changing ? 'Change mark' : 'Save mark') : 'Create free account to save mark'}</button>
-                ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo="${question.question_id}">Undo last save</button>` : ''}</div>
-              <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>
+              ${markFoot(qid, { saved: changing && current && !current.waiting ? `Saved ${current.marks_awarded}/${question.marks}` : '', canUndo })}
             </section>` : ''}
             <div class="row row--tight">
               <button type="button" class="btn btn--sm ${schemeOpen ? '' : 'btn--primary'}" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? html`${icon('chevronLeft', { size: 15 })} Back to question` : html`${icon('eye', { size: 15 })} Show mark scheme`}</button>
+              <button type="button" class="btn btn--sm ${schemeOpen ? 'btn--primary' : ''}" data-next="${qid}">Next question ${icon('chevronRight', { size: 15 })}</button>
               ${reportButton(qid, paper)}
               ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, question.paper_id)}">View full paper</a>` : ''}
             </div>
@@ -935,21 +928,19 @@ export async function mount(element, context) {
           <div class="qgroup__foot">
             ${schemeOpen
               ? html`<p class="qgroup__total" data-group-total>Total <b>${total}</b> / ${entry.marks}</p>
+                ${markFoot(id, { saved: changing ? `Saved ${go.awarded}/${entry.marks}` : '', canUndo, group: true })}
                 <div class="row row--tight">
-                  <button type="button" class="btn btn--primary btn--sm" data-save-group="${id}">${user ? (changing ? 'Change marks' : `Save marks for all ${entry.parts.length} parts`) : 'Create free account to save marks'}</button>
-                  ${canUndo ? html`<button type="button" class="btn btn--sm" data-undo-group="${id}">Undo last save</button>` : ''}
                   <button type="button" class="btn btn--sm" data-scheme="${id}" aria-expanded="true">${icon('chevronLeft', { size: 15 })} Back to question</button>
                   ${reportButton(id, paper)}
-                </div>
-                ${laterRow(id)}
-                <p class="small form-error" role="alert" data-mark-error hidden></p><p class="small" role="status" data-mark-confirmation hidden></p>`
+                  <button type="button" class="btn btn--sm btn--primary" data-next="${id}">Next question ${icon('chevronRight', { size: 15 })}</button>
+                </div>`
               : html`<p class="small muted">Answer all ${entry.parts.length} parts, then check them together.</p>
                 <div class="row row--tight">
                   <button type="button" class="btn btn--primary btn--sm" data-scheme="${id}" aria-expanded="false">${icon('eye', { size: 15 })} Show mark scheme for all parts</button>
                   ${reportButton(id, paper)}
+                  <button type="button" class="btn btn--sm" data-next="${id}">Next question ${icon('chevronRight', { size: 15 })}</button>
                   ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, entry.paper_id)}">View full paper</a>` : ''}
-                </div>
-                ${laterRow(id)}`}
+                </div>`}
           </div>` : ''}
       </div>
       <div class="qcard__side">${marksPill(entry.marks)}<button type="button" class="btn btn--sm" data-open="${id}" aria-expanded="${open}">${open ? 'Hide question' : 'Show question'}</button></div>
@@ -1472,23 +1463,20 @@ export async function mount(element, context) {
       choosing = false;
     }
   }
-  // Clicking into the answer box of a question done before asks which go this is.
-  on(element, 'focusin', '[data-answer]', async (event, input) => {
+  // Re-trying a question done before starts a new attempt without asking; "Switch" on the goline
+  // still lets the student change an earlier one instead. Every attempt is kept.
+  const autoGo = (cardId) => { if (needsChoice(cardId)) state.goes[cardId] = 'new'; };
+  on(element, 'focusin', '[data-answer]', (event, input) => {
     const cardId = cardOf(input);
-    if (!cardId || !needsChoice(cardId)) return;
-    input.blur();
-    if (!(await chooseGo(cardId))) return;
-    redraw();
-    element.querySelector(`[data-answer="${CSS.escape(input.dataset.answer)}"]`)?.focus();
+    if (cardId) autoGo(cardId);
   });
   on(element, 'click', '[data-choose-go]', async (event, button) => {
     if (await chooseGo(button.dataset.chooseGo)) redraw();
   });
   /** Before saving, a question done before must have its go chosen. Returns true to carry on. */
   const goChosen = async (cardId) => {
-    if (!needsChoice(cardId)) return true;
-    if (await chooseGo(cardId)) redraw();
-    return false;
+    autoGo(cardId);
+    return true;
   };
   /** The id a linked question's new go shares across its parts (kept once the go exists). */
   const groupGoId = (cardId) => {
@@ -1501,68 +1489,79 @@ export async function mount(element, context) {
     return context.navigate(routeOf(links.signup(routeOf(links.practice({ subject: subjectId })))));
   };
 
-  const saveMark = async (id) => {
-    if (pendingMarks.has(id)) return;
-    const question = bundle.questionsById.get(id);
-    const value = element.querySelector(`[data-mark="${CSS.escape(id)}"]`)?.value ?? state.drafts[id]?.mark;
-    (state.drafts[id] ||= {}).mark = value;
-    const card = element.querySelector(`[data-mark="${CSS.escape(id)}"]`)?.closest('article');
+  /** Shows the result in place (no redraw), so the slider's colour and animation are not interrupted. */
+  const showSaved = (card, text, canUndo, group = false) => {
+    const confirmation = card?.querySelector('[data-mark-confirmation]');
+    if (confirmation) { confirmation.hidden = false; confirmation.textContent = text; }
+    const undo = card?.querySelector(group ? '[data-undo-group]' : '[data-undo]');
+    if (undo) undo.hidden = !canUndo;
     const error = card?.querySelector('[data-mark-error]');
-    if (value == null || value === '' || !Number.isInteger(Number(value)) || Number(value) < 0 || Number(value) > question.marks) {
-      error.hidden = false;
-      error.textContent = `Choose a whole number from 0 to ${question.marks}.`;
-      return;
-    }
-    if (!user) return goToSignup();
-    if (!(await goChosen(id))) return;
+    if (error) error.hidden = true;
+  };
+  const showError = (card, message) => {
+    const error = card?.querySelector('[data-mark-error]');
+    if (error) { error.hidden = false; error.textContent = message; }
+  };
+
+  // A mark saves as soon as the slider settles: one attempt per question (later moves update it).
+  const saveMark = async (id) => {
+    const question = bundle.questionsById.get(id);
+    const input = element.querySelector(`[data-mark="${CSS.escape(id)}"]`);
+    const card = input?.closest('article');
+    const value = input?.value ?? state.drafts[id]?.mark;
+    if (!question || value == null || value === '') return;
+    (state.drafts[id] ||= {}).mark = value;
+    if (!Number.isInteger(Number(value)) || Number(value) < 0 || Number(value) > question.marks) return;
+    if (!user) { save(); return; }   // guests keep the mark in their draft; the card says how to keep it
+    if (pendingMarks.has(id)) { markAgain.add(id); return; }
+    autoGo(id);
     pendingMarks.add(id);
-    for (const button of card.querySelectorAll('[data-save-mark]')) button.disabled = true;
     try {
       const attempt = partAttempt(id, id);
       const saved = await api.saveQuestionMark(question, Number(value), { attemptId: attempt?.attempt_id, reattempt: !attempt, answer: answerOf(id) });
       state.goes[id] = saved.attempt_id;
-      const confirmation = card?.querySelector('[data-mark-confirmation]');
-      if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${value}/${question.marks}.`; }
-      // Persist drafts before any delayed refresh. Do not redraw another route
-      // after navigation, or allow duplicate clicks to create extra attempts.
       save();
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      if (!element.isConnected) return;
-      redraw();
-      toast(`Saved ${value}/${question.marks}.`, { type: 'success' });
+      refreshLatest();
+      showSaved(card, `Saved ${value}/${question.marks}`, true);
     } catch (failure) {
-      if (error) { error.hidden = false; error.textContent = failure.message; }
+      showError(card, failure.message);
     } finally {
       pendingMarks.delete(id);
-      for (const button of card.querySelectorAll('[data-save-mark]')) button.disabled = false;
+      if (markAgain.delete(id) && element.isConnected) saveMark(id);
     }
   };
-  on(element, 'click', '[data-save-mark]', (event, button) => saveMark(button.dataset.saveMark));
-  // A linked group saves one attempt per part, after checking every part has a mark.
+  const markAgain = new Set();
+  const markTimers = new Map();
+  const queueSave = (key, task) => {
+    clearTimeout(markTimers.get(key));
+    markTimers.set(key, setTimeout(() => { markTimers.delete(key); if (element.isConnected) task(); }, 350));
+  };
+  on(element, 'change', '[data-mark]', (event, input) => {
+    const groupId = input.closest('[data-group]')?.dataset.group;
+    if (groupId) queueSave(groupId, () => saveGroup(groupId));
+    else queueSave(input.dataset.mark, () => saveMark(input.dataset.mark));
+  });
+  on(element, 'click', '[data-signup]', () => goToSignup());
+
+  // A linked group saves one attempt per part as soon as every part has a mark.
   const saveGroup = async (groupId) => {
-    if (pendingMarks.has(groupId)) return;
     const entry = groupEntry(groupId, bundle.questionsById);
     const card = element.querySelector(`[data-group="${CSS.escape(groupId)}"]`);
     if (!entry || !card) return;
-    const error = card.querySelector('[data-mark-error]');
     const values = entry.parts.map((part) => {
       const value = card.querySelector(`[data-mark="${CSS.escape(part.question_id)}"]`)?.value ?? state.drafts[part.question_id]?.mark;
       (state.drafts[part.question_id] ||= {}).mark = value;
       return value;
     });
-    const missing = entry.parts.filter((part, index) => {
+    const complete = entry.parts.every((part, index) => {
       const value = values[index];
-      return value == null || value === '' || !Number.isInteger(Number(value)) || Number(value) < 0 || Number(value) > part.marks;
+      return value != null && value !== '' && Number.isInteger(Number(value)) && Number(value) >= 0 && Number(value) <= part.marks;
     });
-    if (missing.length) {
-      error.hidden = false;
-      error.textContent = `Choose a mark for ${missing.map((part) => linkedPartLabel(part, entry)).join(', ')}.`;
-      return;
-    }
-    if (!user) return goToSignup();
-    if (!(await goChosen(groupId))) return;
+    if (!complete) return;   // saves once every part has a mark; the running total shows meanwhile
+    if (!user) { save(); return; }
+    if (pendingMarks.has(groupId)) { markAgain.add(groupId); return; }
+    autoGo(groupId);
     pendingMarks.add(groupId);
-    for (const button of card.querySelectorAll('[data-save-group]')) button.disabled = true;
     try {
       const go = currentGo(groupId);
       const shared = groupGoId(groupId);
@@ -1572,22 +1571,16 @@ export async function mount(element, context) {
       }
       state.goes[groupId] = shared || go.key;
       const total = values.reduce((sum, value) => sum + Number(value), 0);
-      const confirmation = card.querySelector('[data-mark-confirmation]');
-      if (confirmation) { confirmation.hidden = false; confirmation.textContent = `Saved ${total}/${entry.marks}.`; }
       save();
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      if (!element.isConnected) return;
-      redraw();
-      toast(`Saved ${total}/${entry.marks}.`, { type: 'success' });
+      refreshLatest();
+      showSaved(card, `Saved ${total}/${entry.marks}`, true, true);
     } catch (failure) {
-      error.hidden = false;
-      error.textContent = failure.message;
+      showError(card, failure.message);
     } finally {
       pendingMarks.delete(groupId);
-      for (const button of card.querySelectorAll('[data-save-group]')) button.disabled = false;
+      if (markAgain.delete(groupId) && element.isConnected) saveGroup(groupId);
     }
   };
-  on(element, 'click', '[data-save-group]', (event, button) => saveGroup(button.dataset.saveGroup));
   on(element, 'click', '[data-undo-group]', async (event, button) => {
     const groupId = button.dataset.undoGroup;
     const go = currentGo(groupId);
@@ -1615,31 +1608,21 @@ export async function mount(element, context) {
     toast('Last mark save undone.', { type: 'success' });
   });
 
-  // "Save answer, mark later" (or save a changed answer on an earlier go).
-  on(element, 'click', '[data-save-later]', async (event, button) => {
-    const cardId = button.dataset.saveLater;
-    const parts = partsOf(cardId);
-    if (!parts.length) return;
-    if (!user) return goToSignup();
-    if (!(await goChosen(cardId))) return;
-    button.disabled = true;
-    try {
-      const go = currentGo(cardId);
-      const linked = !bundle.questionsById.has(cardId);
-      const shared = linked ? groupGoId(cardId) : null;
-      let saved = null;
-      for (const part of parts) {
-        const text = element.querySelector(`[data-answer="${CSS.escape(part.question_id)}"]`)?.value ?? answerOf(cardId, part.question_id);
-        saved = await api.saveAnswerUnmarked(part, text, { attemptId: go?.parts.get(part.question_id)?.attempt_id, groupAttemptId: shared });
-      }
-      state.goes[cardId] = linked ? shared || go.key : saved.attempt_id;
-      redraw();
-      const kept = go && !go.waiting && go.markedCount;
-      toast(kept ? 'Answer changed. Your mark stays the same.'
-        : parts.length > 1 ? 'Answers saved. They count as done, and you can mark them later.' : 'Answer saved. It counts as done, and you can mark it later.', { type: 'success' });
-    } finally {
-      button.disabled = false;
-    }
+  // Next question: close this card and open the one below it. Never asks anything, and a typed
+  // answer stays in the draft (state.drafts) whether or not it was marked.
+  on(element, 'click', '[data-next]', (event, button) => {
+    const cards = [...element.querySelectorAll('article[data-card], article[data-group]')];
+    const here = button.closest('article');
+    const next = cards[cards.indexOf(here) + 1];
+    const id = button.dataset.next;
+    const nextId = next?.dataset.card || next?.dataset.group;
+    change(() => {
+      if (!state.closedQuestions.includes(id)) state.closedQuestions.push(id);
+      state.schemeQuestions = state.schemeQuestions.filter((item) => item !== id);
+      if (nextId) state.closedQuestions = state.closedQuestions.filter((item) => item !== nextId);
+    }, { keepControls: true, keepPage: true });
+    if (nextId) requestAnimationFrame(() => element.querySelector(`[data-card="${CSS.escape(nextId)}"], [data-group="${CSS.escape(nextId)}"]`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }));
+    else toast('That was the last question in this list.', { type: 'info' });
   });
 
   on(element, 'click', '[data-start-set]', async () => {

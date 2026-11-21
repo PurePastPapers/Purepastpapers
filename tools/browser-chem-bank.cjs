@@ -88,13 +88,13 @@ const year13 = results(units, (q) => q.introduced_year === 13);
     const markedId = await page.locator('[data-card]').first().getAttribute('data-card');
     const zeros = () => page.evaluate(async (id) => ((await import('/js/data/api.js')).getProgress().question_attempts || []).filter((a) => a.question_id === id && a.marks_awarded === 0).length, markedId);
     const zerosBefore = await zeros();
-    await page.locator('[data-save-mark]').first().click();
+    await page.locator('[data-mark-confirmation]:not([hidden])').first().waitFor();   // marks save as the slider settles
     // an account that has tried the question before is asked whether to change that attempt (560c827)
     const fresh = page.getByRole('button', {name: 'Start a new attempt'});
     if (await fresh.waitFor({timeout: 2000}).then(() => true, () => false)) {
       await fresh.click();
       await pickMark(page, 0);
-      await page.locator('[data-save-mark]').first().click();
+      await page.locator('[data-mark-confirmation]:not([hidden])').first().waitFor();   // marks save as the slider settles
     }
     await page.waitForTimeout(1400);
     await page.reload();

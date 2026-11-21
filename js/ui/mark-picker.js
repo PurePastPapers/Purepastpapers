@@ -1,14 +1,20 @@
 // The "what marks did you get" control used when you mark your own answer.
-//   1-6 marks → one button per mark value (0 to max).
-//   7+ marks  → a slider with − / + buttons and a large readout.
+//   1 mark   → two buttons (0 and 1).
+//   2+ marks → a slider with − / + buttons and a large readout.
+// The slider is coloured by score: green 70% and over, yellow 50 to 69%, red under 50%,
+// with a short pop when the value changes (motion is off for prefers-reduced-motion).
 // Either way the chosen value lives in a hidden input carrying the caller's data attribute
 // (data-mark or data-marks). The picker fires 'input' and 'change' on that hidden input,
 // so the views' existing listeners keep working unchanged.
 
 import { $, $$, html, on } from '../core/dom.js';
 import { icon } from './icons.js';
+import { ragFor } from '../engine/analytics.js';
 
-export const BUTTON_LIMIT = 6;
+export const BUTTON_LIMIT = 1;
+/** Score bands for the colour: share of the marks available. */
+export const BANDS = { green: 70, amber: 50 };
+export const bandFor = (value, max) => (max > 0 && Number.isFinite(value) ? ragFor((value / max) * 100, BANDS) : 'none');
 
 /** Tick labels under the slider. Every mark up to 15 on wide screens; on narrow screens the
  *  in-between labels (is-minor) hide so only about six remain. */
@@ -33,7 +39,7 @@ export function markPicker({ id, max, value = '', attr = 'mark', label }) {
   const hidden = html`<input type="hidden" data-${attr}="${id}" value="${set ? current : ''}" />`;
 
   if (max <= BUTTON_LIMIT) {
-    return html`<div class="markpick markpick--buttons" data-markpick data-max="${max}">
+    return html`<div class="markpick markpick--buttons" data-markpick data-max="${max}" data-rag="${set ? bandFor(current, max) : 'none'}">
       <span class="field__label" id="mp-${id}">${heading}</span>
       ${hidden}
       <div class="markpick__buttons" role="radiogroup" aria-labelledby="mp-${id}">
@@ -43,7 +49,7 @@ export function markPicker({ id, max, value = '', attr = 'mark', label }) {
   }
 
   const fill = set ? (current / max) * 100 : 0;
-  return html`<div class="markpick markpick--slider ${set ? '' : 'is-unset'}" data-markpick data-max="${max}" style="--fill:${fill}%">
+  return html`<div class="markpick markpick--slider ${set ? '' : 'is-unset'}" data-markpick data-max="${max}" data-rag="${set ? bandFor(current, max) : 'none'}" style="--fill:${fill}%">
     <div class="markpick__head">
       <span class="field__label" id="mp-${id}">${heading}</span>
       <output class="markpick__value" data-pick-value aria-live="polite">${set ? html`<b>${current}</b><span> / ${max}</span>` : html`<span class="markpick__hint">Slide to your mark</span>`}</output>
@@ -66,13 +72,21 @@ function apply(picker, raw) {
   const hidden = $('input[type="hidden"]', picker);
   hidden.value = String(value);
   $$('[data-pick]', picker).forEach((button) => button.setAttribute('aria-checked', String(Number(button.dataset.pick) === value)));
+  picker.dataset.rag = bandFor(value, max);
   const range = $('[data-pick-range]', picker);
   if (range) {
     range.value = String(value);
+    const changed = hidden.dataset.last !== String(value);
     picker.classList.remove('is-unset');
     picker.style.setProperty('--fill', `${(value / max) * 100}%`);
     $('[data-pick-value]', picker).innerHTML = `<b>${value}</b><span> / ${max}</span>`;
+    if (changed) {   // restart the pop animation
+      picker.classList.remove('is-pop');
+      void picker.offsetWidth;
+      picker.classList.add('is-pop');
+    }
   }
+  hidden.dataset.last = String(value);
   hidden.dispatchEvent(new Event('input', { bubbles: true }));
   hidden.dispatchEvent(new Event('change', { bubbles: true }));
 }

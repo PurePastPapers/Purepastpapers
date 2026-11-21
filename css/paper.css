@@ -1567,6 +1567,79 @@ input[type='radio'] {
 .markbox .markpick + .row {
   margin-top: 6px;
 }
+/* Score colour: green 70%+, yellow 50-69%, red under 50% (bandFor in mark-picker.js). */
+.markpick {
+  --scf: var(--ink-3);
+  --mark-ink: var(--ink);
+}
+.markpick[data-rag='green'] {
+  --scf: var(--good);
+  --mark-ink: var(--good-ink);
+}
+.markpick[data-rag='amber'] {
+  --scf: var(--warn);
+  --mark-ink: var(--warn-ink);
+}
+.markpick[data-rag='red'] {
+  --scf: var(--crit);
+  --mark-ink: var(--crit-ink);
+}
+.markpick__value b {
+  color: var(--mark-ink);
+  display: inline-block;
+}
+.markpick[data-rag='green'] .markpick__value::after {
+  content: '✓';
+  margin-left: 8px;
+  font: 400 24px/1 var(--font-display);
+  color: var(--good-ink);
+}
+.markpick__range::-webkit-slider-thumb {
+  border-color: var(--ink);
+  background: var(--scf, var(--surface));
+}
+.markpick__range::-moz-range-thumb {
+  border-color: var(--ink);
+  background: var(--scf, var(--surface));
+}
+.markpick.is-unset .markpick__range::-webkit-slider-thumb {
+  background: var(--surface);
+}
+.markpick.is-unset .markpick__range::-moz-range-thumb {
+  background: var(--surface);
+}
+.markpick--buttons .markpick__btn[aria-checked='true'] {
+  background: var(--scf);
+  color: var(--ink);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .markpick__range::-webkit-slider-runnable-track {
+    transition: background 0.25s;
+  }
+  .markpick.is-pop .markpick__value b {
+    animation: markpick-pop 0.22s ease-out;
+  }
+  .markpick.is-pop[data-rag='green'] .markpick__value::after {
+    animation: markpick-tick 0.3s ease-out;
+  }
+  .markpick.is-pop[data-rag='red'] .markpick__value b {
+    animation: markpick-nudge 0.26s ease-out;
+  }
+}
+@keyframes markpick-pop {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+@keyframes markpick-tick {
+  0% { opacity: 0; transform: scale(0.4) rotate(-20deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes markpick-nudge {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-3px); }
+  65% { transform: translateX(3px); }
+}
 @media (max-width: 640px) {
   .markpick__ticks .is-minor {
     font-size: 0;
