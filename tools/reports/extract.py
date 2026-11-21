@@ -36,7 +36,7 @@ from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
-EXTRACTOR_VERSION = 1
+EXTRACTOR_VERSION = 2
 FORMAT = 'examiner-report-text-v1'
 REPO = Path(__file__).resolve().parents[2]
 CACHE = Path(os.environ.get('PPP_REPORT_CACHE', Path.home() / '.cache' / 'ppp-reports'))
@@ -59,13 +59,14 @@ QWORD = r'(?:Questions?|Qu\.?|Q\.?)'
 HEADING = re.compile(
     rf'^{QWORD}\s*(?P<num>\d{{1,2}})(?P<parts>{PART_RUN})?'
     rf'(?P<more>(?:\s*(?:,|&|and|to|–|-)\s*(?:\d{{1,2}}(?:{PART_RUN})?|{PART_RUN}))*)'
-    rf'\s*(?P<title>(?:[:–—-]\s*.{{0,60}})?)\s*$',
+    rf'\s*(?P<title>(?:[:–—-]\s*.{{0,60}}|\((?:Mean|Average|Total|Max)[^)]{{0,60}}\)?)?)\s*$',
     re.I,
 )
 SUBPART = re.compile(rf'^(?P<parts>(?:{PART}\s*)+)\s*$', re.I)
 GENERAL_START = re.compile(r'^(Introduction|General [Cc]omments?|Overview|General [Ii]ntroduction)\b')
 SUMMARY_START = re.compile(r'^(Paper [Ss]ummary|Summary|Based on (their|the) performance on this paper)')
 STOP = re.compile(r'(Grade [Bb]oundaries|Pearson Education Limited\. Registered|Registered company number)')
+BOX_LABEL = re.compile(r'^Examiner(?:\'s)?\s+(Comments?|Tips?)$', re.I)
 BULLET = re.compile(r'^\s*(?:[•●▪◦‣·\-–]||)\s+')
 
 
@@ -131,7 +132,7 @@ def read_layout(pdf):
         xml = (Path(tmp) / 'r.xml').read_text(errors='replace')
     xml = re.sub(r'<!DOCTYPE[^>]*>', '', xml)
     root = ET.fromstring(xml)
-    fonts, pages = {}, []
+    fonts, pages, raw = {}, [], []
     for page in root.iter('page'):
         for spec in page.iter('fontspec'):
             fonts[spec.get('id')] = {'size': float(spec.get('size')), 'family': spec.get('family', '')}
@@ -147,13 +148,52 @@ def read_layout(pdf):
                 bold = bold or bool(re.search(r'bold|black|heavy', font.get('family', ''), re.I))
                 fragments.append({'top': float(node.get('top')), 'left': float(node.get('left')),
                                   'width': float(node.get('width')), 'height': float(node.get('height')),
-                                  'text': text, 'bold': bold, 'size': font.get('size', 0)})
+                                  'text': text, 'bold': bold, 'size': font.get('size', 0),
+                                  'family': font.get('family', '')})
             elif node.tag == 'image':
                 images.append({'top': float(node.get('top')), 'left': float(node.get('left')),
                                'width': float(node.get('width')), 'height': float(node.get('height'))})
+        raw.append((page, height, width, fragments, images))
+    sizes = Counter(round(f['size']) for *_, fragments, _ in raw for f in fragments if len(f['text'].strip()) > 20)
+    body = sizes.most_common(1)[0][0] if sizes else 12
+    for page, height, width, fragments, images in raw:
+        for frag in fragments:
+            frag['math'] = is_math_fragment(frag, body)
+        lines = merge_lines(fragments)
+        mark_math_lines(lines)
         pages.append({'number': int(page.get('number')), 'height': height, 'width': width,
-                      'lines': merge_lines(fragments), 'images': images})
+                      'lines': lines, 'images': images})
     return pages
+
+
+MATH_FONT = re.compile(r'Symbol|MT ?Extra|Math|Cambria ?Math|Euclid|Mathematica|MTSY|CMSY|CMMI|CMEX', re.I)
+PUA = re.compile(r'[\ue000-\uf8ff]')
+
+
+def is_math_fragment(frag, body):
+    """Pieces of an equation (Equation Editor / MathType output): symbol fonts, private-use
+    glyphs (stretchy brackets, fraction bars) and small raised or lowered figures."""
+    text = frag['text'].strip()
+    if BULLET.fullmatch(text + ' ') or text in {'•', '\uf0b7', '\uf0a7'}:
+        return False
+    if MATH_FONT.search(frag['family']) or PUA.search(text):
+        return True
+    return frag['size'] < body - 3 and len(text) <= 6
+
+
+def mark_math_lines(lines):
+    """A line is mathematics if it holds an equation piece, is a stray figure off the text
+    baseline (a numerator, an exponent), or shares its height with such a line."""
+    for line in lines:
+        short = len(line['text']) <= 3 and not line['bold'] and not BULLET.fullmatch(line['text'] + ' ')
+        line['math'] = line.get('math', False) or short
+    maths = [line for line in lines if line['math']]
+    for line in lines:
+        if line['math']:
+            continue
+        top, bottom = line['top'], line['top'] + line['height']
+        if any(m['top'] < bottom - 2 and m['top'] + m['height'] > top + 2 for m in maths):
+            line['math'] = True
 
 
 def merge_lines(fragments):
@@ -162,15 +202,18 @@ def merge_lines(fragments):
     lines = []
     for frag in fragments:
         line = lines[-1] if lines else None
-        if line and abs(line['top'] - frag['top']) <= 3 and frag['left'] >= line['right'] - 2:
+        # A wide gap is a second column (the "Examiner Comments | Examiner Tip" boxes), not one line.
+        if line and abs(line['top'] - frag['top']) <= 3 and line['right'] - 2 <= frag['left'] <= line['right'] + 15:
             gap = frag['left'] - line['right']
             line['text'] += ('' if gap < 1.5 or line['text'].endswith(' ') else ' ') + frag['text']
             line['right'] = frag['left'] + frag['width']
             line['bold'] = line['bold'] and frag['bold']
             line['height'] = max(line['height'], frag['height'])
+            line['math'] = line['math'] or frag.get('math', False)
         else:
             lines.append({'top': frag['top'], 'left': frag['left'], 'right': frag['left'] + frag['width'],
-                          'height': frag['height'], 'text': frag['text'], 'bold': frag['bold'], 'size': frag['size']})
+                          'height': frag['height'], 'text': frag['text'], 'bold': frag['bold'], 'size': frag['size'],
+                          'math': frag.get('math', False)})
     for line in lines:
         line['text'] = re.sub(r'\s+', ' ', line['text']).strip()
     return [line for line in lines if line['text']]
@@ -234,7 +277,36 @@ def split_report(pages):
                   if i['width'] > 60 and i['height'] > 30
                   and (round(i['top'] / 5), round(i['left'] / 5), round(i['width'] / 5)) not in logos]
         items.sort(key=lambda item: item[1]['top'])
+        box = None  # {'top', 'size', 'columns': [(label_left, kind, lines)]} for the box being read
+
+        def close_box():
+            nonlocal box
+            if box and current:
+                for _, box_kind, box_lines in sorted(box['columns'], key=lambda c: c[1] != 'ex'):
+                    text = ' '.join(l['text'] for l in box_lines).strip()
+                    if text:
+                        current['lines'].append({'box': box_kind, 'text': text, 'page': page['number'],
+                                                 'top': box_lines[0]['top'], 'height': 0, 'bold': False})
+            box = None
+
         for kind, item in items:
+            if kind == 'line':
+                label = BOX_LABEL.match(item['text'])
+                if label:
+                    box_kind = 'tip' if label[1].lower().startswith('tip') else 'ex'
+                    if box and abs(item['top'] - box['top']) <= 12:
+                        box['columns'].append((item['left'], box_kind, []))
+                    else:
+                        close_box()
+                        box = {'top': item['top'], 'size': None, 'columns': [(item['left'], box_kind, [])]}
+                    continue
+                if box and item['top'] > box['top'] - 12 and not item['bold'] and (box['size'] is None or abs(item['size'] - box['size']) < 0.6):
+                    box['size'] = item['size']
+                    centre = item['left'] + 40
+                    column = min(box['columns'], key=lambda c: abs(c[0] - centre))
+                    column[2].append(item)
+                    continue
+                close_box()
             if kind == 'image':
                 if current:
                     current['figures'][page['number']] += 1
@@ -258,6 +330,7 @@ def split_report(pages):
                 start('section', heading=f"Question {parent['q']}{part}", targets=[{'q': parent['q'], 'part': part}])
             elif current:
                 current['lines'].append({**item, 'page': page['number']})
+        close_box()
 
     out = {'sections': []}
     for name in ('general', 'summary'):
@@ -277,21 +350,41 @@ def finish(block):
     previous = None
     for line in lines:
         text = line['text']
+        if line.get('box'):
+            # "Examiner Comments" on an example script ('ex') or an "Examiner Tip" ('tip').
+            paras.append({'k': line['box'], 't': text})
+            previous = None
+            continue
         bullet = BULLET.match(text)
         gap = (line['top'] - previous['top']) if previous and previous['page'] == line['page'] else None
-        new = (previous is None or bullet or (gap is not None and gap > max(previous['height'], line['height']) * 1.6)
-               or (gap is not None and gap < 0) or line['bold'] != previous['bold']
-               or (previous and previous['page'] != line['page'] and previous['text'].rstrip().endswith(('.', ':', '?'))))
+        in_maths = previous is not None and (line.get('math') or previous.get('math')) and gap is not None and -40 < gap < max(previous['height'], line['height']) * 3.2
+        new = not in_maths and (
+            previous is None or bullet or (gap is not None and gap > max(previous['height'], line['height']) * 1.6)
+            or (gap is not None and gap < 0) or line['bold'] != previous['bold']
+            or (previous and previous['page'] != line['page'] and previous['text'].rstrip().endswith(('.', ':', '?'))))
         if new:
             kind = 'li' if bullet else 'h' if line['bold'] and len(text) < 90 else 'p'
-            paras.append({'k': kind, 't': BULLET.sub('', text) if bullet else text})
+            paras.append({'k': kind, 't': BULLET.sub('', text) if bullet else text, '_math': False, '_boxes': {}})
         else:
             last = paras[-1]
             joiner = '' if last['t'].endswith('-') and text[:1].islower() else ' '
             last['t'] = (last['t'] + joiner + text).strip()
+        last = paras[-1]
+        last['_math'] = last['_math'] or bool(line.get('math'))
+        box = last['_boxes'].setdefault(line['page'], [line['left'], line['top'], line.get('right', line['left']), line['top'] + line['height']])
+        box[0], box[1] = min(box[0], line['left']), min(box[1], line['top'])
+        box[2], box[3] = max(box[2], line.get('right', box[2])), max(box[3], line['top'] + line['height'])
         previous = line
-    pages = sorted({line['page'] for line in lines} | set(block['figures']))
-    return {'pages': pages, 'paras': paras,
+    regions = {}
+    for line in lines:
+        if line.get('box'):
+            continue
+        r = regions.setdefault(line['page'], [line['left'], line['top'], line.get('right', line['left']), line['top'] + line['height']])
+        r[0], r[1] = min(r[0], line['left']), min(r[1], line['top'])
+        r[2], r[3] = max(r[2], line.get('right', r[2])), max(r[3], line['top'] + line['height'])
+    block['_regions'] = regions
+    pages = sorted({line['page'] for line in lines if not line.get('box')} | set(block['figures'])) or sorted({line['page'] for line in lines})
+    return {'pages': pages, 'paras': paras, '_regions': regions,
             'figures': [{'page': page, 'count': count} for page, count in sorted(block['figures'].items())]}
 
 
@@ -329,9 +422,71 @@ def locate_pdf(url, pdf_dirs, fetch):
     return target
 
 
+WHOLE_SECTION_CROPS = {'maths'}  # equations on most lines: crop each question's comment whole
+
+
+def crop_maths(split, pdf, slug, paper_id):
+    """Paragraphs holding an equation become a crop of that paragraph (pdftotext flattens
+    fractions, powers and brackets into nonsense). The text stays as 't' for search and alt."""
+    from PIL import Image
+    folder = REPO / 'data/reports' / slug / 'img'
+    folder.mkdir(parents=True, exist_ok=True)
+    for old in folder.glob(f'{paper_id}_*.webp'):
+        old.unlink()
+    rendered = {}
+
+    def page_image(page):
+        if page not in rendered:
+            with tempfile.TemporaryDirectory() as tmp:
+                subprocess.run(['pdftoppm', '-r', str(CROP_DPI), '-gray', '-png', '-f', str(page), '-l', str(page),
+                                str(pdf), f'{tmp}/p'], check=True, capture_output=True)
+                rendered[page] = Image.open(next(Path(tmp).glob('p*.png'))).copy()
+        return rendered[page]
+
+    def save(page, x0, y0, x1, y1, name_out):
+        image = page_image(page)
+        scale = image.width / max(1, PAGE_WIDTHS.get(page, image.width))
+        box = [int(max(0, (x0 - 6) * scale)), int(max(0, (y0 - 8) * scale)),
+               int(min(image.width, (x1 + 8) * scale)), int(min(image.height, (y1 + 10) * scale))]
+        crop = image.crop(box)
+        crop.save(folder / name_out, 'WEBP', quality=CROP_QUALITY, method=6)
+        return {'src': f'{slug}/img/{name_out}', 'w': round(crop.width / scale), 'h': round(crop.height / scale)}
+
+    blocks = [('general', split.get('general')), ('summary', split.get('summary'))] + [(sec['id'], sec) for sec in split['sections']]
+    for name, block in blocks:
+        if not block:
+            continue
+        regions = block.pop('_regions', {})
+        if slug in WHOLE_SECTION_CROPS and any(p.get('_math') for p in block['paras']):
+            block['img'] = [save(page, *box, f'{paper_id}_{name}_p{page}.webp') for page, box in sorted(regions.items())]
+            continue
+        count = 0
+        for para in block['paras']:
+            boxes = para.pop('_boxes', {})
+            if not para.pop('_math', False) or para['k'] in ('ex', 'tip'):
+                continue
+            images = []
+            for page, box in sorted(boxes.items()):
+                count += 1
+                images.append(save(page, *box, f'{paper_id}_{name}_{count}.webp'))
+            para['img'] = images
+    for _, block in blocks:
+        (block or {}).pop('_regions', None)
+        for para in (block or {}).get('paras', []):
+            para.pop('_boxes', None); para.pop('_math', None)
+
+
+PAGE_WIDTHS = {}
+CROP_DPI = 150      # pdftohtml works at 108 dpi; 150 keeps small print sharp on phones
+CROP_QUALITY = 45
+
+
 def build_paper(paper, pdf, slug):
     pages = read_layout(pdf)
+    PAGE_WIDTHS.clear()
+    PAGE_WIDTHS.update({page['number']: page['width'] for page in pages})
     split = split_report(pages)
+    crop_maths(split, pdf, slug, paper['paper_id'])
     return {
         'format': FORMAT,
         'extractor_version': EXTRACTOR_VERSION,

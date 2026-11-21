@@ -59,6 +59,12 @@ def make_pdf(path):
     Image.new('L', (400, 160), 200).save(img)
     pdf.drawImage(str(img), 60, y - 170, width=300, height=160)
     y = para(y - 185, ['This response scored 2 marks.'])
+    # An "Examiner Comments | Examiner Tip" box: two columns on the same rows.
+    pdf.setFont('Helvetica-Bold', 9)
+    pdf.drawString(90, y, 'Examiner Comments'); pdf.drawString(330, y, 'Examiner Tip')
+    pdf.setFont('Helvetica', 8)
+    for n, (left, right) in enumerate([('This response gained the first', 'Always convert to SI'), ('mark only.', 'units first.')]):
+        pdf.drawString(70, y - 16 - 11 * n, left); pdf.drawString(310, y - 16 - 11 * n, right)
     pdf.showPage()
 
     chrome()
@@ -114,6 +120,9 @@ def run_self_test(extract):
         ('section continues across a page', 'should join the same section' in text(by.get('Question 2 (b)(i)', {'paras': []}))),
         ('page list spans both pages', by.get('Question 2 (b)(i)', {}).get('pages') == [2, 3]),
         ('example script counted', by.get('Question 2 (b)(i)', {}).get('figures') == [{'page': 2, 'count': 1}]),
+        ('box comment kept whole', {'k': 'ex', 't': 'This response gained the first mark only.'} in by['Question 2 (b)(i)']['paras']),
+        ('box tip kept whole', {'k': 'tip', 't': 'Always convert to SI units first.'} in by['Question 2 (b)(i)']['paras']),
+        ('section continues after a box', 'should join the same section' in text(by['Question 2 (b)(i)'])),
         ('running header dropped', 'Pearson Edexcel GCE' not in text(by.get('Question 2 (b)(i)', {'paras': []}))),
         ('bullets kept as list items', [p['k'] for p in by['Questions 3 and 4']['paras']] == ['p', 'li', 'li']),
         ('bold sub-part starts its own section', by.get('Question 5(b)', {}).get('targets') == [{'q': '5', 'part': '(b)'}]),

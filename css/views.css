@@ -1191,3 +1191,14 @@
   .erpanel { padding: 10px 11px 8px; font-size: 0.92rem; }
   .qsplit__main.is-scheme > .erpanel { margin-left: -8px; margin-right: -8px; }
 }
+.er-tip { padding: 6px 9px; border-radius: var(--radius-sm); background: var(--accent-wash); }
+.er-tip strong { margin-right: 4px; }
+.er-ex > summary { cursor: pointer; font-weight: 600; color: var(--ink-2); }
+.er-ex[open] > summary { margin-bottom: 6px; }
+.er-ex > ul { padding-left: 1.3em; list-style: disc; }
+.er-ex > ul > li + li { margin-top: 4px; }
+.er-ex > p { margin-top: 6px; }
+/* Crops of the printed report where it uses equations (Maths). Scaled to the panel; the
+   report text is the alt text. */
+.er-crops { display: grid; gap: 4px; }
+.er-crop { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; background: #fff; }

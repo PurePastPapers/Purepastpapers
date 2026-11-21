@@ -4,7 +4,7 @@
 // under it; if this fails after an import, run: python3 tools/assets/compact.py
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -16,6 +16,14 @@ test('image catalogues stay under the GitHub Pages size limit', () => {
   let total = 0;
   for (const dir of readdirSync(data).filter((name) => name.endsWith('-assets'))) {
     for (const file of readdirSync(path.join(data, dir))) total += statSync(path.join(data, dir, file)).size;
+  }
+  // Examiner report crops (docs/EXAMINER-REPORTS.md) are binary WebP; count them at base64
+  // size so the limit keeps the same meaning.
+  const reports = path.join(data, 'reports');
+  for (const subject of existsSync(reports) ? readdirSync(reports) : []) {
+    const img = path.join(reports, subject, 'img');
+    if (!existsSync(img)) continue;
+    for (const file of readdirSync(img)) total += Math.ceil(statSync(path.join(img, file)).size * 4 / 3);
   }
   assert.ok(total < LIMIT, `image catalogues are ${(total / 1e9).toFixed(2)} GB; run tools/assets/compact.py or host images elsewhere`);
 });
