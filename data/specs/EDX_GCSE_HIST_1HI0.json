@@ -1,129 +1,2010 @@
 {
   "subject_id": "EDX_GCSE_HIST_1HI0",
+  "specification_version": "pearson-1hi0-issue6-2024-06",
+  "official_source_url": "https://qualifications.pearson.com/content/dam/pdf/GCSE/History/2016/specification-and-sample-assessments/gcse-9-1-history-specification.pdf",
+  "order_status": "verified",
+  "official_source": {
+    "title": "Pearson Edexcel Level 1/Level 2 GCSE (9-1) in History (1HI0) specification",
+    "issue": "Issue 6",
+    "issue_date": "June 2024",
+    "first_teaching": 2016,
+    "first_exams": 2018,
+    "url": "https://qualifications.pearson.com/content/dam/pdf/GCSE/History/2016/specification-and-sample-assessments/gcse-9-1-history-specification.pdf",
+    "sha256": "a5d760fd3856bf16cc724ca33794d7b57b0e1c5d41c9d792a3001629c0fe9c09",
+    "verified_at": "2026-11-21"
+  },
+  "approach": "Official Pearson content order for the three options studied here: Paper 1 option 10, Paper 2 British depth study B1 and Paper 3 option 31. No textbook organisation has been supplied.",
+  "scope": {
+    "included_options": [
+      "10 (Crime and punishment in Britain, c1000–present, with Whitechapel, c1870–c1900)",
+      "B1 (Anglo-Saxon and Norman England, c1060–88)",
+      "31 (Weimar and Nazi Germany, 1918–39)"
+    ],
+    "excluded_options": [
+      "Paper 1 options 11, 12, 13",
+      "Paper 2 British depth studies B2, B3, B4",
+      "Paper 2 period studies P1 to P5 (the other booklet of every Paper 2 combination)",
+      "Paper 3 options 30, 32, 33"
+    ],
+    "dropped_legacy_ids": [
+      "EDX_GCSE_HIST_AMWEST_P3.1",
+      "EDX_GCSE_HIST_AMWEST_P3.2",
+      "EDX_GCSE_HIST_AMWEST_P3.3",
+      "EDX_GCSE_HIST_COLDWAR_P4.1",
+      "EDX_GCSE_HIST_COLDWAR_P4.2",
+      "EDX_GCSE_HIST_COLDWAR_P4.3",
+      "EDX_GCSE_HIST_ELIZ_B4.1",
+      "EDX_GCSE_HIST_ELIZ_B4.2",
+      "EDX_GCSE_HIST_ELIZ_B4.3",
+      "EDX_GCSE_HIST_MED_11.1",
+      "EDX_GCSE_HIST_MED_11.2",
+      "EDX_GCSE_HIST_MED_11.3",
+      "EDX_GCSE_HIST_MED_11.4",
+      "EDX_GCSE_HIST_MED_11.5",
+      "EDX_GCSE_HIST_RUSSIA_30.1",
+      "EDX_GCSE_HIST_RUSSIA_30.2",
+      "EDX_GCSE_HIST_RUSSIA_30.3",
+      "EDX_GCSE_HIST_RUSSIA_30.4",
+      "EDX_GCSE_HIST_USA_33.1",
+      "EDX_GCSE_HIST_USA_33.2",
+      "EDX_GCSE_HIST_USA_33.3",
+      "EDX_GCSE_HIST_USA_33.4"
+    ],
+    "not_edexcel_options": "Vikings and a local-history site study (Verulamium) are not options in this specification; no content was invented for them."
+  },
+  "components": {
+    "1HI0/10": {
+      "title": "Paper 1: Thematic study and historic environment (option 10)",
+      "marks": 52,
+      "minutes": 80
+    },
+    "1HI0/B1": {
+      "title": "Paper 2, Booklet B: British depth study (option B1)",
+      "marks": 32,
+      "minutes": 55
+    },
+    "1HI0/31": {
+      "title": "Paper 3: Modern depth study (option 31)",
+      "marks": 52,
+      "minutes": 90
+    }
+  },
+  "notes": "Runtime leaves are the official content bullets, Pearson wording verbatim. Strand numbers are Pearson's; bullets are unnumbered. Linear GCSE: no Year 10/11 split is recorded. Ids of the earlier unverified tree for options outside the scope were removed: EDX_GCSE_HIST_AMWEST_P3.1, EDX_GCSE_HIST_AMWEST_P3.2, EDX_GCSE_HIST_AMWEST_P3.3, EDX_GCSE_HIST_COLDWAR_P4.1, EDX_GCSE_HIST_COLDWAR_P4.2, EDX_GCSE_HIST_COLDWAR_P4.3, EDX_GCSE_HIST_ELIZ_B4.1, EDX_GCSE_HIST_ELIZ_B4.2, EDX_GCSE_HIST_ELIZ_B4.3, EDX_GCSE_HIST_MED_11.1, EDX_GCSE_HIST_MED_11.2, EDX_GCSE_HIST_MED_11.3, EDX_GCSE_HIST_MED_11.4, EDX_GCSE_HIST_MED_11.5, EDX_GCSE_HIST_RUSSIA_30.1, EDX_GCSE_HIST_RUSSIA_30.2, EDX_GCSE_HIST_RUSSIA_30.3, EDX_GCSE_HIST_RUSSIA_30.4, EDX_GCSE_HIST_USA_33.1, EDX_GCSE_HIST_USA_33.2, EDX_GCSE_HIST_USA_33.3, EDX_GCSE_HIST_USA_33.4",
+  "legacy_ids": {
+    "EDX_GCSE_HIST_CRIME_10.1": [
+      "EDX_GCSE_HIST_CRIME_10.1.1.1",
+      "EDX_GCSE_HIST_CRIME_10.1.1.2",
+      "EDX_GCSE_HIST_CRIME_10.1.2.1",
+      "EDX_GCSE_HIST_CRIME_10.1.2.2",
+      "EDX_GCSE_HIST_CRIME_10.1.3.1"
+    ],
+    "EDX_GCSE_HIST_CRIME_10.2": [
+      "EDX_GCSE_HIST_CRIME_10.2.1.1",
+      "EDX_GCSE_HIST_CRIME_10.2.1.2",
+      "EDX_GCSE_HIST_CRIME_10.2.2.1",
+      "EDX_GCSE_HIST_CRIME_10.2.2.2",
+      "EDX_GCSE_HIST_CRIME_10.2.3.1",
+      "EDX_GCSE_HIST_CRIME_10.2.3.2"
+    ],
+    "EDX_GCSE_HIST_CRIME_10.3": [
+      "EDX_GCSE_HIST_CRIME_10.3.1.1",
+      "EDX_GCSE_HIST_CRIME_10.3.1.2",
+      "EDX_GCSE_HIST_CRIME_10.3.2.1",
+      "EDX_GCSE_HIST_CRIME_10.3.2.2",
+      "EDX_GCSE_HIST_CRIME_10.3.3.1",
+      "EDX_GCSE_HIST_CRIME_10.3.3.2"
+    ],
+    "EDX_GCSE_HIST_CRIME_10.4": [
+      "EDX_GCSE_HIST_CRIME_10.4.1.1",
+      "EDX_GCSE_HIST_CRIME_10.4.1.2",
+      "EDX_GCSE_HIST_CRIME_10.4.2.1",
+      "EDX_GCSE_HIST_CRIME_10.4.2.2",
+      "EDX_GCSE_HIST_CRIME_10.4.3.1",
+      "EDX_GCSE_HIST_CRIME_10.4.3.2"
+    ],
+    "EDX_GCSE_HIST_CRIME_10.5": [
+      "EDX_GCSE_HIST_CRIME_10.5.1.1",
+      "EDX_GCSE_HIST_CRIME_10.5.1.2",
+      "EDX_GCSE_HIST_CRIME_10.5.1.3",
+      "EDX_GCSE_HIST_CRIME_10.5.1.4",
+      "EDX_GCSE_HIST_CRIME_10.5.1.5",
+      "EDX_GCSE_HIST_CRIME_10.5.2.1",
+      "EDX_GCSE_HIST_CRIME_10.5.2.2",
+      "EDX_GCSE_HIST_CRIME_10.5.2.3",
+      "EDX_GCSE_HIST_CRIME_10.5.2.4",
+      "EDX_GCSE_HIST_CRIME_10.5.2.5"
+    ],
+    "EDX_GCSE_HIST_NORMAN_B1.1": [
+      "EDX_GCSE_HIST_NORMAN_B1.1.1.1",
+      "EDX_GCSE_HIST_NORMAN_B1.1.1.2",
+      "EDX_GCSE_HIST_NORMAN_B1.1.2.1",
+      "EDX_GCSE_HIST_NORMAN_B1.1.2.2",
+      "EDX_GCSE_HIST_NORMAN_B1.1.3.1",
+      "EDX_GCSE_HIST_NORMAN_B1.1.3.2",
+      "EDX_GCSE_HIST_NORMAN_B1.1.3.3",
+      "EDX_GCSE_HIST_NORMAN_B1.1.4.1",
+      "EDX_GCSE_HIST_NORMAN_B1.1.4.2"
+    ],
+    "EDX_GCSE_HIST_NORMAN_B1.2": [
+      "EDX_GCSE_HIST_NORMAN_B1.2.1.1",
+      "EDX_GCSE_HIST_NORMAN_B1.2.1.2",
+      "EDX_GCSE_HIST_NORMAN_B1.2.1.3",
+      "EDX_GCSE_HIST_NORMAN_B1.2.2.1",
+      "EDX_GCSE_HIST_NORMAN_B1.2.3.1",
+      "EDX_GCSE_HIST_NORMAN_B1.2.3.2",
+      "EDX_GCSE_HIST_NORMAN_B1.2.4.1",
+      "EDX_GCSE_HIST_NORMAN_B1.2.4.2"
+    ],
+    "EDX_GCSE_HIST_NORMAN_B1.3": [
+      "EDX_GCSE_HIST_NORMAN_B1.3.1.1",
+      "EDX_GCSE_HIST_NORMAN_B1.3.1.2",
+      "EDX_GCSE_HIST_NORMAN_B1.3.1.3",
+      "EDX_GCSE_HIST_NORMAN_B1.3.2.1",
+      "EDX_GCSE_HIST_NORMAN_B1.3.2.2",
+      "EDX_GCSE_HIST_NORMAN_B1.3.2.3",
+      "EDX_GCSE_HIST_NORMAN_B1.3.3.1",
+      "EDX_GCSE_HIST_NORMAN_B1.3.3.2",
+      "EDX_GCSE_HIST_NORMAN_B1.3.4.1",
+      "EDX_GCSE_HIST_NORMAN_B1.3.4.2"
+    ],
+    "EDX_GCSE_HIST_GERMANY_31.1": [
+      "EDX_GCSE_HIST_GERMANY_31.1.1.1",
+      "EDX_GCSE_HIST_GERMANY_31.1.1.2",
+      "EDX_GCSE_HIST_GERMANY_31.1.2.1",
+      "EDX_GCSE_HIST_GERMANY_31.1.2.2",
+      "EDX_GCSE_HIST_GERMANY_31.1.2.3",
+      "EDX_GCSE_HIST_GERMANY_31.1.3.1",
+      "EDX_GCSE_HIST_GERMANY_31.1.3.2",
+      "EDX_GCSE_HIST_GERMANY_31.1.4.1",
+      "EDX_GCSE_HIST_GERMANY_31.1.4.2",
+      "EDX_GCSE_HIST_GERMANY_31.1.4.3"
+    ],
+    "EDX_GCSE_HIST_GERMANY_31.2": [
+      "EDX_GCSE_HIST_GERMANY_31.2.1.1",
+      "EDX_GCSE_HIST_GERMANY_31.2.1.2",
+      "EDX_GCSE_HIST_GERMANY_31.2.2.1",
+      "EDX_GCSE_HIST_GERMANY_31.2.2.2",
+      "EDX_GCSE_HIST_GERMANY_31.2.3.1",
+      "EDX_GCSE_HIST_GERMANY_31.2.3.2",
+      "EDX_GCSE_HIST_GERMANY_31.2.4.1"
+    ],
+    "EDX_GCSE_HIST_GERMANY_31.3": [
+      "EDX_GCSE_HIST_GERMANY_31.3.1.1",
+      "EDX_GCSE_HIST_GERMANY_31.3.1.2",
+      "EDX_GCSE_HIST_GERMANY_31.3.2.1",
+      "EDX_GCSE_HIST_GERMANY_31.3.2.2",
+      "EDX_GCSE_HIST_GERMANY_31.3.3.1",
+      "EDX_GCSE_HIST_GERMANY_31.3.3.2",
+      "EDX_GCSE_HIST_GERMANY_31.3.3.3",
+      "EDX_GCSE_HIST_GERMANY_31.3.4.1",
+      "EDX_GCSE_HIST_GERMANY_31.3.4.2",
+      "EDX_GCSE_HIST_GERMANY_31.3.4.3"
+    ],
+    "EDX_GCSE_HIST_GERMANY_31.4": [
+      "EDX_GCSE_HIST_GERMANY_31.4.1.1",
+      "EDX_GCSE_HIST_GERMANY_31.4.1.2",
+      "EDX_GCSE_HIST_GERMANY_31.4.2.1",
+      "EDX_GCSE_HIST_GERMANY_31.4.2.2",
+      "EDX_GCSE_HIST_GERMANY_31.4.3.1",
+      "EDX_GCSE_HIST_GERMANY_31.4.3.2",
+      "EDX_GCSE_HIST_GERMANY_31.4.4.1",
+      "EDX_GCSE_HIST_GERMANY_31.4.4.2"
+    ]
+  },
+  "point_order": [
+    "EDX_GCSE_HIST_CRIME_10.1.1.1",
+    "EDX_GCSE_HIST_CRIME_10.1.1.2",
+    "EDX_GCSE_HIST_CRIME_10.1.2.1",
+    "EDX_GCSE_HIST_CRIME_10.1.2.2",
+    "EDX_GCSE_HIST_CRIME_10.1.3.1",
+    "EDX_GCSE_HIST_CRIME_10.2.1.1",
+    "EDX_GCSE_HIST_CRIME_10.2.1.2",
+    "EDX_GCSE_HIST_CRIME_10.2.2.1",
+    "EDX_GCSE_HIST_CRIME_10.2.2.2",
+    "EDX_GCSE_HIST_CRIME_10.2.3.1",
+    "EDX_GCSE_HIST_CRIME_10.2.3.2",
+    "EDX_GCSE_HIST_CRIME_10.3.1.1",
+    "EDX_GCSE_HIST_CRIME_10.3.1.2",
+    "EDX_GCSE_HIST_CRIME_10.3.2.1",
+    "EDX_GCSE_HIST_CRIME_10.3.2.2",
+    "EDX_GCSE_HIST_CRIME_10.3.3.1",
+    "EDX_GCSE_HIST_CRIME_10.3.3.2",
+    "EDX_GCSE_HIST_CRIME_10.4.1.1",
+    "EDX_GCSE_HIST_CRIME_10.4.1.2",
+    "EDX_GCSE_HIST_CRIME_10.4.2.1",
+    "EDX_GCSE_HIST_CRIME_10.4.2.2",
+    "EDX_GCSE_HIST_CRIME_10.4.3.1",
+    "EDX_GCSE_HIST_CRIME_10.4.3.2",
+    "EDX_GCSE_HIST_CRIME_10.5.1.1",
+    "EDX_GCSE_HIST_CRIME_10.5.1.2",
+    "EDX_GCSE_HIST_CRIME_10.5.1.3",
+    "EDX_GCSE_HIST_CRIME_10.5.1.4",
+    "EDX_GCSE_HIST_CRIME_10.5.1.5",
+    "EDX_GCSE_HIST_CRIME_10.5.2.1",
+    "EDX_GCSE_HIST_CRIME_10.5.2.2",
+    "EDX_GCSE_HIST_CRIME_10.5.2.3",
+    "EDX_GCSE_HIST_CRIME_10.5.2.4",
+    "EDX_GCSE_HIST_CRIME_10.5.2.5",
+    "EDX_GCSE_HIST_NORMAN_B1.1.1.1",
+    "EDX_GCSE_HIST_NORMAN_B1.1.1.2",
+    "EDX_GCSE_HIST_NORMAN_B1.1.2.1",
+    "EDX_GCSE_HIST_NORMAN_B1.1.2.2",
+    "EDX_GCSE_HIST_NORMAN_B1.1.3.1",
+    "EDX_GCSE_HIST_NORMAN_B1.1.3.2",
+    "EDX_GCSE_HIST_NORMAN_B1.1.3.3",
+    "EDX_GCSE_HIST_NORMAN_B1.1.4.1",
+    "EDX_GCSE_HIST_NORMAN_B1.1.4.2",
+    "EDX_GCSE_HIST_NORMAN_B1.2.1.1",
+    "EDX_GCSE_HIST_NORMAN_B1.2.1.2",
+    "EDX_GCSE_HIST_NORMAN_B1.2.1.3",
+    "EDX_GCSE_HIST_NORMAN_B1.2.2.1",
+    "EDX_GCSE_HIST_NORMAN_B1.2.3.1",
+    "EDX_GCSE_HIST_NORMAN_B1.2.3.2",
+    "EDX_GCSE_HIST_NORMAN_B1.2.4.1",
+    "EDX_GCSE_HIST_NORMAN_B1.2.4.2",
+    "EDX_GCSE_HIST_NORMAN_B1.3.1.1",
+    "EDX_GCSE_HIST_NORMAN_B1.3.1.2",
+    "EDX_GCSE_HIST_NORMAN_B1.3.1.3",
+    "EDX_GCSE_HIST_NORMAN_B1.3.2.1",
+    "EDX_GCSE_HIST_NORMAN_B1.3.2.2",
+    "EDX_GCSE_HIST_NORMAN_B1.3.2.3",
+    "EDX_GCSE_HIST_NORMAN_B1.3.3.1",
+    "EDX_GCSE_HIST_NORMAN_B1.3.3.2",
+    "EDX_GCSE_HIST_NORMAN_B1.3.4.1",
+    "EDX_GCSE_HIST_NORMAN_B1.3.4.2",
+    "EDX_GCSE_HIST_GERMANY_31.1.1.1",
+    "EDX_GCSE_HIST_GERMANY_31.1.1.2",
+    "EDX_GCSE_HIST_GERMANY_31.1.2.1",
+    "EDX_GCSE_HIST_GERMANY_31.1.2.2",
+    "EDX_GCSE_HIST_GERMANY_31.1.2.3",
+    "EDX_GCSE_HIST_GERMANY_31.1.3.1",
+    "EDX_GCSE_HIST_GERMANY_31.1.3.2",
+    "EDX_GCSE_HIST_GERMANY_31.1.4.1",
+    "EDX_GCSE_HIST_GERMANY_31.1.4.2",
+    "EDX_GCSE_HIST_GERMANY_31.1.4.3",
+    "EDX_GCSE_HIST_GERMANY_31.2.1.1",
+    "EDX_GCSE_HIST_GERMANY_31.2.1.2",
+    "EDX_GCSE_HIST_GERMANY_31.2.2.1",
+    "EDX_GCSE_HIST_GERMANY_31.2.2.2",
+    "EDX_GCSE_HIST_GERMANY_31.2.3.1",
+    "EDX_GCSE_HIST_GERMANY_31.2.3.2",
+    "EDX_GCSE_HIST_GERMANY_31.2.4.1",
+    "EDX_GCSE_HIST_GERMANY_31.3.1.1",
+    "EDX_GCSE_HIST_GERMANY_31.3.1.2",
+    "EDX_GCSE_HIST_GERMANY_31.3.2.1",
+    "EDX_GCSE_HIST_GERMANY_31.3.2.2",
+    "EDX_GCSE_HIST_GERMANY_31.3.3.1",
+    "EDX_GCSE_HIST_GERMANY_31.3.3.2",
+    "EDX_GCSE_HIST_GERMANY_31.3.3.3",
+    "EDX_GCSE_HIST_GERMANY_31.3.4.1",
+    "EDX_GCSE_HIST_GERMANY_31.3.4.2",
+    "EDX_GCSE_HIST_GERMANY_31.3.4.3",
+    "EDX_GCSE_HIST_GERMANY_31.4.1.1",
+    "EDX_GCSE_HIST_GERMANY_31.4.1.2",
+    "EDX_GCSE_HIST_GERMANY_31.4.2.1",
+    "EDX_GCSE_HIST_GERMANY_31.4.2.2",
+    "EDX_GCSE_HIST_GERMANY_31.4.3.1",
+    "EDX_GCSE_HIST_GERMANY_31.4.3.2",
+    "EDX_GCSE_HIST_GERMANY_31.4.4.1",
+    "EDX_GCSE_HIST_GERMANY_31.4.4.2"
+  ],
   "sections": [
     {
       "id": "EDX_GCSE_HIST_SEC_P1",
-      "title": "Paper 1: Thematic study and historic environment",
-      "note": "Tick the option your school studies",
+      "code": "10",
+      "title": "Paper 1, Option 10: Crime and punishment in Britain, c1000–present and Whitechapel, c1870–c1900: crime, policing and the inner city",
       "topics": [
         {
-          "id": "EDX_GCSE_HIST_MED",
-          "code": "11",
-          "title": "Medicine in Britain, c1250–present",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_CRIME_T1",
+          "code": "10.1",
+          "title": "c1000–c1500: Crime and punishment in medieval England",
           "points": [
-            {"id":"EDX_GCSE_HIST_MED_11.1","code":"11.1","title":"c1250–c1500: Medicine in medieval England"},
-            {"id":"EDX_GCSE_HIST_MED_11.2","code":"11.2","title":"c1500–c1700: The Medical Renaissance in England"},
-            {"id":"EDX_GCSE_HIST_MED_11.3","code":"11.3","title":"c1700–c1900: Medicine in eighteenth- and nineteenth-century Britain"},
-            {"id":"EDX_GCSE_HIST_MED_11.4","code":"11.4","title":"c1900–present: Medicine in modern Britain"},
-            {"id":"EDX_GCSE_HIST_MED_11.5","code":"11.5","title":"Historic environment: the British sector of the Western Front, 1914–18"}
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.1.1.1",
+              "code": "10.1.1.1",
+              "title": "Crimes against the person, property and authority",
+              "content": "Crimes against the person, property and authority, including poaching as an example of ‘social’ crime.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1000–c1500: Crime and punishment in medieval England",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 1,
+                "source_pages": [
+                  8
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.1.1.2",
+              "code": "10.1.1.2",
+              "title": "Changing definitions of crime as a result of the Norman Conquest",
+              "content": "Changing definitions of crime as a result of the Norman Conquest, including William I’s Forest Laws.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1000–c1500: Crime and punishment in medieval England",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 2,
+                "source_pages": [
+                  8
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.1.2.1",
+              "code": "10.1.2.1",
+              "title": "The role of the authorities and local communities in law enforcement in Anglo-Saxon, Norman and later medieval England",
+              "content": "The role of the authorities and local communities in law enforcement in Anglo-Saxon, Norman and later medieval England, including tithings, the hue and cry, and the parish constable.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1000–c1500: Crime and punishment in medieval England",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 1,
+                "source_pages": [
+                  8
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.1.2.2",
+              "code": "10.1.2.2",
+              "title": "The emphasis on deterrence and retribution",
+              "content": "The emphasis on deterrence and retribution, the use of fines, corporal and capital punishment. The use and end of the Saxon Wergild.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1000–c1500: Crime and punishment in medieval England",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 2,
+                "source_pages": [
+                  8
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.1.3.1",
+              "code": "10.1.3.1",
+              "title": "The influence of the Church on crime and punishment in the early thirteenth century",
+              "content": "The influence of the Church on crime and punishment in the early thirteenth century: the significance of Sanctuary and Benefit of Clergy; the use of trial by ordeal and reasons for its ending.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1000–c1500: Crime and punishment in medieval England",
+                "strand": 3,
+                "strand_title": "Case study",
+                "bullet": 1,
+                "source_pages": [
+                  8
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_HIST_CRIME",
-          "code": "10",
-          "title": "Crime and punishment in Britain, c1000–present",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_CRIME_T2",
+          "code": "10.2",
+          "title": "c1500–c1700: Crime and punishment in early modern England",
           "points": [
-            {"id":"EDX_GCSE_HIST_CRIME_10.1","code":"10.1","title":"c1000–c1500: Crime and punishment in medieval England"},
-            {"id":"EDX_GCSE_HIST_CRIME_10.2","code":"10.2","title":"c1500–c1700: Crime and punishment in early modern England"},
-            {"id":"EDX_GCSE_HIST_CRIME_10.3","code":"10.3","title":"c1700–c1900: Crime and punishment in eighteenth- and nineteenth-century Britain"},
-            {"id":"EDX_GCSE_HIST_CRIME_10.4","code":"10.4","title":"c1900–present: Crime and punishment in modern Britain"},
-            {"id":"EDX_GCSE_HIST_CRIME_10.5","code":"10.5","title":"Historic environment: Whitechapel, c1870–c1900"}
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.2.1.1",
+              "code": "10.2.1.1",
+              "title": "Continuity and change in the nature of crimes against the person, property and authority",
+              "content": "Continuity and change in the nature of crimes against the person, property and authority, including heresy and treason.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1500–c1700: Crime and punishment in early modern England",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.2.1.2",
+              "code": "10.2.1.2",
+              "title": "New definitions of crime in the sixteenth century",
+              "content": "New definitions of crime in the sixteenth century: vagabondage and witchcraft.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1500–c1700: Crime and punishment in early modern England",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.2.2.1",
+              "code": "10.2.2.1",
+              "title": "The role of the authorities and local communities in law enforcement",
+              "content": "The role of the authorities and local communities in law enforcement, including town watchmen.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1500–c1700: Crime and punishment in early modern England",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.2.2.2",
+              "code": "10.2.2.2",
+              "title": "The continued use of corporal and capital punishment",
+              "content": "The continued use of corporal and capital punishment; the introduction of transportation and the start of the Bloody Code.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1500–c1700: Crime and punishment in early modern England",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.2.3.1",
+              "code": "10.2.3.1",
+              "title": "The Gunpowder Plotters, 1605",
+              "content": "The Gunpowder Plotters, 1605: their crimes and punishment.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1500–c1700: Crime and punishment in early modern England",
+                "strand": 3,
+                "strand_title": "Case studies",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.2.3.2",
+              "code": "10.2.3.2",
+              "title": "Key individual",
+              "content": "Key individual: Matthew Hopkins and the witch-hunts of 1645–47. The reasons for their intensity; the punishment of those convicted.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1500–c1700: Crime and punishment in early modern England",
+                "strand": 3,
+                "strand_title": "Case studies",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_GCSE_HIST_CRIME_T3",
+          "code": "10.3",
+          "title": "c1700–c1900: Crime and punishment in eighteenth- and nineteenth-",
+          "points": [
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.3.1.1",
+              "code": "10.3.1.1",
+              "title": "Continuity and change in the nature of crimes against the person, property and authority",
+              "content": "Continuity and change in the nature of crimes against the person, property and authority, including highway robbery, poaching and smuggling.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1700–c1900: Crime and punishment in eighteenth- and nineteenth-",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.3.1.2",
+              "code": "10.3.1.2",
+              "title": "Changing definitions of crime exemplified in the ending of witchcraft prosecutions and treatment of the Tolpuddle Martyrs",
+              "content": "Changing definitions of crime exemplified in the ending of witchcraft prosecutions and treatment of the Tolpuddle Martyrs.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1700–c1900: Crime and punishment in eighteenth- and nineteenth-",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.3.2.1",
+              "code": "10.3.2.1",
+              "title": "The role of the authorities and local communities in law enforcement",
+              "content": "The role of the authorities and local communities in law enforcement, including the work of the Fielding brothers. The development of police forces and the beginning of CID.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1700–c1900: Crime and punishment in eighteenth- and nineteenth-",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.3.2.2",
+              "code": "10.3.2.2",
+              "title": "Changing views on the purpose of punishment",
+              "content": "Changing views on the purpose of punishment. The use and ending of transportation, public execution and the Bloody Code. Prison reform, including the influence of John Howard and Elizabeth Fry.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1700–c1900: Crime and punishment in eighteenth- and nineteenth-",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.3.3.1",
+              "code": "10.3.3.1",
+              "title": "Pentonville prison in the mid nineteenth century",
+              "content": "Pentonville prison in the mid nineteenth century: reasons for its construction; the strengths and weaknesses of the separate system in operation.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1700–c1900: Crime and punishment in eighteenth- and nineteenth-",
+                "strand": 3,
+                "strand_title": "Case studies",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.3.3.2",
+              "code": "10.3.3.2",
+              "title": "Key individual",
+              "content": "Key individual: Robert Peel – his contribution to penal reform and to the development of the Metropolitan Police Force.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1700–c1900: Crime and punishment in eighteenth- and nineteenth-",
+                "strand": 3,
+                "strand_title": "Case studies",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_GCSE_HIST_CRIME_T4",
+          "code": "10.4",
+          "title": "c1900–present: Crime and punishment in modern Britain",
+          "points": [
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.4.1.1",
+              "code": "10.4.1.1",
+              "title": "Continuity and change in the nature of crimes against the person, property and authority",
+              "content": "Continuity and change in the nature of crimes against the person, property and authority, including new forms of theft and smuggling.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1900–present: Crime and punishment in modern Britain",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.4.1.2",
+              "code": "10.4.1.2",
+              "title": "Changing definitions of crime, including driving offences, race crimes and drug crimes",
+              "content": "Changing definitions of crime, including driving offences, race crimes and drug crimes.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1900–present: Crime and punishment in modern Britain",
+                "strand": 1,
+                "strand_title": "Nature and changing definitions of criminal activity",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.4.2.1",
+              "code": "10.4.2.1",
+              "title": "The role of the authorities and local communities in law enforcement",
+              "content": "The role of the authorities and local communities in law enforcement, including the development of Neighbourhood Watch. Changes within the police force: increasing specialisation, use of science and technology and the move towards prevention.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1900–present: Crime and punishment in modern Britain",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.4.2.2",
+              "code": "10.4.2.2",
+              "title": "The abolition of the death penalty",
+              "content": "The abolition of the death penalty; changes to prisons, including the development of open prisons and specialised treatment of young offenders; the development of non-custodial alternatives to prison.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1900–present: Crime and punishment in modern Britain",
+                "strand": 2,
+                "strand_title": "The nature of law enforcement and punishment",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.4.3.1",
+              "code": "10.4.3.1",
+              "title": "The treatment of Conscientious Objectors in the First and Second World Wars",
+              "content": "The treatment of Conscientious Objectors in the First and Second World Wars.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1900–present: Crime and punishment in modern Britain",
+                "strand": 3,
+                "strand_title": "Case studies",
+                "bullet": 1,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.4.3.2",
+              "code": "10.4.3.2",
+              "title": "The Derek Bentley case",
+              "content": "The Derek Bentley case: its significance for the abolition of the death penalty.",
+              "official_reference": {
+                "option": "10",
+                "topic": "c1900–present: Crime and punishment in modern Britain",
+                "strand": 3,
+                "strand_title": "Case studies",
+                "bullet": 2,
+                "source_pages": [
+                  9
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_GCSE_HIST_CRIME_T5",
+          "code": "10.5",
+          "title": "The historic environment",
+          "points": [
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.1.1",
+              "code": "10.5.1.1",
+              "title": "The local context of Whitechapel",
+              "content": "The local context of Whitechapel. The problems of housing and overcrowding. Attempts to improve housing: the Peabody Estate. Provision for the poor in the Whitechapel workhouses. Links between the environment and crime. Life in Whitechapel as an inner city area of poverty and discontent.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 1,
+                "strand_title": "Whitechapel, c1870–c1900: crime, policing and the inner city",
+                "bullet": 1,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.1.2",
+              "code": "10.5.1.2",
+              "title": "The inhabitants of Whitechapel",
+              "content": "The inhabitants of Whitechapel. The lack of employment opportunities and level of poverty. The prevalence of lodging houses and pubs creating a fluctuating population without ties to the community. The impact of changing patterns of migration: the settlement of migrants from Ireland and Eastern Europe, and the increase in Jewish migration during the 1880s.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 1,
+                "strand_title": "Whitechapel, c1870–c1900: crime, policing and the inner city",
+                "bullet": 2,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.1.3",
+              "code": "10.5.1.3",
+              "title": "The organisation of policing in Whitechapel",
+              "content": "The organisation of policing in Whitechapel. The role of the ‘beat constable’. The work of H division and the difficulties of policing the slum area of Whitechapel, the rookeries, alleys and courts. Problems of policing caused by crime and antisocial behaviour: alcohol, prostitution, protection rackets, gangs, violent demonstrations and attacks on Jewish people.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 1,
+                "strand_title": "Whitechapel, c1870–c1900: crime, policing and the inner city",
+                "bullet": 3,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.1.4",
+              "code": "10.5.1.4",
+              "title": "Investigative policing in Whitechapel",
+              "content": "Investigative policing in Whitechapel: developments in techniques of detective investigation, including the use of sketches, photographs and interviews; problems caused by the need for cooperation between the Metropolitan Police, the City of London Police and Scotland Yard. Dealing with the crimes of Jack the Ripper and the added problems caused by the media reporting of the ‘Ripper’ murders. The Whitechapel Vigilance Committee.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 1,
+                "strand_title": "Whitechapel, c1870–c1900: crime, policing and the inner city",
+                "bullet": 4,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.1.5",
+              "code": "10.5.1.5",
+              "title": "The national and regional context",
+              "content": "The national and regional context: the working of the Metropolitan Police, the quality of police recruits. The development of CID, the role of the Home Secretary and of Sir Charles Warren, public attitudes towards the police.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 1,
+                "strand_title": "Whitechapel, c1870–c1900: crime, policing and the inner city",
+                "bullet": 5,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.2.1",
+              "code": "10.5.2.1",
+              "title": "Knowledge of local sources relevant to the period and issue, e.g",
+              "content": "Knowledge of local sources relevant to the period and issue, e.g. housing and employment records, council records and census returns, Charles Booth’s survey, workhouse records, local police records, coroners’ reports, photographs and London newspapers.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 2,
+                "strand_title": "Knowledge, selection and use of sources for historical enquiries",
+                "bullet": 1,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.2.2",
+              "code": "10.5.2.2",
+              "title": "Knowledge of national sources relevant to the period and issue, e.g",
+              "content": "Knowledge of national sources relevant to the period and issue, e.g. national newspapers, records of crimes and police investigations, Old Bailey records of trials and Punch cartoons.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 2,
+                "strand_title": "Knowledge, selection and use of sources for historical enquiries",
+                "bullet": 2,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.2.3",
+              "code": "10.5.2.3",
+              "title": "Recognition of the strengths and weaknesses of different types of source for specific enquiries",
+              "content": "Recognition of the strengths and weaknesses of different types of source for specific enquiries.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 2,
+                "strand_title": "Knowledge, selection and use of sources for historical enquiries",
+                "bullet": 3,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.2.4",
+              "code": "10.5.2.4",
+              "title": "Framing of questions relevant to the pursuit of a specific enquiry",
+              "content": "Framing of questions relevant to the pursuit of a specific enquiry.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 2,
+                "strand_title": "Knowledge, selection and use of sources for historical enquiries",
+                "bullet": 4,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_CRIME_10.5.2.5",
+              "code": "10.5.2.5",
+              "title": "Selection of appropriate sources for specific investigations",
+              "content": "Selection of appropriate sources for specific investigations.",
+              "official_reference": {
+                "option": "10",
+                "topic": "The historic environment",
+                "strand": 2,
+                "strand_title": "Knowledge, selection and use of sources for historical enquiries",
+                "bullet": 5,
+                "source_pages": [
+                  10
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "EDX_GCSE_HIST_SEC_P2",
-      "title": "Paper 2: Period study and British depth study",
-      "note": "Tick the options your school studies",
+      "code": "B1",
+      "title": "Paper 2, Booklet B, Option B1: Anglo-Saxon and Norman England, c1060–88",
       "topics": [
         {
-          "id": "EDX_GCSE_HIST_COLDWAR",
-          "code": "P4",
-          "title": "Superpower relations and the Cold War, 1941–91",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_NORMAN_T1",
+          "code": "B1.1",
+          "title": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
           "points": [
-            {"id":"EDX_GCSE_HIST_COLDWAR_P4.1","code":"P4.1","title":"The origins of the Cold War, 1941–58"},
-            {"id":"EDX_GCSE_HIST_COLDWAR_P4.2","code":"P4.2","title":"Cold War crises, 1958–70"},
-            {"id":"EDX_GCSE_HIST_COLDWAR_P4.3","code":"P4.3","title":"The end of the Cold War, 1970–91"}
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.1.1",
+              "code": "B1.1.1.1",
+              "title": "Monarchy and government",
+              "content": "Monarchy and government. The power of the English monarchy. Earldoms, local government and the legal system.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 1,
+                "strand_title": "Anglo-Saxon government, economy and society",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.1.2",
+              "code": "B1.1.1.2",
+              "title": "The economy and social system",
+              "content": "The economy and social system. Towns and villages. The influence of the Church.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 1,
+                "strand_title": "Anglo-Saxon government, economy and society",
+                "bullet": 2,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.2.1",
+              "code": "B1.1.2.1",
+              "title": "The significance and power of the house of Godwin",
+              "content": "The significance and power of the house of Godwin. Harold Godwinson’s succession as Earl of Wessex.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 2,
+                "strand_title": "The last years of Edward the Confessor and the succession crisis",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.2.2",
+              "code": "B1.1.2.2",
+              "title": "Harold Godwinson’s embassy to Normandy",
+              "content": "Harold Godwinson’s embassy to Normandy. The reasons for the rising against Tostig and his exile. The death of Edward the Confessor.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 2,
+                "strand_title": "The last years of Edward the Confessor and the succession crisis",
+                "bullet": 2,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.3.1",
+              "code": "B1.1.3.1",
+              "title": "The motives and claims of William of Normandy, Harald Hardrada and Edgar the Aethling",
+              "content": "The motives and claims of William of Normandy, Harald Hardrada and Edgar the Aethling.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 3,
+                "strand_title": "The rival claimants for the throne",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.3.2",
+              "code": "B1.1.3.2",
+              "title": "The Witan and the coronation and reign of Harold Godwinson",
+              "content": "The Witan and the coronation and reign of Harold Godwinson.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 3,
+                "strand_title": "The rival claimants for the throne",
+                "bullet": 2,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.3.3",
+              "code": "B1.1.3.3",
+              "title": "Reasons for, and significance of",
+              "content": "Reasons for, and significance of, the outcome of the battles of Gate Fulford and Stamford Bridge.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 3,
+                "strand_title": "The rival claimants for the throne",
+                "bullet": 3,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.4.1",
+              "code": "B1.1.4.1",
+              "title": "The Battle of Hastings",
+              "content": "The Battle of Hastings.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 4,
+                "strand_title": "The Norman invasion",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.1.4.2",
+              "code": "B1.1.4.2",
+              "title": "Reasons for William’s victory",
+              "content": "Reasons for William’s victory, including the leadership skills of Harold and William, Norman and English troops and tactics.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 1: Anglo-Saxon England and the Norman Conquest, 1060–66",
+                "strand": 4,
+                "strand_title": "The Norman invasion",
+                "bullet": 2,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_HIST_AMWEST",
-          "code": "P3",
-          "title": "The American West, c1835–c1895",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_NORMAN_T2",
+          "code": "B1.2",
+          "title": "Key topic 2: William I in power: securing the kingdom, 1066–87",
           "points": [
-            {"id":"EDX_GCSE_HIST_AMWEST_P3.1","code":"P3.1","title":"The early settlement of the West, c1835–c1862"},
-            {"id":"EDX_GCSE_HIST_AMWEST_P3.2","code":"P3.2","title":"Development of the plains, c1862–c1876"},
-            {"id":"EDX_GCSE_HIST_AMWEST_P3.3","code":"P3.3","title":"Conflicts and conquest, c1876–c1895"}
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.1.1",
+              "code": "B1.2.1.1",
+              "title": "The submission of the earls, 1066",
+              "content": "The submission of the earls, 1066.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 1,
+                "strand_title": "Establishing control",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.1.2",
+              "code": "B1.2.1.2",
+              "title": "Rewarding followers and establishing control on the borderlands through the use of earls",
+              "content": "Rewarding followers and establishing control on the borderlands through the use of earls. The Marcher earldoms.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 1,
+                "strand_title": "Establishing control",
+                "bullet": 2,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.1.3",
+              "code": "B1.2.1.3",
+              "title": "Reasons for the building of castles",
+              "content": "Reasons for the building of castles; their key features and importance.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 1,
+                "strand_title": "Establishing control",
+                "bullet": 3,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.2.1",
+              "code": "B1.2.2.1",
+              "title": "Causes and outcomes of Anglo-Saxon resistance",
+              "content": "Causes and outcomes of Anglo-Saxon resistance: the revolt of Earls Edwin and Morcar (1068); Edgar the Aethling and the rebellions in the North (1069); Hereward the Wake and rebellion at Ely (1070–71).",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 2,
+                "strand_title": "Anglo-Saxon resistance, 1068–71",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.3.1",
+              "code": "B1.2.3.1",
+              "title": "The reasons for and features of Harrying of the North (1069–70)",
+              "content": "The reasons for and features of Harrying of the North (1069–70). Its immediate and long-term impact, 1069–87.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 3,
+                "strand_title": "The legacy of resistance to 1087",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.3.2",
+              "code": "B1.2.3.2",
+              "title": "Changes in landownership from Anglo-Saxon to Norman, 1066–87",
+              "content": "Changes in landownership from Anglo-Saxon to Norman, 1066–87.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 3,
+                "strand_title": "The legacy of resistance to 1087",
+                "bullet": 2,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.4.1",
+              "code": "B1.2.4.1",
+              "title": "Reasons for and features of the revolt",
+              "content": "Reasons for and features of the revolt.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 4,
+                "strand_title": "Revolt of the Earls, 1075",
+                "bullet": 1,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.2.4.2",
+              "code": "B1.2.4.2",
+              "title": "The defeat of the revolt and its effects",
+              "content": "The defeat of the revolt and its effects.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 2: William I in power: securing the kingdom, 1066–87",
+                "strand": 4,
+                "strand_title": "Revolt of the Earls, 1075",
+                "bullet": 2,
+                "source_pages": [
+                  22
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_HIST_ELIZ",
-          "code": "B4",
-          "title": "Early Elizabethan England, 1558–88",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_NORMAN_T3",
+          "code": "B1.3",
+          "title": "Key topic 3: Norman England, 1066–88",
           "points": [
-            {"id":"EDX_GCSE_HIST_ELIZ_B4.1","code":"B4.1","title":"Queen, government and religion, 1558–69"},
-            {"id":"EDX_GCSE_HIST_ELIZ_B4.2","code":"B4.2","title":"Challenges to Elizabeth at home and abroad, 1569–88"},
-            {"id":"EDX_GCSE_HIST_ELIZ_B4.3","code":"B4.3","title":"Elizabethan society in the Age of Exploration, 1558–88"}
-          ]
-        },
-        {
-          "id": "EDX_GCSE_HIST_NORMAN",
-          "code": "B1",
-          "title": "Anglo-Saxon and Norman England, c1060–88",
-          "kind": "option",
-          "points": [
-            {"id":"EDX_GCSE_HIST_NORMAN_B1.1","code":"B1.1","title":"Anglo-Saxon England and the Norman Conquest, 1060–66"},
-            {"id":"EDX_GCSE_HIST_NORMAN_B1.2","code":"B1.2","title":"William I in power: securing the kingdom, 1066–87"},
-            {"id":"EDX_GCSE_HIST_NORMAN_B1.3","code":"B1.3","title":"Norman England, 1066–88"}
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.1.1",
+              "code": "B1.3.1.1",
+              "title": "The feudal hierarchy",
+              "content": "The feudal hierarchy. The role and importance of tenants-in-chief and knights. The nature of feudalism (landholding, homage, knight service, labour service); forfeiture.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 1,
+                "strand_title": "The feudal system and the Church",
+                "bullet": 1,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.1.2",
+              "code": "B1.3.1.2",
+              "title": "The Church in England",
+              "content": "The Church in England: its role in society and relationship to government, including the significance of Stigand and Lanfranc. The Normanisation and reform of the Church in the reign of William I.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 1,
+                "strand_title": "The feudal system and the Church",
+                "bullet": 2,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.1.3",
+              "code": "B1.3.1.3",
+              "title": "The extent of change to Anglo-Saxon society and economy",
+              "content": "The extent of change to Anglo-Saxon society and economy.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 1,
+                "strand_title": "The feudal system and the Church",
+                "bullet": 3,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.2.1",
+              "code": "B1.3.2.1",
+              "title": "Changes to government after the Conquest",
+              "content": "Changes to government after the Conquest. Centralised power and the limited use of earls under William I. The role of regents during William’s absences.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 2,
+                "strand_title": "Norman government",
+                "bullet": 1,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.2.2",
+              "code": "B1.3.2.2",
+              "title": "The office of sheriff and the demesne",
+              "content": "The office of sheriff and the demesne. Introduction and significance of the ‘forest’.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 2,
+                "strand_title": "Norman government",
+                "bullet": 2,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.2.3",
+              "code": "B1.3.2.3",
+              "title": "The Domesday survey and Domesday Book and their significance for Norman government and finance",
+              "content": "The Domesday survey and Domesday Book and their significance for Norman government and finance.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 2,
+                "strand_title": "Norman government",
+                "bullet": 3,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.3.1",
+              "code": "B1.3.3.1",
+              "title": "The culture and language of the Norman aristocracy",
+              "content": "The culture and language of the Norman aristocracy.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 3,
+                "strand_title": "The Norman aristocracy",
+                "bullet": 1,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.3.2",
+              "code": "B1.3.3.2",
+              "title": "The career and significance of Bishop Odo",
+              "content": "The career and significance of Bishop Odo.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 3,
+                "strand_title": "The Norman aristocracy",
+                "bullet": 2,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.4.1",
+              "code": "B1.3.4.1",
+              "title": "Character and personality of William I and his relations with Robert",
+              "content": "Character and personality of William I and his relations with Robert, including Robert’s revolt in Normandy (1077–80).",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 4,
+                "strand_title": "William I and the succession",
+                "bullet": 1,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_NORMAN_B1.3.4.2",
+              "code": "B1.3.4.2",
+              "title": "William’s death and the disputed succession",
+              "content": "William’s death and the disputed succession. William Rufus and the defeat of Robert and Odo.",
+              "official_reference": {
+                "option": "B1",
+                "topic": "Key topic 3: Norman England, 1066–88",
+                "strand": 4,
+                "strand_title": "William I and the succession",
+                "bullet": 2,
+                "source_pages": [
+                  23
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         }
       ]
     },
     {
       "id": "EDX_GCSE_HIST_SEC_P3",
-      "title": "Paper 3: Modern depth study",
-      "note": "Tick the option your school studies",
+      "code": "31",
+      "title": "Paper 3, Option 31: Weimar and Nazi Germany, 1918–39",
       "topics": [
         {
-          "id": "EDX_GCSE_HIST_GERMANY",
-          "code": "31",
-          "title": "Weimar and Nazi Germany, 1918–39",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_GERMANY_T1",
+          "code": "31.1",
+          "title": "Key topic 1: The Weimar Republic 1918–29",
           "points": [
-            {"id":"EDX_GCSE_HIST_GERMANY_31.1","code":"31.1","title":"The Weimar Republic, 1918–29"},
-            {"id":"EDX_GCSE_HIST_GERMANY_31.2","code":"31.2","title":"Hitler's rise to power, 1919–33"},
-            {"id":"EDX_GCSE_HIST_GERMANY_31.3","code":"31.3","title":"Nazi control and dictatorship, 1933–39"},
-            {"id":"EDX_GCSE_HIST_GERMANY_31.4","code":"31.4","title":"Life in Nazi Germany, 1933–39"}
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.1.1",
+              "code": "31.1.1.1",
+              "title": "The situation in Germany at the end of the War",
+              "content": "The situation in Germany at the end of the War: political unrest, abdication of the Kaiser, armistice and new republic.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 1,
+                "strand_title": "The origins of the Republic, 1918–19",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.1.2",
+              "code": "31.1.1.2",
+              "title": "The strengths and weaknesses of the new Weimar Constitution",
+              "content": "The strengths and weaknesses of the new Weimar Constitution.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 1,
+                "strand_title": "The origins of the Republic, 1918–19",
+                "bullet": 2,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.2.1",
+              "code": "31.1.2.1",
+              "title": "Reasons for the early unpopularity of the Republic",
+              "content": "Reasons for the early unpopularity of the Republic, including the ‘stab in the back’ theory and the key terms of the Treaty of Versailles.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 2,
+                "strand_title": "The early challenges to the Weimar Republic, 1919–23",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.2.2",
+              "code": "31.1.2.2",
+              "title": "Challenges to the Republic from Left and Right",
+              "content": "Challenges to the Republic from Left and Right: Spartacists, Freikorps, the Kapp Putsch.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 2,
+                "strand_title": "The early challenges to the Weimar Republic, 1919–23",
+                "bullet": 2,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.2.3",
+              "code": "31.1.2.3",
+              "title": "The challenges of 1923",
+              "content": "The challenges of 1923: hyperinflation; the reasons for, and effects of, the French occupation of the Ruhr.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 2,
+                "strand_title": "The early challenges to the Weimar Republic, 1919–23",
+                "bullet": 3,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.3.1",
+              "code": "31.1.3.1",
+              "title": "Reasons for economic recovery",
+              "content": "Reasons for economic recovery, including the work of Stresemann, the Rentenmark, the Dawes and Young Plans and American loans and investment.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 3,
+                "strand_title": "The ‘Golden Years’: recovery of the Republic, 1924–29",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.3.2",
+              "code": "31.1.3.2",
+              "title": "Stresemann’s achievements in gaining international acceptance of Germany abroad through the Locarno Pact and joining the League of Nations",
+              "content": "Stresemann’s achievements in gaining international acceptance of Germany abroad through the Locarno Pact and joining the League of Nations.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 3,
+                "strand_title": "The ‘Golden Years’: recovery of the Republic, 1924–29",
+                "bullet": 2,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.4.1",
+              "code": "31.1.4.1",
+              "title": "Changes in the standard of living",
+              "content": "Changes in the standard of living.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 4,
+                "strand_title": "Changes in society, 1924–29",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.4.2",
+              "code": "31.1.4.2",
+              "title": "Changes in the position of women in work, politics and leisure",
+              "content": "Changes in the position of women in work, politics and leisure.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 4,
+                "strand_title": "Changes in society, 1924–29",
+                "bullet": 2,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.1.4.3",
+              "code": "31.1.4.3",
+              "title": "Cultural changes",
+              "content": "Cultural changes: developments in architecture, art and the cinema.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 1: The Weimar Republic 1918–29",
+                "strand": 4,
+                "strand_title": "Changes in society, 1924–29",
+                "bullet": 3,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_HIST_USA",
-          "code": "33",
-          "title": "The USA, 1954–75: conflict at home and abroad",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_GERMANY_T2",
+          "code": "31.2",
+          "title": "Key topic 2: Hitler’s rise to power, 1919–33",
           "points": [
-            {"id":"EDX_GCSE_HIST_USA_33.1","code":"33.1","title":"The development of the civil rights movement, 1954–60"},
-            {"id":"EDX_GCSE_HIST_USA_33.2","code":"33.2","title":"Protest, progress and radicalism, 1960–75"},
-            {"id":"EDX_GCSE_HIST_USA_33.3","code":"33.3","title":"US involvement in the Vietnam War, 1954–75"},
-            {"id":"EDX_GCSE_HIST_USA_33.4","code":"33.4","title":"Reactions to, and the end of, US involvement in Vietnam, 1964–75"}
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.2.1.1",
+              "code": "31.2.1.1",
+              "title": "Hitler’s early career",
+              "content": "Hitler’s early career: joining the German Workers’ Party and setting up the Nazi Party, 1919–20.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 2: Hitler’s rise to power, 1919–33",
+                "strand": 1,
+                "strand_title": "Early development of the Nazi Party, 1920–22",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.2.1.2",
+              "code": "31.2.1.2",
+              "title": "The Twenty-Five Point Programme",
+              "content": "The Twenty-Five Point Programme. The role of the SA.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 2: Hitler’s rise to power, 1919–33",
+                "strand": 1,
+                "strand_title": "Early development of the Nazi Party, 1920–22",
+                "bullet": 2,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.2.2.1",
+              "code": "31.2.2.1",
+              "title": "The reasons for, events and consequences of the Munich Putsch",
+              "content": "The reasons for, events and consequences of the Munich Putsch; Mein Kampf.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 2: Hitler’s rise to power, 1919–33",
+                "strand": 2,
+                "strand_title": "The Munich Putsch and the Nazi Party, 1923–28",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.2.2.2",
+              "code": "31.2.2.2",
+              "title": "Reasons for limited support for the Nazi Party, 1924–28",
+              "content": "Reasons for limited support for the Nazi Party, 1924–28. Party reorganisation, including the Bamberg Conference of 1926.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 2: Hitler’s rise to power, 1919–33",
+                "strand": 2,
+                "strand_title": "The Munich Putsch and the Nazi Party, 1923–28",
+                "bullet": 2,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.2.3.1",
+              "code": "31.2.3.1",
+              "title": "The growth of unemployment – its causes and impact",
+              "content": "The growth of unemployment – its causes and impact. The growth of support for the Communist Party.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 2: Hitler’s rise to power, 1919–33",
+                "strand": 3,
+                "strand_title": "The growth in support for the Nazis, 1929–32",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.2.3.2",
+              "code": "31.2.3.2",
+              "title": "Reasons for the growth in support for the Nazi Party",
+              "content": "Reasons for the growth in support for the Nazi Party, including the appeal of Hitler and the Nazis, the effects of propaganda and the work of the SA.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 2: Hitler’s rise to power, 1919–33",
+                "strand": 3,
+                "strand_title": "The growth in support for the Nazis, 1929–32",
+                "bullet": 2,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.2.4.1",
+              "code": "31.2.4.1",
+              "title": "The Presidential and Reichstag elections of 1932",
+              "content": "The Presidential and Reichstag elections of 1932; reasons for Hitler becoming Chancellor in 1933, including the roles of Hindenburg and von Papen.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 2: Hitler’s rise to power, 1919–33",
+                "strand": 4,
+                "strand_title": "How Hitler became Chancellor, 1932–33",
+                "bullet": 1,
+                "source_pages": [
+                  44
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         },
         {
-          "id": "EDX_GCSE_HIST_RUSSIA",
-          "code": "30",
-          "title": "Russia and the Soviet Union, 1917–41",
-          "kind": "option",
+          "id": "EDX_GCSE_HIST_GERMANY_T3",
+          "code": "31.3",
+          "title": "Key topic 3: Nazi control and dictatorship, 1933–39",
           "points": [
-            {"id":"EDX_GCSE_HIST_RUSSIA_30.1","code":"30.1","title":"The revolutions of 1917"},
-            {"id":"EDX_GCSE_HIST_RUSSIA_30.2","code":"30.2","title":"The Bolsheviks in power, 1917–24"},
-            {"id":"EDX_GCSE_HIST_RUSSIA_30.3","code":"30.3","title":"Stalin's rise to power and dictatorship, 1924–41"},
-            {"id":"EDX_GCSE_HIST_RUSSIA_30.4","code":"30.4","title":"Economic and social changes, 1924–41"}
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.1.1",
+              "code": "31.3.1.1",
+              "title": "The Reichstag Fire",
+              "content": "The Reichstag Fire. The Enabling Act and the banning of other parties and trade unions.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 1,
+                "strand_title": "The creation of a dictatorship, 1933–34",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.1.2",
+              "code": "31.3.1.2",
+              "title": "The threat from Röhm and the SA, the Night of the Long Knives",
+              "content": "The threat from Röhm and the SA, the Night of the Long Knives. The death of Hindenburg. Hitler becomes Führer, the army oath of allegiance.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 1,
+                "strand_title": "The creation of a dictatorship, 1933–34",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.2.1",
+              "code": "31.3.2.1",
+              "title": "The role of the Gestapo, the SS and concentration camps",
+              "content": "The role of the Gestapo, the SS and concentration camps.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 2,
+                "strand_title": "The police state",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.2.2",
+              "code": "31.3.2.2",
+              "title": "Nazi control of the legal system",
+              "content": "Nazi control of the legal system.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 2,
+                "strand_title": "The police state",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.3.1",
+              "code": "31.3.3.1",
+              "title": "Goebbels and the Ministry of Propaganda",
+              "content": "Goebbels and the Ministry of Propaganda: censorship, Nazi use of media, rallies and sport, including the Berlin Olympics (1936).",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 3,
+                "strand_title": "Controlling and influencing attitudes",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.3.2",
+              "code": "31.3.3.2",
+              "title": "Nazi control of culture and the arts, including art, architecture, literature and film",
+              "content": "Nazi control of culture and the arts, including art, architecture, literature and film.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 3,
+                "strand_title": "Controlling and influencing attitudes",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.3.3",
+              "code": "31.3.3.3",
+              "title": "Nazi attempts to control the Catholic and Protestant Churches",
+              "content": "Nazi attempts to control the Catholic and Protestant Churches: the Concordat and the Reich Church.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 3,
+                "strand_title": "Controlling and influencing attitudes",
+                "bullet": 3,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.4.1",
+              "code": "31.3.4.1",
+              "title": "The extent of support for the Nazi regime",
+              "content": "The extent of support for the Nazi regime.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 4,
+                "strand_title": "Opposition, resistance and conformity",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.4.2",
+              "code": "31.3.4.2",
+              "title": "Opposition from the Churches, including the role of Pastor Niemöller",
+              "content": "Opposition from the Churches, including the role of Pastor Niemöller.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 4,
+                "strand_title": "Opposition, resistance and conformity",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.3.4.3",
+              "code": "31.3.4.3",
+              "title": "Opposition from the young, including the Swing Youth and the Edelweiss Pirates",
+              "content": "Opposition from the young, including the Swing Youth and the Edelweiss Pirates.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 3: Nazi control and dictatorship, 1933–39",
+                "strand": 4,
+                "strand_title": "Opposition, resistance and conformity",
+                "bullet": 3,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EDX_GCSE_HIST_GERMANY_T4",
+          "code": "31.4",
+          "title": "Key topic 4: Life in Nazi Germany, 1933–39",
+          "points": [
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.1.1",
+              "code": "31.4.1.1",
+              "title": "Nazi views on women and the family",
+              "content": "Nazi views on women and the family.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 1,
+                "strand_title": "Nazi policies towards women",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.1.2",
+              "code": "31.4.1.2",
+              "title": "Nazi policies towards women, including marriage and family, employment and appearance",
+              "content": "Nazi policies towards women, including marriage and family, employment and appearance.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 1,
+                "strand_title": "Nazi policies towards women",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.2.1",
+              "code": "31.4.2.1",
+              "title": "Nazi aims and policies towards the young",
+              "content": "Nazi aims and policies towards the young. The Hitler Youth and the League of German Maidens.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 2,
+                "strand_title": "Nazi policies towards the young",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.2.2",
+              "code": "31.4.2.2",
+              "title": "Nazi control of the young through education, including the curriculum and teachers",
+              "content": "Nazi control of the young through education, including the curriculum and teachers.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 2,
+                "strand_title": "Nazi policies towards the young",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.3.1",
+              "code": "31.4.3.1",
+              "title": "Nazi policies to reduce unemployment",
+              "content": "Nazi policies to reduce unemployment: labour service, autobahns, rearmament and invisible unemployment.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 3,
+                "strand_title": "Employment and living standards",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.3.2",
+              "code": "31.4.3.2",
+              "title": "Changes in the standard of living, especially of German workers",
+              "content": "Changes in the standard of living, especially of German workers. The Labour Front, Strength Through Joy, Beauty of Labour.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 3,
+                "strand_title": "Employment and living standards",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.4.1",
+              "code": "31.4.4.1",
+              "title": "Nazi racial beliefs and policies and the treatment of minority groups",
+              "content": "Nazi racial beliefs and policies and the treatment of minority groups: Slavs, Roma and Sinti, homosexuals, and people with disabilities.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 4,
+                "strand_title": "The persecution of minorities",
+                "bullet": 1,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            },
+            {
+              "id": "EDX_GCSE_HIST_GERMANY_31.4.4.2",
+              "code": "31.4.4.2",
+              "title": "The persecution of Jewish people",
+              "content": "The persecution of Jewish people, including the boycott of Jewish shops and businesses (1933), the Nuremberg Laws and 'Kristallnacht'.",
+              "official_reference": {
+                "option": "31",
+                "topic": "Key topic 4: Life in Nazi Germany, 1933–39",
+                "strand": 4,
+                "strand_title": "The persecution of minorities",
+                "bullet": 2,
+                "source_pages": [
+                  45
+                ],
+                "numbering": "Pearson numbers strands; bullets are unnumbered and coded by printed position"
+              }
+            }
           ]
         }
       ]
