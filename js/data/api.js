@@ -639,18 +639,23 @@ export function exportData() {
   return { app: 'onspec', exported_at: new Date().toISOString(), user: { ...user }, progress: structuredClone(requireProgress()) };
 }
 
+async function replaceProgress(replacement) {
+  const account = user;
+  await activeAdapter.saveProgress(account.user_id, replacement);
+  if (user?.user_id !== account.user_id) return;
+  progress = replacement;
+  learnedCache = null;
+  events.emit('progress', progress);
+}
+
 export async function importData(data) {
   const incoming = data?.progress ?? data;
   if (!incoming || !Array.isArray(incoming.question_attempts) || !Array.isArray(incoming.learned_spec_points)) {
     throw new Error('That file is not a PPP progress export.');
   }
-  progress = normalise(incoming, user.user_id);
-  learnedCache = null;
-  await persist();
+  await replaceProgress(normalise(incoming, user.user_id));
 }
 
 export async function resetProgress() {
-  progress = emptyProgress(user.user_id);
-  learnedCache = null;
-  await persist();
+  await replaceProgress(emptyProgress(user.user_id));
 }

@@ -127,10 +127,15 @@ async function restorePendingSignup(email, userId) {
   try { pending = JSON.parse(raw); } catch { return null; }
   const guestProgress = pending?.progress || pending;
 
-  // Never replace data that already exists in the cloud account.
-  const existing = await supabaseAdapter.loadProgress(userId);
-  if (!existing) {
-    await supabaseAdapter.saveProgress(userId, { ...guestProgress, user_id: userId });
+  // A different device can save between checking for progress and restoring it.
+  // Insert only if the account still has no row when the database receives the request.
+  const client = await getClient();
+  const { data: inserted, error } = await client.from('user_progress').upsert({
+    user_id: userId,
+    progress: { ...guestProgress, user_id: userId },
+  }, { onConflict: 'user_id', ignoreDuplicates: true }).select('user_id');
+  if (error) throw new Error(`Could not save your progress: ${error.message}`);
+  if (inserted?.length) {
     copyGuestPracticeDrafts(userId);
     try { localStorage.removeItem(key); } catch {}
     return { imported: true, nextRoute: pending?.nextRoute || null };

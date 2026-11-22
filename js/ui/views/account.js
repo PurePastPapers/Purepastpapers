@@ -123,7 +123,8 @@ export async function mount(element, context) {
             </p>
             <div class="row">
               <button type="button" class="btn btn--primary" data-export>Download my data</button>
-              <label class="btn">Import from a file<input type="file" accept="application/json,.json" data-import hidden /></label>
+              <button type="button" class="btn" data-import-picker>Import from a file</button>
+              <input type="file" accept="application/json,.json" data-import hidden />
             </div>
           </section>
           <section class="card danger-card tilt-3">
@@ -219,6 +220,8 @@ export async function mount(element, context) {
     toast('Your data has been downloaded.', { type: 'success' });
   });
 
+  on(element, 'click', '[data-import-picker]', () => $('[data-import]', element).click());
+
   on(element, 'change', '[data-import]', async (event, input) => {
     const file = input.files?.[0];
     input.value = '';
@@ -248,20 +251,37 @@ export async function mount(element, context) {
       danger: true,
     });
     if (!confirmed) return;
-    await api.resetProgress();
-    toast('Progress reset.');
-    context.refresh();
+    try {
+      await api.resetProgress();
+      toast('Progress reset.');
+      context.refresh();
+    } catch (error) {
+      toast(error.message, { type: 'error' });
+    }
   });
 
   on(element, 'click', '[data-delete]', async () => {
     const confirmed = await confirmDialog({
       title: 'Delete your account?',
-      message: 'Your account and all of its progress will be removed from this browser. This cannot be undone.',
+      message: backend.syncsAcrossDevices
+        ? 'Your account and all of its progress will be removed from every device. This cannot be undone.'
+        : 'Your account and all of its progress will be removed from this browser. This cannot be undone.',
       confirmLabel: 'Delete account',
       danger: true,
     });
-    if (confirmed) await api.deleteAccount();
+    if (!confirmed) return;
+    try {
+      await api.deleteAccount();
+    } catch (error) {
+      toast(error.message, { type: 'error' });
+    }
   });
 
-  on(element, 'click', '[data-logout]', () => api.signOut());
+  on(element, 'click', '[data-logout]', async () => {
+    try {
+      await api.signOut();
+    } catch (error) {
+      toast(error.message, { type: 'error' });
+    }
+  });
 }
