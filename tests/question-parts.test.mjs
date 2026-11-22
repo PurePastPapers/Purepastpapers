@@ -43,6 +43,7 @@ test('linked parts share one stem and keep figures needed by later parts', () =>
   assert.equal(markup.match(/data-math-image="[^"]+\/shared\.webp"/g).length, 1);
   assert.match(markup, /\/later\.webp/);
   assert.doesNotMatch(markup, /\/combined\.webp/);
+  assert.doesNotMatch(String(linkedIntro({parts: [{...first, context: {}}, second]})), /\/combined\.webp/);
 });
 
 test('legacy questions stay valid and a part parent can be a non-assessable grouping id', () => {

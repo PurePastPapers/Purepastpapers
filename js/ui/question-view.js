@@ -195,8 +195,7 @@ export function linkedIntro(entry) {
   };
   return html`${entry.parts.map((part) => {
     const context = part.context || {};
-    const hasStem = context.stem_image_url || context.shared_stem_html;
-    const showStem = hasStem && firstUse(parents, part.parent_question_id || part.question_number);
+    const showStem = firstUse(parents, part.parent_question_id || part.question_number);
     const extra = {
       stem_image_url: showStem && firstUse(assets, context.stem_image_url) ? context.stem_image_url : null,
       intros: Array.isArray(context.intros) ? context.intros.filter((intro) => firstUse(assets, intro?.image_url)) : [],
