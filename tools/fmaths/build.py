@@ -49,6 +49,10 @@ def sample_record(row):
     for key in ('printed_paper_code', 'component_of', 'duration_note'):
         if key in row:
             record[key] = row[key]
+    if row['is_as'] and module != 'CP':
+        record['component_of'] = 'Paper 2'
+        record['duration_note'] = ('Suggested practice time for the sampled 40-mark section is 50 minutes. '
+                                   'The official printed sample route combines two sections in 1 h 40 min.')
     return record
 
 

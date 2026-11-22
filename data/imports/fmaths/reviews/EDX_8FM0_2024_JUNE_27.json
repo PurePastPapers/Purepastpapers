@@ -1,0 +1,364 @@
+{
+  "paper_id": "EDX_8FM0_2024_JUNE_27",
+  "reviewer_type": "model",
+  "source_sha256": "8bc1df4c9dacd3cac662299ed0a75c7e2a6f9d12e854102e46062eeff52d759a",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Apply quick sort and record the pivots on each pass.",
+          "difficulty_basis": "Apply quick sort and record the pivots on each pass.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Pack items using first-fit decreasing.",
+          "difficulty_basis": "Pack items using first-fit decreasing.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Compare a bin-packing result with a lower bound.",
+          "difficulty_basis": "Compare a bin-packing result with a lower bound.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Diagnose an incorrect intermediate state of bubble sort.",
+          "difficulty_basis": "Diagnose an incorrect intermediate state of bubble sort.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Complete an activity network with the required dummy activities.",
+          "difficulty_basis": "Complete an activity network with the required dummy activities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "required_insert_regions": [
+            {
+              "page": 12,
+              "bbox": [
+                0.10583325280803227,
+                0.1179635047624983,
+                0.8972819259811432,
+                0.3449876082676837
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Complete early and late event times for the supplied activity network.",
+          "difficulty_basis": "Complete early and late event times for the supplied activity network.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "required_insert_regions": [
+            {
+              "page": 13,
+              "bbox": [
+                0.10429943754994485,
+                0.12130209451992749,
+                0.8972819259811432,
+                0.5597702159956287
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Identify the critical activities from calculated event times.",
+          "difficulty_basis": "Identify the critical activities from calculated event times.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.3",
+            "EDX_FMATH_AS_D1_4.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the latest start time of an activity for a timed deadline.",
+          "difficulty_basis": "Find the latest start time of an activity for a timed deadline.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Define a tree in graph theory.",
+          "difficulty_basis": "Define a tree in graph theory.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use Dijkstra’s algorithm to find a shortest route with variable arc lengths.",
+          "difficulty_basis": "Use Dijkstra’s algorithm to find a shortest route with variable arc lengths.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the repeated arcs in an open route inspection problem.",
+          "difficulty_basis": "Find the repeated arcs in an open route inspection problem.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find how often a vertex is visited on an inspection route.",
+          "difficulty_basis": "Find how often a vertex is visited on an inspection route.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the inspection route length to infer unknown arc weights.",
+          "difficulty_basis": "Use the inspection route length to infer unknown arc weights.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "State the inequalities represented by a shaded linear programming diagram.",
+          "difficulty_basis": "State the inequalities represented by a shaded linear programming diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Translate restrictions on aquarium stock into inequalities.",
+          "difficulty_basis": "Translate restrictions on aquarium stock into inequalities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Draw additional constraints and label the feasible region.",
+          "difficulty_basis": "Draw additional constraints and label the feasible region.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "required_insert_regions": [
+            {
+              "page": 17,
+              "bbox": [
+                0.10583325280803227,
+                0.1224149577724039,
+                0.8972819259811432,
+                0.5085785063817143
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Optimise a linear objective and choose the maximum integer solution.",
+          "difficulty_basis": "Optimise a linear objective and choose the maximum integer solution.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

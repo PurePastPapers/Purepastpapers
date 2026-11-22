@@ -129,13 +129,18 @@ def work(job):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--slug', help='Compact catalogues for one subject')
+    parser.add_argument('--paper', action='append', help='Compact only the selected paper IDs')
     args = parser.parse_args()
+    if args.paper and not args.slug:
+        parser.error('--paper requires --slug')
     index = json.loads((DATA / 'packs/index.json').read_text())
     pack_files = [DATA / 'packs' / entry['file'] for entry in index['packs']]
     # Packs that are built but not listed (e.g. Computer Science) still own catalogues.
     for folder in (DATA / 'packs').iterdir():
         if folder.is_dir():
             pack_files += [p for p in folder.glob('*.json') if p not in pack_files]
+    if args.slug:
+        pack_files = [p for p in pack_files if p.parent.name == args.slug and (not args.paper or p.stem in args.paper)]
     packs = {p: json.loads(p.read_text()) for p in pack_files}
     stems = collections.defaultdict(set)  # catalogue path -> stem asset names
     for pack in packs.values():
@@ -146,7 +151,7 @@ def main():
                 slug, paper, name = m.groups()
                 stems[str(DATA / f'{slug}-assets/{paper}.json')].add(name)
     catalogue_dir = f'{args.slug}-assets' if args.slug else '*-assets'
-    catalogues = sorted(str(p) for p in DATA.glob(f'{catalogue_dir}/*.json'))
+    catalogues = sorted(str(p) for p in DATA.glob(f'{catalogue_dir}/*.json') if not args.paper or p.stem in args.paper)
     jobs = [(c, stems.get(c, set())) for c in catalogues]
     removed = collections.defaultdict(list)  # url -> catalogue
     totals = collections.Counter()

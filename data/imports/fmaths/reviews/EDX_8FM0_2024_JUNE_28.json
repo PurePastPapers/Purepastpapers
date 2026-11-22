@@ -1,0 +1,295 @@
+{
+  "paper_id": "EDX_8FM0_2024_JUNE_28",
+  "reviewer_type": "model",
+  "source_sha256": "6314fbbb12c2914522ad7876f62a5157a113a8ab9fc1ccbe089c9b46c9e53e3d",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Read the value of a feasible network flow.",
+          "difficulty_basis": "Read the value of a feasible network flow.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use flow conservation to identify a saturation restriction.",
+          "difficulty_basis": "Use flow conservation to identify a saturation restriction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate the capacities of two network cuts.",
+          "difficulty_basis": "Calculate the capacities of two network cuts.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find a flow-augmenting path meeting a saturation condition.",
+          "difficulty_basis": "Find a flow-augmenting path meeting a saturation condition.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(d)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Prove an increased flow is maximal using a cut.",
+          "difficulty_basis": "Prove an increased flow is maximal using a cut.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Convert a maximum-profit assignment matrix with prohibited assignments.",
+          "difficulty_basis": "Convert a maximum-profit assignment matrix with prohibited assignments.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_1.2",
+            "EDX_FMATH_AS_D2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Apply the Hungarian algorithm and calculate the maximum quiz team score.",
+          "difficulty_basis": "Apply the Hungarian algorithm and calculate the maximum quiz team score.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Test a zero-sum game for a stable solution.",
+          "difficulty_basis": "Test a zero-sum game for a stable solution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Write the other player’s reduced payoff matrix.",
+          "difficulty_basis": "Write the other player’s reduced payoff matrix.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_3.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use a graphical mixed strategy to find the value and remove unused options.",
+          "difficulty_basis": "Use a graphical mixed strategy to find the value and remove unused options.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_3.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find an entry of a payoff matrix that makes the game fair.",
+          "difficulty_basis": "Find an entry of a payoff matrix that makes the game fair.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Interpret a recurrence term as a monthly savings contribution.",
+          "difficulty_basis": "Interpret a recurrence term as a monthly savings contribution.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_4.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find a closed form for a savings recurrence.",
+          "difficulty_basis": "Find a closed form for a savings recurrence.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_4.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the recurrence solution to find the initial deposit.",
+          "difficulty_basis": "Use the recurrence solution to find the initial deposit.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_4.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the recurrence solution to prove when the account exceeds a target.",
+          "difficulty_basis": "Use the recurrence solution to prove when the account exceeds a target.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

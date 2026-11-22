@@ -12,18 +12,17 @@ pages at its foot, the whole-question image are cut to match. Re-running is harm
 Pieces are located as refine.py renders them: full-width page crops stacked with 12 px
 gaps at one scale, so a page's height in pixels follows from the image and its regions.
 """
+import argparse
 import base64
 import hashlib
 import io
 import json
 import pathlib
 import re
-import sys
 
 from PIL import Image, ImageChops, ImageStat
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-DRY_RUN = '--dry-run' in sys.argv
 GAP = 12
 # Checked by eye. Regions to keep where the matching gets it wrong: half a page of the 2023
 # Foundation equation list and a 2023 formulae sheet printed at another scale (no other paper
@@ -88,26 +87,31 @@ def differ(a, b):
     return ImageStat.Stat(ImageChops.difference(a, b)).mean[0]
 
 
-def candidates():
+def candidates(slug=None):
     """Parts whose regions run over three or more pages.
 
     The span was ">= 3" until the 2026-11-19 audit: a last part printed on one page and
     followed by a two-page list (AS Physics 8PH0 "List of data, formulae and relationships")
     spans only 2 and kept the list. Booklet pages are still decided by matching other series.
     """
-    for pack_path in sorted((ROOT / 'data/packs').glob('*/*.json')):
+    for pack_path in sorted((ROOT / 'data/packs').glob(f'{slug or "*"}/*.json')):
         pack = json.loads(pack_path.read_text())
         for question in pack.get('questions', []):
             regions = (question.get('provenance') or {}).get('source_regions') or []
             pages = [r['page'] for r in regions]
-            if (question.get('provenance') or {}).get('own_rows_from_full'):
-                continue  # reviewed rows (manual-contexts.py) already stop at the question total
+            provenance = question.get('provenance') or {}
+            if provenance.get('own_rows_from_full') or provenance.get('required_insert_regions'):
+                continue  # checked crops or a required booklet insert
             if len(regions) > 1 and max(pages) - min(pages) >= 2:
                 yield pack_path, question['question_id']
 
 
 def main():
-    found = list(candidates())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--slug')
+    parser.add_argument('--dry-run', action='store_true')
+    args = parser.parse_args()
+    found = list(candidates(args.slug))
     loaded = {}
 
     def load(path):
@@ -201,7 +205,7 @@ def main():
                 assets[full_name] = encode(full.crop((0, 0, full.width, full.height - removed)))
         trimmed.append(question['question_id'])
 
-    if DRY_RUN:
+    if args.dry_run:
         print(f'{len(trimmed)} parts would be trimmed (dry run, nothing written)')
         for unit in units:
             if unit['cut'] is not None:

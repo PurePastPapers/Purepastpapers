@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate and activate Further Maths packs without regenerating image crops."""
+import argparse
 import base64
 import hashlib
 import json
@@ -66,7 +67,16 @@ def verify_pack(path, last_identities, identities):
 
 
 def main():
-    folders = sorted((DATA / 'packs/fmaths').glob('*.json'))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--activate', nargs='+', default=[], metavar='PAPER_ID')
+    parser.add_argument('--candidates', type=Path, action='append', default=[], help='Reconcile counts for available source candidates')
+    args = parser.parse_args()
+    index = DATA / 'packs/index.json'
+    index_data = read(index)
+    existing = {Path(entry['file']).stem for entry in index_data['packs'] if entry['file'].startswith('fmaths/')}
+    paper_ids = existing.union(args.activate)
+    require(all(re.fullmatch(r'EDX_[89]FM0_[A-Z0-9_]+', pid) for pid in paper_ids), 'Invalid activation paper ID')
+    folders = [DATA / 'packs/fmaths' / f'{pid}.json' for pid in sorted(paper_ids)]
     registry = IMPORTS / 'identities.json'
     previous = read(registry)['units'] if registry.exists() else {}
     identities, imported, grouped = {}, {}, defaultdict(Counter)
@@ -93,6 +103,22 @@ def main():
             docs = row['documents']
             if all(docs[k]['availability'] == 'verified_public' for k in ('question_paper', 'mark_scheme')):
                 expected[key]['available_papers'] += 1
+            for directory in args.candidates:
+                candidate_path = directory / f'{pid}.json'
+                if not candidate_path.is_file():
+                    continue
+                candidate = read(candidate_path)
+                qp = docs['question_paper']
+                if candidate['exceptions'] or candidate['total_marks'] != row['max_marks'] or \
+                        candidate['source_sha256'] != qp.get('cache_sha256', qp['sha256']):
+                    continue
+                row['source_counts'] = {'top_level_questions': len(candidate['questions']),
+                                        'scored_parts': sum(len(q['parts']) for q in candidate['questions'])}
+                break
+            if 'source_counts' in row:
+                expected[key].update(counted_source_papers=1,
+                                     available_top_level_questions=row['source_counts']['top_level_questions'],
+                                     available_scored_parts=row['source_counts']['scored_parts'])
             if not sample and docs['examiner_report']['availability'] != 'verified_public':
                 missing_examiner_reports.append(pid)
             counts = imported.get(pid)
@@ -102,8 +128,6 @@ def main():
             else:
                 row.pop('imported_counts', None)
         write(path, inventory, indent=1 if 'qualification' in inventory else 2)
-    index = DATA / 'packs/index.json'
-    index_data = read(index)
     index_data['packs'] = [entry for entry in index_data['packs'] if not entry['file'].startswith('fmaths/')]
     index_data['packs'].extend({'file': f'fmaths/{path.name}', 'subject_id': 'EDX_ALEVEL_FMATH_9FM0'} for path in folders)
     write(index, index_data)

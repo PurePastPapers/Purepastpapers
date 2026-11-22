@@ -141,10 +141,12 @@ def trim_blank(image):
     return image.crop((0, max(0, rows[0] - 8), width, min(image.height, rows[-1] + 9)))
 
 
-def main(slugs):
+def main(slugs, paper_ids=()):
     made = 0
     for slug in slugs:
         for pack_path in sorted((ROOT / 'data/packs' / slug).glob('*.json')):
+            if paper_ids and pack_path.stem not in paper_ids:
+                continue
             pack = json.loads(pack_path.read_text())
             catalogues = {}
             changed = False
@@ -191,4 +193,9 @@ def main(slugs):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:] or ['maths', 'gcsemaths', 'physics', 'gcsephys', 'biology', 'gcsebio', 'gcsechem'])
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('slugs', nargs='*')
+    parser.add_argument('--paper', action='append')
+    args = parser.parse_args()
+    main(args.slugs or ['maths', 'gcsemaths', 'physics', 'gcsephys', 'biology', 'gcsebio', 'gcsechem'], args.paper)
