@@ -999,6 +999,10 @@
 .paper-questions__num {
   font: 400 24px/1 var(--font-display);
 }
+.paper-questions__num--part {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
 .paper-questions__text {
   font-size: 16px;
 }

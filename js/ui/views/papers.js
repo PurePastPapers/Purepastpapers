@@ -99,12 +99,13 @@ export async function mount(element, context) {
     const summary = summaries.get(paper.paper_id);
     const status = statusOf(paper);
     const session = resumeFor.get(paper.paper_id);
+    const questionCount = new Set(paper.question_ids.map((id) => bundle.questionsById.get(id)?.linked_group?.id || id)).size;
     return html`<li class="card ruled paper-card tilt-${[3, 2, 4, 1][index % 4]}">
       <i class="tape tape--c" aria-hidden="true"></i>
       <p class="paper-card__code">${codeLine(paper)}</p>
       <h3><a href="${paperHref(paper)}">${shortTitle(paper)}</a></h3>
       <p class="paper-card__meta">
-        ${paper.total_marks} marks · ${fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}${paper.question_ids.length ? html` · ${plural(paper.question_ids.length, 'question')}` : ''}
+        ${paper.total_marks} marks · ${fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}${questionCount ? html` · ${plural(questionCount, 'question')}` : ''}
       </p>
       ${paper.is_sample ? html`<p style="margin-top:8px">${sourceBadge(paper)}</p>` : ''}
       <div class="paper-card__foot">

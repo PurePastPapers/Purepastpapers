@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { validateBundle, validateQuestion } from '../js/data/schema.js';
 import { createSpecIndex } from '../js/engine/spec-index.js';
 import { filterQuestions } from '../js/engine/filter-engine.js';
-import { questionMeta, questionRef } from '../js/ui/question-view.js';
+import { linkedIntro, questionMeta, questionRef } from '../js/ui/question-view.js';
 import { practicePool } from '../js/ui/student.js';
 
 const subjectId = 'PARTS_SUBJECT';
@@ -30,6 +30,20 @@ const bundle = (questions) => ({
   questionsById: new Map(questions.map((record) => [record.question_id, record])),
 });
 const errors = (questions) => validateBundle(bundle(questions), index).filter((entry) => entry.level === 'error');
+
+test('linked parts share one stem and keep figures needed by later parts', () => {
+  const sharedFigure = {image_url: 'assets/maths/PAPER/shared.webp', label: 'Figure 1'};
+  const first = part('PART_A', {context: {stem_image_url: 'assets/maths/PAPER/stem.webp', figures: [sharedFigure]}});
+  const second = part('PART_B', {context: {
+    stem_image_url: 'assets/maths/PAPER/combined.webp',
+    figures: [sharedFigure, {image_url: 'assets/maths/PAPER/later.webp', label: 'Figure 2'}],
+  }});
+  const markup = String(linkedIntro({parts: [first, second]}));
+  assert.equal(markup.match(/data-math-image="[^"]+\/stem\.webp"/g).length, 1);
+  assert.equal(markup.match(/data-math-image="[^"]+\/shared\.webp"/g).length, 1);
+  assert.match(markup, /\/later\.webp/);
+  assert.doesNotMatch(markup, /\/combined\.webp/);
+});
 
 test('legacy questions stay valid and a part parent can be a non-assessable grouping id', () => {
   assert.deepEqual(validateQuestion(question('LEGACY'), context), []);

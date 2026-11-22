@@ -13,8 +13,6 @@ export function questionBody(question, { contextOpen = false } = {}) {
   const { question_html: markup, question_image_url: url } = question.content || {};
   const context = question.context || {};
   const fullQuestion = context.full_question_html || (context.full_question_image_url && isSafeUrl(context.full_question_image_url));
-  const article = context.article;
-  const articlePages = (article?.page_image_urls || []).filter(isSafeUrl);
   return html`<div class="stack">
     ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
     ${context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
@@ -27,15 +25,22 @@ export function questionBody(question, { contextOpen = false } = {}) {
         <div class="qcontent">${sanitizeHtml(context.full_question_html)}${image(context.full_question_image_url, 'Full question for context only')}</div>
       </div>
     </details>` : ''}
-    ${article ? articlePages.length ? html`<details class="question-context" data-article-context="${question.question_id}">
+    ${articleResource(question)}
+  </div>`;
+}
+
+function articleResource(question) {
+  const article = question.context?.article;
+  if (!article) return '';
+  const articlePages = (article.page_image_urls || []).filter(isSafeUrl);
+  return articlePages.length ? html`<details class="question-context" data-article-context="${question.question_id}">
       <summary>Pre-release scientific article (unscored context)</summary>
       <div class="stack" style="margin-top:12px">
         <p class="small muted">Pearson issued this article to candidates before the exam. It is context only and carries no marks.</p>
         ${articlePages.map((page, index) => html`<div class="qcontent">${image(page, `Scientific article page ${index + 1}`)}</div>`)}
         ${article.url && /^https:/i.test(article.url) ? html`<p class="small"><a href="${article.url}" target="_blank" rel="noopener">Open the official article PDF</a></p>` : ''}
       </div>
-    </details>` : html`<p class="small muted">This question uses the pre-release scientific article for its paper. Pearson has not made that article publicly available, so it is not reproduced here.</p>` : ''}
-  </div>`;
+    </details>` : html`<p class="small muted">This question uses the pre-release scientific article for its paper. Pearson has not made that article publicly available, so it is not reproduced here.</p>`;
 }
 
 /**
@@ -62,7 +67,7 @@ export function markSchemeBody(question, { wholeQuestion = true } = {}) {
   const { mark_scheme_html: markup, mark_scheme_image_url: url } = question.content || {};
   if (!markup && !url) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
   const full = wholeQuestion && question.scheme_scope === 'part' && question.context?.full_scheme_image_url && isSafeUrl(question.context.full_scheme_image_url) ? question.context.full_scheme_image_url : null;
-  return html`<div class="ms">${question.scheme_scope === 'full_question' ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : question.scheme_scope === 'parent_part' ? html`<p class="small muted">The board prints this scheme for the whole part${question.scheme_part ? ` ${question.scheme_part}` : ''}. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, question.part_label ? `Mark scheme for part ${question.part_label}` : 'Mark scheme')}</div>
+  return html`<div class="ms">${question.scheme_scope === 'full_question' && question.part_label ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : question.scheme_scope === 'parent_part' ? html`<p class="small muted">The board prints this scheme for the whole part${question.scheme_part ? ` ${question.scheme_part}` : ''}. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, question.part_label ? `Mark scheme for part ${question.part_label}` : 'Mark scheme')}</div>
     ${full ? html`<details class="question-context" data-full-scheme="${question.question_id}"><summary>Show the mark scheme for the whole question</summary><div class="qcontent" style="margin-top:12px">${image(full, 'Mark scheme for the whole question, context only')}</div></details>` : ''}</div>`;
 }
 
@@ -180,7 +185,28 @@ export function linkedNote(entry) {
 
 /** The question's introduction and printed resources, shown once above the parts. */
 export function linkedIntro(entry) {
-  return resources({ ...entry.parts[0], part_label: '' });
+  const parents = new Set();
+  const assets = new Set();
+  const articles = new Set();
+  const firstUse = (seen, key) => {
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  };
+  return html`${entry.parts.map((part) => {
+    const context = part.context || {};
+    const hasStem = context.stem_image_url || context.shared_stem_html;
+    const showStem = hasStem && firstUse(parents, part.parent_question_id || part.question_number);
+    const extra = {
+      stem_image_url: showStem && firstUse(assets, context.stem_image_url) ? context.stem_image_url : null,
+      intros: Array.isArray(context.intros) ? context.intros.filter((intro) => firstUse(assets, intro?.image_url)) : [],
+      figures: Array.isArray(context.figures) ? context.figures.filter((figure) => firstUse(assets, figure?.image_url)) : [],
+    };
+    const article = context.article && firstUse(articles, context.article.url || part.paper_id);
+    return html`${showStem && context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
+      ${resources({ ...part, part_label: '', context: extra })}
+      ${article ? articleResource(part) : ''}`;
+  })}`;
 }
 
 /** One part's own printed text: anything printed just before its label, then its crop. */

@@ -46,11 +46,12 @@ function paperHeights(units) {
 }
 
 const packs = read('data/packs/index.json').packs.filter((entry) => SLUGS.includes(entry.file.split('/')[0]));
-const catalogues = new Map();
+let currentCatalogue;
 const asset = (url) => {
   const [, slug, paper, name] = url.split('/');
-  if (!catalogues.has(paper)) catalogues.set(paper, read(`data/${slug}-assets/${paper}.json`).assets);
-  return catalogues.get(paper)[name];
+  const file = `data/${slug}-assets/${paper}.json`;
+  if (currentCatalogue?.file !== file) currentCatalogue = {file, assets: read(file).assets};
+  return currentCatalogue.assets[name];
 };
 
 test('every refined GCSE part crop is exactly the region its record names', () => {

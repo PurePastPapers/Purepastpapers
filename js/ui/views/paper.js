@@ -11,10 +11,11 @@ import { loadReportIndex, reportSourceUrl } from '../../data/examiner-reports.js
 import { createSession } from '../../data/sessions.js';
 import { gradeFor, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js';
+import { collapseLinked, expandLinkedIds } from '../../engine/linked-parts.js';
 import { levelLabel, qualificationCode } from '../../engine/paper-identity.js';
 import { paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds } from '../../engine/paper-choice.js';
 import { icon } from '../icons.js';
-import { marksPill, questionRef, questionSnippet } from '../question-view.js';
+import { linkedRef, marksPill, questionRef, questionSnippet } from '../question-view.js';
 import { startSingle } from '../student.js';
 import { targetGrade } from '../subject-colours.js';
 import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, openModal, pageHead, sourceBadge, toast } from '../ui.js';
@@ -32,7 +33,8 @@ export async function mount(element, context) {
   const learned = api.learnedSet();
   const latest = latestByQuestion(progress.question_attempts);
   const questions = paper.question_ids.map((id) => bundle.questionsById.get(id)).filter(Boolean);
-  const locked = questions.filter((question) => missingSpecPoints(question, learned, specIndex).length > 0);
+  const practiceQuestions = collapseLinked(questions, bundle.questionsById);
+  const locked = practiceQuestions.filter((question) => missingSpecPoints(question, learned, specIndex).length > 0);
   const openSession = api.resumableSessions().find((session) => session.paper_id === paper.paper_id);
   const pdf = isSafeUrl(paper.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
   const examinerReport = reportSourceUrl(paper);
@@ -75,29 +77,31 @@ export async function mount(element, context) {
   }
 
   function questionRows() {
-    const shown = showAll ? questions : questions.slice(0, SHOW_FIRST);
+    const shown = showAll ? practiceQuestions : practiceQuestions.slice(0, SHOW_FIRST);
     return html`<ol class="paper-questions">
         ${shown.map((question) => {
           const missing = missingSpecPoints(question, learned, specIndex);
-          const status = questionStatus(question, latest);
-          const attempt = latest.get(question.question_id);
+          const attempts = (question.part_ids || [question.question_id]).map((id) => latest.get(id));
+          const marked = attempts.every(Boolean);
+          const awarded = marked ? attempts.reduce((sum, attempt) => sum + attempt.marks_awarded, 0) : 0;
+          const status = question.is_linked_group ? ragFor(percent(awarded, question.marks)) : questionStatus(question, latest);
           return html`<li>
-            <span class="paper-questions__num">Q${question.question_number}</span>
+            <span class="paper-questions__num ${question.is_linked_group || question.part_label ? 'paper-questions__num--part' : ''}">${question.is_linked_group ? linkedRef(question) : questionRef(question)}</span>
             <div style="min-width:0">
               <p class="paper-questions__text">${questionSnippet(question, 120)}</p>
               <p class="row row--tight small">
                 ${difficultyBadge(question.difficulty)}
                 ${[...new Set(question.primary_spec_points.map((id) => specIndex.topicOf(id)?.title || specIndex.label(id)))].map((topic) => html`<span class="tag">${topic}</span>`)}
                 ${missing.length ? html`<span class="tag tag--locked" title="${missing.map((id) => specIndex.label(id)).join('; ')}">${icon('lock', { size: 13 })} needs ${plural(missing.length, 'topic')} you have not learned yet</span>` : ''}
-                ${attempt ? html`<span class="lasttime"><span class="rag-dot" data-rag="${status}"></span>last time ${attempt.marks_awarded}/${attempt.max_marks}</span>` : ''}
+                ${marked ? html`<span class="lasttime"><span class="rag-dot" data-rag="${status}"></span>last time ${awarded}/${question.marks}</span>` : ''}
               </p>
             </div>
             <span class="row row--tight row--nowrap">${marksPill(question.marks)}<button type="button" class="btn btn--sm" data-open="${question.question_id}">Practise</button></span>
           </li>`;
         })}
       </ol>
-      ${questions.length > SHOW_FIRST
-        ? html`<p class="center" style="margin-top:14px"><button type="button" class="btn btn--sm" data-more>${showAll ? 'Show fewer questions' : `Show ${questions.length - SHOW_FIRST} more questions`}</button></p>`
+      ${practiceQuestions.length > SHOW_FIRST
+        ? html`<p class="center" style="margin-top:14px"><button type="button" class="btn btn--sm" data-more>${showAll ? 'Show fewer questions' : `Show ${practiceQuestions.length - SHOW_FIRST} more questions`}</button></p>`
         : ''}`;
   }
 
@@ -135,8 +139,9 @@ export async function mount(element, context) {
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="section-title">
             <h2 class="card__title">Questions</h2>
-            ${questions.length ? html`<span class="hand">practise any one on its own</span><span class="small muted paper-qs__count">${plural(questions.length, 'question')} · ${paper.total_marks} marks</span>` : ''}
+            ${practiceQuestions.length ? html`<span class="hand">choose a question to practise</span><span class="small muted paper-qs__count">${plural(practiceQuestions.length, 'question')} · ${paper.total_marks} marks</span>` : ''}
           </div>
+          ${paper.choice_note ? html`<p class="small muted">${paper.choice_note}</p>` : ''}
           ${questions.length
             ? html`${locked.length
                   ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs a topic' : 'need topics'} you have not marked as learned. <a href="${links.subject(subject.subject_id)}">Update learned topics</a>`, { type: 'warn' })
@@ -198,6 +203,7 @@ export async function mount(element, context) {
     return openModal({
       title: 'Choose your paper questions',
       body: html`<div class="stack">
+        ${paper.choice_note ? html`<p>${paper.choice_note}</p>` : ''}
         <p>Compulsory questions are included. Choose the optional questions you will answer before you start.</p>
         ${pdf ? html`<a href="${pdf}" target="_blank" rel="noopener">Open the original question paper (PDF)</a>` : ''}
         ${groups.map(({ options, count }, index) => {
@@ -275,17 +281,19 @@ export async function mount(element, context) {
   // Practising one question opens the whole paper as a mark-as-you-go set, starting on that
   // question, so the number row and Next move straight on without returning here.
   on(element, 'click', '[data-open]', async (event, button) => {
-    const question = bundle.questionsById.get(button.dataset.open);
-    if (questions.length < 2) return startSingle(question, context.navigate);
+    const question = practiceQuestions.find((item) => item.question_id === button.dataset.open);
+    if (!question) return;
+    if (practiceQuestions.length < 2) return startSingle(question.parts?.[0] || question, context.navigate);
+    const questionIds = expandLinkedIds(practiceQuestions.map((item) => item.question_id), bundle.questionsById);
     const session = createSession({
       kind: 'question_set',
       subject_id: subject.subject_id,
       title: `${paper.title}: questions`,
-      question_ids: questions.map((item) => item.question_id),
+      question_ids: questionIds,
       paper_type: 'user_custom_test',
       mark_mode: 'each',
     });
-    session.current_index = Math.max(0, questions.indexOf(question));
+    session.current_index = Math.max(0, questionIds.indexOf(question.part_ids?.[0] || question.question_id));
     session.source_paper_id = paper.paper_id; // where "Save and exit" falls back to
     await api.saveSession(session, { silent: true });
     context.navigate(routeOf(links.session(session.session_id)));

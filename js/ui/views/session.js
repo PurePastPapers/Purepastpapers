@@ -792,10 +792,32 @@ export async function mount(element, context) {
               <i class="tape tape--c" aria-hidden="true"></i>
               <h2 class="card__title">Review</h2>
               <p class="hand">open a question to see your answer next to the mark scheme</p>
-              ${questions.map((question, index) => {
+              ${items.map((item) => {
+                if (item.group) {
+                  const marks = item.questions.map((part) => session.marks[part.question_id]);
+                  const anyMarked = marks.some((mark) => mark != null);
+                  const key = item.questions[0].question_id;
+                  return html`<details class="fold fold--row" ${items.length === 1 ? 'open' : ''}>
+                    <summary>
+                      <span class="fold__title">${linkedRef(item.entry, bundle.papersById)}</span>
+                      <span class="spacer"></span>
+                      ${anyMarked ? html`<span class="review-card__marks">${sum(marks, (mark) => mark || 0)}/${item.entry.marks}</span>` : html`<span class="small muted">Not marked</span>`}
+                    </summary>
+                    <div class="stack" style="padding-top:12px">
+                      ${linkedIntro(item.entry)}
+                      ${item.questions.map((part, index) => html`<section class="stack stack--sm qgroup__part">
+                        <h3 class="field__label">Part ${linkedPartLabel(part, item.entry)} · ${marks[index] ?? 'Unmarked'}/${part.marks}</h3>
+                        ${linkedPartBody(part)} ${answerBlock(part)}
+                        <div><p class="label">Mark scheme</p>${markSchemeBody(part, {wholeQuestion: false})}</div>
+                      </section>`)}
+                      ${reportFold({key, units: item.questions, paper: bundle.papersById.get(item.entry.paper_id), group: true})}
+                    </div>
+                  </details>`;
+                }
+                const question = item.questions[0];
                 const marks = session.marks[question.question_id];
                 const share = marks == null ? null : percent(marks, question.marks);
-                return html`<details class="fold fold--row" ${questions.length === 1 ? 'open' : ''}>
+                return html`<details class="fold fold--row" ${items.length === 1 ? 'open' : ''}>
                   <summary>
                     <span class="fold__title">${numberOf(question)}</span>
                     <span class="tag">${topicOf(question)}</span>
