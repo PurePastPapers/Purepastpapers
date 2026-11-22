@@ -158,13 +158,30 @@ test('only the active Pencil pointer can finish a stroke', browserOptions, async
       pointer('pointerup', 'pen', 1, 30);
       pointer('pointerdown', 'pen', 3, 40);
       pointer('lostpointercapture', 'pen', 3, 40);
-      return { beforePenUp, changes, value: editor.getValue(), touchAction: canvas.style.touchAction, ratio: bounds.width / bounds.height };
+      const value = editor.getValue();
+      const add = host.querySelector('.ink-editor__add-space');
+      const belowCanvas = add.getBoundingClientRect().top >= bounds.bottom;
+      add.click();
+      const expanded = host.querySelector('canvas').getBoundingClientRect();
+      const legacyValue = createInkEditor(document.createElement('div'), {
+        value: { ...value, sections: [{ ...value.sections[0], height: 360 }] },
+      }).getValue();
+      return {
+        beforePenUp, changes, value, belowCanvas, touchAction: canvas.style.touchAction,
+        ratio: bounds.width / bounds.height, expandedHeightFactor: expanded.height / bounds.height,
+        expandedValue: editor.getValue(), canvasCount: host.querySelectorAll('canvas').length, legacyValue,
+      };
     });
     assert.equal(result.beforePenUp, 0);
-    assert.equal(result.changes.length, 1);
+    assert.equal(result.changes.length, 2);
     assert.equal(result.value.sections[0].strokes.length, 1);
     assert.equal(result.value.sections[0].strokes[0].points.length, 2);
     assert.equal(result.touchAction, 'pan-y pinch-zoom');
-    assert.ok(Math.abs(result.ratio - 1000 / 360) < 0.01);
+    assert.ok(Math.abs(result.ratio - 1000 / 720) < 0.01);
+    assert.equal(result.belowCanvas, true);
+    assert.equal(result.canvasCount, 1);
+    assert.ok(Math.abs(result.expandedHeightFactor - 1.5) < 0.01);
+    assert.deepEqual(result.expandedValue.sections[0], { ...result.value.sections[0], height: 1080 });
+    assert.deepEqual(result.legacyValue.sections[0], result.value.sections[0]);
   });
 });

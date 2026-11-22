@@ -98,31 +98,25 @@
 }
 
 .ink-editor__sections {
-  display: grid;
-  gap: .65rem;
-}
-
-.ink-editor__section {
   overflow: hidden;
   border: 1px solid var(--ink-border);
   border-radius: .6rem;
-  background: var(--ink-surface);
+  background-color: #fafbff;
+  background-image: linear-gradient(to bottom, transparent calc(100% - 1px), #e5e9f1 calc(100% - 1px));
+  background-size: 100% 2rem;
 }
 
-.ink-editor__section-title {
-  padding: .35rem .65rem;
-  color: var(--ink-muted);
-  font-size: .75rem;
-  border-bottom: 1px solid var(--ink-border);
+.ink-editor__add-space {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-block: .5rem;
 }
 
 .ink-editor__canvas {
   display: block;
   width: 100%;
   height: auto;
-  background-color: #fafbff;
-  background-image: linear-gradient(to bottom, transparent calc(100% - 1px), #e5e9f1 calc(100% - 1px));
-  background-size: 100% 2rem;
   touch-action: pan-y pinch-zoom;
   cursor: crosshair;
 }

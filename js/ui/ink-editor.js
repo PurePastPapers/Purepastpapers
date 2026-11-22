@@ -1,20 +1,24 @@
 const LOGICAL_WIDTH = 1000;
-const LOGICAL_HEIGHT = 360;
-const MAX_SECTIONS = 12;
+const ADDED_HEIGHT = 360;
+const STARTING_HEIGHT = ADDED_HEIGHT * 2;
+const MAX_WRITING_HEIGHT = ADDED_HEIGHT * 12;
+const MAX_CANVAS_EDGE = 4096;
 const MAX_POINTS_PER_STROKE = 5000;
 
 function newSection() {
-  return { id: crypto.randomUUID(), width: LOGICAL_WIDTH, height: LOGICAL_HEIGHT, strokes: [] };
+  return { id: crypto.randomUUID(), width: LOGICAL_WIDTH, height: STARTING_HEIGHT, strokes: [] };
 }
 
-function normalizeInk(value) {
+const writingHeight = sections => sections.reduce((total, section) => total + section.height * LOGICAL_WIDTH / section.width, 0);
+
+function normalizeInk(value, readOnly) {
   if (!value || value.schemaVersion !== 1 || !Array.isArray(value.sections)) {
     return { ...(value || {}), schemaVersion: 1, sections: [newSection()] };
   }
   const sections = value.sections.map((section) => ({
     id: typeof section.id === 'string' ? section.id : crypto.randomUUID(),
     width: Number.isFinite(section.width) && section.width > 0 ? section.width : LOGICAL_WIDTH,
-    height: Number.isFinite(section.height) && section.height > 0 ? section.height : LOGICAL_HEIGHT,
+    height: Number.isFinite(section.height) && section.height > 0 ? section.height : ADDED_HEIGHT,
     strokes: Array.isArray(section.strokes) ? section.strokes.map((stroke) => ({
       id: typeof stroke.id === 'string' ? stroke.id : crypto.randomUUID(),
       tool: stroke.tool === 'eraser' ? 'eraser' : 'pen',
@@ -22,11 +26,15 @@ function normalizeInk(value) {
       width: Number(stroke.width) || 3,
       points: Array.isArray(stroke.points) ? stroke.points.map((point) => ({
         x: Math.max(0, Math.min(Number(section.width) || LOGICAL_WIDTH, Number(point.x) || 0)),
-        y: Math.max(0, Math.min(Number(section.height) || LOGICAL_HEIGHT, Number(point.y) || 0)),
+        y: Math.max(0, Math.min(Number(section.height) || ADDED_HEIGHT, Number(point.y) || 0)),
         pressure: Math.max(0, Math.min(1, Number(point.pressure ?? 0.5))),
       })) : [],
     })) : [],
   }));
+  const last = sections.at(-1);
+  if (last && !readOnly) {
+    last.height += Math.max(0, STARTING_HEIGHT - writingHeight(sections)) * last.width / LOGICAL_WIDTH;
+  }
   return { ...value, schemaVersion: 1, sections: sections.length ? sections : [newSection()] };
 }
 
@@ -59,9 +67,11 @@ function drawStroke(context, stroke, start = 0) {
 
 function drawSection(canvas, section) {
   const rect = canvas.getBoundingClientRect();
-  const dpr = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
-  const pixelWidth = Math.round(rect.width * dpr);
-  const pixelHeight = Math.round(rect.height * dpr);
+  if (!rect.width || !rect.height) return;
+  // Keep tall answers within Safari’s canvas size limits.
+  const dpr = Math.min(3, window.devicePixelRatio || 1, MAX_CANVAS_EDGE / Math.max(rect.width, rect.height));
+  const pixelWidth = Math.max(1, Math.floor(rect.width * dpr));
+  const pixelHeight = Math.max(1, Math.floor(rect.height * dpr));
   if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
     canvas.width = pixelWidth;
     canvas.height = pixelHeight;
@@ -84,7 +94,7 @@ function addControl(parent, label, control) {
 
 /** Mounts a compact vector handwriting editor. `onChange` receives a full immutable snapshot. */
 export function createInkEditor(container, { value, onChange = () => {}, readOnly = false } = {}) {
-  let ink = normalizeInk(value);
+  let ink = normalizeInk(value, readOnly);
   let active = null;
   let saveState = 'Saved on this device';
   let drawingMode = 'pen';
@@ -100,6 +110,7 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
   toolbar.className = 'ink-editor__toolbar';
   const sectionsHost = document.createElement('div');
   sectionsHost.className = 'ink-editor__sections';
+  root.append(toolbar, sectionsHost);
   const status = document.createElement('span');
   status.className = 'ink-editor__status';
   status.setAttribute('role', 'status');
@@ -129,11 +140,6 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     surfaces.length = 0;
     for (let index = 0; index < ink.sections.length; index += 1) {
       const section = ink.sections[index];
-      const panel = document.createElement('div');
-      panel.className = 'ink-editor__section';
-      const heading = document.createElement('div');
-      heading.className = 'ink-editor__section-title';
-      heading.textContent = `Writing space ${index + 1}`;
       const canvas = document.createElement('canvas');
       canvas.className = 'ink-editor__canvas';
       canvas.style.aspectRatio = `${section.width} / ${section.height}`;
@@ -142,8 +148,7 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
       canvas.dataset.sectionId = section.id;
       if (!readOnly) canvas.style.touchAction = allowTouchDrawing ? 'none' : 'pan-y pinch-zoom';
       if (!readOnly) attachPointerHandlers(canvas, section);
-      panel.append(heading, canvas);
-      sectionsHost.append(panel);
+      sectionsHost.append(canvas);
       surfaces.push({ canvas, section });
     }
     redraw();
@@ -232,13 +237,13 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     widthInput.value = '3';
     widthInput.setAttribute('aria-label', 'Pen thickness');
     addControl(toolbar, 'Thickness', widthInput);
-    const button = (label, action) => {
+    const button = (label, action, parent = toolbar) => {
       const element = document.createElement('button');
       element.type = 'button';
       element.className = 'button button--secondary button--small';
       element.textContent = label;
       element.addEventListener('click', action);
-      toolbar.append(element);
+      parent.append(element);
       return element;
     };
     const modeButton = button('Eraser', () => {
@@ -256,27 +261,29 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     touchButton.setAttribute('aria-pressed', 'false');
     undoButton = button('Undo', undo);
     redoButton = button('Redo', redo);
-    button('Add writing space', () => {
-      if (active) return;
-      if (ink.sections.length >= MAX_SECTIONS) {
-        status.textContent = `Maximum ${MAX_SECTIONS} writing spaces`;
-        return;
-      }
-      ink.sections.push(newSection());
-      renderSections();
-      emit();
-    });
     button('Clear answer', () => {
       if (active) return;
       ink = { ...ink, schemaVersion: 1, sections: [newSection()] };
       renderSections();
       emit();
     });
+    const addSpaceButton = button('Add writing space', () => {
+      if (active) return;
+      const addedHeight = Math.min(ADDED_HEIGHT, MAX_WRITING_HEIGHT - writingHeight(ink.sections));
+      if (addedHeight <= 0) {
+        status.textContent = 'Maximum writing space reached';
+        return;
+      }
+      const section = ink.sections.at(-1);
+      section.height += addedHeight * section.width / LOGICAL_WIDTH;
+      renderSections();
+      emit();
+    }, root);
+    addSpaceButton.className = 'btn btn--sm ink-editor__add-space';
   }
 
   if (typeof colorInput === 'undefined') { var colorInput; var widthInput; }
   toolbar.append(status);
-  root.append(toolbar, sectionsHost);
   container.append(root);
   status.textContent = readOnly ? 'Handwritten answer' : saveState;
   renderSections();

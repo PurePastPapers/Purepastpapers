@@ -1794,7 +1794,7 @@ export async function mount(element, context) {
     }
     button.disabled = true;
     const inkTarget = button.closest('[data-ink-target]') || element.querySelector(`[data-ink-target="${CSS.escape(partId)}"]`);
-    inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__canvas').forEach((control) => {
+    inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__add-space, .ink-editor__canvas').forEach((control) => {
       control.disabled = true;
       control.style.pointerEvents = 'none';
     });
@@ -1844,7 +1844,7 @@ export async function mount(element, context) {
       toast(error?.message || 'Could not save this handwritten answer.', { type: 'error' });
     } finally {
       button.disabled = false;
-      inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__canvas').forEach((control) => {
+      inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__add-space, .ink-editor__canvas').forEach((control) => {
         control.disabled = false;
         control.style.pointerEvents = '';
       });
