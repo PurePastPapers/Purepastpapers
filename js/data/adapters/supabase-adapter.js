@@ -13,7 +13,7 @@ const recoverySessionKey = `${namespace}:password-recovery`;
 let clientPromise;
 let writeQueue = Promise.resolve();
 
-async function getClient() {
+export async function getClient() {
   if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
     throw new Error('Cloud accounts are not configured yet.');
   }

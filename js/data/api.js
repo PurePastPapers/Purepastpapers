@@ -143,6 +143,7 @@ export async function init() {
 
 export const currentUser = () => user;
 export const isSignedIn = () => Boolean(user);
+export const cloudAccountId = () => activeAdapter === supabaseAdapter ? user?.user_id ?? null : null;
 const inkOwner = () => user?.user_id || 'guest';
 const inkCloud = { deleteInkConflict, deleteInkResponse, loadInkResponses, saveInkResponse };
 const inkAdapter = () => user && activeAdapter === supabaseAdapter ? inkCloud : null;
