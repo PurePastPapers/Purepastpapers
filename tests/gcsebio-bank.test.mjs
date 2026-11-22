@@ -112,3 +112,35 @@ test('every referenced GCSE Biology crop is packaged losslessly with its recorde
   }
   assert.equal(assetsChecked, coverage.totals.image_assets);
 });
+
+test('the selective breeding task and its shared diagram resolve to separate reviewed crops', () => {
+  const paperId = 'EDX_1BI0_2020_NOVEMBER_1F';
+  const task = units.find(q => q.question_id === `${paperId}_Q05_U01`);
+  const {assets} = read(`data/gcsebio-assets/${paperId}.json`);
+  // The former asset began much earlier on page 14 and contained only the lead-in.
+  assert.equal(assets[task.content.question_image_url.split('/').at(-1)].sha256,
+    '8fbfb66e045f8f58d553633a4888f407741cec9351414e1d24c51ed1d7e9c813');
+  const {source_regions: [own], context_regions: [figure]} = task.provenance;
+  assert.equal(own.page, 14);
+  assert.equal(figure.page, own.page);
+  assert.equal(figure.bbox[3], own.bbox[1]);
+
+  const conclusions = units.find(q => q.question_id === `${paperId}_Q01_U05`);
+  const [before, after] = conclusions.provenance.context_regions;
+  assert.equal(before.page, 4);
+  assert.equal(after.page, 4);
+  assert.ok(before.bbox[3] < .365 && after.bbox[1] > .465); // Keep both figures around (c)(i).
+});
+
+test('whole schemes end at their question and keep the final marked pages', () => {
+  const questionTwo = units.find(q => q.question_id === 'EDX_1BI0_2025_JUNE_1F_Q02_U01');
+  assert.deepEqual(questionTwo.provenance.scheme_regions.map(r => r.page), [7, 8]);
+
+  const finalUnits = units.filter(q => q.parent_question_id === 'EDX_1BI0_2025_JUNE_2F_Q10');
+  assert.equal(finalUnits.reduce((marks, q) => marks + q.marks, 0), 11);
+  for (const part of finalUnits.slice(-3)) {
+    assert.deepEqual(part.provenance.scheme_regions.map(r => r.page), [27, 28]);
+    assert.deepEqual(part.provenance.part_scheme_regions.map(r => r.page), [28]);
+    assert.equal(part.scheme_scope, 'part');
+  }
+});

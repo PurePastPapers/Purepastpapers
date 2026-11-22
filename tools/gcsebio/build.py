@@ -18,6 +18,7 @@ from pathlib import Path
 import pdfplumber
 from render import SourceRenderer
 from schemes import scheme_regions
+from display_reviews import whole_scheme_review
 
 PREFIX = {'1BI0': 'EDX_GCSE_BIOL_OFF_', '1SC0': 'EDX_GCSE_COMBSCI_BIO_'}
 NAMES = {'1BI0': 'Biology', '1SC0': 'Combined Science'}
@@ -63,6 +64,8 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids, h
         if not derivation or derivation['cache_sha256'] != ms_sha or derivation['original_source_sha256'] != paper['documents']['mark_scheme']['sha256']:
             raise ValueError('Scheme source revision mismatch')
     schemes = scheme_regions(ms, len(candidate['questions']))
+    schemes = {number: whole_scheme_review(paper['paper_id'], ms_sha, number, regions)
+               for number, regions in schemes.items()}
     renderer, scheme_renderer = SourceRenderer(qp), SourceRenderer(ms)
     with pdfplumber.open(qp) as doc:
         sizes = [(p.cropbox[2] - p.cropbox[0], p.cropbox[3] - p.cropbox[1]) for p in doc.pages]
@@ -207,7 +210,7 @@ def build_job(job):
     if not review.exists() or not candidate.exists():
         return {'paper_id': paper_id, 'status': 'awaiting_review_or_source'}
     target = repo/'data/packs/gcsebio'/f'{paper_id}.json'
-    signature = hashlib.sha256(b'gcsebio-build-v1' + candidate.read_bytes() + review.read_bytes()).hexdigest()
+    signature = hashlib.sha256(b'gcsebio-build-v2' + candidate.read_bytes() + review.read_bytes()).hexdigest()
     try:
         if target.exists():
             existing = json.loads(target.read_text())
