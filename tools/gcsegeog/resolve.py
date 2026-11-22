@@ -25,6 +25,15 @@ def own_caption(text, figure):
     return bool(re.search(rf'\b{figure.split()[0]}\s+{n}\s*[–—-]\s*\w', text))
 
 
+def contains_figure(regions, figure):
+    """Check for side-by-side figures whose shared panel is already in the part crop."""
+    return bool(figure) and all(any(
+        unit['page'] == panel['page']
+        and unit['bbox'][0] <= panel['bbox'][0] and unit['bbox'][1] <= panel['bbox'][1]
+        and unit['bbox'][2] >= panel['bbox'][2] and unit['bbox'][3] >= panel['bbox'][3]
+        for unit in regions) for panel in figure['regions'])
+
+
 def resolve(candidate, index, roles=None):
     roles = roles or {}
     stems = candidate.get('stems', {})
@@ -61,7 +70,7 @@ def resolve(candidate, index, roles=None):
             cited += [f for f in wanted if f in booklet and f not in cited]
         entries, removed, missing = [], [], []
         for f in cited:
-            if f in own:
+            if f in own or (f in inline and contains_figure(u['regions'], inline[f])):
                 src = ('own', None, None)
                 gone = inline.get(f, {}).get('removed', False)
             elif f in set(stem.get('figures_printed', [])):

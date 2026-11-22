@@ -643,9 +643,36 @@ export async function mount(element, context) {
                 <input class="input" type="number" min="0" max="${session.total_marks}" step="1" inputmode="numeric" value="${session.total_awarded ?? ''}" data-total />
               </label>
             </section>`
-          : questions.map(
-              (question, index) =>
-                html`<article class="card ruled stack markcard">
+          : items.map((item, index) => {
+              if (item.group) {
+                const { entry } = item;
+                return html`<article class="card ruled stack markcard">
+                  <header class="row row--between">
+                    <h2 class="h2">${fullPaper ? linkedRef(entry) : `Question ${index + 1}`}</h2>
+                    <div class="row row--tight">${item.questions.some((part) => session.flagged[part.question_id]) ? html`<span class="tag">${icon('flag', { size: 13 })} Flagged</span>` : ''} ${marksPill(entry.marks)}</div>
+                  </header>
+                  <details class="fold">
+                    <summary>Show the question</summary>
+                    ${linkedIntro(entry)}
+                    ${item.questions.map((part) => html`<section class="stack stack--sm qgroup__part">
+                      <h3 class="field__label">Part ${linkedPartLabel(part, entry)}</h3>
+                      ${linkedPartBody(part)}
+                    </section>`)}
+                  </details>
+                  ${item.questions.map((part) => {
+                    const label = linkedPartLabel(part, entry);
+                    return html`<section class="stack stack--sm qgroup__part" aria-label="Part ${label}">
+                      <h3 class="field__label">Part ${label} · ${plural(part.marks, 'mark')}</h3>
+                      ${answerBlock(part)}
+                      <div><p class="label">Mark scheme</p>${markSchemeBody(part, { wholeQuestion: false })}</div>
+                      ${marksInput(part, `Marks for ${label}, out of ${part.marks}`)}
+                    </section>`;
+                  })}
+                  ${markingReport(item.questions.at(-1))}
+                </article>`;
+              }
+              const [question] = item.questions;
+              return html`<article class="card ruled stack markcard">
                   <header class="row row--between">
                     <h2 class="h2">${numberOf(question)}</h2>
                     <div class="row row--tight">${session.flagged[question.question_id] ? html`<span class="tag">${icon('flag', { size: 13 })} Flagged</span>` : ''} ${marksPill(question.marks)}</div>
@@ -658,8 +685,8 @@ export async function mount(element, context) {
                   <div><p class="label" style="margin-bottom:6px">Mark scheme</p>${markSchemeBody(question)}</div>
                   ${markingReport(question)}
                   ${marksInput(question)}
-                </article>`,
-            )}
+                </article>`;
+            })}
         <div class="markbar">
           <p class="num" data-markbar>${wholePaper ? 'Enter your total to finish' : markbarText()}</p>
           <button type="button" class="btn btn--primary btn--lg" data-save-results>Save results</button>

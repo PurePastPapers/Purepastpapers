@@ -168,7 +168,7 @@ export async function mount(element, context) {
     html`<div class="filter-group" role="radiogroup" aria-label="${label}">
       <p class="field__label">${label}</p>
       <div class="chips">
-        ${options.map(([value, text]) => html`<button type="button" class="chip chip--sm" role="radio" aria-checked="${filters[key] === value}" data-filter="${key}" data-value="${value}">${text}</button>`)}
+        ${options.map(([value, text]) => html`<button type="button" class="chip chip--sm" role="radio" aria-checked="${filters[key] === value}" tabindex="${filters[key] === value ? 0 : -1}" data-filter="${key}" data-value="${value}">${text}</button>`)}
       </div>
     </div>`;
   const sidebar = () => html`<div class="card ruled tilt-3 side-subject">
@@ -211,7 +211,7 @@ export async function mount(element, context) {
     ? html`<div class="tier-switch tier-switch--papers" data-tier-bar>
         <span class="tier-switch__label" id="papers-tier-label">Tier</span>
         <div class="seg" role="radiogroup" aria-labelledby="papers-tier-label">
-          ${[...tiers.map((tier) => [tier, tier]), ['all', 'Both tiers']].map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${filters.tier === value}" data-filter="tier" data-value="${value}">${label}</button>`)}
+          ${[...tiers.map((tier) => [tier, tier]), ['all', 'Both tiers']].map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${filters.tier === value}" tabindex="${filters.tier === value ? 0 : -1}" data-filter="tier" data-value="${value}">${label}</button>`)}
         </div>
         <span class="small muted tier-switch__note">${chosenTier
           ? filters.tier === chosenTier ? `Showing your saved tier. Switch to see ${tiers.filter((tier) => tier !== chosenTier).join(' or ')} papers.` : `Your saved tier is ${chosenTier}.`
@@ -239,6 +239,20 @@ export async function mount(element, context) {
       </div>`,
   );
 
+  on(element, 'keydown', '[data-filter]', (event, chip) => {
+    const chips = [...chip.closest('[role="radiogroup"]').querySelectorAll('[data-filter]')];
+    const index = chips.indexOf(chip);
+    let next;
+    if (event.key === 'Home') next = chips[0];
+    else if (event.key === 'End') next = chips.at(-1);
+    else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = chips[(index + 1) % chips.length];
+    else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = chips[(index - 1 + chips.length) % chips.length];
+    if (!next) return;
+    event.preventDefault();
+    if (next === chip) return;
+    next.focus();
+    next.click();
+  });
   on(element, 'click', '[data-filter]', (event, chip) => {
     filters[chip.dataset.filter] = chip.dataset.value;
     if (chip.dataset.filter === 'tier') {
@@ -248,9 +262,15 @@ export async function mount(element, context) {
       setHtml($('[data-side]', element), sidebar());
       const holder = $('[data-tier-holder]', element);
       if (holder) setHtml(holder, tierBar());
-      $(`[data-tier-bar] [data-value="${CSS.escape(filters.tier)}"]`, element)?.focus();
     }
-    for (const other of element.querySelectorAll(`[data-filter="${chip.dataset.filter}"]`)) other.setAttribute('aria-checked', String(other.dataset.value === filters[chip.dataset.filter]));
+    for (const other of element.querySelectorAll(`[data-filter="${chip.dataset.filter}"]`)) {
+      const selected = other.dataset.value === filters[chip.dataset.filter];
+      other.setAttribute('aria-checked', String(selected));
+      other.tabIndex = selected ? 0 : -1;
+    }
+    if (chip.dataset.filter === 'tier') {
+      $(`[data-filter="tier"][data-value="${CSS.escape(filters.tier)}"]`, element)?.focus();
+    }
     setHtml($('[data-list]', element), list());
   });
   on(element, 'click', '[data-save-tier]', async (event, button) => {

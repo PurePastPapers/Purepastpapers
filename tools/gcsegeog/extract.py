@@ -28,11 +28,13 @@ TARIFF = re.compile(r'\[(\d{1,2}) marks?\]')
 LABEL = re.compile(r'^(\d) (\d)(?:(?: \.)? (\d))?(?: (\d))?(?=\s|$)')   # GCSE: "0 1 1", "0 1 1 0" (part 10); the 4th digit is read only when it continues the sequence
 LABEL2 = re.compile(r'^(\d) (\d) \. (1\d)(?=\s|$)(?:(Z)Z)?')   # specimen Paper 2 prints part 10 as "0 2 . 10" (group 4 never matches)
 SPAG = re.compile(r'^\[\+\s*(\d)\s*SPaG marks?\]$', re.I)
+ALTERNATIVE_SELECTION = re.compile(r'^Tick\s+\(.+?\)\s+the box to show which .+ you have chosen\.$')
 OPTION = re.compile(r'^[A-D]\s+\S')
 FIGURE_REF = re.compile(r'\b(Figures?|Tables?)\s+((?:\d{1,2}[a-z]?)(?:(?:,\s*|\s+and\s+|\s*&\s*)\d{1,2}[a-z]?)*)')
 RUBRIC = re.compile(r'^(Section [A-D]$|Section [A-D]\b.*|Answer (all|either|one|question|Question)\b.*|Either$|or$|OR$|'
                     r'If you (choose|answer)\b.*|Question \d+ continues\b.*|Question \d+\s+[A-Z].*|Extra space.*|'
-                    r'Do not write.*|outside the.*|box$|Turn over.*|Specimen material.*|Only one answer per question.*|'
+                    r'Do not write.*|DO NOT WRITE ON THIS PAGE$|ANSWER IN THE SPACES PROVIDED$|outside the.*|box$|'
+                    r'Turn over.*|Specimen material.*|Only one answer per question.*|'
                     r'For the multiple-choice.*|CORRECT METHOD.*|If you want to change.*|If you wish to return.*|'
                     r'select as shown\.?|End of (Question \d+|Section [A-D])\.?|Shade the circle.*|\.$|optional question you have.*|_{5,}.*|\.{5,}.*|\(?\d{2}\)?$|\* \*$|\*$)')
 FOOTER = re.compile(r'^(IB/[A-Z]/|G/[A-Z/]*|[A-Z]{1,3}/[A-Za-z]{2,}/|[a-z]{3}\d{2}7\d{4,}|\(?[A-Z]{3}\d{2}703\d+\)?|703[67]/\d$)')
@@ -290,6 +292,13 @@ def extract(path):
                     if alternative:
                         # "Either (hot deserts) ... [9 marks] / Or (cold environments) ... [9 marks]": answer one, so the marks do not add
                         u['alternative_tariffs'] = u.get('alternative_tariffs', 0) + 1
+                        selection = stream[i + 1:i + 4]
+                        if (len(selection) == 3 and all(p == pi for p, _ in selection)
+                                and ALTERNATIVE_SELECTION.fullmatch(selection[0][1]['text'])
+                                and all(figure_refs(r['text']) for _, r in selection[1:])):
+                            # The checkboxes below both tariffs belong to this choice, not the next question.
+                            u['rows'].extend(selection)
+                            i += len(selection)
                     else:
                         u['marks'] += int(t.group(1))
                         u['tariff'] = {'page': pi + 1, 'top': row['top'], 'bottom': row['bottom']}
