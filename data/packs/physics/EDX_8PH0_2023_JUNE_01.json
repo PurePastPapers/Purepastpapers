@@ -3263,12 +3263,12 @@
             ]
           },
           {
-            "page": 24,
+            "page": 23,
             "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.069342
+              0.134,
+              0.069,
+              0.911,
+              0.89
             ]
           }
         ],
@@ -3289,17 +3289,27 @@
         "part_display": "refined",
         "context_regions": [
           {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.135,
+              0.958003,
+              0.444
+            ]
+          },
+          {
             "page": 22,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.065,
               0.958003,
-              0.19376391982182628
+              0.188
             ]
           }
         ],
-        "context_includes_stem_image": "Q16_stem.webp",
-        "context_reasons": [],
+        "context_reasons": [
+          "Restore the facing graph grid and keep the ramp diagram and equation as shared context."
+        ],
         "part_scheme_regions": [
           {
             "page": 15,
@@ -3321,18 +3331,8 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_regions_refined": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.193787
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20"
+        "part_display_review": "Restore the facing graph grid and keep the ramp diagram and equation as shared context.",
+        "part_display_review_source": "07c86981d3bf316326ffc6affdb8cfe21cf7bfc038865b2bc5401ff80a3752dc"
       },
       "part_label": "(b)(ii)"
     },
@@ -3450,27 +3450,26 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 22,
+            "page": 21,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.135,
               0.958003,
-              0.19376391982182628
+              0.444
             ]
           },
           {
             "page": 22,
             "bbox": [
               0.041997,
-              0.37787676317743135,
+              0.065,
               0.958003,
-              0.7483296213808464
+              0.188
             ]
           }
         ],
-        "context_includes_stem_image": "Q16_stem.webp",
         "context_reasons": [
-          "earlier figure or data"
+          "The official mark scheme uses a triangle and gradient from the graph drawn in part (b)(ii). Show the parts together."
         ],
         "part_scheme_regions": [
           {
@@ -3496,30 +3495,13 @@
         "context_named_parts": [
           "EDX_8PH0_2023_JUNE_01_Q16_U03"
         ],
-        "context_regions_refined": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.193787
-            ]
-          },
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.377738,
-              0.958003,
-              0.748541
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The official mark scheme uses a triangle and gradient from the graph drawn in part (b)(ii). Show the parts together.",
+        "part_display_review_source": "07c86981d3bf316326ffc6affdb8cfe21cf7bfc038865b2bc5401ff80a3752dc"
       },
-      "part_label": "(b)(iii)"
+      "part_label": "(b)(iii)",
+      "depends_on_question_ids": [
+        "EDX_8PH0_2023_JUNE_01_Q16_U03"
+      ]
     },
     {
       "question_id": "EDX_8PH0_2023_JUNE_01_Q17_U01",

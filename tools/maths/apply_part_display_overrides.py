@@ -17,11 +17,19 @@ REPLACED_REASONS = {
 }
 
 
-def find_source(sources, paper, digest):
-    for path in (sources / f'{digest}.pdf', sources / f'{paper}-qp.pdf'):
+def find_source(sources, paper, digest, kind):
+    for path in (sources / f'{digest}.pdf', sources / f'{paper}-{kind}.pdf'):
         if path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == digest:
             return path
     return None
+
+def resolve_source(sources, paper, provenance, key, kind):
+    extracted = find_source(sources, paper, provenance[f'{key}_source_sha256'], kind)
+    if extracted:
+        return extracted, 0
+    original = find_source(sources, paper, provenance[f'original_{key}_source_sha256'], kind)
+    return original, provenance[f'{key}_page_offset']
+
 
 
 def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_sources=False):
@@ -40,12 +48,19 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
             pack_path = root / f'data/packs/maths/{paper}.json'
             if not pack_path.exists():
                 continue
-            digest = next(iter(entries.values()))['source_sha256']
-            source = find_source(sources, paper, digest)
+            pack = json.loads(pack_path.read_text())
+            first = next(question['provenance'] for question in pack['questions'] if question['question_id'] in entries)
+            source, offset = resolve_source(sources, paper, first, 'question', 'qp')
             if source is None:
                 missing.append(paper)
                 continue
-            pack = json.loads(pack_path.read_text())
+            scheme_renderer = None
+            if any('scheme_regions' in entry for entry in entries.values()):
+                scheme, scheme_offset = resolve_source(sources, paper, first, 'scheme', 'ms')
+                if scheme is None:
+                    missing.append(paper)
+                    continue
+                scheme_renderer = renderer_type(str(scheme))
             catalogue_path = root / f'data/maths-assets/{paper}.json'
             catalogue_text = catalogue_path.read_text()
             catalogue = json.loads(catalogue_text)
@@ -53,7 +68,7 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
             renderer = renderer_type(str(source))
             old_stems = set()
 
-            def render(name, regions, offset):
+            def render(name, regions, renderer, offset):
                 output_path = Path(output) / name
                 adjusted = [{**item, 'page': item['page'] + offset} for item in regions]
                 renderer.render(adjusted, output_path)
@@ -72,19 +87,18 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
                 pv = question['provenance']
                 if pv['question_source_sha256'] != entry['source_sha256']:
                     raise ValueError(f'Source changed for {qid}')
-                offset = pv['question_page_offset']
                 short_id = qid.removeprefix(f'{paper}_')
                 context = question.setdefault('context', {})
                 if 'source_regions' in entry:
                     pv['source_regions'] = entry['source_regions']
                     own_name = question['content']['question_image_url'].rsplit('/', 1)[-1]
-                    question['content']['question_image_url'] = render(own_name, entry['source_regions'], offset)
+                    question['content']['question_image_url'] = render(own_name, entry['source_regions'], renderer, offset)
                 old_stem = context.get('stem_image_url')
                 if old_stem:
                     old_stems.add(old_stem.rsplit('/', 1)[-1])
                 regions = entry['context_regions']
                 if regions:
-                    context['stem_image_url'] = render(f'{short_id}_context.webp', regions, offset)
+                    context['stem_image_url'] = render(f'{short_id}_context.webp', regions, renderer, offset)
                     pv['context_regions'] = regions
                     pv['context_regions_refined'] = regions
                 else:
@@ -95,8 +109,17 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
                     context['figures'] = [{
                         'label': figure['label'],
                         'source': 'paper',
-                        'image_url': render(f'{short_id}_figure_{index}.webp', [figure['region']], offset),
+                        'image_url': render(f'{short_id}_figure_{index}.webp', [figure['region']], renderer, offset),
                     } for index, figure in enumerate(entry['figures'], 1)]
+                if 'shared_stem_html' in entry:
+                    context['shared_stem_html'] = entry['shared_stem_html']
+                if 'scheme_regions' in entry:
+                    if pv['scheme_source_sha256'] != entry['scheme_source_sha256']:
+                        raise ValueError(f'Scheme source changed for {qid}')
+                    scheme_name = question['content']['mark_scheme_image_url'].rsplit('/', 1)[-1]
+                    question['content']['mark_scheme_image_url'] = render(
+                        scheme_name, entry['scheme_regions'], scheme_renderer, scheme_offset)
+                    pv['part_scheme_regions'] = entry['scheme_regions']
                 denied = set(entry.get('remove_dependencies', []))
                 if denied:
                     remaining = [dep for dep in question.get('depends_on_question_ids', []) if dep not in denied]

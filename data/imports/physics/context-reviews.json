@@ -1,0 +1,385 @@
+{
+  "EDX_8PH0_2016_JUNE_02": {
+    "source_sha256": "8e940c63df2f434068270894235b6785d155620151917f5db69ba395a7bc012b",
+    "questions": {
+      "EDX_8PH0_2016_JUNE_02_Q14_U02": {
+        "reason": "The selected part states 1200 mm. Keep the telescope diagram and Moon lead-in and exclude the earlier focal-length task.",
+        "context_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.038345,
+              0.092,
+              0.961655,
+              0.441
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.038345,
+              0.612,
+              0.961655,
+              0.639
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_8PH0_2017_JUNE_02": {
+    "source_sha256": "e21bfb5dcc8ae8e91d9e64262115bc30ceed53fcec113ad175ee1124b07062bc",
+    "questions": {
+      "EDX_8PH0_2017_JUNE_02_Q13_U02": {
+        "reason": "Keep the supplied terminal-velocity equation and its variable definitions as unscored context for the viscosity calculation.",
+        "context_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.11
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.152,
+              0.958003,
+              0.327
+            ]
+          }
+        ]
+      },
+      "EDX_8PH0_2017_JUNE_02_Q13_U03": {
+        "reason": "The choice of cylinder depends on wall effects. Keep the experiment introduction and exclude the preceding viscosity calculation.",
+        "context_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.11
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_8PH0_2019_JUNE_01": {
+    "source_sha256": "e2de6107efeac417317919562a92a8f0dcc7bc93079c76e76c08811062fd6dbe",
+    "questions": {
+      "EDX_8PH0_2019_JUNE_01_Q15_U01": {
+        "reason": "Restore the supplied graph grid on the facing page for the plotting task.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041994,
+              0.13,
+              0.958006,
+              0.477
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041994,
+              0.481,
+              0.958006,
+              0.817
+            ]
+          },
+          {
+            "page": 23,
+            "bbox": [
+              0.153,
+              0.07,
+              0.933,
+              0.894
+            ]
+          }
+        ]
+      },
+      "EDX_8PH0_2019_JUNE_01_Q15_U02": {
+        "reason": "The mark scheme asks about the line plotted in part (a), so use one linked card and keep the setup as shared context.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041994,
+              0.13,
+              0.958006,
+              0.477
+            ]
+          }
+        ],
+        "depends_on": "EDX_8PH0_2019_JUNE_01_Q15_U01"
+      }
+    }
+  },
+  "EDX_8PH0_2020_OCTOBER_01": {
+    "source_sha256": "2600f620013a408df3c0001b2d279902563a8b52f31eaf35f0e3a37960bf9a1f",
+    "questions": {
+      "EDX_8PH0_2020_OCTOBER_01_Q16_U04": {
+        "reason": "Keep the displacement and velocity graphs once. Exclude the projectile-evidence task and the formula sheet.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.067,
+              0.958003,
+              0.552
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.559895,
+              0.958003,
+              0.884065
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 23,
+            "bbox": [
+              0.041997,
+              0.638,
+              0.958003,
+              0.699
+            ]
+          }
+        ]
+      },
+      "EDX_8PH0_2020_OCTOBER_01_Q16_U05": {
+        "reason": "Keep the flight-path figure once and exclude the scored projectile-evidence question and formula sheet.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.067,
+              0.958003,
+              0.552
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_8PH0_2023_JUNE_01": {
+    "source_sha256": "07c86981d3bf316326ffc6affdb8cfe21cf7bfc038865b2bc5401ff80a3752dc",
+    "questions": {
+      "EDX_8PH0_2023_JUNE_01_Q16_U03": {
+        "reason": "Restore the facing graph grid and keep the ramp diagram and equation as shared context.",
+        "context_regions": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.135,
+              0.958003,
+              0.444
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.188
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.377738,
+              0.958003,
+              0.750917
+            ]
+          },
+          {
+            "page": 23,
+            "bbox": [
+              0.134,
+              0.069,
+              0.911,
+              0.89
+            ]
+          }
+        ]
+      },
+      "EDX_8PH0_2023_JUNE_01_Q16_U04": {
+        "reason": "The official mark scheme uses a triangle and gradient from the graph drawn in part (b)(ii). Show the parts together.",
+        "context_regions": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.135,
+              0.958003,
+              0.444
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.188
+            ]
+          }
+        ],
+        "depends_on": "EDX_8PH0_2023_JUNE_01_Q16_U03"
+      }
+    }
+  },
+  "EDX_8PH0_2023_JUNE_02": {
+    "source_sha256": "6e1a31a1724915ac797477aa56ea03602826f110800dcefb431dd820493656a8",
+    "questions": {
+      "EDX_8PH0_2023_JUNE_02_Q10_U02": {
+        "reason": "Keep the collagen lead-in and stress–strain graph and exclude the earlier question on viscosity units.",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.109
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.456,
+              0.958003,
+              0.938
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_8PH0_2025_JUNE_01": {
+    "source_sha256": "9b27af604b5687eb1eefe10ac84f1ddbeb11633febb68773001e997a312844e3",
+    "questions": {
+      "EDX_8PH0_2025_JUNE_01_Q14_U05": {
+        "reason": "The cable-cost task gives the 22 A current directly. Keep the island introduction and exclude the earlier calculation.",
+        "context_regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.126
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2019_JUNE_01": {
+    "source_sha256": "56060f41d9efde017a5b26f22f649e3505d163766bb20ccf30bc8dbdd68a4711",
+    "questions": {
+      "EDX_9PH0_2019_JUNE_01_Q11_U03": {
+        "reason": "The selected projectile task gives its own horizontal velocity and drop height. Keep the track figure and exclude part (b).",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041994,
+              0.068,
+              0.958006,
+              0.418
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2024_JUNE_01": {
+    "source_sha256": "521c14378a200e1eb277b0e3945f89bf886ea551f5e5fb79d3c97fdce70c3cce",
+    "questions": {
+      "EDX_9PH0_2024_JUNE_01_Q16_U02": {
+        "reason": "The potentiometer task gives the required resistance comparison. Keep the bulb introduction without the earlier calculation.",
+        "context_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.111
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2025_JUNE_01": {
+    "source_sha256": "e426226b7b17234c7589bc25e0df2f8480b705129a465937b1db823fc42e4fe5",
+    "questions": {
+      "EDX_9PH0_2025_JUNE_01_Q13_U02": {
+        "reason": "Keep the solar-cell graph needed by the task and exclude part (a) and its answer circuit.",
+        "context_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.35
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.615,
+              0.958003,
+              0.676
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2025_JUNE_03": {
+    "source_sha256": "620f1ec9f989df9a1af2572e8be0cc69e8ffa1a5a738b73daa2960e1b892d72e",
+    "questions": {
+      "EDX_9PH0_2025_JUNE_03_Q04_U02": {
+        "reason": "Keep the apparatus and timing for both students. Exclude the earlier scored comparison and marks.",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.589
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

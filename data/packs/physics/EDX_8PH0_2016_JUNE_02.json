@@ -3019,16 +3019,23 @@
             "page": 14,
             "bbox": [
               0.038345,
-              0.44428969359331477,
+              0.092,
               0.961655,
-              0.6434540389972145
+              0.441
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.038345,
+              0.612,
+              0.961655,
+              0.639
             ]
           }
         ],
-        "context_includes_stem_image": "Q14_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (lens)"
+          "The selected part states 1200 mm. Keep the telescope diagram and Moon lead-in and exclude the earlier focal-length task."
         ],
         "part_scheme_regions": [
           {
@@ -3054,18 +3061,8 @@
         "context_named_parts": [
           "EDX_8PH0_2016_JUNE_02_Q14_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 14,
-            "bbox": [
-              0.038345,
-              0.444197,
-              0.961655,
-              0.643206
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20"
+        "part_display_review": "The selected part states 1200 mm. Keep the telescope diagram and Moon lead-in and exclude the earlier focal-length task.",
+        "part_display_review_source": "8e940c63df2f434068270894235b6785d155620151917f5db69ba395a7bc012b"
       },
       "part_label": "(b)(i)"
     },

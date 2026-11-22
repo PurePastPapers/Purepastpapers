@@ -28,6 +28,8 @@ FALSE = {
     'OCR_H432_SAMPLE_01_Q17_b',
     # The Biology parts use the printed context, with no answer from the preceding "Show that" task.
     'EDX_9BN0_2018_JUNE_03_Q01_U03', 'EDX_9BN0_2025_JUNE_03_Q02_U05', 'EDX_9BN0_2025_JUNE_03_Q02_U06',
+    # OCR already states that Kp increased. The numeric Kp is irrelevant to the direction of the change.
+    'OCR_H432_2019_JUNE_01_Q19_b_iii',
 }
 
 changed = 0

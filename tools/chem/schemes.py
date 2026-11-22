@@ -13,7 +13,7 @@ Pages before the first table header (general marking guidance) are not used.
 import re
 
 ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
-COMPACT = re.compile(r'^(\d{1,2})([a-h])?(i|ii|iii|iv|v|vi|vii|viii|ix|x)?$')
+COMPACT = re.compile(r'^(\d{1,2})([a-hj])?(i|ii|iii|iv|v|vi|vii|viii|ix|x)?$')
 
 
 def parse_tokens(tokens, prev):
@@ -59,12 +59,12 @@ def label_of(t):
     return q + (f'({p})' if p else '') + (f'({s})' if s else '')
 
 
-def scheme_regions(path, labels, start_page=0):
+def scheme_regions(path, labels, start_page=0, source_sha256=None):
     """labels: unit labels like '1(a)(i)'. Returns {label: {'regions': [...], 'scope': 'unit'|'parent'}}."""
     import pdfplumber
     rows = []   # (page_index, top, bottom, label or None)
     # Label cells: "1", "(a)", "(ii)", bare "a"/"ii" (some years print no brackets) or compact "1aii".
-    LABEL = re.compile(r'^(\d{1,2}|\(?(?:[a-h]|i|ii|iii|iv|v|vi|vii|viii|ix|x|Ii|Iii|Iv|Vi|Vii|Viii|Ix)\)?\*?|\d{1,2}[a-h]?(?:i|ii|iii|iv|v|vi|vii|viii|ix|x)?\*?|[()])$')
+    LABEL = re.compile(r'^(\d{1,2}|\(?(?:[a-hj]|i|ii|iii|iv|v|vi|vii|viii|ix|x|Ii|Iii|Iv|Vi|Vii|Viii|Ix)\)?\*?|\d{1,2}[a-hj]?(?:i|ii|iii|iv|v|vi|vii|viii|ix|x)?\*?|[()])$')
     # (one scheme prints the numeral "Iv"; a lone bracket is a label split across words. Single
     # capitals are never labels: they are answers such as "A" or "B".)
     with pdfplumber.open(path) as pdf:
@@ -214,4 +214,26 @@ def scheme_regions(path, labels, start_page=0):
             else:
                 regions.append({'page': r['page'] + 1, 'bbox': box})
         out[label] = {'regions': regions, 'scope': scope}
+    # The specimen table carries part (i) onto the next page. The diagonal
+    # watermark and total row must not become part of the following scheme.
+    if source_sha256 == 'd14d8cc9d3b7845bb002ae125ab1d7bad5615ccba4d71f6d85511c151a695404':
+        out['1(i)'] = {
+            'scope': 'unit',
+            'regions': [
+                {'page': 31, 'bbox': [0.023755, 0.868441, 0.976245, 0.895317]},
+                {'page': 32, 'bbox': [0.023755, 0.102466, 0.976245, 0.228449]},
+            ],
+        }
+        out['1(j)'] = {
+            'scope': 'unit',
+            'regions': [
+                {'page': 32, 'bbox': [0.023755, 0.102466, 0.976245, 0.133]},
+                {'page': 32, 'bbox': [0.023755, 0.225089, 0.976245, 0.272123]},
+            ],
+        }
+    elif source_sha256 == 'c09c7670c12ca8cb40a40df9675f7d4814d8d2da5f3336db0d0f08869318cfa8':
+        # The following page starts with a fresh header and part (c).
+        scheme = out.get('1(b)(iii)')
+        if scheme:
+            scheme['regions'] = [r for r in scheme['regions'] if r['page'] == 5]
     return out, sorted(by_label)

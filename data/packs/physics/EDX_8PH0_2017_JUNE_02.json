@@ -1940,21 +1940,28 @@
         "context_basis": "shared_stem",
         "qualification_code": "8PH0",
         "part_display": "refined",
-        "context_bridge_text": "At terminal velocity: weight of solid sphere = drag + upthrust",
         "context_regions": [
           {
             "page": 12,
             "bbox": [
               0.041997,
-              0.3949517446176689,
+              0.065,
               0.958003,
-              0.42242019302152933
+              0.11
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.152,
+              0.958003,
+              0.327
             ]
           }
         ],
-        "context_includes_stem_image": "Q13_stem.webp",
         "context_reasons": [
-          "text printed just before this part"
+          "Keep the supplied terminal-velocity equation and its variable definitions as unscored context for the viscosity calculation."
         ],
         "part_scheme_regions": [
           {
@@ -1980,19 +1987,8 @@
         "context_stem_from_parts": [
           "EDX_8PH0_2017_JUNE_02_Q13_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 12,
-            "bbox": [
-              0.041997,
-              0.395071,
-              0.958003,
-              0.42239
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "Keep the supplied terminal-velocity equation and its variable definitions as unscored context for the viscosity calculation.",
+        "part_display_review_source": "e21bfb5dcc8ae8e91d9e64262115bc30ceed53fcec113ad175ee1124b07062bc"
       },
       "part_label": "(b)(i)"
     },
@@ -2090,31 +2086,19 @@
         "context_basis": "shared_stem",
         "qualification_code": "8PH0",
         "part_display": "refined",
-        "context_bridge_text": "At terminal velocity: weight of solid sphere = drag + upthrust",
         "context_regions": [
           {
             "page": 12,
             "bbox": [
               0.041997,
-              0.3949517446176689,
+              0.065,
               0.958003,
-              0.42242019302152933
-            ]
-          },
-          {
-            "page": 13,
-            "bbox": [
-              0.041997,
-              0.06904231625835189,
-              0.958003,
-              0.6792873051224945
+              0.11
             ]
           }
         ],
-        "context_includes_stem_image": "Q13_stem.webp",
         "context_reasons": [
-          "scenario (student)",
-          "text printed just before this part"
+          "The choice of cylinder depends on wall effects. Keep the experiment introduction and exclude the preceding viscosity calculation."
         ],
         "part_scheme_regions": [
           {
@@ -2141,28 +2125,8 @@
           "EDX_8PH0_2017_JUNE_02_Q13_U01",
           "EDX_8PH0_2017_JUNE_02_Q13_U02"
         ],
-        "context_regions_refined": [
-          {
-            "page": 12,
-            "bbox": [
-              0.041997,
-              0.395071,
-              0.958003,
-              0.42239
-            ]
-          },
-          {
-            "page": 13,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.679312
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The choice of cylinder depends on wall effects. Keep the experiment introduction and exclude the preceding viscosity calculation.",
+        "part_display_review_source": "e21bfb5dcc8ae8e91d9e64262115bc30ceed53fcec113ad175ee1124b07062bc"
       },
       "part_label": "(b)(ii)"
     },

@@ -645,5 +645,288 @@
         ]
       }
     ]
+  },
+  "EDX_8MA0_SAMPLE_02_Q04_U02": {
+    "source_sha256": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058",
+    "review": "Part (b) asks for reasons about a named data point. Both nested prompts and the two corresponding scheme rows are included.",
+    "context_regions": [
+      {
+        "page": 8,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.209
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 8,
+        "bbox": [
+          0.041997,
+          0.343,
+          0.958003,
+          0.473257
+        ]
+      }
+    ],
+    "scheme_source_sha256": "7213153587b99d509d912c4742950489df16758461de18f5b90b6805639a6f63",
+    "scheme_regions": [
+      {
+        "page": 3,
+        "bbox": [
+          0.041997,
+          0.072887,
+          0.958003,
+          0.095748
+        ]
+      },
+      {
+        "page": 3,
+        "bbox": [
+          0.041997,
+          0.1569,
+          0.958003,
+          0.2497
+        ]
+      },
+      {
+        "page": 4,
+        "bbox": [
+          0.041997,
+          0.1545,
+          0.958003,
+          0.238
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_8MA0_SAMPLE_02_Q04_U01"
+    ],
+    "shared_stem_html": "<p>The reading under discussion is 20.6 mm of rainfall.</p>"
+  },
+  "EDX_8MA0_SAMPLE_02_Q04_U03": {
+    "source_sha256": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058",
+    "review": "The scatter plot and sampling scenario are sufficient to interpret the correlation.",
+    "context_regions": [
+      {
+        "page": 8,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.108
+        ]
+      },
+      {
+        "page": 8,
+        "bbox": [
+          0.041997,
+          0.4738,
+          0.958003,
+          0.874074
+        ]
+      }
+    ]
+  },
+  "EDX_8MA0_SAMPLE_02_Q04_U04": {
+    "source_sha256": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058",
+    "review": "The variable definitions and published regression equation are sufficient to interpret the gradient.",
+    "context_regions": [
+      {
+        "page": 8,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.108
+        ]
+      },
+      {
+        "page": 9,
+        "bbox": [
+          0.041997,
+          0.0973,
+          0.958003,
+          0.12255
+        ]
+      }
+    ]
+  },
+  "EDX_8MA0_SAMPLE_02_Q04_U05": {
+    "source_sha256": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058",
+    "review": "Part (e) needs the sampling scenario and both nested tasks; the corresponding scheme rows and notes are included.",
+    "context_regions": [
+      {
+        "page": 8,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.108
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 9,
+        "bbox": [
+          0.041997,
+          0.1695,
+          0.958003,
+          0.243929
+        ]
+      }
+    ],
+    "scheme_source_sha256": "7213153587b99d509d912c4742950489df16758461de18f5b90b6805639a6f63",
+    "scheme_regions": [
+      {
+        "page": 3,
+        "bbox": [
+          0.041997,
+          0.072887,
+          0.958003,
+          0.095748
+        ]
+      },
+      {
+        "page": 3,
+        "bbox": [
+          0.041997,
+          0.3855,
+          0.958003,
+          0.5305
+        ]
+      },
+      {
+        "page": 4,
+        "bbox": [
+          0.041997,
+          0.354,
+          0.958003,
+          0.543
+        ]
+      }
+    ]
+  },
+  "EDX_8MA0_2022_JUNE_22_Q02_U03": {
+    "source_sha256": "d9acd41f74497fc099e093642b253cf7a2644671b51a8513efc7decd7d3650aa",
+    "review": "A limitation follows from the printed train model, without the computed duration or acceleration.",
+    "context_regions": [
+      {
+        "page": 6,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.255
+        ]
+      },
+      {
+        "page": 6,
+        "bbox": [
+          0.038345,
+          0.329,
+          0.961655,
+          0.351
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_8MA0_2022_JUNE_22_Q02_U02"
+    ]
+  },
+  "EDX_8MA0_2025_JUNE_01_Q11_U02": {
+    "source_sha256": "43481824a118bcbc6939f6dc74024e1e82b746d6944861a2f5a830092944e1b6",
+    "review": "The geometry, model and quoted price suffice to state a costing assumption.",
+    "context_regions": [
+      {
+        "page": 24,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.442
+        ]
+      },
+      {
+        "page": 24,
+        "bbox": [
+          0.038345,
+          0.627738,
+          0.961655,
+          0.649
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_8MA0_2025_JUNE_01_Q11_U01"
+    ]
+  },
+  "EDX_9MA0_2025_JUNE_02_MODIFIED_Q15_U02": {
+    "source_sha256": "fa829d7e236238371749d0b98f5bbff5adb603312db542189f4adaa1e6c72999",
+    "review": "The initial condition and second model are supplied; the first model need not be derived. Lift the numerator at the start of part (c).",
+    "context_regions": [
+      {
+        "page": 40,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.144
+        ]
+      },
+      {
+        "page": 40,
+        "bbox": [
+          0.038345,
+          0.342,
+          0.961655,
+          0.4535
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_9MA0_2025_JUNE_02_MODIFIED_Q15_U01"
+    ],
+    "source_regions": [
+      {
+        "page": 40,
+        "bbox": [
+          0.038345,
+          0.4535,
+          0.961655,
+          0.658841
+        ]
+      }
+    ]
+  },
+  "EDX_9MA0_2025_JUNE_32_Q02_U04": {
+    "source_sha256": "82b851f5530a7ce864ff833a4db4d84ebb366fcfd71207e8523627d43cf738e5",
+    "review": "A limitation follows from the printed assumptions after the force was removed, without the calculated distance.",
+    "context_regions": [
+      {
+        "page": 4,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.311
+        ]
+      },
+      {
+        "page": 4,
+        "bbox": [
+          0.038345,
+          0.496601,
+          0.961655,
+          0.651
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_9MA0_2025_JUNE_32_Q02_U03"
+    ]
   }
 }

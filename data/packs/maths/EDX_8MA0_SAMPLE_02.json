@@ -1033,7 +1033,8 @@
       "context": {
         "full_question_image_url": "assets/maths/EDX_8MA0_SAMPLE_02/Q04_full.webp",
         "stem_image_url": "assets/maths/EDX_8MA0_SAMPLE_02/Q04_U02_context.webp",
-        "full_scheme_image_url": "assets/maths/EDX_8MA0_SAMPLE_02/Q04_scheme.webp"
+        "full_scheme_image_url": "assets/maths/EDX_8MA0_SAMPLE_02/Q04_scheme.webp",
+        "shared_stem_html": "<p>The reading under discussion is 20.6 mm of rainfall.</p>"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1069,7 +1070,7 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.400525,
+              0.343,
               0.958003,
               0.473257
             ]
@@ -1091,24 +1092,13 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.045252225519287835,
+              0.045137,
               0.958003,
-              0.33902077151335314
-            ]
-          },
-          {
-            "page": 8,
-            "bbox": [
-              0.041997,
-              0.3434718100890208,
-              0.958003,
-              0.40059347181008903
+              0.209
             ]
           }
         ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 3,
@@ -1120,19 +1110,25 @@
             ]
           },
           {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.1569,
+              0.958003,
+              0.2497
+            ]
+          },
+          {
             "page": 4,
             "bbox": [
               0.041997,
-              0.195096,
+              0.1545,
               0.958003,
-              0.24075
+              0.238
             ]
           }
         ],
         "part_scheme_check": "reference_matched",
-        "context_named_parts": [
-          "EDX_8MA0_SAMPLE_02_Q04_U01"
-        ],
         "context_regions_refined": [
           {
             "page": 8,
@@ -1140,29 +1136,15 @@
               0.041997,
               0.045137,
               0.958003,
-              0.339145
-            ]
-          },
-          {
-            "page": 8,
-            "bbox": [
-              0.041997,
-              0.343568,
-              0.958003,
-              0.400525
+              0.209
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_8MA0_SAMPLE_02_Q04_U01": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "Part (b) asks for reasons about a named data point. Both nested prompts and the two corresponding scheme rows are included.",
+        "part_display_review_source": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058"
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_8MA0_SAMPLE_02_Q04_U01"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_8MA0_SAMPLE_02_Q04_U03",
@@ -1263,18 +1245,18 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.045252225519287835,
+              0.045137,
               0.958003,
-              0.29821958456973297
+              0.108
             ]
           },
           {
             "page": 8,
             "bbox": [
               0.041997,
-              0.47403560830860536,
+              0.4738,
               0.958003,
-              0.8738872403560831
+              0.874074
             ]
           }
         ],
@@ -1319,21 +1301,23 @@
               0.041997,
               0.045137,
               0.958003,
-              0.339145
+              0.108
             ]
           },
           {
             "page": 8,
             "bbox": [
               0.041997,
-              0.474117,
+              0.4738,
               0.958003,
               0.874074
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "part_display_review": "The scatter plot and sampling scenario are sufficient to interpret the correlation.",
+        "part_display_review_source": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058"
       },
       "part_label": "(c)"
     },
@@ -1436,18 +1420,18 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.045252225519287835,
+              0.045137,
               0.958003,
-              0.29821958456973297
+              0.108
             ]
           },
           {
             "page": 9,
             "bbox": [
               0.041997,
-              0.09792284866468842,
+              0.0973,
               0.958003,
-              0.12240356083086053
+              0.12255
             ]
           }
         ],
@@ -1492,21 +1476,23 @@
               0.041997,
               0.045137,
               0.958003,
-              0.339145
+              0.108
             ]
           },
           {
             "page": 9,
             "bbox": [
               0.041997,
-              0.097606,
+              0.0973,
               0.958003,
               0.12255
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "part_display_review": "The variable definitions and published regression equation are sufficient to interpret the gradient.",
+        "part_display_review_source": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058"
       },
       "part_label": "(d)"
     },
@@ -1586,7 +1572,7 @@
             "page": 9,
             "bbox": [
               0.041997,
-              0.199676,
+              0.1695,
               0.958003,
               0.243929
             ]
@@ -1608,18 +1594,9 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.045252225519287835,
+              0.045137,
               0.958003,
-              0.29821958456973297
-            ]
-          },
-          {
-            "page": 9,
-            "bbox": [
-              0.041997,
-              0.17136498516320475,
-              0.958003,
-              0.19955489614243324
+              0.108
             ]
           }
         ],
@@ -1637,12 +1614,21 @@
             ]
           },
           {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.3855,
+              0.958003,
+              0.5305
+            ]
+          },
+          {
             "page": 4,
             "bbox": [
               0.041997,
-              0.400526,
+              0.354,
               0.958003,
-              0.983834
+              0.543
             ]
           }
         ],
@@ -1654,21 +1640,14 @@
               0.041997,
               0.045137,
               0.958003,
-              0.339145
-            ]
-          },
-          {
-            "page": 9,
-            "bbox": [
-              0.041997,
-              0.171198,
-              0.958003,
-              0.199676
+              0.108
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "part_display_review": "Part (e) needs the sampling scenario and both nested tasks; the corresponding scheme rows and notes are included.",
+        "part_display_review_source": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058"
       },
       "part_label": "(e)"
     },

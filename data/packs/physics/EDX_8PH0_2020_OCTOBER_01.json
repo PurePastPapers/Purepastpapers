@@ -4373,18 +4373,9 @@
             "page": 23,
             "bbox": [
               0.041997,
-              0.637986,
+              0.638,
               0.958003,
-              0.698574
-            ]
-          },
-          {
-            "page": 24,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.068031
+              0.699
             ]
           }
         ],
@@ -4408,33 +4399,23 @@
             "page": 22,
             "bbox": [
               0.041997,
+              0.067,
+              0.958003,
+              0.552
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
               0.559895,
               0.958003,
               0.884065
             ]
-          },
-          {
-            "page": 23,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.068031
-            ]
-          },
-          {
-            "page": 23,
-            "bbox": [
-              0.041997,
-              0.358832,
-              0.958003,
-              0.43249
-            ]
           }
         ],
-        "context_includes_stem_image": "Q16_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "Keep the displacement and velocity graphs once. Exclude the projectile-evidence task and the formula sheet."
         ],
         "part_scheme_regions": [
           {
@@ -4447,7 +4428,9 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "part_display_review": "Keep the displacement and velocity graphs once. Exclude the projectile-evidence task and the formula sheet.",
+        "part_display_review_source": "2600f620013a408df3c0001b2d279902563a8b52f31eaf35f0e3a37960bf9a1f"
       },
       "part_label": "(a)(iv)"
     },
@@ -4565,18 +4548,17 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 23,
+            "page": 22,
             "bbox": [
               0.041997,
-              0.358832,
+              0.067,
               0.958003,
-              0.43249
+              0.552
             ]
           }
         ],
-        "context_includes_stem_image": "Q16_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "Keep the flight-path figure once and exclude the scored projectile-evidence question and formula sheet."
         ],
         "part_scheme_regions": [
           {
@@ -4599,7 +4581,9 @@
           }
         ],
         "part_scheme_check": "verified",
-        "booklet_pages_trimmed": true
+        "booklet_pages_trimmed": true,
+        "part_display_review": "Keep the flight-path figure once and exclude the scored projectile-evidence question and formula sheet.",
+        "part_display_review_source": "2600f620013a408df3c0001b2d279902563a8b52f31eaf35f0e3a37960bf9a1f"
       },
       "part_label": "(b)"
     }

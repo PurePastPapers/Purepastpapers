@@ -112,7 +112,7 @@ def build_paper(paper, research, spec):
     leaves = {p['id']: p for s in spec['sections'] for t in s['topics'] for p in t['points']}
     as_shared = {v['leaf'] for v in spec['as_section_map'].values()}
     start = max(u['tariff']['page'] for u in cand['units']) if paper['is_sample'] else 0
-    schemes, _ = scheme_regions(ms, [u['label'] for u in cand['units']], start_page=start)
+    schemes, _ = scheme_regions(ms, [u['label'] for u in cand['units']], start_page=start, source_sha256=ms_sha)
     missing = [u['label'] for u in cand['units'] if u['label'] not in schemes]
     if missing:
         raise ValueError(f'No scheme rows for {missing}')
@@ -122,6 +122,10 @@ def build_paper(paper, research, spec):
     qual, is_as = paper['qualification_code'], paper['is_as']
     rendered_ctx, records = {}, []
     deps = dependencies(cand['units'])
+    # The part compares the hydrogen yielded in (b)(ii) at the acid
+    # volume calculated in (b)(i). The source wording uses both.
+    if pid == 'OCR_H032_2020_NOVEMBER_02':
+        deps['1(b)(iii)'] = ['1(b)(i)', '1(b)(ii)']
     excluded = []
     for u in cand['units']:
         if u['question'] in withdrawn:
@@ -173,13 +177,8 @@ def build_paper(paper, research, spec):
                            **({'lead_note': rv['lead_note']} if rv.get('lead_note') else {}),
                            **({'board_erratum': paper['erratum_note']} if paper.get('erratum_note') and u['label'] in paper.get('erratum_units', []) else {})},
         }
-        if u['label'] in deps:   # earlier information the part needs: its introductions then the earlier parts, as unscored context
-            by_label_units = {x['label']: x for x in cand['units']}
-            keys = list(dict.fromkeys(list(u.get('context', [])) + [k for d in deps[u['label']] for k in by_label_units[d].get('context', [])]))
-            regs = [r for k in keys for r in cand['context'][k]['regions']] + [r for d in deps[u['label']] for r in by_label_units[d]['regions']]
-            target = root / f"CTX_{name}_earlier.webp"
-            qr.render(regs, target)
-            record['context'] = {'stem_image_url': rel(target)}
+        # Linked cards render each prerequisite's own crop and deduplicate these intros.
+        if u['label'] in deps:
             record['depends_on_question_ids'] = [f"{pid}_{slug(l)}" + ('' if '(' in l else '_W') for l in deps[u['label']]]
         if record['scheme_scope'] == 'parent_part':
             record['scheme_part'] = u['label'].rsplit('(', 1)[0]

@@ -1746,18 +1746,9 @@
             "page": 12,
             "bbox": [
               0.041997,
-              0.615252,
+              0.615,
               0.958003,
-              0.676139
-            ]
-          },
-          {
-            "page": 13,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.069328
+              0.676
             ]
           }
         ],
@@ -1781,15 +1772,14 @@
             "page": 12,
             "bbox": [
               0.041997,
-              0.3556050482553823,
+              0.065,
               0.958003,
-              0.532293986636971
+              0.35
             ]
           }
         ],
-        "context_includes_stem_image": "Q13_stem.webp",
         "context_reasons": [
-          "earlier figure or data"
+          "Keep the solar-cell graph needed by the task and exclude part (a) and its answer circuit."
         ],
         "part_scheme_regions": [
           {
@@ -1815,19 +1805,8 @@
         "context_named_parts": [
           "EDX_9PH0_2025_JUNE_01_Q13_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 12,
-            "bbox": [
-              0.041997,
-              0.355686,
-              0.958003,
-              0.532507
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "Keep the solar-cell graph needed by the task and exclude part (a) and its answer circuit.",
+        "part_display_review_source": "e426226b7b17234c7589bc25e0df2f8480b705129a465937b1db823fc42e4fe5"
       },
       "part_label": "(b)(i)"
     },

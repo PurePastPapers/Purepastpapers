@@ -73,7 +73,9 @@ test('units are model-reviewed source pixels with unscored context and their own
   }
   // Rows OCR did not label for these units: nothing else falls back.
   assert.deepEqual(units.filter(q => q.scheme_scope !== 'part').map(q => q.question_id).sort(),
-    ['OCR_H032_2018_JUNE_02_Q06_b_ii', 'OCR_H432_2018_JUNE_03_Q02_a_i', 'OCR_H432_2021_NOVEMBER_03_Q01_c', 'OCR_H432_SAMPLE_03_Q01_j']);
+    ['OCR_H032_2018_JUNE_02_Q06_b_ii', 'OCR_H432_2018_JUNE_03_Q02_a_i', 'OCR_H432_2021_NOVEMBER_03_Q01_c']);
+  const specimen = units.find(q => q.question_id === 'OCR_H432_SAMPLE_03_Q01_j');
+  assert.deepEqual(specimen.provenance.scheme_regions.map(region => region.page), [32, 32]);
   assert.equal(units.filter(q => q.is_official_sample).length, 198);
   assert(units.every(q => !q.is_official_sample || /SAMPLE/.test(q.paper_id)));
   const erratum = units.filter(q => q.provenance.board_erratum);
@@ -86,13 +88,15 @@ test('parts that build on an earlier answer are held back behind it', () => {
   // Four more matched by mistake (graph or equation made in the same part) and were removed
   // by tools/parts/drop-false-dependencies.py; tools/chem/build.py now skips them.
   // tools/parts/link-dependencies.py adds links read from the printed wording (2026-11-20);
-  // the build's own links stay these three.
-  assert.equal(gated.filter(q => !q.provenance?.dependency_detected).length, 3);
+  // the build's own links also include the reviewed nickel experiment comparison.
+  assert.equal(gated.filter(q => !q.provenance?.dependency_detected).length, 4);
   for (const q of gated) for (const id of q.depends_on_question_ids) {
     const earlier = byId.get(id);
     assert(earlier && earlier.paper_id === q.paper_id && earlier.question_number === q.question_number, q.question_id);
   }
   assert.deepEqual(byId.get('OCR_H432_2019_JUNE_01_Q20_b_v').depends_on_question_ids, ['OCR_H432_2019_JUNE_01_Q20_b_iii']);
+  assert.deepEqual(byId.get('OCR_H032_2020_NOVEMBER_02_Q01_b_iii').depends_on_question_ids,
+    ['OCR_H032_2020_NOVEMBER_02_Q01_b_i', 'OCR_H032_2020_NOVEMBER_02_Q01_b_ii']);
 });
 
 test('Chemistry packs validate and are live in the pack index', () => {

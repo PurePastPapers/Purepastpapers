@@ -184,7 +184,7 @@ def process(job):
                 u['depends_on_question_ids'] = current + new
                 pv = u.setdefault('provenance', {})
                 ctx = u.setdefault('context', {})
-                if not ctx.get('stem_image_url') and not ctx.get('shared_stem_html'):
+                if not (ctx.get('stem_image_url') or ctx.get('shared_stem_html') or ctx.get('intros')):
                     # A dependent part carries the earlier information it uses (validate rule);
                     # in practice it is shown inside its linked question with that part.
                     earlier = next(x for x in units if x['question_id'] == new[0])

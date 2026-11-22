@@ -991,25 +991,22 @@
             "page": 6,
             "bbox": [
               0.038345,
-              0.043689320388349516,
+              0.042289,
               0.961655,
-              0.28779472954230234
+              0.255
             ]
           },
           {
             "page": 6,
             "bbox": [
               0.038345,
-              0.3300970873786408,
+              0.329,
               0.961655,
-              0.4680998613037448
+              0.351
             ]
           }
         ],
-        "context_reasons": [
-          "earlier \"show that\" result",
-          "names an earlier part"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 9,
@@ -1049,9 +1046,6 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_named_parts": [
-          "EDX_8MA0_2022_JUNE_22_Q02_U02"
-        ],
         "context_regions_refined": [
           {
             "page": 6,
@@ -1059,29 +1053,24 @@
               0.038345,
               0.042289,
               0.961655,
-              0.287774
+              0.255
             ]
           },
           {
             "page": 6,
             "bbox": [
               0.038345,
-              0.330041,
+              0.329,
               0.961655,
-              0.467942
+              0.351
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_8MA0_2022_JUNE_22_Q02_U02": "wording names (b)–(c)–(d): \"to parts (b)\""
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "A limitation follows from the printed train model, without the computed duration or acceleration.",
+        "part_display_review_source": "d9acd41f74497fc099e093642b253cf7a2644671b51a8513efc7decd7d3650aa"
       },
-      "part_label": "(e)",
-      "depends_on_question_ids": [
-        "EDX_8MA0_2022_JUNE_22_Q02_U02"
-      ]
+      "part_label": "(e)"
     },
     {
       "question_id": "EDX_8MA0_2022_JUNE_22_Q03_U01",

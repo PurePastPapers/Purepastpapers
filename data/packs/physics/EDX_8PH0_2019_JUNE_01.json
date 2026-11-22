@@ -2567,18 +2567,18 @@
             "page": 22,
             "bbox": [
               0.041994,
-              0.480711,
+              0.481,
               0.958006,
-              0.81718
+              0.817
             ]
           },
           {
-            "page": 24,
+            "page": 23,
             "bbox": [
-              0.041994,
-              0.045135,
-              0.958006,
-              0.06908
+              0.153,
+              0.07,
+              0.933,
+              0.894
             ]
           }
         ],
@@ -2600,9 +2600,22 @@
         "qualification_code": "8PH0",
         "part_display": "refined",
         "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
-        "context_regions": [],
-        "context_includes_stem_image": "Q15_stem.webp",
-        "context_reasons": []
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041994,
+              0.13,
+              0.958006,
+              0.477
+            ]
+          }
+        ],
+        "context_reasons": [
+          "Restore the supplied graph grid on the facing page for the plotting task."
+        ],
+        "part_display_review": "Restore the supplied graph grid on the facing page for the plotting task.",
+        "part_display_review_source": "e2de6107efeac417317919562a92a8f0dcc7bc93079c76e76c08811062fd6dbe"
       },
       "part_label": "(a)"
     },
@@ -2715,15 +2728,14 @@
             "page": 22,
             "bbox": [
               0.041994,
-              0.48106904231625836,
+              0.13,
               0.958006,
-              0.8151447661469933
+              0.477
             ]
           }
         ],
-        "context_includes_stem_image": "Q15_stem.webp",
         "context_reasons": [
-          "earlier figure or data"
+          "The mark scheme asks about the line plotted in part (a), so use one linked card and keep the setup as shared context."
         ],
         "part_scheme_regions": [
           {
@@ -2749,20 +2761,13 @@
         "context_named_parts": [
           "EDX_8PH0_2019_JUNE_01_Q15_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041994,
-              0.480711,
-              0.958006,
-              0.814804
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20"
+        "part_display_review": "The mark scheme asks about the line plotted in part (a), so use one linked card and keep the setup as shared context.",
+        "part_display_review_source": "e2de6107efeac417317919562a92a8f0dcc7bc93079c76e76c08811062fd6dbe"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_8PH0_2019_JUNE_01_Q15_U01"
+      ]
     },
     {
       "question_id": "EDX_8PH0_2019_JUNE_01_Q15_U03",

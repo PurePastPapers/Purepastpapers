@@ -451,15 +451,6 @@
               0.976236,
               0.710685
             ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.023764,
-              0.102487,
-              0.976236,
-              0.14953
-            ]
           }
         ],
         "original_parts": [
@@ -477,7 +468,11 @@
         "prerequisite_codes": [],
         "qualification_code": "H032",
         "extraction_version": "ocr-chem-layout-v2"
-      }
+      },
+      "depends_on_question_ids": [
+        "OCR_H032_2020_NOVEMBER_02_Q01_b_i",
+        "OCR_H032_2020_NOVEMBER_02_Q01_b_ii"
+      ]
     },
     {
       "question_id": "OCR_H032_2020_NOVEMBER_02_Q01_c",
