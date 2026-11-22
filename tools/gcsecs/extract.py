@@ -60,6 +60,25 @@ def graphics(page):
     return out
 
 
+def separate_adjacent_units(pdf, units, candidates):
+    """Keep extra crop padding out of the next printed part on the same page."""
+    for previous, current, before, after in zip(units, units[1:], candidates, candidates[1:]):
+        if not before['regions'] or not after['regions']:
+            continue
+        tail, head = before['regions'][-1], after['regions'][0]
+        previous_page, last = previous['rows'][-1]
+        current_page, first = current['rows'][0]
+        if previous_page != current_page or tail['page'] != head['page']:
+            continue
+        if tail['bbox'][3] <= head['bbox'][1] or last['bottom'] - first['top'] > 1:
+            continue
+        # Font boxes can touch in a tightly spaced layout even when the ink is separate.
+        gap = (last['bottom'] + first['top']) / 2
+        edge = round(gap / pdf.pages[current_page].height, 6)
+        tail['bbox'][3] = min(tail['bbox'][3], edge)
+        head['bbox'][1] = max(head['bbox'][1], edge)
+
+
 def extract(path, label_limit=115):
     """label_limit: right edge of the label column. Official sample papers indent sub-part labels to x~120."""
     import pdfplumber
@@ -205,6 +224,7 @@ def extract(path, label_limit=115):
             if REMOVED.search(text):
                 entry['copyright_removed_content'] = True
             out.append(entry)
+        separate_adjacent_units(pdf, units, out)
         context = {}
         for key, n in list(stems.items()) + list(leads.items()):
             if n['rows']:

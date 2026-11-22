@@ -68,6 +68,17 @@ test('units are model-reviewed source pixels with unscored context and their own
   }
 });
 
+test('adjacent 2025 Paper 1 parts stop between the earlier tariff and the next printed prompt', () => {
+  const paper = packs.find(p => p.papers[0].paper_id === 'OCR_J277_2025_JUNE_01');
+  for (const [earlier, later, page] of [['5(c)', '5(d)', 14], ['6(b)', '6(c)', 15]]) {
+    const tail = paper.questions.find(q => q.scheme_question_number === earlier).provenance.source_regions.at(-1);
+    const head = paper.questions.find(q => q.scheme_question_number === later).provenance.source_regions[0];
+    assert.equal(tail.page, page);
+    assert.equal(head.page, page);
+    assert(tail.bbox[3] <= head.bbox[1], `${earlier} and ${later} overlap`);
+  }
+});
+
 test('J277 packs validate and stay out of the live index until OCR rights for GCSE are confirmed', () => {
   const subject = read('data/subjects.json').find(s => s.subject_id === 'OCR_GCSE_CS_J277');
   const index = createSpecIndex(); index.add(spec);

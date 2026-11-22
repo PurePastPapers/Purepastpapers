@@ -1,0 +1,72 @@
+{
+  "EDX_1MA1_2019_JUNE_3H": {
+    "question_source_sha256": "d0a04b1a150b473a22535fe56452143289bf6110b46404def5b6e05c964e02af",
+    "units": {
+      "EDX_1MA1_2019_JUNE_3H_Q18_U02": {
+        "preview_text": "Solve (1 − x)² < 9/25",
+        "dependencies": [],
+        "drop_stem": true,
+        "evidence": "Part (a) expands an unrelated cubic product. Part (b) prints its own inequality and its scheme starts from that inequality."
+      }
+    }
+  },
+  "EDX_1MA1_2024_JUNE_3F": {
+    "scheme_source_sha256": "18200d0a7f8862920e9d800d2af59aa9f785de8597fab91719c17f3f80586343",
+    "assets": {
+      "Q20_scheme.webp": {
+        "scope": "full_scheme",
+        "regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.023755226149752947,
+              0.1142992676207755,
+              0.9762447738502471,
+              0.49030773
+            ]
+          }
+        ],
+        "evidence": "The source table rule closes the current question before the next question row."
+      },
+      "Q27_U02_scheme.webp": {
+        "scope": "part_scheme",
+        "regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.023755,
+              0.117659,
+              0.976245,
+              0.166842
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.023755,
+              0.264672,
+              0.976245,
+              0.36795337
+            ]
+          }
+        ],
+        "evidence": "The source table rule closes the current question before the next question row."
+      },
+      "Q27_scheme.webp": {
+        "scope": "full_scheme",
+        "regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.023755226149752947,
+              0.1142992676207755,
+              0.9762447738502471,
+              0.36795337
+            ]
+          }
+        ],
+        "evidence": "The source table rule closes the current question before the next question row."
+      }
+    }
+  }
+}
