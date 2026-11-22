@@ -15,6 +15,8 @@ type ReviewRequest = {
   grade: number;
 };
 
+class RejectedReview extends Error {}
+
 function keys(variable: string) {
   return JSON.parse(Deno.env.get(variable) || '{}');
 }
@@ -81,7 +83,13 @@ Deno.serve(async (request) => {
         headers: serviceHeaders,
         body: JSON.stringify(parameters),
       });
-      if (!response.ok) throw new Error('Database operation failed');
+      if (!response.ok) {
+        const failure = await response.json().catch(() => null);
+        // The database rejected this rating (for example a reused request ID or a card
+        // that became unavailable). Retrying the same request cannot succeed.
+        if (['22023', '42501'].includes(failure?.code)) throw new RejectedReview();
+        throw new Error('Database operation failed');
+      }
       return response.json();
     }
 
@@ -104,7 +112,8 @@ Deno.serve(async (request) => {
       p_state: card,
     });
     return reply(saved);
-  } catch {
+  } catch (error) {
+    if (error instanceof RejectedReview) return reply({ status: 'rejected', error: 'This rating cannot be saved. Reload the card and rate it again.' }, 409);
     return reply({ error: 'The review could not be confirmed. Retry to check whether it was saved.' }, 503);
   }
 });
