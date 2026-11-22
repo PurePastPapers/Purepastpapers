@@ -22,11 +22,13 @@ if (/supabase\.(co|com)|pooler/i.test(process.env.PGHOST || '')) throw new Error
 
 function psql(sql) {
   return new Promise((resolvePromise, reject) => {
-    execFile('psql', ['-X', '-q', '-At', '-v', 'ON_ERROR_STOP=1', '-v', 'VERBOSITY=verbose', '-c', sql], { maxBuffer: 256 * 1024 * 1024, env: { ...process.env, PGOPTIONS: '-c client_min_messages=warning' } }, (error, stdout, stderr) => {
+    // SQL goes through stdin: argument strings are capped at 128 KiB by the kernel.
+    const child = execFile('psql', ['-X', '-q', '-At', '-v', 'ON_ERROR_STOP=1', '-v', 'VERBOSITY=verbose', '-f', '-'], { maxBuffer: 256 * 1024 * 1024, env: { ...process.env, PGOPTIONS: '-c client_min_messages=warning' } }, (error, stdout, stderr) => {
       if (!error) return resolvePromise(stdout);
       const match = /ERROR:\s+([0-9A-Z]{5}):\s+(.*)/.exec(stderr);
       reject(Object.assign(new Error(match?.[2] || stderr.trim()), { code: match?.[1] || 'XX000' }));
     });
+    child.stdin.end(sql);
   });
 }
 

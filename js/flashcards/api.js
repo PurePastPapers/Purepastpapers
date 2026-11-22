@@ -247,14 +247,19 @@ function prepareImport(deckId, parsed) {
   return targets.get(deckId);
 }
 
-export async function previewImport(deckId, parsed) {
-  const db = await connection();
-  const { allKeys } = await prepareImport(deckId, parsed);
+async function countDuplicates(db, allKeys) {
   const unique = [...new Set(allKeys)];
   let duplicates = allKeys.length - unique.length;
   for (let start = 0; start < unique.length; start += 5000) {
     duplicates += await db.rpc('flashcard_count_existing_sources', { p_source_keys: unique.slice(start, start + 5000) });
   }
+  return duplicates;
+}
+
+export async function previewImport(deckId, parsed) {
+  const db = await connection();
+  const { allKeys } = await prepareImport(deckId, parsed);
+  const duplicates = await countDuplicates(db, allKeys);
   return { accepted: allKeys.length - duplicates, duplicates };
 }
 
@@ -327,12 +332,20 @@ function importDecks(db, batchId, rootId, decks) {
 export async function commitImport(deckId, parsed, { onProgress } = {}) {
   const db = await connection();
   const prepared = await prepareImport(deckId, parsed);
-  const batchId = uuidFromHash(await digest(`${db.owner}:${prepared.fingerprint}`));
-  const started = await db.rpc('flashcard_begin_import', { p_batch_id: batchId });
-  if (started?.status === 'active_batch') {
-    throw new FlashcardError('Another import is unfinished. Open its original file to finish it or cancel it from Import.');
-  }
-  if (started?.status === 'complete') {
+  // Batch ids are derived from the file so an interrupted upload resumes in the same
+  // batch. A finished batch is reused only while all of its cards still exist; if the
+  // student deleted some, the next attempt id stages just the missing cards.
+  let batchId;
+  for (let attempt = 0; ; attempt++) {
+    if (attempt >= 50) throw new FlashcardError('This file has been imported too many times. Edit it or import into another deck.');
+    batchId = uuidFromHash(await digest(attempt ? `${db.owner}:${prepared.fingerprint}:${attempt}` : `${db.owner}:${prepared.fingerprint}`));
+    const started = await db.rpc('flashcard_begin_import', { p_batch_id: batchId });
+    if (started?.status === 'active_batch') {
+      throw new FlashcardError('Another import is unfinished. Open its original file to finish it or cancel it from Import.');
+    }
+    if (started?.status !== 'complete') break;
+    if (await countDuplicates(db, prepared.allKeys) < prepared.allKeys.length) continue;
+    // Everything is already saved, for example after a lost confirmation: report that batch.
     const result = await db.rpc('flashcard_finish_import', { p_batch_id: batchId });
     return { imported: result.accepted, duplicates: Math.max(0, prepared.allKeys.length - result.accepted) };
   }
