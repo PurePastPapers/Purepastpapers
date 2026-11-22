@@ -51,7 +51,7 @@ const LINKED = [
       await api.setPreference('tiers', {...(api.getProgress().preferences.tiers || {}), [id]: 'Foundation'});
     }, SUBJECT);
     const progressBefore = await page.evaluate(async () => JSON.stringify((await import('/js/data/api.js')).getProgress().question_attempts || []));
-    await page.goto(`${base}/#/practice?subject=${SUBJECT}`);
+    await page.goto(`${base}/#/practice?subject=${SUBJECT}&mode=individual`);
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     await page.locator('[data-search]').fill(PAPER);
@@ -107,7 +107,7 @@ const LINKED = [
         await api.setEnrolled(subject, true);
         await api.setPreference('tiers', {...(api.getProgress().preferences.tiers || {}), [subject]: tier});
       }, sample);
-      const sampleUrl = `${base}/#/practice?subject=${sample.subject}`;
+      const sampleUrl = `${base}/#/practice?subject=${sample.subject}&mode=individual`;
       if (page.url() === sampleUrl) await page.reload();
       else await page.goto(sampleUrl);
       await page.waitForSelector('[data-reset-filters]');

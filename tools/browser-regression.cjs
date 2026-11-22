@@ -40,7 +40,7 @@ const assert = require('node:assert/strict');
     await p.goto((process.env.AUDIT_URL || 'http://localhost:5173') + '/#' + r);
     await p.waitForTimeout(150)
   };
-  await route('/practice?subject=EDX_ALEVEL_MATH_9MA0');
+  await route('/practice?subject=EDX_ALEVEL_MATH_9MA0&mode=individual');
   await p.locator('[data-reset-filters]').click();
   const layout = await p.evaluate(() => {
     const controls = document.querySelector('[data-controls]').getBoundingClientRect();

@@ -23,7 +23,7 @@ const year13 = results(units, (q) => q.introduced_year === 13);
     page.on('console', message => { if (message.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(message.text())) errors.push(message.text()); });
     await page.goto(base);
     await page.evaluate(async () => (await import('/js/data/demo.js')).enterDemoAccount());
-    await page.goto(base + '/#/practice?subject=' + subject);
+    await page.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     await allTopics(page);

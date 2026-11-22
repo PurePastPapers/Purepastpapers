@@ -300,7 +300,7 @@ export async function mount(element, context) {
                     </li>`;
                   })}
                 </ul>
-                <p><a class="btn btn--sm" href="${links.practice({ subject: bundle.subject.subject_id, topic: topic.id })}">Practise this topic</a></p>
+                <p><a class="btn btn--sm" href="${links.practice({ subject: bundle.subject.subject_id, topic: topic.id, mode: 'individual' })}">Practise this topic</a></p>
               </div>
             </details>`;
           })}

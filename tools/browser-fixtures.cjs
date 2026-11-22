@@ -41,7 +41,7 @@ const assert = require('node:assert/strict');
     await (await import('/js/data/demo.js')).enterDemoAccount()
   });
   await p.goto((process.env.AUDIT_URL || 'http://localhost:5173') +
-    '/#/practice?subject=EDX_ALEVEL_MATH_9MA0');
+    '/#/practice?subject=EDX_ALEVEL_MATH_9MA0&mode=individual');
   await p.waitForSelector('[data-reset-filters]');
   await p.locator('[data-reset-filters]').click();
   await p.locator('[data-topic-organisation="official"]').check();

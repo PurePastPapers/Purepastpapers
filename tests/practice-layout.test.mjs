@@ -42,6 +42,25 @@ async function demoPage(viewport) {
   return { page, errors };
 }
 
+test('Practice opens on Build a test where the subject offers it; ?mode= still wins', { skip }, async () => {
+  const page = await browser.newPage({ viewport: { width: 1366, height: 900 } });
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.goto(BASE);
+  await page.evaluate(async () => { const m = await import('/js/data/demo.js'); await m.enterDemoAccount(); });
+  const selected = async (url) => {
+    await page.goto(`${BASE}${url}`);
+    await page.reload();
+    await page.waitForSelector('[data-mode][aria-selected="true"]');
+    return (await page.locator('[data-mode][aria-selected="true"]').textContent()).trim();
+  };
+  assert.equal(await selected(`#/practice?subject=${SUBJECT}`), 'Build a test');
+  assert.equal(await selected(`#/practice?subject=${SUBJECT}&mode=individual`), 'Individual questions');
+  assert.equal(await selected(`#/practice?subject=${SUBJECT}`), 'Build a test', 'the choice is not remembered over the default');
+  assert.deepEqual(errors, []);
+  await page.close();
+});
+
 test('Find questions: the filter is one compact bar of dropdowns', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 1366, height: 900 });
   const bar = await page.locator('.fbar').boundingBox();

@@ -21,7 +21,7 @@ assert.equal(units.filter((q) => q.is_as).length, 377);
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(base);
     await page.evaluate(async () => (await import('/js/data/demo.js')).enterDemoAccount());
-    await page.goto(base + '/#/practice?subject=' + subject);
+    await page.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     await allTopics(page);

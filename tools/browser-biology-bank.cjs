@@ -28,7 +28,7 @@ const articlePaper = 'EDX_9BN0_2023_JUNE_03';
       await (await import('/js/data/demo.js')).enterDemoAccount();
       await (await import('/js/data/api.js')).setEnrolled(id, true);
     }, subject);
-    await page.goto(base + '/#/practice?subject=' + subject);
+    await page.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     await allTopics(page);
@@ -126,7 +126,7 @@ const articlePaper = 'EDX_9BN0_2023_JUNE_03';
 
     // A guest can choose topics without saving learned coverage.
     const guest = await browser.newPage({viewport: {width: 390, height: 900}});
-    await guest.goto(base + '/#/practice?subject=' + subject);
+    await guest.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await guest.waitForTimeout(1500);
     const guestLearned = await guest.evaluate(async () => {
       const api = await import('/js/data/api.js');

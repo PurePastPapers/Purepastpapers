@@ -28,7 +28,7 @@ const year13 = results(units, (q) => q.introduced_year === 13);
       await (await import('/js/data/demo.js')).enterDemoAccount();
       await (await import('/js/data/api.js')).setEnrolled(id, true);
     }, subject);
-    await page.goto(base + '/#/practice?subject=' + subject);
+    await page.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     await allTopics(page);
@@ -107,7 +107,7 @@ const year13 = results(units, (q) => q.introduced_year === 13);
     await page.goto(base + '/#/paper/' + subject + '/OCR_H432_SAMPLE_01');
     await page.getByText('Official sample', {exact: false}).first().waitFor();
 
-    await page.goto(base + '/#/practice?subject=' + subject);
+    await page.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await page.waitForSelector('[data-reset-filters]');
     await page.evaluate(() => document.querySelectorAll('details.fpop[open]').forEach(d => { d.open = false; }));
     for (const width of [320, 390, 768, 1440]) {
@@ -128,7 +128,7 @@ const year13 = results(units, (q) => q.introduced_year === 13);
 
     // A guest can browse without saving learned coverage.
     const guest = await browser.newPage({viewport: {width: 390, height: 900}});
-    await guest.goto(base + '/#/practice?subject=' + subject);
+    await guest.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await guest.waitForTimeout(1500);
     const guestLearned = await guest.evaluate(async () => {
       const api = await import('/js/data/api.js');

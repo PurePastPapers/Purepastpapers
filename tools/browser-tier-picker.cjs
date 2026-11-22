@@ -79,7 +79,7 @@ async function addFromCatalogue(p, subject, tier, learned) {
       await d.locator('input[name=learned][value=skip]').check({force: true});
       await d.getByRole('button', {name: 'Add Mathematics'}).click(); await p.waitForTimeout(600);
       assert.equal((await pageFacts(p, MATHS)).pref, 'Foundation');
-      await p.goto(base + '/#/practice?subject=' + MATHS);
+      await p.goto(base + '/#/practice?subject=' + MATHS + '&mode=individual');
       const n = await statusCount(p);
       assert(n > 0);
       assert.equal(await p.locator('[data-tier-bar] [aria-checked="true"]').innerText(), 'Foundation');

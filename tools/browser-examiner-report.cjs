@@ -78,7 +78,7 @@ async function enterDemo(page) {
 
 async function openPractice(page) {
   await enterDemo(page);
-  await page.goto(`${base}/#/practice?subject=${SUBJECT}`);
+  await page.goto(`${base}/#/practice?subject=${SUBJECT}&mode=individual`);
   await page.locator('[data-reset-filters]').click();
   await page.locator('[data-search]').fill(PAPER);
   await page.locator('[data-search]').press('Enter');

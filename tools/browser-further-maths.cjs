@@ -193,7 +193,7 @@ const offlineError = /ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED|INTERNET_D
         await page.waitForURL('**/#/session/**');
         await page.locator('[data-answer]').first().waitFor();
       }
-      await page.goto(`${base}/#/practice?subject=${S}`);
+      await page.goto(`${base}/#/practice?subject=${S}&mode=individual`);
       const qualification = page.locator(`[data-multi="qualifications"][data-value="${item.level}"]`);
       const other = page.locator(`[data-multi="qualifications"][data-value]:not([data-value="${item.level}"])`);
       const paperFilter = page.locator('select[data-filter="paper"]');

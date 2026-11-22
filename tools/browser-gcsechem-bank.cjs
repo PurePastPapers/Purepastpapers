@@ -32,7 +32,7 @@ async function check(browser, subject) {
       // GCSE sciences need a saved tier before practice opens (2026-11-19).
       await api.setPreference('tiers', {...(api.getProgress().preferences.tiers || {}), [id]: 'Foundation'});
     }, subject);
-    await page.goto(base + '/#/practice?subject=' + subject);
+    await page.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     await allTopics(page);

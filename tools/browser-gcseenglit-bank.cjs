@@ -24,7 +24,7 @@ const units = packs.flatMap(p => p.questions);
       await (await import('/js/data/demo.js')).enterDemoAccount();
       await (await import('/js/data/api.js')).setEnrolled(id, true);
     }, subject);
-    await page.goto(base + '/#/practice?subject=' + subject);
+    await page.goto(base + '/#/practice?subject=' + subject + '&mode=individual');
     await page.waitForSelector('[data-reset-filters]');
     await page.locator('[data-reset-filters]').click();
     const count = async () => {

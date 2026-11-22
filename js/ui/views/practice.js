@@ -234,7 +234,9 @@ export async function mount(element, context) {
 
   // ── state (kept for the browser tab, so filters survive opening a question and coming back) ──
   const storageKey = `${APP.storageNamespace}:practice:${user?.user_id || 'guest'}:${subjectId}`;
-  let state = { ...defaults(), mode: subject.practice_modes.includes('individual') ? 'individual' : subject.practice_modes.includes('picker') ? 'picker' : subject.practice_modes[0] };
+  // The landing tab: "Build a test" where the subject offers it, otherwise the question browser or picker.
+  const defaultMode = (list) => (list.includes('timed_test') ? 'timed_test' : list.includes('individual') ? 'individual' : list.includes('picker') ? 'picker' : list[0]);
+  let state = { ...defaults(), mode: defaultMode(subject.practice_modes) };
   const storage = user ? localStorage : sessionStorage;
   try {
     const saved = JSON.parse(storage.getItem(storageKey) || '{}');
@@ -286,7 +288,7 @@ export async function mount(element, context) {
 
   const modes = subject.practice_modes;
   if (modes.includes(context.query.mode)) state.mode = context.query.mode;
-  else state.mode = modes.includes('individual') ? 'individual' : modes.includes('picker') ? 'picker' : modes[0];
+  else state.mode = defaultMode(modes);
   state.sort = ({ paper: 'paper_order', marks: 'marks_asc', 'marks-desc': 'marks_desc' })[state.sort] || state.sort;
   if (state.sort === 'shuffle') { state.shuffled = true; state.sort = 'newest'; }
   if (!SORTS[state.sort]) state.sort = 'newest';
