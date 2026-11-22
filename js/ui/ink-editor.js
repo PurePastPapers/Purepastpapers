@@ -1,6 +1,6 @@
 const LOGICAL_WIDTH = 1000;
 const ADDED_HEIGHT = 360;
-const STARTING_HEIGHT = ADDED_HEIGHT * 2;
+const STARTING_HEIGHT = 900;
 const MAX_WRITING_HEIGHT = ADDED_HEIGHT * 12;
 const MAX_CANVAS_EDGE = 4096;
 const MAX_POINTS_PER_STROKE = 5000;
@@ -93,7 +93,7 @@ function addControl(parent, label, control) {
 }
 
 /** Mounts a compact vector handwriting editor. `onChange` receives a full immutable snapshot. */
-export function createInkEditor(container, { value, onChange = () => {}, readOnly = false } = {}) {
+export function createInkEditor(container, { value, onChange = () => {}, readOnly = false, controlsBelow = false } = {}) {
   let ink = normalizeInk(value, readOnly);
   let active = null;
   let saveState = 'Saved on this device';
@@ -110,7 +110,7 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
   toolbar.className = 'ink-editor__toolbar';
   const sectionsHost = document.createElement('div');
   sectionsHost.className = 'ink-editor__sections';
-  root.append(toolbar, sectionsHost);
+  root.append(...(controlsBelow ? [sectionsHost, toolbar] : [toolbar, sectionsHost]));
   const status = document.createElement('span');
   status.className = 'ink-editor__status';
   status.setAttribute('role', 'status');
@@ -146,7 +146,6 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
       canvas.setAttribute('role', 'img');
       canvas.setAttribute('aria-label', `Handwriting area ${index + 1}`);
       canvas.dataset.sectionId = section.id;
-      if (!readOnly) canvas.style.touchAction = allowTouchDrawing ? 'none' : 'pan-y pinch-zoom';
       if (!readOnly) attachPointerHandlers(canvas, section);
       sectionsHost.append(canvas);
       surfaces.push({ canvas, section });
@@ -162,45 +161,55 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
         ? Math.max(0.1, Math.min(1, event.pressure)) : 0.5,
     };
   };
-  const attachPointerHandlers = (canvas, section) => {
-    canvas.addEventListener('pointerdown', (event) => {
-      if (active) return;
-      if (event.pointerType === 'touch' && !allowTouchDrawing) return;
-      if (event.button !== undefined && event.button !== 0) return;
-      event.preventDefault();
-      canvas.setPointerCapture(event.pointerId);
-      const stroke = {
-        id: crypto.randomUUID(),
-        tool: drawingMode,
-        color: drawingMode === 'eraser' ? '#ffffff' : colorInput.value,
-        width: Number(widthInput.value),
-        points: [pointFromEvent(event, canvas.getBoundingClientRect(), section)],
-      };
-      active = { pointerId: event.pointerId, canvas, stroke };
-      section.strokes.push(stroke);
-      drawStroke(canvas.getContext('2d'), stroke);
-    });
-    canvas.addEventListener('pointermove', (event) => {
-      if (active?.pointerId !== event.pointerId || active.canvas !== canvas) return;
-      event.preventDefault();
-      const coalesced = event.getCoalescedEvents?.();
-      const rect = canvas.getBoundingClientRect();
-      const { stroke } = active;
+  const startStroke = (canvas, section, event) => {
+    if (active) return null;
+    const rect = canvas.getBoundingClientRect();
+    const stroke = {
+      id: crypto.randomUUID(),
+      tool: drawingMode,
+      color: drawingMode === 'eraser' ? '#ffffff' : colorInput.value,
+      width: Number(widthInput.value),
+      points: [pointFromEvent(event, rect, section)],
+    };
+    const current = { pointerId: event.pointerId, canvas };
+    active = current;
+    section.strokes.push(stroke);
+    drawStroke(canvas.getContext('2d'), stroke);
+    current.move = (samples) => {
+      if (active !== current) return;
       const start = stroke.points.length;
-      for (const sample of coalesced?.length ? coalesced : [event]) {
+      for (const sample of samples) {
         if (stroke.points.length >= MAX_POINTS_PER_STROKE) break;
         stroke.points.push(pointFromEvent(sample, rect, section));
       }
       drawStroke(canvas.getContext('2d'), stroke, start);
-    });
-    const finish = (event, cancelled = false) => {
-      if (active?.pointerId !== event.pointerId || active.canvas !== canvas) return;
+    };
+    current.finish = (cancelled) => {
+      if (active !== current) return;
       active = null;
-      if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
       if (cancelled) {
         section.strokes.pop();
         drawSection(canvas, section);
       } else emit();
+    };
+    return current;
+  };
+  const attachPointerHandlers = (canvas, section) => {
+    canvas.addEventListener('pointerdown', (event) => {
+      if (active || (event.pointerType === 'touch' && !allowTouchDrawing) || event.button !== 0) return;
+      event.preventDefault();
+      try { canvas.setPointerCapture(event.pointerId); } catch { /* synthetic events have no native capture */ }
+      startStroke(canvas, section, event);
+    });
+    canvas.addEventListener('pointermove', (event) => {
+      if (active?.pointerId !== event.pointerId || active.canvas !== canvas) return;
+      event.preventDefault();
+      active.move(pencilSamples(event));
+    });
+    const finish = (event, cancelled = false) => {
+      if (active?.pointerId !== event.pointerId || active.canvas !== canvas) return;
+      active.finish(cancelled);
+      if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
     };
     canvas.addEventListener('pointerup', (event) => finish(event));
     canvas.addEventListener('pointercancel', (event) => finish(event, true));
@@ -254,7 +263,6 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     modeButton.setAttribute('aria-pressed', 'false');
     const touchButton = button('Touch drawing off', () => {
       allowTouchDrawing = !allowTouchDrawing;
-      for (const { canvas } of surfaces) canvas.style.touchAction = allowTouchDrawing ? 'none' : 'pan-y pinch-zoom';
       touchButton.textContent = allowTouchDrawing ? 'Touch drawing on' : 'Touch drawing off';
       touchButton.setAttribute('aria-pressed', String(allowTouchDrawing));
     });
@@ -295,13 +303,61 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
   window.addEventListener('resize', onResize, { passive: true });
 
   return {
+    startPencilStroke(event) {
+      const first = surfaces[0];
+      return !readOnly && first ? startStroke(first.canvas, first.section, event) : null;
+    },
     getValue: () => structuredClone(ink),
     setSaveState(state) { saveState = state; status.textContent = state; },
     destroy() {
+      active?.finish(true);
       resizeObserver.disconnect();
       window.removeEventListener('resize', onResize);
       container.replaceChildren();
     },
+  };
+}
+
+function pencilSamples(event) {
+  const coalesced = event.getCoalescedEvents?.();
+  return coalesced?.length ? coalesced : [event];
+}
+
+/** Keeps the first stroke when Practice swaps a textarea for a handwriting editor. */
+export function transferPencilStroke(event, captureTarget) {
+  event.preventDefault();
+  const lifetime = new AbortController();
+  const samples = [];
+  let stroke;
+  let ended = false;
+  let cancelled = false;
+  try { captureTarget.setPointerCapture(event.pointerId); } catch { /* document listeners also cover events outside the field */ }
+  const listen = (type, handler) => document.addEventListener(type, (next) => {
+    if (next.pointerId === event.pointerId) handler(next);
+  }, { capture: true, signal: lifetime.signal });
+  listen('pointermove', (next) => {
+    next.preventDefault();
+    const points = pencilSamples(next);
+    if (stroke) stroke.move(points);
+    else samples.push(...points.slice(0, MAX_POINTS_PER_STROKE - samples.length));
+  });
+  const finish = (next) => {
+    ended = true;
+    cancelled = next.type !== 'pointerup';
+    stroke?.finish(cancelled);
+    lifetime.abort();
+  };
+  listen('pointerup', finish);
+  listen('pointercancel', finish);
+  listen('lostpointercapture', (next) => { if (next.target === captureTarget) finish(next); });
+  return {
+    attach(editor) {
+      if (cancelled) return;
+      stroke = editor.startPencilStroke(event);
+      stroke?.move(samples);
+      if (ended) stroke?.finish(false);
+    },
+    cancel() { lifetime.abort(); stroke?.finish(true); },
   };
 }
 

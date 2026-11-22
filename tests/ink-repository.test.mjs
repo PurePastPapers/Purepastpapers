@@ -167,7 +167,7 @@ test('only the active Pencil pointer can finish a stroke', browserOptions, async
         value: { ...value, sections: [{ ...value.sections[0], height: 360 }] },
       }).getValue();
       return {
-        beforePenUp, changes, value, belowCanvas, touchAction: canvas.style.touchAction,
+        beforePenUp, changes, value, belowCanvas, touchAction: getComputedStyle(host.querySelector('canvas')).touchAction,
         ratio: bounds.width / bounds.height, expandedHeightFactor: expanded.height / bounds.height,
         expandedValue: editor.getValue(), canvasCount: host.querySelectorAll('canvas').length, legacyValue,
       };
@@ -176,12 +176,48 @@ test('only the active Pencil pointer can finish a stroke', browserOptions, async
     assert.equal(result.changes.length, 2);
     assert.equal(result.value.sections[0].strokes.length, 1);
     assert.equal(result.value.sections[0].strokes[0].points.length, 2);
-    assert.equal(result.touchAction, 'pan-y pinch-zoom');
-    assert.ok(Math.abs(result.ratio - 1000 / 720) < 0.01);
+    assert.equal(result.touchAction, 'none');
+    assert.ok(Math.abs(result.ratio - 1000 / 900) < 0.01);
     assert.equal(result.belowCanvas, true);
     assert.equal(result.canvasCount, 1);
-    assert.ok(Math.abs(result.expandedHeightFactor - 1.5) < 0.01);
-    assert.deepEqual(result.expandedValue.sections[0], { ...result.value.sections[0], height: 1080 });
+    assert.ok(Math.abs(result.expandedHeightFactor - 1.4) < 0.01);
+    assert.deepEqual(result.expandedValue.sections[0], { ...result.value.sections[0], height: 1260 });
     assert.deepEqual(result.legacyValue.sections[0], result.value.sections[0]);
+  });
+});
+
+test('the Pencil keeps a vertical first stroke when the answer switches from text to ink', browserOptions, async () => {
+  await withInkBrowser(async (page) => {
+    const result = await page.evaluate(async () => {
+      const { createInkEditor, transferPencilStroke } = await import('/js/ui/ink-editor.js');
+      const host = document.createElement('div');
+      host.style.width = '500px';
+      const input = document.createElement('textarea');
+      const surface = document.createElement('div');
+      host.append(input, surface);
+      document.body.append(host);
+      let transfer;
+      input.addEventListener('pointerdown', event => { transfer = transferPencilStroke(event, host); });
+      const send = (target, type, y, pointerId = 7) => target.dispatchEvent(new PointerEvent(type, {
+        bubbles: true, cancelable: true, pointerType: 'pen', pointerId, button: 0, clientX: 50, clientY: y,
+      }));
+      const typingCancelled = !send(input, 'pointerdown', 40);
+      input.hidden = true;
+      send(host, 'pointermove', 70);
+      const saved = [];
+      const editor = createInkEditor(surface, { controlsBelow: true, onChange: record => saved.push(record) });
+      transfer.attach(editor);
+      send(host, 'pointerup', 70, 8);
+      send(host, 'pointermove', 100);
+      send(host, 'pointerup', 100);
+      const canvas = surface.querySelector('canvas');
+      const [stroke] = saved[0].sections[0].strokes;
+      return { typingCancelled, saves: saved.length, points: stroke.points, touchAction: getComputedStyle(canvas).touchAction };
+    });
+    assert.equal(result.typingCancelled, true);
+    assert.equal(result.touchAction, 'none');
+    assert.equal(result.saves, 1);
+    assert.equal(result.points.length, 3);
+    assert.ok(result.points[0].y < result.points[1].y && result.points[1].y < result.points[2].y);
   });
 });

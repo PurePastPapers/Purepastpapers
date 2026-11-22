@@ -42,6 +42,57 @@ async function demoPage(viewport) {
   return { page, errors };
 }
 
+test('tablet Practice switches an answer to ink on the first Pencil stroke and keeps the question in place', { skip }, async () => {
+  const viewport = { width: 1194, height: 834 };
+  const page = await browser.newPage({ viewport, hasTouch: true, isMobile: true });
+  try {
+    await page.addInitScript(() => localStorage.setItem('ppp:welcome-seen', '1'));
+    await page.goto(`${BASE}#/practice?subject=${SUBJECT}&mode=individual`);
+    const input = page.locator('textarea[data-answer]').first();
+    await input.fill('Typed working');
+    const side = input.locator('xpath=ancestor::div[contains(@class,"qsplit__side")]');
+    const keyboard = side.getByRole('button', { name: 'Use keyboard' });
+    await input.evaluate(field => {
+      field.scrollIntoView({ block: 'center' });
+      const rect = field.getBoundingClientRect();
+      window.testQuestionLayout = field.closest('.qsplit');
+      const pencil = (type, y) => new PointerEvent(type, {
+        bubbles: true, cancelable: true, pointerType: 'pen', pointerId: 7, button: 0,
+        clientX: rect.left + 65, clientY: rect.top + y,
+      });
+      field.dispatchEvent(pencil('pointerdown', 35));
+      document.dispatchEvent(pencil('pointermove', 90));
+      document.dispatchEvent(pencil('pointerup', 90));
+    });
+    const canvas = side.locator('canvas').first();
+    await keyboard.waitFor();
+    await canvas.waitFor();
+    assert.equal(await input.isVisible(), false);
+    assert.equal(await canvas.evaluate(node => getComputedStyle(node).touchAction), 'none');
+    assert.ok(await canvas.evaluate(node => getComputedStyle(node.closest('.qsplit')).gridTemplateColumns.split(' ').length === 1));
+    await page.waitForFunction(() => {
+      const canvas = window.testQuestionLayout.querySelector('canvas');
+      const { data } = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+      let inkRows = 0;
+      for (let y = 0; y < canvas.height; y++) {
+        const firstAlpha = y * canvas.width * 4 + 3;
+        for (let x = 0; x < canvas.width; x++) {
+          if (data[firstAlpha + x * 4]) { inkRows++; break; }
+        }
+      }
+      return inkRows > 35;
+    });
+    const before = await canvas.boundingBox();
+    await page.setViewportSize({ ...viewport, height: 750 });
+    const after = await canvas.boundingBox();
+    assert.equal(after.width, before.width);
+    assert.equal(after.height, before.height);
+    await keyboard.click();
+    assert.equal(await input.inputValue(), 'Typed working');
+    assert.equal(await input.isVisible(), true);
+  } finally { await page.close(); }
+});
+
 test('Practice opens on Build a test where the subject offers it; ?mode= still wins', { skip }, async () => {
   const page = await browser.newPage({ viewport: { width: 1366, height: 900 } });
   const errors = [];
