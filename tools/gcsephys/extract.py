@@ -17,8 +17,9 @@ import re
 from pathlib import Path
 
 
-VERSION = 'pearson-1ma1-layout-v2'
+VERSION = 'pearson-1ph0-layout-v3'
 TOTAL = r'Total for Question\s+{n}\s*(?:=|is)\s*(\d+)\s*marks?'
+PAPER_TOTAL = re.compile(r'^TOTAL\s+FOR\s+(?:THE\s+)?PAPER\s*(?:=|IS)\s*\d+\s+MARKS\b', re.I)
 
 
 def digest(path):
@@ -224,6 +225,20 @@ def extract(path, ocr_dir=None, overrides_dir=None):
         questions = []
         for index, (start_page, start_y, number) in enumerate(starts):
             end_page, end_y, _ = starts[index + 1] if index + 1 < len(starts) else (len(pages) - 1, 10000, 0)
+            if index == len(starts) - 1:
+                # Equations booklets can be part of the same PDF. Their figures and
+                # text belong to the paper link, never the final question crop.
+                for pi in range(start_page, len(pages)):
+                    ws = pages[pi]['words']
+                    section = [w for w in ws if w['text'].upper() == 'TOTAL'
+                               and (pi > start_page or w['top'] > start_y)]
+                    totals = (w for w in section if PAPER_TOTAL.match(' '.join(
+                        o['text'] for o in sorted(ws, key=lambda o: o['x0'])
+                        if abs(o['top'] - w['top']) < 3 and o['x0'] >= w['x0'] - 1)))
+                    footer = next(totals, None)
+                    if footer:
+                        end_page, end_y = pi, footer['top']
+                        break
             fragments, labels, marks, totals = [], [], [], []
             text_parts = []
             for pi in range(start_page, end_page + 1):
@@ -276,7 +291,7 @@ def extract(path, ocr_dir=None, overrides_dir=None):
                 if not tariff and 'Question' in text and 'continued' in text and len(text) < 120:
                     continue
                 frag_index = len(fragments)
-                fragment = region(p, pi, lo, bottom + 7)
+                fragment = region(p, pi, lo, min(hi, bottom + 7) if index == len(starts) - 1 else bottom + 7)
                 if not tariff and has_figure: fragment['shared_figure'] = True
                 fragments.append(fragment)
                 text_parts.append(clean_text(p, lo, bottom + 7))

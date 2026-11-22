@@ -71,8 +71,17 @@ test('every refined GCSE part crop is exactly the region its record names', () =
         continue;
       }
       if (unit.provenance?.part_display !== 'refined') continue;
-      const { height } = webpSize(asset(unit.content.question_image_url).base64);
+      const { width, height } = webpSize(asset(unit.content.question_image_url).base64);
       checked += 1;
+      const pagePixels = unit.provenance.source_region_page_pixels;
+      if (pagePixels) {
+        const regions = unit.provenance.source_regions;
+        assert.equal(pagePixels.length, regions.length, unit.question_id);
+        const widths = regions.map(({bbox}, i) => Math.round(bbox[2] * pagePixels[i][0]) - Math.round(bbox[0] * pagePixels[i][0]));
+        const heights = regions.map(({bbox}, i) => Math.round(bbox[3] * pagePixels[i][1]) - Math.round(bbox[1] * pagePixels[i][1]));
+        if (width !== Math.max(...widths) || height !== heights.reduce((sum, h) => sum + h, 0) + GAP * (regions.length - 1)) wrong.push(unit.question_id);
+        continue;
+      }
       if (!fits(height, unit.provenance.source_regions, heights)) wrong.push(unit.question_id);
     }
   }
@@ -144,10 +153,12 @@ test('GCSE contexts show another part\'s rows only when the part uses them (audi
   assert.deepEqual(wrong, []);
   const context = (file, id) => read(`data/packs/${file}`).questions.find((q) => q.question_id === id).provenance;
   assert.deepEqual(context('gcsebio/EDX_1SC0_2025_JUNE_1BF.json', 'EDX_1SC0_2025_JUNE_1BF_Q04_U04').context_named_parts, undefined);
-  // the reported cases now hold no other part's rows; a part that names part (b) keeps it
+  // A loose reference can call for only the printed figure or lead-in from the earlier part.
   assert.deepEqual(context('gcsebio/EDX_1SC0_2025_JUNE_1BF.json', 'EDX_1SC0_2025_JUNE_1BF_Q04_U04').context_regions, []);
   assert.deepEqual(context('gcsebio/EDX_1BI0_2025_JUNE_1H.json', 'EDX_1BI0_2025_JUNE_1H_Q01_U04').context_regions.length, 1); // "(b) Fats are needed for energy." only
-  assert.ok(context('gcsephys/EDX_1PH0_2022_JUNE_2F.json', 'EDX_1PH0_2022_JUNE_2F_Q10_U07').context_named_parts.length > 0);
+  const seawater = context('gcsephys/EDX_1PH0_2022_JUNE_2F.json', 'EDX_1PH0_2022_JUNE_2F_Q10_U07');
+  assert.deepEqual(seawater.reviewed_dependencies, []);
+  assert.deepEqual(seawater.context_regions.map(r => r.page), [37]); // Figure 27 and caption, above (b)(i)
   // a stem printed inside the previous part's rows stays (1MA1 June 2024 3F Q16(b))
   assert.deepEqual(context('gcsemaths/EDX_1MA1_2024_JUNE_3F.json', 'EDX_1MA1_2024_JUNE_3F_Q16_U02').context_stem_from_parts, ['EDX_1MA1_2024_JUNE_3F_Q16_U01']);
 });

@@ -3,6 +3,7 @@
     "source_sha256": "c2ca211d0af0de15d75125bc60802689b9f9bf4f476d29683c33e2883439db18",
     "review": "The task prints both the voltage and the current needed to calculate power.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1PH0_2020_NOVEMBER_2F_Q06_U03"
     ]
@@ -11,6 +12,7 @@
     "source_sha256": "b3bbfd214a8ade282397787240c740353957c1f94c090e362c4b0be87b61d46c",
     "review": "The task prints both the voltage and the current needed to calculate power.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
     ]
@@ -19,6 +21,7 @@
     "source_sha256": "8b3fbc764771731171abc3f0f941b80df24b20fb6c1168945e1f7103c1a617b5",
     "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1PH0_2022_JUNE_1F_Q09_U02"
     ]
@@ -27,6 +30,7 @@
     "source_sha256": "3be839f5fa1219ff936694c9d6ebb2cb73e921ff67f839a855214c02185ba66e",
     "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1PH0_2022_JUNE_1H_Q03_U02"
     ]
@@ -35,6 +39,7 @@
     "source_sha256": "304fb70c8e2ff415e1b14837ae9a02b0e03936de231e307cf612dcebe364843c",
     "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1SC0_2022_JUNE_1PF_Q06_U02"
     ]
@@ -43,6 +48,7 @@
     "source_sha256": "ef520857b0e3821cd0f8a12c018dd6e30bdb69cffe79b1b9df6157076fd8f092",
     "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1SC0_2022_JUNE_1PH_Q02_U02"
     ]
@@ -51,6 +57,7 @@
     "source_sha256": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
     "review": "The task prints 2.16 MJ and the conversion percentage needed for the calculation.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1PH0_2022_JUNE_2H_Q07_U04"
     ]
@@ -59,6 +66,7 @@
     "source_sha256": "2b9b6afe56aa65255af9867ee60cd1e347bd3b41edf181748e28befad59ecc98",
     "review": "The task prints 2.16 MJ and the conversion percentage needed for the calculation.",
     "context_regions": [],
+    "reviewed_dependencies": [],
     "remove_dependencies": [
       "EDX_1SC0_2022_JUNE_2PH_Q04_U04"
     ]
@@ -66,13 +74,17 @@
   "EDX_1PH0_2025_JUNE_2F_Q07_U04": {
     "source_sha256": "6834890185458fb92f8ff313e3338b57affb9f2615f3a7ee87baae0a8139e93f",
     "review": "The task prints the oxygen volume and flow rate required for the calculation.",
-    "context_regions": []
+    "context_regions": [],
+    "reviewed_dependencies": []
   },
   "EDX_1PH0_2022_JUNE_1H_Q05_U02": {
     "source_sha256": "3be839f5fa1219ff936694c9d6ebb2cb73e921ff67f839a855214c02185ba66e",
     "review": "The distance calculation uses the acceleration shown in the previous part, together with the previous initial and take-off speeds.",
     "context_regions": [],
     "add_dependencies": [
+      "EDX_1PH0_2022_JUNE_1H_Q05_U01"
+    ],
+    "reviewed_dependencies": [
       "EDX_1PH0_2022_JUNE_1H_Q05_U01"
     ]
   },
@@ -82,6 +94,9 @@
     "context_regions": [],
     "add_dependencies": [
       "EDX_1SC0_2022_JUNE_1PH_Q03_U01"
+    ],
+    "reviewed_dependencies": [
+      "EDX_1SC0_2022_JUNE_1PH_Q03_U01"
     ]
   },
   "EDX_1PH0_2022_JUNE_1H_Q06_U03": {
@@ -90,6 +105,1043 @@
     "context_regions": [],
     "add_dependencies": [
       "EDX_1PH0_2022_JUNE_1H_Q06_U02"
+    ],
+    "reviewed_dependencies": [
+      "EDX_1PH0_2022_JUNE_1H_Q06_U02"
+    ]
+  },
+  "EDX_1PH0_2020_NOVEMBER_1F_Q06_U06": {
+    "source_sha256": "ff39785ee46940b31857a9629da235791823d325ac4abdaee4ba42663973be08",
+    "review": "The question gives the water-wave counting method. The mark scheme uses the printed 12 Hz seismic frequency and never requires any earlier answer.",
+    "context_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.15959,
+          0.067705,
+          0.923942,
+          0.091461
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2020_NOVEMBER_1F_Q06_U01",
+      "EDX_1PH0_2020_NOVEMBER_1F_Q06_U02",
+      "EDX_1PH0_2020_NOVEMBER_1F_Q06_U03",
+      "EDX_1PH0_2020_NOVEMBER_1F_Q06_U05"
+    ]
+  },
+  "EDX_1SC0_2020_NOVEMBER_1PF_Q04_U06": {
+    "source_sha256": "7421a943a03e37a47ffda989670cd40b80397ed813b7205ec6dea10b32635691",
+    "review": "The question gives the water-wave counting method. The mark scheme uses the printed 12 Hz seismic frequency and never requires any earlier answer.",
+    "context_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.15959,
+          0.067705,
+          0.923942,
+          0.091461
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2020_NOVEMBER_1PF_Q04_U01",
+      "EDX_1SC0_2020_NOVEMBER_1PF_Q04_U02",
+      "EDX_1SC0_2020_NOVEMBER_1PF_Q04_U03",
+      "EDX_1SC0_2020_NOVEMBER_1PF_Q04_U05"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_2F_Q10_U07": {
+    "source_sha256": "a99391870e7222848ad55b06db1d463ed996b0b8a3aced35194829333642cb37",
+    "review": "The comparison uses the printed water-pressure graph; the scheme accepts a steeper linear relationship and the same intercept without the earlier plotting and prediction tasks. The official paper ends at its printed total. The following equations page is outside this question.",
+    "context_regions": [
+      {
+        "page": 37,
+        "bbox": [
+          0.065516,
+          0.3896,
+          0.920582,
+          0.805331
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2022_JUNE_2F_Q10_U03",
+      "EDX_1PH0_2022_JUNE_2F_Q10_U04",
+      "EDX_1PH0_2022_JUNE_2F_Q10_U05",
+      "EDX_1PH0_2022_JUNE_2F_Q10_U06"
+    ],
+    "full_question_regions": [
+      {
+        "page": 34,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.700741
+        ]
+      },
+      {
+        "page": 35,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.520046
+        ]
+      },
+      {
+        "page": 36,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.745321
+        ]
+      },
+      {
+        "page": 37,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.904746
+        ]
+      },
+      {
+        "page": 38,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.674857
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 38,
+        "bbox": [
+          0.041997,
+          0.380994,
+          0.958003,
+          0.674857
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_2H_Q04_U07": {
+    "source_sha256": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
+    "review": "The comparison uses the printed water-pressure graph; the scheme accepts a steeper linear relationship and the same intercept without the earlier plotting and prediction tasks.",
+    "context_regions": [
+      {
+        "page": 13,
+        "bbox": [
+          0.065516,
+          0.3896,
+          0.920582,
+          0.805331
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2022_JUNE_2H_Q04_U03",
+      "EDX_1PH0_2022_JUNE_2H_Q04_U04",
+      "EDX_1PH0_2022_JUNE_2H_Q04_U05",
+      "EDX_1PH0_2022_JUNE_2H_Q04_U06"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_2F_Q09_U03": {
+    "source_sha256": "a99391870e7222848ad55b06db1d463ed996b0b8a3aced35194829333642cb37",
+    "review": "The explanation uses the printed displacement procedure. The scheme credits floating and partial displacement without the earlier calculated mass.",
+    "context_regions": [
+      {
+        "page": 30,
+        "bbox": [
+          0.065516,
+          0.067705,
+          0.923942,
+          0.456117
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2022_JUNE_2F_Q09_U02"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_2H_Q03_U03": {
+    "source_sha256": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
+    "review": "The explanation uses the printed displacement procedure. The scheme credits floating and partial displacement without the earlier calculated mass.",
+    "context_regions": [
+      {
+        "page": 8,
+        "bbox": [
+          0.065516,
+          0.067705,
+          0.923942,
+          0.456117
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2022_JUNE_2H_Q03_U02"
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_2PF_Q06_U03": {
+    "source_sha256": "50da359056f0b99ec5e3fe15efac34a9a0c247b7669881e297c3ae1324769051",
+    "review": "The explanation uses the printed displacement procedure. The scheme credits floating and partial displacement without the earlier calculated mass.",
+    "context_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.065516,
+          0.067705,
+          0.923942,
+          0.456117
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2022_JUNE_2PF_Q06_U02"
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_2PH_Q02_U03": {
+    "source_sha256": "2b9b6afe56aa65255af9867ee60cd1e347bd3b41edf181748e28befad59ecc98",
+    "review": "The explanation uses the printed displacement procedure. The scheme credits floating and partial displacement without the earlier calculated mass.",
+    "context_regions": [
+      {
+        "page": 6,
+        "bbox": [
+          0.065516,
+          0.067705,
+          0.923942,
+          0.456117
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2022_JUNE_2PH_Q02_U02"
+    ]
+  },
+  "EDX_1PH0_2024_JUNE_2H_Q09_U04": {
+    "source_sha256": "cdfa1e2348bbc0c9d9131fdcdb5d420b9b2465537fb2ee23f54d000840f82ddb",
+    "review": "The heat-loss explanation requires the heater setup and does not use the calculated temperature rise.",
+    "context_regions": [
+      {
+        "page": 29,
+        "bbox": [
+          0.065516,
+          0.067705,
+          0.923943,
+          0.399102
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2024_JUNE_2H_Q09_U03"
+    ]
+  },
+  "EDX_1SC0_2024_JUNE_2PH_Q06_U04": {
+    "source_sha256": "453f2a13e5d256ec6dd8f7f378ac38c27b7ede80ddc7e647496b7b72f698e3da",
+    "review": "The heat-loss explanation requires the heater setup and does not use the calculated temperature rise.",
+    "context_regions": [
+      {
+        "page": 21,
+        "bbox": [
+          0.101232,
+          0.094593,
+          0.889613,
+          0.405082
+        ]
+      }
+    ],
+    "reviewed_dependencies": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2024_JUNE_2PH_Q06_U03"
+    ]
+  },
+  "EDX_1PH0_2020_NOVEMBER_1F_Q10_U06": {
+    "source_sha256": "ff39785ee46940b31857a9629da235791823d325ac4abdaee4ba42663973be08",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 28,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.87763
+        ]
+      },
+      {
+        "page": 29,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.903529
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 29,
+        "bbox": [
+          0.041997,
+          0.582728,
+          0.958003,
+          0.903529
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2020_NOVEMBER_1H_Q10_U06": {
+    "source_sha256": "710684bf53fa601ae37192ba3bff05a65c26b32417bd3cf94289da5d6d861e75",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 26,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.820361
+        ]
+      },
+      {
+        "page": 27,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.263763
+        ]
+      },
+      {
+        "page": 28,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.745095
+        ]
+      },
+      {
+        "page": 29,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.445201
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 29,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.445201
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2020_NOVEMBER_2F_Q10_U06": {
+    "source_sha256": "c2ca211d0af0de15d75125bc60802689b9f9bf4f476d29683c33e2883439db18",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 37,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.672665
+        ]
+      },
+      {
+        "page": 38,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.701697
+        ]
+      },
+      {
+        "page": 39,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.548237
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 39,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.548237
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2021_NOVEMBER_1F_Q10_U06": {
+    "source_sha256": "b0d2e109b889078a96ad06d58b2fd7728d544823203b542f60fdadb40e3e5688",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 29,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.764843
+        ]
+      },
+      {
+        "page": 30,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.818254
+        ]
+      },
+      {
+        "page": 31,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.334708
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 31,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.334708
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_1F_Q10_U07": {
+    "source_sha256": "8b3fbc764771731171abc3f0f941b80df24b20fb6c1168945e1f7103c1a617b5",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 25,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.711413
+        ]
+      },
+      {
+        "page": 26,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.496945
+        ]
+      },
+      {
+        "page": 27,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.709818
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 27,
+        "bbox": [
+          0.041997,
+          0.37750833096267383,
+          0.958003,
+          0.709818
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2023_JUNE_2F_Q10_U06": {
+    "source_sha256": "caa4a12208a0bbfc2ef38a3befcfb70afc949c2739ea96c6b4e7faa0ee0e1982",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 34,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.884043
+        ]
+      },
+      {
+        "page": 35,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.709123
+        ]
+      },
+      {
+        "page": 36,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.897868
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 36,
+        "bbox": [
+          0.041997,
+          0.727518,
+          0.958003,
+          0.897868
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2023_JUNE_2H_Q10_U04": {
+    "source_sha256": "7c3d72abd938e3e3f8338722adf5a8c6417c8635bfd5cfd2f1a36ffcecbf8784",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 30,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.879898
+        ]
+      },
+      {
+        "page": 31,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.432838
+        ]
+      },
+      {
+        "page": 32,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.694929
+        ]
+      },
+      {
+        "page": 33,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.886831
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 33,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.886831
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2020_NOVEMBER_1PF_Q06_U05": {
+    "source_sha256": "7421a943a03e37a47ffda989670cd40b80397ed813b7205ec6dea10b32635691",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 16,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.729448
+        ]
+      },
+      {
+        "page": 17,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.792017
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.776566
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 17,
+        "bbox": [
+          0.041997,
+          0.069323230661506,
+          0.958003,
+          0.792017
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.776566
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2020_NOVEMBER_1PH_Q06_U04": {
+    "source_sha256": "832974973ed8e059bf609666fb8637399c214f4408e2f604b42bbff9421ea4a0",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 15,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.85101
+        ]
+      },
+      {
+        "page": 16,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.831929
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.535421
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.069323230661506,
+          0.958003,
+          0.535421
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2021_NOVEMBER_1PF_Q06_U06": {
+    "source_sha256": "e780ba11d8b878203f212b859bb9507a7dcf4dd3851e130b7f7ad8aed4946a9c",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 17,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.526485
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.516969
+        ]
+      },
+      {
+        "page": 19,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.864741
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 19,
+        "bbox": [
+          0.041997,
+          0.331643,
+          0.958003,
+          0.864741
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2021_NOVEMBER_2PF_Q06_U04": {
+    "source_sha256": "2b2efe272e81338a6cc125f0c84d17264cff15d148808daa3028a10306464821",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 16,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.943132
+        ]
+      },
+      {
+        "page": 17,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.388379
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.916554
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.916554
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_1PF_Q06_U04": {
+    "source_sha256": "304fb70c8e2ff415e1b14837ae9a02b0e03936de231e307cf612dcebe364843c",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 16,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.580013
+        ]
+      },
+      {
+        "page": 17,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.580996
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.916054
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.916054
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_2PH_Q06_U03": {
+    "source_sha256": "2b9b6afe56aa65255af9867ee60cd1e347bd3b41edf181748e28befad59ecc98",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.736076
+        ]
+      },
+      {
+        "page": 19,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.850203
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 19,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.850203
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2023_JUNE_2PF_Q06_U05": {
+    "source_sha256": "03a9d85d83ea6891c3c3590a0dbac1cccfe5a36ff38d2a780c1f149f4873655e",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 21,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.869343
+        ]
+      },
+      {
+        "page": 22,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.113277
+        ]
+      },
+      {
+        "page": 23,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.917616
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 23,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.917616
+        ]
+      }
+    ]
+  },
+  "EDX_1SC0_2023_JUNE_2PH_Q06_U04": {
+    "source_sha256": "14122478caef41ba3720e04990f655874aea5c019e7cad6c9de81a91c67d388d",
+    "review": "The official paper ends at its printed total. The following equations page is outside this question.",
+    "full_question_regions": [
+      {
+        "page": 16,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.823541
+        ]
+      },
+      {
+        "page": 17,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.450735
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.045137,
+          0.958003,
+          0.886466
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.041997,
+          0.069323,
+          0.958003,
+          0.886466
+        ]
+      }
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_2H_Q06_U04": {
+    "source_sha256": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
+    "review": "The equilibrium scheme compares the clockwise moment calculated in (b)(ii) with the printed moment of C.",
+    "context_regions": [],
+    "add_dependencies": [
+      "EDX_1PH0_2022_JUNE_2H_Q06_U03"
+    ],
+    "reviewed_dependencies": [
+      "EDX_1PH0_2022_JUNE_2H_Q06_U03"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_2H_Q06_U03": {
+    "source_sha256": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
+    "review": "The figure and printed moment of C support the paired equilibrium question. The calculation prompt from (b)(i) is excluded.",
+    "context_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.065516,
+          0.247063,
+          0.922262,
+          0.661607
+        ]
+      }
+    ],
+    "reviewed_dependencies": []
+  },
+  "EDX_1PH0_2024_JUNE_1H_Q07_U03": {
+    "source_sha256": "577c3d83ddf8963fb4a6d92f48b85a5d118a7d65e7329943a08bc33be3986637",
+    "review": "The average speed uses the previous total distance. The scheme explicitly carries forward the answer from (a)(ii).",
+    "context_regions": [],
+    "add_dependencies": [
+      "EDX_1PH0_2024_JUNE_1H_Q07_U02"
+    ],
+    "reviewed_dependencies": [
+      "EDX_1PH0_2024_JUNE_1H_Q07_U02"
+    ]
+  },
+  "EDX_1SC0_2024_JUNE_1PH_Q04_U03": {
+    "source_sha256": "a307aa49779cb2e38cfcd1d9b6121403b348a5683a695ed59842285c28bf6ddc",
+    "review": "The average speed uses the previous total distance. The scheme explicitly carries forward the answer from (a)(ii).",
+    "context_regions": [],
+    "add_dependencies": [
+      "EDX_1SC0_2024_JUNE_1PH_Q04_U02"
+    ],
+    "reviewed_dependencies": [
+      "EDX_1SC0_2024_JUNE_1PH_Q04_U02"
+    ]
+  },
+  "EDX_1PH0_2024_JUNE_2F_Q07_U07": {
+    "source_sha256": "b84bad28df9c82fac90e1214a68c7edfbe7a920f6d15ae26db3deb3027b6532e",
+    "review": "The question refers to the original container in Figure 19a. The scheme explains the change in pressure using particle collisions without the earlier calculated pressure.",
+    "context_regions": [
+      {
+        "page": 20,
+        "bbox": [
+          0.109193,
+          0.251815,
+          0.453572,
+          0.526198
+        ]
+      }
+    ],
+    "reviewed_dependencies": []
+  },
+  "EDX_1PH0_2025_JUNE_1H_Q10_U02": {
+    "source_sha256": "49cd582ca6f3a88114ef558713300a78a4e8df4ce7c3d185bb6d305e4f73bb3d",
+    "review": "The reason uses the previously selected star. The table is included with the prerequisite.",
+    "context_regions": [],
+    "reviewed_dependencies": [
+      "EDX_1PH0_2025_JUNE_1H_Q10_U01"
+    ]
+  },
+  "EDX_1PH0_2025_JUNE_2F_Q08_U02": {
+    "source_sha256": "6834890185458fb92f8ff313e3338b57affb9f2615f3a7ee87baae0a8139e93f",
+    "review": "The velocity uses the mass shown in (a)(i). The diagram and given energy are included with the prerequisite.",
+    "context_regions": [],
+    "reviewed_dependencies": [
+      "EDX_1PH0_2025_JUNE_2F_Q08_U01"
+    ]
+  },
+  "EDX_1PH0_2025_JUNE_2H_Q02_U02": {
+    "source_sha256": "03add5e0a771b16a45bed41941a3d48be49622224a005d4ac1b43a62e2a6a50f",
+    "review": "The velocity uses the mass shown in (a)(i). The diagram and given energy are included with the prerequisite.",
+    "context_regions": [],
+    "reviewed_dependencies": [
+      "EDX_1PH0_2025_JUNE_2H_Q02_U01"
+    ]
+  },
+  "EDX_1SC0_2025_JUNE_2PF_Q05_U02": {
+    "source_sha256": "d831c049481b19ae6c4e6331478ebd53d0b48d61ac1433bb8c88d4ca0a524bfd",
+    "review": "The velocity uses the mass shown in (a)(i). The diagram and given energy are included with the prerequisite.",
+    "context_regions": [],
+    "reviewed_dependencies": [
+      "EDX_1SC0_2025_JUNE_2PF_Q05_U01"
+    ]
+  },
+  "EDX_1SC0_2025_JUNE_2PH_Q01_U02": {
+    "source_sha256": "ffb2a2105e31a8ffb7da38e8f3f9c98846235ba5cd9f68aacada27aa68015320",
+    "review": "The velocity uses the mass shown in (a)(i). The diagram and given energy are included with the prerequisite.",
+    "context_regions": [],
+    "reviewed_dependencies": [
+      "EDX_1SC0_2025_JUNE_2PH_Q01_U01"
     ]
   }
 }

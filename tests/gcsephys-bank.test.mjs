@@ -38,6 +38,47 @@ test('Foundation electromagnet questions keep the choice and its reasons togethe
   }
 });
 
+test('reviewed Physics context, links and equation-booklet exclusions survive publication', () => {
+  const reviews = read('data/imports/gcsephys/part-display-overrides.json');
+  const questions = new Map(units.map(q => [q.question_id, q]));
+  for (const [id, review] of Object.entries(reviews)) {
+    const question = questions.get(id);
+    assert.ok(question, id);
+    assert.equal(question.provenance.question_source_sha256, review.source_sha256, id);
+    if (review.reviewed_dependencies) {
+      assert.deepEqual(question.provenance.reviewed_dependencies, review.reviewed_dependencies, id);
+      assert.deepEqual(question.depends_on_question_ids || [], review.reviewed_dependencies, id);
+    }
+    if (review.context_regions) {
+      assert.equal(Boolean(question.context.stem_image_url), review.context_regions.length > 0, id);
+      assert.deepEqual(question.provenance.context_regions || [], review.context_regions, id);
+    }
+    if (review.source_regions) assert.deepEqual(question.provenance.source_regions, review.source_regions, id);
+    if (review.full_question_regions) assert.deepEqual(question.provenance.full_question_regions, review.full_question_regions, id);
+  }
+
+  const paper = 'EDX_1PH0_2022_JUNE_2F';
+  const question = questions.get(`${paper}_Q10_U07`);
+  assert.equal(question.part_label, '(c)');
+  assert.equal(question.marks, 2);
+  assert.deepEqual(question.provenance.source_regions.map(region => region.page), [38]);
+  assert.equal(question.provenance.full_question_regions.at(-1).page, 38);
+});
+
+test('whole Physics schemes keep all pages assigned to the printed question', () => {
+  const reviews = read('data/imports/gcsephys/scheme-display-overrides.json');
+  for (const question of units) {
+    const review = reviews[question.parent_question_id];
+    if (!review) continue;
+    assert.equal(question.provenance.scheme_source_sha256, review.scheme_source_sha256, question.question_id);
+    assert.deepEqual(question.provenance.scheme_regions, review.scheme_regions, question.question_id);
+    assert.equal(question.provenance.scheme_region_page_pixels.length, review.scheme_regions.length, question.question_id);
+  }
+  const pages = id => reviews[id].scheme_regions.map(region => region.page);
+  assert.deepEqual(pages('EDX_1PH0_2020_NOVEMBER_1F_Q01'), [5]);
+  assert.deepEqual(pages('EDX_1PH0_2022_JUNE_2H_Q10'), [27, 28, 29, 30]);
+});
+
 test('active GCSE Physics booklets reconcile to their printed totals and match the coverage inventory', () => {
   assert(packs.length >= 1);
   assert.equal(packs.length, coverage.totals.booklets);
