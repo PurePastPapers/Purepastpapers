@@ -6,12 +6,12 @@ import { APP, LIMITS } from '../config/app.config.js';
 import { createBus } from '../core/bus.js';
 import { uid } from '../core/utils.js';
 import { latestByQuestion } from '../engine/analytics.js';
-import { localAdapter } from './adapters/local-adapter.js';
+import { localAdapter } from './adapters/local-adapter.js?v=exported-tests-2';
 import { deleteInkConflict, deleteInkResponse, listInkDraftsForPart, loadInkResponses, saveInkResponse, supabaseAdapter } from './adapters/supabase-adapter.js';
 import * as ink from './ink.js';
 import { SUPABASE_CONFIGURED } from '../config/supabase.config.js';
 import { LEGACY_SPEC_IDS } from '../config/spec-id-migrations.js';
-import { isExportedTest, isOfflineSession, putExport, putOfflineAttempt, retainOfflineProgress } from './offline-progress.js';
+import { isExportedTest, isOfflineSession, isStoredTestExport, putExport, putOfflineAttempt, removeTestExport, retainOfflineProgress } from './offline-progress.js';
 
 const guestExportsKey = `${APP.storageNamespace}:guest-pdf-tests`;
 
@@ -729,12 +729,12 @@ export async function deletePaperAttempt(paperAttempt) {
 
 // ───────────────────────────── custom tests (PRD 8.3: user_custom_test) ─────────────────────────────
 
-export const getCustomTest = (paperId) => requireProgress().custom_tests.find((paper) => paper.paper_id === paperId) || null;
+export const getCustomTest = (paperId) => requireProgress().custom_tests.find((paper) => paper.paper_id === paperId && !paper.export_deleted) || null;
 
 export async function saveCustomTest(paper) {
   const doc = requireProgress();
-  const exports = doc.custom_tests.filter(isExportedTest);
-  const ordinary = doc.custom_tests.filter(candidate => !isExportedTest(candidate) && candidate.paper_id !== paper.paper_id);
+  const exports = doc.custom_tests.filter(isStoredTestExport);
+  const ordinary = doc.custom_tests.filter(candidate => !isStoredTestExport(candidate) && candidate.paper_id !== paper.paper_id);
   doc.custom_tests = [...exports, ...[...ordinary, paper].slice(-60)];
   await persist({ silent: true });
 }
@@ -766,7 +766,7 @@ function writeOffline(update) {
       else {
         try {
           sessionStorage.setItem(guestExportsKey, JSON.stringify({
-            custom_tests: doc.custom_tests.filter(isExportedTest),
+            custom_tests: doc.custom_tests.filter(isStoredTestExport),
             sessions: doc.sessions.filter(isOfflineSession),
             question_attempts: doc.question_attempts.filter(attempt => attempt.session_id?.startsWith('paper_')),
             paper_attempts: doc.paper_attempts.filter(attempt => attempt.session_kind === 'offline_test'),
@@ -785,6 +785,7 @@ function writeOffline(update) {
 }
 
 export const saveExportedTest = snapshot => writeOffline(doc => putExport(doc, snapshot));
+export const deleteExportedTest = (paperId, createdAt) => writeOffline(doc => removeTestExport(doc, paperId, createdAt));
 export const saveOfflineAttempt = (paperId, options = {}) => writeOffline(doc => {
   const paper = doc.custom_tests.find(test => test.paper_id === paperId && isExportedTest(test));
   if (!paper) throw new Error('This exported test is unavailable in your account.');

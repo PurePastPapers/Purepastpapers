@@ -1,19 +1,31 @@
 import { uid } from '../core/utils.js';
 
 export const isExportedTest = (test) => test.snapshot?.version === 1;
+export const isStoredTestExport = (test) => test.export_deleted === true || isExportedTest(test);
 export const isOfflineSession = (session) => session.kind === 'offline_test';
 
 export function putExport(doc, snapshot, now = new Date().toISOString()) {
   const existing = doc.custom_tests.find(test => test.paper_id === snapshot.id);
-  if (existing) return existing;
+  if (existing && !existing.export_deleted) return existing;
   const paper = {
     paper_id: snapshot.id, paper_type: 'user_custom_test', subject_id: snapshot.subjectId,
     title: snapshot.title, created_at: now, total_marks: snapshot.totalMarks,
     question_ids: snapshot.groups.flatMap(group => group.parts.map(part => part.id)),
     snapshot,
   };
+  if (existing) doc.custom_tests = doc.custom_tests.filter(test => test !== existing);
   doc.custom_tests.push(paper);
   return paper;
+}
+
+export function removeTestExport(doc, paperId, createdAt) {
+  const index = doc.custom_tests.findIndex(test => test.paper_id === paperId && isExportedTest(test));
+  if (index < 0) return;
+  if (doc.custom_tests[index].created_at !== createdAt) {
+    throw new Error('This test was exported again. Refresh the list before deleting it.');
+  }
+  // Keep the removal in account sync so a stale tab cannot restore the old snapshot.
+  doc.custom_tests[index] = { paper_id: paperId, export_deleted: true };
 }
 
 export function putOfflineAttempt(doc, paper, { newAttemptId, result, expectedRevision }, now = new Date().toISOString()) {
@@ -63,7 +75,7 @@ export const offlineRetakeId = () => uid('paper');
 export function retainOfflineProgress(local, remote) {
   if (!remote) return local;
   const exports = new Map((local.custom_tests || []).map(test => [test.paper_id, test]));
-  for (const test of (remote.custom_tests || []).filter(isExportedTest)) exports.set(test.paper_id, test);
+  for (const test of (remote.custom_tests || []).filter(isStoredTestExport)) exports.set(test.paper_id, test);
   const remoteSessions = new Map((remote.sessions || []).filter(isOfflineSession).map(session => [session.session_id, session]));
   const sessions = new Map((local.sessions || []).map(session => [session.session_id, session]));
   for (const [id, session] of remoteSessions) {

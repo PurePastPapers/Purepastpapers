@@ -353,6 +353,7 @@ export async function mount(element, context) {
 
   function historyTable() {
     const rows = paperAttempts.filter((attempt) => historyType === 'all' || attempt.paper_type === historyType);
+    const exports = new Set(api.exportedTests().map(test => test.paper_id));
     if (!rows.length) return html`<p class="muted" style="padding:16px 0">Nothing here yet.</p>`;
     return html`<div class="table-wrap">
       <table class="table">
@@ -377,7 +378,9 @@ export async function mount(element, context) {
               <td class="nowrap small">${attempt.duration_seconds ? fmtDuration(attempt.duration_seconds) : '—'}</td>
               <td class="right">
                 ${attempt.session_kind === 'offline_test'
-                  ? html`<a class="btn btn--sm btn--ghost" href="${links.exportedTest(attempt.paper_id, { attempt: attempt.session_id })}">Review ${attempt.score_mode === 'overall' ? 'overall score' : 'question marks'}</a>`
+                  ? (exports.has(attempt.paper_id)
+                    ? html`<a class="btn btn--sm btn--ghost" href="${links.exportedTest(attempt.paper_id, { attempt: attempt.session_id })}">Review ${attempt.score_mode === 'overall' ? 'overall score' : 'question marks'}</a>`
+                    : '')
                   : attempt.session_id && api.getSession(attempt.session_id) ? html`<a class="btn btn--sm btn--ghost" href="${links.session(attempt.session_id)}">Review</a>` : ''}
               </td>
             </tr>`;
