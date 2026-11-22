@@ -24,8 +24,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / 'physics'))
+sys.path.insert(0, str(HERE.parent / 'parts'))
 sys.path.insert(0, str(HERE))
 from render import SourceRenderer  # noqa: E402
+from source_reviews import load_source_review  # noqa: E402
 from schemes import scheme_regions  # noqa: E402
 from figures import index_insert  # noqa: E402
 from resolve import resolve  # noqa: E402
@@ -34,6 +36,7 @@ from reviews import ROUTES, TOPIC, leaf_id  # noqa: E402
 SUBJECT = 'AQA_ALEVEL_GEOG_7037'
 SIGNATURE = b'geography-build-v1'
 REPO = HERE.parents[1]
+FIGURE_REVIEW = REPO / 'data/imports/geography/figure-crops.json'
 
 
 def write_json(path, value):
@@ -62,6 +65,9 @@ def build_paper(paper, research, spec):
         raise ValueError('Question source revision mismatch')
     if cand['exceptions'] or cand['total_marks'] != paper['max_marks']:
         raise ValueError('Extraction exceptions or total mismatch')
+    figure_review = load_source_review(FIGURE_REVIEW, pid, cand['source_sha256'])
+    source_regions = figure_review.get('source_regions', {})
+    inline_figures = figure_review.get('inline_figures', {})
     ms_sha = sha(ms)
     if ms_sha != docs['mark_scheme']['sha256']:
         raise ValueError('Scheme source revision mismatch')
@@ -99,7 +105,8 @@ def build_paper(paper, research, spec):
             raise ValueError(f"{u['label']}: invalid tags")
         name = f'Q{n:02}_P{k:02}'
         image, scheme_image = root / f'{name}.webp', root / f'{name}_scheme.webp'
-        qr.render(u['regions'], image)
+        question_regions = source_regions.get(u['label'], u['regions'])
+        qr.render(question_regions, image)
         sr.render(schemes[u['label']], scheme_image)
         context = {}
         if u.get('shared_stem'):
@@ -111,7 +118,7 @@ def build_paper(paper, research, spec):
             context['stem_image_url'] = stems_rendered[q]
         figs = []
         for e in res[u['label']]['figures']:
-            if e['source'] in ('own', 'stem'):
+            if e['source'] in ('own', 'stem') or (e['source'] == 'question_paper' and e['figure'] in inline_figures.get(u['label'], [])):
                 continue
             key = (e['source'], e['figure'])
             if key not in rendered_figs:
@@ -141,7 +148,7 @@ def build_paper(paper, research, spec):
             'provenance': {'review_status': 'model_reviewed', 'reviewer_type': 'model',
                            'question_source_sha256': cand['source_sha256'], 'scheme_source_sha256': ms_sha,
                            'insert_source_sha256': paper['insert']['sha256'] if paper['insert'] else None,
-                           'source_regions': u['regions'], 'scheme_regions': schemes[u['label']],
+                           'source_regions': question_regions, 'scheme_regions': schemes[u['label']],
                            'original_parts': [u['label']], 'original_tariff_indices': [0],
                            'difficulty_basis': rv['difficulty_basis'],
                            'context_basis': 'shared stem and cited figures attached as unscored context' if context else 'independent',
@@ -200,7 +207,7 @@ def build_job(job):
         return {'paper_id': pid, 'status': 'awaiting_review_or_source'}
     target = REPO / 'data/packs/geography' / f'{pid}.json'
     signature = hashlib.sha256(SIGNATURE + cand.read_bytes() + review.read_bytes() +
-                               (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes()).hexdigest()
+                               FIGURE_REVIEW.read_bytes() + (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes()).hexdigest()
     try:
         if target.exists() and json.loads(target.read_text()).get('build_signature') == signature and (REPO / 'assets/geography' / pid).exists():
             return {'paper_id': pid, 'status': 'built', 'units': len(json.loads(target.read_text())['questions']), 'resumed': True}

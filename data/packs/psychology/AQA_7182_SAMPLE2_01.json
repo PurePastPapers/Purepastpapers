@@ -1325,7 +1325,7 @@
     },
     {
       "question_id": "AQA_7182_SAMPLE2_01_Q18_P00",
-      "parent_question_id": "AQA_7182_SAMPLE2_01_Q18",
+      "parent_question_id": "AQA_7182_SAMPLE2_01_Q17",
       "source_type": "real_past_paper",
       "is_sample": false,
       "paper_id": "AQA_7182_SAMPLE2_01",
@@ -1365,11 +1365,12 @@
       "context": {
         "figures": [
           {
-            "label": "Question 17 (this question continues its scenario)",
+            "label": "Question 17 (your answer to it is needed here)",
             "source": "question_paper",
             "image_url": "assets/psychology/AQA_7182_SAMPLE2_01/Q17_P00_ctx.webp"
           }
-        ]
+        ],
+        "shared_stem_html": "<p>This question builds on your answer to Question 17, shown below. Answer that first.</p>"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1418,7 +1419,7 @@
           0
         ],
         "difficulty_basis": "6-mark outline and evaluation",
-        "context_basis": "unscored context: earlier question 17 scenario",
+        "context_basis": "unscored context: earlier question 17 answer dependency",
         "content_year_basis": "all primary leaves are AS 7181 shared content",
         "specification_version": "AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version",
         "official_codes": [
@@ -1426,8 +1427,18 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "7182",
-        "extraction_version": "aqa-psychology-layout-v1"
-      }
+        "extraction_version": "aqa-psychology-layout-v1",
+        "scenario_context_review": {
+          "17": {
+            "omit": true,
+            "link": true
+          }
+        }
+      },
+      "part_label": "18",
+      "depends_on_question_ids": [
+        "AQA_7182_SAMPLE2_01_Q17_P00"
+      ]
     }
   ],
   "build_signature": "9ee101b34325a9715fd8adac09ca2c64fbd20ae65de4335e5c1173c00696fff9"

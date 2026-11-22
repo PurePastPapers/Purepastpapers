@@ -577,7 +577,7 @@
               0.033595,
               0.595062,
               0.966405,
-              0.670552
+              0.659445
             ]
           }
         ],
@@ -664,9 +664,9 @@
             "page": 6,
             "bbox": [
               0.033595,
-              0.657912,
+              0.659445,
               0.966405,
-              0.733551
+              0.722396
             ]
           }
         ],
@@ -753,9 +753,9 @@
             "page": 6,
             "bbox": [
               0.033595,
-              0.720865,
+              0.722396,
               0.966405,
-              0.796407
+              0.785348
             ]
           }
         ],
@@ -842,9 +842,9 @@
             "page": 6,
             "bbox": [
               0.033595,
-              0.783722,
+              0.785348,
               0.966405,
-              0.859406
+              0.848299
             ]
           }
         ],
@@ -931,7 +931,7 @@
             "page": 6,
             "bbox": [
               0.033595,
-              0.846578,
+              0.848299,
               0.966405,
               0.921977
             ]
@@ -2147,9 +2147,9 @@
             "image_url": "assets/psychology/AQA_7182_SAMPLE_02/ITEM_1.webp"
           },
           {
-            "label": "Question 18 (this question continues its scenario)",
+            "label": "Question 18 · Table 1",
             "source": "question_paper",
-            "image_url": "assets/psychology/AQA_7182_SAMPLE_02/Q18_P00_ctx.webp"
+            "image_url": "assets/psychology/AQA_7182_SAMPLE_02/Q18_P00_scenario.webp"
           }
         ]
       },
@@ -2190,7 +2190,7 @@
           0
         ],
         "difficulty_basis": "4-mark methods application",
-        "context_basis": "unscored context: shared item ITEM1, earlier question 18 scenario",
+        "context_basis": "unscored context: shared item ITEM1, reviewed scenario from question 18",
         "content_year_basis": "assesses A-level-only content",
         "specification_version": "AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version",
         "official_codes": [
@@ -2198,7 +2198,21 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "7182",
-        "extraction_version": "aqa-psychology-layout-v1"
+        "extraction_version": "aqa-psychology-layout-v1",
+        "scenario_context_review": {
+          "18": {
+            "region": {
+              "page": 13,
+              "bbox": [
+                0.1,
+                0.148381,
+                0.88,
+                0.34406
+              ]
+            },
+            "label": "Question 18 · Table 1"
+          }
+        }
       }
     },
     {

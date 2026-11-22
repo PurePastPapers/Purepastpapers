@@ -26,14 +26,17 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / 'physics'))
+sys.path.insert(0, str(HERE.parent / 'parts'))
 sys.path.insert(0, str(HERE))
 from render import SourceRenderer  # noqa: E402
+from source_reviews import apply_scenarios, load_source_review, reviewed_dependencies  # noqa: E402
 from schemes import scheme_regions  # noqa: E402
 from reviews import ROUTE_TOPICS, leaf_id, route_of  # noqa: E402
 
 SUBJECT = 'AQA_ALEVEL_PSYCH_7182'
 SIGNATURE = b'psychology-build-v1'
 REPO = HERE.parents[1]
+SCENARIO_REVIEW = REPO / 'data/imports/psychology/scenario-context.json'
 OPTION_TITLE = {v: k[0].upper() + k[1:] for k, v in ROUTE_TOPICS.items()}
 
 
@@ -76,6 +79,9 @@ def build_paper(paper, research, spec):
         raise ValueError('Question source revision mismatch')
     if cand['exceptions'] or cand['total_marks'] != paper['max_marks']:
         raise ValueError('Extraction exceptions or total mismatch')
+    scenario_review = load_source_review(SCENARIO_REVIEW, pid, cand['source_sha256'])
+    scenarios = scenario_review.get('questions', {})
+    source_corrections = scenario_review.get('source_regions', {})
     ms_sha = sha(ms)
     if ms_sha != docs['mark_scheme']['sha256']:
         raise ValueError('Scheme source revision mismatch')
@@ -103,7 +109,7 @@ def build_paper(paper, research, spec):
     grp = {u['label']: u['label'] for u in publishable}
     find = lambda x: x if grp[x] == x else find(grp[x])
     for u in publishable:
-        for d in reviewed[u['label']].get('depends_on', []):
+        for d in reviewed_dependencies(reviewed[u['label']].get('depends_on', []), scenarios.get(u['label'], {})):
             if d in grp:
                 a, b = sorted((find(d), find(u['label'])), key=order.index)
                 grp[b] = a
@@ -125,7 +131,8 @@ def build_paper(paper, research, spec):
         if any(t not in leaves for t in primary + crossover):
             raise ValueError(f"{u['label']}: invalid tags")
         image, scheme_image = root / f'{name}.webp', root / f'{name}_scheme.webp'
-        qr.render(u['regions'], image)
+        source_regions = source_corrections.get(u['label'], u['regions'])
+        qr.render(source_regions, image)
         sr.render(schemes[u['label']], scheme_image)
         context, figs, reasons = {}, [], []
         if u.get('shared_stem'):
@@ -136,16 +143,18 @@ def build_paper(paper, research, spec):
             figs.append({'label': f'Shared information printed before Question {nice(it["serves"][0])}', 'source': 'question_paper',
                          'image_url': put(f'ITEM_{iid[4:]}', it['regions'])})
             reasons.append(f'shared item {iid}')
-        deps = rv.get('depends_on', [])
+        reviewed_context = scenarios.get(u['label'], {})
+        deps = reviewed_dependencies(rv.get('depends_on', []), reviewed_context)
         if any(d not in pub_labels for d in deps):
             raise ValueError(f"{u['label']}: depends on an unpublished unit {deps}")
         ctx_units = rv.get('context_units', u.get('context_units', []))
-        for c in sorted(set(ctx_units) | set(deps), key=order.index):
+        for c in sorted((set(ctx_units) - reviewed_context.keys()) | set(deps), key=order.index):
             if order.index(c) >= order.index(u['label']):
                 raise ValueError(f"{u['label']}: context {c} is not earlier")
             figs.append({'label': f'Question {nice(c)}' + (' (your answer to it is needed here)' if c in deps else ' (this question continues its scenario)'),
-                         'source': 'question_paper', 'image_url': put(f'{qname(c)}_ctx', units[c]['regions'])})
+                         'source': 'question_paper', 'image_url': put(f'{qname(c)}_ctx', source_corrections.get(c, units[c]['regions']))})
             reasons.append(f'earlier question {c}' + (' answer dependency' if c in deps else ' scenario'))
+        apply_scenarios(reviewed_context, context, figs, reasons, put, qname)
         if figs:
             context['figures'] = figs
         if deps:
@@ -169,13 +178,14 @@ def build_paper(paper, research, spec):
             'scheme_scope': 'part', 'scheme_question_number': u['label'], 'context': context,
             'provenance': {'review_status': 'model_reviewed', 'reviewer_type': 'model',
                            'question_source_sha256': cand['source_sha256'], 'scheme_source_sha256': ms_sha,
-                           'source_regions': u['regions'], 'scheme_regions': schemes[u['label']],
+                           'source_regions': source_regions, 'scheme_regions': schemes[u['label']],
                            'scheme_ao_marks': schemes.get(u['label'] + '#ao'),
                            'original_parts': [u['label']], 'original_tariff_indices': [0],
                            'difficulty_basis': rv['difficulty_basis'],
                            'context_basis': ('unscored context: ' + ', '.join(reasons)) if reasons else 'independent',
                            'content_year_basis': 'AS 7181 unit' if is_as else ('all primary leaves are AS 7181 shared content' if year == 12 else 'assesses A-level-only content'),
                            'specification_version': 'AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version',
+                           **({'scenario_context_review': reviewed_context} if reviewed_context else {}),
                            'official_codes': rv['sections'], 'prerequisite_codes': rv['prerequisites'],
                            'qualification_code': qual, 'extraction_version': cand['extraction_version'],
                            **({'lead_note': rv['lead_note']} if rv.get('lead_note') else {})},
@@ -233,7 +243,7 @@ def build_job(job):
         return {'paper_id': pid, 'status': 'awaiting_review_or_source'}
     target = REPO / 'data/packs/psychology' / f'{pid}.json'
     signature = hashlib.sha256(SIGNATURE + cand.read_bytes() + review.read_bytes() + Path(__file__).read_bytes() + (HERE / 'schemes.py').read_bytes() +
-                               (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes()).hexdigest()
+                               SCENARIO_REVIEW.read_bytes() + (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes()).hexdigest()
     try:
         if target.exists() and json.loads(target.read_text()).get('build_signature') == signature and (REPO / 'assets/psychology' / pid).exists():
             return {'paper_id': pid, 'status': 'built', 'units': len(json.loads(target.read_text())['questions']), 'resumed': True}

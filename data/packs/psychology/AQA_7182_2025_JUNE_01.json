@@ -292,15 +292,7 @@
       },
       "scheme_scope": "part",
       "scheme_question_number": "3",
-      "context": {
-        "figures": [
-          {
-            "label": "Question 02 (this question continues its scenario)",
-            "source": "question_paper",
-            "image_url": "assets/psychology/AQA_7182_2025_JUNE_01/Q02_P00_ctx.webp"
-          }
-        ]
-      },
+      "context": {},
       "provenance": {
         "review_status": "model_reviewed",
         "reviewer_type": "model",
@@ -338,7 +330,7 @@
           0
         ],
         "difficulty_basis": "2-mark evaluation",
-        "context_basis": "unscored context: earlier question 2 scenario",
+        "context_basis": "independent",
         "content_year_basis": "all primary leaves are AS 7181 shared content",
         "specification_version": "AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version",
         "official_codes": [
@@ -346,7 +338,12 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "7182",
-        "extraction_version": "aqa-psychology-layout-v1"
+        "extraction_version": "aqa-psychology-layout-v1",
+        "scenario_context_review": {
+          "2": {
+            "omit": true
+          }
+        }
       }
     },
     {
@@ -855,9 +852,9 @@
       "context": {
         "figures": [
           {
-            "label": "Question 09 (this question continues its scenario)",
+            "label": "Question 09 shared information",
             "source": "question_paper",
-            "image_url": "assets/psychology/AQA_7182_2025_JUNE_01/Q09_P00_ctx.webp"
+            "image_url": "assets/psychology/AQA_7182_2025_JUNE_01/Q09_P00_scenario.webp"
           }
         ]
       },
@@ -907,7 +904,7 @@
           0
         ],
         "difficulty_basis": "4-mark application",
-        "context_basis": "unscored context: earlier question 9 scenario",
+        "context_basis": "unscored context: reviewed scenario from question 9",
         "content_year_basis": "all primary leaves are AS 7181 shared content",
         "specification_version": "AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version",
         "official_codes": [
@@ -915,7 +912,21 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "7182",
-        "extraction_version": "aqa-psychology-layout-v1"
+        "extraction_version": "aqa-psychology-layout-v1",
+        "scenario_context_review": {
+          "9": {
+            "region": {
+              "page": 10,
+              "bbox": [
+                0.138917,
+                0.076255,
+                0.912938,
+                0.28885
+              ]
+            },
+            "label": "Question 09 shared information"
+          }
+        }
       }
     },
     {
@@ -1050,9 +1061,9 @@
       "context": {
         "figures": [
           {
-            "label": "Question 14 (this question continues its scenario)",
+            "label": "Question 14 shared information",
             "source": "question_paper",
-            "image_url": "assets/psychology/AQA_7182_2025_JUNE_01/Q14_P00_ctx.webp"
+            "image_url": "assets/psychology/AQA_7182_2025_JUNE_01/Q14_P00_scenario.webp"
           }
         ]
       },
@@ -1093,7 +1104,7 @@
           0
         ],
         "difficulty_basis": "2-mark methods suggestion",
-        "context_basis": "unscored context: earlier question 14 scenario",
+        "context_basis": "unscored context: reviewed scenario from question 14",
         "content_year_basis": "assesses A-level-only content",
         "specification_version": "AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version",
         "official_codes": [
@@ -1101,7 +1112,21 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "7182",
-        "extraction_version": "aqa-psychology-layout-v1"
+        "extraction_version": "aqa-psychology-layout-v1",
+        "scenario_context_review": {
+          "14": {
+            "region": {
+              "page": 13,
+              "bbox": [
+                0.139018,
+                0.076326,
+                0.84026,
+                0.119024
+              ]
+            },
+            "label": "Question 14 shared information"
+          }
+        }
       }
     },
     {

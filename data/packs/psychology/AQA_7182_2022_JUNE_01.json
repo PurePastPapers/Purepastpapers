@@ -1479,15 +1479,7 @@
       },
       "scheme_scope": "part",
       "scheme_question_number": "16",
-      "context": {
-        "figures": [
-          {
-            "label": "Question 15 (this question continues its scenario)",
-            "source": "question_paper",
-            "image_url": "assets/psychology/AQA_7182_2022_JUNE_01/Q15_P00_ctx.webp"
-          }
-        ]
-      },
+      "context": {},
       "provenance": {
         "review_status": "model_reviewed",
         "reviewer_type": "model",
@@ -1525,7 +1517,7 @@
           0
         ],
         "difficulty_basis": "1-mark data reading",
-        "context_basis": "unscored context: earlier question 15 scenario",
+        "context_basis": "independent",
         "content_year_basis": "assesses A-level-only content",
         "specification_version": "AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version",
         "official_codes": [
@@ -1533,7 +1525,12 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "7182",
-        "extraction_version": "aqa-psychology-layout-v1"
+        "extraction_version": "aqa-psychology-layout-v1",
+        "scenario_context_review": {
+          "15": {
+            "omit": true
+          }
+        }
       }
     },
     {
@@ -1583,9 +1580,14 @@
             "image_url": "assets/psychology/AQA_7182_2022_JUNE_01/ITEM_3.webp"
           },
           {
-            "label": "Question 15 (this question continues its scenario)",
+            "label": "Question 15 shared information",
             "source": "question_paper",
-            "image_url": "assets/psychology/AQA_7182_2022_JUNE_01/Q15_P00_ctx.webp"
+            "image_url": "assets/psychology/AQA_7182_2022_JUNE_01/Q15_P00_scenario.webp"
+          },
+          {
+            "label": "Question 16 shared information",
+            "source": "question_paper",
+            "image_url": "assets/psychology/AQA_7182_2022_JUNE_01/Q16_P00_scenario.webp"
           }
         ]
       },
@@ -1626,7 +1628,7 @@
           0
         ],
         "difficulty_basis": "4-mark data application",
-        "context_basis": "unscored context: shared item ITEM3, earlier question 15 scenario",
+        "context_basis": "unscored context: shared item ITEM3, reviewed scenario from question 15, reviewed scenario from question 16",
         "content_year_basis": "assesses A-level-only content",
         "specification_version": "AQA 7181/7182 Version 1.4 (1 September 2025); paper set on the earlier version",
         "official_codes": [
@@ -1634,7 +1636,33 @@
         ],
         "prerequisite_codes": [],
         "qualification_code": "7182",
-        "extraction_version": "aqa-psychology-layout-v1"
+        "extraction_version": "aqa-psychology-layout-v1",
+        "scenario_context_review": {
+          "15": {
+            "region": {
+              "page": 21,
+              "bbox": [
+                0.138917,
+                0.323547,
+                0.912843,
+                0.441002
+              ]
+            },
+            "label": "Question 15 shared information"
+          },
+          "16": {
+            "region": {
+              "page": 22,
+              "bbox": [
+                0.138917,
+                0.259199,
+                0.648604,
+                0.287377
+              ]
+            },
+            "label": "Question 16 shared information"
+          }
+        }
       }
     },
     {
