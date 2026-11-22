@@ -6,9 +6,10 @@ import { resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseAnkiPackage } from '../../js/flashcards/import.js';
 
-const [manifestPath, packagePath, outPath] = process.argv.slice(2);
+const [manifestPath, packagePath, outPath, format] = process.argv.slice(2);
+const apiBatches = format === '--api-batches';
 if (!manifestPath || !packagePath || !outPath) {
-  throw new Error('Usage: node tools/flashcards/stage-catalogue.mjs manifest.json deck.apkg /private/staging/deck');
+  throw new Error('Usage: node tools/flashcards/stage-catalogue.mjs manifest.json deck.apkg /private/staging/deck [--api-batches]');
 }
 const output = resolve(outPath);
 const repo = fileURLToPath(new URL('../..', import.meta.url));
@@ -94,41 +95,70 @@ await append(`insert into public.flashcard_catalogue_versions (id,catalogue_id,v
 values (${qVersion},${qCatalogue},${literal(version)}) on conflict (id) do nothing;`);
 await flush();
 
-const rowColumns = 'stable_key text, front text, back text, note_type text, variant text, tags text[], suspended boolean, subdeck_path text';
-for (let index = 0; index < cardRows.length; index += 100) {
-  const values = literal(JSON.stringify(cardRows.slice(index, index + 100)));
-  await append(`with input as (select * from jsonb_to_recordset(${values}::jsonb) as r(${rowColumns})),
-inserted as (
-  insert into public.flashcard_catalogue_items (catalogue_id,stable_key)
-  select ${qCatalogue}, stable_key from input on conflict (catalogue_id,stable_key) do nothing
-  returning id,stable_key
-), items as (
-  select id,stable_key from inserted
-  union all select i.id,i.stable_key from public.flashcard_catalogue_items i
-    join input r on r.stable_key=i.stable_key where i.catalogue_id=${qCatalogue}
-)
-insert into public.flashcard_catalogue_material(version_id,catalogue_id,catalogue_card_id,front,back,note_type,variant,tags,suspended,subdeck_path)
-select ${qVersion},${qCatalogue},i.id,r.front,r.back,r.note_type,r.variant,r.tags,r.suspended,r.subdeck_path
-from input r join items i using (stable_key)
-on conflict (version_id,catalogue_card_id) do nothing;`);
-}
-await flush();
-
-for (const media of new Map(mediaRows.map((row) => [row.id, row])).values()) {
-  const id = literal(media.id);
-  for (let offset = 0; offset < media.bytes.length; offset += 260_000) {
-    const bytes = literal(media.bytes.subarray(offset, offset + 260_000).toString('base64'));
-    const value = `decode(${bytes},'base64')`;
-    if (offset === 0) {
-      await append(`insert into public.flashcard_catalogue_media(id,catalogue_id,version_id,mime_type,data)
-values (${id},${qCatalogue},${qVersion},${literal(media.type)},${value}) on conflict (version_id,id) do nothing;`);
-    } else {
-      await append(`update public.flashcard_catalogue_media set data=data||${value}
-where version_id=${qVersion} and id=${id} and octet_length(data)=${offset};`);
+if (apiBatches) {
+  let batch = { p_version_id: versionId, p_cards: [], p_media: [] };
+  let batchBytes = 0;
+  async function writeBatch() {
+    if (!batchBytes) return;
+    await writeFile(resolve(output, `${String(fileNumber++).padStart(3, '0')}-batch.json`),
+      JSON.stringify(batch), { flag: 'wx', mode: 0o600 });
+    batch = { p_version_id: versionId, p_cards: [], p_media: [] };
+    batchBytes = 0;
+  }
+  async function addBatchItem(key, item) {
+    const bytes = Buffer.byteLength(JSON.stringify(item));
+    if (batchBytes + bytes > 850_000 || batch.p_cards.length >= 150 || batch.p_media.length >= 12) await writeBatch();
+    batch[key].push(item);
+    batchBytes += bytes;
+  }
+  for (const card of cardRows) await addBatchItem('p_cards', card);
+  await writeBatch();
+  for (const media of new Map(mediaRows.map((row) => [row.id, row])).values()) {
+    for (let offset = 0; offset < media.bytes.length; offset += 260_000) {
+      await addBatchItem('p_media', {
+        id: media.id, mime_type: media.type, position: offset,
+        base64: media.bytes.subarray(offset, offset + 260_000).toString('base64'),
+      });
     }
   }
+  await writeBatch();
+} else {
+  const rowColumns = 'stable_key text, front text, back text, note_type text, variant text, tags text[], suspended boolean, subdeck_path text';
+  for (let index = 0; index < cardRows.length; index += 100) {
+    const values = literal(JSON.stringify(cardRows.slice(index, index + 100)));
+    await append(`with input as (select * from jsonb_to_recordset(${values}::jsonb) as r(${rowColumns})),
+  inserted as (
+    insert into public.flashcard_catalogue_items (catalogue_id,stable_key)
+    select ${qCatalogue}, stable_key from input on conflict (catalogue_id,stable_key) do nothing
+    returning id,stable_key
+  ), items as (
+    select id,stable_key from inserted
+    union all select i.id,i.stable_key from public.flashcard_catalogue_items i
+      join input r on r.stable_key=i.stable_key where i.catalogue_id=${qCatalogue}
+  )
+  insert into public.flashcard_catalogue_material(version_id,catalogue_id,catalogue_card_id,front,back,note_type,variant,tags,suspended,subdeck_path)
+  select ${qVersion},${qCatalogue},i.id,r.front,r.back,r.note_type,r.variant,r.tags,r.suspended,r.subdeck_path
+  from input r join items i using (stable_key)
+  on conflict (version_id,catalogue_card_id) do nothing;`);
+  }
+  await flush();
+
+  for (const media of new Map(mediaRows.map((row) => [row.id, row])).values()) {
+    const id = literal(media.id);
+    for (let offset = 0; offset < media.bytes.length; offset += 260_000) {
+      const bytes = literal(media.bytes.subarray(offset, offset + 260_000).toString('base64'));
+      const value = `decode(${bytes},'base64')`;
+      if (offset === 0) {
+        await append(`insert into public.flashcard_catalogue_media(id,catalogue_id,version_id,mime_type,data)
+  values (${id},${qCatalogue},${qVersion},${literal(media.type)},${value}) on conflict (version_id,id) do nothing;`);
+      } else {
+        await append(`update public.flashcard_catalogue_media set data=data||${value}
+  where version_id=${qVersion} and id=${id} and octet_length(data)=${offset};`);
+      }
+    }
+  }
+  await flush();
 }
-await flush();
 await writeFile(resolve(output, 'publish.sql'), `select public.flashcard_publish_catalogue(${qCatalogue},${qVersion},${literal(subject)},${literal(qualification)},${literal(type)},${expected});\n`, { flag: 'wx', mode: 0o600 });
 console.log(JSON.stringify({ catalogue, versionId, cardCount: cardRows.length, suspended: cardRows.filter((row) => row.suspended).length,
   subdeckCount: new Set(cardRows.map((row) => row.subdeck_path).filter(Boolean)).size, mediaCount: references.size, stagingFiles: fileNumber,

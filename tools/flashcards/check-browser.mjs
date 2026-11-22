@@ -33,6 +33,10 @@ async function newPage(viewport) {
   const page = await context.newPage();
   page.setDefaultTimeout(20_000);
   page.on('pageerror', (error) => issues.push(error.message));
+  if (process.env.PPP_FLASHCARD_QA_TRACE) {
+    page.on("response", (res) => { const url = new URL(res.url()); if (url.pathname.includes("flashcard")) console.error(res.status(), url.pathname); });
+    page.on("requestfailed", (req) => console.error(req.failure()?.errorText, new URL(req.url()).pathname));
+  }
   return page;
 }
 
@@ -94,7 +98,7 @@ try {
   await page.getByLabel('Back or extra information').fill('Its review log.');
   await page.getByRole('dialog').locator('[name=tags]').fill('qa, reviews');
   await page.getByRole('button', { name: 'Save card' }).click();
-  await page.getByText('What stores a revision?', { exact: true }).waitFor();
+  await page.locator('.flashcards__snippet').filter({ hasText: 'What stores a revision?' }).waitFor();
 
   await importFlow(page, title, 'quizlet', (p) => p.getByLabel('Exported text').fill('Quizlet QA term\tQuizlet QA definition'));
   await commit(page);
