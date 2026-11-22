@@ -16,8 +16,12 @@ const ROMAN = /^(?:i{1,3}|iv|vi{0,3}|ix|x)$/;
 /** '(a) (ii)' / 'aii' / 'a(ii)' -> '(a)(ii)'. Mirrors norm_part in tools/reports/extract.py. */
 export function normPart(text) {
   const clean = String(text ?? '').toLowerCase().replace(/\s+/g, '');
+  const decimal = clean.match(/^(\d+)\.(\d+)$/);
+  if (decimal) return `${Number(decimal[1])}.${Number(decimal[2])}`;
+  const textPart = clean.replace(/^\d+/, '');
+  if (!/^(?:[a-z]+|\([a-z]+\))+$/.test(textPart)) return '';
   const out = [];
-  for (const [, paren, bare] of clean.matchAll(/\(([a-z]+)\)|([a-z]+)/g)) {
+  for (const [, paren, bare] of textPart.matchAll(/\(([a-z]+)\)|([a-z]+)/g)) {
     if (paren) out.push(`(${paren})`);
     else if (!out.length && bare.length > 1 && !ROMAN.test(bare) && ROMAN.test(bare.slice(1))) out.push(`(${bare[0]})`, `(${bare.slice(1)})`);
     else out.push(`(${bare})`);
@@ -34,7 +38,7 @@ const isRoman = (token) => ROMAN.test(token.slice(1, -1));
  */
 export function unitParts(question) {
   const original = question?.provenance?.original_parts;
-  let raw = Array.isArray(original) && original.some((part) => String(part).trim()) ? original.map(String)
+  let raw = Array.isArray(original) && original.some((part) => normPart(part)) ? original.map(String)
     : question?.part_label ? String(question.part_label).split(/\s*(?:–|—|\+|,)\s*/) : [];
   raw = raw.map((part) => part.trim()).filter(Boolean);
   const parts = [];
@@ -56,29 +60,53 @@ const questionKey = (number) => {
   return /^\d+$/.test(text) ? String(Number(text)) : text.toLowerCase();
 };
 
-/** Comments for one unit. `report` is a parsed data/reports file. */
+const sectionKey = (value) => String(value ?? '').trim().match(/^(?:section\s+)?([a-z])\b/i)?.[1]?.toUpperCase();
+const same = (left, right) => String(left ?? '').trim().toLowerCase() === String(right ?? '').trim().toLowerCase();
+const isSubpart = (part, parent) => part.startsWith(parent + '(');
+const RELATION_RANK = { section: 0, whole: 1, parent: 2, own: 3 };
+
+function targetRelation(target, question, key, parts) {
+  if (target.option && !same(target.option, question.option)) return null;
+  if (target.route && !same(target.route, question.route)) return null;
+  if (target.section) {
+    const expected = sectionKey(target.section);
+    const actual = sectionKey(question.section);
+    if (!expected || (actual && actual !== expected)) return null;
+    if (Array.isArray(target.questions)) {
+      return target.questions.some((number) => questionKey(number) === key) ? 'section' : null;
+    }
+    if (actual !== expected) return null;
+  }
+  if (!target.q) return target.section && sectionKey(target.section) ? 'section' : null;
+  if (questionKey(target.q) !== key) return null;
+  if (!String(target.part ?? '').trim()) return 'whole';
+  const part = normPart(target.part);
+  if (!part) return null;
+  if (!parts.length || parts.some((own) => part === own || isSubpart(part, own))) return 'own';
+  return parts.some((own) => isSubpart(own, part)) ? 'parent' : null;
+}
+
+/** Comments for one unit, constrained to its own published paper. */
 export function sectionsFor(question, report) {
   const key = questionKey(question?.question_number);
-  const sections = Array.isArray(report?.sections) ? report.sections : [];
   const parts = unitParts(question);
   const matches = [];
-  for (const section of sections) {
-    const targets = (section.targets || []).filter((target) => questionKey(target.q) === key);
-    if (!targets.length) continue;
+  if (!key || (question.paper_id && report?.paper_id && question.paper_id !== report.paper_id)) {
+    return { scope: 'none', matches, parts };
+  }
+  for (const section of report?.sections || []) {
     let relation = null;
-    for (const target of targets) {
-      const part = normPart(target.part);
-      if (!part) { relation ||= 'whole'; continue; }
-      if (!parts.length) { relation = 'own'; continue; } // a whole-question unit owns every part's comment
-      if (parts.some((own) => part === own || part.startsWith(own))) relation = 'own';
-      else if (parts.some((own) => own.startsWith(part)) && relation !== 'own') relation = 'parent';
+    for (const target of section.targets || []) {
+      const candidate = targetRelation(target, question, key, parts);
+      if (candidate && (!relation || RELATION_RANK[candidate] > RELATION_RANK[relation])) relation = candidate;
     }
     if (relation) matches.push({ section, relation });
   }
   const has = (relation) => matches.some((match) => match.relation === relation);
-  const scope = has('own') ? 'part' : has('parent') ? 'parent_part' : has('whole') ? 'full_question' : 'none';
-  // Order: whole-question comments first, then the report's own order.
-  matches.sort((a, b) => (a.relation === 'whole' ? 0 : 1) - (b.relation === 'whole' ? 0 : 1));
+  const scope = has('own') ? 'part' : has('parent') ? 'parent_part' : has('whole') ? 'full_question' : has('section') ? 'section' : 'none';
+  // Shared feedback goes first, in the publisher's order within each scope.
+  const order = (relation) => relation === 'section' ? 0 : relation === 'whole' ? 1 : 2;
+  matches.sort((a, b) => order(a.relation) - order(b.relation));
   return { scope, matches, parts };
 }
 
@@ -91,17 +119,22 @@ export function pageLink(url, page) {
 /** How a linked group's parts share comments: whole-question ones once, part ones per part. */
 export function groupSections(parts, report) {
   const whole = new Map();
+  const sectionWide = new Map();
   const perPart = new Map();
   const shownWith = new Map(); // section id -> label of the part it is first shown under
-  for (const part of parts) {
-    const { matches, scope } = sectionsFor(part, report);
+  const results = parts.map((part) => ({ part, ...sectionsFor(part, report) }));
+  for (const { part, matches, scope } of results) {
     const own = [];
     for (const match of matches) {
-      if (match.relation === 'whole') { whole.set(match.section.id, match.section); continue; }
+      const shared = match.relation === 'section' ? sectionWide : match.relation === 'whole' ? whole : null;
+      if (shared && results.every((result) => result.matches.some((other) => other.section === match.section && other.relation === match.relation))) {
+        shared.set(match.section.id, match.section);
+        continue;
+      }
       own.push({ ...match, firstShownWith: shownWith.get(match.section.id) || null });
       if (!shownWith.has(match.section.id)) shownWith.set(match.section.id, part.question_id);
     }
     perPart.set(part.question_id, { scope, matches: own });
   }
-  return { whole: [...whole.values()], perPart };
+  return { whole: [...whole.values()], sectionWide: [...sectionWide.values()], perPart };
 }

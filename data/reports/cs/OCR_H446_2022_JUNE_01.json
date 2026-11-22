@@ -1,0 +1,793 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H446_2022_JUNE_01",
+  "source_url": "https://www.ocr.org.uk/Images/688026-examiners-report-computer-systems.pdf",
+  "source_sha256": "6ecce7a06793eba12e116be42bcd09ff24018330e898da6af0250401c15fcd3c",
+  "source_pages": 28,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      5
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "H446/01 (Computer Systems) is one of two examined components for the GCE A Level Computer Science."
+      },
+      {
+        "k": "p",
+        "t": "This component focuses on:"
+      },
+      {
+        "k": "li",
+        "t": "The characteristics of contemporary processors, input, output and storage devices"
+      },
+      {
+        "k": "li",
+        "t": "Software and software development"
+      },
+      {
+        "k": "li",
+        "t": "Exchanging data"
+      },
+      {
+        "k": "li",
+        "t": "Data types, data structures and algorithms"
+      },
+      {
+        "k": "li",
+        "t": "Legal, moral, cultural and ethical issues"
+      },
+      {
+        "k": "p",
+        "t": "To do well on this paper, candidates need to be able to demonstrate and apply knowledge across all the topics listed above, in different contexts."
+      },
+      {
+        "k": "p",
+        "t": "It is important that candidates apply their knowledge to the question where a scenario or data is provided. Extra information was provided for this series, but candidates were still expected to have covered the whole specification. Definitions were at times not clearly expressed and key terms not used. Centres should take note of the SQL that candidates are expected to have awareness of."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally did the following:"
+      },
+      {
+        "k": "li",
+        "t": "Applied their knowledge to the context"
+      },
+      {
+        "k": "li",
+        "t": "Were able to write pseudocode or program code"
+      },
+      {
+        "k": "li",
+        "t": "Were able to address all parts of the question in their extended answer responses"
+      },
+      {
+        "k": "li",
+        "t": "Were able to explain the principles of ACID"
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally did the following:"
+      },
+      {
+        "k": "li",
+        "t": "Gave unclear definitions"
+      },
+      {
+        "k": "li",
+        "t": "Attempted to answer questions with a mix of pseudocode and program code"
+      },
+      {
+        "k": "li",
+        "t": "Only addressed a part of an extended answer question"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "Question 1 (a) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to access full marks on this question. This question has been asked in previous papers and candidates should be encouraged to use these to make sure they are clear in their responses. There were many possible responses in the mark scheme to help candidates to gain full marks. Most candidates gained at least 1 mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s2",
+      "heading": "Question 1 (a) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well by candidates and the majority gave separate areas of memory for data and instructions. Where candidates were not given marks, it was generally because their answer was unclear, e.g. just saying ‘separate memory’."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s3",
+      "heading": "Question 1 (b)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to gain full marks on this question. Less successful responses often mentioned clock speed, cache or cores without referring to an improvement, e.g. higher or faster."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 1 (c) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally well answered by candidates who had a good understanding of LMC. Candidates should be encouraged to trace through LMC programs with different values as well as writing them."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s5",
+      "heading": "Question 1 (c) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally answered well, and the majority of students were able to gain marks with most gaining 3 or 4 marks. Less successful responses over complicated the program leading to them making mistakes. A small number of candidates attempted to answer in pseudocode rather than LMC. Candidates should be encouraged to use the commands in Appendix 5d of the specification."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s6",
+      "heading": "Question 1 (c) (iii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)(iii)"
+        }
+      ],
+      "pages": [
+        9,
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to gain at least 2 marks on this question. Some candidates were not awarded marks as they wrote about multiple cores or programs being fetched instead, of instructions."
+        },
+        {
+          "k": "ex",
+          "t": "The candidate has clearly described pipelining with correct terminology. They gained full marks for the description of one instruction being decoded while another is fetched and another is executed, as well as describing that it allows multiple instructions to be processed at the same time."
+        }
+      ],
+      "figures": [
+        {
+          "page": 10,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "heading": "Question 1 (c) (iv)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)(iv)"
+        }
+      ],
+      "pages": [
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates gained 1 mark for giving a benefit to the charity, but they did not go on to say why pipelining enabled that. Some candidates did not apply their answer to the charity, so were not awarded the mark for the benefit."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s8",
+      "heading": "Question 1 (d) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to access 1 mark for the result of ALU calculations, but few were able to give two uses. Some confused the accumulator with the program counter and the ALU."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s9",
+      "heading": "Question 1 (d) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally well answered by candidates who gave clear responses."
+        },
+        {
+          "k": "tip",
+          "t": "Misconception: Some candidates thought that the program counter kept track of a count of the number of instructions that had been fetched."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 1 (d) (iii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(d)(iii)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates gained full marks on this question and were able to correctly identify three other registers. Some lost marks for saying the ALU or control unit were registers."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s11",
+      "heading": "Question 1 (e)*",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(e)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to discuss the difference in reduced or complex instruction sets and gave some discussion of the increase in hardware requirements for CISC. Few talked about the software differences, and some assumed the charity would need to be programming the devices which was not relevant to the question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 2 (a) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates gained 1 mark for the foreign key and most gained both marks, although some candidates gave ‘package’ as the table where it is a primary key rather than the membership table where it is the foreign key."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 2 (b)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to gain some marks. The question refers to the Adverts field which is in the package table and states that the data shown in the tables is only an extract from the tables. For full marks on this question, candidates were expected to attempt to join the two tables to access the Username and Firstname from the membership table, and the Adverts from the package table."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s14",
+      "heading": "Question 2 (c) (i)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Few candidates were able to gain full marks on this question as many overcomplicated it or could not give a relevant data capture method. When they did give form as a relevant answer, they often had unclear suitability."
+        },
+        {
+          "k": "ex",
+          "t": "The candidate has given a valid method and has given clear and correct suitability by describing that the details could be automatically added to the database and can be filled in from home, which would be a remote location. The candidate gained the full 3 marks."
+        }
+      ],
+      "figures": [
+        {
+          "page": 14,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "heading": "Question 2 (c) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Few candidates gained full marks on this question although there were a range of relevant responses they could have given."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 2 (d) (i), (ii) and (iii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(d)(i)"
+        },
+        {
+          "q": "2",
+          "part": "(d)(ii)"
+        },
+        {
+          "q": "2",
+          "part": "(d)(iii)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "For candidates with a good understanding of ACID, these questions were well answered. Unfortunately, some had only a vague knowledge or confused it with referential integrity. Some answers were unclear. Some candidates talked about locking the entire database when record locking rather than just the relevant records."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s19",
+      "heading": "Question 2 (d) (iv)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(d)(iv)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were given a mark for deadlock or longer wait times. Those candidates given a mark in Question 2 (d) (iv) tended to be those who has gained marks in Question 2 (d) (iii)."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s20",
+      "heading": "Question 2 (e)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(e)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to gain 1 mark for this question, but few went on to gain a second mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s21",
+      "heading": "Question 2 (f)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(f)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates tended to write at length for this question, but often made the same point twice. Many missed marks for not making the comparison between lossy and lossless and only gave one side. Some candidates discussed the videos being downloaded rather than streamed."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s22",
+      "heading": "Question 2 (g) (i)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(g)(i)"
+        }
+      ],
+      "pages": [
+        18,
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was well answered by some candidates. The question asks for pseudocode or program code and candidates should be encouraged to do one or the other if given a choice, rather than a combination of the two. Many candidates did not use the information in the question stem to help them structure their answer and gave more than one parameter in the constructor."
+        },
+        {
+          "k": "ex",
+          "t": "This was a good clear example of an answer given in pseudocode. The candidate has declared the 3 given attributes as private, shown a constructor with one parameter and set name to the parameter and views and rating to 0 and 3. The candidate gained 7 marks."
+        }
+      ],
+      "figures": [
+        {
+          "page": 19,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "heading": "Question 2 (g) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(g)(ii)"
+        }
+      ],
+      "pages": [
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to gain at least 1 mark for this question. Those who were not given marks used pseudocode but did not state that the procedure was public, or they did not use the same attribute they had declared in Question 2 (g) (i)."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s24",
+      "heading": "Question 3 (a) (iii)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(a)(iii)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to gain some marks, with many gaining full marks. A popular method was to do two’s complement addition. Candidates should be encouraged to show their working in binary and not do the subtraction in denary and then just give the answer in binary. The question asks them to complete a binary subtraction."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s25",
+      "heading": "Question 3 (b)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates correctly identified the exponent and that the point needed to be moved to the left. Any valid method of working was given marks here, where candidates got the correct answer."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s26",
+      "heading": "Question 3 (c)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was mostly well answered. However, some candidates were able to identify 01 as being normalised but not 10 being normalised."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s27",
+      "heading": "Question 4*",
+      "targets": [
+        {
+          "q": "4",
+          "part": ""
+        }
+      ],
+      "pages": [
+        22
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were a wide range of responses to this question and a wide range of marks given. The most successful responses were able to address all parts of the question and could give the meaning of AI as well as some relevant examples of AI bias. They were also able to give at least one measure that could be taken. Many candidates used self-driving cars as their only example and should be encouraged to explore the use of AI in different fields. Some confused the AI being biased with people being biased against AI. Many candidates were unable to give relevant measures for preventing bias. Candidates should be encouraged to make sure they include all points the question asked for, in their answer."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s28",
+      "heading": "Question 5 (b) (i)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        22
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally well answered, though some candidates thought that a translator translated machine code into source code or that it translated code into something the computer could understand, without specifying what that was."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s29",
+      "heading": "Question 5 (b) (ii)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        23
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was well answered by many candidates who showed two distinct differences."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s30",
+      "heading": "Question 5 (d)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(d)"
+        }
+      ],
+      "pages": [
+        23
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates gave good descriptions of how code is optimised, but they did not answer the question which asked what the purpose of optimisation is."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s31",
+      "heading": "Question 5 (e) (iii)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(e)(iii)"
+        }
+      ],
+      "pages": [
+        24
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates should be encouraged to give a complete answer. Just saying ‘Unicode uses more bits than ASCII’ is not enough to be given a mark at this level."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s32",
+      "heading": "Question 5 (f)*",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(f)"
+        }
+      ],
+      "pages": [
+        24
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates gained some marks on this question. Most could explain that spiral was iterative and waterfall was done in linear stages, but many did not expand on this. Few candidates linked their answer to the complex computer program mentioned in the question. Some candidates also described waterfall as iterative."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s33",
+      "heading": "Question 6 (a) (i)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        25
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally well answered with many candidates gaining at least 1 mark. The question asked why the OS used ‘first come first served’ and many candidates were not given marks for stating why the user would want the OS to use it. Some candidates talked about other scheduling algorithms even though this was not relevant to the question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s34",
+      "heading": "Question 6 (b) (i)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        26
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Very few students could explain what happens at the application layer and answers tended to be about splitting data into packets. Some candidates did mention that encryption would take place but didn’t go on to mention decryption when receiving data. Those candidates that identified that protocols are applied here were unable to give a specific example and simply listed protocols they knew, but without context."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s35",
+      "heading": "Question 6 (b) (ii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        26
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Very few candidates were able to gain 2 marks on this question. Some candidates talked about transmitting data via cables, despite wireless being mentioned in the question."
+        }
+      ],
+      "figures": []
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}

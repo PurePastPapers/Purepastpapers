@@ -83,6 +83,34 @@ test('linked parts show whole-question comments once and say where a shared one 
   assert.equal(grouped.perPart.get(subs[1].question_id).matches[0].firstShownWith, subs[0].question_id);
 });
 
+test('literal decimals match only the right subpart, including zero padded labels', () => {
+  const geography = { sections: [
+    section('01.1', ['01', '01.1']),
+    section('01.2', ['1', '1.2']),
+    section('01.10', ['1', '1.10']),
+    section('invalid', ['1', '4.']),
+  ] };
+  assert.deepEqual(ids(sectionsFor(unit('1', '1.1', ['1.1']), geography)), ['01.1:own']);
+  assert.deepEqual(ids(sectionsFor(unit('1', '01.10'), geography)), ['01.10:own']);
+  assert.deepEqual(unitParts(unit('3', '(a)(i)', ['3(a)(i)'])), ['(a)(i)']);
+});
+
+test('section, option, route and paper constrain matches independently', () => {
+  const data = { paper_id: 'P1', sections: [
+    { ...section('rightScope'), targets: [{ section: 'A', option: '2H.2', route: 'fieldwork' }] },
+    { ...section('rightQuestion'), targets: [{ q: '2', section: 'A', option: '2H.2' }] },
+    { ...section('wrongSection'), targets: [{ q: '2', section: 'B' }] },
+    { ...section('wrongOption'), targets: [{ q: '2', option: '2H.1' }] },
+    { ...section('wrongRoute'), targets: [{ section: 'A', route: 'coasts' }] },
+    { ...section('invalidSection'), targets: [{ section: 'invalid' }] },
+  ] };
+  const question = { ...unit('2'), paper_id: 'P1', section: 'Section A – Fieldwork', option: '2H.2', route: 'fieldwork' };
+  assert.deepEqual(ids(sectionsFor(question, data)), ['rightScope:section', 'rightQuestion:whole']);
+  assert.equal(sectionsFor({ ...question, question_number: '1' }, data).scope, 'section');
+  assert.equal(sectionsFor({ ...question, paper_id: 'P2' }, data).scope, 'none');
+  assert.equal(sectionsFor({ ...question, section: 'Section C' }, data).scope, 'none');
+});
+
 test('page links only go to https PDFs', () => {
   assert.equal(pageLink('https://x.test/r.pdf', 7), 'https://x.test/r.pdf#page=7');
   assert.equal(pageLink('javascript:alert(1)', 2), null);
@@ -122,7 +150,10 @@ test('extracted report files are well formed and indexed', () => {
     assert.match(data.source_sha256, /^[0-9a-f]{64}$/);
     assert.ok(Array.isArray(data.sections));
     for (const entry of data.sections) {
-      assert.ok(entry.targets.length && entry.targets.every((target) => /^\d+$/.test(target.q)), `${file} ${entry.heading}`);
+      assert.ok(entry.targets.length && entry.targets.every((target) =>
+        (target.q ? /^\d+$/.test(target.q) : /^[A-Z]$/.test(target.section)) &&
+        (!target.part || normPart(target.part))), `${file} ${entry.heading}`);
+      assert.ok(entry.pages.every((page) => Number.isInteger(page) && page >= 1 && page <= data.source_pages), `${file} ${entry.heading}`);
       assert.ok(entry.paras.every((para) => ['p', 'li', 'h', 'ex', 'tip'].includes(para.k) && typeof para.t === 'string'));
     }
   }

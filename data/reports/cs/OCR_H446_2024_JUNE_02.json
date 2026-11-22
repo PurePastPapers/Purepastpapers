@@ -1,0 +1,1009 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H446_2024_JUNE_02",
+  "source_url": "https://www.ocr.org.uk/Images/726390-examiners-report-algorithms-and-programming.pdf",
+  "source_sha256": "855ba23e0029e626c52c9ecafa5b83dfb9bfd84e85ffd3aa16ed6661d326410e",
+  "source_pages": 38,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      5
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "Paper 2 is about algorithms and problem solving. It tests candidates’ computational thinking ability to analyse and solve problems. Candidates are expected to be able to write algorithms fluently in either pseudocode or program code and to be able to trace algorithms. This means that candidates require a solid grounding in standard data structures backed by practical experience. The paper also covers Object Oriented Programming (OOP) principles and candidates need to have extensive experience of OOP to be able to tackle section B of the paper successfully."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "displayed an ability to competently interpret and write pseudocode"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated a clear understanding of OOP principles allied to an ability to write code that instantiated classes and provided methods for a given scenario"
+      },
+      {
+        "k": "li",
+        "t": "displayed a good knowledge of a range of data structures and standard algorithms for operations on the given data structures. The data structures covered were queues, stacks, trees and graphs"
+      },
+      {
+        "k": "li",
+        "t": "where Level of Response questions were set, it was noticeable that more successful candidates tried to make more AO3 evaluative comparisons that were relevant to the scenarios given."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "displayed little ability to interpret or correct code and were unable to write basic algorithms using pseudocode"
+      },
+      {
+        "k": "li",
+        "t": "showed a very limited understanding of OOP that exposed little practical experience of relevant programming"
+      },
+      {
+        "k": "li",
+        "t": "displayed limited knowledge of standard data structures such as stacks and queues. They had some AO1 knowledge, but struggled more with AO2 application"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated very limited knowledge in levels of response questions and struggled to apply their learning to the scenarios given."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "section-a",
+      "heading": "Section A overview",
+      "targets": [
+        {
+          "section": "A",
+          "questions": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Section A of the paper consisted of 8 questions, each with a separate theme."
+        },
+        {
+          "k": "p",
+          "t": "Question Topics covered"
+        },
+        {
+          "k": "p",
+          "t": "1 Procedural programming constructs"
+        },
+        {
+          "k": "p",
+          "t": "2 Computational methods – data mining"
+        },
+        {
+          "k": "p",
+          "t": "3 Graphs, A* algorithm and heuristics"
+        },
+        {
+          "k": "p",
+          "t": "4 Queues"
+        },
+        {
+          "k": "p",
+          "t": "5 Stacks"
+        },
+        {
+          "k": "p",
+          "t": "6 Linear search, insertion sort and Big O notation"
+        },
+        {
+          "k": "p",
+          "t": "7 Record structures, binary trees and tree traversal algorithms"
+        },
+        {
+          "k": "p",
+          "t": "8 Abstraction and decomposition"
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s2",
+      "heading": "Question 1 (a) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates gained some credit for identifying that a variable holds a value, and this was the most popular response.  Element/identifier on its own was insufficient for the first mark point as there had to be a clear indication that the identifier referred to a memory/storage location."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s3",
+      "heading": "Question 1 (a) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates had little difficulty correctly identifying the variables given in the code."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 1 (b)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many responses were vague and did not accurately identify or distinguish that a while loop is a pre- condition loop while a do loop is a post-condition loop.  Responses had to be clear as to the relative position of the condition in the loop.  Accepted responses included a while loop is a pre-condition loop while a do loop is a post-condition loop.  Fewer candidates identified that the body of a while loop may not be executed while the body of a do loop will always be executed at least once."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s5",
+      "heading": "Question 1 (c)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally well attempted with marks relatively evenly distributed throughout the range of marks available.  There were some off-by-one errors, with the loop counter or the position of the output line being incorrectly positioned before/after the counter increment.  Incorrect loops such as count-controlled for loops were rejected.  If responses did not produce a fully correct output, marks given were limited to 3 marks."
+        },
+        {
+          "k": "ex",
+          "t": "This response showed a typical off-by-one error where the candidate had not thought through the logic of the entire response.  The condition operator should have been <= rather than < to iterate through all values of c from 1 to 12."
+        }
+      ],
+      "figures": [
+        {
+          "page": 8,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "heading": "Question 2*",
+      "targets": [
+        {
+          "q": "2",
+          "part": ""
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many Level 2 responses demonstrated an ability to define data mining and give relevant examples of its use. Few candidates were able to give an evaluative critique as to the effectiveness of data mining for this scenario."
+        },
+        {
+          "k": "p",
+          "t": "Many candidates struggled to structure their responses.  Where candidates did produce a clear structure, they often used paragraphs effectively, starting with a definition, considering benefits and drawbacks, then going on to evaluate within the parameters of the scenario."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s7",
+      "heading": "Question 3 (a)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        10,
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates demonstrated a good understanding of the A* algorithm and most candidates achieved at least some of the marks available, with the most commonly given being the final path (often through inspection) and the first row of the table."
+        },
+        {
+          "k": "p",
+          "t": "A few candidates treated the algorithm as if it were Dijkstra’s and explored all possible paths/routes rather than stopping as soon as the goal node was located."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s8",
+      "heading": "Question 3 (b)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates struggled to score more than one or two marks for this question.  Responses had to be clearly mappable to technical terms, but there was evidence of vague language in many cases. Candidates were expected to be able to talk about root nodes, cycles, hierarchy, directed/undirected edges and connected/disconnected nodes.  Clear use of technical terms is expected at this level.  A common incorrect response was weighted/unweighted.  A minimum spanning tree is a subset of a graph that can have weighted edges."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s9",
+      "heading": "Question 3 (c)*",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates demonstrated reasonable knowledge of heuristics in terms of definition and application to the game.  Many candidates identified some benefits and drawbacks and the need to have an accurate heuristic value.  Few candidates were able to give a detailed evaluation, or expand to scalability for example, to achieve a Level 3 response."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 4 (a)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally well answered by many candidates. There were some vague responses such as ‘start of queue’, which was not precise enough to indicate the first item, or the index of the first item, as distinct to the indexes of the actual data structure itself."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s11",
+      "heading": "Question 4 (b)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates either tended to score full marks or no marks.  Many candidates missed labelling the pointers in their diagrams and just gave updated queue values.  Some candidates kept the values 20 and 15 on the diagram and correctly moved the headPointer to point to index 3 and the tailPointer to the next free space available. A considerable number of candidates erroneously shifted all items forward, showing a lack of understanding as to how a queue is efficiently implemented."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 4 (c)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The first part of many responses was well attempted, with most candidates identifying the First In First Out (FIFO) property of a queue. Far fewer candidates were able to successfully expand on this for the second mark. A linked explanation was required such as a higher priority item cannot be inserted at the front/in the middle of the queue because only the first element can be accessed/dequeued. Some candidates just reiterated what FIFO meant instead of giving the linked explanation to a priority queue which was insufficient to gain the second mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 5 (a)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        15,
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were many weak responses that did not outline the discrete steps required in the pop() function and there was often no reference to the topStack pointer."
+        },
+        {
+          "k": "p",
+          "t": "A number of candidates confused a stack with a queue and talked about head/rear pointers.  Some candidates confused ‘space for 100 elements’ in the question with the top of the stack and then erroneously talked about removing item 100."
+        },
+        {
+          "k": "p",
+          "t": "Some candidates erroneously stated that the value at topStack - 1 would be returned before saying that topStack would be decremented.  The order of the steps was important for the function to operate correctly, and many candidates lost a mark due to this."
+        },
+        {
+          "k": "ex",
+          "t": "This response shows the candidate returning the value from topStack – 1 in step 2.  As soon as the function returns a value no further actions are performed within the function, so decrementing topStack in point 3 was not given."
+        }
+      ],
+      "figures": [
+        {
+          "page": 16,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "heading": "Question 5 (b)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates scored three or more marks. Some candidates erroneously used numbers.length or len(numbers) in the second space instead of topStack."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s15",
+      "heading": "Question 5 (c)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Some candidates erroneously tried to make a call such as Function Push(15) instead of calling and using/storing the result of Push(15).  A number of responses incorrectly used string values “True” / “False” instead of Boolean True / False.  Many candidates tried to directly access and use the topStack pointer instead of using the function return value as required in the question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s16",
+      "heading": "Question 6 (a)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates scored the majority of the marks available and demonstrated a clear understanding of a linear search. Many candidates answered by example with values from the given list."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s17",
+      "heading": "Question 6 (b)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates correctly identified the requirement for data to be sorted/ordered for a binary search to work. ‘Organised’ was too vague and was not accepted."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 6 (c)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Nearly half the candidates achieved full marks and clearly demonstrated the steps involved in an insertion sort for the given data.  Some candidates confused insertion sort with either bubble, merge or selection sort, and so scored no marks for not answering the question."
+        },
+        {
+          "k": "ex",
+          "t": "This exemplar demonstrated the state of the dataset after each pass of the insertion sort. The candidate has separated the sorted and unsorted parts of the list to make the response much clearer."
+        }
+      ],
+      "figures": [
+        {
+          "page": 19,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "heading": "Question 6 (d) (i)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates did not identify linear but gave a description for ‘directly proportional’ or vice-versa, so only gained one mark. Candidates needed to specify that the time required increased in direct proportion to the number of items. Proportion on its own was too vague and could have meant inverse proportion for example."
+        },
+        {
+          "k": "p",
+          "t": "Incorrect responses included ‘quickest time to find / least operations’ defining best case rather than answering the question regarding O(n)."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s20",
+      "heading": "Question 6 (d) (ii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates did not identify logarithmic but tried to give a description or vice-versa. Many candidates just said the memory space increased in proportion to the log of n without explaining what this meant.  For the second mark candidates had to explain that as the number of items n increased the amount of additional memory required became progressively smaller."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s21",
+      "heading": "Question 6 (d) (iii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(d)(iii)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The vast majority of candidates gave the correct response of constant or O(1)."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s22",
+      "heading": "Question 6 (d) (iv)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(d)(iv)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Half the candidates correctly identified exponential complexity, but common erroneous responses included O(n2) or O(2n) instead of O(2n)."
+        },
+        {
+          "k": "tip",
+          "t": "Misconception: A number of candidates erroneously thought that n2 or 2n demonstrated exponential growth instead of 2n. Candidates need to have the mathematical grounding to understand the difference between different Big O growth factors."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s23",
+      "heading": "Question 7 (a)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        22
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Record structures were poorly understood, and it was clear that many candidates had very limited experience of using records / structures within a programming language.  Many candidates gave responses related to database records rather than record data structures."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s24",
+      "heading": "Question 7 (b) (i)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        22
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Some candidates gave generic properties of trees such as ‘root’ instead of specific characteristics of a binary search tree as required by the question. There was then some lack of precision when describing the number of child nodes each parent node could have (maximum two, not always two), or lack of clarity in defining ‘ordered’ without qualifying what this meant."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s25",
+      "heading": "Question 7 (b) (ii)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        23
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "A number of candidates erroneously talked about binary tree traversal to traverse a 1D list. However, there were many clear and correct responses. Some unqualified ‘easier’ / ‘quicker’ type responses gained no credit. Candidates had to identify that it was quicker to search/insert into the tree."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s26",
+      "heading": "Question 7 (b) (iii)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(b)(iii)"
+        }
+      ],
+      "pages": [
+        23
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates achieved at least partial credit if not full credit."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s27",
+      "heading": "Question 7 (b) (iv)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(b)(iv)"
+        }
+      ],
+      "pages": [
+        24
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The binary search tree diagram generally was answered well with the majority of candidates gaining full marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s28",
+      "heading": "Question 8 (a)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        25
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "While many candidates scored full marks for this question for identifying suitable inputs and outputs within the context of the problem a number of candidates scored no marks for erroneously giving input or output devices. Sometimes responses were unqualified such as ‘left arrow key’ rather than ‘left arrow to turn left’ where candidates did not identify an input within the context of the scenario as an input to the game."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s29",
+      "heading": "Question 8 (b) (i)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        26
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates scored two marks for defining abstraction and giving one example of its application to the game, but fewer managed to identify a second example for full marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s30",
+      "heading": "Question 8 (b) (ii)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        26
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Some candidates reiterated a definition of abstraction and did not focus on the benefits of abstraction as the question required. Most candidates struggled to give more than one or two benefits. There were also a number of unqualified responses such as ‘saves time’ that did not specify ‘saving coding development time’."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s31",
+      "heading": "Question 8 (c) (i)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        27
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates correctly defined decomposition, but some candidates lost marks for lack of clarity for not specifying that a problem is broken down into sub problems."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s32",
+      "heading": "Question 8 (c) (ii)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        27
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates identified that decomposition would make it simpler to code individual subproblems but then lacked a clear related expansion. The most popular response was that this allowed workload to be shared between different members of a team to reduce overall development time or to play to team member expertise."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "section-b",
+      "heading": "Section B overview",
+      "targets": [
+        {
+          "section": "B",
+          "questions": [
+            "9"
+          ]
+        }
+      ],
+      "pages": [
+        28
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Section B referred to one specific scenario that revolved around a problem that was solved by using Object Oriented Programming (OOP) techniques. Those candidates who had very limited practical experience of OOP often struggled with the questions in section B. Conversely, those candidates who demonstrated strong coding skills often scored very well."
+        },
+        {
+          "k": "tip",
+          "t": "Assessment for learning: The OOP scenario in Section B lends itself to implementation by candidates as a programming exercise to enhance the learning of associated concepts such as constructor methods, instantiation and class methods."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s34",
+      "heading": "Question 9 (a)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        28
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many responses were too vague, showing little knowledge of the properties of arrays. Relatively few candidates appeared to be able to make explicit links to the scenario to achieve full marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s35",
+      "heading": "Question 9 (b) (i)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        29
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "While many candidates had little difficulty giving code for a getter()there were a number of common errors. Some candidates used a private access modifier when a getter() needs to be public. There was often erroneous use of ‘procedure’ whereas a getter() is a function that must return a value. Some candidates tried to set values within the getter() function when it should only have returned the class attribute value."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s36",
+      "heading": "Question 9 (b) (ii)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        30
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates struggled with the instantiation of an object. Where candidates made an attempt to instantiate some did not use a string for “box” and “money” or did not give 25 as an integer but instead gave the string “25”."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s37",
+      "heading": "Question 9 (b) (iii)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(b)(iii)"
+        }
+      ],
+      "pages": [
+        30
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were only two reasonable decisions that could be given from the scenario details. Candidates needed to make it clear that a decision with a Boolean output was present that would dictate two potential outcomes. Some candidates quoted actions such as ‘randomly assign space for prize’ which did not represent a decision. Many responses described the mechanics of setting up the game and the random spaces but did not highlight the program conditions/decisions as required."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s38",
+      "heading": "Question 9 (c) (i)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        31
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "It was clear that those candidates with limited OOP programming knowledge found the writing of a relatively simple constructor method difficult. Those with relevant programming experience often found this to be a very straightforward question. Common errors included passing additional values to set the experience, roadPosition and money attributes rather than setting them to the constant values indicated in the question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s39",
+      "heading": "Question 9 (c) (ii)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        32
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The updateValues procedure again proved problematic for candidates with limited OOP experience. No marks were given for the first mark point if a function was declared as there was no return value. Parameter names needed to be fit for purpose, understandable, and had to match the order given in the question scenario to work for the given example calls."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s40",
+      "heading": "Question 9 (d)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(d)"
+        }
+      ],
+      "pages": [
+        33
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Nearly all candidates achieved some marks, and a majority scored five or six marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s41",
+      "heading": "Question 9 (e)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(e)"
+        }
+      ],
+      "pages": [
+        34,
+        35
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates scored three or four marks but in general candidates found it harder to identify errors in the code than to complete code in the previous question. Some candidates didn’t give the line number but rewrote the incorrect line before giving the corrected line, which was acceptable, although not ideal given the scaffolding."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s42",
+      "heading": "Question 9 (f)*",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(f)"
+        }
+      ],
+      "pages": [
+        35
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most responses were Level 2 for definitions and some expansion to passing parameters. Very few candidates were able to go into depth about alternatives to global variables such as passing by value and passing by reference in detail or extending to issues such as scalability within a larger more extended game. Few candidates picked up on the fact that this was a more limited prototype that was likely to be expanded on which would require more consideration to be given to variable scope."
+        }
+      ],
+      "figures": []
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}

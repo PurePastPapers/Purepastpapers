@@ -41,12 +41,12 @@ FORMAT = 'examiner-report-text-v1'
 REPO = Path(__file__).resolve().parents[2]
 CACHE = Path(os.environ.get('PPP_REPORT_CACHE', Path.home() / '.cache' / 'ppp-reports'))
 
-# Subject slug -> pack folder and subject id. A-level History and Geography are planned
-# (docs/EXAMINER-REPORTS.md); they need their own heading rules before they are added.
+# Subject slug -> pack folder and subject ID for this extractor.
 SUBJECTS = {
     'maths': 'EDX_ALEVEL_MATH_9MA0',
     'physics': 'EDX_ALEVEL_PHYS_9PH0',
     'biology': 'EDX_ALEVEL_BIOL_9BN0',
+    'politics': 'AQA_ALEVEL_POL_7152',
 }
 
 ROMAN = r'(?:i{1,3}|iv|vi{0,3}|ix|x)'
@@ -429,21 +429,24 @@ def finish(block):
 
 def load_papers(slug):
     subject_id = SUBJECTS[slug]
-    papers = []
-    for path in sorted((REPO / 'data/packs' / slug).glob('*.json')):
-        pack = json.loads(path.read_text())
-        for paper in pack.get('papers', []):
+    packs = json.loads((REPO / 'data/packs/index.json').read_text())['packs']
+    for entry in packs:
+        if not entry['file'].startswith(f'{slug}/'):
+            continue
+        pack = json.loads((REPO / 'data/packs' / entry['file']).read_text())
+        for paper in pack['papers']:
             if paper.get('subject_id') == subject_id and paper.get('examiner_report_url'):
-                papers.append(paper)
-    return papers
+                yield paper
 
 
-def locate_pdf(url, pdf_dirs, fetch):
+def locate_pdf(url, pdf_dirs, fetch, paper_id=None):
     name = url.rsplit('/', 1)[-1]
+    names = [f'{paper_id}.pdf', name] if paper_id else [name]
     for folder in [*pdf_dirs, CACHE]:
-        candidate = Path(folder).expanduser() / name
-        if candidate.exists() and candidate.stat().st_size > 1000:
-            return candidate
+        for filename in names:
+            candidate = Path(folder).expanduser() / filename
+            if candidate.is_file() and candidate.stat().st_size > 1000:
+                return candidate
     if not fetch:
         return None
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -523,23 +526,42 @@ CROP_DPI = 150      # pdftohtml works at 108 dpi; 150 keeps small print sharp on
 CROP_QUALITY = 45
 
 
+def split_politics(paper, pdf, checksum):
+    from politics import split_politics_report
+    directory = REPO / 'data/imports'
+    inventory = json.loads((directory / 'politics/inventory/7152-inventory.json').read_text())
+    record = next(item for item in inventory['papers'] if item['paper_id'] == paper['paper_id'])
+    source = record['documents']['examiner_report']
+    if source['sha256'] != checksum or source['url'] != paper['examiner_report_url']:
+        raise ValueError(f"{paper['paper_id']}: Politics source differs from the verified inventory")
+    split = split_politics_report(pdf, paper)
+    exemplars = json.loads((directory / 'reports/politics-exemplars.json').read_text()).get(paper['paper_id'], {})
+    for section in split['sections']:
+        links = exemplars.get(section['targets'][0].get('q'))
+        if links:
+            section['exemplar_links'] = links
+    return split
+
+
 def build_paper(paper, pdf, slug):
+    checksum = hashlib.sha256(pdf.read_bytes()).hexdigest()
     pages = read_layout(pdf)
     if garbled(pages):
-        # Text in fonts without a character map. OCR was tried (Tesseract) and misread
-        # question numbers, so these papers get no button rather than wrong comments.
         return None
-    PAGE_WIDTHS.clear()
-    PAGE_WIDTHS.update({page['number']: page['width'] for page in pages})
-    split = split_report(pages)
-    crop_maths(split, pdf, slug, paper['paper_id'])
+    if slug == 'politics':
+        split = split_politics(paper, pdf, checksum)
+    else:
+        PAGE_WIDTHS.clear()
+        PAGE_WIDTHS.update({page['number']: page['width'] for page in pages})
+        split = split_report(pages)
+        crop_maths(split, pdf, slug, paper['paper_id'])
     return {
         'format': FORMAT,
         'extractor_version': EXTRACTOR_VERSION,
         'paper_id': paper['paper_id'],
         'subject_id': paper['subject_id'],
         'source_url': paper['examiner_report_url'],
-        'source_sha256': hashlib.sha256(pdf.read_bytes()).hexdigest(),
+        'source_sha256': checksum,
         'source_pages': len(pages),
         'extracted_on': date.today().isoformat(),
         'review_status': 'unreviewed',
@@ -556,6 +578,9 @@ def write_index():
             'file': str(path.relative_to(REPO / 'data/reports')),
             'sections': len(report['sections']),
         }
+    availability = REPO / 'data/imports/reports/availability.json'
+    if availability.is_file():
+        index['unavailable'] = json.loads(availability.read_text())['unavailable']
     target = REPO / 'data/reports/index.json'
     target.write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
     return index
@@ -569,17 +594,21 @@ def main():
     parser.add_argument('--fetch', action='store_true', help='download reports missing from --pdf-dir and the cache')
     parser.add_argument('--show', action='store_true', help='print the headings found')
     parser.add_argument('--self-test', action='store_true')
+    parser.add_argument('--index-only', action='store_true', help='rebuild the catalogue from existing report files')
     args = parser.parse_args()
     if args.self_test:
         from selftest import run_self_test  # noqa: E402  (tools/reports/selftest.py)
         return run_self_test(sys.modules[__name__])
+    if args.index_only:
+        write_index()
+        return 0
     if not args.subject:
         parser.error('--subject is required')
     papers = [p for p in load_papers(args.subject) if not args.paper or p['paper_id'] in args.paper]
     missing, failed, written, empty, unreadable = [], [], 0, [], []
     for paper in papers:
         try:
-            pdf = locate_pdf(paper['examiner_report_url'], args.pdf_dir, args.fetch)
+            pdf = locate_pdf(paper['examiner_report_url'], args.pdf_dir, args.fetch, paper['paper_id'])
         except Exception as error:  # network refused, not a PDF, 404
             failed.append((paper['paper_id'], str(error)))
             continue
@@ -594,12 +623,10 @@ def main():
         target = REPO / 'data/reports' / args.subject / f"{paper['paper_id']}.json"
         if report is None:
             unreadable.append(paper['paper_id'])
-            target.unlink(missing_ok=True)
             continue
         if not report['sections']:
             # e.g. "Pearson will not publish an Examiner's Report for this paper": no button.
             empty.append(paper['paper_id'])
-            target.unlink(missing_ok=True)
             continue
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(json.dumps(report, ensure_ascii=False, indent=1) + '\n')

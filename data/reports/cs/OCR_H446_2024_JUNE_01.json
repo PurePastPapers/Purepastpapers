@@ -1,0 +1,974 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H446_2024_JUNE_01",
+  "source_url": "https://www.ocr.org.uk/Images/726391-examiners-report-computer-systems.pdf",
+  "source_sha256": "7bbe29a3786c5e23b08486ad38ed62f9bad3fb7bb592c7be1b7bd401d191c51f",
+  "source_pages": 37,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      5
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "H446/01 (Computer Systems) is one of two examined components for the GCE A Level Computer Science."
+      },
+      {
+        "k": "p",
+        "t": "This component focuses on:"
+      },
+      {
+        "k": "li",
+        "t": "the characteristics of contemporary processors, input, output and storage devices"
+      },
+      {
+        "k": "li",
+        "t": "software and software development"
+      },
+      {
+        "k": "li",
+        "t": "exchanging data"
+      },
+      {
+        "k": "li",
+        "t": "data types, data structures and algorithms"
+      },
+      {
+        "k": "li",
+        "t": "legal, moral, cultural and ethical issues."
+      },
+      {
+        "k": "p",
+        "t": "To do well on this paper, candidates need to be able to demonstrate and apply knowledge across all of the topics listed above in different contexts."
+      },
+      {
+        "k": "p",
+        "t": "It is important that candidates apply their knowledge to the question where a scenario or data is provided. Definitions were at times not clearly expressed and key terms not used. Candidates were able to access the full range of marks across the paper and it was good to see how many candidates were able to gain full marks on the binary and hexadecimal questions."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "had a good understanding of Search Engine Indexing and Page Rank"
+      },
+      {
+        "k": "li",
+        "t": "applied their knowledge well to the different scenarios, in particular Question 2 (e) and Question 7"
+      },
+      {
+        "k": "li",
+        "t": "were able to use key terms effectively"
+      },
+      {
+        "k": "li",
+        "t": "had good knowledge of application types and were able to recommend a suitable application for a given purpose"
+      },
+      {
+        "k": "li",
+        "t": "had good knowledge of the FDE cycle and pipelining."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "had little knowledge of Search Engine Indexing or Page Rank"
+      },
+      {
+        "k": "li",
+        "t": "did not use correct terminology"
+      },
+      {
+        "k": "li",
+        "t": "were unable to apply knowledge to scenario"
+      },
+      {
+        "k": "li",
+        "t": "gave vague responses which did not address the question"
+      },
+      {
+        "k": "li",
+        "t": "were unable to use correct database terminology."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "Question 1 (a)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        6,
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates who had good knowledge of the FDE cycle were able to gain 3 or 4 marks on this question. Some candidates did not have a good understanding of what a register or a bus is and tended to say they did something other than transport or temporarily store.  Many however gave clear and correct responses."
+        },
+        {
+          "k": "tip",
+          "t": "Misconception: Some candidates gave responses which mentioned a register fetching the data or passing data.  A register is a temporary store for data/instructions/addresses and as such doesn’t fetch or pass anything."
+        },
+        {
+          "k": "ex",
+          "t": "This candidate has shown a clear understanding of the role of the buses and registers in the fetch part of the FDE cycle."
+        }
+      ],
+      "figures": [
+        {
+          "page": 7,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "heading": "Question 1 (b)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates who understood the FDE cycle gained the mark.  Those that did not tended to mention a register used in the fetch or decode stages."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s3",
+      "heading": "Question 1 (c)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to gain a mark for an instruction being fetched at the same time as another is decoded. Some candidates discussed multiple cores which were mentioned in the question stem but did not apply to this question.  Candidates should have access to previous mark schemes."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 1 (d) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to gain at least one mark for the first output on this question with many gaining full marks.  A small minority of candidates simply copied the outputs given in the question stem."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s5",
+      "heading": "Question 1 (d) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to get the mark for the final answer gap and there was a good range of marks across the cohort."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s6",
+      "heading": "Question 1 (e)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(e)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to give indirect as a mode of memory addressing and there were many candidates who gained full marks on this question.  A small number of candidates gave responses like by reference or value, and some gave direct which was mentioned in the question stem."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s7",
+      "heading": "Question 1 (f)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(f)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "More successful candidates were able to give two valid reasons. Less successful candidates tended to give responses like it is easier to read or easier for the computer to understand.  Some candidates were confused between an assembler and compilers/interpreters. The most common correct responses were the programmer wanting direct control over the hardware and it needing to be written for specific hardware."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s8",
+      "heading": "Question 1 (g)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(g)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to gain 1 or 2 marks on this question.  Some confused primary with secondary saying that adding more RAM meant there was less need to use primary memory.  Some confused RAM with Cache."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s9",
+      "heading": "Question 2 (a)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates were able to state the name of a device, but many did not apply the use of their named input device to the scenario and gave responses related to a generic use of the device for example giving a heart rate sensor or monitor and then saying the use was to monitor the heart rate with no reference to the fitness tracker.  A few gave devices which were unsuitable for an embedded system carried in a shirt such as keyboard and touchscreen."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 2 (b)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates were able to give a reason such as durable/no moving parts/ small physical size.  Candidates who related the reason to why it would be suitable for the fitness tracker were able to gain full marks.  Some candidates did not apply their response to the question stem well and instead talked about things like smart watches."
+        },
+        {
+          "k": "ex",
+          "t": "The candidate has clearly given two reasons with good application to the scenario."
+        }
+      ],
+      "figures": [
+        {
+          "page": 13,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "heading": "Question 2 (c) (i)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to gain at least one or two marks for saying the BIOS finds/loads the operating system and/or checks hardware."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 2 (c) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Strong candidates were able to give a use such as store the operating system and an advantage.  Many though, gave a very good description of what ROM is but did not give a different use and so were unable to gain any marks.  A few candidates said it could store the BIOS which had already been given in the question.  A few candidates talked about microwaves and washing machines which was not relevant to this scenario"
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 2 (d) (i)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally well answered and the majority of candidates could give two roles. Less successful candidates were then unable to follow through with a reasonable description. More successful candidates were able to give two roles plus relevant and correct descriptions. Some described scheduling and interrupts which were given in the question and gained no marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s14",
+      "heading": "Question 2 (d) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Generally well answered and most candidates gained full marks. Those that did not tended to confuse shortest remaining time with shortest job first but were still able to gain three marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s15",
+      "heading": "Question 2 (e)*",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(e)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were a good range of Level 2 responses with good discussions for at least two of the bullet points and related to different cultures.  Some candidates were unable to apply their knowledge to different cultures and instead discussed accessibility concerns.  The candidates with Level 3 responses gave good discussions of all three bullet points and related it to different cultures and the athletes. They were also able to discuss how the programmer could go about this."
+        },
+        {
+          "k": "tip",
+          "t": "Assessment for learning: Candidates should be aware that in level of response questions application of knowledge to the scenario is needed to get into the Level 2 and Level 3 mark bands."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s16",
+      "heading": "Question 3 (a)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to score at least 4 marks on this question.  Those who gave brand names were not given marks as is standard for these types of question.  Few candidates were able to give DTP for the fifth application type.  Many gave email for the second application type which would not be the most appropriate for writing letters to clients."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s17",
+      "heading": "Question 3 (b)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were some good responses to this question with many giving the response that Malware would not affect the server.  Some talked about being able to try out different operating systems which was not relevant to this scenario."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 3 (c)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This is a common topic in previous papers and most candidates were able to gain at least one mark with more successful candidates gaining all three.  Some candidates gave responses that were too vague and did not relate to the question stem."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s19",
+      "heading": "Question 3 (d) (i)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates were able to gain one mark on this question for stating that a linker links code with libraries but few went on to then describe it forming a single executable file."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s20",
+      "heading": "Question 3 (d) (ii)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates confused loaders with compilers and IDEs and talked about being able to use libraries in source code or loading code into the compiler."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s21",
+      "heading": "Question 4 (a) (i)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally well answered with the majority of candidates gaining full marks. Those that did not had either got it completely wrong or had missed or added an extra zero."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s22",
+      "heading": "Question 4 (a) (ii)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally well answered and the majority of candidates gained one mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s23",
+      "heading": "Question 4 (b)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally well answered and the majority of candidates gained two marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s24",
+      "heading": "Question 4 (c)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates were able to gain a mark for converting the exponent to 6 and many were able to gain the second mark for moving the point 6 places to the right.  Many candidates gained full marks although some were unable to convert the binary number back to denary to give -49.5"
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s25",
+      "heading": "Question 4 (d)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(d)"
+        }
+      ],
+      "pages": [
+        22
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were a range of responses with more successful candidates gaining full marks.  Some candidates lost marks for incorrectly writing the final mantissa to 8 bits."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s26",
+      "heading": "Question 4 (e)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(e)"
+        }
+      ],
+      "pages": [
+        22
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates were able to gain full marks on this question showing accurate working out and a correct response."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s27",
+      "heading": "Question 5 (a)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        23
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were a range of marks on this question. More successful candidates gave all four gates accurately, but most candidates were able to gain at least one or two marks.  Some candidates were unaware of what a logic circuit was and instead produced a range of different diagrams including flow charts."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s28",
+      "heading": "Question 5 (b) (i)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        24
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates gained full marks with the most common error being ¬ (A v B)"
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s29",
+      "heading": "Question 5 (b) (ii)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        24
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Almost all candidates were able to gain a mark on this question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s30",
+      "heading": "Question 5 (b) (iii)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)(iii)"
+        }
+      ],
+      "pages": [
+        24
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates recognised that distribution meant that there was only one A following simplification but the most common error for the second mark was again to use OR instead of AND for B AND C"
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s31",
+      "heading": "Question 6* (a)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        24
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to discuss some factors that affect PageRank and how the website could improve it. Far less were able to discuss search engine indexing correctly.  Some were able to apply their knowledge to the scenario. More successful candidates were able to give a good description of both search engine indexing and PageRank as well as relevant suggestions for how the website could improve their PageRank."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s32",
+      "heading": "Question 6 (b)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        25
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to gain 2 or 3 marks on this question with many gaining all 4 marks. The most common error was ticking server side for Running JavaScript to check the surname."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s33",
+      "heading": "Question 6 (c)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        25
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to explain that a protocol is a set of rules for communication between devices.  Few then went on to explain what that meant and so the majority of candidates gained one mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s34",
+      "heading": "Question 6 (d)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(d)"
+        }
+      ],
+      "pages": [
+        26
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates could give three different pieces of networking hardware but many were unable to then describe what they did with many putting connects devices for the description of each piece of hardware."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s35",
+      "heading": "Question 7*",
+      "targets": [
+        {
+          "q": "7",
+          "part": ""
+        }
+      ],
+      "pages": [
+        27,
+        28,
+        29
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were some really good responses to this question. More successful candidates were able to explain the features of both types of database as well as giving relevant benefits and drawbacks of each which they then applied to the scenario well and gave a recommendation.  Some candidates gave good descriptions of the features of each type but were unable to apply their knowledge to the scenario other than saying the membership was going to increase.  There were a number of candidates who confused a database with a table stating that a relational database was a number of related databases and not a number of related tables."
+        },
+        {
+          "k": "tip",
+          "t": "Misconception: The main misconception was to confuse database with table although some candidates also confused the different keys used in a relational database and what they were used for."
+        },
+        {
+          "k": "ex",
+          "t": "The candidate has shown good application to the scenario as well as benefits and drawbacks of both database types.  They have made a valid recommendation which is justified."
+        }
+      ],
+      "figures": [
+        {
+          "page": 28,
+          "count": 1,
+          "pages": [
+            28,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "heading": "Question 8 (a)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        30
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were able to gain full marks with most being able to gain one.  Many candidates did not specify the number of elements in the array which was given in the question and tended to give responses such as towns = [ ] and as such only gained one mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s37",
+      "heading": "Question 8 (b) (i)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        31
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The question states that the first and third column contain a pointer and the second contains the data. The biggest error by far was candidates putting data in the first and third column instead of a pointer which meant that many only gained a mark for having null in the last two rows. More successful candidates were able to gain full marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s38",
+      "heading": "Question 8 (b) (ii)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        32
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally well answered and many candidates gained full marks with many candidates writing out the alphabet beneath the question to aid then in placing the new towns."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s39",
+      "heading": "Question 9",
+      "targets": [
+        {
+          "q": "9",
+          "part": ""
+        }
+      ],
+      "pages": [
+        33
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were a range of responses to this question with the most common responses being written in pseudocode or python. There was a clear division between candidates who were comfortable writing Object Oriented Programming (OOP) code and class constructors and those that were not."
+        },
+        {
+          "k": "p",
+          "t": "Less successful candidates with little OOP experience often confused the class declaration with the constructor declaration.  A few input the values rather than setting the attributes to the values passed in the parameters."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s40",
+      "heading": "Question 10 (a)",
+      "targets": [
+        {
+          "q": "10",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        34
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "There were a number of candidates who could not accurately name one additional power."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s41",
+      "heading": "Question 10 (b)",
+      "targets": [
+        {
+          "q": "10",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        34
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally well answered and candidates showed good understanding of the Data Protection Act (DPA) principles."
+        }
+      ],
+      "figures": []
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}

@@ -1,0 +1,705 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H046_2022_JUNE_01",
+  "source_url": "https://www.ocr.org.uk/Images/688114-examiners-report-computing-principles.pdf",
+  "source_sha256": "13ed071fcee5884ae00b8d32b12e67004b480a1aaf3fa90697743f4b1d822443",
+  "source_pages": 24,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      4
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "H046/01 (Computing Principles) is one of two examined components for the GCE AS Level Computer Science. This component focuses on:"
+      },
+      {
+        "k": "li",
+        "t": "the characteristics of contemporary processors, input, output and storage devices"
+      },
+      {
+        "k": "li",
+        "t": "software and software development"
+      },
+      {
+        "k": "li",
+        "t": "programming"
+      },
+      {
+        "k": "li",
+        "t": "exchanging data"
+      },
+      {
+        "k": "li",
+        "t": "data types, data structures and algorithms"
+      },
+      {
+        "k": "li",
+        "t": "legal, moral, ethical and cultural issues. To do well on this paper, candidates need to be able to demonstrate and apply knowledge across all the topics listed above in different contexts."
+      },
+      {
+        "k": "p",
+        "t": "Advance information was provided for some but not all questions. Candidates were advised that some questions would be on content not listed."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally did the following:"
+      },
+      {
+        "k": "li",
+        "t": "understood the terminology for memory management in Question 1"
+      },
+      {
+        "k": "li",
+        "t": "were able to produce truth tables and simplify expressions for Question 5 (a)"
+      },
+      {
+        "k": "li",
+        "t": "successfully wrote programming code in Question 6 (c)."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally did the following:"
+      },
+      {
+        "k": "li",
+        "t": "did not use key terminology in Question 1 (b) and Question 1 (d)"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated limited discussion in Questions 2 (c) and 3 (c)"
+      },
+      {
+        "k": "li",
+        "t": "showed limited understanding of the TCP/IP stack for Question 3."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "Question 1 (a)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        5
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally answered well, although some candidates were vague in their response. The concept of the BIOS booting up the Operating System was missed by some, but most candidates mentioned the BIOS checking that the hardware is operational (POST)."
+        },
+        {
+          "k": "ex",
+          "t": "Exemplar 1 was given full marks. The candidate achieved the first mark for being clear that the BIOS checks hardware and has provided a suitable example. The second mark has been awarded for explaining that the BIOS loads the operating system. Although it was not essential to mention POST (Power-On-Self-Test) this is useful to explain the process that occurs."
+        }
+      ],
+      "figures": [
+        {
+          "page": 5,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "heading": "Question 1 (b) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Round Robin was the most popular answer by far. Most candidates achieved the mark although some used the example in the question. Candidates should be reminded to read the questions carefully here and to not repeat answers already provided."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s3",
+      "heading": "Question 1 (b) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Few candidates achieved both available marks and most missed the concept of jobs/packets having equal priority."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 1 (c)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "To get both marks, candidates need to be clear that paging and segmentation are about allocating memory. Many candidates were not clear on this and discussed managing data or packets. Candidates should be careful to use the correct terminology for questions of this type in particular."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s5",
+      "heading": "Question 1 (d) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Some candidates were vague in their response and were not clear that Harvard has separate memory blocks. Candidates must be specific in their response."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s6",
+      "heading": "Question 1 (d) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was not answered well. Many candidates repeated their response to the previous question and did not answer the question correctly. Candidates need to read questions carefully."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s7",
+      "heading": "Question 1 (e) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(e)(i)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Very few candidates achieved a mark here. Many mentioned that the CPU would be busy but were not specific enough to gain the mark. In questions of this type, examples need to be specific to the question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s8",
+      "heading": "Question 1 (e) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(e)(ii)"
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Few candidates gained both marks for this question. The concepts of pushing and popping items was mentioned by many candidates although this was often too vague and didn’t link to the question. Candidates needed to use the correct terms for accessing items from a stack to gain the marks in this question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s9",
+      "heading": "Question 2 (a)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well. Several candidates wrote brand names which was not an acceptable answer. Some candidates gave an example of a utility which was required for Question 2 (b)."
+        },
+        {
+          "k": "p",
+          "t": "To gain both marks, candidates were required to choose a suitable application type which would be useful in the given scenario."
+        },
+        {
+          "k": "p",
+          "t": "Candidates are reminded not to use brand names for questions of this type."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 2 (b)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well although many candidates achieved 2 rather than 4 marks. Commonly, two utilities were correctly identified but the explanation to accompany the utility was too vague. Candidates were required to give examples of how the utilities could be used with the given scenario."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s11",
+      "heading": "Question 2 (c)*",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates were assessed on the quality of their extended response in this question. Most of the candidates were clear on the basic difference between open and closed source software but did not link this in with the scenario. Mid-level responses were common with few candidates having a balanced discussion with coverage of all four of the required sections."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 3 (a)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was answered well."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 3 (b) (i)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates achieved both marks for this question. The order of the layers was not important to get both marks and many candidates gave “Transport” and “Network” as the two missing layers. Some candidates gave “Internet” in place of “Network” which was also acceptable."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s14",
+      "heading": "Question 3 (b) (ii)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally not answered well. Candidates that did gain marks, focused on the concept of layers being independent. Many candidates missed this concept and did not achieve the marks."
+        },
+        {
+          "k": "p",
+          "t": "Candidates should be careful to use the correct terminology for questions of this type."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s15",
+      "heading": "Question 3 (c)*",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates were assessed on the quality of their extended response in this question."
+        },
+        {
+          "k": "p",
+          "t": "Most candidates understood the basic concept of storing personal details being a violation of customers civil liberties. Few candidates had a balanced discussion and focused too heavily on the negative aspects of this system therefore being restricted to a mid-level mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s16",
+      "heading": "Question 4 (a)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s17",
+      "heading": "Question 4 (b) (i)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "To gain the mark, the candidate was required to use all 8 bits. Some used 7 bits and therefore did not achieve the mark. Candidates should be reminded to read through each question carefully."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 4 (b) (ii)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was answered well with most errors relating to a miscalculation."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s19",
+      "heading": "Question 4 (b) (iii)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)(iii)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally answered well although some candidates were confused between two’s complement and sign and magnitude."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s20",
+      "heading": "Question 4 (b) (iv)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)(iv)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "As with Question 4 (b) (iii), this was answered well although some candidates gave an answer using two’s complement."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s21",
+      "heading": "Question 4 (c)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was worth either 2 or 0 marks. It was generally not answered well with most candidates being too vague."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s22",
+      "heading": "Question 4 (d)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(d)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "As with the other binary calculation, this was generally answered correctly. Some candidates gave the wrong answer but gained a mark for evidence of a suitable method. The question reminds candidates to show their working and most candidates did."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s23",
+      "heading": "Question 5 (a)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was answered well with many candidates achieving all 4 marks. Some completed the table correctly but were not able to simplify the expression appropriately."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s24",
+      "heading": "Question 5 (b)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        18,
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "As with the first part of this question, this was answered well. Most candidates used the same gates that are shown in the mark scheme, although equivalent gates were accepted. Some candidates lost marks for not being clear on the type of gate they had decided on."
+        },
+        {
+          "k": "ex",
+          "t": "Exemplar 2 was given full marks. This candidate has gained all 3 marks as the gates are correct and are clearly drawn to avoid confusion. Each gate also has the correct number of inputs and outputs in all three instances."
+        },
+        {
+          "k": "ex",
+          "t": "Logic gate guidance"
+        },
+        {
+          "k": "ex",
+          "t": "To make sure full credit is given for the answers provided, it is essential that the drawings are clear enough to distinguish one gate from another. Some gates look similar, so the lines and symbols need to be clear enough to establish which gate has been used."
+        }
+      ],
+      "figures": [
+        {
+          "page": 19,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "heading": "Question 6 (a)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was generally answered well although some candidates picked Integer for the data type which would not be accurate given that averages are likely to be a decimal value. There are a range of data types that support decimal values, any of which would be acceptable as an answer."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s26",
+      "heading": "Question 6 (b)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This was also answered well although some candidates used the word ‘iteration’ in their answer without going to describe what this means. As this was in the question, further detail was required such as repeating or looping through the text file."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s27",
+      "heading": "Question 6 (c)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        21,
+        22
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates achieved a few marks, but few achieved the maximum marks available. The question states that pseudocode or program code could be used so a variety of answers were given."
+        },
+        {
+          "k": "p",
+          "t": "The OCR pseudocode guide gives guidance on how to write pseudocode including data structures, constructs, and reading/writing to file. Some candidates wrote neither pseudocode or program code and therefore were given no marks."
+        },
+        {
+          "k": "p",
+          "t": "Many candidates remembered to open the sales file, but many forgot to close the file. Initialising the variables before the loop was also missed by a number of candidates."
+        },
+        {
+          "k": "p",
+          "t": "Increasing the total was included in many responses, although many forgot to cast the total to a numeric data type to enable this to work correctly."
+        },
+        {
+          "k": "p",
+          "t": "Many candidates achieved the last 2 marks for calculating the average and then displaying the calculated values. Some missed the final output as the text was incorrectly concatenated with the variable values."
+        },
+        {
+          "k": "ex",
+          "t": "Exemplar 3 was given full marks. The candidate has gained the first mark for initialising the variables “numofdays” and “total”. The second mark has been awarded for the first line, which opens the sales file and closing the file after the loop has finished. The while loop gains the third mark which repeats until the end of the file is reached. The fourth mark is awarded for reading each line of the file correctly. The fifth mark correctly increases total in each iteration. Sale has been correctly converted to a “float” data type beforehand to make this possible. The sixth mark is awarded for calculating the average on the penultimate line. The final mark is awarded for printing the number of days, total sales and the daily average. This has been concatenated correctly with a plus symbol. Some candidates used the comma which was also acceptable."
+        },
+        {
+          "k": "ex",
+          "t": "The syntax provided in this example relates to Python whereas some candidates wrote pseudocode or another high-level language. Some candidates lost marks for writing the steps in everyday English which is not what the question stipulated."
+        },
+        {
+          "k": "ex",
+          "t": "OCR support"
+        },
+        {
+          "k": "ex",
+          "t": "The OCR Pseudocode guide shows the format pseudocode will appear in the examined components. This can be downloaded from the OCR Website."
+        }
+      ],
+      "figures": [
+        {
+          "page": 22,
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}

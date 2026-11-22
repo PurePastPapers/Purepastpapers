@@ -12,7 +12,7 @@ import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, p
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { isMultiLevel, levelOf, qualificationCode } from '../../engine/paper-identity.js';
-import { loadReportIndex, reportFold } from '../../data/examiner-reports.js';
+import { loadReportIndex, reportFold, reportSourceUrl } from '../../data/examiner-reports.js';
 import { zoomButton } from '../zoom.js';
 import { ANSWER_MIN, placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
@@ -94,6 +94,20 @@ export async function mount(element, context) {
     const part = partOf(question);
     return `Question ${(itemIndexOf.get(question.question_id) ?? 0) + 1}${part ? ` ${part}` : ''}`;
   };
+
+  const paperReport = reportSourceUrl(paper);
+  const paperReportLink = () => paperReport ? html`<a class="btn" href="${paperReport}" target="_blank" rel="noopener">${icon('book')} Official examiner’s report (PDF)</a>` : '';
+
+  function markingReport(question) {
+    const item = items[itemIndexOf.get(question.question_id)];
+    if (!item || item.questions.at(-1) !== question) return '';
+    return reportFold({
+      key: question.question_id,
+      units: item.questions,
+      paper: bundle.papersById.get(question.paper_id),
+      group: item.questions.length > 1,
+    });
+  }
 
   // ───────────────────────────────── timer ─────────────────────────────────
 
@@ -614,6 +628,7 @@ export async function mount(element, context) {
                   : paper?.official_source_url
                     ? html`<a class="btn" href="${paper.official_source_url}" target="_blank" rel="noopener">Find the mark scheme on the ${subject.board} site ${icon('external', { size: 15 })}</a>`
                     : ''}
+                ${paperReportLink()}
               </div>
             </section>
             <section class="card ruled stack mark-step">
@@ -637,7 +652,7 @@ export async function mount(element, context) {
                   </details>
                   ${answerBlock(question)}
                   <div><p class="label" style="margin-bottom:6px">Mark scheme</p>${markSchemeBody(question)}</div>
-                  ${reportFold({ key: question.question_id, units: [question], paper: bundle.papersById.get(question.paper_id) })}
+                  ${markingReport(question)}
                   ${marksInput(question)}
                 </article>`,
             )}
@@ -712,6 +727,7 @@ export async function mount(element, context) {
             <div class="row">
               <a class="btn btn--primary" href="${exitHref}" data-exit>${backLabel(exitRoute)}</a>
               ${api.isSignedIn() ? html`<a class="btn" href="${links.hub()}">Open the Data Hub</a>` : html`<a class="btn" href="${links.signup('/hub')}">Create a free account</a>`}
+              ${wholePaper ? paperReportLink() : ''}
               ${!resultSaveFailed && (questions.length || sessionPaper) ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} ${session.kind === 'full_paper' ? 'Sit it again' : 'Try these again'}</button>` : ''}
             </div>
             ${resultSaveFailed ? '' : html`<p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? 'Saved in this browser and added to your Data Hub.' : 'Temporary guest result; create an account to save it in this browser.'}</p>`}
@@ -790,9 +806,10 @@ export async function mount(element, context) {
                   <div class="stack" style="padding-top:12px">
                     ${questionBody(question)} ${answerBlock(question)}
                     <div><p class="label" style="margin-bottom:6px">Mark scheme</p>${markSchemeBody(question)}</div>
-                    ${reportFold({ key: question.question_id, units: [question], paper: bundle.papersById.get(question.paper_id) })}
+                    ${items[itemIndexOf.get(question.question_id)].questions.length === 1 ? markingReport(question) : ''}
                   </div>
-                </details>`;
+                </details>
+                ${items[itemIndexOf.get(question.question_id)].questions.length > 1 ? markingReport(question) : ''}`;
               })}
             </section>`
           : ''}

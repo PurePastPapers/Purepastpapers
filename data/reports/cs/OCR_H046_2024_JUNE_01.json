@@ -1,0 +1,530 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H046_2024_JUNE_01",
+  "source_url": "https://www.ocr.org.uk/Images/726911-examiners-report-computing-principles.pdf",
+  "source_sha256": "5af7e0950e04e97eeda65cc47f1e5daab436fddd9d960552c1480c86fda51ff6",
+  "source_pages": 21,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      4
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "H046/01 (Computing Principles) is one of two examined components for the GCE AS Level Computer Science. This component focuses on:"
+      },
+      {
+        "k": "li",
+        "t": "the characteristics of contemporary processors, input, output, and storage devices"
+      },
+      {
+        "k": "li",
+        "t": "software and software development"
+      },
+      {
+        "k": "li",
+        "t": "programming"
+      },
+      {
+        "k": "li",
+        "t": "exchanging data"
+      },
+      {
+        "k": "li",
+        "t": "data types, data structures and algorithms"
+      },
+      {
+        "k": "li",
+        "t": "legal, moral, ethical and cultural issues."
+      },
+      {
+        "k": "p",
+        "t": "To do well on this paper, candidates needed to be able to demonstrate and apply knowledge across all the topics listed above in different contexts."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "successfully described types of operating system, giving an example of their use for Question 3 (b)"
+      },
+      {
+        "k": "li",
+        "t": "successfully wrote LMC code in Question 4 (c)"
+      },
+      {
+        "k": "li",
+        "t": "successfully wrote JavaScript code in Question 5."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "showed limited understanding of the advantages and disadvantages of using thin clients in Question 3 (a) (i) and 3 (a) (ii)"
+      },
+      {
+        "k": "li",
+        "t": "did not use terminology correctly and had limited discussion in Question 2"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated limited discussion in Question 6 (b)."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "Question 1",
+      "targets": [
+        {
+          "q": "1",
+          "part": ""
+        }
+      ],
+      "pages": [
+        5
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well. Most candidates were able to identify the data bus, Memory Address Register (MAR) and Memory Data Register (MDR), although some candidates were not able to identify the Program Counter (PC) and/or the Accumulator (ACC)."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s2",
+      "heading": "Question 2*",
+      "targets": [
+        {
+          "q": "2",
+          "part": ""
+        }
+      ],
+      "pages": [
+        6,
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates were assessed on the quality of their extended response in this question. Most of the candidates were clear on the basic difference between Harvard and Von Neumann architecture, but many did not discuss this in detail or did not use the correct terminology. Some candidates confused the different architectures and contradicted points in their discussion."
+        },
+        {
+          "k": "ex",
+          "t": "This candidate response was given 5 marks. There are some valid points about both Von Neumann and Harvard Architecture, but the points made are not fully developed with limited application. This response was therefore given a mark within the mid-level band."
+        },
+        {
+          "k": "ex",
+          "t": "Assessment for learning: Questions with the command word ‘discuss’ require candidates to give a balanced discussion and provided a suitable conclusion which justifies their comments. Opportunities to practise these questions will support candidates to do better on these style questions."
+        }
+      ],
+      "figures": [
+        {
+          "page": 6,
+          "count": 1,
+          "pages": [
+            6,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "heading": "Question 3 (a) (i)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally not answered well. Candidates did not make sure that their responses were specific to thin clients."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 3 (a) (ii)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "As with Question 3 (a) (i), candidates did not make sure that their responses were specific to thin clients and therefore lost marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s5",
+      "heading": "Question 3 (b)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        9,
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well, although some candidates were too vague in their descriptions of real time and distributed operating systems in particular."
+        },
+        {
+          "k": "ex",
+          "t": "The candidate has been given full marks for this response as they have been clear that real time operating systems respond in a guaranteed time frame, with a suitable example of their use. Some candidates were too vague in their response for descriptions of a real time operating system with answers such as ‘responds quickly’."
+        }
+      ],
+      "figures": [
+        {
+          "page": 10,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "heading": "Question 3 (c) (i)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s7",
+      "heading": "Question 3 (c) (ii)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Although this question was generally answered well, some candidates have used brand names for applications which is not allowed. Where a valid application was given, this was generally followed up with an appropriate example."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s8",
+      "heading": "Question 3 (c) (iii)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(c)(iii)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well although some candidates stated that the software can be modified rather than stating that the source code can be modified."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s9",
+      "heading": "Question 3 (d)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(d)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates have selected three utilities correctly in their response."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 4 (a)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates gained all four marks for this question. Although the question states to tick ‘one box’, candidates were given a mark if they selected either assembler or compiler or both options for ‘creates an executable file’."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s11",
+      "heading": "Question 4 (b)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Although many candidates correctly selected ‘compiler’ for the type of translator, this was often not followed up with a suitable reason."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 4 (c)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were given some of the available marks for this question. Most were able to take two inputs and perform the addition of two numbers, storing the result in the accumulator. Candidates that lost marks did not successfully loop through the instructions correctly, didn’t output the correct answer and/or did not make use of DAT to subtract a value correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 5",
+      "targets": [
+        {
+          "q": "5",
+          "part": ""
+        }
+      ],
+      "pages": [
+        15,
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Although candidates were required to write this response in JavaScript, marks were still given if the syntax was close, and the logic was generally correct. A number of candidates didn’t use JavaScript and gave responses in alternative scripts or Python. The question states that JavaScript code must be written, therefore any other code received no marks."
+        },
+        {
+          "k": "ex",
+          "t": "This candidate response was given full marks. The second part of the ‘if’ statement is not entirely correct, but the overall code provided is very close to each mark scheme point and was therefore given full marks."
+        },
+        {
+          "k": "ex",
+          "t": "Assessment for learning: Appendices 5d in the specification gives guidance on what students are expected to know regarding JavaScript with examples."
+        }
+      ],
+      "figures": [
+        {
+          "page": 16,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "heading": "Question 6 (a) (i)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s15",
+      "heading": "Question 6 (a) (ii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s16",
+      "heading": "Question 6 (a) (iii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)(iii)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s17",
+      "heading": "Question 6 (b)*",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates were assessed on the quality of their extended response in this question. Most candidates were able to explain why computers store data in a binary format and many discussed character sets being used to store test using ASCII and UNICODE. Many candidates also further discussed storing numbers using sign and magnitude and floating point, etc."
+        },
+        {
+          "k": "p",
+          "t": "Few candidates discussed other points such as sound, video and images being stored in binary, and few mentioned that computers are made up of logic gates/switches."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 7 (a) (i)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "The majority of candidates were able to correctly complete the truth table for both marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s19",
+      "heading": "Question 7 (a) (ii)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates correctly stated the correct single logic gate (XOR)."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s20",
+      "heading": "Question 7 (b)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to draw the three logic gates correctly, although some did not make it clear the difference between an ‘and’ gate and an ‘or’ gate in their diagram."
+        }
+      ],
+      "figures": []
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}

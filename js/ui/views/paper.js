@@ -7,6 +7,7 @@ import { links, routeOf } from '../../core/links.js';
 import { fmtDate, fmtMinutes, localDayKey, percent, plural, round1 } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
+import { loadReportIndex, reportSourceUrl } from '../../data/examiner-reports.js';
 import { createSession } from '../../data/sessions.js';
 import { gradeFor, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js';
@@ -19,7 +20,7 @@ import { targetGrade } from '../subject-colours.js';
 import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, openModal, pageHead, sourceBadge, toast } from '../ui.js';
 
 export async function mount(element, context) {
-  const bundle = await getBundle(context.params.subjectId);
+  const [bundle] = await Promise.all([getBundle(context.params.subjectId), loadReportIndex()]);
   const { subject } = bundle;
   const paper = bundle.papersById.get(context.params.paperId);
   if (!paper) {
@@ -34,6 +35,7 @@ export async function mount(element, context) {
   const locked = questions.filter((question) => missingSpecPoints(question, learned, specIndex).length > 0);
   const openSession = api.resumableSessions().find((session) => session.paper_id === paper.paper_id);
   const pdf = isSafeUrl(paper.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
+  const examinerReport = reportSourceUrl(paper);
   const markScheme = isSafeUrl(paper.full_mark_scheme_pdf_url) ? paper.full_mark_scheme_pdf_url : null;
 
   const target = targetGrade(subject);
@@ -153,10 +155,10 @@ export async function mount(element, context) {
             <i class="tape tape--c" aria-hidden="true"></i>
             <h2 class="card__title">Get the paper</h2>
             ${paper.source_bundle_url ? html`<a class="btn btn--block btn--left" href="${paper.source_bundle_url}" target="_blank" rel="noopener">Official assessment source bundle (ZIP)</a>` : ''}
-            ${pdf || markScheme
+            ${pdf || markScheme || examinerReport
               ? html`<div class="stack stack--sm">
                   ${pdf ? html`<a class="btn btn--block btn--left" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
-                  ${paper.examiner_report_url ? html`<a class="btn btn--block btn--left" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report (PDF)</a>` : ''}
+                  ${examinerReport ? html`<a class="btn btn--block btn--left" href="${examinerReport}" target="_blank" rel="noopener">Official examiner’s report (PDF)</a>` : ''}
                   ${markScheme ? html`<a class="btn btn--block btn--left" href="${markScheme}" target="_blank" rel="noopener">${icon('check')} Mark scheme (PDF)</a>` : ''}
                 </div>`
               : questions.length

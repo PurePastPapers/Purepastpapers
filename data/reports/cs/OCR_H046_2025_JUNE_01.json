@@ -1,0 +1,508 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H046_2025_JUNE_01",
+  "source_url": "https://www.ocr.org.uk/Images/752591-examiners-report-computing-principles.pdf",
+  "source_sha256": "5eb9da7f44271e2d295a73a1861d3f074f45c55e03ad3d71272ef6d793f2c152",
+  "source_pages": 23,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      4
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "H046/01 (Computing Principles) is one of two examined components for the GCE AS Level Computer Science. This component focuses on:"
+      },
+      {
+        "k": "li",
+        "t": "the characteristics of contemporary processors, input, output, and storage devices"
+      },
+      {
+        "k": "li",
+        "t": "software and software development"
+      },
+      {
+        "k": "li",
+        "t": "programming"
+      },
+      {
+        "k": "li",
+        "t": "exchanging data"
+      },
+      {
+        "k": "li",
+        "t": "data types, data structures, and algorithms"
+      },
+      {
+        "k": "li",
+        "t": "legal, moral, ethical, and cultural issues."
+      },
+      {
+        "k": "p",
+        "t": "To do well on this paper, candidates needed to be able to demonstrate and apply knowledge across all the topics listed above in different contexts."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "discussed the functions of an operating system in the context of the organisation for Question 2"
+      },
+      {
+        "k": "li",
+        "t": "correctly wrote a loop to count items in an array for Question 3 (b)"
+      },
+      {
+        "k": "li",
+        "t": "correctly wrote a function to add together the items in an array and return the average for Question 6 (b) (ii)"
+      },
+      {
+        "k": "li",
+        "t": "correctly completed the Karnaugh map and the simplified expression for Question 8 (a)."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "did not discuss the functions of an operating system within the context of the organisation for Question 2 in sufficient detail"
+      },
+      {
+        "k": "li",
+        "t": "did not discuss the moral, ethical, legal and environmental drawbacks of a delivery system for Question 4 in sufficient detail"
+      },
+      {
+        "k": "li",
+        "t": "did not identify two data capture methods within the context of the question for Question 3 (a)."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "Question 1 (a)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        5
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well with most candidates achieving full marks. Some candidates did not gain 2 marks as they had incorrectly identified Register B as the MDR/Memory Data Register and then identified Register C as the MAR/Memory Address Register."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s2",
+      "heading": "Question 1 (b) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        5
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly, although some did not write the response in the context of the FDE cycle and therefore did not achieve the mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s3",
+      "heading": "Question 1 (b) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly, although were too vague in their response and did not mention the change to the FDE cycles per second/per unit time. This detail was required to be given the mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 2*",
+      "targets": [
+        {
+          "q": "2",
+          "part": ""
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates were assessed on the quality of their extended response in this question. Most candidates did not answer the question in the context of the organisation and discussed functions which were not relevant to this scenario."
+        },
+        {
+          "k": "tip",
+          "t": "Assessment for learning: Extended repose questions with the command word ‘discuss’ require candidates to read the question and provide comments that relate to the scenario. Opportunities to practise these questions will support candidates to do better on these style questions."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s5",
+      "heading": "Question 3 (a)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well although some candidates identified data input methods rather than data capture methods. This did not answer the question and resulted in no marks being given."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s6",
+      "heading": "Question 3 (b)",
+      "targets": [
+        {
+          "q": "3",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        8,
+        9,
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were given some of the available marks for this question. Most candidates wrote a suitable loop to iterate through the array and correctly determined the most selected option, although few candidates achieved full marks by looping through the rows and columns in the table."
+        },
+        {
+          "k": "ex",
+          "t": "Exemplar 1 was given full marks. The candidate has initialised variables A, B and C and has incremented each of these variables using a for loop. Each of the rows and columns of the array have been checked and the totals of each variable have then been compared to establish the most selected option."
+        }
+      ],
+      "figures": [
+        {
+          "page": 9,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "heading": "Question 4*",
+      "targets": [
+        {
+          "q": "4",
+          "part": ""
+        }
+      ],
+      "pages": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were given a mark in either band one or two for this question. Most candidates did not write drawbacks in the context of the question and therefore did not gain marks. Many candidates also discussed advantages that the drones could offer which doesn’t answer the question and therefore did not gain marks."
+        },
+        {
+          "k": "ex",
+          "t": "Exemplar 2 was given 5 marks. The candidate has discussed legal and environmental drawbacks, although there are limited points relating to moral and ethical issues. Some points made are not fully developed and have limited application. This response was therefore given a mark within the mid-level band."
+        }
+      ],
+      "figures": [
+        {
+          "page": 11,
+          "count": 1,
+          "pages": [
+            11,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "heading": "Question 5 (a) and (b)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(a)"
+        },
+        {
+          "q": "5",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered both of these questions correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s9",
+      "heading": "Question 5 (c)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly although some candidates converted the binary to denary values first and were therefore given no marks."
+        },
+        {
+          "k": "tip",
+          "t": "Assessment for learning: Binary calculations of this type must show working that relates to a suitable method. Candidates should be reminded that converting binary to denary to complete calculations is not a suitable method."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 5 (d)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(d)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s11",
+      "heading": "Question 6 (a)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly and stated a numeric data type for the first part of the question. Some candidates gave reasons why a string data type would not be suitable, rather than stating why a numeric data type would be suitable. This resulted in the second mark not being given."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 6 (b) (i)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates achieved full marks for this question although some confused the features of lists with the features of arrays (and vice versa) and therefore did not gain marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 6 (b) (ii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "This question was generally answered well with many candidates achieving full marks. Some candidates lost a mark for missing the parameter (steps) and some missed another mark for not returning the answer."
+        },
+        {
+          "k": "ex",
+          "t": "Exemplar 3 was given full marks. The candidate has named the function correctly with ‘steps’ as a parameter. The average has been calculated correctly, and the function correctly returns the calculated value."
+        }
+      ],
+      "figures": [
+        {
+          "page": 17,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "heading": "Question 6 (c)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly, although some did not achieve the second mark for explaining how the compiler would benefit Beth in particular."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s15",
+      "heading": "Question 7 (a) and (b)",
+      "targets": [
+        {
+          "q": "7",
+          "part": "(a)"
+        },
+        {
+          "q": "7",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered these questions correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s16",
+      "heading": "Question 8 (a)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly and were given all 4 marks. Some candidates completed the Karnaugh map correctly but were unable to correctly write the simplified expression therefore not gaining 1 mark."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s17",
+      "heading": "Question 8 (b) (i), (ii) and 9 (a)",
+      "targets": [
+        {
+          "q": "8",
+          "part": "(b)(i)"
+        },
+        {
+          "q": "8",
+          "part": "(b)(ii)"
+        },
+        {
+          "q": "9",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered these three questions correctly."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 9 (b)",
+      "targets": [
+        {
+          "q": "9",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        21
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates answered this question correctly, although some did not use the word ‘packets’ when describing data being split and therefore did not gain marks."
+        }
+      ],
+      "figures": []
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}

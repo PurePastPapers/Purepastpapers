@@ -1,0 +1,503 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H046_2025_JUNE_02",
+  "source_url": "https://www.ocr.org.uk/Images/752590-examiners-report-algorithms-and-problem-solving.pdf",
+  "source_sha256": "180ad21451c8ac8d4ea2d60036d8fa46a34b59845ba59288d3d43e2f236d7e07",
+  "source_pages": 21,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      4
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "Paper 2 focuses on algorithms and problem solving. It tests candidates’ computational thinking ability to analyse and solve problems. Candidates are expected to be able to write algorithms fluently in either pseudocode or program code and to be able to trace algorithms."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated good factual knowledge of terms on the specification"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated an ability to trace algorithms accurately"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated an ability to complete algorithms and to describe standard algorithms such as binary search"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated an ability to write well-structured and logical pseudocode to solve problems."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "showed some factual knowledge but were less able to show depth of knowledge"
+      },
+      {
+        "k": "li",
+        "t": "showed a limited knowledge of standard sorting and searching algorithms such as bubble sort and binary search"
+      },
+      {
+        "k": "li",
+        "t": "found algorithms challenging to complete"
+      },
+      {
+        "k": "li",
+        "t": "showed a limited ability to write pseudocode or program code."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "Question 1 (a)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        5
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were given full marks by identifying relevant inputs and outputs from the question stem."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s2",
+      "heading": "Question 1 (b)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        5
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were given at least 1 mark, often for quantifying that programming time would be saved. Fewer candidates were able to expand with a full range of additional points. Where they did so, reasons related to readability, efficiency and testing were the most common responses."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s3",
+      "heading": "Question 2 (a)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates gave generic characteristics of arrays rather than relating their responses to the specific array in the question. Responses such as ‘arrays contain a single data type’ were not accepted, whereas a response that stated this array held string data only were accepted."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 2 (b) (i)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates correctly identified that speech marks were required to denote string data. Incorrect responses often talked about initialising the value but omitted the role of the speech marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s5",
+      "heading": "Question 2 (b) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        7,
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates were unable to convert the while loop to a for loop. Common errors included trying to include a condition in a for loop, incrementing the loop counter variable inside the for loop, and not iterating through the correct sequence of values. Where candidates responded with solutions that were clearly written in Python, they were not given for loops in range (9) since this would only iterate between 0 and 8."
+        },
+        {
+          "k": "ex",
+          "t": "This response exemplifies many of the typical programming errors and misconceptions that some candidates have. The loop index variable does not match the identifier being used to index the item in p1items. The counter increment from the while loop has been erroneously copied into the candidate’s for loop. The candidate has also clearly used a Pythonic syntax that would need to be range (0,10) to yield the correct values."
+        }
+      ],
+      "figures": [
+        {
+          "page": 8,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "heading": "Question 2 (b) (iii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)(iii)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many responses displayed a clearer understanding of this topic than in previous series, with many candidates successfully identifying that passing by reference would maintain changes made to the array after the procedure had completed."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s7",
+      "heading": "Question 2 (c)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "A range of solutions to the question were observed and some efficient solutions were seen. It was clear that some candidates found 2D array indexing challenging and so could not access elements of the structure correctly. Candidates found the first part of the problem to output the names of items in the array more accessible than devising a mechanism to determine if there were no items in the array."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s8",
+      "heading": "Question 3",
+      "targets": [
+        {
+          "q": "3",
+          "part": ""
+        }
+      ],
+      "pages": [
+        10,
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Tracing the code for an insertion sort was found to be challenging by many candidates. Few candidates were given full marks. Many candidates could trace the state change for the x, item and y variables, but far fewer were able to show the swaps/updates to the values in the data array."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s9",
+      "heading": "Question 4* (a)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Nearly all candidates were able to make some valid points about either the agile or the waterfall methodology. Level 1 responses frequently listed a few facts about the methodologies. Level 2 responses were able to compare some relative advantages and/or disadvantages. There were few Level 3 responses that were able to make detailed evaluative analysis with reference to the specific context of the problem. The 9-mark levels of response question on this paper always requires candidates to apply relevant knowledge to the specific context and to make evaluative judgements."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 4 (b)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates identified a difference between black-box and white-box testing. Where candidates did not achieve the mark, it was often because they made a statement about one form of testing only and did not draw out the difference for the other type of testing."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s11",
+      "heading": "Question 5 (a)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates identified at least one subroutine. Length was classed as an attribute and was not given as an acceptable response. Responses that listed whole lines of code without identifying the specific subroutine were also discounted. Some candidates gave the names of variable identifiers rather than subroutines."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 5 (b)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates correctly identified iteration and selection, but some gave these structures in reverse order."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 5 (c)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates identified casting to an integer."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s14",
+      "heading": "Question 5 (d) (i)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were given some marks, but far fewer achieved full marks."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s15",
+      "heading": "Question 5 (d) (ii)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates knew how a binary search operated and there were relatively few candidates who confused a binary search with a linear search or who gave responses related to sorting algorithms. Where candidates did not get full credit, it was either for not clearly articulating that the midpoint needed to be calculated, or for descriptions where the half of the list to discard did not match with the comparison being made."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s16",
+      "heading": "Question 6 (a)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Nearly all candidates identified that a stack is a LIFO structure whereas a queue is a FIFO structure. Few of the other potential responses on the mark scheme were seen."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s17",
+      "heading": "Question 6 (b) (i)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "While many candidates identified that topPointer was a pointer to the index where that last item was inserted into the stack, some candidates confused this by saying that it actually held the last value, implying or stating that it held the value 13."
+        },
+        {
+          "k": "tip",
+          "t": "Misconception: Some candidates think that a pointer holds the actual value that it points towards, rather than holding the location that contains the value."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 6 (b) (ii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates achieved some of the marks, but far fewer were given full marks. The most omitted part of the required response was checking whether the stack was empty or not before trying to pop the value at the top of the stack."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s19",
+      "heading": "Question 6 (b) (iii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)(iii)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates produced accurate solutions. The most common error was an incorrect relational operator in the first gap with <= often given as an incorrect response instead of <."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s20",
+      "heading": "Question 7",
+      "targets": [
+        {
+          "q": "7",
+          "part": ""
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates achieved some marks for taking the relevant inputs and there were relatively few candidates who did not attempt the question. A range of different approaches were then taken regarding extracting parts of the date string. A variety of interpretations for substrings and string slicing were seen, and where responses were logically consistent, marks were given for the logic and syntax was not penalised."
+        },
+        {
+          "k": "tip",
+          "t": "Assessment for learning: Candidates would benefit from being set programming challenges. This 8-mark question can be set as a programming challenge where solutions can be tested using the test data in the question. Candidates can be asked to write the code for the getMonth() function to take a two character string ‘mm’ and return the associated month."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s21",
+      "heading": "Question 8",
+      "targets": [
+        {
+          "q": "8",
+          "part": ""
+        }
+      ],
+      "pages": [
+        19
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Some candidates did not read the question carefully and sorted the list into ascending order. Those that did this were still able to achieve 3 marks for a correct ascending sort. Few candidates confused bubble sort with insertion sort or other sorting algorithms. Some candidates sorted by the total number of letters in each word rather than by alphabetical order."
+        }
+      ],
+      "figures": []
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}

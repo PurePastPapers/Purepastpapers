@@ -27,7 +27,7 @@ import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
 import { questionsForScience, scienceLeaves, sciencesOf, specForScience, validScience } from '../../engine/sciences.js';
 import { isTiered, questionsForTier, savedTier, searchTierIntent, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
 import { zoomButton } from '../zoom.js';
-import { hasExaminerReport, loadReportIndex, reportPanel, revealPanel } from '../../data/examiner-reports.js';
+import { hasExaminerReport, loadReportIndex, reportPanel, reportQuestionLabel, revealPanel } from '../../data/examiner-reports.js';
 import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, toast } from '../ui.js';
@@ -835,8 +835,6 @@ export async function mount(element, context) {
     return html`<button type="button" class="btn btn--sm ${open ? 'is-on' : ''}" data-report="${id}" aria-expanded="${open}">${icon('book', { size: 15 })} ${open ? 'Hide examiner’s report' : 'Examiner’s report'}</button>`;
   }
 
-  const reportLabel = (question) => `Q${question.question_number}${question.part_label ? question.part_label.replace(/\s+/g, '') : ''}`;
-
   function questionCard(question, { locked = null, partsMissing = null } = {}) {
     if (question.is_linked_group) return linkedCard(question, { locked, partsMissing });
     const attempt = latest.get(question.question_id);
@@ -876,7 +874,7 @@ export async function mount(element, context) {
             ${schemeOpen
               ? markSchemeBody(question)
               : questionBody(question, { contextOpen: state.contextQuestions.includes(question.question_id) })}
-            ${reportOpen ? reportPanel({ key: qid, units: [question], paper, view: schemeOpen ? 'scheme' : 'question', label: reportLabel(question), closeAttr: html`data-report="${qid}"` }) : ''}
+            ${reportOpen ? reportPanel({ key: qid, units: [question], paper, view: schemeOpen ? 'scheme' : 'question', label: reportQuestionLabel(question), closeAttr: html`data-report="${qid}"` }) : ''}
           </div>
           <div class="qsplit__side stack stack--sm">
             ${goLine(qid)}
@@ -891,7 +889,6 @@ export async function mount(element, context) {
               ${reportButton(qid, paper)}
               ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, question.paper_id)}">View full paper</a>` : ''}
             </div>
-            ${paper?.examiner_report_url && !hasExaminerReport(paper) ? html`<a class="small" href="${paper.examiner_report_url}" target="_blank" rel="noopener">Official examiner’s report</a>` : ''}
           </div>
         </div>` : ''}
       </div>

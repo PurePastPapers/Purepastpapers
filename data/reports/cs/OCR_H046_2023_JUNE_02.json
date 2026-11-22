@@ -1,0 +1,644 @@
+{
+  "format": "examiner-report-text-v1",
+  "paper_id": "OCR_H046_2023_JUNE_02",
+  "source_url": "https://www.ocr.org.uk/Images/704116-examiners-report-algorithms-and-problem-solving.pdf",
+  "source_sha256": "dbffaee2d3e9ccda7a734658110b9e4b7f0542dd301037804724387c68d02c86",
+  "source_pages": 22,
+  "extracted_on": "2026-11-22",
+  "review_status": "model_reviewed",
+  "general": {
+    "pages": [
+      4
+    ],
+    "paras": [
+      {
+        "k": "p",
+        "t": "Paper 2 focuses on both algorithms and problem solving. In particular, it tests the candidates’ ability to analyse and solve problems within specific contexts. Candidates are expected to be able to write algorithms fluently in either pseudocode or program code and to be able to trace algorithms."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated good factual knowledge of definitions of terms on the specification"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated an ability to analyse questions and respond with appropriately detailed responses for the number of marks available"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated an ability to trace and discuss standard algorithms such as the linear search and bubble sort"
+      },
+      {
+        "k": "li",
+        "t": "demonstrated an ability to write pseudocode to solve a problem."
+      },
+      {
+        "k": "h",
+        "t": "Candidates who did less well on this paper generally:"
+      },
+      {
+        "k": "li",
+        "t": "showed some factual knowledge but were less able to show application"
+      },
+      {
+        "k": "li",
+        "t": "produced responses to ‘explain’ questions that identified a point but lacked an expansion in terms of explanation of the point"
+      },
+      {
+        "k": "li",
+        "t": "struggled to trace the logic of algorithms to find errors within the algorithm"
+      },
+      {
+        "k": "li",
+        "t": "showed an inability to write pseudocode or program code."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "Question 1 (a)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        5
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates clearly showed the steps that would take place in a bubble sort for the date given, with most achieving full marks. Some candidates did not explicitly label each pass as required in the question, but marks were given where the passes could be implied."
+        },
+        {
+          "k": "p",
+          "t": "Few candidates described the principles of a bubble sort instead of applying it to the data given."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s2",
+      "heading": "Question 1 (b) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        6
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates struggled to go beyond recall of definitions for calling by reference and calling by value and struggled to apply it to the code given and to provide a detailed explanation."
+        },
+        {
+          "k": "p",
+          "t": "The bubble sort was defined as a procedure and not a function, so if numbers had been passed by value, a copy of the array would have been passed, and any changes made would not have been kept after the procedure had completed execution."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s3",
+      "heading": "Question 1 (b) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates could accurately define a ‘count controlled loop’ as one that repeated a predefined number of times, although some candidates gave an ambiguous response that was equally applicable to a conditional loop."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s4",
+      "heading": "Question 1 (b) (iii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(iii)"
+        }
+      ],
+      "pages": [
+        7
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates found it difficult to explain the purpose of the holdValue variable in context. Where candidates achieved some of the marks, they most frequently identified holdValue as a temporary store that was required to prevent accidental overwriting of data during the swap process. Relatively few were able to accurately describe how the variable allowed the contents of dataArray[x] and dataArray[x+1] to be swapped."
+        },
+        {
+          "k": "ex",
+          "t": "This exemplar very clearly states exactly how and why the variable holdValue is required."
+        }
+      ],
+      "figures": [
+        {
+          "page": 7,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "heading": "Question 1 (b) (iv)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(b)(iv)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates found it challenging to apply knowledge of a bubble sort to the code given. While a pleasing number identified the need to have an outer loop, there were far fewer who were able to expand on this to explain that this was required to repeat the process for the required number of passes, or until no swaps had occurred during a pass."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s6",
+      "heading": "Question 1 (c) (i)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates did not appreciate that a bubble sort will require a maximum of n-1 passes in the worst case since the first item in the list will be in position after that number of passes and so would not require an additional pass. The most common incorrect responses were 356, and 3562 which confused the worst case time complexity O(n2) with the number of passes."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s7",
+      "heading": "Question 1 (c) (ii)",
+      "targets": [
+        {
+          "q": "1",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        8
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Nearly all candidates could identify an additional sorting algorithm with the most common response being ‘Insertion sort’."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s8",
+      "heading": "Question 2 (a)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        9
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates demonstrated that they knew what abstraction was, but a significant number struggled to make clear qualified points. Some candidates gave definitions of abstraction as the removal of unnecessary detail, but this did not answer the question. This was a contextual question that required relevant and qualified points. Responses such as ‘the weather’ were insufficient, whereas ‘removal of the effects of weather’ was a valid qualified point."
+        },
+        {
+          "k": "ex",
+          "t": "This exemplar shows a response that has unqualified points that do not show how abstraction can be applied. It highlights factors that could be abstracted, but does not tell us how."
+        }
+      ],
+      "figures": [
+        {
+          "page": 9,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "heading": "Question 2 (b) (i)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)(i)"
+        }
+      ],
+      "pages": [
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates successfully identified the relevant potential inputs of city/stage/speed from the given scenario. Some candidates suggested alternative inputs such as ‘magnitude of earthquake’ which were also given marks as they were valid inputs for a simulation relating to earthquakes."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s10",
+      "heading": "Question 2 (b) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(b)(ii)"
+        }
+      ],
+      "pages": [
+        10
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Few candidates were given full marks for this question. There was some repetition of checking user input values, which was given in the stem of the question. There were also many statements of possible calculations rather than clearly expressed conditions or questions. More successful responses included decisions such as ‘have buildings of a certain type survived the earthquake?’."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s11",
+      "heading": "Question 2 (c) (i)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)(i)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were able to display some knowledge of either the waterfall model or the spiral model of software development and were given some marks for identifying relevant points. However, fewer could analyse the factor they gave and then describe the difference between the two models for that factor."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s12",
+      "heading": "Question 2 (c) (ii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)(ii)"
+        }
+      ],
+      "pages": [
+        11
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates who demonstrated application of knowledge were able to interpret the requirements of the question stem to determine valid reasons for why the waterfall model of software development was not valid in the context given. Clear responses stated that the waterfall model was a long process, but that the clients wanted the system as soon as possible."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s13",
+      "heading": "Question 2 (c) (iii)",
+      "targets": [
+        {
+          "q": "2",
+          "part": "(c)(iii)"
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates successfully identified another model of software development. The most popular responses were Agile and Rapid Application Development. Fewer candidates were then able to go on to describe features of the model they had selected."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s14",
+      "heading": "Question 3",
+      "targets": [
+        {
+          "q": "3",
+          "part": ""
+        }
+      ],
+      "pages": [
+        12
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "A pleasing number of candidates could identify and describe a range of features of an IDE, with most being able to demonstrate sufficient knowledge to achieve mark band Level 2. Few candidates displayed a level of evaluative reasoning of sufficient depth to achieve mark band Level 3. More successful responses clearly explained how relevant debugging tools in an IDE led to much greater productivity than a text editor because of the way that they could assist with finding logical errors in code through the use of stepping and tracing. An acknowledgement of the amount of system resources and the complexity of some IDE environments was less often evaluated."
+        },
+        {
+          "k": "p",
+          "t": "Candidates need to focus on making clear logical arguments with evidence of evaluation (AO3) to be able to achieve mark band 3."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s15",
+      "heading": "Question 4 (a)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(a)"
+        }
+      ],
+      "pages": [
+        13
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Very few candidates were able to produce a working function, but many gained some marks."
+        },
+        {
+          "k": "p",
+          "t": "Some candidates had little idea of the concept of a function and struggled to define one. Many omitted the definition statement or omitted the required parameter and then asked for user input instead."
+        },
+        {
+          "k": "p",
+          "t": "The standard of pseudocode/code was quite weak. Indentation of constructs was often missing or hard to follow. Mid-range marks were achieved when candidates effectively utilised MOD to determine if the remainder on division by two was odd or even, and then using DIV to find the next term in the sequence."
+        },
+        {
+          "k": "p",
+          "t": "More successful responses demonstrated an ability to problem solve, think logically, and present clear working functions."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s16",
+      "heading": "Question 4 (b)",
+      "targets": [
+        {
+          "q": "4",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        14
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates found Question 4 (b) easier to approach than Question 4 (a). Most could write pseudocode to accept a user input. When validating the input to be a value between 1 and 255, there was incorrect use of relational operators with off-by-one errors on occasion. There was also incorrect use of logical operators where or was used instead of and, and vice-versa. When candidates called toBinary(inputVal), the result was not always stored for later use."
+        },
+        {
+          "k": "tip",
+          "t": "Assessment for learning: When preparing candidates for the examination, they will benefit from a wide range of programming experience."
+        },
+        {
+          "k": "p",
+          "t": "Questions such as 4 (a) and 4 (b) present an ideal opportunity for developing coded solutions to test and discuss before looking at how the algorithms could be presented as pseudocode."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s17",
+      "heading": "Question 5 (a) (i)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        15
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Nearly all candidates correctly identified ‘sequence’ as the correct construct."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s18",
+      "heading": "Question 5 (a) (ii)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Nearly all candidates correctly identified ‘selection’ as the correct construct."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s19",
+      "heading": "Question 5 (b)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates correctly identified two variables from the given code."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s20",
+      "heading": "Question 5 (c)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(c)"
+        }
+      ],
+      "pages": [
+        16
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Most candidates were given some marks, but fewer achieved full marks."
+        },
+        {
+          "k": "p",
+          "t": "The context of the question indicated that the numbers input were positive integers, but candidates did not always appreciate this."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s21",
+      "heading": "Question 5 (d) (i)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(d)(i)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Few candidates were able to clearly define the term 'local variable'. The concept of scope of variables appeared to be poorly understood, with few able to define that a local variable’s scope was that of the function/procedure in which it was declared."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s22",
+      "heading": "Question 5 (d) (ii)",
+      "targets": [
+        {
+          "q": "5",
+          "part": "(d)(ii)"
+        }
+      ],
+      "pages": [
+        17
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Some candidates confused the terms local variable and global variable and gave definitions the wrong way round. A significant number of responses demonstrated conceptual misconceptions. The contents of dataArray could be used in other parts of the program if it was passed as a parameter to a function/procedure, but could not be referenced directly. Responses such as giving ‘can’t be used anywhere else in the program’ as a disadvantage were, therefore, incorrect."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s23",
+      "heading": "Question 6 (a) (i)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)(i)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "A pleasingly high number of candidates demonstrated a clear understanding of how a linear search operated and used clear and accurate language. More candidates were clearer in the way that they articulated the steps of the search than in previous series. However, there were still a number of candidates who gave vague responses such as ‘check each value until the value input is found’ that did not articulate the required steps. Some candidates gave advantages or disadvantages of using a linear search but such responses did not answer the question."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s24",
+      "heading": "Question 6 (a) (ii)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(a)(ii)"
+        }
+      ],
+      "pages": [
+        18
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Many candidates identified the fact that a linear search can operate on an unordered array whereas a binary search cannot. Some candidates alternatively cited the fact that a linear search could be used when the number of items to search was small, which was valid when qualified by the number of items."
+        }
+      ],
+      "figures": []
+    },
+    {
+      "id": "s25",
+      "heading": "Question 6 (b)",
+      "targets": [
+        {
+          "q": "6",
+          "part": "(b)"
+        }
+      ],
+      "pages": [
+        19,
+        20
+      ],
+      "paras": [
+        {
+          "k": "p",
+          "t": "Candidates need to be mindful of the fact that an array is a static data structure with a predetermined size. This meant that responses that explained how lists could be used to append and remove items were not given marks. This is an area where candidates who only have programming experience of using lists in Python often struggle."
+        },
+        {
+          "k": "p",
+          "t": "Implementing a stack in an array requires a stack pointer. Those candidates who appreciated this and who clearly had practical experience of modelling push()/pop() operations on a stack were able to articulate how the stack would access array locations at the stack pointer."
+        },
+        {
+          "k": "ex",
+          "t": "This exemplar was one of the few responses to show a clear insight as to how an array can be used to store and access a stack. It makes it clear that a stack pointer is required and goes on to explain how the stack pointer is manipulated when push()/pop() operations are performed."
+        },
+        {
+          "k": "ex",
+          "t": "Misconception: Many candidates were not clear about the difference between an array and a list:"
+        },
+        {
+          "k": "ex",
+          "t": "An array is a static structure whose size cannot be changed."
+        },
+        {
+          "k": "ex",
+          "t": "Lists are dynamic and support items being removed or appended."
+        }
+      ],
+      "figures": [
+        {
+          "page": 19,
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "subject_id": "OCR_ALEVEL_CS_H446",
+  "coverage_status": "integrated"
+}
