@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createTestSnapshot, resolveTestSnapshot, scoreTestSnapshot } from '../js/engine/test-snapshot.js';
+import { createTestSnapshot, pinTestCrops, resolveTestSnapshot, scoreTestSnapshot, verifyTestCrops } from '../js/engine/test-snapshot.js';
 import { linkGroups } from '../js/engine/linked-parts.js';
 
 function fixture() {
@@ -143,6 +143,31 @@ test('resolves exact unchanged questions, compatible legacy IDs and reports unav
   assert.equal(snapshot.totalMarks, 5);
   const edited = makeSnapshot(revised, ['q4b'], []);
   assert.notEqual(edited.id, snapshot.id);
+});
+
+test('detects a revised scheme or prompt crop at the same path without changing the frozen test', async () => {
+  const bundle = fixture();
+  const prompt = 'assets/maths/PAPER/Q4B.webp';
+  const scheme = 'assets/maths/PAPER/MS4B.webp';
+  const context = 'assets/maths/PAPER/INTRO4.webp';
+  const question = bundle.questionsById.get('q4b');
+  question.content = { question_image_url: prompt, mark_scheme_image_url: scheme };
+  question.context = { figures: [{ image_url: context }] };
+  const initial = makeSnapshot(bundle, ['q4b'], []);
+  const resolved = resolveTestSnapshot(initial, bundle);
+  const versions = new Map([[prompt, 'prompt-original'], [scheme, 'scheme-original'], [context, 'intro-original']]);
+  const checksums = async (paths) => new Map(paths.map(path => [path, versions.get(path)]));
+  const pinned = await pinTestCrops(initial, resolved, { checksums });
+  assert.notEqual(pinned.id, initial.id);
+  assert.equal(pinned.totalMarks, 2);
+  assert.equal(pinned.id, (await pinTestCrops(initial, resolved, { checksums })).id);
+  versions.set(scheme, 'scheme-revised');
+  const current = (await verifyTestCrops(pinned, resolved, { checksums })).get('q4b');
+  assert.equal(current.promptRevised, false);
+  assert.equal(current.schemeRevised, true);
+  versions.set(context, 'intro-revised');
+  assert.equal((await verifyTestCrops(pinned, resolved, { checksums })).get('q4b').promptRevised, true);
+  assert.equal(await verifyTestCrops(initial, resolved, { checksums }), resolved);
 });
 
 test('real Edexcel 9MA0/01 June 2023 Q3(a)–(b) and standalone Q4(b) retain exact scoring parts', () => {

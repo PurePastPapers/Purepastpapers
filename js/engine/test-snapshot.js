@@ -1,4 +1,5 @@
 import { sha256, toHex } from '../core/sha256.js';
+import { sourceImageChecksums } from '../data/source-images.js';
 import { expandLinkedIds, runnerItems } from './linked-parts.js';
 
 const digest = (value) => toHex(sha256(JSON.stringify(value)));
@@ -138,6 +139,58 @@ export function resolveTestSnapshot(snapshot, bundle) {
     }
   }
   return resolved;
+}
+
+function cropReferences(question) {
+  const content = question?.content || {};
+  const context = question?.context || {};
+  const { question_html, question_image_url, mark_scheme_html, mark_scheme_image_url } = content;
+  const { shared_stem_html, stem_image_url, lead_in_image_url, booklet_image_url, erratum_image_url,
+    intros, figures, article, full_scheme_image_url } = context;
+  const paths = (fields) => [...new Set(JSON.stringify(fields).match(/assets\/[a-z]+\/[A-Z0-9_]+\/[A-Za-z0-9_]+\.webp/g) || [])].sort();
+  return {
+    prompt: paths([question_html, question_image_url, shared_stem_html, stem_image_url, lead_in_image_url,
+      booklet_image_url, erratum_image_url, intros, figures, article?.page_image_urls]),
+    scheme: paths([mark_scheme_html, mark_scheme_image_url || (!mark_scheme_html?.trim() ? full_scheme_image_url : null)]),
+  };
+}
+
+async function fingerprintCrops(questions, checksums, signal) {
+  const references = new Map([...questions].map(([id, item]) => [id, cropReferences(item.question)]));
+  const paths = [...new Set([...references.values()].flatMap(ref => [...ref.prompt, ...ref.scheme]))];
+  const hashes = await checksums(paths, { signal });
+  const fingerprint = (refs) => refs.length ? digest(refs.map(path => [path, hashes.get(path) ?? null])) : null;
+  return new Map([...references].map(([id, refs]) => [id, {
+    prompt: fingerprint(refs.prompt), scheme: fingerprint(refs.scheme),
+  }]));
+}
+
+/** Pin the exact crop revisions, even if a later import keeps their URLs unchanged. */
+export async function pinTestCrops(snapshot, questions, { checksums = sourceImageChecksums, signal } = {}) {
+  if (snapshot.cropVersion) return snapshot;
+  const crops = await fingerprintCrops(questions, checksums, signal);
+  const groups = snapshot.groups.map(group => ({ ...group, parts: group.parts.map(part => ({
+    ...part, promptCrops: crops.get(part.id)?.prompt ?? null, schemeCrops: crops.get(part.id)?.scheme ?? null,
+  })) }));
+  const { id, ...data } = snapshot;
+  const pinned = { ...data, groups, cropVersion: 1 };
+  return freeze({ ...pinned, id: `pdf_${digest(pinned).slice(0, 32)}` });
+}
+
+/** Keep question and scheme availability independent when a saved crop was replaced. */
+export async function verifyTestCrops(snapshot, questions, { checksums = sourceImageChecksums, signal } = {}) {
+  if (snapshot.cropVersion !== 1) return questions;
+  const crops = await fingerprintCrops(questions, checksums, signal);
+  const verified = new Map();
+  for (const part of snapshot.groups.flatMap(group => group.parts)) {
+    const current = questions.get(part.id);
+    if (!current) continue;
+    const { prompt, scheme } = crops.get(part.id);
+    verified.set(part.id, {
+      ...current, promptRevised: part.promptCrops !== prompt, schemeRevised: part.schemeCrops !== scheme,
+    });
+  }
+  return verified;
 }
 
 export function scoreTestSnapshot(snapshot, { mode, marks = {}, chosenOptions = [], total }, resolved, { preserve = {} } = {}) {

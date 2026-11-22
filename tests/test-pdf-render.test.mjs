@@ -6,6 +6,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { prepareTestPdf } from '../js/engine/test-pdf-content.js';
 import { createQuestionPdf, createMarkSchemePdf, createCombinedPdf } from '../js/engine/test-pdf-render.js';
 
 let chromium = null;
@@ -42,6 +43,52 @@ test('PDF exports parse as versioned documents with separate and combined sectio
   assert.doesNotMatch(extractHexText(schemeBytes), /Question only content/);
   const combinedSource = extractHexText(combinedBytes);
   assert.ok(combinedSource.indexOf('Question only content') < combinedSource.indexOf('Scheme only content'));
+});
+
+test('choice instructions and full-paper scheme referrals preserve the frozen numbering', async () => {
+  const parts = [
+    { id: 'P1A', label: '(a)', reference: 'Paper Q1(a)', maxMarks: 2 },
+    { id: 'P1B', label: '(b)', reference: 'Paper Q1(b)', maxMarks: 1 },
+    { id: 'P2', reference: 'Paper Q2', maxMarks: 1 },
+  ];
+  const snapshot = { version: 1, title: 'Choice test', totalMarks: 3, groups: [
+    { number: 1, reference: 'Paper Q1', parts: parts.slice(0, 2) },
+    { number: 2, reference: 'Paper Q2', parts: parts.slice(2) },
+  ], choices: [{ count: 1, options: [{ partIds: ['P1B'] }, { partIds: ['P2'] }] }] };
+  const official = 'https://example.org/paper/ms.pdf#page=7';
+  const questions = new Map(parts.map(part => [part.id, {
+    question: { content: { question_html: `<p>Prompt ${part.id}</p>` }, scheme_scope: 'part' },
+    paper: { full_mark_scheme_pdf_url: official },
+  }]));
+  const prepared = await prepareTestPdf(snapshot, questions, { kind: 'combined' });
+  assert.match(prepared.question.instructions, /Answer all questions outside the choice groups/);
+  assert.match(prepared.question.instructions, /option 1 \(Question 1 \(b\)\).*option 2 \(Question 2\)/);
+  for (const groups of [prepared.question.groups, prepared.scheme.groups]) {
+    assert.deepEqual(groups[0].blocks.filter(block => block.role === 'subheading').map(block => block.text), ['Question 1 (a)', 'Question 1 (b)']);
+  }
+  assert.equal(prepared.question.groups.flatMap(group => group.blocks).some(block => block.url === official), false);
+  assert.equal(prepared.scheme.groups[0].blocks.filter(block => block.type === 'link').length, 2);
+  assert.ok(prepared.missing.every(item => item.kind === 'scheme' && item.officialSourceUrl === official));
+  const pdf = await createMarkSchemePdf(prepared.scheme);
+  const source = await pdf.text();
+  assert.match(source, /\/Subtype \/Link/);
+  assert.ok(source.includes(Buffer.from(official).toString('hex')));
+});
+
+test('unavailable required article blocks the question paper while leaving scheme export available', async () => {
+  const part = { id: 'restricted', reference: 'Paper Q8(a)', maxMarks: 4 };
+  const snapshot = { version: 1, groups: [{ number: 1, reference: part.reference, parts: [part] }] };
+  const questions = new Map([[part.id, {
+    question: {
+      content: { question_html: '<p>Explain the article.</p>', mark_scheme_html: '<p>Actual scheme.</p>' },
+      context: { article: { availability: 'restricted' } },
+    },
+  }]]);
+  const prepared = await prepareTestPdf(snapshot, questions, { kind: 'combined' });
+  assert.equal(prepared.canExportQuestions, false);
+  assert.equal(prepared.canExportScheme, true);
+  assert.deepEqual(prepared.missing.map(item => [item.id, item.reference, item.kind]), [[part.id, part.reference, 'question']]);
+  assert.match(prepared.missing[0].reason, /pre-release article/);
 });
 
 test('80 question selection paginates and preserves a long text block', async () => {
@@ -136,6 +183,16 @@ test('browser converts source images and renders sanitized HTML in page and modu
       ],
     }] });
     const main = new Uint8Array(await pdf.arrayBuffer());
+    canvas.width = 100;
+    canvas.height = 420;
+    context.fillStyle = '#fff';
+    context.fillRect(0, 0, 100, 420);
+    context.fillStyle = '#111';
+    for (let row = 20; row < 420; row += 12) context.fillRect(8, row, 80, 3);
+    const tallImage = new Uint8Array(await (await new Promise(resolve => canvas.toBlob(resolve, 'image/png'))).arrayBuffer());
+    const tall = await createQuestionPdf({ title: 'Long crop', compact: true, groups: [{
+      localNumber: '1', blocks: [{ type: 'image', data: tallImage, mimeType: 'image/png', alt: 'Long source crop' }],
+    }] });
     const worker = new Worker('/tests/test-pdf-worker.js', { type: 'module' });
     const workerBytes = await new Promise((resolve, reject) => {
       worker.onmessage = (event) => event.data?.error ? reject(new Error(event.data.error)) : resolve(new Uint8Array(event.data));
@@ -148,9 +205,50 @@ test('browser converts source images and renders sanitized HTML in page and modu
     return {
       main: source(main), mainText: text(main),
       worker: source(workerBytes), workerText: text(workerBytes),
+      tall: await tall.text(), tallText: text(new Uint8Array(await tall.arrayBuffer())),
       mainBase64: btoa(Array.from(main, (byte) => String.fromCharCode(byte)).join('')),
       workerBase64: btoa(Array.from(workerBytes, (byte) => String.fromCharCode(byte)).join('')),
     };
+  });
+  const realCases = await page.evaluate(async () => {
+    const { prepareTestPdf } = await import('/js/engine/test-pdf-content.js');
+    const { createCombinedPdf } = await import('/js/engine/test-pdf-render.js');
+    const { createTestSnapshot, resolveTestSnapshot } = await import('/js/engine/test-snapshot.js');
+    const { linkGroups } = await import('/js/engine/linked-parts.js');
+    const sourceOf = bytes => new TextDecoder().decode(bytes);
+    const pdfText = bytes => [...sourceOf(bytes).matchAll(/<([\da-f]+)> Tj/g)]
+      .map(match => String.fromCharCode(...match[1].match(/.{2}/g).map(byte => Number.parseInt(byte, 16)))).join(' ');
+    const fixtures = [
+      ['maths', 'EDX_9MA0_2023_JUNE_01', 'Q03_U02'],
+      ['maths', 'EDX_8MA0_2019_JUNE_21', 'Q04_U02'],
+      ['maths', 'EDX_9MA0_2018_JUNE_02', 'Q05_U03'],
+      ['gcsemaths', 'EDX_1MA1_2022_JUNE_1H', 'Q06_U03'],
+    ];
+    const result = [];
+    for (const [slug, paperId, suffix] of fixtures) {
+      const { questions, papers } = await (await fetch(`/data/packs/${slug}/${paperId}.json`)).json();
+      const questionsById = new Map(questions.map(question => [question.question_id, question]));
+      const papersById = new Map(papers.map(paper => [paper.paper_id, paper]));
+      const bundle = { subject: { subject_id: questions[0].subject_id }, questionsById, papersById };
+      linkGroups(questionsById, papersById);
+      const id = `${paperId}_${suffix}`;
+      const snapshot = createTestSnapshot({ bundle, ids: suffix === 'Q06_U03' ? [id, `${paperId}_Q06_U02`] : [id] });
+      const prepared = await prepareTestPdf(snapshot, resolveTestSnapshot(snapshot, bundle), { kind: 'combined' });
+      const pdf = await createCombinedPdf(prepared.combined);
+      const bytes = new Uint8Array(await pdf.arrayBuffer());
+      result.push({
+        parts: snapshot.groups[0].parts.map(part => part.id.replace(`${paperId}_`, '')),
+        marks: snapshot.totalMarks,
+        missing: prepared.missing,
+        contextBlocks: prepared.question.groups[0].blocks.filter(block => block.alt?.startsWith('Required context')).length,
+        answerSpaces: prepared.question.groups[0].blocks.filter(block => block.type === 'answer').map(block => block.marks),
+        questionLabels: prepared.question.groups[0].blocks.filter(block => block.role === 'subheading').map(block => block.text),
+        schemeLabels: prepared.scheme.groups[0].blocks.filter(block => block.role === 'subheading').map(block => block.text),
+        text: pdfText(bytes),
+        pdf: suffix === 'Q03_U02' ? btoa(Array.from(bytes, byte => String.fromCharCode(byte)).join('')) : null,
+      });
+    }
+    return result;
   });
   await writeFile('/tmp/ppp-browser-main-image.pdf', Buffer.from(result.mainBase64, 'base64'));
   await writeFile('/tmp/ppp-browser-worker-image.pdf', Buffer.from(result.workerBase64, 'base64'));
@@ -162,6 +260,20 @@ test('browser converts source images and renders sanitized HTML in page and modu
   assert.match(result.mainText, /x\^\(2\)/);
   assert.match(result.mainText, /\(1\)\/\(2\)/);
   assert.match(result.workerText, /a\^\(3\)/);
+  assert.ok((result.tall.match(/\/Subtype \/Image/g) || []).length > 2);
+  assert.match(result.tall, /q 499\.28 0 0/);
+  assert.match(result.tallText, /Long source crop \(continued\)/);
+  assert.deepEqual(realCases.map(item => item.parts), [['Q03_U01', 'Q03_U02'], ['Q04_U02'], ['Q05_U03'], ['Q06_U02', 'Q06_U03']]);
+  assert.equal(realCases[0].marks, 3);
+  assert.equal(realCases[0].contextBlocks, 1);
+  for (const item of realCases) {
+    assert.deepEqual(item.missing, []);
+    assert.equal(item.answerSpaces.length, item.parts.length);
+    assert.equal(item.answerSpaces.reduce((sum, marks) => sum + marks, 0), item.marks);
+    assert.deepEqual(item.questionLabels, item.schemeLabels);
+    assert.ok(item.text.indexOf('Question paper') < item.text.indexOf('Mark scheme'));
+  }
+  await writeFile('/tmp/ppp-verified-linked-export.pdf', Buffer.from(realCases[0].pdf, 'base64'));
 });
 
 function extractHexText(input) {

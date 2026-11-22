@@ -1,5 +1,6 @@
 import { html } from '../core/dom.js';
 import * as api from '../data/api.js';
+import { pinTestCrops } from '../engine/test-snapshot.js';
 import { askOfflineCompletion } from './views/offline-test.js';
 import { openModal, toast } from './ui.js';
 
@@ -56,6 +57,10 @@ async function renderPdf(kind, options, signal, onProgress) {
 }
 
 export async function offerTestPdf({ snapshot, questions, onOpenTest, existing = false }) {
+  const owner = api.currentUser()?.user_id ?? null;
+  const assertOwner = () => {
+    if ((api.currentUser()?.user_id ?? null) !== owner) throw new Error('Your account changed. Open the test again.');
+  };
   let options = { kind: 'question', compact: false };
   for (;;) {
     const selected = await openModal({
@@ -71,6 +76,7 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
     });
     if (!selected) return;
     options = selected;
+    assertOwner();
     const controller = new AbortController();
     let generated;
     const status = await openModal({
@@ -85,7 +91,10 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
         const { signal } = controller;
         import('../engine/test-pdf-content.js')
           .then(async content => {
-            const prepared = await content.prepareTestPdf(snapshot, questions, {
+            const frozen = existing || options.kind === 'scheme' ? snapshot : await pinTestCrops(snapshot, questions, { signal });
+            assertOwner();
+            const alreadySaved = existing || Boolean(api.getCustomTest(frozen.id));
+            const prepared = await content.prepareTestPdf(frozen, questions, {
               ...options, signal, onProgress({ completed, total }) {
                 progress.max = total;
                 progress.value = completed;
@@ -106,8 +115,18 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
               message.textContent = `Laying out the pages (${completed} of ${total})…`;
             });
             if (signal.aborted) return null;
-            if (!existing) await api.saveExportedTest(snapshot);
-            return { blob, missing: options.kind === 'question' ? [] : schemeNotices };
+            assertOwner();
+            let saved = alreadySaved;
+            if (!alreadySaved && options.kind !== 'scheme') {
+              try {
+                await api.saveExportedTest(frozen);
+                saved = true;
+              } catch {
+                // The PDF is available even if account sync or local storage is temporarily unavailable.
+              }
+            }
+            assertOwner();
+            return { blob, saved, alreadySaved, snapshot: frozen, missing: options.kind === 'question' ? [] : schemeNotices };
           })
           .catch(error => ({ problem: error.message || 'Could not prepare this PDF.' }))
           .then(result => {
@@ -122,14 +141,18 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
       const retry = await openModal({
         title: 'PDF unavailable',
         body: html`<p>${generated?.problem || 'Could not prepare this PDF.'}</p>
-          ${generated?.missing?.length ? html`<ul>${generated.missing.map(item => html`<li>${item.reference}: ${item.reason}</li>`)}</ul>` : ''}`,
+          ${generated?.missing?.length ? html`<ul>${generated.missing.map(item => html`
+            <li>${item.reference} · ${item.reason}
+              ${/^https:\/\//i.test(item.officialSourceUrl || '') ? html`<a href="${item.officialSourceUrl}" target="_blank" rel="noopener">Open official source</a>` : ''}
+            </li>`)}</ul>` : ''}`,
         actions: [{ label: 'Back to test', cancel: true }, { label: 'Retry', value: 'retry', variant: 'primary' }],
       });
       if (retry === 'retry') continue;
       return;
     }
+    assertOwner();
     const url = URL.createObjectURL(generated.blob);
-    const file = `${snapshot.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'practice-test'}-${options.kind}.pdf`;
+    const file = `${(snapshot.title || 'practice test').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'practice-test'}-${options.kind}.pdf`;
     let handedOff = false;
     await openModal({
       title: 'Your PDF is ready',
@@ -137,20 +160,29 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
         <div class="row row--tight"><a class="btn btn--primary" data-pdf-handoff href="${url}" download="${file}">Download ${labels[options.kind].toLowerCase()}</a>
           <a class="btn" data-pdf-handoff href="${url}" target="_blank" rel="noopener">Open PDF</a></div>
         <p class="small muted">In Safari, open the PDF and use Share to save it to Files or print it.</p>
+        ${!generated.saved && options.kind !== 'scheme' ? html`<p role="status">The PDF is ready, but the test could not be saved. Prepare it again to make it available for marking later.</p>` : ''}
         ${generated.missing.length ? html`<p class="small muted">Some scheme extracts are unavailable. See the source information beside those questions in the PDF.</p>` : ''}
       </div>`,
       onOpen(dialog) {
         dialog.addEventListener('click', event => {
           if (!event.target.closest('[data-pdf-handoff]')) return;
+          if ((api.currentUser()?.user_id ?? null) !== owner) {
+            event.preventDefault();
+            toast('Your account changed. Open the test again.', { type: 'error' });
+            dialog.close();
+            return;
+          }
           handedOff = true;
           setTimeout(() => { if (dialog.open) dialog.close(); }, 0);
         });
       },
     });
-    setTimeout(() => URL.revokeObjectURL(url), 5 * 60 * 1000);
-    if (handedOff && !existing && options.kind !== 'scheme') {
+    if (handedOff) setTimeout(() => URL.revokeObjectURL(url), 60 * 1000);
+    else URL.revokeObjectURL(url);
+    if (handedOff && generated.saved && !generated.alreadySaved && options.kind !== 'scheme') {
       try {
-        await promptForOfflineAttempt(snapshot, onOpenTest);
+        assertOwner();
+        await promptForOfflineAttempt(generated.snapshot, onOpenTest);
       } catch (error) {
         toast(error.message, { type: 'error' });
       }

@@ -5,7 +5,7 @@ import * as api from '../../data/api.js';
 import { getBundle } from '../../data/content-repository.js';
 import { offlineRetakeId } from '../../data/offline-progress.js';
 import { getMarkingProvider } from '../../engine/marking.js';
-import { resolveTestSnapshot, scoreTestSnapshot } from '../../engine/test-snapshot.js';
+import { resolveTestSnapshot, scoreTestSnapshot, verifyTestCrops } from '../../engine/test-snapshot.js';
 import { exportRetention, offerTestPdf, promptForOfflineAttempt } from '../test-pdf.js';
 import { emptyState, pageHead, toast } from '../ui.js';
 import { renderOfflineMarking } from './offline-test.js';
@@ -50,13 +50,15 @@ export async function mount(element, context) {
   const { snapshot } = test;
   const owner = api.currentUser()?.user_id ?? null;
   context.setTitle(snapshot.title);
-  let resolved = new Map();
+  let verified = new Map();
   let recovery = '';
   try {
-    resolved = resolveTestSnapshot(snapshot, await getBundle(snapshot.subjectId));
+    const resolved = resolveTestSnapshot(snapshot, await getBundle(snapshot.subjectId));
+    verified = await verifyTestCrops(snapshot, resolved);
   } catch {
     recovery = 'The question bank could not be loaded. You can enter an overall score or reopen this test to try again.';
   }
+  const resolved = new Map([...verified].filter(([, item]) => !item.promptRevised));
   const attempts = () => api.offlineAttempts(paperId);
   const active = context.query.attempt ? attempts().find(item => item.session_id === context.query.attempt) : attempts().at(-1);
   if (context.query.attempt && !active) {
@@ -101,7 +103,7 @@ export async function mount(element, context) {
   }
 
   function onExport() {
-    return offerTestPdf({ snapshot, questions: resolved, existing: true });
+    return offerTestPdf({ snapshot, questions: verified, existing: true });
   }
 
   function draw() {

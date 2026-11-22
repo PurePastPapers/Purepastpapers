@@ -147,6 +147,10 @@ def build_paper(paper, research, spec):
                 qr.render(cand['context'][key]['regions'], target)
                 rendered_ctx[key] = rel(target)
             intros.append({'label': f'Question {key}' if '(' not in key else f'Part {key}', 'image_url': rendered_ctx[key]})
+        context = {'intros': intros} if intros else {}
+        source_text = [u['text'], *(cand['context'][key]['text'] for key in u.get('context', []))]
+        if any('item removed due to third party copyright restrictions' in ' '.join(text.lower().split()) for text in source_text):
+            context['required_stimulus_unavailable'] = 'OCR removed required source material from the public question paper due to third-party copyright restrictions.'
         year = 12 if is_as or all(t in as_shared for t in primary) else 13
         q = u['question']
         record = {
@@ -164,7 +168,7 @@ def build_paper(paper, research, spec):
             'content': {'question_html': '', 'question_image_url': rel(image), 'mark_scheme_html': '',
                         'mark_scheme_image_url': rel(scheme_image)},
             'scheme_scope': {'unit': 'part', 'parent': 'parent_part', 'question': 'full_question'}[schemes[u['label']]['scope']],
-            'scheme_question_number': u['label'], 'context': {'intros': intros} if intros else {},
+            'scheme_question_number': u['label'], 'context': context,
             'provenance': {'review_status': 'model_reviewed', 'reviewer_type': 'model',
                            'question_source_sha256': cand['source_sha256'], 'scheme_source_sha256': ms_sha,
                            'source_regions': u['regions'], 'scheme_regions': schemes[u['label']]['regions'],

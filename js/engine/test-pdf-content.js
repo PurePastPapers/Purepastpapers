@@ -1,6 +1,9 @@
+import { sanitizeHtml } from '../core/dom.js';
 import { sourceImageBytes } from '../data/source-images.js';
+import { displayedPartLabel } from './test-snapshot.js';
+import { decodePdfImage } from './test-pdf-render.js';
 
-const SAFE_TAGS = new Set(['P', 'DIV', 'SPAN', 'STRONG', 'B', 'EM', 'I', 'U', 'SUB', 'SUP', 'BR', 'UL', 'OL', 'LI', 'TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD']);
+const PARAGRAPH_TAGS = new Set(['P', 'DIV', 'LI', 'TR', 'CAPTION', 'FIGCAPTION', 'BLOCKQUOTE', 'H3', 'H4', 'H5']);
 const SOURCE_LABELS = {real_past_paper: 'Official past paper', ai_past_paper: 'AI past paper', ai_spec_question: 'AI specification question', predicted_paper: 'AI predicted paper'};
 
 /** Resolve immutable snapshot references into the renderer's selectable content blocks. */
@@ -12,38 +15,51 @@ export async function prepareTestPdf(snapshot, questions, {kind = 'question', si
   const wantSchemes = kind !== 'question';
   const work = snapshot.groups.flatMap(group => (group.parts || []).map(part => ({group, part})));
   const precedingIds = new Set();
-  const referenceById = new Map(work.map(({group, part}) => [part.id, part.label ? `${group.number}${part.label}` : String(group.number)]));
+  const referenceById = new Map(work.map(({group, part}) => [part.id, displayedPartLabel(group.number, part.label)]));
+  const seenBooklets = new Set();
+  const imagePromises = new Map();
+  const assetOptions = { signal, imagePromises };
   const seenSharedSchemes = new Map();
   let completed = 0;
+  const progress = (reference) => {
+    completed++;
+    onProgress?.({ completed, total: work.length, current: reference });
+  };
   for (const group of snapshot.groups) {
     checkAbort(signal);
     const parts = group.parts || [];
-    const scoredIds = new Set();
     const questionBlocks = [];
     const schemeBlocks = [];
     const seenContext = new Set();
+    const seenParents = new Set();
     let sourceLabelAdded = false;
-    let questionUnavailable = false;
 
     for (const part of parts) {
       checkAbort(signal);
       const partIssueStart = missing.length;
+      const localReference = referenceById.get(part.id);
+      const partHeading = {
+        type: 'text', text: localReference, role: 'subheading',
+        caption: `${part.reference} · ${part.maxMarks} ${part.maxMarks === 1 ? 'mark' : 'marks'}`,
+      };
+      if (wantSchemes && parts.length > 1) schemeBlocks.push(partHeading);
       const item = questions.get(part.id);
       if (!item?.question) {
         missing.push({id: part.id, reference: part.reference, kind: 'question', reason: 'Question content is unavailable in the current bank.'});
-        questionUnavailable = true;
         if (wantSchemes) {
           missing.push({id: part.id, reference: part.reference, kind: 'scheme', reason: 'The question record needed to match its mark scheme is unavailable.'});
           schemeBlocks.push({type: 'text', text: `Mark scheme unavailable for ${part.reference}; the matching question record is missing.`, role: 'notice'});
         }
+        progress(part.reference);
         continue;
       }
       const {question, paper} = item;
-      if (wantQuestions) {
+      if (wantQuestions && item.promptRevised) {
+        missing.push({id: part.id, reference: part.reference, kind: 'question', reason: 'The saved version of this question or its required context is unavailable.'});
+      } else if (wantQuestions) {
         for (const dependencyId of question.depends_on_question_ids || []) {
-          if (scoredIds.has(dependencyId) || precedingIds.has(dependencyId)) continue;
+          if (precedingIds.has(dependencyId)) continue;
           missing.push({id: part.id, reference: part.reference, kind: 'dependency', reason: `Required earlier answer ${dependencyId} is not included in this frozen test.`});
-          questionUnavailable = true;
         }
         if (!sourceLabelAdded) {
           const sourceLabel = part.isOfficialSample || question.is_official_sample || paper?.is_official_sample ? 'Official sample assessment'
@@ -52,58 +68,59 @@ export async function prepareTestPdf(snapshot, questions, {kind = 'question', si
           questionBlocks.push({type: 'text', text: `Source: ${sourceLabel}`, role: 'meta'});
           sourceLabelAdded = true;
         }
-        await appendContext(questionBlocks, question.context, part.reference, missing, signal, seenContext);
-        if (question.context?.lead_in_image_url) {
-          await appendImage(questionBlocks, question.context.lead_in_image_url, `Printed lead-in for ${part.reference}`, missing, signal, 'question');
+        const context = question.context || {};
+        if (context.required_stimulus_unavailable) {
+          missing.push({ kind: 'question', reference: part.reference, reason: context.required_stimulus_unavailable });
         }
-        if (question.context?.erratum_image_url && !question.context.shared_stem_html?.includes(question.context.erratum_image_url)) {
-          await appendContextAsset(questionBlocks, question.context.erratum_image_url, `Official erratum for ${part.reference}`, missing, signal, seenContext);
+        const parent = question.parent_question_id || `${question.paper_id}:${question.question_number}`;
+        const showSharedStem = !seenParents.has(parent) && (context.shared_stem_html || context.stem_image_url);
+        if (showSharedStem) {
+          seenParents.add(parent);
+          await appendSharedStem(questionBlocks, context, part.reference, missing, assetOptions, seenContext);
         }
-        for (const intro of question.context?.intros || []) {
-          await appendContextAsset(questionBlocks, intro?.image_url, `${intro?.label || 'Printed introduction'} for ${part.reference}`, missing, signal, seenContext);
+        await appendContextAsset(questionBlocks, context.booklet_image_url, `Source booklet extract for ${part.reference}`, missing, assetOptions, seenContext);
+        if (!showSharedStem || !question.provenance?.source_lead_in_in_stem) {
+          await appendContextAsset(questionBlocks, context.lead_in_image_url, `Printed lead-in for ${part.reference}`, missing, assetOptions, seenContext);
         }
-        for (const figure of question.context?.figures || []) {
-          await appendContextAsset(questionBlocks, figure?.image_url, `${figure?.label || 'Required figure'} (${figure?.source || 'unscored context'})`, missing, signal, seenContext);
+        if (!context.shared_stem_html?.includes(context.erratum_image_url)) {
+          await appendContextAsset(questionBlocks, context.erratum_image_url, `Official erratum for ${part.reference}`, missing, assetOptions, seenContext);
         }
-        const article = question.context?.article;
-        if (article) {
-          for (const [index, url] of (article.page_image_urls || []).entries()) {
-            await appendContextAsset(questionBlocks, url, `Pre-release article page ${index + 1}`, missing, signal, seenContext);
-          }
-          if (!article.page_image_urls?.length && article.url && /^https:/i.test(article.url)) {
-            questionBlocks.push({type: 'text', text: `Official pre-release article: ${article.url}`, role: 'source'});
-          }
+        for (const intro of context.intros || []) {
+          await appendContextAsset(questionBlocks, intro?.image_url, `${intro?.label || 'Printed introduction'} for ${part.reference}`, missing, assetOptions, seenContext);
         }
-        const label = part.label || question.part_label;
-        if (label || new Set(parts.map(candidate => candidate.reference)).size > 1) {
-          questionBlocks.push({type: 'text', text: `${part.reference} · ${part.maxMarks} ${part.maxMarks === 1 ? 'mark' : 'marks'}`, role: 'subheading'});
+        for (const figure of context.figures || []) {
+          await appendContextAsset(questionBlocks, figure?.image_url, `${figure?.label || 'Required figure'} (${figure?.source?.replaceAll('_', ' ') || 'unscored context'})`, missing, assetOptions, seenContext);
         }
-        await appendHtml(questionBlocks, question.content?.question_html, `Question ${part.reference}`, missing, signal, 'question');
-        if (question.content?.question_image_url) await appendImage(questionBlocks, question.content.question_image_url, `Question ${part.reference}`, missing, signal, 'question');
+        await appendBooklets(questionBlocks, question, paper, part.reference, missing, assetOptions, seenBooklets);
+        if (parts.length > 1) questionBlocks.push(partHeading);
+        await appendHtml(questionBlocks, question.content?.question_html, `Question ${part.reference}`, missing, assetOptions, 'question');
+        if (question.content?.question_image_url) await appendImage(questionBlocks, question.content.question_image_url, '', missing, assetOptions, 'question');
         if (!question.content?.question_html?.trim() && !question.content?.question_image_url) {
           missing.push({id: part.id, reference: part.reference, kind: 'question', reason: 'The question has no printable text or question crop.'});
-          questionUnavailable = true;
         }
         if (!compact) questionBlocks.push({type: 'answer', marks: part.maxMarks});
       }
       if (wantSchemes) {
-        await appendScheme(schemeBlocks, question, paper, part, group.number, missing, signal, seenSharedSchemes);
+        await appendScheme(schemeBlocks, question, paper, part, localReference, missing, assetOptions, seenSharedSchemes, item.schemeRevised);
       }
       for (const entry of missing.slice(partIssueStart)) {
         entry.id ||= part.id;
         entry.reference ||= part.reference;
       }
-      scoredIds.add(part.id);
       precedingIds.add(part.id);
-      completed++;
-      onProgress?.({completed, total: work.length, current: part.reference});
+      precedingIds.add(question.question_id);
+      progress(part.reference);
     }
     const marks = parts.reduce((sum, part) => sum + part.maxMarks, 0);
-    if (wantQuestions && !questionUnavailable) questionGroups.push({localNumber: group.number, sourceReference: group.reference, marks, blocks: questionBlocks});
+    if (wantQuestions) questionGroups.push({localNumber: group.number, sourceReference: group.reference, marks, blocks: questionBlocks});
     if (wantSchemes) schemeGroups.push({localNumber: group.number, sourceReference: group.reference, marks, blocks: schemeBlocks});
   }
   const title = snapshot.title || 'Practice test';
-  const instructions = [`Answer all selected questions. Total marks: ${snapshot.totalMarks}.`, ...formatChoices(snapshot.choices || [], referenceById)].join('\n');
+  const choices = snapshot.choices || [];
+  const instructions = [
+    choices.length ? 'Answer all questions outside the choice groups and follow each choice rule below.' : 'Answer all questions.',
+    ...formatChoices(choices, referenceById),
+  ].join('\n');
   for (const entry of missing) {
     const paper = entry.id ? questions.get(entry.id)?.paper : null;
     const sourceUrl = entry.kind === 'scheme'
@@ -124,116 +141,187 @@ export async function prepareTestPdf(snapshot, questions, {kind = 'question', si
 function checkAbort(signal) {
   if (signal?.aborted) throw new DOMException('PDF export cancelled.', 'AbortError');
 }
-async function appendContext(blocks, context, reference, missing, signal, seen) {
+async function appendSharedStem(blocks, context, reference, missing, assets, seen) {
   if (!context) return;
   const sharedKey = context.shared_stem_html ? `html:${context.shared_stem_html}` : '';
   if (sharedKey && !seen.has(sharedKey)) {
     seen.add(sharedKey);
-    await appendHtml(blocks, context.shared_stem_html, `Shared introduction for ${reference}`, missing, signal, 'question');
+    await appendHtml(blocks, context.shared_stem_html, `Shared introduction for ${reference}`, missing, assets, 'question', seen);
   }
-  for (const [url, label] of [[context.stem_image_url, `Required context for ${reference}`], [context.booklet_image_url, `Source booklet for ${reference}`]]) {
-    const key = url ? `image:${url}` : '';
-    if (!url || seen.has(key) || context.shared_stem_html?.includes(url)) continue;
-    seen.add(key);
-    await appendImage(blocks, url, label, missing, signal, 'question');
+  await appendContextAsset(blocks, context.stem_image_url, `Required context for ${reference}`, missing, assets, seen);
+}
+
+async function appendContextAsset(blocks, url, label, missing, assets, seen) {
+  if (!url || seen.has(url)) return;
+  seen.add(url);
+  await appendImage(blocks, url, label, missing, assets, 'question');
+}
+
+async function appendBooklets(blocks, question, paper, reference, missing, assets, seen) {
+  const article = question.context?.article;
+  if (article) {
+    const pages = article.page_image_urls || [];
+    const key = article.url || question.paper_id;
+    if (!pages.length) {
+      missing.push({ kind: 'question', reference,
+        reason: 'The required pre-release article is unavailable in this bank.',
+        ...(isOfficialUrl(article.url) ? { officialSourceUrl: article.url } : {}) });
+    } else if (!seen.has(key)) {
+      seen.add(key);
+      for (const [index, url] of pages.entries()) {
+        await appendImage(blocks, url, `Pre-release article page ${index + 1} of ${pages.length} (unscored context)`, missing, assets, 'question');
+      }
+    }
+  }
+  for (const [url, label] of [
+    [paper?.insert_pdf_url, 'Official insert'],
+    [paper?.resource_booklet_pdf_url, 'Official resource booklet'],
+    [paper?.data_sheet_url, 'Official data sheet'],
+  ]) {
+    if (!isOfficialUrl(url) || seen.has(url)) continue;
+    seen.add(url);
+    blocks.push({ type: 'link', text: `${label} for ${paper.title || question.paper_id} (separate PDF)`, url });
   }
 }
 
-async function appendContextAsset(blocks, url, label, missing, signal, seen) {
-  if (!url || seen.has(`resource:${url}`)) return;
-  seen.add(`resource:${url}`);
-  await appendImage(blocks, url, label, missing, signal, 'question');
-}
-
-async function appendHtml(blocks, source, alt, missing, signal, role) {
+async function appendHtml(blocks, source, alt, missing, assets, role, seen) {
   if (!source?.trim()) return;
-  if (typeof DOMParser === 'undefined') { blocks.push({type: 'html', html: source, role}); return; }
-  const doc = new DOMParser().parseFromString(source, 'text/html');
+  if (typeof document === 'undefined') { blocks.push({ type: 'html', html: source, role }); return; }
+  const template = document.createElement('template');
+  template.innerHTML = sanitizeHtml(source).toString();
   const pieces = [];
+  for (const fraction of [...template.content.querySelectorAll('.frac')].reverse()) {
+    const numerator = fraction.querySelector(':scope > .frac__n');
+    const denominator = fraction.querySelector(':scope > .frac__d');
+    if (numerator && denominator) fraction.textContent = `(${numerator.textContent.trim()})/(${denominator.textContent.trim()})`;
+  }
   const visit = node => {
-    if (node.nodeType === Node.TEXT_NODE) { pieces.push(escapeText(node.nodeValue || '')); return; }
+    if (node.nodeType === Node.TEXT_NODE) { pieces.push(node.nodeValue.replace(/\s+/g, ' ')); return; }
     if (node.nodeType !== Node.ELEMENT_NODE) return;
-    if (['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT'].includes(node.tagName)) return;
     if (node.tagName === 'IMG') {
-      pieces.push({image: node.getAttribute('data-math-image') || node.getAttribute('src'), alt: node.getAttribute('alt') || alt});
+      pieces.push({ image: node.getAttribute('data-math-image') || node.getAttribute('src'), alt: node.getAttribute('alt') || alt });
       return;
     }
-    if (!SAFE_TAGS.has(node.tagName)) { node.childNodes.forEach(visit); return; }
-    const tag = node.tagName.toLowerCase();
-    pieces.push(`<${tag}>`); node.childNodes.forEach(visit); pieces.push(`</${tag}>`);
+    if (node.tagName === 'PRE') {
+      pieces.push({ code: node.textContent });
+      return;
+    }
+    if (node.tagName === 'SUP') pieces.push('^(');
+    if (node.tagName === 'SUB') pieces.push('_(');
+    if (node.tagName === 'LI') {
+      const list = node.parentElement;
+      pieces.push(list.tagName === 'OL' ? `${Array.prototype.indexOf.call(list.children, node) + 1}. ` : '• ');
+    }
+    node.childNodes.forEach(visit);
+    if (node.tagName === 'SUP' || node.tagName === 'SUB') pieces.push(')');
+    if (node.tagName === 'BR' || PARAGRAPH_TAGS.has(node.tagName)) pieces.push('\n');
+    if ((node.tagName === 'TD' || node.tagName === 'TH') && node.nextElementSibling) pieces.push(' | ');
   };
-  doc.body.childNodes.forEach(visit);
-  let html = '';
+  template.content.childNodes.forEach(visit);
+  let text = '';
   for (const piece of pieces) {
-    checkAbort(signal);
-    if (typeof piece === 'string') { html += piece; continue; }
-    if (html.trim()) blocks.push({type: 'html', html, role});
-    html = '';
-    if (!piece.image) missing.push({kind: role, reference: alt, reason: `Required figure in ${alt} has no usable source reference.`});
-    else await appendImage(blocks, piece.image, piece.alt, missing, signal, role);
+    checkAbort(assets.signal);
+    if (typeof piece === 'string') { text += piece; continue; }
+    if (text.trim()) blocks.push({ type: 'text', text, role });
+    text = '';
+    if ('code' in piece) blocks.push({ type: 'text', text: piece.code, role: 'code' });
+    else if (!piece.image) missing.push({ kind: role, reference: alt, reason: `Required figure in ${alt} has no usable source reference.` });
+    else if (seen) await appendContextAsset(blocks, piece.image, piece.alt, missing, assets, seen);
+    else await appendImage(blocks, piece.image, piece.alt, missing, assets, role);
   }
-  if (html.trim()) blocks.push({type: 'html', html, role});
+  if (text.trim()) blocks.push({ type: 'text', text, role });
 }
-function escapeText(value) { return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;'); }
 
-async function appendImage(blocks, url, alt, missing, signal, kind) {
+function isOfficialUrl(value) {
+  if (!value) return false;
+  try { return new URL(value).protocol === 'https:'; } catch { return false; }
+}
+
+async function appendImage(blocks, url, alt, missing, { signal, imagePromises }, kind) {
   checkAbort(signal);
   if (!String(url).startsWith('assets/')) {
-    missing.push({kind, reference: alt, reason: `Required image is not in the local asset catalogue: ${url}`});
+    missing.push({kind, reference: alt || undefined, reason: `Required image is not in the local asset catalogue: ${url}`});
     return;
   }
   try {
-    const image = await sourceImageBytes(url);
-    blocks.push({type: 'image', data: image.data, mimeType: image.mimeType, alt});
+    if (!imagePromises.has(url)) {
+      imagePromises.set(url, sourceImageBytes(url).then(async image => {
+        const [r, i, f, f2] = image.data;
+        if (r !== 82 || i !== 73 || f !== 70 || f2 !== 70 || String.fromCharCode(...image.data.slice(8, 12)) !== 'WEBP') {
+          throw new Error('The source crop is corrupt.');
+        }
+        if (typeof Image === 'function' || typeof createImageBitmap === 'function') {
+          try {
+            const bitmap = await decodePdfImage(new Blob([image.data], {type: image.mimeType}));
+            bitmap.close?.();
+          } catch {
+            throw new Error('The source crop is corrupt or cannot be opened by this browser.');
+          }
+        }
+        return image;
+      }));
+    }
+    const image = await imagePromises.get(url);
+    checkAbort(signal);
+    blocks.push({type: 'image', ...image, alt});
   } catch (error) {
-    missing.push({kind, reference: alt, reason: error?.message || 'Required image could not be loaded.'});
+    checkAbort(signal);
+    missing.push({kind, reference: alt || undefined, reason: error?.message || 'Required image could not be loaded.'});
   }
 }
 
-async function appendScheme(blocks, question, paper, part, groupNumber, missing, signal, seenSharedSchemes) {
+async function appendScheme(blocks, question, paper, part, localReference, missing, assets, seenSharedSchemes, schemeRevised) {
   const content = question.content || {};
   const markup = content.mark_scheme_html || '';
   const fallbackImage = !markup.trim() && !content.mark_scheme_image_url && question.scheme_scope === 'part'
     ? question.context?.full_scheme_image_url
     : null;
   const image = content.mark_scheme_image_url || fallbackImage;
-  const officialSchemeUrl = question.provenance?.scheme_source_url || paper?.full_mark_scheme_pdf_url;
+  const sources = [question.provenance?.scheme_source_url, paper?.full_mark_scheme_pdf_url];
+  const officialSchemeUrl = sources.find(isOfficialUrl);
+  if (schemeRevised) {
+    const reason = 'The mark scheme has changed since this test was exported.';
+    missing.push({ id: part.id, reference: part.reference, kind: 'scheme', reason,
+      ...(officialSchemeUrl ? { officialSourceUrl: officialSchemeUrl } : {}) });
+    blocks.push({ type: 'text', text: reason, role: 'notice' });
+    if (officialSchemeUrl) blocks.push({ type: 'link', text: 'Open the original full-paper mark scheme', url: officialSchemeUrl });
+    return false;
+  }
   if (!markup.trim() && !image) {
     missing.push({id: part.id, reference: part.reference, kind: 'scheme', reason: officialSchemeUrl ? 'No scheme extract is available in this bank. The official full-paper scheme is linked below.' : 'No mark scheme is available for this question.', ...(officialSchemeUrl ? {officialSourceUrl: officialSchemeUrl} : {})});
     if (officialSchemeUrl) {
       blocks.push({type: 'text', text: 'Full-paper mark scheme · may include other questions.', role: 'notice'});
-      blocks.push({type: 'text', text: `Official source: ${officialSchemeUrl}`, role: 'source'});
+      blocks.push({type: 'link', text: 'Open the official mark scheme', url: officialSchemeUrl});
     } else blocks.push({type: 'text', text: `Mark scheme unavailable for ${part.reference}.`, role: 'notice'});
     return false;
   }
   const scope = fallbackImage ? 'full_question' : question.scheme_scope || 'full_question';
   const questionScope = question.scheme_question_number || question.parent_question_id || question.question_number || part.reference;
-  const schemeKey = scope === 'part' ? '' : `${paper?.paper_id || ''}:${scope}:${questionScope}:${image || markup}`;
+  const schemeKey = ['part', 'whole_question'].includes(scope) ? '' : `${paper?.paper_id || ''}:${scope}:${questionScope}:${image || markup}`;
   if (schemeKey && seenSharedSchemes.has(schemeKey)) {
-    blocks.push({type: 'text', text: `Same ${scope === 'parent_part' ? 'whole-part' : 'full-question'} scheme as Question ${seenSharedSchemes.get(schemeKey)} above; it also covers ${part.reference}.`, role: 'notice'});
+    blocks.push({type: 'text', text: `Same ${scope === 'parent_part' ? 'whole-part' : 'full-question'} scheme as ${seenSharedSchemes.get(schemeKey)} above; it also covers ${part.reference}.`, role: 'notice'});
     return true;
   }
   if (fallbackImage) {
     blocks.push({type: 'text', text: `Full-question scheme fallback · includes other parts of ${part.reference}.`, role: 'notice'});
-    if (officialSchemeUrl) blocks.push({type: 'text', text: `Official source: ${officialSchemeUrl}`, role: 'source'});
+    if (officialSchemeUrl) blocks.push({type: 'link', text: 'Open the official mark scheme', url: officialSchemeUrl});
   } else if (scope === 'full_question') {
-    blocks.push({type: 'text', text: `Full-question scheme · includes other parts of ${part.reference}.`, role: 'notice'});
-    if (officialSchemeUrl) blocks.push({type: 'text', text: `Official source: ${officialSchemeUrl}`, role: 'source'});
+    blocks.push({type: 'text', text: question.part_label ? `Full-question scheme · includes other parts of ${part.reference}.` : 'Full-question scheme', role: 'notice'});
+    if (officialSchemeUrl) blocks.push({type: 'link', text: 'Open the official mark scheme', url: officialSchemeUrl});
   } else if (scope === 'parent_part') {
     blocks.push({type: 'text', text: `Scheme scope: full part ${question.scheme_part || ''}.`, role: 'notice'});
-  } else {
-    blocks.push({type: 'text', text: `${part.reference} · ${part.maxMarks} marks`, role: 'subheading'});
   }
   const issueCount = missing.length;
-  if (markup) await appendHtml(blocks, markup, `Mark scheme for ${part.reference}`, missing, signal, 'scheme');
-  if (image) await appendImage(blocks, image, `Mark scheme for ${part.reference}`, missing, signal, 'scheme');
+  if (markup) await appendHtml(blocks, markup, `Mark scheme for ${part.reference}`, missing, assets, 'scheme');
+  if (image) await appendImage(blocks, image, `Mark scheme for ${part.reference}`, missing, assets, 'scheme');
   const schemeIssue = missing.slice(issueCount).find(entry => entry.kind === 'scheme');
   const available = !schemeIssue;
   if (schemeIssue) {
-    schemeIssue.officialSourceUrl ||= paper?.full_mark_scheme_pdf_url;
-    blocks.push({type: 'text', text: `Mark scheme asset unavailable for ${part.reference}.${schemeIssue.officialSourceUrl ? ` Official source: ${schemeIssue.officialSourceUrl}` : ''}`, role: 'notice'});
+    schemeIssue.officialSourceUrl ||= officialSchemeUrl;
+    blocks.push({type: 'text', text: `Mark scheme asset unavailable for ${part.reference}.`, role: 'notice'});
+    if (isOfficialUrl(officialSchemeUrl)) blocks.push({type: 'link', text: 'Open the official mark scheme', url: officialSchemeUrl});
   }
-  if (available && schemeKey) seenSharedSchemes.set(schemeKey, groupNumber);
+  if (available && schemeKey) seenSharedSchemes.set(schemeKey, localReference);
   return available;
 }
 

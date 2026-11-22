@@ -52,6 +52,7 @@ function snapshotParts(snapshot, questions) {
     groupReference: group.reference,
     question: resolvedQuestion(questions, part.id),
     paper: resolvedPaper(questions, part.id),
+    schemeRevised: Boolean(safeMapGet(questions, part.id)?.schemeRevised),
   })));
 }
 
@@ -125,18 +126,20 @@ export function renderOfflineMarking(element, {
     const display = displayedPartLabel(part.groupNumber || index + 1, part.label);
     const selected = !byChoiceIds.has(part.id) || partsInSelectedChoices().has(part.id);
     const value = Object.prototype.hasOwnProperty.call(marks, part.id) ? marks[part.id] : '';
-    const schemePresent = Boolean(question.content?.mark_scheme_html || question.content?.mark_scheme_image_url);
+    const schemePresent = !part.schemeRevised && (question.content?.mark_scheme_html || question.content?.mark_scheme_image_url);
+    const sourceScheme = [question.provenance?.scheme_source_url, part.paper?.full_mark_scheme_pdf_url].find(url => url && isSafeUrl(url));
     return html`<article class="card ruled stack offline-test__part">
       <header class="row row--between">
         <div><h2 class="h2">${display}</h2><p class="small muted">${reference || 'Original source reference unavailable'}</p></div>
         <span class="marks-pill">${max} ${max === 1 ? 'mark' : 'marks'}</span>
       </header>
       <details class="fold"><summary>Show the question</summary>${questionBody(question)}</details>
-      <section><p class="field__label">Mark scheme for ${display}</p>${markSchemeBody(question)}</section>
+      ${schemePresent ? html`<section><p class="field__label">Mark scheme for ${display}</p>${markSchemeBody(question)}</section>` : ''}
       ${mode === 'parts' && selected ? html`<div class="offline-test__picker">${markPicker({ id: part.id, max, value, attr: 'offline-mark', label: `Marks for ${display}` })}</div>` : ''}
       ${mode === 'parts' && !selected ? html`<p class="small muted">This alternative is not included in the score.</p>` : ''}
       ${mode === 'overall' ? html`<p class="small muted">${hasSavedResult() ? `${saved.marks?.[part.id] ?? '—'} / ${max} marks` : 'Enter an overall test score below.'}</p>` : ''}
-      ${!schemePresent ? html`<p class="small muted">No mark scheme is available in this question record. Check the official source for the matching scheme${part.paper?.title ? ` for ${part.paper.title}` : ''}.</p>${isSafeUrl(part.paper?.full_mark_scheme_pdf_url) ? html`<a href="${part.paper.full_mark_scheme_pdf_url}" target="_blank" rel="noopener">Open the full paper mark scheme</a>` : part.paper?.official_source_url && isSafeUrl(part.paper.official_source_url) ? html`<a href="${part.paper.official_source_url}" target="_blank" rel="noopener">Find the matching mark scheme on the official source</a>` : ''}` : ''}
+      ${!schemePresent ? html`<p class="small muted">${part.schemeRevised ? 'The saved version of this mark scheme extract is unavailable.' : 'No mark scheme extract is available for this question.'}</p>
+        ${sourceScheme ? html`<a href="${sourceScheme}" target="_blank" rel="noopener">Open the official mark scheme for the full paper</a>` : part.paper?.official_source_url && isSafeUrl(part.paper.official_source_url) ? html`<a href="${part.paper.official_source_url}" target="_blank" rel="noopener">Find the matching mark scheme on the official source</a>` : ''}` : ''}
     </article>`;
   };
 
