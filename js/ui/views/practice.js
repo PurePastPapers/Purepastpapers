@@ -885,8 +885,8 @@ export async function mount(element, context) {
             </section>` : ''}
             <div class="row row--tight">
               <button type="button" class="btn btn--sm ${schemeOpen ? '' : 'btn--primary'}" data-scheme="${question.question_id}" aria-expanded="${schemeOpen}">${schemeOpen ? html`${icon('chevronLeft', { size: 15 })} Back to question` : html`${icon('eye', { size: 15 })} Show mark scheme`}</button>
-              <button type="button" class="btn btn--sm ${schemeOpen ? 'btn--primary' : ''}" data-next="${qid}">Next question ${icon('chevronRight', { size: 15 })}</button>
               ${reportButton(qid, paper)}
+              <button type="button" class="btn btn--sm ${schemeOpen ? 'btn--primary' : ''}" data-next="${qid}">Next question ${icon('chevronRight', { size: 15 })}</button>
               ${paper ? html`<a class="btn btn--sm" href="${links.paper(subjectId, question.paper_id)}">View full paper</a>` : ''}
             </div>
           </div>

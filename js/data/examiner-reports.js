@@ -137,7 +137,7 @@ function sectionBlock(section, report, { relation = 'own' } = {}) {
     : relation === 'section' ? `On ${sectionScope} as a whole` : '';
   const shared = section.targets?.length > 1;
   const page = section.pages?.[0];
-  const pageOnly = !paras.length && !section.img?.length && page;
+  const pageOnly = !paras.length && !section.img?.length && !figures.length && page;
   const exemplars = (section.exemplar_links || []).map((entry) => ({...entry, url: pageLink(entry.source_url, entry.page)})).filter((entry) => entry.url);
   return html`<article class="er-sec">
     <p class="er-sec__head">${section.heading}${badge ? html`<span class="er-sec__badge">${badge}</span>` : ''}${shared ? html`<span class="er-sec__badge">Shared feedback</span>` : ''}</p>
@@ -180,13 +180,14 @@ function render(panel, report) {
   }
   if (group) {
     const { whole, sectionWide, perPart } = groupSections(units, report);
+    if (!whole.length && !sectionWide.length && ![...perPart.values()].some((entry) => entry.matches.length)) return noComment(report, paper);
     const blocks = [];
     for (const section of sectionWide) blocks.push(sectionBlock(section, report, { relation: 'section' }));
     for (const section of whole) blocks.push(sectionBlock(section, report, { relation: 'whole' }));
     for (const part of units) {
       const entry = perPart.get(part.question_id);
-      if (!entry?.matches.length) continue;
       blocks.push(html`<p class="er-part">Part ${partName(part)}</p>`);
+      if (!entry.matches.length) blocks.push(html`<p class="small muted">No separate feedback for this part.</p>`);
       for (const match of entry.matches) {
         const first = match.firstShownWith && units.find((unit) => unit.question_id === match.firstShownWith);
         blocks.push(first
@@ -194,7 +195,6 @@ function render(panel, report) {
           : sectionBlock(match.section, report, { relation: match.relation }));
       }
     }
-    if (!blocks.length) return noComment(report, paper);
     const partSections = [...perPart.values()].flatMap((entry) => entry.matches.map((match) => match.section));
     const firstPage = [...partSections, ...whole, ...sectionWide][0]?.pages?.[0];
     return html`${blocks}${sourceLine(report, paper, firstPage)}`;

@@ -1,208 +1,97 @@
 # Examiner reports by question
 
-Every question and part in a subject with linked examiner reports gets an **Examiner's report**
-button. It opens the official report's own comments on that question, as printed, in a
-panel under the question card. Built 20 November 2026 for A-level Maths (9MA0/8MA0),
-Physics (9PH0/8PH0) and Biology (9BN0/8BN0); History and Geography are planned below.
+Practice shows **Examiner’s report** beside **Show mark scheme** for papers with reports.
+Either control can open independently. A report stays open when the question switches
+between the question paper and the mark scheme. Linked cards show shared comments once
+and identify the relevant parts. In a timed session the report first becomes available
+during marking. Mark-as-you-go sets make the report available after the mark scheme
+is revealed. In marking and review the fold loads its contents when opened.
 
-## How it looks and behaves
+## Sources and coverage
 
-The button sits beside **Show mark scheme** (single questions) or **Show mark scheme for
-all parts** (linked questions). The report is independent of the mark scheme: it opens
-under whichever is showing and stays open until it is closed with its own button or the ×.
+The report must match the active pack's paper ID, subject ID and official source URL.
+The source is the publisher's PDF. Each report records its SHA-256, PDF page count and
+the actual PDF pages for each excerpt or page-only match. Printed question labels
+are kept in the excerpt headings. The matcher normalizes labels for comparison and
+checks any section, option or route supplied with the target.
 
-| Situation | What the student sees |
+The project owner confirmed on 22 November 2026 that permission covers publishing
+examiner-report excerpts and crops for all seven subjects below. The existing Biology A
+record also names examiner reports. Candidate responses are linked at the relevant
+PDF pages. AQA Politics Answers and Commentaries for the June 2022 questions are
+linked as sample-answer commentary under their own label.
+
+| Bank | Coverage decisions |
 | --- | --- |
-| Question showing, report opened | Panel under the question with "Examiners discuss the answers here. Try the question first." |
-| Mark scheme open, report opened | Panel under the mark scheme, so scheme and comments are read together, above the answer box and mark buttons on a phone. No warning. |
-| Report open, then mark scheme opened or closed | Report stays where it is, under the new view. |
-| Report opened below the screen | Scrolled into view; if it is already visible nothing jumps. Focus moves to its close button. |
-| Part with its own comment, e.g. 3(b) | The 3(b) comment, plus sub-parts 3(b)(i), (ii) if the report splits it. |
-| Report comments on the whole question too | "On the whole question" comment first, then the part's own. |
-| Only a parent-part comment, e.g. 3(b) for unit 3(b)(i) | "The report comments on this part as a whole." |
-| Only a whole-question comment | "The report comments on the whole question, not this part on its own." |
-| No comment on this question | "The examiners didn't comment on this question" with the paper's general comments folded underneath. |
-| Linked question (parts shown together) | One panel for the group: the whole-question comment once, then each part's; a comment shared by two parts appears once with a pointer. |
-| Comment shows example scripts | The report's "Examiner Comments" on them fold under "Comments on 2 example responses (2)", with a link to the PDF page where the scripts are printed. |
-| Report gives an "Examiner Tip" | Shown as a highlighted "Examiner tip" line under the comment. |
-| Comment contains equations (all Maths, some Physics/Biology) | The comment is shown as a crop of the printed report, so fractions, powers and brackets stay exact; the text is the image's alt text. |
-| Pearson published no report ("insufficient entries") | No button. |
-| Paper's report not split yet | No button; the small "Official examiner's report" PDF link shows as before. |
-| Report fails to load (offline) | Says so, with a link to the full PDF. |
-| Question set (test or mark-as-you-go) | Nothing while answering. After **Mark scheme** is revealed, and on the marking and review screens, a closed "Examiner's report" fold under the scheme. |
+| Edexcel Maths 8MA0/9MA0 | Includes the October 2020 8MA0/21 report under its publisher's unusual file name. Verified the split between Q11(a) and Q11(b) in the October 2020 9MA0/01 report. |
+| Edexcel Biology A 8BN0/9BN0 | Includes November 2021 9BN0/01 and /03 with printed short headings. October 2020 AS notices say no reports were published. A public 8BN0/02 June 2022 report was not found. |
+| Edexcel Physics 8PH0/9PH0 | Includes October 2020 9PH0/01. June 2024 9PH0/01 has verified page links for Q11–18. Its custom fonts make the text layer unreadable. Candidate answer sheets with similar numbers were excluded when checking the page anchors. Both autumn 2021 AS PDFs are no-report notices. |
+| Edexcel History 9HI0 Route H | Supports 1H, 2H.2 and 33. Shared 2H reports omit 2H.1 feedback and keep 2H.2 Q2, Q5 and Q6. The June 2024 1H and 2H text layers are unreadable. Their question headings were visually checked and link to exact PDF pages. Four publisher PDFs are no-report notices. |
+| AQA Politics 7152 | 11 active reports have matching booklets. Six November papers have no public report. June 2025 Paper 1 has an official report but no active question pack. Its source is recorded in [availability.json](../data/imports/reports/availability.json). |
+| AQA Geography 7036/7037 | 18 reports are integrated. Six newer A-level reports are organised by mark or assessment objective. Their cards show proven excerpts and candidate-response links, with the full PDF for further feedback. Four administered booklets have no public report. |
+| OCR Computer Science H046/H446 | 16 question-level reports and two November 2021 general reports. The June 2022–2025 H446/02 Section B start questions are checked against each printed paper. Candidate responses and the examiner's printed Section B code example are presented separately. |
 
-Every panel ends with "From the official Pearson Edexcel examiner's report, June 2019, quoted
-as printed. Open page 7", linking to the PDF at that page.
+Official specimen papers are excluded from report availability totals. Scope counts
+in `coverage.mjs` count each card by its strongest match and additionally count
+section feedback alongside a more specific match. A card without a match may belong
+to a multiple-choice item or a question the publisher did not remark on. Reports with
+unreadable text and verified page links have their own status. Reports with no
+question-level feedback and a verified paper overview use `general_only`.
 
-## Files
+## Data and tools
 
-| Path | What |
+| Path | Purpose |
 | --- | --- |
-| `tools/reports/extract.py` | Splits report PDFs into sections at the report's own headings. `--self-test` runs it on a generated Pearson-style report. |
-| `data/reports/<slug>/<PAPER_ID>.json` | One paper's report text (`examiner-report-text-v1`). |
-| `data/reports/index.json` | Which papers have a split report. Loaded once, only when a panel opens. |
-| `js/engine/examiner-report.js` | Matches sections to a question or part at run time (no pack changes). |
-| `js/data/examiner-reports.js` | The panel, the session fold, loading and caching. |
-| `tests/examiner-report.test.mjs` | Matching rules, every Maths/Physics/Biology unit's parts, report file shape. |
-| `tools/browser-examiner-report.cjs` | Browser check of every situation in the table, at 1280 and 390 px. Serves its own fixture report. |
+| `data/reports/index.json` | Lists report files by paper ID and records verified publisher notices where no report exists. |
+| `data/reports/<bank>/<PAPER_ID>.json` | Source identity, checksum, page count, review status, general feedback and scoped sections. |
+| `data/imports/reports/availability.json` | Source evidence for no-report notices and known reports outside the active packs. |
+| `js/engine/examiner-report.js` | Matches printed questions, parts, parent parts, grouped targets and sections. |
+| `js/data/examiner-reports.js` | Session fold, Practice panel, official source links, crop zoom and loading. |
+| `tools/reports/extract.py` | Common Pearson and Politics extraction plus index generation. |
+| `tools/reports/{history,geography,computing}.py` | Report extractors for the three board layouts. |
+| `tools/reports/stem_gaps.py` | Rebuilds identified reports with layout exceptions and page-only mappings. |
+| `tools/reports/biology_2025.py` | Restores verified short headings and page carryover on AS Biology Paper 1, June 2025. |
+| `tools/reports/visible_boxes.py` | Rebuilds verified Physics comment and tip boxes affected by off-page text. |
 
-### Text first, crops only for equations
+A section target can be `{"q":"3","part":"(b)(i)"}`, `{"q":"1","part":"01.1"}`
+or `{"section":"A"}`. An exact target can also constrain its section, route or option.
+When the pack has no section field, a verified printed section can enumerate its
+question numbers with `{"section":"A","questions":["1","2"]}`. Multiple targets
+identify grouped feedback. An empty paragraph list with verified pages gives a
+page-specific PDF link. Candidate-response figures carry a page or page range.
+Figures such as an examiner diagram have their own label.
 
-The image catalogues are about 0.92 GB against the 1.15 GB test limit (`docs/SITE-SIZE.md`),
-so whole-report crops (~130 MB) are out. Text is 20–40 KB a paper, reflows on a phone and
-is searchable. Equations do not survive as text (pdftotext turns a stacked fraction into
-"2 2 x x 4 4"), so:
+Maths comments with equations use crops. In Physics and Biology, only paragraphs
+containing equations are cropped. OCR Computer Science retains one crop for code
+indentation. Report crops count towards [the site-size check](SITE-SIZE.md).
 
-- **Maths** (`WHOLE_SECTION_CROPS` in `extract.py`): every question comment that contains
-  an equation is one crop per page of the printed comment (150 dpi greyscale WebP, about
-  0.7 MB a paper). Cutting at paragraph boundaries around displayed equations proved
-  unreliable on real reports; whole-comment crops never cut a line.
-- **Physics and Biology**: only paragraphs that contain an equation are cropped.
+## Regenerate and verify
 
-An equation is found from the PDF itself: symbol fonts (Symbol, MT Extra, Cambria Math),
-private-use glyphs (stretchy brackets), small raised or lowered figures, and stray
-characters off the text baseline. Crops count towards `tests/site-size.test.mjs`.
-
-Example scripts (candidates' handwritten answers) are not reproduced: the panel links to
-the page they are printed on.
-
-### Report file
-
-```json
-{
-  "format": "examiner-report-text-v1",
-  "paper_id": "EDX_9PH0_2019_JUNE_01",
-  "source_url": "https://qualifications.pearson.com/…/9PH0_01_pef_20190815.pdf",
-  "source_sha256": "…", "source_pages": 18, "extracted_on": "2026-11-20",
-  "review_status": "unreviewed",
-  "general": {"pages": [3], "paras": [{"k": "p", "t": "…"}]},
-  "summary": {"pages": [18], "paras": [{"k": "li", "t": "…"}]},
-  "sections": [
-    {"id": "s4", "heading": "Question 3 (b)(i)", "targets": [{"q": "3", "part": "(b)(i)"}],
-     "pages": [6, 7], "paras": [{"k": "p", "t": "…"}], "figures": [{"page": 7, "count": 2}]}
-  ]
-}
-```
-
-`k` is `p` (paragraph), `li` (bullet), `h` (a bold line inside a section, such as
-"Example 1"), `ex` (an "Examiner Comments" box about an example script) or `tip` (an
-"Examiner Tip" box). Those boxes print in two columns side by side; the extractor reads
-them as columns, not across. In newer reports the "Examiner Comments" label is an image, so
-a comment is recognised by its indent instead: text more than 40 pt right of the margin
-where that page side's "Question …" headings sit (odd and even pages differ). Tips there
-cannot be told from comments and fold with them. A paragraph or section with `img` is shown as those crops
-(`{"src": "maths/img/<PAPER>_s4_p5.webp", "w": 741, "h": 433}`, sizes in PDF points ×1.5). A heading such as "Questions 4 and 5" or "Question 2(a) and (b)" has several
-targets; it is shown with each.
-
-## Running the extraction (needed before any report text appears)
-
-The button appears only for papers listed in `data/reports/index.json` (empty until the
-first run), so nothing changes for students until reports are split. The split needs the PDFs from
-`qualifications.pearson.com`, which this repository's ordinary sessions cannot reach. Run
-it in the owner's **Purepastpapers** cloud environment (the one that allows Pearson and
-AQA hosts), or save the PDFs locally:
+Supply original PDFs under their paper IDs or publisher file names. The different
+board extractors read their recorded source inventories and check source identities
+or hashes. The shared extractor accepts `--paper PAPER_ID` to select specific papers.
+Use the STEM helper for the short headings, verified board misprints, or unreadable
+text layers described above.
 
 ```sh
 python3 tools/reports/extract.py --self-test
-python3 tools/reports/extract.py --subject maths   --fetch --show
-python3 tools/reports/extract.py --subject physics --fetch --show
-python3 tools/reports/extract.py --subject biology --fetch --show
-# or, with the PDFs saved under their URL file names (e.g. 9PH0_01_pef_20190815.pdf):
-python3 tools/reports/extract.py --subject physics --pdf-dir ~/Downloads/pefs
-npm test && node tools/browser-examiner-report.cjs
+python3 tools/reports/extract.py --subject politics --pdf-dir /path/to/pdfs
+python3 tools/reports/history.py --pdf-dir /path/to/pdfs
+python3 tools/reports/geography.py --pdf-dir /path/to/pdfs --output-dir data/reports/geography
+python3 tools/reports/computing.py --pdf-dir /path/to/pdfs
+python3 tools/reports/stem_gaps.py /path/to/pdfs --existing-fixes
+python3 tools/reports/visible_boxes.py /path/to/pdfs
+python3 tools/reports/biology_2025.py /path/to/pdfs/EDX_8BN0_2025_JUNE_01.pdf
+python3 tools/reports/extract.py --index-only
+node tools/reports/coverage.mjs --all
+npm run validate
+npm test
+node tools/browser-examiner-report.cjs
+node --test tests/site-size.test.mjs
 ```
 
-Published 21 November 2026: Maths 54 of 54 reports, Physics 43 of 47, Biology 42 of 46
-(139 papers). Not published, on purpose: 9PH0 Paper 1 2024 (text in fonts without a
-character map; OCR misread question numbers), and 2020-21 reports that give only general
-comments or say no report was produced (8PH0 October 2021 Papers 1 and 2, 9PH0 October 2020
-Paper 1, 8BN0 October 2020 Papers 1 and 2, 9BN0 November 2021 Papers 1 and 3). Official
-samples have no report. Papers without a report show no button.
-
-Parts without a comment are almost all multiple-choice items, which the reports cover
-only as a statistics table (Physics) or skip (Biology).
-
-`node tools/reports/coverage.mjs <slug> [--all]` lists, per paper, how many units get
-their own, a parent-part, a whole-question or no comment, and flags papers where most get
-none (usually unrecognised headings).
-
-Getting the PDFs: Pearson is blocked in this repository's cloud sessions, and the Claude
-desktop app's browser asks where to save **every** download (147 Save dialogs). Use
-`--fetch` where Pearson is reachable, or `curl` in the owner's own Terminal into a folder
-(no dialogs), then `--pdf-dir`.
-
-Real-report quirks handled (seen 21 November 2026): "Question 1 (Mean Mark 2.6 out of 3)"
-and "Question 1." headings (Maths); "Question 18 (b) (i) - (ii)" ranges (Physics); a
-"Question N" heading at the very top of a page is not a running header; the 8PH0 Paper 2
-2021 PDF only says no report was published.
-
-**Check before publishing:**
-
-1. `--show` prints each paper's headings. Look for papers with no sections (headings not
-   bold, or a new style such as "Q01 (a)") and for questions split mid-comment.
-2. For each subject, open three papers' panels across the years and compare with the PDF:
-   first and last question, a multi-part question, a "Questions 4 and 5" heading, a page
-   break inside a comment.
-3. Check that running headers, page numbers and the cover's "Edexcel and BTEC
-   Qualifications" text do not appear in any section, and that nothing after "Grade
-   boundaries" is kept.
-4. Set `review_status` to `model_reviewed` only after that read; never call it teacher
-   reviewed.
-5. Rights: the Biology rights record names examiner reports; confirm the Maths and
-   Physics permission covers them too before pushing the data.
-
-Data size: run `node --test tests/site-size.test.mjs` (report text is not in the image
-catalogues, but keep an eye on the Pages artifact in the deploy log).
-
-## Plan: A-level History (Edexcel 9HI0, Route H)
-
-27 booklets (1H, 2H, 33; 2017–2025), 117 whole-question essays, one Pearson report per
-booklet (27 linked). Matching is simpler than science (no parts), the reports are harder.
-
-1. **Read three real reports first** (1H, 2H, 33) in the Purepastpapers environment.
-   History PEFs are organised by **section** ("Section A", "Section B") and question
-   *type* more than by question number; many comments name no number at all, and much of
-   the length is example scripts with marginal commentary (images).
-2. **Heading rules** (`extract.py`): add a `history` subject with section headings
-   ("Section A", "Section B: Question 3") as targets `{section: "A"}` and keep "Question 3"
-   targets. Map sections to questions from each question's choice group / `section`
-   field already in the packs (33: Section A Q1, Section B Q2/3, Section C Q4/5).
-3. **2H covers two options.** The 9HI0/2H report discusses 2H.1 and 2H.2; the site has
-   only 2H.2 (printed questions 2, 5, 6). Keep only targets for 2H.2's printed numbers
-   and the 2H.2 headings; drop 2H.1 comments.
-4. **Matcher**: extend `sectionsFor` with a `section` relation ("On Section B as a whole")
-   shown when no question-level comment exists. This is likely the common case.
-5. **Example scripts**: the comments around them ("This response was placed in Level 4
-   because…") are the most useful part. Keep the text; link the figure page. Consider
-   cropping the level-judgement boxes only if size allows (measure first; History's
-   catalogues are small, about 16 MB).
-6. Tests: a History fixture with section-only headings; the 2H.1 exclusion; the browser
-   check extended with one History question. Then the same review steps as above.
-
-## Plan: A-level Geography (AQA 7037/7036)
-
-26 booklets, 605 printed parts ("1.1"–"5.5"); reports linked for 18 (none for 7036
-November 2020 and some 2021 series; record those as unavailable, do not substitute).
-
-1. **Rights first**: the recorded AQA permission (16 November 2026) covers papers and mark
-   schemes. Confirm it covers AQA "Reports on the Examination" before publishing any text.
-2. **Hosts**: reports come from `cdn.sanity.io` (AQA's new file store) with opaque file
-   names, so `--pdf-dir` lookups must use the paper ID (save as `<PAPER_ID>.pdf`) and
-   `--fetch` must follow the URL as stored.
-3. **Heading rules**: AQA writes "Question 01.1", "01.1", "Questions 02.1–02.3", and
-   option sections ("Section B: Coastal systems and landscapes", where questions 2, 3, 4
-   are alternatives). Add an AQA grammar for `NN.N` parts and ranges; store parts as
-   "1.1" and teach `normPart`/`unitParts` that form (the packs' `part_label` is already
-   "1.1").
-4. **Shared reports**: AQA sometimes writes one report per component across options, so
-   one file serves several questions with the same number in different sections only if
-   numbering differs; check that question numbers are unique per booklet before relying
-   on them (they are in the current packs: options take different numbers).
-5. **Long answers** (9- and 20-mark): AQA comments are question-level and fit the
-   existing panel. Fieldwork (Section B of Paper 2) often has a combined comment; that is
-   the "whole question" case already handled.
-6. Tests and checks as for History, plus a fixture with "01.1"-style headings and a
-   range heading.
-
-Order: Geography first (closer to the science format, question-numbered comments), then
-History (needs the section relation and option filtering).
+Compare first and last headings, grouped parts, candidate-response captions, page
+breaks and section boundaries with the source PDF and relevant card. Review exact
+and negative paper, part, route and option matches. Use `model_reviewed` when the
+report is checked to that level. Sampled visual review alone leaves the report
+`unreviewed`.

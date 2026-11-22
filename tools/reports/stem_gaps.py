@@ -269,7 +269,12 @@ def repair_physics(extract, repo, pdf_dir, output, paper_id, fixes):
     path, report, _ = verified_existing_source(repo, pdf_dir, 'physics', paper_id)
     sections = {s['id']: s for s in report['sections']}
     for key, (question, *parts) in fixes.items():
-        section = sections[key]
+        section = sections.get(key)
+        if section is None and (paper_id, key) == ('EDX_8PH0_2017_JUNE_01', 's21'):
+            # The visible-page repair merges the duplicate with s20.
+            section = sections['s20']
+        if section is None:
+            raise ValueError(f'{paper_id}: missing report section {key}')
         if section['targets'][0]['q'] != question:
             raise ValueError(f'{paper_id}: {key} is not Q{question}')
         section['targets'] = [{'q': question, 'part': part} for part in parts]

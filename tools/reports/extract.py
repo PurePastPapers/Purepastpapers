@@ -150,6 +150,15 @@ def read_layout(pdf):
         height, width = float(page.get('height')), float(page.get('width'))
         fragments, images = [], []
         for node in page:
+            if node.tag not in ('text', 'image'):
+                continue
+            position = {key: float(node.get(key)) for key in ('top', 'left', 'width', 'height')}
+            # Some Pearson spreads carry off-page text from the neighbouring page.
+            # Remove it before sorting fragments so it cannot enter a comment or tip.
+            if (position['left'] >= width or position['top'] >= height
+                    or position['left'] + position['width'] <= 0
+                    or position['top'] + position['height'] <= 0):
+                continue
             if node.tag == 'text':
                 text = ''.join(node.itertext())
                 if not text.strip():
@@ -157,13 +166,10 @@ def read_layout(pdf):
                 bold = node.find('b') is not None and len(''.join(node.find('b').itertext()).strip()) >= len(text.strip()) * 0.6
                 font = fonts.get(node.get('font'), {})
                 bold = bold or bool(re.search(r'bold|black|heavy', font.get('family', ''), re.I))
-                fragments.append({'top': float(node.get('top')), 'left': float(node.get('left')),
-                                  'width': float(node.get('width')), 'height': float(node.get('height')),
-                                  'text': text, 'bold': bold, 'size': font.get('size', 0),
+                fragments.append({**position, 'text': text, 'bold': bold, 'size': font.get('size', 0),
                                   'family': font.get('family', '')})
-            elif node.tag == 'image':
-                images.append({'top': float(node.get('top')), 'left': float(node.get('left')),
-                               'width': float(node.get('width')), 'height': float(node.get('height'))})
+            else:
+                images.append(position)
         raw.append((page, height, width, fragments, images))
     sizes = Counter(round(f['size']) for *_, fragments, _ in raw for f in fragments if len(f['text'].strip()) > 20)
     body = sizes.most_common(1)[0][0] if sizes else 12
