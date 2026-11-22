@@ -1,5 +1,5 @@
 import { sanitizeHtml } from '../core/dom.js';
-import { sourceImageBytes } from '../data/source-images.js';
+import { invalidateSourceImageBytes, sourceImageBytes } from '../data/source-images.js';
 import { displayedPartLabel } from './test-snapshot.js';
 import { decodePdfImage } from './test-pdf-render.js';
 
@@ -266,6 +266,7 @@ async function appendImage(blocks, url, alt, missing, { signal, imagePromises },
     blocks.push({type: 'image', ...image, alt});
   } catch (error) {
     checkAbort(signal);
+    invalidateSourceImageBytes(url);
     missing.push({kind, reference: alt || undefined, reason: error?.message || 'Required image could not be loaded.'});
   }
 }

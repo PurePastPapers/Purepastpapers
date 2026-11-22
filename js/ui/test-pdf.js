@@ -1,6 +1,6 @@
 import { html } from '../core/dom.js';
 import * as api from '../data/api.js';
-import { pinTestCrops } from '../engine/test-snapshot.js';
+import { pinTestCrops, verifyTestCrops } from '../engine/test-snapshot.js';
 import { askOfflineCompletion } from './views/offline-test.js';
 import { openModal, toast } from './ui.js';
 
@@ -92,9 +92,10 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
         import('../engine/test-pdf-content.js')
           .then(async content => {
             const frozen = existing || options.kind === 'scheme' ? snapshot : await pinTestCrops(snapshot, questions, { signal });
+            const currentQuestions = existing ? await verifyTestCrops(frozen, questions, { signal }) : questions;
             assertOwner();
             const alreadySaved = existing || Boolean(api.getCustomTest(frozen.id));
-            const prepared = await content.prepareTestPdf(frozen, questions, {
+            const prepared = await content.prepareTestPdf(frozen, currentQuestions, {
               ...options, signal, onProgress({ completed, total }) {
                 progress.max = total;
                 progress.value = completed;

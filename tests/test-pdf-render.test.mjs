@@ -274,6 +274,23 @@ test('browser converts source images and renders sanitized HTML in page and modu
     assert.ok(item.text.indexOf('Question paper') < item.text.indexOf('Mark scheme'));
   }
   await writeFile('/tmp/ppp-verified-linked-export.pdf', Buffer.from(realCases[0].pdf, 'base64'));
+
+  const repairedCrop = await page.evaluate(() => document.createElement('canvas').toDataURL('image/webp').split(',')[1]);
+  let loads = 0;
+  await page.route('**/data/maths-assets/RETRY.json', route => route.fulfill({
+    json: { assets: { 'Q.webp': { base64: loads++ === 0 ? 'Y29ycnVwdA==' : repairedCrop } } },
+  }));
+  const retry = await page.evaluate(async () => {
+    const { prepareTestPdf } = await import('/js/engine/test-pdf-content.js');
+    const part = { id: 'retry', reference: 'Q1', maxMarks: 1 };
+    const snapshot = { version: 1, totalMarks: 1, groups: [{ number: 1, parts: [part] }] };
+    const questions = new Map([[part.id, { question: { content: { question_image_url: 'assets/maths/RETRY/Q.webp' } } }]]);
+    const first = await prepareTestPdf(snapshot, questions);
+    const second = await prepareTestPdf(snapshot, questions);
+    return { originalBlocked: !first.canExportQuestions, retryReady: second.canExportQuestions };
+  });
+  assert.deepEqual(retry, { originalBlocked: true, retryReady: true });
+  assert.equal(loads, 2);
 });
 
 function extractHexText(input) {

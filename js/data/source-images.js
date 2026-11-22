@@ -103,6 +103,18 @@ export async function sourceImageBytes(path) {
   const asset = await resolveAsset(path);
   return {data: asset.data.slice(), mimeType: asset.mimeType};
 }
+
+/** Let a new export retry a source crop that failed validation. */
+export function invalidateSourceImageBytes(path) {
+  const cached = bytes.get(path);
+  if (cached) {
+    byteCacheSize -= cached.data.byteLength;
+    bytes.delete(path);
+  }
+  const match = PATH.exec(path);
+  if (match) removeBundle(`${match[1]}/${match[2]}`);
+}
+
 /** Resolve catalogue checksums without decoding the underlying images. */
 export async function sourceImageChecksums(paths, { signal } = {}) {
   const result = new Map();
