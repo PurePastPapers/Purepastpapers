@@ -283,8 +283,10 @@ export async function mount(element, context) {
   on(element, 'click', '[data-open]', async (event, button) => {
     const question = practiceQuestions.find((item) => item.question_id === button.dataset.open);
     if (!question) return;
-    if (practiceQuestions.length < 2) return startSingle(question.parts?.[0] || question, context.navigate);
-    const questionIds = expandLinkedIds(practiceQuestions.map((item) => item.question_id), bundle.questionsById);
+    if (practiceQuestions.length < 2) return startSingle(question, context.navigate);
+    const branchRoot = question.linked_group?.root_id;
+    const chosen = branchRoot ? practiceQuestions.filter((item) => item === question || item.linked_group?.root_id !== branchRoot) : practiceQuestions;
+    const questionIds = expandLinkedIds(chosen.map((item) => item.question_id), bundle.questionsById);
     const session = createSession({
       kind: 'question_set',
       subject_id: subject.subject_id,

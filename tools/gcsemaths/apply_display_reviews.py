@@ -175,10 +175,15 @@ def apply_reviews(repo, sources, paper_ids=None, aliases=None):
                 checksum = hash_bytes(raw)
                 assets[name] = {'sha256': checksum, 'base64': base64.b64encode(raw).decode()}
                 for unit in candidates:
+                    if scope == 'question':
+                        unit['provenance'].pop('own_rows_from_full', None)
+                        unit['provenance']['source_region_page_pixels'] = [
+                            list(document.page(region['page'] - 1).size) for region in regions
+                        ]
                     if scope == 'context':
                         for key in ('context_from_linked_part', 'context_includes_stem_image', 'context_named_parts',
                                     'context_stem_from_parts', 'context_bridge_text', 'context_regions_refined',
-                                    'context_recut_from_full', 'context_siblings_removed'):
+                                    'context_recut_from_full', 'context_siblings_removed', 'context_rows_from_full'):
                             unit['provenance'].pop(key, None)
                         unit['provenance']['context_basis'] = 'reviewed_unscored_context'
                         unit['provenance']['context_reasons'] = ['reviewed unscored printed context']

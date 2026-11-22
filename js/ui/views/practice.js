@@ -443,7 +443,8 @@ export async function mount(element, context) {
         if (whenOf(attempt) > option.when) option.when = whenOf(attempt);
       }
     }
-    return [...options.values()].map((option) => {
+    const targetId = linked ? groupEntry(cardId, bundle.questionsById)?.linked_group?.target_id : null;
+    return [...options.values()].filter((option) => !targetId || option.parts.has(targetId)).map((option) => {
       const marked = [...option.parts.values()].filter((attempt) => !attempt.waiting);
       return {
         ...option,
@@ -462,7 +463,9 @@ export async function mount(element, context) {
   const needsChoice = (cardId) => Boolean(user) && goOptions(cardId).length > 0 &&
     (state.goes[cardId] === undefined || (state.goes[cardId] !== 'new' && !currentGo(cardId)));
   const partAttempt = (cardId, partId) => currentGo(cardId)?.parts.get(partId) || null;
-  const answerOf = (cardId, partId = cardId) => state.drafts[partId]?.answer ?? (partAttempt(cardId, partId)?.answer || '');
+  // Two graph variants can both be visible. Keep their draft answers and marks separate.
+  const partStateKey = (cardId, partId) => cardId?.startsWith('LINKED_BRANCH_') ? `${cardId}:${partId}` : partId;
+  const answerOf = (cardId, partId = cardId) => state.drafts[partStateKey(cardId, partId)]?.answer ?? (partAttempt(cardId, partId)?.answer || '');
   const inkEditors = new Map();
   const inkValues = new Map();
   const inkSaveChains = new Map();
@@ -503,9 +506,10 @@ export async function mount(element, context) {
   async function mountInkEditors() {
     for (const target of element.querySelectorAll('[data-ink-target]')) {
       const partId = target.dataset.inkTarget;
-      const button = element.querySelector(`[data-ink-toggle="${CSS.escape(partId)}"]`);
+      const button = target.parentElement.querySelector('[data-ink-toggle]');
       const cardId = button?.dataset.inkCard;
-      if (!cardId || !state.inkOpen[partId] || inkEditors.has(partId)) continue;
+      const key = partStateKey(cardId, partId);
+      if (!cardId || !state.inkOpen[key] || inkEditors.has(key)) continue;
       const responseId = activeInkResponseId(cardId, partId);
       const valueKey = inkKey(responseId, partId);
       target.hidden = false;
@@ -549,7 +553,7 @@ export async function mount(element, context) {
             updatedAt: new Date().toISOString(),
           };
           inkValues.set(valueKey, record);
-          state.inkOpen[partId] = true;
+          state.inkOpen[key] = true;
           save();
           editor?.setSaveState('Saving on this device…');
           const repository = api.inkRepository();
@@ -573,7 +577,7 @@ export async function mount(element, context) {
             }
             editor?.setSaveState('Saved on this device');
             if (!hasStrokes) {
-              const saveButton = element.querySelector(`[data-ink-save="${CSS.escape(partId)}"]`);
+              const saveButton = target.querySelector('[data-ink-save]');
               if (saveButton) saveButton.textContent = 'Save handwritten answer';
               if (hadSavedInk) {
                 void api.saveAnswerUnmarked(bundle.questionsById.get(partId), answerOf(cardId, partId), {
@@ -587,8 +591,8 @@ export async function mount(element, context) {
               }).catch(() => editor?.setSaveState('Cleared on this device · Sync will retry'));
               return;
             }
-            clearTimeout(inkSyncTimers.get(partId));
-            inkSyncTimers.set(partId, setTimeout(async () => {
+            clearTimeout(inkSyncTimers.get(key));
+            inkSyncTimers.set(key, setTimeout(async () => {
               try {
                 const synced = await api.syncInk();
                 editor?.setSaveState(synced ? 'Synced' : 'Saved on this device');
@@ -601,7 +605,7 @@ export async function mount(element, context) {
           }).catch(() => editor?.setSaveState('Could not save · Try again'));
         },
       });
-      inkEditors.set(partId, editor);
+      inkEditors.set(key, editor);
       editor.setSaveState(value ? 'Saved on this device' : 'Ready to write');
       const saveButton = document.createElement('button');
       saveButton.type = 'button';
@@ -682,10 +686,10 @@ export async function mount(element, context) {
               section.remove();
               previews.forEach((preview) => preview.destroy());
               editor.destroy();
-              inkEditors.delete(partId);
-              inkConflictPreviews.delete(partId);
+              inkEditors.delete(key);
+              inkConflictPreviews.delete(key);
               target.replaceChildren();
-              state.inkOpen[partId] = true;
+              state.inkOpen[key] = true;
               await mountInkEditors();
             } catch (error) {
               choose.disabled = false;
@@ -697,13 +701,13 @@ export async function mount(element, context) {
           keep.addEventListener('click', () => resolve(false));
         }
         target.append(section);
-        inkConflictPreviews.set(partId, previews);
+        inkConflictPreviews.set(key, previews);
       }
     }
   }
   const markOfPart = (cardId, partId = cardId) => {
     const attempt = partAttempt(cardId, partId);
-    return state.drafts[partId]?.mark ?? (attempt && !attempt.waiting ? String(attempt.marks_awarded) : '');
+    return state.drafts[partStateKey(cardId, partId)]?.mark ?? (attempt && !attempt.waiting ? String(attempt.marks_awarded) : '');
   };
   const cardOf = (node) => node.closest('[data-group]')?.dataset.group || node.closest('[data-card]')?.dataset.card;
   const clock = (iso) => new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -1226,6 +1230,7 @@ export async function mount(element, context) {
           ${entry.parts.map((part) => {
             const uses = linkedUses(part, entry);
             const partId = part.question_id;
+            const key = partStateKey(id, partId);
             return html`<section class="qgroup__part" aria-label="Part ${label(part)}">
               <div class="qsplit">
                 <div class="qsplit__main ${schemeOpen ? 'is-scheme' : ''}" data-zoom-src="${schemeOpen ? 'Mark scheme' : 'Part'} ${label(part)} · ${ref}">
@@ -1234,8 +1239,8 @@ export async function mount(element, context) {
                 </div>
                 <div class="qsplit__side stack stack--sm">
                   <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${answerOf(id, partId)}</textarea></label>
-                  <div class="ink-answer"><button type="button" class="btn btn--sm" data-ink-toggle="${partId}" data-ink-card="${id}" data-ink-part="${partId}" aria-expanded="${Boolean(state.inkOpen[partId])}">${state.inkOpen[partId] ? 'Hide writing' : 'Write with Pencil'}</button><div data-ink-target="${partId}" ${state.inkOpen[partId] ? '' : 'hidden'}></div></div>
-                  ${schemeOpen ? html`<section class="markbox">${markPicker({ id: partId, max: part.marks, value: markOf(part), attr: 'mark', label: `Marks for ${label(part)}, out of ${part.marks}` })}</section>` : ''}
+                  <div class="ink-answer"><button type="button" class="btn btn--sm" data-ink-toggle="${partId}" data-ink-card="${id}" data-ink-part="${partId}" aria-expanded="${Boolean(state.inkOpen[key])}">${state.inkOpen[key] ? 'Hide writing' : 'Write with Pencil'}</button><div data-ink-target="${partId}" ${state.inkOpen[key] ? '' : 'hidden'}></div></div>
+                  ${schemeOpen ? html`<section class="markbox">${markPicker({ id: partId, max: part.marks, value: markOf(part), attr: 'mark', labelId: `mp-${key}`, label: `Marks for ${label(part)}, out of ${part.marks}` })}</section>` : ''}
                 </div>
               </div>
             </section>`;
@@ -1730,8 +1735,8 @@ export async function mount(element, context) {
       const existing = entryOf(id);
       if (!existing) return false;
       // A linked group and one of its own parts must not both be in the set.
-      if (question.is_linked_group && question.part_ids.includes(id)) return true;
-      if (existing.is_linked_group && existing.part_ids.includes(question.question_id)) return true;
+      const existingParts = new Set(existing.part_ids || [id]);
+      if ((question.part_ids || [question.question_id]).some((partId) => existingParts.has(partId))) return true;
       return existing.question_id === question.parent_question_id || existing.parent_question_id === question.question_id;
     });
     const retained = state.selected.filter((id) => !conflicts.includes(id) && id !== question.question_id);
@@ -1740,7 +1745,7 @@ export async function mount(element, context) {
       return;
     }
     state.selected = [...retained, question.question_id];
-    if (conflicts.length) toast('Removed the overlapping full question or part from the set.', { type: 'success' });
+    if (conflicts.length) toast('Removed the overlapping question from the set.', { type: 'success' });
   }, { keepControls: true, keepPage: true }));
   on(element, 'click', '[data-remove-selected]', (event, button) => change(() => (state.selected = state.selected.filter((id) => id !== button.dataset.removeSelected)), { keepControls: true, keepPage: true }));
   on(element, 'click', '[data-clear-selection]', () => change(() => (state.selected = []), { keepControls: true, keepPage: true }));
@@ -1769,40 +1774,41 @@ export async function mount(element, context) {
     state.seed = Math.floor(Math.random() * 1e9);
   }, { keepControls: true }));
   on(element, 'input', '[data-answer]', (event, input) => {
-    (state.drafts[input.dataset.answer] ||= {}).answer = input.value;
+    (state.drafts[partStateKey(cardOf(input), input.dataset.answer)] ||= {}).answer = input.value;
     save();
   });
   on(element, 'click', '[data-ink-toggle]', (event, button) => {
     const partId = button.dataset.inkPart;
     const cardId = button.dataset.inkCard;
-    if (state.inkOpen[partId]) state.inkOpen[partId] = false;
+    const key = partStateKey(cardId, partId);
+    if (state.inkOpen[key]) state.inkOpen[key] = false;
     else {
       autoGo(cardId);
-      state.inkOpen[partId] = true;
+      state.inkOpen[key] = true;
     }
     save();
     update({ keepControls: true, keepPage: true });
   });
   on(element, 'click', '[data-ink-save]', async (event, button) => {
     const partId = button.dataset.inkSave;
-    const toggle = element.querySelector(`[data-ink-part="${CSS.escape(partId)}"]`);
-    const cardId = toggle?.dataset.inkCard;
+    const cardId = cardOf(button);
+    const key = partStateKey(cardId, partId);
     const question = bundle.questionsById.get(partId);
     if (!question || !cardId) return;
-    const sections = inkEditors.get(partId)?.getValue().sections || [];
+    const sections = inkEditors.get(key)?.getValue().sections || [];
     if (!sections.some(section => section.strokes.length)) {
       toast('Write something before saving a handwritten answer.', { type: 'info' });
       return;
     }
     button.disabled = true;
-    const inkTarget = button.closest('[data-ink-target]') || element.querySelector(`[data-ink-target="${CSS.escape(partId)}"]`);
+    const inkTarget = button.closest('[data-ink-target]');
     inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__add-space, .ink-editor__canvas').forEach((control) => {
       control.disabled = true;
       control.style.pointerEvents = 'none';
     });
     const responseId = activeInkResponseId(cardId, partId);
     const valueKey = inkKey(responseId, partId);
-    const editor = inkEditors.get(partId);
+    const editor = inkEditors.get(key);
     try {
       await inkSaveChains.get(valueKey)?.catch(() => {});
       const record = {
@@ -1854,7 +1860,7 @@ export async function mount(element, context) {
   });
   bindMarkPickers(element);
   on(element, 'input', '[data-mark]', (event, input) => {
-    (state.drafts[input.dataset.mark] ||= {}).mark = input.value;
+    (state.drafts[partStateKey(cardOf(input), input.dataset.mark)] ||= {}).mark = input.value;
     save();
   });
   const refreshLatest = () => {
@@ -1903,7 +1909,7 @@ export async function mount(element, context) {
       }
       const go = choice === 'new' ? null : options.find((option) => option.key === choice);
       for (const part of parts) {
-        const draft = (state.drafts[part.question_id] ||= {});
+        const draft = (state.drafts[partStateKey(cardId, part.question_id)] ||= {});
         const attempt = go?.parts.get(part.question_id);
         draft.answer = attempt?.answer || (go ? '' : draft.answer || '');
         if (attempt && !attempt.waiting) draft.mark = String(attempt.marks_awarded);
@@ -2006,8 +2012,9 @@ export async function mount(element, context) {
     const card = element.querySelector(`[data-group="${CSS.escape(groupId)}"]`);
     if (!entry || !card) return;
     const values = entry.parts.map((part) => {
-      const value = card.querySelector(`[data-mark="${CSS.escape(part.question_id)}"]`)?.value ?? state.drafts[part.question_id]?.mark;
-      (state.drafts[part.question_id] ||= {}).mark = value;
+      const key = partStateKey(groupId, part.question_id);
+      const value = card.querySelector(`[data-mark="${CSS.escape(part.question_id)}"]`)?.value ?? state.drafts[key]?.mark;
+      (state.drafts[key] ||= {}).mark = value;
       return value;
     });
     const complete = entry.parts.every((part, index) => {
@@ -2045,7 +2052,7 @@ export async function mount(element, context) {
       const attempt = go?.parts.get(part.question_id);
       if (!attempt || attempt.waiting || (!attempt.inline && !attempt.mark_edits?.length)) continue;
       await api.undoQuestionMark(part.question_id, { attemptId: attempt.attempt_id });
-      delete state.drafts[part.question_id]?.mark;
+      delete state.drafts[partStateKey(groupId, part.question_id)]?.mark;
     }
     redraw();
     toast('Last mark save undone.', { type: 'success' });

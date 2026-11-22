@@ -1528,7 +1528,7 @@
               0.041997,
               0.171169,
               0.958003,
-              0.582277
+              0.503999632
             ]
           }
         ],
@@ -1562,7 +1562,16 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ],
+        "display_review_assets": {
+          "Q12_U01.webp": "ddc1edc212e1abafbbc64bc84751b9b8df9fd5ae9391028a85d10079db6d6fbd"
+        }
       },
       "part_label": "(a)"
     },
@@ -2670,15 +2679,6 @@
               0.958003,
               0.559395
             ]
-          },
-          {
-            "page": 19,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.419516
-            ]
           }
         ],
         "original_parts": [
@@ -2711,7 +2711,16 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ],
+        "display_review_assets": {
+          "Q21_U01.webp": "1d575b02e714bd282f9eed1b18b292e5402f81ea4c521502a7e7ba0ab92666b1"
+        }
       },
       "part_label": "(a)"
     },
@@ -2807,24 +2816,22 @@
           "A12"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "reviewed_unscored_context",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "Here is a sketch of the graph of y = sin x° y O x P The point marked P is a turning point on the graph. The graph of y = sin x° is translated to give the graph of y = sin (x + 180)° + 4 Following the translation the point P, shown on the graph above, moves to point R.",
         "context_regions": [
           {
             "page": 19,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.045137,
               0.958003,
-              0.41573867854491464
+              0.419516
             ]
           }
         ],
-        "context_includes_stem_image": "Q21_stem.webp",
         "context_reasons": [
-          "text printed just before this part"
+          "reviewed unscored printed context"
         ],
         "part_scheme_regions": [
           {
@@ -2847,22 +2854,9 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 19,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.415981
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2024_NOVEMBER_3H_Q21_U01"
-        ]
+        "display_review_assets": {
+          "Q21_U02_context.webp": "56a917608bb506a608db2dbe587c2f2bc925b13c7a9c9562d787e652908530f4"
+        }
       },
       "part_label": "(b)"
     },

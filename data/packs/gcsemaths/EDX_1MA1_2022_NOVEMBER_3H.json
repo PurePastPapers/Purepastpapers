@@ -2827,7 +2827,7 @@
               0.041997,
               0.455851,
               0.958003,
-              0.814506
+              0.496502198
             ]
           }
         ],
@@ -2861,7 +2861,16 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ],
+        "display_review_assets": {
+          "Q23_U01.webp": "0c80e5bab0e9dfa5bf088a87eb82456c5343246d0c089610faf11224a593b1ae"
+        }
       },
       "part_label": "(a)"
     },
@@ -2954,24 +2963,22 @@
           "A13"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "reviewed_unscored_context",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "y graph A 3 2 1 x −4 −3 −2 −1 O 1 2 3 4 −1 −2 −3 graph B On this grid, graph A has been reflected to give graph B. The equation of graph A is y = g(x)",
         "context_regions": [
           {
             "page": 19,
             "bbox": [
               0.041997,
-              0.5077951002227171,
+              0.496502198,
               0.958003,
-              0.8114328136599851
+              0.810082533
             ]
           }
         ],
-        "context_includes_stem_image": "Q23_stem.webp",
         "context_reasons": [
-          "text printed just before this part"
+          "reviewed unscored printed context"
         ],
         "part_scheme_regions": [
           {
@@ -2985,22 +2992,9 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 19,
-            "bbox": [
-              0.041997,
-              0.507431,
-              0.958003,
-              0.81127
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2022_NOVEMBER_3H_Q23_U01"
-        ]
+        "display_review_assets": {
+          "Q23_U02_context.webp": "ae218b190d93d31eef0ab3d4181959801da4cc5c1dd71433dec41d08abec9e97"
+        }
       },
       "part_label": "(b)"
     },

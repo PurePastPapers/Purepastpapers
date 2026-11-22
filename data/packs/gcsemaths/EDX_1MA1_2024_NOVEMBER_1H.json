@@ -376,14 +376,14 @@
           }
         ],
         "part_scheme_check": "verified",
+        "display_review_assets": {
+          "Q02_U02.webp": "f8b0b92220fb6946bd63d885d67ae462b6d20eee7914ee136c60182aaeceb837"
+        },
         "context_includes_stem_image": "Q02_stem.webp",
         "context_regions": [],
         "context_reasons": [
           "reviewed shared printed stem"
-        ],
-        "display_review_assets": {
-          "Q02_U02.webp": "f8b0b92220fb6946bd63d885d67ae462b6d20eee7914ee136c60182aaeceb837"
-        }
+        ]
       },
       "part_label": "(b)",
       "depends_on_question_ids": [
@@ -1338,15 +1338,6 @@
               0.958003,
               0.925868
             ]
-          },
-          {
-            "page": 11,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.155249
-            ]
           }
         ],
         "original_parts": [
@@ -1378,7 +1369,16 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ],
+        "display_review_assets": {
+          "Q09_U01.webp": "c26adcba715ec41ec2d069a4cb9f115a12cabc10794a951a940f99fa4a0d7761"
+        }
       },
       "part_label": "(a)"
     },
@@ -2885,7 +2885,7 @@
               0.041997,
               0.122459,
               0.958003,
-              0.398209
+              0.331026139
             ]
           }
         ],
@@ -2919,7 +2919,16 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ],
+        "display_review_assets": {
+          "Q18_U01.webp": "2202f3b3694f8dd8893859a8db7e2456ae4e658b3774ec4c6b7e8bd1bf9a0e9e"
+        }
       },
       "part_label": "(a)"
     },

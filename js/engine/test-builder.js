@@ -37,7 +37,15 @@ export function buildTest(pool, options) {
 
   const allowed = difficulty === 'mixed' ? Object.keys(ratio) : [difficulty];
   const candidates = pool.filter((question) => allowed.includes(question.difficulty));
-  const availableMinutes = sum(candidates, minutesOf);
+  const branchMinutes = new Map();
+  const availableMinutes = sum(candidates, (question) => {
+    const root = question.linked_group?.root_id;
+    if (!root) return minutesOf(question);
+    const previous = branchMinutes.get(root) || 0;
+    const maximum = Math.max(previous, minutesOf(question));
+    branchMinutes.set(root, maximum);
+    return maximum - previous;
+  });
   const tolerance = Math.max(2, Math.round(minutes * 0.06));
 
   const priorities = new Map(candidates.map((question) => [question.question_id, questionPriority(question)]));
@@ -90,6 +98,7 @@ export function buildTest(pool, options) {
 function assemble({ candidates, minutes, tolerance, mixed, ratio, random, priority, topicOf }) {
   const chosen = [];
   const used = new Set();
+  const usedParts = new Set();
   const perTopic = new Map();
   let total = 0;
   let staleness = 0;
@@ -101,7 +110,8 @@ function assemble({ candidates, minutes, tolerance, mixed, ratio, random, priori
       let pick = null;
       let pickWeight = Infinity;
       for (const question of bucket) {
-        if (used.has(question.question_id) || minutesOf(question) > remaining) continue;
+        if (used.has(question.question_id) || minutesOf(question) > remaining
+          || (question.part_ids || [question.question_id]).some((id) => usedParts.has(id))) continue;
         const weight = priority(question) + random() + 0.75 * (perTopic.get(topicOf(question)) || 0);
         if (weight < pickWeight) {
           pickWeight = weight;
@@ -110,6 +120,7 @@ function assemble({ candidates, minutes, tolerance, mixed, ratio, random, priori
       }
       if (!pick) return;
       used.add(pick.question_id);
+      for (const id of pick.part_ids || [pick.question_id]) usedParts.add(id);
       chosen.push(pick);
       remaining -= minutesOf(pick);
       total += minutesOf(pick);

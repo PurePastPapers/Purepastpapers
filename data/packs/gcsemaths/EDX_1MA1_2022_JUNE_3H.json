@@ -1166,7 +1166,7 @@
               0.041997,
               0.087551,
               0.958003,
-              0.57826
+              0.488131291
             ]
           }
         ],
@@ -1200,13 +1200,16 @@
           }
         ],
         "part_scheme_check": "verified",
-        "own_rows_from_full": [
+        "context_reviewed": "model review of the rendered question, 2026-11-20",
+        "source_region_page_pixels": [
           [
-            44,
-            595
+            953,
+            1348
           ]
         ],
-        "context_reviewed": "model review of the rendered question, 2026-11-20"
+        "display_review_assets": {
+          "Q09_U01.webp": "c2846e169c7128bacd17fc765b2f1cac10bd0ddedac9f6b05668a326f6681918"
+        }
       },
       "part_label": "(a)"
     },
@@ -2200,15 +2203,6 @@
               0.958003,
               0.848871
             ]
-          },
-          {
-            "page": 19,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.62245
-            ]
           }
         ],
         "original_parts": [
@@ -2241,12 +2235,6 @@
           }
         ],
         "part_scheme_check": "verified",
-        "own_rows_from_full": [
-          [
-            363,
-            1078
-          ]
-        ],
         "context_rows_from_full": [
           [
             0,
@@ -2255,8 +2243,15 @@
         ],
         "context_reviewed": "model review of the rendered question, 2026-11-20",
         "display_review_assets": {
-          "Q17_scheme.webp": "45a88bef2a7a0364b53a4a51e8ce3654cb0b7e40358afb01804e3449bacf4779"
-        }
+          "Q17_scheme.webp": "45a88bef2a7a0364b53a4a51e8ce3654cb0b7e40358afb01804e3449bacf4779",
+          "Q17_U01.webp": "f102934451299fbc320942af580aee57cb91f9c971f3a2076040d40a0b655e66"
+        },
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ]
       },
       "part_label": "(a)"
     },
@@ -2349,24 +2344,22 @@
           "S3"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "reviewed_unscored_context",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "The histogram below shows information about the distances, in miles, that some Year 11 students live from school. Frequency density 0 1 2 3 4 5 Distance (d miles) The number of Year 11 students who live between 1 and 2 miles from school is n.",
         "context_regions": [
           {
             "page": 19,
             "bbox": [
               0.041997,
-              0.069328,
+              0.045137,
               0.958003,
-              0.621267
+              0.62245
             ]
           }
         ],
-        "context_includes_stem_image": "Q17_stem.webp",
         "context_reasons": [
-          "text printed just before this part"
+          "reviewed unscored printed context"
         ],
         "part_scheme_regions": [
           {
@@ -2389,27 +2382,17 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
         "own_rows_from_full": [
           [
             1876,
             2287
           ]
         ],
-        "context_rows_from_full": [
-          [
-            0,
-            363
-          ],
-          [
-            1078,
-            1876
-          ]
-        ],
         "context_reviewed": "model review of the rendered question, 2026-11-20",
         "display_review_assets": {
           "Q17_scheme.webp": "45a88bef2a7a0364b53a4a51e8ce3654cb0b7e40358afb01804e3449bacf4779",
-          "Q17_U02_scheme.webp": "551f97b6d2d010ad8f26e2de7eaf61cc1647bb9ccb5b5bdbe790fa42a172cdd3"
+          "Q17_U02_scheme.webp": "551f97b6d2d010ad8f26e2de7eaf61cc1647bb9ccb5b5bdbe790fa42a172cdd3",
+          "Q17_U02_context.webp": "0795d95e82940b54b528f1e27b710797769f653704bee9a60b1d6b399869f64c"
         }
       },
       "part_label": "(b)"

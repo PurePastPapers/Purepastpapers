@@ -28,10 +28,10 @@ function ticks(max) {
 }
 
 /**
- * @param {{ id: string, max: number, value?: string|number|null, attr?: string, label?: string }} options
+ * @param {{ id: string, max: number, value?: string|number|null, attr?: string, label?: string, labelId?: string }} options
  *   attr is the data attribute the view reads the value from ('mark' → data-mark).
  */
-export function markPicker({ id, max, value = '', attr = 'mark', label }) {
+export function markPicker({ id, max, value = '', attr = 'mark', label, labelId = `mp-${id}` }) {
   const set = value !== '' && value != null && !Number.isNaN(Number(value));
   const current = set ? Math.min(max, Math.max(0, Math.round(Number(value)))) : null;
   // The slider's readout already says "out of N", so its label stays short.
@@ -40,9 +40,9 @@ export function markPicker({ id, max, value = '', attr = 'mark', label }) {
 
   if (max <= BUTTON_LIMIT) {
     return html`<div class="markpick markpick--buttons" data-markpick data-max="${max}" data-rag="${set ? bandFor(current, max) : 'none'}">
-      <span class="field__label" id="mp-${id}">${heading}</span>
+      <span class="field__label" id="${labelId}">${heading}</span>
       ${hidden}
-      <div class="markpick__buttons" role="radiogroup" aria-labelledby="mp-${id}">
+      <div class="markpick__buttons" role="radiogroup" aria-labelledby="${labelId}">
         ${Array.from({ length: max + 1 }, (_, n) => html`<button type="button" class="markpick__btn" role="radio" aria-checked="${current === n}" data-pick="${n}" aria-label="${n} out of ${max}">${n}</button>`)}
       </div>
     </div>`;
@@ -51,14 +51,14 @@ export function markPicker({ id, max, value = '', attr = 'mark', label }) {
   const fill = set ? (current / max) * 100 : 0;
   return html`<div class="markpick markpick--slider ${set ? '' : 'is-unset'}" data-markpick data-max="${max}" data-rag="${set ? bandFor(current, max) : 'none'}" style="--fill:${fill}%">
     <div class="markpick__head">
-      <span class="field__label" id="mp-${id}">${heading}</span>
+      <span class="field__label" id="${labelId}">${heading}</span>
       <output class="markpick__value" data-pick-value aria-live="polite">${set ? html`<b>${current}</b><span> / ${max}</span>` : html`<span class="markpick__hint">Slide to your mark</span>`}</output>
     </div>
     ${hidden}
     <div class="markpick__track">
       <button type="button" class="btn btn--icon btn--sm" data-nudge="-1" aria-label="One mark fewer">${icon('minus', { size: 16 })}</button>
       <div class="markpick__rail">
-        <input type="range" class="markpick__range" min="0" max="${max}" step="1" value="${set ? current : 0}" data-pick-range aria-labelledby="mp-${id}" />
+        <input type="range" class="markpick__range" min="0" max="${max}" step="1" value="${set ? current : 0}" data-pick-range aria-labelledby="${labelId}" />
         <div class="markpick__ticks" aria-hidden="true">${ticks(max).map(({ n, minor }) => html`<span class="${minor ? 'is-minor' : ''}" style="left:${(n / max) * 100}%">${n}</span>`)}</div>
       </div>
       <button type="button" class="btn btn--icon btn--sm" data-nudge="1" aria-label="One mark more">${icon('plus', { size: 16 })}</button>

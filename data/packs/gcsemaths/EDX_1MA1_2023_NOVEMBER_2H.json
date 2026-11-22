@@ -1936,15 +1936,6 @@
               0.958003,
               0.890362
             ]
-          },
-          {
-            "page": 13,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.667627
-            ]
           }
         ],
         "original_parts": [
@@ -1977,7 +1968,16 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ],
+        "display_review_assets": {
+          "Q15_U02.webp": "1e257b46e0766f178f8faa3ab074d4f4a39b34777b859ef67a9193535eb220bb"
+        }
       },
       "part_label": "(b)"
     },
@@ -2070,24 +2070,22 @@
           "S3"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "reviewed_unscored_context",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "The histogram below gives information about the times taken by 43 students to run a different race. 7 6 5 4 Frequency density 3 2 1 0 0 5 10 15 20 25 30 Time (seconds)",
         "context_regions": [
           {
             "page": 13,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.045137,
               0.958003,
-              0.6614699331848553
+              0.667627
             ]
           }
         ],
-        "context_includes_stem_image": "Q15_stem.webp",
         "context_reasons": [
-          "text printed just before this part"
+          "reviewed unscored printed context"
         ],
         "part_scheme_regions": [
           {
@@ -2101,22 +2099,9 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 13,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.661669
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2023_NOVEMBER_2H_Q15_U02"
-        ]
+        "display_review_assets": {
+          "Q15_U03_context.webp": "f47cb5c6a171c911892a83dcd1c6d90d345883bac10e7f9b6c930796dce2a9f8"
+        }
       },
       "part_label": "(c)"
     },

@@ -3,16 +3,14 @@
 // units shows fewer results than it has units. Uses the site's own grouping.
 //   const {results, allTopics} = require('./browser-results.cjs');
 //   await allTopics(page); assert.equal(await count(), results(units, (q) => q.is_as));
-const {linkGroups} = require('../js/engine/linked-parts.js'); // require(esm), Node 22.12+
+const {collapseLinked, linkGroups} = require('../js/engine/linked-parts.js'); // require(esm), Node 22.12+
 
 // With a filter, groups are formed over the whole list (as the site forms them over the
 // subject) and a group is one result when any of its parts passes the filter.
 function results(units, keep = () => true) {
-  const groups = [...linkGroups(new Map(units.map((q) => [q.question_id, {...q}]))).values()];
-  const grouped = new Set(groups.flat());
-  const byId = new Map(units.map((q) => [q.question_id, q]));
-  return units.filter((q) => !grouped.has(q.question_id) && keep(q)).length
-    + groups.filter((ids) => ids.some((id) => keep(byId.get(id)))).length;
+  const byId = new Map(units.map((q) => [q.question_id, {...q}]));
+  linkGroups(byId);
+  return collapseLinked([...byId.values()].filter(keep), byId).length;
 }
 // Practice opens on "Topics I've covered" when the account has learned topics (97a9048).
 // Bank checks count every unit, so switch it off.

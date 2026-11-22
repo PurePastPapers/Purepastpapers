@@ -5,6 +5,8 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {filterQuestions} from '../js/engine/filter-engine.js';
 import {createSpecIndex} from '../js/engine/spec-index.js';
+import {buildTest, minutesOf} from "../js/engine/test-builder.js";
+import {createTestSnapshot} from "../js/engine/test-snapshot.js";
 import {collapseLinked, collapseLocked, expandLinkedIds, groupEntry, linkGroups, partRange, runnerItems} from '../js/engine/linked-parts.js';
 
 const read = path => JSON.parse(readFileSync(new URL('../' + path, import.meta.url), 'utf8'));
@@ -124,4 +126,56 @@ test('no "help with your answer" or same-part links remain in the packs', () => 
   // a part shown in a group keeps the text printed just before its label
   const lead = units.find(q => q.question_id === 'EDX_8MA0_2022_JUNE_22_Q01_U03');
   assert.match(lead.context.lead_in_image_url, /Q01_U03_leadin\.webp$/);
+});
+
+test('reviewed graph questions offer each branch with only its prerequisites', () => {
+  for (const [paperId, number, required, expectedMarks] of [
+    ['EDX_1MA1_2024_JUNE_2H', '11', [1, 2], [5, 5]],
+    ['EDX_1MA1_2022_JUNE_1H', '10', [2], [3, 4]],
+  ]) {
+    const pack = read(`data/packs/gcsemaths/${paperId}.json`);
+    const parentId = `${paperId}_Q${number}`;
+    const partId = number => `${parentId}_U0${number}`;
+    const parts = pack.questions.filter(q => q.parent_question_id === parentId);
+    const questionsById = new Map(parts.map(q => [q.question_id, q]));
+    const papersById = new Map(pack.papers.map(p => [p.paper_id, p]));
+    linkGroups(questionsById, papersById);
+    const branches = collapseLinked([...questionsById.values()], questionsById).filter(q => q.is_linked_group);
+    assert.equal(branches.length, 2);
+    for (const [index, target] of [3, 4].entries()) {
+      const branch = branches[index];
+      const expected = [...required, target].map(partId);
+      assert.deepEqual(branch.part_ids, expected);
+      assert.equal(branch.marks, expectedMarks[index]);
+      assert.deepEqual(expandLinkedIds([branch.question_id], questionsById), expected);
+      assert.deepEqual(expandLinkedIds([partId(target)], questionsById), expected);
+      assert.equal(runnerItems(expected.map(id => questionsById.get(id)))[0].group.id, branch.question_id);
+      const bundle = { questionsById, papersById, subject: { subject_id: 'EDX_GCSE_MATH_1MA1' } };
+      const snapshot = createTestSnapshot({ bundle, ids: [branch.question_id], title: 'Graph practice' });
+      assert.equal(snapshot.groups.length, 1);
+      assert.deepEqual(snapshot.groups[0].parts.map(part => part.id), expected);
+      assert.equal(snapshot.totalMarks, expectedMarks[index]);
+    }
+    const legacy = groupEntry(`LINKED_${partId(required[0])}`, questionsById);
+    assert.deepEqual(legacy.part_ids, [...required, 3, 4].map(partId));
+    assert.equal(runnerItems(legacy.parts)[0].group.id, legacy.question_id);
+
+    const result = buildTest(branches, { minutes: 30 });
+    assert.equal(result.question_ids.length, 1);
+    assert.equal(result.available_minutes, Math.max(...branches.map(minutesOf)));
+
+    if (number === '10') {
+      const graph = 'EDX_GCSE_MATH_S3';
+      const statistics = 'EDX_GCSE_MATH_S4';
+      const context = { specIndex: spec(), learned: new Set([graph]), latestAttempts: new Map(), papersById };
+      const pool = [...questionsById.values()];
+      const learned = filterQuestions(pool, { learnedOnly: true }, context);
+      assert.deepEqual(collapseLinked(learned.matches, questionsById).map(q => q.question_id), [partId(1), branches[0].question_id]);
+      assert.deepEqual(collapseLocked(learned.locked, questionsById).map(item => item.question.question_id), [branches[1].question_id]);
+      const filters = { focus: [statistics], learnedOnly: false };
+      assert.equal(filterQuestions(pool, { ...filters, selectionMode: 'strict' }, context).matches.length, 0);
+      const crossover = filterQuestions(pool, { ...filters, selectionMode: 'crossover' }, context);
+      assert.deepEqual(collapseLinked(crossover.matches, questionsById).map(q => q.question_id), [branches[1].question_id]);
+    }
+  }
 });
