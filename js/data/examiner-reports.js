@@ -122,7 +122,7 @@ function paragraphs(paras) {
 
 function sectionBlock(section, report, { relation = 'own' } = {}) {
   const paras = section.paras || [];
-  const unique = (kind) => [...new Set(paras.filter((para) => para.k === kind).map((para) => para.t))];
+  const unique = (kind) => [...new Map(paras.filter((para) => para.k === kind).map((para) => [para.t, para])).values()];
   const tips = unique('tip');
   const examples = unique('ex');
   const figures = section.figures || [];
@@ -146,10 +146,12 @@ function sectionBlock(section, report, { relation = 'own' } = {}) {
       ? crops(section.img, paras.filter((para) => para.k !== 'tip' && para.k !== 'ex').map((para) => para.t).join(' '), `Examiner’s report · ${section.heading}`)
       : paragraphs(paras.filter((para) => para.k !== 'tip' && para.k !== 'ex'))}
     ${pageOnly ? html`<p class="small"><a href="${pageLink(report.source_url, pageOnly)}" target="_blank" rel="noopener">Read on page ${pageOnly} of the official report</a></p>` : ''}
-    ${tips.map((tip) => html`<p class="er-tip"><strong>Examiner tip</strong> ${tip}</p>`)}
+    ${tips.map((tip) => tip.img?.length
+      ? html`<div class="er-tip"><strong>Examiner tips</strong>${crops(tip.img, tip.t)}</div>`
+      : html`<p class="er-tip"><strong>Examiner tip</strong> ${tip.t}</p>`)}
     ${examples.length
       ? html`<details class="er-ex"><summary>Comments on example responses</summary>
-          <ul>${examples.map((text) => html`<li>${text}</li>`)}</ul>
+          <ul>${examples.map((example) => html`<li>${example.img?.length ? crops(example.img, example.t) : example.t}</li>`)}</ul>
           ${responseLinks.length ? html`<p class="small muted">Candidate responses in the official PDF · ${responseLinks}</p>` : ''}
         </details>`
       : figurePages.length ? html`<p class="small er-sec__fig">${icon('file', { size: 13 })} Candidate responses in the official PDF · ${responseLinks}</p>` : ''}
@@ -162,7 +164,7 @@ function sectionBlock(section, report, { relation = 'own' } = {}) {
 function sourceLine(report, paper, page) {
   const link = pageLink(report?.source_url || reportSourceUrl(paper), page);
   const who = paper.board ? `${paper.board === 'Edexcel' ? 'Pearson Edexcel' : paper.board} examiner’s report` : 'examiner’s report';
-  return html`<p class="erpanel__src small muted">From the official ${who}${paper.year ? `, ${paper.series && paper.series !== 'Demo' ? `${paper.series} ` : ''}${paper.year}` : ''}${report && report.coverage_status !== 'unreadable' && report.coverage_status !== 'pdf_only' ? ', quoted as printed' : ''}.
+  return html`<p class="erpanel__src small muted">From the official ${who}${paper.year ? `, ${paper.series && paper.series !== 'Demo' ? `${paper.series} ` : ''}${paper.year}` : ''}${report && report.coverage_status !== 'unreadable' && report.coverage_status !== 'pdf_only' ? ', reproduced as printed' : ''}.
     ${link ? html`<a href="${link}" target="_blank" rel="noopener">${page ? `Open page ${page}` : 'Open the full report'} ${icon('external', { size: 12 })}</a>` : ''}</p>`;
 }
 
