@@ -1220,3 +1220,20 @@
 .starter-practice__choices { padding-top: 14px; }
 .starter-practice__scheme-crop { overflow-x: auto; }
 .starter-practice__scheme-crop .ms { min-width: 640px; }
+
+.lp-demo.btn {
+  background: var(--demo-colour);
+  color: #27231f;
+}
+.lp-demo.btn:hover {
+  background: color-mix(in srgb, var(--demo-colour) 82%, white);
+  color: #27231f;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lp-demo { animation: demo-wobble 600ms ease-in-out 300ms both; }
+}
+@keyframes demo-wobble {
+  0%, 100% { rotate: 0deg; }
+  30% { rotate: -4deg; }
+  65% { rotate: 3deg; }
+}

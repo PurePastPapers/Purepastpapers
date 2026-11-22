@@ -115,7 +115,7 @@ export async function mount(element, context) {
   const user = api.currentUser();
   if (!user && context.query.starter === '1') {
     const starter = await import('./starter-question.js');
-    return starter.mount(element);
+    return starter.mount(element, context.query.subject);
   }
   const requested = context.query.subject;
   const subjectIds = api.getProgress().enrolled_subjects;

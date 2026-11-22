@@ -8,6 +8,7 @@ import { icon } from '../icons.js';
 import { SUBJECT_SWATCHES } from '../subject-colours.js';
 import { liveBadge } from '../ui.js';
 import { openWelcome } from '../welcome.js';
+import { demoForVisit } from '../demo-subjects.js';
 import { links } from '../../core/links.js';
 
 /** The four phases, used on the Account and coming-soon pages. */
@@ -64,6 +65,9 @@ export async function mount(element, context) {
   context.setTitle('PurePastPapers');
   const subjects = await getSubjects();
   const stats = await loadStats(subjects);
+  if (!element.isConnected) return;
+  const demo = demoForVisit();
+  const swatch = SUBJECT_SWATCHES.find(({ id }) => id === demo.swatch);
   element.classList.add('view--landing');
   const boardOrder = Object.values(BOARD_NAMES);
   const boards = [...new Set(subjects.map((subject) => BOARD_NAMES[subject.board] || subject.board))].sort((a, b) => boardOrder.indexOf(a) - boardOrder.indexOf(b));
@@ -84,7 +88,7 @@ export async function mount(element, context) {
           <p class="lp-hero__reassurance">Browse questions and use filters for free. Create a free account to track marks, mistakes and progress in this browser.</p>
           <div class="lp-hero__actions">
             <a class="btn btn--primary btn--lg" href="${links.subjects({ browse: 1 })}">Browse questions →</a>
-            <a class="btn btn--lg" href="${links.practice({ starter: 1 })}">Try a Maths demo</a>
+            <a class="btn btn--lg lp-demo" style="--demo-colour:${swatch.hex}" href="${links.practice({ starter: 1, subject: demo.id })}">Try a ${demo.name} demo</a>
           </div>
         </div>
         <div class="lp-art" aria-hidden="true">
