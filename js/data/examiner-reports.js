@@ -65,20 +65,21 @@ export const hasExaminerReport = (paper) => Boolean(reportSourceUrl(paper));
 /**
  * Placeholder for a question's (or a linked group's) report comments.
  * view: 'question' when the question is showing (adds a "contains answers" note),
- * 'scheme' when the mark scheme is.
+ * 'scheme' when the mark scheme is. A verified inline report lets demos show an
+ * exact excerpt without adding a paper to the site-wide report catalogue.
  */
-export function reportPanel({ key, units, paper, view = 'question', label = '', group = false, closeAttr = null, lazy = false }) {
-  if (!hasExaminerReport(paper)) return '';
+export function reportPanel({ key, units, paper, view = 'question', label = '', group = false, closeAttr = null, lazy = false, verifiedReport = null }) {
+  if (!verifiedReport && !hasExaminerReport(paper)) return '';
   const panel = { units, paper, view, label, group };
   panels.set(key, panel);
-  const ready = !lazy && resolved.has(paper.paper_id);
+  const ready = !lazy && (verifiedReport || resolved.has(paper.paper_id));
   return html`<section class="erpanel" data-er-panel="${key}" ${ready ? html`data-er-bound="true"` : ''} aria-label="Examiner’s report${label ? ` for ${label}` : ''}" tabindex="-1">
     <header class="erpanel__head">
       <span class="erpanel__title">${icon('book', { size: 15 })} Examiner’s report${label ? html`<span class="muted"> · ${label}</span>` : ''}</span>
       ${closeAttr ? html`<button type="button" class="erpanel__close" ${closeAttr} aria-label="Close the examiner’s report">${icon('x', { size: 16 })}</button>` : ''}
     </header>
     ${view === 'question' ? html`<p class="erpanel__warn small">${icon('info', { size: 13 })} Examiners discuss the answers here. Try the question first.</p>` : ''}
-    <div class="erpanel__body" data-er-body aria-live="polite">${ready ? render(panel, resolved.get(paper.paper_id)) : html`<p class="small muted">Loading the examiners’ comments…</p>`}</div>
+    <div class="erpanel__body" data-er-body aria-live="polite">${ready ? render(panel, verifiedReport || resolved.get(paper.paper_id)) : html`<p class="small muted">Loading the examiners’ comments…</p>`}</div>
   </section>`;
 }
 

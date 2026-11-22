@@ -2,6 +2,8 @@
 // as the question browser, without loading or changing the visitor's study settings.
 import { $, html, on, setHtml } from '../../core/dom.js';
 import { links } from '../../core/links.js';
+import { reportPanel, reportQuestionLabel } from '../../data/examiner-reports.js';
+import { demoReportFor } from '../demo-reports.js';
 import { getBundle } from '../../data/content-repository.js';
 import { questionTier } from '../../engine/tiers.js';
 import { addSubject } from '../enrol.js';
@@ -29,13 +31,12 @@ export function selectStarterQuestion({ questions, papersById }, demo = DEMO_SUB
       String(question.scheme_question_number) === `${question.question_number}${question.part_label || ''}` &&
       question.provenance?.review_status === 'model_reviewed' &&
       question.content?.question_image_url && question.content?.mark_scheme_image_url &&
-      paper.full_paper_pdf_url && paper.full_mark_scheme_pdf_url;
+      paper.full_paper_pdf_url && paper.full_mark_scheme_pdf_url && demoReportFor(question, paper);
   });
   for (const id of demo.questions) {
     const preferred = eligible.find((question) => question.question_id === id);
     if (preferred) return preferred;
   }
-  return eligible[0];
 }
 
 export async function mount(element, subjectId) {
@@ -58,6 +59,7 @@ export async function mount(element, subjectId) {
   }
 
   const paper = papersById.get(question.paper_id);
+  const report = demoReportFor(question, paper);
   const ref = questionRef(question, papersById).replace(/ \((?:Non-Calculator|Calculator|Foundation|Higher)\)/g, '');
   const practice = { subject: demo.id, mode: 'individual', tier };
   const enrolled = api.getProgress().enrolled_subjects.includes(demo.id);
@@ -72,10 +74,12 @@ export async function mount(element, subjectId) {
         <div class="starter-practice__question" data-zoom-body>${questionBody(question)}</div>
         <div class="starter-practice__actions">
           <button type="button" class="btn btn--primary" data-starter-scheme aria-expanded="false" aria-controls="starter-scheme">${icon('eye', { size: 16 })} Show mark scheme</button>
+          <button type="button" class="btn" data-starter-report aria-expanded="false" aria-controls="starter-report">${icon('book', { size: 16 })} Examiner’s report</button>
           ${zoomButton('question')}
         </div>
       </div>
       <section id="starter-scheme" class="starter-practice__scheme stack stack--sm" aria-labelledby="starter-scheme-title" hidden></section>
+      <div id="starter-report" hidden></div>
       <p class="muted">Filter past-paper questions by exam paper, topic or exact specification point, or build a timed test.</p>
       <details class="starter-practice__more">
         <summary class="btn">Find more questions ${icon('chevronDown', { size: 16 })}</summary>
@@ -103,6 +107,17 @@ export async function mount(element, subjectId) {
     scheme.hidden = !scheme.hidden;
     button.setAttribute('aria-expanded', String(!scheme.hidden));
     setHtml(button, html`${icon('eye', { size: 16 })} ${scheme.hidden ? 'Show mark scheme' : 'Hide mark scheme'}`);
+  });
+  on(element, 'click', '[data-starter-report]', (event, button) => {
+    const panel = $('#starter-report', element);
+    if (!panel.hasChildNodes()) {
+      setHtml(panel, reportPanel({
+        key: `demo:${question.question_id}`,
+        units: [question], paper, label: reportQuestionLabel(question), verifiedReport: report,
+      }));
+    }
+    panel.hidden = !panel.hidden;
+    button.setAttribute('aria-expanded', String(!panel.hidden));
   });
   on(element, 'click', '[data-starter-enrol]', async (event, button) => {
     if (!(await addSubject(subject, { initialTier: tier }))) return;
