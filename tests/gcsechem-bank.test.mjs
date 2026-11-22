@@ -3,6 +3,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {groupEntry, linkGroups} from '../js/engine/linked-parts.js';
 
 const read = path => JSON.parse(readFileSync(new URL('../' + path, import.meta.url), 'utf8'));
 const entries = read('data/packs/index.json').packs.filter(p => p.file.startsWith('gcsechem/'));
@@ -111,4 +112,32 @@ test('every referenced GCSE Chemistry crop is packaged losslessly with its recor
     }
   }
   assert.equal(assetsChecked, coverage.totals.image_assets);
+});
+
+test('reviewed Chemistry graph parts share one context and independent separation parts stay separate', () => {
+  const questionMap = new Map(units.map(q => [q.question_id, q]));
+  const groups = linkGroups(questionMap, new Map(packs.map(p => [p.papers[0].paper_id, p.papers[0]])));
+  const prefix = 'EDX_1CH0_2024_JUNE_1F_Q08';
+  const ids = [prefix + '_U05', prefix + '_U06'];
+  const groupId = 'LINKED_' + ids[0];
+  assert.deepEqual(groups.get(groupId), ids);
+  const group = groupEntry(groupId, questionMap);
+  assert.equal(group.marks, 4);
+  assert.equal(group.parts.filter(p => p.context.stem_image_url).length, 1);
+  for (const prefix of ['EDX_1CH0_2021_NOVEMBER_1H_Q07', 'EDX_1SC0_2021_NOVEMBER_1CH_Q05']) {
+    const standalone = questionMap.get(prefix + '_U06');
+    assert.equal(standalone.linked_group, undefined);
+    assert.equal(standalone.context.stem_image_url, undefined);
+  }
+});
+
+test('the complete 2022 1CH question 6 scheme has separate answer crops for 6(b) and 6(c)', () => {
+  const unitsById = new Map(units.map(q => [q.question_id, q]));
+  for (const [unit, page] of [['U04', 19], ['U05', 20]]) {
+    const q = unitsById.get('EDX_1SC0_2022_JUNE_1CH_Q06_' + unit);
+    assert.equal(q.scheme_scope, 'part');
+    assert(q.content.mark_scheme_image_url.endsWith(`/Q06_${unit}_scheme.webp`));
+    assert.deepEqual(q.provenance.part_scheme_regions.map(r => r.page), [page]);
+    assert.deepEqual(q.provenance.scheme_regions.map(r => r.page), [18, 19, 20]);
+  }
 });

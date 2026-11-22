@@ -132,9 +132,14 @@ python3 tools/parts/manual-contexts.py                      # reviewed rows for 
 python3 tools/parts/trim-booklet-pages.py --dry-run         # look at every proposed cut first
 python3 tools/parts/trim-scheme-tails.py --dry-run --slug gcsechem
 python3 tools/parts/fix-scheme-regions.py                   # reviewed scheme splits (idempotent)
+python3 tools/gcsechem/apply_display_reviews.py --sources <research>/sources
 python3 tools/parts/audit-part-display.py --slug gcsechem --report /tmp/gcsechem-display.json
 node --test tests/gcse-part-crops.test.mjs tests/gcsechem-bank.test.mjs
 ```
+
+The Chemistry display reviews pin the official PDF hashes. They restore missing continuation
+pages, trim the next question's heading and rows at source-verified boundaries, and remove
+copied scored tasks from context. Reapply them after refining or splitting the crops.
 
 Coverage `image_assets` totals fall when contexts are shared or dropped; update them from
 the catalogues when the bank test reports a new count.
