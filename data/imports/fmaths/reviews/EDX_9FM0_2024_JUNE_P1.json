@@ -1,0 +1,445 @@
+{
+  "paper_id": "EDX_9FM0_2024_JUNE_P1",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "74e1b1d4c256802c0817fdc942d7293197795f91beaa433a19b5a5f932d17f63",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.3",
+            "EDX_FMATH_CP_4.1"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Factor the quartic using a given complex root and its conjugate.",
+          "summary": "Determine the remaining roots of a real quartic.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.4"
+          ],
+          "difficulty": "easy",
+          "difficulty_basis": "Plot each root at its corresponding coordinates.",
+          "summary": "Represent the quartic roots on an Argand diagram.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "difficulty": "easy",
+          "difficulty_basis": "Read three elementary symmetric sums from the polynomial coefficients.",
+          "summary": "Write down the roots–coefficients relationships for a cubic.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Rearrange each requested expression using the elementary symmetric sums.",
+          "summary": "Evaluate three symmetric expressions in the roots of a cubic.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_7.2"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Interpret the largest radius from the minimum distance to the boundary.",
+          "summary": "Find the parameter in a polar model for the edge of a pool.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_7.3"
+          ],
+          "difficulty": "hard",
+          "difficulty_basis": "Set up and evaluate a polar area integral, then subtract from the circular area.",
+          "summary": "Determine the area between a polar curve and a circle.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.9"
+          ],
+          "difficulty": "easy",
+          "difficulty_basis": "Combine positive and negative imaginary exponentials.",
+          "summary": "Deduce a cosine identity from exponential form.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.8"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Expand the fifth power and use the cosine identity for the remaining terms.",
+          "summary": "Express the fifth power of cosine in multiple angles.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.8"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Reduce the trigonometric equation with the derived identity, then solve on the interval.",
+          "summary": "Use the multiple-angle identity to solve a trigonometric equation.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.1",
+            "EDX_FMATH_CP_9.2"
+          ],
+          "difficulty": "hard",
+          "difficulty_basis": "Find an integrating factor, integrate and impose the rest condition.",
+          "summary": "Solve the differential equation for the raindrop velocity.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.2",
+            "EDX_FMATH_CP_9.3"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Determine the model parameter from an observation and evaluate at a fresh time.",
+          "summary": "Use the model to predict velocity after five seconds.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Take the large-time limit of the explicit velocity and compare to the physical scenario.",
+          "summary": "Assess the raindrop model at very large times.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_1.1"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Construct the induction hypothesis and complete the algebraic induction step.",
+          "summary": "Prove a summation identity by induction.",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.4"
+          ],
+          "difficulty": "easy",
+          "difficulty_basis": "Check the scalar product with the two direction vectors.",
+          "summary": "Show that the given vector is normal to the plane.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.2",
+            "EDX_FMATH_CP_6.3"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Use a point on a line and the stated normal to write a plane equation.",
+          "summary": "Determine a Cartesian equation of the plane.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.2"
+          ],
+          "difficulty": "easy",
+          "difficulty_basis": "Substitute the second line’s point into the plane equation.",
+          "summary": "Find the unknown coordinate using the plane equation.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1",
+            "EDX_FMATH_CP_6.3"
+          ],
+          "difficulty": "hard",
+          "difficulty_basis": "Compute the intersection and use the scalar product with the normal to get the angle.",
+          "summary": "Find the acute angle from the plane to the line through its intersection point.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Assessed points are in the AS specification.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.9"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Differentiate, substitute and eliminate the other population.",
+          "summary": "Reduce two coupled population equations to one second-order equation.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.4",
+            "EDX_FMATH_CP_9.6"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Solve the auxiliary equation and write the corresponding population function.",
+          "summary": "Determine the general solution for the first population.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.9"
+          ],
+          "difficulty": "medium",
+          "difficulty_basis": "Substitute the first population and its derivative into the coupled system.",
+          "summary": "Determine the general solution for the second population.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.2",
+            "EDX_FMATH_CP_9.9"
+          ],
+          "difficulty": "hard",
+          "difficulty_basis": "Apply both initial values, equate the models and convert days to hours.",
+          "summary": "Calculate the time when the modelled populations are equal.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)",
+            "(c)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3",
+            "EDX_FMATH_CP_9.9"
+          ],
+          "difficulty": "easy",
+          "difficulty_basis": "Tie a limitation to at least one evaluated general solution as required by the official scheme.",
+          "summary": "Use the solution to identify a limitation of the population model.",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Includes A-level Core Pure content.",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

@@ -339,7 +339,7 @@ def content_trim(doc, regions, stop_at_tariff=False):
 FURNITURE = re.compile(r'DO NOT WRITE|Turn over|Total for|BLANK PAGE|Leave blank|continued|Source:|^\*?[PS]\d{4,}', re.I)
 
 
-def bridge_region(doc, regs):
+def bridge_region(doc, regs, *, short_given=False):
     """Unlabelled text printed after a part's tariff and before the next label, e.g.
     "In reality the stone will be subject to air resistance." before "(d) Explain how
     this would affect...". It introduces the next part, so it belongs to its context."""
@@ -377,7 +377,8 @@ def bridge_region(doc, regs):
     start = noise[-1] + 1 if noise else 0
     for line in lines[start:]:
         text = ' '.join(w['text'] for w in line)
-        if FURNITURE.search(text) or line[0]['x0'] > W_of(line) * 0.6 or len(re.findall(r'[A-Za-z]{2,}', text)) < 4:
+        comes_with_given = short_given and re.match(r'^Given (?:that\b|\w+\s*=)', text)
+        if FURNITURE.search(text) or line[0]['x0'] > W_of(line) * 0.6 or (not comes_with_given and len(re.findall(r'[A-Za-z]{2,}', text)) < 4):
             continue
         # a sentence starts with a capital; lower-case lines are figure labels
         if not re.match(r'[A-Z0-9]', text):
@@ -507,7 +508,7 @@ LOOSE = re.compile(r'^\*?Q?(\d{1,2})\*?\(?([a-h])\)?\(?([ivx]{1,4})?\)?\*?$')
 STACKED = re.compile(r'^\(?([a-h])\)?\(?([ivx]{1,4})?\)?$')
 
 
-def scheme_blocks(doc, regions, number):
+def scheme_blocks(doc, regions, number, *, split_alternatives=False):
     """Split one question's scheme regions into blocks keyed by their reference."""
     words = region_words(doc, regions)
     if not words:
@@ -520,6 +521,13 @@ def scheme_blocks(doc, regions, number):
     anchors, headers = [], []
     for key in sorted(lines):
         ws = sorted(lines[key], key=lambda w: w['x0'])
+        if split_alternatives:
+            alternative = re.match(r'^Alt(?:ernative)?\.?\s*(?:(?:[IVX]+|\d+)\s*)?((?:\([a-zivx]+\))+)',
+                                   ' '.join(w['text'] for w in ws), re.I)
+            if alternative:
+                anchors.append({'word': ws[0], 'tokens': re.findall(r'\(([a-zivx]+)\)', alternative.group(1)),
+                                'alternative': True})
+                continue
         picked = [ws[0]]
         for w in ws[1:]:
             # GCSE 1MA1 tables set "5   (a)" with a wider gap between number and part.
@@ -599,11 +607,12 @@ def scheme_blocks(doc, regions, number):
         above = [h for h in headers if (h['page'], h['top']) > prev_top and h['page'] == w['page'] and 0 < w['top'] - h['top'] < 60]
         if above:
             start = (w['page'], (min(h['top'] for h in above) - 5) / H)
-        blocks.append({'tokens': a['tokens'], 'start': start, 'has_header': bool(above)})
+        blocks.append({'tokens': a['tokens'], 'start': start, 'has_header': bool(above),
+                       'alternative': a.get('alternative', False)})
     seen_tokens = set()
     for b in blocks:  # a reference seen again starts the Maths "Notes" section
         key = tuple(b['tokens'])
-        b['notes'] = key in seen_tokens
+        b['notes'] = key in seen_tokens or b['alternative']
         seen_tokens.add(key)
     notes_started = False
     for b in blocks:
@@ -742,7 +751,7 @@ def numbered_refs(text):
             for k, n in re.findall(r'\b(Figure|Fig\.?|Table|Graph|Diagram|Photograph)\s+(\d+)', text)}
 
 
-def refine_question(qdoc, sdoc, units, stats):
+def refine_question(qdoc, sdoc, units, stats, *, further_maths=False):
     """Returns per-unit dict with new regions, or None when the question keeps its old crops."""
     found = find_labels(qdoc, units)
     if not found:
@@ -784,7 +793,7 @@ def refine_question(qdoc, sdoc, units, stats):
             end = min(candidates)
         part_regions[key] = clip(q_regions, begin, end)
         if nxt is not None:
-            bridge = bridge_region(qdoc, part_regions[key])
+            bridge = bridge_region(qdoc, part_regions[key], short_given=further_maths)
             if bridge:
                 bridges.append((norm_label(units[later[0]]['provenance']['original_parts'][later[1]])[0], bridge))
                 part_regions[key] = clip(part_regions[key], (part_regions[key][0]['page'], part_regions[key][0]['bbox'][1]),
@@ -850,6 +859,8 @@ def refine_question(qdoc, sdoc, units, stats):
             nonlocal context_text, context_graphic
             if id(seg) in included:
                 return
+            if further_maths and seg['kind'] == 'part' and 'reviewed_dependencies' in unit['provenance']:
+                return  # linked siblings already have their own crop and answer box
             included.add(id(seg))
             regs = content_trim(qdoc, seg['regions'], stop_at_tariff=tariff) if trim else seg['regions']
             context.extend(regs)
@@ -931,7 +942,9 @@ def refine_question(qdoc, sdoc, units, stats):
 
 def apply_refined(unit, res, units, qdoc, ctx, put, qn, tag, number, stats, old_assets):
     uid = unit['question_id']
-    unit['content']['question_image_url'] = put(f'{qn}_{tag}.webp', qdoc.render(res['own']))
+    inserts = unit['provenance'].get('required_insert_regions', [])
+    suffix = '_with_insert' if inserts else ''
+    unit['content']['question_image_url'] = put(f'{qn}_{tag}{suffix}.webp', qdoc.render(res['own'] + inserts))
     unit['provenance']['source_regions'] = res['own']
     if res.get('bridge_text'):
         unit['provenance']['context_bridge_text'] = res['bridge_text']
@@ -973,7 +986,9 @@ def apply_refined(unit, res, units, qdoc, ctx, put, qn, tag, number, stats, old_
     if ctx.get('erratum_image_url'):
         ctx['shared_stem_html'] = ('<p>Official erratum notice issued with this paper (unscored context):</p>'
                                    f'<img data-math-image="{ctx["erratum_image_url"]}" alt="Official erratum notice for question {number}" />')
-    deps = [units[d]['question_id'] for d in res['depends_units']]
+    deps = unit['provenance'].get('reviewed_dependencies')
+    if deps is None:
+        deps = [units[d]['question_id'] for d in res['depends_units']]
     if deps:
         unit['depends_on_question_ids'] = deps
         stats['units_with_dependencies'] += 1
@@ -999,7 +1014,7 @@ def open_doc(sources, alias, sha, original_sha, offset, cropbox=False):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'gcsemaths', 'gcsebio', 'gcsechem', 'gcsephys'])
+    ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'fmaths', 'gcsemaths', 'gcsebio', 'gcsechem', 'gcsephys'])
     ap.add_argument('--sources', type=Path, required=True)
     ap.add_argument('--paper')
     ap.add_argument('--dry', action='store_true')
@@ -1082,7 +1097,7 @@ def main():
             elif not any(qdoc.words(r['page']) for r in units[0]['provenance']['source_regions']):
                 stats['image_only_kept'] += len(units)
             else:
-                refined = refine_question(qdoc, sdoc, units, stats)
+                refined = refine_question(qdoc, sdoc, units, stats, further_maths=slug == 'fmaths')
                 if refined and any(w.get('ocr') for r in units[0]['provenance']['source_regions'] for w in qdoc.words(r['page'])):
                     for res in refined:
                         res['ocr'] = True
@@ -1093,7 +1108,7 @@ def main():
             # scheme rows
             s_regions = units[0]['provenance']['scheme_regions']
             # pdfplumber reads /Rotate pages upright; SAM tables printed sideways yield no upright words (full scheme kept)
-            parsed = scheme_blocks(sdoc, s_regions, number)
+            parsed = scheme_blocks(sdoc, s_regions, number, split_alternatives=slug == 'fmaths')
             for ui, (unit, res) in enumerate(zip(units, refined)):
                 uid = unit['question_id']
                 tag = re.search(r'_(U\d+|P\d+)$', uid).group(1)

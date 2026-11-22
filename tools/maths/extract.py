@@ -21,10 +21,10 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def words_for(page):
+def words_for(page, footer_margin=72):
     return [w for w in page.extract_words(extra_attrs=['fontname'])
             if w.get('upright', True) and 25 < w['x0'] < page.width - 25
-            and 35 < w['top'] < page.height - 72]
+            and 35 < w['top'] < page.height - footer_margin]
 
 
 def clean_text(page, top, bottom):
@@ -43,16 +43,64 @@ def clean_text(page, top, bottom):
         r'_{5}|DO NOT WRITE|Question \d+ continued|Total for Question|TOTAL FOR PAPER|BLANK PAGE', line, re.I)).strip()
 
 
-def region(page, page_index, top, bottom):
+def region(page, page_index, top, bottom, footer_margin=72):
     return {'page': page_index + 1, 'bbox': [round(25 / page.width, 6),
             round(max(35, top) / page.height, 6), round((page.width - 25) / page.width, 6),
-            round(min(page.height - 72, bottom) / page.height, 6)]}
+            round(min(page.height - footer_margin, bottom) / page.height, 6)]}
 
 
-def extract(path, ocr_dir=None):
+def printed_part_paths(labels, marks):
+    """Return printed paths, retaining one shared tariff for nested leaves."""
+    paths = []
+    parent = None
+    parent_kind = None
+    for label in labels:
+        value = label['label']
+        kind = 'letter' if value in 'abcdefgh' and len(value) == 1 else 'roman'
+        if kind == parent_kind or parent is None:
+            parent = label
+            parent_kind = kind
+            path = f'({value})'
+        else:
+            # Pearson restarts the alphabetic column when a reverse-nested
+            # Roman group ends. A remote x position may be a new main branch.
+            separated = label['page'] != parent['page']
+            aligned = not separated and label['x'] <= parent['x'] + 8
+            if aligned and value != 'i':
+                parent = label
+                parent_kind = kind
+                path = f'({value})'
+            else:
+                path = f"({parent['label']})({value})"
+        paths.append((label, path))
+    result = []
+    previous = (0, 0)
+    for mark in marks:
+        at = (mark['page'], mark['top'] + 2)
+        available = [(label, path) for label, path in paths
+                     if previous < (label['page'], label['top']) <= at]
+        if not available:
+            result.append(('', [], []))
+        else:
+            printed = [path for _, path in available
+                       if not any(other != path and other.startswith(path) for _, other in available)]
+            shared = printed[0] if len(printed) == 1 else ''
+            if not shared:
+                families = {p.partition(')')[0] + ')' for p in printed}
+                if len(families) == 1:
+                    shared = families.pop()
+                else:
+                    shared = '–'.join(printed)
+            result.append((shared, printed, [label for label, _ in available]))
+        previous = at
+    return result
+
+
+def extract(path, ocr_dir=None, *, page_limit=None, footer_margin=72,
+            cid_question_numbers=False, strict_labels=False, use_printed_total_as_tariff=False):
     import pdfplumber
     with pdfplumber.open(path) as pdf:
-        pages = [{'page': p.filter(lambda c: c.get('object_type') != 'char' or c.get('upright', True)), 'words': words_for(p)} for p in pdf.pages]
+        pages = [{'page': p.filter(lambda c: c.get('object_type') != 'char' or c.get('upright', True)), 'words': words_for(p, footer_margin)} for p in pdf.pages[:page_limit]]
         if ocr_dir:
             for i, data in enumerate(pages):
                 cache = Path(ocr_dir) / path.stem.replace('__question_paper', '') / f'page-{i + 1:03}.json'
@@ -86,22 +134,25 @@ def extract(path, ocr_dir=None):
                                            'source_page': i + 1, 'start_page': i,
                                            'review_required': 'Compare the source question-number and diagram crop.'})
                         expected += 1
-            for w in data['words']:
+            for w in data['words'] if i > 0 or not strict_labels else []:
 
                 # Bold question numbers at the left margin; reject cover/answer lines.
                 if (w['x0'] < 88 and re.fullmatch(r'\d{1,2}\.?', w['text'])
-                        and ('Bold' in w['fontname'] or (w['fontname'] == 'OCR' and w['text'].endswith('.'))) and int(w['text'].rstrip('.')) == expected):
+                        and ('Bold' in w['fontname'] or ((w['fontname'] == 'OCR' or
+                             (cid_question_numbers and w['fontname'].startswith('CIDFont+')))
+                             and w['text'].endswith('.'))) and int(w['text'].rstrip('.')) == expected):
                     starts.append((i, 38 if not starts or starts[-1][0] != i else w['top'] - 25, expected))
                     expected += 1
         questions = []
         for index, (start_page, start_y, number) in enumerate(starts):
             end_page, end_y, _ = starts[index + 1] if index + 1 < len(starts) else (len(pages) - 1, 10000, 0)
             fragments, labels, marks, totals = [], [], [], []
+            printed_total_rows = []
             text_parts = []
             for pi in range(start_page, end_page + 1):
                 p = pages[pi]['page']
                 lo = start_y if pi == start_page else 38
-                hi = end_y if pi == end_page else p.height - 72
+                hi = end_y if pi == end_page else p.height - footer_margin
                 ws = [w for w in pages[pi]['words'] if lo <= w['top'] < hi]
                 # Blank answer continuations are intentionally omitted; prompts,
                 # diagrams and all mark tariffs remain faithful source regions.
@@ -121,6 +172,10 @@ def extract(path, ocr_dir=None):
                 tm = re.search(rf'Total for Question\s+{number}\s+is\s+(\d+)\s+marks?', (p.extract_text() or '') if not getattr(p, '_ocr_words', None) else ' '.join(w['text'] for w in p._ocr_words), re.I)
                 if tm:
                     totals.append(int(tm.group(1)))
+                    if use_printed_total_as_tariff and not getattr(p, '_ocr_words', None):
+                        printed_total_rows.extend(
+                            (pi, row) for row in p.extract_text_lines()
+                            if re.search(rf'Total for Question\s+{number}\s+is\s+{tm.group(1)}\s+marks?', row['text'], re.I))
                 # Remove answer lines and continuation-only pages. The last mark
                 # tariff bounds an exam prompt; diagram content preceding it stays.
                 bottom = max((w['bottom'] for w in tariff), default=0)
@@ -134,18 +189,43 @@ def extract(path, ocr_dir=None):
                 if not tariff and 'Question' in text and 'continued' in text and len(text) < 120:
                     continue
                 frag_index = len(fragments)
-                fragment = region(p, pi, lo, bottom + 7)
+                fragment = region(p, pi, lo, bottom + 7, footer_margin)
                 if not tariff and has_figure: fragment['shared_figure'] = True
                 fragments.append(fragment)
                 text_parts.append(clean_text(p, lo, bottom + 7))
-                for w in ws:
+                label_words = ws
+                if strict_labels and not getattr(p, '_ocr_words', None):
+                    # Font changes within '(b)' split tokens with extra_attrs.
+                    if 'label_words' not in pages[pi]:
+                        pages[pi]['label_words'] = p.extract_words()
+                    label_words = [w for w in pages[pi]['label_words']
+                                   if lo <= w['top'] < hi and w.get('upright', True)]
+                for w in label_words:
                     if w['top'] > bottom + 2:
                         continue
                     label = re.fullmatch(r'\(([a-h]|[ivx]+)\)', w['text'])
-                    if label and w['x0'] < p.width * .28:
+                    earlier_words = [v for v in label_words if v['x1'] < w['x0'] - 2
+                                     and abs(v['top'] - w['top']) < 4] if strict_labels and label else []
+                    row_content = [v['text'] for v in earlier_words
+                                   if not re.fullmatch(r'\d{1,2}\.?|\([a-zivx]+\)', v['text'])]
+                    # Pearson also prints '(a) Find (i)' on one row.
+                    inline_nested = label and label.group(1) == 'i' and any(
+                        re.fullmatch(r'\([a-h]\)', v['text']) for v in earlier_words
+                    ) and len(row_content) <= 2 and all(
+                        value.lower() in ('find', 'state', 'show', 'calculate', 'determine', 'write', 'down')
+                        for value in row_content
+                    )
+                    if label and w['x0'] < p.width * .28 and (not row_content or inline_nested):
                         labels.append({'label': label.group(1), 'page': pi + 1, 'top': w['top'], 'x': w['x0'], 'fragment': frag_index})
-                    if w in tariff:
-                        marks.append({'marks': int(w['text'][1:-1]), 'page': pi + 1, 'top': w['top'], 'bottom': w['bottom'], 'fragment': frag_index})
+                for w in tariff:
+                    marks.append({'marks': int(w['text'][1:-1]), 'page': pi + 1, 'top': w['top'], 'bottom': w['bottom'], 'fragment': frag_index})
+            if not marks and not labels and printed_total_rows and fragments:
+                # A Pearson question can print just a total instead of a separate tariff.
+                pi, row = printed_total_rows[0]
+                fragment = next((i for i, item in enumerate(fragments) if item['page'] == pi + 1), None)
+                if fragment is not None:
+                    marks.append({'marks': totals[0], 'page': pi + 1, 'top': row['top'],
+                                  'bottom': row['bottom'], 'fragment': fragment})
             # A question has one tariff per assessable leaf. Associate each tariff
             # with its closest preceding part label, preserving nested Roman paths.
             parts, letter, consumed = [], '', set()
@@ -169,6 +249,18 @@ def extract(path, ocr_dir=None):
                 earlier = marks[mi - 1] if mi else {'page': 0, 'top': 0}
                 joint_labels = [l for l in preceding if (l['page'], l['top']) > (earlier['page'], earlier['top'])]
                 parts.append({'part_label': part_label, **mark, 'start': joint_labels[0] if joint_labels else last, 'joint_labels': [l['label'] for l in joint_labels]})
+            if strict_labels:
+                labels.sort(key=lambda label: (label['page'], round(label['top'] / 4), label['x']))
+                paths = printed_part_paths(labels, marks)
+                parts = [{'part_label': label, **mark,
+                          'start': used[0] if used else None,
+                          'joint_labels': [item['label'] for item in used],
+                          'printed_labels': printed}
+                         for mark, (label, printed, used) in zip(marks, paths)]
+                exceptions = [entry for entry in exceptions
+                              if not (entry.get('question') == number and entry['type'] == 'repeated_tariff_after_label')]
+                if len(parts) > 1 and any(not part['part_label'] for part in parts):
+                    exceptions.append({'question': number, 'type': 'unlabelled_tariff_in_multipart_question'})
             total = totals[0] if totals else sum(m['marks'] for m in marks)
             if total != sum(m['marks'] for m in marks):
                 exceptions.append({'question': number, 'type': 'marks_mismatch', 'printed_total': total, 'tariff_sum': sum(m['marks'] for m in marks)})
@@ -187,6 +279,8 @@ def extract(path, ocr_dir=None):
                 'extraction_version': VERSION, 'source_sha256': digest(path), 'source_file': str(path),
                 'page_count': len(pages), 'questions': questions,
                 'total_marks': sum(q['marks'] for q in questions), 'exceptions': exceptions}
+        for data in pages:
+            data['page'].close()
         apply_overrides(candidate)
         return candidate
 

@@ -63,18 +63,22 @@ def scheme_starts(page, words):
     return sorted(set(candidates))
 
 
-def scheme_regions(path, question_count):
+def scheme_regions(path, question_count, *, question_starts=None):
     with pdfplumber.open(path) as doc:
         page_words = [visible_words(page) for page in doc.pages]
         starts = []
-        expected = 1
-        for pi, page in enumerate(doc.pages):
-            for top, number in scheme_starts(page, page_words[pi]):
-                if number == expected:
-                    if starts and (pi, max(15, top - 8)) <= starts[-1][:2]:
-                        raise ValueError(f'Non-monotonic scheme question starts: {path}')
-                    starts.append((pi, max(15, top - 8), expected))
-                    expected += 1
+        if question_starts is None:
+            expected = 1
+            for pi, page in enumerate(doc.pages):
+                for top, number in scheme_starts(page, page_words[pi]):
+                    if number == expected:
+                        starts.append((pi, max(15, top - 8), expected))
+                        expected += 1
+        else:
+            starts = [(page - 1, top, number)
+                      for number, (page, top) in enumerate(question_starts, 1)]
+        if any(j[:2] <= i[:2] for i, j in zip(starts, starts[1:])):
+            raise ValueError(f'Non-monotonic scheme question starts: {path}')
         if len(starts) != question_count:
             raise ValueError(f'Scheme has {len(starts)} indexed questions; expected {question_count}: {path}; starts={starts}')
         output = {}

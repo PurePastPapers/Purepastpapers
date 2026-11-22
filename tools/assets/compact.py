@@ -18,7 +18,7 @@ questions that use them show blank. This tool:
 Idempotent: a crop already at or below its grey-level target is not re-encoded. Re-run after any
 import or refine.py run that rewrites catalogues:  python3 tools/assets/compact.py
 """
-import base64, collections, hashlib, io, json, os, re, sys
+import argparse, base64, collections, hashlib, io, json, os, re, sys
 from multiprocessing import Pool
 from pathlib import Path
 
@@ -127,6 +127,9 @@ def work(job):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--slug', help='Compact catalogues for one subject')
+    args = parser.parse_args()
     index = json.loads((DATA / 'packs/index.json').read_text())
     pack_files = [DATA / 'packs' / entry['file'] for entry in index['packs']]
     # Packs that are built but not listed (e.g. Computer Science) still own catalogues.
@@ -142,7 +145,8 @@ def main():
             if m:
                 slug, paper, name = m.groups()
                 stems[str(DATA / f'{slug}-assets/{paper}.json')].add(name)
-    catalogues = sorted(str(p) for p in DATA.glob('*-assets/*.json'))
+    catalogue_dir = f'{args.slug}-assets' if args.slug else '*-assets'
+    catalogues = sorted(str(p) for p in DATA.glob(f'{catalogue_dir}/*.json'))
     jobs = [(c, stems.get(c, set())) for c in catalogues]
     removed = collections.defaultdict(list)  # url -> catalogue
     totals = collections.Counter()

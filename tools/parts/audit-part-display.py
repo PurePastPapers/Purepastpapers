@@ -103,10 +103,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--slug', action='append')
     ap.add_argument('--report', type=Path)
+    ap.add_argument('--paper', action='append', help='Only audit the selected paper IDs')
     a = ap.parse_args()
-    jobs = [(slug, str(p)) for slug in (a.slug or SLUGS) for p in sorted((ROOT / 'data/packs' / slug).glob('*.json'))]
+    jobs = [(slug, str(p)) for slug in (a.slug or SLUGS)
+            for p in sorted((ROOT / 'data/packs' / slug).glob('*.json'))
+            if not a.paper or p.stem in a.paper]
     report = defaultdict(list)
-    with ProcessPoolExecutor() as ex:
+    with ProcessPoolExecutor(max_workers=max(1, min(len(jobs), 4))) as ex:
         for counts in ex.map(check_paper, jobs):
             for k, v in counts.items():
                 report[k] += v

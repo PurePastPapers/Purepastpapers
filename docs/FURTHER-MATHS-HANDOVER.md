@@ -1,33 +1,33 @@
 # Further Mathematics handover (Edexcel 9FM0 / 8FM0)
 
 Subject record: `EDX_ALEVEL_FMATH_9FM0` (one record holds both qualifications).
-Last run: 2026-11-19.
+Last source verification 22 November 2026.
 
-## Status at a glance
+## Source coverage
 
-| Area | State |
-| --- | --- |
-| Qualifications declared | A-Level 9FM0 and AS 8FM0 in `data/subjects.json` |
-| Option routes | All 10 AS routes and all 10 A-Level option pairs, enforced as route cards |
-| Specification | Rebuilt from the official specs: 262 points in 17 module sections |
-| Module selection | Done: setup/edit dialog, subject page, papers and practice are route-scoped |
-| AS/A-Level card labels | Fixed site-wide (all subjects), with unit and browser audits |
-| Source inventory | Expected sources recorded; **unverified** (Pearson host blocked from the build host) |
-| Imported question packs | **None.** No real 9FM0/8FM0 questions are imported yet |
+The direct Pearson downloads match the hashes and byte lengths in the verified
+inventories under `data/imports/fmaths/inventory/`. The recorded URL is both the
+original and acquired URL for each exam document. This includes all 133 exam
+question papers, 133 matching mark schemes and 132 examiner reports. The only
+missing report is June 2019 AS Core Pure (`EDX_8FM0_2019_JUNE_01`). The unused
+June 2019 Further Mechanics 1 original (`P61181A`) is recorded in the inventory
+alongside the scored replacement (`P62674A`). June 2026 materials remain restricted.
 
-The question bank is therefore **not complete**. The only Further Maths questions in the
-repository are the 11 hand-written demo questions (`EDX_9FM0_DEMO_CP`), hidden from
-discovery as before. The 70 A-Level paper cards are generated catalogue rows (no
-questions), unchanged except for new identity metadata.
+A-level has ten papers per series across June 2019, October 2020, November 2021 and
+June 2022–2025. AS has Paper 1 and eight Paper 2 components per series across June
+2018, June 2019, October 2020 and June 2022–2025. Pearson has no 8FM0 November 2021
+sitting in the public inventory.
 
-## Blocker: Pearson exam materials could not be reached
+The official sample ZIP has ten A-level papers and eleven printed AS papers. The
+AS routes reuse the same eight option sections. The sample inventory records the
+printed routes and isolates nine unique AS practice components, including Core Pure.
+The sample component mapping retains historical printed codes and original PDF page
+ranges, including answer booklets and the corrections from Pearson's erratum.
 
-`qualifications.pearson.com` was refused by the build host's outbound proxy
-(`CONNECT 403`, a policy denial; retried, not transient). The official specification
-PDFs could be read as text through a separate fetch tool, which is how the spec map
-was built, but no question paper, mark scheme or examiner report could be probed,
-downloaded, rendered or checksummed. **Next agent: run from a host that can reach that
-domain**, then follow the import steps below.
+The current activation status and imported counts are recorded in
+`data/imports/fmaths/coverage.json`. Individual paper records distinguish source
+questions, scored parts and practice units. The original hand-written demo remains
+hidden from the official practice pool.
 
 ## Official structure (verified from the specifications)
 
@@ -56,10 +56,20 @@ domain**, then follow the import steps below.
 
 There is no route 2I. Codes are strings throughout (`2A`, `3A+4A`, `9FM0/3A`).
 
-Pearson publishes AS Paper 2 as **per-module component files** (`8FM0_21`, `8FM0_22`, …
-seen in public URLs), not one composite 2A–2K paper. A route is two components sat
-together. The component-to-module mapping and per-component marks are not verified yet;
-do not invent them, and do not present two components as two complete AS sittings.
+Pearson publishes exam AS Paper 2 as per-module component files. The covers give
+40 marks per component. One route combines two components for 80 marks in 100
+minutes. The suggested practice time for an individual component is 50 minutes.
+
+| Component | Module | Printed routes |
+| --- | --- | --- |
+| 8FM0/21 | FP1 | A, B, C, D |
+| 8FM0/22 | FP2 | A |
+| 8FM0/23 | FS1 | B, E, F, G |
+| 8FM0/24 | FS2 | G |
+| 8FM0/25 | FM1 | C, E, H, J |
+| 8FM0/26 | FM2 | J |
+| 8FM0/27 | D1 | D, F, H, K |
+| 8FM0/28 | D2 | K |
 
 ## Specification identity (`data/specs/EDX_ALEVEL_FMATH_9FM0.json`)
 
@@ -81,7 +91,7 @@ Built by `python3 tools/fmaths/build_spec.py` from the transcribed official cont
   cover their meaning, and expanded on load via `js/config/spec-id-migrations.js`
   (`python3 tools/write_spec_migrations.py`). Demo questions were retagged the same way.
 - Point titles are the opening wording of each official point; long points are cut at
-  a clause boundary. Spec PDF checksums are not recorded (host blocked).
+  a clause boundary. The handover does not include specification PDF checksums.
 - Textbook organisation: **unavailable**. No textbook contents were supplied; only the
   official specification navigation is offered.
 
@@ -115,44 +125,38 @@ Built by `python3 tools/fmaths/build_spec.py` from the transcribed official cont
 Maths, Biology, OCR Chemistry, Physics, OCR Computer Science, Geography, English
 Literature, Psychology and Sociology (dual); History, Politics and GCSE banks unlabelled.
 
-## Commands
+## Import and verification
+
+Fetch each public question paper and mark scheme to `sources/<paper_id>/` as
+`question_paper.pdf` and `mark_scheme.pdf`. Use `prepare_samples.py` to derive
+sample source components from the verified Pearson ZIP. Use the applicable
+`core_import.py`, `as_import.py` or `options.py` adapter with the shared Maths
+extractor to produce review candidates. Keep the byte-verified PDFs available by
+SHA-256 filename for the part-display passes.
+
+Record a model review against every printed tariff. A single tariff can cover
+multiple nested prompts. An answer dependency connects separate scored parts via
+`depends_on_parts`, preserving each part's marks, crop and answer box. Compare the
+extraction and every ambiguous crop with the original PDF before activating it.
+The full question and full scheme remain available as fallbacks.
 
 ```bash
-python3 tools/fmaths/build_spec.py && python3 tools/write_spec_migrations.py
-python3 tools/fmaths/inventory.py        # expected-source inventories
+python3 tools/fmaths/catalogue.py
+python3 tools/fmaths/build.py --sources sources --candidates candidates --reviews reviews PAPER_ID
+python3 tools/parts/refine.py --subject fmaths --sources sources-by-sha --paper PAPER_ID
+python3 tools/parts/drop-false-dependencies.py
+python3 tools/parts/lead-ins.py fmaths
+python3 tools/parts/trim-booklet-pages.py --dry-run
+JOBS=2 python3 tools/assets/compact.py --slug fmaths
+python3 tools/parts/audit-part-display.py --slug fmaths --paper PAPER_ID
+python3 tools/fmaths/finalize.py
 npm test && npm run validate
-npm start                                # then, in another shell:
-node tools/browser-further-maths.cjs
-node tools/browser-paper-labels.cjs
+MEASURE_SITE_SIZE=1 node --test tests/site-size.test.mjs
 ```
 
-## Source inventory and coverage
-
-`data/imports/fmaths/inventory/9fm0-inventory.json` and `8fm0-inventory.json`.
-
-| Qualification | Expected | Verified public | Imported | Notes |
-| --- | --- | --- | --- | --- |
-| A-Level 9FM0 exam papers | 70 (7 sittings × 10) | 0 | 0 | June 2019, Autumn 2020, Autumn 2021, June 2022–2025 |
-| A-Level 9FM0 samples | 10 | 0 | 0 | One sample per paper expected |
-| AS 8FM0 Paper 1 | 6 expected + 2 possible sittings | 0 | 0 | June 2018, 2019, 2022–2025; Autumn 2020/2021 unconfirmed |
-| AS 8FM0 Paper 2 components | 48 expected + 16 possible | 0 | 0 | Components 21–28; mapping unverified |
-| Examiner reports | — | 2 seen (8FM0/21, /22 June 2019, not probed) | 0 | |
-
-Per module, imported questions: Core Pure 0, FP1 0, FS1 0, FM1 0, D1 0, FP2 0, FS2 0,
-FM2 0, D2 0 (AS and A-Level alike). June 2026 materials: not checked.
-
-AS paper cards are deliberately **not** generated until each sitting and component is
-verified.
-
-## Next actions (in order)
-
-1. From a host that can reach `qualifications.pearson.com`, probe and download every
-   9FM0/8FM0 question paper, mark scheme, examiner report and sample (adapt
-   `tools/physics/discover.py`; the Maths pipeline in `tools/maths/` is the extraction
-   reference but does not understand option papers). Record URL, size, SHA256, revision.
-2. Verify the 8FM0 component → module mapping (21–28) and marks from the papers.
-3. Build packs under `data/packs/fmaths/` with per-part crops (docs/PART-DISPLAY.md),
-   `qualification_code`, `level`, `module_id`, official tags and model-review labels;
-   then rerun `tools/parts/refine.py`, `drop-false-dependencies.py`, `lead-ins.py`,
-   `trim-booklet-pages.py` and `python3 tools/assets/compact.py`; check site size.
-4. Add AS paper records only for verified sittings; they are labelled automatically.
+Review dependency, lead-in, scheme tail and overlap flags using the steps in
+`PART-DISPLAY.md` and `QUESTION-BANK-PITFALLS.md`. Finalization validates checksums,
+marks and published IDs, then refreshes the scoped pack index and coverage. Existing
+catalogues retain their reviewed crops. Pass `--rebuild` only for an intentional
+rebuild. Run the Further Maths and paper-label browser scripts against the local
+server and check the actual Pages artifact and live site after deployment.

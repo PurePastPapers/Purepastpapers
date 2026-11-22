@@ -31,6 +31,11 @@ class SourceRenderer:
                 raise ValueError('Empty source region')
             piece = im.crop((round(left * im.width), round(top * im.height),
                              round(right * im.width), round(bottom * im.height)))
+            rotation = region.get('rotate_degrees', 0)
+            if rotation:
+                if rotation not in (-90, 90, 180):
+                    raise ValueError(f'Unsupported source region rotation: {rotation}')
+                piece = piece.rotate(rotation, expand=True)
             pieces.append(piece)
         if not pieces:
             raise ValueError('No source regions')

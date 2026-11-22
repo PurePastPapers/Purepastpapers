@@ -31,7 +31,7 @@ def clip(regions, start, end):
     return output
 
 
-def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
+def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids, *, runtime_paper=None):
     if review.get('reviewer_type') != 'model' or review.get('source_sha256') != candidate['source_sha256']:
         raise ValueError('Review identity/checksum mismatch')
     by_number = {str(q['number']): q for q in review['questions']}
@@ -52,7 +52,7 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
         derivation = next((item for item in manifest if item['paper_id'] == paper['paper_id'] and item['kind'] == 'mark_scheme'), None)
         if not derivation or derivation['cache_sha256'] != ms_sha or derivation['original_source_sha256'] != paper['documents']['mark_scheme']['sha256']:
             raise ValueError('Scheme source revision mismatch')
-    schemes = scheme_regions(ms, len(candidate['questions']))
+    schemes = candidate.get('scheme_regions') or scheme_regions(ms, len(candidate['questions']))
     renderer, scheme_renderer = SourceRenderer(qp), SourceRenderer(ms)
     with pdfplumber.open(qp) as doc:
         sizes = [(p.width, p.height) for p in doc.pages]
@@ -73,7 +73,12 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
         prefix.extend(r for r in question['regions'] if r.get('shared_figure'))
         root = asset_dir / paper['paper_id']
         full_image = root / f"Q{int(question['number']):02}_full.webp"
-        renderer.render(question['regions'], full_image)
+        full_inserts = []
+        for unit in checked['units']:
+            for insert in unit.get('required_insert_regions', []):
+                if insert not in full_inserts:
+                    full_inserts.append(insert)
+        renderer.render(question['regions'] + full_inserts, full_image)
         scheme_image = root / f"Q{int(question['number']):02}_scheme.webp"
         scheme_renderer.render(schemes[question['number']], scheme_image)
         stem_image = root / f"Q{int(question['number']):02}_stem.webp"
@@ -88,6 +93,7 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
             if begin and begin['page'] == previous['page']:
                 y = min(y, begin['top'] - 4)
             return (previous['page'], y / sizes[previous['page'] - 1][1])
+        earlier_parts = {}
         for ui, unit in enumerate(checked['units'], 1):
             if unit.get('review_status') != 'model_reviewed' or unit.get('introduced_year') not in [12, 13]:
                 raise ValueError(f"Q{question['number']}: unresolved unit/year review")
@@ -109,8 +115,10 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
                         if next_start and next_start['page'] == part['page']:
                             end_y = max(part['bottom'] + 1, min(end_y, next_start['top'] - 4))
                     regions.extend(clip(question['regions'], start, (part['page'], end_y/sizes[part['page']-1][1])))
+            inserts = unit.get('required_insert_regions', [])
             image = full_image if whole else root / f"Q{int(question['number']):02}_U{ui:02}.webp"
-            if not whole: renderer.render(regions, image)
+            if image != full_image:
+                renderer.render(regions + inserts, image)
             rel = lambda path: path.relative_to(repo).as_posix()
             label = unit.get('display_part_label') or ('–'.join(unit['parts']) if len(unit['parts']) > 1 else unit['parts'][0])
             record = {
@@ -142,6 +150,23 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
                     'difficulty_basis': unit['difficulty_basis'], 'year_basis': unit.get('year_basis') or unit.get('introduced_year_basis'),
                     'context_basis': unit['context_basis'], 'qualification_code': paper['qualification_code']},
             }
+            if runtime_paper:
+                record.update(subject_id=runtime_paper['subject_id'], subject=runtime_paper['subject'],
+                              module_id=runtime_paper['module_ids'][0],
+                              official_paper_code=runtime_paper['official_paper_code'],
+                              estimated_minutes=max(1, round(marks * runtime_paper['duration_minutes'] / paper['max_marks'])))
+                record['provenance']['original_tariffs'] = [
+                    {'label': part['part_label'], 'printed_labels': part.get('printed_labels', part.get('joint_labels', [])),
+                     'marks': part['marks']} for part in chosen
+                ]
+                if inserts:
+                    record['provenance']['required_insert_regions'] = inserts
+                if 'depends_on_parts' in unit:
+                    dependencies = list(dict.fromkeys(earlier_parts[p] for p in unit['depends_on_parts']))
+                    if dependencies:
+                        record['depends_on_question_ids'] = dependencies
+                    record['provenance']['reviewed_dependencies'] = dependencies
+                earlier_parts.update(dict.fromkeys(unit['parts'], record['question_id']))
             if label: record['part_label'] = label
             unit_prefix = prefix
             if not whole and (unit.get('context_basis') != 'independent' or unit.get('shared_source_parts')):
@@ -160,6 +185,10 @@ def build_paper(paper, candidate, review, sources, asset_dir, repo, valid_ids):
             records.append(record)
     if sum(r['marks'] for r in records) != paper['max_marks']:
         raise ValueError('Published unit marks do not reconcile to the component')
+    if runtime_paper:
+        activated = {**runtime_paper, 'question_ids': [r['question_id'] for r in records]}
+        activated.pop('catalogue_generated', None)
+        return {'pack_id': paper['paper_id'].lower(), 'papers': [activated], 'questions': records}
     component = paper['component']
     subject_name = {'01': 'Pure Mathematics', '02': 'Pure Mathematics' if paper['qualification_code']=='9MA0' else 'Statistics and Mechanics', '03': 'Statistics and Mechanics', '31': 'Statistics', '32': 'Mechanics', '21': 'Statistics', '22': 'Mechanics'}[component]
     title = f"{paper['series']} {paper['year']} · {'AS' if paper.get('is_as') else 'A-Level'} {subject_name} {component}"
