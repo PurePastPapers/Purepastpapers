@@ -42,10 +42,14 @@ def package(repo, pack_path, paper):
     # part" contexts back (audit 2026-11-19, docs/QUESTION-BANK-PITFALLS.md).
     refined = set()
     for unit in json.loads(text).get('questions', []):
-        if (unit.get('provenance') or {}).get('part_display'):
+        provenance = unit.get('provenance') or {}
+        if provenance.get('part_display'):
             urls = [(unit.get('content') or {}).get('question_image_url'), (unit.get('content') or {}).get('mark_scheme_image_url')]
             urls += [(unit.get('context') or {}).get(k) for k in ('stem_image_url', 'lead_in_image_url')]
             refined |= {u.rsplit('/', 1)[1] for u in urls if u and not u.endswith(('_full.webp', '_scheme.webp')) or (u and re.search(r'_[UP]\d+_scheme\.webp$', u))}
+        if provenance.get('scheme_regions_fixed') or provenance.get('scheme_start_fixed'):
+            # Whole-scheme repairs also use the original generated name.
+            refined.add(f"Q{int(unit['question_number']):02d}_scheme.webp")
     for name in names:
         local = repo / 'assets/gcsebio' / paper / name
         if name in previous and (name in refined or not local.exists()):

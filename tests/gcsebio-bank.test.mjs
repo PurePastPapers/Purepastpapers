@@ -144,3 +144,13 @@ test('whole schemes end at their question and keep the final marked pages', () =
     assert.equal(part.scheme_scope, 'part');
   }
 });
+
+test('scheme starts include the answer and mark printed above a centred part label', () => {
+  const part = units.find(q => q.question_id === 'EDX_1BI0_2025_JUNE_1F_Q03_U01');
+  const [wholeStart] = part.provenance.scheme_regions;
+  const [partStart] = part.provenance.part_scheme_regions;
+  assert.equal(wholeStart.page, 9);
+  assert.equal(partStart.page, wholeStart.page);
+  assert.equal(partStart.bbox[1], wholeStart.bbox[1]);
+  assert.ok(wholeStart.bbox[1] < .112); // Table heading and the answer row start above the label.
+});

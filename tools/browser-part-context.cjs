@@ -8,7 +8,7 @@
 //  - a part that builds on an earlier answer is shown with it as one linked question;
 //  - a Foundation part's scheme is its own part's rows (tier-specific scheme), with the
 //    whole-question scheme available separately;
-//  - the test builder lists linked parts as one question.
+//  - the test builder, active test, marking and review keep linked parts in one card.
 // Requires optional dev Playwright (PLAYWRIGHT_MODULE) and Chrome (CHROME_PATH).
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
@@ -35,7 +35,14 @@ const LINKED = [
     const page = await browser.newPage({viewport: {width: 1280, height: 1000}});
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
-    page.on('console', (m) => { if (m.type() === 'error' && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(m.text())) errors.push(m.text()); }); // offline sandbox: web fonts
+    page.on('console', (message) => {
+      if (message.type() !== 'error') return;
+      const text = message.text();
+      const authCdnUnavailable = message.location().url.startsWith('https://esm.sh/@supabase/supabase-js@')
+        && text.includes('net::ERR_EMPTY_RESPONSE');
+      // The disposable profile works offline when the optional sign-in module is unavailable.
+      if (!authCdnUnavailable && !/net::ERR_(TUNNEL_CONNECTION_FAILED|NAME_NOT_RESOLVED)/.test(text)) errors.push(text);
+    });
     await page.goto(base);
     await page.evaluate(async (id) => {
       await (await import('/js/data/demo.js')).enterDemoAccount();
@@ -135,33 +142,52 @@ const LINKED = [
       assert.ok(sawGroup && sawSibling, `${parent} shows a two-part linked card and an independent sibling`);
     }
 
-    // Test builder: a Foundation test drawn from the paper starts, and its questions show
-    // the part's own crop with the full question available as context only.
+    // Build a deterministic Foundation test with Q2(a)(i)–(a)(ii) and the independent (b)(i).
+    const {paper, question, marks} = LINKED.at(-1);
+    const parent = `${paper}_${question}`;
+    const parts = [`${parent}_U01`, `${parent}_U02`];
+    const sibling = `${parent}_U03`;
     await page.goto(`${base}/#/practice?subject=${SUBJECT}&mode=timed_test`);
-    await page.waitForSelector('[data-start-test]');
-    const paperOption = page.locator('select[data-filter="paper"] option', {hasText: '1BF'});
-    if (await paperOption.count()) {
-      await page.locator('select[data-filter="paper"]').selectOption(await paperOption.first().getAttribute('value'));
-      await page.waitForTimeout(600);
-    }
-    const papers = await page.$$eval('select[data-filter="paper"] option', (nodes) => nodes.slice(1).map((n) => n.textContent));
+    await page.locator('[data-practice-science=Physics]').click();
+    await page.locator('[data-practice-science=Physics][aria-checked=true]').waitFor();
+    const covered = page.locator('[data-covered]');
+    if (await covered.isChecked()) await covered.uncheck({force: true});
+    const paperFilter = page.locator('select[data-filter=paper]');
+    const closedPaperFilters = page.locator('details.filter-details:not([open]) summary', {hasText: 'Paper filters'});
+    if (await closedPaperFilters.count()) await closedPaperFilters.click();
+    const papers = (await paperFilter.locator('option').allTextContents()).slice(1);
     assert.ok(papers.length && papers.every((text) => /Foundation/.test(text)), 'test builder offers Foundation papers only');
+    await paperFilter.selectOption(paper);
+    await page.locator('[data-tree-bulk=none]').click();
+    for (const point of ['12.9', '12.3', '12.2', '12.6']) {
+      await page.locator('[data-tree-search]').fill(point);
+      await page.locator(`[data-point="EDX_GCSE_COMBSCI_PHYS_${point}"]`).check();
+    }
+    await page.locator('[data-topic-coverage=strict]').check();
+    const preview = page.locator('.testlist li');
+    assert.equal(await preview.count(), 2);
+    assert.equal(await preview.filter({hasText: /2 linked parts\s+.+3 marks/s}).count(), 1);
     await page.locator('[data-start-test]').click();
     await page.waitForURL(/#\/session\//, {timeout: 10000});
-    await page.waitForFunction(() => {
-      const img = document.querySelector('.question-selected-part img');
+    const group = page.locator('article.qgroup').filter({has: page.locator(`[data-answer="${parts[0]}"]`)});
+    await group.waitFor();
+    assert.deepEqual(await group.locator('[data-answer]').evaluateAll(nodes => nodes.map(node => node.dataset.answer)), parts);
+    assert.equal(await group.locator('.marks-pill').textContent(), `${marks} marks`);
+    const standalone = page.locator('.runner__item').filter({has: page.locator(`[data-answer="${sibling}"]`)});
+    const sessionCrop = standalone.locator('.question-selected-part img');
+    const sessionPart = await sessionCrop.getAttribute('data-math-image');
+    assert.match(sessionPart, new RegExp(`${paper}/Q02_U03\\.webp$`));
+    await sessionCrop.scrollIntoViewIfNeeded();
+    await page.waitForFunction((src) => {
+      const img = document.querySelector(`img[data-math-image="${src}"]`);
       return img?.complete && img.naturalWidth > 0;
-    });
-    const sessionPart = await page.locator('.question-selected-part img').first().getAttribute('data-math-image');
-    assert.match(sessionPart, /assets\/gcse(bio|chem|phys)\/EDX_1SC0_\d{4}_[A-Z]+_\dPF|assets\/gcse(bio|chem|phys)\/EDX_1SC0_\d{4}_[A-Z]+_\d[BCP]F/, 'session question comes from a Foundation paper');
-    const sessionContext = page.locator('[data-question-context]').first();
+    }, sessionPart);
+    const sessionContext = standalone.locator('[data-question-context]');
     if (await sessionContext.count()) {
-      const heading = await page.locator('main').innerText();
       await sessionContext.locator('summary').click();
-      await page.waitForFunction(() => document.querySelector('[data-question-context]')?.open);
+      assert.equal(await sessionContext.evaluate(details => details.open), true);
       await sessionContext.locator('summary').click();
-      assert.equal(await page.locator('.question-selected-part img').first().getAttribute('data-math-image'), sessionPart, 'context toggle keeps the question');
-      assert.equal((await page.locator('main').innerText()).split('\n')[0], heading.split('\n')[0]);
+      assert.equal(await sessionCrop.getAttribute('data-math-image'), sessionPart, 'context toggle keeps the selected part');
     }
     for (const width of [390, 1280]) {
       await page.setViewportSize({width, height: 900});
@@ -171,8 +197,33 @@ const LINKED = [
       await page.waitForFunction((w) => document.documentElement.scrollWidth <= w, width, {timeout: 2000}).catch(() => {});
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `session overflows at ${width}`);
     }
+
+    const responses = ['First part answer', 'Second part answer'];
+    for (const [index, id] of parts.entries()) await group.locator(`[data-answer="${id}"]`).fill(responses[index]);
+    await page.locator('.runner__end [data-finish]').click();
+    await page.getByRole('dialog').getByRole('button', {name: 'Finish', exact: true}).click();
+    const field = (id) => page.locator(`[data-markbox="${id}"]`);
+    const marking = page.locator('article.markcard').filter({has: field(parts[0])}).filter({has: field(parts[1])});
+    await marking.waitFor();
+    assert.equal(await page.locator('article.markcard').count(), 2);
+    assert.equal(await marking.locator('.marks-pill').textContent(), '3 marks');
+    assert.deepEqual(await marking.locator('[data-marks]').evaluateAll(nodes => nodes.map(node => node.dataset.marks)), parts);
+    const schemeSuffixes = await marking.locator('.ms img').evaluateAll(nodes => nodes.map(node => node.dataset.mathImage.split('/').at(-1)));
+    assert.deepEqual(schemeSuffixes, ['Q02_U01_scheme.webp', 'Q02_U02_scheme.webp']);
+    assert.deepEqual(await marking.locator('.answer-text').allTextContents(), responses);
+    await field(parts[0]).locator('[data-pick="1"]').click();
+    await field(parts[1]).locator('[data-pick-range]').fill('2');
+    await field(sibling).locator('[data-pick="1"]').click();
+    await page.locator('[data-save-results]').click();
+    assert.match(await page.locator('.result-hero__score').innerText(), /4\s*\/\s*4/);
+    const review = page.locator('.review-card > details').filter({has: page.locator('img[data-math-image$="Q02_U01_scheme.webp"]')});
+    assert.equal(await review.count(), 1);
+    await review.locator(':scope > summary').click();
+    assert.equal(await review.locator('.review-card__marks').textContent(), '3/3');
+    assert.deepEqual(await review.locator('.answer-text').allTextContents(), responses);
+    assert.equal(await review.locator('.ms img').count(), 2);
     assert.deepEqual(errors, []);
-    console.log('1SC0 Foundation Q4(b)(i): own crop, introduction, full-question toggle (no count, scheme or progress change), part scheme; 1PH0 linked parts as one card; Foundation test session: PASS');
+    console.log('1SC0 Foundation Q4(b)(i) standalone crop, context and scheme; 1PH0 linked Practice cards; 1SC0 2PF linked test preview, active session, marking and review: PASS');
   } finally {
     await browser.close();
   }
