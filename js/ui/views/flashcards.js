@@ -114,11 +114,16 @@ export async function mount(element, context) {
   const refreshDecks = async () => { decks = await flashcards.listDecks(); };
   const refreshCards = async () => { cards = await flashcards.listCards(selectedDeck); };
   const presentError = (error) => toast(error?.message || 'Something went wrong. Please try again.', { type: 'error' });
-  const task = async (fn) => {
-    if (busy) return;
+  // One action runs at a time. A navigation click made while another action is still
+  // finishing (for example the refresh after a rating) runs next instead of being lost.
+  let queued = null;
+  const task = async (fn, { queue = false } = {}) => {
+    if (busy) { if (queue) queued = fn; return; }
     busy = true;
     try { await fn(); } catch (error) { presentError(error); } finally { busy = false; }
+    if (queued && !disposed) { const next = queued; queued = null; await task(next, { queue: true }); }
   };
+  const navigationActions = new Set(['back-decks', 'catalogue', 'open-deck', 'exit-study', 'study']);
 
   function deckList() {
     const depthOf = (deck) => {
@@ -384,7 +389,7 @@ export async function mount(element, context) {
         progress.textContent = `Imported ${plural(result?.imported || 0, 'card')}. ${plural(result?.duplicates || 0, 'duplicate')} skipped.`;
       } catch (error) { progress.textContent = 'The import could not finish. You can retry.'; button.disabled = false; throw error; } finally { importForm.inert = false; }
     }
-  }));
+  }, { queue: navigationActions.has(button.dataset.action) }));
   const offChange = on(element, 'change', '[data-import-source], [data-catalogue-subject], [data-catalogue-level], [data-topic]', (event, control) => {
     if (control.matches('[data-import-source]')) { setHtml($('[data-import-fields]', element), importFields(control.value)); setHtml($('[data-import-preview]', element), ''); importState = null; }
     else if (control.matches('[data-topic]')) { subdeckPath = control.value; page = 1; draw(); }
