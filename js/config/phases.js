@@ -106,7 +106,7 @@ const PHASED_NAV = [
 
 /**
  * Top navigation, built from the feature flags. `main` is the row of tabs across the top
- * (the four sections). `more` sits in the account menu: My subjects, plus each AI section,
+ * in the header. `more` sits in the account menu: My subjects, plus each AI section,
  * which shows a "Soon" badge until its feature is enabled.
  */
 export function navGroups() {
@@ -116,6 +116,7 @@ export function navGroups() {
       { path: '/', label: 'Home', icon: 'home' },
       { path: '/papers', label: 'Past papers', icon: 'file', match: ['/paper', ...live.map((item) => item.path)] },
       { path: '/practice', label: 'Practice', icon: 'sliders' },
+      { path: '/flashcards', label: 'Flashcards', icon: 'file' },
       { path: '/hub', label: 'Data Hub', icon: 'chart' },
     ],
     more: [{ path: '/subjects', label: 'My subjects', icon: 'cap', match: ['/subject'] }, ...PHASED_NAV],

@@ -23,6 +23,7 @@ export const links = {
   exportedTests: (params) => `#/practice/exported${query(params)}`,
   exportedTest: (paperId, params) => `#/practice/exported/${enc(paperId)}${query(params)}`,
   session: (sessionId) => `#/session/${enc(sessionId)}`,
+  flashcards: (params) => `#/flashcards${query(params)}`,
   hub: (params) => `#/hub${query(params)}`,
   aiPapers: () => '#/ai-papers',
   predicted: () => '#/predicted',
@@ -49,6 +50,7 @@ export function backLabel(route) {
   if (path === '/ai-papers') return 'Back to AI papers';
   if (path === '/predicted') return 'Back to predicted papers';
   if (path === '/practice') return 'Back to practice';
+  if (path === '/flashcards') return 'Back to Flashcards';
   if (path === '/hub') return 'Back to the Data Hub';
   if (path.startsWith('/subject/')) return 'Back to the subject';
   if (path === '/subjects') return 'Back to my subjects';

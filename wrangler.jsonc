@@ -2,6 +2,9 @@
 // Every push to `main` on GitHub is built and deployed by Cloudflare (Workers Builds).
 // The site is plain static files served straight from the repo root; nothing to build.
 // Files listed in .assetsignore are kept out of the published site.
+// Pushes to other branches (pull requests) run `npx wrangler preview`, which
+// refuses to run unless a `previews` block exists. It can stay empty: assets and
+// compatibility settings are inherited from the top level.
 {
   "name": "purepastpapers",
   "compatibility_date": "2026-11-21",
@@ -9,5 +12,6 @@
     "directory": ".",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none"
-  }
+  },
+  "previews": {}
 }

@@ -1,4 +1,4 @@
-// The app frame: a top bar (the four sections, the answered count and an account menu
+// The app frame: a top bar (the main sections, the answered count and an account menu
 // when signed in; Log in / Sign up when signed out) and the outlet that views render into.
 // Layouts: 'app' | 'public' | 'focus' (distraction-free runner: no top bar).
 

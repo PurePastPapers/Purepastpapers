@@ -22,6 +22,22 @@ import { links } from './core/links.js';
 const exportedTestsView = () => import('./ui/views/exported-tests.js?v=exported-tests-2');
 const papersView = () => import('./ui/views/papers.js');
 const comingSoonView = () => import('./ui/views/coming-soon.js');
+let flashcardsStyles;
+function flashcardsView() {
+  flashcardsStyles ??= new Promise((resolve, reject) => {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = new URL('../css/flashcards.css?v=flashcards-beta-1', import.meta.url);
+    stylesheet.addEventListener('load', resolve, { once: true });
+    stylesheet.addEventListener('error', () => {
+      stylesheet.remove();
+      flashcardsStyles = undefined;
+      reject(new Error('Flashcards styles could not load.'));
+    }, { once: true });
+    document.head.append(stylesheet);
+  });
+  return Promise.all([import('./ui/views/flashcards.js'), flashcardsStyles]).then(([view]) => view);
+}
 
 /**
  * auth: true       → signed-in users only (others are sent to log in, then returned)
@@ -44,6 +60,7 @@ const ROUTES = [
   { path: '/practice/exported', load: exportedTestsView },
   { path: '/practice/exported/:paperId', load: exportedTestsView },
   { path: '/session/:sessionId', load: () => import('./ui/views/session.js'), layout: 'focus' },
+  { path: '/flashcards', load: flashcardsView, auth: true },
   { path: '/hub', load: () => import('./ui/views/hub.js?v=exported-tests-2'), auth: true },
   { path: '/ai-papers', load: papersView, feature: 'aiPastPapers', options: { paperType: 'ai_past_paper' } },
   { path: '/predicted', load: papersView, feature: 'predictedPapers', options: { paperType: 'predicted_paper' } },
@@ -137,7 +154,7 @@ async function handleRoute() {
     else needsAuth = true;
     options.feature = route.feature;
   }
-  if (route && needsAuth && !signedIn) return navigate(`/login?next=${encodeURIComponent(full)}`, { replace: true });
+  if (route && needsAuth && !signedIn) return navigate(links.login(full).slice(1), { replace: true });
   if (route?.guestOnly && signedIn) {
     const target = afterAuth || (query.next?.startsWith('/') ? query.next : '/');
     afterAuth = null;
