@@ -20,6 +20,21 @@ import { toHtml } from '../tools/seed/markup.mjs';
 
 const json = async (path) => JSON.parse(await readFile(new URL(`../data/${path}`, import.meta.url), 'utf8'));
 
+test('test builder uses the combined latest scores of linked parts for selection preferences', () => {
+  const linked = {
+    question_id: 'LINKED_a', part_ids: ['a', 'b'], marks: 10, difficulty: 'medium', estimated_minutes: 10,
+  };
+  const unseen = { ...linked, question_id: 'c', part_ids: undefined };
+  const latestAttempts = new Map([
+    ['a', { max_marks: 2, marks_awarded: 0 }],
+    ['b', { max_marks: 8, marks_awarded: 8 }],
+  ]);
+  const config = { minutes: 10, difficulty: 'medium', latestAttempts, prioritiseWeak: true };
+  assert.deepEqual(buildTest([linked, unseen], config).question_ids, ['c']);
+  latestAttempts.set('b', { max_marks: 8, marks_awarded: 6 });
+  assert.deepEqual(buildTest([linked, unseen], config).question_ids, ['LINKED_a']);
+});
+
 // ── a tiny hand-made world: Physics leans on Maths ──
 const maths = {
   subject_id: 'MATHS',

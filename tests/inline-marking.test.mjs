@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import * as api from '../js/data/api.js';
 import { latestByQuestion } from '../js/engine/analytics.js';
-import { createSession, finishSession } from '../js/data/sessions.js';
+import { createSession, finishSession, retrySession } from '../js/data/sessions.js';
 
 const makeStorage = () => {
   const map = new Map();
@@ -48,4 +48,69 @@ test('timed sessions never invent zero marks; manual paper totals remain support
   const manual = await finishSession(paper, { questions: [], subject: {}, totalAwarded: 72 });
   assert.equal(manual.marks_awarded, 72);
   assert.equal(api.getProgress().paper_attempts.length, 1);
+});
+
+test('concurrent and repeated saves record a completed result only once', async () => {
+  globalThis.localStorage = makeStorage();
+  await api.init();
+  const session = createSession({ kind: 'full_paper', subject_id: 's', title: 'Paper', paper_id: 'p', question_ids: ['q1'] });
+  session.marks.q1 = 3;
+  const context = { questions: [q], subject: {} };
+  const [first, second] = await Promise.all([finishSession(session, context), finishSession(session, context)]);
+  assert.equal(first, second);
+  assert.equal(first.marks_awarded, 3);
+  await finishSession(session, context);
+  assert.equal(api.getProgress().question_attempts.length, 1);
+  assert.equal(api.getProgress().paper_attempts.length, 1);
+});
+
+test('retrying a failed progress write saves the completed result without duplicating attempts', async () => {
+  const storage = makeStorage();
+  globalThis.localStorage = storage;
+  await api.init();
+  await api.signUp({ email: 'result@example.test', password: 'password123', displayName: 'Result' });
+  const session = createSession({ kind: 'full_paper', subject_id: 's', title: 'Paper', paper_id: 'p', question_ids: ['q1'] });
+  session.marks.q1 = 3;
+  const context = { questions: [q], subject: {} };
+  globalThis.localStorage = { ...storage, setItem() { throw new Error('Storage unavailable'); } };
+  await assert.rejects(finishSession(session, context), /could not save your data/);
+  globalThis.localStorage = storage;
+  await finishSession(session, context);
+  await api.init();
+  assert.equal(api.getSession(session.session_id).result.marks_awarded, 3);
+  assert.equal(api.getProgress().question_attempts.length, 1);
+  assert.equal(api.getProgress().paper_attempts.length, 1);
+});
+
+test('retrying an official paper keeps its history and timing but starts a new attempt', async () => {
+  globalThis.localStorage = makeStorage();
+  await api.init();
+  const paper = createSession({
+    kind: 'full_paper', subject_id: 's', title: 'Paper from PDF', paper_id: 'p',
+    paper_type: 'real_past_paper', total_marks: 100, timer: 'countdown', time_limit_minutes: 75,
+    mark_mode: 'end',
+  });
+  const context = { questions: [], subject: {}, totalAwarded: 72 };
+  await finishSession(paper, context);
+  const retry = retrySession(paper);
+  assert.notEqual(retry.session_id, paper.session_id);
+  assert.equal(retry.kind, 'full_paper');
+  assert.equal(retry.mark_mode, 'end');
+  assert.equal(retry.time_limit_minutes, 75);
+  assert.equal(retry.timer.mode, 'countdown');
+  assert.equal(retry.result, null);
+  await finishSession(retry, { ...context, totalAwarded: 84 });
+  assert.deepEqual(api.getProgress().paper_attempts.map((attempt) => [attempt.paper_id, attempt.paper_type, attempt.marks_awarded]), [
+    ['p', 'real_past_paper', 72], ['p', 'real_past_paper', 84],
+  ]);
+
+  const set = createSession({ kind: 'question_set', subject_id: 's', title: 'Set', question_ids: ['q1'], timer: 'stopwatch' });
+  set.source_paper_id = 'p';
+  set.answers.q1 = 'Working';
+  const freshSet = retrySession(set);
+  assert.deepEqual(freshSet.question_ids, ['q1']);
+  assert.notEqual(freshSet.question_ids, set.question_ids);
+  assert.equal(freshSet.source_paper_id, 'p');
+  assert.deepEqual(freshSet.answers, {});
+  assert.equal(freshSet.timer.mode, 'stopwatch');
 });

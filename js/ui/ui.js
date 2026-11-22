@@ -38,6 +38,8 @@ export function toast(message, { type = 'info', timeout = 3600 } = {}) {
 
 // ───────────────────────────────── dialogs ─────────────────────────────────
 
+let modalCount = 0;
+
 /**
  * Opens a modal dialog and resolves when it closes.
  * actions: [{ label, value, variant?, cancel?, validate?(dialog) → error string | null, collect?(dialog) → any }]
@@ -48,12 +50,14 @@ export function toast(message, { type = 'info', timeout = 3600 } = {}) {
 export function openModal({ title, body, actions = [{ label: 'Close', cancel: true }], wide = false, onOpen = null }) {
   return new Promise((resolve) => {
     const dialog = document.createElement('dialog');
+    const titleId = `modal-title-${++modalCount}`;
     dialog.className = `modal${wide ? ' modal--wide' : ''}`;
+    dialog.setAttribute('aria-labelledby', titleId);
     setHtml(
       dialog,
       html`<form method="dialog" class="modal__box" novalidate>
         <header class="modal__head">
-          <h2 class="modal__title">${title}</h2>
+          <h2 class="modal__title" id="${titleId}">${title}</h2>
           <button type="button" class="btn btn--icon btn--ghost" data-dismiss aria-label="Close">${icon('x')}</button>
         </header>
         <div class="modal__body">${body}</div>

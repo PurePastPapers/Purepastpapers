@@ -3,6 +3,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {collapseLinked, linkGroups} from '../js/engine/linked-parts.js';
 
 const read = path => JSON.parse(readFileSync(new URL('../' + path, import.meta.url), 'utf8'));
 const entries = read('data/packs/index.json').packs.filter(p => p.file.startsWith('gcsephys/'));
@@ -20,6 +21,22 @@ const leavesOf = qual => {
   return {all: new Set(points.map(p => p.id)), higher: new Set(points.filter(p => p.tier === 'Higher').map(p => p.id)), points};
 };
 const LEAVES = {'1PH0': leavesOf('1PH0'), '1SC0': leavesOf('1SC0')};
+
+test('Foundation electromagnet questions keep the choice and its reasons together', () => {
+  const parents = ['EDX_1PH0_2022_JUNE_2F_Q04', 'EDX_1SC0_2022_JUNE_2PF_Q02'];
+  for (const parent of parents) {
+    const siblings = units.filter(q => q.parent_question_id === parent);
+    const questions = new Map(siblings.map(q => [q.question_id, q]));
+    const choice = `${parent}_U01`;
+    const reasons = `${parent}_U02`;
+    assert.deepEqual(questions.get(reasons).depends_on_question_ids, [choice]);
+    linkGroups(questions);
+    const cards = collapseLinked([...questions.values()], questions);
+    assert.deepEqual(cards[0].part_ids, [choice, reasons]);
+    assert.equal(cards[0].marks, 3);
+    assert.deepEqual(cards.slice(1).map(q => q.question_id), siblings.slice(2).map(q => q.question_id));
+  }
+});
 
 test('active GCSE Physics booklets reconcile to their printed totals and match the coverage inventory', () => {
   assert(packs.length >= 1);

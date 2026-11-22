@@ -23,9 +23,11 @@ const pack = read(`data/packs/gcsebio/${PAPER}.json`);
 const q4 = pack.questions.filter((q) => q.parent_question_id === `${PAPER}_Q04`);
 const independent = q4.find((q) => q.part_label === '(b)(i)');
 assert.ok(independent && !independent.depends_on_question_ids, 'Q4(b)(i) is an independent part');
-const LINKED = {subject: 'EDX_GCSE_PHYS_1PH0', paper: 'EDX_1PH0_2025_JUNE_1H', first: 'EDX_1PH0_2025_JUNE_1H_Q10_U01', dependent: 'EDX_1PH0_2025_JUNE_1H_Q10_U02'};
-const dependent = read('data/packs/gcsephys/EDX_1PH0_2025_JUNE_1H.json').questions.find((q) => q.question_id === LINKED.dependent);
-assert.deepEqual(dependent.depends_on_question_ids, [LINKED.first], 'Q10(a)(ii) uses the answer to (a)(i)');
+const LINKED = [
+  {subject: 'EDX_GCSE_PHYS_1PH0', tier: 'Higher', paper: 'EDX_1PH0_2025_JUNE_1H', question: 'Q10', marks: 2},
+  {subject: 'EDX_GCSE_PHYS_1PH0', tier: 'Foundation', paper: 'EDX_1PH0_2022_JUNE_2F', question: 'Q04', marks: 3},
+  {subject: SUBJECT, tier: 'Foundation', paper: 'EDX_1SC0_2022_JUNE_2PF', question: 'Q02', marks: 3},
+];
 
 (async () => {
   const browser = await chromium.launch({headless: true, ...(process.env.CHROME_PATH ? {executablePath: process.env.CHROME_PATH} : {})});
@@ -90,36 +92,46 @@ assert.deepEqual(dependent.depends_on_question_ids, [LINKED.first], 'Q10(a)(ii) 
     assert.equal(await count(), before);
     const progressAfter = await page.evaluate(async () => JSON.stringify((await import('/js/data/api.js')).getProgress().question_attempts || []));
     assert.equal(progressAfter, progressBefore, 'opening context or a scheme records no attempt');
-    // A part that genuinely uses an earlier answer (1PH0 June 2025 1H Q10(a)(ii): "give a
-    // reason for your answer to part (i)", checked on the printed paper) is one linked card
-    // holding both parts of that dependency. Other parts may be offered on their own.
-    await page.evaluate(async (id) => {
-      const api = await import('/js/data/api.js');
-      await api.setEnrolled(id, true);
-      await api.setPreference('tiers', {...(api.getProgress().preferences.tiers || {}), [id]: 'Higher'});
-    }, LINKED.subject);
-    await page.goto(`${base}/#/practice?subject=${LINKED.subject}`);
-    await page.waitForSelector('[data-reset-filters]');
-    await page.locator('[data-reset-filters]').click();
-    await page.locator('[data-search]').fill(LINKED.paper);
-    await page.locator('[data-search]').press('Enter');
-    await page.waitForTimeout(800);
-    const group = page.locator(`[data-group="LINKED_${LINKED.first}"]`);
-    // the paper lists its units over more than one page
-    for (let turn = 0; turn < 5 && !(await group.count()); turn += 1) {
-      const next = page.getByRole('button', {name: 'Next'});
-      if (!(await next.count()) || await next.isDisabled()) break;
-      await next.click();
-      await page.waitForTimeout(600);
+    // In these official papers (a)(ii) asks for a reason for the answer to (a)(i).
+    // Their independent (b) and later parts remain available as separate cards.
+    for (const sample of LINKED) {
+      await page.evaluate(async ({subject, tier}) => {
+        const api = await import('/js/data/api.js');
+        await api.setEnrolled(subject, true);
+        await api.setPreference('tiers', {...(api.getProgress().preferences.tiers || {}), [subject]: tier});
+      }, sample);
+      await page.goto(`${base}/#/practice?subject=${sample.subject}`);
+      await page.waitForSelector('[data-reset-filters]');
+      await page.locator('[data-reset-filters]').click();
+      await page.locator('[data-search]').fill(sample.paper);
+      await page.locator('[data-search]').press('Enter');
+      await page.waitForTimeout(800);
+      const parent = `${sample.paper}_${sample.question}`;
+      const expected = [`${parent}_U01`, `${parent}_U02`];
+      const group = page.locator(`[data-group="LINKED_${expected[0]}"]`);
+      const independentSibling = page.locator(`[data-card="${parent}_U03"]`);
+      // The paper may list the linked group and the sibling on different result pages.
+      let sawGroup = false;
+      let sawSibling = false;
+      for (let turn = 0; turn <= 5; turn += 1) {
+        if (await group.count()) {
+          assert.equal(await group.count(), 1);
+          const show = group.getByRole('button', {name: 'Show question', exact: true});
+          if (await show.count()) await show.click();
+          assert.deepEqual(await group.locator('textarea[data-answer]').evaluateAll(nodes => nodes.map(node => node.dataset.answer)), expected);
+          assert.equal(await group.locator('.marks-pill').textContent(), `${sample.marks} marks`);
+          for (const id of expected) assert.equal(await page.locator(`[data-card="${id}"]`).count(), 0, `${id} is not offered alone`);
+          sawGroup = true;
+        }
+        sawSibling ||= (await independentSibling.count()) === 1;
+        if (sawGroup && sawSibling) break;
+        const next = page.getByRole('button', {name: 'Next', exact: true});
+        if (!(await next.count()) || await next.isDisabled()) break;
+        await next.click();
+        await page.waitForTimeout(600);
+      }
+      assert.ok(sawGroup && sawSibling, `${parent} shows a two-part linked card and an independent sibling`);
     }
-    assert.equal(await group.count(), 1, 'the linked question is one card');
-    const groupIds = await page.evaluate(async ({subject, first}) => {
-      const {getBundle} = await import('/js/data/content-repository.js');
-      return (await getBundle(subject)).questionsById.get(first).linked_group.question_ids;
-    }, LINKED);
-    assert.ok(groupIds.includes(LINKED.dependent));
-    assert.match(await group.innerText(), new RegExp(`${groupIds.length} linked parts`));
-    for (const id of groupIds) assert.equal(await page.locator(`[data-card="${id}"]`).count(), 0, `${id} is not offered alone`);
 
     // Test builder: a Foundation test drawn from the paper starts, and its questions show
     // the part's own crop with the full question available as context only.

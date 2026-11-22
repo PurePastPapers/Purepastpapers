@@ -48,6 +48,24 @@ export function createSession({
   };
 }
 
+/** Start a fresh attempt with the same paper, questions and timing settings. */
+export function retrySession(session) {
+  const retry = createSession({
+    kind: session.kind,
+    subject_id: session.subject_id,
+    title: session.title,
+    question_ids: [...session.question_ids],
+    paper_id: session.paper_id,
+    paper_type: session.paper_type,
+    time_limit_minutes: session.time_limit_minutes,
+    timer: session.timer.mode,
+    mark_mode: session.mark_mode,
+    total_marks: session.total_marks,
+  });
+  if (session.source_paper_id) retry.source_paper_id = session.source_paper_id;
+  return retry;
+}
+
 // ── timer ──
 
 export function elapsedMs(session, now = Date.now()) {
@@ -76,6 +94,7 @@ export function remainingSeconds(session, now = Date.now()) {
 // ── finishing ──
 
 const LOGS_PAPER = new Set(['full_paper', 'custom_test']);
+const pendingResults = new WeakMap();
 
 /**
  * Completes a session and records the results in the Data Hub.
@@ -84,7 +103,23 @@ const LOGS_PAPER = new Set(['full_paper', 'custom_test']);
  * @param {object} session
  * @param {{ questions: object[], subject: object, paper?: object, totalAwarded?: number }} context
  */
-export async function finishSession(session, { questions, subject, paper = null, totalAwarded = null }) {
+export function finishSession(session, context) {
+  const pending = pendingResults.get(session);
+  if (pending) return pending;
+  const result = (async () => {
+    // If the progress write failed, the result and attempts are already in the in-memory
+    // document. Save that document again without adding another set of attempts.
+    if (session.status === 'completed' && session.result) {
+      await api.saveSession(session);
+      return session.result;
+    }
+    return recordResult(session, context);
+  })().finally(() => pendingResults.delete(session));
+  pendingResults.set(session, result);
+  return result;
+}
+
+async function recordResult(session, { questions, subject, paper = null, totalAwarded = null }) {
   pauseTimer(session);
   const now = new Date().toISOString();
   const provider = getMarkingProvider();

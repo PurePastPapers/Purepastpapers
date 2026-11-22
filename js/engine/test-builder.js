@@ -40,15 +40,20 @@ export function buildTest(pool, options) {
   const availableMinutes = sum(candidates, minutesOf);
   const tolerance = Math.max(2, Math.round(minutes * 0.06));
 
-  const priority = (question) => {
-    const attempt = latestAttempts.get(question.question_id);
-    if (!attempt) return 0; // unseen
-    const score = attempt.max_marks > 0 ? (attempt.marks_awarded / attempt.max_marks) * 100 : 0;
+  const priorities = new Map(candidates.map((question) => [question.question_id, questionPriority(question)]));
+  const priority = (question) => priorities.get(question.question_id);
+
+  function questionPriority(question) {
+    const ids = question.part_ids || [question.question_id];
+    const attempts = ids.map((id) => latestAttempts.get(id));
+    if (attempts.some((attempt) => !attempt)) return 0; // unseen or incomplete linked question
+    const maxMarks = sum(attempts, (attempt) => attempt.max_marks);
+    const score = maxMarks > 0 ? (sum(attempts, (attempt) => attempt.marks_awarded) / maxMarks) * 100 : 0;
     const weak = score < RAG.green;
     if (prioritiseWeak && weak) return -1;
     if (!preferUnseen) return 0;
     return weak ? 1 : 2.5;
-  };
+  }
 
   let best = null;
   for (let trial = 0; trial < trials && candidates.length; trial++) {

@@ -16,11 +16,11 @@ import { loadReportIndex, reportFold } from '../../data/examiner-reports.js';
 import { zoomButton } from '../zoom.js';
 import { ANSWER_MIN, placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
-import { createSession, elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, startTimer } from '../../data/sessions.js';
+import { elapsedMs, finishSession, isRunning, pauseTimer, remainingSeconds, retrySession, startTimer } from '../../data/sessions.js';
 import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { targetGrade, tintPage } from '../subject-colours.js';
 import { icon } from '../icons.js';
-import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody } from '../question-view.js';
+import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody, questionRef } from '../question-view.js';
 import { groupEntry, runnerItems } from '../../engine/linked-parts.js';
 import { banner, confirmDialog, openModal, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
 
@@ -46,6 +46,7 @@ export async function mount(element, context) {
   const paper = bundle.papersById.get(session.paper_id) || api.getCustomTest(session.paper_id) || null;
   const questions = session.question_ids.map((id) => bundle.questionsById.get(id)).filter(Boolean);
   const wholePaper = questions.length === 0; // sat from the PDF and scored as one total
+  const fullPaper = session.kind === 'full_paper';
   const each = session.mark_mode === 'each';
   session.revealed ||= {};
   context.setTitle(session.title);
@@ -67,6 +68,7 @@ export async function mount(element, context) {
   const exitHref = `#${exitRoute}`;
   const leave = () => context.back(fallbackRoute);
   let removed = false; // set once the session has been deleted, so a late save cannot bring it back
+  let resultSaveFailed = false;
   const persist = debounce(() => {
     if (!removed) api.saveSession(session, { silent: true });
   }, 400);
@@ -88,6 +90,7 @@ export async function mount(element, context) {
   };
   /** "Question 3", or "Question 3 (b)" for a part of a linked question. */
   const numberOf = (question) => {
+    if (fullPaper) return questionRef(question).replace(/^Q/, 'Question ');
     const part = partOf(question);
     return `Question ${(itemIndexOf.get(question.question_id) ?? 0) + 1}${part ? ` ${part}` : ''}`;
   };
@@ -411,7 +414,12 @@ export async function mount(element, context) {
       ids.some((id) => session.answers[id]) ? 'is-answered' : '',
       flagged ? 'is-flagged' : '',
     ].join(' ');
-    return html`<button type="button" class="palette__item ${state}" data-jump="${position}" aria-label="Question ${position + 1}${flagged ? ' (flagged)' : ''}" aria-current="${position === current ? 'true' : 'false'}">${position + 1}</button>`;
+    const label = fullPaper ? paperItemNumber(item) : position + 1;
+    return html`<button type="button" class="palette__item ${state}" data-jump="${position}" aria-label="Question ${label}${flagged ? ' (flagged)' : ''}" aria-current="${position === current ? 'true' : 'false'}">${label}</button>`;
+  }
+
+  function paperItemNumber(item) {
+    return (item.group ? linkedRef(item.entry) : questionRef(item.questions[0])).replace(/^Q/, '');
   }
 
   function drawScroll() {
@@ -431,14 +439,15 @@ export async function mount(element, context) {
               ${items.map((item, position) => {
                 const question = item.questions[0];
                 const id = question.question_id;
-                const label = many ? `Question ${position + 1}` : `Question ${question.question_number}`;
+                const label = fullPaper ? `Question ${paperItemNumber(item)}` : `Question ${many ? position + 1 : question.question_number}`;
+                const title = !fullPaper && many ? html`${label}<span class="muted"> of ${items.length}</span>` : label;
                 if (item.group) {
                   return html`<section class="runner__item" data-item="${position}" id="runner-q${position + 1}" aria-label="${label}">
                     <article class="card ruled qview qgroup" data-zoom-src="${label}">
                       <i class="tape tape--c" aria-hidden="true"></i>
                       <header class="qview__head">
                         ${position === 0 ? html`<h1 class="sr-only" tabindex="-1">${session.title}</h1>` : ''}
-                        <h2 class="qview__num">${many ? html`Question ${position + 1}<span class="muted"> of ${items.length}</span>` : html`Question ${question.question_number}`}<span class="muted"> · ${linkedRef(item.entry, bundle.papersById)}</span></h2>
+                        <h2 class="qview__num">${title}${!fullPaper ? html`<span class="muted"> · ${linkedRef(item.entry, bundle.papersById)}</span>` : ''}</h2>
                         <div class="row row--tight">${marksPill(sum(item.questions, (part) => part.marks))} ${zoomButton('question')}</div>
                       </header>
                       ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
@@ -454,7 +463,7 @@ export async function mount(element, context) {
                       <header class="qview__head">
                         ${position === 0 ? html`<h1 class="sr-only" tabindex="-1">${session.title}</h1>` : ''}
                         <h2 class="qview__num">
-                          ${many ? html`Question ${position + 1}<span class="muted"> of ${items.length}</span>` : html`Question ${question.question_number}`}${question.part_label ? html`<span class="muted"> · Part ${question.part_label}</span>` : ''}
+                          ${title}${!fullPaper && question.part_label ? html`<span class="muted"> · Part ${question.part_label}</span>` : ''}
                         </h2>
                         <div class="row row--tight">${marksPill(question.marks)} ${zoomButton('question')}</div>
                       </header>
@@ -674,6 +683,7 @@ export async function mount(element, context) {
       element,
       html`<div class="runner">
         ${bar({ stage: 'result' })}
+        ${resultSaveFailed ? banner(html`Could not save your results. <button type="button" class="linkbtn" data-retry-save>Try saving again</button>`, { type: 'warn' }) : ''}
         ${!api.isSignedIn() ? banner(html`Your results are temporary. <a href="${links.signup('/hub')}">Create a free account</a> to save and track your marks and progress in this browser.`) : ''}
         <section class="card ruled result-hero">
           <i class="tape tape--c" aria-hidden="true"></i>
@@ -702,9 +712,9 @@ export async function mount(element, context) {
             <div class="row">
               <a class="btn btn--primary" href="${exitHref}" data-exit>${backLabel(exitRoute)}</a>
               ${api.isSignedIn() ? html`<a class="btn" href="${links.hub()}">Open the Data Hub</a>` : html`<a class="btn" href="${links.signup('/hub')}">Create a free account</a>`}
-              ${questions.length ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} ${session.kind === 'full_paper' ? 'Sit it again' : 'Try these again'}</button>` : ''}
+              ${!resultSaveFailed && (questions.length || sessionPaper) ? html`<button type="button" class="btn" data-retry>${icon('refresh', { size: 16 })} ${session.kind === 'full_paper' ? 'Sit it again' : 'Try these again'}</button>` : ''}
             </div>
-            <p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? 'Saved in this browser and added to your Data Hub.' : 'Temporary guest result; create an account to save it in this browser.'}</p>
+            ${resultSaveFailed ? '' : html`<p class="small muted"><span class="rag-dot" data-rag="green" style="width:10px;height:10px;vertical-align:-1px"></span> ${api.isSignedIn() ? 'Saved in this browser and added to your Data Hub.' : 'Temporary guest result; create an account to save it in this browser.'}</p>`}
           </div>
         </section>
         ${needsImprovement
@@ -803,11 +813,27 @@ export async function mount(element, context) {
   const typedUnmarked = () => questions.filter((question) => !Number.isInteger(session.marks[question.question_id]) && String(session.answers[question.question_id] || '').trim());
   const unmarkedMessage = (unmarked) => `${plural(unmarked, 'question')} ${unmarked === 1 ? 'has' : 'have'} no mark and will be left out of the score.`;
 
+  let savingResults = false;
   async function complete() {
-    await finishSession(session, { questions, subject, paper, totalAwarded: session.total_awarded });
-    draw();
-    window.scrollTo(0, 0);
-    toast(api.isSignedIn() ? 'Results saved to your Data Hub.' : 'Results are temporary. Create a free account to save them.', { type: 'success' });
+    if (savingResults) return;
+    savingResults = true;
+    try {
+      await finishSession(session, { questions, subject, paper, totalAwarded: session.total_awarded });
+      resultSaveFailed = false;
+      draw();
+      window.scrollTo(0, 0);
+      toast(api.isSignedIn() ? 'Results saved to your Data Hub.' : 'Results are temporary. Create a free account to save them.', { type: 'success' });
+    } catch {
+      if (session.status === 'completed') {
+        resultSaveFailed = true;
+        draw();
+        window.scrollTo(0, 0);
+      } else {
+        toast('Could not calculate your results. Try again.', { type: 'error' });
+      }
+    } finally {
+      savingResults = false;
+    }
   }
 
   async function finishAnswering() {
@@ -948,6 +974,7 @@ export async function mount(element, context) {
     persist();
   });
   on(element, 'click', '[data-finish]', finishAnswering);
+  on(element, 'click', '[data-retry-save]', complete);
 
   /** In mark-as-you-go mode, show a "Next" prompt once the current question has marks. */
   function advanceAfterMark() {
@@ -1024,19 +1051,7 @@ export async function mount(element, context) {
   });
 
   on(element, 'click', '[data-retry]', async () => {
-    const retry = createSession({
-      kind: session.kind === 'full_paper' ? 'question_set' : session.kind,
-      subject_id: session.subject_id,
-      title: session.title,
-      question_ids: [...session.question_ids],
-      paper_id: session.kind === 'custom_test' ? session.paper_id : null,
-      paper_type: session.kind === 'custom_test' ? session.paper_type : 'user_custom_test',
-      time_limit_minutes: session.time_limit_minutes,
-      timer: session.time_limit_minutes ? 'countdown' : 'off',
-      mark_mode: session.mark_mode,
-      total_marks: session.total_marks,
-    });
-    retry.source_paper_id = session.source_paper_id || (session.kind === 'full_paper' ? session.paper_id : null);
+    const retry = retrySession(session);
     await api.saveSession(retry, { silent: true });
     context.navigate(routeOf(links.session(retry.session_id)), { replace: true });
   });

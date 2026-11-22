@@ -46,6 +46,13 @@ REVIEWED_NON_DEPENDENCIES.update({
 })
 
 
+# These two papers print the same task: part (a)(ii) asks for reasons for the
+# metal chosen in (a)(i), without naming its printed label.
+REVIEWED = {
+    f'{question}_U02': {f'{question}_U01': 'asks for reasons for the metal chosen in (a)(i)'}
+    for question in ('EDX_1PH0_2022_JUNE_2F_Q04', 'EDX_1SC0_2022_JUNE_2PF_Q02')
+}
+
 LABEL = r"(\([a-h]\)(?:\s*\([ivx]+\))?|\([ivx]+\)|0?\d\s?\.\s?\d)"
 NAMED = re.compile(
     r"(?:your |the )?answers? (?:to|from|in|for) (?:part |question )?" + LABEL + "|"
@@ -152,6 +159,7 @@ def process(job):
                     restated = value and re.search(r'(?<![\d.])' + re.escape(value.group(1).rstrip('0').rstrip('.')) + r'(?:\.0+)?(?![\d])', text)
                     if near and m and not restated:
                         found.setdefault(earlier['question_id'], 'uses the value of an earlier "Show that" part')
+            found.update(REVIEWED.get(u['question_id'], {}))
             # links this tool added before are re-derived, so a corrected rule also removes them
             pv0 = u.get('provenance') or {}
             mine = set(pv0.get('dependency_detected') or {}) if pv0.get('dependency_detected_on') == TODAY else set()

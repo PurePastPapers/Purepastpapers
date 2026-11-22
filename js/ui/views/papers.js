@@ -13,7 +13,7 @@ import { loadStudent, subjectPills } from '../student.js';
 import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
 import { isTiered, savedTier, tierRequired, validTier } from '../../engine/tiers.js';
 import { banner, emptyState, meter, pageHead, ragBadge, sourceBadge } from '../ui.js';
-import { links } from '../../core/links.js';
+import { links, routeOf } from '../../core/links.js';
 import { isMultiLevel, levelOf, paperCode } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
 
@@ -28,14 +28,19 @@ export async function mount(element, context) {
   const typeInfo = PAPER_TYPES[paperType];
   context.setTitle(paperType === 'real_past_paper' ? 'Past papers' : typeInfo.plural);
 
-  const student = await loadStudent();
+  const requested = context.query.subject;
+  const student = await loadStudent(requested ? [...api.getProgress().enrolled_subjects, requested] : null);
   const { progress, bundles } = student;
   const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.has_written_exam);
+  const requestedBundle = bundles.get(requested);
+  const bundle = requestedBundle?.subject.has_written_exam
+    ? requestedBundle
+    : enrolled.find((candidate) => candidate.subject.subject_id === progress.preferences.lastSubject) || enrolled[0];
   const pageTitle = paperType === 'real_past_paper' ? 'Past papers' : typeInfo.plural;
   const head = (crumb) =>
     pageHead({ title: pageTitle, sub: INTRO[paperType], crumbs: [{ label: 'Home', href: links.home() }, { label: pageTitle, href: `#${context.path}` }, ...(crumb ? [{ label: crumb }] : [])] });
 
-  if (!enrolled.length) {
+  if (!bundle) {
     setHtml(
       element,
       html`${head()}${emptyState({
@@ -48,10 +53,10 @@ export async function mount(element, context) {
     return;
   }
 
-  const wanted = context.query.subject || progress.preferences.lastSubject;
-  const bundle = enrolled.find((candidate) => candidate.subject.subject_id === wanted) || enrolled[0];
   const { subject } = bundle;
-  if (progress.preferences.lastSubject !== subject.subject_id) api.setPreference('lastSubject', subject.subject_id);
+  const isEnrolled = enrolled.includes(bundle);
+  const visibleSubjects = isEnrolled ? enrolled : [...enrolled, bundle];
+  if (isEnrolled && progress.preferences.lastSubject !== subject.subject_id) api.setPreference('lastSubject', subject.subject_id);
 
   const papers = bundle.papers.filter((paper) => paper.paper_type === paperType);
   const summaries = paperSummaries(progress.paper_attempts);
@@ -62,9 +67,10 @@ export async function mount(element, context) {
   // tier appears only when they switch the visible Tier control (or a link names a tier).
   // A science with no saved tier asks for one before listing papers.
   const tieredSubject = isTiered(subject) && tiers.length > 1;
-  const chosenTier = savedTier(subject, progress);
-  const needsTier = tieredSubject && tierRequired(subject) && !chosenTier;
-  const linkTier = context.query.tier === 'all' ? 'all' : validTier(subject, context.query.tier);
+  const chosenTier = isEnrolled ? savedTier(subject, progress) : null;
+  const requestedTier = validTier(subject, context.query.tier);
+  const needsTier = tieredSubject && tierRequired(subject) && !(isEnrolled ? chosenTier : requestedTier);
+  const linkTier = context.query.tier === 'all' ? 'all' : requestedTier;
   const levels = [...new Set(papers.filter((paper) => !paper.is_sample).map((paper) => levelOf(paper, subject)).filter(Boolean))];
   const filters = { year: 'all', code: 'all', status: 'all', level: 'all', tier: linkTier || (tiers.includes(chosenTier) ? chosenTier : 'all') };
   const codesFor = (tier) => [...new Set(papers.filter((paper) => !paper.is_sample && (tier === 'all' || paper.tier === tier)).map((paper) => paper.paper_code))].sort(naturalCompare);
@@ -208,12 +214,12 @@ export async function mount(element, context) {
         </div>
         <span class="small muted tier-switch__note">${chosenTier
           ? filters.tier === chosenTier ? `Showing your saved tier. Switch to see ${tiers.filter((tier) => tier !== chosenTier).join(' or ')} papers.` : `Your saved tier is ${chosenTier}.`
-          : 'Choose a tier in your subject settings to start on it.'}</span>
+          : isEnrolled ? 'Choose a tier in your subject settings to start on it.' : 'Add the subject to save your preferred tier.'}</span>
       </div>`
     : '');
   const tierPrompt = () => html`<section class="card ruled tier-prompt" data-tier-prompt>
       <h2 class="card__title">Choose Foundation or Higher</h2>
-      <p class="muted">${subject.subject} papers are set at Foundation (grades 1 to 5) and Higher (grades 4 to 9). Choose your tier to list its papers. Your saved marks and history are kept.</p>
+      <p class="muted">${subject.subject} papers are set at Foundation (grades 1 to 5) and Higher (grades 4 to 9). Choose your tier to list its papers.${isEnrolled ? ' Your saved marks and history are kept.' : ''}</p>
       <div class="row row--tight">${subject.tiers.map((tier) => html`<button type="button" class="btn" data-save-tier="${tier}">${tier}</button>`)}</div>
     </section>`;
 
@@ -222,7 +228,7 @@ export async function mount(element, context) {
     element,
     html`${head(subject.subject)}
       <div class="stack stack--lg" style="${scStyle(subject)}">
-        ${subjectPills(enrolled, subject.subject_id, (id) => links.papers(id, paperType))}
+        ${subjectPills(visibleSubjects, subject.subject_id, (id) => links.papers(id, paperType, id === subject.subject_id ? requestedTier : null))}
         ${subject.catalogue_note ? banner(subject.catalogue_note) : ''}
         ${moduleScopeBanner(bundle)}
         <div class="with-side">
@@ -247,7 +253,12 @@ export async function mount(element, context) {
     setHtml($('[data-list]', element), list());
   });
   on(element, 'click', '[data-save-tier]', async (event, button) => {
-    await saveSubjectSettings(subject.subject_id, { tier: validTier(subject, button.dataset.saveTier) });
+    const tier = validTier(subject, button.dataset.saveTier);
+    if (!isEnrolled) {
+      context.navigate(routeOf(links.papers(subject.subject_id, paperType, tier)));
+      return;
+    }
+    await saveSubjectSettings(subject.subject_id, { tier });
     context.refresh();
   });
 }

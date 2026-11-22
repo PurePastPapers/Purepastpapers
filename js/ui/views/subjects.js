@@ -132,16 +132,16 @@ export async function mount(element, context) {
             : ''}
           <div class="catalogue-bar">
             <div class="seg" role="tablist" aria-label="Level">
-              ${LEVELS.map((option) => html`<button type="button" role="tab" class="seg__opt" aria-selected="${option.id === level}" data-level="${option.id}">${option.label}</button>`)}
+              ${LEVELS.map((option) => html`<button type="button" role="tab" class="seg__opt" id="catalogue-level-${option.id}" aria-controls="catalogue-results" aria-selected="${option.id === level}" tabindex="${option.id === level ? 0 : -1}" data-level="${option.id}">${option.label}</button>`)}
             </div>
             <label class="searchbox catalogue-bar__search">${icon('search', { size: 16 })}<input class="input" type="search" placeholder="Search subjects or spec codes" value="${search}" data-search aria-label="Search subjects" /></label>
             <div class="chips" role="radiogroup" aria-label="Subject group">
               ${[['all', 'All'], ...Object.entries(CATEGORY_GROUPS).map(([id, entry]) => [id, entry.label])].map(
-                ([id, label]) => html`<button type="button" class="chip chip--sm" role="radio" aria-checked="${group === id}" data-group="${id}">${label}</button>`,
+                ([id, label]) => html`<button type="button" class="chip chip--sm" role="radio" aria-checked="${group === id}" tabindex="${group === id ? 0 : -1}" data-group="${id}">${label}</button>`,
               )}
             </div>
           </div>
-          <div data-catalogue>${catalogue(enrolledIds)}</div>
+          <div id="catalogue-results" role="tabpanel" aria-labelledby="catalogue-level-${level}" tabindex="0" data-catalogue>${catalogue(enrolledIds)}</div>
         </section>`,
     );
     stopPicker = wireColourPicker(element);
@@ -149,15 +149,38 @@ export async function mount(element, context) {
 
   const redrawCatalogue = () => setHtml($('[data-catalogue]', element), catalogue(new Set(api.getProgress().enrolled_subjects)));
 
-  on(element, 'click', '[data-level]', (event, button) => {
+  function wireCatalogueChoice(selector, ariaState, select) {
+    const activate = (button) => {
+      for (const option of element.querySelectorAll(selector)) {
+        option.setAttribute(ariaState, String(option === button));
+        option.tabIndex = option === button ? 0 : -1;
+      }
+      select(button);
+      redrawCatalogue();
+    };
+    on(element, 'click', selector, (event, button) => activate(button));
+    on(element, 'keydown', selector, (event, button) => {
+      const options = [...element.querySelectorAll(selector)];
+      const index = options.indexOf(button);
+      const radio = ariaState === 'aria-checked';
+      let next;
+      if (event.key === 'Home') next = options[0];
+      else if (event.key === 'End') next = options.at(-1);
+      else if (event.key === 'ArrowRight' || (radio && event.key === 'ArrowDown')) next = options[(index + 1) % options.length];
+      else if (event.key === 'ArrowLeft' || (radio && event.key === 'ArrowUp')) next = options[(index - 1 + options.length) % options.length];
+      if (!next) return;
+      event.preventDefault();
+      activate(next);
+      next.focus();
+    });
+  }
+
+  wireCatalogueChoice('[data-level]', 'aria-selected', (button) => {
     level = button.dataset.level;
-    for (const other of element.querySelectorAll('[data-level]')) other.setAttribute('aria-selected', String(other === button));
-    redrawCatalogue();
+    $('[data-catalogue]', element).setAttribute('aria-labelledby', button.id);
   });
-  on(element, 'click', '[data-group]', (event, button) => {
+  wireCatalogueChoice('[data-group]', 'aria-checked', (button) => {
     group = button.dataset.group;
-    for (const other of element.querySelectorAll('[data-group]')) other.setAttribute('aria-checked', String(other === button));
-    redrawCatalogue();
   });
   on(element, 'input', '[data-search]', (event, input) => {
     search = input.value;

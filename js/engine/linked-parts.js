@@ -16,7 +16,7 @@
  * @param {Map<string, object>} papersById  holds the official alternative-answer groups
  * @returns {Map<string, string[]>} group id → member ids in printed order
  */
-export function linkGroups(questionsById, papersById = new Map()) {
+export function linkGroups(questionsById, papersById = new Map(), { includeSiblingParts = false } = {}) {
   const order = new Map([...questionsById.keys()].map((id, index) => [id, index]));
   const options = new Map();
   for (const paper of papersById.values()) {
@@ -47,13 +47,30 @@ export function linkGroups(questionsById, papersById = new Map()) {
     const id = question.question_id;
     for (const dependencyId of question.depends_on_question_ids || []) {
       const dependency = questionsById.get(dependencyId);
-      if (dependency && dependency.paper_id === question.paper_id && order.get(dependencyId) < order.get(id)
-          && options.get(id) === options.get(dependencyId)) {
+      const validLink = dependency && dependency.paper_id === question.paper_id
+        && order.get(dependencyId) < order.get(id) && options.get(id) === options.get(dependencyId);
+      if (includeSiblingParts ? dependency : validLink) {
         union(id, dependencyId);
       }
     }
   }
   if (!parent.size) return new Map();
+
+  // Older saved selections used groups that included every sibling.
+  if (includeSiblingParts) {
+    const siblingsByParent = new Map();
+    for (const question of questionsById.values()) {
+      if (!question.parent_question_id) continue;
+      const siblings = siblingsByParent.get(question.parent_question_id) || [];
+      siblings.push(question.question_id);
+      siblingsByParent.set(question.parent_question_id, siblings);
+    }
+    for (const id of [...parent.keys()]) {
+      for (const sibling of siblingsByParent.get(questionsById.get(id).parent_question_id) || []) {
+        union(id, sibling);
+      }
+    }
+  }
 
   const groups = new Map();
   for (const id of parent.keys()) {
@@ -68,6 +85,7 @@ export function linkGroups(questionsById, papersById = new Map()) {
     const groupId = `LINKED_${members[0]}`;
     const contiguous = order.get(members.at(-1)) - order.get(members[0]) === members.length - 1;
     result.set(groupId, members);
+    if (includeSiblingParts) continue;
     members.forEach((id, position) => {
       const question = questionsById.get(id);
       const points = new Set(question.dependency_spec_points || []);

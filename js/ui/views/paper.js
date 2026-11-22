@@ -11,8 +11,9 @@ import { createSession } from '../../data/sessions.js';
 import { gradeFor, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js';
 import { levelLabel, qualificationCode } from '../../engine/paper-identity.js';
+import { paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds } from '../../engine/paper-choice.js';
 import { icon } from '../icons.js';
-import { marksPill, questionSnippet } from '../question-view.js';
+import { marksPill, questionRef, questionSnippet } from '../question-view.js';
 import { startSingle } from '../student.js';
 import { targetGrade } from '../subject-colours.js';
 import { banner, confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, openModal, pageHead, sourceBadge, toast } from '../ui.js';
@@ -109,7 +110,7 @@ export async function mount(element, context) {
         crumbs: [
           { label: 'Home', href: links.home() },
           { label: PAPER_TYPES[paper.paper_type]?.plural === 'Official past papers' ? 'Past papers' : PAPER_TYPES[paper.paper_type]?.plural || 'Papers', href: links.papers(null, paper.paper_type) },
-          { label: subject.subject, href: links.papers(subject.subject_id, paper.paper_type) },
+          { label: subject.subject, href: links.papers(subject.subject_id, paper.paper_type, progress.enrolled_subjects.includes(subject.subject_id) ? null : paper.tier) },
           ...(paper.year ? [{ label: `${paper.series} ${paper.year}` }] : []),
         ],
         title: paper.title.replace(paper.year ? `${paper.series} ${paper.year} ` : '', ''),
@@ -187,12 +188,63 @@ export async function mount(element, context) {
     setHtml($('[data-questions]', element), questionRows());
   });
 
+  async function chooseQuestions() {
+    const groups = paperChoiceGroups(paper);
+    if (!groups.length) return paper.question_ids;
+    const choices = (dialog) => groups.map((_, index) =>
+      [...dialog.querySelectorAll(`[name="paper-option-${index}"]:checked`)].map(input => Number(input.value)));
+    return openModal({
+      title: 'Choose your paper questions',
+      body: html`<div class="stack">
+        <p>Compulsory questions are included. Choose the optional questions you will answer before you start.</p>
+        ${pdf ? html`<a href="${pdf}" target="_blank" rel="noopener">Open the original question paper (PDF)</a>` : ''}
+        ${groups.map(({ options, count }, index) => {
+          const units = options.map(ids => ids.map(id => bundle.questionsById.get(id)).filter(Boolean));
+          const numbers = units.map(option => [...new Set(option.map(question => question.question_number))].join(', '));
+          return html`<fieldset class="stack stack--sm">
+            <legend>Choice ${index + 1} · Choose ${count}</legend>
+            ${units.map((option, optionIndex) => {
+              const number = numbers[optionIndex];
+              const ambiguous = numbers.some((other, otherIndex) => otherIndex !== optionIndex && other === number);
+              const label = ambiguous ? option.map(question => questionRef(question)).join(', ') : number ? `Question ${number}` : `Option ${optionIndex + 1}`;
+              return html`<label class="check">
+                <input type="${count === 1 ? 'radio' : 'checkbox'}" name="paper-option-${index}" value="${optionIndex}" />
+                <span>${label}</span>
+              </label>`;
+            })}
+          </fieldset>`;
+        })}
+      </div>`,
+      actions: [
+        {label: 'Cancel', cancel: true},
+        {
+          label: 'Continue',
+          variant: 'primary',
+          validate: (dialog) => {
+            const selections = choices(dialog);
+            const missing = groups.findIndex(({ count }, index) => selections[index].length !== count);
+            return missing < 0 ? null : `Choose exactly ${groups[missing].count} in choice ${missing + 1}.`;
+          },
+          collect: (dialog) => paperQuestionSelection(paper, groups, choices(dialog)),
+        },
+      ],
+    });
+  }
+
   async function start(timed) {
+    const selection = await chooseQuestions();
+    if (!selection) return;
+    const questionIds = paperSessionQuestionIds(paper, selection, bundle.questionsById);
+    if (selection.length && !questionIds.length && !(await confirmDialog({
+      title: 'Sit the complete paper from its source',
+      message: `Some questions needed for this sitting are missing here. Use the full source paper and enter your score out of ${paper.total_marks}.`,
+      confirmLabel: 'Sit from source',
+    }))) return;
     const session = createSession({
       kind: 'full_paper',
       subject_id: subject.subject_id,
       title: paper.title,
-      question_ids: paper.question_ids,
+      question_ids: questionIds,
       paper_id: paper.paper_id,
       paper_type: paper.paper_type,
       time_limit_minutes: timed ? paper.duration_minutes : null,

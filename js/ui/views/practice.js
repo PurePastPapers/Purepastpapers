@@ -16,7 +16,7 @@ import { createSession } from '../../data/sessions.js';
 import { countByNode, filterQuestions } from '../../engine/filter-engine.js';
 import { latestByQuestion } from '../../engine/analytics.js';
 import { buildTest, minutesOf } from '../../engine/test-builder.js';
-import { collapseLinked, collapseLocked, expandLinkedIds, groupEntry } from '../../engine/linked-parts.js';
+import { collapseLinked, collapseLocked, expandLinkedIds, groupEntry, linkGroups } from '../../engine/linked-parts.js';
 import { icon } from '../icons.js';
 import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody, questionMeta, questionRef, questionSnippet } from '../question-view.js';
 import { mountSpecTree } from '../spec-tree.js';
@@ -94,6 +94,7 @@ const defaults = () => ({
   prioritiseWeak: false,
   seed: Math.floor(Math.random() * 1e9),
   selected: [],
+  selectionVersion: 1,
   closedQuestions: [],
   schemeQuestions: [],
   reportQuestions: [],
@@ -109,10 +110,19 @@ const toggle = (list, value) => (list.includes(value) ? list.filter((item) => it
 
 export async function mount(element, context) {
   context.setTitle('Practice');
-  const [student] = await Promise.all([loadStudent(), loadReportIndex()]);
+  const requested = context.query.subject;
+  const subjectIds = api.getProgress().enrolled_subjects;
+  const [student] = await Promise.all([
+    loadStudent(requested ? [...subjectIds, requested] : subjectIds),
+    loadReportIndex(),
+  ]);
   const { progress, bundles, latest } = student;
   const user = api.currentUser();
   const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.practice_modes.length);
+  const explicit = bundles.get(requested);
+  const bundle = explicit?.subject.practice_modes.length
+    ? explicit
+    : enrolled.find((candidate) => candidate.subject.subject_id === progress.preferences.lastSubject) || enrolled[0];
   const head = (crumb) =>
     pageHead({
       title: 'Find questions',
@@ -120,7 +130,7 @@ export async function mount(element, context) {
       crumbs: [{ label: 'Home', href: links.home() }, { label: 'Practice', href: links.practice() }, ...(crumb ? [{ label: crumb }] : [])],
     });
 
-  if (!enrolled.length) {
+  if (!bundle) {
     setHtml(
       element,
       html`${head()}${emptyState({
@@ -133,8 +143,6 @@ export async function mount(element, context) {
     return;
   }
 
-  const wanted = context.query.subject || progress.preferences.lastSubject;
-  const bundle = enrolled.find((candidate) => candidate.subject.subject_id === wanted) || enrolled[0];
   const { subject, spec, textbooks } = bundle;
   // Paper choices name their level when the subject holds AS and A-Level papers.
   const paperOptionLabel = (paper) => {
@@ -142,6 +150,8 @@ export async function mount(element, context) {
     return level && !paper.title.split(/[\s·:]+/).includes(level) ? `${level} · ${paper.title}` : paper.title;
   };
   const subjectId = subject.subject_id;
+  const isEnrolled = progress.enrolled_subjects.includes(subjectId);
+  const subjects = isEnrolled ? enrolled : [...enrolled, bundle];
   // Subjects whose scored units carry a reviewed introduced_year use it for the
   // Year 12 / Year 13-only filters, and treat Year 13 as cumulative.
   const unitContentYears = subject.content_year_source === 'introduced_year';
@@ -152,7 +162,7 @@ export async function mount(element, context) {
   };
   const curriculum = await getCurriculum(subjectId);
   let curriculumPoints = null;
-  if (progress.preferences.lastSubject !== subjectId) api.setPreference('lastSubject', subjectId);
+  if (isEnrolled && progress.preferences.lastSubject !== subjectId) api.setPreference('lastSubject', subjectId);
 
   // ── tiers (owner request 2026-11-19) ──
   // A tiered GCSE starts on the student's saved tier. A science with no saved tier asks for one
@@ -160,22 +170,25 @@ export async function mount(element, context) {
   // tiers for this browser tab only; it never changes the saved tier.
   const tiered = isTiered(subject);
   const savedSubjectTier = savedTier(subject, progress);
-  if (tiered && tierRequired(subject) && !savedSubjectTier) {
+  const tierPref = savedSubjectTier || (!isEnrolled ? validTier(subject, context.query.tier) : '') || '';
+  if (tiered && tierRequired(subject) && !tierPref) {
     tintPage(subject);
     setHtml(
       element,
       html`${head(subject.subject)}
         <div class="stack stack--lg" style="${scStyle(subject)}">
-          ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
+          ${subjectPills(subjects, subjectId, (id) => links.practice({ subject: id }))}
           <section class="card ruled tier-prompt" data-tier-prompt>
             <h2 class="card__title">Choose Foundation or Higher for ${subject.subject}</h2>
-            <p class="muted">Questions and tests are built from one tier’s papers. Choose yours to start; you can change it later in the subject’s settings. Your saved ticks, marks and history are kept.</p>
+            <p class="muted">Questions and tests are built from one tier’s papers. ${isEnrolled ? 'Choose yours to start. You can change it later in the subject’s settings.' : 'Choose a tier to browse this subject.'}</p>
             <div class="row row--tight">${subject.tiers.map((tier) => html`<button type="button" class="btn" data-save-tier="${tier}">${tier}</button>`)}</div>
           </section>
         </div>`,
     );
     on(element, 'click', '[data-save-tier]', async (event, button) => {
-      await saveSubjectSettings(subjectId, { tier: validTier(subject, button.dataset.saveTier) });
+      const tier = validTier(subject, button.dataset.saveTier);
+      if (!isEnrolled) return context.navigate(routeOf(links.practice({ ...context.query, subject: subjectId, tier })), { replace: true });
+      await saveSubjectSettings(subjectId, { tier });
       context.refresh();
     });
     return;
@@ -184,7 +197,7 @@ export async function mount(element, context) {
   const readTierOverride = () => {
     try {
       const saved = JSON.parse(sessionStorage.getItem(tierOverrideKey) || 'null');
-      return saved && saved.pref === (savedSubjectTier || '') && (saved.tier === '' || validTier(subject, saved.tier)) ? saved.tier : null;
+      return saved && saved.pref === tierPref && (saved.tier === '' || validTier(subject, saved.tier)) ? saved.tier : null;
     } catch {
       return null;
     }
@@ -192,7 +205,7 @@ export async function mount(element, context) {
   const writeTierOverride = (tier) => {
     try {
       if (tier === null) sessionStorage.removeItem(tierOverrideKey);
-      else sessionStorage.setItem(tierOverrideKey, JSON.stringify({ pref: savedSubjectTier || '', tier }));
+      else sessionStorage.setItem(tierOverrideKey, JSON.stringify({ pref: tierPref, tier }));
     } catch {
       /* not essential */
     }
@@ -207,7 +220,7 @@ export async function mount(element, context) {
     // Covered topics became the default in Nov 2026. Filters saved before then
     // had it off by default, so those return to the automatic setting once.
     if (saved.coveredDefaultVersion !== 1) { delete saved.learnedOnly; delete saved.testFocusVersion; }
-    state = { ...state, ...saved, coveredDefaultVersion: 1 };
+    state = { ...state, ...saved, coveredDefaultVersion: 1, selectionVersion: saved.selectionVersion || 0 };
   } catch {
     /* start from defaults */
   }
@@ -230,7 +243,6 @@ export async function mount(element, context) {
   // A tiered GCSE starts on the tier chosen when the subject was added (subject settings):
   // every visit starts there unless this tab switched tier on purpose. Changing the saved tier
   // drops that switch, so the new tier is the default for every later visit and test.
-  const tierPref = savedSubjectTier || '';
   if (tiered) {
     const override = readTierOverride();
     state.tier = override ?? tierPref;
@@ -346,13 +358,29 @@ export async function mount(element, context) {
   // A linked group is selected by its group id (engine/linked-parts.js).
   const entryOf = (id) => bundle.questionsById.get(id) || (id.startsWith('LINKED_') ? groupEntry(id, bundle.questionsById) : null);
   const visibleQuestionIds = bundle.scope ? new Set(bundle.questions.map((question) => question.question_id)) : null;
-  state.selected = state.selected.filter((id) => {
-    const entry = entryOf(id);
-    return entry && (!visibleQuestionIds || (entry.part_ids || [id]).every((partId) => visibleQuestionIds.has(partId)));
-  });
+  const selected = Array.isArray(state.selected) ? state.selected.filter((id) => typeof id === 'string') : [];
+  // Older selections stored groups that also included independent siblings. Keep all
+  // of those selected questions under the current groups and individual question ids.
+  const oldGroups = state.selectionVersion < 1 && selected.some((id) => id.startsWith('LINKED_'))
+    ? linkGroups(bundle.questionsById, bundle.papersById, { includeSiblingParts: true })
+    : new Map();
+  state.selected = [...new Set(selected.flatMap((id) => oldGroups.get(id) || [id])
+    .map((id) => bundle.questionsById.get(id)?.linked_group?.id || id)
+    .filter((id) => {
+      const entry = entryOf(id);
+      return entry && (!visibleQuestionIds || (entry.part_ids || [id]).every((partId) => visibleQuestionIds.has(partId)));
+    }))];
+  state.selectionVersion = 1;
   save();
 
-  const pool = questionsForScience(practicePool(bundle), viewScience, spec, specIndex);
+  const questionBank = practicePool(bundle);
+  const pool = questionsForScience(questionBank, viewScience, spec, specIndex);
+  const emptyBank = () => emptyState({
+    iconName: 'file',
+    title: 'No practice questions available yet',
+    text: bundle.papers.length ? 'You can still browse the full past papers for this subject.' : 'There are no past papers listed for this subject yet.',
+    action: bundle.papers.length ? html`<a class="btn btn--primary" href="${links.papers(subjectId, 'real_past_paper', viewTier)}">Browse past papers</a>` : '',
+  });
   const representedParents = new Set(pool.map((question) => question.parent_question_id).filter(Boolean));
   const suppressedParents = bundle.questions.filter((question) => !question.part_label && representedParents.has(question.question_id) && question.include_in_custom_pool !== false && enabledSourceTypes().includes(question.source_type)).length;
   // Answers saved to mark later (kept in the account, so they follow the student between devices).
@@ -681,7 +709,7 @@ export async function mount(element, context) {
     const test = currentTest;
     if (!test.questions.length) {
       return html`<div class="card">
-        ${emptyState({
+        ${questionBank.length ? emptyState({
           iconName: 'filter',
           title: 'No questions match yet',
           text: !manualFocus()?.length
@@ -689,7 +717,7 @@ export async function mount(element, context) {
             : lockedCount
               ? `${plural(lockedCount, 'question')} need topics you haven’t learned or selected for this test. Add those topics to this test or widen your selection.`
               : 'Try another difficulty, widen your topics, or add questions for this subject.',
-        })}
+        }) : emptyBank()}
       </div>`;
     }
     return html`<div class="card testpreview tilt-2">
@@ -1028,14 +1056,14 @@ export async function mount(element, context) {
           : ''}
       ${sorted.length
         ? html`<div class="qlist">${visible.map((question) => questionCard(question))}</div>`
-        : emptyState({
+        : questionBank.length ? emptyState({
             iconName: 'filter',
             title: 'No questions match',
             text: !hasLearning(textbookMode()) && coveredOnly()
               ? 'Tick the topics you have learned and questions will appear here.'
               : 'Change the filters to see more questions.',
             action: !hasLearning(textbookMode()) && coveredOnly() ? html`<a class="btn btn--primary" href="${links.subject(subjectId)}">Tick learned topics</a>` : null,
-          })}
+          }) : emptyBank()}
       ${sorted.length > PAGE_SIZE ? html`<nav class="row row--between filter-pagination" aria-label="Question results pages"><button type="button" class="btn btn--sm" data-page="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>Previous</button><span class="small muted" role="status">Page ${state.page} of ${pageCount} · ${(state.page - 1) * PAGE_SIZE + 1}–${Math.min(state.page * PAGE_SIZE, sorted.length)} of ${sorted.length}</span><button type="button" class="btn btn--sm" data-page="${state.page + 1}" ${state.page >= pageCount ? 'disabled' : ''}>Next</button></nav>` : ''}
       ${locked.length
         ? html`<details class="locked">
@@ -1205,7 +1233,7 @@ export async function mount(element, context) {
       ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="${links.signup('/practice')}">Create a free account</a> to save it in this browser.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
-        ${subjectPills(enrolled, subjectId, (id) => links.practice({ subject: id }))}
+        ${subjectPills(subjects, subjectId, (id) => links.practice({ subject: id }))}
         ${tiered ? tierBar() : ''}
         ${sciences.length ? scienceBar() : ''}
         ${moduleScopeBanner(bundle)}

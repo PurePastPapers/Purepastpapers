@@ -16,8 +16,8 @@ export const links = {
   subjects: (params) => `#/subjects${query(params)}`,
   /** `params.tier` opens a tiered GCSE on one tier before it is added. */
   subject: (subjectId, params) => `#/subject/${enc(subjectId)}${query(params)}`,
-  /** A paper list (official by default), optionally opened on one subject. */
-  papers: (subjectId = null, paperType = 'real_past_paper') => `#${PAPER_LISTS[paperType] || '/papers'}${query({ subject: subjectId })}`,
+  /** A paper list (official by default), optionally opened on one subject and tier. */
+  papers: (subjectId = null, paperType = 'real_past_paper', tier = null) => `#${PAPER_LISTS[paperType] || '/papers'}${query({ subject: subjectId, tier })}`,
   paper: (subjectId, paperId) => `#/paper/${enc(subjectId)}/${enc(paperId)}`,
   practice: (params) => `#/practice${query(params)}`,
   session: (sessionId) => `#/session/${enc(sessionId)}`,
