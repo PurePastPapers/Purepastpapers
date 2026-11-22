@@ -1714,6 +1714,11 @@ export async function mount(element, context) {
     const cardId = toggle?.dataset.inkCard;
     const question = bundle.questionsById.get(partId);
     if (!question || !cardId) return;
+    const sections = inkEditors.get(partId)?.getValue().sections || [];
+    if (!sections.some(section => section.strokes.length)) {
+      toast('Write something before saving a handwritten answer.', { type: 'info' });
+      return;
+    }
     button.disabled = true;
     const inkTarget = button.closest('[data-ink-target]') || element.querySelector(`[data-ink-target="${CSS.escape(partId)}"]`);
     inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__canvas').forEach((control) => {

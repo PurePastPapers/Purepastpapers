@@ -614,6 +614,14 @@ export async function saveAnswerUnmarked(question, answer = '', { attemptId = nu
     await persist();
     return { ...marked, waiting: false };
   }
+  if (hasInk === false && !hasText(text)) {
+    const index = waitingIndex(doc, attemptId);
+    if (index >= 0 && doc.saved_answers[index].question_id === question.question_id) {
+      doc.saved_answers.splice(index, 1);
+      await persist();
+    }
+    return null;
+  }
   const entry = keepWaiting(doc, { attempt_id: attemptId, question_id: question.question_id, subject_id: question.subject_id, answer: text, group_attempt_id: groupAttemptId, has_ink: hasInk });
   await persist();
   return { ...entry, waiting: true };
