@@ -15,6 +15,25 @@ import re
 ROMAN = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
 COMPACT = re.compile(r'^(\d{1,2})([a-hj])?(i|ii|iii|iv|v|vi|vii|viii|ix|x)?$')
 
+# These official schemes have exact ruled rows even where a label is repeated,
+# shortened or blank. Bounds are top-left PDF points on the checked sources.
+REVIEWED_SCHEME_ROWS = {
+    '0c25dae332de1146ff930006d9a848062995861193493c9e5e79481eefd2f171': {
+        '6(b)(i)': [(19, 128, 157)],
+        '6(b)(ii)': [(20, 61, 520)],
+    },
+    'c5d6cddc615c2d962e6a9dfcefe4ad134a3eb1f2c682f2a5dbbd63b1b0a5d14b': {
+        '2(a)(i)': [(8, 68, 527)],
+    },
+    'd168504f38cc76cfa6d04d1e8a9a1195d2db3a3a7add1fbd23540b66cde5ddb7': {
+        '1(b)': [(5, 263, 525)],
+        '1(c)': [(6, 61, 289)],
+    },
+    'fe8969d35a0a1a8ff097258ba2d98298d7738febc03404887a4999e5ccac799f': {
+        '20(b)(v)': [(24, 389, 517)],
+    },
+}
+
 
 def parse_tokens(tokens, prev):
     """tokens: label words in reading order. prev: (q, part, sub). Returns (q, part, sub) or None."""
@@ -236,4 +255,13 @@ def scheme_regions(path, labels, start_page=0, source_sha256=None):
         scheme = out.get('1(b)(iii)')
         if scheme:
             scheme['regions'] = [r for r in scheme['regions'] if r['page'] == 5]
+    for label, reviewed in REVIEWED_SCHEME_ROWS.get(source_sha256, {}).items():
+        if label in labels:
+            out[label] = {
+                'scope': 'unit',
+                'regions': [
+                    {'page': page, 'bbox': [0.023755, round(top / 595.32, 6), 0.976245, round(bottom / 595.32, 6)]}
+                    for page, top, bottom in reviewed
+                ],
+            }
     return out, sorted(by_label)

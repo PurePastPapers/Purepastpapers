@@ -1902,7 +1902,7 @@
             "page": 16,
             "bbox": [
               0.038345,
-              0.782191,
+              0.754,
               0.961655,
               0.823652
             ]
@@ -1925,27 +1925,9 @@
             "page": 16,
             "bbox": [
               0.038345,
-              0.042289,
+              0.6555,
               0.961655,
-              0.528064
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.57033,
-              0.961655,
-              0.652872
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.657016,
-              0.961655,
-              0.782191
+              0.752
             ]
           }
         ],
@@ -1982,7 +1964,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.038345,
+              0.6555,
+              0.961655,
+              0.752
+            ]
+          }
+        ],
+        "part_display_review": "The recurrence and initial value are supplied. Include both nested prompts.",
+        "part_display_review_source": "69315ff6a76b76d57d3d95948e7de371911b37006246b98d1f1cd9c43ec732b1"
       },
       "part_label": "(c)"
     },
@@ -2461,16 +2456,7 @@
               0.038345,
               0.042289,
               0.961655,
-              0.22705
-            ]
-          },
-          {
-            "page": 24,
-            "bbox": [
-              0.038345,
-              0.272628,
-              0.961655,
-              0.326335
+              0.198
             ]
           },
           {
@@ -2525,7 +2511,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 24,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.198
+            ]
+          },
+          {
+            "page": 24,
+            "bbox": [
+              0.038345,
+              0.330479,
+              0.961655,
+              0.437652
+            ]
+          }
+        ],
+        "part_display_review": "The equality question uses the two model equations, not the earlier derivative.",
+        "part_display_review_source": "69315ff6a76b76d57d3d95948e7de371911b37006246b98d1f1cd9c43ec732b1"
       },
       "part_label": "(c)"
     },

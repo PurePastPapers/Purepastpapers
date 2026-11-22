@@ -71,9 +71,7 @@ test('units are model-reviewed source pixels with unscored context and their own
     assert(['part', 'parent_part', 'full_question'].includes(q.scheme_scope));
     for (const intro of q.context.intros || []) assert(/^(Question|Part) /.test(intro.label) && intro.image_url.startsWith('assets/chem/'));
   }
-  // Rows OCR did not label for these units: nothing else falls back.
-  assert.deepEqual(units.filter(q => q.scheme_scope !== 'part').map(q => q.question_id).sort(),
-    ['OCR_H032_2018_JUNE_02_Q06_b_ii', 'OCR_H432_2018_JUNE_03_Q02_a_i', 'OCR_H432_2021_NOVEMBER_03_Q01_c']);
+  assert.deepEqual(units.filter(q => q.scheme_scope !== 'part').map(q => q.question_id), []);
   const specimen = units.find(q => q.question_id === 'OCR_H432_SAMPLE_03_Q01_j');
   assert.deepEqual(specimen.provenance.scheme_regions.map(region => region.page), [32, 32]);
   assert.equal(units.filter(q => q.is_official_sample).length, 198);

@@ -406,7 +406,6 @@
       "scheme_question_number": "3(b)(ii)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_2020_OCTOBER_02/Q03_full.webp",
-        "stem_image_url": "assets/maths/EDX_9MA0_2020_OCTOBER_02/Q03_U02_context.webp",
         "full_scheme_image_url": "assets/maths/EDX_9MA0_2020_OCTOBER_02/Q03_scheme.webp"
       },
       "provenance": {
@@ -443,7 +442,7 @@
             "page": 6,
             "bbox": [
               0.038345,
-              0.301716,
+              0.238,
               0.961655,
               0.406398
             ]
@@ -460,26 +459,6 @@
           1
         ],
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 6,
-            "bbox": [
-              0.038345,
-              0.0965,
-              0.961655,
-              0.234362
-            ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.038345,
-              0.238506,
-              0.961655,
-              0.301716
-            ]
-          }
-        ],
         "context_reasons": [
           "earlier \"show that\" result"
         ],
@@ -503,7 +482,9 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "part_display_review": "Part (b) repeats both equations and prints two prompts with one tariff.",
+        "part_display_review_source": "740fb2631fbc3fac4c67ee260382f96e9b510238376d287ee65edca7f84ff3ee"
       },
       "part_label": "(b)"
     },
@@ -2589,16 +2570,16 @@
             "page": 34,
             "bbox": [
               0.038345,
-              0.042289,
+              0.272,
               0.961655,
-              0.450593
+              0.342
             ]
           },
           {
             "page": 34,
             "bbox": [
               0.038345,
-              0.485682,
+              0.489,
               0.961655,
               0.772444
             ]
@@ -2646,7 +2627,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 34,
+            "bbox": [
+              0.038345,
+              0.272,
+              0.961655,
+              0.342
+            ]
+          },
+          {
+            "page": 34,
+            "bbox": [
+              0.038345,
+              0.489,
+              0.961655,
+              0.772444
+            ]
+          }
+        ],
+        "part_display_review": "The walkway calculation uses the shared parametrisation and Figure 4, not the area exercise.",
+        "part_display_review_source": "740fb2631fbc3fac4c67ee260382f96e9b510238376d287ee65edca7f84ff3ee"
       },
       "part_label": "(b)"
     },

@@ -777,7 +777,7 @@
             "page": 8,
             "bbox": [
               0.038345,
-              0.725133,
+              0.717,
               0.961655,
               0.80886
             ]
@@ -804,16 +804,16 @@
               0.038345,
               0.042289,
               0.961655,
-              0.556404
+              0.486
             ]
           },
           {
             "page": 8,
             "bbox": [
               0.038345,
-              0.602815,
+              0.6022,
               0.961655,
-              0.725133
+              0.717
             ]
           }
         ],
@@ -868,7 +868,29 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.486
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.038345,
+              0.6022,
+              0.961655,
+              0.717
+            ]
+          }
+        ],
+        "part_display_review": "The detached-trailer scenario supplies the earlier result. Restore the numerator and both scored parts.",
+        "part_display_review_source": "163a0e2731ff1b4c7b4de709ce483457af4e8fc2e9195ea2d877705158a06eba"
       },
       "part_label": "(c)–(d)"
     },
@@ -992,23 +1014,23 @@
               0.038345,
               0.042289,
               0.961655,
-              0.556404
+              0.486
             ]
           },
           {
             "page": 8,
             "bbox": [
               0.038345,
-              0.725133,
+              0.6022,
               0.961655,
-              0.763255
+              0.694
             ]
           },
           {
             "page": 8,
             "bbox": [
               0.038345,
-              0.809666,
+              0.8093,
               0.961655,
               0.833036
             ]
@@ -1065,7 +1087,38 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.486
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.038345,
+              0.6022,
+              0.961655,
+              0.694
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.038345,
+              0.8093,
+              0.961655,
+              0.833036
+            ]
+          }
+        ],
+        "part_display_review": "Answer from the detached-trailer model and the final prompt without the first three tasks.",
+        "part_display_review_source": "163a0e2731ff1b4c7b4de709ce483457af4e8fc2e9195ea2d877705158a06eba"
       },
       "part_label": "(e)"
     }
