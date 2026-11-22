@@ -2666,7 +2666,8 @@
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_2023_JUNE_01/Q08_full.webp",
         "stem_image_url": "assets/maths/EDX_9MA0_2023_JUNE_01/Q08_U03_context.webp",
-        "full_scheme_image_url": "assets/maths/EDX_9MA0_2023_JUNE_01/Q08_scheme.webp"
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_2023_JUNE_01/Q08_scheme.webp",
+        "lead_in_image_url": "assets/maths/EDX_9MA0_2023_JUNE_01/Q08_U03_leadin.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2734,27 +2735,18 @@
             "page": 18,
             "bbox": [
               0.038345,
-              0.04244954766875435,
+              0.0424495,
               0.961655,
-              0.46555323590814196
+              0.464
             ]
           },
           {
             "page": 18,
             "bbox": [
               0.038345,
-              0.5080027835768963,
+              0.5497,
               0.961655,
-              0.5455810716771051
-            ]
-          },
-          {
-            "page": 18,
-            "bbox": [
-              0.038345,
-              0.5497564370215727,
-              0.961655,
-              0.5734168406402227
+              0.574
             ]
           }
         ],
@@ -2809,34 +2801,42 @@
             "page": 18,
             "bbox": [
               0.038345,
-              0.042289,
+              0.0424495,
               0.961655,
-              0.503543
+              0.464
             ]
           },
           {
             "page": 18,
             "bbox": [
               0.038345,
-              0.507687,
+              0.5497,
               0.961655,
-              0.54581
-            ]
-          },
-          {
-            "page": 18,
-            "bbox": [
-              0.038345,
-              0.549954,
-              0.961655,
-              0.573324
+              0.574
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "lead_in_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.038345,
+              0.5497,
+              0.961655,
+              0.574
+            ]
+          }
+        ],
+        "part_display_review": "The area calculation uses the earlier radius and angle; retain the front-length condition as a separate lead-in.",
+        "part_display_review_source": "2488b4e6aa13bbaa9cbbc5bb3edaefb02d2dd729ed4359f691e6e20a7b15892e"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_2023_JUNE_01_Q08_U01",
+        "EDX_9MA0_2023_JUNE_01_Q08_U02"
+      ]
     },
     {
       "question_id": "EDX_9MA0_2023_JUNE_01_Q09_U01",

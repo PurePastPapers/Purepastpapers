@@ -120,6 +120,19 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
                     question['content']['mark_scheme_image_url'] = render(
                         scheme_name, entry['scheme_regions'], scheme_renderer, scheme_offset)
                     pv['part_scheme_regions'] = entry['scheme_regions']
+                if 'lead_in_regions' in entry:
+                    lead_in = entry['lead_in_regions']
+                    context['lead_in_image_url'] = render(f'{short_id}_leadin.webp', lead_in, renderer, offset)
+                    pv['lead_in_regions'] = lead_in
+                if 'add_dependencies' in entry:
+                    required = entry['add_dependencies']
+                    prior = {item['question_id'] for item in pack['questions'] if
+                             item['parent_question_id'] == question['parent_question_id'] and item['question_id'] < qid}
+                    if set(required) - prior:
+                        raise ValueError(f'Invalid reviewed prerequisites for {qid}')
+                    current = question.get('depends_on_question_ids', [])
+                    question['depends_on_question_ids'] = list(dict.fromkeys(current + required))
+
                 denied = set(entry.get('remove_dependencies', []))
                 if denied:
                     remaining = [dep for dep in question.get('depends_on_question_ids', []) if dep not in denied]

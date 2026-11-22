@@ -154,6 +154,8 @@ def main(slugs, paper_ids=()):
             # which some part depends on another (see linkGroups in js/engine/linked-parts.js).
             linked = {q.get('parent_question_id') for q in pack.get('questions', []) if q.get('depends_on_question_ids')}
             for question in pack.get('questions', []):
+                if question.get('provenance', {}).get('lead_in_regions') and question.get('context', {}).get('lead_in_image_url'):
+                    continue  # Already rendered from source-verified PDF coordinates.
                 if question.get('parent_question_id') not in linked and not (question.get('context') or {}).get('lead_in_image_url'):
                     continue
                 if question.get('parent_question_id') not in linked:

@@ -1475,7 +1475,8 @@
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_full.webp",
         "stem_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_U03_context.webp",
-        "full_scheme_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_scheme.webp"
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_scheme.webp",
+        "lead_in_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_U03_leadin.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1542,9 +1543,9 @@
             "page": 12,
             "bbox": [
               0.038345,
-              0.620317,
+              0.6557,
               0.961655,
-              0.658439
+              0.695
             ]
           }
         ],
@@ -1584,7 +1585,40 @@
         "dependency_detected": {
           "EDX_9MA0_2022_JUNE_32_Q04_U02": "uses the value of an earlier \"Show that\" part"
         },
-        "dependency_detected_on": "2026-11-20"
+        "dependency_detected_on": "2026-11-20",
+        "context_regions_refined": [
+          {
+            "page": 12,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.533664
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.038345,
+              0.6557,
+              0.961655,
+              0.695
+            ]
+          }
+        ],
+        "lead_in_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.038345,
+              0.6557,
+              0.961655,
+              0.695
+            ]
+          }
+        ],
+        "part_display_review": "The bridge states the cosine value needed to apply the earlier tension result.",
+        "part_display_review_source": "76df109bf787c4dcb53745335d5149dd2403df3cdfd18f135f2e04f66b0c8deb"
       },
       "part_label": "(c)",
       "depends_on_question_ids": [
@@ -1632,7 +1666,8 @@
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_full.webp",
         "stem_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_U04_context.webp",
-        "full_scheme_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_scheme.webp"
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_scheme.webp",
+        "lead_in_image_url": "assets/maths/EDX_9MA0_2022_JUNE_32/Q04_U04_leadin.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1668,7 +1703,7 @@
             "page": 12,
             "bbox": [
               0.038345,
-              0.831999,
+              0.822,
               0.961655,
               0.876601
             ]
@@ -1700,27 +1735,9 @@
             "page": 12,
             "bbox": [
               0.038345,
-              0.620317,
+              0.772,
               0.961655,
-              0.658439
-            ]
-          },
-          {
-            "page": 12,
-            "bbox": [
-              0.038345,
-              0.700254,
-              0.961655,
-              0.768241
-            ]
-          },
-          {
-            "page": 12,
-            "bbox": [
-              0.038345,
-              0.772385,
-              0.961655,
-              0.831999
+              0.821
             ]
           }
         ],
@@ -1766,9 +1783,46 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 12,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.533664
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.038345,
+              0.772,
+              0.961655,
+              0.821
+            ]
+          }
+        ],
+        "lead_in_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.038345,
+              0.772,
+              0.961655,
+              0.821
+            ]
+          }
+        ],
+        "part_display_review": "The limiting equilibrium calculation uses results in (b) and (c); keep its condition separate and include the printed numerator.",
+        "part_display_review_source": "76df109bf787c4dcb53745335d5149dd2403df3cdfd18f135f2e04f66b0c8deb"
       },
-      "part_label": "(d)"
+      "part_label": "(d)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_2022_JUNE_32_Q04_U02",
+        "EDX_9MA0_2022_JUNE_32_Q04_U03"
+      ]
     },
     {
       "question_id": "EDX_9MA0_2022_JUNE_32_Q05_U01",

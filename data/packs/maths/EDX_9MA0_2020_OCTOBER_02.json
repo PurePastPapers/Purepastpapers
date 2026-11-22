@@ -1148,7 +1148,7 @@
             "page": 16,
             "bbox": [
               0.038345,
-              0.799961,
+              0.6726,
               0.961655,
               0.841422
             ]
@@ -1170,33 +1170,13 @@
             "page": 16,
             "bbox": [
               0.038345,
-              0.042289,
+              0.534,
               0.961655,
-              0.530341
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.561168,
-              0.961655,
-              0.669225
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.67337,
-              0.961655,
-              0.799961
+              0.555
             ]
           }
         ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 14,
@@ -1218,15 +1198,21 @@
           }
         ],
         "part_scheme_check": "verified",
-        "dependency_detected": {
-          "EDX_9MA0_2020_OCTOBER_02_Q07_U02": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "context_regions_refined": [
+          {
+            "page": 16,
+            "bbox": [
+              0.038345,
+              0.534,
+              0.961655,
+              0.555
+            ]
+          }
+        ],
+        "part_display_review": "Part (c) prints the iteration formula and starting value; include its two subparts and the sentence defining P.",
+        "part_display_review_source": "740fb2631fbc3fac4c67ee260382f96e9b510238376d287ee65edca7f84ff3ee"
       },
-      "part_label": "(c)",
-      "depends_on_question_ids": [
-        "EDX_9MA0_2020_OCTOBER_02_Q07_U02"
-      ]
+      "part_label": "(c)"
     },
     {
       "question_id": "EDX_9MA0_2020_OCTOBER_02_Q08_U01",
@@ -3053,7 +3039,7 @@
               0.038345,
               0.042289,
               0.961655,
-              0.248313
+              0.202
             ]
           }
         ],
@@ -3089,7 +3075,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 38,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.202
+            ]
+          }
+        ],
+        "part_display_review": "The sign of the rational function is determined from its printed numerator and denominator.",
+        "part_display_review_source": "740fb2631fbc3fac4c67ee260382f96e9b510238376d287ee65edca7f84ff3ee"
       },
       "part_label": "(c)"
     },

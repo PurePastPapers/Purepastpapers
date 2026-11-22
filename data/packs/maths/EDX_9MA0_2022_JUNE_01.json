@@ -3761,7 +3761,8 @@
       "context": {
         "full_question_image_url": "assets/maths/EDX_9MA0_2022_JUNE_01/Q15_full.webp",
         "stem_image_url": "assets/maths/EDX_9MA0_2022_JUNE_01/Q15_U02_context.webp",
-        "full_scheme_image_url": "assets/maths/EDX_9MA0_2022_JUNE_01/Q15_scheme.webp"
+        "full_scheme_image_url": "assets/maths/EDX_9MA0_2022_JUNE_01/Q15_scheme.webp",
+        "lead_in_image_url": "assets/maths/EDX_9MA0_2022_JUNE_01/Q15_U02_leadin.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3823,7 +3824,16 @@
               0.038345,
               0.042289,
               0.961655,
-              0.618499
+              0.507
+            ]
+          },
+          {
+            "page": 42,
+            "bbox": [
+              0.038345,
+              0.6216,
+              0.961655,
+              0.644
             ]
           }
         ],
@@ -3877,9 +3887,45 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 42,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.507
+            ]
+          },
+          {
+            "page": 42,
+            "bbox": [
+              0.038345,
+              0.6216,
+              0.961655,
+              0.644
+            ]
+          }
+        ],
+        "lead_in_regions": [
+          {
+            "page": 42,
+            "bbox": [
+              0.038345,
+              0.6216,
+              0.961655,
+              0.644
+            ]
+          }
+        ],
+        "part_display_review": "These tasks differentiate the expression supplied by the earlier derivation; retain its own method instruction separately.",
+        "part_display_review_source": "69315ff6a76b76d57d3d95948e7de371911b37006246b98d1f1cd9c43ec732b1"
       },
-      "part_label": "(b)–(c)"
+      "part_label": "(b)–(c)",
+      "depends_on_question_ids": [
+        "EDX_9MA0_2022_JUNE_01_Q15_U01"
+      ]
     },
     {
       "question_id": "EDX_9MA0_2022_JUNE_01_Q16_U01",

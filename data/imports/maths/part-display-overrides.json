@@ -1158,5 +1158,426 @@
         ]
       }
     ]
+  },
+  "EDX_8MA0_SAMPLE_02_Q05_U03": {
+    "source_sha256": "a490af17eec633c80025fab86e20359bec334909c01d8e165c27b2745607a058",
+    "review": "Assess the sampling model using the original scenario and later Scout group observation.",
+    "context_regions": [
+      {
+        "page": 10,
+        "bbox": [
+          0.041997,
+          0.131,
+          0.958003,
+          0.204
+        ]
+      },
+      {
+        "page": 10,
+        "bbox": [
+          0.041997,
+          0.3775,
+          0.958003,
+          0.417
+        ]
+      },
+      {
+        "page": 10,
+        "bbox": [
+          0.041997,
+          0.4675,
+          0.958003,
+          0.507
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_8MA0_SAMPLE_02_Q05_U02"
+    ]
+  },
+  "EDX_9MA0_2018_JUNE_02_Q14_U02": {
+    "source_sha256": "b249be75e497330f7a4c4bbc03dac0b2e479f70da981390a2345eb1f2551b071",
+    "review": "The rate-of-growth fraction begins above the text baseline. Include the entire earlier result in the scored crop.",
+    "context_regions": [
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.0424495,
+          0.961655,
+          0.212
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.2585,
+          0.961655,
+          0.310229
+        ]
+      }
+    ]
+  },
+  "EDX_9MA0_2018_JUNE_02_Q14_U03": {
+    "source_sha256": "b249be75e497330f7a4c4bbc03dac0b2e479f70da981390a2345eb1f2551b071",
+    "review": "The earlier rate of growth is used to maximise the rate, so the official parts run together.",
+    "context_regions": [
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.0424495,
+          0.961655,
+          0.212
+        ]
+      },
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.3147,
+          0.961655,
+          0.339
+        ]
+      }
+    ],
+    "lead_in_regions": [
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.3147,
+          0.961655,
+          0.339
+        ]
+      }
+    ],
+    "add_dependencies": [
+      "EDX_9MA0_2018_JUNE_02_Q14_U02"
+    ]
+  },
+  "EDX_9MA0_2020_OCTOBER_02_Q07_U03": {
+    "source_sha256": "740fb2631fbc3fac4c67ee260382f96e9b510238376d287ee65edca7f84ff3ee",
+    "review": "Part (c) prints the iteration formula and starting value; include its two subparts and the sentence defining P.",
+    "context_regions": [
+      {
+        "page": 16,
+        "bbox": [
+          0.038345,
+          0.534,
+          0.961655,
+          0.555
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 16,
+        "bbox": [
+          0.038345,
+          0.6726,
+          0.961655,
+          0.841422
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_9MA0_2020_OCTOBER_02_Q07_U02"
+    ]
+  },
+  "EDX_9MA0_2020_OCTOBER_02_Q13_U03": {
+    "source_sha256": "740fb2631fbc3fac4c67ee260382f96e9b510238376d287ee65edca7f84ff3ee",
+    "review": "The sign of the rational function is determined from its printed numerator and denominator.",
+    "context_regions": [
+      {
+        "page": 38,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.202
+        ]
+      }
+    ]
+  },
+  "EDX_9MA0_2020_OCTOBER_31_Q04_U01": {
+    "source_sha256": "78466ab9ddfe054295c24ee94c91b34e88593a543cc48f905005d2e863378097",
+    "review": "Include the numerator of the normalisation constant and leave it out of the stem.",
+    "context_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.04242,
+          0.961655,
+          0.239
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.2395,
+          0.961655,
+          0.300221
+        ]
+      }
+    ]
+  },
+  "EDX_9MA0_2020_OCTOBER_31_Q04_U02": {
+    "source_sha256": "78466ab9ddfe054295c24ee94c91b34e88593a543cc48f905005d2e863378097",
+    "review": "The probability needs the normalisation constant derived in (a). Its independence assumption is an unscored lead-in.",
+    "context_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.04242,
+          0.961655,
+          0.239
+        ]
+      },
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.3008,
+          0.961655,
+          0.32684
+        ]
+      }
+    ],
+    "lead_in_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.3008,
+          0.961655,
+          0.32684
+        ]
+      }
+    ],
+    "add_dependencies": [
+      "EDX_9MA0_2020_OCTOBER_31_Q04_U01"
+    ]
+  },
+  "EDX_9MA0_2021_NOVEMBER_02_Q15_U02": {
+    "source_sha256": "4ec32398efc10c98c6b6d56ab43fc68577b5adcc9920d0bc67590f1d4e161ba6",
+    "review": "Refining the water level requires the original water-wheel model and the printed equation.",
+    "context_regions": [
+      {
+        "page": 44,
+        "bbox": [
+          0.038345,
+          0.172,
+          0.961655,
+          0.559
+        ]
+      },
+      {
+        "page": 44,
+        "bbox": [
+          0.038345,
+          0.8077,
+          0.961655,
+          0.8332
+        ]
+      }
+    ]
+  },
+  "EDX_9MA0_2021_NOVEMBER_32_Q02_U03": {
+    "source_sha256": "87b140b6176875d12b65333b123ba5e027c30f2d5580c3f585a21116630ab702",
+    "review": "The original model assumptions and revised string condition suffice to explain why the tensions differ.",
+    "context_regions": [
+      {
+        "page": 4,
+        "bbox": [
+          0.038345,
+          0.0425978,
+          0.961655,
+          0.636
+        ]
+      },
+      {
+        "page": 4,
+        "bbox": [
+          0.038345,
+          0.8476,
+          0.961655,
+          0.87151
+        ]
+      }
+    ],
+    "remove_dependencies": [
+      "EDX_9MA0_2021_NOVEMBER_32_Q02_U01"
+    ]
+  },
+  "EDX_9MA0_2022_JUNE_01_Q15_U02": {
+    "source_sha256": "69315ff6a76b76d57d3d95948e7de371911b37006246b98d1f1cd9c43ec732b1",
+    "review": "These tasks differentiate the expression supplied by the earlier derivation; retain its own method instruction separately.",
+    "context_regions": [
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.507
+        ]
+      },
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.6216,
+          0.961655,
+          0.644
+        ]
+      }
+    ],
+    "lead_in_regions": [
+      {
+        "page": 42,
+        "bbox": [
+          0.038345,
+          0.6216,
+          0.961655,
+          0.644
+        ]
+      }
+    ],
+    "add_dependencies": [
+      "EDX_9MA0_2022_JUNE_01_Q15_U01"
+    ]
+  },
+  "EDX_9MA0_2022_JUNE_32_Q04_U03": {
+    "source_sha256": "76df109bf787c4dcb53745335d5149dd2403df3cdfd18f135f2e04f66b0c8deb",
+    "review": "The bridge states the cosine value needed to apply the earlier tension result.",
+    "context_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.533664
+        ]
+      },
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.6557,
+          0.961655,
+          0.695
+        ]
+      }
+    ],
+    "lead_in_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.6557,
+          0.961655,
+          0.695
+        ]
+      }
+    ]
+  },
+  "EDX_9MA0_2022_JUNE_32_Q04_U04": {
+    "source_sha256": "76df109bf787c4dcb53745335d5149dd2403df3cdfd18f135f2e04f66b0c8deb",
+    "review": "The limiting equilibrium calculation uses results in (b) and (c); keep its condition separate and include the printed numerator.",
+    "context_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.042289,
+          0.961655,
+          0.533664
+        ]
+      },
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.772,
+          0.961655,
+          0.821
+        ]
+      }
+    ],
+    "source_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.822,
+          0.961655,
+          0.876601
+        ]
+      }
+    ],
+    "lead_in_regions": [
+      {
+        "page": 12,
+        "bbox": [
+          0.038345,
+          0.772,
+          0.961655,
+          0.821
+        ]
+      }
+    ],
+    "add_dependencies": [
+      "EDX_9MA0_2022_JUNE_32_Q04_U02",
+      "EDX_9MA0_2022_JUNE_32_Q04_U03"
+    ]
+  },
+  "EDX_9MA0_2023_JUNE_01_Q08_U03": {
+    "source_sha256": "2488b4e6aa13bbaa9cbbc5bb3edaefb02d2dd729ed4359f691e6e20a7b15892e",
+    "review": "The area calculation uses the earlier radius and angle; retain the front-length condition as a separate lead-in.",
+    "context_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.038345,
+          0.0424495,
+          0.961655,
+          0.464
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          0.038345,
+          0.5497,
+          0.961655,
+          0.574
+        ]
+      }
+    ],
+    "lead_in_regions": [
+      {
+        "page": 18,
+        "bbox": [
+          0.038345,
+          0.5497,
+          0.961655,
+          0.574
+        ]
+      }
+    ],
+    "add_dependencies": [
+      "EDX_9MA0_2023_JUNE_01_Q08_U01",
+      "EDX_9MA0_2023_JUNE_01_Q08_U02"
+    ]
   }
 }
