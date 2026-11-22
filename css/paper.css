@@ -651,6 +651,12 @@ a.tag {
   border-color: #50325f;
   color: #fffaf5;
 }
+.chip--difficulty-mixed[aria-pressed='true'],
+.chip--difficulty-mixed[aria-checked='true'] {
+  background: #c9def5;
+  border-color: #527ba3;
+  color: #19334d;
+}
 .seg {
   padding: 0;
   gap: 0;
