@@ -513,6 +513,21 @@ def scheme_blocks(doc, regions, number, *, split_alternatives=False):
     words = region_words(doc, regions)
     if not words:
         return None
+    total_boundary = None
+    if MARK_COLUMN:
+        # A whole-question source region can continue into the opening of the next
+        # question. Its table header need not contain the word "Question". Stop at
+        # the current question's printed total before expanding any clipped rows.
+        rows = defaultdict(list)
+        for w in words:
+            rows[(w['page'], round(w['top'] / 2.5))].append(w)
+        for key in sorted(rows):
+            row = sorted(rows[key], key=lambda w: w['x0'])
+            text = ' '.join(w['text'] for w in row)
+            if re.match(rf'^\(?Total (?:(?:marks )?for )?Question {int(number)}\s*=', text, re.I):
+                total_boundary = wpos(doc, row[0], pad=2)
+                words = [w for w in words if wpos(doc, w, pad=0) < total_boundary]
+                break
     lines = defaultdict(list)
     for w in words:
         W, _ = doc.size(w['page'])
@@ -580,7 +595,6 @@ def scheme_blocks(doc, regions, number, *, split_alternatives=False):
         return None
     blocks = []
     first = regions[0]
-    end_all = (regions[-1]['page'], regions[-1]['bbox'][3])
     # some builds cut a scheme page just through its last mark; take in what straddles the edge
     grown = []
     for r in regions:
@@ -593,6 +607,8 @@ def scheme_blocks(doc, regions, number, *, split_alternatives=False):
         grown.append({'page': lp, 'bbox': r['bbox'][:3] + [min(1, (max(straddle) + 3) / H)]} if straddle else r)
     regions = grown
     end_all = (regions[-1]['page'], regions[-1]['bbox'][3])
+    if total_boundary:
+        end_all = min(end_all, total_boundary)
     header_rows = []
     for i, a in enumerate(anchors):
         w = a['word']

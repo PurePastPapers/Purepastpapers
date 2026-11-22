@@ -8,7 +8,7 @@
     <style>
       :root { color-scheme: light; font: 16px/1.55 system-ui, sans-serif; color: #292722; background: #f4efe7; }
       body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
-      main { width: min(100%, 440px); padding: 32px; border: 1px solid #d7cfbf; border-radius: 18px; background: #fffdf8; box-shadow: 0 12px 40px #34281715; }
+      main { box-sizing: border-box; width: min(100%, 440px); padding: 32px; border: 1px solid #d7cfbf; border-radius: 18px; background: #fffdf8; box-shadow: 0 12px 40px #34281715; }
       h1 { margin: 0 0 10px; font-size: 1.4rem; } p { margin: 0; color: #635e54; }
       a { display: inline-block; margin-top: 18px; color: #4e694b; }
       [hidden] { display: none !important; }
@@ -23,7 +23,7 @@
       <h1 id="status">Finishing sign in…</h1>
       <p id="detail">Please keep this page open for a moment.</p>
       <div id="actions"></div>
-      <a id="return" href="https://purepastpapers.com/">Return to PurePastPapers</a>
+      <a id="return" href="./">Return to PurePastPapers</a>
     </main>
     <script type="module" src="./js/auth-callback.js"></script>
   </body>

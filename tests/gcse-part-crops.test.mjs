@@ -193,3 +193,22 @@ test('GCSE science schemes come from the part\'s own paper and tier', () => {
   assert.ok(checked > 5000, `only ${checked} science units checked`);
   assert.deepEqual(wrong, []);
 });
+
+test('GCSE science part schemes stop at the current question total', () => {
+  // Pearson prints three forms of the total. In these papers the next question's
+  // table starts on the following page and its first answer used to show here.
+  const samples = [
+    ['gcsephys', 'EDX_1PH0_2023_JUNE_1H', 'Q04_U06', [12], 1348],
+    ['gcsebio', 'EDX_1BI0_2024_JUNE_1F', 'Q04_U05', [13, 14], 1268],
+    ['gcsephys', 'EDX_1PH0_2024_JUNE_1H', 'Q03_U05', [11], 1268],
+  ];
+  for (const [slug, paper, part, pages, renderedPageHeight] of samples) {
+    const id = `${paper}_${part}`;
+    const question = read(`data/packs/${slug}/${paper}.json`).questions.find(q => q.question_id === id);
+    const regions = question.provenance.part_scheme_regions;
+    assert.equal(question.scheme_scope, 'part', id);
+    assert.deepEqual(regions.map(region => region.page), pages, id);
+    const {height} = webpSize(asset(question.content.mark_scheme_image_url).base64);
+    assert.ok(fits(height, regions, [renderedPageHeight]), `${id} crop matches the recorded regions`);
+  }
+});
