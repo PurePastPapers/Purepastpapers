@@ -56,7 +56,7 @@ export function parseCsv(text, mapping = {}) {
   const delimiter = mapping.delimiter ?? ',';
   if (![';', ',', '\t'].includes(delimiter)) throw new Error('Choose comma, semicolon or tab as the delimiter.');
   let rows;
-  try { rows = parseDelimitedRows(text.replace(/^\uFEFF/, ''), delimiter); }
+  try { rows = parseDelimitedRows(text.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n'), delimiter); }
   catch (error) { return { notes: [], errors: [{ row: 1, reason: error.message }], warnings }; }
   const header = mapping.header !== false;
   const column = { front: mapping.front, back: mapping.back, tags: mapping.tags, deck: mapping.deck };
@@ -171,7 +171,8 @@ function readCollection(db) {
     };
   }
   if (tables.has('decks')) {
-    for (const deck of queryRows(db, 'SELECT id, name FROM decks')) decks[deck.id] = { id: Number(deck.id), name: deck.name };
+    // The newer schema stores the deck hierarchy with \x1f separators instead of "::".
+    for (const deck of queryRows(db, 'SELECT id, name FROM decks')) decks[deck.id] = { id: Number(deck.id), name: String(deck.name ?? '').split('\x1f').join('::') };
   }
   return { models, decks, notes, cards, tables };
 }
@@ -323,7 +324,9 @@ function normalizeAnki(collection, mediaNames, warnings) {
       for (const match of String(value).matchAll(/<img\b[^>]*\bsrc\s*=\s*['"]([^'"]+)/gi)) { const name = safeMediaName(match[1]); if (name && !mediaNames.has(name)) missingMedia.add(name); }
       for (const match of String(value).matchAll(/\[sound:([^\]]+)\]/gi)) { const name = safeMediaName(match[1]); if (name && !mediaNames.has(name)) missingMedia.add(name); }
     }
-    const fields = Object.fromEntries(Object.entries(rawFields).map(([key, value]) => [key, sanitizeImportedHtml(value, mediaNames)]));
+    // Anki fields are HTML, where raw newlines are not line breaks. Fold them so the
+    // card renders as it does in Anki (the study view keeps newlines in plain text).
+    const fields = Object.fromEntries(Object.entries(rawFields).map(([key, value]) => [key, sanitizeImportedHtml(value, mediaNames).replace(/\s*\r?\n\s*/g, ' ')]));
     const templates = Array.isArray(model.tmpls) ? model.tmpls : [];
     const sourceCards = (cardsByNote.get(String(sourceNote.id)) ?? []).sort((a, b) => Number(a.ord) - Number(b.ord));
     const modelName = String(model.name ?? '').toLowerCase();

@@ -66,6 +66,14 @@ test('official Anki 26.9 APKG fixtures import modern protobuf and legacy media l
     assert.match(mediaNote.front, /data-flashcard-name="tone\.mp3"/);
     const suspended = result.notes.flatMap(note => note.cards).find(card => card.suspended);
     assert.ok(suspended);
+    // Modern packages store the hierarchy with \x1f; both layouts must keep Parent::Child.
+    assert.deepEqual(result.decks.map(deck => deck.name).sort(), ['Biology', 'Biology::Cells', 'Biology::Reproduction', 'Default']);
+    assert.deepEqual([...new Set(result.notes.flatMap(note => note.cards.map(card => card.deck)))].sort(), ['Biology::Cells', 'Biology::Reproduction']);
+    const reverse = result.notes.flatMap(note => note.cards).find(card => card.variant === 'reverse');
+    assert.equal(reverse.front, 'Cell membrane');
+    const cloze = result.notes.find(note => note.type === 'cloze');
+    assert.deepEqual(cloze.cards.map(card => card.variant), ['cloze:1', 'cloze:2']);
+    assert.equal(suspended.variant, 'forward');
   }
 });
 
@@ -82,4 +90,11 @@ test('Quizlet import can use the definition as the front before committing', () 
   // Each orientation is a different card, so the swapped import is not a duplicate.
   assert.notEqual(swapped.notes[0].cards[0].sourceKey, termFirst.notes[0].cards[0].sourceKey);
   assert.throws(() => parseQuizlet(text, { front: 'back' }), /term or the definition/);
+});
+
+test('CSV with Windows line endings keeps one newline inside a quoted field', () => {
+  const result = parseCsv('Front,Back\r\n"Q","Line one\r\nLine two"\r\n', { front: 0, back: 1, header: true });
+  assert.equal(result.notes[0].back, 'Line one\nLine two');
+  const unix = parseCsv('Front,Back\n"Q","Line one\nLine two"\n', { front: 0, back: 1, header: true });
+  assert.equal(result.notes[0].key, unix.notes[0].key, 'line endings do not change duplicate detection');
 });
