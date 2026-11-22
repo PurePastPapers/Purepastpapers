@@ -13,6 +13,8 @@ import { resolve } from 'node:path';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const { sql, literal } = await import('./local-stack/server.mjs');
+const { trackBackend } = await import('./local-stack/idle.mjs');
+let settle;
 const accounts = JSON.parse(await readFile(process.env.PPP_FLASHCARD_QA_ACCOUNTS, 'utf8'));
 const account = accounts.find(({ role }) => role === 'main');
 const base = 'http://localhost:5173/';
@@ -38,7 +40,7 @@ async function createDeck(page, title) {
   if (!await page.getByRole('button', { name: 'Create deck', exact: true }).count()) {
     await page.getByRole('button', { name: /My decks/ }).first().click();
     await page.getByRole('button', { name: 'Create deck', exact: true }).first().waitFor();
-    await page.waitForLoadState('networkidle');
+    await settle();
   }
   await page.getByRole('button', { name: 'Create deck', exact: true }).first().click();
   await page.getByLabel('Deck name').fill(title);
@@ -51,7 +53,7 @@ async function preview(page, deckTitle, text) {
   if (!await page.getByRole('button', { name: 'Import', exact: true }).count()) {
     await page.getByRole('button', { name: /My decks/ }).first().click();
     await page.getByRole('button', { name: 'Import', exact: true }).waitFor();
-    await page.waitForLoadState('networkidle');
+    await settle();
   }
   await page.getByRole('button', { name: 'Import', exact: true }).click();
   await page.locator('[data-import-form] select[name="deck"]').selectOption({ label: deckTitle });
@@ -85,6 +87,7 @@ try {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   await bridge.install(context);
   const page = await context.newPage();
+  settle = trackBackend(page);
   page.setDefaultTimeout(30_000);
   page.on('pageerror', (error) => issues.push(error.message));
   await signIn(page);

@@ -13,6 +13,9 @@ import { resolve } from 'node:path';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const { sql, literal } = await import('./local-stack/server.mjs');
+const { trackBackend } = await import('./local-stack/idle.mjs');
+const settles = new WeakMap();
+const settle = (page) => settles.get(page)();
 const accounts = JSON.parse(await readFile(process.env.PPP_FLASHCARD_QA_ACCOUNTS, 'utf8'));
 const account = accounts.find(({ role }) => role === 'main');
 const other = accounts.find(({ role }) => role === 'lookalike');
@@ -30,6 +33,7 @@ async function open(viewport, who) {
   const context = await browser.newContext({ viewport, isMobile: viewport.width < 500, hasTouch: viewport.width < 500 });
   await bridge.install(context);
   const page = await context.newPage();
+  settles.set(page, trackBackend(page));
   page.setDefaultTimeout(30_000);
   page.on('pageerror', (error) => issues.push(error.message));
   await page.goto(`${base}#/flashcards`);
@@ -44,11 +48,11 @@ async function idleDecks(page) {
   if (await page.getByRole('button', { name: /Back to deck/ }).count()) {
     await page.getByRole('button', { name: /Back to deck/ }).first().click();
     await page.getByRole('button', { name: 'Deck settings' }).waitFor();
-    await page.waitForLoadState('networkidle');
+    await settle(page);
   }
   if (!await page.getByRole('button', { name: 'Import', exact: true }).count()) await page.getByRole('button', { name: /My decks/ }).first().click();
   await page.getByRole('button', { name: 'Import', exact: true }).waitFor();
-  await page.waitForLoadState('networkidle');
+  await settle(page);
 }
 async function createDeck(page, title) {
   await idleDecks(page);
@@ -56,7 +60,7 @@ async function createDeck(page, title) {
   await page.getByLabel('Deck name').fill(title);
   await page.getByRole('dialog').getByRole('button', { name: 'Create deck' }).click();
   await page.getByRole('heading', { name: title, exact: true }).waitFor();
-  await page.waitForLoadState('networkidle');
+  await settle(page);
   return (await rows(`select id from public.flashcard_decks where title=${literal(title)}`))[0].id;
 }
 async function importFile(page, title, source, setup) {
