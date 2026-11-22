@@ -204,7 +204,7 @@ async function handleRoute() {
         stopReveals();
       }
     };
-    $('h1', view)?.focus({ preventScroll: true });
+    if (!view.contains(document.activeElement)) $('h1', view)?.focus({ preventScroll: true });
   } catch (error) {
     console.error(error);
     if (ticket !== navigation) return;

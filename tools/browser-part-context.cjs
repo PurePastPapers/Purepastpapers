@@ -100,7 +100,9 @@ const LINKED = [
         await api.setEnrolled(subject, true);
         await api.setPreference('tiers', {...(api.getProgress().preferences.tiers || {}), [subject]: tier});
       }, sample);
-      await page.goto(`${base}/#/practice?subject=${sample.subject}`);
+      const sampleUrl = `${base}/#/practice?subject=${sample.subject}`;
+      if (page.url() === sampleUrl) await page.reload();
+      else await page.goto(sampleUrl);
       await page.waitForSelector('[data-reset-filters]');
       await page.locator('[data-reset-filters]').click();
       await page.locator('[data-search]').fill(sample.paper);

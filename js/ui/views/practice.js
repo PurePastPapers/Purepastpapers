@@ -110,7 +110,11 @@ const defaults = () => ({
 
 const toggle = (list, value) => (list.includes(value) ? list.filter((item) => item !== value) : [...list, value]);
 
+let pendingChoiceFocus;
+
 export async function mount(element, context) {
+  const choiceFocus = pendingChoiceFocus;
+  pendingChoiceFocus = undefined;
   context.setTitle('Practice');
   const user = api.currentUser();
   if (!user && context.query.starter === '1') {
@@ -1472,7 +1476,7 @@ export async function mount(element, context) {
     return html`<div class="tier-switch" data-tier-bar>
       <span class="tier-switch__label" id="practice-tier-label">Tier</span>
       <div class="seg" role="radiogroup" aria-labelledby="practice-tier-label">
-        ${options.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${(state.tier || '') === value}" data-practice-tier="${value}">${label}</button>`)}
+        ${options.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${(state.tier || '') === value}" tabindex="${(state.tier || '') === value ? 0 : -1}" data-practice-tier="${value}">${label}</button>`)}
       </div>
       <span class="small muted tier-switch__note">${!user
         ? (state.tier ? `Showing ${state.tier} papers.` : 'Showing both tiers.')
@@ -1487,7 +1491,7 @@ export async function mount(element, context) {
     return html`<div class="tier-switch science-switch" data-science-bar>
       <span class="tier-switch__label" id="practice-science-label">Science</span>
       <div class="seg" role="radiogroup" aria-labelledby="practice-science-label">
-        ${options.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${state.science === value}" data-practice-science="${value}">${label}</button>`)}
+        ${options.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${state.science === value}" tabindex="${state.science === value ? 0 : -1}" data-practice-science="${value}">${label}</button>`)}
       </div>
       <span class="small muted tier-switch__note">${state.science
         ? `Only ${state.science} topics, questions and papers.`
@@ -1508,19 +1512,20 @@ export async function mount(element, context) {
         ${sciences.length ? scienceBar() : ''}
         ${moduleScopeBanner(bundle)}
         ${modes.length > 1
-          ? html`<div class="seg mode-switch" role="tablist">
+          ? html`<div class="seg mode-switch" role="tablist" aria-label="Practice mode">
               ${[...modes].sort((a, b) => (a === 'timed_test') - (b === 'timed_test')).map(
                 (mode) =>
-                  html`<button type="button" role="tab" class="seg__opt" aria-selected="${state.mode === mode}" data-mode="${mode}" title="${PRACTICE_MODES[mode].blurb}">
+                  html`<button type="button" role="tab" class="seg__opt" aria-selected="${state.mode === mode}" tabindex="${state.mode === mode ? 0 : -1}" id="practice-mode-${mode}" aria-controls="practice-mode-panel" data-mode="${mode}" title="${PRACTICE_MODES[mode].blurb}">
                     ${mode === 'timed_test' ? 'Build a test' : 'Individual questions'}
                   </button>`,
               )}
             </div>`
           : html`<p class="muted"><strong>${PRACTICE_MODES[modes[0]].label}.</strong> ${PRACTICE_MODES[modes[0]].blurb}</p>`}
-        <div data-body></div>
+        <div data-body id="practice-mode-panel" ${modes.length > 1 ? html`role="tabpanel" aria-labelledby="practice-mode-${state.mode}"` : ''}></div>
       </div>`,
   );
   draw();
+  if (choiceFocus?.subjectId === subjectId) $(choiceFocus.selector, element)?.focus({ preventScroll: true });
   if (context.query.filters === 'topics') {
     const topics = $('[data-section="fpop-topics"]', element);
     if (topics) {
@@ -1559,9 +1564,30 @@ export async function mount(element, context) {
   document.addEventListener('click', closePops);
   document.addEventListener('keydown', closePops);
 
+  const choiceButtons = '[data-practice-tier], [data-practice-science], [data-mode]';
+  on(element, 'keydown', choiceButtons, (event, button) => {
+    const choices = [...button.parentElement.querySelectorAll(choiceButtons)];
+    const current = choices.indexOf(button);
+    const radio = button.getAttribute('role') === 'radio';
+    let next;
+    if (event.key === 'Home') next = choices[0];
+    else if (event.key === 'End') next = choices.at(-1);
+    else if (event.key === 'ArrowRight' || (radio && event.key === 'ArrowDown')) next = choices[(current + 1) % choices.length];
+    else if (event.key === 'ArrowLeft' || (radio && event.key === 'ArrowUp')) next = choices[(current - 1 + choices.length) % choices.length];
+    if (!next) return;
+    event.preventDefault();
+    if (next === button) return;
+    next.focus();
+    next.click();
+  });
+  const keepChoiceFocus = (event, attribute, value) => {
+    if (event.detail === 0) pendingChoiceFocus = { subjectId, selector: `[data-${attribute}="${CSS.escape(value)}"]` };
+  };
+
   on(element, 'click', '[data-practice-tier]', (event, button) => {
     const tier = button.dataset.practiceTier === '' ? '' : validTier(subject, button.dataset.practiceTier);
     if (tier === null || tier === (state.tier || '')) return;
+    keepChoiceFocus(event, 'practice-tier', tier);
     // A tab-only switch: the saved tier is unchanged. A test already running keeps its questions.
     if (user) writeTierOverride(tier === tierPref ? null : tier);
     state.tier = tier;
@@ -1575,6 +1601,7 @@ export async function mount(element, context) {
   on(element, 'click', '[data-practice-science]', (event, button) => {
     const science = validScience(subject, button.dataset.practiceScience) || '';
     if (science === state.science) return;
+    keepChoiceFocus(event, 'practice-science', science);
     state.science = science;
     state.page = 1;
     state.paper = '';
@@ -1585,6 +1612,7 @@ export async function mount(element, context) {
   on(element, 'click', '[data-mode]', (event, button) => {
     const mode = button.dataset.mode;
     if (mode === state.mode) return;
+    keepChoiceFocus(event, 'mode', mode);
     save();
     context.navigate(routeOf(links.practice({ ...context.query, subject: subjectId, mode, topic: null, filters: null })), { replace: true });
   });

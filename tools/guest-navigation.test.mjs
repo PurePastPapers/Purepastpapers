@@ -114,3 +114,21 @@ test('Catalogue tabs and group filters support keyboard selection', { skip }, as
   assert.ok(await stem.evaluate((element) => document.activeElement === element));
   assert.equal(await panel.getByRole('heading', { name: 'Geography', exact: true }).count(), 0);
 });
+
+test('Practice modes and science filters retain keyboard focus after selection', { skip }, async (t) => {
+  const page = await guestPage(t, '/practice?subject=EDX_GCSE_COMBSCI_1SC0&tier=Foundation&mode=individual');
+  const selectWithKey = async (from, key, to, state) => {
+    await from.press(key);
+    await page.waitForFunction(({id, value, state}) => {
+      const active = document.activeElement;
+      return active?.getAttribute(id) === value && active?.getAttribute(state) === 'true';
+    }, { id: to[0], value: to[1], state });
+    assert.equal(await from.getAttribute('tabindex'), '-1');
+  };
+  await selectWithKey(page.getByRole('tab', {name: 'Individual questions'}), 'ArrowRight',
+    ['data-mode', 'timed_test'], 'aria-selected');
+  await page.getByRole('tabpanel', {name: 'Build a test'}).locator('[data-start-test]').waitFor();
+  await selectWithKey(page.getByRole('radio', {name: 'All three'}), 'End', ['data-practice-science', 'Physics'], 'aria-checked');
+  await selectWithKey(page.getByRole('radio', {name: 'Foundation', exact: true}), 'ArrowRight',
+    ['data-practice-tier', 'Higher'], 'aria-checked');
+});
