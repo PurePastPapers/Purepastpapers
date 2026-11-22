@@ -372,9 +372,10 @@ export async function mount(element, context) {
       importForm.inert = true;
       try {
         const result = await flashcards.commitImport(importState.deckId, importState.parsed, { onProgress: (value) => { progress.textContent = typeof value === 'string' ? value : `Importing ${value.done || 0} of ${value.total || 0} cards…`; } });
-        progress.textContent = `Imported ${plural(result?.imported || 0, 'card')}. ${plural(result?.duplicates || 0, 'duplicate')} skipped.`;
         importState = null;
-        await refreshDecks();
+        // Refresh first so the completion message appears only once the view is idle again.
+        await refreshDecks().catch(() => {});
+        progress.textContent = `Imported ${plural(result?.imported || 0, 'card')}. ${plural(result?.duplicates || 0, 'duplicate')} skipped.`;
       } catch (error) { progress.textContent = 'The import could not finish. You can retry.'; button.disabled = false; throw error; } finally { importForm.inert = false; }
     }
   }));

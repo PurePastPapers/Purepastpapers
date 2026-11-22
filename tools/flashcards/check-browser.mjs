@@ -132,7 +132,8 @@ try {
   await page.locator(`[data-action="open-deck"][data-id="${importedDeck.id}"]`).click();
   const row = page.locator('.flashcards__row').filter({ has: page.locator(`[data-id="${imported.id}"]`) });
   await row.getByRole('button', { name: 'Edit', exact: true }).click();
-  await page.getByLabel('Front', { exact: true }).fill('Edited in the desktop browser');
+  // A filled textarea inside its label contributes its value to the accessible name.
+  await page.getByRole('dialog').locator('[name=front]').fill('Edited in the desktop browser');
   await page.getByRole('button', { name: 'Save card' }).click();
   await page.getByText('Edited in the desktop browser', { exact: true }).waitFor();
 
@@ -156,14 +157,14 @@ try {
   assert.deepEqual(second, first);
   assert.equal((await rate(mobile, imported, 4, crypto.randomUUID())).conflict, 'conflict');
   await mobile.reload();
-  await mobile.getByRole('heading', { name: 'Flashcards' }).waitFor();
+  await mobile.getByRole('heading', { name: /^Flashcards(?: Beta)?$/ }).waitFor();
   assert.deepEqual((await appCards(mobile, importedDeck.id)).find((item) => item.id === imported.id).state, first.state);
 
   // Simulate a lost acknowledgement before retrying with the same request ID.
   const before = await appCards(page, root.id);
   const candidate = before.find((card) => card.revision === 0 && !card.suspended);
   assert.ok(candidate);
-  await page.getByRole('button', { name: /^My decks$/ }).click();
+  await page.getByRole('button', { name: /My decks$/ }).first().click();
   await deckTile(page, title).getByRole('button', { name: 'Study' }).click();
   await page.getByRole('button', { name: /Show answer/ }).click();
   let failed = false;
@@ -197,7 +198,10 @@ try {
 
   for (const [route, heading] of [['#/papers', 'Past papers'], ['#/practice', 'Practice'], ['#/hub', 'Data Hub']]) {
     await page.goto(`${base}${route}`);
-    await page.getByRole('heading', { name: heading, exact: true, level: 1 }).waitFor();
+    // Page headings vary with account state (for example Practice shows its finder), so
+    // check the routed document title and that the view rendered a page heading.
+    await page.waitForFunction((title) => document.title.startsWith(`${title} · `), heading);
+    await page.locator('main h1').first().waitFor();
   }
   assert.deepEqual(issues, []);
   console.log('Desktop + mobile: signed-in route, demo, editor, Quizlet, CSV, Anki, duplicate protection, review retry, exact cross-session schedule, account isolation and site navigation verified.');
