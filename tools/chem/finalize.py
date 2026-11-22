@@ -9,12 +9,13 @@ The owner confirmed OCR permission on 16 November 2026; --activate publishes the
 writes the lazy crop catalogues. Without it, packs are verified but kept out of the index.
 """
 import argparse
-import base64
-import hashlib
 import json
-import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'assets'))
+from package_catalogue import package_catalogue
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -23,20 +24,13 @@ def read(path):
     return json.loads(path.read_text())
 
 
-def write(path, value, compact=False):
+def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text((json.dumps(value, separators=(',', ':')) if compact else json.dumps(value, ensure_ascii=False, indent=2)) + '\n')
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
 
 
 def package(pack_path, pid):
-    names = sorted(set(re.findall(r'assets/chem/' + pid + r'/([A-Za-z0-9_]+\.webp)', pack_path.read_text())))
-    assets = {}
-    for name in names:
-        data = (REPO / 'assets/chem' / pid / name).read_bytes()
-        assert len(data) > 200, (pid, name)
-        assets[name] = {'sha256': hashlib.sha256(data).hexdigest(), 'base64': base64.b64encode(data).decode()}
-    write(REPO / 'data/chem-assets' / f'{pid}.json', {'format': 'lossless-webp-catalogue-v1', 'paper_id': pid, 'assets': assets}, compact=True)
-    return len(assets)
+    return package_catalogue(REPO, pack_path, 'chem', pid, minimum_local_bytes=200)
 
 
 def main():

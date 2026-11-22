@@ -6,18 +6,21 @@ A booklet is active only when its candidate, model review and built pack reconci
 every other public booklet is listed in coverage.json's queue with its reason, so a
 partial checkpoint can never read as complete. Published identities are immutable.
 """
-import argparse, base64, hashlib, json, re
+import argparse, json, sys
 from collections import Counter, defaultdict, deque
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'assets'))
+from package_catalogue import package_catalogue
 
 
 def read(path):
     return json.loads(path.read_text())
 
 
-def write(path, value, compact=False):
+def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text((json.dumps(value, separators=(',', ':')) if compact else json.dumps(value, ensure_ascii=False, indent=2)) + '\n')
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
 
 
 def public(value):
@@ -29,14 +32,7 @@ def public(value):
 
 
 def package(repo, pack_path, paper):
-    text = pack_path.read_text()
-    names = sorted(set(re.findall(r'assets/physics/' + paper + r'/([A-Za-z0-9_]+\.webp)', text)))
-    assets = {}
-    for name in names:
-        data = (repo / 'assets/physics' / paper / name).read_bytes()
-        assets[name] = {'sha256': hashlib.sha256(data).hexdigest(), 'base64': base64.b64encode(data).decode()}
-    write(repo / 'data/physics-assets' / f'{paper}.json', {'format': 'lossless-webp-catalogue-v1', 'paper_id': paper, 'assets': assets}, compact=True)
-    return len(assets)
+    return package_catalogue(repo, pack_path, 'physics', paper)
 
 
 def main():
