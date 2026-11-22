@@ -4,8 +4,11 @@
 import argparse
 import base64
 import hashlib
+import html
 import importlib.util
 import json
+import re
+from collections import Counter
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -52,7 +55,7 @@ def references(unit, name, scope):
     return any(url and url.rsplit('/', 1)[-1] == name for url in urls)
 
 
-def update_unit(unit, reviewed):
+def update_unit(unit, reviewed, units):
     original = json.dumps(unit, sort_keys=True)
     if 'preview_text' in reviewed:
         unit['preview_text'] = reviewed['preview_text']
@@ -65,13 +68,48 @@ def update_unit(unit, reviewed):
         unit['provenance']['reviewed_dependencies'] = reviewed_ids
         unit['provenance'].pop('dependency_detected', None)
         unit['provenance'].pop('dependency_detected_on', None)
-    if reviewed.get('drop_stem'):
+    if reviewed.get('drop_stem') or 'stem_from' in reviewed:
         unit['context'].pop('stem_image_url', None)
         for field in ('context_from_linked_part', 'context_regions', 'context_reasons',
-                      'context_includes_stem_image', 'context_named_parts', 'context_stem_from_parts'):
+                      'context_includes_stem_image', 'context_named_parts', 'context_stem_from_parts',
+                      'context_bridge_text', 'context_regions_refined', 'context_rows_from_full',
+                      'context_siblings_removed', 'context_recut_from_full'):
             unit['provenance'].pop(field, None)
         unit['provenance']['context_basis'] = 'independent'
+    if 'stem_from' in reviewed:
+        source = units[reviewed['stem_from']]
+        if source['parent_question_id'] != unit['parent_question_id']:
+            raise ValueError(f"{unit['question_id']}: reviewed shared stem comes from a different question")
+        unit['context']['stem_image_url'] = source['context']['stem_image_url']
+        for field in ('context_includes_stem_image', 'context_regions'):
+            if field in source['provenance']:
+                unit['provenance'][field] = source['provenance'][field]
+        unit['provenance']['context_basis'] = 'shared_stem'
+        unit['provenance']['context_reasons'] = ['reviewed shared printed stem']
+    if 'context_note' in reviewed:
+        unit['context']['shared_stem_html'] = f"<p>{html.escape(reviewed['context_note'])}</p>"
     return json.dumps(unit, sort_keys=True) != original
+
+
+def update_asset_coverage(repo):
+    path = repo / 'data/imports/gcsemaths/coverage.json'
+    if not path.is_file():
+        return
+    coverage = read(path)
+    samples = set(coverage['official_samples'])
+    totals = Counter()
+    for entry in read(repo / 'data/packs/index.json')['packs']:
+        if entry['subject_id'] != coverage['subject_id']:
+            continue
+        pid = Path(entry['file']).stem
+        pack = read(repo / 'data/packs' / entry['file'])
+        tier = pack['papers'][0]['tier']
+        group = f"{tier} {'official samples' if pid in samples else 'exams'}"
+        totals[group] += len(read(repo / 'data/gcsemaths-assets' / f'{pid}.json')['assets'])
+    coverage['totals']['image_assets'] = sum(totals.values())
+    for group, count in totals.items():
+        coverage['groups'][group]['image_assets'] = count
+    path.write_text(json.dumps(coverage, ensure_ascii=False, indent=2) + '\n')
 
 
 def apply_reviews(repo, sources, paper_ids=None, aliases=None):
@@ -84,7 +122,7 @@ def apply_reviews(repo, sources, paper_ids=None, aliases=None):
     renderer = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(renderer)
     selected = set(paper_ids) if paper_ids is not None else None
-    changed, missing = 0, []
+    changed, missing, coverage_changed = 0, [], False
     for paper, review in read(manifest).items():
         if selected is not None and paper not in selected:
             continue
@@ -102,7 +140,7 @@ def apply_reviews(repo, sources, paper_ids=None, aliases=None):
                 raise ValueError(f'{paper}: review is for a different {kind} PDF')
         source_by_kind = {}
         asset_changed = False
-        unit_changed = sum(update_unit(units[qid], details) for qid, details in reviewed_units.items())
+        unit_changed = sum(update_unit(units[qid], details, units) for qid, details in reviewed_units.items())
         with TemporaryDirectory() as temporary:
             for name, crop in review.get('assets', {}).items():
                 scope = crop['scope']
@@ -139,11 +177,20 @@ def apply_reviews(repo, sources, paper_ids=None, aliases=None):
                 asset_changed = True
                 changed += 1
         if unit_changed or asset_changed:
-            pack_path.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + '\n')
+            pack_text = json.dumps(pack, ensure_ascii=False, indent=2)
+            used_assets = set(re.findall(rf'assets/gcsemaths/{paper}/([A-Za-z0-9_]+\.webp)', pack_text))
+            unused_assets = assets.keys() - used_assets
+            for name in unused_assets:
+                del assets[name]
+            coverage_changed |= bool(unused_assets)
+            asset_changed |= bool(unused_assets)
+            pack_path.write_text(pack_text + '\n')
             changed += unit_changed
         if asset_changed:
             newline = '\n' if catalogue_path.read_text().endswith('\n') else ''
             catalogue_path.write_text(json.dumps(catalogue, separators=(',', ':')) + newline)
+    if coverage_changed:
+        update_asset_coverage(repo)
     return changed, missing
 
 

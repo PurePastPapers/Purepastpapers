@@ -852,7 +852,7 @@
               0.023755226149752947,
               0.1142992676207755,
               0.9762447738502471,
-              0.5473604783981724
+              0.53811396
             ]
           }
         ],
@@ -881,7 +881,10 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "1MA1"
+        "qualification_code": "1MA1",
+        "display_review_assets": {
+          "Q04_scheme.webp": "60b7cf8a14082b2284ab25ab5745f34dd1e77a7e1f3ae74b638d251cdf60aad7"
+        }
       },
       "question_type": "multiple_choice"
     },
@@ -943,7 +946,7 @@
               0.023755226149752947,
               0.5306299805146812,
               0.9762447738502471,
-              0.6330286904521938
+              0.62398373
             ]
           }
         ],
@@ -971,7 +974,10 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "1MA1"
+        "qualification_code": "1MA1",
+        "display_review_assets": {
+          "Q05_scheme.webp": "3b51b64468268f3cbe1bdc995c729f978b726a10a8d01b8ffcf4955db5febd29"
+        }
       },
       "question_type": "multiple_choice"
     },
@@ -1410,12 +1416,15 @@
               0.023755,
               0.243507,
               0.976245,
-              0.383474
+              0.37924144
             ]
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "display_review_assets": {
+          "Q07_U03_scheme.webp": "7ce5ae3b0155b11b54589979dd96626f78b0618713075f23a77996fec4887eea"
+        }
       },
       "part_label": "(c)"
     },
@@ -2736,7 +2745,7 @@
               0.023755226149752947,
               0.49935268427064444,
               0.9762447738502471,
-              0.6376648525162937
+              0.63426396
             ]
           }
         ],
@@ -2764,7 +2773,10 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "1MA1"
+        "qualification_code": "1MA1",
+        "display_review_assets": {
+          "Q18_scheme.webp": "c41ec0e7f378ec06bc45586f676918d1279b9a6bcb90234b65d6a65cb3dcaa68"
+        }
       },
       "question_type": "multiple_choice"
     },
@@ -2916,7 +2928,7 @@
               0.023755226149752947,
               0.1142992676207755,
               0.9762447738502471,
-              0.43505113216421426
+              0.4260062
             ]
           }
         ],
@@ -2944,7 +2956,10 @@
         ],
         "prerequisite_statements": [],
         "context_basis": "independent",
-        "qualification_code": "1MA1"
+        "qualification_code": "1MA1",
+        "display_review_assets": {
+          "Q20_scheme.webp": "60d78273403f10e79cfdf61ea98652a0773db1b4d7d47eb44b43d4f491381963"
+        }
       },
       "question_type": "multiple_choice"
     },
@@ -3106,8 +3121,9 @@
       "scheme_question_number": "21(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q21_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q21_U02_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q21_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q21_scheme.webp",
+        "shared_stem_html": "<p>Part (a) estimated the gradient of the graph at t = 17.5 seconds.</p>",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q21_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3156,21 +3172,6 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 20,
-            "bbox": [
-              0.041997,
-              0.5382331106161841,
-              0.958003,
-              0.6971046770601337
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q21_stem.webp",
-        "context_reasons": [
-          "names an earlier part"
-        ],
         "part_scheme_regions": [
           {
             "page": 13,
@@ -3183,31 +3184,14 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 20,
-            "bbox": [
-              0.041997,
-              0.53831,
-              0.958003,
-              0.696816
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_named_parts": [
-          "EDX_1MA1_2022_NOVEMBER_2H_Q21_U01"
-        ],
-        "dependency_detected": {
-          "EDX_1MA1_2022_NOVEMBER_2H_Q21_U01": "wording names (a): \"in part (a)\""
-        },
-        "dependency_detected_on": "2026-11-20"
+        "reviewed_dependencies": [],
+        "context_includes_stem_image": "Q21_stem.webp",
+        "context_regions": [],
+        "context_reasons": [
+          "reviewed shared printed stem"
+        ]
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_1MA1_2022_NOVEMBER_2H_Q21_U01"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_1MA1_2022_NOVEMBER_2H_Q22_U01",
