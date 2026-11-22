@@ -92,7 +92,7 @@ assert.deepEqual(dependent.depends_on_question_ids, [LINKED.first], 'Q10(a)(ii) 
     assert.equal(progressAfter, progressBefore, 'opening context or a scheme records no attempt');
     // A part that genuinely uses an earlier answer (1PH0 June 2025 1H Q10(a)(ii): "give a
     // reason for your answer to part (i)", checked on the printed paper) is one linked card
-    // holding every part of that question; no part is offered on its own.
+    // holding both parts of that dependency. Other parts may be offered on their own.
     await page.evaluate(async (id) => {
       const api = await import('/js/data/api.js');
       await api.setEnrolled(id, true);
@@ -113,11 +113,13 @@ assert.deepEqual(dependent.depends_on_question_ids, [LINKED.first], 'Q10(a)(ii) 
       await page.waitForTimeout(600);
     }
     assert.equal(await group.count(), 1, 'the linked question is one card');
-    // the group is every part of the printed question (js/engine/linked-parts.js)
-    const members = read('data/packs/gcsephys/EDX_1PH0_2025_JUNE_1H.json').questions.filter((q) => q.parent_question_id === dependent.parent_question_id);
-    assert.match(await group.innerText(), new RegExp(`${members.length} linked parts`));
-    for (const member of members) assert.equal(await page.locator(`[data-card="${member.question_id}"]`).count(), 0, `${member.question_id} is not offered alone`);
-    assert.equal(await page.locator(`[data-card="${LINKED.dependent}"]`).count(), 0, 'the dependent part is not offered alone');
+    const groupIds = await page.evaluate(async ({subject, first}) => {
+      const {getBundle} = await import('/js/data/content-repository.js');
+      return (await getBundle(subject)).questionsById.get(first).linked_group.question_ids;
+    }, LINKED);
+    assert.ok(groupIds.includes(LINKED.dependent));
+    assert.match(await group.innerText(), new RegExp(`${groupIds.length} linked parts`));
+    for (const id of groupIds) assert.equal(await page.locator(`[data-card="${id}"]`).count(), 0, `${id} is not offered alone`);
 
     // Test builder: a Foundation test drawn from the paper starts, and its questions show
     // the part's own crop with the full question available as context only.

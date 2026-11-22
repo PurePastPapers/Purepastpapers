@@ -109,9 +109,10 @@ to ...", "Hence ..."), show the parts as one question, only when every part is l
 content, with a separate answer box for each part.
 
 - `js/engine/linked-parts.js` `linkGroups` runs when a subject loads
-  (`content-repository.js`). Every part of a question in which some part has
-  `depends_on_question_ids` joins one group, as do parts those links reach in a
-  neighbouring question (AQA Psychology "Using your answer to question 21"). Each member
+  (`content-repository.js`). Only units connected by a recorded answer dependency join
+  a group, including dependencies on an earlier numbered question in the same paper
+  (AQA Psychology "Using your answer to question 21"). Independent siblings and
+  alternatives remain separate. Each member
   gets `linked_group` and `dependency_spec_points` holding the other parts' topics, which
   `requiredSpecPoints` includes. With "only topics I've learned" the parts are therefore
   offered all together or not at all.

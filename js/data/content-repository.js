@@ -171,7 +171,7 @@ async function loadBundle(subjectId) {
 
   // Parts that build on each other's answers are offered together as one question, and
   // only once every part's topics are learned (engine/linked-parts.js).
-  linkGroups(questionsById);
+  linkGroups(questionsById, papersById);
 
   // Keep papers and questions consistent: a question that names a paper belongs to it.
   for (const question of questionsById.values()) {

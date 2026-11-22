@@ -28,21 +28,21 @@ function bank() {
   return new Map([
     ['Q1_U01', unit('Q1_U01', 'Q1', '(a)', 'P1')],
     ['Q1_U02', unit('Q1_U02', 'Q1', '(b)', 'P2', {difficulty: 'hard'})],
-    ['Q1_U03', unit('Q1_U03', 'Q1', '(c)', 'P2', {depends_on_question_ids: ['Q1_U02']})],
+    ['Q1_U03', unit('Q1_U03', 'Q1', '(c)', 'P3', {depends_on_question_ids: ['Q1_U02']})],
     ['Q2_U01', unit('Q2_U01', 'Q2', '(a)', 'P3')],
     ['Q2_U02', unit('Q2_U02', 'Q2', '(b)', 'P3')],
   ]);
 }
 
-test('every part of a question with a link becomes one group, in printed order', () => {
+test('only connected parts form a group, leaving the independent sibling available', () => {
   const byId = bank();
   const groups = linkGroups(byId);
-  assert.deepEqual([...groups], [['LINKED_Q1_U01', ['Q1_U01', 'Q1_U02', 'Q1_U03']]]);
-  assert.equal(byId.get('Q1_U02').linked_group.position, 1);
+  assert.deepEqual([...groups], [['LINKED_Q1_U02', ['Q1_U02', 'Q1_U03']]]);
+  assert.equal(byId.get('Q1_U02').linked_group.position, 0);
   assert.equal(byId.get('Q2_U01').linked_group, undefined, 'questions without links are untouched');
-  // each part also needs its siblings' topics, so the whole group shares one gate
-  assert.deepEqual(byId.get('Q1_U01').dependency_spec_points.sort(), ['P2']);
-  assert.deepEqual(byId.get('Q1_U03').dependency_spec_points.sort(), ['P1', 'P2']);
+  assert.equal(byId.get('Q1_U01').linked_group, undefined);
+  assert.deepEqual(byId.get('Q1_U02').dependency_spec_points, ['P3']);
+  assert.deepEqual(byId.get('Q1_U03').dependency_spec_points, ['P2']);
 });
 
 test('a link to a neighbouring question joins both (AQA "using your answer to question 21")', () => {
@@ -53,34 +53,56 @@ test('a link to a neighbouring question joins both (AQA "using your answer to qu
   assert.deepEqual([...linkGroups(byId).values()], [['Q21', 'Q22']]);
 });
 
+test('links can skip independent parts but cannot merge separate options or papers', () => {
+  const byId = new Map([
+    ['a', unit('a', 'Q1', '(a)', 'P1', {paper_id: 'A'})],
+    ['b', unit('b', 'Q1', '(b)', 'P1', {paper_id: 'A', depends_on_question_ids: ['a']})],
+    ['c', unit('c', 'Q1', '(c)', 'P2', {paper_id: 'A', depends_on_question_ids: ['a']})],
+    ['d', unit('d', 'Q1', '(d)', 'P3', {paper_id: 'A', depends_on_question_ids: ['c']})],
+    ['e', unit('e', 'Q1', '(e)', 'P1', {paper_id: 'B', depends_on_question_ids: ['d']})],
+  ]);
+  const paper = {choice_groups: [[['a', 'c', 'd'], 'b']]};
+  assert.deepEqual([...linkGroups(byId, new Map([['A', paper]])).values()], [['a', 'c', 'd']]);
+  assert.equal(groupEntry('LINKED_a', byId).part_label, '(a), (c), (d)');
+  assert.equal(byId.get('b').linked_group, undefined);
+  assert.equal(byId.get('e').linked_group, undefined);
+  assert.deepEqual(runnerItems([byId.get('c'), byId.get('d')]).map((item) => item.group), [null, null]);
+});
+
 test('a linked question is offered only when every part is learned', () => {
   const byId = bank();
   linkGroups(byId);
   const context = learned => ({specIndex: spec(), learned: new Set(learned), latestAttempts: new Map(), papersById: new Map()});
   const some = filterQuestions([...byId.values()], {learnedOnly: true}, context(['P1', 'P3']));
-  assert.deepEqual(some.matches.map(q => q.question_id), ['Q2_U01', 'Q2_U02']);
+  assert.deepEqual(some.matches.map(q => q.question_id), ['Q1_U01', 'Q2_U01', 'Q2_U02']);
   const locked = collapseLocked(some.locked, byId);
   assert.equal(locked.length, 1);
-  assert.equal(locked[0].question.question_id, 'LINKED_Q1_U01');
+  assert.equal(locked[0].question.question_id, 'LINKED_Q1_U02');
   assert.deepEqual(locked[0].missing, ['P2']);
-  assert.deepEqual(locked[0].partsMissing.get('Q1_U01'), ['P2']);
+  assert.deepEqual(locked[0].partsMissing.get('Q1_U03'), ['P2']);
   const all = filterQuestions([...byId.values()], {learnedOnly: true}, context(['P1', 'P2', 'P3']));
-  assert.deepEqual(collapseLinked(all.matches, byId).map(q => q.question_id), ['LINKED_Q1_U01', 'Q2_U01', 'Q2_U02']);
+  assert.deepEqual(collapseLinked(all.matches, byId).map(q => q.question_id), ['Q1_U01', 'LINKED_Q1_U02', 'Q2_U01', 'Q2_U02']);
+  const strict = filterQuestions([...byId.values()], {focus: ['P2'], selectionMode: 'strict', learnedOnly: false}, context([]));
+  assert.deepEqual(strict.matches, []);
+  for (const point of ['P2', 'P3']) {
+    const crossover = filterQuestions([...byId.values()], {focus: [point], selectionMode: 'crossover', learnedOnly: false}, context([]));
+    assert.ok(collapseLinked(crossover.matches, byId).some((q) => q.question_id === 'LINKED_Q1_U02'));
+  }
 });
 
 test('a group entry adds up its parts and starts as all of them', () => {
   const byId = bank();
   linkGroups(byId);
-  const entry = groupEntry('LINKED_Q1_U01', byId);
-  assert.equal(entry.marks, 6);
+  const entry = groupEntry('LINKED_Q1_U02', byId);
+  assert.equal(entry.marks, 4);
   assert.equal(entry.difficulty, 'hard');
-  assert.equal(entry.part_label, '(a)–(c)');
-  assert.deepEqual(entry.part_ids, ['Q1_U01', 'Q1_U02', 'Q1_U03']);
-  assert.deepEqual(entry.primary_spec_points, ['P1', 'P2']);
-  // a test or set holding one part gets the whole question, together
-  assert.deepEqual(expandLinkedIds(['Q2_U01', 'Q1_U03'], byId), ['Q2_U01', 'Q1_U01', 'Q1_U02', 'Q1_U03']);
+  assert.equal(entry.part_label, '(b)–(c)');
+  assert.deepEqual(entry.part_ids, ['Q1_U02', 'Q1_U03']);
+  assert.deepEqual(entry.primary_spec_points, ['P2', 'P3']);
+  // A test or set holding one member gets the two linked parts together.
+  assert.deepEqual(expandLinkedIds(['Q2_U01', 'Q1_U03'], byId), ['Q2_U01', 'Q1_U02', 'Q1_U03']);
   // the test builder picks group entries; they expand to their parts
-  assert.deepEqual(expandLinkedIds(['LINKED_Q1_U01', 'Q2_U02'], byId), ['Q1_U01', 'Q1_U02', 'Q1_U03', 'Q2_U02']);
+  assert.deepEqual(expandLinkedIds(['LINKED_Q1_U02', 'Q2_U02'], byId), ['Q1_U02', 'Q1_U03', 'Q2_U02']);
   assert.equal(partRange([{part_label: '(a)'}, {part_label: '(b)–(c)'}]), '(a)–(c)');
 });
 
@@ -88,7 +110,7 @@ test('the runner shows consecutive linked parts as one item', () => {
   const byId = bank();
   linkGroups(byId);
   const items = runnerItems(['Q2_U01', 'Q1_U01', 'Q1_U02', 'Q1_U03'].map(id => byId.get(id)));
-  assert.deepEqual(items.map(item => [item.start, item.questions.length, Boolean(item.group)]), [[0, 1, false], [1, 3, true]]);
+  assert.deepEqual(items.map(item => [item.start, item.questions.length, Boolean(item.group)]), [[0, 1, false], [1, 1, false], [2, 2, true]]);
   // a lone part from an older session is shown on its own
   assert.equal(runnerItems([byId.get('Q1_U02')])[0].group, null);
 });

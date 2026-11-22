@@ -148,7 +148,8 @@ export function linkedRef(entry, papersById) {
   const numbers = [...new Set(entry.parts.map((part) => String(part.question_number)))];
   if (numbers.length > 1) {
     const paper = papersById?.get(entry.paper_id);
-    return [paper ? paper.title.replace(/:.*/, '') : '', `Q${numbers[0]}–${numbers.at(-1)}`].filter(Boolean).join(' · ');
+    const questions = entry.linked_group?.contiguous ? `Q${numbers[0]}–${numbers.at(-1)}` : numbers.map((number) => `Q${number}`).join(', ');
+    return [paper ? paper.title.replace(/:.*/, '') : '', questions].filter(Boolean).join(' · ');
   }
   return questionRef({ ...entry.parts[0], part_label: entry.part_label }, papersById);
 }

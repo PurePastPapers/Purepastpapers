@@ -6,18 +6,30 @@
 
 /**
  * Finds the linked groups in a subject's questions and marks every member.
- * A group is every part of a question in which at least one part depends on another
- * (`depends_on_question_ids`), plus any part those links reach in a neighbouring question
- * (AQA Psychology prints "Using your answer to question 21" in question 22).
+ * A group contains only units connected by answer dependencies, including links between
+ * printed question numbers on the same paper (e.g. AQA Psychology questions 21 and 22).
  * Each member gets `linked_group = { id, question_ids, position }` and
  * `dependency_spec_points` holding the other members' topics, so with "only topics I've
  * learned" the group is offered only when every one of its parts is learned.
  *
  * @param {Map<string, object>} questionsById  in printed order; replaced entries are written back
+ * @param {Map<string, object>} papersById  holds the official alternative-answer groups
  * @returns {Map<string, string[]>} group id → member ids in printed order
  */
-export function linkGroups(questionsById) {
+export function linkGroups(questionsById, papersById = new Map()) {
   const order = new Map([...questionsById.keys()].map((id, index) => [id, index]));
+  const options = new Map();
+  for (const paper of papersById.values()) {
+    const choices = Array.isArray(paper.choice_groups) ? paper.choice_groups : [];
+    choices.forEach((group, groupIndex) => {
+      if (!Array.isArray(group)) return;
+      group.forEach((option, optionIndex) => {
+        for (const id of Array.isArray(option) ? option : [option]) {
+          options.set(id, `${options.get(id) || ''}/${groupIndex}:${optionIndex}`);
+        }
+      });
+    });
+  }
   const parent = new Map();
   const find = (id) => {
     while (parent.get(id) !== id) {
@@ -32,23 +44,16 @@ export function linkGroups(questionsById) {
     if (ra !== rb) parent.set(order.get(ra) < order.get(rb) ? rb : ra, order.get(ra) < order.get(rb) ? ra : rb);
   };
   for (const question of questionsById.values()) {
-    for (const dependency of question.depends_on_question_ids || []) {
-      if (questionsById.has(dependency)) union(question.question_id, dependency);
+    const id = question.question_id;
+    for (const dependencyId of question.depends_on_question_ids || []) {
+      const dependency = questionsById.get(dependencyId);
+      if (dependency && dependency.paper_id === question.paper_id && order.get(dependencyId) < order.get(id)
+          && options.get(id) === options.get(dependencyId)) {
+        union(id, dependencyId);
+      }
     }
   }
   if (!parent.size) return new Map();
-
-  // Every part of a question that holds a link joins its group.
-  const byParent = new Map();
-  for (const question of questionsById.values()) {
-    if (!question.parent_question_id) continue;
-    if (!byParent.has(question.parent_question_id)) byParent.set(question.parent_question_id, []);
-    byParent.get(question.parent_question_id).push(question.question_id);
-  }
-  for (const id of [...parent.keys()]) {
-    const siblings = byParent.get(questionsById.get(id).parent_question_id) || [];
-    for (const sibling of siblings) union(id, sibling);
-  }
 
   const groups = new Map();
   for (const id of parent.keys()) {
@@ -61,6 +66,7 @@ export function linkGroups(questionsById) {
     if (members.length < 2) continue;
     members.sort((a, b) => order.get(a) - order.get(b));
     const groupId = `LINKED_${members[0]}`;
+    const contiguous = order.get(members.at(-1)) - order.get(members[0]) === members.length - 1;
     result.set(groupId, members);
     members.forEach((id, position) => {
       const question = questionsById.get(id);
@@ -74,7 +80,7 @@ export function linkGroups(questionsById) {
       }
       questionsById.set(id, {
         ...question,
-        linked_group: { id: groupId, question_ids: members, position },
+        linked_group: { id: groupId, question_ids: members, position, contiguous },
         dependency_spec_points: [...points],
         ...(Object.keys(requirements).length ? { textbook_requirements: requirements } : {}),
       });
@@ -117,12 +123,13 @@ function buildEntry(groupId, questionsById) {
     primary_spec_points: union('primary_spec_points'),
     crossover_spec_points: union('crossover_spec_points'),
     textbook_references: union('textbook_references'),
-    part_label: partRange(parts),
+    part_label: partRange(parts, first.linked_group.contiguous),
   };
 }
 
 /** "(a)–(d)" from the first and last part labels. */
-export function partRange(parts) {
+export function partRange(parts, contiguous = true) {
+  if (!contiguous) return parts.map((part) => part.part_label).filter(Boolean).join(', ');
   const first = String(parts[0]?.part_label || '').split(/[–-]/)[0].trim();
   const last = String(parts.at(-1)?.part_label || '').split(/[–-]/).at(-1).trim();
   if (!first) return '';
@@ -203,7 +210,9 @@ export function runnerItems(questions) {
     }
     items.push({ questions: [question], start: index, group: groupId ? question.linked_group : null });
   });
-  // A "group" of one (the rest of the question was not in this session) is shown on its own.
-  for (const item of items) if (item.questions.length < 2) item.group = null;
-  return items;
+  // Older sessions and full papers may have a partial group or a different order.
+  return items.flatMap((item) => {
+    if (!item.group || item.group.question_ids.every((id, index) => item.questions[index]?.question_id === id)) return [item];
+    return item.questions.map((question, index) => ({ questions: [question], start: item.start + index, group: null }));
+  });
 }
