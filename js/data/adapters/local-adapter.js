@@ -20,6 +20,7 @@
 import { APP, LIMITS } from '../../config/app.config.js';
 import { fromHex, sha256, toHex } from '../../core/sha256.js';
 import { uid } from '../../core/utils.js';
+import { retainOfflineProgress } from '../offline-progress.js';
 
 const NS = APP.storageNamespace;
 const USERS_KEY = `${NS}:users`;
@@ -175,7 +176,14 @@ export const localAdapter = {
     return read(progressKey(userId), null);
   },
 
-  async saveProgress(userId, document) {
-    write(progressKey(userId), document);
+  async saveProgress(userId, document, { replace = false } = {}) {
+    return this.updateProgress(userId, remote => replace ? document : retainOfflineProgress(document, remote));
+  },
+
+  async updateProgress(userId, update) {
+    const key = progressKey(userId);
+    const document = update(read(key, null));
+    write(key, document);
+    return document;
   },
 };

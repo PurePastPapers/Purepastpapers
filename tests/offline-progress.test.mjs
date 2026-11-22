@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { putExport, putOfflineAttempt, retainOfflineProgress } from '../js/data/offline-progress.js';
+import { isExportedTest, putExport, putOfflineAttempt, removeTestExport, retainOfflineProgress } from '../js/data/offline-progress.js';
 import { scoreTestSnapshot } from '../js/engine/test-snapshot.js';
 
 const snapshot = {
@@ -35,6 +35,30 @@ test('repeat export keeps the original immutable test record and a revised selec
   assert.equal(repeated.created_at, '2026-11-22T01:00:00.000Z');
   putExport(progress, { ...snapshot, id: 'pdf_edited-test', totalMarks: 1 }, '2026-11-22T03:00:00.000Z');
   assert.deepEqual(progress.custom_tests.map(test => test.paper_id), ['pdf_frozen-test', 'pdf_edited-test']);
+});
+
+test('removing an export survives a stale progress write and preserves recorded marks', () => {
+  const progress = emptyProgress();
+  const saved = putExport(progress, snapshot, '2026-11-22T01:00:00.000Z');
+  const other = putExport(progress, { ...snapshot, id: 'pdf_other-test' });
+  const attempt = putOfflineAttempt(progress, saved, { newAttemptId: 'paper_saved' });
+  putOfflineAttempt(progress, saved, {
+    expectedRevision: attempt.revision,
+    result: { mode: 'overall', awarded: 2, maxMarks: 3, percentage: 67 },
+  });
+  const stale = structuredClone(progress);
+
+  removeTestExport(progress, saved.paper_id, saved.created_at);
+  const merged = retainOfflineProgress(stale, progress);
+  assert.deepEqual(merged.custom_tests.filter(isExportedTest), [other]);
+  assert.deepEqual(merged.paper_attempts, stale.paper_attempts);
+  assert.deepEqual(merged.sessions, stale.sessions);
+  assert.equal(merged.custom_tests.find(test => test.paper_id === saved.paper_id).snapshot, undefined);
+
+  const newExport = putExport(progress, snapshot, '2026-11-22T02:00:00.000Z');
+  assert.deepEqual(retainOfflineProgress(merged, progress).custom_tests.filter(isExportedTest), [newExport, other]);
+  assert.throws(() => removeTestExport(progress, saved.paper_id, saved.created_at), /exported again/);
+  assert.equal(progress.custom_tests.find(test => test.paper_id === saved.paper_id), newExport);
 });
 
 test('completion can be recorded without marks and a partial zero mark remains explicit', () => {

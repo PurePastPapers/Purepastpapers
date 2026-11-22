@@ -36,6 +36,15 @@
     <noscript>
       <p style="padding: 24px; font-family: system-ui, sans-serif">This site needs JavaScript to run.</p>
     </noscript>
-    <script type="module" src="js/main.js"></script>
+    <!-- All views use the same instance of the progress API. -->
+    <script type="importmap">
+      {
+        "imports": {
+          "./js/data/api.js": "./js/data/api.js?v=exported-tests-2",
+          "./js/data/offline-progress.js": "./js/data/offline-progress.js?v=exported-tests-2"
+        }
+      }
+    </script>
+    <script type="module" src="js/main.js?v=exported-tests-2"></script>
   </body>
 </html>

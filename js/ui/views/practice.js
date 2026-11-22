@@ -31,10 +31,10 @@ import { hasExaminerReport, loadReportIndex, reportPanel, reportQuestionLabel, r
 import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, toast } from '../ui.js';
-import { links, routeOf } from '../../core/links.js';
+import { links, routeOf } from '../../core/links.js?v=exported-tests-1';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
-import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js';
+import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js?v=20261122-pdf2';
 import { createInkEditor, renderInkPreview } from '../ink-editor.js';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
@@ -139,7 +139,7 @@ export async function mount(element, context) {
       title: 'Find questions',
       sub: 'Browse questions or build a test',
       crumbs: [{ label: 'Home', href: links.home() }, { label: 'Practice', href: links.practice() }, ...(crumb ? [{ label: crumb }] : [])],
-    })}<p class="row"><a class="btn btn--sm" href="${links.exportedTests()}">Exported tests</a></p>`;
+    })}`;
 
   if (!bundle) {
     if (!user && element.isConnected) {
@@ -165,6 +165,9 @@ export async function mount(element, context) {
     return level && !paper.title.split(/[\s·:]+/).includes(level) ? `${level} · ${paper.title}` : paper.title;
   };
   const subjectId = subject.subject_id;
+  const hasExports = () => api.exportedTests().some(test => test.subject_id === subjectId);
+  const exportedTestsLink = () => html`<a class="btn btn--sm" href="${links.exportedTests({ subject: subjectId })}"
+    data-exported-tests ${hasExports() ? '' : 'hidden'}>Exported tests</a>`;
   const isEnrolled = progress.enrolled_subjects.includes(subjectId);
   const subjects = isEnrolled ? enrolled : [...enrolled, bundle];
   // Subjects whose scored units carry a reviewed introduced_year use it for the
@@ -195,6 +198,7 @@ export async function mount(element, context) {
       html`${head(subject.subject)}
         <div class="stack stack--lg" style="${scStyle(subject)}">
           ${subjectPills(subjects, subjectId, (id) => links.practice({ subject: id }))}
+          ${hasExports() ? html`<div class="row">${exportedTestsLink()}</div>` : ''}
           <section class="card ruled tier-prompt" data-tier-prompt>
             <h2 class="card__title">Choose Foundation or Higher for ${subject.subject}</h2>
             <p class="muted">Questions and tests are built from one tier’s papers. ${isEnrolled ? 'Choose yours to start. You can change it later in the subject’s settings.' : 'Choose a tier to browse this subject.'}</p>
@@ -1511,16 +1515,19 @@ export async function mount(element, context) {
         ${tiered ? tierBar() : ''}
         ${sciences.length ? scienceBar() : ''}
         ${moduleScopeBanner(bundle)}
-        ${modes.length > 1
-          ? html`<div class="seg mode-switch" role="tablist" aria-label="Practice mode">
-              ${[...modes].sort((a, b) => (a === 'timed_test') - (b === 'timed_test')).map(
-                (mode) =>
-                  html`<button type="button" role="tab" class="seg__opt" aria-selected="${state.mode === mode}" tabindex="${state.mode === mode ? 0 : -1}" id="practice-mode-${mode}" aria-controls="practice-mode-panel" data-mode="${mode}" title="${PRACTICE_MODES[mode].blurb}">
-                    ${mode === 'timed_test' ? 'Build a test' : 'Individual questions'}
-                  </button>`,
-              )}
-            </div>`
-          : html`<p class="muted"><strong>${PRACTICE_MODES[modes[0]].label}.</strong> ${PRACTICE_MODES[modes[0]].blurb}</p>`}
+        <div class="row" data-practice-modes>
+          ${modes.length > 1
+            ? html`<div class="seg mode-switch" role="tablist" aria-label="Practice mode">
+                ${[...modes].sort((a, b) => (a === 'timed_test') - (b === 'timed_test')).map(
+                  (mode) =>
+                    html`<button type="button" role="tab" class="seg__opt" aria-selected="${state.mode === mode}" tabindex="${state.mode === mode ? 0 : -1}" id="practice-mode-${mode}" aria-controls="practice-mode-panel" data-mode="${mode}" title="${PRACTICE_MODES[mode].blurb}">
+                      ${mode === 'timed_test' ? 'Build a test' : 'Individual questions'}
+                    </button>`,
+                )}
+              </div>`
+            : html`<p class="muted"><strong>${PRACTICE_MODES[modes[0]].label}.</strong> ${PRACTICE_MODES[modes[0]].blurb}</p>`}
+          ${exportedTestsLink()}
+        </div>
         <div data-body id="practice-mode-panel" ${modes.length > 1 ? html`role="tabpanel" aria-labelledby="practice-mode-${state.mode}"` : ''}></div>
       </div>`,
   );
@@ -2089,6 +2096,10 @@ export async function mount(element, context) {
       toast(error.message, { type: 'error' });
     } finally {
       button.disabled = false;
+      const exportedTests = $('[data-exported-tests]', element);
+      if (exportedTests && element.isConnected) {
+        exportedTests.hidden = !hasExports();
+      }
     }
   });
 
