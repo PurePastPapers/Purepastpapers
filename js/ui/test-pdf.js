@@ -12,9 +12,13 @@ export const exportRetention = () => !api.isSignedIn()
     : 'This test is saved to your account in this browser.';
 
 export function promptForOfflineAttempt(snapshot, onMarkNow, retakeId = null) {
+  const owner = api.currentUser()?.user_id ?? null;
   return askOfflineCompletion({
     retention: exportRetention(),
-    onMarkDone: () => api.saveOfflineAttempt(snapshot.id, { newAttemptId: retakeId?.() }),
+    onMarkDone: () => {
+      if ((api.currentUser()?.user_id ?? null) !== owner) throw new Error('Your account changed. Open the test again.');
+      return api.saveOfflineAttempt(snapshot.id, { newAttemptId: retakeId?.() || `paper_${snapshot.id}` });
+    },
     onMarkNow,
   });
 }

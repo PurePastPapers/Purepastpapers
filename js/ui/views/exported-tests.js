@@ -48,6 +48,7 @@ export async function mount(element, context) {
     return undefined;
   }
   const { snapshot } = test;
+  const owner = api.currentUser()?.user_id ?? null;
   context.setTitle(snapshot.title);
   let resolved = new Map();
   let recovery = '';
@@ -57,14 +58,25 @@ export async function mount(element, context) {
     recovery = 'The question bank could not be loaded. You can enter an overall score or reopen this test to try again.';
   }
   const attempts = () => api.offlineAttempts(paperId);
-  let active = context.query.attempt ? attempts().find(item => item.session_id === context.query.attempt) : attempts().at(-1);
-  let marking = context.query.mark === '1';
+  const active = context.query.attempt ? attempts().find(item => item.session_id === context.query.attempt) : attempts().at(-1);
+  if (context.query.attempt && !active) {
+    setHtml(element, emptyState({
+      iconName: 'file', title: 'This attempt is unavailable',
+      action: html`<a class="btn" href="${links.exportedTest(paperId)}">Open saved test</a>`,
+    }));
+    return undefined;
+  }
+  const marking = context.query.mark === '1';
   let dispose;
   let removeListener;
   let busy = false;
+  const openAttempt = (attempt, mark = false, options) => context.navigate(
+    routeOf(links.exportedTest(paperId, { attempt: attempt.session_id, ...(mark ? { mark: 1 } : {}) })), options,
+  );
 
   async function update(payload) {
-    const previous = active.result;
+    const attempt = active;
+    const previous = attempt.result?.mode === 'parts' ? attempt.result : attempt.previous_part_result;
     // A bank revision may prevent editing an old mark. Its saved value remains valid for this attempt.
     const keep = Object.entries(previous?.marks || {}).filter(([id]) => !resolved.has(id));
     const result = scoreTestSnapshot(snapshot, payload, resolved, { preserve: Object.fromEntries(keep) });
@@ -83,9 +95,9 @@ export async function mount(element, context) {
         result.markedBy = mark.marked_by;
       }
     }
-    active = await api.saveOfflineAttempt(paperId, { newAttemptId: active.session_id, expectedRevision: active.revision, result });
-    marking = false;
-    draw();
+    if ((api.currentUser()?.user_id ?? null) !== owner) throw new Error('Your account changed. Open the test again.');
+    const saved = await api.saveOfflineAttempt(paperId, { newAttemptId: attempt.session_id, expectedRevision: attempt.revision, result });
+    openAttempt(saved, false, { replace: true });
   }
 
   function onExport() {
@@ -108,27 +120,23 @@ export async function mount(element, context) {
     });
     dispose = renderOfflineMarking(element.querySelector('[data-offline-view]'), {
       snapshot, questions: resolved,
-      attempt: active ? { id: active.session_id, status: active.status, result: active.result } : null,
+      attempt: active ? { status: active.status, result: active.result, previousPartResult: active.previous_part_result } : null,
       markImmediately: marking, onSave: update, onExport, backHref: links.exportedTests(),
       onMarkDone: active ? null : async () => {
-        try {
-          await promptForOfflineAttempt(snapshot, () => { marking = true; });
-          active = attempts().at(-1);
-          draw();
-        } catch (error) { toast(error.message, { type: 'error' }); }
+        let mark = false;
+        const attempt = await promptForOfflineAttempt(snapshot, () => { mark = true; });
+        if (attempt) openAttempt(attempt, mark, { replace: true });
       },
       onRetake: active ? async () => {
         if (busy) return;
         busy = true;
         try {
           let markNext = false;
-          await promptForOfflineAttempt(snapshot, () => { markNext = true; }, offlineRetakeId);
-          marking = markNext;
+          const attempt = await promptForOfflineAttempt(snapshot, () => { markNext = true; }, offlineRetakeId);
+          if (attempt) openAttempt(attempt, markNext);
         } catch (error) { toast(error.message, { type: 'error' }); }
         finally {
-          active = attempts().at(-1);
           busy = false;
-          draw();
         }
       } : null,
     });

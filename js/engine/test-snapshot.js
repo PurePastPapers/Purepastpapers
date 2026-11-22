@@ -5,6 +5,8 @@ const digest = (value) => toHex(sha256(JSON.stringify(value)));
 const sorted = (value) => Array.isArray(value) ? value.map(sorted) : value && typeof value === 'object'
   ? Object.fromEntries(Object.keys(value).sort().map(key => [key, sorted(value[key])])) : value;
 
+export const displayedPartLabel = (groupNumber, label) => `Question ${groupNumber}${label ? ` ${label}` : ''}`;
+
 function identity(question, paper) {
   return [
     question.paper_id ?? null, question.source_type, question.qualification_code ?? paper?.spec_code ?? null,

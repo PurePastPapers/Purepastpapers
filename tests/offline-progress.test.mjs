@@ -91,13 +91,17 @@ test('overall-only result leaves per-question scores unknown and keeps existing 
   const started = putOfflineAttempt(progress, savedPaper, { newAttemptId: 'paper_attempt-1' });
   const detailed = { mode: 'parts', marks: { 'part-a': 1 }, awarded: 1, maxMarks: 3, percentage: null, unmarked: 1 };
   const saved = putOfflineAttempt(progress, savedPaper, { result: detailed, expectedRevision: started.revision });
-  const overall = { mode: 'total', marks: {}, total: 2, awarded: 2, maxMarks: 3, percentage: 66.7 };
+  const overall = scoreTestSnapshot(snapshot, { mode: 'overall', total: 2 });
   const latest = putOfflineAttempt(progress, savedPaper, { result: overall, expectedRevision: saved.revision });
-  assert.equal(latest.result.mode, 'total');
-  assert.deepEqual(latest.result.marks, {});
-  assert.deepEqual(progress.question_attempts.map(attempt => [attempt.question_id, attempt.marks_awarded]), [['part-a', 1]]);
+  assert.equal(latest.result.mode, 'overall');
+  assert.equal(latest.result.marks, undefined);
+  assert.deepEqual(latest.previous_part_result.marks, { 'part-a': 1 });
+  assert.equal(progress.question_attempts.length, 0);
   assert.equal(progress.paper_attempts.length, 1);
-  assert.equal(progress.paper_attempts[0].score_mode, 'total');
+  assert.equal(progress.paper_attempts[0].score_mode, 'overall');
+  putOfflineAttempt(progress, savedPaper, { result: detailed, expectedRevision: latest.revision });
+  assert.equal(progress.paper_attempts.length, 0);
+  assert.deepEqual(progress.question_attempts.map(attempt => [attempt.question_id, attempt.marks_awarded]), [['part-a', 1]]);
 });
 
 test('retakes get independent attempt IDs and remote history survives stale progress writes', () => {
@@ -117,4 +121,17 @@ test('retakes get independent attempt IDs and remote history survives stale prog
   assert.equal(merged.sessions.find(session => session.session_id === 'paper_attempt-1').revision, 4);
   assert.equal(merged.sessions.find(session => session.session_id === 'paper_attempt-2').revision, 1);
   assert.equal(merged.custom_tests.length, 1);
+});
+
+test('marking an explicitly opened attempt after a retake updates only the original attempt', () => {
+  const progress = emptyProgress();
+  const savedPaper = putExport(progress, snapshot);
+  const original = putOfflineAttempt(progress, savedPaper, { newAttemptId: 'paper_original' });
+  const retake = putOfflineAttempt(progress, savedPaper, { newAttemptId: 'paper_retake' });
+  const result = scoreTestSnapshot(snapshot, { mode: 'overall', total: 0 });
+  const first = putOfflineAttempt(progress, savedPaper, { newAttemptId: original.session_id, expectedRevision: original.revision, result });
+  const retry = putOfflineAttempt(progress, savedPaper, { newAttemptId: original.session_id, expectedRevision: original.revision, result });
+  assert.equal(first, retry);
+  assert.equal(progress.sessions[1], retake);
+  assert.deepEqual(progress.paper_attempts.map(attempt => attempt.session_id), ['paper_original']);
 });

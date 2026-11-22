@@ -3,6 +3,7 @@
 // snapshot and collects a validated marking choice.
 
 import { $, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
+import { displayedPartLabel } from '../../engine/test-snapshot.js';
 import { markPicker, bindMarkPickers } from '../mark-picker.js';
 import { markSchemeBody, questionBody, questionRef } from '../question-view.js';
 import { openModal, toast } from '../ui.js';
@@ -17,8 +18,8 @@ export async function askOfflineCompletion({ onMarkDone, onMarkNow, retention = 
       { label: 'Mark as done', value: 'done', variant: 'primary' },
     ],
   });
-  if (completed !== 'done') return 'not_yet';
-  await onMarkDone?.();
+  if (completed !== 'done') return null;
+  const attempt = await onMarkDone();
   const mark = await openModal({
     title: 'Would you like to mark it now?',
     body: html`<p>Choose how to enter the result. You can return to this test later.</p>`,
@@ -28,11 +29,11 @@ export async function askOfflineCompletion({ onMarkDone, onMarkNow, retention = 
     ],
   });
   if (mark === 'mark') {
-    await onMarkNow?.();
-    return 'mark_now';
+    await onMarkNow?.(attempt);
+    return attempt;
   }
   toast('Completed on paper · Not marked', { type: 'success' });
-  return 'later';
+  return attempt;
 }
 
 const safeMapGet = (map, key) => map instanceof Map ? map.get(key) : map?.[key];
@@ -64,7 +65,7 @@ function optionDefaults(choices, stored) {
 
 /**
  * Render frozen offline-test review and marking. `onSave` receives
- * `{mode, marks, chosenOptions, total}` and should return the saved attempt.
+ * `{mode, marks, chosenOptions, total}`. Callbacks own navigation after saving.
  * Returns an unmount callback for delegated listeners.
  */
 export function renderOfflineMarking(element, {
@@ -81,11 +82,12 @@ export function renderOfflineMarking(element, {
   if (!snapshot || snapshot.version !== 1) throw new Error('This saved test has an unsupported snapshot version.');
   const allParts = snapshotParts(snapshot, questions);
   const choices = Array.isArray(snapshot.choices) ? snapshot.choices : [];
-  let activeAttempt = attempt;
-  let saved = activeAttempt?.result || {};
+  const activeAttempt = attempt;
+  const saved = attempt?.result || {};
+  const detail = saved.mode === 'parts' ? saved : attempt?.previousPartResult;
   let mode = saved.mode === 'overall' ? 'overall' : 'parts';
-  let chosenOptions = optionDefaults(choices, saved.chosenOptions);
-  const marks = { ...(saved.marks || {}) };
+  let chosenOptions = optionDefaults(choices, detail?.chosenOptions);
+  const marks = { ...(detail?.marks || {}) };
   let busy = false;
   let marking = Boolean(markImmediately && activeAttempt);
 
@@ -120,7 +122,7 @@ export function renderOfflineMarking(element, {
     const question = part.question;
     const max = partMaximum(part, question);
     const reference = exactReference(part, question);
-    const display = part.label ? `Question ${part.groupNumber} ${part.label}` : `Question ${part.groupNumber || index + 1}`;
+    const display = displayedPartLabel(part.groupNumber || index + 1, part.label);
     const selected = !byChoiceIds.has(part.id) || partsInSelectedChoices().has(part.id);
     const value = Object.prototype.hasOwnProperty.call(marks, part.id) ? marks[part.id] : '';
     const schemePresent = Boolean(question.content?.mark_scheme_html || question.content?.mark_scheme_image_url);
@@ -139,7 +141,6 @@ export function renderOfflineMarking(element, {
   };
 
   function draw() {
-    saved = activeAttempt?.result || {};
     const hasResult = hasSavedResult();
     if (!marking) {
       const statusText = activeAttempt?.status === 'completed_on_paper' && !hasResult
@@ -155,7 +156,7 @@ export function renderOfflineMarking(element, {
           ${hasResult && saved.mode === 'overall' ? html`<p>Overall score ${saved.awarded ?? saved.total} / ${saved.maxMarks ?? snapshot.totalMarks}${saved.percentage != null ? ` · ${saved.percentage}%` : ''}</p><p class="small muted">Per-question and topic scores remain unknown.</p>` : ''}
           ${hasResult && saved.mode === 'parts' ? html`<p>Question-by-question score ${saved.awarded ?? 0} / ${saved.maxMarks ?? snapshot.totalMarks}${saved.percentage != null ? ` · ${saved.percentage}%` : ' · Partly marked'}</p>` : ''}
         </header>
-        <section class="card stack"><h2 class="h2">Questions in this test</h2><ol>${allParts.map((part) => html`<li>${part.reference || part.id} · ${part.maxMarks ?? '?'} marks${!part.question ? ' · currently unavailable' : ''}</li>`)}</ol></section>
+        <section class="card stack"><h2 class="h2">Questions in this test</h2><ul>${allParts.map((part) => html`<li>${displayedPartLabel(part.groupNumber, part.label)} · ${part.reference || part.id} · ${part.maxMarks ?? '?'} marks${!part.question ? ' · currently unavailable' : ''}</li>`)}</ul></section>
         <footer class="card offline-test__save">
           ${!activeAttempt ? html`<p class="muted">When you have completed the test on paper, mark this attempt as done to save it in your history.</p><button class="btn btn--primary btn--lg" type="button" data-offline-mark-done>Mark as done</button>` : ''}
           ${activeAttempt && !hasResult ? html`<p class="muted">${activeAttempt.status === 'completed_on_paper' ? 'Your completion is saved. You can enter marks when ready.' : 'This attempt is ready for marking.'}</p><button class="btn btn--primary btn--lg" type="button" data-offline-mark-now>Mark now</button>` : ''}
@@ -165,8 +166,7 @@ export function renderOfflineMarking(element, {
       return;
     }
     const activeParts = effectiveParts();
-    const sumSelectedMax = activeParts.reduce((total, part) => total + partMaximum(part, part.question), 0);
-    const maxScore = choices.length ? (snapshot.totalMarks || sumSelectedMax) : (snapshot.totalMarks || sumSelectedMax);
+    const maxScore = snapshot.totalMarks;
     const currentMarks = activeParts.reduce((total, part) => total + (Number.isInteger(marks[part.id]) ? marks[part.id] : 0), 0);
     const chosenValid = choices.every((choice, index) => chosenOptions[index]?.length === choice.count);
     setHtml(element, html`<main class="offline-test stack">
@@ -177,7 +177,7 @@ export function renderOfflineMarking(element, {
         <p class="small muted">The displayed question numbers and source references come from the exported test.</p>
       </header>
       ${unavailable.length ? html`<section class="card offline-test__unavailable" role="status"><h2>Some saved questions are unavailable</h2><p>They remain in the original test’s score denominator.</p><ul>${unavailable.map((part) => html`<li>${part.reference || part.id} · ${part.maxMarks ?? '?'} marks</li>`)}</ul></section>` : ''}
-      ${choices.length ? html`<section class="card stack"><h2 class="h2">Choose the required alternatives</h2>${choiceControl()}</section>` : ''}
+      ${choices.length && mode === 'parts' ? html`<section class="card stack"><h2 class="h2">Choose the required alternatives</h2>${choiceControl()}</section>` : ''}
       <nav class="offline-test__modes" aria-label="Marking method">
         <button class="btn ${mode === 'parts' ? 'btn--primary' : ''}" type="button" data-offline-mode="parts">Mark each question</button>
         <button class="btn ${mode === 'overall' ? 'btn--primary' : ''}" type="button" data-offline-mode="overall">Enter one total</button>
@@ -188,7 +188,7 @@ export function renderOfflineMarking(element, {
         ${mode === 'parts' ? html`<p class="muted" data-offline-progress>${currentMarks} marks entered · ${activeParts.length} selected question parts</p>` : ''}
         ${hasResult && saved.mode !== mode ? html`<p class="small muted">Saving in this mode replaces the saved result for this same attempt.</p>` : ''}
         ${mode === 'parts' && unavailable.length ? html`<p class="small muted">Unavailable parts cannot be marked. The original denominator stays ${snapshot.totalMarks} marks.</p>` : ''}
-        <button type="button" class="btn btn--primary btn--lg" data-offline-save ${busy || (choices.length && !chosenValid) ? 'disabled' : ''}>${hasResult ? 'Save updated marks' : 'Save result'}</button>
+        <button type="button" class="btn btn--primary btn--lg" data-offline-save ${busy || (mode === 'parts' && !chosenValid) ? 'disabled' : ''}>${hasResult ? 'Save updated marks' : 'Save result'}</button>
       </footer>
     </main>`);
   }
@@ -199,9 +199,7 @@ export function renderOfflineMarking(element, {
       busy = true;
       try {
         if (typeof onMarkDone !== 'function') throw new Error('This test cannot be saved right now. Try again later.');
-        activeAttempt = await onMarkDone();
-        if (!activeAttempt) throw new Error('The completion could not be saved. Try again.');
-        draw();
+        await onMarkDone();
       } catch (error) {
         toast(error?.message || 'The completion could not be saved. Try again.', { type: 'error', timeout: 6500 });
       } finally {
@@ -245,7 +243,7 @@ export function renderOfflineMarking(element, {
     on(element, 'click', '[data-offline-save]', async () => {
       if (busy) return;
       const activeParts = effectiveParts();
-      const max = snapshot.totalMarks || activeParts.reduce((total, part) => total + partMaximum(part, part.question), 0);
+      const max = snapshot.totalMarks;
       let payload;
       if (mode === 'overall') {
         const field = $('[data-offline-total]', element);
@@ -259,8 +257,9 @@ export function renderOfflineMarking(element, {
       } else {
         const current = {};
         let invalid = null;
+        const inputs = new Map([...element.querySelectorAll('[data-offline-mark]')].map(input => [input.dataset.offlineMark, input]));
         activeParts.forEach((part) => {
-          const input = [...element.querySelectorAll('[data-offline-mark]')].find((candidate) => candidate.dataset.offlineMark === part.id);
+          const input = inputs.get(part.id);
           if (!input || input.value === '') return;
           const value = Number(input.value);
           const partMax = partMaximum(part, part.question);
@@ -282,12 +281,7 @@ export function renderOfflineMarking(element, {
       button.disabled = true;
       try {
         if (typeof onSave !== 'function') throw new Error('Saving this result is unavailable. Return to the saved test and try again.');
-        activeAttempt = await onSave(payload);
-        if (activeAttempt) {
-          saved = activeAttempt.result || {};
-          marking = false;
-          draw();
-        }
+        await onSave(payload);
         toast('Your result was saved for this attempt.', { type: 'success' });
       } catch (error) {
         toast(error?.message || 'Your result could not be saved. Try again.', { type: 'error', timeout: 6500 });
@@ -296,7 +290,7 @@ export function renderOfflineMarking(element, {
         if (button.isConnected) button.disabled = false;
       }
     }),
-    on(element, 'click', '[data-offline-retake]', () => onRetake?.()),
+    on(element, 'click', '[data-offline-retake]', () => { if (!busy) onRetake?.(); }),
     on(element, 'click', '[data-offline-export]', () => onExport?.()),
   ];
 

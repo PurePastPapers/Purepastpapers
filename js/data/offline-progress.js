@@ -26,17 +26,19 @@ export function putOfflineAttempt(doc, paper, { newAttemptId, result, expectedRe
     throw new Error('This attempt changed on another device. Reopen it to see the latest marks.');
   }
   if (result && JSON.stringify(current.result) === JSON.stringify(result)) return current;
+  const previousDetail = current?.result?.mode === 'parts' ? current.result : current?.previous_part_result;
   const session = {
     session_id: id, kind: 'offline_test', paper_id: paper.paper_id, subject_id: paper.subject_id, title: paper.title,
     question_ids: paper.question_ids, total_marks: paper.total_marks, status: result ? 'completed' : 'completed_on_paper',
     started_at: current?.started_at || now, completed_at: current?.completed_at || now,
     revision: (current?.revision || 0) + 1, result: result || null,
+    ...(result?.mode === 'overall' && previousDetail ? { previous_part_result: previousDetail } : {}),
   };
   const index = doc.sessions.findIndex(candidate => candidate.session_id === id);
   if (index < 0) doc.sessions.push(session);
   else doc.sessions[index] = session;
   if (!result) return session;
-  if (result.mode === 'parts') doc.question_attempts = doc.question_attempts.filter(attempt => attempt.session_id !== id);
+  doc.question_attempts = doc.question_attempts.filter(attempt => attempt.session_id !== id);
   const parts = new Map(paper.snapshot.groups.flatMap(group => group.parts.map(part => [part.id, part])));
   for (const [partId, marks] of Object.entries(result.marks || {})) {
     const part = parts.get(partId);

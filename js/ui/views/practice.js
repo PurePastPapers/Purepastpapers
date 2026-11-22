@@ -2056,7 +2056,7 @@ export async function mount(element, context) {
       const { offerTestPdf } = await import('../test-pdf.js');
       await offerTestPdf({
         snapshot, questions: resolveTestSnapshot(snapshot, bundle), existing: Boolean(api.getCustomTest(snapshot.id)),
-        onOpenTest: () => context.navigate(routeOf(links.exportedTest(snapshot.id, { mark: 1 }))),
+        onOpenTest: (attempt) => context.navigate(routeOf(links.exportedTest(snapshot.id, { attempt: attempt.session_id, mark: 1 }))),
       });
     } catch (error) {
       toast(error.message, { type: 'error' });

@@ -11,7 +11,7 @@ import { deleteInkConflict, deleteInkResponse, listInkDraftsForPart, loadInkResp
 import * as ink from './ink.js';
 import { SUPABASE_CONFIGURED } from '../config/supabase.config.js';
 import { LEGACY_SPEC_IDS } from '../config/spec-id-migrations.js';
-import { isExportedTest, isOfflineSession, putExport, putOfflineAttempt } from './offline-progress.js';
+import { isExportedTest, isOfflineSession, putExport, putOfflineAttempt, retainOfflineProgress } from './offline-progress.js';
 
 const guestExportsKey = `${APP.storageNamespace}:guest-pdf-tests`;
 
@@ -756,8 +756,9 @@ function writeOffline(update) {
         return doc;
       });
       if (user?.user_id !== accountId) throw new Error('Your account changed. Open the test again.');
-      progress = fresh;
-      learnedCache = null;
+      // A practice or syllabus edit may have changed the in-memory document while
+      // this request was queued. Merge just the exported tests and their attempts.
+      Object.assign(requireProgress(), retainOfflineProgress(requireProgress(), fresh));
     } else {
       const doc = structuredClone(requireProgress());
       value = update(doc);
