@@ -464,7 +464,7 @@ def process(pack_path, slug, dry, report):
         report['paper_page_height'].append(f'{pid} {estimate:.1f}')
     for parent, units in groups.items():
         units.sort(key=lambda q: q['question_id'])
-        if any(u['provenance'].get('own_rows_from_full') for u in units):
+        if any(u['provenance'].get('own_rows_from_full') or u['provenance'].get('context_reviewed') for u in units):
             report['reviewed_rows_kept'].append(parent)  # tools/parts/manual-contexts.py owns these
             continue
         if len(units) < 2 or not all(u['provenance'].get('part_display') == 'refined' for u in units):

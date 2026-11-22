@@ -131,7 +131,7 @@ def process(job):
             return texts[u['question_id']]
 
         for i, u in enumerate(units):
-            if i == 0 or u['question_id'] in FALSE:
+            if i == 0 or u['question_id'] in FALSE or 'reviewed_dependencies' in (u.get('provenance') or {}):
                 continue
             text = text_of(u)
             found = {}

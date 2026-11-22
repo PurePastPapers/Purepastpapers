@@ -108,14 +108,14 @@ def apply_question_review(unit, entry, units_by_id):
     unit['context'].pop('stem_image_url', None)
 
 
-def apply_part_scheme_review(unit, paper, name, regions):
+def apply_part_scheme_review(unit, paper, name, review):
     parent = name.rsplit('_', 1)[0]
     unit['content']['mark_scheme_image_url'] = f'assets/gcsechem/{paper}/{name}_scheme.webp'
     unit['context']['full_scheme_image_url'] = f'assets/gcsechem/{paper}/{parent}_scheme.webp'
     unit['scheme_scope'] = 'part'
-    unit['scheme_question_number'] = f"{unit['question_number']}{unit['part_label']}"
+    unit['scheme_question_number'] = review.get('scheme_question_number', f"{unit['question_number']}{unit['part_label']}")
     unit.pop('scheme_part', None)
-    unit['provenance']['part_scheme_regions'] = regions
+    unit['provenance']['part_scheme_regions'] = review['regions']
     unit['provenance']['part_scheme_check'] = 'verified'
 
 
@@ -159,7 +159,7 @@ def apply(root, sources, paper_ids=None):
                             provenance = unit['provenance']
                             if short_id == name:
                                 assert provenance['scheme_source_sha256'] == digest
-                                apply_part_scheme_review(unit, pid, name, regions)
+                                apply_part_scheme_review(unit, pid, name, review)
                             elif short_id.startswith(name + '_'):
                                 assert provenance['scheme_source_sha256'] == digest
                                 previous = provenance['scheme_regions']

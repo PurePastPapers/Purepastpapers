@@ -55,6 +55,11 @@ test('reviewed Physics context, links and equation-booklet exclusions survive pu
     }
     if (review.source_regions) assert.deepEqual(question.provenance.source_regions, review.source_regions, id);
     if (review.full_question_regions) assert.deepEqual(question.provenance.full_question_regions, review.full_question_regions, id);
+    if (review.scheme_regions) {
+      assert.equal(question.scheme_scope, 'part', id);
+      assert.equal(question.provenance.scheme_source_sha256, review.scheme_source_sha256, id);
+      assert.deepEqual(question.provenance.part_scheme_regions, review.scheme_regions, id);
+    }
   }
 
   const paper = 'EDX_1PH0_2022_JUNE_2F';
@@ -77,6 +82,21 @@ test('whole Physics schemes keep all pages assigned to the printed question', ()
   const pages = id => reviews[id].scheme_regions.map(region => region.page);
   assert.deepEqual(pages('EDX_1PH0_2020_NOVEMBER_1F_Q01'), [5]);
   assert.deepEqual(pages('EDX_1PH0_2022_JUNE_2H_Q10'), [27, 28, 29, 30]);
+});
+
+test('printed reference variants keep the first part scheme and its full fallback', () => {
+  const reviews = read('data/imports/gcsephys/scheme-display-overrides.json');
+  for (const id of ['EDX_1SC0_2022_JUNE_1PH_Q04_U01', 'EDX_1PH0_2021_NOVEMBER_1H_Q10_U01']) {
+    const question = units.find(item => item.question_id === id);
+    const review = reviews[id];
+    const shorthand = id.slice(question.paper_id.length + 1);
+    assert.equal(question.scheme_scope, 'part', id);
+    assert.equal(question.provenance.part_scheme_check, 'verified', id);
+    assert.equal(question.provenance.scheme_source_sha256, review.scheme_source_sha256, id);
+    assert.deepEqual(question.provenance.part_scheme_regions, review.scheme_regions, id);
+    assert.ok(question.content.mark_scheme_image_url.endsWith(`/${shorthand}_scheme.webp`), id);
+    assert.ok(question.context.full_scheme_image_url.endsWith(`/${shorthand.split('_')[0]}_scheme.webp`), id);
+  }
 });
 
 test('active GCSE Physics booklets reconcile to their printed totals and match the coverage inventory', () => {

@@ -12,8 +12,14 @@ region runs from its first reference (or the table header just above it) to the
 next question's start. Coordinates are CropBox-relative, like extract.py.
 """
 import re
+import sys
+from pathlib import Path
+
 import pdfplumber
 from extract import CropView
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'parts'))
+from pearson_scheme_bounds import bounded_scheme_regions, table_start
 
 REF = re.compile(r'\*?Q?(\d{1,2})(?:[a-h]|\((?:[a-h]|[ivx]+|[a-h][ivx]+)\)|[ivx]+)*')
 # Shared Foundation/Higher schemes print both references: "8c(i)(F)  2(ai)(H)".
@@ -28,6 +34,7 @@ def scheme_regions(path, question_count):
         started, starts, expected = False, [], 1
         tier = 'H' if str(path).endswith('H__mark_scheme.pdf') else 'F'
         for pi, ws in enumerate(words):
+            previous_row = 0
             # The command-word guidance table ("AO3 | Strand | Element: 1a and 1b") is not a
             # mark-scheme row; its strand codes look like question references.
             if {'Strand', 'Element'} <= {w['text'] for w in ws}:
@@ -52,49 +59,16 @@ def scheme_regions(path, question_count):
                 m = REF.fullmatch(text)
                 if not m or int(m.group(1)) != expected:
                     continue
-                top = w['top']
-                header = [o for o in ws if o['text'] == 'Question' and o['x0'] < 130 and 0 < top - o['top'] < 20]
-                if header:
-                    top = min(o['top'] for o in header)
-                    # Each 1MA1 table page repeats a "Paper: 1MA1/1H" bar above the header row.
-                    bar = [o for o in ws if o['text'] == 'Paper:' and 0 < top - o['top'] < 25]
-                    if bar: top = min(o['top'] for o in bar)
-                starts.append((pi, max(15, top - 6), expected)); expected += 1
+                top = table_start(views[pi], ws, w['top'], previous_row)
+                starts.append((pi, top, expected))
+                previous_row = w['top']
+                expected += 1
         if len(starts) != question_count:
             raise ValueError(f'Scheme has {len(starts)} indexed questions; expected {question_count}: {path}')
-        out = {}
-        for i, (pi, top, number) in enumerate(starts):
-            if i + 1 < len(starts):
-                ep, ey, _ = starts[i + 1]
-            else:
-                # The last question stops at its "(Total for question N = M marks)" line;
-                # later pages hold general guidance or level descriptors only.
-                ep, ey = pi, 10000
-                for index in range(pi, len(views)):
-                    tot = [o for o in words[index] if o['text'].lower() == 'question' and index >= pi
-                           and re.search(r'Total\s+for\s+question\s+%d\b' % number,
-                                         ' '.join(x['text'] for x in words[index] if abs(x['top'] - o['top']) < 3), re.I)]
-                    if tot:
-                        ep, ey = index, max(o['bottom'] for o in tot) + 4
-                        break
-            regions = []
-            for index in range(pi, ep + 1):
-                v = views[index]
-                lo = top if index == pi else 20
-                hi = ey if index == ep else v.height - 25
-                inside = [w for w in words[index] if lo <= w['top'] < hi]
-                pictures = [o for o in v.images if lo <= o['top'] < hi]
-                if (not inside and not pictures) or hi - lo < 10:
-                    continue
-                bottom = min(v.height - 20, max([w['bottom'] for w in inside] + [o['bottom'] for o in pictures]) + 6)
-                regions.append({'page': index + 1, 'bbox': [20 / v.width, lo / v.height, (v.width - 20) / v.width, bottom / v.height]})
-            if not regions:
-                raise ValueError(f'No scheme region for question {number}: {path}')
-            out[str(number)] = regions
-        return out
+        return bounded_scheme_regions(views, words, starts, path)
 
 
 if __name__ == '__main__':
-    import sys, json
+    import json
     r = scheme_regions(sys.argv[1], int(sys.argv[2]))
     print(json.dumps({k: [x['page'] for x in v] for k, v in r.items()}))

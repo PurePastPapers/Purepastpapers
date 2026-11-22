@@ -6123,15 +6123,6 @@
               0.958003,
               0.505519
             ]
-          },
-          {
-            "page": 27,
-            "bbox": [
-              0.041997,
-              0.045137,
-              0.958003,
-              0.51967
-            ]
           }
         ],
         "original_parts": [
@@ -6217,7 +6208,15 @@
             1348
           ]
         ],
-        "full_scheme_review": "The following Pearson question header and answer row are outside this question."
+        "full_scheme_review": "The following Pearson question header and answer row are outside this question.",
+        "part_display_review": "This task refers to the thermistor set-up in the preceding figure. The next page introduces the two measurement methods for the next part.",
+        "part_display_review_source": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
+        "source_region_page_pixels": [
+          [
+            953,
+            1348
+          ]
+        ]
       },
       "part_label": "(c)(i)"
     },
@@ -6329,15 +6328,6 @@
         "context_bridge_text": "In this investigation, the resistance can be measured in two ways. Method 1 – use an ohmmeter. Method 2 – use an ammeter and a voltmeter. V dc mA OFF OFF OFF mA V k Ω Method 1 Method 2 using an ohmmeter using an ammeter and voltmeter Figure 18",
         "context_regions": [
           {
-            "page": 26,
-            "bbox": [
-              0.041997,
-              0.06904231625835189,
-              0.958003,
-              0.4446919079435783
-            ]
-          },
-          {
             "page": 27,
             "bbox": [
               0.041997,
@@ -6347,9 +6337,8 @@
             ]
           }
         ],
-        "context_includes_stem_image": "Q08_stem.webp",
         "context_reasons": [
-          "text printed just before this part"
+          "reviewed printed context"
         ],
         "part_scheme_regions": [
           {
@@ -6372,28 +6361,17 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
         "context_regions_refined": [
-          {
-            "page": 26,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.444931
-            ]
-          },
           {
             "page": 27,
             "bbox": [
               0.041997,
-              0.069323,
+              0.06904231625835189,
               0.958003,
-              0.511089
+              0.5107646622123236
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20",
         "context_stem_from_parts": [
           "EDX_1PH0_2022_JUNE_2H_Q08_U04"
         ],
@@ -6407,7 +6385,10 @@
             1348
           ]
         ],
-        "full_scheme_review": "The following Pearson question header and answer row are outside this question."
+        "full_scheme_review": "The following Pearson question header and answer row are outside this question.",
+        "part_display_review": "The printed comparison uses the two instruments and captions. The preceding apparatus figure and prompt are outside this part.",
+        "part_display_review_source": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
+        "reviewed_dependencies": []
       },
       "part_label": "(c)(ii)"
     },
@@ -6538,14 +6519,16 @@
             "page": 23,
             "bbox": [
               0.033595,
-              0.137381,
+              0.0902223,
               0.966405,
               0.416964
             ]
           }
         ],
         "part_scheme_check": "reference_matched",
-        "scheme_regions_fixed": "whole regions moved to the question they print (fix-scheme-regions.py, 2026-11-20)"
+        "scheme_regions_fixed": "whole regions moved to the question they print (fix-scheme-regions.py, 2026-11-20)",
+        "part_display_review": "The correct response starts above the first-column part label in the printed table. Include the full response.",
+        "part_display_review_source": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52"
       },
       "part_label": "(a)"
     },
@@ -7003,7 +6986,7 @@
             "page": 27,
             "bbox": [
               0.033595,
-              0.127261,
+              0.08022137,
               0.966405,
               0.468132
             ]
@@ -7028,7 +7011,9 @@
             1348
           ]
         ],
-        "full_scheme_review": "The official scheme continues through the final question answers and level guidance on these pages."
+        "full_scheme_review": "The official scheme continues through the final question answers and level guidance on these pages.",
+        "part_display_review": "The correct response starts above the first-column part label in the printed table. Include the full response.",
+        "part_display_review_source": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52"
       },
       "part_label": "(a)"
     },

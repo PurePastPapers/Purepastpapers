@@ -207,7 +207,7 @@ def build_job(job):
     if not review.exists() or not candidate.exists():
         return {'paper_id': paper_id, 'status': 'awaiting_review_or_source'}
     target = repo/'data/packs/gcsechem'/f'{paper_id}.json'
-    signature = hashlib.sha256(b'gcsechem-build-v1' + candidate.read_bytes() + review.read_bytes()).hexdigest()
+    signature = hashlib.sha256(b'gcsechem-build-v2' + candidate.read_bytes() + review.read_bytes()).hexdigest()
     try:
         if target.exists():
             existing = json.loads(target.read_text())

@@ -1078,6 +1078,13 @@ def open_doc(sources, alias, sha, original_sha, offset, cropbox=False):
     raise FileNotFoundError(sha)
 
 
+def load_review_module(slug, filename):
+    spec = importlib.util.spec_from_file_location(f'{slug}_display_reviews', ROOT / 'tools' / slug / filename)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--subject', required=True, choices=['biology', 'physics', 'maths', 'fmaths', 'gcsemaths', 'gcsebio', 'gcsechem', 'gcsephys'])
@@ -1095,6 +1102,9 @@ def main():
     biology_display = None
     further_maths_sources = None
     option_part_scheme = None
+    gcsebio_display = None
+    if slug == 'gcsebio':
+        gcsebio_display = load_review_module('gcsebio', 'display_reviews.py')
     if slug == 'biology':
         overrides_spec = importlib.util.spec_from_file_location(
             'biology_source_overrides', ROOT / 'tools' / 'biology' / 'source_overrides.py')
@@ -1230,6 +1240,10 @@ def main():
                         unit['marks'], sdoc.size)
                     if manual_scheme:
                         regions, status = manual_scheme, 'verified'
+                if gcsebio_display:
+                    manual_scheme = gcsebio_display.part_scheme_review(uid, p0['scheme_source_sha256'])
+                    if manual_scheme:
+                        regions, status = manual_scheme, 'verified'
                 if option_part_scheme:
                     manual_scheme = option_part_scheme(p0['scheme_source_sha256'], number,
                                                        unit['provenance']['original_parts'], unit['marks'], sdoc.size)
@@ -1265,6 +1279,26 @@ def main():
                     report.append({'question': uid, 'status': 'scheme_fallback', 'why': status})
                 if not ctx:
                     unit.pop('context')
+        if gcsebio_display:
+            for unit in pack['questions']:
+                pv = unit['provenance']
+                review = gcsebio_display.display_review(unit['question_id'], pv['question_source_sha256'])
+                if review is None:
+                    continue
+                name = unit['question_id'].removeprefix(f'{pid}_')
+                if 'own' in review:
+                    unit['content']['question_image_url'] = put(f'{name}.webp', qdoc.render(review['own']))
+                    pv['source_regions'] = review['own']
+                    pv['part_display_positioning'] = 'reviewed PDF regions'
+                    pv.pop('own_rows_from_full', None)
+                for field in ('context_includes_stem_image', 'context_rows_from_full', 'context_siblings_removed',
+                              'context_recut_from_full', 'context_from_linked_part', 'context_named_parts',
+                              'context_bridge_text', 'context_stem_from_parts'):
+                    pv.pop(field, None)
+                unit.setdefault('context', {})['stem_image_url'] = put(f'{name}_context.webp', qdoc.render(review['context']))
+                pv['context_regions'] = review['context']
+                pv['context_reasons'] = ['reviewed printed context']
+                pv['context_reviewed'] = '2026-11-22'
         # catalogue: rewrite referenced assets
         text = json.dumps(pack, ensure_ascii=False)
         refs = set(re.findall(r'assets/' + slug + '/' + pid + r'/([A-Za-z0-9_]+\.webp)', text))
@@ -1294,6 +1328,21 @@ def main():
         stats['reviewed_displays'] = applied
         if missing:
             print(f'No checksum-matched PDF for reviewed part-display overrides: {", ".join(missing)}', file=sys.stderr)
+    if slug == 'gcsemaths' and not args.dry:
+        module = load_review_module(slug, 'apply_display_reviews.py')
+        applied, missing = module.apply_reviews(ROOT, args.sources, paper_ids=selected_papers, aliases=alias)
+        stats['reviewed_displays'] = applied
+        for item in missing:
+            print(item, file=sys.stderr)
+    if slug in ('gcsechem', 'gcsephys') and not args.dry:
+        sys.path.insert(0, str(ROOT / 'tools' / slug))
+        module = load_review_module(slug, 'apply_display_reviews.py')
+        if slug == 'gcsechem':
+            stats['reviewed_displays'] = dict(module.apply(ROOT, args.sources, paper_ids=selected_papers))
+        else:
+            from apply_scheme_reviews import apply_reviews as apply_physics_schemes
+            stats['reviewed_displays'] = module.apply_reviews(args.sources, paper_ids=selected_papers)
+            stats['reviewed_schemes'] = apply_physics_schemes(args.sources, paper_ids=selected_papers)
     print(json.dumps(stats, indent=1))
     if args.report:
         args.report.write_text(json.dumps(report, indent=1))
