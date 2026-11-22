@@ -31,10 +31,10 @@ import { hasExaminerReport, loadReportIndex, reportPanel, reportQuestionLabel, r
 import { placeQuestion } from '../question-fit.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, toast } from '../ui.js';
-import { links, routeOf } from '../../core/links.js';
+import { links, routeOf } from '../../core/links.js?v=exported-tests-1';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
-import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js';
+import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js?v=20261122-pdf2';
 import { createInkEditor, renderInkPreview } from '../ink-editor.js';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
@@ -131,11 +131,14 @@ export async function mount(element, context) {
     : !user && requested
       ? null
       : enrolled.find((candidate) => candidate.subject.subject_id === progress.preferences.lastSubject) || enrolled[0];
-  const head = (crumb) => html`${pageHead({
+  const hasExportsFor = (subjectId) => api.exportedTests().some(test => test.subject_id === subjectId);
+  const head = (crumb, subjectId) => html`${pageHead({
       title: 'Find questions',
       sub: 'Browse questions or build a test',
       crumbs: [{ label: 'Home', href: links.home() }, { label: 'Practice', href: links.practice() }, ...(crumb ? [{ label: crumb }] : [])],
-    })}<p class="row"><a class="btn btn--sm" href="${links.exportedTests()}">Exported tests</a></p>`;
+    })}${subjectId ? html`<p data-exported-tests ${hasExportsFor(subjectId) ? '' : 'hidden'}>
+      <a class="btn btn--sm" href="${links.exportedTests({ subject: subjectId })}">Exported tests</a>
+    </p>` : ''}`;
 
   if (!bundle) {
     if (!user && element.isConnected) {
@@ -188,7 +191,7 @@ export async function mount(element, context) {
     tintPage(subject);
     setHtml(
       element,
-      html`${head(subject.subject)}
+      html`${head(subject.subject, subjectId)}
         <div class="stack stack--lg" style="${scStyle(subject)}">
           ${subjectPills(subjects, subjectId, (id) => links.practice({ subject: id }))}
           <section class="card ruled tier-prompt" data-tier-prompt>
@@ -1498,7 +1501,7 @@ export async function mount(element, context) {
   tintPage(subject);
   setHtml(
     element,
-    html`${head(subject.subject)}
+    html`${head(subject.subject, subjectId)}
       ${!user ? html`<p><a class="btn btn--sm" href="${links.subjects({ browse: 1, subject: subjectId, tier: state.tier || (linkedBothTiers ? 'both' : null) })}">Choose another subject</a></p>` : ''}
       ${!user ? banner(html`Browsing and filters are free. Guest typed answers and marks last until you refresh or close this page. Handwriting is stored in this browser on this device and will not sync across devices. <a href="${links.signup('/practice')}">Create a free account</a> to save your progress.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
@@ -2062,6 +2065,10 @@ export async function mount(element, context) {
       toast(error.message, { type: 'error' });
     } finally {
       button.disabled = false;
+      const exportedTests = $('[data-exported-tests]', element);
+      if (exportedTests && element.isConnected) {
+        exportedTests.hidden = !hasExportsFor(subjectId);
+      }
     }
   });
 

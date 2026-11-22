@@ -18,6 +18,8 @@ import { closeWelcome } from './ui/welcome.js';
 import { banner, loadingBlock, toast } from './ui/ui.js';
 import { links } from './core/links.js';
 
+// Keep the Practice routes on the same release as their PDF modules.
+const exportedTestsView = () => import('./ui/views/exported-tests.js?v=exported-tests-1');
 const papersView = () => import('./ui/views/papers.js');
 const comingSoonView = () => import('./ui/views/coming-soon.js');
 
@@ -38,9 +40,9 @@ const ROUTES = [
   { path: '/subject/:subjectId', load: () => import('./ui/views/subject.js') },
   { path: '/papers', load: papersView, options: { paperType: 'real_past_paper' } },
   { path: '/paper/:subjectId/:paperId', load: () => import('./ui/views/paper.js') },
-  { path: '/practice', load: () => import('./ui/views/practice.js') },
-  { path: '/practice/exported', load: () => import('./ui/views/exported-tests.js') },
-  { path: '/practice/exported/:paperId', load: () => import('./ui/views/exported-tests.js') },
+  { path: '/practice', load: () => import('./ui/views/practice.js?v=exported-tests-1') },
+  { path: '/practice/exported', load: exportedTestsView },
+  { path: '/practice/exported/:paperId', load: exportedTestsView },
   { path: '/session/:sessionId', load: () => import('./ui/views/session.js'), layout: 'focus' },
   { path: '/hub', load: () => import('./ui/views/hub.js'), auth: true },
   { path: '/ai-papers', load: papersView, feature: 'aiPastPapers', options: { paperType: 'ai_past_paper' } },
