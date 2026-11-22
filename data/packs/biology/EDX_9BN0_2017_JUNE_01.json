@@ -6360,41 +6360,32 @@
             "page": 27,
             "bbox": [
               0.065358,
-              0.043323,
+              0.042755,
               0.934677,
-              0.583166
+              0.583135
             ]
           },
           {
             "page": 28,
             "bbox": [
               0.065358,
-              0.043323,
+              0.065321,
               0.934677,
-              0.093196
-            ]
-          },
-          {
-            "page": 28,
-            "bbox": [
-              0.065358,
-              0.501638,
-              0.934677,
-              0.558755
+              0.332542
             ]
           },
           {
             "page": 29,
             "bbox": [
               0.065358,
-              0.068256,
+              0.065321,
               0.934677,
-              0.113363
+              0.112827
             ]
           }
         ],
         "context_reasons": [
-          "earlier \"show that\" result"
+          "reviewed unscored context"
         ],
         "part_scheme_regions": [
           {
@@ -6416,7 +6407,8 @@
             ]
           }
         ],
-        "part_scheme_check": "reference_matched"
+        "part_scheme_check": "reference_matched",
+        "context_review": "Preserve the original population information, GBA allele frequencies and conclusion."
       },
       "part_label": "(b)(i)"
     },
@@ -6462,7 +6454,6 @@
       "scheme_question_number": "10(b)(ii)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_9BN0_2017_JUNE_01/Q10_full.webp",
-        "stem_image_url": "assets/biology/EDX_9BN0_2017_JUNE_01/Q10_U04_context.webp",
         "full_scheme_image_url": "assets/biology/EDX_9BN0_2017_JUNE_01/Q10_scheme.webp"
       },
       "provenance": {
@@ -6536,47 +6527,6 @@
         "qualification_code": "9BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 27,
-            "bbox": [
-              0.065358,
-              0.043323,
-              0.934677,
-              0.583166
-            ]
-          },
-          {
-            "page": 28,
-            "bbox": [
-              0.065358,
-              0.043323,
-              0.934677,
-              0.093196
-            ]
-          },
-          {
-            "page": 28,
-            "bbox": [
-              0.065358,
-              0.501638,
-              0.934677,
-              0.558755
-            ]
-          },
-          {
-            "page": 29,
-            "bbox": [
-              0.065358,
-              0.068256,
-              0.934677,
-              0.113363
-            ]
-          }
-        ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
         "part_scheme_regions": [
           {
             "page": 27,
@@ -6588,7 +6538,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_review": "The speciation explanation uses no calculation from part (a)."
       },
       "part_label": "(b)(ii)"
     }

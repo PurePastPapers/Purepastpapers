@@ -11,7 +11,9 @@ general "Level of response marking instructions" pages are not repeated per unit
 """
 import re
 
-END = re.compile(r'^(Copyright|There are no|END OF|Assessment Objectives? (?:Grid|grid|by question))', re.I)
+END = re.compile(r'^(?:Copyright|There are no|END OF|Assessment Objectives?(?:$| (?:Grid|by question))|Topic [AB]\d+\s)', re.I)
+TABLE_HEADER = re.compile(r'^(?:Qu|Question)\s+Marking guidance(?:\s+Total(?:\s+marks)?)?$', re.I)
+TABLE_HEADER_FRAGMENT = {'total', 'marks', 'total marks'}
 
 
 def label_pattern(label):
@@ -63,6 +65,13 @@ def scheme_regions(path, labels, skip_pages=2, marks=None):
                 if END.match(stream[j][1]['text']):
                     end = j
                     break
+            header = end - 1
+            while header > idx and stream[header][1]['text'].strip().lower() in TABLE_HEADER_FRAGMENT:
+                header -= 1
+            if header > idx and TABLE_HEADER.fullmatch(stream[header][1]['text'].strip()):
+                end = header
+                while end > idx + 1 and stream[end - 1][1]['text'].strip().lower() in TABLE_HEADER_FRAGMENT:
+                    end -= 1
             by_page = {}
             for pi, line in stream[idx:end]:
                 if re.fullmatch(r'\d{1,2}', line['text'].strip()):
@@ -73,9 +82,14 @@ def scheme_regions(path, labels, skip_pages=2, marks=None):
             for pi in sorted(by_page):
                 page = pdf.pages[pi]
                 top, bottom = by_page[pi]
+                limit = page.height - 30
+                if end < len(stream) and stream[end][0] == pi:
+                    # The next row can sit less than 8 pt below this scheme's last line.
+                    limit = min(limit, max(bottom, stream[end][1]['top']))
+                bottom = min(bottom + 8, limit)
                 regions.append({'page': pi + 1, 'bbox': [round(20 / page.width, 6), round(max(30, top - 8) / page.height, 6),
                                                          round((page.width - 20) / page.width, 6),
-                                                         round(min(page.height - 30, bottom + 8) / page.height, 6)]})
+                                                         round(bottom / page.height, 6)]})
             found[label] = regions
             text = ' '.join(l['text'] for _, l in stream[idx:end])
             m = re.search(r'Marks for (?:this|each) (?:question|part)\s*:?\s*((?:AO\d\s*[=-]\s*\d+(?:\s*marks?)?\s*(?:and|,|;)?\s*)+)', text)

@@ -2034,7 +2034,6 @@
       "scheme_question_number": "5(b)(i)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_9BN0_2019_JUNE_03/Q05_U02_context.webp\" alt=\"Shared source stem for question 5\" />",
         "full_scheme_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_scheme.webp"
       },
       "provenance": {
@@ -2111,7 +2110,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_review": "The own crop includes the procedure and darkness prompt."
       },
       "part_label": "(b)(i)"
     },
@@ -2157,7 +2157,6 @@
       "scheme_question_number": "5(b)(ii)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_9BN0_2019_JUNE_03/Q05_U03_context.webp\" alt=\"Shared source stem for question 5\" />",
         "full_scheme_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_scheme.webp"
       },
       "provenance": {
@@ -2234,7 +2233,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_review": "The own crop includes both graphs and the calculation prompt."
       },
       "part_label": "(b)(ii)"
     },
@@ -2280,8 +2280,8 @@
       "scheme_question_number": "5(b)(iii)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_9BN0_2019_JUNE_03/Q05_U04_context.webp\" alt=\"Shared source stem for question 5\" />",
-        "full_scheme_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_scheme.webp"
+        "full_scheme_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_scheme.webp",
+        "stem_image_url": "assets/biology/EDX_9BN0_2019_JUNE_03/Q05_U04_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2357,7 +2357,22 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_review": "The phenotype introduction supplies the definition of weary lettuce.",
+        "context_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.063966,
+              0.06889,
+              0.936034,
+              0.13778
+            ]
+          }
+        ],
+        "context_reasons": [
+          "reviewed unscored context"
+        ]
       },
       "part_label": "(b)(iii)"
     },

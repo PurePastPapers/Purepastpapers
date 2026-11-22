@@ -2187,7 +2187,6 @@
       "scheme_question_number": "4(c)(i)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_9BN0_SAMPLE_03/Q04_full.webp",
-        "stem_image_url": "assets/biology/EDX_9BN0_SAMPLE_03/Q04_U03_context.webp",
         "full_scheme_image_url": "assets/biology/EDX_9BN0_SAMPLE_03/Q04_scheme.webp"
       },
       "provenance": {
@@ -2261,29 +2260,6 @@
         "qualification_code": "9BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 12,
-            "bbox": [
-              0.065542,
-              0.041988,
-              0.934457,
-              0.49534
-            ]
-          },
-          {
-            "page": 14,
-            "bbox": [
-              0.065542,
-              0.068035,
-              0.934457,
-              0.477808
-            ]
-          }
-        ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
         "part_scheme_regions": [
           {
             "page": 8,
@@ -2295,7 +2271,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_review": "The BMI calculation supplies its own values and formula."
       },
       "part_label": "(c)(i)"
     },
@@ -2415,26 +2392,17 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 12,
+            "page": 15,
             "bbox": [
-              0.065542,
-              0.041988,
-              0.934457,
-              0.49534
-            ]
-          },
-          {
-            "page": 14,
-            "bbox": [
-              0.065542,
-              0.068035,
-              0.934457,
-              0.477808
+              0.3,
+              0.129471,
+              0.7,
+              0.179358
             ]
           }
         ],
         "context_reasons": [
-          "earlier \"show that\" result"
+          "reviewed unscored context"
         ],
         "part_scheme_regions": [
           {
@@ -2447,7 +2415,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_review": "Preserve the printed BMI definition without the calculation task."
       },
       "part_label": "(c)(ii)"
     },
@@ -2493,7 +2462,6 @@
       "scheme_question_number": "4(c)(iii)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_9BN0_SAMPLE_03/Q04_full.webp",
-        "stem_image_url": "assets/biology/EDX_9BN0_SAMPLE_03/Q04_U05_context.webp",
         "full_scheme_image_url": "assets/biology/EDX_9BN0_SAMPLE_03/Q04_scheme.webp"
       },
       "provenance": {
@@ -2567,29 +2535,6 @@
         "qualification_code": "9BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 12,
-            "bbox": [
-              0.065542,
-              0.041988,
-              0.934457,
-              0.49534
-            ]
-          },
-          {
-            "page": 14,
-            "bbox": [
-              0.065542,
-              0.068035,
-              0.934457,
-              0.477808
-            ]
-          }
-        ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
         "part_scheme_regions": [
           {
             "page": 9,
@@ -2601,7 +2546,8 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_review": "The BMI health risks task is independent of the earlier drug studies."
       },
       "part_label": "(c)(iii)"
     },
