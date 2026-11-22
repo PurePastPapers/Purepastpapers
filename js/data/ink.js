@@ -9,7 +9,7 @@ const MAX_POINTS_PER_STROKE = 20_000;
 const MAX_TOTAL_POINTS = 100_000;
 
 function validId(value, name) {
-  if (typeof value !== 'string' || value.length === 0 || value.length > 256) {
+  if (typeof value !== 'string' || value.length === 0 || value.length > 256 || value.includes('\u0000')) {
     throw new TypeError(`${name} must be a non-empty string of at most 256 characters.`);
   }
   return value;
@@ -17,6 +17,24 @@ function validId(value, name) {
 
 function recordKey(ownerId, responseId, partId) {
   return `${ownerId}\u0000${responseId}\u0000${partId}`;
+}
+
+function sameAnswer(first, second) {
+  return first.status === second.status && JSON.stringify(first.sections) === JSON.stringify(second.sections);
+}
+
+function storeConflict(records, key, record, conflictId = null) {
+  const conflictKey = `${key}\u0000conflict\u0000${conflictId || crypto.randomUUID()}`;
+  records.put({ key: conflictKey, record: { ...record, conflict: true, conflictId } });
+}
+
+function storedRecord(entry) {
+  if (!entry) return null;
+  const { record, key } = entry;
+  if (!record.conflict) return record;
+  if (key !== recordKey(record.ownerId, record.responseId, record.partId)) return { ...record, conflictKey: key };
+  const { conflict, conflictId, conflictKey, conflictOfRevision, ...canonical } = record;
+  return canonical;
 }
 
 function validateRecord(input, ownerId) {
@@ -124,7 +142,7 @@ export function createInkRepository(owner) {
       const key = recordKey(ownerId, validId(responseId, 'responseId'), validId(partId, 'partId'));
       const stored = await requestResult(transaction.objectStore(RECORDS_STORE).get(key));
       await transactionDone(transaction);
-      return stored?.record || null;
+      return storedRecord(stored);
     } finally { db.close(); }
   }
 
@@ -137,18 +155,24 @@ export function createInkRepository(owner) {
       const records = transaction.objectStore(RECORDS_STORE);
       const outbox = transaction.objectStore(OUTBOX_STORE);
       const previous = await requestResult(records.get(key));
-      const candidate = { ...record, revision: Math.max(record.revision, (previous?.record.revision || 0) + 1), updatedAt: new Date().toISOString() };
-      const changedSections = previous?.record && JSON.stringify(record.sections) !== JSON.stringify(previous.record.sections);
-      const staleRevision = previous && record.revision < previous.record.revision;
-      if (changedSections && staleRevision) {
-        const conflictId = `${key}\u0000conflict\u0000${candidate.revision}`;
-        const conflict = { ...candidate, conflictOfRevision: previous.record.revision, conflict: true };
-        records.put({ key: conflictId, record: conflict });
+      if (previous && sameAnswer(record, previous.record)) {
         await transactionDone(transaction);
-        return { ...conflict, conflict: true };
+        return storedRecord(previous);
+      }
+      const candidate = {
+        ...record,
+        revision: Math.max(record.revision, (previous?.record.revision || 0) + 1),
+        cloudRevision: previous?.record.cloudRevision ?? record.cloudRevision,
+        updatedAt: new Date().toISOString(),
+      };
+      if (previous && record.revision < previous.record.revision) {
+        const conflict = { ...candidate, conflictOfRevision: previous.record.revision, conflict: true };
+        storeConflict(records, key, conflict);
+        await transactionDone(transaction);
+        return conflict;
       }
       records.put({ key, record: candidate });
-      outbox.put({ key, record: candidate, queuedAt: candidate.updatedAt });
+      if (ownerId !== 'guest') outbox.put({ key, record: candidate, queuedAt: candidate.updatedAt });
       await transactionDone(transaction);
       return candidate;
     } finally { db.close(); }
@@ -162,7 +186,7 @@ export function createInkRepository(owner) {
       const stored = await requestResult(transaction.objectStore(RECORDS_STORE).getAll());
       await transactionDone(transaction);
       return stored.filter((entry) => entry.record.ownerId === ownerId && entry.record.responseId === safeResponseId)
-        .map((entry) => entry.record.conflict ? { ...entry.record, conflictKey: entry.key } : entry.record);
+        .map(storedRecord);
     } finally { db.close(); }
   }
 
@@ -205,32 +229,31 @@ export function createInkRepository(owner) {
       if (!queued || localRevision == null || queued.record.revision === localRevision) {
         outbox.delete(key);
       } else {
-        const latest = { ...queued.record, cloudRevision };
+        const latest = { ...queued.record, cloudRevision: Math.max(queued.record.cloudRevision || 0, cloudRevision || 0) || undefined };
         outbox.put({ ...queued, record: latest, queuedAt: new Date().toISOString() });
       }
       const stored = await requestResult(records.get(key));
       if (stored && (localRevision == null || stored.record.revision >= localRevision)) {
-        records.put({ ...stored, record: { ...stored.record, cloudRevision } });
+        const latest = { ...storedRecord(stored), cloudRevision: Math.max(stored.record.cloudRevision || 0, cloudRevision || 0) || undefined };
+        records.put({ ...stored, record: latest });
       }
       await transactionDone(transaction);
     } finally { db.close(); }
   }
 
   async function preserveConflict(outboxEntry, conflictId = null) {
+    const sent = outboxEntry.record;
+    const key = recordKey(ownerId, sent.responseId, sent.partId);
+    if (outboxEntry.key !== key || sent.ownerId !== ownerId) throw new Error('Outbox record belongs to a different account.');
     const db = await openDatabase();
     try {
       const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
       const records = transaction.objectStore(RECORDS_STORE);
       const outbox = transaction.objectStore(OUTBOX_STORE);
-      const queued = await requestResult(outbox.get(outboxEntry.key));
-      const sent = outboxEntry.record;
-      const conflictKey = `${recordKey(ownerId, sent.responseId, sent.partId)}\u0000conflict\u0000${sent.revision}\u0000${conflictId || 'cloud'}`;
-      records.put({ key: conflictKey, record: { ...sent, conflict: true, conflictId } });
-      if (queued) outbox.delete(outboxEntry.key);
-      const stored = await requestResult(records.get(recordKey(ownerId, sent.responseId, sent.partId)));
-      if (stored) records.put({ ...stored, record: { ...stored.record, conflict: true, conflictId } });
+      const queued = await requestResult(outbox.get(key));
+      if (queued?.record.revision === sent.revision) outbox.delete(key);
+      storeConflict(records, key, sent, conflictId);
       await transactionDone(transaction);
-      return conflictKey;
     } finally { db.close(); }
   }
 
@@ -244,19 +267,19 @@ export function createInkRepository(owner) {
       const records = transaction.objectStore(RECORDS_STORE);
       const outbox = transaction.objectStore(OUTBOX_STORE);
       const all = await requestResult(records.getAll());
-      const selectedEntry = all.find((entry) => entry.record.ownerId === ownerId
+      const selectedEntries = all.filter((entry) => entry.record.ownerId === ownerId
         && entry.record.responseId === safeResponseId && entry.record.partId === safePartId
         && entry.key !== canonicalKey && entry.record.conflict
         && ((selected?.conflictId && entry.record.conflictId === selected.conflictId)
           || (selected?.conflictKey && entry.key === selected.conflictKey)
-          || JSON.stringify(entry.record.sections) === JSON.stringify(selected?.sections)));
+          || (selected && sameAnswer(entry.record, selected))));
       const currentEntry = await requestResult(records.get(canonicalKey));
-      const selectedRecord = selectedEntry?.record || (selected?.responseId === safeResponseId && selected?.partId === safePartId ? selected : null);
+      const selectedRecord = selectedEntries[0]?.record || (selected?.responseId === safeResponseId && selected?.partId === safePartId ? selected : null);
       if (useConflict && !selectedRecord) throw new Error('That handwriting conflict is no longer available. Reload and choose again.');
-      const chosen = useConflict ? selectedRecord : currentEntry?.record;
+      let chosen = useConflict ? selectedRecord : storedRecord(currentEntry);
       if (!chosen) throw new Error('The current handwritten answer is unavailable.');
 
-      if (selectedEntry) records.delete(selectedEntry.key);
+      for (const entry of selectedEntries) records.delete(entry.key);
       if (useConflict) {
         const canonicalInput = {
           ...chosen,
@@ -270,15 +293,13 @@ export function createInkRepository(owner) {
         delete canonicalInput.conflictId;
         delete canonicalInput.conflictKey;
         delete canonicalInput.conflictOfRevision;
-        const canonical = validateRecord(canonicalInput, ownerId);
-        records.put({ key: canonicalKey, record: canonical, writerId: TAB_WRITER_ID });
+        chosen = validateRecord(canonicalInput, ownerId);
+        records.put({ key: canonicalKey, record: chosen });
         if (alreadySynced) outbox.delete(canonicalKey);
-        else outbox.put({ key: canonicalKey, record: canonical, queuedAt: new Date().toISOString() });
-      } else if (currentEntry) {
-        records.put({ ...currentEntry, record: { ...currentEntry.record, conflict: false }, writerId: TAB_WRITER_ID });
+        else if (ownerId !== 'guest') outbox.put({ key: canonicalKey, record: chosen, queuedAt: new Date().toISOString() });
       }
       await transactionDone(transaction);
-      return { record: useConflict ? chosen : currentEntry?.record || null, conflictRemoved: Boolean(selectedEntry) };
+      return { record: chosen, conflictRemoved: selectedEntries.length > 0 };
     } finally { db.close(); }
   }
 
@@ -286,7 +307,8 @@ export function createInkRepository(owner) {
 }
 
 async function mergeCloudRecord(ownerId, input) {
-  const record = validateRecord({ ...input, ownerId }, ownerId);
+  if (input.ownerId !== ownerId) throw new Error('Synced handwriting belongs to a different account.');
+  const record = validateRecord(input, ownerId);
   const key = recordKey(ownerId, record.responseId, record.partId);
   const db = await openDatabase();
   try {
@@ -295,25 +317,24 @@ async function mergeCloudRecord(ownerId, input) {
     const outbox = transaction.objectStore(OUTBOX_STORE);
     const existing = await requestResult(records.get(key));
     const queued = await requestResult(outbox.get(key));
-    if (input.conflict === true) {
-      const conflictKey = `${key}\u0000cloud-conflict\u0000${input.conflictId || record.revision}`;
-      records.put({ key: conflictKey, record: { ...record, conflict: true } });
-    } else if (queued && existing) {
-      if (JSON.stringify(existing.record.sections) === JSON.stringify(record.sections)) {
-        records.put({ key, record: { ...existing.record, cloudRevision: record.cloudRevision ?? record.revision }, writerId: TAB_WRITER_ID });
+    if (record.conflict) {
+      storeConflict(records, key, record, record.conflictId);
+    } else if (!existing) {
+      records.put({ key, record });
+    } else if ((record.cloudRevision ?? record.revision) >= (existing.record.cloudRevision ?? 0)) {
+      const cloudRevision = record.cloudRevision ?? record.revision;
+      const identical = sameAnswer(record, existing.record);
+      if (identical) {
+        records.put({ key, record: { ...storedRecord(existing), cloudRevision } });
+        if (queued) outbox.delete(key);
+      } else if (queued && cloudRevision > (queued.record.cloudRevision ?? 0)) {
+        // A concurrent cloud edit diverged from this draft's base. Keep both copies.
+        storeConflict(records, key, existing.record);
         outbox.delete(key);
-      } else {
-        const conflictKey = `${key}\u0000cloud-conflict\u0000${record.cloudRevision ?? record.revision}`;
-        records.put({ key: conflictKey, record: { ...record, conflict: true } });
-        records.put({ ...existing, record: { ...existing.record, conflict: true, conflictId: input.conflictId || null } });
-        outbox.delete(key);
+        records.put({ key, record: { ...record, cloudRevision, revision: existing.record.revision + 1 } });
+      } else if (!queued && cloudRevision > (existing.record.cloudRevision ?? 0)) {
+        records.put({ key, record: { ...record, cloudRevision, revision: existing.record.revision + 1 } });
       }
-    } else if (existing && JSON.stringify(existing.record.sections) !== JSON.stringify(record.sections)) {
-      const conflictKey = `${key}\u0000local-conflict\u0000${existing.record.revision}`;
-      records.put({ key: conflictKey, record: { ...existing.record, conflict: true } });
-        records.put({ key, record: { ...record, conflict: false }, writerId: TAB_WRITER_ID });
-    } else {
-      records.put({ key, record, writerId: TAB_WRITER_ID });
     }
     await transactionDone(transaction);
   } finally { db.close(); }
@@ -328,7 +349,6 @@ export async function syncInkOutbox(owner, adapter) {
   const queued = await repository.listOutbox();
   const result = { synced: 0, conflicts: 0, failed: 0 };
   for (const entry of queued) {
-    if (entry.record.conflict) continue;
     const expectedRevision = entry.record.cloudRevision ?? null;
     const cloudRecord = {
       ...entry.record,
@@ -362,12 +382,14 @@ export async function loadSyncedInk(owner, responseId, partId, adapter) {
     if (!adapter?.loadInkResponses) throw new TypeError('A cloud adapter with loadInkResponses is required.');
     const remoteRecords = await adapter.loadInkResponses(ownerId, safeResponseId);
     for (const record of remoteRecords) {
-      if (record.partId === safePartId) await mergeCloudRecord(ownerId, record);
+      if (record.responseId === safeResponseId && record.partId === safePartId) await mergeCloudRecord(ownerId, record);
     }
   }
   const records = await repository.listByResponse(safeResponseId);
-  const parts = records.filter((record) => record.partId === safePartId);
-  return { record: parts.find((record) => !record.conflict) || null, conflicts: parts.filter((record) => record.conflict) };
+  return {
+    record: await repository.load(safeResponseId, safePartId),
+    conflicts: records.filter((record) => record.partId === safePartId && record.conflict && record.conflictKey),
+  };
 }
 
 /** Resolves one divergent copy while retaining every unrelated conflict and checking cloud revisions. */
@@ -429,7 +451,7 @@ export async function exportInkOwnerData(owner) {
     return {
       schemaVersion: 1,
       ownerId,
-      records: entries.filter((entry) => entry.record.ownerId === ownerId).map((entry) => entry.record),
+      records: entries.filter((entry) => entry.record.ownerId === ownerId).map(storedRecord),
     };
   } finally { db.close(); }
 }
@@ -438,7 +460,11 @@ export async function importInkOwnerData(owner, payload) {
   const ownerId = validId(typeof owner === 'string' ? owner : owner?.ownerId, 'ownerId');
   if (!payload || payload.schemaVersion !== 1 || !Array.isArray(payload.records)) throw new TypeError('This file does not contain a supported handwriting backup.');
   if (payload.records.length > 10_000) throw new TypeError('The handwriting backup contains too many records.');
-  const records = payload.records.map((record) => validateRecord({ ...record, ownerId }, ownerId));
+  const records = payload.records.map((input) => {
+    // A backup is a copy of an answer, not authority to replace an account's cloud revision.
+    const { cloudRevision, conflictId, conflictKey, ...record } = input;
+    return validateRecord(record, ownerId);
+  });
   const db = await openDatabase();
   try {
     const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
@@ -447,15 +473,13 @@ export async function importInkOwnerData(owner, payload) {
     for (const record of records) {
       const key = recordKey(ownerId, record.responseId, record.partId);
       const existing = await requestResult(recordStore.get(key));
-      if (existing?.record && JSON.stringify(existing.record.sections) !== JSON.stringify(record.sections)) {
-        const conflict = { ...record, conflict: true, conflictOfRevision: existing.record.revision };
-        const conflictKey = `${key}\u0000import-conflict\u0000${record.revision}`;
-        recordStore.put({ key: conflictKey, record: conflict });
+      if (record.conflict || (existing?.record && !sameAnswer(existing.record, record))) {
+        storeConflict(recordStore, key, record);
         continue;
       }
       if (existing?.record) continue;
       recordStore.put({ key, record });
-      outboxStore.put({ key, record, queuedAt: new Date().toISOString() });
+      if (ownerId !== 'guest') outboxStore.put({ key, record, queuedAt: new Date().toISOString() });
     }
     await transactionDone(transaction);
     return records.length;

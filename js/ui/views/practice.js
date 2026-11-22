@@ -501,19 +501,22 @@ export async function mount(element, context) {
       target.hidden = false;
       button?.setAttribute('aria-expanded', 'true');
       button.textContent = 'Hide writing';
-      let value = inkValues.get(valueKey) || null;
+      let value = null;
       let conflicts = [];
       let otherDrafts = [];
       try {
+        await inkSaveChains.get(valueKey)?.catch(() => {});
         const result = await api.loadInkState(responseId, partId);
-        value ||= result.record;
+        value = result.record;
         conflicts = result.conflicts || [];
         if (!value && !conflicts.length) otherDrafts = (await api.listInkForPart(partId) || []).filter((record) => record.responseId !== responseId);
       } catch { /* the local editor remains available while storage recovers */ }
       if (!target.isConnected) continue;
+      value ||= inkValues.get(valueKey) || null;
       if (value) {
         inkValues.set(valueKey, value);
-        if (value.status === 'saved') state.inkSaved[valueKey] = true;
+        inkRevisions.set(valueKey, value.revision);
+        state.inkSaved[valueKey] = value.status === 'saved' && value.sections.some((section) => section.strokes.length > 0);
       }
       const editor = createInkEditor(target, {
         value,
@@ -616,8 +619,6 @@ export async function mount(element, context) {
           resume.addEventListener('click', () => {
             const byCard = (state.inkAttempts[cardId] ||= {});
             byCard[partId] = draft.responseId;
-            inkValues.set(inkKey(draft.responseId, partId), draft);
-            if (draft.status === 'saved') state.inkSaved[inkKey(draft.responseId, partId)] = true;
             try { localStorage.setItem(inkIdentityKey, JSON.stringify({ attempts: state.inkAttempts, groups: state.inkGroups })); } catch { /* current session still has the chosen draft */ }
             save();
             update({ keepControls: true, keepPage: true });

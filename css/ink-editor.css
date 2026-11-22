@@ -119,9 +119,9 @@
 .ink-editor__canvas {
   display: block;
   width: 100%;
-  height: clamp(9rem, 38vw, 16rem);
-  background-color: var(--ink-surface);
-  background-image: linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in srgb, var(--ink-border) 70%, transparent) calc(100% - 1px));
+  height: auto;
+  background-color: #fafbff;
+  background-image: linear-gradient(to bottom, transparent calc(100% - 1px), #e5e9f1 calc(100% - 1px));
   background-size: 100% 2rem;
   touch-action: pan-y pinch-zoom;
   cursor: crosshair;
@@ -146,7 +146,4 @@
     margin-left: 0;
   }
 
-  .ink-editor__canvas {
-    height: 11rem;
-  }
 }
