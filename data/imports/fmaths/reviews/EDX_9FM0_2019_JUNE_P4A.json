@@ -1,0 +1,541 @@
+{
+  "paper_id": "EDX_9FM0_2019_JUNE_P4A",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "015c24b947abca791f062d83c291e8e576ce02843d7227ac550be84902c85218",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find the Cartesian equation of a complex modulus locus.",
+          "summary": "Find the Cartesian equation of a complex modulus locus",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the maximum modulus on the circle.",
+          "summary": "Find the maximum modulus on the circle",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the repeated and distinct eigenvalues of a three-by-three matrix.",
+          "summary": "Find the repeated and distinct eigenvalues of a three-by-three matrix",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Find three non-parallel eigenvectors including a basis for the repeated eigenvalue.",
+          "summary": "Find three non-parallel eigenvectors including a basis for the repeated eigenvalue",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Construct a diagonalising matrix from the eigenvectors.",
+          "summary": "Construct a diagonalising matrix from the eigenvectors",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Reduction of matrices to diagonal form"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Write a second-order recurrence for the modelled monthly website visits.",
+          "summary": "Write a second-order recurrence for the modelled monthly website visits",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "First and second order recurrence relations"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Solve the recurrence with a repeated characteristic root.",
+          "summary": "Solve the recurrence with a repeated characteristic root",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Solving recurrence relations to obtain closed forms"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use the closed form to find when visits first reach the threshold.",
+          "summary": "Use the closed form to find when visits first reach the threshold",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Solving recurrence relations to obtain closed forms"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use Fermat's little theorem to find the requested modular residue.",
+          "summary": "Use Fermat's little theorem to find the requested modular residue",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Fermat's little theorem"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Count unrestricted seatings of seven students.",
+          "summary": "Count unrestricted seatings of seven students",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Combinatorics: counting problems, permutations and combinations"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Count seatings with a specified block of four students.",
+          "summary": "Count seatings with a specified block of four students",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Combinatorics: counting problems, permutations and combinations"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Count seatings with two people at opposite ends.",
+          "summary": "Count seatings with two people at opposite ends",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Combinatorics: counting problems, permutations and combinations"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Count seatings in which two specified students are not adjacent.",
+          "summary": "Count seatings in which two specified students are not adjacent",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Combinatorics: counting problems, permutations and combinations"
+          ],
+          "depends_on_parts": [
+            "(ii)(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Derive a reduction formula for integrals of powers of cosecant.",
+          "summary": "Derive a reduction formula for integrals of powers of cosecant",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further integration: reduction formulae"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use the recurrence to evaluate the stated definite integral.",
+          "summary": "Use the recurrence to evaluate the stated definite integral",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further integration: reduction formulae"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Prove associativity of the specified binary operation.",
+          "summary": "Prove associativity of the specified binary operation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The axioms of a group"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Show that the given modular group is cyclic.",
+          "summary": "Show that the given modular group is cyclic",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Examples of groups; Cayley tables; cyclic groups"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: List the subgroups of the second group.",
+          "summary": "List the subgroups of the second group",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Order of a group and of an element; subgroups"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Describe an isomorphism between the two groups.",
+          "summary": "Describe an isomorphism between the two groups",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Isomorphism"
+          ],
+          "depends_on_parts": [
+            "(ii)(a)",
+            "(ii)(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.2",
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the Cartesian equation of the image of a circle under a complex transformation.",
+          "summary": "Find the Cartesian equation of the image of a circle under a complex transformation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Elementary transformations from the z-plane to the w-plane",
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.2",
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Sketch the original and mapped circles on Argand diagrams.",
+          "summary": "Sketch the original and mapped circles on Argand diagrams",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Elementary transformations from the z-plane to the w-plane",
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Derive the surface area of a spinning top formed by rotation.",
+          "summary": "Derive the surface area of a spinning top formed by rotation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Arc length and the area of a surface of revolution"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Determine the remaining length in the spinning-top model.",
+          "summary": "Determine the remaining length in the spinning-top model",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Arc length and the area of a surface of revolution"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

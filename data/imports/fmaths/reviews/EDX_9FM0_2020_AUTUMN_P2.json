@@ -1,0 +1,344 @@
+{
+  "paper_id": "EDX_9FM0_2020_AUTUMN_P2",
+  "source_sha256": "8aac80f65360eb6a03167086b14aa18f07153162aed023f4542d261706344231",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.1",
+            "EDX_FMATH_CP_8.2",
+            "EDX_FMATH_CP_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Differentiate, reduce to a quadratic in cosh and invert the admissible values.",
+          "summary": "Find exact stationary points of a hyperbolic curve",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Find the midpoint and half the distance between the endpoints.",
+          "summary": "Write a modulus equation for a circle with a given diameter",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Convert the modulus equations to Cartesian form and solve them.",
+          "summary": "Find intersections of two Argand circles",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.5",
+            "EDX_FMATH_CP_9.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Find the damped oscillatory complementary part and the constant particular solution.",
+          "summary": "Find the general solution of a forced second-order differential equation",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.2",
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Fit the initial data and locate the appropriate stationary point.",
+          "summary": "Find the maximum of a differential-equation model",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Evaluate the particular solution at the requested time.",
+          "summary": "Compare a later model prediction with a given threshold",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Expand the seventh complex power, compare imaginary parts and simplify the cosine powers.",
+          "summary": "Derive a multiple-angle sine identity by De Moivre",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use the multiple-angle identity and exclude duplicate values from the angle solutions.",
+          "summary": "Find the distinct roots of a seventh-degree equation",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Implicitly differentiate the tangent relation and simplify using the secant identity.",
+          "summary": "Derive the derivative of inverse tangent",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Integrate by parts and divide the resulting rational function to simplify.",
+          "summary": "Find an antiderivative involving inverse tangent",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Evaluate its antiderivative at the endpoints and divide by the interval width.",
+          "summary": "Find the exact mean of a function involving inverse tangent",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Calculate the determinant and adjugate, retaining the parameter.",
+          "summary": "Find a symbolic inverse of a three-by-three matrix",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.7",
+            "EDX_FMATH_CP_3.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Substitute into the symbolic inverse to solve the system.",
+          "summary": "Find the unique intersection of three planes",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.8",
+            "EDX_FMATH_CP_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use consistency of a dependent system and express the common solutions as a vector line.",
+          "summary": "Determine when three planes share a line of intersection",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Substitute its two specified points and solve the resulting system.",
+          "summary": "Find the parameters of a reciprocal profile curve",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Find the circle equation for the second curve and combine the cylinder and piecewise radius integrals.",
+          "summary": "Find the volume of a revolved chess-piece profile",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

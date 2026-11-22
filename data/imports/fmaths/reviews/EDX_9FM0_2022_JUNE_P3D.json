@@ -1,0 +1,590 @@
+{
+  "paper_id": "EDX_9FM0_2022_JUNE_P3D",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "742f10f46ba6328659c76c532c73c9b26835c479bbb133068e6139c076535d60",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find a lower bound for the number of balls of string.",
+          "summary": "Find a lower bound for the number of balls of string",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Bin packing, bubble sort and quick sort"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Assign the lengths to balls of string using first-fit packing.",
+          "summary": "Assign the lengths to balls of string using first-fit packing",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Bin packing, bubble sort and quick sort"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use Dijkstra's algorithm to find the shortest path and length.",
+          "summary": "Use Dijkstra's algorithm to find the shortest path and length",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Dijkstra's and Floyd's algorithms for shortest paths"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Identify repeated edges and the length of a closed inspection route.",
+          "summary": "Identify repeated edges and the length of a closed inspection route",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Route inspection: shortest route travelling along every edge at least once"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the optimal open inspection route from the specified start and finish.",
+          "summary": "Find the optimal open inspection route from the specified start and finish",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Route inspection: shortest route travelling along every edge at least once"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Complete the road network diagram from the initial distance matrix.",
+          "summary": "Complete the road network diagram from the initial distance matrix",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Dijkstra's and Floyd's algorithms for shortest paths"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 22,
+              "bbox": [
+                0.31903357368218427,
+                0.13243072704469147,
+                0.6825477898489039,
+                0.3650191468122589
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Continue Floyd's algorithm from the supplied partial result.",
+          "summary": "Continue Floyd's algorithm from the supplied partial result",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Dijkstra's and Floyd's algorithms for shortest paths"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Compare upper bounds from two nearest-neighbour Hamiltonian cycles.",
+          "summary": "Compare upper bounds from two nearest-neighbour Hamiltonian cycles",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The practical and classical travelling salesman problems"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_5.4",
+            "EDX_FMATH_D1_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Read the linear programming constraints and objective from a big-M tableau.",
+          "summary": "Read the linear programming constraints and objective from a big-M tableau",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The two-stage Simplex and big-M methods",
+            "Formulating linear programs, including slack, surplus and artificial variables"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Identify and justify the most efficient pivot value.",
+          "summary": "Identify and justify the most efficient pivot value",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The two-stage Simplex and big-M methods"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Complete the activity precedence table.",
+          "summary": "Complete the activity precedence table",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Completing the precedence table for a given activity network"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 28,
+              "bbox": [
+                0.25001188706825017,
+                0.1101734619951635,
+                0.7500356612047505,
+                0.36947059982216446
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Determine the maximum integer consistent with the supplied event times.",
+          "summary": "Determine the maximum integer consistent with the supplied event times",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Finding the critical path; earliest and latest event times"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Complete the late event times and identify activities that must be critical.",
+          "summary": "Complete the late event times and identify activities that must be critical",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Finding the critical path; earliest and latest event times"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 28,
+              "bbox": [
+                0.10276562229185743,
+                0.45961252327275276,
+                0.8589365445289576,
+                0.8480017983870161
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_4.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Calculate the total float for an activity.",
+          "summary": "Calculate the total float for an activity",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Total float; Gantt (cascade) charts"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ]
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Read the required worker numbers from the resource histogram.",
+          "summary": "Read the required worker numbers from the resource histogram",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Resource histograms, including resource levelling"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 29,
+              "bbox": [
+                0.253079517584425,
+                0.19920252219327542,
+                0.7515694764628379,
+                0.4418067112331304
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_4.4",
+            "EDX_FMATH_D1_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Draw the Gantt chart consistent with the event-time information.",
+          "summary": "Draw the Gantt chart consistent with the event-time information",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Total float; Gantt (cascade) charts",
+            "Resource histograms, including resource levelling"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "required_insert_regions": [
+            {
+              "page": 29,
+              "bbox": [
+                0.17485493942196637,
+                0.4607253865252292,
+                0.8159897173025097,
+                0.8635818839216857
+              ]
+            }
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Complete the iteration table for the comparison-counting algorithm.",
+          "summary": "Complete the iteration table for the comparison-counting algorithm",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Algorithms and implementing an algorithm given by a flow chart or text"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 30,
+              "bbox": [
+                0.38038618400568125,
+                0.15580085534669585,
+                0.6242628100415817,
+                0.5085785063817143
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Perform a bubble sort and count the number of comparisons.",
+          "summary": "Perform a bubble sort and count the number of comparisons",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Bin packing, bubble sort and quick sort"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find the worst-case number of comparisons for a ten-element bubble sort.",
+          "summary": "Find the worst-case number of comparisons for a ten-element bubble sort",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Bin packing, bubble sort and quick sort"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_1.1",
+            "EDX_FMATH_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Extend the maximum comparison count to sorting the arcs of a complete graph.",
+          "summary": "Extend the maximum comparison count to sorting the arcs of a complete graph",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Algorithms and implementing an algorithm given by a flow chart or text",
+            "Bin packing, bubble sort and quick sort"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Set up the initial Simplex tableau from the stated geometric constraints.",
+          "summary": "Set up the initial Simplex tableau from the stated geometric constraints",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The Simplex algorithm and tableau for problems with ≤ constraints"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Read the variable values from the supplied tableau after two iterations.",
+          "summary": "Read the variable values from the supplied tableau after two iterations",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The Simplex algorithm and tableau for problems with ≤ constraints"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D1_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Perform the next Simplex iteration and determine the achievable range of the objective.",
+          "summary": "Perform the next Simplex iteration and determine the achievable range of the objective",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The Simplex algorithm and tableau for problems with ≤ constraints"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

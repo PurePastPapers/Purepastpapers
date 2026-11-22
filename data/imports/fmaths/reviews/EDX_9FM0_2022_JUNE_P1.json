@@ -1,0 +1,541 @@
+{
+  "paper_id": "EDX_9FM0_2022_JUNE_P1",
+  "source_sha256": "1fa67dbe255525ae5f259189e18dc2bb89ffb5fcfe8add335f4b5d112cbc4673",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Apply the conjugate-pair rule to the given non-real root.",
+          "summary": "Find the conjugate root of a real cubic",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the constant term to recover the third root and expand the resulting factors.",
+          "summary": "Solve a cubic and determine an unknown coefficient",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Turn all three roots into plotted coordinates.",
+          "summary": "Plot the roots of a cubic in an Argand diagram",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.1",
+            "EDX_FMATH_CP_8.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Solve the quadratic in the square of cosh and invert using logarithms.",
+          "summary": "Solve a quartic equation in cosh exactly",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.1",
+            "EDX_FMATH_CP_9.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Divide by cosine and use the integrating factor of the normalised equation.",
+          "summary": "Solve a first-order differential equation",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the initial condition and select the least admissible root.",
+          "summary": "Find the first positive zero of a particular solution",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Split each quotient into a logarithmic difference and cancel interior terms.",
+          "summary": "Prove a logarithmic sum identity by telescoping",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the identity on a difference of cumulative sums and simplify the log.",
+          "summary": "Find the exact value of a shifted logarithmic sum",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Evaluate the determinant and show the parameter cancels.",
+          "summary": "Show a parameter-dependent matrix is always non-singular",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Calculate its cofactors and divide by the determinant.",
+          "summary": "Invert a matrix with a symbolic parameter",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Match coefficients in the linear and irreducible quadratic terms.",
+          "summary": "Decompose a rational function with a quadratic factor",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.4",
+            "EDX_FMATH_CP_5.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use logarithmic and inverse tangent antiderivatives.",
+          "summary": "Evaluate the integral of a decomposed rational function",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.2",
+            "EDX_FMATH_CP_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Multiply the two Cartesian forms and simplify.",
+          "summary": "Prove a complex conjugate product is real",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.2",
+            "EDX_FMATH_CP_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Translate the product and quotient into equations for both components.",
+          "summary": "Find a complex number from a conjugate product and quotient",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Expand the sixth power and group reciprocal power pairs into cosines.",
+          "summary": "Derive a cosine-power identity from complex powers",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Read the amplitude from the given cosine expression and stated height.",
+          "summary": "Use the maximum of a modelled cross section",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use the trigonometric identity and the height scale with the half-rotation.",
+          "summary": "Integrate the volume of a half-solid of revolution",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify idealisation in the stated cross section or solid shape.",
+          "summary": "Assess an assumption of the paperweight model",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(i)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify the infinite upper bound.",
+          "summary": "Explain why a hyperbolic integral is improper",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(i)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.2",
+            "EDX_FMATH_CP_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Evaluate the integral to a finite endpoint and show it has no finite limit.",
+          "summary": "Show that a hyperbolic improper integral diverges",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Rearrange in terms of tanh and use its range.",
+          "summary": "Find a parameter range for a solvable hyperbolic equation",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "10",
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Differentiate the proposed oscillatory form and substitute.",
+          "summary": "Verify the given particular solution in a resonance problem",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.5",
+            "EDX_FMATH_CP_9.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Solve the auxiliary equation and combine the complementary and particular terms.",
+          "summary": "Find the general forced-harmonic solution",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)(i)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.2",
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Fit the starting position and velocity before evaluating at the requested time.",
+          "summary": "Find a pendulum's displacement from initial conditions",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)(ii)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compare the predicted and actual angle.",
+          "summary": "Evaluate a pendulum model against an observation",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Remove the periodic forcing term from the repeated equation.",
+          "summary": "Refine a forced model to simple harmonic motion",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

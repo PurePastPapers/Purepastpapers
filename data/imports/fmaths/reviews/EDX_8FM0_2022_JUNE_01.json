@@ -1,0 +1,556 @@
+{
+  "paper_id": "EDX_8FM0_2022_JUNE_01",
+  "reviewer_type": "model",
+  "source_sha256": "4482cea37078cdeaf8d2368f8fc991e6a40de9202e0e89ae21c39ae36071f475",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.1",
+            "EDX_FMATH_CP_3.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use matrix multiplication to establish two matrix identities.",
+          "difficulty_basis": "Use matrix multiplication to establish two matrix identities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.7"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Solve three simultaneous equations using the matrix identity.",
+          "difficulty_basis": "Solve three simultaneous equations using the matrix identity.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.5"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Convert a complex number to modulus–argument form.",
+          "difficulty_basis": "Convert a complex number to modulus–argument form.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.4",
+            "EDX_FMATH_CP_2.7"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Plot a complex number and an argument locus on the same diagram.",
+          "difficulty_basis": "Plot a complex number and an argument locus on the same diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.7"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Determine the shortest distance from a point to an Argand ray.",
+          "difficulty_basis": "Determine the shortest distance from a point to an Argand ray.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the image of a point under reflection in a coordinate plane.",
+          "difficulty_basis": "Find the image of a point under reflection in a coordinate plane.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.3",
+            "EDX_FMATH_CP_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Apply a rotation matrix to find the exact coordinates of a point.",
+          "difficulty_basis": "Apply a rotation matrix to find the exact coordinates of a point.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find an exact vector distance between two points.",
+          "difficulty_basis": "Find an exact vector distance between two points.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use a dot product to prove two transformed segments perpendicular.",
+          "difficulty_basis": "Use a dot product to prove two transformed segments perpendicular.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1",
+            "EDX_FMATH_CP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)",
+            "(d)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use perpendicular sides to find the area of a triangle.",
+          "difficulty_basis": "Use perpendicular sides to find the area of a triangle.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the sum of the squares of the roots of a quartic.",
+          "difficulty_basis": "Find the sum of the squares of the roots of a quartic.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Evaluate the sum of reciprocal roots of a quartic.",
+          "difficulty_basis": "Evaluate the sum of reciprocal roots of a quartic.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Evaluate a product of shifted quartic roots.",
+          "difficulty_basis": "Evaluate a product of shifted quartic roots.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Derive a finite sum from standard summation formulae.",
+          "difficulty_basis": "Derive a finite sum from standard summation formulae.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Compare two finite sums with related upper indices.",
+          "difficulty_basis": "Compare two finite sums with related upper indices.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Solve an equation involving a derived finite sum.",
+          "difficulty_basis": "Solve an equation involving a derived finite sum.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the trajectory parameter at the ball’s collision with the plane.",
+          "difficulty_basis": "Find the trajectory parameter at the ball’s collision with the plane.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Read the velocity direction from the vector model.",
+          "difficulty_basis": "Read the velocity direction from the vector model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the angle at which the ball reaches the ground.",
+          "difficulty_basis": "Find the angle at which the ball reaches the ground.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the trajectory intersection with the net’s plane.",
+          "difficulty_basis": "Find the trajectory intersection with the net’s plane.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(d)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Compare the predicted ball height with the top of the net.",
+          "difficulty_basis": "Compare the predicted ball height with the top of the net.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1",
+            "EDX_FMATH_CP_6.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Assess a modelling assumption about a real tennis ball trajectory.",
+          "difficulty_basis": "Assess a modelling assumption about a real tennis ball trajectory.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_1.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Prove the given statement by mathematical induction.",
+          "difficulty_basis": "Prove the given statement by mathematical induction.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Read a vase modelling parameter from the radius of its circular cross sections.",
+          "difficulty_basis": "Read a vase modelling parameter from the radius of its circular cross sections.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the widest cross section and resulting diameter for each proposed vase profile.",
+          "difficulty_basis": "Find the widest cross section and resulting diameter for each proposed vase profile.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Compare a model’s width against observed vase measurements.",
+          "difficulty_basis": "Compare a model’s width against observed vase measurements.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Integrate the second rotated profile to find vase volume.",
+          "difficulty_basis": "Integrate the second rotated profile to find vase volume.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(d)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Compare an integrated model volume with an actual quantity.",
+          "difficulty_basis": "Compare an integrated model volume with an actual quantity.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

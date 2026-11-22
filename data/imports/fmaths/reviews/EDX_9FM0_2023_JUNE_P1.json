@@ -1,0 +1,516 @@
+{
+  "paper_id": "EDX_9FM0_2023_JUNE_P1",
+  "source_sha256": "2d1b9effdfd732618bee9792e609a149619b0c3365058713a70f20a633c165b8",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Substitute for the shifted variable or use symmetric sums to reconstruct the cubic.",
+          "summary": "Find a polynomial for shifted cubic roots",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Match the linear coefficient and adjust the constant term.",
+          "summary": "Rewrite a quadratic expression by completing the square",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Rewrite the radicand and match the logarithmic integration formula.",
+          "summary": "Use a standard integral with a radical denominator",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Evaluate the definite integral and divide by the interval width.",
+          "summary": "Evaluate the mean value of a rational function",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compute its modulus and place its argument in the correct quadrant.",
+          "summary": "Convert a complex number to modulus-argument form",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.5",
+            "EDX_FMATH_CP_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Divide the moduli and subtract angles before converting to Cartesian form.",
+          "summary": "Find a complex quotient in exact Cartesian form",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Apply De Moivre to the modulus-argument expression.",
+          "summary": "Find the fourth power of a complex number in exact Cartesian form",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.4",
+            "EDX_FMATH_CP_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the calculated quotient and compare distances from the given points.",
+          "summary": "Plot complex numbers and an equidistance region",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)(i)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_1.1",
+            "EDX_FMATH_CP_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use matrix multiplication in the inductive step.",
+          "summary": "Prove a matrix power identity by induction",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use a parameter for the Cartesian line and substitute into the plane equation.",
+          "summary": "Find the intersection of a line and a plane",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1",
+            "EDX_FMATH_CP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use a shared point and reflect the direction vector about the normal.",
+          "summary": "Verify the reflected line in the given plane",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1",
+            "EDX_FMATH_CP_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use their common point and a direction in both planes.",
+          "summary": "Find the line of intersection of two planes",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.8",
+            "EDX_FMATH_CP_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Require the third plane to contain the existing intersection line.",
+          "summary": "Find constants that make three planes a sheaf",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use initial volume and rate of change to infer the loss coefficient.",
+          "summary": "Verify a differential equation for the volume of water",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Apply the chain rule to the stated composition.",
+          "summary": "Differentiate inverse tangent of an exponential",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.1",
+            "EDX_FMATH_CP_9.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Solve the linear differential equation with an integrating factor and an inverse-tangent integral.",
+          "summary": "Find a solution for the volume of water in a tank",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compare the fitted equation's prediction with the observation.",
+          "summary": "Evaluate the tank model against a measured volume",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Pair even and odd terms and make their indexing explicit.",
+          "summary": "Explain an identity for an alternating sum",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Use the odd-even split and apply the formulas for sums of powers.",
+          "summary": "Evaluate an alternating finite sum using standard sums",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Subtract the initial sum and account for the remaining boundary terms.",
+          "summary": "Use cumulative sums to evaluate a finite interval sum",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify an assumption about the stated division into age groups.",
+          "summary": "Assess a limitation of a population model's age categories",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Propagate the matrix model for two steps with the stated initial composition.",
+          "summary": "Find initial population size and a transition coefficient",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Invert the explicitly given matrix in terms of its parameter.",
+          "summary": "Find an inverse transition matrix symbolically",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Apply the inverse matrix to the later composition and use the earlier total.",
+          "summary": "Infer a matrix model parameter from successive populations",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Adapt the state vector and use the given newborn proportions in the appropriate entries.",
+          "summary": "Refine a population matrix to split newborn categories",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(d)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

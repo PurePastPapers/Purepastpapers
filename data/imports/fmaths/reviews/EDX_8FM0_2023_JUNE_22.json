@@ -1,0 +1,292 @@
+{
+  "paper_id": "EDX_8FM0_2023_JUNE_22",
+  "reviewer_type": "model",
+  "source_sha256": "2fa011add5e618092ae30608faadb1b91cf42b2bd129e09b649186fa6b34c6c6",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_1.2",
+            "EDX_FMATH_AS_FP2_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Complete a Cayley table using a binary operation defined modulo four.",
+          "difficulty_basis": "Complete a Cayley table using a binary operation defined modulo four.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_1.1",
+            "EDX_FMATH_AS_FP2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Verify the remaining group axioms using the Cayley table.",
+          "difficulty_basis": "Verify the remaining group axioms using the Cayley table.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the order of each element under the given operation.",
+          "difficulty_basis": "Find the order of each element under the given operation.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_1.2",
+            "EDX_FMATH_AS_FP2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the element orders to decide whether the group is cyclic.",
+          "difficulty_basis": "Use the element orders to decide whether the group is cyclic.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the repeated root of a characteristic polynomial to find the matrix parameter and eigenvalue.",
+          "difficulty_basis": "Use the repeated root of a characteristic polynomial to find the matrix parameter and eigenvalue.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the eigenspace of the repeated eigenvalue to find the invariant line.",
+          "difficulty_basis": "Use the eigenspace of the repeated eigenvalue to find the invariant line.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Sketch the argument-ratio locus on an Argand diagram.",
+          "difficulty_basis": "Sketch the argument-ratio locus on an Argand diagram.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the maximum modulus along the appropriate arc of the complex locus.",
+          "difficulty_basis": "Find the maximum modulus along the appropriate arc of the complex locus.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Interpret the interest multiplier and fixed repayment in a recurrence model.",
+          "difficulty_basis": "Interpret the interest multiplier and fixed repayment in a recurrence model.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_5.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Solve the first-order loan recurrence with the stated initial amount.",
+          "difficulty_basis": "Solve the first-order loan recurrence with the stated initial amount.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_5.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the closed form to determine how many repayments clear the loan.",
+          "difficulty_basis": "Use the closed form to determine how many repayments clear the loan.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_4.3",
+            "EDX_FMATH_AS_FP2_4.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use congruences to show that an exponential expression is divisible by eight.",
+          "difficulty_basis": "Use congruences to show that an exponential expression is divisible by eight.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_4.4",
+            "EDX_FMATH_AS_FP2_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use divisibility by eleven to determine a repeated digit.",
+          "difficulty_basis": "Use divisibility by eleven to determine a repeated digit.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FP2_4.4",
+            "EDX_FMATH_AS_FP2_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(ii)(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Combine the known digit with divisibility by three to find the possible second digit.",
+          "difficulty_basis": "Combine the known digit with divisibility by three to find the possible second digit.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

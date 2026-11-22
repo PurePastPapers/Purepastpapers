@@ -1,0 +1,514 @@
+{
+  "paper_id": "EDX_9FM0_2025_JUNE_P2",
+  "source_sha256": "4c3d0c0578bca6da0671b4f864256e2c2a2ec3335152be432a468f5176562f3a",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.2",
+            "EDX_FMATH_CP_2.5",
+            "EDX_FMATH_CP_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Evaluate the Cartesian quotient and compare with the quotient of moduli.",
+          "summary": "Verify the modulus rule for a complex quotient",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.5",
+            "EDX_FMATH_CP_2.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the correct quadrants for the factors and product.",
+          "summary": "Verify the arguments of a complex product",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.3",
+            "EDX_FMATH_CP_6.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Project onto the normal direction or solve its intersection with the plane.",
+          "summary": "Find the shortest distance to a target plane",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Subtract the two position vectors to obtain the direction.",
+          "summary": "Find a line equation for an arrow's flight",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Compare the direction vector and the plane normal with a scalar product.",
+          "summary": "Find the angle between the arrow's flight and the plane",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use the norm of the displacement vector formed from the stated endpoints.",
+          "summary": "Find the straight-line distance travelled by the arrow",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify a physical reason why the actual path is longer.",
+          "summary": "Assess the straight-line approximation for an arrow's flight",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(d)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_1.1",
+            "EDX_FMATH_CP_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Multiply the inductive formula by the original matrix and simplify the off-diagonal term.",
+          "summary": "Prove a matrix power by induction",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify the reflection and its invariant axis from the given matrix.",
+          "summary": "Describe the geometry of a transformation matrix",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.1",
+            "EDX_FMATH_CP_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Multiply the two matrices in the order matching their action.",
+          "summary": "Compose two plane transformations",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Equate the transformed coordinates and solve for the power.",
+          "summary": "Recover a power of a matrix from a transformed point",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.2",
+            "EDX_FMATH_CP_2.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Translate the real-part and modulus constraints into simultaneous equations.",
+          "summary": "Find Cartesian components of two complex numbers",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Determine the two circles' centres and radii and identify their axis crossings.",
+          "summary": "Sketch two modulus loci on an Argand diagram",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_2.7"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the geometry of the two centres and radii to bound the separation.",
+          "summary": "Find the range of distances between two Argand loci",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(ii)(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(i)–(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.6",
+            "EDX_FMATH_CP_3.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Require both a dependent coefficient matrix and compatible right-hand sides.",
+          "summary": "Find the parameters that make three planes a sheaf",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Express the symmetric sum of reciprocals in terms of the quartic coefficients.",
+          "summary": "Find a sum of reciprocals of quartic roots",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Express the sum of squared roots through the first two symmetric sums.",
+          "summary": "Find quartic coefficients from a root-squares condition",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_7.1",
+            "EDX_FMATH_CP_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Differentiate the Cartesian horizontal coordinate of the curve.",
+          "summary": "Find the tangent points of a polar curve",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Calculate the separation of the tangent points in Cartesian coordinates.",
+          "summary": "Find a polar model's scale from a measured width",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Square the radial expression and integrate over its full allowed range.",
+          "summary": "Integrate the area of a polar swimming-pool model",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Differentiate repeatedly and show the result is proportional to the original expression.",
+          "summary": "Find the fourth derivative of a hyperbolic product",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the repeated derivative relation to find coefficients after substitution at zero.",
+          "summary": "Find the first nonzero Maclaurin terms from a derivative recurrence",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Apply the derivative of arcsin and the chain rule.",
+          "summary": "Differentiate an inverse sine function",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Differentiate the outer cosine and simplify the inverse-sine expression.",
+          "summary": "Find the derivative of a composed inverse-trigonometric curve",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Solve the simplified derivative equation in the stated domain.",
+          "summary": "Find a point at a specified gradient",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

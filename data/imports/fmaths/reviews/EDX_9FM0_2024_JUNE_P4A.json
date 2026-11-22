@@ -1,0 +1,526 @@
+{
+  "paper_id": "EDX_9FM0_2024_JUNE_P4A",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "7d233a0a5d4f67bb5c6d1cfd24865cbfe55d182c0aab33eb5d1e8e8411d56055",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Apply Fermat's little theorem to find a least positive residue.",
+          "summary": "Apply Fermat's little theorem to find a least positive residue",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Fermat's little theorem"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Solve a second-order recurrence with a repeated characteristic root.",
+          "summary": "Solve a second-order recurrence with a repeated characteristic root",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Solving recurrence relations to obtain closed forms"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Use the Euclidean algorithm to find the highest common factor.",
+          "summary": "Use the Euclidean algorithm to find the highest common factor",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The division theorem and the Euclidean algorithm"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find a linear combination equal to the highest common factor.",
+          "summary": "Find a linear combination equal to the highest common factor",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Bezout's identity"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Determine all solutions to a congruence with a non-unit common divisor.",
+          "summary": "Determine all solutions to a congruence with a non-unit common divisor",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Solution of congruence equations"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find the eigenvalue associated with the specified eigenvector.",
+          "summary": "Find the eigenvalue associated with the specified eigenvector",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Determine the unknown entry of the matrix.",
+          "summary": "Determine the unknown entry of the matrix",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Calculate the remaining eigenvalues and eigenvectors.",
+          "summary": "Calculate the remaining eigenvalues and eigenvectors",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Construct the orthogonal diagonalisation.",
+          "summary": "Construct the orthogonal diagonalisation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Reduction of matrices to diagonal form"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(i)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Rewrite a complex modulus locus as a Cartesian circle.",
+          "summary": "Rewrite a complex modulus locus as a Cartesian circle",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(i)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Shade the required complex region on an Argand diagram.",
+          "summary": "Shade the required complex region on an Argand diagram",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": [
+            "(i)(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(ii)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Describe the geometric effect of a cubing transformation.",
+          "summary": "Describe the geometric effect of a cubing transformation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Elementary transformations from the z-plane to the w-plane"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(ii)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Sketch the image of the given sector under the transformation.",
+          "summary": "Sketch the image of the given sector under the transformation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Elementary transformations from the z-plane to the w-plane"
+          ],
+          "depends_on_parts": [
+            "(ii)(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Prove a reduction formula for the trigonometric integrals.",
+          "summary": "Prove a reduction formula for the trigonometric integrals",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further integration: reduction formulae"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Find the exact value of the given definite integral using the reduction formula.",
+          "summary": "Find the exact value of the given definite integral using the reduction formula",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further integration: reduction formulae"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Show that the stated matrix has order three.",
+          "summary": "Show that the stated matrix has order three",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Order of a group and of an element; subgroups"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the orders of the other matrices in the group.",
+          "summary": "Find the orders of the other matrices in the group",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Order of a group and of an element; subgroups"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.5",
+            "EDX_FMATH_FP2_1.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use order invariants to reject two proposed isomorphisms.",
+          "summary": "Use order invariants to reject two proposed isomorphisms",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Isomorphism",
+            "Order of a group and of an element; subgroups"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find an isomorphism to the given permutation group.",
+          "summary": "Find an isomorphism to the given permutation group",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Isomorphism"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Express the bell's external surface area as a surface-of-revolution integral.",
+          "summary": "Express the bell's external surface area as a surface-of-revolution integral",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Arc length and the area of a surface of revolution"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Use the given substitution to simplify the integral.",
+          "summary": "Use the given substitution to simplify the integral",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Arc length and the area of a surface of revolution"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Estimate the bell's surface area to the specified precision.",
+          "summary": "Estimate the bell's surface area to the specified precision",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Arc length and the area of a surface of revolution"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

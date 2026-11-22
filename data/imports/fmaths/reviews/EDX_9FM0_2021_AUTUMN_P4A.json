@@ -1,0 +1,500 @@
+{
+  "paper_id": "EDX_9FM0_2021_AUTUMN_P4A",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "03a8c1fbb1fcaf04d6b685676a877fca4e21365fae67fbd093550361f32eec49",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Prove divisibility by sixty-six with digit rules.",
+          "summary": "Prove divisibility by sixty-six with digit rules",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Divisibility tests"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Explain closure under the absolute-difference operation.",
+          "summary": "Explain closure under the absolute-difference operation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The axioms of a group"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Prove the identity property.",
+          "summary": "Prove the identity property",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The axioms of a group"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Show that each element has an inverse.",
+          "summary": "Show that each element has an inverse",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The axioms of a group"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Determine whether the operation satisfies the remaining group axiom.",
+          "summary": "Determine whether the operation satisfies the remaining group axiom",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The axioms of a group"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.1",
+            "EDX_FMATH_FP2_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use the Euclidean algorithm and back substitution to express one as a linear combination.",
+          "summary": "Use the Euclidean algorithm and back substitution to express one as a linear combination",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The division theorem and the Euclidean algorithm",
+            "Bezout's identity"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Identify the modular inverse from the linear combination.",
+          "summary": "Identify the modular inverse from the linear combination",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Modular arithmetic"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Solve the linear congruence using the modular inverse.",
+          "summary": "Solve the linear congruence using the modular inverse",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Solution of congruence equations"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(i)–(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_5.4",
+            "EDX_FMATH_FP2_1.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Use modular arithmetic and group order to determine possible subgroup orders.",
+          "summary": "Use modular arithmetic and group order to determine possible subgroup orders",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Fermat's little theorem",
+            "Lagrange's theorem"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Calculate the centre and radius of a circle defined by a complex modulus relation.",
+          "summary": "Calculate the centre and radius of a circle defined by a complex modulus relation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Shade the intersection of a modulus region and an argument region.",
+          "summary": "Shade the intersection of a modulus region and an argument region",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further loci and regions in the Argand diagram"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_6.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Prove a closed expression for a variable-coefficient recurrence by induction.",
+          "summary": "Prove a closed expression for a variable-coefficient recurrence by induction",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Proof by induction of closed forms"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Prove a reduction formula for the integral family.",
+          "summary": "Prove a reduction formula for the integral family",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further integration: reduction formulae"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Set up a surface of revolution integral for the shell.",
+          "summary": "Set up a surface of revolution integral for the shell",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Arc length and the area of a surface of revolution"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_2.1",
+            "EDX_FMATH_FP2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Evaluate the shell surface area using the reduction formula.",
+          "summary": "Evaluate the shell surface area using the reduction formula",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Further integration: reduction formulae",
+            "Arc length and the area of a surface of revolution"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Determine the eigenvalue of the given eigenvector.",
+          "summary": "Determine the eigenvalue of the given eigenvector",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Determine the missing matrix parameter.",
+          "summary": "Determine the missing matrix parameter",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": [
+            "(a)(i)"
+          ]
+        },
+        {
+          "parts": [
+            "(a)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Find the remaining eigenvalues and eigenvectors.",
+          "summary": "Find the remaining eigenvalues and eigenvectors",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Eigenvalues and eigenvectors of 2 × 2 and 3 × 3 matrices"
+          ],
+          "depends_on_parts": [
+            "(a)(ii)"
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Construct a diagonalisation from the eigenvalues and eigenvectors.",
+          "summary": "Construct a diagonalisation from the eigenvalues and eigenvectors",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Reduction of matrices to diagonal form"
+          ],
+          "depends_on_parts": [
+            "(a)(iii)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Solve the elementary scalar differential equation.",
+          "summary": "Solve the elementary scalar differential equation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Reduction of matrices to diagonal form"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FP2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Use the matrix diagonalisation to find the vector displacement.",
+          "summary": "Use the matrix diagonalisation to find the vector displacement",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Reduction of matrices to diagonal form"
+          ],
+          "depends_on_parts": [
+            "(b)",
+            "(c)(i)"
+          ]
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

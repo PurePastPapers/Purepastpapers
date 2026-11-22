@@ -6,7 +6,8 @@ import fnmatch
 import json
 from pathlib import Path
 
-from as_sources import restore_as_lead_ins, reviewed_scheme_regions, scan_candidate
+from as_sources import (place_early_cayley_table, restore_as_lead_ins, restore_core_2019_scheme_appendix,
+                        restore_statistics_label, reviewed_scheme_regions, scan_candidate)
 from options import answer_book_start, digest, extract, scheme_regions
 
 # These original Pearson answer-book covers predate the modern cover wording.
@@ -37,10 +38,13 @@ def extract_as(paper, sources):
                             strict_labels=True, use_printed_total_as_tariff=True)
         candidate['extraction_version'] += '-fmaths-as-v1'
         restore_as_lead_ins(paper_id, qp, candidate)
+        restore_statistics_label(paper_id, qp, candidate)
+        place_early_cayley_table(paper_id, qp, candidate)
     if book_start:
         candidate['answer_book_start_page'] = book_start
     count = len(candidate['questions'])
     candidate['scheme_regions'] = reviewed_scheme_regions(paper_id, ms, count) or scheme_regions(ms, count)
+    restore_core_2019_scheme_appendix(paper_id, ms, candidate['scheme_regions'])
     return candidate
 
 

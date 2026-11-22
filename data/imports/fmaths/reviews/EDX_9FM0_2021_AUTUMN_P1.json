@@ -1,0 +1,521 @@
+{
+  "paper_id": "EDX_9FM0_2021_AUTUMN_P1",
+  "source_sha256": "012c59dbeed3e3c92a3012c279f2e14ee8a3c1590026da400bae257a8b0b80c1",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Take the magnitudes of the scaled sine and cosine entries and identify the angle's quadrant.",
+          "summary": "Recover the enlargement and rotation in a composite matrix",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Multiply the original area by the absolute determinant.",
+          "summary": "Find the area of a square after a matrix transformation",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.5",
+            "EDX_FMATH_CP_4.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Square the given cosine expansion and keep terms through fourth degree.",
+          "summary": "Expand the square of a cosine as a Maclaurin series",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Divide the approximation by the variable and integrate between the given endpoints.",
+          "summary": "Integrate a Maclaurin approximation",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Enter the unexpanded integrand and use the calculator for a reference value.",
+          "summary": "Evaluate the original integral numerically",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compare the approximated integral and the calculator result.",
+          "summary": "Assess the accuracy of a series approximation",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)",
+            "(c)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_4.1",
+            "EDX_FMATH_CP_4.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Match coefficients under the given root transformation to solve for three unknowns.",
+          "summary": "Relate the coefficients of cubics with transformed roots",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use dimensions to test multiplication and addition.",
+          "summary": "Check which operations are defined for two matrices",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.1",
+            "EDX_FMATH_CP_3.2",
+            "EDX_FMATH_CP_3.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Compare the entries of the matrix product and divide by its scalar factor.",
+          "summary": "Use a product proportional to the identity to find an inverse",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_3.6"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Set the determinant to zero and find all solutions in the interval.",
+          "summary": "Find the angles where a trigonometric matrix is singular",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Integrate to a finite endpoint and take the limit.",
+          "summary": "Evaluate an improper exponential integral",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Integrate the periodic model through one day and divide by its duration.",
+          "summary": "Evaluate the modelled mean daily air temperature",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(ii)(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_5.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify a suitable adjustment to the model's constant baseline.",
+          "summary": "Refine a model when the measured mean temperature differs",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(ii)(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.8"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Substitute the given initial position, velocity and acceleration.",
+          "summary": "Find a coefficient in a damped equation from initial acceleration",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.4",
+            "EDX_FMATH_CP_9.6",
+            "EDX_FMATH_CP_9.8",
+            "EDX_FMATH_CP_9.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Solve the auxiliary equation and fit both initial conditions.",
+          "summary": "Solve a damped model of a bungee jump",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Evaluate the displacement and account for the datum.",
+          "summary": "Find the tourist's predicted height above the river",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.8",
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Identify a limitation of the stated damped motion assumptions.",
+          "summary": "Assess a physical assumption in the bungee model",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Check its dot products with the two given plane directions.",
+          "summary": "Verify that a vector is normal to a plane",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.2",
+            "EDX_FMATH_CP_6.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Use the normal and point on the plane.",
+          "summary": "Convert a vector plane equation to Cartesian form",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_6.1",
+            "EDX_FMATH_CP_6.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Substitute the line parameter into the signed point-to-plane distance equation.",
+          "summary": "Locate points on a line at a given normal distance",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 12,
+          "year_basis": "Edexcel AS Core Pure overlap",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Use the constant volume and concentration to write the red paint balance.",
+          "summary": "Verify an inflow-outflow model for mixing paint",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.1",
+            "EDX_FMATH_CP_9.2",
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Apply the initial amount and solve when both colours have the same amount.",
+          "summary": "Solve a differential equation for paint mixing time",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_9.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Compare the predicted and observed time to equal proportions.",
+          "summary": "Evaluate a paint mixing model against an observation",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Substitute cosh, then integrate the resulting square using a hyperbolic identity.",
+          "summary": "Integrate using a hyperbolic substitution",
+          "context_basis": "independent",
+          "depends_on_parts": [],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_CP_8.4",
+            "EDX_FMATH_CP_8.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Integrate by parts, reuse the earlier integral and express the endpoints in logarithmic form.",
+          "summary": "Find an exact area involving an inverse hyperbolic function",
+          "context_basis": "shared_stem",
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "introduced_year": 13,
+          "year_basis": "Edexcel A-level-only Core Pure specification point",
+          "review_status": "model_reviewed"
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

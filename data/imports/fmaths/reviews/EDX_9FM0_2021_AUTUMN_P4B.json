@@ -1,0 +1,581 @@
+{
+  "paper_id": "EDX_9FM0_2021_AUTUMN_P4B",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "655d41a8caccaa3ec487714a2f7bdd6ea9710d82e466d569a86db765c649fd68",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Assign average ranks to tied test scores.",
+          "summary": "Assign average ranks to tied test scores",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Spearman's rank correlation coefficient, its use and interpretation"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_3.2",
+            "EDX_FMATH_FS2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Explain why the full correlation formula is used for tied ranks.",
+          "summary": "Explain why the full correlation formula is used for tied ranks",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Spearman's rank correlation coefficient, its use and interpretation",
+            "The product moment correlation coefficient"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Test for positive rank correlation using the stated Spearman coefficient.",
+          "summary": "Test for positive rank correlation using the stated Spearman coefficient",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Testing the hypothesis that a correlation is zero"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Test whether an assumed difference in population means exceeds five minutes.",
+          "summary": "Test whether an assumed difference in population means exceeds five minutes",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Test for the difference between two Normal means with variances known"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Explain the change to the test when the population variances are unknown.",
+          "summary": "Explain the change to the test when the population variances are unknown",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Large sample results when the population variances are unknown"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Explain why the large-sample test survives non-Normal population distributions.",
+          "summary": "Explain why the large-sample test survives non-Normal population distributions",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Large sample results when the population variances are unknown"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Use a CDF to find the probability of disjoint intervals.",
+          "summary": "Use a CDF to find the probability of disjoint intervals",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Relationship between probability density and cumulative distribution functions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Solve a CDF equation for the distribution median.",
+          "summary": "Solve a CDF equation for the distribution median",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Relationship between probability density and cumulative distribution functions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_2.2",
+            "EDX_FMATH_FS2_2.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Differentiate the CDF and integrate to find a second moment.",
+          "summary": "Differentiate the CDF and integrate to find a second moment",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Relationship between probability density and cumulative distribution functions",
+            "Mean and variance of continuous random variables"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_2.2",
+            "EDX_FMATH_FS2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Sketch the density from the CDF and interpret its skewness.",
+          "summary": "Sketch the density from the CDF and interpret its skewness",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Relationship between probability density and cumulative distribution functions",
+            "Continuous random variables and probability density functions"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Interpret a negative product moment correlation in context.",
+          "summary": "Interpret a negative product moment correlation in context",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The product moment correlation coefficient"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Recover a least-squares regression from correlation and summary statistics.",
+          "summary": "Recover a least-squares regression from correlation and summary statistics",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Least squares linear regression"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Convert the regression model from metres to kilometres.",
+          "summary": "Convert the regression model from metres to kilometres",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Least squares linear regression"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Use the correlation and variation to find residual sum of squares.",
+          "summary": "Use the correlation and variation to find residual sum of squares",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Residuals and the residual sum of squares"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(e)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the share of residual sum of squares from one weather station.",
+          "summary": "Find the share of residual sum of squares from one weather station",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Residuals and the residual sum of squares"
+          ],
+          "depends_on_parts": [
+            "(b)",
+            "(d)"
+          ]
+        },
+        {
+          "parts": [
+            "(e)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Interpret an observation's unusually large share of residual variation.",
+          "summary": "Interpret an observation's unusually large share of residual variation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Residuals and the residual sum of squares"
+          ],
+          "depends_on_parts": [
+            "(e)(i)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_5.1",
+            "EDX_FMATH_FS2_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Calculate biases for three estimators based on a continuous uniform sample.",
+          "summary": "Calculate biases for three estimators based on a continuous uniform sample",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Standard error, estimators and bias; quality of estimators",
+            "The continuous uniform (rectangular) distribution"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_5.1",
+            "EDX_FMATH_FS2_2.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Compare two estimators' variances and account for their biases.",
+          "summary": "Compare two estimators' variances and account for their biases",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Standard error, estimators and bias; quality of estimators",
+            "The continuous uniform (rectangular) distribution"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_5.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Construct an unbiased estimator from the sample expectation.",
+          "summary": "Construct an unbiased estimator from the sample expectation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Standard error, estimators and bias; quality of estimators"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Test for a difference between population variances of butterfly wingspans.",
+          "summary": "Test for a difference between population variances of butterfly wingspans",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Test that two independent samples are from Normal populations with equal variances"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Infer the confidence level of a variance interval.",
+          "summary": "Infer the confidence level of a variance interval",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Test and confidence interval for the variance of a Normal distribution"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Build a confidence interval for the difference between two Normal mean wingspans.",
+          "summary": "Build a confidence interval for the difference between two Normal mean wingspans",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Test and confidence interval for the difference between two means"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the Normal distributions for two independent sums of fruit weights.",
+          "summary": "Find the Normal distributions for two independent sums of fruit weights",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Linear combinations of independent Normal random variables"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Condition on which fruit are drawn to find a total-weight probability.",
+          "summary": "Condition on which fruit are drawn to find a total-weight probability",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Linear combinations of independent Normal random variables"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Infer coefficients of a combined Normal variable from its central interval.",
+          "summary": "Infer coefficients of a combined Normal variable from its central interval",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Linear combinations of independent Normal random variables"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

@@ -1,0 +1,572 @@
+{
+  "paper_id": "EDX_9FM0_2022_JUNE_P3B",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "85ed07f290e51dbb0628b07e8ca70d33b84b668355b2d96039ec9b5cd01d0448",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Calculate expected litter counts under a binomial model.",
+          "summary": "Calculate expected litter counts under a binomial model",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Mean and variance of the binomial and Poisson distributions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use a chi-squared goodness-of-fit test to assess the binomial model.",
+          "summary": "Use a chi-squared goodness-of-fit test to assess the binomial model",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Goodness of fit tests and contingency tables"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Express the mean of a discrete random variable in terms of the missing outcome.",
+          "summary": "Express the mean of a discrete random variable in terms of the missing outcome",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Mean and variance of discrete probability distributions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the missing outcome from the prescribed variance.",
+          "summary": "Find the missing outcome from the prescribed variance",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Mean and variance of discrete probability distributions"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Calculate the probability that the discrete outcome satisfies a quadratic inequality.",
+          "summary": "Calculate the probability that the discrete outcome satisfies a quadratic inequality",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Mean and variance of discrete probability distributions"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the chance of at least nineteen mountain rescue calls across independent days.",
+          "summary": "Find the chance of at least nineteen mountain rescue calls across independent days",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The Poisson distribution and its additive property"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.3",
+            "EDX_FMATH_FS1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Apply a Poisson approximation to a count of days above the call threshold.",
+          "summary": "Apply a Poisson approximation to a count of days above the call threshold",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The Poisson distribution as an approximation to the binomial",
+            "The Poisson distribution and its additive property"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Test for a difference in the rescue call rate.",
+          "summary": "Test for a difference in the rescue call rate",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Hypothesis tests for the mean of a Poisson distribution"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the smallest number of days meeting the given probability condition.",
+          "summary": "Find the smallest number of days meeting the given probability condition",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The Poisson distribution and its additive property"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: State an assumption required for the Poisson rescue call model.",
+          "summary": "State an assumption required for the Poisson rescue call model",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "The Poisson distribution and its additive property"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find the chance of a first blue outcome on the sixth spin.",
+          "summary": "Find the chance of a first blue outcome on the sixth spin",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Geometric and negative binomial distributions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(a)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find the chance of a first blue outcome before the sixth spin.",
+          "summary": "Find the chance of a first blue outcome before the sixth spin",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Geometric and negative binomial distributions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(a)(iii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find the chance of exactly four blues in six spins.",
+          "summary": "Find the chance of exactly four blues in six spins",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Mean and variance of the binomial and Poisson distributions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(a)(iv)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_3.1",
+            "EDX_FMATH_FS1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the chance of the fourth blue outcome by the sixth spin.",
+          "summary": "Find the chance of the fourth blue outcome by the sixth spin",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Geometric and negative binomial distributions",
+            "Mean and variance of the binomial and Poisson distributions"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Derive the probability that the first player wins the alternating spinner game.",
+          "summary": "Derive the probability that the first player wins the alternating spinner game",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Geometric and negative binomial distributions"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_5.1",
+            "EDX_FMATH_FS1_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use the central limit theorem for a large sample from a geometric distribution.",
+          "summary": "Use the central limit theorem for a large sample from a geometric distribution",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Applications of the central limit theorem to other distributions",
+            "Mean and variance of a geometric distribution"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Construct a probability generating function from tabulated probabilities.",
+          "summary": "Construct a probability generating function from tabulated probabilities",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Probability generating functions: definitions, derivations and applications"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)(i)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Use calculus to find the mean from a generating function.",
+          "summary": "Use calculus to find the mean from a generating function",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Use a probability generating function to find the mean and variance"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Use calculus to find the variance from a generating function.",
+          "summary": "Use calculus to find the variance from a generating function",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Use a probability generating function to find the mean and variance"
+          ],
+          "depends_on_parts": [
+            "(b)(i)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the generating function of a sum of independent variables.",
+          "summary": "Find the generating function of a sum of independent variables",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Probability generating function of a sum of independent random variables"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find the generating function after a linear transformation.",
+          "summary": "Find the generating function after a linear transformation",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Probability generating functions: definitions, derivations and applications"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ]
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Read off the probability of a specified outcome.",
+          "summary": "Read off the probability of a specified outcome",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Probability generating functions: definitions, derivations and applications"
+          ],
+          "depends_on_parts": [
+            "(d)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Perform the two-sided test of the mean flour-bag weight.",
+          "summary": "Perform the two-sided test of the mean flour-bag weight",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Type I and Type II errors; size and power of a test"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Express the critical threshold in terms of sample size.",
+          "summary": "Express the critical threshold in terms of sample size",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Type I and Type II errors; size and power of a test"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Find the sample size and threshold giving the specified Type II error probability.",
+          "summary": "Find the sample size and threshold giving the specified Type II error probability",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Type I and Type II errors; size and power of a test"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

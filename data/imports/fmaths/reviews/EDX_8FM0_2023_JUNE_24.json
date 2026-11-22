@@ -1,0 +1,275 @@
+{
+  "paper_id": "EDX_8FM0_2023_JUNE_24",
+  "reviewer_type": "model",
+  "source_sha256": "a62527ea839dd4a8e0dc3c97d0a04655052768feb9e148b61361d54699766542",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate a Spearman rank coefficient with tied data.",
+          "difficulty_basis": "Calculate a Spearman rank coefficient with tied data.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_3.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Test for positive rank correlation between two sets of task scores.",
+          "difficulty_basis": "Test for positive rank correlation between two sets of task scores.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Recommend two tasks using their relative rank correlations.",
+          "difficulty_basis": "Recommend two tasks using their relative rank correlations.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Integrate a density to find its cumulative distribution function.",
+          "difficulty_basis": "Integrate a density to find its cumulative distribution function.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate a continuous lower-tail probability.",
+          "difficulty_basis": "Calculate a continuous lower-tail probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_2.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the expectation of a reciprocal transformation by integration.",
+          "difficulty_basis": "Find the expectation of a reciprocal transformation by integration.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the shape of a continuous density on its support to identify its mode.",
+          "difficulty_basis": "Use the shape of a continuous density on its support to identify its mode.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate the product moment correlation from summary statistics.",
+          "difficulty_basis": "Calculate the product moment correlation from summary statistics.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Assess whether the computed correlation supports a linear model.",
+          "difficulty_basis": "Assess whether the computed correlation supports a linear model.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find a least-squares line from the supplied sums of squares and products.",
+          "difficulty_basis": "Find a least-squares line from the supplied sums of squares and products.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the sum-of-residuals property to identify a reported error.",
+          "difficulty_basis": "Use the sum-of-residuals property to identify a reported error.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_1.1",
+            "EDX_FMATH_AS_FS2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Recover an observed serve speed by correcting a residual and applying the fitted line.",
+          "difficulty_basis": "Recover an observed serve speed by correcting a residual and applying the fitted line.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_2.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find a uniform distribution endpoint from an interval probability.",
+          "difficulty_basis": "Find a uniform distribution endpoint from an interval probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS2_2.3",
+            "EDX_FMATH_AS_FS2_2.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Recover the uniform support from its moments and compute a binomial tail for repeated draws.",
+          "difficulty_basis": "Recover the uniform support from its moments and compute a binomial tail for repeated draws.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

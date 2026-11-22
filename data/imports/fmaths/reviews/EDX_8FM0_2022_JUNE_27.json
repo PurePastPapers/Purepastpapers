@@ -1,0 +1,267 @@
+{
+  "paper_id": "EDX_8FM0_2022_JUNE_27",
+  "reviewer_type": "model",
+  "source_sha256": "ffdcc402e13f0cdaf851899e54a4c93793e526df878e4ece89a1a25bad1f8e9d",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use quick sort to sort the list and record pivots.",
+          "difficulty_basis": "Use quick sort to sort the list and record pivots.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Apply Kruskal’s algorithm to find a minimum spanning tree.",
+          "difficulty_basis": "Apply Kruskal’s algorithm to find a minimum spanning tree.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Draw the minimum spanning tree on a node template and give its weight.",
+          "difficulty_basis": "Draw the minimum spanning tree on a node template and give its weight.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "required_insert_regions": [
+            {
+              "page": 11,
+              "bbox": [
+                0.2270046581969388,
+                0.5909303870649678,
+                0.7730428900760619,
+                0.8357603026097756
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Draw an activity-on-arc network for the precedence table.",
+          "difficulty_basis": "Draw an activity-on-arc network for the precedence table.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Explain the need for a dummy activity in a precedence network.",
+          "difficulty_basis": "Explain the need for a dummy activity in a precedence network.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Identify an activity that cannot lie on a critical path.",
+          "difficulty_basis": "Identify an activity that cannot lie on a critical path.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Explain the graph terminology of a path.",
+          "difficulty_basis": "Explain the graph terminology of a path.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Classify a network using the parity of its vertex degrees.",
+          "difficulty_basis": "Classify a network using the parity of its vertex degrees.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Apply Dijkstra’s algorithm to find a shortest path.",
+          "difficulty_basis": "Apply Dijkstra’s algorithm to find a shortest path.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Compare possible added tracks by finding repeated edges and total route-inspection distance.",
+          "difficulty_basis": "Compare possible added tracks by finding repeated edges and total route-inspection distance.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Translate the graph boundaries into integer-coefficient inequalities.",
+          "difficulty_basis": "Translate the graph boundaries into integer-coefficient inequalities.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Compute the optimal vertex and derive the objective function from the graph.",
+          "difficulty_basis": "Compute the optimal vertex and derive the objective function from the graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the optimal point to deduce the best integer production plan.",
+          "difficulty_basis": "Use the optimal point to deduce the best integer production plan.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "paper_id": "EDX_8FM0_2020_AUTUMN_27",
+  "reviewer_type": "model",
+  "source_sha256": "c68908c297a3f9d2dfbae2d0f0256d183b3efa1d2d5dd596a10c1c5e0ea5fc23",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Pack a list of items into bins using first fit.",
+          "difficulty_basis": "Pack a list of items into bins using first fit.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.1",
+            "EDX_FMATH_AS_D1_1.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Determine worst-case growth of the first-fit algorithm.",
+          "difficulty_basis": "Determine worst-case growth of the first-fit algorithm.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Fill a precedence table from an activity network.",
+          "difficulty_basis": "Fill a precedence table from an activity network.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "required_insert_regions": [
+            {
+              "page": 12,
+              "bbox": [
+                0.10583325280803227,
+                0.1201892312674511,
+                0.8957481107230558,
+                0.3138274371983445
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Complete the early and late event times on a supplied network.",
+          "difficulty_basis": "Complete the early and late event times on a supplied network.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed",
+          "required_insert_regions": [
+            {
+              "page": 12,
+              "bbox": [
+                0.1196375901308191,
+                0.3238432064706321,
+                0.8696732513355696,
+                0.6009461563372555
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Read the project duration and critical activities from its event times.",
+          "difficulty_basis": "Read the project duration and critical activities from its event times.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate the total float of a specified activity.",
+          "difficulty_basis": "Calculate the total float of a specified activity.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find a lower bound on the crew size from workload and duration.",
+          "difficulty_basis": "Find a lower bound on the crew size from workload and duration.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Draw a cascade chart on the answer-book time grid.",
+          "difficulty_basis": "Draw a cascade chart on the answer-book time grid.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed",
+          "required_insert_regions": [
+            {
+              "page": 13,
+              "bbox": [
+                0.17178730890579152,
+                0.3394232920053017,
+                0.8313278698833839,
+                0.7411669261492817
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(g)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_4.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(f)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use the cascade chart to explain why the lower bound on workers is unattainable.",
+          "difficulty_basis": "Use the cascade chart to explain why the lower bound on workers is unattainable.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_1.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Prove that the number of odd-degree vertices is even.",
+          "difficulty_basis": "Prove that the number of odd-degree vertices is even.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use a unique Prim arc order to bound an unknown weight.",
+          "difficulty_basis": "Use a unique Prim arc order to bound an unknown weight.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Apply route inspection and the minimum tour time to find an arc weight.",
+          "difficulty_basis": "Apply route inspection and the minimum tour time to find an arc weight.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D1_5.1",
+            "EDX_FMATH_AS_D1_5.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Recover the inequalities and objective of a linear programme from its graph.",
+          "difficulty_basis": "Recover the inequalities and objective of a linear programme from its graph.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

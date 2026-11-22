@@ -63,13 +63,17 @@ def scheme_starts(page, words):
     return sorted(set(candidates))
 
 
-def scheme_regions(path, question_count, *, question_starts=None):
+def scheme_regions(path, question_count, *, question_starts=None, page_limit=None):
     with pdfplumber.open(path) as doc:
-        page_words = [visible_words(page) for page in doc.pages]
+        pages = doc.pages[:page_limit]
+        page_words = []
+        for page in pages:
+            page_words.append(visible_words(page))
+            page.close()
         starts = []
         if question_starts is None:
             expected = 1
-            for pi, page in enumerate(doc.pages):
+            for pi, page in enumerate(pages):
                 for top, number in scheme_starts(page, page_words[pi]):
                     if number == expected:
                         starts.append((pi, max(15, top - 8), expected))
@@ -83,10 +87,10 @@ def scheme_regions(path, question_count, *, question_starts=None):
             raise ValueError(f'Scheme has {len(starts)} indexed questions; expected {question_count}: {path}; starts={starts}')
         output = {}
         for i, (pi, top, number) in enumerate(starts):
-            ep, ey, _ = starts[i + 1] if i + 1 < len(starts) else (len(doc.pages) - 1, 10000, 0)
+            ep, ey, _ = starts[i + 1] if i + 1 < len(starts) else (len(pages) - 1, 10000, 0)
             regions = []
             for index in range(pi, ep + 1):
-                page = doc.pages[index]
+                page = pages[index]
                 lo = top if index == pi else 20
                 hi = ey if index == ep else page.height - 25
                 words = [w for w in page_words[index] if lo <= w['top'] < hi]

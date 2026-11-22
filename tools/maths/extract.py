@@ -57,6 +57,10 @@ def printed_part_paths(labels, marks):
     for label in labels:
         value = label['label']
         kind = 'letter' if value in 'abcdefgh' and len(value) == 1 else 'roman'
+        if kind == parent_kind == 'letter' and label['page'] == parent['page'] and label['x'] > parent['x'] + 10:
+            # A line can wrap immediately before a prose cross-reference,
+            # e.g. 'using the value found in' followed by '(c) to approximate'.
+            continue
         if kind == parent_kind or parent is None:
             parent = label
             parent_kind = kind
@@ -100,7 +104,13 @@ def extract(path, ocr_dir=None, *, page_limit=None, footer_margin=72,
             cid_question_numbers=False, strict_labels=False, use_printed_total_as_tariff=False):
     import pdfplumber
     with pdfplumber.open(path) as pdf:
-        pages = [{'page': p.filter(lambda c: c.get('object_type') != 'char' or c.get('upright', True)), 'words': words_for(p, footer_margin)} for p in pdf.pages[:page_limit]]
+        source_pages = pdf.pages[:page_limit]
+        pages = []
+        for page in source_pages:
+            pages.append({'page': page.filter(lambda c: c.get('object_type') != 'char' or c.get('upright', True)),
+                          'words': words_for(page, footer_margin)})
+            if strict_labels:
+                page.close()
         if ocr_dir:
             for i, data in enumerate(pages):
                 cache = Path(ocr_dir) / path.stem.replace('__question_paper', '') / f'page-{i + 1:03}.json'
@@ -144,12 +154,19 @@ def extract(path, ocr_dir=None, *, page_limit=None, footer_margin=72,
                     starts.append((i, 38 if not starts or starts[-1][0] != i else w['top'] - 25, expected))
                     expected += 1
         questions = []
+        previous_page = None
         for index, (start_page, start_y, number) in enumerate(starts):
             end_page, end_y, _ = starts[index + 1] if index + 1 < len(starts) else (len(pages) - 1, 10000, 0)
             fragments, labels, marks, totals = [], [], [], []
             printed_total_rows = []
             text_parts = []
             for pi in range(start_page, end_page + 1):
+                # Keep only the active page's pdfminer objects in memory when
+                # processing larger Further Maths booklets with strict labels.
+                if strict_labels and previous_page is not None and previous_page != pi:
+                    pages[previous_page]['page'].close()
+                    source_pages[previous_page].close()
+                previous_page = pi
                 p = pages[pi]['page']
                 lo = start_y if pi == start_page else 38
                 hi = end_y if pi == end_page else p.height - footer_margin

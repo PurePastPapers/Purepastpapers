@@ -408,7 +408,7 @@
       "scheme_question_number": "3(b)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_U02_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_scheme.webp"
       },
       "provenance": {
@@ -565,7 +565,7 @@
       "scheme_question_number": "3(c)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_U03_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q03_scheme.webp"
       },
       "provenance": {
@@ -858,7 +858,7 @@
       "scheme_question_number": "4(b)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q04_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q04_U02_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q04_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q04_scheme.webp"
       },
       "provenance": {
@@ -1258,7 +1258,7 @@
       "scheme_question_number": "6(b)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_U02_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_scheme.webp"
       },
       "provenance": {
@@ -1572,9 +1572,9 @@
       "scheme_question_number": "6(d)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_U04_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_scheme.webp",
-        "lead_in_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_U04_leadin.webp"
+        "lead_in_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_U04_source_lead.webp",
+        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q06_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1649,15 +1649,6 @@
               0.958003,
               0.122765
             ]
-          },
-          {
-            "page": 12,
-            "bbox": [
-              0.041997,
-              0.355365,
-              0.958003,
-              0.386115
-            ]
           }
         ],
         "context_reasons": [
@@ -1693,7 +1684,18 @@
           }
         ],
         "part_scheme_check": "verified",
-        "part_scheme_review": "reviewed_sample_source_rows"
+        "part_scheme_review": "reviewed_sample_source_rows",
+        "source_lead_in_regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.095659,
+              0.343511,
+              0.298129,
+              0.386742
+            ]
+          }
+        ]
       },
       "module_id": "FP1",
       "official_paper_code": "9FM0/3A",
@@ -1994,7 +1996,8 @@
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_full.webp",
         "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_U02_context.webp",
-        "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_scheme.webp"
+        "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_scheme.webp",
+        "lead_in_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_U02_leadin.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2176,7 +2179,7 @@
       "scheme_question_number": "8(c)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_U03_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_U02_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_9FM0_SAMPLE_3A/Q08_scheme.webp"
       },
       "provenance": {

@@ -127,6 +127,7 @@ class Doc:
         self._words = {}
         self._objs = {}
         self._frames = {}
+        self.word_extractor = None
 
     def page(self, page):  # page is 1-based, relative to the record (offset applied here)
         return self.pdf.pages[page + self.offset - 1]
@@ -202,8 +203,9 @@ class Doc:
     def words(self, page):
         if page not in self._words:
             p = self.page(page)
-            ws = [self._shift(page, w) for w in p.extract_words(keep_blank_chars=False, extra_attrs=['size'])
-                  if w.get('upright', True)]
+            extracted = (self.word_extractor(p) if self.word_extractor else
+                         p.extract_words(keep_blank_chars=False, extra_attrs=['size']))
+            ws = [self._shift(page, w) for w in extracted if w.get('upright', True)]
             if not ws and self.ocr_allowed:
                 ws = self.ocr_words(page)
             self._words[page] = ws
@@ -228,14 +230,19 @@ class Doc:
         return self._objs[page]
 
     def render(self, regions, output=None):
-        shifted = [{'page': r['page'] + self.offset, 'bbox': r['bbox']} for r in regions]
         buffer = io.BytesIO()
         pieces = []
-        for region in shifted:
-            im = self.renderer.page(region['page'] - 1)
+        for region in regions:
+            im = self.renderer.page(region['page'] + self.offset - 1)
             left, top, right, bottom = region['bbox']
-            pieces.append(im.crop((round(left * im.width), round(top * im.height),
-                                   round(right * im.width), round(bottom * im.height))))
+            piece = im.crop((round(left * im.width), round(top * im.height),
+                             round(right * im.width), round(bottom * im.height)))
+            rotation = region.get('rotate_degrees', 0)
+            if rotation:
+                if rotation not in (-90, 90, 180):
+                    raise ValueError(f'Unsupported source region rotation: {rotation}')
+                piece = piece.rotate(rotation, expand=True)
+            pieces.append(piece)
         from PIL import Image
         canvas = Image.new('RGB', (max(p.width for p in pieces), sum(p.height for p in pieces) + 12 * (len(pieces) - 1)), 'white')
         y = 0
@@ -506,9 +513,10 @@ ANCHOR = re.compile(r'^\*?Q?(\d{1,2})?\*?(?:\(?([a-h])\)?)?((?:\([ivx]{1,4}\))*)
 
 LOOSE = re.compile(r'^\*?Q?(\d{1,2})\*?\(?([a-h])\)?\(?([ivx]{1,4})?\)?\*?$')
 STACKED = re.compile(r'^\(?([a-h])\)?\(?([ivx]{1,4})?\)?$')
+REVERSE_ANCHOR = re.compile(r'^\*?Q?(\d{1,2})?((?:\([a-hivx]{1,4}\))+)\*?$')
 
 
-def scheme_blocks(doc, regions, number, *, split_alternatives=False):
+def scheme_blocks(doc, regions, number, *, split_alternatives=False, reverse_nested=False):
     """Split one question's scheme regions into blocks keyed by their reference."""
     words = region_words(doc, regions)
     if not words:
@@ -534,6 +542,7 @@ def scheme_blocks(doc, regions, number, *, split_alternatives=False):
         if w['x0'] < W * 0.22:
             lines[(w['page'], round(w['top'] / 2.5))].append(w)
     anchors, headers = [], []
+    roman_parent = None
     for key in sorted(lines):
         ws = sorted(lines[key], key=lambda w: w['x0'])
         if split_alternatives:
@@ -558,6 +567,17 @@ def scheme_blocks(doc, regions, number, *, split_alternatives=False):
         if re.match(r'^Question', text, re.I):
             headers.append(ws[0])
             continue
+        reverse = REVERSE_ANCHOR.fullmatch(text) if reverse_nested else None
+        if reverse:
+            if reverse.group(1) and reverse.group(1) != str(int(number)):
+                continue
+            tokens = re.findall(r'\(([a-hivx]{1,4})\)', reverse.group(2))
+            if tokens[0] in ROMAN:
+                roman_parent = tokens[0]
+            elif roman_parent and len(tokens) == 1:
+                tokens = [roman_parent, *tokens]
+            anchors.append({'word': ws[0], 'tokens': tokens})
+            continue
         stacked = STACKED.match(text)
         if stacked and anchors and not anchors[-1]['tokens']:
             # GCSE science tables stack the reference in a narrow column: "1" over "(b)(ii)", "a(ii)", "(b)ii"
@@ -577,6 +597,10 @@ def scheme_blocks(doc, regions, number, *, split_alternatives=False):
         if m.group(1) and m.group(1) != str(int(number)):
             continue
         if not m.group(2) and not m.group(3) and m.group(1):
+            if split_alternatives and anchors:
+                # Pearson's equation and prose in scheme notes can contain the
+                # question number at the margin. The table has already started.
+                continue
             # a bare number must sit on a table row, not a page number or prose
             W, _ = doc.size(ws[0]['page'])
             row = [v for v in words if v['page'] == ws[0]['page'] and abs(v['top'] - ws[0]['top']) < 3 and v['x0'] > ws[-1]['x1']]
@@ -663,7 +687,7 @@ def scheme_blocks(doc, regions, number, *, split_alternatives=False):
         h = min(later, key=lambda h: (h['page'], h['top']))
         last['end'] = (h['page'], (h['top'] - 5) / doc.size(h['page'])[1])
         last['regions'] = clip(regions, last['start'], last['end'])
-    return {'blocks': blocks, 'header': header, 'words': words}
+    return {'blocks': blocks, 'header': header, 'words': words, 'split_alternatives': split_alternatives}
 
 
 def match_tokens(block_tokens, letter, roman):
@@ -704,8 +728,16 @@ def scheme_for_unit(doc, parsed, unit, marks):
     # verify against the Mark column
     counted = [r for b in chosen if not b['notes'] for r in b['regions']]
     total = 0
+    tariffs = []
     total_lines = {(w['page'], round(w['top'] / 3)) for w in parsed['words'] if re.match(r'^\(?Total', w['text'])}
     mark_column = {}
+    fmaths_mark_columns = {}
+    if parsed.get('split_alternatives'):
+        for word in parsed['words']:
+            page = word['page']
+            width, _ = doc.size(page)
+            if word['text'].casefold() in ('mark', 'marks') and word['x0'] > width * 0.6:
+                fmaths_mark_columns[page] = word['x0'] / width
     if MARK_CODES:
         # GCSE 1MA1 tables carry a narrow "Mark" column of codes (M1, A1, B2, P1, C1);
         # guidance prose to the right is full of numbers, so count only that column.
@@ -735,10 +767,28 @@ def scheme_for_unit(doc, parsed, unit, marks):
                 a['page'] == w['page'] and abs(a['top'] - w['top']) < 3 and 0 <= w['x0'] - a['x1'] < 12 and re.fullmatch(r'AO\d', a['text'])
                 for a in parsed['words']):
             continue  # "AO2 1" is an assessment-objective code split in two, not a tariff
-        if (w['x0'] > W * 0.70 and TARIFF.match(w['text'])) or (w['x0'] > W * 0.86 and re.fullmatch(r'\d{1,2}', w['text'])):
+        tariff = w['x0'] > W * 0.70 and TARIFF.match(w['text'])
+        bare_mark = w['x0'] > W * 0.86 and re.fullmatch(r'\d{1,2}', w['text'])
+        if parsed.get('split_alternatives') and (tariff or bare_mark):
+            page = w['page']
+            nearest = min(fmaths_mark_columns, key=lambda n: abs(n - page), default=None)
+            # Exclude wrapped AOs digits and derivative orders in the answer column.
+            if nearest is not None:
+                distance = abs(w['x0'] / W - fmaths_mark_columns[nearest])
+                tariff = tariff and distance < 0.045
+                bare_mark = bare_mark and distance < 0.03
+            else:
+                bare_mark = False
+        if tariff or bare_mark:
             if any(r['page'] == w['page'] and r['bbox'][1] * H <= w['top'] < r['bbox'][3] * H for r in counted):
-                total += int(w['text'].strip('()'))
-    if total == marks:
+                value = int(w['text'].strip('()'))
+                total += value
+                tariffs.append(value)
+    alternative_headings = (parsed.get('split_alternatives') and len(tariffs) > 1
+                            and all(value == marks for value in tariffs)
+                            and any(re.match(r'^(?:Way|Alt(?:ernative)?)[.:]?$', w['text'], re.I)
+                                    for w in region_words(doc, counted)))
+    if total == marks or alternative_headings:
         status = 'verified'
     elif total > marks and 'parent' in kinds:
         status = 'includes_sibling_rows'
@@ -1043,12 +1093,18 @@ def main():
     alias = json.loads(alias_path.read_text()) if alias_path.exists() else {}
     slug = args.subject
     biology_display = None
+    further_maths_sources = None
+    option_part_scheme = None
     if slug == 'biology':
         overrides_spec = importlib.util.spec_from_file_location(
             'biology_source_overrides', ROOT / 'tools' / 'biology' / 'source_overrides.py')
         overrides = importlib.util.module_from_spec(overrides_spec)
         overrides_spec.loader.exec_module(overrides)
         biology_display = overrides.display_regions_for
+    if slug == 'fmaths':
+        sys.path.insert(0, str(ROOT / 'tools' / 'fmaths'))
+        import as_sources as further_maths_sources
+        from options import reviewed_option_part_scheme as option_part_scheme
     global MARK_CODES, MARK_COLUMN
     MARK_CODES = slug == 'gcsemaths'
     MARK_COLUMN = slug in ('gcsebio', 'gcsechem', 'gcsephys')
@@ -1082,6 +1138,15 @@ def main():
         crop = slug in ('physics', 'gcsemaths', 'gcsebio', 'gcsechem', 'gcsephys')  # tools/physics, gcsemaths, gcsebio, gcsechem and gcsephys render the CropBox
         qdoc = open_doc(args.sources, alias, p0['question_source_sha256'], p0['original_question_source_sha256'], p0['question_page_offset'], crop)
         sdoc = open_doc(args.sources, alias, p0['scheme_source_sha256'], p0['original_scheme_source_sha256'], p0['scheme_page_offset'], crop)
+        if further_maths_sources and pid == further_maths_sources.CORE_2019:
+            qdoc._words[28] = further_maths_sources.restore_core_2019_scan_label(
+                pid, p0['question_source_sha256'], qdoc.words(28))
+        if slug == 'fmaths' and pid == 'EDX_9FM0_2019_JUNE_P1':
+            sys.path.insert(0, str(ROOT / 'tools/fmaths'))
+            from core_import import TYPE3_SOURCE, type3_words
+            if p0['question_source_sha256'] != TYPE3_SOURCE:
+                raise ValueError(f'{pid}: Type3 font source changed')
+            qdoc.word_extractor = type3_words
         new_assets = {}
 
         def put(name, data):
@@ -1124,7 +1189,12 @@ def main():
             # scheme rows
             s_regions = units[0]['provenance']['scheme_regions']
             # pdfplumber reads /Rotate pages upright; SAM tables printed sideways yield no upright words (full scheme kept)
-            parsed = scheme_blocks(sdoc, s_regions, number, split_alternatives=slug == 'fmaths')
+            reverse_nested = slug == 'fmaths' and any(
+                re.match(r'^\([ivx]{1,4}\)\([a-h]\)$', label)
+                for unit in units for tariff in unit['provenance'].get('original_tariffs', [])
+                for label in [tariff['label'], *tariff['printed_labels']])
+            parsed = scheme_blocks(sdoc, s_regions, number, split_alternatives=slug == 'fmaths',
+                                   reverse_nested=reverse_nested)
             for ui, (unit, res) in enumerate(zip(units, refined)):
                 uid = unit['question_id']
                 tag = re.search(r'_(U\d+|P\d+)$', uid).group(1)
@@ -1140,11 +1210,41 @@ def main():
                     apply_refined(unit, res, units, qdoc, ctx, put, qn, tag, number, stats, catalogue['assets'])
                     if reviewed is not None:
                         unit['provenance']['part_display_positioning'] = 'reviewed PDF regions'
+                    if further_maths_sources:
+                        manual_context = further_maths_sources.reviewed_as_context(
+                            pid, p0['question_source_sha256'], number, unit['provenance']['original_parts'], qdoc.size)
+                        if manual_context:
+                            ctx['stem_image_url'] = put(f'{qn}_{tag}_context.webp', qdoc.render(manual_context))
+                            unit['provenance']['context_regions'] = manual_context
+                            unit['provenance']['context_reasons'] = ['reviewed printed context']
+                            unit['provenance'].pop('context_bridge_text', None)
+                            unit['provenance'].pop('context_includes_stem_image', None)
                 # scheme
                 if reviewed is not None:
                     regions, status = reviewed[ui]['scheme'], 'verified'
                 else:
                     regions, status = (None, 'scheme_unparsed') if parsed is None else scheme_for_unit(sdoc, parsed, unit, unit['marks'])
+                if further_maths_sources:
+                    manual_scheme = further_maths_sources.reviewed_as_part_scheme(
+                        pid, p0['scheme_source_sha256'], number, unit['provenance']['original_parts'],
+                        unit['marks'], sdoc.size)
+                    if manual_scheme:
+                        regions, status = manual_scheme, 'verified'
+                if option_part_scheme:
+                    manual_scheme = option_part_scheme(p0['scheme_source_sha256'], number,
+                                                       unit['provenance']['original_parts'], unit['marks'], sdoc.size)
+                    if manual_scheme:
+                        regions, status = manual_scheme, 'verified'
+                # Pearson printed (1) for 2023 Core Pure 2 Q7(b) even though the
+                # QP and the two B1ft scoring rows allocate two marks.
+                if (slug == 'fmaths' and pid == 'EDX_9FM0_2023_JUNE_P2' and number == '7'
+                        and p0['scheme_source_sha256'] == 'bb5554f543b907b00644b7901d78af9a9adcb83fe82e7e5a536d7b2cfe3457ba'
+                        and unit['provenance']['original_parts'] == ['(b)'] and status == 'marks 1 != 2'):
+                    regions, status = scheme_for_unit(sdoc, parsed, unit, 1)
+                    if regions:
+                        note = 'Pearson’s scheme lists two one-mark points. Its printed subtotal says (1), while the question allocates 2 marks.'
+                        unit['content']['mark_scheme_html'] = f'<p>{note}</p>'
+                        unit['provenance']['part_scheme_note'] = note
                 full_scheme = f'assets/{slug}/{pid}/{qn}_scheme.webp'
                 if regions:
                     unit['content']['mark_scheme_image_url'] = put(f'{qn}_{tag}_scheme.webp', sdoc.render(regions))

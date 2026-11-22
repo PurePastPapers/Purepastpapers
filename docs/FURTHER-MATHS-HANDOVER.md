@@ -144,12 +144,14 @@ The full question and full scheme remain available as fallbacks.
 python3 tools/fmaths/catalogue.py
 python3 tools/fmaths/build.py --sources sources --candidates candidates --reviews reviews PAPER_ID
 python3 tools/parts/refine.py --subject fmaths --sources sources-by-sha --paper PAPER_ID
+python3 tools/fmaths/fix_scored_regions.py --sources sources-by-sha --plan data/imports/fmaths/reviews/scored-regions.json --paper PAPER_ID
+python3 tools/fmaths/restore_lead_ins.py --sources sources-by-sha --plan data/imports/fmaths/reviews/official-lead-ins.json --paper PAPER_ID
 python3 tools/parts/drop-false-dependencies.py
-python3 tools/parts/lead-ins.py fmaths
-python3 tools/parts/trim-booklet-pages.py --dry-run
-JOBS=2 python3 tools/assets/compact.py --slug fmaths
+python3 tools/parts/lead-ins.py fmaths --paper PAPER_ID
+python3 tools/parts/trim-booklet-pages.py --slug fmaths --dry-run
+JOBS=2 python3 tools/assets/compact.py --slug fmaths --paper PAPER_ID
 python3 tools/parts/audit-part-display.py --slug fmaths --paper PAPER_ID
-python3 tools/fmaths/finalize.py
+python3 tools/fmaths/finalize.py --candidates candidates --activate PAPER_ID
 npm test && npm run validate
 MEASURE_SITE_SIZE=1 node --test tests/site-size.test.mjs
 ```
@@ -160,3 +162,10 @@ marks and published IDs, then refreshes the scoped pack index and coverage. Exis
 catalogues retain their reviewed crops. Pass `--rebuild` only for an intentional
 rebuild. Run the Further Maths and paper-label browser scripts against the local
 server and check the actual Pages artifact and live site after deployment.
+
+For Core Pure exam rebuilds, apply the paper-specific `fix_core_crops.py` pass.
+For sample rebuilds, run `fix_sample_schemes.py`, then apply the reviewed source
+lead-ins. The Pearson 9FM0 sample Further Mechanics 2 scheme gives Q7(b)/(c) 3/4
+while the paper gives 2/5. The June 2023 9FM0/02 Q7(b) scheme prints a subtotal of
+1 beside two one-mark rows. Both records preserve the question-paper tariff and
+carry a visible source note.

@@ -1,0 +1,650 @@
+{
+  "paper_id": "EDX_9FM0_2021_AUTUMN_P4D",
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source_sha256": "d5bc37f27a8b5c5974e737494491d6791b3cd482b1c25656a34a3b311fe700a2",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Formulate a minimum-cost assignment linear programme with prohibited worker-task assignments.",
+          "summary": "Formulate a minimum-cost assignment linear programme with prohibited worker-task assignments",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Formulating the allocation problem as a linear programming problem"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(i)–(ii)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_7.1",
+            "EDX_FMATH_D2_7.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Draw a multi-stage decision tree and find the best expected monetary strategy for the game.",
+          "summary": "Draw a multi-stage decision tree and find the best expected monetary strategy for the game",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Use, construct and interpret decision trees",
+            "Expected monetary values (EMVs) and utility"
+          ],
+          "depends_on_parts": []
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_1.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Find the starting transportation allocation using the north-west corner method.",
+          "summary": "Find the starting transportation allocation using the north-west corner method",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "North-west corner method for an initial basic feasible solution"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Improve the transportation allocation with the specified entering cell.",
+          "summary": "Improve the transportation allocation with the specified entering cell",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Stepping-stone method for an improved solution; improvement indices"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Apply a further stepping-stone iteration using shadow costs and improvement indices.",
+          "summary": "Apply a further stepping-stone iteration using shadow costs and improvement indices",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Stepping-stone method for an improved solution; improvement indices"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Calculate the total cost of the improved solution.",
+          "summary": "Calculate the total cost of the improved solution",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Stepping-stone method for an improved solution; improvement indices"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ]
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Determine whether the improved solution is optimal.",
+          "summary": "Determine whether the improved solution is optimal",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Stepping-stone method for an improved solution; improvement indices"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_6.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Eliminate a sequence variable to show the second-order recurrence.",
+          "summary": "Eliminate a sequence variable to show the second-order recurrence",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Using recurrence relations to model problems"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Solve the recurrence with a parameter in the initial values.",
+          "summary": "Solve the recurrence with a parameter in the initial values",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Solving first and second order linear recurrence relations"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_6.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Use a stated term of the sequence to find the initial parameter.",
+          "summary": "Use a stated term of the sequence to find the initial parameter",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Solving first and second order linear recurrence relations"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Calculate two cut capacities in the flow network.",
+          "summary": "Calculate two cut capacities in the flow network",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Cuts and their capacity"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Use the cut capacities to bound the maximum possible flow.",
+          "summary": "Use the cut capacities to bound the maximum possible flow",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Max-flow min-cut theorem to prove a flow is maximal"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Read the total value of an initial feasible flow.",
+          "summary": "Read the total value of an initial feasible flow",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Labelling procedure to augment a flow to a maximum flow"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Complete missing residual-arc labels on a partly labelled flow diagram.",
+          "summary": "Complete missing residual-arc labels on a partly labelled flow diagram",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Labelling procedure to augment a flow to a maximum flow"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "required_insert_regions": [
+            {
+              "page": 21,
+              "bbox": [
+                0.18405783097049092,
+                0.12686641078230948,
+                0.8221249783348594,
+                0.8825005592137845
+              ],
+              "rotate_degrees": -90
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Find each augmenting route and its flow to reach a maximum flow.",
+          "summary": "Find each augmenting route and its flow to reach a maximum flow",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Labelling procedure to augment a flow to a maximum flow"
+          ],
+          "depends_on_parts": [
+            "(d)"
+          ]
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Transfer the maximum-flow solution to a supplied network diagram.",
+          "summary": "Transfer the maximum-flow solution to a supplied network diagram",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Labelling procedure to augment a flow to a maximum flow"
+          ],
+          "depends_on_parts": [
+            "(e)"
+          ],
+          "required_insert_regions": [
+            {
+              "page": 22,
+              "bbox": [
+                0.17332112416387893,
+                0.36056769380235326,
+                0.8313278698833839,
+                0.6755079942531742
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(g)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.3"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Prove the proposed maximum flow pattern is optimal.",
+          "summary": "Prove the proposed maximum flow pattern is optimal",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Max-flow min-cut theorem to prove a flow is maximal"
+          ],
+          "depends_on_parts": [
+            "(f)"
+          ]
+        },
+        {
+          "parts": [
+            "(h)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_3.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Model a vertex capacity restriction and find the resulting maximum flow.",
+          "summary": "Model a vertex capacity restriction and find the resulting maximum flow",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Multiple sources and sinks; vertices with restricted capacity"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 23,
+              "bbox": [
+                0.14724626477639274,
+                0.35166478778254207,
+                0.8405307614319085,
+                0.6198648316293542
+              ]
+            }
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Identify the minimax journey problem as a dynamic programming problem.",
+          "summary": "Identify the minimax journey problem as a dynamic programming problem",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Principles of dynamic programming; Bellman's principle of optimality"
+          ],
+          "depends_on_parts": []
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Complete the staged dynamic programming table for a minimax route.",
+          "summary": "Complete the staged dynamic programming table for a minimax route",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Principles of dynamic programming; Bellman's principle of optimality"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 24,
+              "bbox": [
+                0.1702534936477041,
+                0.17360666738631825,
+                0.8282602393672092,
+                0.909209277273218
+              ]
+            },
+            {
+              "page": 25,
+              "bbox": [
+                0.1702534936477041,
+                0.11907636801497469,
+                0.8282602393672092,
+                0.7211353876047065
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Recover possible optimal routes from the completed dynamic programming table.",
+          "summary": "Recover possible optimal routes from the completed dynamic programming table",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Principles of dynamic programming; Bellman's principle of optimality"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_5.1",
+            "EDX_FMATH_D2_5.5"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Reconstruct a payoff matrix from the linear programme and its shift.",
+          "summary": "Reconstruct a payoff matrix from the linear programme and its shift",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Two person zero-sum games and the pay-off matrix",
+            "Optimal mixed strategies by converting games to linear programs"
+          ],
+          "depends_on_parts": [],
+          "required_insert_regions": [
+            {
+              "page": 26,
+              "bbox": [
+                0.23007228871311364,
+                0.2570714113220482,
+                0.769975259559887,
+                0.3394232920053017
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "hard",
+          "difficulty_basis": "Requires several linked steps, a case analysis or an unprompted modelling decision. Reviewed assessment: Use a graphical method to find player A's optimal mixed strategy.",
+          "summary": "Use a graphical method to find player A's optimal mixed strategy",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Optimal mixed strategies by graphical methods"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ]
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "easy",
+          "difficulty_basis": "Uses one standard relationship with the relevant quantities identified. Reviewed assessment: Calculate the original game value from the optimal strategy.",
+          "summary": "Calculate the original game value from the optimal strategy",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Optimal mixed strategies by graphical methods"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ]
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_D2_5.4"
+          ],
+          "crossover_spec_points": [],
+          "difficulty": "medium",
+          "difficulty_basis": "Requires selecting and combining the relationships indicated by the physical setup. Reviewed assessment: Find player B's best mixed strategy using the game value.",
+          "summary": "Find player B's best mixed strategy using the game value",
+          "context_basis": "independent",
+          "introduced_year": 13,
+          "year_basis": "A-level Further Mathematics option scope.",
+          "review_status": "model_reviewed",
+          "reviewed_spec_scope": [
+            "Optimal mixed strategies by graphical methods"
+          ],
+          "depends_on_parts": [
+            "(b)",
+            "(c)"
+          ]
+        }
+      ],
+      "exceptions": []
+    }
+  ]
+}

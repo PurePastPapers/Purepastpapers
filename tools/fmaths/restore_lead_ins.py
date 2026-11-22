@@ -25,6 +25,35 @@ def covers(stem_regions, lead_regions):
                    and r['bbox'][3] >= lead['bbox'][3] - .004 for r in stem_regions) for lead in lead_regions)
 
 
+def without_lead(stem_regions, lead_regions, clear_overlap=False):
+    remaining = stem_regions
+    for lead in lead_regions:
+        lx, lt, rx, lb = lead['bbox']
+        current = []
+        for region in remaining:
+            x0, top, x1, bottom = region['bbox']
+            intersects = (region['page'] == lead['page'] and top < lb and bottom > lt
+                          and min(x1, rx) - max(x0, lx) >= min(x1 - x0, rx - lx) * .7)
+            if not intersects:
+                current.append(region)
+                continue
+            if clear_overlap and top >= lt - .035 and bottom <= lb + .035:
+                continue
+            if lt - top > .005:
+                current.append({**region, 'bbox': [x0, top, x1, lt]})
+            if bottom - lb > .005:
+                current.append({**region, 'bbox': [x0, lb, x1, bottom]})
+        remaining = current
+    return remaining
+
+
+def store_crop(renderer, regions, assets, target):
+    renderer.render(regions, target)
+    buffer = target.read_bytes()
+    assets[target.name] = {'sha256': hashlib.sha256(buffer).hexdigest(),
+                           'base64': base64.b64encode(buffer).decode('ascii')}
+
+
 def add_lead_in(question, plan, renderer, assets, paper_id, temporary):
     provenance = question['provenance']
     if plan['question_source_sha256'] != provenance['question_source_sha256']:
@@ -38,17 +67,26 @@ def add_lead_in(question, plan, renderer, assets, paper_id, temporary):
     if any((r['page'], r['bbox'][3]) > (start['page'], start['bbox'][1] + .007) for r in regions):
         raise ValueError(f"{question['question_id']}: lead-in reaches into its scored part")
     context = question.setdefault('context', {})
-    name = asset_name(question).removesuffix('.webp') + '_source_lead.webp'
-    target = temporary / name
-    renderer.render(regions, target)
-    buffer = target.read_bytes()
-    assets[name] = {'sha256': hashlib.sha256(buffer).hexdigest(), 'base64': base64.b64encode(buffer).decode('ascii')}
+    stem_name = asset_name(question).removesuffix('.webp')
+    name = stem_name + '_source_lead.webp'
+    store_crop(renderer, regions, assets, temporary / name)
     context['lead_in_image_url'] = f'assets/fmaths/{paper_id}/{name}'
     provenance['source_lead_in_regions'] = regions
-    if plan.get('standalone_already_has_context') or covers(provenance.get('context_regions', []), regions):
+    clear_overlap = plan.get('clear_overlapping_context', False)
+    if not clear_overlap and (plan.get('standalone_already_has_context') or covers(provenance.get('context_regions', []), regions)):
         provenance['source_lead_in_in_stem'] = True
     else:
         provenance.pop('source_lead_in_in_stem', None)
+        old_stem = provenance.get('context_regions', [])
+        if context.get('stem_image_url') and not provenance.get('context_includes_stem_image'):
+            stem = without_lead(old_stem, regions, clear_overlap)
+            if stem != old_stem:
+                provenance['context_regions'] = stem
+                context.pop('stem_image_url')
+                if stem:
+                    name = stem_name + '_source_stem.webp'
+                    store_crop(renderer, stem, assets, temporary / name)
+                    context['stem_image_url'] = f'assets/fmaths/{paper_id}/{name}'
 
 
 def apply(paper_id, plans, sources, temporary):

@@ -395,7 +395,7 @@
       "scheme_question_number": "1(c)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_U03_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_scheme.webp"
       },
       "provenance": {
@@ -550,9 +550,9 @@
       "scheme_question_number": "1(d)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_U04_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_scheme.webp",
-        "lead_in_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_U04_source_lead.webp"
+        "lead_in_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_U04_source_lead.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q01_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -628,15 +628,6 @@
               0.958003,
               0.500218
             ]
-          },
-          {
-            "page": 1,
-            "bbox": [
-              0.041997,
-              0.745951,
-              0.958003,
-              0.787529
-            ]
           }
         ],
         "context_reasons": [
@@ -665,13 +656,13 @@
         "part_scheme_check": "verified",
         "source_lead_in_regions": [
           {
-            "page": 1,
             "bbox": [
               0.085675,
               0.696053,
               0.907142,
               0.786326
-            ]
+            ],
+            "page": 1
           }
         ]
       },
@@ -966,7 +957,7 @@
       "scheme_question_number": "3(b)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q03_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q03_U02_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q03_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q03_scheme.webp"
       },
       "provenance": {
@@ -1254,7 +1245,8 @@
       "scheme_question_number": "4(b)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q04_full.webp",
-        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q04_scheme.webp"
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q04_scheme.webp",
+        "lead_in_image_url": "assets/fmaths/EDX_8FM0_SAMPLE_27/Q04_U02_source_lead.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1350,7 +1342,18 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "source_lead_in_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.095632,
+              0.128975,
+              0.819888,
+              0.16909
+            ]
+          }
+        ]
       },
       "module_id": "D1",
       "official_paper_code": "8FM0/2K",

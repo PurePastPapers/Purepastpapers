@@ -1,0 +1,313 @@
+{
+  "paper_id": "EDX_8FM0_2023_JUNE_23",
+  "reviewer_type": "model",
+  "source_sha256": "24d560f965a5043bf8da0c0db37f82bde3b76acceb06996d3e3b60370cf92baa",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_1.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "hard",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Use a probability table and equality of the mean and standard deviation to find an unknown probability.",
+          "difficulty_basis": "Use a probability table and equality of the mean and standard deviation to find an unknown probability.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate selected expected frequencies for a table of ball colours.",
+          "difficulty_basis": "Calculate selected expected frequencies for a table of ball colours.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Complete a chi-squared independence test from the supplied statistic.",
+          "difficulty_basis": "Complete a chi-squared independence test from the supplied statistic.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Explain a plausible effect in the experiment using the expected counts and test conclusion.",
+          "difficulty_basis": "Explain a plausible effect in the experiment using the expected counts and test conclusion.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find a cloth area from its probability of having no Poisson faults.",
+          "difficulty_basis": "Find a cloth area from its probability of having no Poisson faults.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Find the probability of at least two fault-free tablecloths in a packet.",
+          "difficulty_basis": "Find the probability of at least two fault-free tablecloths in a packet.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_2.2"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate the mean and variance of a binomial count of fault-free tablecloths.",
+          "difficulty_basis": "Calculate the mean and variance of a binomial count of fault-free tablecloths.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_2.3"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Approximate a binomial count with a Poisson probability.",
+          "difficulty_basis": "Approximate a binomial count with a Poisson probability.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_2.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Test whether the Poisson fault rate has decreased over a specified cloth area.",
+          "difficulty_basis": "Test whether the Poisson fault rate has decreased over a specified cloth area.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_2.4"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(e)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "State the tail probability used in the Poisson rate test.",
+          "difficulty_basis": "State the tail probability used in the Poisson rate test.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "State hypotheses for fitting a Poisson model to breakdown counts.",
+          "difficulty_basis": "State hypotheses for fitting a Poisson model to breakdown counts.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Explain the use of an open-ended final cell in a goodness-of-fit table.",
+          "difficulty_basis": "Explain the use of an open-ended final cell in a goodness-of-fit table.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_2.1",
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Estimate the Poisson mean and complete an expected frequency table.",
+          "difficulty_basis": "Estimate the Poisson mean and complete an expected frequency table.",
+          "context_basis": "shared_stem",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Calculate two cells’ contributions to a chi-squared statistic.",
+          "difficulty_basis": "Calculate two cells’ contributions to a chi-squared statistic.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "difficulty": "medium",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Explain a goodness-of-fit test’s degrees of freedom after pooling cells and estimating its parameter.",
+          "difficulty_basis": "Explain a goodness-of-fit test’s degrees of freedom after pooling cells and estimating its parameter.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "primary_spec_points": [
+            "EDX_FMATH_AS_FS1_3.1"
+          ],
+          "crossover_spec_points": [],
+          "depends_on_parts": [
+            "(e)"
+          ],
+          "difficulty": "easy",
+          "introduced_year": 12,
+          "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+          "summary": "Complete a Poisson goodness-of-fit test from the supplied test statistic and degrees of freedom.",
+          "difficulty_basis": "Complete a Poisson goodness-of-fit test from the supplied test statistic and degrees of freedom.",
+          "context_basis": "grouped_dependency",
+          "review_status": "model_reviewed"
+        }
+      ]
+    }
+  ]
+}

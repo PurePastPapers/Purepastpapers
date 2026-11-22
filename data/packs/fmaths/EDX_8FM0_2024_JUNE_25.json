@@ -218,7 +218,7 @@
       "scheme_question_number": "1(b)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_U02_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_scheme.webp"
       },
       "provenance": {
@@ -364,7 +364,7 @@
       "scheme_question_number": "1(c)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_U03_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q01_scheme.webp"
       },
       "provenance": {
@@ -637,8 +637,9 @@
       "scheme_question_number": "2(b)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q02_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q02_U02_context.webp",
-        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q02_scheme.webp"
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q02_scheme.webp",
+        "lead_in_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q02_U02_source_lead.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q02_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -702,15 +703,6 @@
               0.961655,
               0.231085
             ]
-          },
-          {
-            "page": 4,
-            "bbox": [
-              0.038345,
-              0.285571,
-              0.961655,
-              0.386783
-            ]
           }
         ],
         "context_reasons": [
@@ -745,7 +737,18 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "source_lead_in_regions": [
+          {
+            "bbox": [
+              0.130787,
+              0.272961,
+              0.759624,
+              0.383445
+            ],
+            "page": 4
+          }
+        ]
       },
       "module_id": "FM1",
       "official_paper_code": "8FM0/25",
@@ -1094,7 +1097,7 @@
       "scheme_question_number": "3(c)",
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q03_full.webp",
-        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q03_U03_context.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q03_U01_context.webp",
         "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q03_scheme.webp"
       },
       "provenance": {
@@ -1592,7 +1595,8 @@
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q04_full.webp",
         "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q04_U03_context.webp",
-        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q04_scheme.webp"
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q04_scheme.webp",
+        "lead_in_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_25/Q04_U03_source_lead.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1728,7 +1732,19 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "source_lead_in_regions": [
+          {
+            "bbox": [
+              0.130813,
+              0.607563,
+              0.624987,
+              0.630003
+            ],
+            "page": 10
+          }
+        ],
+        "source_lead_in_in_stem": true
       },
       "module_id": "FM1",
       "official_paper_code": "8FM0/25",

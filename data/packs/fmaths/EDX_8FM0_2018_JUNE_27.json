@@ -1,0 +1,2233 @@
+{
+  "pack_id": "edx_8fm0_2018_june_27",
+  "papers": [
+    {
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "paper_type": "real_past_paper",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "year": 2018,
+      "series": "June",
+      "pearson_series": "June 2018",
+      "paper_code": "27",
+      "tier": null,
+      "title": "June 2018 AS Paper 2 component 27: Decision Mathematics 1",
+      "total_marks": 40,
+      "duration_minutes": 50,
+      "question_ids": [
+        "EDX_8FM0_2018_JUNE_27_Q01_U01",
+        "EDX_8FM0_2018_JUNE_27_Q01_U02",
+        "EDX_8FM0_2018_JUNE_27_Q01_U03",
+        "EDX_8FM0_2018_JUNE_27_Q02_U01",
+        "EDX_8FM0_2018_JUNE_27_Q02_U02",
+        "EDX_8FM0_2018_JUNE_27_Q02_U03",
+        "EDX_8FM0_2018_JUNE_27_Q03_U01",
+        "EDX_8FM0_2018_JUNE_27_Q03_U02",
+        "EDX_8FM0_2018_JUNE_27_Q03_U03",
+        "EDX_8FM0_2018_JUNE_27_Q03_U04",
+        "EDX_8FM0_2018_JUNE_27_Q04_U01",
+        "EDX_8FM0_2018_JUNE_27_Q04_U02",
+        "EDX_8FM0_2018_JUNE_27_Q04_U03"
+      ],
+      "full_paper_pdf_url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-que-20180518.pdf",
+      "full_mark_scheme_pdf_url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-rms-20180815.pdf",
+      "examiner_report_url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_pef_20180815.pdf",
+      "official_source_url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-que-20180518.pdf",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "module_ids": [
+        "D1"
+      ],
+      "official_paper_code": "8FM0/27",
+      "catalogue_verified": true,
+      "component_of": "Paper 2",
+      "duration_note": "Suggested practice time for this 40-mark component is 50 minutes. The official AS Paper 2 lasts 1 h 40 min for both components in the chosen route."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q01_U01",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q01",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "1",
+      "marks": 6,
+      "estimated_minutes": 8,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_2.2"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Find a shortest driving route and journey time using Dijkstra’s algorithm.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U01_with_insert.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U01_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "1(a)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.6627887082976903
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.4089962931280297
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.610116,
+              0.904951,
+              0.682185
+            ]
+          }
+        ],
+        "original_parts": [
+          "(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "Find a shortest driving route and journey time using Dijkstra’s algorithm.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(a)",
+            "printed_labels": [
+              "a",
+              "i",
+              "ii"
+            ],
+            "marks": 6
+          }
+        ],
+        "required_insert_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.11503614435655682,
+              0.09681910296544671,
+              0.8297940546252965,
+              0.8402117556196812
+            ]
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.120189,
+              0.904951,
+              0.598498
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.369076
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.041986,
+              0.369076,
+              0.958014,
+              0.429182
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041986,
+              0.079384,
+              0.958014,
+              0.211881
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041986,
+              0.211881,
+              0.958014,
+              0.249377
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(a)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q01_U02",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q01",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "1",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_1.1"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Estimate how execution time scales with the size of a network.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U02.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U02_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "1(b)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U02_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_scheme.webp",
+        "lead_in_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U02_leadin.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.6627887082976903
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.4089962931280297
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.719088,
+              0.904951,
+              0.791246
+            ]
+          }
+        ],
+        "original_parts": [
+          "(b)"
+        ],
+        "original_tariff_indices": [
+          1
+        ],
+        "difficulty_basis": "Estimate how execution time scales with the size of a network.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(b)",
+            "printed_labels": [
+              "b"
+            ],
+            "marks": 2
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "context_bridge_text": "n? network with vertices, Dijkstra’s algorithm has order For a 7",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.120189,
+              0.904951,
+              0.598498
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.688373,
+              0.904951,
+              0.710407
+            ]
+          }
+        ],
+        "context_reasons": [
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.083946
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.041986,
+              0.429182,
+              0.958014,
+              0.561769
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041986,
+              0.249377,
+              0.958014,
+              0.325083
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(b)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q01_U03",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q01",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "1",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_1.1"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Explain why an algorithm runtime estimate is approximate.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U03.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U03_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "1(c)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_U02_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q01_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.6627887082976903
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.4089962931280297
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.797077,
+              0.904951,
+              0.837986
+            ]
+          }
+        ],
+        "original_parts": [
+          "(c)"
+        ],
+        "original_tariff_indices": [
+          2
+        ],
+        "difficulty_basis": "Explain why an algorithm runtime estimate is approximate.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "grouped_dependency",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(c)",
+            "printed_labels": [
+              "c"
+            ],
+            "marks": 1
+          }
+        ],
+        "reviewed_dependencies": [
+          "EDX_8FM0_2018_JUNE_27_Q01_U02"
+        ],
+        "part_display": "refined",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.120189,
+              0.904951,
+              0.598498
+            ]
+          },
+          {
+            "page": 2,
+            "bbox": [
+              0.107367,
+              0.688373,
+              0.904951,
+              0.710407
+            ]
+          }
+        ],
+        "context_reasons": [
+          "names an earlier part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.083946
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.041986,
+              0.561769,
+              0.958014,
+              0.662789
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041986,
+              0.023762,
+              0.958014,
+              0.079384
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041986,
+              0.325083,
+              0.958014,
+              0.407613
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "depends_on_question_ids": [
+        "EDX_8FM0_2018_JUNE_27_Q01_U02"
+      ],
+      "part_label": "(c)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q02_U01",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q02",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "2",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_1.3"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Find the minimum and maximum arc counts of a simply connected graph.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U01.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U01_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "2(a)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.5885086968919304
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.49311377245508975
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.107367,
+              0.136931,
+              0.904951,
+              0.241491
+            ]
+          }
+        ],
+        "original_parts": [
+          "(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "Find the minimum and maximum arc counts of a simply connected graph.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(a)",
+            "printed_labels": [
+              "a",
+              "i",
+              "ii"
+            ],
+            "marks": 2
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.129146
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.166909
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041986,
+              0.079384,
+              0.958014,
+              0.139169
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(a)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q02_U02",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q02",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "2",
+      "marks": 3,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_1.3"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Draw a specified graph and classify its Eulerian status.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U02.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U02_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "2(b)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.5885086968919304
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.49311377245508975
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.107367,
+              0.245983,
+              0.904951,
+              0.319392
+            ]
+          }
+        ],
+        "original_parts": [
+          "(b)"
+        ],
+        "original_tariff_indices": [
+          1
+        ],
+        "difficulty_basis": "Draw a specified graph and classify its Eulerian status.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(b)",
+            "printed_labels": [
+              "b",
+              "i",
+              "ii"
+            ],
+            "marks": 3
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.129146
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.083946
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041986,
+              0.166909,
+              0.958014,
+              0.226219
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041986,
+              0.226219,
+              0.958014,
+              0.299929
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041986,
+              0.139169,
+              0.958014,
+              0.17966
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041986,
+              0.17966,
+              0.958014,
+              0.268468
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(b)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q02_U03",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q02",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "2",
+      "marks": 5,
+      "estimated_minutes": 6,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_1.3"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Use vertex degrees to justify uniqueness of a simple connected graph.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U03.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U03_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "2(c)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q02_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.5885086968919304
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.49311377245508975
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.107367,
+              0.323879,
+              0.904951,
+              0.381712
+            ]
+          }
+        ],
+        "original_parts": [
+          "(c)"
+        ],
+        "original_tariff_indices": [
+          2
+        ],
+        "difficulty_basis": "Use vertex degrees to justify uniqueness of a simple connected graph.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(c)",
+            "printed_labels": [
+              "c"
+            ],
+            "marks": 5
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "context_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.129146
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.083946
+            ]
+          },
+          {
+            "page": 7,
+            "bbox": [
+              0.041986,
+              0.299929,
+              0.958014,
+              0.588509
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041986,
+              0.023762,
+              0.958014,
+              0.079384
+            ]
+          },
+          {
+            "page": 8,
+            "bbox": [
+              0.041986,
+              0.268468,
+              0.958014,
+              0.491731
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(c)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q03_U01",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q03",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "3",
+      "marks": 3,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_4.1"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Complete a precedence network by adding activities and dummy arcs.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U01_with_insert.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U01_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "3(a)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.5992015968063872
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.5448674080410608
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.623471,
+              0.904951,
+              0.664379
+            ]
+          }
+        ],
+        "original_parts": [
+          "(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "Complete a precedence network by adding activities and dummy arcs.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(a)",
+            "printed_labels": [
+              "a"
+            ],
+            "marks": 3
+          }
+        ],
+        "required_insert_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.11503614435655682,
+              0.1179635047624983,
+              0.8313278698833839,
+              0.5508673099758175
+            ]
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.617461
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.100342
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041986,
+              0.079384,
+              0.958014,
+              0.195485
+            ]
+          }
+        ],
+        "part_scheme_check": "reference_matched"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(a)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q03_U02",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q03",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "3",
+      "marks": 3,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_4.3"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Work out the completed activity network’s early and late event times.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U02.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U02_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "3(b)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.5992015968063872
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.5448674080410608
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.666739,
+              0.904951,
+              0.707781
+            ]
+          }
+        ],
+        "original_parts": [
+          "(b)"
+        ],
+        "original_tariff_indices": [
+          1
+        ],
+        "difficulty_basis": "Work out the completed activity network’s early and late event times.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "grouped_dependency",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(b)",
+            "printed_labels": [
+              "b"
+            ],
+            "marks": 3
+          }
+        ],
+        "reviewed_dependencies": [
+          "EDX_8FM0_2018_JUNE_27_Q03_U01"
+        ],
+        "part_display": "refined",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.617461
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.18137847642079805,
+              0.11762189905902481,
+              0.7557436517533253,
+              0.362370497101036
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.06717721348918446,
+              0.1936602984507176,
+              0.9085718124412199,
+              0.37425149700598803
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "depends_on_question_ids": [
+        "EDX_8FM0_2018_JUNE_27_Q03_U01"
+      ],
+      "part_label": "(b)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q03_U03",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q03",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "3",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_4.3"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Identify the critical activities from the event times.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U03.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U03_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "3(c)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.5992015968063872
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.5448674080410608
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.710808,
+              0.904951,
+              0.751183
+            ]
+          }
+        ],
+        "original_parts": [
+          "(c)"
+        ],
+        "original_tariff_indices": [
+          2
+        ],
+        "difficulty_basis": "Identify the critical activities from the event times.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "grouped_dependency",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(c)",
+            "printed_labels": [
+              "c"
+            ],
+            "marks": 1
+          }
+        ],
+        "reviewed_dependencies": [
+          "EDX_8FM0_2018_JUNE_27_Q03_U02"
+        ],
+        "part_display": "refined",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.617461
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.100342
+            ]
+          },
+          {
+            "page": 9,
+            "bbox": [
+              0.041986,
+              0.405575,
+              0.958014,
+              0.468021
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041986,
+              0.371547,
+              0.958014,
+              0.41248
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "depends_on_question_ids": [
+        "EDX_8FM0_2018_JUNE_27_Q03_U02"
+      ],
+      "part_label": "(c)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q03_U04",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q03",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "3",
+      "marks": 3,
+      "estimated_minutes": 4,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_4.3",
+        "EDX_FMATH_AS_D1_4.4"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Explain the impact of removing an activity on project duration and timing.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U04.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U04_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "3(d)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U04_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_scheme.webp",
+        "lead_in_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q03_U04_leadin.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.5992015968063872
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.5448674080410608
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.782654,
+              0.904951,
+              0.880275
+            ]
+          }
+        ],
+        "original_parts": [
+          "(d)"
+        ],
+        "original_tariff_indices": [
+          3
+        ],
+        "difficulty_basis": "Explain the impact of removing an activity on project duration and timing.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "grouped_dependency",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(d)",
+            "printed_labels": [
+              "d",
+              "i",
+              "ii"
+            ],
+            "marks": 3
+          }
+        ],
+        "reviewed_dependencies": [
+          "EDX_8FM0_2018_JUNE_27_Q03_U02"
+        ],
+        "part_display": "refined",
+        "context_bridge_text": "the beginning of the project it is decided that activity is longer required. At G no",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.617461
+            ]
+          },
+          {
+            "page": 4,
+            "bbox": [
+              0.107367,
+              0.755412,
+              0.904951,
+              0.777179
+            ]
+          }
+        ],
+        "context_reasons": [
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.100342
+            ]
+          },
+          {
+            "page": 9,
+            "bbox": [
+              0.041986,
+              0.468021,
+              0.958014,
+              0.494539
+            ]
+          },
+          {
+            "page": 9,
+            "bbox": [
+              0.041986,
+              0.494539,
+              0.958014,
+              0.599202
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041986,
+              0.023762,
+              0.958014,
+              0.079384
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041986,
+              0.41248,
+              0.958014,
+              0.456202
+            ]
+          },
+          {
+            "page": 10,
+            "bbox": [
+              0.041986,
+              0.456202,
+              0.958014,
+              0.543484
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "depends_on_question_ids": [
+        "EDX_8FM0_2018_JUNE_27_Q03_U02"
+      ],
+      "part_label": "(d)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q04_U01",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q04",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "4",
+      "marks": 1,
+      "estimated_minutes": 1,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_5.1"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Define the variables of a production scheduling linear programme.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U01.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U01_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "4(a)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.6536641003706871
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.6177359566581123
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.08187966923296262
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.107367,
+              0.308308,
+              0.904951,
+              0.348326
+            ]
+          }
+        ],
+        "original_parts": [
+          "(a)"
+        ],
+        "original_tariff_indices": [
+          0
+        ],
+        "difficulty_basis": "Define the variables of a production scheduling linear programme.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(a)",
+            "printed_labels": [
+              "a"
+            ],
+            "marks": 1
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.299627
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.187459
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041986,
+              0.079384,
+              0.958014,
+              0.12035
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(a)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q04_U02",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q04",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "4",
+      "marks": 2,
+      "estimated_minutes": 2,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_5.1"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Translate a production schedule into linear inequalities.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U02.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U02_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "4(b)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U01_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.6536641003706871
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.6177359566581123
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.08187966923296262
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.107367,
+              0.355048,
+              0.904951,
+              0.395066
+            ]
+          }
+        ],
+        "original_parts": [
+          "(b)"
+        ],
+        "original_tariff_indices": [
+          1
+        ],
+        "difficulty_basis": "Translate a production schedule into linear inequalities.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "grouped_dependency",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(b)",
+            "printed_labels": [
+              "b"
+            ],
+            "marks": 2
+          }
+        ],
+        "reviewed_dependencies": [
+          "EDX_8FM0_2018_JUNE_27_Q04_U01"
+        ],
+        "part_display": "refined",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.299627
+            ]
+          }
+        ],
+        "context_reasons": [],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.083946
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041986,
+              0.187459,
+              0.958014,
+              0.385908
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041986,
+              0.12035,
+              0.958014,
+              0.225874
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "depends_on_question_ids": [
+        "EDX_8FM0_2018_JUNE_27_Q04_U01"
+      ],
+      "part_label": "(b)"
+    },
+    {
+      "question_id": "EDX_8FM0_2018_JUNE_27_Q04_U03",
+      "parent_question_id": "EDX_8FM0_2018_JUNE_27_Q04",
+      "source_type": "real_past_paper",
+      "is_sample": false,
+      "paper_id": "EDX_8FM0_2018_JUNE_27",
+      "subject_id": "EDX_ALEVEL_FMATH_9FM0",
+      "board": "Edexcel",
+      "level": "AS",
+      "subject": "Further Mathematics",
+      "spec_code": "8FM0",
+      "qualification_code": "8FM0",
+      "is_as": true,
+      "is_official_sample": false,
+      "subject_category": "STEM",
+      "year": 2018,
+      "series": "June",
+      "component": "27",
+      "question_number": "4",
+      "marks": 8,
+      "estimated_minutes": 10,
+      "difficulty": "medium",
+      "introduced_year": 12,
+      "primary_spec_points": [
+        "EDX_FMATH_AS_D1_5.2"
+      ],
+      "crossover_spec_points": [],
+      "preview_text": "Find a minimum-cost production schedule using a supplied feasible region.",
+      "include_in_custom_pool": true,
+      "content": {
+        "question_html": "",
+        "question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U03_with_insert.webp",
+        "mark_scheme_html": "",
+        "mark_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U03_scheme.webp"
+      },
+      "scheme_scope": "part",
+      "scheme_question_number": "4(c)",
+      "context": {
+        "full_question_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_full.webp",
+        "stem_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_U03_context.webp",
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2018_JUNE_27/Q04_scheme.webp"
+      },
+      "provenance": {
+        "review_status": "model_reviewed",
+        "reviewer_type": "model",
+        "question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "original_question_source_sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+        "original_scheme_source_sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+        "question_page_offset": 0,
+        "scheme_page_offset": 0,
+        "scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.04198575843074029,
+              0.05253526280771781,
+              0.9580142415692597,
+              0.6536641003706871
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.6177359566581123
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.04198575843074029,
+              0.023761999809904004,
+              0.9580142415692597,
+              0.08187966923296262
+            ]
+          }
+        ],
+        "source_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.107367,
+              0.575128,
+              0.904951,
+              0.677734
+            ]
+          }
+        ],
+        "original_parts": [
+          "(c)"
+        ],
+        "original_tariff_indices": [
+          2
+        ],
+        "difficulty_basis": "Find a minimum-cost production schedule using a supplied feasible region.",
+        "year_basis": "Printed Edexcel AS Further Mathematics assessment",
+        "context_basis": "shared_stem",
+        "qualification_code": "8FM0",
+        "original_tariffs": [
+          {
+            "label": "(c)",
+            "printed_labels": [
+              "c",
+              "i",
+              "ii"
+            ],
+            "marks": 8
+          }
+        ],
+        "required_insert_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.11503614435655682,
+              0.4551610702628472,
+              0.8313278698833839,
+              0.9069835507682652
+            ]
+          }
+        ],
+        "reviewed_dependencies": [],
+        "part_display": "refined",
+        "context_bridge_text": "demand, exactly cabinets be produced during these three weeks. This reduces the Due to 150 must constraints to xt+y<75 3y > 150 + x > 25 x y20 | which shown in Diagram in the book. are answer Given that the does cabinets left unfinished the end of week, not want at manager any a",
+        "part_display_positioning": "tesseract OCR word boxes (image-only source page)",
+        "context_regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.107367,
+              0.08569,
+              0.904951,
+              0.299627
+            ]
+          },
+          {
+            "page": 5,
+            "bbox": [
+              0.107367,
+              0.402322,
+              0.904951,
+              0.56618
+            ]
+          }
+        ],
+        "context_reasons": [
+          "text printed just before this part"
+        ],
+        "part_scheme_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041986,
+              0.0561,
+              0.958014,
+              0.083946
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041986,
+              0.385908,
+              0.958014,
+              0.562974
+            ]
+          },
+          {
+            "page": 11,
+            "bbox": [
+              0.041986,
+              0.562974,
+              0.958014,
+              0.653664
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041986,
+              0.023762,
+              0.958014,
+              0.079384
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041986,
+              0.225874,
+              0.958014,
+              0.570687
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041986,
+              0.570687,
+              0.958014,
+              0.617736
+            ]
+          },
+          {
+            "page": 14,
+            "bbox": [
+              0.041986,
+              0.023762,
+              0.958014,
+              0.078315
+            ]
+          }
+        ],
+        "part_scheme_check": "verified"
+      },
+      "module_id": "D1",
+      "official_paper_code": "8FM0/27",
+      "part_label": "(c)"
+    }
+  ],
+  "source_counts": {
+    "top_level_questions": 4,
+    "scored_parts": 13
+  }
+}

@@ -22,6 +22,9 @@ PILOT = 'EDX_9FM0_2024_JUNE_P1'
 PILOT_SOURCE = '74e1b1d4c256802c0817fdc942d7293197795f91beaa433a19b5a5f932d17f63'
 PILOT_SCHEME = 'f984b6b819d773127055fcc52857f8668b298f271d81aea842ba76278890f17e'
 TYPE3 = 'EDX_9FM0_2019_JUNE_P1'
+TYPE3_SOURCE = 'd16f808fd3124e9a155c00996a860c901b57addb1c1c9401579b6ba10bc2ded5'
+LATE_INSTRUCTION = 'EDX_9FM0_2020_AUTUMN_P2'
+LATE_INSTRUCTION_SOURCE = '8aac80f65360eb6a03167086b14aa18f07153162aed023f4542d261706344231'
 TYPE3_LABEL = re.compile(r'^\(cid:11\)\(cid:(6[89]|7[0-4])\)\(cid:12\)')
 ROMAN = ('i', 'ii', 'iii', 'iv', 'v', 'vi')
 
@@ -35,6 +38,43 @@ LABELS = {
     ('EDX_9FM0_2025_JUNE_P1', '9'): ('(i)(a)', '(i)(b)', '(i)(c)', '(ii)'),
     ('EDX_9FM0_2025_JUNE_P2', '4'): ('(i)', '(ii)(a)', '(ii)(b)'),
 }
+
+
+def type3_words(page):
+    """Recover text and boxes from the original font's encoded Latin glyphs.
+
+    Pearson's PDF represents its spaces as glyph 3. pdfplumber consequently
+    treats entire lines as single words. Use character geometry to split them
+    into the same boxes the normal part-rendering path expects.
+    """
+    for word in page.extract_words(return_chars=True, extra_attrs=['size']):
+        chars = word.pop('chars')
+        if '(cid:' not in word['text']:
+            yield word
+            continue
+        tokens = []
+        current = []
+        for char in chars:
+            encoded = re.fullmatch(r'\(cid:(\d+)\)', char['text'])
+            code = int(encoded[1]) if encoded else None
+            if code in (3, 3032):
+                if current:
+                    tokens.append(current)
+                    current = []
+                continue
+            if code is not None and 3 < code <= 97:
+                text = chr(code + 29)
+            else:
+                text = {237: '−', 537: 'θ', 652: 'π'}.get(code, char['text'])
+            current.append((char, text))
+        if current:
+            tokens.append(current)
+        for token in tokens:
+            yield {**word, 'text': ''.join(text for _, text in token),
+                   'x0': min(char['x0'] for char, _ in token),
+                   'x1': max(char['x1'] for char, _ in token),
+                   'top': min(char['top'] for char, _ in token),
+                   'bottom': max(char['bottom'] for char, _ in token)}
 
 
 def recover_type3_starts(candidate, question_pdf):
@@ -82,6 +122,24 @@ def normalize_parts(paper_id, question):
         part.update(part_label=label, printed_labels=printed)
 
 
+def restore_late_instruction(candidate, question_pdf):
+    """Preserve the rounding instruction printed just below Q4(b)'s tariff."""
+    if candidate['source_sha256'] != LATE_INSTRUCTION_SOURCE:
+        raise ValueError(f'{LATE_INSTRUCTION}: recheck the rounding instruction position')
+    question = next(q for q in candidate['questions'] if q['number'] == '4')
+    part = question['parts'][-1]
+    region = question['regions'][-1]
+    if part['part_label'] != '(b)' or part['page'] != 12 or region['page'] != 12:
+        raise ValueError(f'{LATE_INSTRUCTION}: recheck the Q4(b) crop')
+    with pdfplumber.open(question_pdf) as pdf:
+        page = pdf.pages[part['page'] - 1]
+        line = next(line for line in page.extract_text_lines()
+                    if 'giving your answer to 3 decimal places' in line['text'].casefold())
+        part['tariff_bottom'] = part.get('tariff_bottom', part['bottom'])
+        part['bottom'] = line['bottom']
+        region['bbox'][3] = round((line['bottom'] + 7) / page.height, 6)
+
+
 def trim_scheme_footer(scheme_pdf, regions):
     """Remove the publisher's final-page registration block, preserving scheme notes."""
     with pdfplumber.open(scheme_pdf) as pdf:
@@ -120,6 +178,8 @@ def extract_paper(paper, sources):
         recover_type3_starts(candidate, question_pdf)
     for question in candidate['questions']:
         normalize_parts(paper_id, question)
+    if paper_id == LATE_INSTRUCTION:
+        restore_late_instruction(candidate, question_pdf)
     schemes = scheme_regions(scheme_pdf, len(candidate['questions']))
     if paper_id == PILOT:
         if (candidate['source_sha256'] != PILOT_SOURCE or scheme_checksum != PILOT_SCHEME
