@@ -68,6 +68,13 @@ test('route tags, removed poems and content years', () => {
       assert(q.provenance.rubric_regions[0].bbox[3] <= q.provenance.source_regions[0].bbox[1], q.question_id);
       assert.match(q.context.figures[0].image_url, /\/HEAD_R_instructions\.webp$/, q.question_id);
     }
+    if (q.route === 'P') {
+      assert.equal(q.provenance.rubric_regions.length, 1, q.question_id);
+      const [rubric] = q.provenance.rubric_regions;
+      const [task] = q.provenance.source_regions;
+      assert(rubric.page < task.page || (rubric.page === task.page && rubric.bbox[3] <= task.bbox[1]), q.question_id);
+      assert.match(q.context.figures[0].image_url, /\/HEAD_P_instructions\.webp$/, q.question_id);
+    }
     if (q.is_as) {
       assert.equal(q.level, 'AS');
       assert(q.primary_spec_points.every(id => asShared.has(id)), q.question_id);

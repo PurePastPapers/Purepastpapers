@@ -123,6 +123,27 @@ def booklet_start(pdf, texts):
     return None
 
 
+def rubric_box(pdf, page_index, rows):
+    words = [word for row in rows for word in row['words']]
+    left = min(word['x0'] for word in words) - 5
+    right = pdf.pages[page_index].width - max(word['x1'] for word in words) - 5
+    return box(pdf, [(page_index, row) for row in rows], left=left, right=right)
+
+
+def prose_rubric(pdf, page_number):
+    """Keep each paper's printed Prose choice rule, including any period restriction."""
+    for page_index in range(page_number - 1, 0, -1):
+        rows = lines_of(pdf.pages[page_index], right=34)
+        choose = next((i for i, row in enumerate(rows) if re.match(r'Answer ONE question on', row['text'], re.I)), None)
+        if choose is not None:
+            rule = [rows[choose]]
+            next_row = rows[choose + 1:choose + 2]
+            if next_row and re.match(r'(?:Begin your answer|page \d+\.)', next_row[0]['text'], re.I):
+                rule.extend(next_row)
+            return rubric_box(pdf, page_index, rule)
+    raise ValueError(f'Prose rubric missing at or before PDF page {page_number}')
+
+
 def romantics_rubric(pdf, page_number):
     """Keep the choose-one and prescribed-poem rules printed above The Romantics."""
     page_index = page_number - 1
@@ -135,11 +156,7 @@ def romantics_rubric(pdf, page_number):
     choose = next((i for i, row in enumerate(before) if re.match(r'Answer ONE question', row['text'], re.I)), None)
     if choose is None or not any('prescribed list' in row['text'] for row in before[choose:]):
         raise ValueError(f'Romantics rubric missing on PDF page {page_number}')
-    rubric = before[choose:]
-    words = [word for row in rubric for word in row['words']]
-    left = min(word['x0'] for word in words) - 5
-    right = page.width - max(word['x1'] for word in words) - 5
-    return box(pdf, [(page_index, row) for row in rubric], left=left, right=right)
+    return rubric_box(pdf, page_index, before[choose:])
 
 
 def extract(path, paper):

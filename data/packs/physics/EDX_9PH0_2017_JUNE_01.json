@@ -4200,17 +4200,36 @@
         "part_display": "refined",
         "context_regions": [
           {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.092
+            ]
+          },
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.302,
+              0.958003,
+              0.337
+            ]
+          },
+          {
             "page": 22,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.065,
               0.958003,
-              0.4350408314773571
+              0.426
             ]
           }
         ],
-        "context_includes_stem_image": "Q18_stem.webp",
-        "context_reasons": [],
+        "context_reasons": [
+          "Show the shared motor diagram and the supplied power equation once for the linked calculation and comparison."
+        ],
         "part_scheme_regions": [
           {
             "page": 19,
@@ -4232,19 +4251,8 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_regions_refined": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.435244
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "Show the shared motor diagram and the supplied power equation once for the linked calculation and comparison.",
+        "part_display_review_source": "5e9e122afdfaf049774d38e05b83c83cdba0b41bc28484a07e7fed5b76f79979"
       },
       "part_label": "(b)(ii)"
     },
@@ -4362,28 +4370,35 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 22,
+            "page": 21,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.065,
               0.958003,
-              0.42242019302152933
+              0.092
             ]
           },
           {
-            "page": 23,
+            "page": 21,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.302,
               0.958003,
-              0.16852264291017074
+              0.337
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.426
             ]
           }
         ],
-        "context_includes_stem_image": "Q18_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "names an earlier part"
+          "Use the force found in part (b)(ii). Supply the word equation and motor diagram as unscored context."
         ],
         "part_scheme_regions": [
           {
@@ -4419,48 +4434,13 @@
         "context_named_parts": [
           "EDX_9PH0_2017_JUNE_01_Q18_U03"
         ],
-        "context_regions_refined": [
-          {
-            "page": 21,
-            "bbox": [
-              0.041997,
-              0.097814,
-              0.958003,
-              0.391507
-            ]
-          },
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.422615
-            ]
-          },
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.435244,
-              0.958003,
-              0.849921
-            ]
-          },
-          {
-            "page": 23,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.168163
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "Use the force found in part (b)(ii). Supply the word equation and motor diagram as unscored context.",
+        "part_display_review_source": "5e9e122afdfaf049774d38e05b83c83cdba0b41bc28484a07e7fed5b76f79979"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2017_JUNE_01_Q18_U03"
+      ]
     }
   ],
   "build_signature": "b2e01dfd3ff0dfa8e24aadc948b7c701f8e578243e34a49905926e9a2ac710d9"

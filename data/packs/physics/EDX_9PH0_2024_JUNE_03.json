@@ -2962,18 +2962,26 @@
         "part_display": "refined",
         "context_regions": [
           {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.401
+            ]
+          },
+          {
             "page": 19,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.064,
               0.958003,
-              0.18337045285820341
+              0.093
             ]
           }
         ],
-        "context_includes_stem_image": "Q08_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The spring-mass calculation uses the pendulum period obtained from part (b)(i)."
         ],
         "part_scheme_regions": [
           {
@@ -2999,21 +3007,13 @@
         "context_named_parts": [
           "EDX_9PH0_2024_JUNE_03_Q08_U02"
         ],
-        "context_regions_refined": [
-          {
-            "page": 19,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.183609
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The spring-mass calculation uses the pendulum period obtained from part (b)(i).",
+        "part_display_review_source": "db46b03042bb0d2ebd01dc5f44b5ba84f7ccd568081923550491e0966a5a15d5"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2024_JUNE_03_Q08_U02"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2024_JUNE_03_Q09_U01",

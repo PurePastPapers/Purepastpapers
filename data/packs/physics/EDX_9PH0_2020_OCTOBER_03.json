@@ -2418,25 +2418,23 @@
             "page": 14,
             "bbox": [
               0.041997,
-              0.5723830734966593,
+              0.065,
               0.958003,
-              0.7178916109873794
+              0.388
             ]
           },
           {
             "page": 15,
             "bbox": [
               0.041997,
-              0.23162583518930957,
+              0.226,
               0.958003,
-              0.4239049740163326
+              0.288
             ]
           }
         ],
-        "context_includes_stem_image": "Q07_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "earlier figure or data"
+          "The specific-charge calculation uses electron speed from the electric and magnetic field relation in part (c)(i)."
         ],
         "part_scheme_regions": [
           {
@@ -2462,30 +2460,13 @@
         "context_named_parts": [
           "EDX_9PH0_2020_OCTOBER_03_Q07_U04"
         ],
-        "context_regions_refined": [
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.572054,
-              0.958003,
-              0.718173
-            ]
-          },
-          {
-            "page": 15,
-            "bbox": [
-              0.041997,
-              0.231461,
-              0.958003,
-              0.423936
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The specific-charge calculation uses electron speed from the electric and magnetic field relation in part (c)(i).",
+        "part_display_review_source": "386917b2c6a8a8871d151adaa86054533de29df4eef837da59a87b1f8aac177e"
       },
-      "part_label": "(c)(ii)"
+      "part_label": "(c)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2020_OCTOBER_03_Q07_U04"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2020_OCTOBER_03_Q07_U06",

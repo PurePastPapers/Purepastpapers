@@ -1655,19 +1655,26 @@
         "part_display": "refined",
         "context_regions": [
           {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.126
+            ]
+          },
+          {
             "page": 12,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.064,
               0.958003,
-              0.2182628062360802
+              0.093
             ]
           }
         ],
-        "context_includes_stem_image": "Q11_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (mass)"
+          "The table gives each string’s mass per unit length. Keep the violin introduction and exclude the earlier calculation."
         ],
         "part_scheme_regions": [
           {
@@ -1693,19 +1700,8 @@
         "context_named_parts": [
           "EDX_8PH0_2025_JUNE_02_Q11_U02"
         ],
-        "context_regions_refined": [
-          {
-            "page": 12,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.218261
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The table gives each string’s mass per unit length. Keep the violin introduction and exclude the earlier calculation.",
+        "part_display_review_source": "269031e9792db61bf47752d7a9c4a7628776971bbe1a58f36c7958aeb4410159"
       },
       "part_label": "(b)(ii)"
     },

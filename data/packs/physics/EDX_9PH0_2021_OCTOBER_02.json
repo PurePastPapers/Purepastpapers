@@ -3635,11 +3635,19 @@
         "context_basis": "shared_stem",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [],
-        "context_includes_stem_image": "Q19_stem.webp",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.138
+            ]
+          }
+        ],
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (lens)"
+          "The qualitative focus comparison uses changes in refractive index and does not require the earlier numerical focal length."
         ],
         "part_scheme_regions": [
           {
@@ -3662,28 +3670,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_regions_refined": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.14292,
-              0.958003,
-              0.213276
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_9PH0_2021_OCTOBER_02_Q19_U01": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The qualitative focus comparison uses changes in refractive index and does not require the earlier numerical focal length.",
+        "part_display_review_source": "38ff6d57f9878db2b1c5fcbdde498ce864d92c585e17c8b2d484f270139f5353"
       },
-      "part_label": "(a)(iii)",
-      "depends_on_question_ids": [
-        "EDX_9PH0_2021_OCTOBER_02_Q19_U01"
-      ]
+      "part_label": "(a)(iii)"
     },
     {
       "question_id": "EDX_9PH0_2021_OCTOBER_02_Q19_U04",
@@ -3785,10 +3775,19 @@
         "context_basis": "shared_stem",
         "qualification_code": "9PH0",
         "part_display": "refined",
-        "context_regions": [],
-        "context_includes_stem_image": "Q19_stem.webp",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.138
+            ]
+          }
+        ],
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The speed calculation uses the refractive index stated in this part, not the lens focal length."
         ],
         "part_scheme_regions": [
           {
@@ -3811,28 +3810,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_regions_refined": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.14292,
-              0.958003,
-              0.212088
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_9PH0_2021_OCTOBER_02_Q19_U01": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The speed calculation uses the refractive index stated in this part, not the lens focal length.",
+        "part_display_review_source": "38ff6d57f9878db2b1c5fcbdde498ce864d92c585e17c8b2d484f270139f5353"
       },
-      "part_label": "(a)(iv)",
-      "depends_on_question_ids": [
-        "EDX_9PH0_2021_OCTOBER_02_Q19_U01"
-      ]
+      "part_label": "(a)(iv)"
     },
     {
       "question_id": "EDX_9PH0_2021_OCTOBER_02_Q19_U05",
@@ -4234,33 +4215,25 @@
             "page": 24,
             "bbox": [
               0.041997,
-              0.42538975501113585,
+              0.064,
               0.958003,
-              0.49443207126948774
+              0.42
             ]
           }
         ],
-        "context_includes_stem_image": "Q20_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The percentage calculation uses the decay constant found in part (a)(i)."
         ],
         "context_named_parts": [
           "EDX_9PH0_2021_OCTOBER_02_Q20_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 24,
-            "bbox": [
-              0.041997,
-              0.425041,
-              0.958003,
-              0.494204
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20"
+        "part_display_review": "The percentage calculation uses the decay constant found in part (a)(i).",
+        "part_display_review_source": "38ff6d57f9878db2b1c5fcbdde498ce864d92c585e17c8b2d484f270139f5353"
       },
-      "part_label": "(a)(ii)"
+      "part_label": "(a)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2021_OCTOBER_02_Q20_U01"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2021_OCTOBER_02_Q20_U03",

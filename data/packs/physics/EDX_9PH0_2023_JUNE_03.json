@@ -4994,37 +4994,38 @@
         "part_display": "refined",
         "context_regions": [
           {
+            "page": 30,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.55
+            ]
+          },
+          {
             "page": 31,
             "bbox": [
               0.041997,
-              0.3771343726800297,
+              0.37,
               0.958003,
-              0.6889383815887157
+              0.625
             ]
           }
         ],
-        "context_includes_stem_image": "Q11_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The density uncertainty uses the area uncertainty from part (c)(i). Keep the washer dimensions and formula as shared context."
         ],
         "booklet_pages_trimmed": true,
         "context_named_parts": [
           "EDX_9PH0_2023_JUNE_03_Q11_U03"
         ],
-        "context_regions_refined": [
-          {
-            "page": 31,
-            "bbox": [
-              0.041997,
-              0.376978,
-              0.958003,
-              0.688627
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20"
+        "part_display_review": "The density uncertainty uses the area uncertainty from part (c)(i). Keep the washer dimensions and formula as shared context.",
+        "part_display_review_source": "50c1de6dd3765b16872a792123cb1fe1f635f98609026a3361db58a3ef26132b"
       },
-      "part_label": "(c)(ii)"
+      "part_label": "(c)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2023_JUNE_03_Q11_U03"
+      ]
     }
   ],
   "build_signature": "9f9f6b0155287b05f7e928691643b5ae11b79dde8b77ff417f98b30e5e4e0a28"

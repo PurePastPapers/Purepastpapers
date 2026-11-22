@@ -1396,15 +1396,14 @@
             "page": 8,
             "bbox": [
               0.041997,
-              0.5567928730512249,
+              0.064,
               0.958003,
-              0.6139569413511508
+              0.552
             ]
           }
         ],
-        "context_includes_stem_image": "Q12_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The wire length uses the shunt resistance from part (a). Keep the ammeter introduction and circuit once."
         ],
         "part_scheme_regions": [
           {
@@ -1430,21 +1429,13 @@
         "context_named_parts": [
           "EDX_9PH0_2020_OCTOBER_01_Q12_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 8,
-            "bbox": [
-              0.041997,
-              0.556778,
-              0.958003,
-              0.614101
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The wire length uses the shunt resistance from part (a). Keep the ammeter introduction and circuit once.",
+        "part_display_review_source": "608f20b3467bb23e9979a7b81935c74715271eb94450b34f8180581d0bd47811"
       },
-      "part_label": "(b)"
+      "part_label": "(b)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2020_OCTOBER_01_Q12_U01"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2020_OCTOBER_01_Q13_U01",

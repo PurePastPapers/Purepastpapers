@@ -4833,45 +4833,26 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 23,
+            "page": 22,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.064,
               0.958003,
-              0.12694877505567928
+              0.11
             ]
           }
         ],
-        "context_includes_stem_image": "Q18_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The isotope explanation uses neutron and proton numbers. Keep the facility introduction without the earlier velocity calculation."
         ],
         "booklet_pages_trimmed": true,
         "context_named_parts": [
           "EDX_9PH0_2025_JUNE_01_Q18_U03"
         ],
-        "context_regions_refined": [
-          {
-            "page": 23,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.126652
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_9PH0_2025_JUNE_01_Q18_U03": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The isotope explanation uses neutron and proton numbers. Keep the facility introduction without the earlier velocity calculation.",
+        "part_display_review_source": "e426226b7b17234c7589bc25e0df2f8480b705129a465937b1db823fc42e4fe5"
       },
-      "part_label": "(c)",
-      "depends_on_question_ids": [
-        "EDX_9PH0_2025_JUNE_01_Q18_U03"
-      ]
+      "part_label": "(c)"
     }
   ],
   "build_signature": "11b929cf29ad62718b43d6bbfb2b94316c50d51febbdf2db5fa1277dbc0289c9"

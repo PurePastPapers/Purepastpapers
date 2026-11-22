@@ -2953,15 +2953,14 @@
             "page": 16,
             "bbox": [
               0.041997,
-              0.7357089829250185,
+              0.064,
               0.958003,
-              0.8047512991833704
+              0.729
             ]
           }
         ],
-        "context_includes_stem_image": "Q19_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The fraction of melted ice uses the total mass found in part (a). Keep the dimensions and sculpture diagram."
         ],
         "part_scheme_regions": [
           {
@@ -2987,21 +2986,13 @@
         "context_named_parts": [
           "EDX_9PH0_2025_JUNE_02_Q19_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 16,
-            "bbox": [
-              0.041997,
-              0.735392,
-              0.958003,
-              0.804558
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The fraction of melted ice uses the total mass found in part (a). Keep the dimensions and sculpture diagram.",
+        "part_display_review_source": "e8e7b3da76a79b6202ac324c56c3b1749eeb85d54fbb2e95077e07fe9b87cfca"
       },
-      "part_label": "(b)(i)"
+      "part_label": "(b)(i)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2025_JUNE_02_Q19_U01"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2025_JUNE_02_Q19_U03",

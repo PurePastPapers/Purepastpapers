@@ -3164,18 +3164,17 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 19,
+            "page": 18,
             "bbox": [
               0.041997,
-              0.06904231625835189,
+              0.064,
               0.958003,
-              0.24498886414253898
+              0.171
             ]
           }
         ],
-        "context_includes_stem_image": "Q16_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The launch-speed calculation uses its own gravitational potential and Earth data. Keep the rock scenario without the earlier age calculation."
         ],
         "part_scheme_regions": [
           {
@@ -3192,28 +3191,10 @@
         "context_named_parts": [
           "EDX_9PH0_2020_OCTOBER_02_Q16_U02"
         ],
-        "context_regions_refined": [
-          {
-            "page": 19,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.245349
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_9PH0_2020_OCTOBER_02_Q16_U02": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The launch-speed calculation uses its own gravitational potential and Earth data. Keep the rock scenario without the earlier age calculation.",
+        "part_display_review_source": "ea7338f76c6e0bc1b981c0cc725dba54d46345b09aeb7502ae31f3ccb40b483c"
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_9PH0_2020_OCTOBER_02_Q16_U02"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_9PH0_2020_OCTOBER_02_Q16_U04",

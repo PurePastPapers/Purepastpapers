@@ -31,7 +31,7 @@ sys.path.insert(0, str(HERE.parent / 'physics'))
 sys.path.insert(0, str(HERE))
 from render import SourceRenderer  # noqa: E402
 from schemes import scheme_regions  # noqa: E402
-from extract import romantics_rubric  # noqa: E402
+from extract import prose_rubric, romantics_rubric  # noqa: E402
 
 SUBJECT = 'EDX_ALEVEL_ENGLIT_9ET0'
 SIGNATURE = b'englit-build-v1'
@@ -109,15 +109,18 @@ def build_paper(paper, research, spec):
         if q['route'] in ('P', 'R') and q['heading_regions']:
             context['stem_image_url'] = put(f"HEAD_{q['route']}", q['heading_regions'])
             reasons.append('set-text heading printed above the question')
-        if q['route'] == 'R':
+        if q['route'] in ('P', 'R'):
+            route = q['route']
             if rubric_regions is None:
                 import pdfplumber
                 with pdfplumber.open(qp) as pdf:
-                    rubric_regions = romantics_rubric(pdf, q['heading_regions'][0]['page'])
-            context['figures'] = [{'label': 'Official choice and prescribed poem instructions',
+                    select_rubric = romantics_rubric if route == 'R' else prose_rubric
+                    rubric_regions = select_rubric(pdf, q['heading_regions'][0]['page'])
+            label = 'Official choice and prescribed poem instructions' if route == 'R' else 'Official Prose choice instructions'
+            context['figures'] = [{'label': label,
                                    'source': 'question_paper',
-                                   'image_url': put('HEAD_R_instructions', rubric_regions)}]
-            reasons.append('printed choice and prescribed poem instructions')
+                                   'image_url': put(f'HEAD_{route}_instructions', rubric_regions)}]
+            reasons.append('printed choice and prescribed poem instructions' if route == 'R' else 'printed Prose choice instructions')
         if q.get('context_regions'):
             pages = q['context_pages']
             label = f"Source Booklet page{'s' if len(pages) > 1 else ''} {', '.join(map(str, pages))}: the unseen poem and {', '.join(q['named_poems'])}"
@@ -144,7 +147,7 @@ def build_paper(paper, research, spec):
                            'source_regions': q['regions'], 'scheme_regions': scheme['indicative'] + scheme['grid'],
                            'scheme_indicative_regions': scheme['indicative'], 'scheme_grid_regions': scheme['grid'],
                            'booklet_regions': q.get('context_regions', []), 'original_parts': [q['number']],
-                           **({'rubric_regions': rubric_regions} if q['route'] == 'R' else {}),
+                           **({'rubric_regions': rubric_regions} if q['route'] in ('P', 'R') else {}),
                            'original_tariff_indices': [0], 'difficulty_basis': rv['difficulty_basis'],
                            'context_basis': ('unscored context: ' + ', '.join(reasons)) if reasons else 'independent',
                            'content_year_basis': 'AS 8ET0 unit' if is_as else ('every primary leaf is an AS 8ET0 set text' if year == 12 else 'assesses A-level-only content'),

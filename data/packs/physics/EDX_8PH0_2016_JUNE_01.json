@@ -2649,16 +2649,14 @@
             "page": 16,
             "bbox": [
               0.038345,
-              0.21298882681564246,
+              0.092,
               0.961655,
-              0.29399441340782123
+              0.206
             ]
           }
         ],
-        "context_includes_stem_image": "Q14_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (battery)"
+          "The maximum charge calculation uses the stored energy converted in part (a)(i)."
         ],
         "part_scheme_regions": [
           {
@@ -2684,21 +2682,13 @@
         "context_named_parts": [
           "EDX_8PH0_2016_JUNE_01_Q14_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.212641,
-              0.961655,
-              0.293862
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The maximum charge calculation uses the stored energy converted in part (a)(i).",
+        "part_display_review_source": "51638563032d4b642c597ac30d9b54c6846f3174baa25f345c4d558042ba7d06"
       },
-      "part_label": "(a)(ii)"
+      "part_label": "(a)(ii)",
+      "depends_on_question_ids": [
+        "EDX_8PH0_2016_JUNE_01_Q14_U01"
+      ]
     },
     {
       "question_id": "EDX_8PH0_2016_JUNE_01_Q14_U03",
@@ -2800,11 +2790,19 @@
         "context_basis": "shared_stem",
         "qualification_code": "8PH0",
         "part_display": "refined",
-        "context_regions": [],
-        "context_includes_stem_image": "Q14_stem.webp",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.038345,
+              0.092,
+              0.961655,
+              0.206
+            ]
+          }
+        ],
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (battery)"
+          "Charging time uses the battery charge from part (a)(ii), rather than the energy alone."
         ],
         "part_scheme_regions": [
           {
@@ -2827,27 +2825,12 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_regions_refined": [
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.212641,
-              0.961655,
-              0.293862
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_8PH0_2016_JUNE_01_Q14_U01": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "Charging time uses the battery charge from part (a)(ii), rather than the energy alone.",
+        "part_display_review_source": "51638563032d4b642c597ac30d9b54c6846f3174baa25f345c4d558042ba7d06"
       },
       "part_label": "(a)(iii)",
       "depends_on_question_ids": [
-        "EDX_8PH0_2016_JUNE_01_Q14_U01"
+        "EDX_8PH0_2016_JUNE_01_Q14_U02"
       ]
     },
     {
@@ -2949,25 +2932,14 @@
             "page": 16,
             "bbox": [
               0.038345,
-              0.21298882681564246,
+              0.092,
               0.961655,
-              0.29399441340782123
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.36522346368715086,
-              0.961655,
-              0.8589385474860335
+              0.206
             ]
           }
         ],
-        "context_includes_stem_image": "Q14_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "names an earlier part"
+          "The charger comparison uses the two printed ratings and does not require a previous numerical result."
         ],
         "part_scheme_regions": [
           {
@@ -2995,50 +2967,10 @@
           "EDX_8PH0_2016_JUNE_01_Q14_U02",
           "EDX_8PH0_2016_JUNE_01_Q14_U03"
         ],
-        "context_regions_refined": [
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.212641,
-              0.961655,
-              0.293862
-            ]
-          },
-          {
-            "page": 16,
-            "bbox": [
-              0.038345,
-              0.36549,
-              0.961655,
-              0.859031
-            ]
-          },
-          {
-            "page": 17,
-            "bbox": [
-              0.038345,
-              0.042289,
-              0.961655,
-              0.062347
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_8PH0_2016_JUNE_01_Q14_U01": "wording names (a)(i): \"in part (a)\"",
-          "EDX_8PH0_2016_JUNE_01_Q14_U02": "wording names (a)(ii): \"in part (a)\"",
-          "EDX_8PH0_2016_JUNE_01_Q14_U03": "wording names (a)(iii): \"in part (a)\""
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The charger comparison uses the two printed ratings and does not require a previous numerical result.",
+        "part_display_review_source": "51638563032d4b642c597ac30d9b54c6846f3174baa25f345c4d558042ba7d06"
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_8PH0_2016_JUNE_01_Q14_U01",
-        "EDX_8PH0_2016_JUNE_01_Q14_U02",
-        "EDX_8PH0_2016_JUNE_01_Q14_U03"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_8PH0_2016_JUNE_01_Q15_U01",

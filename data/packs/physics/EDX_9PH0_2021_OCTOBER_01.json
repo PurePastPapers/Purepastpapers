@@ -1720,16 +1720,14 @@
             "page": 10,
             "bbox": [
               0.041997,
-              0.5397178916109874,
+              0.064,
               0.958003,
-              0.6265775798069785
+              0.417
             ]
           }
         ],
-        "context_includes_stem_image": "Q12_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (ball)"
+          "The projectile calculation uses the initial golf-ball speed found in part (b)(i)."
         ],
         "part_scheme_regions": [
           {
@@ -1764,20 +1762,13 @@
         "context_named_parts": [
           "EDX_9PH0_2021_OCTOBER_01_Q12_U02"
         ],
-        "context_regions_refined": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.539774,
-              0.958003,
-              0.626764
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20"
+        "part_display_review": "The projectile calculation uses the initial golf-ball speed found in part (b)(i).",
+        "part_display_review_source": "8c16949c2ceff9b08a964c86ce915042abd64348860792f3a314a1a94bee8470"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2021_OCTOBER_01_Q12_U02"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2021_OCTOBER_01_Q13_U01",

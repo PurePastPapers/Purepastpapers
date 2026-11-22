@@ -3911,15 +3911,14 @@
             "page": 24,
             "bbox": [
               0.041997,
-              0.17520415738678544,
+              0.066,
               0.958003,
-              0.21529324424647364
+              0.171
             ]
           }
         ],
-        "context_includes_stem_image": "Q19_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result"
+          "The temperature calculation uses the luminosity of Proxima Centauri found in part (a)(i)."
         ],
         "part_scheme_regions": [
           {
@@ -3945,21 +3944,13 @@
         "context_named_parts": [
           "EDX_9PH0_2018_JUNE_02_Q19_U01"
         ],
-        "context_regions_refined": [
-          {
-            "page": 24,
-            "bbox": [
-              0.041997,
-              0.129766,
-              0.958003,
-              0.21526
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The temperature calculation uses the luminosity of Proxima Centauri found in part (a)(i).",
+        "part_display_review_source": "92f4156e281c7b8b74c6ea0a9fa354c96328fb10238f64e5b2242449a82e8046"
       },
-      "part_label": "(a)(ii)"
+      "part_label": "(a)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2018_JUNE_02_Q19_U01"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2018_JUNE_02_Q19_U03",

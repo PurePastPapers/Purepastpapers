@@ -3481,47 +3481,28 @@
         "part_display": "refined",
         "context_regions": [
           {
-            "page": 30,
+            "page": 29,
             "bbox": [
               0.041997,
-              0.3771343726800297,
+              0.065,
               0.958003,
-              0.4461766889383816
+              0.653
             ]
           }
         ],
-        "context_includes_stem_image": "Q17_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (mass)"
+          "The launch-speed calculation uses the work found in part (b). Keep the common force–extension graph."
         ],
         "context_named_parts": [
           "EDX_8PH0_SAMPLE_02_Q17_U02"
         ],
-        "context_regions_refined": [
-          {
-            "page": 30,
-            "bbox": [
-              0.041997,
-              0.069328,
-              0.958003,
-              0.172653
-            ]
-          },
-          {
-            "page": 30,
-            "bbox": [
-              0.041997,
-              0.376963,
-              0.958003,
-              0.445832
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The launch-speed calculation uses the work found in part (b). Keep the common force–extension graph.",
+        "part_display_review_source": "a20facd98555b13422709eb58db6a3d880d948495bb84378080cb9ff6c2a696e"
       },
-      "part_label": "(c)"
+      "part_label": "(c)",
+      "depends_on_question_ids": [
+        "EDX_8PH0_SAMPLE_02_Q17_U02"
+      ]
     },
     {
       "question_id": "EDX_8PH0_SAMPLE_02_Q17_U04",

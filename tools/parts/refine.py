@@ -1168,15 +1168,16 @@ def main():
                                            separators=(',', ':')) + '\n')
         print(pid, 'assets', len(catalogue['assets']), '->', len(assets), 'bytes', old_size, '->',
               cat_path.stat().st_size if not args.dry else '(dry)', flush=True)
-    if slug == 'maths' and not args.dry:
+    if slug in ('maths', 'fmaths') and not args.dry:
         spec = importlib.util.spec_from_file_location(
             'maths_part_display_overrides', ROOT / 'tools/maths/apply_part_display_overrides.py')
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        applied, missing = module.apply_overrides(args.sources, _render.SourceRenderer, paper_ids=selected_papers)
-        stats['maths_reviewed_displays'] = applied
+        applied, missing = module.apply_overrides(
+            args.sources, _render.SourceRenderer, paper_ids=selected_papers, slug=slug)
+        stats['reviewed_displays'] = applied
         if missing:
-            print(f'No checksum-matched PDF for reviewed Maths overrides: {", ".join(missing)}', file=sys.stderr)
+            print(f'No checksum-matched PDF for reviewed part-display overrides: {", ".join(missing)}', file=sys.stderr)
     print(json.dumps(stats, indent=1))
     if args.report:
         args.report.write_text(json.dumps(report, indent=1))

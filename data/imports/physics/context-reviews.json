@@ -1,4 +1,61 @@
 {
+  "EDX_8PH0_2016_JUNE_01": {
+    "source_sha256": "51638563032d4b642c597ac30d9b54c6846f3174baa25f345c4d558042ba7d06",
+    "questions": {
+      "EDX_8PH0_2016_JUNE_01_Q14_U02": {
+        "reason": "The maximum charge calculation uses the stored energy converted in part (a)(i).",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.038345,
+              0.092,
+              0.961655,
+              0.206
+            ]
+          }
+        ],
+        "depends_on": "EDX_8PH0_2016_JUNE_01_Q14_U01"
+      },
+      "EDX_8PH0_2016_JUNE_01_Q14_U03": {
+        "reason": "Charging time uses the battery charge from part (a)(ii), rather than the energy alone.",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.038345,
+              0.092,
+              0.961655,
+              0.206
+            ]
+          }
+        ],
+        "depends_on": "EDX_8PH0_2016_JUNE_01_Q14_U02",
+        "remove_dependencies": [
+          "EDX_8PH0_2016_JUNE_01_Q14_U01"
+        ]
+      },
+      "EDX_8PH0_2016_JUNE_01_Q14_U04": {
+        "reason": "The charger comparison uses the two printed ratings and does not require a previous numerical result.",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.038345,
+              0.092,
+              0.961655,
+              0.206
+            ]
+          }
+        ],
+        "remove_dependencies": [
+          "EDX_8PH0_2016_JUNE_01_Q14_U01",
+          "EDX_8PH0_2016_JUNE_01_Q14_U02",
+          "EDX_8PH0_2016_JUNE_01_Q14_U03"
+        ]
+      }
+    }
+  },
   "EDX_8PH0_2016_JUNE_02": {
     "source_sha256": "8e940c63df2f434068270894235b6785d155620151917f5db69ba395a7bc012b",
     "questions": {
@@ -120,6 +177,20 @@
           }
         ],
         "depends_on": "EDX_8PH0_2019_JUNE_01_Q15_U01"
+      },
+      "EDX_8PH0_2019_JUNE_01_Q13_U03": {
+        "reason": "Keep the hiker diagram and definitions of the forces. Exclude the scored tasks from part (a).",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041994,
+              0.068,
+              0.958006,
+              0.448
+            ]
+          }
+        ]
       }
     }
   },
@@ -295,6 +366,321 @@
       }
     }
   },
+  "EDX_8PH0_2025_JUNE_02": {
+    "source_sha256": "269031e9792db61bf47752d7a9c4a7628776971bbe1a58f36c7958aeb4410159",
+    "questions": {
+      "EDX_8PH0_2025_JUNE_02_Q11_U03": {
+        "reason": "The table gives each string’s mass per unit length. Keep the violin introduction and exclude the earlier calculation.",
+        "context_regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.126
+            ]
+          },
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.093
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_8PH0_SAMPLE_01": {
+    "source_sha256": "2b9d831e9dfb7e7519d7fc64d7a9e56659e7136b00d97985740ed773042b1a71",
+    "questions": {
+      "EDX_8PH0_SAMPLE_01_Q10_U02": {
+        "reason": "Keep the printed speed, reaction time and braking time. The collision check can use the data directly, so remove the earlier graph task.",
+        "context_regions": [
+          {
+            "page": 6,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.41
+            ]
+          }
+        ]
+      },
+      "EDX_8PH0_SAMPLE_01_Q14_U02": {
+        "reason": "Keep the laboratory investigation setup without the earlier scored circuit-completion task.",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.111
+            ]
+          }
+        ]
+      }
+    },
+    "original_source_sha256": "7f3e88e5c9baf59a25ce454b51d5fd820389098c6d03655e74e37cfd05ed1a28",
+    "source_page_offset": 10
+  },
+  "EDX_8PH0_SAMPLE_02": {
+    "source_sha256": "a20facd98555b13422709eb58db6a3d880d948495bb84378080cb9ff6c2a696e",
+    "questions": {
+      "EDX_8PH0_SAMPLE_02_Q17_U03": {
+        "reason": "The launch-speed calculation uses the work found in part (b). Keep the common force–extension graph.",
+        "context_regions": [
+          {
+            "page": 29,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.653
+            ]
+          }
+        ],
+        "depends_on": "EDX_8PH0_SAMPLE_02_Q17_U02"
+      }
+    },
+    "original_source_sha256": "7f3e88e5c9baf59a25ce454b51d5fd820389098c6d03655e74e37cfd05ed1a28",
+    "source_page_offset": 50
+  },
+  "EDX_9PH0_2017_JUNE_01": {
+    "source_sha256": "5e9e122afdfaf049774d38e05b83c83cdba0b41bc28484a07e7fed5b76f79979",
+    "questions": {
+      "EDX_9PH0_2017_JUNE_01_Q18_U04": {
+        "reason": "Use the force found in part (b)(ii). Supply the word equation and motor diagram as unscored context.",
+        "context_regions": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.092
+            ]
+          },
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.302,
+              0.958003,
+              0.337
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.426
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2017_JUNE_01_Q18_U03"
+      },
+      "EDX_9PH0_2017_JUNE_01_Q18_U03": {
+        "reason": "Show the shared motor diagram and the supplied power equation once for the linked calculation and comparison.",
+        "context_regions": [
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.092
+            ]
+          },
+          {
+            "page": 21,
+            "bbox": [
+              0.041997,
+              0.302,
+              0.958003,
+              0.337
+            ]
+          },
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.426
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2018_JUNE_01": {
+    "source_sha256": "c0a3f8a95067d8603c5adf23a377342fe9a8cf191214553a79e45d4434080799",
+    "questions": {
+      "EDX_9PH0_2018_JUNE_01_Q18_U04": {
+        "reason": "The mark scheme uses the time found in part (b)(ii) and allows error carried forward from that part.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.066,
+              0.958003,
+              0.273
+            ]
+          },
+          {
+            "page": 23,
+            "bbox": [
+              0.041997,
+              0.066,
+              0.958003,
+              0.398
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2018_JUNE_01_Q18_U03",
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.14795918367346939,
+              0.917,
+              0.19081632653061226
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.6551020408163265,
+              0.917,
+              0.7571428571428571
+            ]
+          }
+        ]
+      },
+      "EDX_9PH0_2018_JUNE_01_Q18_U05": {
+        "reason": "The mark scheme also uses the time from part (b)(ii) to find vertical displacement and allows error carried forward.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.066,
+              0.958003,
+              0.273
+            ]
+          },
+          {
+            "page": 23,
+            "bbox": [
+              0.041997,
+              0.066,
+              0.958003,
+              0.398
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2018_JUNE_01_Q18_U03",
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.14795918367346939,
+              0.917,
+              0.19081632653061226
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.7561224489795918,
+              0.917,
+              0.8826530612244898
+            ]
+          }
+        ]
+      },
+      "EDX_9PH0_2018_JUNE_01_Q18_U02": {
+        "reason": "Match the part (b)(i) scheme row, identified by its printed reference and 2-mark tariff.",
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.14795918367346939,
+              0.917,
+              0.19081632653061226
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.42448979591836733,
+              0.917,
+              0.5510204081632653
+            ]
+          }
+        ]
+      },
+      "EDX_9PH0_2018_JUNE_01_Q18_U03": {
+        "reason": "Match the part (b)(ii) scheme row, identified by its printed reference and 2-mark tariff.",
+        "part_scheme_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.14795918367346939,
+              0.917,
+              0.19081632653061226
+            ]
+          },
+          {
+            "page": 16,
+            "bbox": [
+              0.073,
+              0.55,
+              0.917,
+              0.6561224489795918
+            ]
+          }
+        ]
+      }
+    },
+    "scheme_source_sha256": "de1963a2f94aadd0bd264deb4202ffe19b40a556e0ba4e0dde1225cf76047670"
+  },
+  "EDX_9PH0_2018_JUNE_02": {
+    "source_sha256": "92f4156e281c7b8b74c6ea0a9fa354c96328fb10238f64e5b2242449a82e8046",
+    "questions": {
+      "EDX_9PH0_2018_JUNE_02_Q19_U02": {
+        "reason": "The temperature calculation uses the luminosity of Proxima Centauri found in part (a)(i).",
+        "context_regions": [
+          {
+            "page": 24,
+            "bbox": [
+              0.041997,
+              0.066,
+              0.958003,
+              0.171
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2018_JUNE_02_Q19_U01"
+      }
+    }
+  },
   "EDX_9PH0_2019_JUNE_01": {
     "source_sha256": "56060f41d9efde017a5b26f22f649e3505d163766bb20ccf30bc8dbdd68a4711",
     "questions": {
@@ -314,6 +700,228 @@
       }
     }
   },
+  "EDX_9PH0_2019_JUNE_03": {
+    "source_sha256": "eab4925b5a6537fddb3b24800fff478b1ee574ad104052c008c9f93cc41895b8",
+    "questions": {
+      "EDX_9PH0_2019_JUNE_03_Q05_U02": {
+        "reason": "End the part before the halogen-lamp lead-in printed for part (c).",
+        "source_regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.042001,
+              0.391,
+              0.957999,
+              0.629
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2020_OCTOBER_01": {
+    "source_sha256": "608f20b3467bb23e9979a7b81935c74715271eb94450b34f8180581d0bd47811",
+    "questions": {
+      "EDX_9PH0_2020_OCTOBER_01_Q12_U02": {
+        "reason": "The wire length uses the shunt resistance from part (a). Keep the ammeter introduction and circuit once.",
+        "context_regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.552
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2020_OCTOBER_01_Q12_U01"
+      }
+    }
+  },
+  "EDX_9PH0_2020_OCTOBER_02": {
+    "source_sha256": "ea7338f76c6e0bc1b981c0cc725dba54d46345b09aeb7502ae31f3ccb40b483c",
+    "questions": {
+      "EDX_9PH0_2020_OCTOBER_02_Q16_U03": {
+        "reason": "The launch-speed calculation uses its own gravitational potential and Earth data. Keep the rock scenario without the earlier age calculation.",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.171
+            ]
+          }
+        ],
+        "remove_dependencies": [
+          "EDX_9PH0_2020_OCTOBER_02_Q16_U02"
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2020_OCTOBER_03": {
+    "source_sha256": "386917b2c6a8a8871d151adaa86054533de29df4eef837da59a87b1f8aac177e",
+    "questions": {
+      "EDX_9PH0_2020_OCTOBER_03_Q07_U05": {
+        "reason": "The specific-charge calculation uses electron speed from the electric and magnetic field relation in part (c)(i).",
+        "context_regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.065,
+              0.958003,
+              0.388
+            ]
+          },
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.226,
+              0.958003,
+              0.288
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2020_OCTOBER_03_Q07_U04"
+      }
+    }
+  },
+  "EDX_9PH0_2021_OCTOBER_01": {
+    "source_sha256": "8c16949c2ceff9b08a964c86ce915042abd64348860792f3a314a1a94bee8470",
+    "questions": {
+      "EDX_9PH0_2021_OCTOBER_01_Q12_U03": {
+        "reason": "The projectile calculation uses the initial golf-ball speed found in part (b)(i).",
+        "context_regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.417
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2021_OCTOBER_01_Q12_U02"
+      }
+    }
+  },
+  "EDX_9PH0_2021_OCTOBER_02": {
+    "source_sha256": "38ff6d57f9878db2b1c5fcbdde498ce864d92c585e17c8b2d484f270139f5353",
+    "questions": {
+      "EDX_9PH0_2021_OCTOBER_02_Q20_U02": {
+        "reason": "The percentage calculation uses the decay constant found in part (a)(i).",
+        "context_regions": [
+          {
+            "page": 24,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.42
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2021_OCTOBER_02_Q20_U01"
+      },
+      "EDX_9PH0_2021_OCTOBER_02_Q19_U03": {
+        "reason": "The qualitative focus comparison uses changes in refractive index and does not require the earlier numerical focal length.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.138
+            ]
+          }
+        ],
+        "remove_dependencies": [
+          "EDX_9PH0_2021_OCTOBER_02_Q19_U01"
+        ]
+      },
+      "EDX_9PH0_2021_OCTOBER_02_Q19_U04": {
+        "reason": "The speed calculation uses the refractive index stated in this part, not the lens focal length.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.138
+            ]
+          }
+        ],
+        "remove_dependencies": [
+          "EDX_9PH0_2021_OCTOBER_02_Q19_U01"
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2022_JUNE_03": {
+    "source_sha256": "a84208a63282cdec7353802b77e3c1d8f232cad4e924ab59d57d60c99f86fb31",
+    "questions": {
+      "EDX_9PH0_2022_JUNE_03_Q10_U03": {
+        "reason": "The viscosity calculation uses mean velocity found in part (b)(i). Keep the setup and original data table.",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.322
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.581,
+              0.958003,
+              0.71
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2022_JUNE_03_Q10_U02"
+      }
+    }
+  },
+  "EDX_9PH0_2023_JUNE_03": {
+    "source_sha256": "50c1de6dd3765b16872a792123cb1fe1f635f98609026a3361db58a3ef26132b",
+    "questions": {
+      "EDX_9PH0_2023_JUNE_03_Q11_U04": {
+        "reason": "The density uncertainty uses the area uncertainty from part (c)(i). Keep the washer dimensions and formula as shared context.",
+        "context_regions": [
+          {
+            "page": 30,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.55
+            ]
+          },
+          {
+            "page": 31,
+            "bbox": [
+              0.041997,
+              0.37,
+              0.958003,
+              0.625
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2023_JUNE_03_Q11_U03"
+      }
+    }
+  },
   "EDX_9PH0_2024_JUNE_01": {
     "source_sha256": "521c14378a200e1eb277b0e3945f89bf886ea551f5e5fb79d3c97fdce70c3cce",
     "questions": {
@@ -330,6 +938,35 @@
             ]
           }
         ]
+      }
+    }
+  },
+  "EDX_9PH0_2024_JUNE_03": {
+    "source_sha256": "db46b03042bb0d2ebd01dc5f44b5ba84f7ccd568081923550491e0966a5a15d5",
+    "questions": {
+      "EDX_9PH0_2024_JUNE_03_Q08_U03": {
+        "reason": "The spring-mass calculation uses the pendulum period obtained from part (b)(i).",
+        "context_regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.401
+            ]
+          },
+          {
+            "page": 19,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.093
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2024_JUNE_03_Q08_U02"
       }
     }
   },
@@ -360,6 +997,43 @@
             ]
           }
         ]
+      },
+      "EDX_9PH0_2025_JUNE_01_Q18_U04": {
+        "reason": "The isotope explanation uses neutron and proton numbers. Keep the facility introduction without the earlier velocity calculation.",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.11
+            ]
+          }
+        ],
+        "remove_dependencies": [
+          "EDX_9PH0_2025_JUNE_01_Q18_U03"
+        ]
+      }
+    }
+  },
+  "EDX_9PH0_2025_JUNE_02": {
+    "source_sha256": "e8e7b3da76a79b6202ac324c56c3b1749eeb85d54fbb2e95077e07fe9b87cfca",
+    "questions": {
+      "EDX_9PH0_2025_JUNE_02_Q19_U02": {
+        "reason": "The fraction of melted ice uses the total mass found in part (a). Keep the dimensions and sculpture diagram.",
+        "context_regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.064,
+              0.958003,
+              0.729
+            ]
+          }
+        ],
+        "depends_on": "EDX_9PH0_2025_JUNE_02_Q19_U01"
       }
     }
   },

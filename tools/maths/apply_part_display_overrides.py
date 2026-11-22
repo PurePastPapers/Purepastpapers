@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply reviewed Edexcel Maths display corrections using checksum-matched Pearson PDFs."""
+"""Apply reviewed Pearson Mathematics display corrections using checksum-matched Pearson PDFs."""
 import argparse
 import base64
 import hashlib
@@ -9,7 +9,6 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 ROOT = Path(__file__).resolve().parents[2]
-OVERRIDES = ROOT / 'data/imports/maths/part-display-overrides.json'
 REPLACED_REASONS = {
     'builds on the previous answer',
     'earlier "show that" result',
@@ -32,8 +31,8 @@ def resolve_source(sources, paper, provenance, key, kind):
 
 
 
-def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_sources=False):
-    reviewed = json.loads((root / OVERRIDES.relative_to(ROOT)).read_text())
+def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_sources=False, slug='maths'):
+    reviewed = json.loads((root / f'data/imports/{slug}/part-display-overrides.json').read_text())
     by_paper = {}
     for qid, entry in reviewed.items():
         paper = qid.rsplit('_Q', 1)[0]
@@ -45,7 +44,7 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
         for paper, entries in by_paper.items():
             if paper_ids is not None and paper not in paper_ids:
                 continue
-            pack_path = root / f'data/packs/maths/{paper}.json'
+            pack_path = root / f'data/packs/{slug}/{paper}.json'
             if not pack_path.exists():
                 continue
             pack = json.loads(pack_path.read_text())
@@ -61,7 +60,7 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
                     missing.append(paper)
                     continue
                 scheme_renderer = renderer_type(str(scheme))
-            catalogue_path = root / f'data/maths-assets/{paper}.json'
+            catalogue_path = root / f'data/{slug}-assets/{paper}.json'
             catalogue_text = catalogue_path.read_text()
             catalogue = json.loads(catalogue_text)
             assets = catalogue['assets']
@@ -77,7 +76,7 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
                     'sha256': hashlib.sha256(data).hexdigest(),
                     'base64': base64.b64encode(data).decode('ascii'),
                 }
-                return f'assets/maths/{paper}/{name}'
+                return f'assets/{slug}/{paper}/{name}'
 
             for question in pack['questions']:
                 qid = question['question_id']
@@ -93,18 +92,19 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
                     pv['source_regions'] = entry['source_regions']
                     own_name = question['content']['question_image_url'].rsplit('/', 1)[-1]
                     question['content']['question_image_url'] = render(own_name, entry['source_regions'], renderer, offset)
-                old_stem = context.get('stem_image_url')
-                if old_stem:
-                    old_stems.add(old_stem.rsplit('/', 1)[-1])
-                regions = entry['context_regions']
-                if regions:
-                    context['stem_image_url'] = render(f'{short_id}_context.webp', regions, renderer, offset)
-                    pv['context_regions'] = regions
-                    pv['context_regions_refined'] = regions
-                else:
-                    context.pop('stem_image_url', None)
-                    pv.pop('context_regions', None)
-                    pv.pop('context_regions_refined', None)
+                if 'context_regions' in entry:
+                    old_stem = context.get('stem_image_url')
+                    if old_stem:
+                        old_stems.add(old_stem.rsplit('/', 1)[-1])
+                    regions = entry['context_regions']
+                    if regions:
+                        context['stem_image_url'] = render(f'{short_id}_context.webp', regions, renderer, offset)
+                        pv['context_regions'] = regions
+                        pv['context_regions_refined'] = regions
+                    else:
+                        context.pop('stem_image_url', None)
+                        pv.pop('context_regions', None)
+                        pv.pop('context_regions_refined', None)
                 if entry.get('figures'):
                     context['figures'] = [{
                         'label': figure['label'],
@@ -149,7 +149,7 @@ def apply_overrides(sources, renderer_type, root=ROOT, paper_ids=None, require_s
                 applied += 1
 
             pack_text = json.dumps(pack, ensure_ascii=False, indent=2) + '\n'
-            referenced = set(re.findall(rf'assets/maths/{paper}/([A-Za-z0-9_]+\.webp)', pack_text))
+            referenced = set(re.findall(rf'assets/{slug}/{paper}/([A-Za-z0-9_]+\.webp)', pack_text))
             for name in old_stems - referenced:
                 assets.pop(name, None)
             pack_path.write_text(pack_text)
@@ -167,6 +167,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--sources', type=Path, required=True)
     parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--slug', choices=('maths', 'fmaths'), default='maths')
     args = parser.parse_args()
-    count, _ = apply_overrides(args.sources, SourceRenderer, args.root, require_sources=True)
+    count, _ = apply_overrides(args.sources, SourceRenderer, args.root, require_sources=True, slug=args.slug)
     print(f'Regenerated {count} reviewed Maths part displays')

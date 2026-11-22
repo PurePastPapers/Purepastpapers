@@ -17,7 +17,7 @@ HEADER = re.compile(r'^Question\s+(number\s+)?Indicative [Cc]ontent')
 GRID = re.compile(r'^(Please refer to (the )?Specific Marking Guidance|Level\s+Mark\b)', re.I)
 QROW = re.compile(r'^(\d{1,2})\s+(?!Qualities|No rewardable)[A-Z][a-z]')
 SECTION = re.compile(r'^(Paper \d+ Mark scheme\b.*SECTION [A-C]|SECTION [A-C])\b')
-FOOTER = re.compile(r'^(PMT|\d{1,2}|Paper \d Mark scheme|Pearson Education Limited.*)$')
+FOOTER = re.compile(r'^(PMT|\d{1,2}|Paper \d Mark scheme|Pearson Education Limited.*|with its registered office at .*)$', re.I)
 
 
 def rows_of(pdf):

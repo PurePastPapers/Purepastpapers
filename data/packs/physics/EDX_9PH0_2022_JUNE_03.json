@@ -2772,16 +2772,23 @@
             "page": 18,
             "bbox": [
               0.041997,
-              0.5879732739420935,
+              0.064,
               0.958003,
-              0.7564959168522642
+              0.322
+            ]
+          },
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.581,
+              0.958003,
+              0.71
             ]
           }
         ],
-        "context_includes_stem_image": "Q10_stem.webp",
         "context_reasons": [
-          "earlier \"show that\" result",
-          "scenario (student)"
+          "The viscosity calculation uses mean velocity found in part (b)(i). Keep the setup and original data table."
         ],
         "part_scheme_regions": [
           {
@@ -2807,30 +2814,13 @@
         "context_named_parts": [
           "EDX_9PH0_2022_JUNE_03_Q10_U02"
         ],
-        "context_regions_refined": [
-          {
-            "page": 18,
-            "bbox": [
-              0.041997,
-              0.330987,
-              0.958003,
-              0.451245
-            ]
-          },
-          {
-            "page": 18,
-            "bbox": [
-              0.041997,
-              0.588323,
-              0.958003,
-              0.756325
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "part_display_review": "The viscosity calculation uses mean velocity found in part (b)(i). Keep the setup and original data table.",
+        "part_display_review_source": "a84208a63282cdec7353802b77e3c1d8f232cad4e924ab59d57d60c99f86fb31"
       },
-      "part_label": "(b)(ii)"
+      "part_label": "(b)(ii)",
+      "depends_on_question_ids": [
+        "EDX_9PH0_2022_JUNE_03_Q10_U02"
+      ]
     },
     {
       "question_id": "EDX_9PH0_2022_JUNE_03_Q11_U01",
