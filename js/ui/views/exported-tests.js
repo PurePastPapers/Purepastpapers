@@ -1,12 +1,12 @@
 import { html, on, setHtml } from '../../core/dom.js';
-import { links, routeOf } from '../../core/links.js';
+import { links, routeOf } from '../../core/links.js?v=exported-tests-1';
 import { fmtDate } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle } from '../../data/content-repository.js';
 import { offlineRetakeId } from '../../data/offline-progress.js';
 import { getMarkingProvider } from '../../engine/marking.js';
-import { resolveTestSnapshot, scoreTestSnapshot, verifyTestCrops } from '../../engine/test-snapshot.js';
-import { exportRetention, offerTestPdf, promptForOfflineAttempt } from '../test-pdf.js';
+import { resolveTestSnapshot, scoreTestSnapshot, verifyTestCrops } from '../../engine/test-snapshot.js?v=exported-tests-1';
+import { exportRetention, offerTestPdf, promptForOfflineAttempt } from '../test-pdf.js?v=exported-tests-1';
 import { emptyState, pageHead, toast } from '../ui.js';
 import { renderOfflineMarking } from './offline-test.js';
 
@@ -20,21 +20,25 @@ export function savedTestState(attempt) {
 
 export async function mount(element, context) {
   const paperId = context.params.paperId;
+  const { subject } = context.query;
+  const backHref = links.exportedTests({ subject });
+  const practiceHref = links.practice({ subject });
   const available = api.exportedTests();
+  const detailHref = (id, params) => links.exportedTest(id, { subject, ...params });
   if (!paperId) {
+    const tests = subject ? available.filter(test => test.subject_id === subject) : available;
     context.setTitle('Exported tests');
     setHtml(element, html`${pageHead({
-      title: 'Exported tests', crumbs: [{ label: 'Practice', href: links.practice() }, { label: 'Exported tests' }],
+      title: 'Exported tests', crumbs: [{ label: 'Practice', href: practiceHref }, { label: 'Exported tests' }],
     })}
-    <p class="small muted">${exportRetention()}</p>
-    ${available.length ? html`<div class="stack">${available.slice().reverse().map(test => html`
+    ${tests.length ? html`<p class="small muted">${exportRetention()}</p><div class="stack">${tests.slice().reverse().map(test => html`
       <article class="card row row--between">
-        <div><h2 class="h3"><a href="${links.exportedTest(test.paper_id)}">${test.title}</a></h2>
+        <div><h2 class="h3"><a href="${detailHref(test.paper_id)}">${test.title}</a></h2>
         <p class="small muted">${fmtDate(test.created_at)} · ${test.total_marks} marks · ${savedTestState(api.offlineAttempts(test.paper_id).at(-1))}</p></div>
-        <a class="btn btn--sm" href="${links.exportedTest(test.paper_id)}">Open test</a>
+        <a class="btn btn--sm" href="${detailHref(test.paper_id)}">Open test</a>
       </article>`)}</div>` : emptyState({ iconName: 'file', title: 'No exported tests yet',
       text: 'Build a custom test or select questions in Practice, then choose Export PDF.',
-      action: html`<a class="btn btn--primary" href="${links.practice()}">Go to Practice</a>`,
+      action: html`<a class="btn btn--primary" href="${practiceHref}">Go to Practice</a>`,
     })}`);
     return undefined;
   }
@@ -43,7 +47,7 @@ export async function mount(element, context) {
     setHtml(element, emptyState({
       iconName: 'file', title: 'This exported test is unavailable',
       text: 'Open Exported tests to see the tests saved in this account or browser tab.',
-      action: html`<a class="btn" href="${links.exportedTests()}">Exported tests</a>`,
+      action: html`<a class="btn" href="${backHref}">Exported tests</a>`,
     }));
     return undefined;
   }
@@ -73,7 +77,7 @@ export async function mount(element, context) {
   let removeListener;
   let busy = false;
   const openAttempt = (attempt, mark = false, options) => context.navigate(
-    routeOf(links.exportedTest(paperId, { attempt: attempt.session_id, ...(mark ? { mark: 1 } : {}) })), options,
+    routeOf(detailHref(paperId, { attempt: attempt.session_id, ...(mark ? { mark: 1 } : {}) })), options,
   );
 
   async function update(payload) {
@@ -118,12 +122,12 @@ export async function mount(element, context) {
       ${recovery ? html`<p role="status" class="small muted">${recovery}</p>` : ''}
       <div data-offline-view></div>`);
     removeListener = on(element, 'change', '[data-offline-history]', (event, select) => {
-      context.navigate(routeOf(links.exportedTest(paperId, { attempt: select.value })));
+      context.navigate(routeOf(detailHref(paperId, { attempt: select.value })));
     });
     dispose = renderOfflineMarking(element.querySelector('[data-offline-view]'), {
       snapshot, questions: resolved,
       attempt: active ? { status: active.status, result: active.result, previousPartResult: active.previous_part_result } : null,
-      markImmediately: marking, onSave: update, onExport, backHref: links.exportedTests(),
+      markImmediately: marking, onSave: update, onExport, backHref,
       onMarkDone: active ? null : async () => {
         let mark = false;
         const attempt = await promptForOfflineAttempt(snapshot, () => { mark = true; });

@@ -1,6 +1,6 @@
 import { html } from '../core/dom.js';
 import * as api from '../data/api.js';
-import { pinTestCrops, verifyTestCrops } from '../engine/test-snapshot.js';
+import { pinTestCrops, verifyTestCrops } from '../engine/test-snapshot.js?v=exported-tests-1';
 import { askOfflineCompletion } from './views/offline-test.js';
 import { openModal, toast } from './ui.js';
 
