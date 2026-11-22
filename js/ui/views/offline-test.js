@@ -3,7 +3,7 @@
 // snapshot and collects a validated marking choice.
 
 import { $, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
-import { displayedPartLabel } from '../../engine/test-snapshot.js';
+import { displayedPartLabel } from '../../engine/test-snapshot.js?v=20261122-pdf2';
 import { markPicker, bindMarkPickers } from '../mark-picker.js';
 import { markSchemeBody, questionBody, questionRef } from '../question-view.js';
 import { openModal, toast } from '../ui.js';

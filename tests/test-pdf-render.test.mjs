@@ -291,6 +291,21 @@ test('browser converts source images and renders sanitized HTML in page and modu
   });
   assert.deepEqual(retry, { originalBlocked: true, retryReady: true });
   assert.equal(loads, 2);
+
+  const openTab = await browser.newPage();
+  for (const path of ['js/engine/test-snapshot.js', 'js/data/source-images.js']) {
+    await openTab.route(url => url.pathname === `/${path}` && !url.search, route => route.fulfill({
+      contentType: 'text/javascript',
+      body: path.endsWith('/source-images.js') ? 'export function sourceImage() {}' : 'export const oldVersion = true;',
+    }));
+  }
+  await openTab.goto(`http://127.0.0.1:${server.address().port}/`);
+  assert.equal(await openTab.evaluate(async () => {
+    await import('/js/engine/test-snapshot.js');
+    await import('/js/data/source-images.js');
+    return typeof (await import('/js/ui/test-pdf.js')).offerTestPdf;
+  }), 'function');
+  await openTab.close();
 });
 
 function extractHexText(input) {

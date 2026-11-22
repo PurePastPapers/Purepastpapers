@@ -1,4 +1,4 @@
-import { createCombinedPdf, createMarkSchemePdf, createQuestionPdf } from './test-pdf-render.js';
+import { createCombinedPdf, createMarkSchemePdf, createQuestionPdf } from './test-pdf-render.js?v=20261122-pdf2';
 
 const generators = { question: createQuestionPdf, scheme: createMarkSchemePdf, combined: createCombinedPdf };
 

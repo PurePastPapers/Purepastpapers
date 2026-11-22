@@ -1,5 +1,5 @@
 import { sha256, toHex } from '../core/sha256.js';
-import { sourceImageChecksums } from '../data/source-images.js';
+import { sourceImageChecksums } from '../data/source-images.js?v=20261122-pdf2';
 import { expandLinkedIds, runnerItems } from './linked-parts.js';
 
 const digest = (value) => toHex(sha256(JSON.stringify(value)));

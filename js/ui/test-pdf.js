@@ -1,7 +1,9 @@
 import { html } from '../core/dom.js';
+import { links } from '../core/links.js';
 import * as api from '../data/api.js';
-import { pinTestCrops, verifyTestCrops } from '../engine/test-snapshot.js';
-import { askOfflineCompletion } from './views/offline-test.js';
+// Keep the lazy PDF modules on the same revision when Practice spans a deploy.
+import { pinTestCrops, verifyTestCrops } from '../engine/test-snapshot.js?v=20261122-pdf2';
+import { askOfflineCompletion } from './views/offline-test.js?v=20261122-pdf2';
 import { openModal, toast } from './ui.js';
 
 const labels = { question: 'Question paper', scheme: 'Mark scheme', combined: 'Combined PDF' };
@@ -28,7 +30,7 @@ async function renderPdf(kind, options, signal, onProgress) {
   if ('Worker' in globalThis && 'OffscreenCanvas' in globalThis && 'createImageBitmap' in globalThis) {
     let worker;
     try {
-      worker = new Worker(new URL('../engine/test-pdf-worker.js', import.meta.url), { type: 'module' });
+      worker = new Worker(new URL('../engine/test-pdf-worker.js?v=20261122-pdf2', import.meta.url), { type: 'module' });
       return await new Promise((resolve, reject) => {
         if (signal.aborted) { reject(signal.reason); return; }
         const abort = () => reject(signal.reason);
@@ -51,12 +53,12 @@ async function renderPdf(kind, options, signal, onProgress) {
       worker?.terminate();
     }
   }
-  const { createQuestionPdf, createMarkSchemePdf, createCombinedPdf } = await import('../engine/test-pdf-render.js');
+  const { createQuestionPdf, createMarkSchemePdf, createCombinedPdf } = await import('../engine/test-pdf-render.js?v=20261122-pdf2');
   const make = { question: createQuestionPdf, scheme: createMarkSchemePdf, combined: createCombinedPdf };
   return make[kind](options, { signal, onProgress });
 }
 
-export async function offerTestPdf({ snapshot, questions, onOpenTest, existing = false }) {
+export async function offerTestPdf({ snapshot, questions, existing = false }) {
   const owner = api.currentUser()?.user_id ?? null;
   const assertOwner = () => {
     if ((api.currentUser()?.user_id ?? null) !== owner) throw new Error('Your account changed. Open the test again.');
@@ -89,7 +91,7 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
         const progress = dialog.querySelector('progress');
         next.hidden = true;
         const { signal } = controller;
-        import('../engine/test-pdf-content.js')
+        import('../engine/test-pdf-content.js?v=20261122-pdf2')
           .then(async content => {
             const frozen = existing || options.kind === 'scheme' ? snapshot : await pinTestCrops(snapshot, questions, { signal });
             const currentQuestions = existing ? await verifyTestCrops(frozen, questions, { signal }) : questions;
@@ -183,7 +185,9 @@ export async function offerTestPdf({ snapshot, questions, onOpenTest, existing =
     if (handedOff && generated.saved && !generated.alreadySaved && options.kind !== 'scheme') {
       try {
         assertOwner();
-        await promptForOfflineAttempt(generated.snapshot, onOpenTest);
+        await promptForOfflineAttempt(generated.snapshot, (attempt) => {
+          location.hash = links.exportedTest(attempt.paper_id, { attempt: attempt.session_id, mark: 1 });
+        });
       } catch (error) {
         toast(error.message, { type: 'error' });
       }

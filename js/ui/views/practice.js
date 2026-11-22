@@ -2054,10 +2054,9 @@ export async function mount(element, context) {
     button.disabled = true;
     try {
       const snapshot = createTestSnapshot({ bundle, ids, title });
-      const { offerTestPdf } = await import('../test-pdf.js');
+      const { offerTestPdf } = await import('../test-pdf.js?v=20261122-pdf2');
       await offerTestPdf({
         snapshot, questions: resolveTestSnapshot(snapshot, bundle), existing: Boolean(api.getCustomTest(snapshot.id)),
-        onOpenTest: (attempt) => context.navigate(routeOf(links.exportedTest(attempt.paper_id, { attempt: attempt.session_id, mark: 1 }))),
       });
     } catch (error) {
       toast(error.message, { type: 'error' });
