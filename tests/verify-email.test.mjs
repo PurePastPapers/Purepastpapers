@@ -22,6 +22,7 @@ const listeners = [];
 window.__resends = 0;
 window.__fakeSession = null;
 export function createClient() {
+  let progressRow = null;
   return {
     auth: {
       async getSession() { return { data: { session: window.__fakeSession }, error: null }; },
@@ -46,11 +47,30 @@ export function createClient() {
       async signOut() { window.__fakeSession = null; return { error: null }; },
     },
     from() {
+      let write;
+      const filters = new Map();
       const query = {
         select() { return query; },
-        eq() { return query; },
-        async maybeSingle() { return { data: null, error: null }; },
-        async upsert() { return { error: null }; },
+        eq(key, value) { filters.set(key, value); return query; },
+        async maybeSingle() { return { data: progressRow, error: null }; },
+        upsert(row, { ignoreDuplicates } = {}) {
+          write = () => {
+            if (progressRow && ignoreDuplicates) return [];
+            progressRow = row;
+            return [{ user_id: row.user_id }];
+          };
+          return query;
+        },
+        insert(row) { write = () => { progressRow = row; return [{ user_id: row.user_id }]; }; return query; },
+        update(changes) {
+          write = () => {
+            if (!progressRow || [...filters].some(([key, value]) => progressRow[key] !== value)) return [];
+            progressRow = { ...progressRow, ...changes };
+            return [{ user_id: progressRow.user_id }];
+          };
+          return query;
+        },
+        then(resolve) { return Promise.resolve({ data: write?.() || [], error: null }).then(resolve); },
       };
       return query;
     },

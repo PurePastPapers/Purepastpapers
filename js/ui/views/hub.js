@@ -19,6 +19,7 @@ import { tintPage } from '../subject-colours.js';
 import { confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, meter, openModal, pageHead, ragBadge, soonBadge, subjectName, toast } from '../ui.js';
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { links } from '../../core/links.js';
+import { bindInkPreviews, inkPreview } from '../ink-preview.js';
 
 const TABS = [
   { id: 'overview', label: 'Overview' },
@@ -375,7 +376,9 @@ export async function mount(element, context) {
               <td class="nowrap">${ragBadge(ragFor(attempt.percentage), attempt.percentage, { label: false })} ${attempt.grade ? html`<span class="tag">Grade ${attempt.grade}</span>` : ''}</td>
               <td class="nowrap small">${attempt.duration_seconds ? fmtDuration(attempt.duration_seconds) : '—'}</td>
               <td class="right">
-                ${attempt.session_id && api.getSession(attempt.session_id) ? html`<a class="btn btn--sm btn--ghost" href="${links.session(attempt.session_id)}">Review</a>` : ''}
+                ${attempt.session_kind === 'offline_test'
+                  ? html`<a class="btn btn--sm btn--ghost" href="${links.exportedTest(attempt.paper_id, { attempt: attempt.session_id })}">Review ${attempt.score_mode === 'overall' ? 'overall score' : 'question marks'}</a>`
+                  : attempt.session_id && api.getSession(attempt.session_id) ? html`<a class="btn btn--sm btn--ghost" href="${links.session(attempt.session_id)}">Review</a>` : ''}
               </td>
             </tr>`;
           })}
@@ -394,7 +397,7 @@ export async function mount(element, context) {
       </section>
       <section class="card ruled tilt-2">
           <i class="tape tape--l" aria-hidden="true"></i>
-        <div class="card__head"><h2 class="card__title">History</h2></div>
+        <div class="card__head"><h2 class="card__title">History</h2><a class="btn btn--sm" href="${links.exportedTests()}">Exported tests</a></div>
         <div class="chips" role="group" aria-label="Filter by type" style="margin-bottom:14px">
           ${HISTORY_TYPES.map((type) => {
             const available = !type.feature || isEnabled(type.feature);
@@ -427,7 +430,7 @@ export async function mount(element, context) {
 
   // ───────────────────────────────── page ─────────────────────────────────
 
-  const hasData = progress.question_attempts.length > 0 || progress.paper_attempts.length > 0 || (progress.saved_answers || []).length > 0;
+  const hasData = api.exportedTests().length || progress.question_attempts.length > 0 || progress.paper_attempts.length > 0 || (progress.saved_answers || []).length > 0;
   const body = !hasData
     ? emptyState({
         iconName: 'chart',
@@ -523,7 +526,8 @@ export async function mount(element, context) {
                 : html`<button type="submit" class="btn btn--sm" name="pick" value="change:${attempt.attempt_id}">Change mark</button>`}
                 <button type="submit" class="btn btn--sm btn--ghost attempt-full__remove" name="pick" value="remove:${attempt.attempt_id}" aria-label="Remove attempt ${list.length - index}">${icon('trash', { size: 15 })} Remove</button></span>
             </div>
-            <p class="attempt-answer small">${attempt.answer || html`<span class="muted">No typed answer (done on paper)</span>`}</p>
+            ${attempt.answer ? html`<p class="attempt-answer small">${attempt.answer}</p>` : !attempt.has_ink ? html`<p class="attempt-answer small muted">No typed answer (done on paper)</p>` : ''}
+            ${attempt.has_ink ? inkPreview(attempt.attempt_id, attempt.question_id) : ''}
           </li>`)}
         </ol>`,
       onOpen: (dialog) => {
@@ -536,6 +540,7 @@ export async function mount(element, context) {
           dialog.querySelector('.modal__foot button[type="submit"]').click();
         });
       },
+      onOpen: bindInkPreviews,
       actions: [
         { label: 'Close', cancel: true },
         { label: 'Answer it again', variant: 'primary', collect: (dialog) => dialog.dataset.pick || 'retry' },

@@ -8,12 +8,20 @@ import { html, isSafeUrl } from '../core/dom.js';
 const PATH = /^assets\/([a-z]+)\/([A-Z0-9_]+)\/([A-Za-z0-9_]+\.webp)$/;
 const bundles = new Map();
 const urls = new Map();
+const bytes = new Map();
+const BYTE_CACHE_LIMIT = 16 * 1024 * 1024;
+let byteCacheSize = 0;
 export function sourceImage(url, alt) {
   if (!url || !isSafeUrl(url)) return '';
   return html`<a href="${url}" target="_blank" rel="noopener" aria-label="Open ${alt} image at its original size">${PATH.test(url) ? html`<img data-math-image="${url}" alt="${alt}" />` : html`<img src="${url}" alt="${alt}" loading="lazy" />`}</a>`;
 }
-async function resolve(path) {
-  if (urls.has(path)) return urls.get(path);
+async function resolveAsset(path) {
+  if (bytes.has(path)) {
+    const cached = bytes.get(path);
+    bytes.delete(path);
+    bytes.set(path, cached);
+    return cached;
+  }
   const match = PATH.exec(path);
   if (!match) throw new Error('Invalid source-image reference');
   const [, slug, paper, name] = match;
@@ -33,10 +41,30 @@ async function resolve(path) {
   }
   const asset = bundle.assets[name];
   if (!asset || !asset.base64) throw new Error('Source image is unavailable');
-  const bytes = Uint8Array.from(atob(asset.base64), char => char.charCodeAt(0));
-  const url = URL.createObjectURL(new Blob([bytes], {type: 'image/webp'}));
+  const value = {data: Uint8Array.from(atob(asset.base64), char => char.charCodeAt(0)), mimeType: 'image/webp'};
+  if (value.data.byteLength <= BYTE_CACHE_LIMIT) {
+    bytes.set(path, value);
+    byteCacheSize += value.data.byteLength;
+    while (byteCacheSize > BYTE_CACHE_LIMIT) {
+      const oldestPath = bytes.keys().next().value;
+      byteCacheSize -= bytes.get(oldestPath).data.byteLength;
+      bytes.delete(oldestPath);
+    }
+  }
+  return value;
+}
+async function resolve(path) {
+  if (urls.has(path)) return urls.get(path);
+  const asset = await resolveAsset(path);
+  const url = URL.createObjectURL(new Blob([asset.data], {type: asset.mimeType}));
   urls.set(path, url);
   return url;
+}
+
+/** Resolve a catalogue crop to its original bytes for generated documents. */
+export async function sourceImageBytes(path) {
+  const asset = await resolveAsset(path);
+  return {data: asset.data.slice(), mimeType: asset.mimeType};
 }
 export function observeSourceImages(root = document) {
   const hydrate = () => {

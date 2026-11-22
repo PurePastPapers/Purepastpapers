@@ -148,6 +148,7 @@ async function recordResult(session, { questions, subject, paper = null, totalAw
       subject_id: session.subject_id,
       session_id: session.session_id,
       marked_by: mark.marked_by,
+      ...(session.ink_answers?.[question.question_id] ? { has_ink: true } : {}),
       ...(String(session.answers?.[question.question_id] || '').trim() ? { answer: session.answers[question.question_id] } : {}),
     });
   }

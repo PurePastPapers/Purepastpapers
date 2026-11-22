@@ -21,6 +21,7 @@ import { byDifficulty, paperHistory, ragFor, TARGET_BANDS, targetBand } from '..
 import { targetGrade, tintPage } from '../subject-colours.js';
 import { icon } from '../icons.js';
 import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody, questionRef } from '../question-view.js';
+import { bindInkPreviews, inkPreview } from '../ink-preview.js';
 import { groupEntry, runnerItems } from '../../engine/linked-parts.js';
 import { banner, confirmDialog, openModal, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
 
@@ -201,11 +202,13 @@ export async function mount(element, context) {
       ? ''
       : html`<p class="small muted aisoon">${icon('sparkle', { size: 15 })}<span>You mark this yourself for now. AI marking of typed answers:</span> ${soonBadge('aiMarking')}</p>`;
 
+  const savedInk = question => inkPreview(session.ink_answers?.[question.question_id], question.question_id);
   const answerBlock = (question) => {
     const answer = session.answers[question.question_id];
-    return answer
+    return html`${answer
       ? html`<div><p class="label">Your answer</p><div class="answer-text">${answer}</div></div>`
-      : html`<p class="small muted">No typed answer for this question. Mark the work you did on paper.</p>`;
+      : !session.ink_answers?.[question.question_id] ? html`<p class="small muted">No typed answer for this question. Mark the work you did on paper.</p>` : ''}
+      ${savedInk(question)}`;
   };
 
   // ───────────────────────────────── stage: answering ─────────────────────────────────
@@ -275,6 +278,7 @@ export async function mount(element, context) {
             <span class="card__title row row--between">Your answer <span class="muted">(optional)</span> ${zoomButton('answer box')}</span>
             ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
             <textarea class="textarea" data-answer="${id}" placeholder="Type your working here, or answer on paper.">${session.answers[id] || ''}</textarea>
+            ${savedInk(question)}
           </label>
         </section>
         </div>
@@ -347,7 +351,7 @@ export async function mount(element, context) {
           return html`<section class="runner__part qgroup__part" aria-label="Part ${label}">
             <div class="qsplit__head"><span class="field__label qgroup__partlabel"><b>${scheme ? 'Mark scheme ' : 'Part '}${label}</b><span class="small muted">${plural(part.marks, 'mark')}</span>${uses.length && !scheme ? html`<span class="qgroup__uses">${icon('chevronLeft', { size: 12 })} uses your answer to ${uses.join(' and ')}</span>` : ''}</span></div>
             ${scheme ? markSchemeBody(part, { wholeQuestion: false }) : linkedPartBody(part)}
-            ${scheme && session.answers[part.question_id] ? html`<div><p class="label">Your answer</p><div class="answer-text">${session.answers[part.question_id]}</div></div>` : ''}
+            ${scheme ? answerBlock(part) : savedInk(part)}
             ${scheme
               ? marksInput(part, `Marks for ${label}, out of ${part.marks}`)
               : html`<label class="field"><span class="field__label">Your answer to ${label}</span>
@@ -843,6 +847,7 @@ export async function mount(element, context) {
     if (session.status === 'completed') drawResults();
     else if (session.status === 'marking') drawMarking();
     else drawRun();
+    bindInkPreviews(element);
     if (focus) $('h1', element)?.focus({ preventScroll: true });
   }
 
