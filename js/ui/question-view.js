@@ -17,6 +17,7 @@ export function questionBody(question, { contextOpen = false } = {}) {
     ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
     ${context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
     ${resources(question)}
+    ${question.provenance?.source_lead_in_regions && !question.provenance.source_lead_in_in_stem ? partLeadIn(question) : ''}
     <div class="qcontent question-selected-part">${sanitizeHtml(markup)}${image(url, `${question.preview_text || 'Source-rendered question'}. Question ${question.question_number}${question.part_label ? `, part ${question.part_label}` : ''}`)}</div>
     ${fullQuestion ? html`<details class="question-context" data-question-context="${question.question_id}" ${contextOpen ? 'open' : ''}>
       <summary>Show full question for context</summary>
@@ -211,7 +212,13 @@ export function linkedIntro(entry) {
 /** One part's own printed text: anything printed just before its label, then its crop. */
 export function linkedPartBody(part) {
   const { question_html: markup, question_image_url: url } = part.content || {};
-  const lead = part.context?.lead_in_image_url;
-  return html`${lead && isSafeUrl(lead) ? html`<div class="qcontent qgroup__lead">${image(lead, `Text printed before part ${part.part_label || ''}`)}</div>` : ''}
+  return html`${partLeadIn(part)}
     <div class="qcontent">${sanitizeHtml(markup)}${image(url, `${part.preview_text || 'Question part'}. Part ${part.part_label || part.question_number}`)}</div>`;
+}
+
+function partLeadIn(part) {
+  const lead = part.context?.lead_in_image_url;
+  return lead && isSafeUrl(lead)
+    ? html`<div class="qcontent qgroup__lead">${image(lead, `Text printed before part ${part.part_label || ''}`)}</div>`
+    : '';
 }

@@ -46,6 +46,17 @@ def ink_share(rgb):
     return float((grey < 160).mean())
 
 
+def blank_stem(rgb, paper_id):
+    if ink_share(rgb) < BLANK_INK:
+        return True
+    if paper_id.startswith('EDX_9FM0_') and paper_id.endswith(('_P1', '_P2')) and rgb.height <= 100:
+        # Some Core Pure stems contain only the booklet border and barcode.
+        # These can look inky overall while the printed question body is empty.
+        body = np.asarray(rgb.convert('L'))[:, int(rgb.width * 0.105):int(rgb.width * 0.82)]
+        return not (body < 120).any()
+    return False
+
+
 def colourful(rgb):
     a = np.asarray(rgb).astype(np.int16)
     spread = np.abs(a[:, :, 0] - a[:, :, 1]) + np.abs(a[:, :, 1] - a[:, :, 2]) + np.abs(a[:, :, 0] - a[:, :, 2])
@@ -113,7 +124,7 @@ def work(job):
     blanks, recoded = [], 0
     for name, asset in catalogue['assets'].items():
         rgb = decode(asset['base64']).convert('RGB')
-        if name in blank_candidates and ink_share(rgb) < BLANK_INK:
+        if name in blank_candidates and blank_stem(rgb, catalogue['paper_id']):
             blanks.append(name)
             continue
         if colourful(rgb) or photo(rgb):

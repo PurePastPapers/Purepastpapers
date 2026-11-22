@@ -1,0 +1,445 @@
+{
+  "paper_id": "EDX_9FM0_SAMPLE_3B",
+  "source_sha256": "0cb7e0a1adef7943a32abcf009d3d904da347511388587c787e484d34a81ac34",
+  "reviewer_type": "model",
+  "questions": [
+    {
+      "number": "1",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_4.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Test a claim about a Poisson rate",
+          "difficulty": "medium",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.1",
+            "EDX_FMATH_FS1_2.3"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use binomial and Poisson models for call routing",
+          "difficulty": "medium",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.3"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use binomial and Poisson models for call routing",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use binomial and Poisson models for call routing",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)",
+            "(c)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_2.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use binomial and Poisson models for call routing",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_6.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a chi-squared goodness-of-fit test for a binomial model",
+          "difficulty": "hard",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_6.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a chi-squared goodness-of-fit test for a binomial model",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_6.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a chi-squared goodness-of-fit test for a binomial model",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_5.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use the central limit theorem on a Poisson sample",
+          "difficulty": "medium",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_3.1",
+            "EDX_FMATH_FS1_3.2",
+            "EDX_FMATH_FS1_3.3"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Model repeated game outcomes with geometric distributions",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_3.1",
+            "EDX_FMATH_FS1_3.2",
+            "EDX_FMATH_FS1_3.3"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Model repeated game outcomes with geometric distributions",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_3.1",
+            "EDX_FMATH_FS1_3.2",
+            "EDX_FMATH_FS1_3.3"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Model repeated game outcomes with geometric distributions",
+          "difficulty": "medium",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a probability generating function to find probabilities and variance",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a probability generating function to find probabilities and variance",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a probability generating function to find probabilities and variance",
+          "difficulty": "hard",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_7.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a probability generating function to find probabilities and variance",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Compare critical regions and the power of two tests",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Compare critical regions and the power of two tests",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_4.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Compare critical regions and the power of two tests",
+          "difficulty": "medium",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "depends_on_parts": [
+            "(c)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Compare critical regions and the power of two tests",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Compare critical regions and the power of two tests",
+          "difficulty": "medium",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "depends_on_parts": [
+            "(e)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 13,
+          "primary_spec_points": [
+            "EDX_FMATH_FS1_8.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Compare critical regions and the power of two tests",
+          "difficulty": "medium",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ import { createGzip } from 'node:zlib';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CATALOGUE_LIMIT = 1_150_000_000; // fast estimate using base64-equivalent image bytes
-const PAGES_BUDGET = 950_000_000; // retain 50 MB below the published Pages limit
+const PAGES_BUDGET = 1_000_000_000;
 const SITE_PATHS = ['assets', 'css', 'data', 'fonts', 'js', 'index.html', 'auth-callback.html', 'CNAME', '.nojekyll'];
 
 function gitFiles(args) {

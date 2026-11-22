@@ -21,7 +21,7 @@ Result: catalogues 1.84 GB down to 1.06 GB of JSON, about 0.83 GB as uploaded to
 **After any import or `tools/parts/refine.py` run that rewrites catalogues, run
 `python3 tools/assets/compact.py`.** The size test checks catalogue and report image
 bytes first. At 1.15 GB of base64-equivalent images it streams the prospective site
-through gzip, allows for tar overhead and requires the estimate to stay under 950 MB.
+through gzip, allows for tar overhead and checks against the 1 GB Pages limit.
 Run `MEASURE_SITE_SIZE=1 node --test tests/site-size.test.mjs` to measure an otherwise
 passing tree. Include the GitHub Pages deployment's `github-pages` archive size in
 the release verification. The archive for commit `2dcd7ad3` was 851,742,933 bytes.

@@ -1,0 +1,275 @@
+{
+  "paper_id": "EDX_8FM0_SAMPLE_28",
+  "source_sha256": "9244a66a5280cacfc4df02e39eb8ac6ade2bebaf6d216a5d830f3e825483c897",
+  "reviewer_type": "model",
+  "questions": [
+    {
+      "number": "6",
+      "units": [
+        {
+          "parts": [
+            ""
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_1.1",
+            "EDX_FMATH_AS_D2_1.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use the Hungarian algorithm for a minimum-time assignment",
+          "difficulty": "hard",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a recurrence relation to count regions made by lines",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent",
+          "required_insert_regions": [
+            {
+              "page": 8,
+              "bbox": [
+                0.06551582784459595,
+                0.09621209254254495,
+                0.9357004130625627,
+                0.1734193272989082
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_4.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a recurrence relation to count regions made by lines",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "depends_on_parts": [
+            "(a)",
+            "(b)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_4.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use a recurrence relation to count regions made by lines",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use network flow to model school corridors",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use network flow to model school corridors",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(c)"
+          ],
+          "depends_on_parts": [
+            "(b)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.1"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use network flow to model school corridors",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(d)"
+          ],
+          "depends_on_parts": [
+            "(b)",
+            "(c)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use network flow to model school corridors",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts",
+          "required_insert_regions": [
+            {
+              "page": 10,
+              "bbox": [
+                0.08567454410447163,
+                0.11521695032872668,
+                0.915541696802687,
+                0.4038532279563616
+              ]
+            }
+          ]
+        },
+        {
+          "parts": [
+            "(e)"
+          ],
+          "depends_on_parts": [
+            "(b)",
+            "(c)",
+            "(d)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use network flow to model school corridors",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        },
+        {
+          "parts": [
+            "(f)"
+          ],
+          "depends_on_parts": [
+            "(b)",
+            "(c)",
+            "(d)",
+            "(e)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_2.3"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Use network flow to model school corridors",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "units": [
+        {
+          "parts": [
+            "(a)"
+          ],
+          "depends_on_parts": [],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_3.2"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Test for a stable game and find optimal mixed strategies",
+          "difficulty": "easy",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "independent"
+        },
+        {
+          "parts": [
+            "(b)"
+          ],
+          "depends_on_parts": [
+            "(a)"
+          ],
+          "review_status": "model_reviewed",
+          "introduced_year": 12,
+          "primary_spec_points": [
+            "EDX_FMATH_AS_D2_3.3"
+          ],
+          "crossover_spec_points": [],
+          "summary": "Test for a stable game and find optimal mixed strategies",
+          "difficulty": "hard",
+          "difficulty_basis": "Printed tariff and linked source prompts.",
+          "year_basis": "Latest introduced year among the reviewed official specification points.",
+          "context_basis": "linked_source_parts"
+        }
+      ]
+    }
+  ]
+}

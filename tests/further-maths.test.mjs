@@ -2,6 +2,7 @@
 // the official option routes, module-scoped specification and route-aware scoping.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { LEGACY_SPEC_IDS } from '../js/config/spec-id-migrations.js';
 import { createSpecIndex } from '../js/engine/spec-index.js';
@@ -310,6 +311,45 @@ test('imported questions carry the paper qualification, module and corresponding
         assert.equal(point?.module, question.module_id, `${question.question_id}: ${id}`);
         assert(point.qualifications.includes(question.qualification_code), `${question.question_id}: ${id}`);
       }
+    }
+  }
+});
+
+test('activated papers retain one scored record per printed tariff and resolvable source crops', () => {
+  const assetsPattern = /assets\/fmaths\/([A-Z0-9_]+)\/([A-Za-z0-9_]+\.webp)/g;
+  for (const pack of importedPacks) {
+    const [paper] = pack.papers;
+    const parts = new Map();
+    const order = new Map();
+    for (const question of pack.questions) {
+      const { question_id: id, parent_question_id: parent, provenance } = question;
+      const [tariff] = provenance.original_tariffs;
+      assert.equal(provenance.original_tariffs.length, 1, id);
+      assert.equal(tariff.marks, question.marks, id);
+      assert.equal(tariff.label, question.part_label ?? '', id);
+      assert.equal(provenance.original_tariff_indices[0], parts.get(parent) || 0, id);
+      assert.equal(provenance.review_status, 'model_reviewed', id);
+      parts.set(parent, (parts.get(parent) || 0) + 1);
+      for (const dependency of question.depends_on_question_ids || []) {
+        assert.equal(order.get(dependency), parent, `${id}: missing earlier scored part ${dependency}`);
+      }
+      order.set(id, parent);
+    }
+    assert.deepEqual(paper.question_ids, [...order.keys()], paper.paper_id);
+    assert.deepEqual(pack.source_counts, { top_level_questions: parts.size, scored_parts: order.size }, paper.paper_id);
+    assert.equal(pack.questions.reduce((n, q) => n + q.marks, 0), paper.total_marks, paper.paper_id);
+    const names = new Set();
+    for (const [, owner, name] of JSON.stringify(pack).matchAll(assetsPattern)) {
+      assert.equal(owner, paper.paper_id);
+      names.add(name);
+    }
+    const { assets } = read(`data/fmaths-assets/${paper.paper_id}.json`);
+    assert.deepEqual(new Set(Object.keys(assets)), names, paper.paper_id);
+    for (const [name, asset] of Object.entries(assets)) {
+      const bytes = Buffer.from(asset.base64, 'base64');
+      assert.equal(bytes.toString('ascii', 0, 4), 'RIFF', name);
+      assert.equal(bytes.toString('ascii', 8, 12), 'WEBP', name);
+      assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256, name);
     }
   }
 });

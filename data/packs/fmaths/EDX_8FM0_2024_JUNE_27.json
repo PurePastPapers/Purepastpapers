@@ -538,7 +538,8 @@
       "context": {
         "full_question_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_27/Q01_full.webp",
         "stem_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_27/Q01_U04_context.webp",
-        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_27/Q01_scheme.webp"
+        "full_scheme_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_27/Q01_scheme.webp",
+        "lead_in_image_url": "assets/fmaths/EDX_8FM0_2024_JUNE_27/Q01_U04_source_lead.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -651,7 +652,18 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "source_lead_in_regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.12884,
+              0.344988,
+              0.835929,
+              0.421775
+            ]
+          }
+        ]
       },
       "module_id": "D1",
       "official_paper_code": "8FM0/27",

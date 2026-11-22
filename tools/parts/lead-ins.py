@@ -19,7 +19,6 @@ import hashlib
 import io
 import json
 import pathlib
-import sys
 
 from PIL import Image
 
@@ -60,7 +59,10 @@ def lead_in(question, assets, previous_crops=()):
         return None
     own_image = decode(assets[question['content']['question_image_url'].rsplit('/', 1)[1]])
     context_image = decode(assets[stem.rsplit('/', 1)[1]])
-    height = page_height(own_image, own)
+    inserts = prov.get('required_insert_regions') or []
+    if any(region.get('rotate_degrees') in (-90, 90) for region in inserts):
+        return None  # A rotated insert's height is measured on a different source axis.
+    height = page_height(own_image, [*own, *inserts])
     piece = lambda r: round(r['bbox'][3] * height) - round(r['bbox'][1] * height)
     bottom = context_image.height - sum(piece(r) + GAP for r in regions[index + 1:])
     top = bottom - piece(bridge)
@@ -154,7 +156,8 @@ def main(slugs, paper_ids=()):
             # which some part depends on another (see linkGroups in js/engine/linked-parts.js).
             linked = {q.get('parent_question_id') for q in pack.get('questions', []) if q.get('depends_on_question_ids')}
             for question in pack.get('questions', []):
-                if question.get('provenance', {}).get('lead_in_regions') and question.get('context', {}).get('lead_in_image_url'):
+                provenance = question.get('provenance', {})
+                if (provenance.get('lead_in_regions') or provenance.get('source_lead_in_regions')) and question.get('context', {}).get('lead_in_image_url'):
                     continue  # Already rendered from source-verified PDF coordinates.
                 if question.get('parent_question_id') not in linked and not (question.get('context') or {}).get('lead_in_image_url'):
                     continue
