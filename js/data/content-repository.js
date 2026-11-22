@@ -107,20 +107,22 @@ export function writeLocalPack(pack) {
 /** Enabled packs for one subject. An index entry may name its `subject_id`; an
  * entry without one is loaded for every subject (local and older packs). */
 async function getPacks(subjectId) {
-  packsPromise ??= fetchJson('packs/index.json').catch(() => ({ packs: [] }));
+  packsPromise ??= fetchJson('packs/index.json').catch((error) => {
+    packsPromise = null;
+    throw error;
+  });
   const index = await packsPromise;
   const wanted = (index.packs || []).filter((entry) => entry.enabled !== false && (!entry.subject_id || entry.subject_id === subjectId));
   const packs = await Promise.all(wanted.map((entry) => {
     if (!packPromises.has(entry.file)) {
       packPromises.set(entry.file, fetchJson(`packs/${entry.file}`).then((pack) => ({ ...pack, file: entry.file })).catch((error) => {
-        console.warn(`Content pack "${entry.file}" could not be loaded.`, error);
         packPromises.delete(entry.file);
-        return null;
+        throw error;
       }));
     }
     return packPromises.get(entry.file);
   }));
-  return [...packs.filter(Boolean), readLocalPack()];
+  return [...packs, readLocalPack()];
 }
 
 /** Call after content changes so the next read rebuilds from source. */

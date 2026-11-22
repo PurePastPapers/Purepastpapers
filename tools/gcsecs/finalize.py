@@ -95,7 +95,7 @@ def main():
             write(target / 'reviews' / f'{pid}.json', review)
             if a.activate:
                 g.update(image_assets=package(pack_path, pid))
-                packs.append({'file': f'gcsecs/{pid}.json'})
+                packs.append({'file': f'gcsecs/{pid}.json', 'subject_id': runtime['subject_id']})
     assert previous.keys() <= identities.keys(), 'Published Computer Science identities removed'
     if a.activate:
         index_path = REPO / 'data/packs/index.json'

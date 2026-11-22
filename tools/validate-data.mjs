@@ -23,13 +23,20 @@ const subjects = await load('subjects.json');
 const specIndex = createSpecIndex();
 for (const subject of subjects) specIndex.add(await load(`specs/${subject.subject_id}.json`));
 
-const packs = [];
-for (const entry of (await load('packs/index.json', { packs: [] })).packs || []) {
-  if (entry.enabled !== false) packs.push(await load(`packs/${entry.file}`));
-}
-
 let errors = 0;
 let warnings = 0;
+const packs = [];
+for (const entry of (await load('packs/index.json', { packs: [] })).packs || []) {
+  if (entry.enabled === false) continue;
+  const pack = await load(`packs/${entry.file}`);
+  const owners = new Set([...(pack.papers || []), ...(pack.questions || [])].map(record => record.subject_id));
+  if (entry.subject_id ? owners.size !== 1 || !owners.has(entry.subject_id) : owners.size === 1) {
+    console.log(`  ERROR  pack ${entry.file}: its index subject_id must match its sole subject, if any`);
+    errors += 1;
+  }
+  packs.push(pack);
+}
+
 const curriculum = await load('curriculum/index.json');
 if (!Array.isArray(curriculum.mappings)) {
   console.log('  ERROR  curriculum: mappings must be an array');
