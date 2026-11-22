@@ -7,9 +7,22 @@ import { createBus } from '../core/bus.js';
 import { uid } from '../core/utils.js';
 import { latestByQuestion } from '../engine/analytics.js';
 import { localAdapter } from './adapters/local-adapter.js';
-import { supabaseAdapter } from './adapters/supabase-adapter.js';
+import { deleteInkConflict, deleteInkResponse, listInkDraftsForPart, loadInkResponses, saveInkResponse, supabaseAdapter } from './adapters/supabase-adapter.js';
+import * as ink from './ink.js';
 import { SUPABASE_CONFIGURED } from '../config/supabase.config.js';
 import { LEGACY_SPEC_IDS } from '../config/spec-id-migrations.js';
+import { isExportedTest, isOfflineSession, putExport, putOfflineAttempt } from './offline-progress.js';
+
+const guestExportsKey = `${APP.storageNamespace}:guest-pdf-tests`;
+
+function guestProgress() {
+  const doc = emptyProgress('guest');
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(guestExportsKey) || 'null');
+    if (saved) Object.assign(doc, saved);
+  } catch {}
+  return normalise(doc, 'guest');
+}
 
 /** The cloud adapter is the default when configured; browser-only accounts use an explicit legacy login. */
 const backendAdapter = SUPABASE_CONFIGURED ? supabaseAdapter : localAdapter;
@@ -118,28 +131,98 @@ export async function init() {
       console.warn('Saved progress could not be restored; continuing with public browsing:', error);
       user = null;
       activeAdapter = backendAdapter;
-      progress = emptyProgress('guest');
+      progress = guestProgress();
     }
   } else {
-    progress = emptyProgress('guest');
+    progress = guestProgress();
   }
   learnedCache = null;
+  if (user) syncInk().catch(() => {});
   return user;
 }
 
 export const currentUser = () => user;
 export const isSignedIn = () => Boolean(user);
+const inkOwner = () => user?.user_id || 'guest';
+const inkCloud = { deleteInkConflict, deleteInkResponse, loadInkResponses, saveInkResponse };
+const inkAdapter = () => user && activeAdapter === supabaseAdapter ? inkCloud : null;
+export const inkRepository = () => ink.createInkRepository(inkOwner());
+export async function loadInkState(responseId, partId) {
+  const owner = inkOwner();
+  const adapter = inkAdapter();
+  const repository = ink.createInkRepository(owner);
+  if (adapter && globalThis.navigator?.onLine !== false) {
+    try { return await ink.loadSyncedInk(owner, responseId, partId, adapter); }
+    catch { /* local handwriting remains usable offline */ }
+  }
+  const records = (await repository.listByResponse(responseId)).filter(record => record.partId === partId);
+  return { record: records.find(record => !record.conflict) || null, conflicts: records.filter(record => record.conflict) };
+}
+globalThis.addEventListener?.('online', () => syncInk().catch(() => {}));
+export const loadInk = async (responseId, partId) => (await loadInkState(responseId, partId)).record;
+export async function listInkForPart(partId) {
+  if (!inkAdapter() || globalThis.navigator?.onLine === false) return [];
+  return listInkDraftsForPart(inkOwner(), partId);
+}
+const syncingInk = new Map();
+export async function syncInk() {
+  const adapter = inkAdapter();
+  if (!adapter || !globalThis.indexedDB) return false;
+  const owner = inkOwner();
+  const done = (syncingInk.get(owner) || Promise.resolve()).catch(() => {}).then(() =>
+    inkOwner() === owner ? ink.syncInkOutbox(owner, adapter) : { failed: 0, conflicts: 0 });
+  syncingInk.set(owner, done);
+  try {
+    const { failed, conflicts } = await done;
+    if (failed) throw new Error('Some handwriting could not be synced. Try again when you’re online.');
+    return inkOwner() === owner && !conflicts;
+  } finally {
+    if (syncingInk.get(owner) === done) syncingInk.delete(owner);
+  }
+}
+
+export function resolveInkConflict(responseId, partId, conflict, options) {
+  return ink.resolveInkConflict(inkOwner(), responseId, partId, conflict, options, inkAdapter());
+}
+
+function guestInkReferences(doc) {
+  const refs = new Map();
+  for (const attempt of [...doc.question_attempts, ...doc.saved_answers]) {
+    if (attempt.has_ink) refs.set(attempt.attempt_id, attempt.question_id);
+  }
+  try {
+    const prefix = `${APP.storageNamespace}:practice:guest:`;
+    for (let i = 0; i < sessionStorage.length; i++) {
+      const key = sessionStorage.key(i);
+      if (!key?.startsWith(prefix)) continue;
+      const drafts = JSON.parse(sessionStorage.getItem(key) || '{}').inkAttempts;
+      for (const parts of Object.values(drafts || {})) {
+        for (const [partId, responseId] of Object.entries(parts)) if (typeof responseId === 'string') refs.set(responseId, partId);
+      }
+    }
+  } catch {}
+  return [...refs].slice(0, 1000);
+}
+
+async function deleteAttemptInk(attempt) {
+  if (!attempt?.has_ink) return;
+  const owner = inkOwner();
+  const adapter = inkAdapter();
+  if (adapter?.deleteInkResponse) await adapter.deleteInkResponse(owner, attempt.attempt_id, attempt.question_id);
+  await ink.createInkRepository(owner).remove(attempt.attempt_id, attempt.question_id);
+}
 export const backendInfo = () => ({ id: activeAdapter.id, label: activeAdapter.label, syncsAcrossDevices: activeAdapter.syncsAcrossDevices, cloudConfigured: SUPABASE_CONFIGURED });
 
 /** `initialProgress` (optional) pre-fills the new account — used by the demo account. */
 export async function signUp({ initialProgress = null, redirectTo = null, ...details }) {
   const chosenAdapter = details.isDemo ? localAdapter : backendAdapter;
   const guestProgress = !user ? progress : null;
+  const guestInk = guestProgress ? guestInkReferences(guestProgress) : [];
   activeAdapter = chosenAdapter;
   if (chosenAdapter === supabaseAdapter) setLegacyMode(false);
   else if (SUPABASE_CONFIGURED && details.isDemo) setLegacyMode(true);
   if (chosenAdapter === supabaseAdapter && guestProgress) {
-    await supabaseAdapter.stagePendingSignup(details.email, guestProgress, redirectTo);
+    await supabaseAdapter.stagePendingSignup(details.email, guestProgress, redirectTo, guestInk);
   }
   let created;
   try {
@@ -175,6 +258,7 @@ export async function signUp({ initialProgress = null, redirectTo = null, ...det
   learnedCache = null;
   try {
     await activeAdapter.saveProgress(user.user_id, progress);
+    await ink.adoptGuestInk(user.user_id, guestInk).catch(() => {});
     if (chosenAdapter === supabaseAdapter) await supabaseAdapter.clearPendingSignup(details.email);
   } catch (error) {
     user = null;
@@ -314,7 +398,7 @@ export async function signOut() {
   user = null;
   setLegacyMode(false);
   activeAdapter = backendAdapter;
-  progress = emptyProgress('guest');
+  progress = guestProgress();
   learnedCache = null;
   events.emit('auth', null);
 }
@@ -328,11 +412,13 @@ export async function updateProfile(patch) {
 export const changePassword = (currentPassword, newPassword) => activeAdapter.changePassword(user.user_id, currentPassword, newPassword);
 
 export async function deleteAccount() {
-  await activeAdapter.deleteUser(user.user_id, user.email);
+  const owner = user.user_id;
+  await activeAdapter.deleteUser(owner, user.email);
+  if (globalThis.indexedDB) await ink.deleteInkOwnerData(owner).catch(() => {});
   user = null;
   setLegacyMode(false);
   activeAdapter = backendAdapter;
-  progress = emptyProgress('guest');
+  progress = guestProgress();
   learnedCache = null;
   events.emit('auth', null);
 }
@@ -394,7 +480,7 @@ export const getSession = (sessionId) => requireProgress().sessions.find((sessio
 /** Unfinished sessions worth resuming (single-question sessions only once something was entered). */
 export function resumableSessions() {
   return requireProgress()
-    .sessions.filter((session) => session.status !== 'completed')
+    .sessions.filter((session) => session.status !== 'completed' && !isOfflineSession(session))
     .filter((session) => session.kind !== 'single' || Object.keys(session.marks || {}).length > 0)
     .sort((a, b) => (a.started_at < b.started_at ? 1 : -1));
 }
@@ -405,7 +491,7 @@ function upsertSession(session) {
   if (index >= 0) doc.sessions[index] = session;
   else doc.sessions.push(session);
   // Keep storage bounded: old completed sessions go, their attempts stay in the history.
-  const completed = doc.sessions.filter((candidate) => candidate.status === 'completed');
+  const completed = doc.sessions.filter((candidate) => candidate.status === 'completed' && !isOfflineSession(candidate));
   if (completed.length > LIMITS.keptCompletedSessions) {
     const drop = new Set(
       completed
@@ -433,12 +519,16 @@ export async function deleteSession(sessionId) {
 export async function commitSessionResult(session, questionAttempts = [], paperAttempt = null, unmarkedAnswers = []) {
   const doc = requireProgress();
   for (const attempt of questionAttempts) {
-    attempt.attempt_id ||= uid('att');
+    attempt.attempt_id ||= `${session.session_id}:${attempt.question_id}`;
     absorbWaiting(doc, attempt);
   }
-  doc.question_attempts.push(...questionAttempts);
-  for (const entry of unmarkedAnswers) keepWaiting(doc, entry);
-  if (paperAttempt) doc.paper_attempts.push(paperAttempt);
+  for (const attempt of questionAttempts) {
+    if (!doc.question_attempts.some(candidate => candidate.attempt_id === attempt.attempt_id)) doc.question_attempts.push(attempt);
+  }
+  for (const entry of unmarkedAnswers) keepWaiting(doc, {
+    ...entry, attempt_id: entry.attempt_id || `${session.session_id}:${entry.question_id}`,
+  });
+  if (paperAttempt && !doc.paper_attempts.some(candidate => candidate.session_id === session.session_id)) doc.paper_attempts.push(paperAttempt);
   upsertSession(session);
   await persist();
 }
@@ -454,15 +544,17 @@ const waitingIndex = (doc, attemptId) => (attemptId ? doc.saved_answers.findInde
 const markedAttempt = (doc, attemptId) => (attemptId ? doc.question_attempts.find((entry) => entry.attempt_id === attemptId) : null);
 
 /** Adds a go saved to mark later, or updates one when its attempt_id is already waiting. */
-function keepWaiting(doc, { attempt_id = null, question_id, subject_id, answer = '', session_id = null, group_attempt_id = null }, now = new Date().toISOString()) {
+function keepWaiting(doc, { attempt_id = null, question_id, subject_id, answer = '', session_id = null, group_attempt_id = null, has_ink = undefined }, now = new Date().toISOString()) {
   const index = waitingIndex(doc, attempt_id);
   if (index >= 0) {
-    Object.assign(doc.saved_answers[index], { answer, updated_at: now }, session_id ? { session_id } : {});
+    Object.assign(doc.saved_answers[index], { answer, updated_at: now }, session_id ? { session_id } : {},
+      has_ink === undefined ? {} : { has_ink });
     return doc.saved_answers[index];
   }
   const entry = { attempt_id: attempt_id || uid('att'), question_id, subject_id, answer, timestamp: now, updated_at: now };
   if (session_id) entry.session_id = session_id;
   if (group_attempt_id) entry.group_attempt_id = group_attempt_id;
+  if (has_ink) entry.has_ink = true;
   doc.saved_answers.push(entry);
   return entry;
 }
@@ -474,6 +566,7 @@ function absorbWaiting(doc, attempt) {
   const [entry] = doc.saved_answers.splice(index, 1);
   if (hasText(entry.answer) && !hasText(attempt.answer)) attempt.answer = entry.answer;
   attempt.answered_at = entry.timestamp;
+  if (entry.has_ink && attempt.has_ink === undefined) attempt.has_ink = true;
   if (entry.group_attempt_id && !attempt.group_attempt_id) attempt.group_attempt_id = entry.group_attempt_id;
   if (attempt.inline) attempt.saved_answer = entry;
 }
@@ -509,17 +602,19 @@ export function answerFor(questionId) {
  * Save an answer without a mark. With an attemptId it changes that go's answer (a marked
  * go keeps its mark); without one it starts a new go that waits to be marked.
  */
-export async function saveAnswerUnmarked(question, answer = '', { attemptId = null, groupAttemptId = null } = {}) {
+export async function saveAnswerUnmarked(question, answer = '', { attemptId = null, groupAttemptId = null, hasInk = undefined } = {}) {
   const doc = requireProgress();
   const text = String(answer || '');
   const marked = markedAttempt(doc, attemptId);
   if (marked) {
+    if (marked.question_id !== question.question_id) throw new Error('This answer belongs to another question.');
     marked.answer = text;
+    if (hasInk !== undefined) marked.has_ink = hasInk;
     marked.answer_edited_at = new Date().toISOString();
     await persist();
     return { ...marked, waiting: false };
   }
-  const entry = keepWaiting(doc, { attempt_id: attemptId, question_id: question.question_id, subject_id: question.subject_id, answer: text, group_attempt_id: groupAttemptId });
+  const entry = keepWaiting(doc, { attempt_id: attemptId, question_id: question.question_id, subject_id: question.subject_id, answer: text, group_attempt_id: groupAttemptId, has_ink: hasInk });
   await persist();
   return { ...entry, waiting: true };
 }
@@ -529,11 +624,13 @@ export async function saveAnswerUnmarked(question, answer = '', { attemptId = nu
  * a waiting one is marked. With no attemptId, `reattempt` starts a new go; otherwise the latest
  * marked go is changed (kept for older callers).
  */
-export async function saveQuestionMark(question, marks, { reattempt = false, answer = null, attemptId = null, groupAttemptId = null } = {}) {
+export async function saveQuestionMark(question, marks, { reattempt = false, answer = null, attemptId = null, groupAttemptId = null, hasInk = undefined } = {}) {
   if (!validMark(marks, question.marks)) throw new Error('Enter a whole number within the available marks.');
   const doc = requireProgress();
   const target = markedAttempt(doc, attemptId) || (!attemptId && !reattempt ? latestByQuestion(doc.question_attempts).get(question.question_id) : null);
   if (target) {
+    if (target.question_id !== question.question_id) throw new Error('This answer belongs to another question.');
+    if (hasInk !== undefined) target.has_ink = hasInk;
     if (hasText(answer)) target.answer = answer;
     if (target.marks_awarded !== marks) {
       target.mark_edits = [...(target.mark_edits || []), { marks_awarded: target.marks_awarded, max_marks: target.max_marks }];
@@ -548,6 +645,7 @@ export async function saveQuestionMark(question, marks, { reattempt = false, ans
     difficulty: question.difficulty, marks_awarded: marks, max_marks: question.marks, timestamp: new Date().toISOString(), marked_by: 'self', inline: true };
   if (hasText(answer)) attempt.answer = answer;
   if (groupAttemptId) attempt.group_attempt_id = groupAttemptId;
+  if (hasInk !== undefined) attempt.has_ink = hasInk;
   absorbWaiting(doc, attempt);
   doc.question_attempts.push(attempt);
   await persist();
@@ -559,6 +657,7 @@ export async function changeQuestionMark(attemptOrQuestionId, marks) {
   const doc = requireProgress();
   const attempt = markedAttempt(doc, attemptOrQuestionId) || latestByQuestion(doc.question_attempts).get(attemptOrQuestionId);
   if (!attempt) throw new Error('There is no mark to change yet.');
+  if (attempt.session_id?.startsWith('paper_')) throw new Error('Change these marks from the exported test review.');
   if (!validMark(marks, attempt.max_marks)) throw new Error('Enter a whole number within the available marks.');
   if (attempt.marks_awarded === marks) return attempt;
   attempt.mark_edits = [...(attempt.mark_edits || []), { marks_awarded: attempt.marks_awarded, max_marks: attempt.max_marks }];
@@ -587,6 +686,9 @@ export async function undoQuestionMark(questionId, { attemptId = null } = {}) {
 /** Delete one go at a question, marked or waiting: its answer and mark are gone for good. */
 export async function removeAttempt(attemptId) {
   const doc = requireProgress();
+  const attempt = markedAttempt(doc, attemptId) || doc.saved_answers[waitingIndex(doc, attemptId)];
+  if (attempt?.session_id?.startsWith('paper_')) throw new Error('Change these marks from the exported test review.');
+  await deleteAttemptInk(attempt);
   const before = doc.question_attempts.length + doc.saved_answers.length;
   doc.question_attempts = doc.question_attempts.filter((entry) => entry.attempt_id !== attemptId);
   doc.saved_answers = doc.saved_answers.filter((entry) => entry.attempt_id !== attemptId);
@@ -600,6 +702,7 @@ export async function removeSavedAnswer(attemptId) {
   const doc = requireProgress();
   const index = waitingIndex(doc, attemptId);
   if (index < 0) return;
+  await deleteAttemptInk(doc.saved_answers[index]);
   doc.saved_answers.splice(index, 1);
   await persist();
 }
@@ -622,9 +725,62 @@ export const getCustomTest = (paperId) => requireProgress().custom_tests.find((p
 
 export async function saveCustomTest(paper) {
   const doc = requireProgress();
-  doc.custom_tests = [...doc.custom_tests.filter((candidate) => candidate.paper_id !== paper.paper_id), paper].slice(-60);
+  const exports = doc.custom_tests.filter(isExportedTest);
+  const ordinary = doc.custom_tests.filter(candidate => !isExportedTest(candidate) && candidate.paper_id !== paper.paper_id);
+  doc.custom_tests = [...exports, ...[...ordinary, paper].slice(-60)];
   await persist({ silent: true });
 }
+
+export const exportedTests = () => requireProgress().custom_tests.filter(isExportedTest);
+export const offlineAttempts = (paperId) => requireProgress().sessions.filter(session => isOfflineSession(session) && session.paper_id === paperId);
+
+let offlineWrites = Promise.resolve();
+function writeOffline(update) {
+  const accountId = user?.user_id ?? null;
+  const adapter = activeAdapter;
+  const promise = offlineWrites.catch(() => {}).then(async () => {
+    if ((user?.user_id ?? null) !== accountId) throw new Error('Your account changed. Open the test again.');
+    let value;
+    if (accountId && adapter.updateProgress) {
+      const fresh = await adapter.updateProgress(accountId, remote => {
+        const doc = normalise(remote || requireProgress(), accountId);
+        value = update(doc);
+        return doc;
+      });
+      if (user?.user_id !== accountId) throw new Error('Your account changed. Open the test again.');
+      progress = fresh;
+      learnedCache = null;
+    } else {
+      const doc = structuredClone(requireProgress());
+      value = update(doc);
+      if (accountId) await adapter.saveProgress(accountId, doc);
+      else {
+        try {
+          sessionStorage.setItem(guestExportsKey, JSON.stringify({
+            custom_tests: doc.custom_tests.filter(isExportedTest),
+            sessions: doc.sessions.filter(isOfflineSession),
+            question_attempts: doc.question_attempts.filter(attempt => attempt.session_id?.startsWith('paper_')),
+            paper_attempts: doc.paper_attempts.filter(attempt => attempt.session_kind === 'offline_test'),
+          }));
+        } catch {
+          throw new Error('This browser could not save the exported test. Free up browser storage and try again.');
+        }
+      }
+      if ((user?.user_id ?? null) !== accountId) throw new Error('Your account changed. Open the test again.');
+      Object.assign(requireProgress(), doc);
+    }
+    return value;
+  });
+  offlineWrites = promise;
+  return promise;
+}
+
+export const saveExportedTest = snapshot => writeOffline(doc => putExport(doc, snapshot));
+export const saveOfflineAttempt = (paperId, options = {}) => writeOffline(doc => {
+  const paper = doc.custom_tests.find(test => test.paper_id === paperId && isExportedTest(test));
+  if (!paper) throw new Error('This exported test is unavailable in your account.');
+  return putOfflineAttempt(doc, paper, options);
+});
 
 // ───────────────────────────── bulk writes, export, import, reset ─────────────────────────────
 
@@ -639,9 +795,26 @@ export function exportData() {
   return { app: 'onspec', exported_at: new Date().toISOString(), user: { ...user }, progress: structuredClone(requireProgress()) };
 }
 
+export async function exportDataWithInk() {
+  const owner = inkOwner();
+  const data = exportData();
+  if (globalThis.indexedDB) data.ink = await ink.exportInkOwnerData(owner);
+  if (inkAdapter()?.loadInkResponses) {
+    const remote = await inkAdapter().loadInkResponses(owner);
+    if (remote.length && !data.ink) data.ink = { schemaVersion: 1, ownerId: owner, records: [] };
+    const seen = new Set(data.ink?.records.map(record => JSON.stringify([record.responseId, record.partId, record.sections])));
+    for (const record of remote) {
+      const key = JSON.stringify([record.responseId, record.partId, record.sections]);
+      if (!seen.has(key)) { data.ink.records.push(record); seen.add(key); }
+    }
+  }
+  if (inkOwner() !== owner) throw new Error('Your account changed. Open the account page again.');
+  return data;
+}
+
 async function replaceProgress(replacement) {
   const account = user;
-  await activeAdapter.saveProgress(account.user_id, replacement);
+  await activeAdapter.saveProgress(account.user_id, replacement, { replace: true });
   if (user?.user_id !== account.user_id) return;
   progress = replacement;
   learnedCache = null;
@@ -653,7 +826,11 @@ export async function importData(data) {
   if (!incoming || !Array.isArray(incoming.question_attempts) || !Array.isArray(incoming.learned_spec_points)) {
     throw new Error('That file is not a PPP progress export.');
   }
-  await replaceProgress(normalise(incoming, user.user_id));
+  const owner = user.user_id;
+  if (data?.ink) await ink.importInkOwnerData(owner, data.ink);
+  if (inkOwner() !== owner) throw new Error('Your account changed. Open the account page again.');
+  await replaceProgress(normalise(incoming, owner));
+  if (data?.ink) syncInk().catch(() => {});
 }
 
 export async function resetProgress() {

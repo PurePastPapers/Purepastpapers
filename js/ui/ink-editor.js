@@ -1,0 +1,300 @@
+const LOGICAL_WIDTH = 1000;
+const LOGICAL_HEIGHT = 360;
+const MAX_SECTIONS = 12;
+const MAX_POINTS_PER_STROKE = 5000;
+
+function newSection() {
+  return { id: crypto.randomUUID(), width: LOGICAL_WIDTH, height: LOGICAL_HEIGHT, strokes: [] };
+}
+
+function normalizeInk(value) {
+  if (!value || value.schemaVersion !== 1 || !Array.isArray(value.sections)) {
+    return { ...(value || {}), schemaVersion: 1, sections: [newSection()] };
+  }
+  const sections = value.sections.slice(0, MAX_SECTIONS).map((section) => ({
+    id: typeof section.id === 'string' ? section.id : crypto.randomUUID(),
+    width: Number.isFinite(section.width) && section.width > 0 ? section.width : LOGICAL_WIDTH,
+    height: Number.isFinite(section.height) && section.height > 0 ? section.height : LOGICAL_HEIGHT,
+    strokes: Array.isArray(section.strokes) ? section.strokes.map((stroke) => ({
+      id: typeof stroke.id === 'string' ? stroke.id : crypto.randomUUID(),
+      tool: stroke.tool === 'eraser' ? 'eraser' : 'pen',
+      color: typeof stroke.color === 'string' ? stroke.color : '#172554',
+      width: Math.max(1, Math.min(40, Number(stroke.width) || 3)),
+      points: Array.isArray(stroke.points) ? stroke.points.slice(0, MAX_POINTS_PER_STROKE).map((point) => ({
+        x: Math.max(0, Math.min(Number(section.width) || LOGICAL_WIDTH, Number(point.x) || 0)),
+        y: Math.max(0, Math.min(Number(section.height) || LOGICAL_HEIGHT, Number(point.y) || 0)),
+        pressure: Math.max(0.1, Math.min(1, Number(point.pressure) || 0.5)),
+      })) : [],
+    })) : [],
+  }));
+  return { ...value, schemaVersion: 1, sections: sections.length ? sections : [newSection()] };
+}
+
+function drawSection(canvas, section) {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = Math.max(1, window.devicePixelRatio || 1);
+  const pixelWidth = Math.round(rect.width * dpr);
+  const pixelHeight = Math.round(rect.height * dpr);
+  if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+    canvas.width = pixelWidth;
+    canvas.height = pixelHeight;
+  }
+  const context = canvas.getContext('2d');
+  context.setTransform(pixelWidth / section.width, 0, 0, pixelHeight / section.height, 0, 0);
+  context.clearRect(0, 0, section.width, section.height);
+  for (const stroke of section.strokes) {
+    if (!stroke.points.length) continue;
+    context.save();
+    context.globalCompositeOperation = stroke.tool === 'eraser' ? 'destination-out' : 'source-over';
+    context.strokeStyle = stroke.color;
+    context.fillStyle = stroke.color;
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+    if (stroke.points.length === 1) {
+      const point = stroke.points[0];
+      const radius = stroke.width * (0.55 + point.pressure * 0.45) / 2;
+      context.beginPath();
+      context.arc(point.x, point.y, radius, 0, Math.PI * 2);
+      context.fill();
+    } else {
+      for (let index = 1; index < stroke.points.length; index += 1) {
+        const previous = stroke.points[index - 1];
+        const point = stroke.points[index];
+        context.lineWidth = stroke.width * (0.45 + point.pressure * 0.55);
+        context.beginPath();
+        context.moveTo(previous.x, previous.y);
+        context.lineTo(point.x, point.y);
+        context.stroke();
+      }
+    }
+    context.restore();
+  }
+}
+
+function addControl(parent, label, control) {
+  const wrapper = document.createElement('label');
+  wrapper.className = 'ink-editor__control';
+  const text = document.createElement('span');
+  text.textContent = label;
+  wrapper.append(text, control);
+  parent.append(wrapper);
+  return control;
+}
+
+/** Mounts a compact vector handwriting editor. `onChange` receives a full immutable snapshot. */
+export function createInkEditor(container, { value, onChange = () => {}, readOnly = false } = {}) {
+  let ink = normalizeInk(value);
+  let activeStroke = null;
+  let activeSection = null;
+  let saveState = 'Saved on this device';
+  let drawingMode = 'pen';
+  let allowTouchDrawing = false;
+  const history = [structuredClone(ink)];
+  let historyIndex = 0;
+
+  container.replaceChildren();
+  const root = document.createElement('section');
+  root.className = `ink-editor${readOnly ? ' ink-editor--readonly' : ''}`;
+  root.setAttribute('aria-label', readOnly ? 'Handwritten answer' : 'Handwritten answer editor');
+  const toolbar = document.createElement('div');
+  toolbar.className = 'ink-editor__toolbar';
+  const sectionsHost = document.createElement('div');
+  sectionsHost.className = 'ink-editor__sections';
+  const status = document.createElement('span');
+  status.className = 'ink-editor__status';
+  status.setAttribute('role', 'status');
+  const surfaces = [];
+
+  const emit = (state = 'Saved on this device') => {
+    saveState = state;
+    status.textContent = saveState;
+    const snapshot = structuredClone(ink);
+    onChange(snapshot);
+    history.splice(historyIndex + 1);
+    history.push(snapshot);
+    if (history.length > 60) history.shift();
+    historyIndex = history.length - 1;
+    updateHistoryControls();
+  };
+
+  let undoButton;
+  let redoButton;
+  const updateHistoryControls = () => {
+    if (undoButton) undoButton.disabled = readOnly || historyIndex <= 0;
+    if (redoButton) redoButton.disabled = readOnly || historyIndex >= history.length - 1;
+  };
+  const redraw = () => surfaces.forEach(({ canvas, section }) => drawSection(canvas, section));
+  const renderSections = () => {
+    sectionsHost.replaceChildren();
+    surfaces.length = 0;
+    for (let index = 0; index < ink.sections.length; index += 1) {
+      const section = ink.sections[index];
+      const panel = document.createElement('div');
+      panel.className = 'ink-editor__section';
+      const heading = document.createElement('div');
+      heading.className = 'ink-editor__section-title';
+      heading.textContent = `Writing space ${index + 1}`;
+      const canvas = document.createElement('canvas');
+      canvas.className = 'ink-editor__canvas';
+      canvas.width = 1000;
+      canvas.height = 360;
+      canvas.setAttribute('role', 'img');
+      canvas.setAttribute('aria-label', `Handwriting area ${index + 1}`);
+      canvas.dataset.sectionId = section.id;
+      canvas.style.touchAction = allowTouchDrawing ? 'none' : 'pan-y pinch-zoom';
+      if (!readOnly) attachPointerHandlers(canvas, section);
+      panel.append(heading, canvas);
+      sectionsHost.append(panel);
+      surfaces.push({ canvas, section });
+    }
+    redraw();
+  };
+
+  const pointFromEvent = (event, canvas, section) => {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: Math.max(0, Math.min(section.width, ((event.clientX - rect.left) / rect.width) * section.width)),
+      y: Math.max(0, Math.min(section.height, ((event.clientY - rect.top) / rect.height) * section.height)),
+      pressure: event.pointerType === 'pen' && Number.isFinite(event.pressure) && event.pressure > 0
+        ? Math.max(0.1, Math.min(1, event.pressure)) : 0.5,
+    };
+  };
+  const attachPointerHandlers = (canvas, section) => {
+    canvas.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'touch' && !allowTouchDrawing) return;
+      if (event.button !== undefined && event.button !== 0) return;
+      event.preventDefault();
+      canvas.setPointerCapture(event.pointerId);
+      activeSection = section;
+      activeStroke = {
+        id: crypto.randomUUID(),
+        tool: drawingMode,
+        color: drawingMode === 'eraser' ? '#ffffff' : colorInput.value,
+        width: Number(widthInput.value),
+        points: [pointFromEvent(event, canvas, section)],
+      };
+      section.strokes.push(activeStroke);
+      redraw();
+    });
+    canvas.addEventListener('pointermove', (event) => {
+      if (!activeStroke || activeSection !== section || !canvas.hasPointerCapture(event.pointerId)) return;
+      event.preventDefault();
+      const events = typeof event.getCoalescedEvents === 'function' ? event.getCoalescedEvents() : [event];
+      for (const sample of events) {
+        if (activeStroke.points.length < MAX_POINTS_PER_STROKE) activeStroke.points.push(pointFromEvent(sample, canvas, section));
+      }
+      redraw();
+    });
+    const finish = (event, cancelled = false) => {
+      if (!activeStroke || activeSection !== section) return;
+      if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+      if (cancelled) section.strokes.pop();
+      activeStroke = null;
+      activeSection = null;
+      redraw();
+      emit();
+    };
+    canvas.addEventListener('pointerup', (event) => finish(event));
+    canvas.addEventListener('pointercancel', (event) => finish(event, true));
+    canvas.addEventListener('lostpointercapture', (event) => finish(event, true));
+  };
+
+  const undo = () => {
+    if (historyIndex <= 0) return;
+    historyIndex -= 1;
+    ink = structuredClone(history[historyIndex]);
+    renderSections();
+    onChange(structuredClone(ink));
+    updateHistoryControls();
+  };
+  const redo = () => {
+    if (historyIndex >= history.length - 1) return;
+    historyIndex += 1;
+    ink = structuredClone(history[historyIndex]);
+    renderSections();
+    onChange(structuredClone(ink));
+    updateHistoryControls();
+  };
+
+  if (!readOnly) {
+    colorInput = document.createElement('input');
+    colorInput.type = 'color';
+    colorInput.value = '#172554';
+    colorInput.setAttribute('aria-label', 'Pen colour');
+    addControl(toolbar, 'Colour', colorInput);
+    widthInput = document.createElement('input');
+    widthInput.type = 'range';
+    widthInput.min = '1';
+    widthInput.max = '12';
+    widthInput.value = '3';
+    widthInput.setAttribute('aria-label', 'Pen thickness');
+    addControl(toolbar, 'Thickness', widthInput);
+    const button = (label, action) => {
+      const element = document.createElement('button');
+      element.type = 'button';
+      element.className = 'button button--secondary button--small';
+      element.textContent = label;
+      element.addEventListener('click', action);
+      toolbar.append(element);
+      return element;
+    };
+    const modeButton = button('Eraser', () => {
+      drawingMode = drawingMode === 'eraser' ? 'pen' : 'eraser';
+      modeButton.textContent = drawingMode === 'eraser' ? 'Pen' : 'Eraser';
+      modeButton.setAttribute('aria-pressed', String(drawingMode === 'eraser'));
+    });
+    modeButton.setAttribute('aria-pressed', 'false');
+    const touchButton = button('Touch drawing off', () => {
+      allowTouchDrawing = !allowTouchDrawing;
+      for (const { canvas } of surfaces) canvas.style.touchAction = allowTouchDrawing ? 'none' : 'pan-y pinch-zoom';
+      touchButton.textContent = allowTouchDrawing ? 'Touch drawing on' : 'Touch drawing off';
+      touchButton.setAttribute('aria-pressed', String(allowTouchDrawing));
+    });
+    touchButton.setAttribute('aria-pressed', 'false');
+    undoButton = button('Undo', undo);
+    redoButton = button('Redo', redo);
+    button('Add writing space', () => {
+      if (ink.sections.length >= MAX_SECTIONS) {
+        status.textContent = `Maximum ${MAX_SECTIONS} writing spaces`;
+        return;
+      }
+      ink.sections.push(newSection());
+      renderSections();
+      emit();
+    });
+    button('Clear answer', () => {
+      ink = { ...ink, schemaVersion: 1, sections: [newSection()] };
+      renderSections();
+      emit();
+    });
+  }
+
+  if (typeof colorInput === 'undefined') { var colorInput; var widthInput; }
+  if (!readOnly) toolbar.append(status);
+  else toolbar.append(status);
+  root.append(toolbar, sectionsHost);
+  container.append(root);
+  status.textContent = readOnly ? 'Handwritten answer' : saveState;
+  renderSections();
+  updateHistoryControls();
+
+  const resizeObserver = new ResizeObserver(redraw);
+  resizeObserver.observe(root);
+  const onResize = () => redraw();
+  window.addEventListener('resize', onResize, { passive: true });
+
+  return {
+    getValue: () => structuredClone(ink),
+    setSaveState(state) { saveState = state; status.textContent = state; },
+    destroy() {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', onResize);
+      container.replaceChildren();
+    },
+  };
+}
+
+/** Draws stored strokes without controls for marking and history views. */
+export function renderInkPreview(container, value) {
+  return createInkEditor(container, { value, readOnly: true });
+}

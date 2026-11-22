@@ -20,6 +20,8 @@ export const links = {
   papers: (subjectId = null, paperType = 'real_past_paper', tier = null) => `#${PAPER_LISTS[paperType] || '/papers'}${query({ subject: subjectId, tier })}`,
   paper: (subjectId, paperId) => `#/paper/${enc(subjectId)}/${enc(paperId)}`,
   practice: (params) => `#/practice${query(params)}`,
+  exportedTests: () => '#/practice/exported',
+  exportedTest: (paperId, params) => `#/practice/exported/${enc(paperId)}${query(params)}`,
   session: (sessionId) => `#/session/${enc(sessionId)}`,
   hub: (params) => `#/hub${query(params)}`,
   aiPapers: () => '#/ai-papers',

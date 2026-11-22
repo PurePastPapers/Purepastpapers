@@ -1,12 +1,19 @@
 # Agent handoff: Supabase accounts and progress sync
 
-Last updated: 2026-11-17 (Europe/London)
+Last updated: 2026-11-22 (Europe/London)
 
 ## Start here
 
 At the beginning of every agent session, read this file and `docs/supabase-setup.md` before changing code or Supabase settings. Update and commit this handoff after each significant milestone and before context or usage limits.
 
 Never put passwords, SMTP credentials, Supabase secret keys, access tokens, or other secrets in this document, GitHub, logs, or chat.
+
+## Printable practice tests and handwritten answers
+
+- Practice exports keep a versioned reference-only snapshot in the student's custom tests. Paper attempts use stable IDs and a frozen selection, with completion and score saved separately. Account progress writes use a compare-and-swap on `user_progress.updated_at` to preserve offline test commits from another device.
+- Guest exported tests and paper results are retained in the current browser tab. Practice handwriting is stored in owner-scoped IndexedDB. A signed-in account syncs each bounded answer separately through the handwriting RPCs. Conflicting edits remain available until the student chooses a version.
+- Migration `20261122120000_ink_responses.sql` was applied to the production Supabase project. The rollback-only test in `supabase/tests/ink_responses_isolation.sql` passed in local PostgreSQL with synthetic auth identities. Production metadata confirms RLS and an owner read policy on each handwriting table.
+- User deletion cascades handwriting records in Supabase. The Account backup includes handwriting, and deleting an individual attempt removes its associated handwriting. Verification on physical Apple Pencil hardware remains separate from browser pointer tests.
 
 ## 1. Project overview
 

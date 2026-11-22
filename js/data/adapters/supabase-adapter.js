@@ -2,6 +2,10 @@
 // The app is a static site with no bundler, so supabase-js is loaded from esm.sh on demand.
 import { APP, LIMITS } from '../../config/app.config.js';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from '../../config/supabase.config.js';
+import { deleteInkOwnerData } from '../ink.js';
+
+import { adoptGuestInk } from '../ink.js';
+import { retainOfflineProgress } from '../offline-progress.js';
 
 const namespace = APP.storageNamespace;
 const pendingKey = (email) => `${namespace}:pending-signup:${String(email || '').trim().toLowerCase()}`;
@@ -137,6 +141,7 @@ async function restorePendingSignup(email, userId) {
   if (error) throw new Error(`Could not save your progress: ${error.message}`);
   if (inserted?.length) {
     copyGuestPracticeDrafts(userId);
+    await adoptGuestInk(userId, pending?.inkReferences).catch(() => {});
     try { localStorage.removeItem(key); } catch {}
     return { imported: true, nextRoute: pending?.nextRoute || null };
   }
@@ -337,6 +342,9 @@ export const supabaseAdapter = {
     } catch {
       // Server-side account and progress have been deleted; browser storage may be blocked.
     }
+    try { await deleteInkOwnerData(userId); } catch {
+      // Server-side records are removed by the auth.users cascade if local storage is unavailable.
+    }
   },
 
   /** Whether the signed-in account is listed in public.site_owners (checked by row-level security). */
@@ -357,23 +365,39 @@ export const supabaseAdapter = {
     return data?.progress ?? null;
   },
 
-  async saveProgress(userId, document) {
-    const client = await getClient();
+  async saveProgress(userId, document, { replace = false } = {}) {
     const snapshot = structuredClone(document);
-    writeQueue = writeQueue.catch(() => {}).then(async () => {
-      const { error } = await client.from('user_progress').upsert({
-        user_id: userId,
-        progress: snapshot,
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'user_id' });
-      if (error) throw new Error(`Could not save your progress: ${error.message}`);
-    });
-    return writeQueue;
+    return this.updateProgress(userId, remote => replace ? snapshot : retainOfflineProgress(snapshot, remote));
   },
 
-  async stagePendingSignup(email, progress, nextRoute) {
+  /** Compare-and-swap the account's progress, preserving other devices' offline attempt commits. */
+  updateProgress(userId, update) {
+    const save = writeQueue.catch(() => {}).then(async () => {
+      const client = await getClient();
+      for (let retry = 0; retry < 6; retry += 1) {
+        const { data: row, error: readError } = await client.from('user_progress')
+          .select('progress,updated_at').eq('user_id', userId).maybeSingle();
+        if (readError) throw new Error(`Could not read your saved progress: ${readError.message}`);
+        const document = update(row?.progress ?? null);
+        const stamp = new Date(Math.max(Date.now(), Date.parse(row?.updated_at || 0) + (row ? 1 : 0))).toISOString();
+        const changes = { progress: document, updated_at: stamp };
+        const request = row
+          ? client.from('user_progress').update(changes).eq('user_id', userId).eq('updated_at', row.updated_at)
+          : client.from('user_progress').insert({ user_id: userId, ...changes });
+        const { data, error } = await request.select('user_id');
+        if (!row && error?.code === '23505') continue;
+        if (error) throw new Error(`Could not save your progress: ${error.message}`);
+        if (data?.length === 1) return document;
+      }
+      throw new Error('Your progress changed on another device. Please try again.');
+    });
+    writeQueue = save;
+    return save;
+  },
+
+  async stagePendingSignup(email, progress, nextRoute, inkReferences = []) {
     try {
-      localStorage.setItem(pendingKey(email), JSON.stringify({ progress, nextRoute }));
+      localStorage.setItem(pendingKey(email), JSON.stringify({ progress, nextRoute, inkReferences }));
     } catch {
       throw new Error('Your browser could not prepare progress for the confirmation link. Free up browser storage and try again.');
     }
@@ -410,3 +434,74 @@ export const supabaseAdapter = {
     };
   },
 };
+
+async function requireInkOwner(client, userId) {
+  const { data, error } = await client.auth.getUser();
+  if (error) throw new Error(`Could not verify the signed-in account for handwriting sync: ${error.message}`);
+  if (!userId || data.user?.id !== userId) throw new Error('Handwriting can only sync to the signed-in account.');
+}
+
+/** Loads saved handwriting and unresolved concurrent edits for the signed-in owner. */
+export async function loadInkResponses(userId, responseId = null) {
+  const client = await getClient();
+  await requireInkOwner(client, userId);
+  let query = client.from('ink_responses').select('response_id,part_id,revision,record,updated_at').eq('user_id', userId);
+  let conflictsQuery = client.from('ink_response_conflicts').select('conflict_id,response_id,part_id,revision,record,created_at').eq('user_id', userId);
+  if (responseId) {
+    query = query.eq('response_id', responseId);
+    conflictsQuery = conflictsQuery.eq('response_id', responseId);
+  }
+  const [{ data: records, error: recordsError }, { data: conflicts, error: conflictsError }] = await Promise.all([query, conflictsQuery]);
+  if (recordsError) throw new Error(`Could not load synced handwriting: ${recordsError.message}`);
+  if (conflictsError) throw new Error(`Could not load handwriting conflicts: ${conflictsError.message}`);
+  return [
+    ...(records || []).map(({ record, revision, updated_at }) => ({ ...record, revision, cloudRevision: revision, syncedAt: updated_at })),
+    ...(conflicts || []).map(({ record, revision, conflict_id, created_at }) => ({ ...record, revision, cloudRevision: revision, conflictId: conflict_id, conflict: true, createdAt: created_at })),
+  ];
+}
+
+/** Saves one bounded response with a database-side revision check that preserves divergent edits. */
+export async function saveInkResponse(userId, record, expectedRevision = null) {
+  const client = await getClient();
+  await requireInkOwner(client, userId);
+  const cloudRecord = { ...record, ownerId: userId };
+  const { data, error } = await client.rpc('save_ink_response', {
+    p_response_id: cloudRecord.responseId,
+    p_part_id: cloudRecord.partId,
+    p_expected_revision: expectedRevision,
+    p_revision: cloudRecord.revision,
+    p_record: cloudRecord,
+  });
+  if (error) throw new Error(`Could not sync handwriting: ${error.message}`);
+  return data;
+}
+
+/** Removes the response and its saved divergent edits for the signed-in owner. */
+export async function deleteInkResponse(userId, responseId, partId) {
+  const client = await getClient();
+  await requireInkOwner(client, userId);
+  const { data, error } = await client.rpc('delete_ink_response', { p_response_id: responseId, p_part_id: partId });
+  if (error) throw new Error(`Could not delete synced handwriting: ${error.message}`);
+  return data === true;
+}
+
+/** Deletes one explicitly resolved conflict while retaining every other copy. */
+export async function deleteInkConflict(userId, conflictId) {
+  const client = await getClient();
+  await requireInkOwner(client, userId);
+  const { data, error } = await client.rpc('delete_ink_response_conflict', { p_conflict_id: conflictId });
+  if (error) throw new Error(`Could not resolve the handwriting conflict: ${error.message}`);
+  return data === true;
+}
+
+/** Recent drafts for the same canonical part help students resume writing on another device. */
+export async function listInkDraftsForPart(userId, partId) {
+  const client = await getClient();
+  await requireInkOwner(client, userId);
+  const { data, error } = await client.from('ink_responses')
+    .select('response_id,updated_at')
+    .eq('user_id', userId).eq('part_id', partId).eq('record->>status', 'draft')
+    .order('updated_at', { ascending: false }).limit(8);
+  if (error) throw new Error(`Could not find synced handwriting drafts: ${error.message}`);
+  return (data || []).map(row => ({ responseId: row.response_id, updatedAt: row.updated_at }));
+}

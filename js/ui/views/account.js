@@ -214,10 +214,17 @@ export async function mount(element, context) {
     for (const option of element.querySelectorAll('[data-theme-choice]')) option.setAttribute('aria-checked', String(option === button));
   });
 
-  on(element, 'click', '[data-export]', () => {
-    const stamp = new Date().toISOString().slice(0, 10);
-    download(`${APP.storageNamespace}-progress-${stamp}.json`, JSON.stringify(api.exportData(), null, 2));
-    toast('Your data has been downloaded.', { type: 'success' });
+  on(element, 'click', '[data-export]', async (event, button) => {
+    button.disabled = true;
+    try {
+      const stamp = new Date().toISOString().slice(0, 10);
+      download(`${APP.storageNamespace}-progress-${stamp}.json`, JSON.stringify(await api.exportDataWithInk(), null, 2));
+      toast('Your data has been downloaded.', { type: 'success' });
+    } catch (error) {
+      toast(error.message, { type: 'error' });
+    } finally {
+      button.disabled = false;
+    }
   });
 
   on(element, 'click', '[data-import-picker]', () => $('[data-import]', element).click());

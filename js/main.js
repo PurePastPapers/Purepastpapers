@@ -39,6 +39,8 @@ const ROUTES = [
   { path: '/papers', load: papersView, options: { paperType: 'real_past_paper' } },
   { path: '/paper/:subjectId/:paperId', load: () => import('./ui/views/paper.js') },
   { path: '/practice', load: () => import('./ui/views/practice.js') },
+  { path: '/practice/exported', load: () => import('./ui/views/exported-tests.js') },
+  { path: '/practice/exported/:paperId', load: () => import('./ui/views/exported-tests.js') },
   { path: '/session/:sessionId', load: () => import('./ui/views/session.js'), layout: 'focus' },
   { path: '/hub', load: () => import('./ui/views/hub.js'), auth: true },
   { path: '/ai-papers', load: papersView, feature: 'aiPastPapers', options: { paperType: 'ai_past_paper' } },

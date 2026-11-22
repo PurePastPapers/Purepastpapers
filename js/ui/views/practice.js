@@ -34,6 +34,8 @@ import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, to
 import { links, routeOf } from '../../core/links.js';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
+import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js';
+import { createInkEditor, renderInkPreview } from '../ink-editor.js';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
 const SOURCE_CHOICES = [
@@ -123,12 +125,11 @@ export async function mount(element, context) {
   const bundle = explicit?.subject.practice_modes.length
     ? explicit
     : enrolled.find((candidate) => candidate.subject.subject_id === progress.preferences.lastSubject) || enrolled[0];
-  const head = (crumb) =>
-    pageHead({
+  const head = (crumb) => html`${pageHead({
       title: 'Find questions',
       sub: 'Browse questions or build a test',
       crumbs: [{ label: 'Home', href: links.home() }, { label: 'Practice', href: links.practice() }, ...(crumb ? [{ label: crumb }] : [])],
-    });
+    })}<p class="row"><a class="btn btn--sm" href="${links.exportedTests()}">Exported tests</a></p>`;
 
   if (!bundle) {
     setHtml(
@@ -276,6 +277,17 @@ export async function mount(element, context) {
   state.markStatuses = [...new Set(state.markStatuses)].filter((id) => PROGRESS_FILTERS[id]);
   delete state.markStatus;
   if (!state.drafts || typeof state.drafts !== 'object') state.drafts = {};
+  if (!state.inkOpen || typeof state.inkOpen !== 'object') state.inkOpen = {};
+  const inkIdentityKey = `${APP.storageNamespace}:ink-attempts:${user?.user_id || 'guest'}`;
+  if (!state.inkAttempts || typeof state.inkAttempts !== 'object') {
+    try {
+      const persistedInkIds = JSON.parse(localStorage.getItem(inkIdentityKey) || '{}');
+      state.inkAttempts = persistedInkIds.attempts || persistedInkIds;
+      state.inkGroups ||= persistedInkIds.groups || {};
+    } catch { state.inkAttempts = {}; }
+  }
+  if (!state.inkGroups || typeof state.inkGroups !== 'object') state.inkGroups = {};
+  if (!state.inkSaved || typeof state.inkSaved !== 'object') state.inkSaved = {};
   // Which go is open on each question is chosen fresh on each visit (the "done this before?" popup).
   state.goes = {};
   if (user) for (const id of Object.keys(state.drafts)) if (api.attemptsFor(id).length) delete state.drafts[id];
@@ -429,6 +441,235 @@ export async function mount(element, context) {
     (state.goes[cardId] === undefined || (state.goes[cardId] !== 'new' && !currentGo(cardId)));
   const partAttempt = (cardId, partId) => currentGo(cardId)?.parts.get(partId) || null;
   const answerOf = (cardId, partId = cardId) => state.drafts[partId]?.answer ?? (partAttempt(cardId, partId)?.answer || '');
+  const inkEditors = new Map();
+  const inkValues = new Map();
+  const inkSaveChains = new Map();
+  const inkRevisions = new Map();
+  const inkSyncTimers = new Map();
+  const inkConflictPreviews = new Map();
+  const inkKey = (responseId, partId) => `${responseId}\u0000${partId}`;
+  function ensureInkAttemptId(cardId, partId) {
+    const existing = partAttempt(cardId, partId)?.attempt_id;
+    if (existing) return existing;
+    const byCard = (state.inkAttempts[cardId] ||= {});
+    if (!byCard[partId]) {
+      byCard[partId] = uid('att');
+      save();
+      try { localStorage.setItem(inkIdentityKey, JSON.stringify({ attempts: state.inkAttempts, groups: state.inkGroups })); } catch { /* local draft still saves */ }
+    }
+    return byCard[partId];
+  }
+  function groupAttemptIdFor(cardId) {
+    const current = currentGo(cardId);
+    if (current) return current.key.startsWith('at:') ? null : current.key;
+    if (bundle.questionsById.has(cardId)) return null;
+    const groupAttempts = state.inkGroups;
+    if (!groupAttempts[cardId]) {
+      groupAttempts[cardId] = uid('go');
+      save();
+      try { localStorage.setItem(inkIdentityKey, JSON.stringify({ attempts: state.inkAttempts, groups: state.inkGroups })); } catch { /* local draft still saves */ }
+    }
+    return groupAttempts[cardId];
+  }
+  const activeInkResponseId = (cardId, partId) => ensureInkAttemptId(cardId, partId);
+  function disposeInkEditors() {
+    for (const editor of inkEditors.values()) editor.destroy();
+    inkEditors.clear();
+    for (const previews of inkConflictPreviews.values()) previews.forEach((preview) => preview.destroy());
+    inkConflictPreviews.clear();
+  }
+  async function mountInkEditors() {
+    for (const target of element.querySelectorAll('[data-ink-target]')) {
+      const partId = target.dataset.inkTarget;
+      const button = element.querySelector(`[data-ink-toggle="${CSS.escape(partId)}"]`);
+      const cardId = button?.dataset.inkCard;
+      if (!cardId || !state.inkOpen[partId] || inkEditors.has(partId)) continue;
+      const responseId = activeInkResponseId(cardId, partId);
+      const valueKey = inkKey(responseId, partId);
+      target.hidden = false;
+      button?.setAttribute('aria-expanded', 'true');
+      button.textContent = 'Hide writing';
+      let value = inkValues.get(valueKey) || null;
+      let conflicts = [];
+      let otherDrafts = [];
+      try {
+        const result = await api.loadInkState(responseId, partId);
+        value ||= result.record;
+        conflicts = result.conflicts || [];
+        if (!value && !conflicts.length) otherDrafts = (await api.listInkForPart(partId) || []).filter((record) => record.responseId !== responseId);
+      } catch { /* the local editor remains available while storage recovers */ }
+      if (!target.isConnected) continue;
+      if (value) {
+        inkValues.set(valueKey, value);
+        if (value.status === 'saved') state.inkSaved[valueKey] = true;
+      }
+      const editor = createInkEditor(target, {
+        value,
+        onChange: (changed) => {
+          const hadSavedInk = Boolean(state.inkSaved[valueKey]);
+          const hasStrokes = changed.sections.some((section) => section.strokes.length > 0);
+          const previousValue = inkValues.get(valueKey);
+          const previouslyHadStrokes = previousValue?.sections?.some((section) => section.strokes.length > 0) || false;
+          if (!hasStrokes && !previouslyHadStrokes) return;
+          if (!hasStrokes) delete state.inkSaved[valueKey];
+          const record = {
+            ...(inkValues.get(valueKey) || {}),
+            schemaVersion: 1,
+            ownerId: api.inkRepository().ownerId,
+            responseId,
+            partId,
+            revision: inkRevisions.get(valueKey) || inkValues.get(valueKey)?.revision || 1,
+            status: !hasStrokes || state.inkSaved[valueKey] ? 'saved' : 'draft',
+            sections: changed.sections,
+            updatedAt: new Date().toISOString(),
+          };
+          inkValues.set(valueKey, record);
+          state.inkOpen[partId] = true;
+          save();
+          editor?.setSaveState('Saving on this device…');
+          const repository = api.inkRepository();
+          const previousSave = inkSaveChains.get(valueKey) || Promise.resolve();
+          const pendingSave = previousSave.catch(() => {}).then(async () => {
+            const latestRevision = inkRevisions.get(valueKey) || record.revision;
+            const persisted = await repository.save({ ...record, revision: latestRevision });
+            inkRevisions.set(valueKey, persisted.revision);
+            if (inkValues.get(valueKey)?.updatedAt === record.updatedAt) inkValues.set(valueKey, persisted);
+            return persisted;
+          });
+          inkSaveChains.set(valueKey, pendingSave);
+          void pendingSave.then(() => {
+            editor?.setSaveState('Saved on this device');
+            if (!hasStrokes) {
+              const saveButton = element.querySelector(`[data-ink-save="${CSS.escape(partId)}"]`);
+              if (saveButton) saveButton.textContent = 'Save handwritten answer';
+              if (hadSavedInk) {
+                void api.saveAnswerUnmarked(bundle.questionsById.get(partId), answerOf(cardId, partId), {
+                  attemptId: responseId,
+                  groupAttemptId: groupAttemptIdFor(cardId),
+                  hasInk: false,
+                }).catch(() => {});
+              }
+              void api.syncInk().then((synced) => {
+                editor?.setSaveState(synced ? 'Cleared and synced' : 'Cleared on this device');
+              }).catch(() => editor?.setSaveState('Cleared on this device · Sync will retry'));
+              return;
+            }
+            clearTimeout(inkSyncTimers.get(partId));
+            inkSyncTimers.set(partId, setTimeout(async () => {
+              try {
+                const synced = await api.syncInk();
+                editor?.setSaveState(synced ? 'Synced' : 'Saved on this device');
+                if (!synced && api.isSignedIn()) {
+                  const latest = await api.loadInkState(responseId, partId);
+                  if (latest.conflicts?.length) update({ keepControls: true, keepPage: true });
+                }
+              } catch { editor?.setSaveState('Saved on this device · Sync will retry'); }
+            }, 1200));
+          }).catch(() => editor?.setSaveState('Could not save · Try again'));
+        },
+      });
+      inkEditors.set(partId, editor);
+      editor.setSaveState(value ? 'Saved on this device' : 'Ready to write');
+      const saveButton = document.createElement('button');
+      saveButton.type = 'button';
+      saveButton.className = 'btn btn--sm btn--primary ink-answer__save';
+      saveButton.dataset.inkSave = partId;
+      saveButton.textContent = state.inkSaved[valueKey] ? 'Saved answer' : 'Save handwritten answer';
+      target.append(saveButton);
+      if (otherDrafts.length) {
+        const section = document.createElement('details');
+        section.className = 'ink-answer__drafts';
+        const summary = document.createElement('summary');
+        summary.textContent = `Resume another saved draft (${otherDrafts.length})`;
+        section.append(summary);
+        for (const draft of otherDrafts) {
+          const row = document.createElement('div');
+          row.className = 'ink-answer__draft';
+          const label = document.createElement('span');
+          label.textContent = draft.updatedAt ? `Saved ${new Date(draft.updatedAt).toLocaleString('en-GB')}` : 'Saved draft';
+          const resume = document.createElement('button');
+          resume.type = 'button';
+          resume.className = 'btn btn--sm';
+          resume.textContent = 'Resume synced draft';
+          row.append(label, resume);
+          section.append(row);
+          resume.addEventListener('click', () => {
+            const byCard = (state.inkAttempts[cardId] ||= {});
+            byCard[partId] = draft.responseId;
+            inkValues.set(inkKey(draft.responseId, partId), draft);
+            if (draft.status === 'saved') state.inkSaved[inkKey(draft.responseId, partId)] = true;
+            try { localStorage.setItem(inkIdentityKey, JSON.stringify({ attempts: state.inkAttempts, groups: state.inkGroups })); } catch { /* current session still has the chosen draft */ }
+            save();
+            update({ keepControls: true, keepPage: true });
+          });
+        }
+        target.insertBefore(section, target.firstChild);
+      }
+      if (conflicts.length) {
+        const section = document.createElement('details');
+        section.className = 'ink-answer__conflicts';
+        const summary = document.createElement('summary');
+        summary.textContent = `${conflicts.length} other saved version${conflicts.length === 1 ? '' : 's'} need review`;
+        section.append(summary);
+        const previews = [];
+        for (const [index, conflict] of conflicts.entries()) {
+          const panel = document.createElement('div');
+          panel.className = 'ink-answer__conflict';
+          const title = document.createElement('p');
+          title.textContent = `Saved version ${index + 1}${conflict.updatedAt ? ` · ${new Date(conflict.updatedAt).toLocaleString('en-GB')}` : ''}`;
+          const previewTarget = document.createElement('div');
+          const actions = document.createElement('div');
+          actions.className = 'row row--tight';
+          const choose = document.createElement('button');
+          choose.type = 'button';
+          choose.className = 'btn btn--sm btn--primary';
+          choose.textContent = 'Use this version';
+          const keep = document.createElement('button');
+          keep.type = 'button';
+          keep.className = 'btn btn--sm';
+          keep.textContent = 'Keep current version';
+          actions.append(choose, keep);
+          panel.append(title, previewTarget, actions);
+          section.append(panel);
+          previews.push(renderInkPreview(previewTarget, conflict));
+          const resolve = async (useConflict) => {
+            choose.disabled = true;
+            keep.disabled = true;
+            try {
+              const result = await api.resolveInkConflict(responseId, partId, conflict, { useConflict });
+              if (useConflict && result?.record) {
+                inkValues.set(valueKey, result.record);
+                inkRevisions.set(valueKey, result.record.revision || 1);
+                state.inkSaved[valueKey] = result.record.status === 'saved';
+              }
+              const latest = await api.loadInkState(responseId, partId);
+              if (latest.record) {
+                inkValues.set(valueKey, latest.record);
+                inkRevisions.set(valueKey, latest.record.revision || 1);
+                state.inkSaved[valueKey] = latest.record.status === 'saved';
+              }
+              section.remove();
+              previews.forEach((preview) => preview.destroy());
+              editor.destroy();
+              inkEditors.delete(partId);
+              inkConflictPreviews.delete(partId);
+              target.replaceChildren();
+              state.inkOpen[partId] = true;
+              await mountInkEditors();
+            } catch (error) {
+              choose.disabled = false;
+              keep.disabled = false;
+              toast(error?.message || 'Could not resolve the saved handwriting versions.', { type: 'error' });
+            }
+          };
+          choose.addEventListener('click', () => resolve(true));
+          keep.addEventListener('click', () => resolve(false));
+        }
+        target.append(section);
+        inkConflictPreviews.set(partId, previews);
+      }
+    }
+  }
   const markOfPart = (cardId, partId = cardId) => {
     const attempt = partAttempt(cardId, partId);
     return state.drafts[partId]?.mark ?? (attempt && !attempt.waiting ? String(attempt.marks_awarded) : '');
@@ -749,6 +990,7 @@ export async function mount(element, context) {
         </ol>
         <div class="testpreview__actions">
           <button type="button" class="btn btn--lg" data-shuffle>Shuffle</button>
+          <button type="button" class="btn btn--lg" data-export-test="built">Export PDF</button>
           <button type="button" class="btn btn--primary btn--lg" data-start-test>Start test</button>
         </div>
         <p class="hand testpreview__note">the clock starts when you press start</p>
@@ -879,6 +1121,7 @@ export async function mount(element, context) {
           <div class="qsplit__side stack stack--sm">
             ${goLine(qid)}
             <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${answerOf(qid)}</textarea></label>
+            <div class="ink-answer"><button type="button" class="btn btn--sm" data-ink-toggle="${question.question_id}" data-ink-card="${qid}" data-ink-part="${question.question_id}" aria-expanded="${Boolean(state.inkOpen[question.question_id])}">${state.inkOpen[question.question_id] ? 'Hide writing' : 'Write with Pencil'}</button><div data-ink-target="${question.question_id}" ${state.inkOpen[question.question_id] ? '' : 'hidden'}></div></div>
             ${schemeOpen ? html`<section class="markbox stack stack--sm">
               ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'mark' })}
               ${markFoot(qid, { saved: changing && current && !current.waiting ? `Saved ${current.marks_awarded}/${question.marks}` : '', canUndo })}
@@ -960,6 +1203,7 @@ export async function mount(element, context) {
                 </div>
                 <div class="qsplit__side stack stack--sm">
                   <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${answerOf(id, partId)}</textarea></label>
+                  <div class="ink-answer"><button type="button" class="btn btn--sm" data-ink-toggle="${partId}" data-ink-card="${id}" data-ink-part="${partId}" aria-expanded="${Boolean(state.inkOpen[partId])}">${state.inkOpen[partId] ? 'Hide writing' : 'Write with Pencil'}</button><div data-ink-target="${partId}" ${state.inkOpen[partId] ? '' : 'hidden'}></div></div>
                   ${schemeOpen ? html`<section class="markbox">${markPicker({ id: partId, max: part.marks, value: markOf(part), attr: 'mark', label: `Marks for ${label(part)}, out of ${part.marks}` })}</section>` : ''}
                 </div>
               </div>
@@ -1043,6 +1287,7 @@ export async function mount(element, context) {
             <div class="row row--tight">
               <label class="check small"><input type="checkbox" data-flag="stopwatch" ${state.stopwatch ? 'checked' : ''} /><span>Run a stopwatch</span></label>
               <button type="button" class="btn btn--sm btn--ghost" data-clear-selection>Clear</button>
+              <button type="button" class="btn btn--sm" data-export-test="selection">Export PDF</button>
               <button type="button" class="btn btn--sm btn--primary" data-start-set>${icon('play', { size: 15 })} Start ${chosen.length === 1 ? 'question' : 'these'}</button>
             </div>
           </div>`
@@ -1115,6 +1360,7 @@ export async function mount(element, context) {
   }
 
   function draw() {
+    disposeInkEditors();
     if (timed()) {
       const { matches, locked } = filterQuestions(scopedPool(), criteria(), engineContext);
       setHtml(
@@ -1143,10 +1389,12 @@ export async function mount(element, context) {
     } else {
       setHtml($('[data-output]', element), browserResults());
     }
+    void mountInkEditors();
   }
 
   /** Re-renders after a filter change. The topic tree keeps its own state, so only the rest redraws. */
   function update({ keepControls = false, resetControls = false } = {}) {
+    disposeInkEditors();
     const controls = resetControls ? null : controlSnapshot();
     const scroll = window.scrollY;
     const active = document.activeElement;
@@ -1187,12 +1435,14 @@ export async function mount(element, context) {
       restoreControls(controls);
       restore();
       fitOpenQuestions();
+      void mountInkEditors();
       return;
     }
     draw();
     restoreControls(controls);
     restore();
     fitOpenQuestions();
+    void mountInkEditors();
   }
 
   // The Tier control: saved tier by default, the other tier or both tiers on purpose.
@@ -1227,7 +1477,7 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${head(subject.subject)}
-      ${!user ? banner(html`Browsing and filters are free. Your guest progress lasts until you refresh or close this page. <a href="${links.signup('/practice')}">Create a free account</a> to save it in this browser.`) : ''}
+      ${!user ? banner(html`Browsing and filters are free. Guest typed answers and marks last until you refresh or close this page. Handwriting is stored in this browser on this device and will not sync across devices. <a href="${links.signup('/practice')}">Create a free account</a> to save your progress.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
         ${subjectPills(subjects, subjectId, (id) => links.practice({ subject: id }))}
@@ -1447,6 +1697,74 @@ export async function mount(element, context) {
     (state.drafts[input.dataset.answer] ||= {}).answer = input.value;
     save();
   });
+  on(element, 'click', '[data-ink-toggle]', (event, button) => {
+    const partId = button.dataset.inkPart;
+    const cardId = button.dataset.inkCard;
+    if (state.inkOpen[partId]) state.inkOpen[partId] = false;
+    else {
+      autoGo(cardId);
+      state.inkOpen[partId] = true;
+    }
+    save();
+    update({ keepControls: true, keepPage: true });
+  });
+  on(element, 'click', '[data-ink-save]', async (event, button) => {
+    const partId = button.dataset.inkSave;
+    const toggle = element.querySelector(`[data-ink-part="${CSS.escape(partId)}"]`);
+    const cardId = toggle?.dataset.inkCard;
+    const question = bundle.questionsById.get(partId);
+    if (!question || !cardId) return;
+    button.disabled = true;
+    const inkTarget = button.closest('[data-ink-target]') || element.querySelector(`[data-ink-target="${CSS.escape(partId)}"]`);
+    inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__canvas').forEach((control) => {
+      control.disabled = true;
+      control.style.pointerEvents = 'none';
+    });
+    const responseId = activeInkResponseId(cardId, partId);
+    const valueKey = inkKey(responseId, partId);
+    const editor = inkEditors.get(partId);
+    try {
+      await inkSaveChains.get(valueKey)?.catch(() => {});
+      await api.saveAnswerUnmarked(question, answerOf(cardId, partId), {
+        attemptId: responseId,
+        groupAttemptId: groupAttemptIdFor(cardId),
+        hasInk: true,
+      });
+      const record = {
+        ...(inkValues.get(valueKey) || editor?.getValue() || {}),
+        schemaVersion: 1,
+        ownerId: api.inkRepository().ownerId,
+        responseId,
+        partId,
+        revision: inkRevisions.get(valueKey) || inkValues.get(valueKey)?.revision || 1,
+        status: 'saved',
+        sections: editor?.getValue().sections || inkValues.get(valueKey)?.sections || [],
+        updatedAt: new Date().toISOString(),
+      };
+      const savedRecord = await api.inkRepository().save(record);
+      inkValues.set(valueKey, savedRecord);
+      inkRevisions.set(valueKey, savedRecord.revision);
+      state.inkSaved[valueKey] = true;
+      save();
+      const synced = await api.syncInk().catch(() => false);
+      editor?.setSaveState(synced ? 'Saved and synced' : 'Saved on this device');
+      if (!synced && api.isSignedIn()) {
+        const latest = await api.loadInkState(responseId, partId);
+        if (latest.conflicts?.length) update({ keepControls: true, keepPage: true });
+      }
+      button.textContent = 'Answer saved';
+      toast('Your handwritten answer is saved and ready to mark.', { type: 'success' });
+    } catch (error) {
+      editor?.setSaveState('Could not save · Try again');
+      toast(error?.message || 'Could not save this handwritten answer.', { type: 'error' });
+    } finally {
+      button.disabled = false;
+      inkTarget?.querySelectorAll('.ink-editor__toolbar button, .ink-editor__toolbar input, .ink-editor__canvas').forEach((control) => {
+        control.disabled = false;
+        control.style.pointerEvents = '';
+      });
+    }
+  });
   bindMarkPickers(element);
   on(element, 'input', '[data-mark]', (event, input) => {
     (state.drafts[input.dataset.mark] ||= {}).mark = input.value;
@@ -1491,6 +1809,11 @@ export async function mount(element, context) {
       });
       if (!choice) return false;
       state.goes[cardId] = choice;
+      if (choice === 'new') {
+        delete state.inkAttempts[cardId];
+        delete state.inkGroups[cardId];
+        try { localStorage.setItem(inkIdentityKey, JSON.stringify({ attempts: state.inkAttempts, groups: state.inkGroups })); } catch { /* session state still has the new go */ }
+      }
       const go = choice === 'new' ? null : options.find((option) => option.key === choice);
       for (const part of parts) {
         const draft = (state.drafts[part.question_id] ||= {});
@@ -1506,7 +1829,13 @@ export async function mount(element, context) {
   }
   // Re-trying a question done before starts a new attempt without asking; "Switch" on the goline
   // still lets the student change an earlier one instead. Every attempt is kept.
-  const autoGo = (cardId) => { if (needsChoice(cardId)) state.goes[cardId] = 'new'; };
+  const autoGo = (cardId) => {
+    if (!needsChoice(cardId)) return;
+    state.goes[cardId] = 'new';
+    delete state.inkAttempts[cardId];
+    delete state.inkGroups[cardId];
+    try { localStorage.setItem(inkIdentityKey, JSON.stringify({ attempts: state.inkAttempts, groups: state.inkGroups })); } catch { /* current session still has the new go */ }
+  };
   on(element, 'focusin', '[data-answer]', (event, input) => {
     const cardId = cardOf(input);
     if (cardId) autoGo(cardId);
@@ -1664,6 +1993,26 @@ export async function mount(element, context) {
     }, { keepControls: true, keepPage: true });
     if (nextId) requestAnimationFrame(() => element.querySelector(`[data-card="${CSS.escape(nextId)}"], [data-group="${CSS.escape(nextId)}"]`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }));
     else toast('That was the last question in this list.', { type: 'info' });
+  });
+
+  on(element, 'click', '[data-export-test]', async (event, button) => {
+    const built = button.dataset.exportTest === 'built';
+    const ids = built ? currentTest?.question_ids : state.selected;
+    if (!ids?.length) return;
+    const title = built ? `Custom ${fmtMinutes(state.minutes)} test · ${subject.subject}` : `Question set · ${subject.subject}`;
+    button.disabled = true;
+    try {
+      const snapshot = createTestSnapshot({ bundle, ids, title });
+      const { offerTestPdf } = await import('../test-pdf.js');
+      await offerTestPdf({
+        snapshot, questions: resolveTestSnapshot(snapshot, bundle), existing: Boolean(api.getCustomTest(snapshot.id)),
+        onOpenTest: () => context.navigate(routeOf(links.exportedTest(snapshot.id, { mark: 1 }))),
+      });
+    } catch (error) {
+      toast(error.message, { type: 'error' });
+    } finally {
+      button.disabled = false;
+    }
   });
 
   on(element, 'click', '[data-start-set]', async () => {

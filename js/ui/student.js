@@ -303,6 +303,7 @@ export async function startSingle(question, navigate, { attempts = null } = {}) 
     for (const [id, attempt] of Object.entries(attempts)) {
       session.attempt_ids[id] = attempt.attempt_id;
       if (attempt.answer) session.answers[id] = attempt.answer;
+      if (attempt.has_ink) (session.ink_answers ||= {})[id] = attempt.attempt_id;
     }
   }
   await api.saveSession(session, { silent: true });
