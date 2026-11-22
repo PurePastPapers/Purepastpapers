@@ -1564,7 +1564,15 @@ export async function mount(element, context) {
   }));
   on(element, 'click', '[data-range-reset]', () => change(() => { state.rangeFrom = ''; state.rangeTo = ''; }));
   on(element, 'click', '[data-reset-filters]', () => change(() => {
-    const kept = { mode: state.mode, science: state.science, topicOrganisation: state.topicOrganisation, selected: state.selected, drafts: state.drafts, goes: state.goes, closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions, reportQuestions: state.reportQuestions, contextQuestions: state.contextQuestions, referenceQuestions: state.referenceQuestions };
+    const kept = {
+      mode: state.mode, science: state.science, topicOrganisation: state.topicOrganisation,
+      selected: state.selected, drafts: state.drafts, goes: state.goes,
+      closedQuestions: state.closedQuestions, schemeQuestions: state.schemeQuestions,
+      reportQuestions: state.reportQuestions, contextQuestions: state.contextQuestions,
+      referenceQuestions: state.referenceQuestions,
+      inkOpen: state.inkOpen, inkAttempts: state.inkAttempts,
+      inkGroups: state.inkGroups, inkSaved: state.inkSaved,
+    };
     state = { ...defaults(), ...kept, tier: tierPref, tierPref };
     if (tiered && (readTierOverride() ?? tierPref) !== tierPref) {
       // Reset returns to the saved tier; its spec points need the page drawn again.

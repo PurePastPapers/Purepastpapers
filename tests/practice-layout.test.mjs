@@ -76,6 +76,22 @@ test('Find questions: the filter is one compact bar of dropdowns', { skip }, asy
   await page.close();
 });
 
+test('Resetting question filters keeps the open handwriting editor', { skip }, async () => {
+  const { page, errors } = await demoPage({ width: 1366, height: 900 });
+  try {
+    const toggle = page.locator('[data-ink-toggle]').first();
+    const part = await toggle.getAttribute('data-ink-part');
+    const editor = page.locator(`[data-ink-target="${part}"]`);
+    await toggle.click();
+    await editor.waitFor({ state: 'visible' });
+    await page.locator('[data-reset-filters]').click();
+    await editor.waitFor({ state: 'visible' });
+    assert.deepEqual(errors, []);
+  } finally {
+    await page.close();
+  }
+});
+
 test('Find questions: answer box beside or below the question, mark scheme replaces the question', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 1366, height: 900 });
   await page.waitForSelector('.qsplit[data-qlayout]');
