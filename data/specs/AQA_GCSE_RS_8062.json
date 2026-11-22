@@ -1,18 +1,587 @@
 {
   "subject_id": "AQA_GCSE_RS_8062",
+  "specification_version": "aqa-8062-v1.3-2025-09",
+  "official_source_url": "https://www.aqa.org.uk/subjects/religious-studies/gcse/religious-studies-a-8062/specification",
+  "order_status": "verified",
+  "official_source": {
+    "title": "AQA GCSE Religious Studies A 8062 specification",
+    "version": "Version 1.3",
+    "issue_date": "1 September 2025",
+    "url": "https://cdn.sanity.io/files/p28bar15/green/ab272d86486eb6b391a2c33de9072a5031e0f584.pdf",
+    "file_name": "AQA-8062-SP-2025.pdf",
+    "sha256": "883998765252db817bfcfee4c74d692886fa9ff456ca546b825a64c7b359b41c",
+    "verified_at": "2026-11-22",
+    "note": "Exam format revised from June 2026 (AQA-8061-8062-SOC v1.0, March 2025): 1-mark short response replaces the 2-mark question and the 5-mark question becomes 6 marks."
+  },
+  "approach": "Official AQA content order. Students study two religions (Component 1) and four themes (Component 2, Themes A to F, or the textual route Themes G and H with Christianity or Catholic Christianity). No textbook organisation has been supplied.",
+  "notes": "Leaves are AQA printed sub-headings (id <topic>_<strand>.k<n> for religions, <theme>_k<n> for themes) with AQA bullet content verbatim. The earlier stub covered only Christianity and Islam and \"four themes\".",
+  "legacy_ids": {
+    "AQA_GCSE_RS_CHR_1.1": [
+      "AQA_GCSE_RS_CHR_1.k1",
+      "AQA_GCSE_RS_CHR_1.k2"
+    ],
+    "AQA_GCSE_RS_CHR_1.2": [
+      "AQA_GCSE_RS_CHR_2.k3",
+      "AQA_GCSE_RS_CHR_2.k4"
+    ],
+    "AQA_GCSE_RS_ISL_2.1": [
+      "AQA_GCSE_RS_ISL_1.k1",
+      "AQA_GCSE_RS_ISL_1.k2"
+    ],
+    "AQA_GCSE_RS_ISL_2.2": [
+      "AQA_GCSE_RS_ISL_2.k3",
+      "AQA_GCSE_RS_ISL_2.k4"
+    ],
+    "AQA_GCSE_RS_THEMES_A": [
+      "AQA_GCSE_RS_THEME_A_k1",
+      "AQA_GCSE_RS_THEME_A_k2"
+    ],
+    "AQA_GCSE_RS_THEMES_B": [
+      "AQA_GCSE_RS_THEME_B_k1",
+      "AQA_GCSE_RS_THEME_B_k2"
+    ],
+    "AQA_GCSE_RS_THEMES_C": [
+      "AQA_GCSE_RS_THEME_C_k1",
+      "AQA_GCSE_RS_THEME_C_k2"
+    ],
+    "AQA_GCSE_RS_THEMES_D": [
+      "AQA_GCSE_RS_THEME_D_k1",
+      "AQA_GCSE_RS_THEME_D_k2"
+    ],
+    "AQA_GCSE_RS_THEMES_E": [
+      "AQA_GCSE_RS_THEME_E_k1",
+      "AQA_GCSE_RS_THEME_E_k2"
+    ],
+    "AQA_GCSE_RS_THEMES_F": [
+      "AQA_GCSE_RS_THEME_F_k1",
+      "AQA_GCSE_RS_THEME_F_k2"
+    ]
+  },
+  "point_order": [
+    "AQA_GCSE_RS_BUD_1.k1",
+    "AQA_GCSE_RS_BUD_1.k2",
+    "AQA_GCSE_RS_BUD_2.k3",
+    "AQA_GCSE_RS_BUD_2.k4",
+    "AQA_GCSE_RS_CHR_1.k1",
+    "AQA_GCSE_RS_CHR_1.k2",
+    "AQA_GCSE_RS_CHR_2.k3",
+    "AQA_GCSE_RS_CHR_2.k4",
+    "AQA_GCSE_RS_CATH_1.k1",
+    "AQA_GCSE_RS_CATH_1.k2",
+    "AQA_GCSE_RS_CATH_2.k3",
+    "AQA_GCSE_RS_CATH_2.k4",
+    "AQA_GCSE_RS_HIN_1.k1",
+    "AQA_GCSE_RS_HIN_1.k2",
+    "AQA_GCSE_RS_HIN_2.k3",
+    "AQA_GCSE_RS_HIN_2.k4",
+    "AQA_GCSE_RS_ISL_1.k1",
+    "AQA_GCSE_RS_ISL_1.k2",
+    "AQA_GCSE_RS_ISL_2.k3",
+    "AQA_GCSE_RS_ISL_2.k4",
+    "AQA_GCSE_RS_JUD_1.k1",
+    "AQA_GCSE_RS_JUD_1.k2",
+    "AQA_GCSE_RS_JUD_2.k3",
+    "AQA_GCSE_RS_JUD_2.k4",
+    "AQA_GCSE_RS_SIK_1.k1",
+    "AQA_GCSE_RS_SIK_1.k2",
+    "AQA_GCSE_RS_SIK_2.k3",
+    "AQA_GCSE_RS_SIK_2.k4",
+    "AQA_GCSE_RS_THEME_A_k1",
+    "AQA_GCSE_RS_THEME_A_k2",
+    "AQA_GCSE_RS_THEME_B_k1",
+    "AQA_GCSE_RS_THEME_B_k2",
+    "AQA_GCSE_RS_THEME_C_k1",
+    "AQA_GCSE_RS_THEME_C_k2",
+    "AQA_GCSE_RS_THEME_D_k1",
+    "AQA_GCSE_RS_THEME_D_k2",
+    "AQA_GCSE_RS_THEME_E_k1",
+    "AQA_GCSE_RS_THEME_E_k2",
+    "AQA_GCSE_RS_THEME_F_k1",
+    "AQA_GCSE_RS_THEME_F_k2",
+    "AQA_GCSE_RS_THEME_G_k1",
+    "AQA_GCSE_RS_THEME_G_k2",
+    "AQA_GCSE_RS_THEME_G_k3",
+    "AQA_GCSE_RS_THEME_G_k4",
+    "AQA_GCSE_RS_THEME_H_k1",
+    "AQA_GCSE_RS_THEME_H_k2",
+    "AQA_GCSE_RS_THEME_H_k3",
+    "AQA_GCSE_RS_THEME_H_k4"
+  ],
   "sections": [
     {
       "id": "AQA_GCSE_RS_SEC_P1",
-      "title": "Paper 1: The study of religions",
+      "title": "Component 1: The study of religions: beliefs, teachings and practices",
       "topics": [
+        {
+          "id": "AQA_GCSE_RS_BUD",
+          "code": "3.1.1",
+          "title": "Buddhism",
+          "kind": "topic",
+          "religion": "BUD",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_BUD_1.k1",
+              "code": "3.1.1.1.1",
+              "title": "The Dhamma (Dharma)",
+              "official_reference": {
+                "section": "3.1.1.1",
+                "strand": "Key Beliefs",
+                "source_pages": [
+                  10
+                ]
+              },
+              "content": [
+                "The concept of Dhamma (Dharma).",
+                "The concept of dependent arising (paticcasamupada).",
+                "The Three Marks of Existence:",
+                "anicca (impermanence)",
+                "anatta (no fixed self)",
+                "dukkha (unsatisfactoriness of life, suffering).",
+                "The human personality, in the Theravada and Mahayana traditions:",
+                "Theravada: the Five Aggregates (skandhas) of form, sensation, perception, mental",
+                "formations, consciousness",
+                "Mahayana: sunyata, the possibility of attaining Buddhahood and Buddha-nature.",
+                "Human destiny:",
+                "different ideals in Theravada and Mahayana traditions: Arhat (a ‘perfected person’) and",
+                "Bodhisattva ideals",
+                "Buddhahood and the Pure Land."
+              ],
+              "strand": "Key Beliefs",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_BUD_1.k2",
+              "code": "3.1.1.1.2",
+              "title": "The Buddha and the Four Noble Truths",
+              "official_reference": {
+                "section": "3.1.1.1",
+                "strand": "Key Beliefs",
+                "source_pages": [
+                  10
+                ]
+              },
+              "content": [
+                "The Buddha’s life and its significance:",
+                "the birth of the Buddha and his life of luxury",
+                "the Four Sights: illness, old age, death, holy man (Jataka 075)",
+                "the Buddha’s ascetic life",
+                "the Buddha’s Enlightenment.",
+                "The Four Noble Truths:",
+                "suffering (dukkha) including different types of suffering",
+                "the causes of suffering (samudaya); the Three Poisons, ignorance, greed and hate",
+                "the end of craving (tanha), interpretations of nibbana (nirvana) and Enlightenment",
+                "the Eightfold Path (magga) to nibbana/nirvana; the pathas the Threefold Way: ethics (sila),",
+                "meditation (samadhi) and wisdom (panna). Dhammapada 190–191."
+              ],
+              "strand": "Key Beliefs",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_BUD_2.k3",
+              "code": "3.1.1.2.3",
+              "title": "Worship and festivals",
+              "official_reference": {
+                "section": "3.1.1.2",
+                "strand": "Practices",
+                "source_pages": [
+                  10
+                ]
+              },
+              "content": [
+                "The nature, use and importance of Buddhist places of worship including temples, shrines,",
+                "monasteries (viharas), halls for meditation or learning (gompas) and their key features",
+                "including Buddha rupa, artefacts and offerings.",
+                "Puja, the significance and role of puja/devotional ritual in the home and in the temple,",
+                "including chanting, both as a devotional practice and as an aid to mental concentration,",
+                "mantra recitation, use of malas.",
+                "Meditation, the different aims, significance and methods of meditation:",
+                "Samatha (concentration and tranquillity) including mindfulness of breathing",
+                "Vipassana (insight) including zazen",
+                "the visualisation of Buddhas and Bodhisattvas.",
+                "The practice and significance of different ceremonies and rituals associated with death and",
+                "mourning in Theravada communities and in Japan and Tibet.",
+                "Festivals and retreats and their importance to Buddhists in Great Britain today, including the",
+                "celebrations, origins and significance of:",
+                "Wesak",
+                "Parinirvana Day."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            },
+            {
+              "id": "AQA_GCSE_RS_BUD_2.k4",
+              "code": "3.1.1.2.4",
+              "title": "Buddhist ethics",
+              "official_reference": {
+                "section": "3.1.1.2",
+                "strand": "Practices",
+                "source_pages": [
+                  11
+                ]
+              },
+              "content": [
+                "Ethical teaching:",
+                "kamma (karma) and rebirth",
+                "compassion (karuna)",
+                "loving kindness (metta).",
+                "The five moral precepts:",
+                "do not take life",
+                "do not take what is not given",
+                "do not misuse the senses",
+                "do not speak falsehoods",
+                "do not take intoxicants that cloud the mind.",
+                "The six perfections in the Mahayanan tradition:",
+                "generosity",
+                "morality",
+                "patience",
+                "energy",
+                "meditation",
+                "wisdom, including how the individual develops these perfections within themselves."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            }
+          ]
+        },
         {
           "id": "AQA_GCSE_RS_CHR",
           "code": "3.1.2",
           "title": "Christianity",
           "kind": "topic",
+          "religion": "CHR",
           "points": [
-            {"id":"AQA_GCSE_RS_CHR_1.1","code":"1.1","title":"Christianity: beliefs and teachings"},
-            {"id":"AQA_GCSE_RS_CHR_1.2","code":"1.2","title":"Christianity: practices"}
+            {
+              "id": "AQA_GCSE_RS_CHR_1.k1",
+              "code": "3.1.2.1.1",
+              "title": "Key beliefs",
+              "official_reference": {
+                "section": "3.1.2.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The nature of God:",
+                "God as omnipotent, loving and just, and the problem of evil and suffering",
+                "the oneness of God and the Trinity: Father, Son and Holy Spirit.",
+                "Different Christian beliefs about creation including the role of Word and Spirit (John 1:1-3 and",
+                "Genesis 1:1-3).",
+                "Different Christian beliefs about the afterlife and their importance, including: resurrection and",
+                "life after death; judgement, heaven and hell."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_CHR_1.k2",
+              "code": "3.1.2.1.2",
+              "title": "Jesus Christ and salvation",
+              "official_reference": {
+                "section": "3.1.2.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "Beliefs and teachings about:",
+                "the incarnation and Jesus as the Son of God",
+                "the crucifixion, resurrection and ascension",
+                "sin, including original sin",
+                "the means of salvation, including law, grace and Spirit",
+                "the role of Christ in salvation including the idea of atonement."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_CHR_2.k3",
+              "code": "3.1.2.2.3",
+              "title": "Worship and festivals",
+              "official_reference": {
+                "section": "3.1.2.2",
+                "strand": "Practices",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "Different forms of worship and their significance:",
+                "liturgical, non-liturgical and informal, including the use of the Bible",
+                "private worship.",
+                "Prayer and its significance, including the Lord’s Prayer, set prayers and informal prayer.",
+                "The role and meaning of the sacraments:",
+                "the meaning of sacrament",
+                "the sacrament of baptism and its significance for Christians; infant and believers' baptism;",
+                "different beliefs about infant baptism",
+                "the sacrament of Holy Communion/Eucharist and its significance for Christians, including",
+                "different ways in which it is celebrated and different interpretations of its meaning.",
+                "The role and importance of pilgrimage and celebrations including:",
+                "two contrasting examples of Christian pilgrimage: Lourdes and Iona",
+                "the celebrations of Christmas and Easter, including their importance for Christians in Great",
+                "Britain today."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            },
+            {
+              "id": "AQA_GCSE_RS_CHR_2.k4",
+              "code": "3.1.2.2.4",
+              "title": "The role of the church in the local and worldwide community",
+              "official_reference": {
+                "section": "3.1.2.2",
+                "strand": "Practices",
+                "source_pages": [
+                  12
+                ]
+              },
+              "content": [
+                "The role of the Church in the local community, including food banks and street pastors.",
+                "The place of mission, evangelism and Church growth.",
+                "The importance of the worldwide Church including:",
+                "working for reconciliation",
+                "how Christian churches respond to persecution",
+                "the work of one of the following: Catholic Agency For Overseas Development (CAFOD),",
+                "Christian Aid, Tearfund."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_CATH",
+          "code": "3.1.3",
+          "title": "Catholic Christianity",
+          "kind": "topic",
+          "religion": "CATH",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_CATH_1.k1",
+              "code": "3.1.3.1.1",
+              "title": "Key beliefs",
+              "official_reference": {
+                "section": "3.1.3.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "One God as a Trinity of persons: Father, Son and Holy Spirit, as expressed in the Nicene",
+                "Creed; the scriptural origins of this belief and its development in the Council of Nicaea.",
+                "Creation: Biblical accounts of creation (Genesis 1 and 2) and their significance for an",
+                "understanding of the nature of God, the dignity of human beings and of humanity’s",
+                "relationship with creation. Different Christian beliefs about creation.",
+                "Incarnation: the belief in Jesus as incarnate Son, divine Word, both fully God and fully human",
+                "and the scriptural origins of this belief.",
+                "Redemption: the significance of the life, death, resurrection and ascension of Jesus for",
+                "Catholic beliefs about salvation and grace.",
+                "Beliefs about life after death: resurrection, judgement, heaven, hell and purgatory."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_CATH_1.k2",
+              "code": "3.1.3.1.2",
+              "title": "The seven sacraments",
+              "official_reference": {
+                "section": "3.1.3.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  13
+                ]
+              },
+              "content": [
+                "The meaning and significance of ‘sacrament’ and the importance of the sacramental nature",
+                "of reality.",
+                "The names, meanings and effects of the seven sacraments:",
+                "baptism",
+                "confirmation",
+                "reconciliation",
+                "anointing of the sick",
+                "matrimony",
+                "holy orders",
+                "the eucharist: its status as 'the source and summit of Christian life'; different Christian",
+                "views about its meaning and importance."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_CATH_2.k3",
+              "code": "3.1.3.2.3",
+              "title": "Worship",
+              "official_reference": {
+                "section": "3.1.3.2",
+                "strand": "Practices",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Prayer:",
+                "prayer as 'the raising of the mind and heart to God'",
+                "formal prayers and informal prayer, including different views about their relative",
+                "importance",
+                "the meaning and importance of the Lord’s Prayer.",
+                "The role and importance of forms of popular piety including the Rosary and the Stations of",
+                "the Cross.",
+                "The role and importance of pilgrimage, including a study of one place of Roman Catholic",
+                "pilgrimage, and different Christian views about the importance of pilgrimage.",
+                "The funeral rite and its significance."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            },
+            {
+              "id": "AQA_GCSE_RS_CATH_2.k4",
+              "code": "3.1.3.2.4",
+              "title": "The work of the Church",
+              "official_reference": {
+                "section": "3.1.3.2",
+                "strand": "Practices",
+                "source_pages": [
+                  14
+                ]
+              },
+              "content": [
+                "Catholic beliefs about the essential duty to ‘love our neighbour’ in concrete ways locally,",
+                "nationally and globally and how these beliefs are reflected in:",
+                "Catholic social teaching including Gaudium et Spes paragraph 26",
+                "Catholic teaching on justice, peace and reconciliation",
+                "The work of Catholic agencies including CAFOD, Trocaire, Missio.",
+                "The meaning and significance of mission and evangelism for Catholics today, globally and in",
+                "Great Britain, both nationally and locally.",
+                "The aims and importance of the Society of Saint Vincent de Paul (SVP).",
+                "The aims and importance of either the Corrymeela community or Pax Christi."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_HIN",
+          "code": "3.1.4",
+          "title": "Hinduism",
+          "kind": "topic",
+          "religion": "HIN",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_HIN_1.k1",
+              "code": "3.1.4.1.1",
+              "title": "Ideas about the nature of God and existence",
+              "official_reference": {
+                "section": "3.1.4.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Brahman: different Hindu understandings of brahman; ultimate reality as divine",
+                "consciousness (nirguna) and manifestation of God in form (saguna); spiritual worlds.",
+                "Different understandings of the three features of the divine:",
+                "everywhere, as non-personal (brahman)",
+                "within the heart",
+                "beyond, as a personal loving God",
+                "Brihadaranyaka Upanishad 391.",
+                "How the divine presents:",
+                "the Tri-murti: Brahma, Vishnu and Shiva",
+                "male and female deities, including Ganesha, Lakshmi, Hanuman, Saraswati",
+                "the concept of avatara, including Krishna, Rama.",
+                "Matter (prakriti); the three qualities (tri-guna); illusion (maya); cosmology (Rig Veda",
+                "10.129.6-7); the cycle of four ages; many worlds and their diverse inhabitants."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_HIN_1.k2",
+              "code": "3.1.4.1.2",
+              "title": "Beliefs about the nature of human life",
+              "official_reference": {
+                "section": "3.1.4.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "The concept of atman, as individual, eternal inner self, distinct from material mind and body.",
+                "Cycle of birth and death: samsara; moral action and reaction: the law of karma; types of",
+                "liberation: moksha.",
+                "Individual free will and responses to suffering; knowledge and ignorance.",
+                "Personal virtues including ahimsa, respect, empathy, mind/sense control, humility, love.",
+                "The four aims of human life: dharma, artha, kama, moksha.",
+                "The meaning of dharma; sanatana dharma; varnashrama dharma."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_HIN_2.k3",
+              "code": "3.1.4.2.3",
+              "title": "Worship and festivals",
+              "official_reference": {
+                "section": "3.1.4.2",
+                "strand": "Practices",
+                "source_pages": [
+                  15
+                ]
+              },
+              "content": [
+                "Places of worship and their importance: home; temple; outdoors (such as shrines); the space",
+                "of the heart",
+                "Different forms of worship/meditation and their significance: havan, puja, arati, darshan,",
+                "bhajan/kirtan, japa/mantra; key differences in worship in Shaivism and Vaishnavism and",
+                "different Hindu views about the importance of worship.",
+                "Focuses of worship and representations of the divine and their importance:",
+                "one God (personal or non-personal)",
+                "the many deities, guru and other elders",
+                "holy land, hills and rivers",
+                "sacred plants and animals",
+                "the murti as a representation of God.",
+                "Sacred festivals and their importance for Hindus in Great Britain today, including the origins",
+                "and meaning of:",
+                "Diwali",
+                "Holi."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            },
+            {
+              "id": "AQA_GCSE_RS_HIN_2.k4",
+              "code": "3.1.4.2.4",
+              "title": "Lifestyle",
+              "official_reference": {
+                "section": "3.1.4.2",
+                "strand": "Practices",
+                "source_pages": [
+                  16
+                ]
+              },
+              "content": [
+                "The four paths towards yoga (union with the divine), their differences and their importance:",
+                "action (karma yoga)",
+                "knowledge (jnana yoga)",
+                "meditation (astanga yoga)",
+                "devotion (bhakti yoga).",
+                "Pilgrimage:",
+                "the role of pilgrimage",
+                "practices and purposes",
+                "sacred sites, including Varanasi",
+                "Kumbh Mela.",
+                "The work and significance of:",
+                "Hindu environmental projects including ‘cow protection’ and their significance.",
+                "Charities that promote well-being, social inclusion and women’s rights."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            }
           ]
         },
         {
@@ -20,30 +589,854 @@
           "code": "3.1.5",
           "title": "Islam",
           "kind": "topic",
+          "religion": "ISL",
           "points": [
-            {"id":"AQA_GCSE_RS_ISL_2.1","code":"2.1","title":"Islam: beliefs and teachings"},
-            {"id":"AQA_GCSE_RS_ISL_2.2","code":"2.2","title":"Islam: practices"}
+            {
+              "id": "AQA_GCSE_RS_ISL_1.k1",
+              "code": "3.1.5.1.1",
+              "title": "Key Beliefs",
+              "official_reference": {
+                "section": "3.1.5.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  16
+                ]
+              },
+              "content": [
+                "The six articles of faith in Sunni Islam and five roots of Usul ad-Din in Shi’a Islam, including",
+                "key similarities and differences.",
+                "Tawhid (the Oneness of God), Qur’an Surah 112.",
+                "The nature of God: omnipotence, beneficence, mercy, fairness and justice/Adalat in Shi’a",
+                "Islam, including different ideas about God’s relationship with the world: immanence and",
+                "transcendence.",
+                "Angels, their nature and role, including Jibril and Mika’il.",
+                "Predestination and human freedom and its relationship to the Day of Judgement.",
+                "Akhirah (life after death), human responsibility and accountability, resurrection, heaven and",
+                "hell."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_ISL_1.k2",
+              "code": "3.1.5.1.2",
+              "title": "Authority",
+              "official_reference": {
+                "section": "3.1.5.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Risalah (Prophethood) including the role and importance of Adam, Ibrahim and Muhammad.",
+                "The holy books:",
+                "Qur’an: revelation and authority",
+                "the Torah, the Psalms, the Gospel, the Scrolls of Abraham and their authority.",
+                "The imamate in Shi'a Islam: its role and significance."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_ISL_2.k3",
+              "code": "3.1.5.2.3",
+              "title": "Worship",
+              "official_reference": {
+                "section": "3.1.5.2",
+                "strand": "Practices",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Five Pillars of Sunni Islam and the Ten Obligatory Acts of Shi’a Islam (students should study",
+                "the Five Pillars and jihad in both Sunni and Shi’a Islam and the additional duties of Shi’a",
+                "Islam).",
+                "Shahadah: declaration of faith and its place in Muslim practice.",
+                "Salah and its significance: how and why Muslims pray including times, directions, ablution",
+                "(wudu), movements (rak’ahs) and recitations; salah in the home and mosque and elsewhere;",
+                "Friday prayer: Jummah; key differences in the practice of salah in Sunni and Shi’a Islam, and",
+                "different Muslim views about the importance of prayer."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            },
+            {
+              "id": "AQA_GCSE_RS_ISL_2.k4",
+              "code": "3.1.5.2.4",
+              "title": "Duties and festivals",
+              "official_reference": {
+                "section": "3.1.5.2",
+                "strand": "Practices",
+                "source_pages": [
+                  17
+                ]
+              },
+              "content": [
+                "Sawm: the role and significance of fasting during the month of Ramadan including origins,",
+                "duties, benefits of fasting, the exceptions and their reasons, and the Night of Power, Qur’an",
+                "96:1-5.",
+                "Zakah: the role and significance of giving alms including origins, how and why it is given,",
+                "benefits of receipt, Khums in Shi’a Islam.",
+                "Hajj: the role and significance of the pilgrimage to Makkah including origins, how hajj is",
+                "performed, the actions pilgrims perform at sites including the Ka’aba at Makkah, Mina, Arafat,",
+                "Muzdalifah and their significance.",
+                "Jihad: different understandings of jihad: the meaning and significance of greater and lesser",
+                "jihad; origins, influence and conditions for the declaration of lesser jihad.",
+                "Festivals and commemorations and their importance for Muslims in Great Britain today,",
+                "including the origins and meanings of Id-ul-Adha, Id-ul-Fitr, Ashura."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_JUD",
+          "code": "3.1.6",
+          "title": "Judaism",
+          "kind": "topic",
+          "religion": "JUD",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_JUD_1.k1",
+              "code": "3.1.6.1.1",
+              "title": "Key beliefs",
+              "official_reference": {
+                "section": "3.1.6.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "The nature of God:",
+                "God as one",
+                "God as Creator",
+                "God as Law-Giver and Judge, loving and merciful.",
+                "The divine presence (Shekhinah).",
+                "Beliefs about life after death, including judgement and resurrection.",
+                "The nature and role of the Messiah, including different views on the role and importance of",
+                "the Messiah."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_JUD_1.k2",
+              "code": "3.1.6.1.2",
+              "title": "The Covenant and the mitzvot",
+              "official_reference": {
+                "section": "3.1.6.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "The promised land and the Covenant with Abraham, Genesis 12:1-3.",
+                "The Covenant at Sinai and its importance including the role of Moses and the Ten",
+                "Commandments, Exodus 20:1-17.",
+                "Key moral principles including justice, healing the world, charity and kindness to others.",
+                "The importance of the sanctity of human life, including the concept of ‘saving a life’ (Pikuach",
+                "Nefesh).",
+                "The relationship between free will and the 613 mitzvot.",
+                "Mitzvot between man and God and mitzvot between man and man, including the difference",
+                "between them and their importance."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_JUD_2.k3",
+              "code": "3.1.6.2.3",
+              "title": "The synagogue and worship",
+              "official_reference": {
+                "section": "3.1.6.2",
+                "strand": "Practices",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "The synagogue and its importance.",
+                "The design and religious features of synagogues including bimah (reading platform), aron",
+                "hakodesh (ark), ner tamid (ever burning light) and associated practices; differences between",
+                "Orthodox and Reform synagogues.",
+                "Public acts of worship including:",
+                "synagogue services in both Orthodox and Reform synagogues",
+                "the significance of prayer, including the Amidah, the standing prayer.",
+                "Shabbat in the home and synagogue and its significance.",
+                "Worship in the home and private prayer.",
+                "Tenakh (the written law) and Talmud (the oral law), and their study, use and significance in",
+                "daily life."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            },
+            {
+              "id": "AQA_GCSE_RS_JUD_2.k4",
+              "code": "3.1.6.2.4",
+              "title": "Family life and festivals",
+              "official_reference": {
+                "section": "3.1.6.2",
+                "strand": "Practices",
+                "source_pages": [
+                  18
+                ]
+              },
+              "content": [
+                "Rituals and their significance:",
+                "ceremonies associated with birth including Brit Milah.",
+                "Bar and Bat Mitzvah",
+                "the marriage ceremony",
+                "mourning rituals.",
+                "Dietary laws and their significance, including different Jewish views about their importance.",
+                "kosher and trefah",
+                "separation of milk and meat.",
+                "Festivals and their importance for Jews in Great Britain today, including the origins and",
+                "meaning of:",
+                "Rosh Hashanah and Yom Kippur",
+                "Pesach."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_SIK",
+          "code": "3.1.7",
+          "title": "Sikhism",
+          "kind": "topic",
+          "religion": "SIK",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_SIK_1.k1",
+              "code": "3.1.7.1.1",
+              "title": "Key beliefs",
+              "official_reference": {
+                "section": "3.1.7.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  19
+                ]
+              },
+              "content": [
+                "The nature of God as expressed in the Mool Mantra: the content and significance of the Mool",
+                "Mantra, Guru Granth Sahib (GGS) 1a.",
+                "God as Creator, including different aspects of God’s relationship with creation:",
+                "God shown in and through the universe",
+                "God as separate from the universe",
+                "The nature of human life as an opportunity to unite with God, including the development of",
+                "Sikh virtues such as wisdom, truthful living, justice, temperance, self-control, patience,",
+                "courage, humility, contentment.",
+                "Beliefs in karma and rebirth, and the aim of mukti; the meaning of mukti, including the",
+                "different aspects of mukti – positive and negative.",
+                "The five stages of liberation (five khands) and barriers to mukti (illusion, self-centredness,",
+                "lust, anger, greed, worldly attachment, pride).",
+                "The importance of being gurmukh (God-centred) rather than manmukh (man-centred) and",
+                "the elimination of pride or ego (haumai)."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_SIK_1.k2",
+              "code": "3.1.7.1.2",
+              "title": "Beliefs about the nature of human life",
+              "official_reference": {
+                "section": "3.1.7.1",
+                "strand": "Beliefs and teachings",
+                "source_pages": [
+                  20
+                ]
+              },
+              "content": [
+                "Belief in the oneness of humanity and in the equality of all, including complete equality of",
+                "women with men.",
+                "The expression of the equality of all in:",
+                "the stories of the lives of Gurus, including Guru Nanak and Guru Gobind Singh",
+                "the Guru Granth Sahib",
+                "in Sikhism today.",
+                "Sewa: the importance and priority of service to others, including physical (tan), mental (man)",
+                "and material (dhan).",
+                "The role and importance of the sangat (religious community)."
+              ],
+              "strand": "Beliefs and teachings",
+              "strand_number": 1
+            },
+            {
+              "id": "AQA_GCSE_RS_SIK_2.k3",
+              "code": "3.1.7.2.3",
+              "title": "Worship and service",
+              "official_reference": {
+                "section": "3.1.7.2",
+                "strand": "Practices",
+                "source_pages": [
+                  20
+                ]
+              },
+              "content": [
+                "Religious features of the gurdwara: design, furniture, and artefacts; the practices associated",
+                "with these features and their importance, including the palki and takht.",
+                "The role of the gurdwara within the Sikh community.",
+                "The role of prayer in the home, GGS 305:4.",
+                "The role and importance of the akhand path.",
+                "The meaning and significance of langar as an expression of sewa.",
+                "The significance of meditating on the name of God (nam japna) in daily life and in the",
+                "gurdwara."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            },
+            {
+              "id": "AQA_GCSE_RS_SIK_2.k4",
+              "code": "3.1.7.2.4",
+              "title": "Festivals and lifestyle",
+              "official_reference": {
+                "section": "3.1.7.2",
+                "strand": "Practices",
+                "source_pages": [
+                  20
+                ]
+              },
+              "content": [
+                "Festivals and their importance for Sikhs in Great Britain today, including the origins and",
+                "significance of the following:",
+                "Vaisakhi (Baisakhi)",
+                "Divali",
+                "Gurpurbs, including Guru Nanak’s birthday and differences in the way gurpurbs are",
+                "celebrated in India and Great Britain.",
+                "The importance of visiting Sikh historical gurdwaras, including the Golden Temple",
+                "(Harimandir Sahib) in Amritsar.",
+                "Birth and naming ceremonies including their meaning and significance.",
+                "The initiation ceremony (Amrit Sanskar), including the meaning and importance of the Khalsa",
+                "and the five Ks, and the different perspectives of sahajdhari and amritdhari Sikhs.",
+                "The significance and use of the names Singh and Kaur. 3.2 Component 2: Thematic studies Students should study a total of four themes from Component 2. Students may study either four religious, philosophical and ethical studies themes or two religious, philosophical and ethical studies themes and two textual studies themes. 3.2.1 Religious, philosophical and ethical studies Students should be aware of different religious perspectives on the issues studied within and / or between religious and non-religious beliefs such as atheism and humanism. Students must also study religious, philosophical and ethical arguments related to the issues raised, and their impact and influence on the modern world. Students will be expected to show their understanding of religion through the application of teachings from religion and beliefs. They will also be expected to make specific references to sources of wisdom and authority including scripture and/or sacred texts. They may refer to any relevant religious text such as the Pali Canon, the sermons of the Buddha, the Bible, the Catechism of the Catholic Church, the Vedas and Upanishads, the Qur’an and Hadith, the Torah and Talmud, and the Guru Granth Sahib. As part of the supporting material for this specification, AQA will publish a list of appropriate texts; alternatives may be used and no questions will be set on them. Students must demonstrate knowledge and understanding that:",
+                "the religious traditions of Great Britain are, in the main, Christian",
+                "the religious traditions in Great Britain are diverse. Students may draw upon Christianity, Buddhism, Hinduism, Islam, Judaism and Sikhism, as well as other religions and non-religious beliefs such as atheism and humanism."
+              ],
+              "strand": "Practices",
+              "strand_number": 2
+            }
           ]
         }
       ]
     },
     {
       "id": "AQA_GCSE_RS_SEC_P2",
-      "title": "Paper 2: Thematic studies",
-      "note": "Four themes are studied",
+      "title": "Component 2: Thematic studies",
       "topics": [
         {
-          "id": "AQA_GCSE_RS_THEMES",
-          "code": "3.2",
-          "title": "Religious, philosophical and ethical studies",
-          "kind": "option",
+          "id": "AQA_GCSE_RS_THEME_A",
+          "code": "3.2.1.1",
+          "title": "Theme A: Relationships and families",
+          "kind": "topic",
+          "route": "non_textual",
           "points": [
-            {"id":"AQA_GCSE_RS_THEMES_A","code":"A","title":"Theme A: Relationships and families"},
-            {"id":"AQA_GCSE_RS_THEMES_B","code":"B","title":"Theme B: Religion and life"},
-            {"id":"AQA_GCSE_RS_THEMES_C","code":"C","title":"Theme C: The existence of God and revelation"},
-            {"id":"AQA_GCSE_RS_THEMES_D","code":"D","title":"Theme D: Religion, peace and conflict"},
-            {"id":"AQA_GCSE_RS_THEMES_E","code":"E","title":"Theme E: Religion, crime and punishment"},
-            {"id":"AQA_GCSE_RS_THEMES_F","code":"F","title":"Theme F: Religion, human rights and social justice"}
+            {
+              "id": "AQA_GCSE_RS_THEME_A_k1",
+              "code": "3.2.1.1.1",
+              "title": "Sex, marriage and divorce",
+              "official_reference": {
+                "section": "3.2.1.1",
+                "source_pages": [
+                  21
+                ]
+              },
+              "content": [
+                "Human sexuality including: heterosexual and same sex relationships.",
+                "Sexual relationships before and outside of marriage.",
+                "Contraception and family planning.",
+                "The nature and purpose of marriage.",
+                "Same-sex marriage and cohabitation.",
+                "Divorce, including reasons for divorce, and remarrying.",
+                "Ethical arguments related to divorce, including those based on the sanctity of marriage vows",
+                "and compassion."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_A_k2",
+              "code": "3.2.1.1.2",
+              "title": "Families and gender equality",
+              "official_reference": {
+                "section": "3.2.1.1",
+                "source_pages": [
+                  21
+                ]
+              },
+              "content": [
+                "The nature of families, including:",
+                "the role of parents and children",
+                "extended families and the nuclear family.",
+                "The purpose of families, including:",
+                "procreation",
+                "stability and the protection of children",
+                "educating children in a faith.",
+                "Contemporary family issues including:",
+                "same-sex parents",
+                "polygamy.",
+                "The roles of men and women.",
+                "Gender equality.",
+                "Gender prejudice and discrimination, including examples."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_THEME_B",
+          "code": "3.2.1.2",
+          "title": "Theme B: Religion and life",
+          "kind": "topic",
+          "route": "non_textual",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_THEME_B_k1",
+              "code": "3.2.1.2.1",
+              "title": "The origins and value of the universe",
+              "official_reference": {
+                "section": "3.2.1.2",
+                "source_pages": [
+                  22
+                ]
+              },
+              "content": [
+                "The origins of the universe, including:",
+                "religious teachings about the origins of the universe, and different interpretations of these",
+                "the relationship between scientific views, such as the Big Bang theory, and religious",
+                "views.",
+                "The value of the world and the duty of human beings to protect it, including religious teaching",
+                "about stewardship, dominion, responsibility, awe and wonder.",
+                "The use and abuse of the environment, including the use of natural resources, pollution.",
+                "The use and abuse of animals, including:",
+                "animal experimentation",
+                "the use of animals for food."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_B_k2",
+              "code": "3.2.1.2.2",
+              "title": "The origins and value of human life",
+              "official_reference": {
+                "section": "3.2.1.2",
+                "source_pages": [
+                  22
+                ]
+              },
+              "content": [
+                "The origins of life, including:",
+                "religious teachings about the origins of human life, and different interpretations of these",
+                "the relationship between scientific views, such as evolution, and religious views.",
+                "The concepts of sanctity of life and the quality of life.",
+                "Abortion, including situations when the mother's life is at risk.",
+                "Ethical arguments related to abortion, including those based on the sanctity of life and quality",
+                "of life.",
+                "Euthanasia.",
+                "Beliefs about death and an afterlife, and their impact on beliefs about the value of human life."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_THEME_C",
+          "code": "3.2.1.3",
+          "title": "Theme C: The existence of God and revelation",
+          "kind": "topic",
+          "route": "non_textual",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_THEME_C_k1",
+              "code": "3.2.1.3.1",
+              "title": "Philosophical arguments for and against the existence of God",
+              "official_reference": {
+                "section": "3.2.1.3",
+                "source_pages": [
+                  23
+                ]
+              },
+              "content": [
+                "The Design argument, including its strengths and weaknesses.",
+                "The First Cause argument, including its strengths and weaknesses.",
+                "The argument from miracles, including its strengths and weaknesses, and one example of a",
+                "miracle.",
+                "Evil and suffering as an argument against the existence of God.",
+                "Arguments based on science against the existence of God."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_C_k2",
+              "code": "3.2.1.3.2",
+              "title": "The nature of the divine and revelation",
+              "official_reference": {
+                "section": "3.2.1.3",
+                "source_pages": [
+                  23
+                ]
+              },
+              "content": [
+                "Special revelation as a source of knowledge about the divine (God, gods or ultimate reality)",
+                "including visions and one example of a vision.",
+                "Enlightenment as a source of knowledge about the divine.",
+                "General revelation: nature and scripture as a way of understanding the divine.",
+                "Different ideas about the divine that come from these sources:",
+                "omnipotent and omniscient",
+                "personal and impersonal",
+                "immanent and transcendent.",
+                "The value of general and special revelation and enlightenment as sources of knowledge",
+                "about the divine, including:",
+                "the problems of different ideas about the divine arising from these experiences",
+                "alternative explanations for the experiences, and the possibility that the people who",
+                "claimed to have them were lying or mistaken."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_THEME_D",
+          "code": "3.2.1.4",
+          "title": "Theme D: Religion, peace and conflict",
+          "kind": "topic",
+          "route": "non_textual",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_THEME_D_k1",
+              "code": "3.2.1.4.1",
+              "title": "Religion, violence, terrorism and war",
+              "official_reference": {
+                "section": "3.2.1.4",
+                "source_pages": [
+                  23
+                ]
+              },
+              "content": [
+                "The meaning and significance of:",
+                "peace",
+                "justice",
+                "forgiveness",
+                "reconciliation.",
+                "Violence, including violent protest.",
+                "Terrorism.",
+                "Reasons for war, including greed, self-defence and retaliation.",
+                "The just war theory, including the criteria for a just war.",
+                "Holy war.",
+                "Pacifism."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_D_k2",
+              "code": "3.2.1.4.2",
+              "title": "Religion and belief in 21st century conflict",
+              "official_reference": {
+                "section": "3.2.1.4",
+                "source_pages": [
+                  24
+                ]
+              },
+              "content": [
+                "Religion and belief as a cause of war and violence in the contemporary world.",
+                "Nuclear weapons, including nuclear deterrence.",
+                "The use of weapons of mass destruction.",
+                "Religion and peace-making in the contemporary world including the work of individuals",
+                "influenced by religious teaching.",
+                "Religious responses to the victims of war including the work of one present day religious",
+                "organisation."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_THEME_E",
+          "code": "3.2.1.5",
+          "title": "Theme E: Religion, crime and punishment",
+          "kind": "topic",
+          "route": "non_textual",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_THEME_E_k1",
+              "code": "3.2.1.5.1",
+              "title": "Religion, crime and the causes of crime",
+              "official_reference": {
+                "section": "3.2.1.5",
+                "source_pages": [
+                  24
+                ]
+              },
+              "content": [
+                "Good and evil intentions and actions, including whether it can ever be good to cause",
+                "suffering.",
+                "Reasons for crime, including:",
+                "poverty and upbringing",
+                "mental health problems and addiction",
+                "greed and hate",
+                "opposition to an unjust law.",
+                "Views about people who break the law for these reasons.",
+                "Views about different types of crime, including hate crimes, theft and murder."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_E_k2",
+              "code": "3.2.1.5.2",
+              "title": "Religion and punishment",
+              "official_reference": {
+                "section": "3.2.1.5",
+                "source_pages": [
+                  24
+                ]
+              },
+              "content": [
+                "The aims of punishment, including:",
+                "retribution",
+                "deterrence",
+                "reformation.",
+                "The treatment of criminals, including:",
+                "prison",
+                "corporal punishment",
+                "community service.",
+                "Forgiveness.",
+                "The death penalty.",
+                "Ethical arguments related to the death penalty, including those based on the principle of",
+                "utility and sanctity of life."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_THEME_F",
+          "code": "3.2.1.6",
+          "title": "Theme F: Religion, human rights and social justice",
+          "kind": "topic",
+          "route": "non_textual",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_THEME_F_k1",
+              "code": "3.2.1.6.1",
+              "title": "Human rights",
+              "official_reference": {
+                "section": "3.2.1.6",
+                "source_pages": [
+                  25
+                ]
+              },
+              "content": [
+                "Prejudice and discrimination in religion and belief, including the status and treatment within",
+                "religion of women and those in same sex relationships.",
+                "Issues of equality, freedom of religion and belief including freedom of religious expression.",
+                "Human rights and the responsibilities that come with rights, including the responsibility to",
+                "respect the rights of others.",
+                "Social justice.",
+                "Racial prejudice and discrimination.",
+                "Ethical arguments related to racial discrimination (including positive discrimination), including",
+                "those based on the ideals of equality and justice."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_F_k2",
+              "code": "3.2.1.6.2",
+              "title": "Wealth and poverty",
+              "official_reference": {
+                "section": "3.2.1.6",
+                "source_pages": [
+                  25
+                ]
+              },
+              "content": [
+                "Wealth, including:",
+                "the right attitude to wealth",
+                "the uses of wealth.",
+                "The responsibilities of wealth, including the duty to tackle poverty and its causes.",
+                "Exploitation of those living in poverty including issues relating to:",
+                "fair pay",
+                "excessive interest on loans",
+                "people-trafficking.",
+                "The responsibilities of those living in poverty to help themselves overcome the difficulties",
+                "they face.",
+                "Charity, including issues related to giving money to those living in poverty. 3.2.2 Textual studies Students entering for textual studies themes must also study Christianity (page 11) or Catholic Christianity (page 13) in Component 1. There is a separate entry code for this route (see Entries and codes (page 33)). Students electing for this route must study both textual studies themes (Themes G and H). In studying these themes, students should be aware of the significance, importance and influence of St Mark’s Gospel for individuals, communities and societies. They should understand how varied interpretations of the meaning of passages from St Mark’s Gospel may give rise to diversity within Christian traditions and consider how far Christian and non-religious communities give authority to St Mark’s Gospel, especially in relation to other sources of contemporary authority. Students should be able to show knowledge of the set texts for study and an understanding of their importance for Jesus, for his early followers and for people of the 21st century. Students should be able to consider the authority of the Gospel and the relevance of Jesus’ example and teaching."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_THEME_G",
+          "code": "3.2.2.1",
+          "title": "Theme G: St Mark’s gospel: the life of Jesus",
+          "kind": "topic",
+          "route": "textual",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_THEME_G_k1",
+              "code": "3.2.2.1.1",
+              "title": "The early ministry of Jesus",
+              "official_reference": {
+                "section": "3.2.2.1",
+                "source_pages": [
+                  26
+                ]
+              },
+              "content": [
+                "John’s preparation for Jesus’ ministry: 1:1–8.",
+                "Jesus’ baptism and temptation: 1:9–13.",
+                "The paralysed man: 2:1–12.",
+                "Jairus’ daughter: 5:21–24a, 35–43.",
+                "The rejection at Nazareth: 6:1–6.",
+                "The feeding of the five thousand: 6:30–44."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_G_k2",
+              "code": "3.2.2.1.2",
+              "title": "The later ministry of Jesus",
+              "official_reference": {
+                "section": "3.2.2.1",
+                "source_pages": [
+                  26
+                ]
+              },
+              "content": [
+                "The conversation at Caesarea Philippi: 8:27–33.",
+                "The transfiguration of Jesus: 9:2–9.",
+                "Jesus’ passion prediction: 10:32–34.",
+                "The request of James and John: 10:35–45.",
+                "Bartimaeus: 10:46–52.",
+                "The entry into Jerusalem: 11:1–11."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_G_k3",
+              "code": "3.2.2.1.3",
+              "title": "The final days in Jerusalem",
+              "official_reference": {
+                "section": "3.2.2.1",
+                "source_pages": [
+                  26
+                ]
+              },
+              "content": [
+                "The Last Supper: 14:12–26.",
+                "Jesus in Gethsemane: 14:32–52.",
+                "The trial before the Jewish authorities: 14:53, 57–65.",
+                "The trial before Pilate: 15:1–15.",
+                "The crucifixion and burial: 15:21–47.",
+                "The empty tomb: 16:1–8."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_G_k4",
+              "code": "3.2.2.1.4",
+              "title": "Significance",
+              "official_reference": {
+                "section": "3.2.2.1",
+                "source_pages": [
+                  26
+                ]
+              },
+              "content": [
+                "The titles Son of Man, Son of God, Christ (Messiah) and Son of David, including their",
+                "meaning for 1st century Jews and Jesus.",
+                "The significance for 21st century Christians of Jesus’ understanding of the titles Son of Man,",
+                "Son of God, Christ (Messiah) and Son of David.",
+                "St Mark’s portrayal of Jesus as a teacher and miracle worker, including contrasting views on",
+                "the historicity of the miracle stories.",
+                "Differing beliefs about the meaning of Jesus’ words and actions at the Last Supper.",
+                "Differing beliefs about the significance of Jesus' death and resurrection, and different",
+                "explanations given for the empty tomb.",
+                "Differing views on the authority of St Mark ’s Gospel relating to the life of Jesus in relation to",
+                "the challenges posed by secular sources of contemporary authority."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "AQA_GCSE_RS_THEME_H",
+          "code": "3.2.2.2",
+          "title": "Theme H: St Mark’s Gospel as a source of religious, moral and spiritual truths",
+          "kind": "topic",
+          "route": "textual",
+          "points": [
+            {
+              "id": "AQA_GCSE_RS_THEME_H_k1",
+              "code": "3.2.2.2.1",
+              "title": "The Kingdom of God",
+              "official_reference": {
+                "section": "3.2.2.2",
+                "source_pages": [
+                  27
+                ]
+              },
+              "content": [
+                "Parable of the sower: 4:1–9, 14–20.",
+                "Parable of the growing seed: 4:26–29.",
+                "Parable of the mustard seed: 4:30–32.",
+                "Jesus and the children: 10:13–16.",
+                "The rich man: 10:17–27.",
+                "The greatest commandment: 12:28–34."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_H_k2",
+              "code": "3.2.2.2.2",
+              "title": "Jesus’ relationships with those disregarded by society",
+              "official_reference": {
+                "section": "3.2.2.2",
+                "source_pages": [
+                  27
+                ]
+              },
+              "content": [
+                "The man with leprosy: 1:40–45.",
+                "The call of Levi: 2:13–17.",
+                "The Greek (Syro-Phoenician) woman’s daughter: 7:24–30.",
+                "The epileptic (demon-possessed) boy: 9:14–29.",
+                "The widow at the treasury: 12:41–44.",
+                "The anointing at Bethany: 14:1–9."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_H_k3",
+              "code": "3.2.2.2.3",
+              "title": "Faith and discipleship",
+              "official_reference": {
+                "section": "3.2.2.2",
+                "source_pages": [
+                  27
+                ]
+              },
+              "content": [
+                "The call of the first disciples: 1:16–20.",
+                "The woman with a haemorrhage: 5:24b–34.",
+                "The mission of the Twelve: 6:7–13.",
+                "The cost and rewards of discipleship: 8:34–38; 10:28–31.",
+                "Peter’s denials: 14:27–31, 66–72.",
+                "The commission and ascension: 16:14–20."
+              ]
+            },
+            {
+              "id": "AQA_GCSE_RS_THEME_H_k4",
+              "code": "3.2.2.2.4",
+              "title": "Significance",
+              "official_reference": {
+                "section": "3.2.2.2",
+                "source_pages": [
+                  27
+                ]
+              },
+              "content": [
+                "The significance and importance for Jesus, for the people of his day and for people in the",
+                "21st century, of key events in the life of Jesus recorded St Mark.",
+                "Different ways in which the Kingdom of God might be understood, including as a present",
+                "reality and a future hope, and as a personal inner state and a community.",
+                "Reasons for 1st century attitudes and those of Jesus to those disregarded by society.",
+                "The significance and importance for Christians of Jesus’ attitudes to those disregarded by the",
+                "society of his day.",
+                "Different views on the significance and importance for Jesus’ disciples and for 21st century",
+                "Christians of discipleship as seen in incidents relating to Jesus’ disciples and in Jesus’",
+                "teaching.",
+                "Different views on the nature and importance of faith as seen in St Mark’s Gospel.",
+                "Differing views on the authority of Jesus’ teaching as recorded by St Mark in relation to the",
+                "challenges posed by secular sources of contemporary authority."
+              ]
+            }
           ]
         }
       ]
