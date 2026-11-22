@@ -51,7 +51,6 @@ for (const slug of SUBJECTS) {
         assert(dependency, `${q.question_id} depends on missing ${id}`);
         assert.equal(dependency.parent_question_id, q.parent_question_id);
         assert(dependency.question_id < q.question_id, 'dependencies point to earlier parts');
-        assert(q.context?.stem_image_url, `${q.question_id} shows the part it depends on`);
       }
     }
   });

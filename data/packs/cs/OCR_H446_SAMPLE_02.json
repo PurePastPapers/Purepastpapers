@@ -2107,9 +2107,9 @@
             "page": 12,
             "bbox": [
               0.041943,
-              0.444029,
+              0.444159,
               0.958057,
-              0.682662
+              0.632987
             ]
           }
         ],
@@ -2422,9 +2422,9 @@
             "page": 14,
             "bbox": [
               0.041943,
-              0.220542,
+              0.219705,
               0.958057,
-              0.484299
+              0.435846
             ]
           }
         ],
@@ -2516,9 +2516,9 @@
             "page": 14,
             "bbox": [
               0.041943,
-              0.433625,
+              0.48335,
               0.958057,
-              0.633659
+              0.579545
             ]
           }
         ],
@@ -2610,9 +2610,9 @@
             "page": 14,
             "bbox": [
               0.041943,
-              0.582431,
+              0.631799,
               0.958057,
-              0.728633
+              0.729182
             ]
           }
         ],
@@ -3335,8 +3335,7 @@
             "label": "Part 10(d)",
             "image_url": "assets/cs/OCR_H446_SAMPLE_02/CTX_Q10_d.webp"
           }
-        ],
-        "stem_image_url": "assets/cs/OCR_H446_SAMPLE_02/Q10_d_i.webp"
+        ]
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3385,10 +3384,7 @@
           "OCR_H446_SAMPLE_02_Q10_d_i": "wording names (d)(i): \"part (i)\""
         },
         "dependency_detected_on": "2026-11-20"
-      },
-      "depends_on_question_ids": [
-        "OCR_H446_SAMPLE_02_Q10_d_i"
-      ]
+      }
     },
     {
       "question_id": "OCR_H446_SAMPLE_02_Q10_d_iii",
@@ -3441,6 +3437,13 @@
             "label": "Part 10(d)",
             "image_url": "assets/cs/OCR_H446_SAMPLE_02/CTX_Q10_d.webp"
           }
+        ],
+        "figures": [
+          {
+            "label": "Printed timing for three discs",
+            "source": "question_paper",
+            "image_url": "assets/cs/OCR_H446_SAMPLE_02/hanoi_printed_timing.webp"
+          }
         ]
       },
       "provenance": {
@@ -3477,7 +3480,7 @@
           0
         ],
         "difficulty_basis": "2-mark sketch applying exponential complexity.",
-        "context_basis": "question stem and part lead-in attached as unscored context",
+        "context_basis": "printed introductions and reviewed unscored source excerpt",
         "content_year_basis": "assesses A-level-only content",
         "official_codes": [
           "2.3.1(c)"
@@ -3486,7 +3489,18 @@
           "2.3.1(d)"
         ],
         "qualification_code": "H446",
-        "extraction_version": "ocr-cs-layout-v3"
+        "extraction_version": "ocr-cs-layout-v3",
+        "display_context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.19294,
+              0.13301,
+              0.77176,
+              0.154387
+            ]
+          }
+        ]
       }
     },
     {
@@ -3589,15 +3603,6 @@
               0.102466,
               0.976245,
               0.342673
-            ]
-          },
-          {
-            "page": 52,
-            "bbox": [
-              0.033595,
-              0.098584,
-              0.966405,
-              0.783922
             ]
           }
         ],

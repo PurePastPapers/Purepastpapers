@@ -504,23 +504,14 @@
             "page": 2,
             "bbox": [
               0.065358,
-              0.12843355605048257,
+              0.134204,
               0.934677,
-              0.3867854491462509
-            ]
-          },
-          {
-            "page": 3,
-            "bbox": [
-              0.065358,
-              0.06829992576095026,
-              0.934677,
-              0.15367483296213807
+              0.193587
             ]
           }
         ],
         "context_reasons": [
-          "earlier \"show that\" result"
+          "reviewed unscored context"
         ],
         "part_scheme_regions": [
           {
@@ -558,15 +549,9 @@
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_9BN0_2018_JUNE_03_Q01_U02": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "dependency_review": "The gel electrophoresis task uses no PCR amplification result."
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_9BN0_2018_JUNE_03_Q01_U02"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_9BN0_2018_JUNE_03_Q02_U01",

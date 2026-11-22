@@ -719,9 +719,9 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.04528582034149963,
+              0.5085,
               0.958006,
-              0.39643652561247217
+              0.5945
             ]
           }
         ],
@@ -761,14 +761,16 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.5085,
               0.958006,
-              0.39676
+              0.5945
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "part_display_review": "Part (c) uses the summary statistics printed immediately before it.",
+        "part_display_review_source": "caf64ee2be9938a17025f984febdafad499b50b9aeaf413515d9eabfb1640f92"
       },
       "part_label": "(c)"
     },
@@ -862,24 +864,13 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.04528582034149963,
+              0.6435,
               0.958006,
-              0.39643652561247217
-            ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.041994,
-              0.5983667409057164,
-              0.958006,
-              0.7008166295471417
+              0.701
             ]
           }
         ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 7,
@@ -910,39 +901,22 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_named_parts": [
-          "EDX_9MA0_2019_JUNE_31_Q02_U03"
-        ],
         "context_regions_refined": [
           {
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.6435,
               0.958006,
-              0.39676
-            ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.041994,
-              0.598442,
-              0.958006,
-              0.700637
+              0.701
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_9MA0_2019_JUNE_31_Q02_U03": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "Part (d) is based on the printed distribution, which already supplies the standard deviation.",
+        "part_display_review_source": "caf64ee2be9938a17025f984febdafad499b50b9aeaf413515d9eabfb1640f92"
       },
-      "part_label": "(d)",
-      "depends_on_question_ids": [
-        "EDX_9MA0_2019_JUNE_31_Q02_U03"
-      ]
+      "part_label": "(d)"
     },
     {
       "question_id": "EDX_9MA0_2019_JUNE_31_Q02_U05",
@@ -1035,18 +1009,9 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.04528582034149963,
+              0.754,
               0.958006,
-              0.39643652561247217
-            ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.041994,
-              0.643652561247216,
-              0.958006,
-              0.7008166295471417
+              0.797
             ]
           }
         ],
@@ -1088,23 +1053,16 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045135,
+              0.754,
               0.958006,
-              0.39676
-            ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.041994,
-              0.598442,
-              0.958006,
-              0.700637
+              0.797
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "part_display_review": "Part (e) uses the new modelling instruction printed immediately before it.",
+        "part_display_review_source": "caf64ee2be9938a17025f984febdafad499b50b9aeaf413515d9eabfb1640f92"
       },
       "part_label": "(e)"
     },

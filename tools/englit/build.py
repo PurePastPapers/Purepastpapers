@@ -31,6 +31,7 @@ sys.path.insert(0, str(HERE.parent / 'physics'))
 sys.path.insert(0, str(HERE))
 from render import SourceRenderer  # noqa: E402
 from schemes import scheme_regions  # noqa: E402
+from extract import romantics_rubric  # noqa: E402
 
 SUBJECT = 'EDX_ALEVEL_ENGLIT_9ET0'
 SIGNATURE = b'englit-build-v1'
@@ -85,6 +86,7 @@ def build_paper(paper, research, spec):
     rel = lambda p: p.relative_to(REPO).as_posix()
     qual, is_as = paper['qualification_code'], paper['is_as']
     rendered, records = {}, []
+    rubric_regions = None
 
     def put(name, regions):
         if name not in rendered:
@@ -107,6 +109,15 @@ def build_paper(paper, research, spec):
         if q['route'] in ('P', 'R') and q['heading_regions']:
             context['stem_image_url'] = put(f"HEAD_{q['route']}", q['heading_regions'])
             reasons.append('set-text heading printed above the question')
+        if q['route'] == 'R':
+            if rubric_regions is None:
+                import pdfplumber
+                with pdfplumber.open(qp) as pdf:
+                    rubric_regions = romantics_rubric(pdf, q['heading_regions'][0]['page'])
+            context['figures'] = [{'label': 'Official choice and prescribed poem instructions',
+                                   'source': 'question_paper',
+                                   'image_url': put('HEAD_R_instructions', rubric_regions)}]
+            reasons.append('printed choice and prescribed poem instructions')
         if q.get('context_regions'):
             pages = q['context_pages']
             label = f"Source Booklet page{'s' if len(pages) > 1 else ''} {', '.join(map(str, pages))}: the unseen poem and {', '.join(q['named_poems'])}"
@@ -133,6 +144,7 @@ def build_paper(paper, research, spec):
                            'source_regions': q['regions'], 'scheme_regions': scheme['indicative'] + scheme['grid'],
                            'scheme_indicative_regions': scheme['indicative'], 'scheme_grid_regions': scheme['grid'],
                            'booklet_regions': q.get('context_regions', []), 'original_parts': [q['number']],
+                           **({'rubric_regions': rubric_regions} if q['route'] == 'R' else {}),
                            'original_tariff_indices': [0], 'difficulty_basis': rv['difficulty_basis'],
                            'context_basis': ('unscored context: ' + ', '.join(reasons)) if reasons else 'independent',
                            'content_year_basis': 'AS 8ET0 unit' if is_as else ('every primary leaf is an AS 8ET0 set text' if year == 12 else 'assesses A-level-only content'),
@@ -187,7 +199,8 @@ def build_job(job):
     if not review.exists() or not cand.exists():
         return {'paper_id': pid, 'status': 'awaiting_review_or_source'}
     target = REPO / 'data/packs/englit' / f'{pid}.json'
-    signature = hashlib.sha256(SIGNATURE + cand.read_bytes() + review.read_bytes() + Path(__file__).read_bytes() + (HERE / 'schemes.py').read_bytes() +
+    signature = hashlib.sha256(SIGNATURE + cand.read_bytes() + review.read_bytes() + Path(__file__).read_bytes() +
+                               (HERE / 'extract.py').read_bytes() + (HERE / 'schemes.py').read_bytes() +
                                (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes()).hexdigest()
     try:
         if target.exists() and json.loads(target.read_text()).get('build_signature') == signature and (REPO / 'assets/englit' / pid).exists():

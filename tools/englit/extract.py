@@ -123,6 +123,25 @@ def booklet_start(pdf, texts):
     return None
 
 
+def romantics_rubric(pdf, page_number):
+    """Keep the choose-one and prescribed-poem rules printed above The Romantics."""
+    page_index = page_number - 1
+    page = pdf.pages[page_index]
+    rows = lines_of(page, right=34)
+    heading = next((i for i, row in enumerate(rows) if row['text'] == 'The Romantics'), None)
+    if heading is None:
+        raise ValueError(f'Romantics heading missing on PDF page {page_number}')
+    before = rows[max(0, heading - 9):heading]
+    choose = next((i for i, row in enumerate(before) if re.match(r'Answer ONE question', row['text'], re.I)), None)
+    if choose is None or not any('prescribed list' in row['text'] for row in before[choose:]):
+        raise ValueError(f'Romantics rubric missing on PDF page {page_number}')
+    rubric = before[choose:]
+    words = [word for row in rubric for word in row['words']]
+    left = min(word['x0'] for word in words) - 5
+    right = page.width - max(word['x1'] for word in words) - 5
+    return box(pdf, [(page_index, row) for row in rubric], left=left, right=right)
+
+
 def extract(path, paper):
     import pdfplumber
     exceptions = []

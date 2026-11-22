@@ -1369,8 +1369,7 @@
             "label": "Part 2(b)",
             "image_url": "assets/cs/OCR_H446_2021_NOVEMBER_01/CTX_Q02_b.webp"
           }
-        ],
-        "stem_image_url": "assets/cs/OCR_H446_2021_NOVEMBER_01/Q02_b_i.webp"
+        ]
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3928,7 +3927,10 @@
         ],
         "qualification_code": "H446",
         "extraction_version": "ocr-cs-layout-v3"
-      }
+      },
+      "depends_on_question_ids": [
+        "OCR_H446_2021_NOVEMBER_01_Q07_b_i"
+      ]
     },
     {
       "question_id": "OCR_H446_2021_NOVEMBER_01_Q07_b_iii",

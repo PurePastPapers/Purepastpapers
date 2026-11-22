@@ -74,6 +74,10 @@ def scheme_regions(path, labels, start_page=0):
         for pi, page in enumerate(pdf.pages):
             if pi < first:
                 continue
+            # Specimen schemes end with a paper-wide marks grid and sometimes a
+            # revision log. Neither is a continuation of the last answer row.
+            if re.search(r'Assessment Objectives\s*\(AO\)\s*Grid', page.extract_text() or ''):
+                break
             words = page.extract_words()
             # Rules are drawn per cell, so a row boundary is a height whose segments together span the table.
             span = {}

@@ -633,7 +633,7 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.586184,
+              0.572,
               0.958006,
               0.639128
             ]
@@ -656,9 +656,9 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045252225519287835,
+              0.045135,
               0.958006,
-              0.586053412462908
+              0.572
             ]
           }
         ],
@@ -691,11 +691,13 @@
               0.041994,
               0.045135,
               0.958006,
-              0.586184
+              0.572
             ]
           }
         ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "part_display_review": "The image starts above the numerator of the supplied tension.",
+        "part_display_review_source": "c802bf701889f98b22b9bcf5c343579a4dd1f71093a668e99381cbb171bef738"
       },
       "part_label": "(a)"
     },
@@ -799,15 +801,22 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045252225519287835,
+              0.045135,
               0.958006,
-              0.6810089020771514
+              0.572
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.6395,
+              0.958006,
+              0.6825
             ]
           }
         ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 9,
@@ -838,9 +847,6 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_named_parts": [
-          "EDX_9MA0_2019_JUNE_32_Q03_U01"
-        ],
         "context_regions_refined": [
           {
             "page": 6,
@@ -848,20 +854,24 @@
               0.041994,
               0.045135,
               0.958006,
-              0.680967
+              0.572
+            ]
+          },
+          {
+            "page": 6,
+            "bbox": [
+              0.041994,
+              0.6395,
+              0.958006,
+              0.6825
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_9MA0_2019_JUNE_32_Q03_U01": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "Part (b) describes the block after the other block reaches the ground; the earlier moving tension is not needed.",
+        "part_display_review_source": "c802bf701889f98b22b9bcf5c343579a4dd1f71093a668e99381cbb171bef738"
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_9MA0_2019_JUNE_32_Q03_U01"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_9MA0_2019_JUNE_32_Q03_U03",
@@ -961,18 +971,9 @@
             "page": 6,
             "bbox": [
               0.041994,
-              0.045252225519287835,
+              0.045135,
               0.958006,
-              0.586053412462908
-            ]
-          },
-          {
-            "page": 6,
-            "bbox": [
-              0.041994,
-              0.6394658753709199,
-              0.958006,
-              0.6810089020771514
+              0.572
             ]
           }
         ],
@@ -986,12 +987,14 @@
               0.041994,
               0.045135,
               0.958006,
-              0.680967
+              0.572
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "part_display_review": "Part (c) uses the original modelling assumptions without the other scored tasks.",
+        "part_display_review_source": "c802bf701889f98b22b9bcf5c343579a4dd1f71093a668e99381cbb171bef738"
       },
       "part_label": "(c)"
     },

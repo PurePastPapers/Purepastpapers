@@ -61,7 +61,7 @@ export function validateQuestion(question, { specIndex, paperIds, subjectId }) {
     if (!question.context || typeof question.context !== 'object' || Array.isArray(question.context)) {
       error('context must be an object when supplied.');
     } else {
-      for (const field of ['shared_stem_html', 'full_question_html', 'full_question_image_url']) {
+      for (const field of ['shared_stem_html', 'stem_image_url', 'full_question_html', 'full_question_image_url']) {
         if (question.context[field] !== undefined && typeof question.context[field] !== 'string') error(`context.${field} must be a string.`);
       }
     }
@@ -74,11 +74,6 @@ export function validateQuestion(question, { specIndex, paperIds, subjectId }) {
       if (dependencies.some((dependency) => typeof dependency !== 'string' || !dependency.trim())) error('depends_on_question_ids must contain non-empty string ids.');
       if (new Set(dependencies).size !== dependencies.length) error('depends_on_question_ids contains duplicate ids.');
       if (dependencies.includes(question.question_id)) error('depends_on_question_ids cannot include the question itself.');
-      const suppliesContext = (typeof question.context?.shared_stem_html === 'string' && question.context.shared_stem_html.trim()) ||
-        (typeof question.context?.stem_image_url === 'string' && question.context.stem_image_url.trim());
-      if (dependencies.length && !suppliesContext) {
-        error('A question with dependencies needs context.shared_stem_html or context.stem_image_url supplying the earlier information needed to answer this part.');
-      }
     }
   }
   return issues;
@@ -151,9 +146,6 @@ export function validateBundle(bundle, specIndex) {
       const dependency = byId.get(dependencyId);
       if (!dependency) issues.push(issue('error', question.question_id, `Dependency "${dependencyId}" is not a question in this subject bundle.`));
       else if (dependency.paper_id !== question.paper_id) issues.push(issue('error', question.question_id, `Dependency "${dependencyId}" belongs to a different paper.`));
-      else if (question.parent_question_id && dependency.parent_question_id && dependency.parent_question_id !== question.parent_question_id) {
-        issues.push(issue('error', question.question_id, `Dependency "${dependencyId}" belongs to a different parent question.`));
-      }
     }
   }
   // Mark actual cycle participants rather than every record which reaches a

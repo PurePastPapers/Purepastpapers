@@ -3281,9 +3281,7 @@
       },
       "scheme_scope": "part",
       "scheme_question_number": "7(b)",
-      "context": {
-        "stem_image_url": "assets/cs/OCR_H446_SAMPLE_01/Q07_a.webp"
-      },
+      "context": {},
       "provenance": {
         "review_status": "model_reviewed",
         "reviewer_type": "model",
@@ -4757,7 +4755,11 @@
         "prerequisite_codes": [],
         "qualification_code": "H446",
         "extraction_version": "ocr-cs-layout-v3"
-      }
+      },
+      "depends_on_question_ids": [
+        "OCR_H446_SAMPLE_01_Q10_a_i",
+        "OCR_H446_SAMPLE_01_Q10_a_ii"
+      ]
     },
     {
       "question_id": "OCR_H446_SAMPLE_01_Q10_b",
@@ -4839,24 +4841,6 @@
               0.351036,
               0.976246,
               0.581141
-            ]
-          },
-          {
-            "page": 53,
-            "bbox": [
-              0.033592,
-              0.108079,
-              0.966408,
-              0.849189
-            ]
-          },
-          {
-            "page": 54,
-            "bbox": [
-              0.023754,
-              0.184756,
-              0.976246,
-              0.361114
             ]
           }
         ],

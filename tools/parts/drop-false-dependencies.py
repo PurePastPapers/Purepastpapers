@@ -26,6 +26,8 @@ FALSE = {
     # drawn or written in the same part
     'OCR_H032_2022_JUNE_01_Q24_a_ii', 'OCR_H432_2020_NOVEMBER_03_Q05_c', 'OCR_H432_2025_JUNE_01_Q18_c_ii',
     'OCR_H432_SAMPLE_01_Q17_b',
+    # The Biology parts use the printed context, with no answer from the preceding "Show that" task.
+    'EDX_9BN0_2018_JUNE_03_Q01_U03', 'EDX_9BN0_2025_JUNE_03_Q02_U05', 'EDX_9BN0_2025_JUNE_03_Q02_U06',
 }
 
 changed = 0

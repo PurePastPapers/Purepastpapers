@@ -55,20 +55,20 @@ test('optional part and context fields reject malformed imports', () => {
   }
 });
 
-test('a dependent part must provide required earlier information in its visible shared stem', () => {
+test('a dependent part can get earlier working from the prerequisite question', () => {
   const withoutStem = part('B', { depends_on_question_ids: ['A'], context: { full_question_html: '<p>Full original.</p>' } });
-  assert.ok(validateQuestion(withoutStem, context).some((entry) => /shared_stem_html/.test(entry.message)));
+  assert.deepEqual(errors([part('A'), withoutStem]), []);
   const supplied = { ...withoutStem, context: { ...withoutStem.context, shared_stem_html: '<p>For this part, use the result x = 4 from part a.</p>' } };
   assert.deepEqual(validateQuestion(supplied, context), []);
 });
 
-test('dependencies resolve only within their subject bundle, paper and original question', () => {
+test('dependencies resolve within their subject bundle and paper, including separate numbered questions', () => {
   const a = part('A', { part_label: 'a' });
   const b = part('B', { depends_on_question_ids: ['A'], context: { shared_stem_html: '<p>Use the result from a: x = 4.</p>' } });
   assert.deepEqual(errors([a, b]), []);
   assert.ok(errors([b]).some((entry) => /not a question in this subject bundle/.test(entry.message)));
   assert.ok(errors([{ ...a, paper_id: 'OTHER_PAPER' }, b]).some((entry) => /different paper/.test(entry.message)));
-  assert.ok(errors([{ ...a, parent_question_id: 'PAPER_Q8' }, b]).some((entry) => /different parent question/.test(entry.message)));
+  assert.deepEqual(errors([a, {...b, question_number: '8', parent_question_id: 'PAPER_Q8'}]), []);
 });
 
 test('dependency cycles reject just the cyclic records while valid dependency chains pass', () => {

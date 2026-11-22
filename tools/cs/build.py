@@ -26,6 +26,7 @@ sys.path.insert(0, str(HERE.parent / 'physics'))
 sys.path.insert(0, str(HERE))
 from render import SourceRenderer  # noqa: E402
 from schemes import scheme_regions  # noqa: E402
+from display import apply_display, question_regions  # noqa: E402
 
 SUBJECT = 'OCR_ALEVEL_CS_H446'
 SIGNATURE = b'cs-build-v3'
@@ -74,6 +75,12 @@ def build_paper(paper, research, spec):
     qr, sr = SourceRenderer(qp), SourceRenderer(ms)
     root = REPO / 'assets/cs' / pid
     rel = lambda p: p.relative_to(REPO).as_posix()
+
+    def render_context(asset_name, regions):
+        target = root / f'{asset_name}.webp'
+        qr.render(regions, target)
+        return rel(target)
+
     qual, is_as = paper['qualification_code'], paper['is_as']
     rendered_ctx, records = {}, []
     for u in cand['units']:
@@ -83,7 +90,8 @@ def build_paper(paper, research, spec):
             raise ValueError(f"{u['label']}: invalid tags")
         name = slug(u['label'])
         image, scheme_image = root / f'{name}.webp', root / f'{name}_scheme.webp'
-        qr.render(u['regions'], image)
+        own_regions = question_regions(pid, name, u['regions'])
+        qr.render(own_regions, image)
         sr.render(schemes[u['label']]['regions'], scheme_image)
         intros = []
         for key in u.get('context', []):
@@ -112,7 +120,7 @@ def build_paper(paper, research, spec):
             'scheme_question_number': u['label'], 'context': {'intros': intros} if intros else {},
             'provenance': {'review_status': 'model_reviewed', 'reviewer_type': 'model',
                            'question_source_sha256': cand['source_sha256'], 'scheme_source_sha256': ms_sha,
-                           'source_regions': u['regions'], 'scheme_regions': schemes[u['label']]['regions'],
+                           'source_regions': own_regions, 'scheme_regions': schemes[u['label']]['regions'],
                            'original_parts': [u['label']], 'original_tariff_indices': [0],
                            'difficulty_basis': rv['difficulty_basis'],
                            'context_basis': 'question stem and part lead-in attached as unscored context' if intros else 'independent',
@@ -123,6 +131,8 @@ def build_paper(paper, research, spec):
         }
         if record['scheme_scope'] == 'parent_part':
             record['scheme_part'] = u['label'].rsplit('(', 1)[0]
+
+        apply_display(pid, record, render_context)
         records.append(record)
     if sum(r['marks'] for r in records) != paper['max_marks']:
         raise ValueError('Units do not reconcile to the booklet')
@@ -151,6 +161,7 @@ def build_job(job):
         return {'paper_id': pid, 'status': 'awaiting_review_or_source'}
     target = REPO / 'data/packs/cs' / f'{pid}.json'
     signature = hashlib.sha256(SIGNATURE + cand.read_bytes() + review.read_bytes() +
+                               Path(__file__).read_bytes() + (HERE / 'schemes.py').read_bytes() + (HERE / 'display.py').read_bytes() +
                                (REPO / 'data/specs' / f'{SUBJECT}.json').read_bytes()).hexdigest()
     try:
         if target.exists() and json.loads(target.read_text()).get('build_signature') == signature and (REPO / 'assets/cs' / pid).exists():
