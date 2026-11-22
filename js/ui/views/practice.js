@@ -532,12 +532,20 @@ export async function mount(element, context) {
           const pendingSave = previousSave.catch(() => {}).then(async () => {
             const latestRevision = inkRevisions.get(valueKey) || record.revision;
             const persisted = await repository.save({ ...record, revision: latestRevision });
-            inkRevisions.set(valueKey, persisted.revision);
-            if (inkValues.get(valueKey)?.updatedAt === record.updatedAt) inkValues.set(valueKey, persisted);
+            if (!persisted.conflict) {
+              inkRevisions.set(valueKey, persisted.revision);
+              if (inkValues.get(valueKey)?.updatedAt === record.updatedAt) inkValues.set(valueKey, persisted);
+            }
             return persisted;
           });
           inkSaveChains.set(valueKey, pendingSave);
-          void pendingSave.then(() => {
+          void pendingSave.then((persisted) => {
+            if (persisted.conflict) {
+              inkValues.delete(valueKey);
+              inkRevisions.delete(valueKey);
+              if (target.isConnected) update({ keepControls: true, keepPage: true });
+              return;
+            }
             editor?.setSaveState('Saved on this device');
             if (!hasStrokes) {
               const saveButton = element.querySelector(`[data-ink-save="${CSS.escape(partId)}"]`);
@@ -1738,11 +1746,6 @@ export async function mount(element, context) {
     const editor = inkEditors.get(partId);
     try {
       await inkSaveChains.get(valueKey)?.catch(() => {});
-      await api.saveAnswerUnmarked(question, answerOf(cardId, partId), {
-        attemptId: responseId,
-        groupAttemptId: groupAttemptIdFor(cardId),
-        hasInk: true,
-      });
       const record = {
         ...(inkValues.get(valueKey) || editor?.getValue() || {}),
         schemaVersion: 1,
@@ -1755,6 +1758,18 @@ export async function mount(element, context) {
         updatedAt: new Date().toISOString(),
       };
       const savedRecord = await api.inkRepository().save(record);
+      if (savedRecord.conflict) {
+        inkValues.delete(valueKey);
+        inkRevisions.delete(valueKey);
+        update({ keepControls: true, keepPage: true });
+        toast('This answer changed in another tab. Choose which version to keep.', { type: 'info' });
+        return;
+      }
+      await api.saveAnswerUnmarked(question, answerOf(cardId, partId), {
+        attemptId: responseId,
+        groupAttemptId: groupAttemptIdFor(cardId),
+        hasInk: true,
+      });
       inkValues.set(valueKey, savedRecord);
       inkRevisions.set(valueKey, savedRecord.revision);
       state.inkSaved[valueKey] = true;

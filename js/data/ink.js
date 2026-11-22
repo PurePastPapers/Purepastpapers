@@ -7,7 +7,6 @@ const MAX_SECTIONS = 24;
 const MAX_STROKES_PER_SECTION = 5_000;
 const MAX_POINTS_PER_STROKE = 20_000;
 const MAX_TOTAL_POINTS = 100_000;
-const TAB_WRITER_ID = globalThis.crypto?.randomUUID?.() || `tab-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 function validId(value, name) {
   if (typeof value !== 'string' || value.length === 0 || value.length > 256) {
@@ -125,11 +124,6 @@ export function createInkRepository(owner) {
       const key = recordKey(ownerId, validId(responseId, 'responseId'), validId(partId, 'partId'));
       const stored = await requestResult(transaction.objectStore(RECORDS_STORE).get(key));
       await transactionDone(transaction);
-      if (stored && stored.writerId !== TAB_WRITER_ID) {
-        const claim = db.transaction(RECORDS_STORE, 'readwrite');
-        claim.objectStore(RECORDS_STORE).put({ ...stored, writerId: TAB_WRITER_ID });
-        await transactionDone(claim);
-      }
       return stored?.record || null;
     } finally { db.close(); }
   }
@@ -145,15 +139,15 @@ export function createInkRepository(owner) {
       const previous = await requestResult(records.get(key));
       const candidate = { ...record, revision: Math.max(record.revision, (previous?.record.revision || 0) + 1), updatedAt: new Date().toISOString() };
       const changedSections = previous?.record && JSON.stringify(record.sections) !== JSON.stringify(previous.record.sections);
-      const staleOtherTabWrite = previous?.writerId && previous.writerId !== TAB_WRITER_ID && record.revision <= previous.record.revision;
-      if (changedSections && staleOtherTabWrite) {
+      const staleRevision = previous && record.revision < previous.record.revision;
+      if (changedSections && staleRevision) {
         const conflictId = `${key}\u0000conflict\u0000${candidate.revision}`;
         const conflict = { ...candidate, conflictOfRevision: previous.record.revision, conflict: true };
         records.put({ key: conflictId, record: conflict });
         await transactionDone(transaction);
         return { ...conflict, conflict: true };
       }
-      records.put({ key, record: candidate, writerId: TAB_WRITER_ID });
+      records.put({ key, record: candidate });
       outbox.put({ key, record: candidate, queuedAt: candidate.updatedAt });
       await transactionDone(transaction);
       return candidate;
