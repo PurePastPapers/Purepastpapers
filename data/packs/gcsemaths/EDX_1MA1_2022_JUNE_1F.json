@@ -1663,7 +1663,7 @@
               0.041997,
               0.14292,
               0.958003,
-              0.344972
+              0.26669463
             ]
           }
         ],
@@ -1696,7 +1696,10 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "display_review_assets": {
+          "Q13_U01.webp": "157dd5203d4bf7ce9fa7f3a273894b6a7503de5d3240a84097600d56af428e90"
+        }
       },
       "part_label": "(a)"
     },
@@ -1743,7 +1746,6 @@
       "scheme_question_number": "13(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q13_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q13_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q13_scheme.webp"
       },
       "provenance": {
@@ -1771,7 +1773,7 @@
             "page": 9,
             "bbox": [
               0.041997,
-              0.344972,
+              0.26669463,
               0.958003,
               0.487215
             ]
@@ -1789,25 +1791,9 @@
           "P4"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "independent",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "The probability that the counter is green is 0.3",
-        "context_regions": [
-          {
-            "page": 9,
-            "bbox": [
-              0.041997,
-              0.31625835189309576,
-              0.958003,
-              0.3414996288047513
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q13_stem.webp",
-        "context_reasons": [
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 9,
@@ -1820,22 +1806,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 9,
-            "bbox": [
-              0.041997,
-              0.316493,
-              0.958003,
-              0.341437
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2022_JUNE_1F_Q13_U01"
-        ]
+        "reviewed_dependencies": [],
+        "display_review_assets": {
+          "Q13_U02.webp": "ed93f9c91b103f502bef11ac38805c6f17c8f11aaa8711a96b43512bdcff3ec7"
+        }
       },
       "part_label": "(b)"
     },
@@ -2225,7 +2199,7 @@
               0.041997,
               0.154765,
               0.958003,
-              0.56115
+              0.52798545
             ]
           }
         ],
@@ -2260,7 +2234,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "display_review_assets": {
+          "Q16_U01.webp": "1f1a5a2f5d8ea65e8a2bce55341e72dc8ae4c51ec9ac363d24f071399d75ea9b"
+        }
       },
       "part_label": "(a)"
     },
@@ -2307,8 +2284,8 @@
       "scheme_question_number": "16(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q16_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q16_U02_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q16_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q16_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_JUNE_1F/Q16_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -2335,7 +2312,7 @@
             "page": 11,
             "bbox": [
               0.041997,
-              0.56115,
+              0.52798545,
               0.958003,
               0.736654
             ]
@@ -2356,23 +2333,6 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "In fact, Savio’s average speed was greater than 40 miles per hour.",
-        "context_regions": [
-          {
-            "page": 11,
-            "bbox": [
-              0.041997,
-              0.1544172234595397,
-              0.958003,
-              0.5575352635486266
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q16_stem.webp",
-        "context_reasons": [
-          "names an earlier part",
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 10,
@@ -2394,22 +2354,14 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 11,
-            "bbox": [
-              0.041997,
-              0.154765,
-              0.958003,
-              0.557615
-            ]
-          }
+        "context_includes_stem_image": "Q16_stem.webp",
+        "context_regions": [],
+        "context_reasons": [
+          "reviewed shared printed stem"
         ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2022_JUNE_1F_Q16_U01"
-        ]
+        "display_review_assets": {
+          "Q16_U02.webp": "b63834cd944fc71787c90159be1268d4a3f23e39c679fa57816844397e11a592"
+        }
       },
       "part_label": "(b)",
       "depends_on_question_ids": [

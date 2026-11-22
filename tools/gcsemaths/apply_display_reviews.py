@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 REVIEW_PATH = 'data/imports/gcsemaths/display-reviews.json'
 SCOPE_KEYS = {
     'question': ('source_regions', 'question'),
+    'context': ('context_regions', 'question'),
     'part_scheme': ('part_scheme_regions', 'scheme'),
     'full_scheme': ('scheme_regions', 'scheme'),
 }
@@ -46,6 +47,8 @@ def references(unit, name, scope):
     context = unit['context']
     if scope == 'question':
         urls = [contents.get('question_image_url')]
+    elif scope == 'context':
+        urls = [context.get('stem_image_url')]
     elif scope == 'part_scheme':
         urls = [contents.get('mark_scheme_image_url')]
     else:
@@ -172,6 +175,13 @@ def apply_reviews(repo, sources, paper_ids=None, aliases=None):
                 checksum = hash_bytes(raw)
                 assets[name] = {'sha256': checksum, 'base64': base64.b64encode(raw).decode()}
                 for unit in candidates:
+                    if scope == 'context':
+                        for key in ('context_from_linked_part', 'context_includes_stem_image', 'context_named_parts',
+                                    'context_stem_from_parts', 'context_bridge_text', 'context_regions_refined',
+                                    'context_recut_from_full', 'context_siblings_removed'):
+                            unit['provenance'].pop(key, None)
+                        unit['provenance']['context_basis'] = 'reviewed_unscored_context'
+                        unit['provenance']['context_reasons'] = ['reviewed unscored printed context']
                     unit['provenance'][field] = regions
                     unit['provenance'].setdefault('display_review_assets', {})[name] = checksum
                 asset_changed = True

@@ -223,7 +223,7 @@
               0.041997,
               0.253367,
               0.958003,
-              0.646012
+              0.57957952
             ]
           }
         ],
@@ -256,7 +256,10 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "display_review_assets": {
+          "Q02_U01.webp": "db08d07043cfe93481329037bbfbd6f2a113ffbb8cb231a32eb2e59827504c11"
+        }
       },
       "part_label": "(a)"
     },
@@ -303,8 +306,8 @@
       "scheme_question_number": "2(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1H/Q02_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1H/Q02_U02_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1H/Q02_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1H/Q02_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1H/Q02_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -331,7 +334,7 @@
             "page": 3,
             "bbox": [
               0.041997,
-              0.646012,
+              0.57957952,
               0.958003,
               0.838342
             ]
@@ -352,23 +355,6 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "The probability that the dice will land on 2 is greater than the probability that the dice will land on 1",
-        "context_regions": [
-          {
-            "page": 3,
-            "bbox": [
-              0.041997,
-              0.25315515961395696,
-              0.958003,
-              0.6421677802524127
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q02_stem.webp",
-        "context_reasons": [
-          "names an earlier part",
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 7,
@@ -390,22 +376,14 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 3,
-            "bbox": [
-              0.041997,
-              0.253367,
-              0.958003,
-              0.642477
-            ]
-          }
+        "context_includes_stem_image": "Q02_stem.webp",
+        "context_regions": [],
+        "context_reasons": [
+          "reviewed shared printed stem"
         ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2024_NOVEMBER_1H_Q02_U01"
-        ]
+        "display_review_assets": {
+          "Q02_U02.webp": "f8b0b92220fb6946bd63d885d67ae462b6d20eee7914ee136c60182aaeceb837"
+        }
       },
       "part_label": "(b)",
       "depends_on_question_ids": [

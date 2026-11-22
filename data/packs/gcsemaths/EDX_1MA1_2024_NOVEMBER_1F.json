@@ -2430,7 +2430,7 @@
               0.041997,
               0.433655,
               0.958003,
-              0.676942
+              0.54122019
             ]
           }
         ],
@@ -2465,7 +2465,8 @@
         ],
         "part_scheme_check": "verified",
         "display_review_assets": {
-          "Q13_scheme.webp": "dff57ec2f659378347f752150734d860b0e29eec942d7b985b0d869b248ff999"
+          "Q13_scheme.webp": "dff57ec2f659378347f752150734d860b0e29eec942d7b985b0d869b248ff999",
+          "Q13_U01.webp": "52b6db667c4b545174c195be02078532a15387bc6b8382ec3aa7f8107125b297"
         }
       },
       "part_label": "(a)"
@@ -2513,7 +2514,6 @@
       "scheme_question_number": "13(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q13_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q13_U02_context.webp",
         "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q13_scheme.webp"
       },
       "provenance": {
@@ -2541,7 +2541,7 @@
             "page": 10,
             "bbox": [
               0.041997,
-              0.676942,
+              0.54122019,
               0.958003,
               0.819388
             ]
@@ -2559,25 +2559,9 @@
           "A17"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "independent",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "When the input is 10, the output is 28",
-        "context_regions": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.6481069042316259,
-              0.958003,
-              0.6733481811432813
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q13_stem.webp",
-        "context_reasons": [
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 9,
@@ -2599,26 +2583,12 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 10,
-            "bbox": [
-              0.041997,
-              0.648463,
-              0.958003,
-              0.673407
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2024_NOVEMBER_1F_Q13_U01"
-        ],
         "display_review_assets": {
           "Q13_scheme.webp": "dff57ec2f659378347f752150734d860b0e29eec942d7b985b0d869b248ff999",
-          "Q13_U02_scheme.webp": "039f72bc097c2e28e3666dc6e52640682f441d6be9535fb36879f345440180ae"
-        }
+          "Q13_U02_scheme.webp": "039f72bc097c2e28e3666dc6e52640682f441d6be9535fb36879f345440180ae",
+          "Q13_U02.webp": "1187daf70e9216007c6f854f551ae4483092f7e096e580544d6d747928400b82"
+        },
+        "reviewed_dependencies": []
       },
       "part_label": "(b)"
     },
@@ -3416,7 +3386,7 @@
               0.041997,
               0.253367,
               0.958003,
-              0.646012
+              0.57957952
             ]
           }
         ],
@@ -3449,7 +3419,10 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "display_review_assets": {
+          "Q19_U01.webp": "db08d07043cfe93481329037bbfbd6f2a113ffbb8cb231a32eb2e59827504c11"
+        }
       },
       "part_label": "(a)"
     },
@@ -3496,8 +3469,8 @@
       "scheme_question_number": "19(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q19_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q19_U02_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q19_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q19_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2024_NOVEMBER_1F/Q19_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3524,7 +3497,7 @@
             "page": 15,
             "bbox": [
               0.041997,
-              0.646012,
+              0.57957952,
               0.958003,
               0.838342
             ]
@@ -3545,23 +3518,6 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "The probability that the dice will land on 2 is greater than the probability that the dice will land on 1",
-        "context_regions": [
-          {
-            "page": 15,
-            "bbox": [
-              0.041997,
-              0.25315515961395696,
-              0.958003,
-              0.6421677802524127
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q19_stem.webp",
-        "context_reasons": [
-          "names an earlier part",
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 13,
@@ -3583,22 +3539,14 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 15,
-            "bbox": [
-              0.041997,
-              0.253367,
-              0.958003,
-              0.642477
-            ]
-          }
+        "context_includes_stem_image": "Q19_stem.webp",
+        "context_regions": [],
+        "context_reasons": [
+          "reviewed shared printed stem"
         ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2024_NOVEMBER_1F_Q19_U01"
-        ]
+        "display_review_assets": {
+          "Q19_U02.webp": "bea665ccb81eb6fe05d3d984e95e1c9bf93b1192a6a974ef54d29f2f4d122830"
+        }
       },
       "part_label": "(b)",
       "depends_on_question_ids": [

@@ -127,8 +127,54 @@
           }
         ],
         "evidence": "The official table rule on page 10 closes question 20 before the visible question 21 marking row."
+      },
+      "Q15_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.042001,
+              0.477125,
+              0.957999,
+              0.66366476
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 7. The following material introduces the next part."
+      },
+      "Q15_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.042001,
+              0.66366476,
+              0.957999,
+              0.934621
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 7, preserving the complete setup for (b)."
+      },
+      "Q15_U02_context.webp": {
+        "scope": "context",
+        "regions": [
+          {
+            "page": 7,
+            "bbox": [
+              0.042001,
+              0.35273159,
+              0.957999,
+              0.44180523
+            ]
+          }
+        ],
+        "evidence": "The shared hire-charge rule is needed for both parts. The detail about Mia’s four-week hire belongs to part (a)."
       }
-    }
+    },
+    "question_source_sha256": "a68118382a5dac9f9e0a46ddad3f96f831969c150c83468038f11a164d5f5c4a"
   },
   "EDX_1MA1_2019_JUNE_3H": {
     "question_source_sha256": "d0a04b1a150b473a22535fe56452143289bf6110b46404def5b6e05c964e02af",
@@ -138,6 +184,10 @@
         "dependencies": [],
         "drop_stem": true,
         "evidence": "Part (a) expands an unrelated cubic product. Part (b) prints its own inequality and its scheme starts from that inequality."
+      },
+      "EDX_1MA1_2019_JUNE_3H_Q11_U02": {
+        "stem_from": "EDX_1MA1_2019_JUNE_3H_Q11_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
       }
     },
     "scheme_source_sha256": "22bc13f21dfe7e9f6a2a04b7963abe34a843ad1481e398c4ee8df498680f22cf",
@@ -165,6 +215,36 @@
           }
         ],
         "evidence": "The official table rule on page 12 closes question 8 before the visible question 9 marking row."
+      },
+      "Q11_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.042001,
+              0.36482942,
+              0.957999,
+              0.588232
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 12, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q11_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.042001,
+              0.143302,
+              0.957999,
+              0.36482942
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 12."
       }
     }
   },
@@ -200,6 +280,43 @@
           }
         ],
         "evidence": "The official table rule on page 11 closes question 13 before the visible question 14 marking row."
+      },
+      "Q16_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.41343244,
+              0.958003,
+              0.63873
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 14, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q16_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.188033,
+              0.958003,
+              0.41343244
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 14."
+      }
+    },
+    "question_source_sha256": "c4432dd495e5a153df2ac04b1d22ba4d1e59df1ba7b854cf7651643873b075c2",
+    "units": {
+      "EDX_1MA1_2020_NOVEMBER_1H_Q16_U02": {
+        "stem_from": "EDX_1MA1_2020_NOVEMBER_1H_Q16_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
       }
     }
   },
@@ -543,8 +660,99 @@
           }
         ],
         "evidence": "The official table rule on page 8 closes question 12 before the visible question 13 marking row."
+      },
+      "Q16_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.364097,
+              0.958003,
+              0.50491521
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 11. The following material introduces the next part."
+      },
+      "Q16_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.50491521,
+              0.958003,
+              0.93979
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 11, preserving the complete setup for (b)."
+      },
+      "Q16_U02_context.webp": {
+        "scope": "context",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.06295363,
+              0.958003,
+              0.32902179
+            ]
+          }
+        ],
+        "evidence": "Part (b) needs the kite diagram and side label. Jasper’s conjectured value belongs to part (a)."
+      },
+      "Q17_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.31298,
+              0.958003,
+              0.65598943
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 12. The following material introduces the next part."
+      },
+      "Q17_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.65598943,
+              0.958003,
+              0.897917
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 12, preserving the complete setup for (b)."
+      },
+      "Q17_U02_context.webp": {
+        "scope": "context",
+        "regions": [
+          {
+            "page": 12,
+            "bbox": [
+              0.041997,
+              0.06295363,
+              0.958003,
+              0.27913401
+            ]
+          }
+        ],
+        "evidence": "Part (b) needs the recipe and the amounts Heidi thought she had. The previous conditional instruction and scored calculation are omitted."
       }
-    }
+    },
+    "question_source_sha256": "b6f9f81090b2aa1bce230147572c69999e2f28eeb247b821623331a268d968d0"
   },
   "EDX_1MA1_2021_NOVEMBER_2F": {
     "scheme_source_sha256": "6c284e7afdf6d3b2e6839fc0ea69bbd4351329a69b3dca2e75cf87e8dbd82b8d",
@@ -759,6 +967,132 @@
       }
     }
   },
+  "EDX_1MA1_2021_NOVEMBER_3H": {
+    "question_source_sha256": "d0ecee69165a964a16ae7c7558ffd2534a2a691349fa57490fbbe54ee4ddfdeb",
+    "assets": {
+      "Q09_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.14292,
+              0.958003,
+              0.38516186
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 11. The following material introduces the next part."
+      },
+      "Q09_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.38516186,
+              0.958003,
+              0.593826
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 11, preserving the complete setup for (b)."
+      },
+      "Q09_U02_context.webp": {
+        "scope": "context",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.06295363,
+              0.958003,
+              0.13659749
+            ]
+          }
+        ],
+        "evidence": "Retain only the original two-day case and common-rate assumption. Omit the scored part (a) prompt, answer line and marks."
+      }
+    }
+  },
+  "EDX_1MA1_2022_JUNE_1F": {
+    "question_source_sha256": "c87eedc6ebaee195c53c513d9252f1847869b35992673b4c4c2ab1782e6e9083",
+    "units": {
+      "EDX_1MA1_2022_JUNE_1F_Q16_U02": {
+        "stem_from": "EDX_1MA1_2022_JUNE_1F_Q16_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      },
+      "EDX_1MA1_2022_JUNE_1F_Q13_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
+      }
+    },
+    "assets": {
+      "Q16_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.52798545,
+              0.958003,
+              0.736654
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 11, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q16_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.154765,
+              0.958003,
+              0.52798545
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 11."
+      },
+      "Q13_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041997,
+              0.14292,
+              0.958003,
+              0.26669463
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 9. The following material introduces the next part."
+      },
+      "Q13_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041997,
+              0.26669463,
+              0.958003,
+              0.487215
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 9, preserving the complete setup for (b)."
+      }
+    }
+  },
   "EDX_1MA1_2022_JUNE_1H": {
     "question_source_sha256": "fd774945a7fb0a16f8b17516f66cf1c23fcc8c0b4cebfcaf1805911784e667f7",
     "units": {
@@ -876,6 +1210,155 @@
           }
         ],
         "evidence": "The official table rule on page 11 closes question 20 before the visible question 21 marking row."
+      },
+      "Q12_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.156692,
+              0.958003,
+              0.23058219
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 8. The following material introduces the next part."
+      },
+      "Q12_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 8,
+            "bbox": [
+              0.041997,
+              0.23058219,
+              0.958003,
+              0.579454
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 8, preserving the complete setup for (b)."
+      },
+      "Q24_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.204662,
+              0.958003,
+              0.67408536
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 17. The following material introduces the next part."
+      },
+      "Q24_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.67408536,
+              0.958003,
+              0.939716
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 17, preserving the complete setup for (b)."
+      }
+    },
+    "question_source_sha256": "ba8236e50a4d4478e1cf7f1cc51ee4ecd921d12be3561f91bf267f353fb72414",
+    "units": {
+      "EDX_1MA1_2022_JUNE_2F_Q12_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
+      },
+      "EDX_1MA1_2022_JUNE_2F_Q24_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
+      }
+    }
+  },
+  "EDX_1MA1_2022_JUNE_2H": {
+    "question_source_sha256": "91642e03c42dbde7d651ab1fe3a435b9cf8383b39b56239aa4ff29b51a872da4",
+    "units": {
+      "EDX_1MA1_2022_JUNE_2H_Q17_U02": {
+        "stem_from": "EDX_1MA1_2022_JUNE_2H_Q17_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      },
+      "EDX_1MA1_2022_JUNE_2H_Q04_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
+      }
+    },
+    "assets": {
+      "Q17_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.69886131,
+              0.958003,
+              0.940789
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 14, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q17_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 14,
+            "bbox": [
+              0.041997,
+              0.367219,
+              0.958003,
+              0.69886131
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 14."
+      },
+      "Q04_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.204662,
+              0.958003,
+              0.67408536
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 4. The following material introduces the next part."
+      },
+      "Q04_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.67408536,
+              0.958003,
+              0.939716
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 4, preserving the complete setup for (b)."
       }
     }
   },
@@ -1099,6 +1582,10 @@
         "stem_from": "EDX_1MA1_2022_NOVEMBER_2H_Q21_U01",
         "context_note": "Part (a) estimated the gradient of the graph at t = 17.5 seconds.",
         "evidence": "The part (b) scheme accepts a description of the rate of change of volume and requires no calculated numerical gradient. The context identifies the gradient without including the scored calculation."
+      },
+      "EDX_1MA1_2022_NOVEMBER_2H_Q12_U02": {
+        "stem_from": "EDX_1MA1_2022_NOVEMBER_2H_Q12_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
       }
     },
     "scheme_source_sha256": "b0f90df528f7790c4b358600406ce43ac4d9d6d94f258891c9550c8c42aafb54",
@@ -1186,6 +1673,36 @@
           }
         ],
         "evidence": "The official table rule on page 13 closes question 20 before the visible question 21 marking row."
+      },
+      "Q12_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.46721382,
+              0.958003,
+              0.675883
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 13, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q12_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 13,
+            "bbox": [
+              0.041997,
+              0.193773,
+              0.958003,
+              0.46721382
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 13."
       }
     }
   },
@@ -1300,6 +1817,79 @@
           }
         ],
         "evidence": "The official table rule on page 15 closes question 27 before the visible question 28 marking row."
+      },
+      "Q08_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.456134,
+              0.958003,
+              0.61418772
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 4. The following material introduces the next part."
+      },
+      "Q08_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.61418772,
+              0.958003,
+              0.834713
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 4, preserving the complete setup for (b)."
+      },
+      "Q14_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041997,
+              0.283849,
+              0.958003,
+              0.39140871
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 9. The following material introduces the next part."
+      },
+      "Q14_U03.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 9,
+            "bbox": [
+              0.041997,
+              0.39140871,
+              0.958003,
+              0.934069
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 9, preserving the complete setup for (c)."
+      }
+    },
+    "question_source_sha256": "f023cc969cfc03c8c2f46fe540ea386fbd6c02d9b6356efbd387d036c9e60045",
+    "units": {
+      "EDX_1MA1_2023_JUNE_1F_Q08_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
+      },
+      "EDX_1MA1_2023_JUNE_1F_Q14_U03": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
       }
     }
   },
@@ -1411,6 +2001,47 @@
       }
     },
     "scheme_source_sha256": "123159883250c1c8ebcf56d70a8bbeca9c0258440698a5d217a2cc1a3c945873"
+  },
+  "EDX_1MA1_2023_JUNE_3F": {
+    "question_source_sha256": "7c8a50603459d68811160121e0caa82ed9e9dc9b6a6ff963b21c3bc811cd9849",
+    "units": {
+      "EDX_1MA1_2023_JUNE_3F_Q21_U02": {
+        "stem_from": "EDX_1MA1_2023_JUNE_3F_Q21_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      }
+    },
+    "assets": {
+      "Q21_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.64889825,
+              0.958003,
+              0.891026
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 17, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q21_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 17,
+            "bbox": [
+              0.041997,
+              0.171169,
+              0.958003,
+              0.64889825
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 17."
+      }
+    }
   },
   "EDX_1MA1_2023_JUNE_3H": {
     "scheme_source_sha256": "3d47b64ec9a2df4171410c09bb130e2a88bc42cd5278a346111bf9cd8ef9c6e9",
@@ -1546,6 +2177,84 @@
           }
         ],
         "evidence": "The official table rule on page 12 closes question 18 before the visible question 19 marking row."
+      },
+      "Q02_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.64889787,
+              0.958003,
+              0.891026
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 3, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q02_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.171169,
+              0.958003,
+              0.64889787
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 3."
+      }
+    },
+    "question_source_sha256": "e1102375b1ba8afbb60f3d0d2a44dd59277edc4df9bbf08d423cf9f7e483a5c2",
+    "units": {
+      "EDX_1MA1_2023_JUNE_3H_Q02_U02": {
+        "stem_from": "EDX_1MA1_2023_JUNE_3H_Q02_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      }
+    }
+  },
+  "EDX_1MA1_2023_NOVEMBER_1F": {
+    "question_source_sha256": "ed79bee142ec43b2484524276096e04f5846b5c87dd8b2540d395e30ca136b43",
+    "units": {
+      "EDX_1MA1_2023_NOVEMBER_1F_Q21_U02": {
+        "stem_from": "EDX_1MA1_2023_NOVEMBER_1F_Q21_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      }
+    },
+    "assets": {
+      "Q21_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.48637801,
+              0.958003,
+              0.7283
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 18, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q21_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 18,
+            "bbox": [
+              0.041997,
+              0.126285,
+              0.958003,
+              0.48637801
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 18."
       }
     }
   },
@@ -1556,6 +2265,42 @@
         "dependencies": [],
         "drop_stem": true,
         "evidence": "Part (b) explicitly permits any method and prints the complete inequality. The scheme shows ways that do not use the answer from part (a)."
+      },
+      "EDX_1MA1_2023_NOVEMBER_1H_Q04_U02": {
+        "stem_from": "EDX_1MA1_2023_NOVEMBER_1H_Q04_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      }
+    },
+    "assets": {
+      "Q04_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.48637801,
+              0.958003,
+              0.7283
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 5, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q04_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.126285,
+              0.958003,
+              0.48637801
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 5."
       }
     }
   },
@@ -1819,8 +2564,24 @@
           }
         ],
         "evidence": "The official table rule on page 21 closes question 27 before the visible question 28 marking row."
+      },
+      "Q22_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.392069,
+              0.958003,
+              0.901946
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 17."
       }
-    }
+    },
+    "question_source_sha256": "0ab46c50e07d226c1090e24ea2ec0890c7dfb121c5de7aa4b7635e46a6290b56"
   },
   "EDX_1MA1_2024_JUNE_1H": {
     "scheme_source_sha256": "023f4c58a05aa0624a998f4593bbadbe551d35f8e6e2294fd8a7bc7aab8ef7a7",
@@ -1848,8 +2609,24 @@
           }
         ],
         "evidence": "The official table rule on page 20 closes question 22 before the visible question 23 marking row."
+      },
+      "Q03_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.392069,
+              0.958003,
+              0.901946
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 5."
       }
-    }
+    },
+    "question_source_sha256": "0f66c76d4947d2ff6e1450c7aa38058b85abcf84f1336e43e0287e590e46b48e"
   },
   "EDX_1MA1_2024_JUNE_2F": {
     "scheme_source_sha256": "a2bb684af508506c4bf3ec8d77fefd0344f09bba1d734883d9c37df1defcb16c",
@@ -2204,6 +2981,119 @@
           }
         ],
         "evidence": "The official table rule on page 17 closes question 25 before the visible question 26 marking row."
+      },
+      "Q19_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.57957952,
+              0.958003,
+              0.838342
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 15, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q19_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 15,
+            "bbox": [
+              0.041997,
+              0.253367,
+              0.958003,
+              0.57957952
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 15."
+      },
+      "Q13_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.433655,
+              0.958003,
+              0.54122019
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 10. The following material introduces the next part."
+      },
+      "Q13_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 10,
+            "bbox": [
+              0.041997,
+              0.54122019,
+              0.958003,
+              0.819388
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 10, preserving the complete setup for (b)."
+      }
+    },
+    "question_source_sha256": "984552b3f4c391658d9905b15465d651cedacee8e951ed0e07426dd352642c4b",
+    "units": {
+      "EDX_1MA1_2024_NOVEMBER_1F_Q19_U02": {
+        "stem_from": "EDX_1MA1_2024_NOVEMBER_1F_Q19_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      },
+      "EDX_1MA1_2024_NOVEMBER_1F_Q13_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
+      }
+    }
+  },
+  "EDX_1MA1_2024_NOVEMBER_1H": {
+    "question_source_sha256": "5fa47d95d0cf8274de208525ae52f717d9c4c72bf43a3fab93540dcae4eac1be",
+    "units": {
+      "EDX_1MA1_2024_NOVEMBER_1H_Q02_U02": {
+        "stem_from": "EDX_1MA1_2024_NOVEMBER_1H_Q02_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
+      }
+    },
+    "assets": {
+      "Q02_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.57957952,
+              0.958003,
+              0.838342
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 3, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q02_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 3,
+            "bbox": [
+              0.041997,
+              0.253367,
+              0.958003,
+              0.57957952
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 3."
       }
     }
   },
@@ -2278,6 +3168,44 @@
           }
         ],
         "evidence": "The official table rule on page 15 closes question 24 before the visible question 25 marking row."
+      },
+      "Q17_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.126056,
+              0.958003,
+              0.41612836
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 11. The following material introduces the next part."
+      },
+      "Q17_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.41612836,
+              0.958003,
+              0.880899
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 11, preserving the complete setup for (b)."
+      }
+    },
+    "question_source_sha256": "6a1cc0a90008ee17a4e834145a2cb2de6a3de0334feb9327842c7c56fe6e57f6",
+    "units": {
+      "EDX_1MA1_2024_NOVEMBER_2F_Q17_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
       }
     }
   },
@@ -2467,6 +3395,43 @@
           }
         ],
         "evidence": "The official table rule on page 15 closes question 20 before the visible question 21 marking row."
+      },
+      "Q22_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.72017777,
+              0.958003,
+              0.943096
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 16, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q22_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.21888,
+              0.958003,
+              0.72017777
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 16."
+      }
+    },
+    "question_source_sha256": "562b3d0f8c98be10c6f183cd883726dac5cbb7100377c1536d34e78f02731f9a",
+    "units": {
+      "EDX_1MA1_2025_JUNE_1F_Q22_U02": {
+        "stem_from": "EDX_1MA1_2025_JUNE_1F_Q22_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
       }
     }
   },
@@ -2496,6 +3461,43 @@
           }
         ],
         "evidence": "The official table rule on page 12 closes question 8 before the visible question 9 marking row."
+      },
+      "Q04_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.72017777,
+              0.958003,
+              0.943096
+            ]
+          }
+        ],
+        "evidence": "On official question paper page 5, the unscored qualifier between the previous tariff and this printed label belongs to this part."
+      },
+      "Q04_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 5,
+            "bbox": [
+              0.041997,
+              0.21888,
+              0.958003,
+              0.72017777
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 5."
+      }
+    },
+    "question_source_sha256": "549e92568c20b29917cba658c18582e2db3ca37c2944d52626c65eabea90900d",
+    "units": {
+      "EDX_1MA1_2025_JUNE_1H_Q04_U02": {
+        "stem_from": "EDX_1MA1_2025_JUNE_1H_Q04_U01",
+        "evidence": "The earlier part has its own scored crop and marks. The next part starts with its unchanged printed qualifier."
       }
     }
   },
@@ -2598,9 +3600,44 @@
           }
         ],
         "evidence": "The official table rule on page 11 closes question 18 before the visible question 19 marking row."
+      },
+      "Q22_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 16,
+            "bbox": [
+              0.041997,
+              0.449519,
+              0.958003,
+              0.941377
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 17."
       }
     },
     "scheme_source_sha256": "c75aa72d7503c98a8b66b8e3fdb9cf3359919f82db4f45dc16f6a8d3c02d3bb0"
+  },
+  "EDX_1MA1_2025_JUNE_2H": {
+    "question_source_sha256": "4013fd59a504afe64f853e42c17cddc75620eb586a3d744d2f0cdd0a4b2e0bcc",
+    "assets": {
+      "Q03_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 4,
+            "bbox": [
+              0.041997,
+              0.449519,
+              0.958003,
+              0.941377
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends before the qualifier printed for (b) on question paper page 5."
+      }
+    }
   },
   "EDX_1MA1_2025_JUNE_3F": {
     "scheme_source_sha256": "54c8166fd8ee16ac29b245dec4d67fbcb13598aa7b77b9e2b07e9c11fe4787d1",
@@ -2732,6 +3769,44 @@
           }
         ],
         "evidence": "The official table rule on page 21 closes question 16 before the visible question 17 marking row."
+      },
+      "Q12_U01.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.183244,
+              0.958003,
+              0.34069771
+            ]
+          }
+        ],
+        "evidence": "The preceding part ends after its printed tariff on page 11. The following material introduces the next part."
+      },
+      "Q12_U02.webp": {
+        "scope": "question",
+        "regions": [
+          {
+            "page": 11,
+            "bbox": [
+              0.041997,
+              0.34069771,
+              0.958003,
+              0.769829
+            ]
+          }
+        ],
+        "evidence": "Begin with the printed givens after the previous tariff on page 11, preserving the complete setup for (b)."
+      }
+    },
+    "question_source_sha256": "797f487401dd356664864ed22df66a0e089dd3fa0b594c57a6b8be0a8fa987fe",
+    "units": {
+      "EDX_1MA1_2025_JUNE_3H_Q12_U02": {
+        "drop_stem": true,
+        "dependencies": [],
+        "evidence": "The current part prints a distinct scenario or statement. Its complete printed details are now in its own crop."
       }
     }
   }

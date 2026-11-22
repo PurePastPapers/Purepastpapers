@@ -802,7 +802,7 @@
               0.041997,
               0.126285,
               0.958003,
-              0.55281
+              0.48637801
             ]
           }
         ],
@@ -835,7 +835,10 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "display_review_assets": {
+          "Q04_U01.webp": "73809f7daa1080b8e9cff7a9ab858933464f6bdbbb30f20543149837a5a81545"
+        }
       },
       "part_label": "(a)"
     },
@@ -882,8 +885,8 @@
       "scheme_question_number": "4(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_1H/Q04_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_1H/Q04_U02_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_1H/Q04_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_1H/Q04_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_NOVEMBER_1H/Q04_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -910,7 +913,7 @@
             "page": 5,
             "bbox": [
               0.041997,
-              0.55281,
+              0.48637801,
               0.958003,
               0.7283
             ]
@@ -931,23 +934,6 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "The stick was not 7 cm long. It was 17 cm long.",
-        "context_regions": [
-          {
-            "page": 5,
-            "bbox": [
-              0.041997,
-              0.12620638455827765,
-              0.958003,
-              0.5493689680772086
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q04_stem.webp",
-        "context_reasons": [
-          "names an earlier part",
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 8,
@@ -969,22 +955,14 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 5,
-            "bbox": [
-              0.041997,
-              0.126285,
-              0.958003,
-              0.549275
-            ]
-          }
+        "context_includes_stem_image": "Q04_stem.webp",
+        "context_regions": [],
+        "context_reasons": [
+          "reviewed shared printed stem"
         ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2023_NOVEMBER_1H_Q04_U01"
-        ]
+        "display_review_assets": {
+          "Q04_U02.webp": "61f12ceb34a134f1b653e42904857280d8bd71166e9bcced1022d312d6c18c90"
+        }
       },
       "part_label": "(b)",
       "depends_on_question_ids": [

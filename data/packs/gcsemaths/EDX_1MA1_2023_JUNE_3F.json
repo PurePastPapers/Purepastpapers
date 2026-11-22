@@ -3577,7 +3577,7 @@
               0.041997,
               0.171169,
               0.958003,
-              0.698696
+              0.64889825
             ]
           }
         ],
@@ -3612,7 +3612,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "display_review_assets": {
+          "Q21_U01.webp": "774fc045dbe48dd05ca19cee973d4dfc6b3571281987e788945b910ff63b4426"
+        }
       },
       "part_label": "(a)"
     },
@@ -3659,8 +3662,8 @@
       "scheme_question_number": "21(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2023_JUNE_3F/Q21_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_JUNE_3F/Q21_U02_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_JUNE_3F/Q21_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2023_JUNE_3F/Q21_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2023_JUNE_3F/Q21_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -3687,7 +3690,7 @@
             "page": 17,
             "bbox": [
               0.041997,
-              0.698696,
+              0.64889825,
               0.958003,
               0.891026
             ]
@@ -3708,23 +3711,6 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "Jonny’s assumption is wrong. 72% of the people will drink coffee.",
-        "context_regions": [
-          {
-            "page": 17,
-            "bbox": [
-              0.041997,
-              0.1714922048997773,
-              0.958003,
-              0.6948775055679287
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q21_stem.webp",
-        "context_reasons": [
-          "names an earlier part",
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 12,
@@ -3746,22 +3732,14 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 17,
-            "bbox": [
-              0.041997,
-              0.171169,
-              0.958003,
-              0.695161
-            ]
-          }
+        "context_includes_stem_image": "Q21_stem.webp",
+        "context_regions": [],
+        "context_reasons": [
+          "reviewed shared printed stem"
         ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2023_JUNE_3F_Q21_U01"
-        ]
+        "display_review_assets": {
+          "Q21_U02.webp": "5f2e2f6cccfc126a6162c134d907f98e921c9cbfaedf7a3bcd91cd49dcc61bd2"
+        }
       },
       "part_label": "(b)",
       "depends_on_question_ids": [

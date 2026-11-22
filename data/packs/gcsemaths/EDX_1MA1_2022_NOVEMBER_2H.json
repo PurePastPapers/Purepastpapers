@@ -1869,7 +1869,7 @@
               0.041997,
               0.193773,
               0.958003,
-              0.500378
+              0.46721382
             ]
           }
         ],
@@ -1904,7 +1904,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "display_review_assets": {
+          "Q12_U01.webp": "07414e29f16c247a2825b9fe93860fdb9bac093ea397b576f4834dd66bbe801e"
+        }
       },
       "part_label": "(a)"
     },
@@ -1953,8 +1956,8 @@
       "scheme_question_number": "12(b)",
       "context": {
         "full_question_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q12_full.webp",
-        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q12_U02_context.webp",
-        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q12_scheme.webp"
+        "full_scheme_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q12_scheme.webp",
+        "stem_image_url": "assets/gcsemaths/EDX_1MA1_2022_NOVEMBER_2H/Q12_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1981,7 +1984,7 @@
             "page": 13,
             "bbox": [
               0.041997,
-              0.500378,
+              0.46721382,
               0.958003,
               0.675883
             ]
@@ -2003,23 +2006,6 @@
         "context_basis": "shared_stem",
         "qualification_code": "1MA1",
         "part_display": "refined",
-        "context_bridge_text": "The value of k actually increases year on year from its value of 1.13 in year 1",
-        "context_regions": [
-          {
-            "page": 13,
-            "bbox": [
-              0.041997,
-              0.19376391982182628,
-              0.958003,
-              0.49665924276169265
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q12_stem.webp",
-        "context_reasons": [
-          "names an earlier part",
-          "text printed just before this part"
-        ],
         "part_scheme_regions": [
           {
             "page": 9,
@@ -2032,22 +2018,14 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 13,
-            "bbox": [
-              0.041997,
-              0.193773,
-              0.958003,
-              0.496843
-            ]
-          }
+        "context_includes_stem_image": "Q12_stem.webp",
+        "context_regions": [],
+        "context_reasons": [
+          "reviewed shared printed stem"
         ],
-        "context_siblings_removed": "2026-11-20",
-        "context_stem_from_parts": [
-          "EDX_1MA1_2022_NOVEMBER_2H_Q12_U01"
-        ]
+        "display_review_assets": {
+          "Q12_U02.webp": "2d27a54393ad06c6f86453fca5430fdd48508118af7be8fb0cf40b3f1ecbfd4d"
+        }
       },
       "part_label": "(b)",
       "depends_on_question_ids": [
