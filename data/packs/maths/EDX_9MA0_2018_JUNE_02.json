@@ -1147,8 +1147,7 @@
       "scheme_scope": "full_question",
       "scheme_question_number": "4",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_9MA0_2018_JUNE_02/Q04_full.webp",
-        "stem_image_url": "assets/maths/EDX_9MA0_2018_JUNE_02/Q04_U02_context.webp"
+        "full_question_image_url": "assets/maths/EDX_9MA0_2018_JUNE_02/Q04_full.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -1201,44 +1200,12 @@
           1
         ],
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 8,
-            "bbox": [
-              0.038345,
-              0.04247910863509749,
-              0.961655,
-              0.149025069637883
-            ]
-          }
-        ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
-        "context_named_parts": [
-          "EDX_9MA0_2018_JUNE_02_Q04_U01"
-        ],
-        "context_regions_refined": [
-          {
-            "page": 8,
-            "bbox": [
-              0.038345,
-              0.042289,
-              0.961655,
-              0.148729
-            ]
-          }
-        ],
+        "context_reasons": [],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_9MA0_2018_JUNE_02_Q04_U01": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "Part (ii) defines its own sequence. Part (i) uses a different summation.",
+        "part_display_review_source": "b249be75e497330f7a4c4bbc03dac0b2e479f70da981390a2345eb1f2551b071"
       },
-      "part_label": "(ii)",
-      "depends_on_question_ids": [
-        "EDX_9MA0_2018_JUNE_02_Q04_U01"
-      ]
+      "part_label": "(ii)"
     },
     {
       "question_id": "EDX_9MA0_2018_JUNE_02_Q05_U01",

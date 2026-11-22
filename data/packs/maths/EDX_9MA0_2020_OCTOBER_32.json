@@ -1731,24 +1731,22 @@
             "page": 16,
             "bbox": [
               0.038345,
-              0.04242002781641168,
+              0.042289,
               0.961655,
-              0.5180806675938804
+              0.4445
             ]
           },
           {
             "page": 16,
             "bbox": [
               0.038345,
-              0.5605006954102921,
+              0.560593,
               0.961655,
-              0.6265646731571627
+              0.626229
             ]
           }
         ],
         "context_reasons": [
-          "earlier \"show that\" result",
-          "names an earlier part",
           "text printed just before this part"
         ],
         "part_scheme_regions": [
@@ -1781,9 +1779,6 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_named_parts": [
-          "EDX_9MA0_2020_OCTOBER_32_Q05_U01"
-        ],
         "context_regions_refined": [
           {
             "page": 16,
@@ -1791,7 +1786,7 @@
               0.038345,
               0.042289,
               0.961655,
-              0.518326
+              0.4445
             ]
           },
           {
@@ -1805,15 +1800,10 @@
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_9MA0_2020_OCTOBER_32_Q05_U01": "wording names (a): \"in part (a)\""
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "Part (c) prints the value 28. Its air-resistance refinement can be compared directly with the initial model.",
+        "part_display_review_source": "8b7be39072db9329218b4b9dcde677474695740c46bbc38ecbdc56109eb47165"
       },
-      "part_label": "(c)",
-      "depends_on_question_ids": [
-        "EDX_9MA0_2020_OCTOBER_32_Q05_U01"
-      ]
+      "part_label": "(c)"
     },
     {
       "question_id": "EDX_9MA0_2020_OCTOBER_32_Q05_U04",

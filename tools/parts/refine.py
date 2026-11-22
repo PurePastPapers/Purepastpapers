@@ -1011,12 +1011,20 @@ def main():
     alias_path = args.sources.parent / 'alias.json'
     alias = json.loads(alias_path.read_text()) if alias_path.exists() else {}
     slug = args.subject
+    biology_display = None
+    if slug == 'biology':
+        overrides_spec = importlib.util.spec_from_file_location(
+            'biology_source_overrides', ROOT / 'tools' / 'biology' / 'source_overrides.py')
+        overrides = importlib.util.module_from_spec(overrides_spec)
+        overrides_spec.loader.exec_module(overrides)
+        biology_display = overrides.display_regions_for
     global MARK_CODES, MARK_COLUMN
     MARK_CODES = slug == 'gcsemaths'
     MARK_COLUMN = slug in ('gcsebio', 'gcsechem', 'gcsephys')
     stats = defaultdict(int)
     report = []
     shard, shards = (int(v) for v in args.shard.split('/'))
+    selected_papers = set()
     for number, pack_path in enumerate(sorted((ROOT / 'data/packs' / slug).glob('*.json'))):
         if number % shards != shard:
             continue
@@ -1024,6 +1032,7 @@ def main():
         pid = pack['papers'][0]['paper_id']
         if args.paper and pid != args.paper:
             continue
+        selected_papers.add(pid)
         cat_path = ROOT / f'data/{slug}-assets/{pid}.json'
         catalogue = json.loads(cat_path.read_text())
         head = None
@@ -1062,8 +1071,14 @@ def main():
                 if not args.rescheme:
                     continue  # never re-crop a refined question: its regions no longer include the stem
             refined = 'keep' if any(u['provenance'].get('part_display') == 'refined' for u in units) else None
+            reviewed = None
+            if biology_display:
+                reviewed = biology_display(p0['question_source_sha256'], p0['scheme_source_sha256'],
+                                           number, units, qdoc.size, sdoc.size)
             if refined == 'keep':
                 refined = [None] * len(units)
+            elif reviewed is not None:
+                refined = reviewed
             elif not any(qdoc.words(r['page']) for r in units[0]['provenance']['source_regions']):
                 stats['image_only_kept'] += len(units)
             else:
@@ -1092,8 +1107,13 @@ def main():
                     report.append({'question': uid, 'status': 'own_crop_has_no_text'})
                 if res is not None:
                     apply_refined(unit, res, units, qdoc, ctx, put, qn, tag, number, stats, catalogue['assets'])
+                    if reviewed is not None:
+                        unit['provenance']['part_display_positioning'] = 'reviewed PDF regions'
                 # scheme
-                regions, status = (None, 'scheme_unparsed') if parsed is None else scheme_for_unit(sdoc, parsed, unit, unit['marks'])
+                if reviewed is not None:
+                    regions, status = reviewed[ui]['scheme'], 'verified'
+                else:
+                    regions, status = (None, 'scheme_unparsed') if parsed is None else scheme_for_unit(sdoc, parsed, unit, unit['marks'])
                 full_scheme = f'assets/{slug}/{pid}/{qn}_scheme.webp'
                 if regions:
                     unit['content']['mark_scheme_image_url'] = put(f'{qn}_{tag}_scheme.webp', sdoc.render(regions))
@@ -1133,6 +1153,15 @@ def main():
                                            separators=(',', ':')) + '\n')
         print(pid, 'assets', len(catalogue['assets']), '->', len(assets), 'bytes', old_size, '->',
               cat_path.stat().st_size if not args.dry else '(dry)', flush=True)
+    if slug == 'maths' and not args.dry:
+        spec = importlib.util.spec_from_file_location(
+            'maths_part_display_overrides', ROOT / 'tools/maths/apply_part_display_overrides.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        applied, missing = module.apply_overrides(args.sources, _render.SourceRenderer, paper_ids=selected_papers)
+        stats['maths_reviewed_displays'] = applied
+        if missing:
+            print(f'No checksum-matched PDF for reviewed Maths overrides: {", ".join(missing)}', file=sys.stderr)
     print(json.dumps(stats, indent=1))
     if args.report:
         args.report.write_text(json.dumps(report, indent=1))

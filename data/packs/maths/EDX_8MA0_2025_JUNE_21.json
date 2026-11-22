@@ -681,14 +681,22 @@
             "page": 4,
             "bbox": [
               0.038345,
-              0.042538354253835425,
+              0.042289,
               0.961655,
-              0.5808926080892608
+              0.182
+            ]
+          },
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.227,
+              0.961655,
+              0.580585
             ]
           }
         ],
         "context_reasons": [
-          "builds on the previous answer",
           "text printed just before this part"
         ],
         "part_scheme_regions": [
@@ -749,17 +757,25 @@
               0.038345,
               0.042289,
               0.961655,
+              0.182
+            ]
+          },
+          {
+            "page": 4,
+            "bbox": [
+              0.038345,
+              0.227,
+              0.961655,
               0.580585
             ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
-        "context_recut_from_full": "2026-11-19"
+        "context_recut_from_full": "2026-11-19",
+        "part_display_review": "The box plot and outlier rule suffice. Part (a) asks about the data collection method.",
+        "part_display_review_source": "f14cd82f09f252d06d464fc90c9c94d469f96456dfb4efb6c29832b4a6ff51e1"
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_8MA0_2025_JUNE_21_Q02_U01"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_8MA0_2025_JUNE_21_Q02_U03",

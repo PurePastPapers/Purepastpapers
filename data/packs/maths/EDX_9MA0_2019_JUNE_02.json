@@ -2672,32 +2672,22 @@
             "page": 32,
             "bbox": [
               0.042001,
-              0.04528582034149963,
+              0.438,
               0.957999,
-              0.3585746102449889
+              0.458
             ]
           },
           {
             "page": 32,
             "bbox": [
               0.042001,
-              0.4639940608760208,
+              0.511,
               0.957999,
-              0.5048255382331106
-            ]
-          },
-          {
-            "page": 32,
-            "bbox": [
-              0.042001,
-              0.585003711952487,
-              0.957999,
-              0.6132145508537491
+              0.613149
             ]
           }
         ],
         "context_reasons": [
-          "earlier \"show that\" result",
           "text printed just before this part"
         ],
         "part_scheme_regions": [
@@ -2757,33 +2747,21 @@
           }
         ],
         "part_scheme_check": "reference_matched",
-        "context_named_parts": [
-          "EDX_9MA0_2019_JUNE_02_Q11_U02"
-        ],
         "context_regions_refined": [
           {
             "page": 32,
             "bbox": [
               0.042001,
-              0.045131,
+              0.438,
               0.957999,
-              0.358765
+              0.458
             ]
           },
           {
             "page": 32,
             "bbox": [
               0.042001,
-              0.464357,
-              0.957999,
-              0.504741
-            ]
-          },
-          {
-            "page": 32,
-            "bbox": [
-              0.042001,
-              0.584747,
+              0.511,
               0.957999,
               0.613149
             ]
@@ -2791,15 +2769,10 @@
         ],
         "context_siblings_removed": "2026-11-20",
         "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_9MA0_2019_JUNE_02_Q11_U02": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The iteration formula and starting value are printed, so part (b)’s bracket is unnecessary.",
+        "part_display_review_source": "6e346964b34f429ea0a214a5fe473f12c6c62540a2e68db4723ac6f92777a3de"
       },
-      "part_label": "(c)–(d)",
-      "depends_on_question_ids": [
-        "EDX_9MA0_2019_JUNE_02_Q11_U02"
-      ]
+      "part_label": "(c)–(d)"
     },
     {
       "question_id": "EDX_9MA0_2019_JUNE_02_Q12_U01",

@@ -11,17 +11,20 @@ def reviewed_urls(unit):
     content = unit.get('content') or {}
     context = unit.get('context') or {}
     refined = provenance.get('part_display') == 'refined'
+    reviewed = provenance.get('part_display_review_source')
 
-    if refined or any(provenance.get(key) for key in (
+    if refined or reviewed or any(provenance.get(key) for key in (
         'own_rows_from_full', 'booklet_pages_trimmed', 'next_part_trimmed',
     )):
         yield content.get('question_image_url')
     if provenance.get('booklet_pages_trimmed'):
         yield context.get('full_question_image_url')
-    if refined or any(provenance.get(key) for key in (
+    if refined or reviewed or any(provenance.get(key) for key in (
         'context_rows_from_full', 'context_recut_from_full', 'context_siblings_cut_by_pixels',
     )):
         yield context.get('stem_image_url')
+    if reviewed:
+        yield from (figure.get('image_url') for figure in context.get('figures') or [])
     yield context.get('lead_in_image_url')
     if provenance.get('part_scheme_regions'):
         yield content.get('mark_scheme_image_url')

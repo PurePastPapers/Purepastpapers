@@ -784,9 +784,9 @@
             "page": 8,
             "bbox": [
               0.038345,
-              0.708984,
+              0.686,
               0.961655,
-              0.803502
+              0.799
             ]
           }
         ],
@@ -810,7 +810,7 @@
               0.038345,
               0.042289,
               0.961655,
-              0.708984
+              0.687096
             ]
           }
         ],
@@ -862,7 +862,20 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.687096
+            ]
+          }
+        ],
+        "part_display_review": "The scored unit includes both printed subparts of (a) and all of (b).",
+        "part_display_review_source": "0ebc83d55e302524ab2705e97e06bb4aa2ce45c0401eb364808c88b755e5a63f"
       },
       "part_label": "(a)–(b)"
     },
@@ -944,7 +957,7 @@
               0.038345,
               0.799513,
               0.961655,
-              0.856558
+              0.851
             ]
           }
         ],
@@ -966,22 +979,11 @@
               0.038345,
               0.042289,
               0.961655,
-              0.687096
-            ]
-          },
-          {
-            "page": 8,
-            "bbox": [
-              0.038345,
-              0.746456,
-              0.961655,
-              0.799513
+              0.66
             ]
           }
         ],
-        "context_reasons": [
-          "names an earlier part"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 7,
@@ -1011,12 +1013,22 @@
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions_refined": [
+          {
+            "page": 8,
+            "bbox": [
+              0.038345,
+              0.042289,
+              0.961655,
+              0.66
+            ]
+          }
+        ],
+        "part_display_review": "The effect of representing each ball as a particle can be assessed without calculating the height.",
+        "part_display_review_source": "0ebc83d55e302524ab2705e97e06bb4aa2ce45c0401eb364808c88b755e5a63f"
       },
-      "part_label": "(c)",
-      "depends_on_question_ids": [
-        "EDX_8MA0_2021_NOVEMBER_22_Q03_U01"
-      ]
+      "part_label": "(c)"
     },
     {
       "question_id": "EDX_8MA0_2021_NOVEMBER_22_Q03_U03",

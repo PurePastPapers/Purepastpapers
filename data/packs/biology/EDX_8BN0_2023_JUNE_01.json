@@ -4321,8 +4321,8 @@
       "scheme_question_number": "7(a)(i)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_8BN0_2023_JUNE_01/Q07_stem.webp\" alt=\"Shared source stem for question 7\" />",
-        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp"
+        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp",
+        "stem_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U01_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -4375,10 +4375,10 @@
           {
             "page": 22,
             "bbox": [
-              0.103321,
-              0.072091,
-              0.896678,
-              0.50388044287506
+              0.1,
+              0.355003,
+              0.895,
+              0.439581
             ]
           }
         ],
@@ -4394,19 +4394,34 @@
         "context_basis": "independent",
         "qualification_code": "8BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
-        "part_display": "scheme_only",
+        "part_display": "refined",
         "part_scheme_regions": [
           {
             "page": 20,
             "bbox": [
               0.017821,
-              0.177861,
+              0.102445,
               0.982179,
-              0.385816
+              0.386269
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.1,
+              0.092368,
+              0.895,
+              0.119076
+            ]
+          }
+        ],
+        "context_reasons": [
+          "question introduction"
+        ],
+        "part_display_positioning": "reviewed PDF regions"
       },
       "part_label": "(a)(i)"
     },
@@ -4452,8 +4467,8 @@
       "scheme_question_number": "7(a)(ii)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U02_context.webp\" alt=\"Shared source stem for question 7\" />",
-        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp"
+        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp",
+        "stem_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U02_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -4506,10 +4521,10 @@
           {
             "page": 22,
             "bbox": [
-              0.103321,
-              0.50388044287506,
-              0.896678,
-              0.6041819175301558
+              0.1,
+              0.507466,
+              0.895,
+              0.603172
             ]
           }
         ],
@@ -4525,19 +4540,34 @@
         "context_basis": "shared_stem",
         "qualification_code": "8BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
-        "part_display": "scheme_only",
+        "part_display": "refined",
         "part_scheme_regions": [
           {
             "page": 20,
             "bbox": [
               0.017821,
-              0.39758,
+              0.396346,
               0.982179,
-              0.929883
+              0.665054
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions": [
+          {
+            "page": 22,
+            "bbox": [
+              0.1,
+              0.092368,
+              0.895,
+              0.349439
+            ]
+          }
+        ],
+        "context_reasons": [
+          "phospholipid bilayer diagram"
+        ],
+        "part_display_positioning": "reviewed PDF regions"
       },
       "part_label": "(a)(ii)"
     },
@@ -4581,7 +4611,6 @@
       "scheme_question_number": "7(b)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U03_context.webp\" alt=\"Shared source stem for question 7\" />",
         "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp"
       },
       "provenance": {
@@ -4635,10 +4664,10 @@
           {
             "page": 23,
             "bbox": [
-              0.103321,
-              0.09649525975897602,
-              0.896678,
-              0.16324479764251046
+              0.1,
+              0.092368,
+              0.895,
+              0.162478
             ]
           }
         ],
@@ -4654,19 +4683,20 @@
         "context_basis": "shared_stem",
         "qualification_code": "8BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
-        "part_display": "scheme_only",
+        "part_display": "refined",
         "part_scheme_regions": [
           {
             "page": 21,
             "bbox": [
               0.017821,
-              0.103495,
+              0.102445,
               0.982179,
-              0.51886
+              0.520623
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "part_display_positioning": "reviewed PDF regions"
       },
       "part_label": "(b)"
     },
@@ -4710,7 +4740,6 @@
       "scheme_question_number": "7(c)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U04_context.webp\" alt=\"Shared source stem for question 7\" />",
         "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp"
       },
       "provenance": {
@@ -4764,10 +4793,10 @@
           {
             "page": 23,
             "bbox": [
-              0.103321,
-              0.16324479764251046,
-              0.896678,
-              0.77559
+              0.1,
+              0.448484,
+              0.895,
+              0.777891
             ]
           }
         ],
@@ -4783,19 +4812,20 @@
         "context_basis": "shared_stem",
         "qualification_code": "8BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
-        "part_display": "scheme_only",
+        "part_display": "refined",
         "part_scheme_regions": [
           {
             "page": 21,
             "bbox": [
               0.017821,
-              0.530625,
+              0.529021,
               0.982179,
-              0.929883
+              0.7675
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "part_display_positioning": "reviewed PDF regions"
       },
       "part_label": "(c)"
     },
@@ -4841,8 +4871,8 @@
       "scheme_question_number": "7(d)(i)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U05_context.webp\" alt=\"Shared source stem for question 7\" />",
-        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp"
+        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp",
+        "stem_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U05_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -4895,10 +4925,10 @@
           {
             "page": 24,
             "bbox": [
-              0.103321,
-              0.09649525975897602,
-              0.896678,
-              0.6459667053572125
+              0.1,
+              0.602059,
+              0.895,
+              0.645461
             ]
           }
         ],
@@ -4914,19 +4944,34 @@
         "context_basis": "shared_stem",
         "qualification_code": "8BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
-        "part_display": "scheme_only",
+        "part_display": "refined",
         "part_scheme_regions": [
           {
             "page": 22,
             "bbox": [
               0.017821,
-              0.103495,
+              0.102445,
               0.982179,
-              0.384203
+              0.386269
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions": [
+          {
+            "page": 24,
+            "bbox": [
+              0.1,
+              0.092368,
+              0.895,
+              0.59093
+            ]
+          }
+        ],
+        "context_reasons": [
+          "part (d) investigation and graph"
+        ],
+        "part_display_positioning": "reviewed PDF regions"
       },
       "part_label": "(d)(i)"
     },
@@ -4972,8 +5017,8 @@
       "scheme_question_number": "7(d)(ii)",
       "context": {
         "full_question_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_full.webp",
-        "shared_stem_html": "<p>Original question information and preceding context. Only the selected unit is scored:</p><img data-math-image=\"assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U06_context.webp\" alt=\"Shared source stem for question 7\" />",
-        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp"
+        "full_scheme_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_scheme.webp",
+        "stem_image_url": "assets/biology/EDX_8BN0_2023_JUNE_01/Q07_U06_context.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -5026,10 +5071,10 @@
           {
             "page": 25,
             "bbox": [
-              0.103321,
-              0.09649525975897602,
-              0.896678,
-              0.232191
+              0.1,
+              0.092368,
+              0.895,
+              0.231476
             ]
           }
         ],
@@ -5045,19 +5090,34 @@
         "context_basis": "shared_stem",
         "qualification_code": "8BN0",
         "extraction_version": "pearson-9bn0-layout-v12",
-        "part_display": "scheme_only",
+        "part_display": "refined",
         "part_scheme_regions": [
           {
             "page": 22,
             "bbox": [
               0.017821,
-              0.395767,
+              0.394666,
               0.982179,
-              0.929883
+              0.791012
             ]
           }
         ],
-        "part_scheme_check": "verified"
+        "part_scheme_check": "verified",
+        "context_regions": [
+          {
+            "page": 24,
+            "bbox": [
+              0.1,
+              0.092368,
+              0.895,
+              0.59093
+            ]
+          }
+        ],
+        "context_reasons": [
+          "part (d) investigation and graph"
+        ],
+        "part_display_positioning": "reviewed PDF regions"
       },
       "part_label": "(d)(ii)"
     },

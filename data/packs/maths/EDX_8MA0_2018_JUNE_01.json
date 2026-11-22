@@ -265,8 +265,7 @@
       "scheme_scope": "full_question",
       "scheme_question_number": "2",
       "context": {
-        "full_question_image_url": "assets/maths/EDX_8MA0_2018_JUNE_01/Q02_full.webp",
-        "stem_image_url": "assets/maths/EDX_8MA0_2018_JUNE_01/Q02_U02_context.webp"
+        "full_question_image_url": "assets/maths/EDX_8MA0_2018_JUNE_01/Q02_full.webp"
       },
       "provenance": {
         "review_status": "model_reviewed",
@@ -319,44 +318,12 @@
           1
         ],
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 4,
-            "bbox": [
-              0.042017,
-              0.07201187824795843,
-              0.957983,
-              0.11210096510764662
-            ]
-          }
-        ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
-        "context_named_parts": [
-          "EDX_8MA0_2018_JUNE_01_Q02_U01"
-        ],
-        "context_regions_refined": [
-          {
-            "page": 4,
-            "bbox": [
-              0.042017,
-              0.071733,
-              0.957983,
-              0.112118
-            ]
-          }
-        ],
+        "context_reasons": [],
         "context_siblings_removed": "2026-11-20",
-        "dependency_detected": {
-          "EDX_8MA0_2018_JUNE_01_Q02_U01": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The comparison in part (ii) is independent of the expression in part (i).",
+        "part_display_review_source": "54b996a0d4f4fb269b3bc924650141bd9797c33b24ecbc7e42744544139a698c"
       },
-      "part_label": "(ii)",
-      "depends_on_question_ids": [
-        "EDX_8MA0_2018_JUNE_01_Q02_U01"
-      ]
+      "part_label": "(ii)"
     },
     {
       "question_id": "EDX_8MA0_2018_JUNE_01_Q03_U01",

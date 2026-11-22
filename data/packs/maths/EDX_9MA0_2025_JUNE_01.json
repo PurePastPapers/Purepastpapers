@@ -2550,24 +2550,13 @@
             "page": 28,
             "bbox": [
               0.038345,
-              0.04250871080139373,
+              0.042289,
               0.961655,
-              0.32473867595818817
-            ]
-          },
-          {
-            "page": 28,
-            "bbox": [
-              0.038345,
-              0.3853658536585366,
-              0.961655,
-              0.45574912891986064
+              0.324489
             ]
           }
         ],
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 27,
@@ -2598,9 +2587,6 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_named_parts": [
-          "EDX_9MA0_2025_JUNE_01_Q11_U02"
-        ],
         "context_regions_refined": [
           {
             "page": 28,
@@ -2610,28 +2596,14 @@
               0.961655,
               0.324489
             ]
-          },
-          {
-            "page": 28,
-            "bbox": [
-              0.038345,
-              0.385652,
-              0.961655,
-              0.455571
-            ]
           }
         ],
         "context_siblings_removed": "2026-11-20",
         "context_recut_from_full": "2026-11-19",
-        "dependency_detected": {
-          "EDX_9MA0_2025_JUNE_01_Q11_U02": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The earlier rate calculation is unnecessary to state a limitation of the original model.",
+        "part_display_review_source": "1978a481f19625e3ba1fbffe96fa1503f6a5af5fc3d791185a95a86751c0abaf"
       },
-      "part_label": "(c)",
-      "depends_on_question_ids": [
-        "EDX_9MA0_2025_JUNE_01_Q11_U02"
-      ]
+      "part_label": "(c)"
     },
     {
       "question_id": "EDX_9MA0_2025_JUNE_01_Q12_U01",

@@ -33,6 +33,18 @@ ROOT = Path(__file__).resolve().parents[2]
 TODAY = '2026-11-20'
 
 FALSE = set(re.findall(r"'([A-Z0-9_a-z]+)'", (ROOT / 'tools/parts/drop-false-dependencies.py').read_text().split('changed = 0')[0]))
+MATHS_REVIEW = ROOT / 'data/imports/maths/part-display-overrides.json'
+REVIEWED_NON_DEPENDENCIES = {
+    qid: set(entry.get('remove_dependencies', []))
+    for qid, entry in json.loads(MATHS_REVIEW.read_text()).items()
+} if MATHS_REVIEW.exists() else {}
+REVIEWED_NON_DEPENDENCIES.update({
+    # The Big O explanation does not use the earlier calculation.
+    'OCR_H446_SAMPLE_02_Q10_d_ii': {'OCR_H446_SAMPLE_02_Q10_d_i'},
+    # The later part needs the printed signature of countRow, not the student's implementation.
+    'OCR_H446_2021_NOVEMBER_02_Q08_b_iv': {'OCR_H446_2021_NOVEMBER_02_Q08_b_i'},
+})
+
 
 LABEL = r"(\([a-h]\)(?:\s*\([ivx]+\))?|\([ivx]+\)|0?\d\s?\.\s?\d)"
 NAMED = re.compile(
@@ -154,7 +166,8 @@ def process(job):
                 if pv0.pop('context_from_linked_part', None):
                     (u.get('context') or {}).pop('stem_image_url', None)
                 changed = True
-            new = [qid for qid in found if qid not in current]
+            denied = REVIEWED_NON_DEPENDENCIES.get(u['question_id'], set())
+            new = [qid for qid in found if qid not in current and qid not in denied]
             if not new:
                 continue
             for qid in new:

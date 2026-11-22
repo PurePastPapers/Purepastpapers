@@ -2742,7 +2742,6 @@
       "scheme_question_number": "12(b)",
       "context": {
         "full_question_image_url": "assets/maths/EDX_8MA0_2019_JUNE_01/Q12_full.webp",
-        "stem_image_url": "assets/maths/EDX_8MA0_2019_JUNE_01/Q12_U02_context.webp",
         "full_scheme_image_url": "assets/maths/EDX_8MA0_2019_JUNE_01/Q12_scheme.webp"
       },
       "provenance": {
@@ -2796,21 +2795,7 @@
           1
         ],
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 28,
-            "bbox": [
-              0.042001,
-              0.06829992576095026,
-              0.957999,
-              0.15664439495174462
-            ]
-          }
-        ],
-        "context_reasons": [
-          "builds on the previous answer",
-          "earlier \"show that\" result"
-        ],
+        "context_reasons": [],
         "part_scheme_regions": [
           {
             "page": 24,
@@ -2841,26 +2826,11 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_named_parts": [
-          "EDX_8MA0_2019_JUNE_01_Q12_U01"
-        ],
-        "context_regions_refined": [
-          {
-            "page": 28,
-            "bbox": [
-              0.042001,
-              0.068076,
-              0.957999,
-              0.156373
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20"
+        "context_siblings_removed": "2026-11-20",
+        "part_display_review": "Part (b) supplies its equation and explicitly permits an alternative method.",
+        "part_display_review_source": "b9913da13247ac2897b75680584921a03c0a732b629f5f92a3ecd8397105c2c3"
       },
-      "part_label": "(b)",
-      "depends_on_question_ids": [
-        "EDX_8MA0_2019_JUNE_01_Q12_U01"
-      ]
+      "part_label": "(b)"
     },
     {
       "question_id": "EDX_8MA0_2019_JUNE_01_Q13_U01",
