@@ -54,3 +54,5 @@
 .flashcards__pagination { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
 .flashcards__topic { margin: 1rem 0; padding: 1rem; border: 1px solid var(--line, #ddd); border-radius: 8px; }
 .flashcards__topic p { margin: .5rem 0; }
+/* Plain-text cards (typed, CSV and Quizlet) keep their line breaks. Anki HTML has its newlines folded on import. */
+.flashcards__content, .flashcards__snippet, .flashcards__extra, .flashcards__preview-cards .flashcards__example-card > div { white-space: pre-line; }
