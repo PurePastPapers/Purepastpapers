@@ -5494,7 +5494,6 @@
       "scheme_question_number": "7(b)(ii)",
       "context": {
         "full_question_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_2H/Q07_full.webp",
-        "stem_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_2H/Q07_U05_context.webp",
         "full_scheme_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_2H/Q07_scheme.webp"
       },
       "provenance": {
@@ -5567,24 +5566,9 @@
           "8.15"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "independent",
         "qualification_code": "1PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 23,
-            "bbox": [
-              0.041997,
-              0.39346696362286565,
-              0.958003,
-              0.49072011878247956
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q07_stem.webp",
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
         "part_scheme_regions": [
           {
             "page": 20,
@@ -5597,31 +5581,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 23,
-            "bbox": [
-              0.041997,
-              0.393588,
-              0.958003,
-              0.490936
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_named_parts": [
-          "EDX_1PH0_2022_JUNE_2H_Q07_U04"
-        ],
-        "dependency_detected": {
-          "EDX_1PH0_2022_JUNE_2H_Q07_U04": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The task prints 2.16 MJ and the conversion percentage needed for the calculation.",
+        "part_display_review_source": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52"
       },
-      "part_label": "(b)(ii)",
-      "depends_on_question_ids": [
-        "EDX_1PH0_2022_JUNE_2H_Q07_U04"
-      ]
+      "part_label": "(b)(ii)"
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_2H_Q08_U01",

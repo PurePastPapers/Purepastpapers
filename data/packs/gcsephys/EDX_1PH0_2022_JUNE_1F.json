@@ -6863,7 +6863,6 @@
       "scheme_question_number": "9(a)(iii)",
       "context": {
         "full_question_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1F/Q09_full.webp",
-        "stem_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1F/Q09_U03_context.webp",
         "full_scheme_image_url": "assets/gcsephys/EDX_1PH0_2022_JUNE_1F/Q09_scheme.webp"
       },
       "provenance": {
@@ -6966,24 +6965,9 @@
         "prerequisite_statements": [
           "1.4"
         ],
-        "context_basis": "shared_stem",
+        "context_basis": "independent",
         "qualification_code": "1PH0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.5360059391239792,
-              0.958003,
-              0.5760950259836675
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q09_stem.webp",
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
         "part_scheme_regions": [
           {
             "page": 26,
@@ -6996,40 +6980,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.323625
-            ]
-          },
-          {
-            "page": 22,
-            "bbox": [
-              0.041997,
-              0.53606,
-              0.958003,
-              0.57645
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_named_parts": [
-          "EDX_1PH0_2022_JUNE_1F_Q09_U02"
-        ],
-        "dependency_detected": {
-          "EDX_1PH0_2022_JUNE_1F_Q09_U02": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
+        "part_display_review_source": "8b3fbc764771731171abc3f0f941b80df24b20fb6c1168945e1f7103c1a617b5"
       },
-      "part_label": "(a)(iii)",
-      "depends_on_question_ids": [
-        "EDX_1PH0_2022_JUNE_1F_Q09_U02"
-      ]
+      "part_label": "(a)(iii)"
     },
     {
       "question_id": "EDX_1PH0_2022_JUNE_1F_Q09_U04",

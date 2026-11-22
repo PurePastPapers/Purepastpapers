@@ -2587,7 +2587,6 @@
       "scheme_question_number": "4(b)(iii)",
       "context": {
         "full_question_image_url": "assets/gcsephys/EDX_1SC0_2020_NOVEMBER_2PF/Q04_full.webp",
-        "stem_image_url": "assets/gcsephys/EDX_1SC0_2020_NOVEMBER_2PF/Q04_U04_context.webp",
         "full_scheme_image_url": "assets/gcsephys/EDX_1SC0_2020_NOVEMBER_2PF/Q04_scheme.webp"
       },
       "provenance": {
@@ -2660,33 +2659,9 @@
           "10.31"
         ],
         "prerequisite_statements": [],
-        "context_basis": "shared_stem",
+        "context_basis": "independent",
         "qualification_code": "1SC0",
         "part_display": "refined",
-        "context_regions": [
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.06904231625835189,
-              0.958003,
-              0.1544172234595397
-            ]
-          },
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.2583518930957684,
-              0.958003,
-              0.4112843355605048
-            ]
-          }
-        ],
-        "context_includes_stem_image": "Q04_stem.webp",
-        "context_reasons": [
-          "earlier \"show that\" result"
-        ],
         "part_scheme_regions": [
           {
             "page": 12,
@@ -2699,40 +2674,10 @@
           }
         ],
         "part_scheme_check": "verified",
-        "context_recut_from_full": "2026-11-19",
-        "context_regions_refined": [
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.069323,
-              0.958003,
-              0.15476
-            ]
-          },
-          {
-            "page": 14,
-            "bbox": [
-              0.041997,
-              0.25853,
-              0.958003,
-              0.411082
-            ]
-          }
-        ],
-        "context_siblings_removed": "2026-11-20",
-        "context_named_parts": [
-          "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
-        ],
-        "dependency_detected": {
-          "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03": "uses the value of an earlier \"Show that\" part"
-        },
-        "dependency_detected_on": "2026-11-20"
+        "part_display_review": "The task prints both the voltage and the current needed to calculate power.",
+        "part_display_review_source": "b3bbfd214a8ade282397787240c740353957c1f94c090e362c4b0be87b61d46c"
       },
-      "part_label": "(b)(iii)",
-      "depends_on_question_ids": [
-        "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
-      ]
+      "part_label": "(b)(iii)"
     },
     {
       "question_id": "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U05",

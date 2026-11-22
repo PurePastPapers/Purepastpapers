@@ -1,0 +1,95 @@
+{
+  "EDX_1PH0_2020_NOVEMBER_2F_Q06_U04": {
+    "source_sha256": "c2ca211d0af0de15d75125bc60802689b9f9bf4f476d29683c33e2883439db18",
+    "review": "The task prints both the voltage and the current needed to calculate power.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2020_NOVEMBER_2F_Q06_U03"
+    ]
+  },
+  "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U04": {
+    "source_sha256": "b3bbfd214a8ade282397787240c740353957c1f94c090e362c4b0be87b61d46c",
+    "review": "The task prints both the voltage and the current needed to calculate power.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2020_NOVEMBER_2PF_Q04_U03"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_1F_Q09_U03": {
+    "source_sha256": "8b3fbc764771731171abc3f0f941b80df24b20fb6c1168945e1f7103c1a617b5",
+    "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2022_JUNE_1F_Q09_U02"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_1H_Q03_U03": {
+    "source_sha256": "3be839f5fa1219ff936694c9d6ebb2cb73e921ff67f839a855214c02185ba66e",
+    "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2022_JUNE_1H_Q03_U02"
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_1PF_Q06_U03": {
+    "source_sha256": "304fb70c8e2ff415e1b14837ae9a02b0e03936de231e307cf612dcebe364843c",
+    "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2022_JUNE_1PF_Q06_U02"
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_1PH_Q02_U03": {
+    "source_sha256": "ef520857b0e3821cd0f8a12c018dd6e30bdb69cffe79b1b9df6157076fd8f092",
+    "review": "The task prints speed and distance in metres and does not use the earlier speed conversion.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2022_JUNE_1PH_Q02_U02"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_2H_Q07_U05": {
+    "source_sha256": "fcb4bd5a27dbacf8cde757ebb990d2ec7bad97488f9088a7337378c48f35df52",
+    "review": "The task prints 2.16 MJ and the conversion percentage needed for the calculation.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1PH0_2022_JUNE_2H_Q07_U04"
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_2PH_Q04_U05": {
+    "source_sha256": "2b9b6afe56aa65255af9867ee60cd1e347bd3b41edf181748e28befad59ecc98",
+    "review": "The task prints 2.16 MJ and the conversion percentage needed for the calculation.",
+    "context_regions": [],
+    "remove_dependencies": [
+      "EDX_1SC0_2022_JUNE_2PH_Q04_U04"
+    ]
+  },
+  "EDX_1PH0_2025_JUNE_2F_Q07_U04": {
+    "source_sha256": "6834890185458fb92f8ff313e3338b57affb9f2615f3a7ee87baae0a8139e93f",
+    "review": "The task prints the oxygen volume and flow rate required for the calculation.",
+    "context_regions": []
+  },
+  "EDX_1PH0_2022_JUNE_1H_Q05_U02": {
+    "source_sha256": "3be839f5fa1219ff936694c9d6ebb2cb73e921ff67f839a855214c02185ba66e",
+    "review": "The distance calculation uses the acceleration shown in the previous part, together with the previous initial and take-off speeds.",
+    "context_regions": [],
+    "add_dependencies": [
+      "EDX_1PH0_2022_JUNE_1H_Q05_U01"
+    ]
+  },
+  "EDX_1SC0_2022_JUNE_1PH_Q03_U02": {
+    "source_sha256": "ef520857b0e3821cd0f8a12c018dd6e30bdb69cffe79b1b9df6157076fd8f092",
+    "review": "The distance calculation uses the acceleration shown in the previous part, together with the previous initial and take-off speeds.",
+    "context_regions": [],
+    "add_dependencies": [
+      "EDX_1SC0_2022_JUNE_1PH_Q03_U01"
+    ]
+  },
+  "EDX_1PH0_2022_JUNE_1H_Q06_U03": {
+    "source_sha256": "3be839f5fa1219ff936694c9d6ebb2cb73e921ff67f839a855214c02185ba66e",
+    "review": "The recession velocity calculation requires the previous red shift result.",
+    "context_regions": [],
+    "add_dependencies": [
+      "EDX_1PH0_2022_JUNE_1H_Q06_U02"
+    ]
+  }
+}
