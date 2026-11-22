@@ -316,15 +316,6 @@
         },
         "source_regions": [
           {
-            "page": 3,
-            "bbox": [
-              0.033601,
-              0.746176,
-              0.966399,
-              0.83621
-            ]
-          },
-          {
             "page": 4,
             "bbox": [
               0.033601,
@@ -981,15 +972,6 @@
         },
         "source_regions": [
           {
-            "page": 8,
-            "bbox": [
-              0.033601,
-              0.185304,
-              0.966399,
-              0.275335
-            ]
-          },
-          {
             "page": 9,
             "bbox": [
               0.033601,
@@ -1601,15 +1583,6 @@
         },
         "source_regions": [
           {
-            "page": 13,
-            "bbox": [
-              0.033601,
-              0.482774,
-              0.966399,
-              0.572802
-            ]
-          },
-          {
             "page": 14,
             "bbox": [
               0.033601,
@@ -1892,15 +1865,7 @@
       },
       "scheme_scope": "part",
       "scheme_question_number": "4.9",
-      "context": {
-        "figures": [
-          {
-            "label": "Figure 10",
-            "image_url": "assets/gcsegeog/AQA_8035_2021_NOVEMBER_03/QP_FIG10.webp",
-            "source": "question_paper"
-          }
-        ]
-      },
+      "context": {},
       "provenance": {
         "review_status": "model_reviewed",
         "reviewer_type": "model",
@@ -1916,7 +1881,7 @@
               0.033601,
               0.076047,
               0.966399,
-              0.502495
+              0.649281
             ]
           }
         ],
@@ -1938,7 +1903,7 @@
           0
         ],
         "difficulty_basis": "1 mark, AO4 table completion",
-        "context_basis": "shared stem and cited figures attached as unscored context",
+        "context_basis": "independent",
         "official_codes": [
           "APP_7.3.5"
         ],
@@ -2006,7 +1971,7 @@
             "page": 16,
             "bbox": [
               0.033601,
-              0.506533,
+              0.670866,
               0.966399,
               0.732158
             ]
@@ -2030,7 +1995,7 @@
           0
         ],
         "difficulty_basis": "4 marks, AO4 comparison with figures from a table",
-        "context_basis": "independent",
+        "context_basis": "grouped_dependency",
         "official_codes": [
           "APP_7.3.5"
         ],
@@ -2038,8 +2003,14 @@
           "APP_7.2.k1"
         ],
         "qualification_code": "8035",
-        "extraction_version": "aqa-gcsegeog-layout-v1"
-      }
+        "extraction_version": "aqa-gcsegeog-layout-v1",
+        "reviewed_dependencies": [
+          "AQA_8035_2021_NOVEMBER_03_Q04_P09"
+        ]
+      },
+      "depends_on_question_ids": [
+        "AQA_8035_2021_NOVEMBER_03_Q04_P09"
+      ]
     }
   ],
   "build_signature": "a38713c569f0dbd02a32a56b761600f3f12167e246f2c0fd8349908f05d0cbda"

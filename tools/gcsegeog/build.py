@@ -49,6 +49,11 @@ def slug(name):
     return re.sub(r'[^A-Za-z0-9]+', '_', name.replace('Figure ', 'FIG').replace('Table ', 'TAB')).strip('_')
 
 
+def part_id(paper_id, label):
+    question, _, part = label.partition('.')
+    return f'{paper_id}_Q{int(question):02}_P{int(part or 0):02}'
+
+
 def build_paper(paper, research, spec):
     pid = paper['paper_id']
     sources = research / 'sources'
@@ -126,7 +131,7 @@ def build_paper(paper, research, spec):
         if figs:
             context['figures'] = figs
         record = {
-            'question_id': f'{pid}_Q{n:02}_P{k:02}', 'parent_question_id': f'{pid}_Q{n:02}',
+            'question_id': part_id(pid, u['label']), 'parent_question_id': f'{pid}_Q{n:02}',
             'source_type': 'real_past_paper', 'is_sample': False, 'paper_id': pid, 'subject_id': SUBJECT,
             'board': 'AQA', 'level': 'GCSE', 'subject': 'Geography', 'spec_code': qual,
             'qualification_code': qual, 'is_as': False, 'is_official_sample': bool(paper['is_sample']),
@@ -152,6 +157,12 @@ def build_paper(paper, research, spec):
                            **({'spag_marks_included': u['spag_marks']} if u.get('spag_marks') else {}),
                            **({'lead_note': rv['lead_note']} if rv.get('lead_note') else {})},
         }
+        dependencies = [part_id(pid, label) for label in res[u['label']].get('dependencies', [])]
+        if dependencies:
+            record['depends_on_question_ids'] = dependencies
+            record['provenance']['reviewed_dependencies'] = dependencies
+            if not context:
+                record['provenance']['context_basis'] = 'grouped_dependency'
         if u.get('multiple_choice_options'):
             record['multiple_choice'] = True
         if u.get('spag_marks'):

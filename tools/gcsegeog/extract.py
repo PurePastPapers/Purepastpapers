@@ -29,6 +29,15 @@ LABEL = re.compile(r'^(\d) (\d)(?:(?: \.)? (\d))?(?: (\d))?(?=\s|$)')   # GCSE: 
 LABEL2 = re.compile(r'^(\d) (\d) \. (1\d)(?=\s|$)(?:(Z)Z)?')   # specimen Paper 2 prints part 10 as "0 2 . 10" (group 4 never matches)
 SPAG = re.compile(r'^\[\+\s*(\d)\s*SPaG marks?\]$', re.I)
 ALTERNATIVE_SELECTION = re.compile(r'^Tick\s+\(.+?\)\s+the box to show which .+ you have chosen\.$')
+SUPPLIED_DATA = re.compile(r'\busing (?:the )?(?:following data|data below)\b', re.I)
+COMPLETION_TABLE = re.compile(r'\bcomplete (?:the )?(?:following table|table below)\b', re.I)
+SUPPLIED_INFORMATION = re.compile(r'\busing (?:the )?information below\b', re.I)
+UNNAMED_CHART = re.compile(r'\bcomplete (?:the )?(?:\w+ ){0,2}(?:graph|chart) below\b', re.I)
+PREVIOUS_ANSWER_FIELD = re.compile(r'^(?:(?:Reason [1-9]|Chosen (?:environment|project|tectonic hazard)):$|'
+                                    r'Answer:?\s*[_….]+|[1-4](?:\s+[_….]+.*)?$)')
+REQUIRED_CHOICE = re.compile(r'^Answer Question \d+ and(?:$|\s+(?:either|one)\b)')
+DESERT_OPTION = r'Hot desert(?: environment)?(?: \(Figure \d+\))?'
+COLD_OPTION = r'Cold environment(?: \(Figure \d+\))?'
 OPTION = re.compile(r'^[A-D]\s+\S')
 FIGURE_REF = re.compile(r'\b(Figures?|Tables?)\s+((?:\d{1,2}[a-z]?)(?:(?:,\s*|\s+and\s+|\s*&\s*)\d{1,2}[a-z]?)*)')
 RUBRIC = re.compile(r'^(Section [A-D]$|Section [A-D]\b.*|Answer (all|either|one|question|Question)\b.*|Either$|or$|OR$|'
@@ -73,6 +82,33 @@ def graphics(page):
             continue
         out.append((obj['top'], obj['bottom']))
     return out
+
+
+def post_tariff_task_rows(page, tariff, following, prompt):
+    """Keep supplied data tables and unnumbered completion charts printed below a tariff."""
+    if not following:
+        return []
+    if UNNAMED_CHART.search(prompt):
+        # The graph axes and their labels are needed to complete this part.
+        return [(pi, {**row, 'figure': None}) for pi, row in following]
+    for table in page.find_tables():
+        left, top, right, bottom = table.bbox
+        if not tariff['bottom'] - 2 <= top <= tariff['bottom'] + 45 or right - left < 65:
+            continue
+        cells = table.extract()
+        if len(cells) < 2 or len(cells[0]) < 2 or not any(cell for cell in cells[1]):
+            continue
+        rows = [(pi, row) for pi, row in following if row['top'] < bottom]
+        caption_room = 32 if COMPLETION_TABLE.search(prompt) else 24
+        if rows and rows[0][1]['top'] >= top - caption_room:
+            pi, last = rows[-1]
+            rows[-1] = (pi, {**last, 'bottom': max(last['bottom'], bottom)})
+            return rows
+    if (SUPPLIED_INFORMATION.search(prompt) and len(following) >= 2
+            and re.fullmatch(r'Estimated percentage.*:', following[0][1]['text'])
+            and re.fullmatch(r'[^:]+[–-]\s*\d+\s*%', following[1][1]['text'])):
+        return following[:2]
+    return []
 
 
 def gcse_choice_rules(cover_text):
@@ -243,6 +279,19 @@ def extract(path):
                     continue
             else:
                 t = TARIFF.search(text) if row['words'][-1]['x0'] > 380 else None
+            if current is None and units and ALTERNATIVE_SELECTION.fullmatch(text):
+                prior_page, prior = units[-1]['rows'][-1]
+                if prior_page == pi and row['top'] - prior['bottom'] <= 65:
+                    selection = [(p, r) for p, r in stream[i + 1:i + 3] if p == pi]
+                    labels = ' '.join(r['text'] for _, r in selection)
+                    if len(selection) == 2 and re.fullmatch(rf'{DESERT_OPTION} {COLD_OPTION}', labels):
+                        units[-1]['rows'].extend([(pi, row)] + selection)
+                        i += 3
+                        continue
+                    if selection and re.fullmatch(rf'{DESERT_OPTION} {COLD_OPTION}', selection[0][1]['text']):
+                        units[-1]['rows'].extend([(pi, row), selection[0]])
+                        i += 2
+                        continue
             if t and current is not None:
                 if not label:
                     current['rows'].append((pi, row))
@@ -277,6 +326,20 @@ def extract(path):
                             current['rows'].append(stream[j])
                     i = last_j + 1
                     current['options'] = 4
+                prompt = ' '.join(r['text'] for _, r in current['rows'] if not r.get('figure'))
+                if SUPPLIED_DATA.search(prompt) or SUPPLIED_INFORMATION.search(prompt) or COMPLETION_TABLE.search(prompt):
+                    following = []
+                    chart = UNNAMED_CHART.search(prompt)
+                    for p, r in stream[i:]:
+                        if p != pi or r['x0'] < 75 and (LABEL2.match(r['text']) or LABEL.match(r['text'])):
+                            break
+                        axis_tick = chart and r['text'].isdecimal()
+                        if (RUBRIC.match(r['text']) and not axis_tick) or r['text'].startswith('_____'):
+                            break
+                        following.append((p, r))
+                    task_rows = post_tariff_task_rows(pdf.pages[pi], row, following, prompt)
+                    current['rows'].extend(task_rows)
+                    i += len(task_rows)
                 current['rows'] = prune(current['rows'])
                 units.append(current)
                 last_label = current['label']
@@ -292,13 +355,6 @@ def extract(path):
                     if alternative:
                         # "Either (hot deserts) ... [9 marks] / Or (cold environments) ... [9 marks]": answer one, so the marks do not add
                         u['alternative_tariffs'] = u.get('alternative_tariffs', 0) + 1
-                        selection = stream[i + 1:i + 4]
-                        if (len(selection) == 3 and all(p == pi for p, _ in selection)
-                                and ALTERNATIVE_SELECTION.fullmatch(selection[0][1]['text'])
-                                and all(figure_refs(r['text']) for _, r in selection[1:])):
-                            # The checkboxes below both tariffs belong to this choice, not the next question.
-                            u['rows'].extend(selection)
-                            i += len(selection)
                     else:
                         u['marks'] += int(t.group(1))
                         u['tariff'] = {'page': pi + 1, 'top': row['top'], 'bottom': row['bottom']}
@@ -308,7 +364,8 @@ def extract(path):
                     continue
             if current is not None:
                 current['rows'].append((pi, row))
-            elif row.get('figure') or (not RUBRIC.match(text) and (
+            elif REQUIRED_CHOICE.match(text) or row.get('figure') or (not RUBRIC.match(text)
+                    and not (row['x0'] > 90 and PREVIOUS_ANSWER_FIELD.match(text)) and (
                     not re.fullmatch(r'[A-Z][a-z]+( [a-z]+)*( and [a-z]+)*( [a-z]+)*', text) or len(text.split()) > 6)):
                 pending.append((pi, row))
             i += 1

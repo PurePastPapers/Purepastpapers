@@ -14,10 +14,13 @@ Two GCSE-specific rules:
   map (that figure is called an Ordnance Survey map in some part) gets the insert's "Key for Figure n" (or the
   generic "Key") attached as an extra unscored figure.
 """
+import json
 import re
 from collections import Counter
+from pathlib import Path
 
 OS_TEXT = re.compile(r'Ordnance Survey|\bOS map|\bmap evidence|\(\d{6}\)|1\s?:\s?(?:25|50)\s?000')
+REVIEWED_CONTEXT_PATH = Path(__file__).resolve().parents[2] / 'data/imports/gcsegeog/part-display-context.json'
 
 
 def own_caption(text, figure):
@@ -36,6 +39,10 @@ def contains_figure(regions, figure):
 
 def resolve(candidate, index, roles=None):
     roles = roles or {}
+    source_review = json.loads(REVIEWED_CONTEXT_PATH.read_text()).get(candidate['source_sha256'], {})
+    reviewed_parts = source_review.get('parts', {})
+    if reviewed_parts.keys() - {u['label'] for u in candidate['units']}:
+        raise ValueError(f"Unknown reviewed context part for {source_review['paper_id']}")
     stems = candidate.get('stems', {})
     inline = candidate.get('inline_figures', {})
     results = {}
@@ -59,17 +66,21 @@ def resolve(candidate, index, roles=None):
     # A figure is an OS map when any part that cites it says so ("a 1:50 000 Ordnance Survey map"); later parts only say "Figure 14".
     os_figs = {f for u in candidate['units'] if OS_TEXT.search(u['text']) for f in (u['figures'] or qfigs.get(u['question'], []))}
     for n, u in enumerate(candidate['units']):
+        review = reviewed_parts.get(u['label'], {})
         own = set(u.get('figures_printed', []))
         stem = stems.get(u.get('shared_stem'), {}) if u.get('shared_stem') else {}
         cited = list(u['figures']) + [f for f in stem.get('figures', []) if f not in u['figures']]
         cited += [f for f in between.get(n, []) if f not in cited]
+        cited += [f for f in review.get('figures', []) if f not in cited]
         if booklet and u.get('section') == 'Section A':
             # Paper 3 Section A: a question is based on the booklet figure(s) some part of it names, even where a later part does not
             # name them again; "Use evidence from the resources booklet" needs every figure of the booklet.
             wanted = booklet if re.search(r'evidence from the resources? booklet', u['text'], re.I) else qfigs.get(u['question'], [])
-            cited += [f for f in wanted if f in booklet and f not in cited]
+            cited += [f for f in wanted if f in booklet and f not in cited and f not in review.get('omit_inherited', [])]
         entries, removed, missing = [], [], []
         for f in cited:
+            if f in review.get('figures_in_prerequisite', []):
+                continue
             if f in own or (f in inline and contains_figure(u['regions'], inline[f])):
                 src = ('own', None, None)
                 gone = inline.get(f, {}).get('removed', False)
@@ -88,6 +99,9 @@ def resolve(candidate, index, roles=None):
             entries.append({'figure': f, 'source': src[0], 'regions': src[1], 'file': src[2], 'removed': gone})
             if gone:
                 removed.append(f)
+        for extract in review.get('extracts', []):
+            entries.append({'figure': extract['label'], 'source': 'inline', 'regions': extract['regions'],
+                            'file': None, 'removed': False})
         if index and any(f in os_figs for f in cited):
             keys = [f'Key for {f}' for f in cited if f'Key for {f}' in index['figures']] or (['Key'] if 'Key' in index['figures'] else [])
             for k in keys:
@@ -95,6 +109,8 @@ def resolve(candidate, index, roles=None):
                 entries.append({'figure': k, 'source': roles.get(fig['file'], 'insert'), 'regions': fig['regions'], 'file': fig['file'], 'removed': fig['removed']})
         results[u['label']] = {'figures': entries, 'removed': removed, 'unresolved': missing,
                                'text_removed': bool(u.get('copyright_removed_content') or stem.get('copyright_removed_content'))}
+        if review.get('dependencies'):
+            results[u['label']]['dependencies'] = review['dependencies']
     return results
 
 

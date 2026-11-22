@@ -82,6 +82,12 @@ test('whole Physics schemes keep all pages assigned to the printed question', ()
   const pages = id => reviews[id].scheme_regions.map(region => region.page);
   assert.deepEqual(pages('EDX_1PH0_2020_NOVEMBER_1F_Q01'), [5]);
   assert.deepEqual(pages('EDX_1PH0_2022_JUNE_2H_Q10'), [27, 28, 29, 30]);
+  const sharedTier = 'EDX_1PH0_2021_NOVEMBER_2H';
+  assert.deepEqual(pages(`${sharedTier}_Q01`), [5, 6]);
+  assert.deepEqual(pages(`${sharedTier}_Q02`), [7, 8]);
+  assert.deepEqual(pages(`${sharedTier}_Q03`), [9, 10, 11]);
+  assert.ok(reviews[`${sharedTier}_Q02`].scheme_regions[0].bbox[1] < 0.09);
+  assert.ok(reviews[`${sharedTier}_Q03`].scheme_regions[0].bbox[1] < 0.11);
 });
 
 test('printed reference variants keep the first part scheme and its full fallback', () => {

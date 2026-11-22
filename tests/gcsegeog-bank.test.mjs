@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync, readdirSync} from 'node:fs';
 import {createSpecIndex} from '../js/engine/spec-index.js';
+import {linkGroups} from '../js/engine/linked-parts.js';
 import {validateBundle} from '../js/data/schema.js';
 
 const read = path => JSON.parse(readFileSync(new URL('../' + path, import.meta.url), 'utf8'));
@@ -74,10 +75,14 @@ test('tags are valid 8035 key ideas and route-scoped: each section or question u
       '03': {'Section A': 'APP_7.1', 'Section B': 'APP_7.2'}}[q.component][q.section];
     assert.equal(q.route, typeof expected === 'string' ? expected : expected[Number(q.question_number)], q.question_id);
   }
-  // Every Paper 3 Section A unit is issue evaluation with its resources booklet figure(s) attached.
+  const selfContainedData = new Set([
+    'AQA_8035_2023_JUNE_03_Q01_P02', 'AQA_8035_2023_JUNE_03_Q01_P03',
+    'AQA_8035_2025_JUNE_03_Q01_P05', 'AQA_8035_2025_JUNE_03_Q01_P06',
+  ]);
+  // The official question paper supplies the data for these four tasks.
   for (const q of units.filter(q => q.component === '03' && q.section === 'Section A')) {
     assert(q.primary_spec_points.includes(P + 'APP_7.1.k1'), q.question_id);
-    assert(q.context.figures?.some(f => f.source === 'resource_booklet'), q.question_id);
+    assert.equal(!!q.context.figures?.some(f => f.source === 'resource_booklet'), !selfContainedData.has(q.question_id), q.question_id);
   }
 });
 
@@ -111,6 +116,40 @@ test('units are model-reviewed source pixels; SPaG marks are folded into the par
   assert.deepEqual(units.filter(q => q.multiple_choice && q.marks !== 1).map(q => q.question_id),
     ['AQA_8035_2025_JUNE_02_Q04_P03', 'AQA_8035_2025_JUNE_02_Q05_P03', 'AQA_8035_2025_JUNE_02_Q06_P03']);
   assert(units.some(q => q.context.figures?.some(f => /^Key for/.test(f.label) && f.source === 'insert')));
+});
+
+test('supplied data stays with its part and independent questions receive only the inputs they use', () => {
+  const question = (paper, part) => units.find(q => q.paper_id === `AQA_8035_${paper}` && q.scheme_question_number === part);
+  const population = question('2025_JUNE_02', '1.5');
+  const next = question('2025_JUNE_02', '1.6');
+  const table = population.provenance.source_regions.at(-1);
+  assert.equal(table.page, 7);
+  assert(table.bbox[3] >= 0.30 && table.bbox[3] < next.provenance.source_regions[0].bbox[1]);
+  assert.deepEqual(next.context, {});
+
+  const projections = question('2020_NOVEMBER_02', '1.3');
+  assert.equal(projections.marks, 1);
+  assert.deepEqual(projections.context.figures.map(f => f.label), ['Table supplied with Question 1.2']);
+  const peak = question('2025_JUNE_01', '4.3');
+  assert.deepEqual(peak.context.figures.map(f => f.label), ['Figure 14']);
+
+  const spending = question('2023_JUNE_03', '1.3');
+  assert.equal(spending.provenance.source_regions.length, 1);
+  assert.equal(spending.provenance.source_regions[0].page, 3);
+  assert(spending.provenance.source_regions[0].bbox[3] >= 0.32);
+  assert.deepEqual(spending.context, {});
+});
+
+test('Town A charity shop count links only the two printed tasks that use it', () => {
+  const pack = packs.find(p => p.papers[0].paper_id === 'AQA_8035_2021_NOVEMBER_03');
+  const required = pack.questions.find(q => q.scheme_question_number === '4.9');
+  const comparison = pack.questions.find(q => q.scheme_question_number === '4.10');
+  const questions = new Map(pack.questions.map(q => [q.question_id, q]));
+  const groups = linkGroups(questions);
+  assert.deepEqual(comparison.depends_on_question_ids, [required.question_id]);
+  assert.deepEqual([...groups.values()], [[required.question_id, comparison.question_id]]);
+  assert.equal(required.marks + comparison.marks, 5);
+  assert.deepEqual(comparison.context, {});
 });
 
 test('GCSE Geography packs validate against the schema and are live', () => {
