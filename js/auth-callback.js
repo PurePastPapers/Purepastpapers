@@ -18,33 +18,39 @@ function localRoute(value) {
 
 function showUsedLink() {
   const site = new URL('./', location.href);
+  const resetLink = `<a class="primary" href="${site.href}#/forgot-password">Send me a new reset link</a>`;
   if (recoveryLink) {
     status.textContent = 'This reset link has expired';
     detail.textContent = 'Password reset links work once and expire after an hour. Ask for a new one from the login page.';
     returnLink.hidden = true;
-    actions.innerHTML = `<a class="primary" href="${site.href}#/forgot-password">Send me a new reset link</a>`;
+    actions.innerHTML = resetLink;
     return;
   }
-  // Usually the account is already confirmed, so go straight to log in. The log in page
-  // explains the old link, and offers a new code if the email still isn't confirmed.
-  status.textContent = 'Taking you to log in…';
-  detail.textContent = 'That email link has already been used.';
-  location.replace(`${site.href}#/login?linkused=1`);
+  // Supabase can omit the link type on errors, including expired recovery links.
+  status.textContent = 'This email link has expired or been used';
+  detail.textContent = 'Log in if you’ve already confirmed your email, or request a new link to reset your password.';
+  returnLink.href = `${site.href}#/login?linkused=1`;
+  returnLink.textContent = 'Back to log in';
+  actions.innerHTML = resetLink;
 }
 
-try {
-  const result = await supabaseAdapter.completeAuthRedirect();
-  const requested = new URLSearchParams(location.search).get('next');
-  const next = result.recovery ? '/reset-password' : localRoute(requested || result.nextRoute || '/subjects?welcome=1');
-  const destination = new URL('./', location.href);
-  destination.hash = `#${next}`;
-  destination.search = '';
-  location.replace(destination.href);
-} catch (error) {
-  if (linkError || /invalid|expired/i.test(error.message || '')) showUsedLink();
-  else {
-    status.textContent = 'We couldn’t finish that link';
-    detail.textContent = error.message || 'Return to the site and try again.';
-    returnLink.href = 'https://purepastpapers.com/#/login';
+if (linkError) {
+  showUsedLink();
+} else {
+  try {
+    const result = await supabaseAdapter.completeAuthRedirect();
+    const requested = new URLSearchParams(location.search).get('next');
+    const next = result.recovery ? '/reset-password' : localRoute(requested || result.nextRoute || '/subjects?welcome=1');
+    const destination = new URL('./', location.href);
+    destination.hash = `#${next}`;
+    destination.search = '';
+    location.replace(destination.href);
+  } catch (error) {
+    if (/invalid|expired/i.test(error.message || '')) showUsedLink();
+    else {
+      status.textContent = 'We couldn’t finish that link';
+      detail.textContent = error.message || 'Return to the site and try again.';
+      returnLink.href = new URL('./#/login', location.href).href;
+    }
   }
 }
