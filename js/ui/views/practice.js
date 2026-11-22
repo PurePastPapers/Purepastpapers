@@ -145,7 +145,7 @@ export async function mount(element, context) {
   // Subjects whose scored units carry a reviewed introduced_year use it for the
   // Year 12 / Year 13-only filters, and treat Year 13 as cumulative.
   const unitContentYears = subject.content_year_source === 'introduced_year';
-  const qualificationOptions = subject.qualifications || [];
+  const qualificationOptions = (subject.qualifications || []).filter(({ code }) => !bundle.scope || bundle.scope.levels.includes(code));
   const qualificationLabel = (code) => {
     const option = qualificationOptions.find((item) => item.code === code);
     return option ? `${option.label} papers` : `${code} papers`;
@@ -211,6 +211,18 @@ export async function mount(element, context) {
   } catch {
     /* start from defaults */
   }
+  let moduleScopeChanged = false;
+  if (bundle.scope) {
+    const moduleScopeKey = JSON.stringify([...bundle.scope.modules].map(([level, modules]) => [level, [...modules].sort()]));
+    moduleScopeChanged = state.moduleScopeKey !== moduleScopeKey;
+    state.moduleScopeKey = moduleScopeKey;
+    state.qualifications = state.qualifications.filter((code) => qualificationOptions.some((option) => option.code === code));
+    if (state.paper && !bundle.papers.some((paper) => paper.paper_id === state.paper)) state.paper = '';
+    if (moduleScopeChanged) {
+      state.testFocusVersion = 0;
+      state.page = 1;
+    }
+  }
   // Preserve a previously saved single-year selection.
   if (!Array.isArray(state.years)) state.years = [];
   if (state.year && !state.years.length) state.years = [String(state.year)];
@@ -273,10 +285,10 @@ export async function mount(element, context) {
   const learned = api.learnedSet();
   // Module routes (Further Maths) scope the leaves first; tiered GCSEs use the viewed tier.
   const subjectLeaves = scienceLeaves(bundle.scopeLeaves || tierLeaves(specIndex, subjectId, viewTier), spec, viewScience, specIndex);
-  if ((viewTier || viewScience) && Array.isArray(state.focus) && state.focus.length) {
-    // A topic choice made on the other tier (or another science) keeps only this view's points.
-    const inTier = new Set(subjectLeaves);
-    state.focus = state.focus.filter((id) => specIndex.leavesOf(id).some((leaf) => inTier.has(leaf)));
+  if ((viewTier || viewScience || moduleScopeChanged) && Array.isArray(state.focus) && state.focus.length) {
+    // Keep topic filters in the currently visible syllabus.
+    const visible = new Set(subjectLeaves);
+    state.focus = state.focus.filter((id) => specIndex.leavesOf(id).some((leaf) => visible.has(leaf)));
     if (!state.focus.length) state.focus = null;
   }
   if (!textbooks) state.topicOrganisation = 'official';
@@ -333,7 +345,11 @@ export async function mount(element, context) {
   migrateBrowserRange();
   // A linked group is selected by its group id (engine/linked-parts.js).
   const entryOf = (id) => bundle.questionsById.get(id) || (id.startsWith('LINKED_') ? groupEntry(id, bundle.questionsById) : null);
-  state.selected = state.selected.filter((id) => entryOf(id));
+  const visibleQuestionIds = bundle.scope ? new Set(bundle.questions.map((question) => question.question_id)) : null;
+  state.selected = state.selected.filter((id) => {
+    const entry = entryOf(id);
+    return entry && (!visibleQuestionIds || (entry.part_ids || [id]).every((partId) => visibleQuestionIds.has(partId)));
+  });
   save();
 
   const pool = questionsForScience(practicePool(bundle), viewScience, spec, specIndex);
@@ -472,7 +488,7 @@ export async function mount(element, context) {
     const qualifications = qualificationOptions.length > 1 ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${qualificationOptions.map(({code: value, label}) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
     </div>${sourceControl()}`
-      : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper ? 'open' : ''}><summary>Paper filters</summary><div class="stack">${papersAndYears}</div></details>`;
+      : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper || (bundle.scope && state.qualifications.length) ? 'open' : ''}><summary>Paper filters</summary><div class="stack">${bundle.scope ? qualifications : ''}${papersAndYears}</div></details>`;
   }
 
   function focusSummary(browser = false) {

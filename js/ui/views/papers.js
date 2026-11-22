@@ -87,7 +87,7 @@ export async function mount(element, context) {
     return level ? html`<span class="paper-card__level" data-level="${level}">${level}</span> ` : '';
   };
   const codeLine = (paper) =>
-    paper.is_sample ? 'Demo paper' : html`${levelTag(paper)}${paperCode(paper, subject)}${paper.tier ? ` · ${paper.tier}` : ''}`;
+    paper.is_sample ? 'Demo paper' : html`${levelTag(paper)}${paperCode(paper, subject)}${paper.tier ? ` · ${paper.tier}` : ''}${paper.component_of ? ` · ${paper.component_of} component` : ''}`;
 
   function card(paper, index) {
     const summary = summaries.get(paper.paper_id);
@@ -98,7 +98,7 @@ export async function mount(element, context) {
       <p class="paper-card__code">${codeLine(paper)}</p>
       <h3><a href="${paperHref(paper)}">${shortTitle(paper)}</a></h3>
       <p class="paper-card__meta">
-        ${paper.total_marks} marks · ${fmtMinutes(paper.duration_minutes)}${paper.question_ids.length ? html` · ${plural(paper.question_ids.length, 'question')}` : ''}
+        ${paper.total_marks} marks · ${fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}${paper.question_ids.length ? html` · ${plural(paper.question_ids.length, 'question')}` : ''}
       </p>
       ${paper.is_sample ? html`<p style="margin-top:8px">${sourceBadge(paper)}</p>` : ''}
       <div class="paper-card__foot">
@@ -110,7 +110,7 @@ export async function mount(element, context) {
           : status === 'progress'
             ? html`<span class="paper-card__status is-progress">In progress</span>
                 <a class="btn btn--sm btn--primary" href="${session ? links.session(session.session_id) : paperHref(paper)}">Resume</a>`
-            : html`<span class="paper-card__status">Not started</span><a class="btn btn--sm" href="${paperHref(paper)}">Sit paper</a>`}
+            : html`<span class="paper-card__status">Not started</span><a class="btn btn--sm" href="${paperHref(paper)}">${paper.component_of ? 'Sit component' : 'Sit paper'}</a>`}
       </div>
     </li>`;
   }
@@ -156,7 +156,7 @@ export async function mount(element, context) {
 
   // Progress counts the papers of the tier on show.
   const tierPapers = () => papers.filter((paper) => filters.tier === 'all' || paper.tier === filters.tier);
-  const hasCatalogue = papers.some((paper) => paper.catalogue_generated);
+  const hasUnverifiedCatalogue = papers.some((paper) => paper.catalogue_generated && !paper.catalogue_verified);
   const filterGroup = (key, label, options) =>
     html`<div class="filter-group" role="radiogroup" aria-label="${label}">
       <p class="field__label">${label}</p>
@@ -173,7 +173,7 @@ export async function mount(element, context) {
         ${paperType === 'real_past_paper'
           ? html`Question papers and mark schemes are published by ${subject.board}. Open the paper there, sit it here against the clock, then log your marks.`
           : `${plural(papers.length, 'paper')} available.`}
-        ${hasCatalogue ? ' Paper details come from the specification, so check them against the board if something looks wrong.' : ''}
+        ${hasUnverifiedCatalogue ? ' Paper details come from the specification, so check them against the board if something looks wrong.' : ''}
       </p>
       ${paperType === 'real_past_paper' && subject.official_url
         ? html`<a class="btn btn--sm" style="margin-top:14px" href="${subject.official_url}" target="_blank" rel="noopener">${subject.board} past papers ${icon('external', { size: 15 })}</a>`

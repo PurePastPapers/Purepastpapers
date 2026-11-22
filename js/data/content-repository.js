@@ -203,11 +203,11 @@ async function loadBundle(subjectId) {
   await Promise.all([...foreignSubjects].map((id) => ensureSpec(id).catch(() => null)));
 
   const hasReviewedSource = questions.some(question => question.provenance?.review_status === 'model_reviewed');
-  // Authenticated source booklets supersede generated catalogue placeholders.
+  // Authenticated source booklets supersede unverified catalogue placeholders.
   // Keep the original lookup records so saved sessions and marks still resolve.
   const generatedIds = new Set(basePapers.map(paper => paper.paper_id));
   const papers = [...papersById.values()].filter(paper => (CONTENT.showSampleContent || !paper.is_sample) && (!hasReviewedSource ||
-    !generatedIds.has(paper.paper_id) || paper.question_ids.some(id =>
+    !generatedIds.has(paper.paper_id) || paper.catalogue_verified === true || paper.question_ids.some(id =>
       questionsById.get(id)?.provenance?.review_status === 'model_reviewed')));
   return { subject, spec, papers, papersById, questions, questionsById, textbooks: textbooks?.index || null };
 }

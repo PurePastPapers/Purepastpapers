@@ -17,6 +17,9 @@ const subject = subjects.find((entry) => entry.subject_id === ID);
 const spec = read(`data/specs/${ID}.json`);
 const papers = read(`data/papers/${ID}.json`);
 const questions = read(`data/questions/${ID}.json`);
+const importedPacks = read('data/packs/index.json').packs
+  .filter((entry) => entry.enabled !== false && entry.file.startsWith('fmaths/'))
+  .map((entry) => read(`data/packs/${entry.file}`));
 const leaves = spec.sections.flatMap((section) => section.topics.flatMap((topic) => topic.points));
 const sectionOf = (id) => spec.sections.find((section) => section.id === id);
 
@@ -171,15 +174,15 @@ test('questions follow their module and qualification', () => {
   // A question without a module takes its paper's single module.
   const paper = papers.find((entry) => entry.paper_id === 'EDX_9FM0_2024_JUNE_P3D');
   assert(questionInScope({ question_id: 'q4' }, paper, route));
-  for (const question of questions) assert.equal(question.module_id, 'CP');
+  for (const question of questions.filter((entry) => entry.paper_id === 'EDX_9FM0_DEMO_CP')) assert.equal(question.module_id, 'CP');
 });
 
 test('papers carry their own qualification, module and official code', () => {
   for (const paper of papers) {
-    assert.equal(paper.qualification_code, '9FM0', paper.paper_id);
-    assert.equal(paper.is_as, false);
-    assert.equal(paper.module_ids.length, 1);
-    assert.equal(levelOf(paper, subject), 'A-Level');
+    assert.equal(paper.module_ids.length, 1, paper.paper_id);
+    assert.equal(paper.paper_id.startsWith('EDX_8FM0_') ? '8FM0' : '9FM0', paper.qualification_code, paper.paper_id);
+    assert.equal(paper.is_as, paper.qualification_code === '8FM0');
+    assert.equal(levelOf(paper, subject), paper.is_as ? 'AS' : 'A-Level');
   }
   const p4c = papers.find((paper) => paper.paper_id === 'EDX_9FM0_2023_JUNE_P4C');
   assert.equal(p4c.official_paper_code, '9FM0/4C');
@@ -200,10 +203,17 @@ test("Pearson's best-combination rule picks the permitted pair with the highest 
 });
 
 test('existing identifiers, marks and saved learning survive the rebuild', async () => {
-  // The 71 paper ids and the 11 demo question ids/marks are exactly as before this change.
-  assert.equal(papers.length, 71);
-  assert.equal(new Set(papers.map((paper) => paper.paper_id)).size, 71);
-  assert.deepEqual(questions.map((question) => [question.question_id, question.marks]), [
+  const existingSeries = ['2019_JUNE', '2020_AUTUMN', '2021_AUTUMN', '2022_JUNE', '2023_JUNE', '2024_JUNE', '2025_JUNE'];
+  const existingCodes = ['P1', 'P2', 'P3A', 'P3B', 'P3C', 'P3D', 'P4A', 'P4B', 'P4C', 'P4D'];
+  const paperIds = new Set(papers.map((paper) => paper.paper_id));
+  assert.equal(paperIds.size, papers.length);
+  assert(paperIds.has('EDX_9FM0_DEMO_CP'));
+  for (const series of existingSeries) for (const code of existingCodes) {
+    assert(paperIds.has(`EDX_9FM0_${series}_${code}`), `${series} ${code}`);
+  }
+  const demoQuestions = questions.filter((question) => question.paper_id === 'EDX_9FM0_DEMO_CP');
+  assert(demoQuestions.every((question) => question.is_sample));
+  assert.deepEqual(demoQuestions.map((question) => [question.question_id, question.marks]), [
     ['EDX_9FM0_DEMO_CP_Q01', 5], ['EDX_9FM0_DEMO_CP_Q02', 5], ['EDX_9FM0_DEMO_CP_Q03', 7], ['EDX_9FM0_DEMO_CP_Q04', 6],
     ['EDX_9FM0_DEMO_CP_Q05', 8], ['EDX_9FM0_DEMO_CP_Q06', 9], ['EDX_9FM0_DEMO_CP_Q07', 6], ['EDX_9FM0_DEMO_CP_Q08', 9],
     ['EDX_9FM0_DEMO_CP_Q09', 8], ['EDX_9FM0_DEMO_CP_Q10', 9], ['EDX_9FM0_DEMO_CP_Q11', 8],
@@ -215,4 +225,91 @@ test('existing identifiers, marks and saved learning survive the rebuild', async
   // The demo account's topic-level ids (CP_PROOF, CP_COMPLEX, …) are still live topics.
   const topicIds = new Set(spec.sections.flatMap((section) => section.topics.map((topic) => topic.id)));
   for (const suffix of ['CP_PROOF', 'CP_COMPLEX', 'CP_MATRICES', 'CP_ALG']) assert(topicIds.has(`EDX_FMATH_${suffix}`));
+});
+
+test('source inventories are verified Pearson files with checksums, and only verified AS rows exist', () => {
+  const inv9 = read('data/imports/fmaths/inventory/9fm0-inventory.json');
+  const inv8 = read('data/imports/fmaths/inventory/8fm0-inventory.json');
+  const pearson = /^https:\/\/qualifications\.pearson\.com\/content\/dam\/pdf\//;
+  for (const inv of [inv9, inv8]) {
+    for (const row of inv.papers) {
+      for (const [kind, doc] of Object.entries(row.documents)) {
+        if (doc.availability !== 'verified_public') continue;
+        assert.match(doc.url, pearson, `${row.paper_id} ${kind}`);
+        assert.match(doc.sha256, /^[0-9a-f]{64}$/);
+        assert(doc.bytes > 10_000);
+      }
+      assert.equal(row.documents.question_paper.availability, 'verified_public', row.paper_id);
+      assert.equal(row.documents.mark_scheme.availability, 'verified_public', row.paper_id);
+    }
+    assert.match(inv.official_samples.url, pearson);
+  }
+  // Seven A-Level sittings x ten papers; seven AS sittings x (Paper 1 + components 21-28).
+  assert.equal(inv9.papers.length, 70);
+  assert.equal(inv8.papers.length, 63);
+  const sittings = (inv) => [...new Set(inv.papers.map((row) => row.pearson_series))];
+  assert.deepEqual(sittings(inv9), ['June 2019', 'October 2020', 'November 2021', 'June 2022', 'June 2023', 'June 2024', 'June 2025']);
+  assert.deepEqual(sittings(inv8), ['June 2018', 'June 2019', 'October 2020', 'June 2022', 'June 2023', 'June 2024', 'June 2025']);
+  // The only gap Pearson leaves: no examiner report for June 2019 8FM0/01.
+  const gaps = inv8.papers.flatMap((row) => Object.entries(row.documents).filter(([, d]) => d.availability !== 'verified_public').map(([k]) => `${row.paper_id}:${k}`));
+  assert.deepEqual(gaps, ['EDX_8FM0_2019_JUNE_01:examiner_report']);
+  // Every AS catalogue row is a verified component; nothing invented.
+  const asRows = papers.filter((paper) => paper.qualification_code === '8FM0' && paper.year);
+  assert.deepEqual(asRows.map((p) => p.paper_id).sort(), inv8.papers.map((row) => row.paper_id).sort());
+  for (const row of [...inv9.papers, ...inv8.papers]) {
+    const paper = papers.find((entry) => entry.paper_id === row.paper_id);
+    assert.equal(paper.catalogue_verified, true, row.paper_id);
+    assert.equal(paper.full_paper_pdf_url, row.documents.question_paper.url, row.paper_id);
+    assert.equal(paper.full_mark_scheme_pdf_url, row.documents.mark_scheme.url, row.paper_id);
+  }
+});
+
+test('AS Paper 2 components 21-28 are single verified modules worth 40 marks', () => {
+  const MODULE = { 21: 'FP1', 22: 'FP2', 23: 'FS1', 24: 'FS2', 25: 'FM1', 26: 'FM2', 27: 'D1', 28: 'D2' };
+  for (const paper of papers.filter((p) => p.qualification_code === '8FM0')) {
+    if (paper.paper_code === '01') {
+      assert.deepEqual(paper.module_ids, ['CP']);
+      assert.equal(paper.total_marks, 80);
+      assert.equal(paper.duration_minutes, 100);
+      assert.equal(paper.component_of, undefined);
+      continue;
+    }
+    assert.deepEqual(paper.module_ids, [MODULE[paper.paper_code]], paper.paper_id);
+    assert.equal(paper.total_marks, 40);
+    assert.equal(paper.component_of, 'Paper 2');
+    assert.equal(paper.duration_minutes, 50);
+    assert.match(paper.duration_note, /official AS Paper 2 lasts 1 h 40 min for both components/);
+  }
+  for (const module of subject.module_routes.modules.filter((m) => m.id !== 'CP')) {
+    assert.deepEqual(module.papers['8FM0'], [Object.keys(MODULE).find((code) => MODULE[code] === module.id)]);
+  }
+  // An AS route scope shows AS Paper 1 and only its own two components.
+  const route2F = scopeOf(subject, { levels: ['8FM0'], routes: { '8FM0': '2F' } });
+  const visible = papers.filter((p) => p.qualification_code === '8FM0' && p.year === 2024 && paperInScope(p, route2F)).map((p) => p.paper_code).sort();
+  assert.deepEqual(visible, ['01', '23', '27']);
+});
+
+test('imported questions carry the paper qualification, module and corresponding spec points', () => {
+  const baseById = new Map(papers.map((paper) => [paper.paper_id, paper]));
+  const specPoints = new Map();
+  for (const section of spec.sections) for (const topic of section.topics) for (const point of topic.points) {
+    specPoints.set(point.id, { module: section.module_id, qualifications: point.qualifications });
+  }
+  for (const pack of importedPacks) {
+    const byId = new Map(pack.papers.map((paper) => [paper.paper_id, { ...baseById.get(paper.paper_id), ...paper }]));
+    for (const question of pack.questions) {
+      const paper = byId.get(question.paper_id);
+      assert(paper, question.question_id);
+      assert.equal(question.qualification_code, paper.qualification_code, question.question_id);
+      assert.deepEqual([question.module_id], paper.module_ids, question.question_id);
+      assert.equal(question.source_type, 'real_past_paper', question.question_id);
+      assert.notEqual(question.is_sample, true, question.question_id);
+      assert(question.primary_spec_points.length, question.question_id);
+      for (const id of question.primary_spec_points) {
+        const point = specPoints.get(id);
+        assert.equal(point?.module, question.module_id, `${question.question_id}: ${id}`);
+        assert(point.qualifications.includes(question.qualification_code), `${question.question_id}: ${id}`);
+      }
+    }
+  }
 });

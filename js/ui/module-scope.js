@@ -135,7 +135,8 @@ export function moduleScopeBanner(bundle) {
   const id = subject.subject_id;
   if (!safePreferences()) return '';
   if (!scope.configured) {
-    return banner(html`<b>Choose your ${subject.subject} modules.</b> Until you do, only Core Pure content is shown. <button type="button" class="linkbtn" data-module-routes="${id}">Choose modules</button> · <button type="button" class="linkbtn" data-module-showall="${id}" data-value="${scope.showAll ? '' : '1'}">${scope.showAll ? 'Hide other options' : 'Show all options'}</button>`, { type: 'warn' });
+    const description = scope.showAll ? 'Showing every optional module.' : 'Showing Core Pure and any modules you have selected.';
+    return banner(html`<b>Choose your ${subject.subject} modules.</b> ${description} <button type="button" class="linkbtn" data-module-routes="${id}">Choose modules</button> · <button type="button" class="linkbtn" data-module-showall="${id}" data-value="${scope.showAll ? '' : '1'}">${scope.showAll ? 'Hide other options' : 'Show all options'}</button>`, { type: 'warn' });
   }
   return banner(html`${scope.showAll ? html`<b>Showing every optional module.</b> ` : html`<b>Your modules:</b> `}${describeScope(subject, scope)}. <button type="button" class="linkbtn" data-module-routes="${id}">Change modules</button> · <button type="button" class="linkbtn" data-module-showall="${id}" data-value="${scope.showAll ? '' : '1'}">${scope.showAll ? 'Back to my modules only' : 'Show all options'}</button>`);
 }

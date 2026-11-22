@@ -2,41 +2,33 @@
  "qualification": "Pearson Edexcel AS Further Mathematics 8FM0",
  "specification": "Issue 5, July 2025",
  "first_assessment": "June 2018",
- "checked_at": "2026-11-19",
- "blocked": {
-  "host": "qualifications.pearson.com",
-  "reason": "HTTP CONNECT 403 from the build host outbound proxy (policy denial); retried, not transient",
-  "checked_at": "2026-11-19"
+ "checked_at": "2026-11-21",
+ "retrieved_at": "2026-11-21T10:52:40.499Z",
+ "source_search": "https://qualifications.pearson.com/en/support/support-topics/exams/past-papers.html",
+ "evidence_method": "Listed by Pearson past-paper search (A Level > Mathematics (2017) > each exam series) and the Mathematics (2017) course materials; fetched only from qualifications.pearson.com in the Claude desktop built-in browser on the owner's computer; SHA-256 computed in the browser and re-verified on the build host. The build host's own proxy still refuses the domain (CONNECT 403).",
+ "restricted": {
+  "series": "June 2026",
+  "listed_files": 57,
+  "reason": "Listed by Pearson but served from /content/dam/secure/ (teacher-only for 12 months); the public fetch fails. Not downloaded; no access gate was bypassed."
  },
- "route_vs_component": "The specification defines Paper 2 routes 8FM0/2A–2K (two modules each, 80 marks, 1 h 40 min). Pearson publishes Paper 2 as per-module component files (8FM0_21, 8FM0_22, … seen in public URLs). A route is therefore two components sat together, not a single composite paper; the component-to-module mapping and per-component marks are not verified.",
- "public_evidence": [
-  {
-   "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_pef_20190815.pdf",
-   "kind": "examiner_report",
-   "component": "8FM0/21",
-   "series": "June 2019",
-   "seen_via": "web search result title",
-   "probed": false
-  },
-  {
-   "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_pef_20190815.pdf",
-   "kind": "examiner_report",
-   "component": "8FM0/22",
-   "series": "June 2019",
-   "seen_via": "web search result title",
-   "probed": false
-  }
- ],
+ "official_samples": {
+  "availability": "verified_public",
+  "url": "https://qualifications.pearson.com/content/dam/pdf/A%20Level/Mathematics/2017/specification-and-sample-assesment/as-al-maths-further-sams.zip",
+  "sha256": "c158f17ba92edd515d4fd2454756473ad1ecd98fe42318cab748446f5da7a40d",
+  "bytes": 9303599,
+  "zip_entry": "8FM0 AS Further Mathematics SAMs.pdf",
+  "pearson_label": "AS & A level Maths and AS & A level Further Maths Sample Assessment Materials",
+  "note": "One PDF per qualification holds every sample component; page ranges are taken at import."
+ },
  "papers": [
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2018,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2018_JUNE_01",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2018,
+   "series": "June",
+   "pearson_series": "June 2018",
    "official_paper_code": "8FM0/01",
    "module_ids": [
     "CP"
@@ -44,324 +36,430 @@
    "component_title": "Core Pure Mathematics",
    "max_marks": 80,
    "duration_minutes": 100,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-que-20180518.pdf",
+     "sha256": "5eacd9f2a07eef1efe147c5fa012ecf018d746619ce9ce66c670d18d4aa4e4df",
+     "bytes": 544852,
+     "last_modified": "Sat, 21 Nov 2026 06:41:15 GMT",
+     "etag": "W/\"85054-660c3a5b36ae7",
+     "pearson_label": "Question paper - 8FM0-01 AS Core Pure Mathematics - June 2018"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-rms-20180815.pdf",
+     "sha256": "fa7b2d6498e96db595ff2aaea1d2a426c89636da4bbb846ccb80e1030c068b67",
+     "bytes": 411557,
+     "last_modified": "Fri, 20 Nov 2026 18:53:06 GMT",
+     "etag": "W/\"647a5-660b9c12844c4",
+     "pearson_label": "Mark scheme - 8FM0-01 AS Core Pure Mathematics - June 2018"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_01_pef_20180815.pdf",
+     "sha256": "06bd0c84539ca1f5f5e99e619c9df60d76c10ee27d30fb46c51fd533804f6f7d",
+     "bytes": 390054,
+     "last_modified": "Fri, 20 Nov 2026 19:49:22 GMT",
+     "etag": "W/\"5f3a6-660ba8a6a9dea",
+     "pearson_label": "Examiner report - Further Core Maths - June 2018 Paper 1 - Core Pure Mathematics"
     }
-   }
+   },
+   "imported": false
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2018,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2018_JUNE_21",
-   "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/21",
+   "module_ids": [
+    "FP1"
+   ],
+   "component_title": "Further Pure Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-que-20180518.pdf",
+     "sha256": "f707466f9c39bf82233603ecb80fe194e3209f3a8d2e42d6a545dfd5930028d1",
+     "bytes": 346934,
+     "last_modified": "Sat, 21 Nov 2026 06:43:36 GMT",
+     "etag": "W/\"54b36-660c3ae208ee5",
+     "pearson_label": "Question paper - 8FM0-21 AS Further Pure Mathematics 1 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-rms-20180815.pdf",
+     "sha256": "cbb516c5df4878ebb9c265f3167871d53fb58520891642407f594ace06f35833",
+     "bytes": 210642,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"336d2-660c727349c17",
+     "pearson_label": "Mark Scheme - 8FM0-21 AS Further Pure Mathematics 1 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_pef_20180815.pdf",
+     "sha256": "47cbeca22bb591bc92d5f93729ca3b890a59aa7cc509b5f81d2552d6a49e1bdc",
+     "bytes": 345471,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"5457f-660c727395707",
+     "pearson_label": "Examiner report - Further Pure Maths 1 - June 2018 Paper 1 - Further Pure Mathematics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2018_JUNE_22",
-   "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/22",
+   "module_ids": [
+    "FP2"
+   ],
+   "component_title": "Further Pure Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-que-20180518.pdf",
+     "sha256": "cecb2bbc37082be6d7360a1d55022efaaac0827b021f9e14e95047dfc7b7e46c",
+     "bytes": 384180,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"5dcb4-660c72734bceb",
+     "pearson_label": "Question paper - 8FM0-22 AS Further Pure Mathematics 2 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-rms-20180815.pdf",
+     "sha256": "00860b551fd940c0d18468449c6851d4f0eb203242fd211745dda3540fbb0de0",
+     "bytes": 154705,
+     "last_modified": "Fri, 20 Nov 2026 18:53:06 GMT",
+     "etag": "W/\"25c51-660b9c1323384",
+     "pearson_label": "Mark scheme - 8FM0-22 AS Further Pure Mathematics 2 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_pef_20180815.pdf",
+     "sha256": "7e6f4b789429d109ed9d6a9142c1dc5a76fd2db026f62dad6015840b7bd1797f",
+     "bytes": 268178,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"41792-660c7273b04b7",
+     "pearson_label": "Examiner report - Further Pure Maths 2 - June 2018 Paper 2 - Further Pure Mathematics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2018_JUNE_23",
-   "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/23",
+   "module_ids": [
+    "FS1"
+   ],
+   "component_title": "Further Statistics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-que-20180518.pdf",
+     "sha256": "4e96bcb9017a869936a0330e0ec5b6290e55e055776b773d1849da0e7a63e73e",
+     "bytes": 302833,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"49ef1-660c727353857",
+     "pearson_label": "Question paper - 8FM0-23 AS Further Statistics 1 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-rms-20180815.pdf",
+     "sha256": "5a1062724ab0509ce5506fb6a35ff0279406b7b6306af06682fe843980c32fc1",
+     "bytes": 164585,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"282e9-660c72735803b",
+     "pearson_label": "Mark scheme - 8FM0-23 AS Further Statistics 1 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_23_pef_20180815.pdf",
+     "sha256": "e1732ccec1770f55d6d2eef7e4f1f9f54e5031c462caf2b02c88d7372ced77f5",
+     "bytes": 286605,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"45f8d-660c7273929bc",
+     "pearson_label": "Examiner report - Further Statistics 1 - June 2018 Paper 1 - Further Statistics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2018_JUNE_24",
-   "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/24",
+   "module_ids": [
+    "FS2"
+   ],
+   "component_title": "Further Statistics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-que-20180518.pdf",
+     "sha256": "4c80e4b3867420f9b4bc4d00bb2d19f106cfbe5679e6f02e96d898d8ede2a9cb",
+     "bytes": 322214,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"4eaa6-660c72735d497",
+     "pearson_label": "Question paper - 8FM0-24 AS Further Statistics 2 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-rms-20180815.pdf",
+     "sha256": "e0ddd2cd7b4ad01f37ebb4f5a26683e6605c6a3fa3686c329d64379803389e7d",
+     "bytes": 164107,
+     "last_modified": "Sat, 21 Nov 2026 06:47:31 GMT",
+     "etag": "W/\"2810b-660c3bc240f7b",
+     "pearson_label": "Mark scheme - 8FM0-24 AS Further Statistics 2 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_24_pef_20180815.pdf",
+     "sha256": "a1c53ff235f419c91093d36132d23605414900db9a400626b769cc6d51a14210",
+     "bytes": 205943,
+     "last_modified": "Sat, 21 Nov 2026 09:40:27 GMT",
+     "etag": "W/\"32477-660c6269731be",
+     "pearson_label": "Examiner report - Further Statistics 2 - June 2018 Paper 2 - Further Statistics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2018_JUNE_25",
-   "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/25",
+   "module_ids": [
+    "FM1"
+   ],
+   "component_title": "Further Mechanics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-que-20180518.pdf",
+     "sha256": "b6d0db4ab6aec37386ea651fbda458bf358219624ee7359cc7104d32f2b322a9",
+     "bytes": 348952,
+     "last_modified": "Sat, 21 Nov 2026 06:48:41 GMT",
+     "etag": "W/\"55318-660c3c04d9597",
+     "pearson_label": "Question paper - 8FM0-25 AS Further Mechanics 1 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-rms-20180815.pdf",
+     "sha256": "e395d1842a0fa954029c75f771f2a9d86eb0419e3ddb415e3387bf39f1b2b65e",
+     "bytes": 129564,
+     "last_modified": "Fri, 20 Nov 2026 18:53:10 GMT",
+     "etag": "W/\"1fa1c-660b9c171c28f",
+     "pearson_label": "Mark scheme - 8FM0-25 AS Further Mechanics 1 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_25_pef_20180815.pdf",
+     "sha256": "6f97b0902bba999873b0959389e0ca4c4fb827ebdb0e1a7509f77cf081a2c209",
+     "bytes": 294936,
+     "last_modified": "Sat, 21 Nov 2026 05:54:00 GMT",
+     "etag": "W/\"48018-660c2fcc10834",
+     "pearson_label": "Examiner report - Further Mechanics 1 - June 2018 Paper 1 - Further Mechanics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2018_JUNE_26",
-   "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/26",
+   "module_ids": [
+    "FM2"
+   ],
+   "component_title": "Further Mechanics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-que-20180518.pdf",
+     "sha256": "f9ddadf1d189c6adb272dd66520e10b4752eadd708ddcfc8aa24372ab0874b18",
+     "bytes": 397915,
+     "last_modified": "Sat, 21 Nov 2026 06:49:44 GMT",
+     "etag": "W/\"6125b-660c3c4141413",
+     "pearson_label": "Question paper - 8FM0-26 AS Further Mechanics 2 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-rms-20180815.pdf",
+     "sha256": "6695fbf2a56ccc597b89f89a6b7a9955537f0f2f1537e76d03ea1c3466591ac3",
+     "bytes": 132089,
+     "last_modified": "Fri, 20 Nov 2026 18:53:10 GMT",
+     "etag": "W/\"203f9-660b9c171ad8e",
+     "pearson_label": "Mark scheme - 8FM0-26 AS Further Mechanics 2 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_26_pef_20180815.pdf",
+     "sha256": "b42ee6ed995ce876db049a07ab317bcc59dc1d38c76c76e9fc0e86c53e4427dd",
+     "bytes": 220766,
+     "last_modified": "Sat, 21 Nov 2026 06:49:51 GMT",
+     "etag": "W/\"35e5e-660c3c47bd6a4",
+     "pearson_label": "Examiner report - Further Mechanics 2 - June 2018 Paper 2 - Further Mechanics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2018_JUNE_27",
-   "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/27",
+   "module_ids": [
+    "D1"
+   ],
+   "component_title": "Decision Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-que-20180518.pdf",
+     "sha256": "fbafe4d0f8618a7499a298e10dac0aa126a6a3cb2421ed4b4a1b27c4a1df21d0",
+     "bytes": 1798158,
+     "last_modified": "Sat, 21 Nov 2026 06:50:44 GMT",
+     "etag": "W/\"1b700e-660c3c79d3b67",
+     "pearson_label": "Question paper - 8FM0-27 AS Decision Mathematics 1 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-rms-20180815.pdf",
+     "sha256": "f2a4593c6868b9c173d2c781b305dd0322b2a9ad00613bed102cdc6a18271b57",
+     "bytes": 222596,
+     "last_modified": "Sat, 21 Nov 2026 06:50:41 GMT",
+     "etag": "W/\"36584-660c3c7756811",
+     "pearson_label": "Mark scheme - 8FM0-27 AS Decision Mathematics 1 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_pef_20180815.pdf",
+     "sha256": "5a0334d1aa77920f259978789a30329e8f19504e6c81bec54c714cbc349e981d",
+     "bytes": 215082,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"3482a-660c7273893b7",
+     "pearson_label": "Examiner report - Further Decision Maths 1 - June 2018 Paper 1 - Decision Maths"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2018_JUNE_28",
-   "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2019,
+   "year": 2018,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2018",
+   "official_paper_code": "8FM0/28",
+   "module_ids": [
+    "D2"
+   ],
+   "component_title": "Decision Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-que-20180518.pdf",
+     "sha256": "fd58bebda27b342606bed270b3890d0baf90312397ce767d94b6c0bed734f357",
+     "bytes": 429776,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"68ed0-660c72737f13c",
+     "pearson_label": "Question paper - 8FM0-28 AS Decision Mathematics 2 - June 2018"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-rms-20180815.pdf",
+     "sha256": "c444095b8b913b11cfa4490dc6adf89f4c75bf99a7e467f496a171378daf35aa",
+     "bytes": 178824,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"2ba88-660c727383f5c",
+     "pearson_label": "Mark scheme - 8FM0-28 AS Decision Mathematics 2 - June 2018"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_28_pef_20180815.pdf",
+     "sha256": "765f0b9c238995d9baa86bbca8ac419641973bfa95622dc940601d8d013328a0",
+     "bytes": 219552,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"359a0-660c72739ed0c",
+     "pearson_label": "Examiner report - Further Decision Maths 2 - June 2018 Paper 2 - Decision Maths"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_01",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2019,
+   "series": "June",
+   "pearson_series": "June 2019",
    "official_paper_code": "8FM0/01",
    "module_ids": [
     "CP"
@@ -369,1624 +467,428 @@
    "component_title": "Core Pure Mathematics",
    "max_marks": 80,
    "duration_minutes": 100,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_01_que_20190514.pdf",
+     "sha256": "9e968b74773ab6d6ace0602eb744b842598930ca76dc52fae003155e398295e8",
+     "bytes": 1522892,
+     "last_modified": "Fri, 20 Nov 2026 17:25:50 GMT",
+     "etag": "W/\"173ccc-660b8891a590f",
+     "pearson_label": "Question paper - AS Further Core Maths - June 2019 Paper 1 - Core Pure Mathematics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_01_rms_20190815.pdf",
+     "sha256": "f899092ecd6d7d4f92dbe33c70709c7ffcba03901d56c3272bc3406f861089ec",
+     "bytes": 539969,
+     "last_modified": "Sat, 21 Nov 2026 05:40:26 GMT",
+     "etag": "W/\"83d41-660c2cc387092",
+     "pearson_label": "Mark scheme - Further Core Maths - June 2019 Paper 1 - Core Pure Mathematics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
+     "availability": "not_published",
      "url": null,
      "sha256": null,
-     "bytes": null
+     "bytes": null,
+     "note": "not listed by Pearson for this series"
     }
-   }
+   },
+   "imported": false
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2019,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2019_JUNE_21",
-   "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/21",
+   "module_ids": [
+    "FP1"
+   ],
+   "component_title": "Further Pure Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_que_20190517.pdf",
+     "sha256": "b5322fcb6430f77666d115d01c25b0803e267ca89f0450b675bdd4505942c3c2",
+     "bytes": 308204,
+     "last_modified": "Fri, 20 Nov 2026 18:52:58 GMT",
+     "etag": "W/\"4b3ec-660b9c0b131a9",
+     "pearson_label": "Question paper - AS Further Pure Maths 1 - June 2019 Paper 1 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_rms_20190815.pdf",
+     "sha256": "9014e254f0372ce6dcfce457d79fba0f7581911a25b2082b4a8c411df5f70763",
+     "bytes": 297258,
+     "last_modified": "Sat, 21 Nov 2026 06:43:55 GMT",
+     "etag": "W/\"4892a-660c3af42c7f0",
+     "pearson_label": "Mark scheme - Further Pure Maths 1 - June 2019 Paper 1 - Further Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_pef_20190815.pdf",
+     "sha256": "49e08f9eaf7d0a935cc6f42a75fd0fcbb0d5f6fa28684f4d502176dc818f502c",
+     "bytes": 441100,
+     "last_modified": "Fri, 20 Nov 2026 17:15:13 GMT",
+     "etag": "W/\"6bb0c-660b86319ec6f",
+     "pearson_label": "Examiner report - Further Pure Maths 1 - June 2019 Paper 1 - Further Pure Mathematics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_22",
-   "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/22",
+   "module_ids": [
+    "FP2"
+   ],
+   "component_title": "Further Pure Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_que_20190517.pdf",
+     "sha256": "0e12db81665dba1a5029d568803d814be5e0b4655c155675a427ec6b5c42663d",
+     "bytes": 282683,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"4503b-660c7272839c8",
+     "pearson_label": "Question paper - AS Further Pure Maths 2 - June 2019 Paper 2 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_rms_20190815.pdf",
+     "sha256": "79bde35a09c03e0390ee5c26d4f8c24d6c869acc306c14eb238fe57ab556fb4a",
+     "bytes": 273976,
+     "last_modified": "Fri, 20 Nov 2026 18:53:02 GMT",
+     "etag": "W/\"42e38-660b9c0e9f4ea",
+     "pearson_label": "Mark scheme - Further Pure Maths 2 - June 2019 Paper 2 - Further Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_pef_20190815.pdf",
+     "sha256": "feff64899583d7f33afa8a9a5b4ec886ab55224185cbb723c2b03f9de756cc44",
+     "bytes": 458059,
+     "last_modified": "Sat, 21 Nov 2026 02:37:53 GMT",
+     "etag": "W/\"6fd4b-660c03f627e4c",
+     "pearson_label": "Examiner report - Further Pure Maths 2 - June 2019 Paper 2 - Further Pure Mathematics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_23",
-   "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/23",
+   "module_ids": [
+    "FS1"
+   ],
+   "component_title": "Further Statistics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_23_que_20190517.pdf",
+     "sha256": "1dc006861b4dd050dafb029c655350bccb5261f460883595b6cc096c59d02d4f",
+     "bytes": 252745,
+     "last_modified": "Sat, 21 Nov 2026 06:46:33 GMT",
+     "etag": "W/\"3db49-660c3b8a60bb7",
+     "pearson_label": "Question paper - AS Further Statistics 1 - June 2019 Paper 1 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_23_rms_20190815.pdf",
+     "sha256": "b61cf587b5b210887d0c983eed1b6ca3a1002086fbf09ae86e9b67ce8c257ee6",
+     "bytes": 188844,
+     "last_modified": "Fri, 20 Nov 2026 18:53:02 GMT",
+     "etag": "W/\"2e1ac-660b9c0ea1bfa",
+     "pearson_label": "Mark scheme - Further Statistics 1 - June 2019 Paper 1 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_23_pef_20190815.pdf",
+     "sha256": "141f7f9715bbb8bf3755a28198370af7385e6235dee99cee737d7ca8f381241e",
+     "bytes": 454207,
+     "last_modified": "Sat, 21 Nov 2026 03:25:02 GMT",
+     "etag": "W/\"6ee3f-660c0e804f135",
+     "pearson_label": "Examiner report - Further Statistics 1 - June 2019 Paper 1 - Further Statistics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_24",
-   "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/24",
+   "module_ids": [
+    "FS2"
+   ],
+   "component_title": "Further Statistics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_24_que_20190517.pdf",
+     "sha256": "cdaec7e53d8286d534d5f96c2b1a41dd0fd25596305146e549ef4aa1af50164a",
+     "bytes": 283643,
+     "last_modified": "Sat, 21 Nov 2026 06:47:42 GMT",
+     "etag": "W/\"453fb-660c3bcc44735",
+     "pearson_label": "Question paper - AS Further Statistics 2 - June 2019 Paper 2 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_24_rms_20190815.pdf",
+     "sha256": "6ccd0d145199fedae3a017c69e1c91a07694afd5dc77613119135adc93b5858e",
+     "bytes": 209885,
+     "last_modified": "Fri, 20 Nov 2026 18:53:02 GMT",
+     "etag": "W/\"333dd-660b9c0ea1bfa",
+     "pearson_label": "Mark scheme - Further Statistics 2 - June 2019 Paper 2 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_24_pef_20190815.pdf",
+     "sha256": "8fa3767a27d3f3193754d95b5ffbf2102aeab02e6421b1a98bc3b9a38d7fe80a",
+     "bytes": 285009,
+     "last_modified": "Fri, 20 Nov 2026 20:41:04 GMT",
+     "etag": "W/\"45951-660bb43516110",
+     "pearson_label": "Examiner report - Further Statistics 2 - June 2019 Paper 2 - Further Statistics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_25",
-   "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/25",
+   "module_ids": [
+    "FM1"
+   ],
+   "component_title": "Further Mechanics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_25_que_20190517.pdf",
+     "sha256": "be94a59930030b5e8cb832a6150fb1f1ed94acc873ac34f2a0e2955521b3b8fb",
+     "bytes": 269850,
+     "last_modified": "Fri, 20 Nov 2026 18:53:06 GMT",
+     "etag": "W/\"41e1a-660b9c1314576",
+     "pearson_label": "Question paper - AS Further Mechanics 1 - June 2019 Paper 1 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_25_rms_20190815.pdf",
+     "sha256": "9b1c8464e49460f1a386b6bc860bc7cf06e6844246fbaaa07dacf169eb6a45b5",
+     "bytes": 164670,
+     "last_modified": "Fri, 20 Nov 2026 18:53:02 GMT",
+     "etag": "W/\"2833e-660b9c0ea0335",
+     "pearson_label": "Mark scheme - Further Mechanics 1 - June 2019 Paper 1 - Further Mechanics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_25_pef_20190815.pdf",
+     "sha256": "b9b4c6bb0c5b4849cf0594b3690446123c79af6417aae302a5f60d8dc9064451",
+     "bytes": 700668,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"ab0fc-660c727266b46",
+     "pearson_label": "Examiner report - Further Mechanics 1 - June 2019 Paper 1 - Further Mechanics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_26",
-   "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/26",
+   "module_ids": [
+    "FM2"
+   ],
+   "component_title": "Further Mechanics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_26_que_20190517.pdf",
+     "sha256": "98753282b8a6c411a2875099ab48322ac0f5485a177fc2d47a8275e924fd7b60",
+     "bytes": 338385,
+     "last_modified": "Sat, 21 Nov 2026 06:49:52 GMT",
+     "etag": "W/\"529d1-660c3c4865df5",
+     "pearson_label": "Question paper - AS Further Mechanics 2 - June 2019 Paper 2 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_26_rms_20190815.pdf",
+     "sha256": "521931c57d4adcf6688c2aafdb8477b0aed94c300523fb7ab9326163ab1a96ef",
+     "bytes": 202738,
+     "last_modified": "Sat, 21 Nov 2026 06:49:55 GMT",
+     "etag": "W/\"317f2-660c3c4b70aed",
+     "pearson_label": "Mark scheme - Further Mechanics 2 - June 2019 Paper 2 - Further Mechanics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_26_pef_20190815.pdf",
+     "sha256": "9588fedf7f95e402ba8c7f16f2dce4898c46ac0a307a161cbc90d8eab5f5e1c6",
+     "bytes": 113098,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"1b9ca-660c7272a0e88",
+     "pearson_label": "Examiner report - Further Mechanics 2 - June 2019 Paper 2 - Further Mechanics"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_27",
-   "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/27",
+   "module_ids": [
+    "D1"
+   ],
+   "component_title": "Decision Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_que_20190517.pdf",
+     "sha256": "d342dcd1fa8a4f170f1c8880237d995ad1efeceaad776e4bed5290d80459fecb",
+     "bytes": 288202,
+     "last_modified": "Sat, 21 Nov 2026 06:50:49 GMT",
+     "etag": "W/\"465ca-660c3c7f19d05",
+     "pearson_label": "Question paper - AS Further Decision Maths 1 - June 2019 Paper 1 - Decision Maths"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_rms_20190815.pdf",
+     "sha256": "015ac6121792594563d3dc658df1b82f77d180f5016442314d1ac437fca39a67",
+     "bytes": 251906,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"3d802-660c72725efd7",
+     "pearson_label": "Mark scheme - Further Decision Maths 1 - June 2019 Paper 1 - Decision Maths"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_pef_20190815.pdf",
+     "sha256": "c5cd29f05662e70393b6938579d117d396122c6ff3e9adbd997f477d44a2b138",
+     "bytes": 453285,
+     "last_modified": "Sat, 21 Nov 2026 04:01:17 GMT",
+     "etag": "W/\"6eaa5-660c1699b472a",
+     "pearson_label": "Examiner report - Further Decision Maths 1 - June 2019 Paper 1 - Decision Maths"
+    }
+   },
    "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
    "paper_id": "EDX_8FM0_2019_JUNE_28",
-   "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2022,
+   "year": 2019,
    "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_01",
-   "official_paper_code": "8FM0/01",
+   "pearson_series": "June 2019",
+   "official_paper_code": "8FM0/28",
    "module_ids": [
-    "CP"
+    "D2"
    ],
-   "component_title": "Core Pure Mathematics",
-   "max_marks": 80,
-   "duration_minutes": 100,
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_21",
-   "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "component_title": "Decision Mathematics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_28_que_20190517.pdf",
+     "sha256": "72aaf55063b38b8a929c7a8558b45a688ce31e5d976c5ae5a6a473294739a85b",
+     "bytes": 269481,
+     "last_modified": "Fri, 20 Nov 2026 18:53:06 GMT",
+     "etag": "W/\"41ca9-660b9c1286bd4",
+     "pearson_label": "Question paper - AS Further Decision Maths 2 - June 2019 Paper 2 - Decision Maths"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_28_rms_20190815.pdf",
+     "sha256": "3a34a54b80628881586f45f9a33543d1030b7d9a77061b82b3349a156c45c284",
+     "bytes": 239437,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"3a74d-660c727295176",
+     "pearson_label": "Mark scheme - Further Decision Maths 2 - June 2019 Paper 2 - Decision Maths"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_28_pef_20190815.pdf",
+     "sha256": "0c7dddfa22b931d72eac6997bd275cf2b093e5376773214b98415f04aaccef8e",
+     "bytes": 447088,
+     "last_modified": "Sat, 21 Nov 2026 10:52:12 GMT",
+     "etag": "W/\"6d270-660c7272a3bd6",
+     "pearson_label": "Examiner report - Further Decision Maths 2 - June 2019 Paper 2 - Decision Maths"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_22",
-   "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_23",
-   "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_24",
-   "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_25",
-   "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_26",
-   "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_27",
-   "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2022,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2022_JUNE_28",
-   "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_01",
-   "official_paper_code": "8FM0/01",
-   "module_ids": [
-    "CP"
-   ],
-   "component_title": "Core Pure Mathematics",
-   "max_marks": 80,
-   "duration_minutes": 100,
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_21",
-   "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_22",
-   "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_23",
-   "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_24",
-   "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_25",
-   "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_26",
-   "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_27",
-   "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2023,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2023_JUNE_28",
-   "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_01",
-   "official_paper_code": "8FM0/01",
-   "module_ids": [
-    "CP"
-   ],
-   "component_title": "Core Pure Mathematics",
-   "max_marks": 80,
-   "duration_minutes": 100,
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_21",
-   "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_22",
-   "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_23",
-   "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_24",
-   "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_25",
-   "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_26",
-   "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_27",
-   "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2024,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2024_JUNE_28",
-   "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_01",
-   "official_paper_code": "8FM0/01",
-   "module_ids": [
-    "CP"
-   ],
-   "component_title": "Core Pure Mathematics",
-   "max_marks": 80,
-   "duration_minutes": 100,
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_21",
-   "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_22",
-   "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_23",
-   "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_24",
-   "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_25",
-   "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_26",
-   "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_27",
-   "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2025,
-   "series": "June",
-   "sitting_status": "expected_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2025_JUNE_28",
-   "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_01",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2020,
+   "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "8FM0/01",
    "module_ids": [
     "CP"
@@ -1994,324 +896,430 @@
    "component_title": "Core Pure Mathematics",
    "max_marks": 80,
    "duration_minutes": 100,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_01_que_20201006.pdf",
+     "sha256": "53291088157bc2a17b78fe9d5c1d4500ac80c0de4cee37b26e9f71110ae55c44",
+     "bytes": 975232,
+     "last_modified": "Fri, 20 Nov 2026 20:12:45 GMT",
+     "etag": "W/\"ee180-660bade03b1cc",
+     "pearson_label": "8FM0-01 AS Core Pure Mathematics - October 2020 - question paper AS Core Pure Mathematics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_01_msc_20201217.pdf",
+     "sha256": "871486b106e4e0020585fdd9c3c05ff2a65d2e9fc6d83e179c0ef41e4e42e4cb",
+     "bytes": 313851,
+     "last_modified": "Fri, 20 Nov 2026 18:25:47 GMT",
+     "etag": "W/\"4c9fb-660b95f78659a",
+     "pearson_label": "8FM0-01 AS Core Pure Mathematics - October 2020 - mark scheme AS Core Pure Mathematics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_01_pef_20201217.pdf",
+     "sha256": "8f9bbd3c6661ce731f60113a04b844709e6d13b6d398bca05b9bb621c2f7074d",
+     "bytes": 116067,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"1c563-660c727180d24",
+     "pearson_label": "8FM0-01 AS Core Pure Mathematics - October 2020 - examiner report AS Core Pure Mathematics"
     }
-   }
+   },
+   "imported": false
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_21",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2020,
+   "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FP1"
+   ],
+   "component_title": "Further Pure Mathematics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_que_20201009.pdf",
+     "sha256": "5272e435b8d0e72913f6886fe6e4c962da03d16044c2ecfb95338b7f54a74a54",
+     "bytes": 492989,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"785bd-660c727154e03",
+     "pearson_label": "8FM0-21 AS Further Pure Maths 1 - October 2020 - question paper AS Further Pure Mathematics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_msc_20201217.pdf",
+     "sha256": "f15944f096ecffe07b67353d35cfb08b768487c9b82700badcfe056f1f188820",
+     "bytes": 300539,
+     "last_modified": "Fri, 20 Nov 2026 18:52:47 GMT",
+     "etag": "W/\"495fb-660b9c0068495",
+     "pearson_label": "8FM0-21 AS Further Pure Mathematics 1 - October 2020 - mark scheme AS Further Pure Mathematics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_21_pef_20201217.pdf",
+     "sha256": "717e28ae1159b904f93caffb3c50b84eab29ac861a6d0547d5f93206c93427df",
+     "bytes": 84051,
+     "last_modified": "Fri, 20 Nov 2026 17:14:59 GMT",
+     "etag": "W/\"14853-660b8624c3c04",
+     "pearson_label": "8FM0-21 AS Further Pure Mathematics 1 - October 2020 - examiner report AS Further Pure Mathematics 1"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_22",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2020,
+   "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FP2"
+   ],
+   "component_title": "Further Pure Mathematics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_que_20201009.pdf",
+     "sha256": "f2c0569b86c0cb6e98847eda8c5b7ad0536e554a5d8c2e00b3c2c97c53dfdfd9",
+     "bytes": 389610,
+     "last_modified": "Fri, 20 Nov 2026 18:52:47 GMT",
+     "etag": "W/\"5f1ea-660b9c006f600",
+     "pearson_label": "8FM0-22 AS Further Pure Maths 2 - October 2020 - question paper AS Further Pure Mathematics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_msc_20201217.pdf",
+     "sha256": "5617fd62af1c9bee8d2759f3b76b76c175f44c41fb5cd1d2e1622ff003bed197",
+     "bytes": 248581,
+     "last_modified": "Fri, 20 Nov 2026 18:52:47 GMT",
+     "etag": "W/\"3cb05-660b9c006f600",
+     "pearson_label": "8FM0-22 AS Further Pure Maths 2 - October 2020 - mark scheme AS Further Pure Mathematics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_22_pef_20201217.pdf",
+     "sha256": "e1cf2bdcf8a2ab3b1ac211c1b3634a643dea386a733c6558e49b257d93a42760",
+     "bytes": 59096,
+     "last_modified": "Sat, 21 Nov 2026 06:45:42 GMT",
+     "etag": "W/\"e6d8-660c3b5a43cf5",
+     "pearson_label": "8FM0-22 AS Further Pure Maths 2 - October 2020 - examiner report AS Further Pure Mathematics 2"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_23",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2020,
+   "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FS1"
+   ],
+   "component_title": "Further Statistics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_23_que_20201009.pdf",
+     "sha256": "80b1b85b0999c9f760e5bd91c0e551b64bafa585c269322bc40a1b32393973e3",
+     "bytes": 319575,
+     "last_modified": "Fri, 20 Nov 2026 19:21:21 GMT",
+     "etag": "W/\"4e057-660ba262e7b7c",
+     "pearson_label": "8FM0-23 AS Further Statistics 1 - October 2020 - question paper AS Further Statistics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_23_msc_20201217.pdf",
+     "sha256": "9fa4b4e9e6967c2d065d5a585f45624a1810895e7f7eaaa2eb2e7f768154650b",
+     "bytes": 183548,
+     "last_modified": "Fri, 20 Nov 2026 21:44:19 GMT",
+     "etag": "W/\"2ccfc-660bc25837818",
+     "pearson_label": "8FM0-23 AS Further Statistics 1 - October 2020 - mark scheme AS Further Statistics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_23_pef_20201217.pdf",
+     "sha256": "6756161d916a723431705ba3cb44ffbf225520ac42928f65822cafbd88c60eeb",
+     "bytes": 90549,
+     "last_modified": "Sat, 21 Nov 2026 03:16:56 GMT",
+     "etag": "W/\"161b5-660c0cb062bc5",
+     "pearson_label": "8FM0-23 AS Further Statistics 1 - October 2020 - examiner report AS Further Statistics 1"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_24",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2020,
+   "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FS2"
+   ],
+   "component_title": "Further Statistics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_24_que_20201009.pdf",
+     "sha256": "4f939d4c2118b4034d525dd872991bc0c64650193651fa98547713b843b953f9",
+     "bytes": 561879,
+     "last_modified": "Sat, 21 Nov 2026 06:47:43 GMT",
+     "etag": "W/\"892d7-660c3bcd1dbc7",
+     "pearson_label": "8FM0-24 AS Further Statistics 2 - October 2020 - question paper AS Further Statistics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_24_msc_20201217.pdf",
+     "sha256": "11343e6a918ed7e8d9731c44efc1b8a98f1f75fcd67dc4c87b622da691dde25f",
+     "bytes": 1087868,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"10997c-660c7271acc44",
+     "pearson_label": "8FM0-24 AS Further Statistics 2 - October 2020 - mark scheme AS Further Statistics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_24_pef_20201217.pdf",
+     "sha256": "a7db0262158fb8ee6ff3b1001f66187059d9ca7e6c809107d65386292fa9b837",
+     "bytes": 59091,
+     "last_modified": "Sat, 21 Nov 2026 10:52:11 GMT",
+     "etag": "W/\"e6d3-660c7271b20a6",
+     "pearson_label": "8FM0-24 AS Further Statistics 2 - October 2020 - examiner report AS Further Statistics 2"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_25",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2020,
+   "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FM1"
+   ],
+   "component_title": "Further Mechanics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_25_que_20201009.pdf",
+     "sha256": "4f5b4943af97a25bf66dc04dc48519303cd7c0b4f1df678cefd9f28fa4da41c3",
+     "bytes": 316344,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"4d3b8-660c72714b805",
+     "pearson_label": "8FM0-25 AS Further Mechanics 1 - October 2020 - question paper AS Further Mechanics 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_25_msc_20201217.pdf",
+     "sha256": "5967b5d30ee76c36f20ec3889c289680da05601c86badb9c9d8c8835b5069925",
+     "bytes": 195106,
+     "last_modified": "Fri, 20 Nov 2026 18:52:50 GMT",
+     "etag": "W/\"2fa22-660b9c035e725",
+     "pearson_label": "8FM0-25 AS Further Mechanics 1 - October 2020 - mark scheme AS Further Mechanics 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_25_pef_20201217.pdf",
+     "sha256": "2bc4709fb8d2f5ef5472a695e2680e22b5cd083beaea36e547dc3bebb5fc7fc9",
+     "bytes": 91402,
+     "last_modified": "Sat, 21 Nov 2026 10:52:10 GMT",
+     "etag": "W/\"1650a-660c727172905",
+     "pearson_label": "8MF0-25 AS Further Mechanics 1 - October 2020 - examiner report AS Further Mechanics 1"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_26",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2020,
+   "series": "Autumn",
+   "pearson_series": "October 2020",
    "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FM2"
+   ],
+   "component_title": "Further Mechanics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_26_que_20201009.pdf",
+     "sha256": "663c69b32ed9edab4d04dfa8b125e017646f498480a412dc038e028951241a4f",
+     "bytes": 425107,
+     "last_modified": "Sat, 21 Nov 2026 06:50:01 GMT",
+     "etag": "W/\"67c93-660c3c50db67c",
+     "pearson_label": "8FM0-26 AS Further Mechanics 2 - October 2020 - question paper AS Further Mechanics 2"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_26_msc_20201217.pdf",
+     "sha256": "3f4b1b17291c3453945a698a0345f9bc498166c9086950e8c44b5e2bc27adf5f",
+     "bytes": 151438,
+     "last_modified": "Fri, 20 Nov 2026 18:49:55 GMT",
+     "etag": "W/\"24f8e-660b9b5cfeafc",
+     "pearson_label": "8FM0-26 AS Further Mechanics 2 - October 2020 - mark scheme AS Further Mechanics 2"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_26_pef_20201217.pdf",
+     "sha256": "cd0606b6bcd7fcd1dca533393a695d40b24e3e630dee36a971c3e9678cee414a",
+     "bytes": 59085,
+     "last_modified": "Sat, 21 Nov 2026 06:50:06 GMT",
+     "etag": "W/\"e6cd-660c3c558f058",
+     "pearson_label": "8FM0-26 AS Further Mechanics 2 - October 2020 - examiner report AS Further Mechanics 2"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
-   "qualification_code": "8FM0",
-   "level": "AS",
-   "is_as": true,
-   "year": 2020,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
    "paper_id": "EDX_8FM0_2020_AUTUMN_27",
-   "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
-   "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
-   "documents": {
-    "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    },
-    "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
-    }
-   }
-  },
-  {
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
    "year": 2020,
    "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2020_AUTUMN_28",
-   "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "pearson_series": "October 2020",
+   "official_paper_code": "8FM0/27",
+   "module_ids": [
+    "D1"
+   ],
+   "component_title": "Decision Mathematics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_que_20201009.pdf",
+     "sha256": "c68908c297a3f9d2dfbae2d0f0256d183b3efa1d2d5dd596a10c1c5e0ea5fc23",
+     "bytes": 587166,
+     "last_modified": "Fri, 20 Nov 2026 18:52:50 GMT",
+     "etag": "W/\"8f59e-660b9c0377fad",
+     "pearson_label": "8FM0-27 AS Further Decision Maths 1 - October 2020 - question paper AS Decision Maths 1"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_msc_20201217.pdf",
+     "sha256": "06ea1b7652afe48d60ba28b222e367a8e6605adde22c2c1c70ced2d9cfe958af",
+     "bytes": 179587,
+     "last_modified": "Sat, 21 Nov 2026 06:50:58 GMT",
+     "etag": "W/\"2bd83-660c3c873c56b",
+     "pearson_label": "8FM0-27 AS Further Decision Maths 1 - October 2020 - mark scheme AS Decision Maths 1"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_27_pef_20201217.pdf",
+     "sha256": "6afd7f1c88ca1eef0268569495cad5448b5cef0219215e06e76e5171e82fe47e",
+     "bytes": 96985,
+     "last_modified": "Sat, 21 Nov 2026 10:41:33 GMT",
+     "etag": "W/\"17ad9-660c70117859d",
+     "pearson_label": "8FM0-27 AS Further Decision Maths 1 - October 2020 - examiner report AS Decision Maths 1"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2020_AUTUMN_28",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
+   "year": 2020,
    "series": "Autumn",
-   "sitting_status": "possible_unverified",
+   "pearson_series": "October 2020",
+   "official_paper_code": "8FM0/28",
+   "module_ids": [
+    "D2"
+   ],
+   "component_title": "Decision Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_28_que_20201009.pdf",
+     "sha256": "730b51b6a6075e29bb2f267bec0e6299ea6e8a5be7ffbfd534bd5ebaad6b9b72",
+     "bytes": 412336,
+     "last_modified": "Fri, 20 Nov 2026 17:13:55 GMT",
+     "etag": "W/\"64ab0-660b85e76f046",
+     "pearson_label": "8FM0-29 AS Further Decision Maths 2 - October 2020 - question paper AS Decision Maths 2"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_28_msc_20201217.pdf",
+     "sha256": "4a28bb5c1d6e9ca50f44906be2f3f235aec910b544ef0a92a4668b4c683e78dd",
+     "bytes": 176813,
+     "last_modified": "Fri, 20 Nov 2026 18:30:24 GMT",
+     "etag": "W/\"2b2ad-660b96ffd3b9d",
+     "pearson_label": "8FM0-28 AS Further Decision Maths 2 - October 2020 - mark scheme AS Decision Maths 2"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8FM0_28_pef_20201217.pdf",
+     "sha256": "8c105816f5da9775428ffdbb5305800a84ec3b851ad348a9716fc76ee284aee3",
+     "bytes": 59090,
+     "last_modified": "Sat, 21 Nov 2026 00:08:26 GMT",
+     "etag": "W/\"e6d2-660be28e7f207",
+     "pearson_label": "8FM0-28 AS Further Decision Maths 2 - October 2020 - examiner report AS Decision Maths 2"
+    }
+   },
    "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_01",
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2022_JUNE_01",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/01",
    "module_ids": [
     "CP"
@@ -2319,315 +1327,1715 @@
    "component_title": "Core Pure Mathematics",
    "max_marks": 80,
    "duration_minutes": 100,
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-que-20220517.pdf",
+     "sha256": "4482cea37078cdeaf8d2368f8fc991e6a40de9202e0e89ae21c39ae36071f475",
+     "bytes": 1263989,
+     "last_modified": "Fri, 20 Nov 2026 18:52:25 GMT",
+     "etag": "W/\"134975-660b9bec292b2",
+     "pearson_label": "Question paper - 8FM0-01 AS Core Pure Mathematics - June 2022 AS Further Mathematics Paper 1 - Core Pure Mathematics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-rms-20220818.pdf",
+     "sha256": "db1895024f6e6986585822f610ec7fa0d8cfa19258b0a8ac920c589965b0de49",
+     "bytes": 565907,
+     "last_modified": "Fri, 20 Nov 2026 18:52:26 GMT",
+     "etag": "W/\"8a293-660b9bec56729",
+     "pearson_label": "Mark scheme - 8FM0-01 AS Core Pure Mathematics - June 2022 AS Further Mathematics Paper 1 - Core Pure Mathematics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-pef-20220818.pdf",
+     "sha256": "562fa365ec573cb2e65501773c0852291034df45f5d1795cab0fbe0af6df294b",
+     "bytes": 342509,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"539ed-660c7276a03fa",
+     "pearson_label": "Examiner report - 8FM0-01 AS Core Pure Mathematics - June 2022 AS Further Mathematics Paper 1 - Core Pure Mathematics"
     }
-   }
+   },
+   "imported": false
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_21",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_21",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/21",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FP1"
+   ],
+   "component_title": "Further Pure Mathematics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-que-20220524.pdf",
+     "sha256": "1fde21d4001c04b1a92cc9542865c53ac15bcf95a363291b6795b424c2d671d1",
+     "bytes": 811847,
+     "last_modified": "Fri, 20 Nov 2026 19:38:12 GMT",
+     "etag": "W/\"c6347-660ba627990b6",
+     "pearson_label": "Question paper - 8FM0-21 AS Further Pure Mathematics 1 - June 2022 AS Further Mathematics Paper 21 - Further Pure Mathematics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-rms-20220818.pdf",
+     "sha256": "c660d7ed94db07b69f7eca3e1c1b0c95051333000464e29f7e56285509472150",
+     "bytes": 457492,
+     "last_modified": "Sat, 21 Nov 2026 06:44:19 GMT",
+     "etag": "W/\"6fb14-660c3b0af2967",
+     "pearson_label": "Mark scheme - 8FM0-21 AS Further Pure Mathematics 1 - June 2022 AS Further Mathematics Paper 21 - Further Pure Mathematics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-pef-20220818.pdf",
+     "sha256": "8090afc0a40ed8b5aeba5a389d8a3d3df3fc2cfcdbc626cdc64588b2236184de",
+     "bytes": 273230,
+     "last_modified": "Fri, 20 Nov 2026 21:06:44 GMT",
+     "etag": "W/\"42b4e-660bb9f126fa8",
+     "pearson_label": "Examiner report - 8FM0-21 AS Further Pure Mathematics 1 - June 2022 AS Further Mathematics Paper 21 - Further Pure Mathematics"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_22",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_22",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/22",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FP2"
+   ],
+   "component_title": "Further Pure Mathematics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-que-20220524.pdf",
+     "sha256": "bfab1bfa50b45146b3fc8d72f933d6d8184b5d7d82fd87ff70321fa3b5b23c2e",
+     "bytes": 670240,
+     "last_modified": "Fri, 20 Nov 2026 18:52:25 GMT",
+     "etag": "W/\"a3a20-660b9bec30404",
+     "pearson_label": "Question paper - 8FM0-22 AS Further Pure Mathematics 2 - June 2022 AS Further Mathematics Paper 22 - Further Pure Mathematics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-rms-20220818.pdf",
+     "sha256": "110233909eea89a24fd96c9070a7f76f2dcc2c20bc11d1144da7a47755a4c297",
+     "bytes": 416838,
+     "last_modified": "Sat, 21 Nov 2026 06:45:49 GMT",
+     "etag": "W/\"65c46-660c3b614b216",
+     "pearson_label": "Mark scheme - 8FM0-22 AS Further Pure Mathematics 2 - June 2022 AS Further Mathematics Paper 22 - Further Pure Mathematics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-pef-20220818.pdf",
+     "sha256": "f141a0ae1306f24d8d6c390424483cef7e83602c387e49b8c5477e2c2d1d7997",
+     "bytes": 265190,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"40be6-660c7277373aa",
+     "pearson_label": "Examiner report - 8FM0-22 AS Further Pure Mathematics 2 - June 2022 AS Further Mathematics Paper 22 - Further Pure Mathematics"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_23",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_23",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/23",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FS1"
+   ],
+   "component_title": "Further Statistics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-que-20220524.pdf",
+     "sha256": "6a1584fb92ca89b09c1b8c0ded636f71744d24ac8a649a4520bb7a46a4273a32",
+     "bytes": 557370,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"8813a-660c72768c547",
+     "pearson_label": "Question paper - 8FM0-23 AS Further Statistics 1 - June 2022 AS Further Mathematics Paper 23 - Further Statistics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-rms-20220818.pdf",
+     "sha256": "16079eca7be8895e5a83b6cf23c96d3993c45e24cdede5844555e891748a7b60",
+     "bytes": 389686,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"5f236-660c727739aba",
+     "pearson_label": "Mark scheme - 8FM0-23 AS Further Statistics 1 - June 2022 AS Further Mathematics Paper 23 - Further Statistics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-pef-20220818.pdf",
+     "sha256": "b2fbc2476b3232b384dee1526ec88ec86c4090d69dab39d1c1e0fb342f6c13ce",
+     "bytes": 314825,
+     "last_modified": "Fri, 20 Nov 2026 21:27:27 GMT",
+     "etag": "W/\"4cdc9-660bbe932556f",
+     "pearson_label": "Examiner report - 8FM0-23 AS Further Statistics 1 - June 2022 AS Further Mathematics Paper 23 - Further Statistics"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_24",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_24",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/24",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FS2"
+   ],
+   "component_title": "Further Statistics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-que-20220524.pdf",
+     "sha256": "06cb64c473e194a921450e80289a2b7c0c9fc86b353a5c1dd75d149650292ceb",
+     "bytes": 669946,
+     "last_modified": "Sat, 21 Nov 2026 00:10:00 GMT",
+     "etag": "W/\"a38fa-660be2e845180",
+     "pearson_label": "Question paper - 8FM0-24 AS Further Statistics 2 - June 2022 AS Further Mathematics Paper 24 - Further Statistics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-rms-20220818.pdf",
+     "sha256": "0a4bec6c69589c8aa7ca8a449002b7bdd2e6fd5e6658d6994edbd93dc8fbead9",
+     "bytes": 362411,
+     "last_modified": "Fri, 20 Nov 2026 18:52:31 GMT",
+     "etag": "W/\"587ab-660b9bf1a4bd8",
+     "pearson_label": "Mark scheme - 8FM0-24 AS Further Statistics 2 - June 2022 AS Further Mathematics Paper 24 - Further Statistics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-pef-20220818.pdf",
+     "sha256": "f9ae3ebf1160cbe411045aa524d6b01b3c9c9a68a5a3ce4c74b0c9658b849a66",
+     "bytes": 302812,
+     "last_modified": "Fri, 20 Nov 2026 20:44:46 GMT",
+     "etag": "W/\"49edc-660bb5085fa70",
+     "pearson_label": "Examiner report - 8FM0-24 AS Further Statistics 2 - June 2022 AS Further Mathematics Paper 24 - Further Statistics"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_25",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_25",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/25",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FM1"
+   ],
+   "component_title": "Further Mechanics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-que-20220524.pdf",
+     "sha256": "884d98ac9169951efe468f0fdb08a3c82a88487483952e0467b74b8c66877cd1",
+     "bytes": 575386,
+     "last_modified": "Fri, 20 Nov 2026 18:52:31 GMT",
+     "etag": "W/\"8c79a-660b9bf1a4fb0",
+     "pearson_label": "Question paper - 8FM0-25 AS Further Mechanics 1 - June 2022 AS Further Mathematics Paper 25 - Further Mechanics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-rms-20220818.pdf",
+     "sha256": "1d5056b120257ee02fa09486a3a4a51d13900bbbb17c7b5cf8009d637e26e2bc",
+     "bytes": 368591,
+     "last_modified": "Sat, 21 Nov 2026 09:51:46 GMT",
+     "etag": "W/\"59fcf-660c64f17657c",
+     "pearson_label": "Mark scheme - 8FM0-25 AS Further Mechanics 1 - June 2022 AS Further Mathematics Paper 25 - Further Mechanics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-pef-20220818.pdf",
+     "sha256": "ca7b2516da076878ab8074008818c857d6e01bcdcb6161577d93d47490157e77",
+     "bytes": 303424,
+     "last_modified": "Sat, 21 Nov 2026 01:18:13 GMT",
+     "etag": "W/\"4a140-660bf2278ef84",
+     "pearson_label": "Examiner report - 8FM0-25 AS Further Mechanics 1 - June 2022 AS Further Mathematics Paper 25 - Further Mechanics"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_26",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_26",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/26",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "FM2"
+   ],
+   "component_title": "Further Mechanics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-que-20220524.pdf",
+     "sha256": "387f9ce3cd21f4fbabbc349c88a90dd3a5d20cfd4a8b74f116ffd7585070e149",
+     "bytes": 717016,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"af0d8-660c7276a03fa",
+     "pearson_label": "Question paper - 8FM0-26 AS Further Mechanics 2 - June 2022 AS Further Mathematics Paper 26 - Further Mechanics"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-rms-20220818.pdf",
+     "sha256": "c89b726cd34760b7961b86464b1edbff629a86476fd59bb68904999584d4da6c",
+     "bytes": 365551,
+     "last_modified": "Fri, 20 Nov 2026 18:52:31 GMT",
+     "etag": "W/\"593ef-660b9bf1853e0",
+     "pearson_label": "Mark scheme - 8FM0-26 AS Further Mechanics 2 - June 2022 AS Further Mathematics Paper 26 - Further Mechanics"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-pef-20220818.pdf",
+     "sha256": "db2c6fe1c9952fdbd25707a1cf43c65d9d371784a652fb0f5ddf04c771b0a610",
+     "bytes": 271449,
+     "last_modified": "Sat, 21 Nov 2026 10:52:17 GMT",
+     "etag": "W/\"42459-660c727756f7a",
+     "pearson_label": "Examiner report - 8FM0-26 AS Further Mechanics 2 - June 2022 AS Further Mathematics Paper 26 - Further Mechanics"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_27",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_27",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/27",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "D1"
+   ],
+   "component_title": "Decision Mathematics 1",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-que-20220524.pdf",
+     "sha256": "ffdcc402e13f0cdaf851899e54a4c93793e526df878e4ece89a1a25bad1f8e9d",
+     "bytes": 743906,
+     "last_modified": "Fri, 20 Nov 2026 22:00:13 GMT",
+     "etag": "W/\"b59e2-660bc5e561f11",
+     "pearson_label": "Question paper - 8FM0-27 AS Decision Mathematics 1 - June 2022 AS Further Mathematics Paper 27 - Decision Maths"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-rms-20220818.pdf",
+     "sha256": "d3c19571e68ad51685666d1bb32b2d8a95c2a8af4ee731b1c08e7665574d4aa9",
+     "bytes": 511269,
+     "last_modified": "Fri, 20 Nov 2026 18:27:48 GMT",
+     "etag": "W/\"7cd25-660b966b7430f",
+     "pearson_label": "Mark scheme - 8FM0-27 AS Decision Mathematics 1 - June 2022 AS Further Mathematics Paper 27 - Decision Maths"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-pef-20220818.pdf",
+     "sha256": "852b7bcfaa7393c95a5fa493b898c8ec659de5020686cbc49f6fbd6e1043a57f",
+     "bytes": 275938,
+     "last_modified": "Sat, 21 Nov 2026 06:51:12 GMT",
+     "etag": "W/\"435e2-660c3c9559a10",
+     "pearson_label": "Examiner report - 8FM0-27 AS Decision Mathematics 1 - June 2022 AS Further Mathematics Paper 27 - Decision Maths"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   },
   {
+   "paper_id": "EDX_8FM0_2022_JUNE_28",
    "qualification_code": "8FM0",
    "level": "AS",
    "is_as": true,
-   "year": 2021,
-   "series": "Autumn",
-   "sitting_status": "possible_unverified",
-   "imported": false,
-   "paper_id": "EDX_8FM0_2021_AUTUMN_28",
+   "year": 2022,
+   "series": "June",
+   "pearson_series": "June 2022",
    "official_paper_code": "8FM0/28",
-   "module_ids": [],
-   "component_title": "Paper 2 option module (module not verified)",
-   "max_marks": null,
+   "module_ids": [
+    "D2"
+   ],
+   "component_title": "Decision Mathematics 2",
+   "max_marks": 40,
    "duration_minutes": null,
-   "shared_duration": "Paper 2 is 100 minutes for the two route modules",
+   "module_verified_from": "printed question-paper cover",
    "documents": {
     "question_paper": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-que-20220524.pdf",
+     "sha256": "118d57ac8ac6a51a232e8a3355b60d0eb5fd4412c7598b793cf5dc539d4fe78c",
+     "bytes": 647065,
+     "last_modified": "Sat, 21 Nov 2026 10:52:16 GMT",
+     "etag": "W/\"9df99-660c7276bb1aa",
+     "pearson_label": "Question paper - 8FM0-28 AS Decision Mathematics 2 - June 2022 AS Further Mathematics Paper 28 - Decision Maths"
     },
     "mark_scheme": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-rms-20220818.pdf",
+     "sha256": "286e4404aa4cffc2a3d466fb570b3a76343a2fad471f374dcf18f3724efb5a02",
+     "bytes": 397355,
+     "last_modified": "Fri, 20 Nov 2026 18:52:31 GMT",
+     "etag": "W/\"6102b-660b9bf1eaabc",
+     "pearson_label": "Mark scheme - 8FM0-28 AS Decision Mathematics 2 - June 2022 AS Further Mathematics Paper 28 - Decision Maths"
     },
     "examiner_report": {
-     "availability": "unverified_host_blocked",
-     "url": null,
-     "sha256": null,
-     "bytes": null
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-pef-20220818.pdf",
+     "sha256": "be920997459652d2ad9fc5557ed0508760a0ea26cfc7e831c5b272d62010787d",
+     "bytes": 288139,
+     "last_modified": "Fri, 20 Nov 2026 22:33:25 GMT",
+     "etag": "W/\"4658b-660bcd515d1bd",
+     "pearson_label": "Examiner report - 8FM0-28 AS Decision Mathematics 2 - June 2022 AS Further Mathematics Paper 28 - Decision Maths"
     }
-   }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_01",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/01",
+   "module_ids": [
+    "CP"
+   ],
+   "component_title": "Core Pure Mathematics",
+   "max_marks": 80,
+   "duration_minutes": 100,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-que-20230516.pdf",
+     "sha256": "d63c5b66c50a00582b7da3d14ea566f4923da6e37fff70199ad4c69ef55fd34a",
+     "bytes": 759532,
+     "last_modified": "Fri, 20 Nov 2026 16:59:39 GMT",
+     "etag": "W/\"b96ec-660b82b6c302c",
+     "pearson_label": "Question paper - 8FM0-01 AS Core Pure Mathematics - June 2023 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-rms-20230824.pdf",
+     "sha256": "6ee4c1095bcca8f350b4078fb96650b2ab72abbeb78be58a0485d905f641fae5",
+     "bytes": 821899,
+     "last_modified": "Fri, 20 Nov 2026 16:59:39 GMT",
+     "etag": "W/\"c8a8b-660b82b72e8fb",
+     "pearson_label": "Mark scheme - 8FM0-01 AS Core Pure Mathematics - June 2023 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-pef-20230817.pdf",
+     "sha256": "a71fbd5ba011aea8993cfbb3a0ebf0e7f49c3dce350a2c9433c6ffec312c5789",
+     "bytes": 183632,
+     "last_modified": "Fri, 20 Nov 2026 17:14:45 GMT",
+     "etag": "W/\"2cd50-660b8616fe596",
+     "pearson_label": "Examiner report - 8FM0-01 AS Core Pure Mathematics - June 2023 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    }
+   },
+   "imported": false
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_21",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/21",
+   "module_ids": [
+    "FP1"
+   ],
+   "component_title": "Further Pure Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-que-20230520.pdf",
+     "sha256": "1f50c02ede81910c350e24acb17b26f49067bda8610fb47570ba3c57cf0fc4bd",
+     "bytes": 462095,
+     "last_modified": "Sat, 21 Nov 2026 01:39:37 GMT",
+     "etag": "W/\"70d0f-660bf6efff4d9",
+     "pearson_label": "Question paper - 8FM0-21 AS Further Pure Mathematics 1 - June 2023 AS Further Mathematics Paper 21 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-rms-20230824.pdf",
+     "sha256": "50ec51dad9612bfb3927c07df4716f4e8f247c39bb465be84ea6234619a8480e",
+     "bytes": 562230,
+     "last_modified": "Fri, 20 Nov 2026 18:42:47 GMT",
+     "etag": "W/\"89436-660b99c42b63f",
+     "pearson_label": "Mark scheme - 8FM0-21 AS Further Pure Mathematics 1 - June 2023 AS Further Mathematics Paper 21 - Further Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-pef-20230817.pdf",
+     "sha256": "ff11acbadfef6a84d2400ab38908295612ab87c23495fbd48f53c2ad18374dda",
+     "bytes": 211658,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"33aca-660c7275a4654",
+     "pearson_label": "Examiner report - 8FM0-21 AS Further Pure Mathematics 1 - June 2023 AS Further Mathematics Paper 21 - Further Pure Mathematics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_22",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/22",
+   "module_ids": [
+    "FP2"
+   ],
+   "component_title": "Further Pure Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-que-20230520.pdf",
+     "sha256": "2fa011add5e618092ae30608faadb1b91cf42b2bd129e09b649186fa6b34c6c6",
+     "bytes": 438231,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"6afd7-660c7275a4654",
+     "pearson_label": "Question paper - 8FM0-22 AS Further Pure Mathematics 2 - June 2023 AS Further Mathematics Paper 22 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-rms-20230817.pdf",
+     "sha256": "72e9187060c6fd8e1a657eaa1c2acf376523ee799d5746a1a0ece338fcb75b0e",
+     "bytes": 284607,
+     "last_modified": "Sat, 21 Nov 2026 06:45:55 GMT",
+     "etag": "W/\"457bf-660c3b6620ed1",
+     "pearson_label": "Mark scheme - 8FM0-22 AS Further Pure Mathematics 2 - June 2023 AS Further Mathematics Paper 22 - Further Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-pef-20230817.pdf",
+     "sha256": "e1da58ecc4a1823e8b3b61823899afe42ae37abd29b757e16bef66fa6ac563c7",
+     "bytes": 120528,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"1d6d0-660c7275a4c89",
+     "pearson_label": "Examiner report - 8FM0-22 AS Further Pure Mathematics 2 - June 2023 AS Further Mathematics Paper 22 - Further Pure Mathematics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_23",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/23",
+   "module_ids": [
+    "FS1"
+   ],
+   "component_title": "Further Statistics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-que-20230520.pdf",
+     "sha256": "24d560f965a5043bf8da0c0db37f82bde3b76acceb06996d3e3b60370cf92baa",
+     "bytes": 539587,
+     "last_modified": "Sat, 21 Nov 2026 06:47:00 GMT",
+     "etag": "W/\"83bc3-660c3ba48e68c",
+     "pearson_label": "Question paper - 8FM0-23 AS Further Statistics 1 - June 2023 AS Further Mathematics Paper 23 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-rms-20230817.pdf",
+     "sha256": "b5f1f6a135511b29531b56ccddb635a58b5ac751f8b813152eb8cc4875323292",
+     "bytes": 395720,
+     "last_modified": "Fri, 20 Nov 2026 18:42:47 GMT",
+     "etag": "W/\"609c8-660b99c443cdf",
+     "pearson_label": "Mark scheme - 8FM0-23 AS Further Statistics 1 - June 2023 AS Further Mathematics Paper 23 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-pef-20230817.pdf",
+     "sha256": "8bd2ba4c3b5cd27a6e7062c62598ccc8e727a0277bc56961a7d85aa6115378a8",
+     "bytes": 167099,
+     "last_modified": "Sat, 21 Nov 2026 05:02:22 GMT",
+     "etag": "W/\"28cbb-660c2441d1fd9",
+     "pearson_label": "Examiner report - 8FM0-23 AS Further Statistics 1 - June 2023 AS Further Mathematics Paper 23 - Further Statistics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_24",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/24",
+   "module_ids": [
+    "FS2"
+   ],
+   "component_title": "Further Statistics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-que-20230520.pdf",
+     "sha256": "a62527ea839dd4a8e0dc3c97d0a04655052768feb9e148b61361d54699766542",
+     "bytes": 425839,
+     "last_modified": "Sat, 21 Nov 2026 01:39:15 GMT",
+     "etag": "W/\"67f6f-660bf6dac1aac",
+     "pearson_label": "Question paper - 8FM0-24 AS Further Statistics 2 - June 2023 AS Further Mathematics Paper 24 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-rms-20230817.pdf",
+     "sha256": "d114d4cc69186d395aaae2cd1afe8eef0c4146834465adabe823fe54fa4217da",
+     "bytes": 366793,
+     "last_modified": "Fri, 20 Nov 2026 18:42:47 GMT",
+     "etag": "W/\"598c9-660b99c43f5b6",
+     "pearson_label": "Mark scheme - 8FM0-24 AS Further Statistics 2 - June 2023 AS Further Mathematics Paper 24 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-pef-20230817.pdf",
+     "sha256": "ee083af94fbc5c38625f0b4e7ed9cd060b98662bc3cba4dd1b8557a4c9d9fd90",
+     "bytes": 197130,
+     "last_modified": "Sat, 21 Nov 2026 06:48:26 GMT",
+     "etag": "W/\"3020a-660c3bf6b99e2",
+     "pearson_label": "Examiner report - 8FM0-24 AS Further Statistics 2 - June 2023 AS Further Mathematics Paper 24 - Further Statistics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_25",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/25",
+   "module_ids": [
+    "FM1"
+   ],
+   "component_title": "Further Mechanics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-que-20230520.pdf",
+     "sha256": "6eef9795931d4c572784e1cbafbe061d82df7c213e1f3028cd816fc3dee55e2a",
+     "bytes": 636176,
+     "last_modified": "Fri, 20 Nov 2026 22:30:48 GMT",
+     "etag": "W/\"9b510-660bccbbbfe89",
+     "pearson_label": "Question paper - 8FM0-25 AS Further Mechanics 1 - June 2023 AS Further Mathematics Paper 25 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-rms-20230817.pdf",
+     "sha256": "89dd0377355b28debe7eff1732c7819eaa37f58eac2c411de53751ce8cfd875a",
+     "bytes": 316093,
+     "last_modified": "Fri, 20 Nov 2026 21:47:48 GMT",
+     "etag": "W/\"4d2bd-660bc31fa7326",
+     "pearson_label": "Mark scheme - 8FM0-25 AS Further Mechanics 1 - June 2023 AS Further Mathematics Paper 25 - Further Mechanics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-pef-20230817.pdf",
+     "sha256": "935afb5300ea979e5467ec60acc9139dc203e0e554bf979a1c340b51a6db6ec2",
+     "bytes": 169401,
+     "last_modified": "Fri, 20 Nov 2026 19:11:34 GMT",
+     "etag": "W/\"295b9-660ba03372fec",
+     "pearson_label": "Examiner report - 8FM0-25 AS Further Mechanics 1 - June 2023 AS Further Mathematics Paper 25 - Further Mechanics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_26",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/26",
+   "module_ids": [
+    "FM2"
+   ],
+   "component_title": "Further Mechanics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-que-20230520.pdf",
+     "sha256": "82a9ff2b067d1b158a98f7b095c4b3f45124e3256cb6ee4df359d778fd924fe3",
+     "bytes": 609894,
+     "last_modified": "Fri, 20 Nov 2026 18:42:54 GMT",
+     "etag": "W/\"94e66-660b99cb9e214",
+     "pearson_label": "Question paper - 8FM0-26 AS Further Mechanics 2 - June 2023 AS Further Mathematics Paper 26 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-rms-20230817.pdf",
+     "sha256": "5cd4a2384250a329a1761b1115e308cf84ef4adc3a394e4c54d639cf78151f32",
+     "bytes": 328056,
+     "last_modified": "Fri, 20 Nov 2026 18:42:54 GMT",
+     "etag": "W/\"50178-660b99cb96ce4",
+     "pearson_label": "Mark scheme - 8FM0-26 AS Further Mechanics 2 - June 2023 AS Further Mathematics Paper 26 - Further Mechanics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-pef-20230817.pdf",
+     "sha256": "828a4c8c335b4bd37703ca7bb576d1c88c4f6fd14022b11a2109a23d37e07692",
+     "bytes": 163810,
+     "last_modified": "Sat, 21 Nov 2026 04:54:34 GMT",
+     "etag": "W/\"27fe2-660c2283011ff",
+     "pearson_label": "Examiner report - 8FM0-26 AS Further Mechanics 2 - June 2023 AS Further Mathematics Paper 26 - Further Mechanics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_27",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/27",
+   "module_ids": [
+    "D1"
+   ],
+   "component_title": "Decision Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-que-20230520.pdf",
+     "sha256": "fae4da59656aef35bf99fbd73c27aa73f78968c620699f7f828c7466d30db383",
+     "bytes": 529618,
+     "last_modified": "Fri, 20 Nov 2026 18:42:54 GMT",
+     "etag": "W/\"814d2-660b99cb8d0a4",
+     "pearson_label": "Question paper - 8FM0-27 AS Decision Mathematics 1 - June 2023 AS Further Mathematics Paper 27 - Decision Maths"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-rms-20230817.pdf",
+     "sha256": "45e1d5e9130bf2bb3576bbf7f9ef7751134d28fcb67da602b2da9ef43896799e",
+     "bytes": 576750,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"8ccee-660c7275e4429",
+     "pearson_label": "Mark scheme - 8FM0-27 AS Decision Mathematics 1 - June 2023 AS Further Mathematics Paper 27 - Decision Maths"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-pef-20230817.pdf",
+     "sha256": "f84d822e8f2d5287eb3073a5f6a523dfdf7f3d27df99e19138e056f3f9df451a",
+     "bytes": 161480,
+     "last_modified": "Sat, 21 Nov 2026 04:58:37 GMT",
+     "etag": "W/\"276c8-660c236af7442",
+     "pearson_label": "Examiner report - 8FM0-27 AS Decision Mathematics 1 - June 2023 AS Further Mathematics Paper 27 - Decision Maths"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2023_JUNE_28",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2023,
+   "series": "June",
+   "pearson_series": "June 2023",
+   "official_paper_code": "8FM0/28",
+   "module_ids": [
+    "D2"
+   ],
+   "component_title": "Decision Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-que-20230520.pdf",
+     "sha256": "53136bb86646750887d30a4d6dfaaeadf95b929536c68feda531888267b2ca61",
+     "bytes": 510039,
+     "last_modified": "Sat, 21 Nov 2026 01:39:15 GMT",
+     "etag": "W/\"7c857-660bf6db57349",
+     "pearson_label": "Question paper - 8FM0-28 AS Decision Mathematics 2 - June 2023 AS Further Mathematics Paper 28 - Decision Maths"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-rms-20230817.pdf",
+     "sha256": "8170307dcf3d33540bdb8ac0a3201308db2c6a5631ea8518639da867128bfd60",
+     "bytes": 446791,
+     "last_modified": "Fri, 20 Nov 2026 18:42:54 GMT",
+     "etag": "W/\"6d147-660b99cb8d0a4",
+     "pearson_label": "Mark scheme - 8FM0-28 AS Decision Mathematics 2 - June 2023 AS Further Mathematics Paper 28 - Decision Maths"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-pef-20230817.pdf",
+     "sha256": "f390288c93b7e8a0601f53f0d4adeff0dc7edd0870fd52c220e0b9e69ba9a5a4",
+     "bytes": 204832,
+     "last_modified": "Sat, 21 Nov 2026 10:52:15 GMT",
+     "etag": "W/\"32020-660c7275f9d85",
+     "pearson_label": "Examiner report - 8FM0-28 AS Decision Mathematics 2 - June 2023 AS Further Mathematics Paper 28 - Decision Maths"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_01",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/01",
+   "module_ids": [
+    "CP"
+   ],
+   "component_title": "Core Pure Mathematics",
+   "max_marks": 80,
+   "duration_minutes": 100,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-que-20240514.pdf",
+     "sha256": "62e55831ab23c6fd2d7f6538d4e0d7653f031d36b75d3c516722f6acdd328c7a",
+     "bytes": 668613,
+     "last_modified": "Fri, 20 Nov 2026 18:42:40 GMT",
+     "etag": "W/\"a33c5-660b99be09fef",
+     "pearson_label": "Question paper - 8FM0-01 AS Core Pure Mathematics - June 2024 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-rms-20240815.pdf",
+     "sha256": "6f9fd79f5a38ce5630321381a5631c6828f7f62ad6613a6de59a072c0beae84f",
+     "bytes": 652735,
+     "last_modified": "Fri, 20 Nov 2026 18:42:40 GMT",
+     "etag": "W/\"9f5bf-660b99be0c01c",
+     "pearson_label": "Mark scheme - 8FM0-01 AS Core Pure Mathematics - June 2024 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-pef-20240815.pdf",
+     "sha256": "fa58dd0a48a5d942ee617c0f8ed0d243382e13dac024aba1220f4ae11af2b02b",
+     "bytes": 357639,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"57507-660c7274a40c0",
+     "pearson_label": "Examiner report - 8FM0-01 AS Core Pure Mathematics - June 2024"
+    }
+   },
+   "imported": false
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_21",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/21",
+   "module_ids": [
+    "FP1"
+   ],
+   "component_title": "Further Pure Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-que-20240518.pdf",
+     "sha256": "fe37f3ee599e71839ec91e6f22e9e2a4491ad3ab7218720af3ec87c0480751ee",
+     "bytes": 415488,
+     "last_modified": "Fri, 20 Nov 2026 18:56:43 GMT",
+     "etag": "W/\"65700-660b9ce1f3b1b",
+     "pearson_label": "Question paper - 8FM0-21 AS Further Pure Mathematics 1 - June 2024 AS Further Mathematics Paper 21 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-rms-24060815.pdf",
+     "sha256": "f979c4fe0a65e78135cce45b1445bb77c60289cd1dee2456659f4f3f4e02dc03",
+     "bytes": 496996,
+     "last_modified": "Fri, 20 Nov 2026 18:42:40 GMT",
+     "etag": "W/\"79564-660b99bddbfe9",
+     "pearson_label": "Mark scheme - 8FM0-21 AS Further Pure Mathematics 1 - June 2024 AS Further Mathematics Paper 21 - Further Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-pef-20240815.pdf",
+     "sha256": "db0f3863c445bd9c3fbb3e86ff96cc866a21be16fa489dce2b1ed83bea6fb48a",
+     "bytes": 281925,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"44d45-660c7274b2b20",
+     "pearson_label": "Examiner report - 8FM0-21 AS Further Pure Mathematics 1 - June 2024 AS Further Mathematics Paper 21 - Further Pure Mathematics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_22",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/22",
+   "module_ids": [
+    "FP2"
+   ],
+   "component_title": "Further Pure Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-que-20240518.pdf",
+     "sha256": "96f94c33bc8f8a2d17c1b5d0b6257cb32614fa81c391051cb658008b563bda37",
+     "bytes": 511397,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"7cda5-660c7274b7f78",
+     "pearson_label": "Question paper - 8FM0-22 AS Further Pure Mathematics 2 - June 2024 AS Further Mathematics Paper 22 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-rms-24060815.pdf",
+     "sha256": "90828e7a90cdef3a1073413e2907b8ea3c77cef5b7fe3fc7a176f7b346bcf5d3",
+     "bytes": 333385,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"51649-660c7274b7f78",
+     "pearson_label": "Mark scheme - 8FM0-22 AS Further Pure Mathematics 2 - June 2024 AS Further Mathematics Paper 22 - Further Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-pef-20240815.pdf",
+     "sha256": "782733bbf9197891c66947f7e0080cdc08da5c566fea8f83544351ff9d6dc893",
+     "bytes": 314007,
+     "last_modified": "Fri, 20 Nov 2026 21:03:28 GMT",
+     "etag": "W/\"4ca97-660bb936588b0",
+     "pearson_label": "Examiner report - 8FM0-22 AS Further Pure Mathematics 2 - June 2024"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_23",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/23",
+   "module_ids": [
+    "FS1"
+   ],
+   "component_title": "Further Statistics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-que-20240518.pdf",
+     "sha256": "52d1417de652fd835f7f4f7db53e58cd842690d1ee892fe54e7b2f88fb1151f9",
+     "bytes": 382870,
+     "last_modified": "Fri, 20 Nov 2026 18:42:40 GMT",
+     "etag": "W/\"5d796-660b99bdde6f9",
+     "pearson_label": "Question paper - 8FM0-23 AS Further Statistics 1 - June 2024 AS Further Mathematics Paper 23 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-rms-24060815.pdf",
+     "sha256": "0de35c53f39dc30cf84d54706c8bd56e3c22492f764f0186ef85eb8c0f6ba236",
+     "bytes": 410256,
+     "last_modified": "Fri, 20 Nov 2026 18:42:42 GMT",
+     "etag": "W/\"64290-660b99bf81f94",
+     "pearson_label": "Mark scheme - 8FM0-23 AS Further Statistics 1 - June 2024 AS Further Mathematics Paper 23 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-pef-20240815.pdf",
+     "sha256": "a7c0ccab7e05be126c710bd42c10f24e58d231de16079a8a6761043063cd39e1",
+     "bytes": 354433,
+     "last_modified": "Fri, 20 Nov 2026 20:22:01 GMT",
+     "etag": "W/\"56881-660baff26eb45",
+     "pearson_label": "Examiner report - 8FM0-23 AS Further Statistics 1 - June 2024"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_24",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/24",
+   "module_ids": [
+    "FS2"
+   ],
+   "component_title": "Further Statistics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-que-20240518.pdf",
+     "sha256": "e60010bde3294e4f29551425bfe96e4296a0eac8cf9b6076bfa67df8d3d2ca02",
+     "bytes": 428235,
+     "last_modified": "Fri, 20 Nov 2026 18:42:43 GMT",
+     "etag": "W/\"688cb-660b99c1341ce",
+     "pearson_label": "Question paper - 8FM0-24 AS Further Statistics 2 - June 2024 AS Further Mathematics Paper 24 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-rms-24060815.pdf",
+     "sha256": "eda381018a6dfb4401bb68c24f64f1847414db3770e2f5a99731d7920aeb5cd5",
+     "bytes": 359090,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"57ab2-660c7274cffe1",
+     "pearson_label": "Mark scheme - 8FM0-24 AS Further Statistics 2 - June 2024 AS Further Mathematics Paper 24 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-pef-20240815.pdf",
+     "sha256": "7fbaa4c604b2743cd789e803081c65b27c07de65d4c9f064f02f7075a26a25be",
+     "bytes": 280300,
+     "last_modified": "Sat, 21 Nov 2026 06:18:17 GMT",
+     "etag": "W/\"446ec-660c35397c518",
+     "pearson_label": "Examiner report - 8FM0-24 AS Further Statistics 2 - June 2024"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_25",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/25",
+   "module_ids": [
+    "FM1"
+   ],
+   "component_title": "Further Mechanics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-que-20240518.pdf",
+     "sha256": "a472523fbcac417b0365304b528e08fc4db7883aef7559f26d385edc7203b74b",
+     "bytes": 465635,
+     "last_modified": "Fri, 20 Nov 2026 21:32:54 GMT",
+     "etag": "W/\"71ae3-660bbfcb12c7d",
+     "pearson_label": "Question paper - 8FM0-25 AS Further Mechanics 1 - June 2024 AS Further Mathematics Paper 25 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-rms-24060815.pdf",
+     "sha256": "cbee89901b8d68bac989dadcc5e542f3c14ce0bd72bae080a5382ec990dea073",
+     "bytes": 380777,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"5cf69-660c7274df078",
+     "pearson_label": "Mark scheme - 8FM0-25 AS Further Mechanics 1 - June 2024 AS Further Mathematics Paper 25 - Further Mechanics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-pef-20240815.pdf",
+     "sha256": "7cfd0609bd9c711c04276a8ca7930cc5ae8f84764e90d44ad5c4e00cbd9b4f73",
+     "bytes": 225723,
+     "last_modified": "Fri, 20 Nov 2026 17:14:34 GMT",
+     "etag": "W/\"371bb-660b860cffbf4",
+     "pearson_label": "Examiner report - 8FM0-25 AS Further Mechanics 1 - June 2024"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_26",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/26",
+   "module_ids": [
+    "FM2"
+   ],
+   "component_title": "Further Mechanics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-que-20240518.pdf",
+     "sha256": "4c892fbb4f56fb628636f13d8bca4000a06e61a87d6f66b4e1a104b63ddfdebb",
+     "bytes": 541965,
+     "last_modified": "Fri, 20 Nov 2026 18:42:43 GMT",
+     "etag": "W/\"8450d-660b99c10d7ba",
+     "pearson_label": "Question paper - 8FM0-26 AS Further Mechanics 2 - June 2024 AS Further Mathematics Paper 26 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-rms-24060815.pdf",
+     "sha256": "2feae26f50e741a49efb68ed08bbc91ce5e81941d93ce54249a0af10713d70db",
+     "bytes": 328840,
+     "last_modified": "Fri, 20 Nov 2026 18:42:47 GMT",
+     "etag": "W/\"50488-660b99c431179",
+     "pearson_label": "Mark scheme - 8FM0-26 AS Further Mechanics 2 - June 2024 AS Further Mathematics Paper 26 - Further Mechanics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-pef-20240815.pdf",
+     "sha256": "dd289e35f659956f1bf12780e92a224cd1e7be8cd54c80f10aaa789adcce3644",
+     "bytes": 170183,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"298c7-660c7274efbb1",
+     "pearson_label": "Examiner report - 8FM0-26 AS Further Mechanics 2 - June 2024"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_27",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/27",
+   "module_ids": [
+    "D1"
+   ],
+   "component_title": "Decision Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-que-20240518.pdf",
+     "sha256": "8bc1df4c9dacd3cac662299ed0a75c7e2a6f9d12e854102e46062eeff52d759a",
+     "bytes": 604552,
+     "last_modified": "Fri, 20 Nov 2026 21:32:55 GMT",
+     "etag": "W/\"93988-660bbfcb400e1",
+     "pearson_label": "Question paper - 8FM0-27 AS Decision Mathematics 1 - June 2024 AS Further Mathematics Paper 27 - Decision Maths"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-rms-24060815.pdf",
+     "sha256": "c54fb5ddf000861aac4d9b2063ae7145d800b4d0b0e96b5a59ef012c998d6a58",
+     "bytes": 811409,
+     "last_modified": "Fri, 20 Nov 2026 18:42:43 GMT",
+     "etag": "W/\"c6191-660b99c1104f1",
+     "pearson_label": "Mark scheme - 8FM0-27 AS Decision Mathematics 1 - June 2024 AS Further Mathematics Paper 27 - Decision Maths"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-pef-20240815.pdf",
+     "sha256": "2fb49503be2a8df454db46e52b739dcce6b6392f8f880f09e2d2a1dbca6b8f58",
+     "bytes": 259827,
+     "last_modified": "Sat, 21 Nov 2026 06:51:35 GMT",
+     "etag": "W/\"3f6f3-660c3caac2998",
+     "pearson_label": "Examiner report - 8FM0-27 AS Decision Mathematics 1 - June 2024 AS Further Mathematics Paper 27 - Decision Maths"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2024_JUNE_28",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2024,
+   "series": "June",
+   "pearson_series": "June 2024",
+   "official_paper_code": "8FM0/28",
+   "module_ids": [
+    "D2"
+   ],
+   "component_title": "Decision Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-que-20240518.pdf",
+     "sha256": "6314fbbb12c2914522ad7876f62a5157a113a8ab9fc1ccbe089c9b46c9e53e3d",
+     "bytes": 578475,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"8d3ab-660c727500d21",
+     "pearson_label": "Question paper - 8FM0-28 AS Decision Mathematics 2 - June 2024 AS Further Mathematics Paper 28 - Decision Maths"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-rms-24060815.pdf",
+     "sha256": "ca37d4a325b8ff8c2ea4db2a0f9629693c1d665659ae41fd3daea7f77878e8a1",
+     "bytes": 397628,
+     "last_modified": "Sat, 21 Nov 2026 10:52:14 GMT",
+     "etag": "W/\"6113c-660c727505b41",
+     "pearson_label": "Mark scheme - 8FM0-28 AS Decision Mathematics 2 - June 2024 AS Further Mathematics Paper 28 - Decision Maths"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-pef-20240815.pdf",
+     "sha256": "81ef3aa04d69d5c1cbf3b1d8979a9cc577064ba991bd7bdc0a53956cfdec847c",
+     "bytes": 257102,
+     "last_modified": "Fri, 20 Nov 2026 23:08:01 GMT",
+     "etag": "W/\"3ec4e-660bd50d77d8a",
+     "pearson_label": "Examiner report - 8FM0-28 AS Decision Mathematics 2 - June 2024"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_01",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/01",
+   "module_ids": [
+    "CP"
+   ],
+   "component_title": "Core Pure Mathematics",
+   "max_marks": 80,
+   "duration_minutes": 100,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-que-20250513.pdf",
+     "sha256": "636f4695eb95c8a7bdd2e8fa2fd925a6c4b6119ae47f3648c83698b14f0336d9",
+     "bytes": 877444,
+     "last_modified": "Fri, 20 Nov 2026 18:44:54 GMT",
+     "etag": "W/\"d6384-660b9a3d89a03",
+     "pearson_label": "Question paper - 8FM0-01 AS Core Pure Mathematics - June 2025 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-rms-20250814.pdf",
+     "sha256": "b4b047e3709e91aeae42fe15ba51cb3b7fbbe160610d1f1920197163437dc9d1",
+     "bytes": 556441,
+     "last_modified": "Sat, 21 Nov 2026 06:43:25 GMT",
+     "etag": "W/\"87d99-660c3ad73d40b",
+     "pearson_label": "Mark scheme - 8FM0-01 AS Core Pure Mathematics - June 2025 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-01-pef-20250814.pdf",
+     "sha256": "04b5d3c34d4b169ba3a1057e17eba9c2ad07b4fb0dd43f06e932da37145c8488",
+     "bytes": 316576,
+     "last_modified": "Fri, 20 Nov 2026 17:14:29 GMT",
+     "etag": "W/\"4d4a0-660b860792952",
+     "pearson_label": "Examiner report - 8FM0-01 AS Core Pure Mathematics - June 2025 AS Further Mathematics Paper 1 - Core Pure Mathematics"
+    }
+   },
+   "imported": false
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_21",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/21",
+   "module_ids": [
+    "FP1"
+   ],
+   "component_title": "Further Pure Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-que-20250517.pdf",
+     "sha256": "b7c62adf515155325f590495693b97e134f64bafc8518d69bd3e8e02c7efe41a",
+     "bytes": 484060,
+     "last_modified": "Sat, 21 Nov 2026 08:08:07 GMT",
+     "etag": "W/\"762dc-660c4dc5f4be2",
+     "pearson_label": "Question paper - 8FM0-21 AS Further Pure Mathematics 1 - June 2025 AS Further Mathematics Paper 21 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-rms-20250814.pdf",
+     "sha256": "06134410d51f99431dc38bc1ee4740baf30ee6f7510b5640fa72f446099dae24",
+     "bytes": 411987,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"64953-660c7273c0fed",
+     "pearson_label": "Mark scheme - 8FM0-21 AS Further Pure Mathematics 1 - June 2025"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-21-pef-20250814.pdf",
+     "sha256": "cca7b4a3b266097cc5e2cc8093fda69c6e46e414af8df5e82ad976fec0137c54",
+     "bytes": 306450,
+     "last_modified": "Fri, 20 Nov 2026 21:02:09 GMT",
+     "etag": "W/\"4ad12-660bb8eaf885e",
+     "pearson_label": "Examiner report - 8FM0-21 AS Further Pure Mathematics 1 - June 2025"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_22",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/22",
+   "module_ids": [
+    "FP2"
+   ],
+   "component_title": "Further Pure Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-que-20250517.pdf",
+     "sha256": "049be272bd755f8ce96cfe206d1997518f8d1386c8a47abacc68f6cda536e414",
+     "bytes": 444386,
+     "last_modified": "Fri, 20 Nov 2026 18:52:13 GMT",
+     "etag": "W/\"6c7e2-660b9be058424",
+     "pearson_label": "Question paper - 8FM0-22 AS Further Pure Mathematics 2 - June 2025 AS Further Mathematics Paper 22 - Further Pure Mathematics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-rms-20250814.pdf",
+     "sha256": "3213e4316f0b26e0dcaf4c183c380036ec01f448318ed3f452d8fba9c8d1a1bf",
+     "bytes": 405459,
+     "last_modified": "Fri, 20 Nov 2026 18:29:10 GMT",
+     "etag": "W/\"62fd3-660b96b991fcb",
+     "pearson_label": "Mark scheme - 8FM0-22 AS Further Pure Mathematics 2 - June 2025"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-22-pef-20250814.pdf",
+     "sha256": "529161e660842d2914d57fca2166e5b1039feb5d8c7abfabac4db538f82306ee",
+     "bytes": 281759,
+     "last_modified": "Sat, 21 Nov 2026 06:46:14 GMT",
+     "etag": "W/\"44c9f-660c3b79007ae",
+     "pearson_label": "Examiner report - 8FM0-22 AS Further Pure Mathematics 2 - June 2025 AS Further Mathematics Paper 22 - Further Pure Mathematics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_23",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/23",
+   "module_ids": [
+    "FS1"
+   ],
+   "component_title": "Further Statistics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-que-20250517.pdf",
+     "sha256": "9a8ab2278820093332037cadb3fbda0844f1d76710231be9931ac2210b252609",
+     "bytes": 378709,
+     "last_modified": "Fri, 20 Nov 2026 18:52:13 GMT",
+     "etag": "W/\"5c755-660b9be0950c8",
+     "pearson_label": "Question paper - 8FM0-23 AS Further Statistics 1 - June 2025 AS Further Mathematics Paper 23 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-rms-20250814.pdf",
+     "sha256": "2354afa17db4d5013e36b00920aec186d00790c5b30e436d6af8a83cff5331f1",
+     "bytes": 459657,
+     "last_modified": "Fri, 20 Nov 2026 16:57:41 GMT",
+     "etag": "W/\"70389-660b8246cf72d",
+     "pearson_label": "Mark scheme - 8FM0-23 AS Further Statistics 1 - June 2025 AS Further Mathematics Paper 23 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-23-pef-20250814.pdf",
+     "sha256": "2899965734a81afcce85ac1a21f6624e027cfb609a04fc33d4055070bf053864",
+     "bytes": 277384,
+     "last_modified": "Sat, 21 Nov 2026 06:47:24 GMT",
+     "etag": "W/\"43b88-660c3bbbe48ba",
+     "pearson_label": "Examiner report - 8FM0-23 AS Further Statistics 1 - June 2025 AS Further Mathematics Paper 23 - Further Statistics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_24",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/24",
+   "module_ids": [
+    "FS2"
+   ],
+   "component_title": "Further Statistics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-que-20250517.pdf",
+     "sha256": "051e681f3a2088ad80f1138eb2e1522866538227e77b0996053c0053c1639a35",
+     "bytes": 427729,
+     "last_modified": "Fri, 20 Nov 2026 21:32:53 GMT",
+     "etag": "W/\"686d1-660bbfc96cc66",
+     "pearson_label": "Question paper - 8FM0-24 AS Further Statistics 2 - June 2025 AS Further Mathematics Paper 24 - Further Statistics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-rms-20250814.pdf",
+     "sha256": "cec455ae86435b3e8af8a509b13021f819b502e461447c47d94ad098fd69a873",
+     "bytes": 358161,
+     "last_modified": "Fri, 20 Nov 2026 18:52:13 GMT",
+     "etag": "W/\"57711-660b9be030f37",
+     "pearson_label": "Mark scheme - 8FM0-24 AS Further Statistics 2 - June 2025 AS Further Mathematics Paper 24 - Further Statistics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-24-pef-20250814.pdf",
+     "sha256": "959ee0ab5ce156646f445ed61f2bb13ff01ee18f8ce700abb44296fd1f545f6d",
+     "bytes": 296154,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"484da-660c7273e11f8",
+     "pearson_label": "Examiner report - 8FM0-24 AS Further Statistics 2 - June 2025 AS Further Mathematics Paper 24 - Further Statistics"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_25",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/25",
+   "module_ids": [
+    "FM1"
+   ],
+   "component_title": "Further Mechanics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-que-20250517.pdf",
+     "sha256": "af4170b6979ab0d8fcab224f2efa481a365c83f3e8d4f4e9cedba1a1a94200ab",
+     "bytes": 529376,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"813e0-660c7273e11f8",
+     "pearson_label": "Question paper - 8FM0-25 AS Further Mechanics 1 - June 2025 AS Further Mathematics Paper 25 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-rms-20250814.pdf",
+     "sha256": "57f10d6e5c07c4655c93d8e6637dc364f706d1ee0222da607673d3c4b5e52ad7",
+     "bytes": 378659,
+     "last_modified": "Fri, 20 Nov 2026 17:06:35 GMT",
+     "etag": "W/\"5c723-660b84445d0ac",
+     "pearson_label": "Mark scheme - 8FM0-25 AS Further Mechanics 1 - June 2025 AS Further Mathematics Paper 25 - Further Mechanics"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-25-pef-20250814.pdf",
+     "sha256": "a75ffcb39d0b9dfbfb6643996ef3a18971c9fd30963eb52f2a01bbd97a94531d",
+     "bytes": 375220,
+     "last_modified": "Sat, 21 Nov 2026 04:11:51 GMT",
+     "etag": "W/\"5b9b4-660c18f6952e1",
+     "pearson_label": "Examiner report - 8FM0-25 AS Further Mechanics 1 - June 2025"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_26",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/26",
+   "module_ids": [
+    "FM2"
+   ],
+   "component_title": "Further Mechanics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-que-20250517.pdf",
+     "sha256": "efaf1040ed82c87b964b2d6c0a117ed00c63a625513516336b98f445164c06c1",
+     "bytes": 562170,
+     "last_modified": "Fri, 20 Nov 2026 21:32:53 GMT",
+     "etag": "W/\"893fa-660bbfc9ae55c",
+     "pearson_label": "Question paper - 8FM0-26 AS Further Mechanics 2 - June 2025 AS Further Mathematics Paper 26 - Further Mechanics"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-rms-20250814.pdf",
+     "sha256": "035a04714417a796769a459d9fb7e1b4a24a931ddeb9e3deb2e3dcc485f6f475",
+     "bytes": 431844,
+     "last_modified": "Fri, 20 Nov 2026 19:50:27 GMT",
+     "etag": "W/\"696e4-660ba8e4b1355",
+     "pearson_label": "Mark scheme - 8FM0-26 AS Further Mechanics 2 - June 2025"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-26-pef-20250814.pdf",
+     "sha256": "f9d8e617818a0797f308261fb28d778886e35bc59113da01d925dba082b108e9",
+     "bytes": 283105,
+     "last_modified": "Sat, 21 Nov 2026 06:50:43 GMT",
+     "etag": "W/\"451e1-660c3c78d35d5",
+     "pearson_label": "Examiner report - 8FM0-26 AS Further Mechanics 2 - June 2025"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_27",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/27",
+   "module_ids": [
+    "D1"
+   ],
+   "component_title": "Decision Mathematics 1",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-que-20250517.pdf",
+     "sha256": "87dac7bffcce765d17df7ad2c3ac54f83f35bcfcf02b7214cf4ebf07ec5bbef3",
+     "bytes": 759643,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"b975b-660c7273fb96d",
+     "pearson_label": "Question paper - 8FM0-27 AS Decision Mathematics 1 - June 2025 AS Further Mathematics Paper 27 - Decision Maths"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-rms-20250814.pdf",
+     "sha256": "5af9aa0a817ce03a9f08ccb47afe662f376002f7b91143355f74e81cffa196c4",
+     "bytes": 1076017,
+     "last_modified": "Fri, 20 Nov 2026 18:26:53 GMT",
+     "etag": "W/\"106b31-660b963650a07",
+     "pearson_label": "Mark scheme - 8FM0-27 AS Decision Mathematics 1 - June 2025 AS Further Mathematics Paper 27 - Decision Maths"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-27-pef-20250814.pdf",
+     "sha256": "efc1a9490d34b10d47c421be7c816906bc925f93126b915604021ec2812f62c7",
+     "bytes": 374371,
+     "last_modified": "Sat, 21 Nov 2026 05:01:35 GMT",
+     "etag": "W/\"5b663-660c24145ba36",
+     "pearson_label": "Examiner report - 8FM0-27 AS Decision Mathematics 1 - June 2025"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
+  },
+  {
+   "paper_id": "EDX_8FM0_2025_JUNE_28",
+   "qualification_code": "8FM0",
+   "level": "AS",
+   "is_as": true,
+   "year": 2025,
+   "series": "June",
+   "pearson_series": "June 2025",
+   "official_paper_code": "8FM0/28",
+   "module_ids": [
+    "D2"
+   ],
+   "component_title": "Decision Mathematics 2",
+   "max_marks": 40,
+   "duration_minutes": null,
+   "module_verified_from": "printed question-paper cover",
+   "documents": {
+    "question_paper": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-que-20250517.pdf",
+     "sha256": "88f3e4ca7327c81af661904436830cab4ed5d84b2191e17096a016e7f23c1a82",
+     "bytes": 699973,
+     "last_modified": "Sat, 21 Nov 2026 10:52:13 GMT",
+     "etag": "W/\"aae45-660c72740d118",
+     "pearson_label": "Question paper - 8FM0-28 AS Decision Mathematics 2 - June 2025 AS Further Mathematics Paper 28 - Decision Maths"
+    },
+    "mark_scheme": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-rms-20250814.pdf",
+     "sha256": "bd1be7cae63898a1e5c50d4d7564cd759bd56b9aedcea976e9adeb5203a7bf9b",
+     "bytes": 505671,
+     "last_modified": "Fri, 20 Nov 2026 17:21:45 GMT",
+     "etag": "W/\"7b747-660b87a7b7826",
+     "pearson_label": "Mark scheme - 8FM0-28 AS Decision Mathematics 2 - June 2025"
+    },
+    "examiner_report": {
+     "availability": "verified_public",
+     "url": "https://qualifications.pearson.com/content/dam/pdf/A-Level/Mathematics/2017/Exam-materials/8fm0-28-pef-20250814.pdf",
+     "sha256": "328cec13abd36b56504aa1c09a83c5b061bbc91984c045ec8dc8a5fc59e01805",
+     "bytes": 281227,
+     "last_modified": "Sat, 21 Nov 2026 06:52:58 GMT",
+     "etag": "W/\"44a8b-660c3cf99ea2c",
+     "pearson_label": "Examiner report - 8FM0-28 AS Decision Mathematics 2 - June 2025"
+    }
+   },
+   "imported": false,
+   "shared_duration": "AS Paper 2 is 1 h 40 min for the two modules of the route"
   }
  ],
- "not_generated_as_catalogue": "AS rows are not shown on the site until each sitting and component is verified."
+ "route_vs_component": "Pearson publishes AS Paper 2 as eight 40-mark module components, 8FM0/21-28. A route 2A-2K is two of them sat together (80 marks, 1 h 40 min). No 8FM0 sitting was published for November 2021."
 }

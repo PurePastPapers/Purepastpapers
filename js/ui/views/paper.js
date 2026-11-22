@@ -98,7 +98,8 @@ export async function mount(element, context) {
         : ''}`;
   }
 
-  const facts = [levelLabel(paper, subject, bundle.papers), subject.board, paper.official_paper_code || `${qualificationCode(paper, subject)}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.year ? `${paper.series} ${paper.year}` : null, `${paper.total_marks} marks`, fmtMinutes(paper.duration_minutes), paper.tier ? `${paper.tier} tier` : null]
+  const time = `${fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}`;
+  const facts = [levelLabel(paper, subject, bundle.papers), subject.board, paper.official_paper_code || `${qualificationCode(paper, subject)}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.pearson_series || (paper.year ? `${paper.series} ${paper.year}` : null), `${paper.total_marks} marks`, time, paper.tier ? `${paper.tier} tier` : null]
     .filter(Boolean)
     .join(' · ');
 
@@ -115,7 +116,7 @@ export async function mount(element, context) {
         actions: openSession
           ? html`<a class="btn btn--primary" href="${links.session(openSession.session_id)}">${icon('play', { size: 16 })} Resume paper</a>
               <button type="button" class="btn" data-discard-open>${icon('x', { size: 16 })} Discard attempt</button>`
-          : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${fmtMinutes(paper.duration_minutes)})</button>
+          : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${time})</button>
               <button type="button" class="btn" data-start="untimed">Sit untimed</button>
               <button type="button" class="btn" data-log>Log a score</button>`,
       })}
@@ -138,7 +139,10 @@ export async function mount(element, context) {
                   ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs a topic' : 'need topics'} you have not marked as learned. <a href="${links.subject(subject.subject_id)}">Update learned topics</a>`, { type: 'warn' })
                   : ''}
                 <div data-questions>${questionRows()}</div>`
-            : html`<div class="empty paper-qs__whole">
+            : paper.component_of ? html`<div class="empty paper-qs__whole">
+                <h3 class="empty__title">Practise this component from the PDF</h3>
+                <p class="empty__text">Open the question paper, then log your score for this component. Individual questions will appear here once they are available in Practice.</p>
+              </div>` : html`<div class="empty paper-qs__whole">
                 <h3 class="empty__title">Sat as a whole paper</h3>
                 <p class="empty__text">This paper’s questions have not been split out yet, so you sit it from the PDF and score it as one total. Once its questions are added they appear here with topic tags and feed Practice.</p>
               </div>`}
