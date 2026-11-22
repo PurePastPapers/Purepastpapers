@@ -1204,3 +1204,19 @@
 .er-crops > [data-zoom-body] { display: grid; gap: 4px; cursor: zoom-in; }
 .er-crops > .zoom-btn { margin-top: 4px; }
 .er-crop { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; background: #fff; }
+
+/* The guest entry to Practice uses the same official source crops as the browser. */
+.starter-practice { max-width: 780px; margin-inline: auto; }
+.starter-practice .page-head { margin-block-end: 0; }
+.starter-practice__heading { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.starter-practice__heading .marks-pill { white-space: nowrap; }
+.starter-practice__question[data-zoom-body] { overflow-x: auto; }
+.starter-practice__question[data-zoom-body] img { min-width: 560px; }
+.starter-practice__actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; margin-top: 12px; }
+.starter-practice__more { border-top: 1px solid var(--line); padding-top: 16px; }
+.starter-practice__more > summary { width: fit-content; list-style: none; }
+.starter-practice__more > summary::-webkit-details-marker { display: none; }
+.starter-practice__more[open] > summary svg { transform: rotate(180deg); }
+.starter-practice__choices { padding-top: 14px; }
+.starter-practice__scheme-crop { overflow-x: auto; }
+.starter-practice__scheme-crop .ms { min-width: 640px; }

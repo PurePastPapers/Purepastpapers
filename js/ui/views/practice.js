@@ -112,6 +112,11 @@ const toggle = (list, value) => (list.includes(value) ? list.filter((item) => it
 
 export async function mount(element, context) {
   context.setTitle('Practice');
+  const user = api.currentUser();
+  if (!user && context.query.starter === '1') {
+    const starter = await import('./starter-question.js');
+    return starter.mount(element);
+  }
   const requested = context.query.subject;
   const subjectIds = api.getProgress().enrolled_subjects;
   const [student] = await Promise.all([
@@ -119,12 +124,13 @@ export async function mount(element, context) {
     loadReportIndex(),
   ]);
   const { progress, bundles, latest } = student;
-  const user = api.currentUser();
   const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.practice_modes.length);
   const explicit = bundles.get(requested);
   const bundle = explicit?.subject.practice_modes.length
     ? explicit
-    : enrolled.find((candidate) => candidate.subject.subject_id === progress.preferences.lastSubject) || enrolled[0];
+    : !user && requested
+      ? null
+      : enrolled.find((candidate) => candidate.subject.subject_id === progress.preferences.lastSubject) || enrolled[0];
   const head = (crumb) => html`${pageHead({
       title: 'Find questions',
       sub: 'Browse questions or build a test',
@@ -132,6 +138,10 @@ export async function mount(element, context) {
     })}<p class="row"><a class="btn btn--sm" href="${links.exportedTests()}">Exported tests</a></p>`;
 
   if (!bundle) {
+    if (!user && element.isConnected) {
+      const browse = links.subjects({ browse: 1 });
+      return context.navigate(routeOf(browse), { replace: true });
+    }
     setHtml(
       element,
       html`${head()}${emptyState({
@@ -171,8 +181,10 @@ export async function mount(element, context) {
   // tiers for this browser tab only; it never changes the saved tier.
   const tiered = isTiered(subject);
   const savedSubjectTier = savedTier(subject, progress);
-  const tierPref = savedSubjectTier || (!isEnrolled ? validTier(subject, context.query.tier) : '') || '';
-  if (tiered && tierRequired(subject) && !tierPref) {
+  const linkedTier = !user || !isEnrolled ? validTier(subject, context.query.tier) : null;
+  const linkedBothTiers = !user && context.query.tier === 'both';
+  const tierPref = linkedBothTiers ? '' : linkedTier || savedSubjectTier || '';
+  if (tiered && tierRequired(subject) && !tierPref && !linkedBothTiers) {
     tintPage(subject);
     setHtml(
       element,
@@ -188,7 +200,7 @@ export async function mount(element, context) {
     );
     on(element, 'click', '[data-save-tier]', async (event, button) => {
       const tier = validTier(subject, button.dataset.saveTier);
-      if (!isEnrolled) return context.navigate(routeOf(links.practice({ ...context.query, subject: subjectId, tier })), { replace: true });
+      if (!user || !isEnrolled) return context.navigate(routeOf(links.practice({ ...context.query, subject: subjectId, tier })), { replace: true });
       await saveSubjectSettings(subjectId, { tier });
       context.refresh();
     });
@@ -245,7 +257,7 @@ export async function mount(element, context) {
   // every visit starts there unless this tab switched tier on purpose. Changing the saved tier
   // drops that switch, so the new tier is the default for every later visit and test.
   if (tiered) {
-    const override = readTierOverride();
+    const override = !user && (linkedTier || linkedBothTiers) ? null : readTierOverride();
     state.tier = override ?? tierPref;
     state.tierPref = tierPref;
   } else if ((state.tierPref ?? '') !== tierPref) { state.tier = tierPref; state.tierPref = tierPref; }
@@ -1461,9 +1473,10 @@ export async function mount(element, context) {
       <div class="seg" role="radiogroup" aria-labelledby="practice-tier-label">
         ${options.map(([value, label]) => html`<button type="button" class="seg__opt" role="radio" aria-checked="${(state.tier || '') === value}" data-practice-tier="${value}">${label}</button>`)}
       </div>
-      <span class="small muted tier-switch__note">${savedSubjectTier
-        ? (state.tier || '') === savedSubjectTier ? `Your saved tier. Questions and tests use ${savedSubjectTier} papers.` : `Your saved tier is ${savedSubjectTier}. This switch lasts for this tab.`
-        : 'No tier saved. Choose one in the subject’s settings to start on it.'}</span>
+      <span class="small muted tier-switch__note">${!user
+        ? (state.tier ? `Showing ${state.tier} papers.` : 'Showing both tiers.')
+        : savedSubjectTier ? (state.tier || '') === savedSubjectTier ? `Your saved tier. Questions and tests use ${savedSubjectTier} papers.` : `Your saved tier is ${savedSubjectTier}. This switch lasts for this tab.`
+          : 'No tier saved. Choose one in the subject’s settings to start on it.'}</span>
     </div>`;
   }
 
@@ -1485,6 +1498,7 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${head(subject.subject)}
+      ${!user ? html`<p><a class="btn btn--sm" href="${links.subjects({ browse: 1, subject: subjectId, tier: state.tier || (linkedBothTiers ? 'both' : null) })}">Choose another subject</a></p>` : ''}
       ${!user ? banner(html`Browsing and filters are free. Guest typed answers and marks last until you refresh or close this page. Handwriting is stored in this browser on this device and will not sync across devices. <a href="${links.signup('/practice')}">Create a free account</a> to save your progress.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
@@ -1506,6 +1520,13 @@ export async function mount(element, context) {
       </div>`,
   );
   draw();
+  if (context.query.filters === 'topics') {
+    const topics = $('[data-section="fpop-topics"]', element);
+    if (topics) {
+      topics.open = true;
+      requestAnimationFrame(() => topics.scrollIntoView({ block: 'nearest' }));
+    }
+  }
   fitOpenQuestions();
   const onResize = debounce(() => { if (element.isConnected) fitOpenQuestions(); else window.removeEventListener('resize', onResize); }, 250);
   window.addEventListener('resize', onResize);
@@ -1541,12 +1562,13 @@ export async function mount(element, context) {
     const tier = button.dataset.practiceTier === '' ? '' : validTier(subject, button.dataset.practiceTier);
     if (tier === null || tier === (state.tier || '')) return;
     // A tab-only switch: the saved tier is unchanged. A test already running keeps its questions.
-    writeTierOverride(tier === tierPref ? null : tier);
+    if (user) writeTierOverride(tier === tierPref ? null : tier);
     state.tier = tier;
     state.page = 1;
     state.paper = '';
     state.testFocusVersion = 0; // the topic list is seeded again for the new tier
     save();
+    if (!user) return context.navigate(routeOf(links.practice({ ...context.query, subject: subjectId, mode: state.mode, tier: tier || 'both' })), { replace: true });
     context.refresh();
   });
   on(element, 'click', '[data-practice-science]', (event, button) => {

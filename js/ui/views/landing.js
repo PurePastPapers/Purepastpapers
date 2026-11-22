@@ -83,7 +83,8 @@ export async function mount(element, context) {
           </p>
           <p class="lp-hero__reassurance">Browse questions and use filters for free. Create a free account to track marks, mistakes and progress in this browser.</p>
           <div class="lp-hero__actions">
-            <a class="btn btn--primary btn--lg" href="${links.subjects({ welcome: 1 })}">Browse questions →</a>
+            <a class="btn btn--primary btn--lg" href="${links.subjects({ browse: 1 })}">Browse questions →</a>
+            <a class="btn btn--lg" href="${links.practice({ starter: 1 })}">Try a Maths demo</a>
           </div>
         </div>
         <div class="lp-art" aria-hidden="true">

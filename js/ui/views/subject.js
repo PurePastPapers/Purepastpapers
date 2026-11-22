@@ -17,7 +17,7 @@ import { saveSubjectSettings, scStyle, targetGrade, tintPage } from '../subject-
 import { addSubject, editSubject } from '../enrol.js';
 import { isTiered, questionsForTier, savedTier, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
 import { banner, confirmDialog, emptyState, fmtPercent, meter, pageHead, ragBadge, subjectName, toast } from '../ui.js';
-import { links } from '../../core/links.js';
+import { links, routeOf } from '../../core/links.js';
 
 export async function mount(element, context) {
   const [fullBundle, subjects] = await Promise.all([getBundle(context.params.subjectId), getSubjects()]);
@@ -35,8 +35,11 @@ export async function mount(element, context) {
   // A science (`tier_required`) with no tier shows a "Choose a tier" prompt instead of content.
   const tiered = isTiered(subject);
   const required = tierRequired(subject);
-  const viewTier = tiered ? (enrolled() ? savedTier(subject, progress) : validTier(subject, context.query.tier)) : null;
-  const linkedTier = enrolled() ? null : viewTier;
+  const user = api.currentUser();
+  const requestedTier = validTier(subject, context.query.tier);
+  const viewTier = (!user && requestedTier) || (enrolled() ? savedTier(subject, progress) : requestedTier);
+  const linkedTier = user && enrolled() ? null : viewTier;
+  const findQuestions = links.practice({ subject: subjectId, mode: 'individual', tier: linkedTier });
   const needsTier = tiered && required && !viewTier;
   const tierSpec = specForTier(spec, viewTier);
   const pool = questionsForTier(practicePool(bundle), viewTier, bundle.papersById);
@@ -91,7 +94,7 @@ export async function mount(element, context) {
         title: subject.subject,
         sub: `${subject.level} · ${subject.board} ${subject.spec_code} · ${subject.spec_notes}`,
         actions: subject.has_written_exam
-          ? html`<a class="btn btn--primary" href="${links.practice({ subject: subjectId, mode: 'individual', tier: linkedTier })}">${icon('sliders')} Find questions</a>
+          ? html`<a class="btn btn--primary" href="${findQuestions}">${icon('sliders')} Find questions</a>
               <a class="btn" href="${links.papers(subjectId, undefined, linkedTier)}">Full past papers</a>
               <a class="btn btn--ghost" href="${subject.official_url}" target="_blank" rel="noopener">${subject.board} site ${icon('external', { size: 15 })}</a>`
           : '',
@@ -119,7 +122,7 @@ export async function mount(element, context) {
                   </p>
                   ${topicOrganisationControl(organisation, {available: Boolean(textbooks), name: 'covered-organisation'})}
                   ${leaves.length ? html`<div data-tree></div>` : emptyState({ title: 'No specification tree yet', text: 'Topics for this subject have not been added.' })}
-                </details>` : html`<section class="card"><h2>Choose topics for practice</h2><p>You can select any topics without saving a learned-topic list.</p><a class="btn" href="${links.practice({ subject: subjectId, tier: linkedTier })}">Find questions</a></section>`}
+                </details>` : html`<section class="card"><h2>Choose topics for practice</h2><p>You can select any topics without saving a learned-topic list.</p><a class="btn" href="${findQuestions}">Find questions</a></section>`}
                 <aside class="stack" data-side></aside>
               </div>`
           : emptyState({ iconName: 'info', title: 'No written exam', text: subject.no_written_exam })}
@@ -348,9 +351,10 @@ export async function mount(element, context) {
       // Only the preference changes: learned ticks, attempts and history stay as they are.
       await saveSubjectSettings(subjectId, { tier });
       toast(tier ? `${subject.subject}: ${tier} tier.` : `${subject.subject}: both tiers.`, { type: 'success' });
+      if (!user && requestedTier) return context.navigate(routeOf(links.subject(subjectId, { tier })), { replace: true });
       context.refresh();
     } else {
-      context.navigate(`/subject/${encodeURIComponent(subjectId)}${tier ? `?tier=${encodeURIComponent(tier)}` : ''}`);
+      context.navigate(routeOf(links.subject(subjectId, { tier })));
     }
   });
   on(element, 'click', '[data-unenrol]', async () => {

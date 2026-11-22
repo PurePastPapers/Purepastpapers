@@ -1,14 +1,7 @@
-// First-visit welcome popup: three taped index cards explaining Practice, the Test builder
-// and making a free account. Shown once per browser to signed-out visitors; the landing
-// page's "How it works" section has a button that opens it again.
+// Optional quick tour opened from the landing page’s “How it works” section.
 
 import { links } from '../core/links.js';
 import { icon } from './icons.js';
-
-const SEEN_KEY = 'ppp:welcome-seen';
-
-/** Pages where the popup would get in the way (sitting a paper, signing in, password reset). */
-const SKIP = [/^\/session\//, /^\/login/, /^\/signup/, /^\/legacy-login/, /^\/forgot-password/, /^\/reset-password/];
 
 const TILES = [
   {
@@ -31,28 +24,11 @@ const TILES = [
   },
 ];
 
-function seen() {
-  try {
-    return localStorage.getItem(SEEN_KEY) === '1';
-  } catch {
-    return true; // storage blocked: never nag on every page load
-  }
-}
-
-function markSeen() {
-  try {
-    localStorage.setItem(SEEN_KEY, '1');
-  } catch {
-    /* ignore */
-  }
-}
-
 let open = null;
 
 /** Opens the popup. `navigate` is the router's navigate, used by "Create a free account". */
 export function openWelcome({ navigate } = {}) {
   if (open) return;
-  markSeen();
   const dialog = document.createElement('dialog');
   dialog.className = 'modal welcome';
   dialog.setAttribute('aria-labelledby', 'welcome-title');
@@ -67,7 +43,7 @@ export function openWelcome({ navigate } = {}) {
         <h3>${tile.title}</h3><p>${tile.text}</p>
         <p class="welcome__where">Find it: <span>${tile.where}</span></p></li>`,
     ).join('')}</ol></div>
-    <footer class="modal__foot"><p class="welcome__note">You’ll only see this once. Reopen it from <b>How it works</b>.</p>
+    <footer class="modal__foot"><p class="welcome__note">Reopen this tour from <b>How it works</b>.</p>
       <span class="welcome__btns"><button type="button" class="btn btn--ghost" data-welcome-close>Just browse</button>
       <button type="button" class="btn btn--primary" data-welcome-signup>Create a free account</button></span></footer></div>`;
 
@@ -94,12 +70,4 @@ export function openWelcome({ navigate } = {}) {
 /** Closes the popup if it is open (for example once the visitor signs in). */
 export function closeWelcome() {
   open?.close();
-}
-
-/** Shows the popup on a signed-out visitor's first visit. Call after each route renders. */
-export function maybeWelcome({ path, signedIn, navigate }) {
-  if (signedIn) return closeWelcome();
-  if (seen() || SKIP.some((pattern) => pattern.test(path))) return;
-  if (document.querySelector('dialog[open]')) return; // never stack on another popup
-  openWelcome({ navigate });
 }
