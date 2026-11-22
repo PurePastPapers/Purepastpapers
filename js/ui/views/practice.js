@@ -35,7 +35,7 @@ import { links, routeOf } from '../../core/links.js?v=exported-tests-1';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
 import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js?v=20261122-pdf2';
-import { createInkEditor, renderInkPreview } from '../ink-editor.js';
+import { createInkEditor, renderInkPreview, transferPencilStroke } from '../ink-editor.js?v=pencil-2';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
 const SOURCE_CHOICES = [
@@ -468,6 +468,8 @@ export async function mount(element, context) {
   const partStateKey = (cardId, partId) => cardId?.startsWith('LINKED_BRANCH_') ? `${cardId}:${partId}` : partId;
   const answerOf = (cardId, partId = cardId) => state.drafts[partStateKey(cardId, partId)]?.answer ?? (partAttempt(cardId, partId)?.answer || '');
   const inkEditors = new Map();
+  const pendingInkTargets = new WeakSet();
+  const pencilTransfers = new Map();
   const inkValues = new Map();
   const inkSaveChains = new Map();
   const inkRevisions = new Map();
@@ -499,23 +501,26 @@ export async function mount(element, context) {
   }
   const activeInkResponseId = (cardId, partId) => ensureInkAttemptId(cardId, partId);
   function disposeInkEditors() {
+    for (const transfer of pencilTransfers.values()) transfer.cancel();
+    pencilTransfers.clear();
     for (const editor of inkEditors.values()) editor.destroy();
     inkEditors.clear();
     for (const previews of inkConflictPreviews.values()) previews.forEach((preview) => preview.destroy());
     inkConflictPreviews.clear();
   }
-  async function mountInkEditors() {
-    for (const target of element.querySelectorAll('[data-ink-target]')) {
+  async function mountInkEditors(targets = element.querySelectorAll('[data-ink-target]')) {
+    for (const target of targets) {
       const partId = target.dataset.inkTarget;
       const button = target.parentElement.querySelector('[data-ink-toggle]');
       const cardId = button?.dataset.inkCard;
       const key = partStateKey(cardId, partId);
-      if (!cardId || !state.inkOpen[key] || inkEditors.has(key)) continue;
+      if (!cardId || !state.inkOpen[key] || inkEditors.has(key) || pendingInkTargets.has(target)) continue;
+      pendingInkTargets.add(target);
       const responseId = activeInkResponseId(cardId, partId);
       const valueKey = inkKey(responseId, partId);
       target.hidden = false;
       button?.setAttribute('aria-expanded', 'true');
-      button.textContent = 'Hide writing';
+      button.textContent = 'Use keyboard';
       let value = null;
       let conflicts = [];
       let otherDrafts = [];
@@ -526,7 +531,9 @@ export async function mount(element, context) {
         conflicts = result.conflicts || [];
         if (!value && !conflicts.length) otherDrafts = (await api.listInkForPart(partId) || []).filter((record) => record.responseId !== responseId);
       } catch { /* the local editor remains available while storage recovers */ }
-      if (!target.isConnected) continue;
+      pendingInkTargets.delete(target);
+      if (!target.isConnected || target.hidden) continue;
+      target.style.minBlockSize = '';
       value ||= inkValues.get(valueKey) || null;
       if (value) {
         inkValues.set(valueKey, value);
@@ -535,6 +542,7 @@ export async function mount(element, context) {
       }
       const editor = createInkEditor(target, {
         value,
+        controlsBelow: true,
         onChange: (changed) => {
           const hadSavedInk = Boolean(state.inkSaved[valueKey]);
           const hasStrokes = changed.sections.some((section) => section.strokes.length > 0);
@@ -573,7 +581,7 @@ export async function mount(element, context) {
             if (persisted.conflict) {
               inkValues.delete(valueKey);
               inkRevisions.delete(valueKey);
-              if (target.isConnected) update({ keepControls: true, keepPage: true });
+              editor.setSaveState('Another version is saved. Switch to keyboard and reopen writing to review both.');
               return;
             }
             editor?.setSaveState('Saved on this device');
@@ -599,7 +607,7 @@ export async function mount(element, context) {
                 editor?.setSaveState(synced ? 'Synced' : 'Saved on this device');
                 if (!synced && api.isSignedIn()) {
                   const latest = await api.loadInkState(responseId, partId);
-                  if (latest.conflicts?.length) update({ keepControls: true, keepPage: true });
+                  if (latest.conflicts?.length) editor.setSaveState('Another version is saved. Switch to keyboard and reopen writing to review both.');
                 }
               } catch { editor?.setSaveState('Saved on this device · Sync will retry'); }
             }, 1200));
@@ -614,6 +622,7 @@ export async function mount(element, context) {
       saveButton.dataset.inkSave = partId;
       saveButton.textContent = state.inkSaved[valueKey] ? 'Saved answer' : 'Save handwritten answer';
       target.append(saveButton);
+      pencilTransfers.get(target)?.attach(editor);
       if (otherDrafts.length) {
         const section = document.createElement('details');
         section.className = 'ink-answer__drafts';
@@ -705,6 +714,9 @@ export async function mount(element, context) {
         inkConflictPreviews.set(key, previews);
       }
     }
+  }
+  function writingControls(cardId, partId, open) {
+    return html`<div class="ink-answer"><div data-ink-target="${partId}" ${open ? '' : 'hidden'}></div><button type="button" class="btn btn--sm" data-ink-toggle="${partId}" data-ink-card="${cardId}" data-ink-part="${partId}" aria-expanded="${open}">${open ? 'Use keyboard' : 'Write with Pencil'}</button></div>`;
   }
   const markOfPart = (cardId, partId = cardId) => {
     const attempt = partAttempt(cardId, partId);
@@ -1156,8 +1168,8 @@ export async function mount(element, context) {
           </div>
           <div class="qsplit__side stack stack--sm">
             ${goLine(qid)}
-            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}"><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${answerOf(qid)}</textarea></label>
-            <div class="ink-answer"><button type="button" class="btn btn--sm" data-ink-toggle="${question.question_id}" data-ink-card="${qid}" data-ink-part="${question.question_id}" aria-expanded="${Boolean(state.inkOpen[question.question_id])}">${state.inkOpen[question.question_id] ? 'Hide writing' : 'Write with Pencil'}</button><div data-ink-target="${question.question_id}" ${state.inkOpen[question.question_id] ? '' : 'hidden'}></div></div>
+            <label class="field qsplit__answerfield" data-zoom-src="Your answer · ${questionRef(question, bundle.papersById)}" ${state.inkOpen[qid] ? 'hidden' : ''}><span class="field__label">Your answer (optional) ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="8" data-answer="${question.question_id}" placeholder="Type your answer here, or answer on paper">${answerOf(qid)}</textarea></label>
+            ${writingControls(qid, question.question_id, Boolean(state.inkOpen[qid]))}
             ${schemeOpen ? html`<section class="markbox stack stack--sm">
               ${markPicker({ id: question.question_id, max: question.marks, value, attr: 'mark' })}
               ${markFoot(qid, { saved: changing && current && !current.waiting ? `Saved ${current.marks_awarded}/${question.marks}` : '', canUndo })}
@@ -1239,8 +1251,8 @@ export async function mount(element, context) {
                   ${schemeOpen ? markSchemeBody(part, { wholeQuestion: false }) : linkedPartBody(part)}
                 </div>
                 <div class="qsplit__side stack stack--sm">
-                  <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}"><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${answerOf(id, partId)}</textarea></label>
-                  <div class="ink-answer"><button type="button" class="btn btn--sm" data-ink-toggle="${partId}" data-ink-card="${id}" data-ink-part="${partId}" aria-expanded="${Boolean(state.inkOpen[key])}">${state.inkOpen[key] ? 'Hide writing' : 'Write with Pencil'}</button><div data-ink-target="${partId}" ${state.inkOpen[key] ? '' : 'hidden'}></div></div>
+                  <label class="field qsplit__answerfield" data-zoom-src="Your answer to ${label(part)} · ${ref}" ${state.inkOpen[key] ? 'hidden' : ''}><span class="field__label">Your answer to ${label(part)} ${zoomButton('answer box')}</span><textarea class="textarea qsplit__answer" rows="4" data-answer="${partId}" placeholder="Type your answer to ${label(part)}, or answer on paper">${answerOf(id, partId)}</textarea></label>
+                  ${writingControls(id, partId, Boolean(state.inkOpen[key]))}
                   ${schemeOpen ? html`<section class="markbox">${markPicker({ id: partId, max: part.marks, value: markOf(part), attr: 'mark', labelId: `mp-${key}`, label: `Marks for ${label(part)}, out of ${part.marks}` })}</section>` : ''}
                 </div>
               </div>
@@ -1386,6 +1398,7 @@ export async function mount(element, context) {
   // Answer box below short questions and beside long ones, each question sized to fit the
   // screen (js/ui/question-fit.js).
   function fitOpenQuestions() {
+    if (window.matchMedia('(any-pointer: coarse)').matches) return;
     for (const grid of element.querySelectorAll('.qsplit[data-qfit]')) {
       placeQuestion(grid, {
         body: grid.querySelector('.qsplit__main'),
@@ -1778,17 +1791,42 @@ export async function mount(element, context) {
     (state.drafts[partStateKey(cardOf(input), input.dataset.answer)] ||= {}).answer = input.value;
     save();
   });
-  on(element, 'click', '[data-ink-toggle]', (event, button) => {
+  function setWritingMode(button, open, pencil = null) {
     const partId = button.dataset.inkPart;
     const cardId = button.dataset.inkCard;
     const key = partStateKey(cardId, partId);
-    if (state.inkOpen[key]) state.inkOpen[key] = false;
-    else {
+    const target = button.parentElement.querySelector('[data-ink-target]');
+    const typedField = button.closest('.qsplit__side').querySelector('.qsplit__answerfield');
+    target.style.minBlockSize = open ? `${typedField.offsetHeight}px` : '';
+    state.inkOpen[key] = open;
+    typedField.hidden = open;
+    target.hidden = !open;
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? 'Use keyboard' : 'Write with Pencil';
+    if (open) {
       autoGo(cardId);
-      state.inkOpen[key] = true;
+      if (pencil) pencilTransfers.set(target, pencil);
+      target.textContent = 'Opening handwriting…';
+      void mountInkEditors([target]);
+    } else {
+      pencilTransfers.get(target)?.cancel();
+      pencilTransfers.delete(target);
+      inkEditors.get(key)?.destroy();
+      inkEditors.delete(key);
+      inkConflictPreviews.get(key)?.forEach(preview => preview.destroy());
+      inkConflictPreviews.delete(key);
+      target.replaceChildren();
     }
     save();
-    update({ keepControls: true, keepPage: true });
+  }
+  on(element, 'click', '[data-ink-toggle]', (event, button) => {
+    const key = partStateKey(button.dataset.inkCard, button.dataset.inkPart);
+    setWritingMode(button, !state.inkOpen[key]);
+  });
+  on(element, 'pointerdown', 'textarea[data-answer]', (event, input) => {
+    if (event.pointerType !== 'pen' || event.button !== 0) return;
+    const button = input.closest('.qsplit__side')?.querySelector('[data-ink-toggle]');
+    if (button) setWritingMode(button, true, transferPencilStroke(event, element));
   });
   on(element, 'click', '[data-ink-save]', async (event, button) => {
     const partId = button.dataset.inkSave;

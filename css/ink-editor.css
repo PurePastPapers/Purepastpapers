@@ -11,6 +11,14 @@
   gap: .55rem;
 }
 
+.qsplit__answerfield[hidden] {
+  display: none;
+}
+
+.ink-answer > [data-ink-toggle] {
+  justify-self: start;
+}
+
 .ink-answer__save {
   justify-self: start;
 }
@@ -117,7 +125,9 @@
   display: block;
   width: 100%;
   height: auto;
-  touch-action: pan-y pinch-zoom;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
   cursor: crosshair;
 }
 
@@ -128,6 +138,25 @@
 .ink-editor--readonly .ink-editor__canvas {
   cursor: default;
   touch-action: auto;
+}
+
+@media (any-pointer: coarse) {
+  /* Keep the tablet answer column stable when Safari's toolbar changes height. */
+  .qsplit:has([data-ink-toggle]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .qsplit:has([data-ink-toggle]) > .qsplit__side {
+    position: static;
+  }
+
+  .qsplit__answer[data-answer] {
+    touch-action: none;
+  }
+
+  .ink-editor:not(.ink-editor--readonly) .ink-editor__sections {
+    padding-inline: 12px;
+  }
 }
 
 @media (max-width: 520px) {
