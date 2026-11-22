@@ -61,6 +61,56 @@ test('Practice opens on Build a test where the subject offers it; ?mode= still w
   await page.close();
 });
 
+test('Practice carries the current mode to any subject that supports it', { skip }, async () => {
+  const page = await browser.newPage({ viewport: { width: 1366, height: 900 } });
+  try {
+    const maths = 'EDX_ALEVEL_MATH_9MA0';
+    const biology = 'EDX_ALEVEL_BIOL_9BN0';
+    const history = 'EDX_ALEVEL_HIST_9HI0';
+    await page.goto(BASE);
+    await page.evaluate(async enrolled_subjects => {
+      const api = await import('/js/data/api.js');
+      await api.signUp({
+        displayName: 'Practice mode test', email: 'practice-mode@onspec.local', password: 'onspec-practice-mode',
+        isDemo: true, initialProgress: { enrolled_subjects },
+      });
+    }, [maths, biology, SUBJECT, history]);
+
+    const activeSubject = (subject) => page.locator(`.subject-pills a[href*="subject=${subject}"][aria-current="true"]`);
+    const selectedMode = (mode) => page.locator(`[data-mode="${mode}"][aria-selected="true"]`);
+    const switchSubject = async (subject, mode) => {
+      await page.locator(`.subject-pills a[href*="subject=${subject}"]`).click();
+      await activeSubject(subject).waitFor();
+      if (mode) await selectedMode(mode).waitFor();
+    };
+    const mixed = page.locator('[data-difficulty="mixed"][aria-checked="true"]');
+
+    await page.goto(`${BASE}#/practice?subject=${maths}&mode=individual`);
+    await activeSubject(maths).waitFor();
+    await selectedMode('individual').waitFor();
+    await switchSubject(biology, 'individual');
+    await page.goBack();
+    await activeSubject(maths).waitFor();
+    await selectedMode('individual').waitFor();
+
+    await page.getByRole('tab', { name: 'Build a test' }).click();
+    await selectedMode('timed_test').waitFor();
+    await switchSubject(SUBJECT, 'timed_test');
+    assert.equal(await mixed.evaluate(button => getComputedStyle(button).backgroundColor), 'rgb(201, 222, 245)');
+    await switchSubject(biology, 'timed_test');
+    assert.equal(await mixed.evaluate(button => getComputedStyle(button).color), 'rgb(25, 51, 77)');
+
+    await page.getByRole('tab', { name: 'Individual questions' }).click();
+    await selectedMode('individual').waitFor();
+    await switchSubject(SUBJECT, 'individual');
+    await switchSubject(history);
+    assert.equal(await page.getByRole('tablist', { name: 'Practice mode' }).count(), 0);
+    await page.locator('#practice-mode-panel .fbar').waitFor();
+  } finally {
+    await page.close();
+  }
+});
+
 test('Find questions: the filter is one compact bar of dropdowns', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 1366, height: 900 });
   const bar = await page.locator('.fbar').boundingBox();

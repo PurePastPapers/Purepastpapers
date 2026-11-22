@@ -108,6 +108,9 @@ const defaults = () => ({
   curriculum: {},
 });
 
+// Open the builder by default where it is available.
+const defaultMode = (modes) => ['timed_test', 'individual', 'picker'].find(mode => modes.includes(mode)) ?? modes[0];
+
 const toggle = (list, value) => (list.includes(value) ? list.filter((item) => item !== value) : [...list, value]);
 
 let pendingChoiceFocus;
@@ -143,7 +146,7 @@ export async function mount(element, context) {
 
   if (!bundle) {
     if (!user && element.isConnected) {
-      const browse = links.subjects({ browse: 1 });
+      const browse = links.subjects({ browse: 1, mode: context.query.mode });
       return context.navigate(routeOf(browse), { replace: true });
     }
     setHtml(
@@ -165,6 +168,9 @@ export async function mount(element, context) {
     return level && !paper.title.split(/[\s·:]+/).includes(level) ? `${level} · ${paper.title}` : paper.title;
   };
   const subjectId = subject.subject_id;
+  const modes = subject.practice_modes;
+  const mode = modes.includes(context.query.mode) ? context.query.mode : defaultMode(modes);
+  const switchSubject = (id) => links.practice({ subject: id, mode });
   const hasExports = () => api.exportedTests().some(test => test.subject_id === subjectId);
   const exportedTestsLink = () => html`<a class="btn btn--sm" href="${links.exportedTests({ subject: subjectId })}"
     data-exported-tests ${hasExports() ? '' : 'hidden'}>Exported tests</a>`;
@@ -197,7 +203,7 @@ export async function mount(element, context) {
       element,
       html`${head(subject.subject)}
         <div class="stack stack--lg" style="${scStyle(subject)}">
-          ${subjectPills(subjects, subjectId, (id) => links.practice({ subject: id }))}
+          ${subjectPills(subjects, subjectId, switchSubject)}
           ${hasExports() ? html`<div class="row">${exportedTestsLink()}</div>` : ''}
           <section class="card ruled tier-prompt" data-tier-prompt>
             <h2 class="card__title">Choose Foundation or Higher for ${subject.subject}</h2>
@@ -234,16 +240,14 @@ export async function mount(element, context) {
 
   // ── state (kept for the browser tab, so filters survive opening a question and coming back) ──
   const storageKey = `${APP.storageNamespace}:practice:${user?.user_id || 'guest'}:${subjectId}`;
-  // The landing tab: "Build a test" where the subject offers it, otherwise the question browser or picker.
-  const defaultMode = (list) => (list.includes('timed_test') ? 'timed_test' : list.includes('individual') ? 'individual' : list.includes('picker') ? 'picker' : list[0]);
-  let state = { ...defaults(), mode: defaultMode(subject.practice_modes) };
+  let state = { ...defaults(), mode };
   const storage = user ? localStorage : sessionStorage;
   try {
     const saved = JSON.parse(storage.getItem(storageKey) || '{}');
     // Covered topics became the default in Nov 2026. Filters saved before then
     // had it off by default, so those return to the automatic setting once.
     if (saved.coveredDefaultVersion !== 1) { delete saved.learnedOnly; delete saved.testFocusVersion; }
-    state = { ...state, ...saved, coveredDefaultVersion: 1, selectionVersion: saved.selectionVersion || 0 };
+    state = { ...state, ...saved, mode, coveredDefaultVersion: 1, selectionVersion: saved.selectionVersion || 0 };
   } catch {
     /* start from defaults */
   }
@@ -286,9 +290,6 @@ export async function mount(element, context) {
     }
   };
 
-  const modes = subject.practice_modes;
-  if (modes.includes(context.query.mode)) state.mode = context.query.mode;
-  else state.mode = defaultMode(modes);
   state.sort = ({ paper: 'paper_order', marks: 'marks_asc', 'marks-desc': 'marks_desc' })[state.sort] || state.sort;
   if (state.sort === 'shuffle') { state.shuffled = true; state.sort = 'newest'; }
   if (!SORTS[state.sort]) state.sort = 'newest';
@@ -1514,11 +1515,11 @@ export async function mount(element, context) {
   setHtml(
     element,
     html`${head(subject.subject)}
-      ${!user ? html`<p><a class="btn btn--sm" href="${links.subjects({ browse: 1, subject: subjectId, tier: state.tier || (linkedBothTiers ? 'both' : null) })}">Choose another subject</a></p>` : ''}
+      ${!user ? html`<p><a class="btn btn--sm" href="${links.subjects({ browse: 1, subject: subjectId, mode, tier: state.tier || (linkedBothTiers ? 'both' : null) })}">Choose another subject</a></p>` : ''}
       ${!user ? banner(html`Browsing and filters are free. Guest typed answers and marks last until you refresh or close this page. Handwriting is stored in this browser on this device and will not sync across devices. <a href="${links.signup('/practice')}">Create a free account</a> to save your progress.`) : ''}
       ${suppressedParents ? banner(html`${plural(suppressedParents, 'full question')} ${suppressedParents === 1 ? 'is represented by its' : 'are represented by their'} available parts to avoid counting the same content twice.`) : ''}
       <div class="stack stack--lg" style="${scStyle(subject)}">
-        ${subjectPills(subjects, subjectId, (id) => links.practice({ subject: id }))}
+        ${subjectPills(subjects, subjectId, switchSubject)}
         ${tiered ? tierBar() : ''}
         ${sciences.length ? scienceBar() : ''}
         ${moduleScopeBanner(bundle)}

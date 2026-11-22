@@ -72,7 +72,7 @@ export async function mount(element, context) {
             ${subject.has_written_exam ? '' : html`<p class="small warn-note">${subject.no_written_exam}</p>`}
             <footer class="row row--tight">
               ${browsing
-                ? html`<a class="btn btn--sm btn--primary" href="${links.practice({ subject: subject.subject_id, tier: context.query.subject === subject.subject_id ? context.query.tier : null })}">Find questions</a>`
+                ? html`<a class="btn btn--sm btn--primary" href="${links.practice({ subject: subject.subject_id, mode: context.query.mode, tier: context.query.subject === subject.subject_id ? context.query.tier : null })}">Find questions</a>`
                 : enrolledIds.has(subject.subject_id) ? html`<span class="btn btn--sm is-added" aria-disabled="true">${icon('check', { size: 15 })} Added</span>`
                 : html`<button type="button" class="btn btn--sm btn--primary" data-enrol="${subject.subject_id}">+ Add subject</button>`}
               ${browsing ? '' : html`<a class="btn btn--sm" href="${links.subject(subject.subject_id)}">View topics</a>`}
