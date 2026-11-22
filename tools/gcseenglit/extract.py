@@ -20,7 +20,7 @@ number is kept as that two-digit code ("21"). Tariffs are printed as "[15]", "[2
   section; the extract is part of the crop.
 - Unseen poetry (Component 2 Section C; 2022 C722U20-C): 31 (one poem, 15) and 32
   (comparison with a second poem, 25). Unit 31 is the section rubric, 31 and its poem;
-  unit 32 is 32 and the second poem, with unit 31's region as unscored context.
+  unit 32 is 32 and the second poem, with the rubric and first poem as unscored context.
 
 Reconciliation: each text's questions sum to its section's 40 marks, one text per
 section is answered, and the sections sum to the cover total. The owner's route is
@@ -107,6 +107,21 @@ def tariff(rows):
     return found
 
 
+def unseen_comparison_context(pdf, rows):
+    """Keep the rubric and poem in separate crops around question 31's scored task."""
+    labels = [i for i, (_, row) in enumerate(rows) if label_of(row) == '31']
+    if len(labels) != 1 or not labels[0]:
+        raise ValueError('Cannot locate the first unseen poetry question and its rubric')
+    prompt = labels[0]
+    title = re.search(r'Write about the poem (.+?) by ', rows[prompt][1]['text'])
+    if not title:
+        raise ValueError('Cannot read the first unseen poem title from its printed prompt')
+    headings = [i for i, (_, row) in enumerate(rows) if i > prompt and row['text'] == title.group(1)]
+    if len(headings) != 1 or tariff(rows[prompt:headings[0]]) != [15]:
+        raise ValueError('Cannot separate the first unseen poem from its scored prompt')
+    return box(pdf, rows[:prompt]) + box(pdf, rows[headings[0]:])
+
+
 def extract(path, paper):
     import pdfplumber
     exceptions = []
@@ -184,7 +199,6 @@ def extract(path, paper):
         for q in out:
             n, fam = q['number'], q['family']
             rows = q['rows']
-            ctx_rows, ctx_kind = [], None
             if fam == 'shakespeare' and n[1] == '1':
                 head = max(h[0] for h in heads if h[0] < q['index'])
                 rows = stream[head:q['index']] + rows
@@ -219,11 +233,13 @@ def extract(path, paper):
             q['marks'] = t[0] if t else None
             if REMOVED.search(text_of(rows)):
                 q['copyright_removed_content'] = True
-        # Context for unseen 32: unit 31's region.
+        # Context for unseen 32: the first poem and the section rubric.
         for q in out:
             if q['family'] == 'unseen' and q['number'][1] == '2':
                 p1 = by_num.get(q['number'][0] + '1')
-                q['context_rows'] = p1['all_rows'] if p1 else []
+                if p1 is None:
+                    raise ValueError('The comparison question has no first poem')
+                q['context_regions'] = unseen_comparison_context(pdf, p1['all_rows'])
         # Reconcile.
         groups = {}
         for q in out:
@@ -252,8 +268,8 @@ def extract(path, paper):
             entry = {'number': q['number'], 'marks': q['marks'], 'family': q['family'], 'title': q['title'], 'route': route,
                      'regions': box(pdf, q['unit_rows']), 'extract_regions': box(pdf, q.get('extract_rows', [])) if q.get('extract_rows') else [],
                      'text': text_of(q['all_rows'])}
-            if q.get('context_rows'):
-                entry['context_regions'] = box(pdf, q['context_rows'])
+            if q.get('context_regions'):
+                entry['context_regions'] = q['context_regions']
             if q.get('copyright_removed_content'):
                 entry['copyright_removed_content'] = True
             result.append(entry)

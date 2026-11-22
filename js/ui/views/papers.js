@@ -69,8 +69,8 @@ export async function mount(element, context) {
   const tieredSubject = isTiered(subject) && tiers.length > 1;
   const chosenTier = isEnrolled ? savedTier(subject, progress) : null;
   const requestedTier = validTier(subject, context.query.tier);
-  const needsTier = tieredSubject && tierRequired(subject) && !(isEnrolled ? chosenTier : requestedTier);
   const linkTier = context.query.tier === 'all' ? 'all' : requestedTier;
+  const needsTier = tieredSubject && tierRequired(subject) && !(linkTier || chosenTier);
   const levels = [...new Set(papers.filter((paper) => !paper.is_sample).map((paper) => levelOf(paper, subject)).filter(Boolean))];
   const filters = { year: 'all', code: 'all', status: 'all', level: 'all', tier: linkTier || (tiers.includes(chosenTier) ? chosenTier : 'all') };
   const codesFor = (tier) => [...new Set(papers.filter((paper) => !paper.is_sample && (tier === 'all' || paper.tier === tier)).map((paper) => paper.paper_code))].sort(naturalCompare);

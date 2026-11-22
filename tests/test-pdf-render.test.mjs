@@ -91,6 +91,24 @@ test('unavailable required article blocks the question paper while leaving schem
   assert.match(prepared.missing[0].reason, /pre-release article/);
 });
 
+test('a linked export skips a later composite stem when the first part has no stem', async () => {
+  const parts = [
+    {id: 'A', label: '(a)', reference: 'Paper Q1(a)', maxMarks: 1},
+    {id: 'B', label: '(b)', reference: 'Paper Q1(b)', maxMarks: 2},
+  ];
+  const snapshot = {version: 1, totalMarks: 3, groups: [{number: 1, reference: 'Paper Q1', parts}]};
+  const questions = new Map([
+    ['A', {question: {question_id: 'A', parent_question_id: 'Q1', content: {question_html: '<p>First scored prompt</p>'}}}],
+    ['B', {question: {question_id: 'B', parent_question_id: 'Q1', depends_on_question_ids: ['A'],
+      context: {shared_stem_html: '<p>First scored prompt repeated in legacy context</p>'}, content: {question_html: '<p>Second scored prompt</p>'}}}],
+  ]);
+  const prepared = await prepareTestPdf(snapshot, questions);
+  assert.equal(prepared.canExportQuestions, true);
+  const blocks = prepared.question.groups[0].blocks;
+  assert.deepEqual(blocks.filter(block => block.type === 'html').map(block => block.html), ['<p>First scored prompt</p>', '<p>Second scored prompt</p>']);
+  assert.deepEqual(blocks.filter(block => block.type === 'answer').map(block => block.marks), [1, 2]);
+});
+
 test('80 question selection paginates and preserves a long text block', async () => {
   const groups = Array.from({ length: 80 }, (_, index) => group(String(index + 1), `Question ${index + 1}. ${'Long readable response text '.repeat(35)}`));
   const pdf = await createQuestionPdf({ title: 'Maximum selection', totalMarks: 160, compact: false, groups });
@@ -223,6 +241,7 @@ test('browser converts source images and renders sanitized HTML in page and modu
       ['maths', 'EDX_8MA0_2019_JUNE_21', 'Q04_U02'],
       ['maths', 'EDX_9MA0_2018_JUNE_02', 'Q05_U03'],
       ['gcsemaths', 'EDX_1MA1_2022_JUNE_1H', 'Q06_U03'],
+      ['gcsephys', 'EDX_1SC0_2022_JUNE_2PF', 'Q02_U02'],
     ];
     const result = [];
     for (const [slug, paperId, suffix] of fixtures) {
@@ -263,9 +282,11 @@ test('browser converts source images and renders sanitized HTML in page and modu
   assert.ok((result.tall.match(/\/Subtype \/Image/g) || []).length > 2);
   assert.match(result.tall, /q 499\.28 0 0/);
   assert.match(result.tallText, /Long source crop \(continued\)/);
-  assert.deepEqual(realCases.map(item => item.parts), [['Q03_U01', 'Q03_U02'], ['Q04_U02'], ['Q05_U03'], ['Q06_U02', 'Q06_U03']]);
+  assert.deepEqual(realCases.map(item => item.parts), [['Q03_U01', 'Q03_U02'], ['Q04_U02'], ['Q05_U03'], ['Q06_U02', 'Q06_U03'], ['Q02_U01', 'Q02_U02']]);
   assert.equal(realCases[0].marks, 3);
   assert.equal(realCases[0].contextBlocks, 1);
+  assert.equal(realCases[4].marks, 3);
+  assert.equal(realCases[4].contextBlocks, 1);
   for (const item of realCases) {
     assert.deepEqual(item.missing, []);
     assert.equal(item.answerSpaces.length, item.parts.length);

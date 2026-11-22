@@ -7,7 +7,7 @@ Usage: build.py --research DIR [--only PAPER ...]
 One scored unit per printed question on the owner's route: Macbeth 21 (extract question,
 crop includes the extract) and 22 (essay); An Inspector Calls 08 and A Christmas Carol 21
 (40-mark source-based essays, crop includes the extract); unseen poetry 31 and 32 (32
-shows the section rubric, 31 and the first poem as unscored context). Questions on other
+shows the section rubric and first poem as unscored context). Questions on other
 texts are listed as option_not_in_route. Anthology questions name a poem from the
 anthology examined until 2026 and are listed as removed_from_specification; a booklet
 whose every question is removed (Summer 2022 C722U20-A) gets no pack and is listed in
@@ -93,9 +93,9 @@ def build_paper(paper, research, spec):
         if q.get('context_regions'):
             ctx = root / f'Q{code}_U01_context.webp'
             qr.render(q['context_regions'], ctx)
-            context['figures'] = [{'label': f"Question {code[0]}.1 and the first poem (needed for the comparison)", 'source': 'question_paper',
+            context['figures'] = [{'label': 'Section rubric and first unseen poem', 'source': 'question_paper',
                                    'image_url': rel(ctx)}]
-            basis = 'unscored context: the section rubric, question 3.1 and the first unseen poem'
+            basis = 'unscored context: the section rubric and the first unseen poem'
         elif q['extract_regions']:
             basis = 'the printed extract (on the opposite page in the paper) is part of the question image'
         elif q['route'] in ('POST1914', 'C19'):

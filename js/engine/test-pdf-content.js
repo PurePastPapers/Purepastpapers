@@ -74,10 +74,8 @@ export async function prepareTestPdf(snapshot, questions, {kind = 'question', si
         }
         const parent = question.parent_question_id || `${question.paper_id}:${question.question_number}`;
         const showSharedStem = !seenParents.has(parent) && (context.shared_stem_html || context.stem_image_url);
-        if (showSharedStem) {
-          seenParents.add(parent);
-          await appendSharedStem(questionBlocks, context, part.reference, missing, assetOptions, seenContext);
-        }
+        seenParents.add(parent);
+        if (showSharedStem) await appendSharedStem(questionBlocks, context, part.reference, missing, assetOptions, seenContext);
         await appendContextAsset(questionBlocks, context.booklet_image_url, `Source booklet extract for ${part.reference}`, missing, assetOptions, seenContext);
         if (!showSharedStem || !question.provenance?.source_lead_in_in_stem) {
           await appendContextAsset(questionBlocks, context.lead_in_image_url, `Printed lead-in for ${part.reference}`, missing, assetOptions, seenContext);

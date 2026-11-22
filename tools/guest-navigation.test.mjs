@@ -59,6 +59,30 @@ test('A guest science tier follows the subject links to the matching papers', { 
   assert.ok((await codes.allTextContents()).every((label) => label.includes('Foundation')));
 });
 
+test('A guest can open a both-tier science paper list directly', { skip }, async (t) => {
+  const page = await guestPage(t, '/papers?subject=EDX_GCSE_COMBSCI_1SC0&tier=all');
+  const codes = page.locator('.paper-card__code');
+  await codes.first().waitFor();
+  const labels = await codes.allTextContents();
+  assert.ok(labels.some(label => label.includes('Foundation')));
+  assert.ok(labels.some(label => label.includes('Higher')));
+});
+
+test('Switching Combined Science disciplines keeps the chosen practice mode on reload', { skip }, async (t) => {
+  const page = await guestPage(t, '/practice?subject=EDX_GCSE_COMBSCI_1SC0&tier=Foundation&mode=individual');
+  const builder = page.getByRole('tab', {name: 'Build a test', exact: true});
+  await builder.click();
+  await page.waitForURL(url => url.hash.includes('mode=timed_test'));
+  const chemistry = page.getByRole('radio', {name: 'Chemistry', exact: true});
+  await chemistry.click();
+  await page.locator('[data-start-test]').waitFor();
+  assert.equal(await chemistry.getAttribute('aria-checked'), 'true');
+  await page.reload();
+  await page.locator('[data-start-test]').waitFor();
+  assert.equal(await builder.getAttribute('aria-selected'), 'true');
+  assert.equal(await chemistry.getAttribute('aria-checked'), 'true');
+});
+
 test('The add-subject dialog announces its title and restores focus on Escape', { skip }, async (t) => {
   const page = await guestPage(t, '/subjects?level=alevel');
   const math = page.getByRole('article').filter({ has: page.getByRole('heading', { name: 'Mathematics', exact: true }) });

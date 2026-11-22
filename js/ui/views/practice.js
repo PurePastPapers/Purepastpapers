@@ -1583,11 +1583,10 @@ export async function mount(element, context) {
     context.refresh();
   });
   on(element, 'click', '[data-mode]', (event, button) => {
-    state.mode = button.dataset.mode;
-    migrateBrowserRange();
-    for (const tab of element.querySelectorAll('[data-mode]')) tab.setAttribute('aria-selected', String(tab === button));
+    const mode = button.dataset.mode;
+    if (mode === state.mode) return;
     save();
-    draw();
+    context.navigate(routeOf(links.practice({ ...context.query, subject: subjectId, mode, topic: null, filters: null })), { replace: true });
   });
   on(element, 'change', '[data-filter]', (event, select) => change(() => {
     state[select.dataset.filter] = select.value;

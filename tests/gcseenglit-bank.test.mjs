@@ -69,6 +69,11 @@ test('route tags, tariffs and unseen context', () => {
       assert.deepEqual(q.primary_spec_points, [first ? `${P}_UNSEEN_C.1` : `${P}_UNSEEN_C.2`]);
       assert.equal(q.marks, first ? 15 : 25);
       assert.equal(Boolean(q.context.figures?.length), !first, q.question_id);
+      if (!first) {
+        const [rubric, poem] = q.provenance.context_regions;
+        assert.equal(q.context.figures[0].label, 'Section rubric and first unseen poem');
+        assert(rubric.page < poem.page || (rubric.page === poem.page && rubric.bbox[3] < poem.bbox[1]), q.question_id);
+      }
     }
     assert.equal(q.level, 'GCSE');
     assert.equal(q.tier, null);
