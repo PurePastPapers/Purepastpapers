@@ -105,6 +105,14 @@ try {
   await importFlow(page, title, 'quizlet', (p) => p.getByLabel('Exported text').fill('Quizlet QA term\tQuizlet QA definition'));
   assert.equal(await page.getByRole('button', { name: 'Import cards', exact: true }).isDisabled(), true);
 
+  // Swap Quizlet sides in the preview; the saved card must match what the preview showed.
+  await importFlow(page, title, 'quizlet', (p) => p.getByLabel('Exported text').fill('Swap QA term\tSwap QA definition'));
+  await page.getByRole('button', { name: 'Swap front and back' }).click();
+  await page.locator('[data-import-preview]').getByText('Front shows the definition.').waitFor();
+  const previewSides = await page.locator('.flashcards__preview-cards article').first().locator(':scope > div').allTextContents();
+  assert.deepEqual(previewSides.map((text) => text.trim()), ['Swap QA definition', 'Swap QA term']);
+  await commit(page);
+
   const csv = '"Front","Back","Tags"\n"CSV, QA question","First line\nSecond line with ""quotes""","audit"\n';
   await importFlow(page, title, 'csv', async (p) => {
     await p.locator('input[name="file"]').setInputFiles({ name: 'qa.csv', mimeType: 'text/csv', buffer: Buffer.from(csv) });
@@ -114,7 +122,10 @@ try {
   await page.locator('[data-import-preview]').getByText(/Second line with/).waitFor();
   await commit(page);
   const root = (await appDecks(page)).find((entry) => entry.title === title);
-  assert.equal((await appCards(page, root.id)).length, 3);
+  const rootCards = await appCards(page, root.id);
+  assert.equal(rootCards.length, 4);
+  const swappedCard = rootCards.find((card) => card.front === 'Swap QA definition');
+  assert.deepEqual([swappedCard?.front, swappedCard?.back, swappedCard?.variant], ['Swap QA definition', 'Swap QA term', 'forward']);
 
   await importFlow(page, title, 'anki', (p) => p.locator('input[name="file"]').setInputFiles(ankiPath));
   await commit(page);
@@ -123,7 +134,7 @@ try {
   let importedDeck;
   for (const deck of [root, ...importedDecks]) {
     const cards = await appCards(page, deck.id);
-    imported = cards.find((card) => !card.suspended && card.type === 'basic' && !['What stores a revision?', 'Quizlet QA term', 'CSV, QA question'].includes(card.front));
+    imported = cards.find((card) => !card.suspended && card.type === 'basic' && !['What stores a revision?', 'Quizlet QA term', 'Swap QA definition', 'CSV, QA question'].includes(card.front));
     if (imported) { importedDeck = deck; break; }
   }
   assert.ok(imported, 'Anki fixture contains a new, unsuspended basic card');

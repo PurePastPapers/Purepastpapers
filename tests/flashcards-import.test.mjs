@@ -68,3 +68,18 @@ test('official Anki 26.9 APKG fixtures import modern protobuf and legacy media l
     assert.ok(suspended);
   }
 });
+
+test('Quizlet import can use the definition as the front before committing', () => {
+  const text = 'Mitochondrion\tReleases energy in respiration\nRibosome\tSite of protein synthesis';
+  const termFirst = parseQuizlet(text);
+  const swapped = parseQuizlet(text, { front: 'definition' });
+  assert.equal(termFirst.front, 'term');
+  assert.equal(swapped.front, 'definition');
+  assert.deepEqual(swapped.notes.map(note => [note.front, note.back]), [
+    ['Releases energy in respiration', 'Mitochondrion'],
+    ['Site of protein synthesis', 'Ribosome'],
+  ]);
+  // Each orientation is a different card, so the swapped import is not a duplicate.
+  assert.notEqual(swapped.notes[0].cards[0].sourceKey, termFirst.notes[0].cards[0].sourceKey);
+  assert.throws(() => parseQuizlet(text, { front: 'back' }), /term or the definition/);
+});

@@ -90,20 +90,24 @@ export function parseCsv(text, mapping = {}) {
   return { source: 'csv', notes, errors, warnings };
 }
 
-export function parseQuizlet(text) {
+// `front` chooses which exported column becomes the card front: the term (default)
+// or the definition. The preview and the saved cards both use the same parsed notes.
+export function parseQuizlet(text, { front: frontColumn = 'term' } = {}) {
   if (typeof text !== 'string') throw new TypeError('Quizlet export must be text.');
+  if (!['term', 'definition'].includes(frontColumn)) throw new Error('Choose the term or the definition as the card front.');
   const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/);
   const notes = [], errors = [], warnings = [];
   for (let i = 0; i < lines.length; i++) {
     if (!lines[i].trim()) continue;
     const splitAt = lines[i].indexOf('\t');
     if (splitAt < 0) { errors.push({ row: i + 1, reason: 'Expected a term and definition separated by a tab.' }); continue; }
-    const front = lines[i].slice(0, splitAt).trim(), back = lines[i].slice(splitAt + 1).trim();
-    if (!front || !back) { errors.push({ row: i + 1, reason: 'Term and definition must both contain text.' }); continue; }
+    const term = lines[i].slice(0, splitAt).trim(), definition = lines[i].slice(splitAt + 1).trim();
+    if (!term || !definition) { errors.push({ row: i + 1, reason: 'Term and definition must both contain text.' }); continue; }
+    const [front, back] = frontColumn === 'definition' ? [definition, term] : [term, definition];
     notes.push(normalizedNote(stableContentKey('quizlet', front, back), front, back));
     if (notes.length >= IMPORT_LIMITS.rows) { warnings.push(`Only the first ${IMPORT_LIMITS.rows.toLocaleString()} rows are imported.`); break; }
   }
-  return { source: 'quizlet', notes, errors, warnings };
+  return { source: 'quizlet', front: frontColumn, notes, errors, warnings };
 }
 
 const tableNames = db => new Set(db.exec("SELECT name FROM sqlite_master WHERE type='table'")[0]?.values.map(row => row[0]) ?? []);
