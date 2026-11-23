@@ -56,7 +56,7 @@ const ROUTES = [
   { path: '/subject/:subjectId', load: () => import('./ui/views/subject.js') },
   { path: '/papers', load: papersView, options: { paperType: 'real_past_paper' } },
   { path: '/paper/:subjectId/:paperId', load: () => import('./ui/views/paper.js') },
-  { path: '/practice', load: () => import('./ui/views/practice.js?v=pencil-2') },
+  { path: '/practice', load: () => import('./ui/views/practice.js?v=pencil-3') },
   { path: '/practice/exported', load: exportedTestsView },
   { path: '/practice/exported/:paperId', load: exportedTestsView },
   { path: '/session/:sessionId', load: () => import('./ui/views/session.js'), layout: 'focus' },

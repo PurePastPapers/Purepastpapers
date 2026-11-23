@@ -195,6 +195,14 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     return current;
   };
   const attachPointerHandlers = (canvas, section) => {
+    // iPad can deliver a native touch gesture alongside Pencil pointer events.
+    // Cancel it at the writing surface on every contact, including after pen-up.
+    canvas.style.touchAction = 'none';
+    const preventCanvasPan = (event) => {
+      if (event.cancelable) event.preventDefault();
+    };
+    canvas.addEventListener('touchstart', preventCanvasPan, { passive: false });
+    canvas.addEventListener('touchmove', preventCanvasPan, { passive: false });
     canvas.addEventListener('pointerdown', (event) => {
       if (active || (event.pointerType === 'touch' && !allowTouchDrawing) || event.button !== 0) return;
       event.preventDefault();

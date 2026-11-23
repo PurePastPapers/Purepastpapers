@@ -221,3 +221,35 @@ test('the Pencil keeps a vertical first stroke when the answer switches from tex
     assert.ok(result.points[0].y < result.points[1].y && result.points[1].y < result.points[2].y);
   });
 });
+
+test('each Pencil contact blocks native panning on the canvas and leaves surrounding touch gestures alone', browserOptions, async () => {
+  await withInkBrowser(async (page) => {
+    const result = await page.evaluate(async () => {
+      const { createInkEditor } = await import('/js/ui/ink-editor.js');
+      const host = document.createElement('div');
+      document.body.append(host);
+      const editor = createInkEditor(host);
+      const canvas = host.querySelector('canvas');
+      const bounds = canvas.getBoundingClientRect();
+      const blocked = (target, type) => !target.dispatchEvent(new Event(type, { bubbles: true, cancelable: true }));
+      const gestures = [];
+      for (const [index, direction] of [1, -1, 1, -1].entries()) {
+        const startY = bounds.top + 100;
+        const pen = (type, y) => canvas.dispatchEvent(new PointerEvent(type, {
+          bubbles: true, cancelable: true, pointerType: 'pen', pointerId: index + 1, button: 0,
+          clientX: bounds.left + 35 + index * 15, clientY: y,
+        }));
+        pen('pointerdown', startY);
+        gestures.push(blocked(canvas, 'touchstart'), blocked(canvas, 'touchmove'));
+        pen('pointermove', startY + 50 * direction);
+        pen('pointerup', startY + 50 * direction);
+      }
+      const strokeDirections = editor.getValue().sections[0].strokes.map(({ points }) => Math.sign(points.at(-1).y - points[0].y));
+      return { gestures, strokeDirections, outside: blocked(host, 'touchmove'), touchAction: canvas.style.touchAction };
+    });
+    assert.deepEqual(result.gestures, Array(8).fill(true));
+    assert.deepEqual(result.strokeDirections, [1, -1, 1, -1]);
+    assert.equal(result.outside, false);
+    assert.equal(result.touchAction, 'none');
+  });
+});

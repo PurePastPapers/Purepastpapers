@@ -35,7 +35,7 @@ import { links, routeOf } from '../../core/links.js?v=exported-tests-1';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
 import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js?v=20261122-pdf2';
-import { createInkEditor, renderInkPreview, transferPencilStroke } from '../ink-editor.js?v=pencil-2';
+import { createInkEditor, renderInkPreview, transferPencilStroke } from '../ink-editor.js?v=pencil-3';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
 const SOURCE_CHOICES = [
