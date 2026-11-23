@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 9350)
+Total output lines: 600
+
 // The Comprehensive Data Hub (PRD 4.4): every question attempt, topic mastery with
 // Red / Amber / Green ratings, and paper and test history with grade trends.
 // One filter row (subject) scopes every number, chart and table on the page.
@@ -7,6 +10,7 @@ import { isEnabled } from '../../config/phases.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
 import { fmtDate, fmtDayMonth, fmtDuration, fmtRelative, percent, plural, uniq } from '../../core/utils.js';
 import * as api from '../../data/api.js';
+import { privateStudySummary } from '../../data/study-summary.js';
 import { getBundles, specIndex } from '../../data/content-repository.js';
 import {
   attemptCounts, byDifficulty, currentStreak, latestByQuestion, masteryByNode, paperHistory, ragFor, scoreOf, totals, weeklyActivity,
@@ -205,181 +209,7 @@ export async function mount(element, context) {
               return html`<tr>
                 <td class="qcell">
                   ${found
-                    ? html`<span class="small muted">${subjectId === 'all' ? `${found.bundle.subject.subject} · ` : ''}${questionRef(found.question, found.bundle.papersById)}</span>
-                        <span class="qcell__text">${questionSnippet(found.question, 90)}</span>`
-                    : html`<span class="muted">Question no longer in the bank</span>`}
-                </td>
-                <td>${found ? html`<span class="tag">${specIndex.topicOf(found.question.primary_spec_points[0])?.title || '—'}</span>` : ''}</td>
-                <td>${difficultyBadge(attempt.difficulty)}</td>
-                <td class="nowrap">${attempt.waiting
-                  ? html`<span class="tag tag--waiting">${icon('clock', { size: 13 })} Not marked yet</span>`
-                  : html`${ragBadge(ragFor(score), score, { label: false })} <span class="small muted num">${attempt.marks_awarded}/${attempt.max_marks}</span>`}</td>
-                <td class="num">${(counts.get(attempt.question_id) || 0) + (waitingCounts.get(attempt.question_id) || 0)}</td>
-                <td class="nowrap small">${fmtRelative(attempt.timestamp)}</td>
-                <td class="right">${found ? (attempt.waiting
-                  ? html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm btn--primary" data-mark-later="${attempt.attempt_id}">Mark it</button><button type="button" class="btn btn--sm" data-attempts="${attempt.question_id}">All attempts</button></span>`
-                  : html`<span class="row row--tight" style="justify-content:flex-end;flex-wrap:nowrap"><button type="button" class="btn btn--sm" data-attempts="${attempt.question_id}">All attempts</button><button type="button" class="btn btn--sm" data-retry="${attempt.question_id}" title="Answer it again and save a new score">Retry</button></span>`) : ''}</td>
-              </tr>`;
-            })}
-          </tbody>
-        </table>
-      </div>
-      ${rows.length > 200 ? html`<p class="small muted" style="margin-top:10px">Showing the 200 most recent of ${rows.length}.</p>` : ''}`;
-  }
-
-  function questionsTab() {
-    const weak = latestList.filter((attempt) => scoreOf(attempt) < RAG.green && find(attempt.question_id));
-    const chip = (group, value, label) =>
-      html`<button type="button" class="chip ${group === 'difficulty' && value !== 'all' ? `chip--difficulty chip--difficulty-${value}` : ''}" data-qfilter="${group}" data-value="${value}" aria-pressed="${questionFilters[group] === value}">${label}</button>`;
-    return html`<section class="card ruled tilt-2">
-          <i class="tape tape--l" aria-hidden="true"></i>
-      <div class="card__head">
-        <h2 class="card__title">Every question you have answered</h2>
-        ${subjectId === 'all'
-          ? html`<span class="small muted">Choose a subject above to retry its weak questions as a set.</span>`
-          : html`<button type="button" class="btn btn--sm btn--primary" data-retry-weak ${weak.length ? '' : 'disabled'}>
-              ${icon('refresh', { size: 15 })} Retry ${Math.min(weak.length, LIMITS.questionSetMax)} below ${RAG.green}%
-            </button>`}
-      </div>
-      <div class="stack stack--sm" style="margin-bottom:14px">
-        <div class="chips" role="group" aria-label="Filter by result">
-          ${chip('status', 'all', 'All results')} ${waitingList.length ? chip('status', 'waiting', `Not marked yet (${waitingList.length})`) : ''} ${chip('status', 'red', RAG_LABELS.red)} ${chip('status', 'amber', RAG_LABELS.amber)} ${chip('status', 'green', RAG_LABELS.green)}
-        </div>
-        <div class="chips" role="group" aria-label="Filter by difficulty">
-          ${chip('difficulty', 'all', 'All difficulties')} ${DIFFICULTIES.map((difficulty) => chip('difficulty', difficulty.id, difficulty.label))}
-        </div>
-      </div>
-      <div data-qtable>${questionsTable()}</div>
-    </section>`;
-  }
-
-  // ───────────────────────────────── topics ─────────────────────────────────
-
-  function difficultyLine(entry) {
-    const parts = DIFFICULTIES.filter((difficulty) => entry.byDifficulty[difficulty.id]).map((difficulty) => {
-      const level = entry.byDifficulty[difficulty.id];
-      return `${difficulty.label} ${fmtPercent(percent(level.awarded, level.max))}`;
-    });
-    return parts.join(' · ');
-  }
-
-  function topicsForSubject(bundle) {
-    const mastery = masteryByNode(latest, bundle.questionsById, specIndex);
-    const learned = api.learnedSet();
-    return html`${bundle.spec.sections.map(
-      (section) =>
-        html`<section class="card ruled tilt-4">
-          <i class="tape tape--c" aria-hidden="true"></i>
-          <div class="card__head">
-            <h2 class="card__title">${section.title}</h2>
-            ${mastery.get(section.id) ? ragBadge(mastery.get(section.id).rag, mastery.get(section.id).percentage) : html`<span class="small muted">No attempts yet</span>`}
-          </div>
-          ${section.topics.map((topic) => {
-            const entry = mastery.get(topic.id);
-            const leaves = specIndex.leavesOf(topic.id);
-            const learnedCount = leaves.filter((id) => learned.has(id)).length;
-            return html`<details class="fold fold--row">
-              <summary>
-                <span class="fold__title"><span class="tree__code">${topic.code}</span> ${topic.title}</span>
-                <span class="small muted nowrap">${learnedCount}/${leaves.length} learned</span>
-                <span class="topicbar">${entry ? meter(entry.percentage, entry.rag, `${topic.title}: ${fmtPercent(entry.percentage)}`) : meter(0, 'none', 'No attempts')}</span>
-                <span class="topicbar__value">${entry ? ragBadge(entry.rag, entry.percentage, { label: false }) : html`<span class="small muted">—</span>`}</span>
-              </summary>
-              <div class="stack stack--sm" style="padding:10px 0 4px">
-                ${entry
-                  ? html`<p class="small muted">${plural(entry.count, 'question')} answered · ${entry.awarded}/${entry.max} marks · ${difficultyLine(entry)}</p>`
-                  : html`<p class="small muted">No questions answered in this topic yet.</p>`}
-                <ul class="pointlist">
-                  ${topic.points.map((point) => {
-                    const pointEntry = mastery.get(point.id);
-                    return html`<li>
-                      <span class="tree__code">${point.code}</span>
-                      <span class="pointlist__title">${point.title}</span>
-                      <span class="small muted nowrap">${learned.has(point.id) ? html`${icon('check', { size: 14 })} Learned` : 'Not yet learned'}</span>
-                      <span class="nowrap">${pointEntry ? ragBadge(pointEntry.rag, pointEntry.percentage, { label: false }) : html`<span class="small muted">No data</span>`}</span>
-                    </li>`;
-                  })}
-                </ul>
-                <p><a class="btn btn--sm" href="${links.practice({ subject: bundle.subject.subject_id, topic: topic.id, mode: 'individual' })}">Practise this topic</a></p>
-              </div>
-            </details>`;
-          })}
-        </section>`,
-    )}`;
-  }
-
-  function topicsTab() {
-    if (subjectId !== 'all') {
-      return html`<div class="stack">
-        <p class="muted">
-          ${ragBadge('green')} ${RAG.green}% or more &nbsp; ${ragBadge('amber')} ${RAG.amber}–${RAG.green - 1}% &nbsp; ${ragBadge('red')} below ${RAG.amber}%.
-          Ratings use your latest attempt at each question. <a href="${links.subject(subjectId)}">Edit what you have learned</a>
-        </p>
-        ${topicsForSubject(scope[0])}
-      </div>`;
-    }
-    return html`<div class="grid grid--2">
-      ${scope.map((bundle) => {
-        const mastery = masteryByNode(latest, bundle.questionsById, specIndex);
-        const rated = bundle.spec.sections
-          .flatMap((section) => section.topics)
-          .map((topic) => ({ topic, entry: mastery.get(topic.id) }))
-          .filter((item) => item.entry)
-          .sort((a, b) => a.entry.percentage - b.entry.percentage);
-        return html`<section class="card ruled tilt-1">
-          <i class="tape tape--r" aria-hidden="true"></i>
-          <div class="card__head">
-            <h2 class="card__title">${subjectName(bundle.subject)}</h2>
-            <a class="btn btn--sm" href="${href({ subject: bundle.subject.subject_id })}">All topics</a>
-          </div>
-          ${rated.length
-            ? html`<p class="label" style="margin-bottom:8px">Lowest scoring topics</p>
-                <div class="meterlist">
-                  ${rated.slice(0, 4).map(
-                    ({ topic, entry }) =>
-                      html`<span class="meterlist__name">${topic.title}</span>${meter(entry.percentage, entry.rag, `${topic.title}: ${fmtPercent(entry.percentage)}`)}
-                        <span class="meterlist__value">${ragBadge(entry.rag, entry.percentage, { label: false })}</span>`,
-                  )}
-                </div>`
-            : html`<p class="muted small">No questions answered yet.</p>`}
-        </section>`;
-      })}
-    </div>`;
-  }
-
-  // ───────────────────────────────── papers and tests ─────────────────────────────────
-
-  let historyType = 'all';
-
-  function historyTable() {
-    const rows = paperAttempts.filter((attempt) => historyType === 'all' || attempt.paper_type === historyType);
-    const exports = new Set(api.exportedTests().map(test => test.paper_id));
-    if (!rows.length) return html`<p class="muted" style="padding:16px 0">Nothing here yet.</p>`;
-    return html`<div class="table-wrap">
-      <table class="table">
-        <thead>
-          <tr><th>Date</th><th>Paper or test</th><th>Type</th><th class="num">Score</th><th>Result</th><th>Time taken</th><th><span class="sr-only">Actions</span></th></tr>
-        </thead>
-        <tbody>
-          ${rows.map((attempt) => {
-            const bundle = bundles.get(attempt.subject_id);
-            const isPaper = bundle?.papersById.has(attempt.paper_id);
-            return html`<tr>
-              <td class="nowrap">${fmtDate(attempt.timestamp)}</td>
-              <td>
-                ${isPaper
-                  ? html`<a href="${links.paper(attempt.subject_id, attempt.paper_id)}">${attempt.title}</a>`
-                  : attempt.title || 'Practice'}
-                ${bundle ? html`<br /><span class="small muted">${subjectName(bundle.subject)}</span>` : ''}
-              </td>
-              <td><span class="badge ${attempt.paper_type === 'real_past_paper' ? 'badge--official' : ''}">${PAPER_TYPES[attempt.paper_type]?.label || attempt.paper_type}</span></td>
-              <td class="num">${attempt.marks_awarded}/${attempt.max_marks}</td>
-              <td class="nowrap">${ragBadge(ragFor(attempt.percentage), attempt.percentage, { label: false })} ${attempt.grade ? html`<span class="tag">Grade ${attempt.grade}</span>` : ''}</td>
-              <td class="nowrap small">${attempt.duration_seconds ? fmtDuration(attempt.duration_seconds) : '—'}</td>
-              <td class="right">
-                ${attempt.session_kind === 'offline_test'
-                  ? (exports.has(attempt.paper_id)
-                    ? html`<a class="btn btn--sm btn--ghost" href="${links.exportedTest(attempt.paper_id, { attempt: attempt.session_id })}">Review ${attempt.score_mode === 'overall' ? 'overall score' : 'question marks'}</a>`
+                    ? html`<span class="small muted">${subjectId === …2850 tokens truncated…   ? html`<a class="btn btn--sm btn--ghost" href="${links.exportedTest(attempt.paper_id, { attempt: attempt.session_id })}">Review ${attempt.score_mode === 'overall' ? 'overall score' : 'question marks'}</a>`
                     : '')
                   : attempt.session_id && api.getSession(attempt.session_id) ? html`<a class="btn btn--sm btn--ghost" href="${links.session(attempt.session_id)}">Review</a>` : ''}
               </td>
@@ -457,6 +287,7 @@ export async function mount(element, context) {
         sub: 'everything you’ve done, in one place: questions, topics, papers and tests',
         crumbs: [{ label: 'Home', href: links.home() }, { label: 'Data Hub', href: links.hub() }, ...(subjectId === 'all' ? [] : [{ label: bundles.get(subjectId).subject.subject }])],
       })}
+      <div data-study-summary-link hidden></div>
       <nav class="chips subject-pills" aria-label="Subject">
         <a class="chip ${subjectId === 'all' ? 'is-on' : ''}" href="${href({ subject: 'all' })}" aria-current="${subjectId === 'all' ? 'true' : 'false'}">All subjects</a>
         ${[...bundles.values()].map(
@@ -469,6 +300,15 @@ export async function mount(element, context) {
       </nav>
       ${body}`,
   );
+  const cloudAccount = api.cloudAccountId();
+  if (cloudAccount) {
+    privateStudySummary({ accessOnly: true }).then((allowed) => {
+      if (allowed !== true || api.cloudAccountId() !== cloudAccount || !element.isConnected) return;
+      const slot = $('[data-study-summary-link]', element);
+      setHtml(slot, html`<a class="btn btn--sm" href="${links.studySummary()}">My study summary</a>`);
+      slot.hidden = false;
+    }).catch(() => {});
+  }
   if (hasData && tab === 'overview') mountOverviewCharts();
   if (hasData && tab === 'papers') mountTrendChart();
 
