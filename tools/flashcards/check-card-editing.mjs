@@ -88,7 +88,7 @@ try {
   ]);
 
   // Study every new card once and record what the question side shows.
-  await page.getByRole('button', { name: 'Study', exact: true }).click();
+  await page.getByRole('button', { name: /^(Study|Start studying)$/ }).click();
   const questions = [];
   for (let i = 0; i < 5; i++) {
     const question = (await page.locator('.flashcards__study .flashcards__content').first().innerText()).trim();

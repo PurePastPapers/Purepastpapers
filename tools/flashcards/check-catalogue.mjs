@@ -61,16 +61,15 @@ try {
 
   const lookalike = await session('lookalike', { width: 1440, height: 1000 });
   await lookalike.getByRole('button', { name: 'PurePastPapers decks' }).click();
-  assert.equal(await catalogueCard(lookalike).getByRole('button', { name: 'School access required' }).isDisabled(), true);
+  assert.equal(await catalogueCard(lookalike).getByRole('button', { name: 'Access required' }).isDisabled(), true);
 
   const school = await session('school', { width: 390, height: 844 });
   await school.getByRole('button', { name: 'PurePastPapers decks' }).click();
-  await school.getByText('Your account is eligible.').waitFor();
   await catalogueCard(school).getByRole('button', { name: 'Add deck' }).click();
   await school.getByText('Deck added to My decks.').waitFor();
   await school.settle();
   const deck = (await rows(`select d.id from public.flashcard_decks d join auth.users u on u.id=d.user_id where d.catalogue_id=${literal(catalogue)} and u.email like '%@reachfree.co.uk'`))[0].id;
-  await school.locator(`[data-action="open-deck"][data-id="${deck}"]`).click();
+  await catalogueCard(school).getByRole('button', { name: 'Open deck' }).click();
   await school.locator('[data-topic]').waitFor();
   await school.settle();
   await school.locator('[data-topic]').selectOption('Cells');
@@ -87,7 +86,7 @@ try {
   assert.ok((await visible()).every((card) => card.front === ''), 'catalogue text is never copied into student notes');
 
   // Study one card, then publish a revision that rewords it and adds a card.
-  await school.getByRole('button', { name: 'Study', exact: true }).click();
+  await school.getByRole('button', { name: /^(Study|Start studying)$/ }).click();
   await school.getByRole('button', { name: /Show answer/ }).click();
   const studied = (await school.locator('.flashcards__study .flashcards__content').first().innerText()).trim();
   await school.getByRole('button', { name: /^Easy/ }).click();

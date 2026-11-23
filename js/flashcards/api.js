@@ -74,6 +74,7 @@ async function connection() {
 const eq = (value) => `eq.${value}`;
 const record = (rows) => rows?.[0];
 const selectId = (id) => ({ id: eq(id) });
+const cardFields = 'id,note_id,deck_id,variant,suspended,type,front,back,tags,revision,state,due_at,subdeck_path';
 
 async function readAll(db, table, query) {
   const pageSize = 200;
@@ -85,11 +86,10 @@ async function readAll(db, table, query) {
   }
 }
 
-export async function listDecks() {
+export async function listDecks({ sync = true } = {}) {
   if (!hasCloudAccount()) return [];
   const db = await connection();
-  await db.rpc('flashcard_sync_catalogue_decks');
-  return db.rpc('flashcard_list_decks');
+  return db.rpc(sync ? 'flashcard_open_decks' : 'flashcard_list_decks');
 }
 
 export async function createDeck({ title, parent_id = null }) {
@@ -126,8 +126,28 @@ export async function deleteDeck(id) {
 export async function listCards(deckId) {
   return readAll(await connection(), 'flashcard_visible_cards', {
     deck_id: eq(deckId), order: 'created_at.asc,id.asc',
-    select: 'id,note_id,deck_id,variant,suspended,type,front,back,tags,revision,state,due_at,subdeck_path',
+    select: cardFields,
   });
+}
+
+export async function getCard(deckId, cardId) {
+  const db = await connection();
+  return record(await db.read('flashcard_visible_cards', {
+    deck_id: eq(deckId), id: eq(cardId), select: cardFields, limit: 1,
+  })) ?? null;
+}
+
+export async function listCardPage(deckId, { subdeckPath = '', query = '', page = 1, pageSize = 30 } = {}) {
+  const db = await connection();
+  return db.rpc('flashcard_manage_cards', {
+    p_deck_id: deckId, p_subdeck_path: subdeckPath || null, p_query: query,
+    p_page: page, p_page_size: pageSize,
+  });
+}
+
+export async function listDeckTopics(deckId) {
+  const db = await connection();
+  return db.rpc('flashcard_deck_topics', { p_deck_id: deckId });
 }
 
 export async function saveNote({ id = null, deck_id, type, front, back, tags, confirm_remove = false }) {
@@ -208,18 +228,26 @@ function uuidFromHash(hash) {
   return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-8${hash.slice(13, 16)}-a${hash.slice(17, 20)}-${hash.slice(20, 32)}`;
 }
 
-export async function readMedia(id) {
+export async function readMedia(id, { catalogue = false } = {}) {
   if (!uuid.test(id)) throw new FlashcardError('Invalid media reference.');
   const db = await connection();
-  const row = record(await db.read('flashcard_media', { id: eq(id), select: 'data,mime_type' }))
-    ?? record(await db.rpc('flashcard_catalogue_media_content', { p_id: id }));
+  const personal = catalogue ? null : record(await db.read('flashcard_media', { id: eq(id), select: 'data,mime_type' }));
+  const row = personal ?? record(await db.rpc('flashcard_catalogue_media_content', { p_id: id }));
   if (!row || !mediaTypes.has(row.mime_type) || typeof row.data !== 'string' || !row.data.startsWith('\\x')) {
     throw new FlashcardError('This media is unavailable.');
   }
-  const value = row.data.slice(2);
-  const data = new Uint8Array(value.length / 2);
-  for (let index = 0; index < data.length; index++) data[index] = parseInt(value.slice(index * 2, index * 2 + 2), 16);
+  const data = decodeBytea(row.data);
   return URL.createObjectURL(new Blob([data], { type: row.mime_type }));
+}
+
+function decodeBytea(value) {
+  if (typeof Uint8Array.fromHex === 'function') return Uint8Array.fromHex(value.slice(2));
+  const data = new Uint8Array((value.length - 2) / 2);
+  const nibble = (code) => code <= 57 ? code - 48 : (code | 32) - 87;
+  for (let index = 0, offset = 2; index < data.length; index++, offset += 2) {
+    data[index] = (nibble(value.charCodeAt(offset)) << 4) | nibble(value.charCodeAt(offset + 1));
+  }
+  return data;
 }
 
 const preparedImports = new WeakMap();

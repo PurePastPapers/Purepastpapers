@@ -30,15 +30,38 @@ do $$ declare v_card uuid; v_deck uuid; r jsonb; begin
 end $$;
 select public.flashcard_publish_catalogue('EDX_ALEVEL_BIOL_9BN0_ATOMIC','40000000-0000-4000-8000-000000000402','EDX_ALEVEL_BIOL_9BN0','A-level 9BN0','atomic',3);
 set local role authenticated;
-do $$ declare r jsonb; v_deck uuid; begin
- r:=public.flashcard_sync_catalogue_decks();
- if r->>'added'<>'2' then raise exception 'Sync should add exactly two cards %',r; end if;
+do $$ declare r jsonb; v_deck uuid; first_card text; begin
+ r:=public.flashcard_open_decks();
+ if not r @> '[{"catalogue_id":"EDX_ALEVEL_BIOL_9BN0_ATOMIC","card_count":3}]'::jsonb then
+   raise exception 'Opening a deck did not return its updated card count %',r;
+ end if;
  if (select count(*) from public.flashcard_visible_cards)<>3 then raise exception 'Updated version cards missing'; end if;
  if not exists(select 1 from public.flashcard_visible_cards where front='Updated question' and revision=1 and subdeck_path='Topic 1') then
    raise exception 'Updated material lost its review state';
  end if;
  if exists(select 1 from public.flashcard_notes where front<>'' or back<>'') then raise exception 'Official content copied into private notes'; end if;
  select id into v_deck from public.flashcard_decks where catalogue_id='EDX_ALEVEL_BIOL_9BN0_ATOMIC';
+ r:=public.flashcard_manage_cards(v_deck,'Topic 2','',1,1);
+ first_card:=r->'cards'->0->>'id';
+ if r->>'total'<>'2' or jsonb_array_length(r->'cards')<>1 then
+   raise exception 'First topic page has the wrong size %',r;
+ end if;
+ r:=public.flashcard_manage_cards(v_deck,'Topic 2','',2,1);
+ if r->>'total'<>'2' or jsonb_array_length(r->'cards')<>1 or r->'cards'->0->>'id'=first_card then
+   raise exception 'Second topic page repeats the first %',r;
+ end if;
+ r:=public.flashcard_manage_cards(v_deck,'Topic 2','',3,1);
+ if r->>'total'<>'2' or jsonb_array_length(r->'cards')<>0 then
+   raise exception 'An empty page lost the total %',r;
+ end if;
+ r:=public.flashcard_manage_cards(v_deck,'Topic 2','NEW QUESTION',1,30);
+ if r->>'total'<>'1' or r->'cards'->0->>'front'<>'New question' then
+   raise exception 'Topic search failed %',r;
+ end if;
+ r:=public.flashcard_deck_topics(v_deck);
+ if not r @> '[{"path":"Topic 2","total":2,"suspended":1},{"path":"Topic 2::Archive","total":1,"suspended":1}]'::jsonb then
+   raise exception 'Nested topic summary failed %',r;
+ end if;
  r:=public.flashcard_study_queue(v_deck,'Topic 2');
  if jsonb_array_length(r->'cards')<>1 or r->'cards'->0->>'front'<>'New question' then raise exception 'Subdeck filter failed %',r; end if;
  r:=public.flashcard_set_topic_suspension(v_deck,'Topic 2',true);

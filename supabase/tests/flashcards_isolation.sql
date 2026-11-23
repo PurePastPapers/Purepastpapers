@@ -27,9 +27,13 @@ do $$ declare result jsonb; batch uuid := '30000000-0000-4000-8000-000000000201'
  if result->>'accepted' <> '1' then raise exception 'Import final count is wrong %', result; end if;
 end $$;
 select set_config('request.jwt.claim.sub','00000000-0000-4000-8000-000000000202',true);
-do $$ begin
+do $$ declare result jsonb; begin
  if (select count(*) from public.flashcard_cards) <> 0 or (select count(*) from public.flashcard_notes) <> 0 then
    raise exception 'Another account can read cards';
+ end if;
+ result := public.flashcard_manage_cards('10000000-0000-4000-8000-000000000201',null,'',1,30);
+ if result <> '{"cards":[],"total":0}'::jsonb or public.flashcard_deck_topics('10000000-0000-4000-8000-000000000201') <> '[]'::jsonb then
+   raise exception 'Another account can read card pages or topic metadata %',result;
  end if;
  begin
    perform public.flashcard_save_note(null,'10000000-0000-4000-8000-000000000201','basic','X','Y','{}',array['forward'],false);
