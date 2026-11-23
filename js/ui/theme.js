@@ -16,7 +16,7 @@ export function getThemePreference() {
 
 export const activeTheme = () => document.documentElement.dataset.theme || 'light';
 
-function apply(preference) {
+export function applyTheme(preference = getThemePreference()) {
   const dark = preference === 'dark' || (preference === 'system' && systemDark.matches);
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
 }
@@ -27,13 +27,13 @@ export function setThemePreference(preference) {
   } catch {
     /* the theme still applies for this visit */
   }
-  apply(preference);
+  applyTheme(preference);
 }
 
 export const toggleTheme = () => setThemePreference(activeTheme() === 'dark' ? 'light' : 'dark');
 
 systemDark.addEventListener('change', () => {
-  if (getThemePreference() === 'system') apply('system');
+  if (getThemePreference() === 'system') applyTheme('system');
 });
 
 // ── other display settings (per device, like the theme) ──

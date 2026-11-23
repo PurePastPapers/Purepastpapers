@@ -24,6 +24,7 @@ export const links = {
   exportedTest: (paperId, params) => `#/practice/exported/${enc(paperId)}${query(params)}`,
   session: (sessionId) => `#/session/${enc(sessionId)}`,
   flashcards: (params) => `#/flashcards${query(params)}`,
+  studySummary: () => '/study-summary/',
   hub: (params) => `#/hub${query(params)}`,
   aiPapers: () => '#/ai-papers',
   predicted: () => '#/predicted',

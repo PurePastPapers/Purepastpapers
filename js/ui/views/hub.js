@@ -7,6 +7,7 @@ import { isEnabled } from '../../config/phases.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
 import { fmtDate, fmtDayMonth, fmtDuration, fmtRelative, percent, plural, uniq } from '../../core/utils.js';
 import * as api from '../../data/api.js';
+import { privateStudySummary } from '../../data/study-summary.js';
 import { getBundles, specIndex } from '../../data/content-repository.js';
 import {
   attemptCounts, byDifficulty, currentStreak, latestByQuestion, masteryByNode, paperHistory, ragFor, scoreOf, totals, weeklyActivity,
@@ -457,6 +458,7 @@ export async function mount(element, context) {
         sub: 'everything you’ve done, in one place: questions, topics, papers and tests',
         crumbs: [{ label: 'Home', href: links.home() }, { label: 'Data Hub', href: links.hub() }, ...(subjectId === 'all' ? [] : [{ label: bundles.get(subjectId).subject.subject }])],
       })}
+      <div data-study-summary-link hidden></div>
       <nav class="chips subject-pills" aria-label="Subject">
         <a class="chip ${subjectId === 'all' ? 'is-on' : ''}" href="${href({ subject: 'all' })}" aria-current="${subjectId === 'all' ? 'true' : 'false'}">All subjects</a>
         ${[...bundles.values()].map(
@@ -469,6 +471,15 @@ export async function mount(element, context) {
       </nav>
       ${body}`,
   );
+  const cloudAccount = api.cloudAccountId();
+  if (cloudAccount) {
+    privateStudySummary({ accessOnly: true }).then((allowed) => {
+      if (allowed !== true || api.cloudAccountId() !== cloudAccount || !element.isConnected) return;
+      const slot = $('[data-study-summary-link]', element);
+      setHtml(slot, html`<a class="btn btn--sm" href="${links.studySummary()}">My study summary</a>`);
+      slot.hidden = false;
+    }).catch(() => {});
+  }
   if (hasData && tab === 'overview') mountOverviewCharts();
   if (hasData && tab === 'papers') mountTrendChart();
 

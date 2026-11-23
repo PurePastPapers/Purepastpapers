@@ -8,6 +8,16 @@ At the beginning of every agent session, read this file and `docs/supabase-setup
 
 Never put passwords, SMTP credentials, Supabase secret keys, access tokens, or other secrets in this document, GitHub, logs, or chat.
 
+## Private study summary
+
+- The browser-only study summary at `/study-summary/` reads projected progress from
+  the new `private_study_summary` RPC through the existing signed-in Supabase session.
+  It renders independently of the usual progress and handwriting sync. The Data Hub
+  reveals its link only after the authenticated RPC confirms access.
+- The migration installs an empty owner binding. The operator runbook in
+  `docs/private-study-summary.md` describes activation, revocation and verification.
+  No custom ChatGPT app or new student role is part of this release.
+
 ## Printable practice tests and handwritten answers
 
 - Practice exports keep a versioned reference-only snapshot in the student's custom tests. Paper attempts use stable IDs and a frozen selection, with completion and score saved separately. Account progress writes use a compare-and-swap on `user_progress.updated_at` to preserve offline test commits from another device.
