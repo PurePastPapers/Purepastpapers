@@ -79,7 +79,8 @@ export async function mount(element, context) {
   const statusOf = (paper) => {
     const summary = summaries.get(paper.paper_id);
     if (summary) return 'done';
-    return inProgress.has(paper.paper_id) ? 'progress' : 'todo';
+    if (inProgress.has(paper.paper_id)) return 'progress';
+    return paper.resources_only ? 'resources' : 'todo';
   };
 
   const resumeFor = new Map(api.resumableSessions().filter((session) => session.paper_id).map((session) => [session.paper_id, session]));
@@ -105,7 +106,7 @@ export async function mount(element, context) {
       <p class="paper-card__code">${codeLine(paper)}</p>
       <h3><a href="${paperHref(paper)}">${shortTitle(paper)}</a></h3>
       <p class="paper-card__meta">
-        ${paper.total_marks} marks · ${fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}${questionCount ? html` · ${plural(questionCount, 'question')}` : ''}
+        ${paper.total_marks} marks · ${paper.duration_label || fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}${questionCount ? html` · ${plural(questionCount, 'question')}` : ''}
       </p>
       ${paper.is_sample ? html`<p style="margin-top:8px">${sourceBadge(paper)}</p>` : ''}
       <div class="paper-card__foot">
@@ -117,7 +118,9 @@ export async function mount(element, context) {
           : status === 'progress'
             ? html`<span class="paper-card__status is-progress">In progress</span>
                 <a class="btn btn--sm btn--primary" href="${session ? links.session(session.session_id) : paperHref(paper)}">Resume</a>`
-            : html`<span class="paper-card__status">Not started</span><a class="btn btn--sm" href="${paperHref(paper)}">${paper.component_of ? 'Sit component' : 'Sit paper'}</a>`}
+            : paper.resources_only
+              ? html`<span class="paper-card__status">${paper.catalogue_verified ? 'Source resources' : 'Source unavailable'}</span><a class="btn btn--sm" href="${paperHref(paper)}">View resources</a>`
+              : html`<span class="paper-card__status">Not started</span><a class="btn btn--sm" href="${paperHref(paper)}">${paper.component_of ? 'Sit component' : 'Sit paper'}</a>`}
       </div>
     </li>`;
   }
@@ -193,13 +196,14 @@ export async function mount(element, context) {
       ${tiers.length > 1 && !tieredSubject ? filterGroup('tier', 'Tier', [['all', 'Both'], ...tiers.map((tier) => [tier, tier])]) : ''}
       ${filterGroup('year', 'Year', [['all', 'All'], ...years.map((year) => [String(year), String(year)])])}
       ${codes.length > 1 ? filterGroup('code', 'Paper', [['all', 'All'], ...codes.map((code) => [code, papers.find((paper) => paper.paper_code === code)?.official_paper_code?.split('/')[1] || (/^P\d+$/.test(code) ? `Paper ${code.slice(1)}` : code)])]) : ''}
-      ${filterGroup('status', 'Status', [['all', 'All'], ['todo', 'Not started'], ['progress', 'In progress'], ['done', 'Completed']])}
+      ${filterGroup('status', 'Status', [['all', 'All'], ['todo', 'Not started'], ['progress', 'In progress'], ['done', 'Completed'],
+        ...(papers.some(paper => paper.resources_only) ? [['resources', 'Resources only']] : [])])}
     </div>
     <div class="card tilt-1 side-progress">
       <i class="tape tape--r" aria-hidden="true"></i>
       <h2 class="h3">Completed</h2>
       ${(() => {
-        const shown = tierPapers();
+        const shown = tierPapers().filter(paper => !paper.resources_only);
         const completed = shown.filter((paper) => summaries.has(paper.paper_id)).length;
         return html`<p class="side-progress__row"><span class="muted small">papers sat${tieredSubject && filters.tier !== 'all' ? ` · ${filters.tier}` : ''}</span><b>${completed} <span>of ${shown.length}</span></b></p>
           ${meter(shown.length ? (completed / shown.length) * 100 : 0, 'accent', `${completed} of ${shown.length} papers completed`)}`;

@@ -15,6 +15,7 @@ import { collapseLinked, expandLinkedIds } from '../../engine/linked-parts.js';
 import { levelLabel, qualificationCode } from '../../engine/paper-identity.js';
 import { paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds } from '../../engine/paper-choice.js';
 import { icon } from '../icons.js';
+import { assessmentResourceLinks } from '../assessment-resources.js';
 import { linkedRef, marksPill, questionRef, questionSnippet } from '../question-view.js';
 import { startSingle } from '../student.js';
 import { targetGrade } from '../subject-colours.js';
@@ -39,6 +40,7 @@ export async function mount(element, context) {
   const pdf = isSafeUrl(paper.full_paper_pdf_url) ? paper.full_paper_pdf_url : null;
   const examinerReport = reportSourceUrl(paper);
   const markScheme = isSafeUrl(paper.full_mark_scheme_pdf_url) ? paper.full_mark_scheme_pdf_url : null;
+  const sourceLinks = assessmentResourceLinks(paper, { className: 'btn btn--block btn--left' });
 
   const target = targetGrade(subject);
   const schemeBands = GRADE_SCHEMES[subject.grade_scheme]?.bands || [];
@@ -105,7 +107,7 @@ export async function mount(element, context) {
         : ''}`;
   }
 
-  const time = `${fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}`;
+  const time = `${paper.duration_label || fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}`;
   const facts = [levelLabel(paper, subject, bundle.papers), subject.board, paper.official_paper_code || `${qualificationCode(paper, subject)}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.pearson_series || (paper.year ? `${paper.series} ${paper.year}` : null), `${paper.total_marks} marks`, time, paper.tier ? `${paper.tier} tier` : null]
     .filter(Boolean)
     .join(' · ');
@@ -123,7 +125,7 @@ export async function mount(element, context) {
         actions: openSession
           ? html`<a class="btn btn--primary" href="${links.session(openSession.session_id)}">${icon('play', { size: 16 })} Resume paper</a>
               <button type="button" class="btn" data-discard-open>${icon('x', { size: 16 })} Discard attempt</button>`
-          : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${time})</button>
+          : paper.resources_only ? '' : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${time})</button>
               <button type="button" class="btn" data-start="untimed">Sit untimed</button>
               <button type="button" class="btn" data-log>Log a score</button>`,
       })}
@@ -138,7 +140,7 @@ export async function mount(element, context) {
         <section class="card ruled tilt-1 paper-qs">
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="section-title">
-            <h2 class="card__title">Questions</h2>
+            <h2 class="card__title">${paper.resources_only ? 'Assessment resources' : 'Questions'}</h2>
             ${practiceQuestions.length ? html`<span class="hand">choose a question to practise</span><span class="small muted paper-qs__count">${plural(practiceQuestions.length, 'question')} · ${paper.total_marks} marks</span>` : ''}
           </div>
           ${paper.choice_note ? html`<p class="small muted">${paper.choice_note}</p>` : ''}
@@ -147,7 +149,7 @@ export async function mount(element, context) {
                   ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs a topic' : 'need topics'} you have not marked as learned. <a href="${links.subject(subject.subject_id)}">Update learned topics</a>`, { type: 'warn' })
                   : ''}
                 <div data-questions>${questionRows()}</div>`
-            : paper.component_of ? html`<div class="empty paper-qs__whole">
+            : paper.assessment_note ? html`<p class="muted">${paper.assessment_note}</p>` : paper.component_of ? html`<div class="empty paper-qs__whole">
                 <h3 class="empty__title">Practise this component from the PDF</h3>
                 <p class="empty__text">Open the question paper, then log your score for this component. Individual questions will appear here once they are available in Practice.</p>
               </div>` : html`<div class="empty paper-qs__whole">
@@ -158,24 +160,25 @@ export async function mount(element, context) {
         <aside class="stack">
           <section class="card ruled tilt-3">
             <i class="tape tape--c" aria-hidden="true"></i>
-            <h2 class="card__title">Get the paper</h2>
+            <h2 class="card__title">${paper.resources_only ? 'Official links' : 'Get the paper'}</h2>
             ${paper.source_bundle_url ? html`<a class="btn btn--block btn--left" href="${paper.source_bundle_url}" target="_blank" rel="noopener">Official assessment source bundle (ZIP)</a>` : ''}
-            ${pdf || markScheme || examinerReport
+            ${pdf || markScheme || examinerReport || sourceLinks.length
               ? html`<div class="stack stack--sm">
                   ${pdf ? html`<a class="btn btn--block btn--left" href="${pdf}" target="_blank" rel="noopener">${icon('file')} Question paper (PDF)</a>` : ''}
+                  ${sourceLinks}
                   ${examinerReport ? html`<a class="btn btn--block btn--left" href="${examinerReport}" target="_blank" rel="noopener">Official examiner’s report (PDF)</a>` : ''}
                   ${markScheme ? html`<a class="btn btn--block btn--left" href="${markScheme}" target="_blank" rel="noopener">${icon('check')} Mark scheme (PDF)</a>` : ''}
                 </div>`
               : questions.length
                 ? html`<p class="muted">This paper is here question by question, with its mark scheme.</p>`
-                : html`<p class="muted">
-                      The PDF is not hosted here. Open ${subject.board}’s past papers page and look for the <strong>${paper.series} ${paper.year}</strong> series,
+                : html`${paper.resources_only ? '' : html`<p class="muted">
+                      Open ${subject.board}’s past papers page and look for the <strong>${paper.series} ${paper.year}</strong> series,
                       <strong>${paper.title.replace(`${paper.series} ${paper.year} `, '')}</strong>.
-                    </p>
+                    </p>`}
                     ${paper.official_source_url
                       ? html`<p style="margin-top:12px"><a class="btn btn--block" href="${paper.official_source_url}" target="_blank" rel="noopener">Open ${subject.board} past papers ${icon('external', { size: 15 })}</a></p>`
                       : ''}`}
-            ${bounds.length
+            ${bounds.length && !paper.resources_only
               ? html`<p class="field__label" style="margin-top:20px">${officialBounds ? `Grade boundaries${paper.year ? ` · ${paper.series} ${paper.year}` : ''}` : 'Indicative grade boundaries'}</p>
                   <div class="boundaries">
                     ${bounds.map(([grade, minimum]) => html`<span>${grade}<b>${Math.ceil((minimum / 100) * paper.total_marks)}</b></span>`)}
@@ -185,7 +188,7 @@ export async function mount(element, context) {
                   </p>`
               : ''}
           </section>
-          <div data-attempts>${attemptsCard()}</div>
+          ${paper.resources_only && !paperHistory(progress.paper_attempts).some(attempt => attempt.paper_id === paper.paper_id) ? '' : html`<div data-attempts>${attemptsCard()}</div>`}
         </aside>
       </div>`,
   );
