@@ -193,63 +193,48 @@ Mode = 0.7 m/s :: (1)` },
     ],
   },
   {
-    subject: 'EDX_GCSE_HIST_1HI0', code: 'P123', title: 'Demo Paper: Medicine, Cold War, Elizabeth and Germany',
+    subject: 'OCR_GCSE_HIST_J411', code: 'P1433', title: 'Demo Paper: Crime and Punishment, Norman Conquest, Vikings and Nazi Rule',
     questions: [
-      { m: 4, d: 'e', p: ['MED_11.1', 'MED_11.2'],
-        q: `Explain one way in which ideas about the cause of disease were similar in the fourteenth and seventeenth centuries. [4]`,
-        ms: `One similarity identified :: (2)
-Supported with specific information from both periods :: (2)
-e.g. In both periods people believed that miasma (bad air) caused disease: during the Black Death of 1348 people carried sweet-smelling herbs, and during the Great Plague of 1665 people lit fires to clean the air.` },
-      { m: 12, d: 'm', p: ['MED_11.3'],
-        q: `Explain why there was rapid change in surgical treatment in the period c1700–c1900. [12]`,
+      { m: 9, d: 'm', p: ['CRIME_1.3'],
+        q: `Explain why the police force was introduced and developed in the period c.1750–c.1900. [9]`,
         ms: `${LEVELS}
 Indicative content:
-- Anaesthetics: Simpson's use of chloroform from 1847 allowed longer, more complex operations
-- Antiseptics: Lister's carbolic spray from 1865, building on Pasteur's germ theory
-- The move towards aseptic surgery by 1900
-- The role of individuals, science and communication, and how the factors are linked` },
-      { m: 16, d: 'h', p: ['MED_11.3', 'MED_11.4'],
-        q: `'Louis Pasteur's germ theory was the most important breakthrough in medicine in the period c1700–present.' How far do you agree? Explain your answer. [16]`,
-        ms: `${LEVELS} Four additional marks are available for spelling, punctuation and grammar.
-Indicative content:
-- Germ theory (1861) replaced miasma and spontaneous generation and led to Koch's identification of specific microbes, vaccines and antiseptic surgery
-- Other breakthroughs: Jenner's vaccination, penicillin and antibiotics, the discovery of the structure of DNA
-- Organisational change: the NHS in 1948
-- Criteria for 'most important': how many later developments depended on it
-- A sustained judgement` },
-      { m: 8, d: 'm', p: ['COLDWAR_P4.2'],
-        q: `Write a narrative account analysing the key events of the Cuban Missile Crisis in 1962. [8]`,
+- Urbanisation and rising crime in the early nineteenth century overwhelmed watchmen and parish constables
+- Peel's Metropolitan Police Act of 1829 created a paid, uniformed force in London
+- The County Police Act (1839) and County and Borough Police Act (1856) spread forces across Britain
+- Government's growing role and new attitudes to preventing rather than punishing crime` },
+      { m: 18, d: 'h', p: ['CRIME_1.2', 'CRIME_1.3'],
+        q: `'The Bloody Code was the most important change in punishment between c.1500 and c.1900.' How far do you agree? [18]`,
         ms: `${LEVELS}
 Indicative content:
-- US spy planes photograph Soviet missile sites on Cuba in October 1962
-- Kennedy announces a naval blockade ('quarantine') of Cuba
-- Soviet ships turn back; Khrushchev's two letters
-- The agreement: Soviet missiles removed from Cuba; a US pledge not to invade and secret removal of missiles from Turkey
-- Events linked into a clear sequence showing how each led to the next` },
-      { m: 16, d: 'h', p: ['ELIZ_B4.2'],
-        q: `'Religion was the main reason for the Revolt of the Northern Earls in 1569.' How far do you agree? Explain your answer. [16]`,
+- The Bloody Code: by 1800 over 200 crimes carried the death penalty
+- Transportation to Australia as an alternative to hanging
+- The growth of prisons and the work of prison reformers such as Howard and Fry
+- A sustained judgement on 'most important'` },
+      { m: 10, d: 'm', p: ['NORMAN_2.3'],
+        q: `Explain why William I carried out the 'Harrying of the North' in 1069–70. [10]`,
         ms: `${LEVELS}
 Indicative content:
-- Religion: the earls and much of the north remained Catholic; mass was celebrated in Durham Cathedral
-- Politics: the earls of Northumberland and Westmorland had lost influence at court to newer men
-- The succession: the plan to marry Mary, Queen of Scots to the Duke of Norfolk
-- How the factors are linked, and a sustained judgement` },
-      { m: 12, d: 'm', p: ['GERMANY_31.2'],
-        q: `Explain why Hitler was able to become Chancellor in January 1933. [12]`,
+- Northern resistance and the rebellion of 1069, supported by a Danish fleet and Edgar Atheling
+- The killing of Robert de Comines and the Norman garrison at Durham
+- William's aim to remove the north's ability to support future rebellions` },
+      { m: 10, d: 'm', p: ['VIKING_4.3'],
+        q: `Explain why the Vikings were able to raid Britain and France so successfully in the years 793–850. [10]`,
         ms: `${LEVELS}
 Indicative content:
-- The Great Depression: six million unemployed by 1932 and the failure of Weimar governments
-- Nazi propaganda, the SA and Hitler's appeal as a speaker
-- Fear of communism among the middle classes and industrialists
-- Political deals: von Papen and Hindenburg believed they could control Hitler
-- How the factors combined` },
-      { m: 4, d: 'e', p: ['GERMANY_31.4'],
-        q: `Explain one way in which the Nazis tried to control young people in Germany in the years 1933–39. [4]`,
-        ms: `One way identified :: (2)
-Supported with specific information :: (2)
-e.g. Through youth organisations: the Hitler Youth and the League of German Maidens taught loyalty to Hitler, and membership was made compulsory in 1939.` },
+- Fast, shallow-draught longships allowed surprise attacks along coasts and up rivers
+- Rich, poorly defended monasteries such as Lindisfarne
+- Divisions between rival kingdoms` },
+      { m: 8, d: 'e', p: ['NAZI_5.2'],
+        q: `What was the role of the Gestapo in Nazi Germany in the years 1933–1939? [8]`,
+        ms: `${LEVELS}
+Indicative content:
+- Secret state police led from 1936 by Heydrich under Himmler
+- Relied on informers; arrests without trial and 'protective custody' in concentration camps
+- Created fear that discouraged opposition` },
     ],
   },
+
   {
     subject: 'AQA_GCSE_RS_8062', code: 'P12', title: 'Demo Paper: Religions and themes',
     questions: [
@@ -295,15 +280,15 @@ Indicative content:
     ],
   },
   {
-    subject: 'AQA_GCSE_SPAN_8698', code: 'P34', title: 'Demo Paper: Translation and writing',
+    subject: 'EDX_GCSE_SPAN_1SP1', code: 'P34', title: 'Demo Paper: Translation and writing',
     questions: [
-      { m: 9, d: 'm', p: ['SK_4.2'], x: ['T1_1.1', 'T3_3.4'],
+      { m: 9, d: 'm', p: ['SK_7.3'], x: ['T1_1.1', 'T5_5.1'],
         q: `Translate this passage into English. [9]
 > Mi hermana mayor vive en el centro de la ciudad. Le gusta ir de compras los sábados, pero ayer fue al cine con sus amigos. En el futuro quiere ser profesora porque le encantan los niños.`,
         ms: `Example translation (accept equivalent wording):
 My older sister lives in the city centre. She likes to go shopping on Saturdays, but yesterday she went to the cinema with her friends. In the future she wants to be a teacher because she loves children.
 Marks are awarded for conveying key messages and for the accurate use of tenses.` },
-      { m: 10, d: 'm', p: ['SK_4.3'], x: ['T2_2.1', 'T3_3.2', 'SK_4.5'],
+      { m: 10, d: 'm', p: ['SK_7.4'], x: ['T3_3.1', 'T5_5.1', 'SK_7.6'],
         q: `Translate the following sentences into Spanish. [10]
 (a) I live in a small town.
 (b) My school is quite big.
@@ -315,7 +300,7 @@ Marks are awarded for conveying key messages and for the accurate use of tenses.
 (c) Me gusta el deporte pero no me gustan las matemáticas. :: (2)
 (d) El fin de semana pasado fui a la playa. :: (2)
 (e) Mañana voy a jugar al fútbol. :: (2)` },
-      { m: 16, d: 'm', t: 20, p: ['SK_4.4'], x: ['T2_2.4'],
+      { m: 16, d: 'm', t: 20, p: ['SK_7.5'], x: ['T6_6.1'],
         q: `Escribe a tu amigo español sobre tus vacaciones. Menciona:
 - adónde fuiste el año pasado
 - lo que hiciste
@@ -327,7 +312,7 @@ Escribe aproximadamente 90 palabras en español. [16]`,
 - Opinions are given and justified
 - Three time frames are used: past, present and future
 - A variety of vocabulary and structures, with mostly accurate verbs` },
-      { m: 32, d: 'h', t: 35, p: ['SK_4.4'], x: ['T2_2.3'],
+      { m: 32, d: 'h', t: 35, p: ['SK_7.5'], x: ['T4_4.1'],
         q: `Escribe un artículo sobre el medio ambiente para una revista española. Menciona:
 - lo que has hecho recientemente para proteger el medio ambiente
 - tus ideas para mejorar tu ciudad en el futuro
