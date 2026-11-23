@@ -459,6 +459,8 @@ const subjectLabels = {
   EDX_ALEVEL_BIOL_9BN0: 'Biology',
   EDX_ALEVEL_PHYS_9PH0: 'Physics',
   EDX_ALEVEL_MATH_9MA0: 'Mathematics',
+  AQA_ALEVEL_PSYCH_7182: 'Psychology',
+  AQA_ALEVEL_SOC_7192: 'Sociology',
 };
 
 // The shared packages stay at their original download pages. Students can
