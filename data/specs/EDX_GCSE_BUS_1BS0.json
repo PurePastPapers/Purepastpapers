@@ -1,5 +1,11 @@
 {
   "subject_id": "EDX_GCSE_BUS_1BS0",
+  "official_source": {
+    "url": "https://qualifications.pearson.com/content/dam/pdf/GCSE/Business/2017/specification-and-sample-assessments/gcse-business-spec-2017.pdf",
+    "sha256": "f35ee3706278173795e89e2cacc3076ffab7af82d31fced47eccaf42a476d7f9",
+    "qualification_code": "1BS0",
+    "edition": "Issue 2, July 2022"
+  },
   "sections": [
     {
       "id": "EDX_GCSE_BUS_SEC_T1",
@@ -130,6 +136,23 @@
             {"id":"EDX_GCSE_BUS_2.5.2","code":"2.5.2","title":"Effective recruitment"},
             {"id":"EDX_GCSE_BUS_2.5.3","code":"2.5.3","title":"Effective training and development"},
             {"id":"EDX_GCSE_BUS_2.5.4","code":"2.5.4","title":"Motivation"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDX_GCSE_BUS_SEC_APP2",
+      "title": "Appendix 2: Quantitative skills",
+      "note": "Papers 1 and 2",
+      "topics": [
+        {
+          "id": "EDX_GCSE_BUS_APP2",
+          "code": "APP2",
+          "title": "Quantitative skills",
+          "kind": "skill",
+          "points": [
+            {"id":"EDX_GCSE_BUS_APP2.CALC","code":"APP2.CALC","title":"Calculations in a business context"},
+            {"id":"EDX_GCSE_BUS_APP2.INTERPRET","code":"APP2.INTERPRET","title":"Interpretation and use of quantitative data"}
           ]
         }
       ]

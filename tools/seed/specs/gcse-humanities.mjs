@@ -263,6 +263,12 @@ export default {
         '2.5.4|Motivation',
       ]],
     ] },
+    { key: 'APP2', title: 'Appendix 2: Quantitative skills', note: 'Papers 1 and 2', topics: [
+      ['APP2', 'APP2', 'Quantitative skills', [
+        'APP2.CALC|Calculations in a business context',
+        'APP2.INTERPRET|Interpretation and use of quantitative data',
+      ], { kind: 'skill' }],
+    ] },
   ],
 
   AQA_GCSE_PSYCH_8182: [
