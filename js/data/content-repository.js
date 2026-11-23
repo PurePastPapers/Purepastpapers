@@ -104,14 +104,18 @@ export function writeLocalPack(pack) {
   invalidateContent();
 }
 
-/** Enabled packs for one subject. An index entry may name its `subject_id`; an
- * entry without one is loaded for every subject (local and older packs). */
-async function getPacks(subjectId) {
+export function getPackIndex() {
   packsPromise ??= fetchJson('packs/index.json').catch((error) => {
     packsPromise = null;
     throw error;
   });
-  const index = await packsPromise;
+  return packsPromise;
+}
+
+/** Enabled packs for one subject. An index entry may name its `subject_id`; an
+ * entry without one is loaded for every subject (local and older packs). */
+async function getPacks(subjectId) {
+  const index = await getPackIndex();
   const wanted = (index.packs || []).filter((entry) => entry.enabled !== false && (!entry.subject_id || entry.subject_id === subjectId));
   const packs = await Promise.all(wanted.map((entry) => {
     if (!packPromises.has(entry.file)) {

@@ -29,7 +29,7 @@ export const DIFFICULTY_BY_ID = Object.fromEntries(DIFFICULTIES.map((d) => [d.id
 export const MIXED = { id: 'mixed', label: 'Mixed', description: 'A balanced exam-style mix of Easy, Medium and Hard.' };
 export const MIXED_RATIO = { easy: 0.3, medium: 0.45, hard: 0.25 };
 
-/** Customisable timed tests (STEM). */
+/** Customisable timed tests. */
 export const TEST_DURATIONS = [15, 30, 45, 50, 60, 90];
 export const DEFAULT_TEST_MINUTES = 50;
 
@@ -72,7 +72,7 @@ export const PAPER_TYPES = {
   user_custom_test: { label: 'Custom practice', plural: 'Custom practice', feature: 'customPractice' },
 };
 
-/** PRD 4.3 — practice modes; each subject lists the modes it offers in `practice_modes`. */
+/** PRD 4.3 — the registry sets browser modes and default preferences; the bank enables timed tests. */
 export const PRACTICE_MODES = {
   timed_test: { label: 'Timed test', blurb: 'A mini-paper built from your topics, to the length you choose.' },
   individual: { label: 'Individual questions', blurb: 'Browse and attempt single questions, marking as you go.' },

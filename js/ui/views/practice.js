@@ -1,6 +1,5 @@
 // Customisable Practice (PRD 4.1–4.3).
-//   STEM subjects       → "Timed test" builder + "Individual questions"
-//   Humanities subjects → untimed "Question picker" (plus a timed test for mixed subjects)
+// The timed test builder and the individual-question browser share the subject's question bank.
 // Everything here draws from the unified question pool through the filtering engine, so a
 // student is never given a question that needs a topic they have not marked as learned.
 
@@ -15,6 +14,7 @@ import { getCurriculum, specIndex } from '../../data/content-repository.js';
 import { createSession } from '../../data/sessions.js';
 import { countByNode, filterQuestions } from '../../engine/filter-engine.js';
 import { latestByQuestion } from '../../engine/analytics.js';
+import { resolvePracticeMode, testEntries, testPool } from '../../engine/practice-modes.js';
 import { buildTest, minutesOf } from '../../engine/test-builder.js';
 import { collapseLinked, collapseLocked, expandLinkedIds, groupEntry, linkGroups } from '../../engine/linked-parts.js';
 import { icon } from '../icons.js';
@@ -22,7 +22,7 @@ import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, li
 import { mountSpecTree } from '../spec-tree.js';
 import { mountCurriculumSelector } from '../curriculum-selector.js';
 import { topicOrganisationControl } from '../topic-organisation.js';
-import { loadStudent, practicePool, startQuestionSet, subjectPills } from '../student.js';
+import { loadStudent, practiceModes, practicePool, startQuestionSet, subjectPills } from '../student.js';
 import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
 import { questionsForScience, scienceLeaves, sciencesOf, specForScience, validScience } from '../../engine/sciences.js';
 import { isTiered, questionsForTier, savedTier, searchTierIntent, specForTier, tierLeaves, tierRequired, validTier } from '../../engine/tiers.js';
@@ -108,9 +108,6 @@ const defaults = () => ({
   curriculum: {},
 });
 
-// Open the builder by default where it is available.
-const defaultMode = (modes) => ['timed_test', 'individual', 'picker'].find(mode => modes.includes(mode)) ?? modes[0];
-
 const toggle = (list, value) => (list.includes(value) ? list.filter((item) => item !== value) : [...list, value]);
 
 let pendingChoiceFocus;
@@ -131,9 +128,10 @@ export async function mount(element, context) {
     loadReportIndex(),
   ]);
   const { progress, bundles, latest } = student;
-  const enrolled = progress.enrolled_subjects.map((id) => bundles.get(id)).filter((bundle) => bundle?.subject.practice_modes.length);
+  const availability = new Map([...bundles].map(([id, bundle]) => [id, practiceModes(bundle)]));
+  const enrolled = progress.enrolled_subjects.filter(id => availability.get(id)?.modes.length).map(id => bundles.get(id));
   const explicit = bundles.get(requested);
-  const bundle = explicit?.subject.practice_modes.length
+  const bundle = availability.get(requested)?.modes.length
     ? explicit
     : !user && requested
       ? null
@@ -168,9 +166,9 @@ export async function mount(element, context) {
     return level && !paper.title.split(/[\s·:]+/).includes(level) ? `${level} · ${paper.title}` : paper.title;
   };
   const subjectId = subject.subject_id;
-  const modes = subject.practice_modes;
-  const mode = modes.includes(context.query.mode) ? context.query.mode : defaultMode(modes);
-  const switchSubject = (id) => links.practice({ subject: id, mode });
+  const { modes } = availability.get(subjectId);
+  const mode = resolvePracticeMode(availability.get(subjectId), context.query.mode);
+  const switchSubject = (id) => links.practice({ subject: id, mode: resolvePracticeMode(availability.get(id), mode) });
   const hasExports = () => api.exportedTests().some(test => test.subject_id === subjectId);
   const exportedTestsLink = () => html`<a class="btn btn--sm" href="${links.exportedTests({ subject: subjectId })}"
     data-exported-tests ${hasExports() ? '' : 'hidden'}>Exported tests</a>`;
@@ -408,7 +406,8 @@ export async function mount(element, context) {
   state.selectionVersion = 1;
   save();
 
-  const questionBank = practicePool(bundle);
+  const availableQuestions = practicePool(bundle);
+  const questionBank = mode === 'timed_test' ? testPool(availableQuestions, bundle.papersById) : availableQuestions;
   const pool = questionsForScience(questionBank, viewScience, spec, specIndex);
   const emptyBank = () => emptyState({
     iconName: 'file',
@@ -930,7 +929,7 @@ export async function mount(element, context) {
     });
   }
 
-  // ───────────────────────────────── timed test (STEM) ─────────────────────────────────
+  // ───────────────────────────────── timed test ─────────────────────────────────
 
   let currentTest = null;
 
@@ -984,7 +983,7 @@ export async function mount(element, context) {
 
   function testPreview(unitMatches, lockedCount) {
     // A linked group goes into a test whole or not at all, and counts as one question.
-    const matches = collapseLinked(unitMatches, bundle.questionsById);
+    const matches = testEntries(unitMatches, pool, bundle.questionsById);
     currentTest = buildTest(matches, {
       minutes: state.minutes,
       difficulty: state.difficulty,
@@ -998,15 +997,16 @@ export async function mount(element, context) {
     const test = currentTest;
     if (!test.questions.length) {
       return html`<div class="card">
-        ${questionBank.length ? emptyState({
+        ${emptyState({
           iconName: 'filter',
           title: 'No questions match yet',
           text: !manualFocus()?.length
             ? 'Choose one or more topics in the list to build this test. Your saved learned topics will stay unchanged.'
             : lockedCount
               ? `${plural(lockedCount, 'question')} need topics you haven’t learned or selected for this test. Add those topics to this test or widen your selection.`
-              : 'Try another difficulty, widen your topics, or add questions for this subject.',
-        }) : emptyBank()}
+              : 'Try another difficulty, widen your topics, or check the current paper, tier and module filters.',
+          action: html`<button type="button" class="btn" data-reset-filters>Reset filters</button>`,
+        })}
       </div>`;
     }
     return html`<div class="card testpreview tilt-2">
@@ -1018,6 +1018,9 @@ export async function mount(element, context) {
           <div><b>${test.total_marks}</b><span>marks</span></div>
           <div><b>${test.total_minutes}</b><span>minutes</span></div>
         </div>
+        ${test.time_limit_minutes > test.target_minutes
+          ? banner(html`The shortest question that matches needs about ${fmtMinutes(test.total_minutes)}. That’s how much time this test will give you.`)
+          : ''}
         ${test.short
           ? banner(
               html`Only <strong>${fmtMinutes(test.available_minutes)}</strong> of questions match these settings, so this test is shorter than ${state.minutes} minutes. Widen
@@ -1029,10 +1032,15 @@ export async function mount(element, context) {
           ${test.questions.map(
             (question, index) =>
               html`<li>
-                <span class="testlist__num">${index + 1}</span>
-                <span class="testlist__topic">${specIndex.topicOf(question.primary_spec_points[0])?.title || 'Topic'}${question.is_linked_group ? html` <span class="small muted">· ${question.parts.length} linked parts</span>` : ''}</span>
-                ${difficultyBadge(question.difficulty)}
-                <span class="small muted nowrap">${plural(question.marks, 'mark')}</span>
+                <details data-test-preview="${index}">
+                  <summary class="testlist__summary">
+                    <span class="testlist__num">${index + 1}</span>
+                    <span class="testlist__topic">${specIndex.topicOf(question.primary_spec_points[0])?.title || 'Question'}${question.is_linked_group ? html` <span class="small muted">· ${question.parts.length} linked parts</span>` : ''}</span>
+                    ${difficultyBadge(question.difficulty)}
+                    <span class="small muted nowrap">${plural(question.marks, 'mark')}</span>
+                  </summary>
+                  <div class="stack stack--sm" data-test-preview-body></div>
+                </details>
               </li>`,
           )}
         </ol>
@@ -1416,7 +1424,7 @@ export async function mount(element, context) {
       setHtml(
         $('[data-body]', element),
         html`<div class="split split--wide-aside">
-          <div data-controls>${builderControls(matches)}</div>
+          <div data-controls>${builderControls(testEntries(matches, pool, bundle.questionsById))}</div>
           <aside class="sticky" data-output>${testPreview(matches, collapseLocked(locked, bundle.questionsById).length)}</aside>
         </div>`,
       );
@@ -1577,6 +1585,16 @@ export async function mount(element, context) {
   // Filter bar: one dropdown open at a time; a click outside or Escape closes it.
   element.addEventListener('toggle', (event) => {
     const opened = event.target;
+    if (opened.matches?.('[data-test-preview][open]')) {
+      const question = currentTest?.questions[Number(opened.dataset.testPreview)];
+      const body = $('[data-test-preview-body]', opened);
+      if (question && !body.hasChildNodes()) {
+        setHtml(body, html`<p class="small muted">${question.is_linked_group ? linkedRef(question, bundle.papersById) : questionRef(question, bundle.papersById)}</p>
+          ${question.is_linked_group
+            ? html`${linkedIntro(question)}${question.parts.map(part => linkedPartBody(part))}`
+            : questionBody(question)}`);
+      }
+    }
     if (!opened.matches?.('.fpop') || !opened.open) return;
     for (const other of element.querySelectorAll('.fpop[open]')) if (other !== opened) other.open = false;
   }, true);
@@ -2132,7 +2150,7 @@ export async function mount(element, context) {
     const built = button.dataset.exportTest === 'built';
     const ids = built ? currentTest?.question_ids : state.selected;
     if (!ids?.length) return;
-    const title = built ? `Custom ${fmtMinutes(state.minutes)} test · ${subject.subject}` : `Question set · ${subject.subject}`;
+    const title = built ? `Custom ${fmtMinutes(currentTest.time_limit_minutes)} test · ${subject.subject}` : `Question set · ${subject.subject}`;
     button.disabled = true;
     try {
       const snapshot = createTestSnapshot({ bundle, ids, title });
@@ -2166,7 +2184,7 @@ export async function mount(element, context) {
     const test = currentTest;
     if (!test?.questions.length) return;
     button.disabled = true;
-    const minutes = state.minutes;
+    const minutes = test.time_limit_minutes;
     const paper = {
       paper_id: uid('CUSTOM'),
       paper_type: 'user_custom_test',

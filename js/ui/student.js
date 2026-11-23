@@ -9,6 +9,7 @@ import { createSession } from '../data/sessions.js';
 import { TARGET_BANDS, latestByQuestion, masteryByNode, paperHistory, ragFor, targetBand, totals } from '../engine/analytics.js';
 import { filterQuestions } from '../engine/filter-engine.js';
 import { paperInScope, questionInScope, scopeLeaves, scopeOf, scopeSpec } from '../engine/module-routes.js';
+import { practiceAvailability, testEntries, testPool } from '../engine/practice-modes.js';
 import { textbookMasteryByNode } from '../engine/textbook-index.js';
 import { isTiered, questionsForTier, savedTier, tierLeaves, tierRequired } from '../engine/tiers.js';
 import { icon } from './icons.js';
@@ -47,6 +48,7 @@ export function scopeBundle(bundle, progress = null) {
   return {
     ...bundle,
     scope,
+    unscopedQuestions: bundle.questions,
     scopeLeaves: leaves,
     spec: scopeSpec(bundle.spec, scope),
     papers: bundle.papers.filter((paper) => paperInScope(paper, scope)),
@@ -71,6 +73,13 @@ export function practicePool(bundle) {
   // Once a subject has reviewed source units, demo questions never enter its pool.
   const hasRealSource = available.some(question => !question.is_sample && question.provenance?.review_status === 'model_reviewed');
   return available.filter((question) => !parents.has(question.question_id) && !(hasRealSource && question.is_sample));
+}
+
+/** Mode availability uses the whole enabled bank, before saved route or tier choices. */
+export function practiceModes(bundle) {
+  const questions = bundle.unscopedQuestions || bundle.questions;
+  const pool = testPool(practicePool({ questions }), bundle.papersById);
+  return practiceAvailability(bundle.subject, testEntries(pool, pool, bundle.questionsById));
 }
 
 /**
