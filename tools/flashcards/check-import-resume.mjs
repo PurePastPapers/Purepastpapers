@@ -66,10 +66,16 @@ async function preview(page, deckTitle, text) {
 }
 async function interruptAfter(page, chunks) {
   let seen = 0;
-  await page.route('**/rest/v1/rpc/flashcard_import_chunk', (route) => (++seen > chunks ? route.abort('connectionreset') : route.fallback()));
+  let staged = 0;
+  await page.route('**/rest/v1/rpc/flashcard_import_chunk', (route) => {
+    if (++seen > chunks) return route.abort('connectionreset');
+    staged += route.request().postDataJSON().p_notes.reduce((total, { cards }) => total + cards.length, 0);
+    return route.fallback();
+  });
   await page.getByRole('button', { name: 'Import cards', exact: true }).click();
   await page.getByText('The import could not finish. You can retry.').waitFor({ timeout: 120_000 });
   await page.unroute('**/rest/v1/rpc/flashcard_import_chunk');
+  return staged;
 }
 async function commit(page) {
   await page.getByRole('button', { name: 'Import cards', exact: true }).click();
@@ -95,9 +101,10 @@ try {
   // 1. Resume: interrupt after staging begins, reload, re-select the same text.
   const resumeDeck = await createDeck(page, 'Large import resume');
   assert.equal(await preview(page, 'Large import resume', lines('Resume')), `${CARDS} cards ready · 0 duplicates skipped · 0 invalid rows`);
-  await interruptAfter(page, 10);
+  const resumeStaged = await interruptAfter(page, 5);
   let counts = await deckCounts(resumeDeck);
-  assert.equal(counts.staged, 1000, 'ten chunks of 100 cards were staged before the interruption');
+  assert.equal(counts.staged, resumeStaged, 'the successfully sent chunks were staged before the interruption');
+  assert.ok(counts.staged > 0 && counts.staged < CARDS);
   assert.equal(counts.cards, counts.staged, 'only staged rows exist for the interrupted import');
   assert.equal(await scalar(`select count(*) from public.flashcard_imports where status='staging'`), 1);
   await page.reload();
@@ -134,8 +141,9 @@ try {
   // 4. Cancel: interrupt a different import, reload, cancel, and confirm nothing is left behind.
   const cancelDeck = await createDeck(page, 'Large import cancel');
   assert.equal(await preview(page, 'Large import cancel', lines('Cancel')), `${CARDS} cards ready · 0 duplicates skipped · 0 invalid rows`);
-  await interruptAfter(page, 5);
-  assert.equal((await deckCounts(cancelDeck)).staged, 500);
+  const cancelStaged = await interruptAfter(page, 2);
+  assert.equal((await deckCounts(cancelDeck)).staged, cancelStaged);
+  assert.ok(cancelStaged > 0 && cancelStaged < CARDS);
   await page.reload();
   await page.getByRole('heading', { name: /^Flashcards(?: Beta)?$/ }).waitFor();
   await page.getByRole('button', { name: 'Import', exact: true }).click();
