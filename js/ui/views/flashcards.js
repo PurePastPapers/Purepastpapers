@@ -65,11 +65,15 @@ function cardMarkup(content, variant = '', revealed = true, { previewMedia = nul
   return raw(template.innerHTML);
 }
 
+function questionFace(card) {
+  const front = card.variant === 'reverse' ? card.back : card.front;
+  return cardMarkup(front, card.variant, false);
+}
+
 function faces(card, answerShown) {
   const reverse = card.variant === 'reverse';
-  const front = reverse ? card.back : card.front;
   const back = reverse ? card.front : card.back;
-  return html`<div class="flashcards__content">${cardMarkup(front, card.variant, false)}</div>
+  return html`<div class="flashcards__content">${questionFace(card)}</div>
     ${answerShown ? html`<hr class="flashcards__divider"><div class="flashcards__content">${card.variant?.startsWith('cloze:') ? cardMarkup(card.front, card.variant, true) : cardMarkup(back, card.variant, true)}</div>${card.variant?.startsWith('cloze:') && card.back ? html`<div class="flashcards__extra">${cardMarkup(card.back)}</div>` : ''}` : ''}`;
 }
 
@@ -410,6 +414,7 @@ export function mount(element, context) {
 
   async function loadStudyQueue(session, saved = null) {
     const request = ++studyRequest;
+    const requestedAt = performance.now();
     try {
       const [queue, original] = await Promise.all([
         flashcards.getStudyQueue(session.deckId, { subdeckPath: session.topic || null }),
@@ -419,7 +424,12 @@ export function mount(element, context) {
       session.card = queue.cards[0] || null;
       session.shown = false;
       session.nextDue = queue.nextDue;
+      session.buffer = queue.cards.slice(1);
+      const untilDue = Date.parse(queue.nextDue) - Date.parse(queue.serverNow);
+      session.refreshAt = Number.isFinite(untilDue) ? requestedAt + Math.max(0, untilDue) : Infinity;
       if (saved && original) {
+        // The pending review may already have committed. Refill after retrying it.
+        session.buffer = [];
         session.card = { ...original, revision: saved.revision };
         session.shown = true;
         session.pending = { card: session.card, grade: saved.grade, requestId: saved.requestId };
@@ -431,6 +441,15 @@ export function mount(element, context) {
     }
     session.loading = false;
     draw();
+    preloadNextQuestion(session);
+  }
+
+  function preloadNextQuestion(session) {
+    const next = session.buffer?.[0];
+    if (!next) return;
+    const preview = document.createElement('template');
+    setHtml(preview, questionFace(next));
+    resolveMedia(preview.content, Boolean(activeDeck()?.catalogue_id));
   }
 
   function beginStudy(deckId) {
@@ -455,8 +474,10 @@ export function mount(element, context) {
     session.saving = true;
     $('[data-rating-status]', element).textContent = 'Saving rating…';
     for (const button of element.querySelectorAll('[data-action="grade"]')) button.disabled = true;
+    const requestedAt = performance.now();
+    let saved;
     try {
-      await flashcards.reviewCard(session.pending.card, grade, session.pending.requestId);
+      saved = await flashcards.reviewCard(session.pending.card, grade, session.pending.requestId);
     } catch (error) {
       if (disposed) return;
       if (error?.retryable) {
@@ -470,7 +491,22 @@ export function mount(element, context) {
     writePending(session.deckId, null);
     deckCountsDirty = true;
     if (disposed || study !== session || view !== 'study') return;
-    Object.assign(session, { nextDue: null, pending: null, saving: false, loading: true, failed: false });
+    session.pending = null;
+    session.saving = false;
+    // The server has already ordered this batch and applied the daily quota.
+    // Refresh if a scheduled card has become due, the batch is spent, or a review was rejected.
+    if (saved && session.buffer?.length && performance.now() < session.refreshAt) {
+      const untilDue = Date.parse(saved.state?.due) - Date.parse(saved.reviewed_at);
+      if (Number.isFinite(untilDue)) session.refreshAt = Math.min(session.refreshAt, requestedAt + Math.max(0, untilDue));
+      session.card = session.buffer.shift();
+      session.shown = false;
+      draw();
+      preloadNextQuestion(session);
+      return;
+    }
+    session.buffer = [];
+    session.nextDue = null;
+    session.loading = true;
     $('[data-rating-status]', element).textContent = 'Loading the next card…';
     void loadStudyQueue(session);
   }

@@ -37,7 +37,7 @@ const fixtureApi = `
     makeCard('bio-second', 'Genetics retrieval', official.id, { suspended: true, subdeck_path: 'Genetics' })
   ];
   let added = false;
-  let rated = false;
+  let rated = 0;
 
   const { call } = window.flashcardFixture;
   export const hasCloudAccount = () => true;
@@ -65,11 +65,11 @@ const fixtureApi = `
   export const getCard = async (id, cardId) => (id === official.id ? libraryCards : [firstStudy, secondStudy]).find((card) => card.id === cardId);
   export async function getStudyQueue(id) {
     await call('queue');
-    return { cards: id === official.id ? [] : rated ? [secondStudy] : [firstStudy, secondStudy], nextDue: null };
+    return { cards: id === official.id ? [] : [firstStudy, secondStudy].slice(rated), nextDue: null };
   }
   export async function reviewCard() {
     await call('review');
-    rated = true;
+    rated++;
     return { status: 'saved' };
   }
 `;
@@ -103,7 +103,10 @@ let browser;
 try {
   await once(server.stdout, 'data');
   browser = await chromium.launch({ executablePath: process.env.PPP_CHROMIUM_EXECUTABLE });
-  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const desktop = process.env.PPP_FLASHCARD_UI_QA_DESKTOP === '1';
+  const page = await browser.newPage(desktop
+    ? { viewport: { width: 1440, height: 900 } }
+    : { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   page.setDefaultTimeout(4_000);
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
@@ -177,12 +180,24 @@ try {
   await page.getByRole('button', { name: /^Good/ }).click();
   await waitForCall('review');
   await page.getByText('Saving rating…', { exact: true }).waitFor();
+  // A slow queue endpoint must not delay an already returned card.
+  const queueCalls = await page.evaluate(() => window.flashcardFixture.calls.get('queue'));
+  await gate('hold', 'queue');
   await gate('release', 'review');
   await page.getByText('Second study question', { exact: true }).waitFor();
+  assert.equal(await page.evaluate(() => window.flashcardFixture.calls.get('queue')), queueCalls,
+    'a saved rating should advance directly to the next queued card');
   assert.deepEqual(await page.evaluate(() => window.flashcardFixture.unexpectedStates), [],
     'a rating must not flash a completed state between two study cards');
+  await page.getByRole('button', { name: /Show answer/ }).click();
+  await page.getByRole('button', { name: /^Good/ }).click();
+  await page.getByText('Loading the next card…', { exact: true }).waitFor();
+  assert.equal(await heading('All caught up').count(), 0, 'an exhausted local batch still needs server confirmation');
+  await gate('release', 'queue');
+  await heading('All caught up').waitFor();
+
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true,
-    'the study screen must fit a phone viewport');
+    'the study screen must fit the viewport');
   assert.deepEqual(errors, [], 'the view must not throw browser errors');
   console.log('Flashcards loading, catalogue add/open, focused search, suspended-deck guidance and study transitions passed.');
 } finally {
