@@ -109,17 +109,19 @@ export function validatePaper(paper, { questionsById, subjectId }) {
   // A paper may carry choice_choose, parallel to choice_groups, with how many options the candidate
   // answers in each group (default 1; AQA GCSE Geography Paper 1 Section C is "answer two of three").
   // The total then counts the best N options of the group.
+  // Options may share questions (AQA GCSE Geography June 2022 Paper 2: "Section B, or Question 3 plus one
+  // of Questions 4, 5, 6"), so the optional questions are counted once each, then replaced by the best options.
   const groups = Array.isArray(paper.choice_groups) ? paper.choice_groups : [];
   const choose = Array.isArray(paper.choice_choose) ? paper.choice_choose : [];
   groups.forEach((group, index) => {
-    const options = group
-      .map((member) => (Array.isArray(member) ? member : [member]).map((id) => questionsById.get(id)).filter(Boolean))
-      .filter((units) => units.length)
-      .map((units) => units.reduce((total, question) => total + question.marks, 0));
-    const count = Number.isInteger(choose[index]) && choose[index] > 0 ? Math.min(choose[index], options.length) : 1;
-    if (options.length > 1) {
-      const best = [...options].sort((a, b) => b - a).slice(0, count).reduce((total, value) => total + value, 0);
-      marks -= options.reduce((total, value) => total + value, 0) - best;
+    const members = group
+      .map((member) => [...new Set(Array.isArray(member) ? member : [member])].filter((id) => questionsById.has(id)))
+      .filter((ids) => ids.length);
+    const count = Number.isInteger(choose[index]) && choose[index] > 0 ? Math.min(choose[index], members.length) : 1;
+    if (members.length > 1) {
+      const sum = (ids) => ids.reduce((total, id) => total + questionsById.get(id).marks, 0);
+      const best = members.map(sum).sort((a, b) => b - a).slice(0, count).reduce((total, value) => total + value, 0);
+      marks -= sum([...new Set(members.flat())].filter((id) => ids.includes(id))) - best;
     }
   });
   if (ids.length && marks !== paper.total_marks) {

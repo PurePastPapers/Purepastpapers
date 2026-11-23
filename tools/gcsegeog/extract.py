@@ -29,19 +29,19 @@ LABEL = re.compile(r'^(\d) (\d)(?:(?: \.)? (\d))?(?: (\d))?(?=\s|$)')   # GCSE: 
 LABEL2 = re.compile(r'^(\d) (\d) \. (1\d)(?=\s|$)(?:(Z)Z)?')   # specimen Paper 2 prints part 10 as "0 2 . 10" (group 4 never matches)
 SPAG = re.compile(r'^\[\+\s*(\d)\s*SPaG marks?\]$', re.I)
 ALTERNATIVE_SELECTION = re.compile(r'^Tick\s+\(.+?\)\s+the box to show which .+ you have chosen\.$')
-SUPPLIED_DATA = re.compile(r'\busing (?:the )?(?:following data|data below)\b', re.I)
+SUPPLIED_DATA = re.compile(r'\b(?:using|plot|identified by) (?:the )?(?:following data|data below)\b', re.I)   # June 2022 P2: "Plot the following data", "Which country is identified by the following data?"
 COMPLETION_TABLE = re.compile(r'\bcomplete (?:the )?(?:following table|table below)\b', re.I)
 SUPPLIED_INFORMATION = re.compile(r'\busing (?:the )?information below\b', re.I)
 UNNAMED_CHART = re.compile(r'\bcomplete (?:the )?(?:\w+ ){0,2}(?:graph|chart) below\b', re.I)
 PREVIOUS_ANSWER_FIELD = re.compile(r'^(?:(?:Reason [1-9]|Chosen (?:environment|project|tectonic hazard)):$|'
-                                    r'Answer:?\s*[_….]+|[1-4](?:\s+[_….]+.*)?$)')
+                                    r'Answer:?\s*[_….]+|[1-4](?:\s+[_….]+.*)?$|Name of [A-Za-z/ ]+?\s*_{3,}.*|Regional importance\s*_{3,}.*|Answer\s*=\s*_{3,}.*)')   # "Name of local scheme ____" (June 2022 P2)
 REQUIRED_CHOICE = re.compile(r'^Answer Question \d+ and(?:$|\s+(?:either|one)\b)')
 DESERT_OPTION = r'Hot desert(?: environment)?(?: \(Figure \d+\))?'
 COLD_OPTION = r'Cold environment(?: \(Figure \d+\))?'
 OPTION = re.compile(r'^[A-D]\s+\S')
 FIGURE_REF = re.compile(r'\b(Figures?|Tables?)\s+((?:\d{1,2}[a-z]?)(?:(?:,\s*|\s+and\s+|\s*&\s*)\d{1,2}[a-z]?)*)')
 RUBRIC = re.compile(r'^(Section [A-D]$|Section [A-D]\b.*|Answer (all|either|one|question|Question)\b.*|Either$|or$|OR$|'
-                    r'If you (choose|answer)\b.*|Question \d+ continues\b.*|Question \d+\s+[A-Z].*|Extra space.*|'
+                    r'If you (choose|answer|have answered)\b.*|Question \d+ continues\b.*|Question \d+\s+[A-Z].*|Extra space.*|'
                     r'Do not write.*|DO NOT WRITE ON THIS PAGE$|ANSWER IN THE SPACES PROVIDED$|outside the.*|box$|'
                     r'Turn over.*|Specimen material.*|Only one answer per question.*|'
                     r'For the multiple-choice.*|CORRECT METHOD.*|If you want to change.*|If you wish to return.*|'
@@ -119,6 +119,23 @@ def gcse_choice_rules(cover_text):
     for m in re.finditer(r'Answer Question (\d+) and (?:any )?one other question in Section ([A-D])', cover_text):
         rules.append({'section': 'Section ' + m.group(2), 'choose': 1, 'compulsory': [m.group(1)]})
     return rules
+
+
+def section_choice(cover_text):
+    """Adapted June 2022 Paper 2: "Answer either Section B or Section C. If you choose Section B answer all
+    questions. If you choose Section C answer Question 3 and either Question 4 or Question 5 or Question 6."
+    Returns (sections, {section: compulsory question, optional questions}) or None. Each option of the
+    resulting choice group is a list of question numbers (one whole section, or Question 3 plus one other)."""
+    text = re.sub(r'\s+', ' ', re.sub(r'\n\d+\n', ' ', cover_text))
+    m = re.search(r'Answer either (Section [A-D]) or (Section [A-D])', text)
+    if not m:
+        return None
+    rules = {}
+    for sec in m.groups():
+        r = re.search(rf'If you choose {sec},? answer Question (\d+) and either ((?:(?:or )?Question \d+ ?)+)', text)
+        if r:
+            rules[sec] = (r.group(1), re.findall(r'Question (\d+)', r.group(2)))
+    return list(m.groups()), rules
 
 
 def choice_groups(cover_text):
@@ -435,10 +452,21 @@ def extract(path):
             if len(members) > 1 and members not in groups:
                 groups.append(members)
                 choose.append(rule['choose'])
-        grouped = {n for g in groups for n in g}
+        either = section_choice(cover)
+        if either:   # one group whose options are whole sections, or a compulsory question plus one optional one
+            options = []
+            for sec in either[0]:
+                if sec in either[1]:
+                    first, rest = either[1][sec]
+                    options += [[first, n] for n in rest]
+                else:
+                    options.append([n for n in sorted(totals, key=int) if sections_of.get(n) == sec])
+            groups, choose = [options], [1]
+        member = lambda x: x if isinstance(x, list) else [x]
+        grouped = {n for g in groups for x in g for n in member(x)}
         effective = sum(m for n, m in totals.items() if n not in grouped)
         for g, k in zip(groups, choose):
-            vals = {totals.get(n) for n in g}
+            vals = {sum(totals.get(n, 0) for n in member(x)) if all(n in totals for n in member(x)) else None for x in g}
             if None in vals or len(vals) != 1:
                 exceptions.append({'type': 'unequal_or_missing_choice_totals', 'group': g, 'totals': [totals.get(n) for n in g]})
             effective += k * max(v for v in vals if v is not None) if vals - {None} else 0

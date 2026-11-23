@@ -13,7 +13,7 @@ const packs = read('data/packs/index.json').packs.filter(p => p.file.startsWith(
 const units = packs.flatMap(p => p.questions);
 
 (async () => {
-  assert.equal(packs.length, 20, 'GCSE Geography packs are not active in data/packs/index.json');
+  assert.equal(packs.length, 21, 'GCSE Geography packs are not active in data/packs/index.json');
   const browser = await chromium.launch({headless: true, ...(process.env.CHROME_PATH ? {executablePath: process.env.CHROME_PATH} : {})});
   try {
     const page = await browser.newPage({viewport: {width: 1440, height: 1000}});
@@ -74,6 +74,16 @@ const units = packs.flatMap(p => p.questions);
     await page.waitForSelector('.paper-qs__count');
     assert.match(await page.locator('.paper-qs__count').textContent(), new RegExp(`${sample.question_ids.length} questions`));
     assert.equal(await page.getByText('Demo content', {exact: true}).count(), 0);
+    // Adapted June 2022 Paper 2: one choice of Section B, or Question 3 plus one of Questions 4, 5, 6.
+    await page.goto(base + '/#/paper/' + subject + '/AQA_8035_2022_JUNE_02');
+    await page.waitForSelector('.paper-qs__count');
+    await page.locator('[data-start="untimed"]').click();
+    await page.waitForSelector('[name="paper-option-0"]');
+    assert.equal(await page.locator('[name="paper-option-0"]').count(), 4);
+    for (const label of ['Question 2', 'Question 3, 4', 'Question 3, 5', 'Question 3, 6']) {
+      assert.equal(await page.getByText(label, {exact: true}).count(), 1, label);
+    }
+    await page.screenshot({path: process.env.SHOT_2022 || '/tmp/gcsegeog-2022-choice.png'});
     assert.deepEqual(errors, []);
     console.log(`${packs.length} GCSE Geography booklets / ${units.length} units; insert keys; resources booklet figures; source+scheme pixels; paper page; 4 widths: PASS`);
   } finally {

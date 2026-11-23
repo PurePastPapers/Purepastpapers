@@ -90,7 +90,8 @@ def build_paper(paper, research, spec):
     root = REPO / 'assets/gcsegeog' / pid
     rel = lambda p: p.relative_to(REPO).as_posix()
     qual = paper['qualification_code']
-    group_of = {n: g for g in cand['choice_groups'] for n in g}
+    member = lambda x: x if isinstance(x, list) else [x]   # an option is one question or a list of them
+    group_of = {n: g for g in cand['choice_groups'] for x in g for n in member(x)}
     rendered_figs, stems_rendered, records = {}, {}, []
     for u in publishable:
         rv = reviewed[u['label']]
@@ -173,15 +174,16 @@ def build_paper(paper, research, spec):
     ids_by_q = {}
     for r in records:
         ids_by_q.setdefault(r['question_number'], []).append(r['question_id'])
-    pairs = [([ids_by_q.get(x, []) for x in g], c) for g, c in zip(cand['choice_groups'], cand['choice_choose'])]
+    pairs = [([[i for n in member(x) for i in ids_by_q.get(n, [])] for x in g], c)
+             for g, c in zip(cand['choice_groups'], cand['choice_choose'])]
     # Reconcile: published marks + excluded marks must equal the cover maximum (choose-N options per group).
     totals = {}
     for u in cand['units']:
         totals[u['question']] = totals.get(u['question'], 0) + u['marks']
-    grouped = {x for g in cand['choice_groups'] for x in g}
+    grouped = {n for g in cand['choice_groups'] for x in g for n in member(x)}
     check = sum(m for x, m in totals.items() if x not in grouped)
     for g, c in zip(cand['choice_groups'], cand['choice_choose']):
-        check += sum(sorted((totals[x] for x in g), reverse=True)[:c])
+        check += sum(sorted((sum(totals[n] for n in member(x)) for x in g), reverse=True)[:c])
     if check != paper['max_marks'] or sum(r['marks'] for r in records) + sum(u['marks'] for u in excluded) != cand['printed_tariff_sum']:
         raise ValueError('Units do not reconcile to the booklet')
     title = f"{paper['series']} {paper['year']} · Paper {paper['assessment_paper']}: {paper['component_title']}"
@@ -191,6 +193,17 @@ def build_paper(paper, research, spec):
     notes = []
     sec_of = {u['question']: u['section'] for u in cand['units']}
     for g, c in zip(cand['choice_groups'], cand['choice_choose']):
+        if any(isinstance(x, list) for x in g):   # adapted 2022 Paper 2: whole sections, or Question 3 plus one other
+            sections = list(dict.fromkeys(sec_of[member(x)[0]] for x in g))
+            parts = []
+            for sec in sections:
+                opts = [member(x) for x in g if sec_of[member(x)[0]] == sec]
+                if len(opts) == 1:
+                    parts.append(f"{sec} (Question {', '.join(opts[0])})")
+                else:
+                    parts.append(f"{sec} (Question {opts[0][0]} and one of Questions {', '.join(o[1] for o in opts)})")
+            notes.append('Answer either ' + ' or '.join(parts))
+            continue
         compulsory = sorted({x for x, sec in sec_of.items() if sec == sec_of[g[0]]} - set(g), key=int)
         lead = f"{sec_of[g[0]]}: answer " + (f"Question {' and '.join(compulsory)} and " if compulsory else '')
         notes.append(f"{lead}{NUMBER.get(c, c)} of Questions {', '.join(g)}")
