@@ -1,13 +1,16 @@
 // Private flashcards. The data adapter keeps content and scheduling in the account backend.
 import { $, html, on, raw, setHtml } from '../../core/dom.js';
 import { confirmDialog, openModal, toast } from '../ui.js';
-import * as flashcards from '../../flashcards/api.js?v=flashcards-studio-1';
+import * as flashcards from '../../flashcards/api.js?v=flashcards-organise-1';
 import { icon } from '../icons.js';
 import { cloudAccountId } from '../../data/api.js';
 
 const plural = (n, singular, pluralForm = `${singular}s`) => `${n} ${n === 1 ? singular : pluralForm}`;
 const dateLabel = (value) => value ? new Date(value).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '';
 const tagList = (tags) => Array.isArray(tags) ? tags : [];
+const specOrder = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+const specLabel = (tag) => tag.replace(/^(?:PPP::)?Spec::/i, '')
+  .replace(/^AQA_(?:PSYCH|SOC)_/, '').replaceAll('::', ' ').replaceAll('_', ' ');
 const safeAnkiUrl = (value) => {
   try {
     const url = new URL(value);
@@ -94,18 +97,28 @@ export function mount(element, context) {
   let selectedDeck = null;
   let query = '';
   let subdeckPath = '';
+  let specPoint = '';
+  let cardStatus = 'all';
+  let availability = 'all';
+  let cardSort = 'oldest';
   let page = 1;
   const pageSize = 24;
   let totalCards = 0;
+  let matchingActive = 0;
+  let matchingUnsuspendable = 0;
+  let matchingProtected = 0;
   let topics = [];
+  let specPoints = [];
   let decksStatus = 'loading';
   let catalogueStatus = 'idle';
   let managerStatus = 'idle';
   let topicsStatus = 'idle';
+  let specPointsStatus = 'idle';
   let decksRequest = null;
   let deckCountsDirty = true;
   let managerRequest = 0;
   let topicsRequest = 0;
+  let specPointsRequest = 0;
   let studyRequest = 0;
   let searchTimer;
   let addingCatalogue = null;
@@ -227,17 +240,24 @@ export function mount(element, context) {
     if (results && view === 'deck') setHtml(results, managerResults());
   }
 
+  function managerFilters() {
+    return { subdeckPath, query: query.trim(), specPoint, status: cardStatus, availability };
+  }
+
   async function refreshCards() {
     const request = ++managerRequest;
     const deckId = selectedDeck;
-    const filters = { subdeckPath, query, page, pageSize };
+    const filters = { ...managerFilters(), sort: cardSort, page, pageSize };
     managerStatus = 'loading';
     updateCardList();
     try {
       const result = await flashcards.listCardPage(deckId, filters);
       if (disposed || view !== 'deck' || selectedDeck !== deckId || request !== managerRequest) return;
       totalCards = result.total;
-      if (!subdeckPath && !query) {
+      matchingActive = result.active ?? 0;
+      matchingUnsuspendable = result.unsuspendable ?? 0;
+      matchingProtected = result.protected ?? 0;
+      if (!filters.subdeckPath && !filters.query && !filters.specPoint && filters.status === 'all' && filters.availability === 'all') {
         const summary = $('[data-manager-card-count]', element);
         if (summary) summary.textContent = plural(totalCards, 'card');
       }
@@ -250,6 +270,32 @@ export function mount(element, context) {
       managerStatus = 'error';
     }
     updateCardList();
+  }
+
+  async function refreshSpecPoints() {
+    const request = ++specPointsRequest;
+    const deckId = selectedDeck;
+    const panel = $('[data-manager-spec-points]', element);
+    if (!panel) return;
+    if (specPointsStatus === 'error') {
+      specPointsStatus = 'loading';
+      setHtml(panel, specPointFilter());
+    }
+    try {
+      const result = await flashcards.listDeckSpecPoints(deckId);
+      if (disposed || view !== 'deck' || selectedDeck !== deckId || specPointsRequest !== request) return;
+      specPoints = result.sort((a, b) => specOrder.compare(specLabel(a), specLabel(b)) || a.localeCompare(b));
+      specPointsStatus = 'ready';
+      if (specPoint && !specPoints.includes(specPoint)) {
+        specPoint = '';
+        page = 1;
+        void refreshCards();
+      }
+    } catch {
+      if (disposed || view !== 'deck' || selectedDeck !== deckId || specPointsRequest !== request) return;
+      specPointsStatus = 'error';
+    }
+    setHtml(panel, specPointFilter());
   }
 
   async function refreshTopics() {
@@ -274,18 +320,29 @@ export function mount(element, context) {
   function openManager(deckId, { keepTopic = false } = {}) {
     clearTimeout(searchTimer);
     selectedDeck = deckId;
-    query = '';
-    if (!keepTopic) subdeckPath = '';
+    if (!keepTopic) resetManagerFilters();
     page = 1;
     cards = [];
     topics = [];
+    specPoints = [];
     managerStatus = 'loading';
     topicsStatus = 'loading';
+    specPointsStatus = 'loading';
     view = 'deck';
     draw();
     $('.flashcards__toolbar h2', element)?.focus({ preventScroll: true });
     void refreshCards();
     void refreshTopics();
+    void refreshSpecPoints();
+  }
+
+  function resetManagerFilters() {
+    query = '';
+    subdeckPath = '';
+    specPoint = '';
+    cardStatus = 'all';
+    availability = 'all';
+    cardSort = 'oldest';
   }
 
   function deckCover(title, detail, subject = '') {
@@ -356,18 +413,64 @@ export function mount(element, context) {
     const available = topic ? topic.total - topic.suspended : 0;
     return html`<section class="flashcards__topic"><div class="flashcards__topic-heading"><h3>Study by topic</h3>${topic ? html`<span class="small muted">${available} of ${topic.total} active</span>` : ''}</div>
       <label class="field"><span class="field__label">Topic</span><select class="input" data-topic><option value="">All topics</option>${topics.map(({ path }) => html`<option value="${path}" ${path === subdeckPath ? raw('selected') : ''}>${path.split('::').join(' › ')}</option>`)}</select></label>
-      <p class="small muted">Unsuspend the topics you’re ready to study. Archived and optional cards stay suspended during bulk changes.</p>
-      <div class="flashcards__actions"><button class="btn btn--sm btn--primary" data-action="topic-unsuspend">Unsuspend ${subdeckPath ? 'topic' : 'all topics'}</button><button class="btn btn--sm" data-action="topic-suspend">Suspend ${subdeckPath ? 'topic' : 'all topics'}</button></div></section>`;
+      </section>`;
+  }
+
+  function selectOptions(choices, current) {
+    return choices.map(([value, label]) => html`<option value="${value}" ${value === current ? raw('selected') : ''}>${label}</option>`);
+  }
+
+  function specPointFilter() {
+    if (specPointsStatus === 'loading') return html`<p class="small muted" role="status">Loading specification points…</p>`;
+    if (specPointsStatus === 'error') return status('Could not load specification points.', 'retry-spec-points');
+    if (!specPoints.length) return '';
+    return html`<label class="field"><span class="field__label">Specification point</span>
+      <select class="input" data-spec-point>${selectOptions([['', 'All specification points'], ...specPoints.map((point) => [point, specLabel(point)])], specPoint)}</select>
+    </label>`;
+  }
+
+  function bulkScope() {
+    if (query.trim() || specPoint || cardStatus !== 'all' || availability !== 'all') return 'matching cards';
+    return subdeckPath ? 'topic' : 'all cards';
+  }
+
+  function bulkActions() {
+    const scope = bulkScope();
+    return html`<div class="flashcards__manager-summary">
+      <p class="small muted flashcards__result-count" role="status">${plural(totalCards, 'matching card')} · ${matchingActive} active · ${totalCards - matchingActive} suspended</p>
+      <div class="flashcards__bulk-actions flashcards__actions">
+        <button class="btn btn--sm btn--primary" data-action="topic-unsuspend" ${matchingUnsuspendable ? '' : raw('disabled')}>Unsuspend ${scope}</button>
+        <button class="btn btn--sm" data-action="topic-suspend" ${matchingActive ? '' : raw('disabled')}>Suspend ${scope}</button>
+        ${scope !== 'all cards' ? html`<button class="linkbtn" data-action="clear-card-filters">Clear filters</button>` : ''}
+      </div>
+      <p class="small muted">Applies to matches across all pages.${matchingProtected ? ' Archived and optional cards are skipped when unsuspending.' : ''}</p>
+    </div>`;
+  }
+
+  function cardMetadata(card) {
+    const tags = tagList(card.tags);
+    const points = tags.filter((tag) => /^(?:PPP::)?Spec::/i.test(tag));
+    const schedule = card.revision > 0 ? card.state?.state || 'Reviewed' : 'New';
+    return html`<div class="flashcards__card-meta">
+      <span>${schedule}</span>${card.suspended ? html`<span>Suspended</span>` : ''}
+      ${points.map((point) => html`<span class="flashcards__point-chip">Spec ${specLabel(point)}</span>`)}
+    </div>
+    ${card.revision > 0 && card.due_at ? html`<p class="small muted">Due ${dateLabel(card.due_at)}</p>` : ''}
+    ${card.subdeck_path ? html`<p class="small muted">${card.subdeck_path.split('::').join(' › ')}</p>` : ''}
+    ${tags.length > points.length ? html`<details class="flashcards__tags"><summary>All tags</summary><p>${tags.join(', ')}</p></details>` : ''}`;
   }
 
   function managerResults() {
     if (managerStatus === 'loading') return status('Loading cards…');
     if (managerStatus === 'error') return status('Could not load cards.', 'retry-cards');
-    if (!cards.length) return status(query ? 'No cards match your search.' : subdeckPath ? 'There are no cards in this topic.' : 'This deck has no cards yet.');
+    if (!cards.length) {
+      if (bulkScope() === 'all cards') return status('This deck has no cards yet.');
+      return html`${status('No cards match these filters.')}<button class="linkbtn" data-action="clear-card-filters">Clear filters</button>`;
+    }
     const readOnly = Boolean(activeDeck()?.catalogue_id);
-    return html`<p class="small muted flashcards__result-count" role="status">${plural(totalCards, 'card')} ${query ? 'found' : ''}</p>
+    return html`${bulkActions()}
       <div class="flashcards__card-list">${cards.map((card) => html`<article class="card flashcards__row"><div class="flashcards__row-content"><div class="flashcards__snippet">${cardMarkup(card.variant === 'reverse' ? card.back : card.front, card.variant, false, { showMedia: false })}</div>
-        <p class="small muted">${card.suspended ? 'Suspended' : card.revision > 0 && card.due_at ? `${card.state?.state || 'Scheduled'} · Due ${dateLabel(card.due_at)}` : 'New'}${card.subdeck_path ? ` · ${card.subdeck_path.split('::').join(' › ')}` : ''}${tagList(card.tags).length ? ` · ${tagList(card.tags).join(', ')}` : ''}</p></div>
+        ${cardMetadata(card)}</div>
         <div class="flashcards__actions"><button class="btn btn--sm" data-action="preview-card" data-id="${card.id}">Preview</button>${readOnly ? '' : html`<button class="btn btn--sm" data-action="edit-card" data-id="${card.id}">Edit</button><button class="btn btn--sm" data-action="move-card" data-id="${card.id}">Move</button>`}<button class="btn btn--sm" data-action="suspend-card" data-id="${card.id}">${card.suspended ? 'Unsuspend' : 'Suspend'}</button>${readOnly ? '' : html`<button class="btn btn--sm" data-action="delete-card" data-id="${card.id}">Delete</button>`}</div></article>`)}</div>
       ${totalCards > pageSize ? html`<nav class="flashcards__pagination" aria-label="Card pages"><button class="btn btn--sm" data-action="prev-page" ${page <= 1 ? raw('disabled') : ''}>Previous</button><span>Page ${page} of ${Math.ceil(totalCards / pageSize)}</span><button class="btn btn--sm" data-action="next-page" ${page * pageSize >= totalCards ? raw('disabled') : ''}>Next</button></nav>` : ''}`;
   }
@@ -379,7 +482,13 @@ export function mount(element, context) {
     return html`<button class="linkbtn" data-action="back-decks">← My decks</button><div class="flashcards__toolbar"><div><h2 tabindex="-1">${deck.title}</h2><p class="muted"><span data-manager-card-count>${plural(deck.card_count || 0, 'card')}</span> · ${deck.target_retention || 90}% target retention${readOnly ? ' · Official deck' : ''}</p></div>
       <div class="flashcards__actions"><button class="btn btn--primary" data-action="study" data-id="${deck.id}">Start studying</button>${readOnly ? '' : html`<button class="btn" data-action="add-card">Add card</button>`}<button class="btn" data-action="settings">Deck settings</button></div></div>
       <div data-manager-topics>${readOnly ? topicPanel() : ''}</div>
-      <label class="field flashcards__search"><span class="field__label">Search cards and tags</span><input class="input" type="search" data-search value="${query}" placeholder="Search this deck"></label>
+      <div class="flashcards__manager-filters">
+        <label class="field flashcards__search"><span class="field__label">Search cards and tags</span><input class="input" type="search" data-search value="${query}" placeholder="Search this deck"></label>
+        <div data-manager-spec-points>${specPointFilter()}</div>
+        <label class="field"><span class="field__label">Card status</span><select class="input" data-card-status>${selectOptions([['all', 'Any status'], ['new', 'New'], ['learning', 'Learning'], ['due', 'Due now'], ['reviewed', 'Reviewed']], cardStatus)}</select></label>
+        <label class="field"><span class="field__label">Study availability</span><select class="input" data-card-availability>${selectOptions([['all', 'Active and suspended'], ['active', 'Active only'], ['suspended', 'Suspended only']], availability)}</select></label>
+        <label class="field"><span class="field__label">Sort cards</span><select class="input" data-card-sort>${selectOptions([['oldest', 'Oldest added'], ['newest', 'Newest added'], ['new-first', 'New cards first'], ['due', 'Due date']], cardSort)}</select></label>
+      </div>
       <div data-manager-results>${managerResults()}</div>`;
   }
 
@@ -425,7 +534,7 @@ export function mount(element, context) {
   function studyControls(session) {
     if (!session.shown) return html`<button class="btn btn--primary" data-action="show-answer">Show answer <span class="small flashcards__shortcut">Space</span></button>`;
     return html`<div class="flashcards__grades" role="group" aria-label="Rate this card">${[['Again', 1], ['Hard', 2], ['Good', 3], ['Easy', 4]].map(([label, grade]) => html`
-      <button class="btn ${grade === 3 ? 'btn--primary' : ''}" data-action="grade" data-grade="${grade}" data-grade-label="${label}">${label} <span aria-hidden="true">${grade}</span></button>`)}</div>`;
+      <button class="btn" data-action="grade" data-grade="${grade}" data-grade-label="${label}">${label} <span aria-hidden="true">${grade}</span></button>`)}</div>`;
   }
 
   function updateStudyFeedback(session) {
@@ -553,7 +662,7 @@ export function mount(element, context) {
     const overview = view === 'decks' || view === 'catalogue';
     const tabHadFocus = element.contains(document.activeElement) && document.activeElement.matches('.flashcards__tab, [data-action="back-decks"]');
     setHtml(element, html`<div class="flashcards" data-view="${view}">${overview ? libraryHeader() : ''}
-      ${view === 'study' ? studyPage() : view === 'import' ? importPage() : view === 'deck' ? deckPage() : view === 'catalogue' ? cataloguePage() : html`${deckList()}${decksStatus === 'ready' && !decks.length ? example() : ''}`}</div>`);
+      ${view === 'study' ? studyPage() : view === 'import' ? importPage() : view === 'deck' ? deckPage() : view === 'catalogue' ? cataloguePage() : html`${deckList()}${decksStatus === 'ready' && !decks.length ? example() : ''}<footer class="flashcards__guide-link"><button class="linkbtn" data-action="flashcards-guide">${icon('book')} How to use Flashcards</button></footer>`}</div>`);
     releaseDetachedMedia();
     if (overview && tabHadFocus) $('.flashcards__tab[aria-current="page"]', element)?.focus({ preventScroll: true });
   }
@@ -600,7 +709,7 @@ export function mount(element, context) {
       await flashcards.saveNote({ ...result, confirm_remove: true });
     }
     deckCountsDirty = true;
-    await refreshCards();
+    await Promise.all([refreshCards(), refreshSpecPoints()]);
   }
 
   function isCurrentStudy(session) {
@@ -878,6 +987,20 @@ export function mount(element, context) {
     const action = button.dataset.action;
     const id = button.dataset.id;
     const card = cards.find((item) => item.id === id);
+    if (action === 'flashcards-guide') {
+      await openModal({
+        title: 'How to use Flashcards',
+        onOpen: (dialog) => dialog.classList.add('flashcards-dialog'),
+        body: html`<ol class="flashcards__guide">
+          <li><strong>Choose a deck.</strong> Add one from the Official catalogue, create your own, or import cards.</li>
+          <li><strong>Choose what to learn.</strong> Open Manage to find a spec point or filter new and suspended cards. Unsuspend cards to include them in study. Suspend them to pause them and keep their progress.</li>
+          <li><strong>Review.</strong> Try the question, then show the answer. Pick Again if you forgot, Hard if recall took effort, Good if you remembered, or Easy if it felt effortless.</li>
+        </ol><p class="small muted">On a keyboard, press Space to reveal and 1–4 to rate.</p>`,
+        actions: [{ label: 'Got it', cancel: true }],
+      });
+      if (view === 'decks') $('[data-action="flashcards-guide"]', element)?.focus({ preventScroll: true });
+      return;
+    }
     if (action === 'back-decks' || action === 'retry-decks') {
       if (view === 'import') clearImportPreview();
       clearTimeout(searchTimer);
@@ -892,6 +1015,23 @@ export function mount(element, context) {
     }
     else if (action === 'retry-cards') void refreshCards();
     else if (action === 'retry-topics') void refreshTopics();
+    else if (action === 'retry-spec-points') void refreshSpecPoints();
+    else if (action === 'clear-card-filters') {
+      clearTimeout(searchTimer);
+      const previousSort = cardSort;
+      resetManagerFilters();
+      cardSort = previousSort;
+      page = 1;
+      if (activeDeck()?.catalogue_id) setHtml($('[data-manager-topics]', element), topicPanel());
+      const point = $('[data-spec-point]', element);
+      if (point) point.value = '';
+      $('[data-card-status]', element).value = cardStatus;
+      $('[data-card-availability]', element).value = availability;
+      const search = $('[data-search]', element);
+      search.value = '';
+      search.focus({ preventScroll: true });
+      void refreshCards();
+    }
     else if (action === 'retry-study' && study) {
       study.loading = true;
       drawStudy();
@@ -913,19 +1053,26 @@ export function mount(element, context) {
     else if (action === 'preview-card' && card) { await openModal({ title: 'Card preview', body: html`<div class="flashcards__preview-card">${faces(card, true)}</div>`, onOpen: (dialog) => { dialog.classList.add('flashcards-dialog'); resolveMedia(dialog, Boolean(activeDeck()?.catalogue_id)); } }); }
     else if (action === 'move-card' && card) {
       const target = await openModal({ title: 'Move card', body: html`<label class="field"><span class="field__label">Move to deck</span><select class="input" name="deck">${decks.filter((deck) => deck.id !== selectedDeck && !deck.catalogue_id).map((deck) => html`<option value="${deck.id}">${deck.title}</option>`)}</select></label><p class="small muted">The card keeps its review history and due date.</p>`, actions: [{ label: 'Cancel', cancel: true }, { label: 'Move card', variant: 'primary', validate: (dialog) => dialog.querySelector('[name=deck]').value ? null : 'Create another deck first.', collect: (dialog) => dialog.querySelector('[name=deck]').value }] });
-      if (target) { await flashcards.updateCard(id, { deck_id: target }); deckCountsDirty = true; await refreshCards(); }
+      if (target) { await flashcards.updateCard(id, { deck_id: target }); deckCountsDirty = true; await Promise.all([refreshCards(), refreshSpecPoints()]); }
     }
     else if (action === 'suspend-card' && card) { await flashcards.updateCard(id, { suspended: !card.suspended }); deckCountsDirty = true; await Promise.all([refreshCards(), refreshTopics()]); }
     else if (action === 'delete-card' && card) {
-      if (await confirmDialog({ title: 'Delete card?', message: `Remove this card from study in “${activeDeck().title}”? Its review logs are retained.`, confirmLabel: 'Delete card', danger: true })) { await flashcards.deleteCard(id); deckCountsDirty = true; await refreshCards(); }
+      if (await confirmDialog({ title: 'Delete card?', message: `Remove this card from study in “${activeDeck().title}”? Its review logs are retained.`, confirmLabel: 'Delete card', danger: true })) { await flashcards.deleteCard(id); deckCountsDirty = true; await Promise.all([refreshCards(), refreshSpecPoints()]); }
     }
-    else if (action === 'study') { if (view !== 'deck' || selectedDeck !== id) subdeckPath = ''; beginStudy(id); }
-    else if (action === 'topic-unsuspend' || action === 'topic-suspend') {
+    else if (action === 'study') { if (view !== 'deck' || selectedDeck !== id) resetManagerFilters(); beginStudy(id); }
+    else if ((action === 'topic-unsuspend' || action === 'topic-suspend') && managerStatus === 'ready') {
       const suspended = action === 'topic-suspend';
-      const topicName = subdeckPath ? subdeckPath.split('::').join(' › ') : 'all topics';
-      const confirmed = await confirmDialog({ title: suspended ? 'Suspend cards?' : 'Unsuspend cards?', message: `${suspended ? 'Suspend' : 'Unsuspend'} cards in ${topicName}? ${suspended ? 'They will leave your study queue.' : 'Archived and optional cards stay suspended.'}`, confirmLabel: suspended ? 'Suspend' : 'Unsuspend' });
+      const count = suspended ? matchingActive : matchingUnsuspendable;
+      if (!count) return;
+      const deckId = selectedDeck;
+      const filters = managerFilters();
+      const verb = suspended ? 'Suspend' : 'Unsuspend';
+      const confirmed = await confirmDialog({ title: `${verb} cards?`, message: `${verb} ${plural(count, 'card')} across all pages of the current results?${!suspended && matchingProtected ? ' Archived and optional cards will be skipped.' : ''}`, confirmLabel: verb });
       if (confirmed) {
-        const result = await flashcards.setTopicSuspension(selectedDeck, subdeckPath || null, suspended);
+        button.disabled = true;
+        let result;
+        try { result = await flashcards.setFilteredSuspension(deckId, filters, suspended); }
+        finally { button.disabled = false; }
         deckCountsDirty = true;
         await Promise.all([refreshCards(), refreshTopics()]);
         toast(`${plural(result?.changed || 0, 'card')} ${suspended ? 'suspended' : 'unsuspended'}.${result?.excluded ? ` ${plural(result.excluded, 'archived or optional card')} left unchanged.` : ''}`, { type: 'success' });
@@ -1017,7 +1164,7 @@ export function mount(element, context) {
     }
 
   }
-  const offChange = on(element, 'change', '[data-import-source], [data-catalogue-subject], [data-catalogue-level], [data-topic]', (event, control) => {
+  const offChange = on(element, 'change', '[data-import-source], [data-catalogue-subject], [data-catalogue-level], [data-topic], [data-spec-point], [data-card-status], [data-card-availability], [data-card-sort]', (event, control) => {
     if (control.matches('[data-import-source]')) setHtml($('[data-import-fields]', element), importFields(control.value));
     else if (control.matches('[data-topic]')) {
       clearTimeout(searchTimer);
@@ -1025,6 +1172,14 @@ export function mount(element, context) {
       page = 1;
       setHtml($('[data-manager-topics]', element), topicPanel());
       $('[data-topic]', element)?.focus({ preventScroll: true });
+      void refreshCards();
+    } else if (control.matches('[data-spec-point], [data-card-status], [data-card-availability], [data-card-sort]')) {
+      clearTimeout(searchTimer);
+      if (control.matches('[data-spec-point]')) specPoint = control.value;
+      else if (control.matches('[data-card-status]')) cardStatus = control.value;
+      else if (control.matches('[data-card-availability]')) availability = control.value;
+      else cardSort = control.value;
+      page = 1;
       void refreshCards();
     } else {
       catalogueSubject = $('[data-catalogue-subject]', element).value;
@@ -1038,6 +1193,8 @@ export function mount(element, context) {
     query = control.value;
     page = 1;
     managerRequest++;
+    managerStatus = 'loading';
+    updateCardList();
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => { if (view === 'deck') void refreshCards(); }, 220);
   });

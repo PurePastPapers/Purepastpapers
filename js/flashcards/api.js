@@ -141,12 +141,20 @@ export async function getCard(deckId, cardId) {
   return record(rows) ?? null;
 }
 
-export async function listCardPage(deckId, { subdeckPath = '', query = '', page = 1, pageSize = 30 } = {}) {
+export async function listCardPage(deckId, {
+  subdeckPath = '', query = '', page = 1, pageSize = 30,
+  specPoint = '', status = 'all', availability = 'all', sort = 'oldest',
+} = {}) {
   const db = await connection();
   return db.rpc('flashcard_manage_cards', {
     p_deck_id: deckId, p_subdeck_path: subdeckPath || null, p_query: query,
     p_page: page, p_page_size: pageSize,
+    p_filters: { specPoint, status, availability, sort },
   });
+}
+
+export async function listDeckSpecPoints(deckId) {
+  return (await connection()).rpc('flashcard_deck_spec_points', { p_deck_id: deckId });
 }
 
 export async function listDeckTopics(deckId) {
@@ -193,6 +201,15 @@ export async function getStudyQueue(deckId, { subdeckPath = null } = {}) {
 export async function setTopicSuspension(deckId, subdeckPath, suspended) {
   return (await connection()).rpc('flashcard_set_topic_suspension', {
     p_deck_id: deckId, p_subdeck_path: subdeckPath || null, p_suspended: suspended,
+  });
+}
+
+export async function setFilteredSuspension(deckId, {
+  subdeckPath = '', query = '', specPoint = '', status = 'all', availability = 'all',
+}, suspended) {
+  return (await connection()).rpc('flashcard_set_filtered_suspension', {
+    p_deck_id: deckId, p_subdeck_path: subdeckPath || null, p_query: query,
+    p_filters: { specPoint, status, availability }, p_suspended: suspended,
   });
 }
 
