@@ -7,6 +7,13 @@
 
 const LEVELS = new Set(['AS', 'A-Level', 'GCSE', 'Level 3']);
 
+/** Decimal part labels already contain the printed parent question number. */
+export function printedQuestionNumber(question) {
+  const number = String(question.question_number ?? '');
+  const label = String(question.part_label || '').trim();
+  return /^\d+\.\d+$/.test(label) && Number(label.split('.')[0]) === Number(number) ? label : number;
+}
+
 /** The qualification code a paper or question belongs to, e.g. "8PH0". */
 export function qualificationCode(item, subject = null) {
   return item?.qualification_code || item?.spec_code || subject?.spec_code || null;

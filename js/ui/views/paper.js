@@ -13,7 +13,7 @@ import { gradeFor, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetB
 import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js';
 import { collapseLinked, expandLinkedIds } from '../../engine/linked-parts.js';
 import { levelLabel, qualificationCode } from '../../engine/paper-identity.js';
-import { paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds } from '../../engine/paper-choice.js';
+import { DISTINCT_WORKS, paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds } from '../../engine/paper-choice.js';
 import { icon } from '../icons.js';
 import { assessmentResourceLinks } from '../assessment-resources.js';
 import { linkedRef, marksPill, questionRef, questionSnippet } from '../question-view.js';
@@ -202,23 +202,26 @@ export async function mount(element, context) {
   async function chooseQuestions() {
     const groups = paperChoiceGroups(paper);
     if (!groups.length) return paper.question_ids;
+    const workChoices = paper.choice_rule === DISTINCT_WORKS;
     const choices = (dialog) => groups.map((_, index) =>
       [...dialog.querySelectorAll(`[name="paper-option-${index}"]:checked`)].map(input => Number(input.value)));
     return openModal({
       title: 'Choose your paper questions',
       body: html`<div class="stack">
         ${paper.choice_note ? html`<p>${paper.choice_note}</p>` : ''}
-        <p>Compulsory questions are included. Choose the optional questions you will answer before you start.</p>
+        ${workChoices ? '' : html`<p>Compulsory questions are included. Choose the optional questions you will answer before you start.</p>`}
         ${pdf ? html`<a href="${pdf}" target="_blank" rel="noopener">Open the original question paper (PDF)</a>` : ''}
         ${groups.map(({ options, count }, index) => {
           const units = options.map(ids => ids.map(id => bundle.questionsById.get(id)).filter(Boolean));
           const numbers = units.map(option => [...new Set(option.map(question => question.question_number))].join(', '));
           return html`<fieldset class="stack stack--sm">
-            <legend>Choice ${index + 1} · Choose ${count}</legend>
+            <legend>${workChoices ? 'Choose two essay questions' : `Choice ${index + 1} · Choose ${count}`}</legend>
             ${units.map((option, optionIndex) => {
               const number = numbers[optionIndex];
               const ambiguous = numbers.some((other, otherIndex) => otherIndex !== optionIndex && other === number);
-              const label = ambiguous ? option.map(question => questionRef(question)).join(', ') : number ? `Question ${number}` : `Option ${optionIndex + 1}`;
+              const work = option[0]?.work;
+              const label = workChoices && work ? `${questionRef(option[0])} · ${work.title} (${work.type})`
+                : ambiguous ? option.map(question => questionRef(question)).join(', ') : number ? `Question ${number}` : `Option ${optionIndex + 1}`;
               return html`<label class="check">
                 <input type="${count === 1 ? 'radio' : 'checkbox'}" name="paper-option-${index}" value="${optionIndex}" />
                 <span>${label}</span>
@@ -235,9 +238,13 @@ export async function mount(element, context) {
           validate: (dialog) => {
             const selections = choices(dialog);
             const missing = groups.findIndex(({ count }, index) => selections[index].length !== count);
-            return missing < 0 ? null : `Choose exactly ${groups[missing].count} in choice ${missing + 1}.`;
+            if (missing >= 0) return workChoices ? 'Choose exactly two essay questions.' : `Choose exactly ${groups[missing].count} in choice ${missing + 1}.`;
+            if (workChoices && !paperQuestionSelection(paper, groups, selections, bundle.questionsById)) {
+              return 'Choose two different texts, or one text and one film.';
+            }
+            return null;
           },
-          collect: (dialog) => paperQuestionSelection(paper, groups, choices(dialog)),
+          collect: (dialog) => paperQuestionSelection(paper, groups, choices(dialog), bundle.questionsById),
         },
       ],
     });
