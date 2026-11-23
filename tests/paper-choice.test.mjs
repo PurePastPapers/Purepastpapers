@@ -32,3 +32,23 @@ test('an answer-two section includes every part of each chosen option in paper o
   questionMap.delete('A2');
   assert.deepEqual(paperSessionQuestionIds(paper, selected, questionMap), []);
 });
+
+test('options that share a question keep it when any option holding it is chosen (GCSE Geography June 2022 Paper 2)', () => {
+  const pack = JSON.parse(readFileSync(new URL('../data/packs/gcsegeog/AQA_8035_2022_JUNE_02.json', import.meta.url), 'utf8'));
+  const [paper] = pack.papers;
+  const questionsById = new Map(pack.questions.map(question => [question.question_id, question]));
+  const groups = paperChoiceGroups(paper);
+  assert.equal(groups.length, 1);
+  assert.equal(groups[0].options.length, 4);
+  const numbers = (ids) => [...new Set(ids.map(id => questionsById.get(id).question_number))];
+  const water = paperQuestionSelection(paper, groups, [[2]]);
+  assert.deepEqual(numbers(water), ['1', '3', '5']);
+  const sectionB = paperQuestionSelection(paper, groups, [[0]]);
+  assert.deepEqual(numbers(sectionB), ['1', '2']);
+  // Question 3.1 was removed for copyright, so each option is one mark short of the official 63 and the
+  // paper is sat from the original source (an empty list), as for other booklets with an excluded part.
+  const marks = (ids) => ids.reduce((sum, id) => sum + questionsById.get(id).marks, 0);
+  assert.equal(marks(sectionB), 63);
+  assert.equal(marks(water), 62);
+  assert.deepEqual(paperSessionQuestionIds(paper, sectionB, questionsById), sectionB);
+});

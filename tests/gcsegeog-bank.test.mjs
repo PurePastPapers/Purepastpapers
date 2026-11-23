@@ -13,20 +13,19 @@ const inventory = read('data/imports/gcsegeog/inventory/8035-inventory.json');
 const spec = read('data/specs/AQA_GCSE_GEOG_8035.json');
 const leaves = new Map(spec.sections.flatMap(s => s.topics.flatMap(t => t.points.map(p => [p.id, p]))));
 const units = packs.flatMap(p => p.questions);
-const NOT_IMPORTED = 'AQA_8035_2022_JUNE_02';
 const P = 'AQA_GCSE_GEOG_';
 
-test('every public AQA 8035 booklet is built and accounted for, the adapted June 2022 Paper 2 recorded as not imported', () => {
-  const ids = inventory.papers.map(p => p.paper_id).filter(id => id !== NOT_IMPORTED).sort();
+test('every public AQA 8035 booklet is built and accounted for, including the adapted June 2022 Paper 2', () => {
+  const ids = inventory.papers.map(p => p.paper_id).sort();
   assert.equal(inventory.papers.length, 21);
   assert.deepEqual(packs.map(p => p.papers[0].paper_id).sort(), ids);
   assert.deepEqual(coverage.queued_public_booklets, []);
-  assert.deepEqual(coverage.not_imported.map(x => x.paper_id), [NOT_IMPORTED]);
+  assert.deepEqual(coverage.not_imported, []);
   const {booklets, printed_parts, scored_units, excluded_parts} = coverage.totals;
-  assert.deepEqual({booklets, printed_parts, scored_units, excluded_parts}, {booklets: 20, printed_parts: 662, scored_units: 631, excluded_parts: 31});
-  assert.equal(units.length, 631);
-  assert.equal(new Set(units.map(q => q.question_id)).size, 631);
-  assert.equal(Object.keys(read('data/imports/gcsegeog/identities.json').units).length, 631);
+  assert.deepEqual({booklets, printed_parts, scored_units, excluded_parts}, {booklets: 21, printed_parts: 708, scored_units: 676, excluded_parts: 32});
+  assert.equal(units.length, 676);
+  assert.equal(new Set(units.map(q => q.question_id)).size, 676);
+  assert.equal(Object.keys(read('data/imports/gcsegeog/identities.json').units).length, 676);
 });
 
 test('each booklet reconciles to its cover maximum, counting the right number of options per choice group', () => {
@@ -44,13 +43,15 @@ test('each booklet reconciles to its cover maximum, counting the right number of
     // An option that was excluded entirely has no units, so recount from the group's question numbers.
     let marks = Object.entries(totals).filter(([n]) => !grouped.has(n)).reduce((s, [, m]) => s + m, 0);
     groups.forEach((group, i) => {
-      const sums = group.map(option => totals[byId.get(option[0]).question_number]).sort((a, b) => b - a);
+      // An option is one question or (adapted June 2022 Paper 2) Question 3 plus one of 4, 5, 6.
+      const sums = group.map(option => [...new Set(option.map(id => byId.get(id).question_number))]
+        .reduce((s, n) => s + totals[n], 0)).sort((a, b) => b - a);
       marks += sums.slice(0, picks[i]).reduce((s, m) => s + m, 0);
     });
     assert.equal(marks, paper.total_marks, paper.paper_id);
     choose[paper.paper_code] = picks.join(',');
     assert.equal(paper.level, 'GCSE');
-    assert.equal(paper.total_marks, {AQA_8035_2021_NOVEMBER_03: 56, AQA_8035_2022_JUNE_03: 56}[paper.paper_id] || (paper.paper_code === '03' ? 76 : 88), paper.paper_id);
+    assert.equal(paper.total_marks, {AQA_8035_2021_NOVEMBER_03: 56, AQA_8035_2022_JUNE_02: 63, AQA_8035_2022_JUNE_03: 56}[paper.paper_id] || (paper.paper_code === '03' ? 76 : 88), paper.paper_id);
   }
   // Paper 1 Section C is "answer two of three"; Paper 2 Section C is Question 3 plus one of 4, 5, 6.
   assert.deepEqual(Object.entries(choose).sort(), [['01', '2'], ['02', '1'], ['03', '']]);
@@ -88,7 +89,7 @@ test('tags are valid 8035 key ideas and route-scoped: each section or question u
 
 test('copyright-removed parts are excluded and recorded, never published incomplete', () => {
   const excluded = coverage.excluded_copyright_removed;
-  assert.equal(excluded.length, 31);
+  assert.equal(excluded.length, 32);
   const published = new Set(units.map(q => `${q.paper_id} ${q.part_label || q.question_number}`));
   for (const x of excluded) {
     assert(!published.has(`${x.paper_id} ${x.question_number}`), x.paper_id + x.question_number);
@@ -162,6 +163,6 @@ test('GCSE Geography packs validate against the schema and are live', () => {
   const short = new Set(papers.filter(p => p.excluded_questions?.length).map(p => p.paper_id));
   for (const issue of issues) assert(short.has(issue.id), issue.id + ': ' + issue.message);
   const live = read('data/packs/index.json').packs.map(p => p.file);
-  assert.equal(live.filter(f => f.startsWith('gcsegeog/')).length, coverage.published ? 20 : 0);
+  assert.equal(live.filter(f => f.startsWith('gcsegeog/')).length, coverage.published ? 21 : 0);
   assert.match(coverage.rights_basis, /ASSUMPTION/);
 });

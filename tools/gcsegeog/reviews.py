@@ -48,11 +48,9 @@ ROUTES = {('01', 'Section A'): ('HAZ', 'HAZ_1.', 'Natural hazards'),
           ('03', 'Section A'): ('APP_7.1', 'APP_7.1.', 'Issue evaluation'),
           ('03', 'Section B'): ('APP_7.2', 'APP_7.2.', 'Fieldwork')}
 SKILLS = 'APP_7.3.'
-# AQA_8035_2022_JUNE_02 is an adapted sitting ("Answer either Section B or Section C", with a further choice inside
-# Section C); it does not reconcile to a cover maximum with one choice level, so it is recorded, not imported.
-NOT_IMPORTED = {'AQA_8035_2022_JUNE_02': 'Adapted June 2022 sitting: Section B or Section C is a choice, with a second choice inside '
-                                         'Section C, so printed parts (125 marks) cannot be reconciled to the 63-mark cover total with the '
-                                         'choice-group model. Not imported.'}
+# AQA_8035_2022_JUNE_02 (adapted sitting, "Answer either Section B or Section C") is imported since 23 November 2026:
+# its choice group has whole-section options and Question 3 plus one of 4, 5, 6 (see extract.section_choice).
+NOT_IMPORTED = {}
 
 
 def route_of(paper, unit):

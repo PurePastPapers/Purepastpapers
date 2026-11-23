@@ -13,13 +13,17 @@ export function paperChoiceGroups(paper) {
  * Null means the selection is incomplete or invalid. */
 export function paperQuestionSelection(paper, groups, selections) {
   const excluded = new Set();
+  const kept = new Set();
   for (const [index, { count, options }] of groups.entries()) {
     const selected = new Set(selections[index]);
     if (selected.size !== count || [...selected].some(option => !Number.isInteger(option) || option < 0 || option >= options.length)) return null;
     options.forEach((option, optionIndex) => {
-      if (!selected.has(optionIndex)) option.forEach(id => excluded.add(id));
+      option.forEach(id => (selected.has(optionIndex) ? kept : excluded).add(id));
     });
   }
+  // Options may share questions (AQA GCSE Geography June 2022 Paper 2: Section B, or Question 3 plus one of
+  // Questions 4, 5, 6), so a question in any chosen option stays in.
+  for (const id of kept) excluded.delete(id);
   return paper.question_ids.filter(id => !excluded.has(id));
 }
 

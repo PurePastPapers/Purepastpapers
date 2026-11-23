@@ -29,10 +29,15 @@ agree, remove the `gcsegeog/` entries from `data/packs/index.json`.
 
 ### Not imported and excluded
 
-- **AQA_8035_2022_JUNE_02 is not imported.** It is an adapted sitting (63 marks, 75 minutes): "Answer either Section B or
-  Section C", with a further choice inside Section C. Printed parts add to 125 against 63 and the choice-group model
-  (one level) cannot express it. Recorded in `coverage.json` (`not_imported`) and `NOT_IMPORTED` in `tools/gcsegeog/reviews.py`.
-- **31 units excluded** because AQA removed a figure or text the unit needs ("-CR" files). Listed on each paper as
+- **AQA_8035_2022_JUNE_02 imported on 23 November 2026** (adapted sitting, 63 marks, 75 minutes: "Answer either
+  Section B or Section C"; in Section C, Question 3 and one of 4, 5, 6). `extract.section_choice` reads the cover and makes
+  one choice group whose options are lists of questions: `[2]`, `[3, 4]`, `[3, 5]`, `[3, 6]`. Options share Question 3, so
+  `js/data/schema.js` counts each question once and `js/engine/paper-choice.js` keeps a question that is in any chosen
+  option (`tests/choice-overlap.test.mjs`, `tests/paper-choice.test.mjs`). 45 units; 3.1 excluded (Figure 10 removed).
+  The extractor also now keeps the data table after "Plot the following data" and "Which country is identified by the
+  following data?", and drops "Name of local scheme ____", "Regional importance ____" and "Answer = ____" lines left from
+  the previous part. Built with `--only`, packaged and compacted for this paper alone (other packs untouched).
+- **31 units excluded** (32 with June 2022 Paper 2 3.1) because AQA removed a figure or text the unit needs ("-CR" files). Listed on each paper as
   `excluded_questions` and in `coverage.json`:
   Nov 2020 P1 1.12, 2.6, 5.6; Nov 2020 P2 3.1, 5.5; Nov 2020 P3 Q3 (resources Figure 3); Jun 2022 P3 Q3 (Figure 3);
   Jun 2023 P1 2.1, 2.3 (Figure 7); Jun 2023 P2 2.9, 3.4, 6.5; Jun 2023 P3 2.1 to 2.6 and Q3 (Figures 2 and 3);
@@ -98,9 +103,8 @@ Examiners' reports exist for every exam booklet; the specimen papers have none.
 - Two tariffs under one label are one unit: a multiple-choice part followed by an unlabelled follow-up
   question (2025 Paper 2, 4.3, 5.3, 6.3: marks add), and an "Either ... Or ..." pair (2025 Paper 1,
   2.10: one option's marks).
-- **Not importable as is: June 2022 Paper 2** (adapted sitting, "Answer either Section B or Section C"
-  with a further choice inside Section C). It does not reconcile (125 of 63) and has no clean
-  choice-group representation. Record it as excluded unless a nested-choice form is added.
+- **June 2022 Paper 2** (adapted sitting, "Answer either Section B or Section C" with a further choice inside
+  Section C): imported on 23 November 2026 with list options sharing Question 3 (see "Not imported and excluded").
 - 708 candidate units across the 21 booklets (662 in the 20 that reconcile). 17 units already show
   AQA's copyright-removed notice in their own crop.
 
