@@ -1,6 +1,7 @@
 import { sha256, toHex } from '../core/sha256.js';
 import { sourceImageChecksums } from '../data/source-images.js?v=20261122-pdf2';
 import { expandLinkedIds, runnerItems } from './linked-parts.js';
+import { printedQuestionNumber } from './paper-identity.js';
 
 const digest = (value) => toHex(sha256(JSON.stringify(value)));
 const sorted = (value) => Array.isArray(value) ? value.map(sorted) : value && typeof value === 'object'
@@ -36,7 +37,7 @@ function contentFingerprint(question, paper) {
 }
 
 function partReference(question, paper) {
-  const number = String(question.question_number ?? '');
+  const number = printedQuestionNumber(question);
   const label = String(question.part_label || '').trim();
   const normalise = (value) => value.replace(/[\s()]/g, '').toLowerCase();
   const suffix = label && !normalise(number).endsWith(normalise(label))

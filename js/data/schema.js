@@ -1,6 +1,9 @@
 // Validation of question and paper records against the PRD schemas (section 8).
 // Pure functions, shared by the Content Studio in the browser and tools/validate-data.mjs.
 
+import { DISTINCT_WORKS, paperWorkChoicesValid } from '../engine/paper-choice.js';
+import { officialResourceUrl } from '../engine/question-resources.js';
+
 export const SOURCE_TYPE_VALUES = ['real_past_paper', 'ai_past_paper', 'ai_spec_question', 'predicted_paper'];
 export const PAPER_TYPE_VALUES = ['real_past_paper', 'ai_past_paper', 'predicted_paper', 'user_custom_test'];
 export const DIFFICULTY_VALUES = ['easy', 'medium', 'hard', 'extra_hard'];
@@ -44,8 +47,13 @@ export function validateQuestion(question, { specIndex, paperIds, subjectId }) {
   }
 
   const content = question.content || {};
-  if (!content.question_html && !content.question_image_url) error('content needs question_html or question_image_url.');
-  if (!content.mark_scheme_html && !content.mark_scheme_image_url) warning('no mark scheme (mark_scheme_html or mark_scheme_image_url).');
+  const resources = question.context?.official_resources;
+  const externalPrompt = Array.isArray(resources) && resources.some(resource =>
+    resource?.kind === 'question_pdf' && officialResourceUrl(resource.url));
+  if (!content.question_html && !content.question_image_url && !externalPrompt) error('content needs a question prompt or an official question PDF.');
+  const externalScheme = officialResourceUrl(question.provenance?.scheme_source_url);
+  if (!content.mark_scheme_html && !content.mark_scheme_image_url && !externalScheme) warning('no mark scheme (mark_scheme_html or mark_scheme_image_url).');
+  if (question.context?.official_scheme_required && !externalScheme) error('A required official scheme URL is missing.');
 
   // A part is an independently marked leaf record. Its parent is a grouping id,
   // not necessarily another assessable question in the bank.
@@ -61,7 +69,11 @@ export function validateQuestion(question, { specIndex, paperIds, subjectId }) {
     if (!question.context || typeof question.context !== 'object' || Array.isArray(question.context)) {
       error('context must be an object when supplied.');
     } else {
-      for (const field of ['shared_stem_html', 'stem_image_url', 'full_question_html', 'full_question_image_url']) {
+      if (resources !== undefined && (!Array.isArray(resources) || resources.some(resource =>
+        !resource || !officialResourceUrl(resource.url) || typeof resource.label !== 'string' || !resource.label.trim()))) {
+        error('context.official_resources must contain labelled HTTPS sources.');
+      }
+      for (const field of ['shared_stem_html', 'stem_image_url', 'full_question_html', 'full_question_image_url', 'full_question_pdf_url', 'full_scheme_pdf_url']) {
         if (question.context[field] !== undefined && typeof question.context[field] !== 'string') error(`context.${field} must be a string.`);
       }
     }
@@ -113,6 +125,23 @@ export function validatePaper(paper, { questionsById, subjectId }) {
   // of Questions 4, 5, 6"), so the optional questions are counted once each, then replaced by the best options.
   const groups = Array.isArray(paper.choice_groups) ? paper.choice_groups : [];
   const choose = Array.isArray(paper.choice_choose) ? paper.choice_choose : [];
+  if (paper.choice_rule === DISTINCT_WORKS) {
+    const options = Array.isArray(groups[0]) ? groups[0] : [];
+    if (groups.length !== 1 || choose[0] !== 2 || options.length !== ids.length
+      || new Set(options).size !== ids.length || !ids.every(questionId => options.includes(questionId))) {
+      error('A distinct-works paper must offer all essay IDs as individual options in one choose-two group.');
+    }
+    for (const questionId of ids) {
+      const question = questionsById.get(questionId);
+      const work = question?.work;
+      if (!work?.id || !work.title || !['text', 'film'].includes(work.type) || question.marks * 2 !== paper.total_marks) {
+        error(`Essay "${questionId}" must have a work ID, title, type and half the paper marks.`);
+      }
+    }
+    if (!ids.some((first, index) => ids.slice(index + 1).some(second => paperWorkChoicesValid([first, second], questionsById)))) {
+      error('A distinct-works paper must offer at least one valid pair of works.');
+    }
+  }
   groups.forEach((group, index) => {
     const members = group
       .map((member) => [...new Set(Array.isArray(member) ? member : [member])].filter((id) => questionsById.has(id)))

@@ -1,4 +1,5 @@
 import { sanitizeHtml } from '../core/dom.js';
+import { questionResourceUrl } from './question-resources.js';
 import { invalidateSourceImageBytes, sourceImageBytes } from '../data/source-images.js?v=20261122-pdf2';
 import { displayedPartLabel } from './test-snapshot.js?v=20261122-pdf2';
 import { decodePdfImage } from './test-pdf-render.js?v=20261122-pdf2';
@@ -72,6 +73,19 @@ export async function prepareTestPdf(snapshot, questions, {kind = 'question', si
         if (context.required_stimulus_unavailable) {
           missing.push({ kind: 'question', reference: part.reference, reason: context.required_stimulus_unavailable });
         }
+        let hasExternalQuestion = false;
+        for (const resource of context.official_resources || []) {
+          const url = questionResourceUrl(resource);
+          if (resource.kind === 'question_pdf' && url) hasExternalQuestion = true;
+          if (!url || resource.kind === 'audio') {
+            missing.push({ kind: 'question', reference: part.reference,
+              reason: url ? 'This question requires the official listening recording.' : 'A required source link is unavailable.',
+              ...(url ? { officialSourceUrl: url } : {}) });
+          } else if (!seenContext.has(url)) {
+            seenContext.add(url);
+            questionBlocks.push({ type: 'link', text: `${resource.label} · required for ${part.reference}`, url });
+          }
+        }
         const parent = question.parent_question_id || `${question.paper_id}:${question.question_number}`;
         const showSharedStem = !seenParents.has(parent) && (context.shared_stem_html || context.stem_image_url);
         seenParents.add(parent);
@@ -97,7 +111,7 @@ export async function prepareTestPdf(snapshot, questions, {kind = 'question', si
         if (parts.length > 1) questionBlocks.push(partHeading);
         await appendHtml(questionBlocks, question.content?.question_html, `Question ${part.reference}`, missing, assetOptions, 'question');
         if (question.content?.question_image_url) await appendImage(questionBlocks, question.content.question_image_url, '', missing, assetOptions, 'question');
-        if (!question.content?.question_html?.trim() && !question.content?.question_image_url) {
+        if (!question.content?.question_html?.trim() && !question.content?.question_image_url && !hasExternalQuestion) {
           missing.push({id: part.id, reference: part.reference, kind: 'question', reason: 'The question has no printable text or question crop.'});
         }
         if (!compact) questionBlocks.push({type: 'answer', marks: part.maxMarks});
@@ -317,6 +331,9 @@ async function appendScheme(blocks, question, paper, part, localReference, missi
   const issueCount = missing.length;
   if (markup) await appendHtml(blocks, markup, `Mark scheme for ${part.reference}`, missing, assets, 'scheme');
   if (image) await appendImage(blocks, image, `Mark scheme for ${part.reference}`, missing, assets, 'scheme');
+  if (question.context?.official_scheme_required && officialSchemeUrl) {
+    blocks.push({ type: 'link', text: `Open the official mark scheme at ${part.reference}`, url: officialSchemeUrl });
+  }
   const schemeIssue = missing.slice(issueCount).find(entry => entry.kind === 'scheme');
   const available = !schemeIssue;
   if (schemeIssue) {

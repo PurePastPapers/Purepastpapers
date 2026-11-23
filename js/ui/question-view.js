@@ -4,6 +4,8 @@
 import { html, isSafeUrl, sanitizeHtml } from '../core/dom.js';
 import { sourceImage } from '../data/source-images.js';
 import { fmtMinutes } from '../core/utils.js';
+import { officialResourceUrl, questionResourceUrl } from '../engine/question-resources.js';
+import { printedQuestionNumber } from '../engine/paper-identity.js';
 import { difficultyBadge, sourceBadge } from './ui.js';
 import { icon } from './icons.js';
 
@@ -13,6 +15,8 @@ export function questionBody(question, { contextOpen = false } = {}) {
   const { question_html: markup, question_image_url: url } = question.content || {};
   const context = question.context || {};
   const fullQuestion = context.full_question_html || (context.full_question_image_url && isSafeUrl(context.full_question_image_url));
+  const fullQuestionPdf = context.official_resources?.some(resource => resource.url === context.full_question_pdf_url)
+    ? null : officialResourceUrl(context.full_question_pdf_url);
   return html`<div class="stack">
     ${question.part_label ? html`<p class="small muted">Part ${question.part_label} only · ${question.marks} ${question.marks === 1 ? 'mark' : 'marks'}</p>` : ''}
     ${context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}
@@ -26,6 +30,7 @@ export function questionBody(question, { contextOpen = false } = {}) {
         <div class="qcontent">${sanitizeHtml(context.full_question_html)}${image(context.full_question_image_url, 'Full question for context only')}</div>
       </div>
     </details>` : ''}
+    ${fullQuestionPdf ? html`<a class="small" href="${fullQuestionPdf}" target="_blank" rel="noopener">Open the original question paper for context (PDF)</a>` : ''}
     ${articleResource(question)}
   </div>`;
 }
@@ -56,11 +61,21 @@ function resources(question) {
   const intros = (Array.isArray(context.intros) ? context.intros : []).filter((intro) => intro && isSafeUrl(intro.image_url));
   const figures = (Array.isArray(context.figures) ? context.figures : []).filter((figure) =>
     figure && (isSafeUrl(figure.image_url) || /^https:\/\//i.test(figure.official_url || '')));
-  if (!stem && !intros.length && !figures.length) return '';
+  const official = (context.official_resources || []).flatMap(resource => {
+    const url = questionResourceUrl(resource);
+    return url ? [{ ...resource, url }] : [];
+  });
+  if (!stem && !intros.length && !figures.length && !official.length) return '';
   return html`<section class="stack question-resources" aria-label="Resources for this question (unscored)" data-question-resources="${question.question_id}">
     <p class="small muted">Resources for this question. Unscored context: they carry no marks of their own.</p>
     ${stem ? html`<figure class="qcontent"><figcaption class="small">${question.part_label ? `Question ${question.question_number}: introduction and earlier material this part uses` : `Question ${question.question_number} (shared introduction)`}</figcaption>${image(stem, `Introduction to question ${question.question_number}, unscored context`)}</figure>` : ''}
     ${intros.map((intro) => html`<figure class="qcontent"><figcaption class="small">${intro.label} (printed introduction)</figcaption>${image(intro.image_url, `${intro.label}, unscored context`)}</figure>`)}
+    ${official.map(({ kind, label, url, start_seconds, end_seconds }) => html`<div class="stack stack--sm">
+      ${kind === 'audio' ? html`<audio controls preload="none" data-assessment-audio src="${url}" aria-label="${label}"
+        ${Number.isFinite(start_seconds) ? html`data-clip-start="${start_seconds}" data-clip-end="${end_seconds}"` : ''}
+        style="width:100%;max-width:360px"></audio>` : ''}
+      <a class="small" href="${url}" target="_blank" rel="noopener">${label}</a>
+    </div>`)}
     ${figures.map((figure) => html`<figure class="qcontent">
       <figcaption class="small">${figure.label} · ${figure.source === 'insert' ? 'from the insert' : figure.source === 'resource_booklet' ? 'from the resources booklet' : 'from the question paper'}</figcaption>
       ${image(figure.image_url, `${figure.label}, unscored resource`)}
@@ -71,10 +86,18 @@ function resources(question) {
 
 export function markSchemeBody(question, { wholeQuestion = true } = {}) {
   const { mark_scheme_html: markup, mark_scheme_image_url: url } = question.content || {};
-  if (!markup && !url) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
+  const source = officialResourceUrl(question.provenance?.scheme_source_url);
+  const transcript = officialResourceUrl(question.provenance?.transcript_source_url);
+  const fullPdf = wholeQuestion && officialResourceUrl(question.context?.full_scheme_pdf_url);
+  const showSource = source && (question.context?.official_scheme_required || (!markup && !url));
+  if (!markup && !url && !source) return html`<p class="muted">No mark scheme has been added for this question yet.</p>`;
   const full = wholeQuestion && question.scheme_scope === 'part' && question.context?.full_scheme_image_url && isSafeUrl(question.context.full_scheme_image_url) ? question.context.full_scheme_image_url : null;
   return html`<div class="ms">${question.scheme_scope === 'full_question' && question.part_label ? html`<p class="small muted">Official scheme for the original question, including other parts. Save marks only for the selected ${question.marks}-mark unit.</p>` : question.scheme_scope === 'parent_part' ? html`<p class="small muted">The board prints this scheme for the whole part${question.scheme_part ? ` ${question.scheme_part}` : ''}. Save marks only for the selected ${question.marks}-mark unit.</p>` : ''}<div class="qcontent">${sanitizeHtml(markup)}${image(url, question.part_label ? `Mark scheme for part ${question.part_label}` : 'Mark scheme')}</div>
-    ${full ? html`<details class="question-context" data-full-scheme="${question.question_id}"><summary>Show the mark scheme for the whole question</summary><div class="qcontent" style="margin-top:12px">${image(full, 'Mark scheme for the whole question, context only')}</div></details>` : ''}</div>`;
+    ${full ? html`<details class="question-context" data-full-scheme="${question.question_id}"><summary>Show the mark scheme for the whole question</summary><div class="qcontent" style="margin-top:12px">${image(full, 'Mark scheme for the whole question, context only')}</div></details>` : ''}
+    ${showSource ? html`<p class="small"><a href="${source}" target="_blank" rel="noopener">Open the official mark scheme at this question (PDF)</a></p>` : ''}
+    ${fullPdf && (!showSource || fullPdf !== source) ? html`<p class="small"><a href="${fullPdf}" target="_blank" rel="noopener">Open the official full-question mark scheme (PDF)</a></p>` : ''}
+    ${transcript ? html`<p class="small"><a href="${transcript}" target="_blank" rel="noopener">Open the official listening transcript (PDF)</a></p>` : ''}
+  </div>`;
 }
 
 /** Plain-text opening of a question, for list cards. */
@@ -102,7 +125,7 @@ export function questionSnippet(question, length = 220) {
 export function questionRef(question, papersById) {
   const paper = papersById?.get(question.paper_id);
   const paperLabel = paper ? paper.title.replace(/:.*/, '') : question.source_type === 'ai_spec_question' ? 'AI question' : '';
-  const number = String(question.question_number ?? '');
+  const number = printedQuestionNumber(question);
   // Older packs may already carry "7(b)"; new part records can keep number "7".
   const normalise = (value) => String(value).replace(/[\s()]/g, '').toLowerCase();
   const hasPart = question.part_label && normalise(number).endsWith(normalise(question.part_label));
@@ -206,6 +229,7 @@ export function linkedIntro(entry) {
       stem_image_url: showStem && firstUse(assets, context.stem_image_url) ? context.stem_image_url : null,
       intros: Array.isArray(context.intros) ? context.intros.filter((intro) => firstUse(assets, intro?.image_url)) : [],
       figures: Array.isArray(context.figures) ? context.figures.filter((figure) => firstUse(assets, figure?.image_url)) : [],
+      official_resources: (context.official_resources || []).filter(resource => firstUse(assets, questionResourceUrl(resource))),
     };
     const article = context.article && firstUse(articles, context.article.url || part.paper_id);
     return html`${showStem && context.shared_stem_html ? html`<div class="qcontent question-stem">${sanitizeHtml(context.shared_stem_html)}</div>` : ''}

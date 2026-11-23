@@ -25,3 +25,37 @@ The source manifest covers the 99 unmodified 7692 resources listed by AQA, inclu
 Run `python3 tools/spanish/build_catalogue.py` using the checked-in manifest to regenerate the paper rows. Run `node --test tests/spanish-catalogue.test.mjs` for series, source, specimen and resource-gating checks.
 
 [AQA assessment resources](https://www.aqa.org.uk/subjects/spanish/a-level/spanish-7692/assessment-resources) · [Specification](https://www.aqa.org.uk/subjects/spanish/a-level/spanish-7692/specification/scheme-of-assessment) · [Release schedule](https://www.aqa.org.uk/exams-administration/exams/whats-available-when) · [Copyright policy](https://www.aqa.org.uk/about-us/who-we-are/our-standards/copyright-and-intellectual-property-policy)
+
+## Practice bank
+
+The owner confirmed reproduction permission for the AQA 7692 written question papers and schemes on 23 November 2026. Official audio, transcripts, separate reading inserts, credited or uncertain stimuli, and examiner reports link to AQA. Examiner reports retain full-paper scope. Speaking remains a resource-based partner practice activity.
+
+| Coverage | Booklets | Scored units | Official total per attempt |
+| --- | ---: | ---: | ---: |
+| Paper 1 · autumn 2020–21, June 2022–25, specimen set 1 | 7 | 305 | 100 |
+| Paper 2 · autumn 2020–21, June 2022–25, specimen set 1 | 7 | 224 | 80 |
+
+Paper 1 records scoped prompts and schemes, separates unscored stems, and retains links to the official page where licensed display ends. Printed summaries carry independent content and language marks. Translation records identify their direction and retain the source conversion instructions. A printable selection that requires a recording points the student to the official audio and stays unavailable as a self-contained question PDF. Required PDF stimuli and quoted prompts are emitted as labelled links.
+
+All 28 listening tasks use bounded official audio. For the specimen the cue groups follow the official tracked archive and continuous recording. Autumn 2020 uses the spoken section announcements in the official recording and their order in the transcript.
+
+Paper 2 permits two essays from distinct works with a maximum of one film. Each booklet has 420 valid 80-mark pairs. The shared AO3/AO4 rubric stays visible during marking alongside the exact essay guidance or its official PDF page. The June 2022 Q05.1, June 2024 Q08.1, and June 2025 Q02.1 prompts open on the official page because they quote prescribed works. The builder lists the 52 indicative schemes sourced by page link for the same reason. Custom sets can include any eligible essays and are labelled as question sets.
+
+### Rebuild and verify the bank
+
+Use a cache with the checked-in `official-sources.json` at `official-manifest.json` and the checksum-matched original files under `assets/`. Keep this cache and both staging directories outside the published tree. Run the following from the repository root.
+
+```sh
+python3 tools/spanish/build-paper-one.py \
+  --source-cache "$spanish_cache" --source-map data/imports/spanish/paper-one-resources.json \
+  --repo "$PWD" --stage "$spanish_p1"
+python3 tools/spanish/check-paper2.py \
+  "$spanish_cache/assets" data/imports/spanish/official-sources.json /tmp/ppp-7692-p2-proof.json
+python3 tools/spanish/build-paper2.py \
+  "$PWD" "$spanish_cache/assets" /tmp/ppp-7692-p2-proof.json "$spanish_p2"
+python3 tools/spanish/finalize.py --paper-one "$spanish_p1" --paper-two "$spanish_p2"
+python3 tools/assets/compact.py --slug spanish
+python3 tools/spanish/finalize.py --verify
+npm run validate
+npm test
+```

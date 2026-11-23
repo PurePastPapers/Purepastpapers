@@ -12,6 +12,7 @@ import * as shell from './ui/shell.js';
 import { tintPage } from './ui/subject-colours.js';
 import { revealOnScroll } from './ui/motion.js';
 import { installZoom } from './ui/zoom.js';
+import { installAssessmentAudioBounds } from './ui/assessment-resources.js';
 import { installModuleScopeHandlers } from './ui/module-scope.js';
 import { getBundle, getSubjects } from './data/content-repository.js';
 import { closeWelcome } from './ui/welcome.js';
@@ -240,6 +241,7 @@ async function start() {
   observeSourceImages();
   observeExaminerReports();
   installZoom();
+  installAssessmentAudioBounds();
   installModuleScopeHandlers({
     getSubject: async (id) => (await getSubjects()).find((subject) => subject.subject_id === id) || null,
     getSpec: async (id) => (await getBundle(id)).spec,

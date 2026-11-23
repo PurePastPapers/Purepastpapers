@@ -1,7 +1,32 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {test} from 'node:test';
-import {paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds} from '../js/engine/paper-choice.js';
+import {DISTINCT_WORKS, paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds} from '../js/engine/paper-choice.js';
+import {validatePaper} from '../js/data/schema.js';
+
+test('a Spanish writing paper accepts two texts or one text and one film from different works', () => {
+  const textA = {id: 'text-a', type: 'text', title: 'Text A'};
+  const textB = {id: 'text-b', type: 'text', title: 'Text B'};
+  const filmA = {id: 'film-a', type: 'film', title: 'Film A'};
+  const filmB = {id: 'film-b', type: 'film', title: 'Film B'};
+  const ids = ['01.1', '01.2', '02.1', '11.1', '12.1'];
+  const questions = new Map(ids.map((id, index) => [id, {marks: 40, work: [textA, textA, textB, filmA, filmB][index]}]));
+  const paper = {
+    paper_id: 'SPANISH_P2', subject_id: 'SPANISH', paper_type: 'real_past_paper',
+    title: 'Writing', total_marks: 80, duration_minutes: 120, question_ids: ids,
+    choice_groups: [ids], choice_choose: [2], choice_rule: DISTINCT_WORKS,
+  };
+  const groups = paperChoiceGroups(paper);
+  const choose = (...indexes) => paperQuestionSelection(paper, groups, [indexes], questions);
+  assert.deepEqual(validatePaper(paper, {questionsById: questions, subjectId: paper.subject_id}), []);
+  assert.deepEqual(choose(2, 0), ['01.1', '02.1']);
+  assert.deepEqual(choose(1, 3), ['01.2', '11.1']);
+  assert.deepEqual(paperSessionQuestionIds(paper, choose(1, 3), questions), ['01.2', '11.1']);
+  assert.equal(choose(0, 1), null);
+  assert.equal(choose(3, 4), null);
+  assert.equal(choose(3), null);
+  assert.deepEqual(paperSessionQuestionIds(paper, ['11.1', '12.1'], questions), []);
+});
 
 test('a full Politics past paper uses its official 77 marks with exactly one chosen essay', () => {
   const pack = JSON.parse(readFileSync(new URL('../data/packs/politics/AQA_7152_2022_JUNE_03.json', import.meta.url), 'utf8'));
