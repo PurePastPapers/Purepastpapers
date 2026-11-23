@@ -1,7 +1,13 @@
 # Site size and image catalogues
 
-The site is published with GitHub Pages, which only publishes reliably up to **1 GB**.
-From the GCSE science deploy on 17 November 2026 the upload was 1.33 to 1.40 GB, and every
+PurePastPapers deploys through Cloudflare Workers Builds using `wrangler.jsonc` and
+`.assetsignore`. Run `node --test tests/site-size.test.mjs` to check the static asset count
+against the 20,000-file Free plan limit and the largest asset against the 25 MiB per-file limit.
+See [Cloudflare Workers limits](https://developers.cloudflare.com/workers/platform/limits/).
+
+## Previous GitHub Pages deployment
+
+GitHub Pages published reliably up to **1 GB**. From the GCSE science deploy on 17 November 2026 the upload was 1.33 to 1.40 GB, and every
 deploy log warned "Uploaded artifact size ... exceeds the allowed size of 1 GB. Deployment
 might fail." Questions then showed blank on the live site (reported for A-level and GCSE
 Maths), although every pack and catalogue in the repository was intact and rendered locally.
@@ -18,10 +24,6 @@ Maths), although every pack and catalogue in the repository was intact and rende
 
 Result: catalogues 1.84 GB down to 1.06 GB of JSON, about 0.83 GB as uploaded to Pages.
 
-**After any import or `tools/parts/refine.py` run that rewrites catalogues, run
-`python3 tools/assets/compact.py`.** The size test checks catalogue and report image
-bytes first. At 1.15 GB of base64-equivalent images it streams the prospective site
-through gzip, allows for tar overhead and checks against the 1 GB Pages limit.
-Run `MEASURE_SITE_SIZE=1 node --test tests/site-size.test.mjs` to measure an otherwise
-passing tree. Include the GitHub Pages deployment's `github-pages` archive size in
-the release verification. The archive for commit `2dcd7ad3` was 851,742,933 bytes.
+**After an import or a `tools/parts/refine.py` run that rewrites catalogues, compact its
+assets with `python3 tools/assets/compact.py --slug SUBJECT`.** This keeps catalogue downloads
+small and removes empty introduction crops. Check the published assets after deployment.

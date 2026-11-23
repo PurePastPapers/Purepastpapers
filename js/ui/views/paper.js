@@ -144,6 +144,7 @@ export async function mount(element, context) {
             ${practiceQuestions.length ? html`<span class="hand">choose a question to practise</span><span class="small muted paper-qs__count">${plural(practiceQuestions.length, 'question')} · ${paper.total_marks} marks</span>` : ''}
           </div>
           ${paper.choice_note ? html`<p class="small muted">${paper.choice_note}</p>` : ''}
+          ${paper.practice_coverage_note ? html`<p class="small muted">${paper.practice_coverage_note}</p>` : ''}
           ${questions.length
             ? html`${locked.length
                   ? banner(html`${plural(locked.length, 'question')} on this paper ${locked.length === 1 ? 'needs a topic' : 'need topics'} you have not marked as learned. <a href="${links.subject(subject.subject_id)}">Update learned topics</a>`, { type: 'warn' })

@@ -88,6 +88,10 @@ export async function prepareTestPdf(snapshot, questions, {kind = 'question', si
         }
         for (const figure of context.figures || []) {
           await appendContextAsset(questionBlocks, figure?.image_url, `${figure?.label || 'Required figure'} (${figure?.source?.replaceAll('_', ' ') || 'unscored context'})`, missing, assetOptions, seenContext);
+          if (isOfficialUrl(figure?.official_url) && !seenBooklets.has(figure.official_url)) {
+            seenBooklets.add(figure.official_url);
+            questionBlocks.push({type: 'link', text: `Official source for ${figure.label}`, url: figure.official_url});
+          }
         }
         await appendBooklets(questionBlocks, question, paper, part.reference, missing, assetOptions, seenBooklets);
         if (parts.length > 1) questionBlocks.push(partHeading);
