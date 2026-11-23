@@ -12,6 +12,7 @@ import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, p
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { isMultiLevel, levelOf, qualificationCode } from '../../engine/paper-identity.js';
+import { assessmentResourceLinks } from '../assessment-resources.js';
 import { loadReportIndex, reportFold, reportSourceUrl } from '../../data/examiner-reports.js';
 import { zoomButton } from '../zoom.js';
 import { ANSWER_MIN, placeQuestion } from '../question-fit.js';
@@ -592,6 +593,7 @@ export async function mount(element, context) {
               : paper?.official_source_url
                 ? html`<a class="btn" href="${paper.official_source_url}" target="_blank" rel="noopener">Find it on the ${subject.board} site ${icon('external', { size: 15 })}</a>`
                 : ''}
+            ${assessmentResourceLinks(paper)}
             <button type="button" class="btn btn--primary" data-finish>Finish and enter marks</button>
           </div>
           ${pdf ? html`<iframe class="pdfframe" src="${pdf}" title="Question paper"></iframe>` : ''}
@@ -632,6 +634,7 @@ export async function mount(element, context) {
                   : paper?.official_source_url
                     ? html`<a class="btn" href="${paper.official_source_url}" target="_blank" rel="noopener">Find the mark scheme on the ${subject.board} site ${icon('external', { size: 15 })}</a>`
                     : ''}
+                ${assessmentResourceLinks(paper, { review: true })}
                 ${paperReportLink()}
               </div>
             </section>
