@@ -295,6 +295,24 @@ test('Phone width: nothing overflows the screen sideways', { skip }, async () =>
   await page.close();
 });
 
+test('a long Foundation test preview fits a phone with a question expanded', { skip }, async () => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  try {
+    await page.goto(`${BASE}#/practice?subject=EDX_GCSE_BIOL_1BI0&mode=timed_test&tier=Foundation`);
+    await page.locator('[data-minutes="90"]').click();
+    await page.locator('[data-test-preview] > summary').first().click();
+    const image = page.locator('[data-test-preview-body] img').first();
+    await image.waitFor();
+    await page.waitForFunction(() => {
+      const image = document.querySelector('[data-test-preview-body] img');
+      return image?.complete && image.naturalWidth > 0;
+    });
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), 390);
+  } finally {
+    await page.close();
+  }
+});
+
 test('Enlarge: question, mark scheme and answer box open large over the page', { skip }, async () => {
   const { page, errors } = await demoPage({ width: 1366, height: 900 });
   const card = page.locator('.qcard').filter({ has: page.locator('.qsplit') }).first();

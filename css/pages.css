@@ -283,6 +283,10 @@
   .builder {
     grid-template-columns: minmax(0, 1fr);
   }
+  .builder__card,
+  .testpreview {
+    transform: none;
+  }
 }
 .testlist > li {
   border-top: 0;
