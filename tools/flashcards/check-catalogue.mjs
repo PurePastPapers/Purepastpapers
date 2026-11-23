@@ -54,9 +54,11 @@ const catalogueCard = (page) => page.locator('.flashcards__catalogue-card').filt
 
 try {
   await publish('v1', [
-    ['cells-1', 'What is a eukaryote?', 'Cells'], ['cells-2', 'Name an organelle.', 'Cells::Organelles'],
-    ['cells-3', 'Optional extension card', 'Cells', ['optional']], ['cells-4', 'Archived 2019 card', 'Cells::Archive'],
-    ['genetics-1', 'What is an allele?', 'Genetics'],
+    ['cells-1', 'What is a eukaryote?', 'Cells', ['spec::1.1']],
+    ['cells-2', 'Name an organelle.', 'Cells::Organelles', ['spec::1.10']],
+    ['cells-3', 'Optional extension card', 'Cells', ['spec::1.1', 'optional']],
+    ['cells-4', 'Archived 2019 card', 'Cells::Archive', ['spec::1.1']],
+    ['genetics-1', 'What is an allele?', 'Genetics', ['spec::1.10']],
   ]);
 
   const lookalike = await session('lookalike', { width: 1440, height: 1000 });
@@ -94,9 +96,12 @@ try {
   const before = await rows(`select i.stable_key,c.id,c.suspended,s.revision,s.state from public.flashcard_cards c join public.flashcard_states s on s.card_id=c.id join public.flashcard_catalogue_items i on i.id=c.catalogue_card_id where c.deck_id=${literal(deck)} order by i.stable_key`);
   assert.equal(before.filter((card) => card.revision === 1).length, 1);
   await publish('v2', [
-    ['cells-1', 'What is a eukaryotic cell?', 'Cells'], ['cells-2', 'Name a membrane-bound organelle.', 'Cells::Organelles'],
-    ['cells-3', 'Optional extension card', 'Cells', ['optional']], ['cells-4', 'Archived 2019 card', 'Cells::Archive'],
-    ['genetics-1', 'What is an allele?', 'Genetics'], ['genetics-2', 'What is a gene?', 'Genetics'],
+    ['cells-1', 'What is a eukaryotic cell?', 'Cells', ['spec::1.1']],
+    ['cells-2', 'Name a membrane-bound organelle.', 'Cells::Organelles', ['spec::1.10']],
+    ['cells-3', 'Optional extension card', 'Cells', ['spec::1.1', 'optional']],
+    ['cells-4', 'Archived 2019 card', 'Cells::Archive', ['spec::1.1']],
+    ['genetics-1', 'What is an allele?', 'Genetics', ['spec::1.10']],
+    ['genetics-2', 'What is a gene?', 'Genetics', ['spec::1.1']],
   ]);
   await school.reload();
   await school.getByRole('heading', { name: /^Flashcards(?: Beta)?$/ }).waitFor();
@@ -107,10 +112,61 @@ try {
   await school.locator(`[data-action="open-deck"][data-id="${deck}"]`).click();
   await school.getByText(/6 cards/).waitFor();
   const studiedRow = school.locator('.flashcards__row').filter({ hasText: studied === 'What is a eukaryote?' ? 'What is a eukaryotic cell?' : 'Name a membrane-bound organelle.' });
-  assert.match(await studiedRow.locator('p.small').innerText(), /Review · Due /, 'the reworded card shows its saved schedule');
+  await studiedRow.locator('.flashcards__card-meta').getByText('Review', { exact: true }).waitFor();
+  await studiedRow.getByText(/^Due /).waitFor();
+  const spec = school.locator('[data-spec-point]');
+  await spec.waitFor();
+  const snippets = school.locator('.flashcards__row .flashcards__snippet');
+  const expectCards = async (fronts) => {
+    await school.waitForFunction((expected) => {
+      const visible = [...document.querySelectorAll('.flashcards__row .flashcards__snippet')]
+        .map((card) => card.textContent.trim()).sort();
+      return JSON.stringify(visible) === JSON.stringify([...expected].sort());
+    }, fronts);
+    assert.equal(await snippets.count(), fronts.length);
+  };
+  const reviewedFront = studied === 'What is a eukaryote?' ? 'What is a eukaryotic cell?' : 'Name a membrane-bound organelle.';
+  await school.locator('[data-card-status]').selectOption('reviewed');
+  await expectCards([reviewedFront]);
+  await school.locator('[data-card-status]').selectOption('all');
+  await school.locator('[data-card-sort]').selectOption('new-first');
+  await school.waitForFunction((front) => document.querySelector('.flashcards__row:last-child .flashcards__snippet')?.textContent.trim() === front,
+    reviewedFront);
+  await spec.selectOption('spec::1.10');
+  await expectCards(['Name a membrane-bound organelle.', 'What is an allele?']);
+  await spec.selectOption('spec::1.1');
+  await expectCards(['What is a eukaryotic cell?', 'Optional extension card', 'Archived 2019 card', 'What is a gene?']);
+  await school.locator('[data-card-status]').selectOption('new');
+  await school.locator('[data-card-availability]').selectOption('suspended');
+  await expectCards(['Optional extension card', 'Archived 2019 card', 'What is a gene?']);
+  await school.getByText('3 matching cards · 0 active · 3 suspended', { exact: true }).waitFor();
+
+  const bulk = async (action, confirm) => {
+    await school.getByRole('button', { name: action, exact: true }).click();
+    await school.getByRole('dialog').getByRole('button', { name: confirm, exact: true }).click();
+    await school.settle();
+  };
+  const saved = async () => rows(`select i.stable_key,c.id,c.suspended,s.revision,s.state
+    from public.flashcard_cards c join public.flashcard_states s on s.card_id=c.id
+    join public.flashcard_catalogue_items i on i.id=c.catalogue_card_id
+    where c.deck_id=${literal(deck)} order by i.stable_key`);
+  await bulk('Unsuspend matching cards', 'Unsuspend');
+  await expectCards(['Optional extension card', 'Archived 2019 card']);
+  assert.deepEqual(await saved(), after.map((card) => card.stable_key === 'genetics-2'
+    ? { ...card, suspended: false }
+    : card), 'bulk unsuspension affects only the eligible card in the exact intersection');
+
+  await school.locator('[data-card-availability]').selectOption('active');
+  await school.locator('[data-search]').fill('What is a gene?');
+  await expectCards(['What is a gene?']);
+  await bulk('Suspend matching cards', 'Suspend');
+  assert.deepEqual(await saved(), after, 'bulk suspension preserves the card state and leaves other cards unchanged');
+  await school.locator('[data-action="clear-card-filters"]').click();
+  await school.getByText('6 matching cards · 2 active · 4 suspended', { exact: true }).waitFor();
+  assert.equal(await school.locator('[data-card-sort]').inputValue(), 'new-first', 'clearing filters preserves sort');
   assert.ok(await school.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'no horizontal scroll on a phone');
   assert.deepEqual(issues, []);
-  console.log('School catalogue access (lookalike blocked), topic unsuspension with optional/archived exclusions, and progress across a catalogue update verified.');
+  console.log('School access, exact spec and status filters, filtered suspension with protected exclusions, and schedule preservation verified.');
 } catch (error) {
   for (const context of browser.contexts()) for (const open of context.pages()) console.error(`--- ${open.url()}\n${(await open.locator('main').innerText().catch(() => '')).slice(0, 1200)}`);
   throw error;
