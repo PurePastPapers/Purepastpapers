@@ -125,7 +125,7 @@ def main():
                 s = alevel[code]
                 for i, b in enumerate(s['bullets'], start=1):
                     point = {'id': leaf_id(code, i), 'code': f'{code} ({i})',
-                             'title': (b['text'][0].upper() + b['text'][1:]).split(';')[0].rstrip('.')[:120],
+                             'title': (b['text'][0].upper() + b['text'][1:]).rstrip('.'),
                              'official_reference': {'section': code, 'section_title': s['title'], 'bullet': i,
                                                     'component': comp, 'source_pages': [b['page']], 'route': route},
                              'content': [b['text']]}
