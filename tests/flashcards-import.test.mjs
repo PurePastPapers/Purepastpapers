@@ -98,3 +98,23 @@ test('CSV with Windows line endings keeps one newline inside a quoted field', ()
   const unix = parseCsv('Front,Back\n"Q","Line one\nLine two"\n', { front: 0, back: 1, header: true });
   assert.equal(result.notes[0].key, unix.notes[0].key, 'line endings do not change duplicate detection');
 });
+
+test('corrupt Anki input fails and reports the bytes read from the package', async () => {
+  const file = new Blob(['this is not a ZIP archive']);
+  const progress = [];
+  await assert.rejects(parseAnkiPackage(file, { onProgress: (value) => progress.push(value) }), /Anki collection database|invalid zip/i);
+  assert.deepEqual(progress[0], { stage: 'reading', loaded: file.size, total: file.size });
+});
+
+test('text imports report invalid content before staging any cards', () => {
+  const tooLong = 'ü'.repeat(125_001);
+  const csv = parseCsv('Good,answer\nInvalid\0text,answer\n' + tooLong + ',answer', { front: 0, back: 1, header: false });
+  const quizlet = parseQuizlet('Good\tanswer\nInvalid\0text\tanswer\n' + tooLong + '\tanswer');
+  for (const result of [csv, quizlet]) {
+    assert.equal(result.notes.length, 1);
+    assert.deepEqual(result.errors, [
+      { row: 2, reason: 'Card fields contain a null character.' },
+      { row: 3, reason: 'Front or back exceeds the 250 KB card limit.' },
+    ]);
+  }
+});

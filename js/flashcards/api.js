@@ -5,6 +5,7 @@ import { getClient } from '../data/adapters/supabase-adapter.js';
 const rest = '/rest/v1/';
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const requiredAccount = 'Sign in with a cloud account to use private flashcard decks.';
+const studyTimeout = 15_000;
 const mediaTypes = new Set(['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'audio/mpeg', 'audio/ogg', 'audio/wav', 'audio/mp4']);
 
 export const hasCloudAccount = () => Boolean(cloudAccountId());
@@ -24,7 +25,7 @@ async function connection() {
   const owner = cloudAccountId();
   if (!owner) throw new FlashcardError(requiredAccount);
   const client = await getClient();
-  async function request(path, { query, method = 'GET', body, preference } = {}) {
+  async function request(path, { query, method = 'GET', body, preference, signal } = {}) {
     const { data, error } = await client.auth.getSession();
     const session = data?.session;
     if (error || session?.user?.id !== owner || cloudAccountId() !== owner) {
@@ -40,12 +41,13 @@ async function connection() {
     if (preference) headers.Prefer = preference;
     let response;
     try {
-      response = await fetch(url, { method, headers, body: body === undefined ? undefined : JSON.stringify(body), cache: 'no-store' });
+      response = await fetch(url, { method, headers, body: body === undefined ? undefined : JSON.stringify(body), cache: 'no-store', signal });
     } catch {
       throw new FlashcardError('Could not connect. Check your connection and retry.', { retryable: true });
     }
     if (cloudAccountId() !== owner) throw new FlashcardError('Your account changed. Open Flashcards again.', { status: 401 });
     const result = await response.json().catch(() => null);
+    if (signal?.aborted) throw new FlashcardError('The request timed out. Please retry.', { retryable: true });
     if (!response.ok) {
       let message = 'Flashcards could not save your changes. Please try again.';
       if (response.status === 401) message = 'Sign in again to use Flashcards.';
@@ -64,10 +66,10 @@ async function connection() {
   return {
     owner,
     request,
-    read: (table, query) => request(`${rest}${table}`, { query }),
+    read: (table, query, signal) => request(`${rest}${table}`, { query, signal }),
     write: (table, method, body, query, preference = 'return=representation') =>
       request(`${rest}${table}`, { method, body, query, preference }),
-    rpc: (name, body = {}) => request(`${rest}rpc/${name}`, { method: 'POST', body }),
+    rpc: (name, body = {}, signal) => request(`${rest}rpc/${name}`, { method: 'POST', body, signal }),
   };
 }
 
@@ -132,9 +134,11 @@ export async function listCards(deckId) {
 
 export async function getCard(deckId, cardId) {
   const db = await connection();
-  return record(await db.read('flashcard_visible_cards', {
+  const rows = await db.read('flashcard_visible_cards', {
     deck_id: eq(deckId), id: eq(cardId), select: cardFields, limit: 1,
-  })) ?? null;
+  }, AbortSignal.timeout?.(studyTimeout));
+  if (!Array.isArray(rows)) throw new FlashcardError('Could not load this card. Please retry.', { retryable: true });
+  return record(rows) ?? null;
 }
 
 export async function listCardPage(deckId, { subdeckPath = '', query = '', page = 1, pageSize = 30 } = {}) {
@@ -181,7 +185,7 @@ export async function deleteNote(id) {
 export async function getStudyQueue(deckId, { subdeckPath = null } = {}) {
   const result = await (await connection()).rpc('flashcard_study_queue', {
     p_deck_id: deckId, p_subdeck_path: subdeckPath,
-  });
+  }, AbortSignal.timeout?.(studyTimeout));
   if (!result) throw new FlashcardError('This deck is unavailable. Return to My decks and refresh.');
   return result;
 }
@@ -195,10 +199,12 @@ export async function setTopicSuspension(deckId, subdeckPath, suspended) {
 export async function reviewCard(card, grade, requestId) {
   const result = await (await connection()).request('/functions/v1/flashcard-review', {
     method: 'POST',
+    signal: AbortSignal.timeout?.(studyTimeout),
     body: { cardId: card.id, revision: card.revision, grade, requestId },
   });
   if (result?.status === 'saved') return result;
   const messages = {
+    missing: 'This card is no longer available.',
     conflict: 'This card was already rated in another session.',
     missing_or_moved: 'This card has moved. Reload its study queue.',
     settings_changed: 'The deck settings changed. Show the answer and rate the card again.',
@@ -206,12 +212,17 @@ export async function reviewCard(card, grade, requestId) {
     not_due: 'This card is scheduled for later.',
     new_limit_reached: 'You reached this deck’s daily limit for new cards.',
   };
-  throw new FlashcardError(messages[result?.status] || 'This card is no longer available.', { code: result?.status });
+  if (!Object.hasOwn(messages, result?.status)) {
+    throw new FlashcardError('The review could not be confirmed. Retry to check whether it was saved.', { retryable: true });
+  }
+  throw new FlashcardError(messages[result.status], { code: result.status });
 }
 
+const encoder = new TextEncoder();
 const hexLookup = Array.from({ length: 256 }, (_, byte) => byte.toString(16).padStart(2, '0'));
 function hex(buffer) {
   const bytes = new Uint8Array(buffer);
+  if (typeof bytes.toHex === 'function') return bytes.toHex();
   const output = [];
   for (let start = 0; start < bytes.length; start += 8192) {
     output.push(Array.from(bytes.subarray(start, start + 8192), (byte) => hexLookup[byte]).join(''));
@@ -220,7 +231,7 @@ function hex(buffer) {
 }
 
 async function digest(value) {
-  const bytes = typeof value === 'string' ? new TextEncoder().encode(value) : value;
+  const bytes = typeof value === 'string' ? encoder.encode(value) : value;
   return hex(await crypto.subtle.digest('SHA-256', bytes));
 }
 
@@ -228,7 +239,7 @@ function uuidFromHash(hash) {
   return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-8${hash.slice(13, 16)}-a${hash.slice(17, 20)}-${hash.slice(20, 32)}`;
 }
 
-export async function readMedia(id, { catalogue = false } = {}) {
+export async function readMedia(id, { catalogue = false, asBlob = false } = {}) {
   if (!uuid.test(id)) throw new FlashcardError('Invalid media reference.');
   const db = await connection();
   const personal = catalogue ? null : record(await db.read('flashcard_media', { id: eq(id), select: 'data,mime_type' }));
@@ -237,7 +248,8 @@ export async function readMedia(id, { catalogue = false } = {}) {
     throw new FlashcardError('This media is unavailable.');
   }
   const data = decodeBytea(row.data);
-  return URL.createObjectURL(new Blob([data], { type: row.mime_type }));
+  const blob = new Blob([data], { type: row.mime_type });
+  return asBlob ? blob : URL.createObjectURL(blob);
 }
 
 function decodeBytea(value) {
@@ -252,14 +264,11 @@ function decodeBytea(value) {
 
 const preparedImports = new WeakMap();
 
-function prepareImport(deckId, parsed) {
-  let targets = preparedImports.get(parsed);
-  if (!targets) { targets = new Map(); preparedImports.set(parsed, targets); }
-  if (!targets.has(deckId)) {
-    targets.set(deckId, (async () => {
+function prepareImport(parsed) {
+  if (!preparedImports.has(parsed)) {
+    preparedImports.set(parsed, (async () => {
       const notes = await Promise.all(parsed.notes.map(async (note) => ({
         ...note,
-        key: await digest(note.key ?? JSON.stringify([note.type, note.front, note.back])),
         cards: await Promise.all(note.cards.map(async (card) => ({
           variant: card.variant,
           deck: card.deck || '',
@@ -268,11 +277,10 @@ function prepareImport(deckId, parsed) {
         }))),
       })));
       const allKeys = notes.flatMap((note) => note.cards.map((card) => card.sourceKey));
-      const fingerprint = await digest(JSON.stringify([deckId, ...allKeys, ...notes.map((note) => [note.front, note.back, note.tags, note.cards.map((card) => card.deck)])]));
-      return { notes, allKeys, fingerprint };
+      return { notes, allKeys };
     })());
   }
-  return targets.get(deckId);
+  return preparedImports.get(parsed);
 }
 
 async function countDuplicates(db, allKeys) {
@@ -284,32 +292,59 @@ async function countDuplicates(db, allKeys) {
   return duplicates;
 }
 
-export async function previewImport(deckId, parsed) {
+// Source keys are unique across the account, including cards moved to other decks.
+export async function previewImport(_deckId, parsed) {
+  const { allKeys } = await prepareImport(parsed);
+  if (!allKeys.length) return { accepted: 0, duplicates: 0 };
   const db = await connection();
-  const { allKeys } = await prepareImport(deckId, parsed);
   const duplicates = await countDuplicates(db, allKeys);
   return { accepted: allKeys.length - duplicates, duplicates };
 }
 
 async function uploadMedia(db, batchId, media, onProgress) {
+  const entries = [...(media || [])].filter(([, blob]) =>
+    mediaTypes.has(blob.type) && blob.size > 0 && blob.size <= 10 * 1024 * 1024);
   const references = new Map();
-  let count = 0;
-  for (const [name, blob] of media || []) {
-    if (!mediaTypes.has(blob.type) || !blob.size || blob.size > 10 * 1024 * 1024) continue;
-    const bytes = await blob.arrayBuffer();
-    const source = await digest(`${blob.type}:${await digest(bytes)}`);
+  if (!entries.length) return references;
+
+  let next = 0;
+  let done = 0;
+  let failure;
+  const resolved = new Map();
+  const report = () => onProgress?.({ stage: 'media', done, total: entries.length });
+  report();
+
+  async function upload(source, mimeType, bytes) {
     let row = record(await db.read('flashcard_media', { source_key: eq(source), select: 'id' }));
     if (!row) {
       row = record(await db.write('flashcard_media', 'POST', {
-        user_id: db.owner, source_key: source, mime_type: blob.type,
+        user_id: db.owner, source_key: source, mime_type: mimeType,
         data: `\\x${hex(bytes)}`, import_id: batchId,
       }, { select: 'id', on_conflict: 'user_id,source_key' }, 'resolution=ignore-duplicates,return=representation'));
       row ??= record(await db.read('flashcard_media', { source_key: eq(source), select: 'id' }));
     }
     if (!row) throw new FlashcardError('A media upload could not be confirmed. Please retry.');
-    references.set(name, row.id);
-    onProgress?.(`Uploading media (${++count}/${media.size})…`);
+    return row.id;
   }
+
+  async function consume() {
+    while (!failure && next < entries.length) {
+      const [name, blob] = entries[next++];
+      try {
+        const bytes = await blob.arrayBuffer();
+        const source = await digest(`${blob.type}:${await digest(bytes)}`);
+        if (!resolved.has(source)) resolved.set(source, upload(source, blob.type, bytes));
+        references.set(name, await resolved.get(source));
+        done++;
+        report();
+      } catch (error) { failure ??= error; }
+    }
+  }
+
+  // Bound concurrent bytea encodes and requests. Wait for in-flight writes before
+  // showing retry or cancellation controls, so a previous attempt cannot race them.
+  await Promise.all(Array.from({ length: Math.min(3, entries.length) }, consume));
+  if (failure) throw failure;
   return references;
 }
 
@@ -359,14 +394,17 @@ function importDecks(db, batchId, rootId, decks) {
 
 export async function commitImport(deckId, parsed, { onProgress } = {}) {
   const db = await connection();
-  const prepared = await prepareImport(deckId, parsed);
+  const prepared = await prepareImport(parsed);
+  const fingerprint = await digest(JSON.stringify([deckId, ...prepared.allKeys,
+    ...prepared.notes.map((note) => [note.front, note.back, note.tags, note.cards.map((card) => card.deck)]),
+  ]));
   // Batch ids are derived from the file so an interrupted upload resumes in the same
   // batch. A finished batch is reused only while all of its cards still exist; if the
   // student deleted some, the next attempt id stages just the missing cards.
   let batchId;
   for (let attempt = 0; ; attempt++) {
     if (attempt >= 50) throw new FlashcardError('This file has been imported too many times. Edit it or import into another deck.');
-    batchId = uuidFromHash(await digest(attempt ? `${db.owner}:${prepared.fingerprint}:${attempt}` : `${db.owner}:${prepared.fingerprint}`));
+    batchId = uuidFromHash(await digest(attempt ? `${db.owner}:${fingerprint}:${attempt}` : `${db.owner}:${fingerprint}`));
     const started = await db.rpc('flashcard_begin_import', { p_batch_id: batchId });
     if (started?.status === 'active_batch') {
       throw new FlashcardError('Another import is unfinished. Open its original file to finish it or cancel it from Import.');
@@ -378,9 +416,12 @@ export async function commitImport(deckId, parsed, { onProgress } = {}) {
     return { imported: result.accepted, duplicates: Math.max(0, prepared.allKeys.length - result.accepted) };
   }
 
-  const decks = await db.rpc('flashcard_list_decks');
+  const hasSubdecks = prepared.notes.some((note) => note.cards.some((card) => card.deck));
+  const decks = hasSubdecks ? await db.rpc('flashcard_list_decks') : [];
   const deckFor = importDecks(db, batchId, deckId, decks.filter((deck) => !deck.catalogue_id));
   const references = await uploadMedia(db, batchId, parsed.media, onProgress);
+  const noteKeys = await Promise.all(prepared.notes.map((note) =>
+    digest(note.key ?? JSON.stringify([note.type, note.front, note.back]))));
   let done = 0;
   let chunk = [];
   let chunkSize = 0;
@@ -388,21 +429,22 @@ export async function commitImport(deckId, parsed, { onProgress } = {}) {
     if (!chunk.length) return;
     await db.rpc('flashcard_import_chunk', { p_batch_id: batchId, p_notes: chunk });
     done += chunk.reduce((count, note) => count + note.cards.length, 0);
-    onProgress?.({ done, total: prepared.allKeys.length });
+    onProgress?.({ stage: 'cards', done, total: prepared.allKeys.length });
     chunk = [];
     chunkSize = 0;
   }
-  for (const note of prepared.notes) {
+  onProgress?.({ stage: 'cards', done, total: prepared.allKeys.length });
+  for (const [index, note] of prepared.notes.entries()) {
     const cards = [];
-    for (const { deck, ...card } of note.cards) cards.push({ ...card, deckId: await deckFor(deck) });
-    const row = { key: note.key, type: note.type, front: storedMedia(note.front, references), back: storedMedia(note.back, references), tags: note.tags, cards };
-    const size = new TextEncoder().encode(JSON.stringify(row)).length;
-    if (chunk.length >= 100 || chunkSize + size > 1_500_000) await flush();
+    for (const { deck, ...card } of note.cards) cards.push({ ...card, deckId: deck ? await deckFor(deck) : deckId });
+    const row = { key: noteKeys[index], type: note.type, front: storedMedia(note.front, references), back: storedMedia(note.back, references), tags: note.tags, cards };
+    const size = encoder.encode(JSON.stringify(row)).length;
+    if (chunk.length >= 250 || chunkSize + size > 1_500_000) await flush();
     chunk.push(row);
     chunkSize += size;
   }
   await flush();
-  onProgress?.('Publishing your cards…');
+  onProgress?.({ stage: 'publishing' });
   const result = await db.rpc('flashcard_finish_import', { p_batch_id: batchId });
   const imported = result?.accepted;
   if (!Number.isSafeInteger(imported)) throw new FlashcardError('The import could not be confirmed. Retry this preview to check.');

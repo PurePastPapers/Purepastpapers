@@ -51,7 +51,7 @@ async function idleDecks(page) {
     await settle(page);
   }
   if (!await page.getByRole('button', { name: 'Import', exact: true }).count()) await page.getByRole('button', { name: /My decks/ }).first().click();
-  await page.getByRole('button', { name: 'Import', exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Create deck', exact: true }).waitFor();
   await settle(page);
 }
 async function createDeck(page, title) {
@@ -121,15 +121,13 @@ try {
     await page.getByRole('button', { name: /Show answer/ }).click();
     const answer = (await page.locator('.flashcards__study .flashcards__content').nth(1).innerText()).trim();
     faces.push([question, answer]);
-    const reviewed = await page.evaluate(() => document.querySelectorAll('.flashcards__study').length);
+    const cardId = await page.locator('[data-study-card]').getAttribute('data-card-id');
     await page.getByRole('button', { name: /^Good/ }).click();
-    // Wait for the saved rating to bring the next question (or the end of the queue).
     await page.waitForFunction((previous) => {
-      const label = document.querySelector('.flashcards__study p.small.muted')?.textContent;
-      const text = document.querySelector('.flashcards__study .flashcards__content')?.innerText.trim();
-      return (label === 'Question' && text !== previous) || /All caught up/.test(document.querySelector('.flashcards__study')?.textContent || '');
-    }, question);
-    void reviewed;
+      const panel = document.querySelector('[data-study-card]');
+      return panel && (panel.dataset.cardId !== previous || /All caught up/.test(panel.textContent));
+    }, cardId);
+    await settle(page);
   }
   assert.deepEqual(faces.map(([q]) => q).sort(), [
     'Cell membrane',

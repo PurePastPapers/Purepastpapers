@@ -60,11 +60,11 @@ try {
   ]);
 
   const lookalike = await session('lookalike', { width: 1440, height: 1000 });
-  await lookalike.getByRole('button', { name: 'PurePastPapers decks' }).click();
+  await lookalike.getByRole('button', { name: 'Official catalogue' }).click();
   assert.equal(await catalogueCard(lookalike).getByRole('button', { name: 'Access required' }).isDisabled(), true);
 
   const school = await session('school', { width: 390, height: 844 });
-  await school.getByRole('button', { name: 'PurePastPapers decks' }).click();
+  await school.getByRole('button', { name: 'Official catalogue' }).click();
   await catalogueCard(school).getByRole('button', { name: 'Add deck' }).click();
   await school.getByText('Deck added to My decks.').waitFor();
   await school.settle();

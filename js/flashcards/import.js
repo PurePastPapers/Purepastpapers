@@ -8,7 +8,8 @@ export const IMPORT_LIMITS = Object.freeze({
   mediaFileBytes: 10 * 1024 * 1024,
   totalMediaBytes: 64 * 1024 * 1024,
   mediaFiles: 500,
-  rows: 10_000
+  rows: 10_000,
+  cardSideBytes: 250_000
 });
 
 const normalizedNote = (key, front, back, tags = [], card = {}) => ({
@@ -25,6 +26,15 @@ function stableContentKey(prefix, front, back, deck = '') {
     hash = BigInt.asUintN(64, hash * 1099511628211n);
   }
   return `${prefix}:${hash.toString(16)}-${front.length}-${back.length}`;
+}
+
+const textEncoder = new TextEncoder();
+function invalidCardFields(front, back, extra = []) {
+  if ([front, back, ...extra].some((value) => value.includes('\0'))) return 'Card fields contain a null character.';
+  if ([front, back].some((value) => textEncoder.encode(value).length > IMPORT_LIMITS.cardSideBytes)) {
+    return 'Front or back exceeds the 250 KB card limit.';
+  }
+  return '';
 }
 
 function parseDelimitedRows(text, delimiter) {
@@ -83,9 +93,10 @@ export function parseCsv(text, mapping = {}) {
     const back = values[column.back]?.trim();
     if (!front || !back) { errors.push({ row: index + 1, reason: !front && !back ? 'Front and Back are both empty.' : !front ? 'Front is empty.' : 'Back is empty.' }); continue; }
     const deck = Number.isInteger(column.deck) ? values[column.deck]?.trim() : '';
-    const id = stableContentKey('csv', front, back, deck);
     const tags = Number.isInteger(column.tags) ? (values[column.tags] ?? '').split(/[ ,]+/).filter(Boolean) : [];
-    notes.push(normalizedNote(id, front, back, tags, { deck }));
+    const invalid = invalidCardFields(front, back, [...tags, deck || '']);
+    if (invalid) { errors.push({ row: index + 1, reason: invalid }); continue; }
+    notes.push(normalizedNote(stableContentKey('csv', front, back, deck), front, back, tags, { deck }));
   }
   return { source: 'csv', notes, errors, warnings };
 }
@@ -104,6 +115,8 @@ export function parseQuizlet(text, { front: frontColumn = 'term' } = {}) {
     const term = lines[i].slice(0, splitAt).trim(), definition = lines[i].slice(splitAt + 1).trim();
     if (!term || !definition) { errors.push({ row: i + 1, reason: 'Term and definition must both contain text.' }); continue; }
     const [front, back] = frontColumn === 'definition' ? [definition, term] : [term, definition];
+    const invalid = invalidCardFields(front, back);
+    if (invalid) { errors.push({ row: i + 1, reason: invalid }); continue; }
     notes.push(normalizedNote(stableContentKey('quizlet', front, back), front, back));
     if (notes.length >= IMPORT_LIMITS.rows) { warnings.push(`Only the first ${IMPORT_LIMITS.rows.toLocaleString()} rows are imported.`); break; }
   }
@@ -315,10 +328,12 @@ function normalizeAnki(collection, mediaNames, warnings) {
   }
   const normalized = [];
   let unsupported = 0;
+  let incomplete = 0;
+  const errors = [];
   const missingMedia = new Set();
-  for (const sourceNote of collection.notes) {
+  for (const [index, sourceNote] of collection.notes.entries()) {
     const model = collection.models?.[sourceNote.mid];
-    if (!model) { unsupported++; continue; }
+    if (!model) { unsupported += cardsByNote.get(String(sourceNote.id))?.length || 1; continue; }
     const rawFields = modelFields(model, sourceNote.flds);
     for (const value of Object.values(rawFields)) {
       for (const match of String(value).matchAll(/<img\b[^>]*\bsrc\s*=\s*['"]([^'"]+)/gi)) { const name = safeMediaName(match[1]); if (name && !mediaNames.has(name)) missingMedia.add(name); }
@@ -347,6 +362,8 @@ function normalizeAnki(collection, mediaNames, warnings) {
       : '';
     const noteFront = isCloze ? (fields[promptField] ?? fieldValues[0] ?? '') : `${fields[promptField] ?? ''}${mediaMarkup ? `<br>${mediaMarkup}` : ''}`;
     const noteBack = isCloze ? (fields[answerField] ?? '') : `${fields[answerField] ?? ''}${markSchemeExtra}`;
+    const invalid = invalidCardFields(noteFront, noteBack, [...tags, ...sourceCards.map((card) => deckName(collection.decks, card.did))]);
+    if (invalid) { errors.push({ row: index + 1, reason: invalid }); continue; }
     const note = { key: `anki-note:${sourceNote.id}`, type: isCloze ? 'cloze' : 'basic', front: noteFront, back: noteBack, tags, cards: [] };
     for (const card of sourceCards) {
       const template = templates[isCloze ? 0 : card.ord];
@@ -358,7 +375,7 @@ function normalizeAnki(collection, mediaNames, warnings) {
       if (isCloze) {
         const ordinal = Number(card.ord) + 1;
         const clozeField = Object.entries(fields).find(([, value]) => new RegExp(`{{c${ordinal}::`, 'i').test(value));
-        if (!clozeField) { unsupported++; continue; }
+        if (!clozeField) { incomplete++; continue; }
         front = renderCloze(clozeField[1], ordinal, false);
         back = fields.Extra ?? '';
         variant = `cloze:${ordinal}`;
@@ -373,15 +390,15 @@ function normalizeAnki(collection, mediaNames, warnings) {
           variant = Number(card.ord) === 0 ? 'forward' : `card:${card.ord + 1}`;
         }
       }
-      if (!front.trim()) { unsupported++; continue; }
+      if (!front.trim()) { incomplete++; continue; }
       note.cards.push({ variant, front, back, sourceKey: cardKey, ...(deck ? { deck } : {}), ...(isSuspended ? { suspended: true } : {}) });
     }
     if (note.cards.length) normalized.push(note);
   }
   if (missingMedia.size) warnings.push(`${missingMedia.size} referenced media file(s) were missing and their placeholders were removed.`);
-  if (unsupported) warnings.push(`${unsupported} cards or notes use unsupported templates or missing fields and were skipped.`);
-  if (normalized.some(note => note.type === 'basic') && normalized.some(note => note.type === 'cloze')) warnings.push('Basic, reverse and cloze notes are represented as reviewable cards. Custom note types may be skipped.');
-  return normalized;
+  if (unsupported) warnings.push(`${unsupported} cards or notes were skipped because their Anki templates are unsupported (for example, image occlusion).`);
+  if (incomplete) warnings.push(`${incomplete} cards were skipped because their question or cloze field was empty.`);
+  return { notes: normalized, errors };
 }
 
 async function streamZip(file, onProgress) {
@@ -417,18 +434,20 @@ async function streamZip(file, onProgress) {
           if (++mediaCount > IMPORT_LIMITS.mediaFiles) omittedMedia.add(name);
           else rawMedia.set(name, bytes);
         }
-        onProgress?.({ loaded: expanded, total: Math.max(file.size || 0, 1) });
       }
     };
     stream.start();
   });
   unzip.register(UnzipInflate);
-  const bytes = new Uint8Array(await file.arrayBuffer());
-  if (bytes.byteLength > IMPORT_LIMITS.compressedBytes) throw new Error('Anki packages must be smaller than 100 MB.');
-  for (let offset = 0; offset < bytes.length; offset += 64 * 1024) {
-    unzip.push(bytes.subarray(offset, Math.min(bytes.length, offset + 64 * 1024)), offset + 64 * 1024 >= bytes.length);
+  const chunkSize = 256 * 1024;
+  for (let offset = 0; offset < file.size; offset += chunkSize) {
+    const end = Math.min(file.size, offset + chunkSize);
+    const bytes = new Uint8Array(await file.slice(offset, end).arrayBuffer());
+    unzip.push(bytes, end === file.size);
     if (failure) throw failure;
+    onProgress?.({ stage: 'reading', loaded: end, total: file.size });
   }
+  onProgress?.({ stage: 'media' });
   if (failure) throw failure;
   const latestFormat = entries.has('collection.anki21b');
   let mediaIndex = {};
@@ -474,11 +493,12 @@ async function loadSqlJs() {
 }
 
 export async function parseAnkiPackage(file, { onProgress, initializeSql } = {}) {
-  if (!file || typeof file.arrayBuffer !== 'function') throw new TypeError('Choose an Anki .apkg file.');
+  if (!file || typeof file.slice !== 'function' || typeof file.arrayBuffer !== 'function') throw new TypeError('Choose an Anki .apkg file.');
   if (file.size > IMPORT_LIMITS.compressedBytes) throw new Error('Anki packages must be smaller than 100 MB.');
   const { entries, media, omittedMedia } = await streamZip(file, onProgress);
   const dbEntry = ['collection.anki21b', 'collection.anki21', 'collection.anki2'].find(name => entries.has(name));
   if (!dbEntry) throw new Error('No Anki collection database was found in this package.');
+  onProgress?.({ stage: 'cards' });
   const SQL = await (initializeSql ? initializeSql() : loadSqlJs());
   let db;
   try {
@@ -486,12 +506,10 @@ export async function parseAnkiPackage(file, { onProgress, initializeSql } = {})
     db = new SQL.Database(databaseBytes);
     const collection = readCollection(db);
     const warnings = [];
-    if (dbEntry === 'collection.anki21b' || dbEntry === 'collection.anki21') warnings.push('The modern Anki collection format was read from its SQLite export.');
-    if (collection.tables.has('revlog') && queryRows(db, 'SELECT id FROM revlog LIMIT 1').length) warnings.push('This package contains review history. Import will start a fresh FSRS schedule.');
-    else warnings.push('No review history was found. Imported cards will start with a fresh FSRS schedule.');
-    const notes = normalizeAnki(collection, new Set(media.keys()), warnings);
     const scheduling = collection.tables.has('revlog') && queryRows(db, 'SELECT id FROM revlog LIMIT 1').length > 0;
-    if (omittedMedia.size) warnings.push(`${omittedMedia.size} media file(s) exceeded import limits and were left out. Cards remain importable, with missing media placeholders removed.`);
-    return { source: 'anki', notes, decks: Object.values(collection.decks).map(deck => ({ name: deck.name })), media, warnings, scheduling, errors: [] };
+    warnings.push(scheduling ? 'This package contains review history. Cards will start a fresh FSRS schedule.' : 'Cards will start a fresh FSRS schedule.');
+    const { notes, errors } = normalizeAnki(collection, new Set(media.keys()), warnings);
+    if (omittedMedia.size) warnings.push(`${omittedMedia.size} media file(s) were unavailable, unsupported or exceeded import limits. Cards remain importable, with missing media placeholders removed.`);
+    return { source: 'anki', notes, decks: Object.values(collection.decks).map(deck => ({ name: deck.name })), media, warnings, scheduling, errors };
   } finally { db?.close(); }
 }

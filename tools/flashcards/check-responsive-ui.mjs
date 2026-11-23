@@ -24,6 +24,7 @@ const fixturePage = `<!doctype html>
 
 const fixtureApi = `
   const personal = { id: 'personal', title: 'Personal revision', card_count: 2, new_count: 2 };
+  const another = { id: 'another', title: 'Another revision deck', card_count: 1, new_count: 1 };
   const official = { id: 'official', title: 'A-level Biology Atomic', catalogue_id: 'biology', card_count: 3238, suspended_count: 3238 };
   const makeCard = (id, front, deckId, options = {}) => ({
     id, note_id: id, deck_id: deckId, front, back: 'Answer to ' + front, tags: [],
@@ -31,17 +32,19 @@ const fixtureApi = `
   });
   const firstStudy = makeCard('first-study', 'First study question', personal.id);
   const secondStudy = makeCard('second-study', 'Second study question', personal.id);
+  const otherStudy = makeCard('other-study', 'Question in another deck', another.id);
   const libraryCards = [
     makeCard('bio-first', 'Membrane transport', official.id, { suspended: true, subdeck_path: 'Cells' }),
     ...Array.from({ length: official.card_count - 2 }, (_, index) => makeCard('bio-' + index, 'Cells question ' + index, official.id, { suspended: true, subdeck_path: 'Cells' })),
     makeCard('bio-second', 'Genetics retrieval', official.id, { suspended: true, subdeck_path: 'Genetics' })
   ];
   let added = false;
-  let rated = 0;
+  const rated = new Set();
+  const savedRequests = new Set();
 
   const { call } = window.flashcardFixture;
   export const hasCloudAccount = () => true;
-  export const listDecks = async () => { await call('decks'); return [personal, ...(added ? [official] : [])]; };
+  export const listDecks = async () => { await call('decks'); return [personal, another, ...(added ? [official] : [])]; };
   export async function listCatalogue() {
     await call('catalogue');
     return { schoolEligible: true, entries: [{
@@ -65,11 +68,21 @@ const fixtureApi = `
   export const getCard = async (id, cardId) => (id === official.id ? libraryCards : [firstStudy, secondStudy]).find((card) => card.id === cardId);
   export async function getStudyQueue(id) {
     await call('queue');
-    return { cards: id === official.id ? [] : [firstStudy, secondStudy].slice(rated), nextDue: null };
+    const cards = id === official.id ? [] : id === another.id ? [otherStudy] : [firstStudy, secondStudy];
+    return { cards: cards.filter((card) => !rated.has(card.id)), nextDue: null };
   }
-  export async function reviewCard() {
+  export async function reviewCard(card, grade, requestId) {
+    window.flashcardFixture.reviewRequests.push({ cardId: card.id, grade, requestId });
     await call('review');
-    rated++;
+    if (!savedRequests.has(requestId)) {
+      savedRequests.add(requestId);
+      rated.add(card.id);
+      await call('commit');
+    }
+    if (window.flashcardFixture.loseNextAcknowledgement) {
+      window.flashcardFixture.loseNextAcknowledgement = false;
+      throw Object.assign(new Error('Lost acknowledgement'), { retryable: true });
+    }
     return { status: 'saved' };
   }
 `;
@@ -81,6 +94,7 @@ function installGates() {
   window.flashcardFixture = {
     calls,
     unexpectedStates,
+    reviewRequests: [],
     hold: (name) => {
       let release;
       const promise = new Promise((resolve) => { release = resolve; });
@@ -167,7 +181,12 @@ try {
   const personal = page.locator('.flashcards__deck').filter({ has: heading('Personal revision') });
   await personal.getByRole('button', { name: /^(Study|Start studying)$/ }).click();
   await page.getByText('First study question', { exact: true }).waitFor();
-  await page.getByRole('button', { name: /Show answer/ }).click();
+  await page.waitForFunction(() => document.activeElement.matches('[data-study-question]'));
+  await page.locator('[data-study-question]').evaluate((question) => { window.firstQuestion = question; });
+  await page.keyboard.press('Space');
+  await page.waitForFunction(() => document.activeElement.matches('[data-study-answer-face]'));
+  assert.equal(await page.locator('[data-study-question]').evaluate((question) => question === window.firstQuestion), true,
+    'revealing the answer should preserve the question element');
 
   await page.evaluate(() => {
     new MutationObserver(() => {
@@ -177,24 +196,70 @@ try {
     }).observe(document.querySelector('main'), { childList: true, subtree: true });
   });
   await gate('hold', 'review');
-  await page.getByRole('button', { name: /^Good/ }).click();
+  await page.keyboard.press('3');
   await waitForCall('review');
-  await page.getByText('Saving rating…', { exact: true }).waitFor();
-  // A slow queue endpoint must not delay an already returned card.
+  await page.getByText('Saving the previous rating…', { exact: true }).waitFor();
+  // The buffered card must be usable before the review or queue resolves.
   const queueCalls = await page.evaluate(() => window.flashcardFixture.calls.get('queue'));
   await gate('hold', 'queue');
-  await gate('release', 'review');
   await page.getByText('Second study question', { exact: true }).waitFor();
+  await page.waitForFunction(() => document.activeElement.matches('[data-study-question]'));
+  await page.keyboard.press('Space');
+  await page.waitForFunction(() => document.activeElement.matches('[data-study-answer-face]'));
+  await page.keyboard.press('3');
+  const good = page.getByRole('button', { name: /^Good/ });
+  assert.equal(await good.isDisabled(), true, 'the next card cannot be rated while a save is pending');
+  assert.equal(await page.evaluate(() => window.flashcardFixture.calls.get('review')), 1,
+    'the blocked shortcut must not send a second review request');
+  await gate('release', 'review');
+  await page.waitForFunction(() => !document.querySelector('[data-grade="3"]').disabled);
+  assert.equal(await page.evaluate(() => document.activeElement.matches('[data-study-answer-face]')), true,
+    'acknowledgement must preserve the focus of a revealed answer');
   assert.equal(await page.evaluate(() => window.flashcardFixture.calls.get('queue')), queueCalls,
     'a saved rating should advance directly to the next queued card');
   assert.deepEqual(await page.evaluate(() => window.flashcardFixture.unexpectedStates), [],
     'a rating must not flash a completed state between two study cards');
-  await page.getByRole('button', { name: /Show answer/ }).click();
-  await page.getByRole('button', { name: /^Good/ }).click();
+  await page.keyboard.press('3');
   await page.getByText('Loading the next card…', { exact: true }).waitFor();
   assert.equal(await heading('All caught up').count(), 0, 'an exhausted local batch still needs server confirmation');
   await gate('release', 'queue');
   await heading('All caught up').waitFor();
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await waitForCall('decks');
+  await gate('release', 'decks');
+  await personal.getByRole('button', { name: 'Study', exact: true }).click();
+  await page.getByText('First study question', { exact: true }).waitFor();
+  await page.keyboard.press('Space');
+  await page.evaluate(() => { window.flashcardFixture.loseNextAcknowledgement = true; });
+  await gate('hold', 'review');
+  await page.keyboard.press('3');
+  await page.getByText('Second study question', { exact: true }).waitFor();
+  await page.getByRole('button', { name: /Back to deck/ }).click();
+  await page.locator('[data-action="back-decks"]').first().click();
+  const another = page.locator('.flashcards__deck').filter({ has: heading('Another revision deck') });
+  await another.getByRole('button', { name: 'Study', exact: true }).click();
+  const otherQuestion = page.getByText('Question in another deck', { exact: true });
+  await otherQuestion.waitFor();
+  assert.equal(await page.evaluate(() => window.flashcardFixture.calls.get('commit') || 0), 0,
+    'another deck must be usable while the previous deck rating is still in flight');
+  await gate('release', 'review');
+  await waitForCall('commit');
+  assert.equal(await otherQuestion.isVisible(), true, 'a lost acknowledgement must leave the active deck visible');
+  assert.equal(await page.getByRole('button', { name: /Retry Good/ }).count(), 0,
+    'a failed save in another deck must leave its recovery UI in that deck');
+  await page.getByRole('button', { name: /Back to deck/ }).click();
+  await page.locator('[data-action="back-decks"]').first().click();
+  await personal.getByRole('button', { name: 'Study', exact: true }).click();
+  await page.getByText('Answer to First study question', { exact: true }).waitFor();
+  await page.getByRole('button', { name: /^Retry Good/ }).click();
+  await page.getByText('Second study question', { exact: true }).waitFor();
+  const recovered = await page.evaluate(() => ({
+    requests: window.flashcardFixture.reviewRequests, commits: window.flashcardFixture.calls.get('commit'),
+  }));
+  assert.equal(recovered.requests.length, 2);
+  assert.deepEqual(recovered.requests[1], recovered.requests[0], 'retry must reuse the first card, grade and request ID');
+  assert.equal(recovered.commits, 1, 'recovery may acknowledge the rating only once');
 
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true,
     'the study screen must fit the viewport');
