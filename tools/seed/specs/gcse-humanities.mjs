@@ -113,64 +113,45 @@ export default {
     ] },
   ],
 
-  EDX_GCSE_HIST_1HI0: [
-    { key: 'P1', title: 'Paper 1: Thematic study and historic environment', note: 'Tick the option your school studies', topics: [
-      ['MED', '11', 'Medicine in Britain, c1250–present', [
-        '11.1|c1250–c1500: Medicine in medieval England',
-        '11.2|c1500–c1700: The Medical Renaissance in England',
-        '11.3|c1700–c1900: Medicine in eighteenth- and nineteenth-century Britain',
-        '11.4|c1900–present: Medicine in modern Britain',
-        '11.5|Historic environment: the British sector of the Western Front, 1914–18',
-      ], { kind: 'option' }],
-      ['CRIME', '10', 'Crime and punishment in Britain, c1000–present', [
-        '10.1|c1000–c1500: Crime and punishment in medieval England',
-        '10.2|c1500–c1700: Crime and punishment in early modern England',
-        '10.3|c1700–c1900: Crime and punishment in eighteenth- and nineteenth-century Britain',
-        '10.4|c1900–present: Crime and punishment in modern Britain',
-        '10.5|Historic environment: Whitechapel, c1870–c1900',
-      ], { kind: 'option' }],
+  OCR_GCSE_HIST_J411: [
+    { key: 'P1', title: 'J411/14: British thematic study and British depth study', topics: [
+      ['CRIME', '1', 'Crime and Punishment, c.1250 to present', [
+        '1.1|Medieval Britain, c.1250–c.1500',
+        '1.2|Early Modern Britain, c.1500–c.1750',
+        '1.3|Industrial Britain, c.1750–c.1900',
+        '1.4|Britain since c.1900',
+      ]],
+      ['NORMAN', '2', 'The Norman Conquest, 1065–1087', [
+        '2.1|England on the eve of the conquest',
+        '2.2|Invasion and victory',
+        '2.3|Resistance and response',
+        '2.4|Castles',
+        '2.5|Conquest and control',
+        '2.6|Interpretations of the Norman Conquest',
+      ]],
     ] },
-    { key: 'P2', title: 'Paper 2: Period study and British depth study', note: 'Tick the options your school studies', topics: [
-      ['COLDWAR', 'P4', 'Superpower relations and the Cold War, 1941–91', [
-        'P4.1|The origins of the Cold War, 1941–58',
-        'P4.2|Cold War crises, 1958–70',
-        'P4.3|The end of the Cold War, 1970–91',
-      ], { kind: 'option' }],
-      ['AMWEST', 'P3', 'The American West, c1835–c1895', [
-        'P3.1|The early settlement of the West, c1835–c1862',
-        'P3.2|Development of the plains, c1862–c1876',
-        'P3.3|Conflicts and conquest, c1876–c1895',
-      ], { kind: 'option' }],
-      ['ELIZ', 'B4', 'Early Elizabethan England, 1558–88', [
-        'B4.1|Queen, government and religion, 1558–69',
-        'B4.2|Challenges to Elizabeth at home and abroad, 1569–88',
-        'B4.3|Elizabethan society in the Age of Exploration, 1558–88',
-      ], { kind: 'option' }],
-      ['NORMAN', 'B1', 'Anglo-Saxon and Norman England, c1060–88', [
-        'B1.1|Anglo-Saxon England and the Norman Conquest, 1060–66',
-        'B1.2|William I in power: securing the kingdom, 1066–87',
-        'B1.3|Norman England, 1066–88',
-      ], { kind: 'option' }],
+    { key: 'P2', title: 'J411/21: History Around Us', topics: [
+      ['HAU', '3', 'History Around Us (your school\'s chosen site)', [
+        '3.1|The physical features of the site as evidence about its past',
+        '3.2|How the site fits into its wider historical context',
+      ]],
     ] },
-    { key: 'P3', title: 'Paper 3: Modern depth study', note: 'Tick the option your school studies', topics: [
-      ['GERMANY', '31', 'Weimar and Nazi Germany, 1918–39', [
-        '31.1|The Weimar Republic, 1918–29',
-        "31.2|Hitler's rise to power, 1919–33",
-        '31.3|Nazi control and dictatorship, 1933–39',
-        '31.4|Life in Nazi Germany, 1933–39',
-      ], { kind: 'option' }],
-      ['USA', '33', 'The USA, 1954–75: conflict at home and abroad', [
-        '33.1|The development of the civil rights movement, 1954–60',
-        '33.2|Protest, progress and radicalism, 1960–75',
-        '33.3|US involvement in the Vietnam War, 1954–75',
-        '33.4|Reactions to, and the end of, US involvement in Vietnam, 1964–75',
-      ], { kind: 'option' }],
-      ['RUSSIA', '30', 'Russia and the Soviet Union, 1917–41', [
-        '30.1|The revolutions of 1917',
-        '30.2|The Bolsheviks in power, 1917–24',
-        "30.3|Stalin's rise to power and dictatorship, 1924–41",
-        '30.4|Economic and social changes, 1924–41',
-      ], { kind: 'option' }],
+    { key: 'P3', title: 'J411/33: World period study and world depth study', topics: [
+      ['VIKING', '4', 'Viking Expansion, c.750–c.1050', [
+        '4.1|Homelands',
+        '4.2|Volga Vikings',
+        '4.3|Raiders and invaders',
+        '4.4|Settlers',
+        '4.5|Kings',
+      ]],
+      ['NAZI', '5', 'Living under Nazi Rule, 1933–1945', [
+        '5.1|Dictatorship',
+        '5.2|Control and opposition, 1933–1939',
+        '5.3|Changing lives, 1933–1939',
+        '5.4|Germany in war',
+        '5.5|Occupation',
+        '5.6|Interpretations of living under Nazi rule',
+      ]],
     ] },
   ],
 
@@ -197,34 +178,23 @@ export default {
     ] },
   ],
 
-  AQA_GCSE_SPAN_8698: [
-    { key: 'THEMES', title: 'Themes', topics: [
-      ['T1', '1', 'Theme 1: Identity and culture', [
-        '1.1|Me, my family and friends',
-        '1.2|Technology in everyday life',
-        '1.3|Free-time activities',
-        '1.4|Customs and festivals in Spanish-speaking countries',
-      ]],
-      ['T2', '2', 'Theme 2: Local, national, international and global areas of interest', [
-        '2.1|Home, town, neighbourhood and region',
-        '2.2|Social issues',
-        '2.3|Global issues',
-        '2.4|Travel and tourism',
-      ]],
-      ['T3', '3', 'Theme 3: Current and future study and employment', [
-        '3.1|My studies',
-        '3.2|Life at school and college',
-        '3.3|Education post-16',
-        '3.4|Jobs, career choices and ambitions',
-      ]],
+  EDX_GCSE_SPAN_1SP1: [
+    { key: 'THEMES', title: 'Thematic contexts', topics: [
+      ['T1', '1', 'My personal world', ['1.1|My personal world']],
+      ['T2', '2', 'Lifestyle and wellbeing', ['2.1|Lifestyle and wellbeing']],
+      ['T3', '3', 'My neighbourhood', ['3.1|My neighbourhood']],
+      ['T4', '4', 'Media and technology', ['4.1|Media and technology']],
+      ['T5', '5', 'Studying and my future', ['5.1|Studying and my future']],
+      ['T6', '6', 'Travel and tourism', ['6.1|Travel and tourism']],
     ] },
     { key: 'SKILLS', title: 'Skills', topics: [
-      ['SK', '4', 'Reading, writing and translation skills', [
-        '4.1|Reading comprehension',
-        '4.2|Translation into English',
-        '4.3|Translation into Spanish',
-        '4.4|Structured and open-ended writing',
-        '4.5|Grammar',
+      ['SK', '7', 'Listening, reading, writing and translation skills', [
+        '7.1|Listening and understanding, including dictation',
+        '7.2|Reading and understanding',
+        '7.3|Translation into English',
+        '7.4|Translation into Spanish',
+        '7.5|Writing',
+        '7.6|Grammar',
       ], { kind: 'skill' }],
     ] },
   ],
