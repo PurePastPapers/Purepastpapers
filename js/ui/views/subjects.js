@@ -4,7 +4,7 @@
 import { CATEGORY_GROUPS } from '../../config/app.config.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
 import * as api from '../../data/api.js';
-import { getSubjects } from '../../data/content-repository.js';
+import { getPackIndex, getSubjects } from '../../data/content-repository.js';
 import { icon } from '../icons.js';
 import { addSubject, editSubject } from '../enrol.js';
 import { addSubjectButton, addSubjectTile, loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
@@ -40,7 +40,11 @@ function suggestionsFor(subjects, enrolled) {
 export async function mount(element, context) {
   const browsing = context.query.browse === '1';
   context.setTitle(browsing ? 'Choose a subject' : 'My subjects');
-  const subjects = await getSubjects();
+  const [subjects, packIndex] = await Promise.all([
+    getSubjects(),
+    browsing ? getPackIndex() : null,
+  ]);
+  const indexedSubjects = new Set(packIndex?.packs?.filter(pack => pack.enabled !== false).map(pack => pack.subject_id));
   const enrolledAtStart = api.getProgress().enrolled_subjects;
   const startLevel = subjects.find((subject) => subject.subject_id === (context.query.subject || enrolledAtStart[0]))?.level;
   let level = LEVELS.find((option) => option.id === context.query.level)?.id || LEVELS.find((option) => option.level === startLevel)?.id || 'alevel';
@@ -53,7 +57,7 @@ export async function mount(element, context) {
     const words = search.trim().toLowerCase();
     const list = subjects.filter(
       (subject) =>
-        (!browsing || subject.practice_modes.length) &&
+        (!browsing || subject.practice_modes?.length || (subject.has_written_exam && indexedSubjects.has(subject.subject_id))) &&
         subject.level === wanted &&
         (group === 'all' || subject.category_group === group) &&
         (!words || `${subject.subject} ${subject.board} ${subject.spec_code} ${subject.subject_category}`.toLowerCase().includes(words)),

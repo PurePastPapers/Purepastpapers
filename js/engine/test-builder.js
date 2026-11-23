@@ -70,7 +70,12 @@ export function buildTest(pool, options) {
     if (!best || attempt.score < best.score) best = attempt;
   }
 
-  const questions = (best?.questions || []).sort(
+  const chosen = best?.questions || [];
+  // An essay can take longer than the smallest duration setting. Offer the
+  // shortest matching question and give the student enough time to answer it.
+  const oversized = !chosen.length && candidates.reduce((shortest, question) =>
+    !shortest || minutesOf(question) < minutesOf(shortest) ? question : shortest, null);
+  const questions = (oversized ? [oversized] : chosen).sort(
     (a, b) =>
       DIFFICULTY_ORDER[a.difficulty] - DIFFICULTY_ORDER[b.difficulty] ||
       a.marks - b.marks ||
@@ -86,6 +91,7 @@ export function buildTest(pool, options) {
     total_minutes: totalMinutes,
     total_marks: sum(questions, (question) => question.marks),
     target_minutes: minutes,
+    time_limit_minutes: oversized ? Math.ceil(totalMinutes) : minutes,
     available_minutes: availableMinutes,
     candidate_count: candidates.length,
     // true when the pool simply does not hold enough matching questions to fill the time
