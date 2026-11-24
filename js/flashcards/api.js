@@ -157,6 +157,18 @@ export async function listDeckSpecPoints(deckId) {
   return (await connection()).rpc('flashcard_deck_spec_points', { p_deck_id: deckId });
 }
 
+/** Distinct spec-tag combinations in a deck with card counts (see spec-map.js). */
+export async function listDeckSpecSets(deckId) {
+  return (await connection()).rpc('flashcard_deck_spec_sets', { p_deck_id: deckId });
+}
+
+/** Keep only the chosen cards in study. Cards left out keep their review history. */
+export async function applySpecSelection(deckId, { mapped, allowed, general }) {
+  return (await connection()).rpc('flashcard_apply_spec_selection', {
+    p_deck_id: deckId, p_mapped: mapped, p_allowed: allowed, p_include_general: general,
+  });
+}
+
 export async function listDeckTopics(deckId) {
   const db = await connection();
   return db.rpc('flashcard_deck_topics', { p_deck_id: deckId });
@@ -483,11 +495,12 @@ const subjectLabels = {
 // The shared packages stay at their original download pages. Students can
 // import those packages to a private deck using the same Anki workflow.
 const sharedGcseDecks = [
-  ['Biology', '377190157'],
-  ['Chemistry', '526813556'],
-  ['Physics', '642243480'],
-].map(([subject, id]) => ({
+  ['Biology', '377190157', 'EDX_GCSE_BIOL_1BI0'],
+  ['Chemistry', '526813556', 'EDX_GCSE_CHEM_1CH0'],
+  ['Physics', '642243480', 'EDX_GCSE_PHYS_1PH0'],
+].map(([subject, id, subjectId]) => ({
   id: `ankiweb-${id}`,
+  subject_id: subjectId,
   title: `GCSE ${subject} Triple Science`,
   subject,
   board: 'Edexcel',
@@ -512,6 +525,11 @@ export async function listCatalogue() {
       description: entry.deck_type === 'atomic' ? 'Short questions that test one idea at a time.' : 'Practise the wording and steps that earn marks.',
     })), ...sharedGcseDecks],
   };
+}
+
+/** Remove a PurePastPapers set from the student's sets. Progress is kept for re-adding. */
+export async function removeCatalogueDeck(id) {
+  return (await connection()).rpc('flashcard_unsubscribe_catalogue', { p_catalogue_id: id });
 }
 
 export async function addCatalogueDeck(id) {

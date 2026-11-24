@@ -18,6 +18,9 @@ const fixturePage = `<!doctype html>
 <link rel="stylesheet" href="/css/flashcards.css">
 <main id="fixture"></main>
 <script type="module">
+  const demo = await import('/js/data/demo.js');
+  await demo.enterDemoAccount();
+  await (await import('/js/data/api.js')).setEnrolled('EDX_ALEVEL_BIOL_9BN0', true);
   import { mount } from '/js/ui/views/flashcards.js';
   await mount(document.querySelector('main'), { setTitle: (title) => { document.title = title; } });
 </script>`;
@@ -49,7 +52,7 @@ const fixtureApi = `
     await call('catalogue');
     return { schoolEligible: true, entries: [{
       id: 'biology', title: official.title, card_count: official.card_count,
-      available: true, subject: 'Biology', qualification: 'A-level 9BN0', board: 'Edexcel', deck_type: 'Atomic'
+      available: true, subject: 'Biology', subject_id: 'EDX_ALEVEL_BIOL_9BN0', qualification: 'A-level 9BN0', board: 'Edexcel', deck_type: 'Atomic'
     }] };
   }
   export async function addCatalogueDeck() {
@@ -69,6 +72,11 @@ const fixtureApi = `
   export const listDeckSpecPoints = async (id) => id === official.id
     ? ['spec::1.1', 'spec::1.10']
     : [];
+  export const listDeckSpecSets = async (id) => id === official.id
+    ? [{ tags: ['spec::1.1'], cards: 3237, active: 0, optional: false }, { tags: ['spec::1.10'], cards: 1, active: 0, optional: false }]
+    : [];
+  export const applySpecSelection = async () => ({ total: 3238, active: 0, changed: 0 });
+  export const removeCatalogueDeck = async () => ({ status: 'removed' });
   export const listDeckTopics = async () => [{ path: 'Cells', total: 3237, suspended: 3237 }, { path: 'Genetics', total: 1, suspended: 1 }];
   export const getCard = async (id, cardId) => (id === official.id ? libraryCards : [firstStudy, secondStudy]).find((card) => card.id === cardId);
   export async function getStudyQueue(id) {
@@ -145,21 +153,21 @@ try {
   const heading = (name) => page.getByRole('heading', { name, exact: true });
   await waitForCall('decks');
   await page.getByRole('heading', { name: /^Flashcards(?: Beta)?$/ }).waitFor();
-  await page.getByText('Loading your decks…', { exact: true }).waitFor();
+  await page.getByText('Loading your sets…', { exact: true }).waitFor();
   assert.equal(await heading('Start your first deck').count(), 0, 'loading must not display an empty collection');
   await gate('release', 'decks');
   await heading('Personal revision').waitFor();
 
   const guide = page.getByRole('button', { name: 'How to use Flashcards' });
   assert.ok(await guide.evaluate((button) => Boolean(
-    document.querySelector('.flashcards__deck-grid')
+    document.querySelector('.fc-panel')
       .compareDocumentPosition(button) & Node.DOCUMENT_POSITION_FOLLOWING
-  )), 'the guide follows the deck library');
+  )), 'the guide follows the sets');
   if (desktop) await guide.press('Enter');
   else await guide.tap();
   const guideDialog = page.getByRole('dialog', { name: 'How to use Flashcards' });
   await guideDialog.waitFor();
-  for (const instruction of ['Choose a deck.', 'Choose what to learn.', 'Review.']) {
+  for (const instruction of ['Choose a set.', 'Choose which cards.', 'Review.']) {
     await guideDialog.getByText(instruction, { exact: true }).waitFor();
   }
   await page.keyboard.press('Escape');
@@ -167,25 +175,25 @@ try {
   assert.equal(await guide.evaluate((button) => button === document.activeElement), true,
     'dismissing the guide returns focus to its trigger');
 
-  await gate('hold', 'catalogue');
+  // The PurePastPapers sets load with the home page, so the screen opens straight away.
   await page.locator('[data-action="catalogue"]').click();
-  await waitForCall('catalogue');
-  await page.getByText('Loading the deck catalogue…', { exact: true }).waitFor();
-  await gate('release', 'catalogue');
-  const catalogue = page.locator('.flashcards__catalogue-card').filter({ has: heading('A-level Biology Atomic') });
+  const catalogue = page.locator('.fc-ppp').filter({ has: heading('Atomic') });
   await catalogue.waitFor();
-  assert.equal(await guide.count(), 0, 'the guide belongs to My decks');
+  assert.equal(await guide.count(), 0, 'the guide belongs to the Flashcards home');
 
   await gate('hold', 'add');
-  await catalogue.getByRole('button', { name: 'Add deck' }).click();
+  await catalogue.getByRole('button', { name: '+ Add to my sets' }).click();
   await waitForCall('add');
   assert.equal(await catalogue.getByRole('button', { name: /Add/ }).isDisabled(), true, 'an in-flight add is visibly disabled');
   await gate('release', 'add');
   await catalogue.getByRole('button', { name: /Open/ }).waitFor();
-  assert.equal(await page.getByRole('button', { name: 'Add deck', exact: true }).count(), 0, 'an owned deck cannot be added twice');
+  assert.equal(await page.getByRole('button', { name: '+ Add to my sets', exact: true }).count(), 0, 'an owned deck cannot be added twice');
 
-  await gate('hold', 'manager');
   await catalogue.getByRole('button', { name: /Open/ }).click();
+  await page.locator('.fc-sethead__title').waitFor();
+  await page.locator('[data-choice-mode][value="learnt"]:checked').waitFor();
+  await gate('hold', 'manager');
+  await page.getByRole('button', { name: /Browse all/ }).click();
   await waitForCall('manager');
   await heading('A-level Biology Atomic').waitFor();
   await page.getByText('Loading cards…', { exact: true }).waitFor();
@@ -196,7 +204,7 @@ try {
   assert.equal(await page.locator('.flashcards__row').count(), 24, 'initial manager render is limited to one card page');
   const spec = page.locator('[data-spec-point]');
   await spec.selectOption('spec::1.1');
-  await page.getByText('3237 matching cards · 0 active · 3237 suspended', { exact: true }).waitFor();
+  await page.getByText('3237 matching cards · 0 in play', { exact: true }).waitFor();
   assert.equal(await page.locator('.flashcards__row').count(), 24, 'filtered counts cover every page');
   await spec.selectOption('spec::1.10');
   await page.getByText('Genetics retrieval', { exact: true }).waitFor();
@@ -211,12 +219,12 @@ try {
     'results must update without replacing the focused search control');
 
   await page.getByRole('button', { name: /^(Study|Start studying)$/ }).click();
-  await page.getByRole('button', { name: /Choose topics/ }).waitFor();
+  await page.getByRole('button', { name: /Choose cards/ }).waitFor();
   assert.equal(await heading('All caught up').count(), 0, 'a fully suspended deck should guide the student to topics');
 
-  await page.getByRole('button', { name: /Back to deck/ }).click();
+  await page.getByRole('button', { name: /Back to the set/ }).click();
   await page.locator('[data-action="back-decks"]').first().click();
-  const personal = page.locator('.flashcards__deck').filter({ has: heading('Personal revision') });
+  const personal = page.locator('.fc-own').filter({ has: heading('Personal revision') });
   await personal.getByRole('button', { name: /^(Study|Start studying)$/ }).click();
   await page.getByText('First study question', { exact: true }).waitFor();
   await page.waitForFunction(() => document.activeElement.matches('[data-study-question]'));
@@ -307,7 +315,7 @@ try {
   await page.getByText('Second study question', { exact: true }).waitFor();
   await page.getByRole('button', { name: /Back to deck/ }).click();
   await page.locator('[data-action="back-decks"]').first().click();
-  const another = page.locator('.flashcards__deck').filter({ has: heading('Another revision deck') });
+  const another = page.locator('.fc-own').filter({ has: heading('Another revision deck') });
   await another.getByRole('button', { name: 'Study', exact: true }).click();
   const otherQuestion = page.getByText('Question in another deck', { exact: true });
   await otherQuestion.waitFor();
