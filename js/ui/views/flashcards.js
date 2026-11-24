@@ -720,16 +720,15 @@ export function mount(element, context) {
 
   function studyPage() {
     const deck = activeDeck();
-    if (deck?.catalogue_id) {
-      const subject = subjectFor(deck);
-      return html`<div class="flashcards__study-top"><button class="linkbtn" data-action="exit-study">← Back to the set</button><span class="muted small flashcards__study-progress" data-study-progress></span></div>
-      <div class="fc-study" style="--sc:${subject?.colour || 'var(--ink)'}">
-        <div class="fc-study__band"><span class="fc-stamp" aria-hidden="true">P</span><span>${subject ? `${subject.name} · ${entryFor(deck)?.deck_type || study.deckTitle}` : study.deckTitle}${study.topic ? ` · ${study.topic.split('::').join(' › ')}` : ''}</span></div>
-        <section class="card flashcards__study" data-study-card></section>
-      </div>`;
-    }
-    return html`<div class="flashcards__study-top"><button class="linkbtn" data-action="exit-study">← Back to deck</button><div><span class="muted small">${study.deckTitle}${study.topic ? ` · ${study.topic.split('::').join(' › ')}` : ''}</span><span class="muted small flashcards__study-progress" data-study-progress></span></div></div>
-      <section class="card flashcards__study" data-study-card></section>`;
+    const subject = subjectFor(deck);
+    const label = deck?.catalogue_id
+      ? html`<span class="fc-stamp" aria-hidden="true">P</span><span><b>${subject?.name || 'PurePastPapers'}</b> · ${entryFor(deck)?.deck_type || study.deckTitle}</span>`
+      : html`${subject ? html`<span class="fc-dot" aria-hidden="true"></span>` : ''}<span><b>${study.deckTitle}</b>${subject ? ` · ${subject.name}` : ''}</span>`;
+    return html`<div class="fc-studytop"><button class="linkbtn" data-action="exit-study">← Back to the set</button>
+        <div class="fc-studyset ${deck?.catalogue_id ? '' : 'fc-studyset--own'}" style="--sc:${subject?.colour || 'var(--surface)'}">${label}${study.topic ? html`<span class="small"> · ${study.topic.split('::').join(' › ')}</span>` : ''}</div>
+        <span class="muted small flashcards__study-progress" data-study-progress></span></div>
+      <div class="fc-studymeter" style="--sc:${subject?.colour || 'var(--ink)'}" aria-hidden="true"><i data-study-meter></i></div>
+      <section class="fc-studypanel" data-study-card></section>`;
   }
 
   function studyEmpty(session) {
@@ -747,11 +746,20 @@ export function mount(element, context) {
       <button class="btn" data-action="grade" data-grade="${grade}" data-grade-label="${label}">${label} <span aria-hidden="true">${grade}</span></button>`)}</div>`;
   }
 
+  function studyMeter(session) {
+    const meter = $('[data-study-meter]', element);
+    if (!meter) return;
+    const left = session.card ? 1 + session.buffer.length : 0;
+    const total = Math.max(session.planned || 0, session.reviewed + left);
+    meter.style.width = `${total ? Math.round((100 * session.reviewed) / total) : session.reviewed ? 100 : 0}%`;
+  }
+
   function updateStudyFeedback(session) {
     const statusArea = $('[data-rating-status]', element);
     const message = ratingStatus(session);
     if (statusArea.textContent !== message) statusArea.textContent = message;
     $('[data-study-progress]', element).textContent = `${session.reviewed} reviewed`;
+    studyMeter(session);
     const pendingGrade = !session.saving && session.pending?.grade;
     for (const button of element.querySelectorAll('[data-action="grade"]')) {
       const isRetry = pendingGrade === Number(button.dataset.grade);
@@ -765,11 +773,12 @@ export function mount(element, context) {
     const previousFocus = document.activeElement;
     const restoreFocus = previousFocus === document.body || element.contains(previousFocus);
     const nextCard = study.card;
-    panel.classList.toggle('ruled', Boolean(nextCard));
+    panel.classList.toggle('card', !nextCard);
     panel.classList.toggle('flashcards__study-empty', !nextCard);
     scheduleStudyWake();
     if (!nextCard) {
       $('[data-study-progress]', element).textContent = `${study.reviewed} reviewed`;
+      studyMeter(study);
       setHtml(panel, studyEmpty(study));
       delete panel.dataset.cardId;
       delete panel.dataset.cardRevision;
@@ -782,9 +791,11 @@ export function mount(element, context) {
     if (cardChanged) {
       panel.dataset.cardId = nextCard.id;
       panel.dataset.cardRevision = nextCard.revision;
-      setHtml(panel, html`<div class="flashcards__faces">
+      const points = tagList(nextCard.tags).filter((tag) => /^(?:PPP::)?Spec::/i.test(tag)).slice(0, 2);
+      setHtml(panel, html`<div class="card ruled flashcards__faces fc-studycard"><i class="tape tape--c" aria-hidden="true"></i>
+        ${points.length ? html`<span class="fc-studyspec">${points.map((tag) => html`<span class="tag">Spec ${specLabel(tag)}</span>`)}</span>` : ''}
         <div role="group" aria-labelledby="flashcard-question-label" aria-describedby="flashcard-question" tabindex="-1" data-study-question>
-          <p class="small muted flashcards__face-label" id="flashcard-question-label">Question</p>
+          <p class="flashcards__face-label hand" id="flashcard-question-label">question</p>
           <div class="flashcards__content" id="flashcard-question">${questionFace(nextCard)}</div>
         </div>
         <div data-study-answer hidden></div>
@@ -801,7 +812,7 @@ export function mount(element, context) {
       answer.hidden = false;
       setHtml(answer, html`<hr class="flashcards__divider">
         <div role="group" aria-labelledby="flashcard-answer-label" aria-describedby="flashcard-answer flashcard-rating-status" tabindex="-1" data-study-answer-face>
-          <p class="small muted flashcards__face-label" id="flashcard-answer-label">Answer</p>
+          <p class="flashcards__face-label hand" id="flashcard-answer-label">answer</p>
           <div class="flashcards__content" id="flashcard-answer">${answerContent(nextCard)}</div>
           ${answerExtra(nextCard)}
         </div>`);
@@ -881,7 +892,7 @@ export function mount(element, context) {
       : view === 'set' ? (activeDeck() ? setPage(pagesModel(), activeDeck()) : status('This set is no longer in your sets.'))
       : overviewPage();
     const siteLook = view === 'decks' || view === 'catalogue' || view === 'set';
-    setHtml(element, html`<div class="${siteLook ? 'fc' : 'flashcards'}" data-view="${view}">${page}</div>`);
+    setHtml(element, html`<div class="${siteLook ? 'fc' : view === 'study' ? 'flashcards flashcards--site' : 'flashcards'}" data-view="${view}">${page}</div>`);
     for (const box of element.querySelectorAll('[data-part]')) box.indeterminate = true;
     releaseDetachedMedia();
   }
@@ -996,7 +1007,7 @@ export function mount(element, context) {
     const saved = readPending(deckId);
     if (saved?.subdeckPath !== undefined) subdeckPath = saved.subdeckPath || '';
     study = { deckId, topic: subdeckPath, card: null, buffer: [], nextDue: null, refreshAt: Infinity,
-      deckTitle: activeDeck()?.title || 'Study', shown: false, reviewed: 0, pending: null, loading: true };
+      deckTitle: activeDeck()?.title || 'Study', planned: (activeDeck()?.due_count || 0) + (activeDeck()?.learning_count || 0) + (activeDeck()?.new_count || 0), shown: false, reviewed: 0, pending: null, loading: true };
     view = 'study';
     draw();
     drawStudy();

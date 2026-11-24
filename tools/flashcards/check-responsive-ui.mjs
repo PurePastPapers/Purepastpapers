@@ -244,9 +244,9 @@ try {
         const linear = srgb <= .04045 ? srgb / 12.92 : ((srgb + .055) / 1.055) ** 2.4;
         return sum + linear * [.2126, .7152, .0722][index];
       }, 0);
-      const inspect = (element) => {
+      const inspect = (element, surface = element) => {
         const style = getComputedStyle(element);
-        const fill = rgb(style.backgroundColor);
+        const fill = rgb(getComputedStyle(surface).backgroundColor);
         const pair = [luminance(rgb(style.color)), luminance(fill)].sort((a, b) => b - a);
         return { fill, contrast: (pair[0] + .05) / (pair[1] + .05) };
       };
@@ -254,7 +254,7 @@ try {
         grades: [...document.querySelectorAll('[data-action="grade"]')].map((button) => ({
           label: button.dataset.gradeLabel, ...inspect(button),
         })),
-        answer: inspect(document.querySelector('[data-study-answer-face]')),
+        answer: inspect(document.querySelector('[data-study-answer-face] .flashcards__content'), document.querySelector('[data-study-card] .flashcards__faces')),
       };
     }, theme);
     assert.deepEqual(grades.map(({ label }) => label), ['Again', 'Hard', 'Good', 'Easy']);
@@ -263,7 +263,7 @@ try {
     const [red, amber, green, blue] = grades.map(({ fill }) => fill);
     assert.ok(red[0] > red[1] && amber[0] > amber[1] && amber[1] > amber[2]
       && green[1] > green[0] && blue[2] > blue[0], `${theme} applies red, amber, green and blue in order`);
-    assert.ok(answer.fill[2] > answer.fill[0] && answer.contrast >= 4.5, `${theme} answer has a readable blue inset`);
+    assert.ok(answer.contrast >= 4.5, `${theme} answer text is readable on its card`);
   }
 
   await page.evaluate(() => {
@@ -313,7 +313,7 @@ try {
   await gate('hold', 'review');
   await page.keyboard.press('3');
   await page.getByText('Second study question', { exact: true }).waitFor();
-  await page.getByRole('button', { name: /Back to deck/ }).click();
+  await page.getByRole('button', { name: /Back to the set/ }).click();
   await page.locator('[data-action="back-decks"]').first().click();
   const another = page.locator('.fc-own').filter({ has: heading('Another revision deck') });
   await another.getByRole('button', { name: 'Study', exact: true }).click();
@@ -326,7 +326,7 @@ try {
   assert.equal(await otherQuestion.isVisible(), true, 'a lost acknowledgement must leave the active deck visible');
   assert.equal(await page.getByRole('button', { name: /Retry Good/ }).count(), 0,
     'a failed save in another deck must leave its recovery UI in that deck');
-  await page.getByRole('button', { name: /Back to deck/ }).click();
+  await page.getByRole('button', { name: /Back to the set/ }).click();
   await page.locator('[data-action="back-decks"]').first().click();
   await personal.getByRole('button', { name: 'Study', exact: true }).click();
   await page.getByText('Answer to First study question', { exact: true }).waitFor();
