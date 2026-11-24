@@ -553,15 +553,18 @@ export async function mount(element, context) {
           dialog.dataset.pick = pick.value;
           dialog.querySelector('.modal__foot button[type="submit"]').click();
         });
+        bindInkPreviews(dialog);
       },
-      onOpen: bindInkPreviews,
       actions: [
         { label: 'Close', cancel: true },
         { label: 'Answer it again', variant: 'primary', collect: (dialog) => dialog.dataset.pick || 'retry' },
       ],
     });
     if (!picked) return;
-    const [kind, attemptId] = picked.split(':');
+    // Attempt ids from tests contain a colon too ("ses_…:question"), so split on the first one only.
+    const split = picked.indexOf(':');
+    const kind = split < 0 ? picked : picked.slice(0, split);
+    const attemptId = split < 0 ? '' : picked.slice(split + 1);
     if (kind === 'retry') return startSingle(found.question, context.navigate);
     if (kind === 'mark') return markLater(attemptId);
     const attempt = list.find((candidate) => candidate.attempt_id === attemptId);
@@ -574,7 +577,11 @@ export async function mount(element, context) {
         danger: true,
       });
       if (!sure) return;
-      await api.removeAttempt(attempt.attempt_id);
+      try {
+        await api.removeAttempt(attempt.attempt_id);
+      } catch (error) {
+        return toast(error.message, { type: 'error' });
+      }
       toast(`Attempt ${number} removed.`, { type: 'success' });
       return reload();
     }
