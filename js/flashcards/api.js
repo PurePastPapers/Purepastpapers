@@ -496,8 +496,9 @@ const subjectLabels = {
 // Some subjects offer more than one atomic set. The catalogue id suffix names
 // the set so students can tell them apart.
 const setVariants = {
-  _EXAM: ['Exam essentials', 'One fact per card that you can use as evidence in an exam answer.'],
-  _FULL: ['Full set', 'Every exam essentials card plus background knowledge.'],
+  _EXAM: ['Exam knowledge', 'One fact per card that you can use as evidence in an exam answer.'],
+  _BACK: ['Background knowledge', 'Context and detail that is not needed as exam evidence. No card is also in Exam knowledge.'],
+  _FULL: ['Full set', 'Every exam knowledge card plus background knowledge.'],
 };
 const setVariant = (id) => Object.entries(setVariants).find(([suffix]) => String(id).endsWith(suffix))?.[1] || null;
 
