@@ -6,7 +6,7 @@ import { icon } from '../icons.js';
 import { cloudAccountId, getProgress, learnedSet, setPreference } from '../../data/api.js';
 import { ensureSpec, getSubject, specIndex } from '../../data/content-repository.js';
 import { subjectColour } from '../subject-colours.js';
-import { catalogueScreen, homePage, setPage } from './flashcards-pages.js';
+import { catalogueScreen, homePage, setPage } from './flashcards-pages.js?v=flashcards-sets-3';
 import {
   cardsPerPoint, countInPlay, createTagMapper, describeSets, generalCount, inPlay, requestSignature, selectionRequest,
 } from '../../flashcards/spec-map.js';
