@@ -42,6 +42,46 @@ async function demoPage(viewport) {
   return { page, errors };
 }
 
+test('signed-in Psychology handwriting opens on a slow connection', { skip }, async () => {
+  const page = await browser.newPage({ viewport: { width: 1194, height: 834 }, hasTouch: true, isMobile: true });
+  try {
+    await page.addInitScript(() => localStorage.setItem('ppp:welcome-seen', '1'));
+    await page.route('https://esm.sh/**', route => route.fulfill({
+      contentType: 'application/javascript',
+      body: `
+        const user = { id: 'ink-test', email: 'ink-test@example.com', user_metadata: {} };
+        export function createClient() {
+          return {
+            auth: {
+              async getSession() { return { data: { session: { user } } }; },
+              async getUser() { return { data: { user } }; },
+              onAuthStateChange() { return { data: { subscription: { unsubscribe() {} } } }; },
+            },
+            from() {
+              const query = {
+                select() { return query; },
+                eq() { return query; },
+                order() { return query; },
+                limit() { return query; },
+                abortSignal() { return query; },
+                async maybeSingle() { return { data: { progress: { enrolled_subjects: ['AQA_ALEVEL_PSYCH_7182'] } } }; },
+                then() { /* Hold handwriting and draft requests open. */ },
+              };
+              return query;
+            },
+          };
+        }`,
+    }));
+    await page.goto(`${BASE}#/practice?subject=AQA_ALEVEL_PSYCH_7182&mode=individual`);
+    assert.equal(await page.evaluate(async () => (await import('/js/data/api.js')).isSignedIn()), true);
+    const answer = page.locator('.ink-answer').first();
+    await answer.getByRole('button', { name: 'Write with Pencil' }).click();
+    await answer.locator('canvas').waitFor({ timeout: 6000 });
+    await answer.getByRole('button', { name: 'Use keyboard' }).click();
+    assert.equal(await answer.getByRole('button', { name: 'Write with Pencil' }).isVisible(), true);
+  } finally { await page.close(); }
+});
+
 test('tablet Practice switches an answer to ink on the first Pencil stroke and keeps the question in place', { skip }, async () => {
   const viewport = { width: 1194, height: 834 };
   const page = await browser.newPage({ viewport, hasTouch: true, isMobile: true });

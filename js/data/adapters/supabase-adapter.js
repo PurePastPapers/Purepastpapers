@@ -442,7 +442,7 @@ async function requireInkOwner(client, userId) {
 }
 
 /** Loads saved handwriting and unresolved concurrent edits for the signed-in owner. */
-export async function loadInkResponses(userId, responseId = null) {
+export async function loadInkResponses(userId, responseId = null, signal = null) {
   const client = await getClient();
   await requireInkOwner(client, userId);
   let query = client.from('ink_responses').select('response_id,part_id,revision,record,updated_at').eq('user_id', userId);
@@ -450,6 +450,10 @@ export async function loadInkResponses(userId, responseId = null) {
   if (responseId) {
     query = query.eq('response_id', responseId);
     conflictsQuery = conflictsQuery.eq('response_id', responseId);
+  }
+  if (signal) {
+    query = query.abortSignal(signal);
+    conflictsQuery = conflictsQuery.abortSignal(signal);
   }
   const [{ data: records, error: recordsError }, { data: conflicts, error: conflictsError }] = await Promise.all([query, conflictsQuery]);
   if (recordsError) throw new Error(`Could not load synced handwriting: ${recordsError.message}`);

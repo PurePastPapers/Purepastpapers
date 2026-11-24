@@ -148,13 +148,26 @@ const inkOwner = () => user?.user_id || 'guest';
 const inkCloud = { deleteInkConflict, deleteInkResponse, loadInkResponses, saveInkResponse };
 const inkAdapter = () => user && activeAdapter === supabaseAdapter ? inkCloud : null;
 export const inkRepository = () => ink.createInkRepository(inkOwner());
-export async function loadInkState(responseId, partId) {
+export async function loadInkState(responseId, partId, { waitForCloudMs } = {}) {
   const owner = inkOwner();
   const adapter = inkAdapter();
   const repository = ink.createInkRepository(owner);
   if (adapter && globalThis.navigator?.onLine !== false) {
-    try { return await ink.loadSyncedInk(owner, responseId, partId, adapter); }
+    const controller = waitForCloudMs === undefined ? null : new AbortController();
+    let timer;
+    try {
+      const synced = ink.loadSyncedInk(owner, responseId, partId, adapter, { signal: controller?.signal });
+      if (!controller) return await synced;
+      const deadline = new Promise((resolve, reject) => {
+        timer = setTimeout(() => {
+          controller.abort();
+          reject(controller.signal.reason);
+        }, waitForCloudMs);
+      });
+      return await Promise.race([synced, deadline]);
+    }
     catch { /* local handwriting remains usable offline */ }
+    finally { clearTimeout(timer); }
   }
   const records = (await repository.listByResponse(responseId)).filter(record => record.partId === partId);
   return { record: records.find(record => !record.conflict) || null, conflicts: records.filter(record => record.conflict) };

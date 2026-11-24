@@ -522,13 +522,11 @@ export async function mount(element, context) {
       button.textContent = 'Use keyboard';
       let value = null;
       let conflicts = [];
-      let otherDrafts = [];
       try {
         await inkSaveChains.get(valueKey)?.catch(() => {});
-        const result = await api.loadInkState(responseId, partId);
+        const result = await api.loadInkState(responseId, partId, { waitForCloudMs: 1200 });
         value = result.record;
         conflicts = result.conflicts || [];
-        if (!value && !conflicts.length) otherDrafts = (await api.listInkForPart(partId) || []).filter((record) => record.responseId !== responseId);
       } catch { /* the local editor remains available while storage recovers */ }
       pendingInkTargets.delete(target);
       if (!target.isConnected || target.hidden) continue;
@@ -622,7 +620,10 @@ export async function mount(element, context) {
       saveButton.textContent = state.inkSaved[valueKey] ? 'Saved answer' : 'Save handwritten answer';
       target.append(saveButton);
       pencilTransfers.get(target)?.attach(editor);
-      if (otherDrafts.length) {
+      if (!value && !conflicts.length) void api.listInkForPart(partId).then((drafts) => {
+        if (!target.isConnected || inkEditors.get(key) !== editor) return;
+        const otherDrafts = drafts.filter((record) => record.responseId !== responseId);
+        if (!otherDrafts.length) return;
         const section = document.createElement('details');
         section.className = 'ink-answer__drafts';
         const summary = document.createElement('summary');
@@ -647,8 +648,8 @@ export async function mount(element, context) {
             update({ keepControls: true, keepPage: true });
           });
         }
-        target.insertBefore(section, target.firstChild);
-      }
+        target.append(section);
+      }).catch(() => {});
       if (conflicts.length) {
         const section = document.createElement('details');
         section.className = 'ink-answer__conflicts';

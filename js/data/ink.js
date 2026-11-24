@@ -373,15 +373,16 @@ export async function syncInkOutbox(owner, adapter) {
 }
 
 /** Loads account ink while preserving unsynced local edits and storing divergent copies. */
-export async function loadSyncedInk(owner, responseId, partId, adapter) {
+export async function loadSyncedInk(owner, responseId, partId, adapter, { signal } = {}) {
   const ownerId = validId(typeof owner === 'string' ? owner : owner?.ownerId, 'ownerId');
   const safeResponseId = validId(responseId, 'responseId');
   const safePartId = validId(partId, 'partId');
   const repository = createInkRepository(ownerId);
   if (ownerId !== 'guest') {
     if (!adapter?.loadInkResponses) throw new TypeError('A cloud adapter with loadInkResponses is required.');
-    const remoteRecords = await adapter.loadInkResponses(ownerId, safeResponseId);
+    const remoteRecords = await adapter.loadInkResponses(ownerId, safeResponseId, signal);
     for (const record of remoteRecords) {
+      if (signal?.aborted) throw signal.reason;
       if (record.responseId === safeResponseId && record.partId === safePartId) await mergeCloudRecord(ownerId, record);
     }
   }
