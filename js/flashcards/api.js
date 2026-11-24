@@ -491,6 +491,7 @@ const subjectLabels = {
   AQA_ALEVEL_PSYCH_7182: 'Psychology',
   AQA_ALEVEL_SOC_7192: 'Sociology',
   EDX_ALEVEL_HIST_9HI0: 'History',
+  AQA_ALEVEL_POL_7152: 'Politics',
 };
 
 // Some subjects offer more than one atomic set. The catalogue id suffix names
@@ -499,6 +500,9 @@ const setVariants = {
   _EXAM: ['Exam knowledge', 'One fact per card that you can use as evidence in an exam answer.'],
   _BACK: ['Background knowledge', 'Context and detail that is not needed as exam evidence. No card is also in Exam knowledge.'],
   _FULL: ['Full set', 'Every exam knowledge card plus background knowledge.'],
+  _CONTENT: ['Key content', 'Definitions, concepts, institutions and thinkers\' ideas from the specification.'],
+  _EXAMPLES: ['Exam examples', 'Acts, cases, events and figures you can use as evidence. Updated every week.'],
+  _BACKGROUND: ['Background knowledge', 'Useful context, such as election winners and book titles. No card is also in Key content or Exam examples.'],
 };
 const setVariant = (id) => Object.entries(setVariants).find(([suffix]) => String(id).endsWith(suffix))?.[1] || null;
 
