@@ -18,6 +18,7 @@ const SESSION_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', qu
 const SECTIONS = [
   { href: links.papers(), icon: 'file', title: 'Past papers', text: 'Full official papers by year and series.' },
   { href: links.practice(), icon: 'clock', title: 'Practice', text: 'Custom tests or single questions from your topics.' },
+  { href: links.flashcards(), icon: 'layers', title: 'Flashcards', text: "Cards for the spec points you've learnt." },
   { href: links.hub(), icon: 'chart', title: 'Data Hub', text: 'Scores, history and topic mastery.' },
   { href: links.subjects(), icon: 'target', title: 'My subjects', text: "Subjects and the topics you've learned." },
 ];
@@ -61,7 +62,7 @@ export async function mount(element, context) {
       <nav class="dash-sections" aria-label="Sections">
         ${SECTIONS.map(
           (section, index) =>
-            html`<a class="card card--link ruled dash-section tilt-${[1, 3, 2, 4][index]}" href="${section.href}">
+            html`<a class="card card--link ruled dash-section tilt-${[1, 3, 2, 4][index % 4]}" href="${section.href}">
               <i class="tape tape--c" aria-hidden="true"></i>
               <span class="ic" aria-hidden="true">${icon(section.icon, { size: 20 })}</span>
               <span class="dash-section__arrow" aria-hidden="true">→</span>
