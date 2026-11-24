@@ -1,7 +1,7 @@
 // Private flashcards. The data adapter keeps content and scheduling in the account backend.
 import { $, html, on, raw, setHtml } from '../../core/dom.js';
 import { confirmDialog, openModal, toast } from '../ui.js';
-import * as flashcards from '../../flashcards/api.js?v=flashcards-sets-1';
+import * as flashcards from '../../flashcards/api.js?v=flashcards-sets-2';
 import { icon } from '../icons.js';
 import { cloudAccountId, getProgress, learnedSet, setPreference } from '../../data/api.js';
 import { ensureSpec, getSubject, specIndex } from '../../data/content-repository.js';

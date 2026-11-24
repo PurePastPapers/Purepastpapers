@@ -490,7 +490,16 @@ const subjectLabels = {
   EDX_ALEVEL_MATH_9MA0: 'Mathematics',
   AQA_ALEVEL_PSYCH_7182: 'Psychology',
   AQA_ALEVEL_SOC_7192: 'Sociology',
+  EDX_ALEVEL_HIST_9HI0: 'History',
 };
+
+// Some subjects offer more than one atomic set. The catalogue id suffix names
+// the set so students can tell them apart.
+const setVariants = {
+  _EXAM: ['Exam essentials', 'One fact per card that you can use as evidence in an exam answer.'],
+  _FULL: ['Full set', 'Every exam essentials card plus background knowledge.'],
+};
+const setVariant = (id) => Object.entries(setVariants).find(([suffix]) => String(id).endsWith(suffix))?.[1] || null;
 
 // The shared packages stay at their original download pages. Students can
 // import those packages to a private deck using the same Anki workflow.
@@ -520,9 +529,9 @@ export async function listCatalogue() {
       ...entry,
       subject: subjectLabels[entry.subject_id] ?? entry.subject_id,
       board: entry.exam_board,
-      deck_type: entry.deck_type === 'atomic' ? 'Atomic' : 'Mark scheme',
+      deck_type: setVariant(entry.id)?.[0] || (entry.deck_type === 'atomic' ? 'Atomic' : 'Mark scheme'),
       available: entry.status === 'published',
-      description: entry.deck_type === 'atomic' ? 'Short questions that test one idea at a time.' : 'Practise the wording and steps that earn marks.',
+      description: setVariant(entry.id)?.[1] || (entry.deck_type === 'atomic' ? 'Short questions that test one idea at a time.' : 'Practise the wording and steps that earn marks.'),
     })), ...sharedGcseDecks],
   };
 }
