@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isExportedTest, putExport, putOfflineAttempt, removeTestExport, retainOfflineProgress } from '../js/data/offline-progress.js';
+import { isExportedTest, putExport, putOfflineAttempt, removeOfflinePart, removeTestExport, retainOfflineProgress } from '../js/data/offline-progress.js';
 import { scoreTestSnapshot } from '../js/engine/test-snapshot.js';
 
 const snapshot = {
@@ -158,4 +158,35 @@ test('marking an explicitly opened attempt after a retake updates only the origi
   assert.equal(first, retry);
   assert.equal(progress.sessions[1], retake);
   assert.deepEqual(progress.paper_attempts.map(attempt => attempt.session_id), ['paper_original']);
+});
+
+test('removing one question from a marked exported test keeps it removed after a stale sync', () => {
+  const progress = emptyProgress();
+  const savedPaper = putExport(progress, snapshot);
+  const first = putOfflineAttempt(progress, savedPaper, { newAttemptId: 'paper_one' });
+  const resolved = new Map([['part-a', {}], ['part-b', {}]]);
+  const result = scoreTestSnapshot(snapshot, { mode: 'parts', marks: { 'part-a': 1, 'part-b': 2 } }, resolved);
+  putOfflineAttempt(progress, savedPaper, { newAttemptId: 'paper_one', expectedRevision: first.revision, result });
+  const stale = structuredClone(progress);
+  assert.equal(progress.paper_attempts.length, 1);
+
+  assert.equal(removeOfflinePart(progress, 'paper_one:part-b'), true);
+  assert.deepEqual(progress.question_attempts.map(attempt => attempt.attempt_id), ['paper_one:part-a']);
+  const session = progress.sessions.find(entry => entry.session_id === 'paper_one');
+  assert.deepEqual(session.result.marks, { 'part-a': 1 });
+  assert.equal(session.result.awarded, 1);
+  assert.equal(session.result.percentage, null);
+  assert.equal(progress.paper_attempts.length, 0);
+
+  // A tab still holding the old marks writes later: the removal wins.
+  const merged = retainOfflineProgress(stale, progress);
+  assert.deepEqual(merged.question_attempts.map(attempt => attempt.attempt_id), ['paper_one:part-a']);
+
+  // Removing the last mark leaves the test recorded but unmarked.
+  assert.equal(removeOfflinePart(progress, 'paper_one:part-a'), true);
+  const emptied = progress.sessions.find(entry => entry.session_id === 'paper_one');
+  assert.equal(emptied.result, null);
+  assert.equal(emptied.status, 'completed_on_paper');
+  assert.equal(progress.question_attempts.length, 0);
+  assert.equal(removeOfflinePart(progress, 'paper_one:part-a'), false);
 });

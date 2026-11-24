@@ -11,7 +11,7 @@ import { deleteInkConflict, deleteInkResponse, listInkDraftsForPart, loadInkResp
 import * as ink from './ink.js';
 import { SUPABASE_CONFIGURED } from '../config/supabase.config.js';
 import { LEGACY_SPEC_IDS } from '../config/spec-id-migrations.js';
-import { isExportedTest, isOfflineSession, isStoredTestExport, putExport, putOfflineAttempt, removeTestExport, retainOfflineProgress } from './offline-progress.js';
+import { isExportedTest, isOfflineSession, isStoredTestExport, putExport, putOfflineAttempt, removeOfflinePart, removeTestExport, retainOfflineProgress } from './offline-progress.js';
 
 const guestExportsKey = `${APP.storageNamespace}:guest-pdf-tests`;
 
@@ -709,7 +709,11 @@ export async function undoQuestionMark(questionId, { attemptId = null } = {}) {
 export async function removeAttempt(attemptId) {
   const doc = requireProgress();
   const attempt = markedAttempt(doc, attemptId) || doc.saved_answers[waitingIndex(doc, attemptId)];
-  if (attempt?.session_id?.startsWith('paper_')) throw new Error('Change these marks from the exported test review.');
+  if (attempt?.session_id?.startsWith('paper_')) {
+    // Exported test marks are kept with the test itself, so they are removed there.
+    await deleteAttemptInk(attempt);
+    return writeOffline(offline => removeOfflinePart(offline, attemptId));
+  }
   await deleteAttemptInk(attempt);
   const before = doc.question_attempts.length + doc.saved_answers.length;
   doc.question_attempts = doc.question_attempts.filter((entry) => entry.attempt_id !== attemptId);

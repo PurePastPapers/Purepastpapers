@@ -71,6 +71,40 @@ export function putOfflineAttempt(doc, paper, { newAttemptId, result, expectedRe
 
 export const offlineRetakeId = () => uid('paper');
 
+/**
+ * Delete one question's mark from an exported test attempt (the Data Hub's Remove).
+ * The mark is taken out of the attempt's saved result and the revision goes up, so a
+ * stale tab or device syncing later cannot bring it back. The test is then partly marked.
+ */
+export function removeOfflinePart(doc, attemptId) {
+  const attempt = doc.question_attempts.find(entry => entry.attempt_id === attemptId);
+  const sessionId = attempt?.session_id;
+  const index = doc.sessions.findIndex(session => session.session_id === sessionId && isOfflineSession(session));
+  if (!attempt || index < 0) return false;
+  const session = doc.sessions[index];
+  const partId = attemptId.slice(sessionId.length + 1);
+  const result = session.result;
+  // Always bump the revision, so this copy wins over older ones when they are merged.
+  doc.sessions[index] = { ...session, revision: (session.revision || 0) + 1 };
+  if (result?.mode === 'parts' && Object.hasOwn(result.marks || {}, partId)) {
+    const marks = { ...result.marks };
+    delete marks[partId];
+    const left = Object.keys(marks).length;
+    const canonicalIds = { ...(result.canonicalIds || {}) };
+    delete canonicalIds[partId];
+    doc.sessions[index] = {
+      ...doc.sessions[index],
+      ...(left
+        ? { result: { ...result, marks, canonicalIds, awarded: Object.values(marks).reduce((sum, value) => sum + value, 0), percentage: null, unmarked: (result.unmarked || 0) + 1 } }
+        : { result: null, status: 'completed_on_paper' }),
+    };
+    // With a mark missing the test has no overall score, so it leaves the scores-over-time chart.
+    doc.paper_attempts = doc.paper_attempts.filter(entry => entry.session_id !== sessionId);
+  }
+  doc.question_attempts = doc.question_attempts.filter(entry => entry.attempt_id !== attemptId);
+  return true;
+}
+
 /** A general progress write may originate on a tab whose offline paper history is older. */
 export function retainOfflineProgress(local, remote) {
   if (!remote) return local;
