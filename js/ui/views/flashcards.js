@@ -1,9 +1,15 @@
 // Private flashcards. The data adapter keeps content and scheduling in the account backend.
 import { $, html, on, raw, setHtml } from '../../core/dom.js';
 import { confirmDialog, openModal, toast } from '../ui.js';
-import * as flashcards from '../../flashcards/api.js?v=flashcards-organise-1';
+import * as flashcards from '../../flashcards/api.js?v=flashcards-sets-1';
 import { icon } from '../icons.js';
-import { cloudAccountId } from '../../data/api.js';
+import { cloudAccountId, getProgress, learnedSet, setPreference } from '../../data/api.js';
+import { ensureSpec, getSubject, specIndex } from '../../data/content-repository.js';
+import { subjectColour } from '../subject-colours.js';
+import { catalogueScreen, homePage, setPage } from './flashcards-pages.js';
+import {
+  cardsPerPoint, countInPlay, createTagMapper, describeSets, generalCount, inPlay, requestSignature, selectionRequest,
+} from '../../flashcards/spec-map.js';
 
 const plural = (n, singular, pluralForm = `${singular}s`) => `${n} ${n === 1 ? singular : pluralForm}`;
 const dateLabel = (value) => value ? new Date(value).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '';
@@ -131,12 +137,9 @@ export function mount(element, context) {
   let studyRequest = 0;
   let searchTimer;
   let addingCatalogue = null;
-  let catalogueSubject = '';
-  let catalogueLevel = '';
   let queueTimer = null;
   let study = null;
   const activeReviews = new Map();
-  let exampleShown = false;
   let importState = null;
   let importPreviewRequest = null;
   let busy = false;
@@ -144,6 +147,18 @@ export function mount(element, context) {
   const mediaUrls = new Set();
   const mountOwner = cloudAccountId();
   const mediaCache = new Map();
+  // Subject tabs and "which cards" choices for PurePastPapers sets.
+  let homeTab = sessionStorage.getItem('ppp.flashcards.tab') || 'all';
+  let subjects = [];
+  let subjectsStatus = 'loading';
+  const specSets = new Map(); // deck id → described spec-tag groups
+  const specSetRequests = new Map();
+  const mappers = new Map(); // subject id → tag mapper
+  const openTopics = new Set();
+  let applyStatus = '';
+  let applyTimer = null;
+  let sampleCards = null;
+  let sampleDeck = null;
 
   const displayedMedia = new Map();
   function releaseDetachedMedia() {
@@ -202,6 +217,251 @@ export function mount(element, context) {
     if (readPending(deckId)?.requestId === requestId) writePending(deckId, null);
   };
   const activeDeck = () => decks.find((deck) => deck.id === selectedDeck);
+
+  // ── subjects, PurePastPapers sets and "which cards" ──
+  const preferences = () => { try { return getProgress().preferences || {}; } catch { return {}; } };
+  const entryFor = (deck) => catalogue.entries.find((entry) => entry.id === deck?.catalogue_id) || null;
+  const subjectById = (id) => subjects.find((subject) => subject.id === id) || null;
+  function subjectFor(deck) {
+    if (!deck) return null;
+    if (deck.catalogue_id) return subjectById(entryFor(deck)?.subject_id);
+    return subjectById(preferences().flashcardDeckSubjects?.[deck.id]);
+  }
+  const deckSubjectId = (deck) => deck?.catalogue_id ? entryFor(deck)?.subject_id || null : preferences().flashcardDeckSubjects?.[deck?.id] || null;
+  function choiceFor(deck) {
+    const saved = preferences().flashcardChoices?.[deck?.catalogue_id];
+    const mode = ['learnt', 'all', 'choose'].includes(saved?.mode) ? saved.mode : 'learnt';
+    return { mode, general: saved?.general !== false, points: Array.isArray(saved?.points) ? saved.points : [] };
+  }
+  async function saveChoice(deck, choice) {
+    const all = { ...(preferences().flashcardChoices || {}) };
+    all[deck.catalogue_id] = { mode: choice.mode, general: choice.general, ...(choice.mode === 'choose' ? { points: choice.points } : {}) };
+    await setPreference('flashcardChoices', all);
+  }
+  function pickerFor(choice) {
+    if (choice.mode === 'all') return () => true;
+    if (choice.mode === 'choose') { const chosen = new Set(choice.points); return (id) => chosen.has(id); }
+    let learned;
+    try { learned = learnedSet(); } catch { learned = new Set(); }
+    return (id) => learned.has(id);
+  }
+  function mapperFor(subjectId) {
+    if (!subjectId || !specIndex.hasSubject(subjectId)) return null;
+    if (!mappers.has(subjectId)) mappers.set(subjectId, createTagMapper(subjectId, specIndex));
+    return mappers.get(subjectId);
+  }
+
+  async function loadSubjects() {
+    try {
+      const ids = getProgress().enrolled_subjects || [];
+      const loaded = await Promise.all(ids.map(async (id) => {
+        const subject = await getSubject(id);
+        if (!subject) return null;
+        await ensureSpec(id).catch(() => null);
+        return {
+          id, name: `${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}`, board: subject.board, code: subject.spec_code,
+          colour: subjectColour(subject), subject,
+        };
+      }));
+      subjects = loaded.filter(Boolean);
+    } catch { subjects = []; }
+    subjectsStatus = 'ready';
+    if (homeTab !== 'all' && !subjectById(homeTab)) homeTab = 'all';
+  }
+
+  /** The spec-tag groups of a PurePastPapers set, loaded once per visit. */
+  function loadSpecSets(deck) {
+    if (specSets.has(deck.id)) return Promise.resolve(specSets.get(deck.id));
+    if (!specSetRequests.has(deck.id)) {
+      const request = (async () => {
+        const subjectId = deckSubjectId(deck);
+        if (subjectId) await ensureSpec(subjectId).catch(() => null);
+        const mapper = mapperFor(subjectId) || (() => []);
+        const sets = describeSets(await flashcards.listDeckSpecSets(deck.id), mapper);
+        specSets.set(deck.id, sets);
+        return sets;
+      })().finally(() => specSetRequests.delete(deck.id));
+      specSetRequests.set(deck.id, request);
+    }
+    return specSetRequests.get(deck.id);
+  }
+
+  /** Cards in play for a PurePastPapers set under its saved choice (null while loading). */
+  function inPlayFor(deck, choice = choiceFor(deck)) {
+    const sets = specSets.get(deck.id);
+    if (!sets) return null;
+    const picked = pickerFor(choice);
+    const total = sets.reduce((sum, set) => sum + set.cards, 0);
+    const learnt = pickerFor({ mode: 'learnt' });
+    const result = {
+      choice, total, general: generalCount(sets), inPlay: countInPlay(sets, choice, picked),
+      counts: {
+        learnt: countInPlay(sets, { mode: 'learnt', general: choice.general }, learnt),
+        all: total,
+        choose: countInPlay(sets, { mode: 'choose', general: choice.general }, pickerFor({ ...choice, mode: 'choose' })),
+      },
+      topics: [],
+    };
+    if (view === 'set' && deck.id === selectedDeck) {
+      const perPoint = cardsPerPoint(sets);
+      const subjectId = deckSubjectId(deck);
+      const leaves = specIndex.subjectLeaves(subjectId);
+      const groups = new Map();
+      const bigSubject = new Set(leaves.map((id) => specIndex.topicOf(id)?.id)).size > 30;
+      for (const id of leaves) {
+        if (!perPoint.has(id)) continue;
+        const point = specIndex.get(id);
+        let topic = specIndex.topicOf(id) || point;
+        if (bigSubject && topic.parent) topic = specIndex.get(topic.parent) || topic;
+        if (!groups.has(topic.id)) {
+          groups.set(topic.id, { id: topic.id, title: /^\d+$/.test(topic.code || '') ? `Topic ${topic.code}: ${topic.title.replace(/^Topic \d+:\s*/, '')}` : (topic.code && !/^Topic/.test(topic.title) && /^Topic/.test(topic.code) ? `${topic.code}: ${topic.title}` : topic.title), points: [] });
+        }
+        groups.get(topic.id).points.push({ id, code: point.code || '', title: point.title, cards: perPoint.get(id), on: picked(id) });
+      }
+      result.topics = [...groups.values()];
+    }
+    return result;
+  }
+
+  /** Make the database match a set's choice. Skips when nothing changed. */
+  async function syncSelection(deck, { force = false } = {}) {
+    const sets = await loadSpecSets(deck);
+    const choice = choiceFor(deck);
+    const mapper = mapperFor(deckSubjectId(deck)) || (() => []);
+    const request = selectionRequest(sets, mapper, choice, pickerFor(choice));
+    const key = `ppp.flashcards.applied.${mountOwner}.${deck.id}`;
+    const signature = requestSignature(request);
+    const expected = countInPlay(sets, choice, pickerFor(choice));
+    const active = sets.reduce((sum, set) => sum + set.active, 0);
+    let stored = null;
+    try { stored = localStorage.getItem(key); } catch { /* private mode */ }
+    if (!force && stored === signature && active === expected) return false;
+    const result = await flashcards.applySpecSelection(deck.id, request);
+    try { localStorage.setItem(key, signature); } catch { /* private mode */ }
+    for (const set of sets) set.active = inPlay(set, choice, pickerFor(choice)) ? set.cards : 0;
+    deckCountsDirty = true;
+    return Boolean(result?.changed);
+  }
+
+  /** After decks load: keep every PurePastPapers set in step with what has been learnt. */
+  let syncing = null;
+  function syncAllSelections() {
+    if (syncing || !cloudReady()) return syncing;
+    syncing = (async () => {
+      let changed = false;
+      for (const deck of decks.filter((item) => item.catalogue_id)) {
+        try { changed = (await syncSelection(deck)) || changed; } catch { /* the set still opens; it retries next visit */ }
+        if (disposed) return;
+      }
+      if (changed) { await refreshDecks().catch(() => {}); }
+      if (!disposed && ['decks', 'catalogue', 'set'].includes(view)) draw();
+    })().finally(() => { syncing = null; });
+    return syncing;
+  }
+
+  function pagesModel() {
+    return {
+      tab: homeTab, subjects, decks, catalogue, cloud: cloudReady(), adding: addingCatalogue, openTopics, applyStatus,
+      subjectFor, entryFor, choiceFor, inPlayFor, safeUrl: safeAnkiUrl,
+      hasSets: (id) => id === 'all' || decks.some((deck) => subjectFor(deck)?.id === id) || catalogue.entries.some((entry) => entry.subject_id === id),
+      topicSummary: (subjectId) => {
+        const learned = learnedSet();
+        return specIndex.subjectNodes(subjectId).filter((node) => node.type === 'topic' && node.leaves.length).map((node) => {
+          const done = node.leaves.filter((id) => learned.has(id)).length;
+          return { id: node.id, title: node.title.replace(/^Topic \d+:\s*/, ''), state: done === node.leaves.length ? 'all' : done ? 'part' : 'none' };
+        });
+      },
+      samples: () => {
+        if (sampleDeck !== selectedDeck || !sampleCards) return html`<p class="small muted" role="status">Loading cards…</p>`;
+        if (!sampleCards.length) return html`<p class="small muted">No cards are in play yet. Tick spec points you’ve learnt, or choose Everything.</p>`;
+        return html`${sampleCards.map((card) => html`<article class="card fc-sample"><div class="flashcards__snippet">${cardMarkup(card.variant === 'reverse' ? card.back : card.front, card.variant, false, { showMedia: false })}</div>
+          <div class="fc-sample__tags">${tagList(card.tags).filter((tag) => /^(?:PPP::)?Spec::/i.test(tag)).slice(0, 2).map((tag) => html`<span class="tag">Spec ${specLabel(tag)}</span>`)}</div></article>`)}`;
+      },
+    };
+  }
+
+  async function loadSamples(deck) {
+    sampleDeck = deck.id;
+    sampleCards = null;
+    try {
+      const result = await flashcards.listCardPage(deck.id, { pageSize: 4, availability: 'active', sort: 'new-first' });
+      if (disposed || selectedDeck !== deck.id) return;
+      sampleCards = result.cards || [];
+    } catch { sampleCards = []; }
+    const target = $('[data-set-samples]', element);
+    if (target && view === 'set') setHtml(target, pagesModel().samples());
+  }
+
+  async function openSet(deckId) {
+    clearTimeout(applyTimer);
+    selectedDeck = deckId;
+    openTopics.clear();
+    applyStatus = '';
+    view = 'set';
+    draw();
+    $('.fc-sethead__title', element)?.focus({ preventScroll: true });
+    const deck = activeDeck();
+    void loadSamples(deck);
+    try { await loadSpecSets(deck); } catch { applyStatus = 'Could not load this set’s spec points.'; }
+    if (!disposed && view === 'set' && selectedDeck === deckId) draw();
+  }
+
+  /** The student changed which cards they want: save, redraw, then update study. */
+  async function changeChoice(deck, choice) {
+    await saveChoice(deck, choice);
+    applyStatus = 'Updating your cards…';
+    drawSetKeepingScroll();
+    clearTimeout(applyTimer);
+    applyTimer = setTimeout(async () => {
+      try {
+        await syncSelection(deck, { force: true });
+        await refreshDecks();
+        applyStatus = 'Saved. Study uses these cards now.';
+        void loadSamples(deck);
+      } catch (error) {
+        applyStatus = error?.message || 'Could not update your cards. Try again.';
+      }
+      if (!disposed && view === 'set' && selectedDeck === deck.id) drawSetKeepingScroll();
+    }, 450);
+  }
+
+  function drawSetKeepingScroll() {
+    const y = window.scrollY;
+    const focused = document.activeElement;
+    const key = focused?.matches?.('input') ? [...element.querySelectorAll('input')].indexOf(focused) : -1;
+    draw();
+    window.scrollTo({ top: y });
+    if (key >= 0) element.querySelectorAll('input')[key]?.focus({ preventScroll: true });
+  }
+
+  async function setMenu(deck) {
+    const choice = await openModal({
+      title: deck.title,
+      onOpen: (dialog) => dialog.classList.add('flashcards-dialog'),
+      body: html`<p>PurePastPapers set${subjectFor(deck) ? ` for ${subjectFor(deck).name}` : ''}.</p>`,
+      actions: [{ label: 'Cancel', cancel: true }, { label: 'Choose cards', value: 'choose' }, { label: 'Study settings', value: 'settings' }, { label: 'Remove from my sets', value: 'remove', variant: 'danger' }],
+    });
+    if (choice === 'choose') return openSet(deck.id);
+    if (choice === 'settings') return deckDialog(deck);
+    if (choice !== 'remove') return;
+    const name = [subjectFor(deck)?.name, entryFor(deck)?.deck_type].filter(Boolean).join(' ') || deck.title;
+    const confirmed = await confirmDialog({
+      title: `Remove ${name}?`,
+      message: 'It goes from your sets and stops coming up in reviews. Your progress is kept: add it again from “Add a PurePastPapers set” and you carry on where you left off.',
+      confirmLabel: 'Remove set', danger: true,
+    });
+    if (!confirmed) return;
+    await flashcards.removeCatalogueDeck(deck.catalogue_id);
+    try { localStorage.removeItem(`ppp.flashcards.applied.${mountOwner}.${deck.id}`); } catch { /* private mode */ }
+    specSets.delete(deck.id);
+    decks = decks.filter((item) => item.id !== deck.id);
+    selectedDeck = null;
+    view = 'decks';
+    deckCountsDirty = true;
+    draw();
+    toast(`${name} removed from your sets.`, { type: 'success' });
+    void refreshDecks().then(() => { if (!disposed && view === 'decks') draw(); }).catch(() => {});
+  }
   const presentError = (error) => toast(error?.message || 'Something went wrong. Please try again.', { type: 'error' });
   const status = (message, retry = '') => html`<div class="flashcards__status" role="status">${icon(retry ? 'alert' : message.endsWith('…') ? 'clock' : 'info')}<p>${message}</p>${retry ? html`<button class="btn btn--sm" data-action="${retry}">Try again</button>` : ''}</div>`;
   // Keep mutations serial. Read-only screens render before their requests complete.
@@ -212,7 +472,7 @@ export function mount(element, context) {
     try { await fn(); } catch (error) { if (!disposed) presentError(error); } finally { busy = false; }
     if (queued && !disposed) { const next = queued; queued = null; await task(next, { queue: true }); }
   };
-  const navigationActions = new Set(['back-decks', 'catalogue', 'open-deck', 'exit-study', 'study']);
+  const navigationActions = new Set(['back-decks', 'catalogue', 'open-deck', 'exit-study', 'study', 'home-tab', 'browse-cards', 'back-set']);
 
   async function refreshDecks({ sync = false } = {}) {
     if (decksRequest) return decksRequest;
@@ -230,18 +490,29 @@ export function mount(element, context) {
   async function loadDecks() {
     if (decksStatus === 'ready' && !deckCountsDirty) return;
     if (decksStatus === 'error') { decksStatus = 'loading'; if (view === 'decks') draw(); }
-    try { await refreshDecks({ sync: decksStatus === 'loading' }); }
+    try {
+      await Promise.all([
+        refreshDecks({ sync: decksStatus === 'loading' }),
+        subjectsStatus === 'ready' ? null : loadSubjects(),
+        catalogueStatus === 'ready' || !cloudReady() ? null : loadCatalogue({ quiet: true }),
+      ]);
+    }
     catch { if (decksStatus !== 'ready') decksStatus = 'error'; }
     if (!disposed && ['decks', 'catalogue'].includes(view)) draw();
+    if (!disposed && decksStatus === 'ready') void syncAllSelections();
   }
 
-  async function loadCatalogue() {
-    if (catalogueStatus === 'ready' || catalogueStatus === 'loading') return;
+  let catalogueRequest = null;
+  async function loadCatalogue({ quiet = false } = {}) {
+    if (catalogueStatus === 'ready') return;
+    if (catalogueRequest) return catalogueRequest;
     catalogueStatus = 'loading';
-    draw();
-    try { catalogue = await flashcards.listCatalogue(); catalogueStatus = 'ready'; }
-    catch { catalogueStatus = 'error'; }
-    if (view === 'catalogue') draw();
+    if (!quiet) draw();
+    catalogueRequest = flashcards.listCatalogue().then((result) => { catalogue = result; catalogueStatus = 'ready'; })
+      .catch(() => { catalogueStatus = 'error'; })
+      .finally(() => { catalogueRequest = null; });
+    await catalogueRequest;
+    if (!disposed && ['catalogue', 'decks'].includes(view)) draw();
   }
 
   function updateCardList() {
@@ -354,67 +625,6 @@ export function mount(element, context) {
     cardSort = 'oldest';
   }
 
-  function deckCover(title, detail, subject = '') {
-    const label = (subject || title).toLowerCase();
-    const tone = /biolog|cell|plant/.test(label) ? 'leaf'
-      : /chem|bond/.test(label) ? 'wave'
-      : /physic|mechanic/.test(label) ? 'orbit'
-      : /math|algebra/.test(label) ? 'grid'
-      : ['leaf', 'orbit', 'grid', 'wave'][Array.from(label).reduce((sum, ch) => sum + ch.codePointAt(0), 0) % 4];
-    return html`<header class="flashcards__cover" data-tone="${tone}">
-      <div class="flashcards__cover-art" aria-hidden="true"></div>
-      <div class="flashcards__cover-meta">${icon('layers', { size: 16 })}${detail}</div>
-      <h3>${title}</h3>
-    </header>`;
-  }
-
-  function libraryHeader() {
-    return html`<header class="flashcards__mast">
-      <h1>Flashcards</h1>
-      <div class="flashcards__fan" aria-hidden="true"><i></i><i></i><i></i></div>
-      <nav class="flashcards__tabs" aria-label="Flashcard decks">
-        <button class="flashcards__tab" data-action="back-decks" aria-current="${view === 'decks' ? 'page' : 'false'}">${icon('layers')} My decks</button>
-        <button class="flashcards__tab" data-action="catalogue" aria-current="${view === 'catalogue' ? 'page' : 'false'}">${icon('book')} Official catalogue</button>
-      </nav>
-    </header>`;
-  }
-
-  function deckList() {
-    if (decksStatus === 'loading') return status('Loading your decks…');
-    if (decksStatus === 'error') return status('Could not load your decks.', 'retry-decks');
-    const byId = new Map(decks.map((deck) => [deck.id, deck]));
-    const children = new Map();
-    for (const deck of decks) {
-      const parent = byId.has(deck.parent_id) ? deck.parent_id : null;
-      if (!children.has(parent)) children.set(parent, []);
-      children.get(parent).push(deck);
-    }
-    const ordered = [];
-    const seen = new Set();
-    const append = (root) => {
-      const stack = [root];
-      while (stack.length) {
-        const deck = stack.pop();
-        if (seen.has(deck.id)) continue;
-        seen.add(deck.id);
-        ordered.push(deck);
-        for (const child of [...(children.get(deck.id) || [])].reverse()) stack.push(child);
-      }
-    };
-    for (const deck of children.get(null) || []) append(deck);
-    for (const deck of decks) if (!seen.has(deck.id)) append(deck);
-    return html`${cloudReady() ? '' : html`<p class="banner banner--warn">Sign in to create, import and sync private decks.</p>`}
-      <div class="flashcards__toolbar"><div><h2>My decks</h2>${decks.length ? html`<p class="muted">${plural(decks.length, 'deck')} in your library</p>` : ''}</div>
-        ${decks.length ? html`<div class="flashcards__actions"><button class="btn" data-action="import" ${cloudReady() ? '' : raw('disabled')}>${icon('upload')} Import</button><button class="btn btn--primary" data-action="create-deck" ${cloudReady() ? '' : raw('disabled')}>${icon('plus')} Create deck</button></div>` : ''}
-      </div>
-      ${decks.length ? html`<div class="flashcards__deck-grid">${ordered.map((deck) => html`<article class="card flashcards__deck">
-        ${deckCover(deck.title, plural(deck.card_count || 0, 'card'))}
-        ${deck.parent_id ? html`<p class="small muted">Inside ${byId.get(deck.parent_id)?.title || 'another deck'}</p>` : ''}
-        <div class="flashcards__counts" aria-label="Study counts"><span><strong>${deck.new_count || 0}</strong> New</span><span><strong>${deck.learning_count || 0}</strong> Learning</span><span><strong>${deck.due_count || 0}</strong> Due</span></div>
-        <div class="flashcards__actions"><button class="btn btn--primary" data-action="study" data-id="${deck.id}">${icon('play', { size: 16 })} Study</button><button class="btn" data-action="open-deck" data-id="${deck.id}">Manage</button></div>
-      </article>`)}</div>` : html`<section class="card flashcards__empty">${icon('layers', { size: 32 })}<h3>Start studying</h3><p>Choose an official deck, or create a private deck to write or import your own cards.</p><div class="flashcards__actions"><button class="btn btn--primary" data-action="create-deck" ${cloudReady() ? '' : raw('disabled')}>Create deck</button><button class="btn" data-action="catalogue">Browse decks</button><button class="btn" data-action="import" ${cloudReady() ? '' : raw('disabled')}>Import</button></div></section>`}`;
-  }
-
   function topicPanel() {
     if (topicsStatus === 'loading') return status('Loading topics…');
     if (topicsStatus === 'error') return status('Could not load topics.', 'retry-topics');
@@ -477,10 +687,10 @@ export function mount(element, context) {
       return html`${status('No cards match these filters.')}<button class="linkbtn" data-action="clear-card-filters">Clear filters</button>`;
     }
     const readOnly = Boolean(activeDeck()?.catalogue_id);
-    return html`${bulkActions()}
+    return html`${readOnly ? html`<p class="small muted flashcards__result-count" role="status">${plural(totalCards, 'matching card')} · ${matchingActive} in play</p>` : bulkActions()}
       <div class="flashcards__card-list">${cards.map((card) => html`<article class="card flashcards__row"><div class="flashcards__row-content"><div class="flashcards__snippet">${cardMarkup(card.variant === 'reverse' ? card.back : card.front, card.variant, false, { showMedia: false })}</div>
         ${cardMetadata(card)}</div>
-        <div class="flashcards__actions"><button class="btn btn--sm" data-action="preview-card" data-id="${card.id}">Preview</button>${readOnly ? '' : html`<button class="btn btn--sm" data-action="edit-card" data-id="${card.id}">Edit</button><button class="btn btn--sm" data-action="move-card" data-id="${card.id}">Move</button>`}<button class="btn btn--sm" data-action="suspend-card" data-id="${card.id}">${card.suspended ? 'Unsuspend' : 'Suspend'}</button>${readOnly ? '' : html`<button class="btn btn--sm" data-action="delete-card" data-id="${card.id}">Delete</button>`}</div></article>`)}</div>
+        <div class="flashcards__actions"><button class="btn btn--sm" data-action="preview-card" data-id="${card.id}">Preview</button>${readOnly ? '' : html`<button class="btn btn--sm" data-action="edit-card" data-id="${card.id}">Edit</button><button class="btn btn--sm" data-action="move-card" data-id="${card.id}">Move</button>`}${readOnly ? '' : html`<button class="btn btn--sm" data-action="suspend-card" data-id="${card.id}">${card.suspended ? 'Unsuspend' : 'Suspend'}</button><button class="btn btn--sm" data-action="delete-card" data-id="${card.id}">Delete</button>`}</div></article>`)}</div>
       ${totalCards > pageSize ? html`<nav class="flashcards__pagination" aria-label="Card pages"><button class="btn btn--sm" data-action="prev-page" ${page <= 1 ? raw('disabled') : ''}>Previous</button><span>Page ${page} of ${Math.ceil(totalCards / pageSize)}</span><button class="btn btn--sm" data-action="next-page" ${page * pageSize >= totalCards ? raw('disabled') : ''}>Next</button></nav>` : ''}`;
   }
 
@@ -488,35 +698,17 @@ export function mount(element, context) {
     const deck = activeDeck();
     if (!deck) return status('Deck unavailable.');
     const readOnly = Boolean(deck.catalogue_id);
-    return html`<button class="linkbtn" data-action="back-decks">← My decks</button><div class="flashcards__toolbar"><div><h2 tabindex="-1">${deck.title}</h2><p class="muted"><span data-manager-card-count>${plural(deck.card_count || 0, 'card')}</span> · ${deck.target_retention || 90}% target retention${readOnly ? ' · Official deck' : ''}</p></div>
+    return html`${readOnly ? html`<button class="linkbtn" data-action="back-set">← Back to the set</button>` : html`<button class="linkbtn" data-action="back-decks">← My sets</button>`}<div class="flashcards__toolbar"><div><h2 tabindex="-1">${deck.title}</h2><p class="muted"><span data-manager-card-count>${plural(deck.card_count || 0, 'card')}</span> · ${deck.target_retention || 90}% target retention${readOnly ? ' · PurePastPapers set' : ''}</p></div>
       <div class="flashcards__actions"><button class="btn btn--primary" data-action="study" data-id="${deck.id}">Start studying</button>${readOnly ? '' : html`<button class="btn" data-action="add-card">Add card</button>`}<button class="btn" data-action="settings">Deck settings</button></div></div>
       <div data-manager-topics>${readOnly ? topicPanel() : ''}</div>
       <div class="flashcards__manager-filters">
         <label class="field flashcards__search"><span class="field__label">Search cards and tags</span><input class="input" type="search" data-search value="${query}" placeholder="Search this deck"></label>
         <div data-manager-spec-points>${specPointFilter()}</div>
         <label class="field"><span class="field__label">Card status</span><select class="input" data-card-status>${selectOptions([['all', 'Any status'], ['new', 'New'], ['learning', 'Learning'], ['due', 'Due now'], ['reviewed', 'Reviewed']], cardStatus)}</select></label>
-        <label class="field"><span class="field__label">Study availability</span><select class="input" data-card-availability>${selectOptions([['all', 'Active and suspended'], ['active', 'Active only'], ['suspended', 'Suspended only']], availability)}</select></label>
+        <label class="field"><span class="field__label">${readOnly ? 'In play' : 'Study availability'}</span><select class="input" data-card-availability>${selectOptions(readOnly ? [['all', 'All cards'], ['active', 'In play'], ['suspended', 'Not in play']] : [['all', 'Active and suspended'], ['active', 'Active only'], ['suspended', 'Suspended only']], availability)}</select></label>
         <label class="field"><span class="field__label">Sort cards</span><select class="input" data-card-sort>${selectOptions([['oldest', 'Oldest added'], ['newest', 'Newest added'], ['new-first', 'New cards first'], ['due', 'Due date']], cardSort)}</select></label>
       </div>
       <div data-manager-results>${managerResults()}</div>`;
-  }
-
-  function cataloguePage() {
-    if (catalogueStatus === 'loading' || catalogueStatus === 'idle') return status('Loading the deck catalogue…');
-    if (catalogueStatus === 'error') return status('Could not load the deck catalogue.', 'retry-catalogue');
-    const owned = new Map(decks.filter((deck) => deck.catalogue_id).map((deck) => [deck.catalogue_id, deck]));
-    const option = (value, current) => html`<option value="${value}" ${value === current ? raw('selected') : ''}>${value}</option>`;
-    const entries = catalogue.entries.filter((entry) => (!catalogueSubject || entry.subject === catalogueSubject) && (!catalogueLevel || entry.qualification === catalogueLevel));
-    return html`<div class="flashcards__toolbar"><div><h2>Official catalogue</h2><p class="muted">${catalogue.schoolEligible || catalogue.entries.some((entry) => entry.entitled) ? 'Add an official deck to study it in My decks.' : 'Official pilot decks are available to eligible school accounts and site owners.'}</p></div></div>
-      <div class="flashcards__filters"><label class="field"><span class="field__label">Subject</span><select class="input" data-catalogue-subject><option value="">All subjects</option>${[...new Set(catalogue.entries.map((entry) => entry.subject).filter(Boolean))].map((value) => option(value, catalogueSubject))}</select></label>
-      <label class="field"><span class="field__label">Qualification</span><select class="input" data-catalogue-level><option value="">All qualifications</option>${[...new Set(catalogue.entries.map((entry) => entry.qualification).filter(Boolean))].map((value) => option(value, catalogueLevel))}</select></label></div>
-      <div class="flashcards__deck-grid" data-catalogue-list>${entries.length ? entries.map((entry) => {
-        const deck = owned.get(entry.id);
-        const external = safeAnkiUrl(entry.sourceUrl);
-        const canAdd = entry.entitled ?? catalogue.schoolEligible;
-        return html`<article class="card flashcards__catalogue-card" data-subject="${entry.subject || ''}" data-level="${entry.qualification || ''}">${deckCover(entry.title, [entry.subject, entry.deck_type].filter(Boolean).join(' · ') || 'Official deck', entry.subject)}<p class="small muted">${[entry.qualification, entry.board].filter(Boolean).join(' · ')}</p><p>${entry.description || ''}</p>${entry.card_count ? html`<p class="small muted">${plural(entry.card_count, 'card')}</p>` : ''}
-          <div class="flashcards__actions">${external ? html`<a class="btn" href="${external}" target="_blank" rel="noopener noreferrer">Download from AnkiWeb</a>` : deck ? html`<button class="btn" data-action="open-deck" data-id="${deck.id}">Open deck</button>` : entry.available ? html`<button class="btn btn--primary" data-action="add-catalogue" data-id="${entry.id}" ${!canAdd || addingCatalogue ? raw('disabled') : ''}>${addingCatalogue === entry.id ? 'Adding…' : canAdd ? 'Add deck' : 'Access required'}</button>` : html`<span class="tag">Coming soon</span>`}</div></article>`;
-      }) : status('No decks match these filters.')}</div>`;
   }
 
   function ratingStatus(session) {
@@ -527,15 +719,23 @@ export function mount(element, context) {
   }
 
   function studyPage() {
-    return html`<div class="flashcards__study-top"><button class="linkbtn" data-action="exit-study">← Back to deck</button><div><span class="muted small">${study.deckTitle}${study.topic ? ` · ${study.topic.split('::').join(' › ')}` : ''}</span><span class="muted small flashcards__study-progress" data-study-progress></span></div></div>
-      <section class="card flashcards__study" data-study-card></section>`;
+    const deck = activeDeck();
+    const subject = subjectFor(deck);
+    const label = deck?.catalogue_id
+      ? html`<span class="fc-stamp" aria-hidden="true">P</span><span><b>${subject?.name || 'PurePastPapers'}</b> · ${entryFor(deck)?.deck_type || study.deckTitle}</span>`
+      : html`${subject ? html`<span class="fc-dot" aria-hidden="true"></span>` : ''}<span><b>${study.deckTitle}</b>${subject ? ` · ${subject.name}` : ''}</span>`;
+    return html`<div class="fc-studytop"><button class="linkbtn" data-action="exit-study">← Back to the set</button>
+        <div class="fc-studyset ${deck?.catalogue_id ? '' : 'fc-studyset--own'}" style="--sc:${subject?.colour || 'var(--surface)'}">${label}${study.topic ? html`<span class="small"> · ${study.topic.split('::').join(' › ')}</span>` : ''}</div>
+        <span class="muted small flashcards__study-progress" data-study-progress></span></div>
+      <div class="fc-studymeter" style="--sc:${subject?.colour || 'var(--ink)'}" aria-hidden="true"><i data-study-meter></i></div>
+      <section class="fc-studypanel" data-study-card></section>`;
   }
 
   function studyEmpty(session) {
     if (session.loading) return status(session.reviewed ? 'Loading the next card…' : 'Loading your study queue…');
     if (session.failed) return status('Could not load the study queue.', 'retry-study');
     if (!session.reviewed && !session.nextDue && activeDeck()?.catalogue_id) {
-      return html`<h2 data-study-end tabindex="-1">No cards ready</h2><p>Choose which cards are active for study in your deck’s topics.</p><button class="btn btn--primary" data-action="exit-study">Choose topics</button>`;
+      return html`<h2 data-study-end tabindex="-1">No cards ready</h2><p>None of this set’s cards are in play yet. Tick the spec points you’ve learnt in My subjects, or choose cards yourself.</p><button class="btn btn--primary" data-action="exit-study">Choose cards</button>`;
     }
     return html`${icon('checkCircle', { size: 36 })}<h2 data-study-end tabindex="-1">All caught up</h2><p>${session.reviewed ? `You completed ${plural(session.reviewed, 'review')} in this session.` : 'There are no cards ready to study in this deck.'}</p>${session.nextDue ? html`<p>Next card due ${dateLabel(session.nextDue)}.</p>` : ''}`;
   }
@@ -546,11 +746,20 @@ export function mount(element, context) {
       <button class="btn" data-action="grade" data-grade="${grade}" data-grade-label="${label}">${label} <span aria-hidden="true">${grade}</span></button>`)}</div>`;
   }
 
+  function studyMeter(session) {
+    const meter = $('[data-study-meter]', element);
+    if (!meter) return;
+    const left = session.card ? 1 + session.buffer.length : 0;
+    const total = Math.max(session.planned || 0, session.reviewed + left);
+    meter.style.width = `${total ? Math.round((100 * session.reviewed) / total) : session.reviewed ? 100 : 0}%`;
+  }
+
   function updateStudyFeedback(session) {
     const statusArea = $('[data-rating-status]', element);
     const message = ratingStatus(session);
     if (statusArea.textContent !== message) statusArea.textContent = message;
     $('[data-study-progress]', element).textContent = `${session.reviewed} reviewed`;
+    studyMeter(session);
     const pendingGrade = !session.saving && session.pending?.grade;
     for (const button of element.querySelectorAll('[data-action="grade"]')) {
       const isRetry = pendingGrade === Number(button.dataset.grade);
@@ -564,11 +773,12 @@ export function mount(element, context) {
     const previousFocus = document.activeElement;
     const restoreFocus = previousFocus === document.body || element.contains(previousFocus);
     const nextCard = study.card;
-    panel.classList.toggle('ruled', Boolean(nextCard));
+    panel.classList.toggle('card', !nextCard);
     panel.classList.toggle('flashcards__study-empty', !nextCard);
     scheduleStudyWake();
     if (!nextCard) {
       $('[data-study-progress]', element).textContent = `${study.reviewed} reviewed`;
+      studyMeter(study);
       setHtml(panel, studyEmpty(study));
       delete panel.dataset.cardId;
       delete panel.dataset.cardRevision;
@@ -581,9 +791,11 @@ export function mount(element, context) {
     if (cardChanged) {
       panel.dataset.cardId = nextCard.id;
       panel.dataset.cardRevision = nextCard.revision;
-      setHtml(panel, html`<div class="flashcards__faces">
+      const points = tagList(nextCard.tags).filter((tag) => /^(?:PPP::)?Spec::/i.test(tag)).slice(0, 2);
+      setHtml(panel, html`<div class="card ruled flashcards__faces fc-studycard"><i class="tape tape--c" aria-hidden="true"></i>
+        ${points.length ? html`<span class="fc-studyspec">${points.map((tag) => html`<span class="tag">Spec ${specLabel(tag)}</span>`)}</span>` : ''}
         <div role="group" aria-labelledby="flashcard-question-label" aria-describedby="flashcard-question" tabindex="-1" data-study-question>
-          <p class="small muted flashcards__face-label" id="flashcard-question-label">Question</p>
+          <p class="flashcards__face-label hand" id="flashcard-question-label">question</p>
           <div class="flashcards__content" id="flashcard-question">${questionFace(nextCard)}</div>
         </div>
         <div data-study-answer hidden></div>
@@ -600,7 +812,7 @@ export function mount(element, context) {
       answer.hidden = false;
       setHtml(answer, html`<hr class="flashcards__divider">
         <div role="group" aria-labelledby="flashcard-answer-label" aria-describedby="flashcard-answer flashcard-rating-status" tabindex="-1" data-study-answer-face>
-          <p class="small muted flashcards__face-label" id="flashcard-answer-label">Answer</p>
+          <p class="flashcards__face-label hand" id="flashcard-answer-label">answer</p>
           <div class="flashcards__content" id="flashcard-answer">${answerContent(nextCard)}</div>
           ${answerExtra(nextCard)}
         </div>`);
@@ -627,10 +839,6 @@ export function mount(element, context) {
     if (view !== 'study' || !study?.card || study.shown) return;
     study.shown = true;
     drawStudy();
-  }
-
-  function example() {
-    return html`<details class="card flashcards__example"><summary>Try an example card</summary><p class="small muted">This example does not affect your decks or progress.</p><div class="flashcards__example-card"><p>What is the powerhouse of the cell?</p>${exampleShown ? html`<hr><p>The mitochondrion</p>` : ''}</div><button class="btn btn--sm" data-action="example">${exampleShown ? 'Hide answer' : 'Show answer'}</button></details>`;
   }
 
   function importPage() {
@@ -665,31 +873,54 @@ export function mount(element, context) {
     }
   }
 
+  function overviewPage() {
+    const head = html`<header class="fc-head"><div><h1>Flashcards</h1></div></header>`;
+    if (decksStatus === 'loading' || subjectsStatus === 'loading') return html`${head}${status('Loading your sets…')}`;
+    if (decksStatus === 'error') return html`${head}${status('Could not load your sets.', 'retry-decks')}`;
+    if (view === 'catalogue') {
+      if (catalogueStatus === 'error') return status('Could not load the PurePastPapers sets.', 'retry-catalogue');
+      if (catalogueStatus !== 'ready') return status('Loading the PurePastPapers sets…');
+      return catalogueScreen(pagesModel());
+    }
+    return homePage(pagesModel());
+  }
+
   function draw() {
     if (disposed) return;
     clearTimeout(queueTimer);
-    const overview = view === 'decks' || view === 'catalogue';
-    const tabHadFocus = element.contains(document.activeElement) && document.activeElement.matches('.flashcards__tab, [data-action="back-decks"]');
-    setHtml(element, html`<div class="flashcards" data-view="${view}">${overview ? libraryHeader() : ''}
-      ${view === 'study' ? studyPage() : view === 'import' ? importPage() : view === 'deck' ? deckPage() : view === 'catalogue' ? cataloguePage() : html`${deckList()}${decksStatus === 'ready' && !decks.length ? example() : ''}<footer class="flashcards__guide-link"><button class="linkbtn" data-action="flashcards-guide">${icon('book')} How to use Flashcards</button></footer>`}</div>`);
+    const page = view === 'study' ? studyPage() : view === 'import' ? importPage() : view === 'deck' ? deckPage()
+      : view === 'set' ? (activeDeck() ? setPage(pagesModel(), activeDeck()) : status('This set is no longer in your sets.'))
+      : overviewPage();
+    const siteLook = view === 'decks' || view === 'catalogue' || view === 'set';
+    setHtml(element, html`<div class="${siteLook ? 'fc' : view === 'study' ? 'flashcards flashcards--site' : 'flashcards'}" data-view="${view}">${page}</div>`);
+    for (const box of element.querySelectorAll('[data-part]')) box.indeterminate = true;
     releaseDetachedMedia();
-    if (overview && tabHadFocus) $('.flashcards__tab[aria-current="page"]', element)?.focus({ preventScroll: true });
   }
 
   async function deckDialog(deck = null) {
+    const own = !deck?.catalogue_id;
+    const currentSubject = deck ? deckSubjectId(deck) : (homeTab !== 'all' ? homeTab : '');
+    const subjectField = own && subjects.length ? html`<label class="field"><span class="field__label">Subject (optional)</span><select class="input" name="subject"><option value="">No subject</option>${subjects.map((item) => html`<option value="${item.id}" ${item.id === currentSubject ? raw('selected') : ''}>${item.name}</option>`)}</select><span class="field__hint">The set shows on this subject’s tab.</span></label>` : '';
     const result = await openModal({
       onOpen: (dialog) => dialog.classList.add('flashcards-dialog'),
-      title: deck ? 'Deck settings' : 'Create a deck',
-      body: html`<label class="field"><span class="field__label">Deck name</span><input class="input" name="title" maxlength="100" required value="${deck?.title || ''}" ${deck?.catalogue_id ? raw('readonly') : ''}></label>${!deck?.catalogue_id ? html`<label class="field"><span class="field__label">Inside another deck (optional)</span><select class="input" name="parent"><option value="">No parent deck</option>${decks.filter((item) => item.id !== deck?.id && !item.catalogue_id).map((item) => html`<option value="${item.id}" ${deck?.parent_id === item.id ? raw('selected') : ''}>${item.title}</option>`)}</select></label>` : ''}${deck ? html`<label class="field"><span class="field__label">Target retention</span><input class="input" name="retention" type="number" min="80" max="92" step="1" value="${deck.target_retention || 90}"><span class="field__hint">A higher target usually means more reviews. Changes apply to future reviews.</span></label><label class="field"><span class="field__label">New cards per day</span><input class="input" name="newLimit" type="number" min="0" max="999" step="1" value="${deck.new_limit ?? 20}"></label>` : ''}`,
-      actions: [{ label: 'Cancel', cancel: true }, { label: deck ? 'Save changes' : 'Create deck', variant: 'primary', validate: (dialog) => {
+      title: deck ? (own ? 'Set settings' : 'Study settings') : 'Make your own set',
+      body: html`<label class="field"><span class="field__label">Set name</span><input class="input" name="title" maxlength="100" required value="${deck?.title || ''}" ${deck?.catalogue_id ? raw('readonly') : ''}></label>${subjectField}${!deck?.catalogue_id ? html`<label class="field"><span class="field__label">Inside another set (optional)</span><select class="input" name="parent"><option value="">Not inside another set</option>${decks.filter((item) => item.id !== deck?.id && !item.catalogue_id).map((item) => html`<option value="${item.id}" ${deck?.parent_id === item.id ? raw('selected') : ''}>${item.title}</option>`)}</select></label>` : ''}${deck ? html`<label class="field"><span class="field__label">Target retention</span><input class="input" name="retention" type="number" min="80" max="92" step="1" value="${deck.target_retention || 90}"><span class="field__hint">A higher target usually means more reviews. Changes apply to future reviews.</span></label><label class="field"><span class="field__label">New cards per day</span><input class="input" name="newLimit" type="number" min="0" max="999" step="1" value="${deck.new_limit ?? 20}"></label>` : ''}`,
+      actions: [{ label: 'Cancel', cancel: true }, { label: deck ? 'Save changes' : 'Make set', variant: 'primary', validate: (dialog) => {
         const title = dialog.querySelector('[name=title]').value.trim();
         const retention = Number(dialog.querySelector('[name=retention]')?.value || 90);
         const limit = Number(dialog.querySelector('[name=newLimit]')?.value ?? 20);
-        return !title ? 'Enter a deck name.' : !Number.isInteger(retention) || retention < 80 || retention > 92 ? 'Choose a whole percentage from 80 to 92.' : !Number.isInteger(limit) || limit < 0 || limit > 999 ? 'Choose a daily limit from 0 to 999.' : null;
-      }, collect: (dialog) => ({ title: dialog.querySelector('[name=title]').value.trim(), target_retention: Number(dialog.querySelector('[name=retention]')?.value || 90), new_limit: Number(dialog.querySelector('[name=newLimit]')?.value ?? 20), parent_id: dialog.querySelector('[name=parent]') ? dialog.querySelector('[name=parent]').value || null : undefined }) }],
+        return !title ? 'Enter a set name.' : !Number.isInteger(retention) || retention < 80 || retention > 92 ? 'Choose a whole percentage from 80 to 92.' : !Number.isInteger(limit) || limit < 0 || limit > 999 ? 'Choose a daily limit from 0 to 999.' : null;
+      }, collect: (dialog) => ({ title: dialog.querySelector('[name=title]').value.trim(), target_retention: Number(dialog.querySelector('[name=retention]')?.value || 90), new_limit: Number(dialog.querySelector('[name=newLimit]')?.value ?? 20), parent_id: dialog.querySelector('[name=parent]') ? dialog.querySelector('[name=parent]').value || null : undefined, subject: dialog.querySelector('[name=subject]')?.value }) }],
     });
     if (!result) return;
-    const saved = deck ? await flashcards.updateDeck(deck.id, result) : await flashcards.createDeck(result);
+    const { subject, ...fields } = result;
+    const saved = deck ? await flashcards.updateDeck(deck.id, fields) : await flashcards.createDeck(fields);
+    const savedId = deck?.id || saved?.id;
+    if (subject !== undefined && savedId && (subject || null) !== (deckSubjectId(deck || { id: savedId }) || null)) {
+      const subjectLinks = { ...(preferences().flashcardDeckSubjects || {}) };
+      if (subject) subjectLinks[savedId] = subject; else delete subjectLinks[savedId];
+      try { await setPreference('flashcardDeckSubjects', subjectLinks); } catch { toast('The set was saved, but its subject could not be saved.', { type: 'error' }); }
+    }
     await refreshDecks(); draw();
     return saved;
   }
@@ -776,7 +1007,7 @@ export function mount(element, context) {
     const saved = readPending(deckId);
     if (saved?.subdeckPath !== undefined) subdeckPath = saved.subdeckPath || '';
     study = { deckId, topic: subdeckPath, card: null, buffer: [], nextDue: null, refreshAt: Infinity,
-      deckTitle: activeDeck()?.title || 'Study', shown: false, reviewed: 0, pending: null, loading: true };
+      deckTitle: activeDeck()?.title || 'Study', planned: (activeDeck()?.due_count || 0) + (activeDeck()?.learning_count || 0) + (activeDeck()?.new_count || 0), shown: false, reviewed: 0, pending: null, loading: true };
     view = 'study';
     draw();
     drawStudy();
@@ -986,7 +1217,8 @@ export function mount(element, context) {
     if (action === 'grade') { rateStudy(Number(button.dataset.grade)); return; }
     if (action === 'exit-study') {
       study = null;
-      openManager(selectedDeck, { keepTopic: true });
+      if (activeDeck()?.catalogue_id) void openSet(selectedDeck);
+      else openManager(selectedDeck, { keepTopic: true });
       return;
     }
     return task(() => handleAction(button), { queue: navigationActions.has(action) });
@@ -1001,8 +1233,8 @@ export function mount(element, context) {
         title: 'How to use Flashcards',
         onOpen: (dialog) => dialog.classList.add('flashcards-dialog'),
         body: html`<ol class="flashcards__guide">
-          <li><strong>Choose a deck.</strong> Add one from the Official catalogue, create your own, or import cards.</li>
-          <li><strong>Choose what to learn.</strong> Open Manage to find a spec point or filter new and suspended cards. Unsuspend cards to include them in study. Suspend them to pause them and keep their progress.</li>
+          <li><strong>Choose a set.</strong> Add a PurePastPapers set for one of your subjects, make your own, or import cards.</li>
+          <li><strong>Choose which cards.</strong> PurePastPapers sets start with only what you’ve learnt: the spec points you’ve ticked in My subjects. Open a set to choose Everything or pick spec points instead. Your progress is kept whatever you choose.</li>
           <li><strong>Review.</strong> Try the question, then show the answer. Pick Again if you forgot, Hard if recall took effort, Good if you remembered, or Easy if it felt effortless.</li>
         </ol><p class="small muted">On a keyboard, press Space to reveal and 1–4 to rate.</p>`,
         actions: [{ label: 'Got it', cancel: true }],
@@ -1017,10 +1249,21 @@ export function mount(element, context) {
       draw();
       void loadDecks();
     }
+    else if (action === 'home-tab') {
+      homeTab = id || 'all';
+      try { sessionStorage.setItem('ppp.flashcards.tab', homeTab); } catch { /* private mode */ }
+      draw();
+      $(`.fc-tab[data-id="${CSS.escape(homeTab)}"]`, element)?.focus({ preventScroll: true });
+    }
+    else if (action === 'set-menu') { const deck = decks.find((item) => item.id === id); if (deck) await setMenu(deck); }
+    else if (action === 'browse-cards') openManager(id);
+    else if (action === 'back-set') void openSet(id);
     else if (action === 'catalogue' || action === 'retry-catalogue') {
       view = 'catalogue';
+      if (catalogueStatus === 'error') catalogueStatus = 'idle';
       if (['ready', 'loading'].includes(catalogueStatus)) draw();
       else void loadCatalogue();
+      $('h1', element)?.focus({ preventScroll: true });
     }
     else if (action === 'retry-cards') void refreshCards();
     else if (action === 'retry-topics') void refreshTopics();
@@ -1056,7 +1299,10 @@ export function mount(element, context) {
       }
     }
     else if (action === 'prev-page' || action === 'next-page') { page += action === 'prev-page' ? -1 : 1; void refreshCards(); }
-    else if (action === 'open-deck') openManager(id);
+    else if (action === 'open-deck') {
+      if (decks.find((deck) => deck.id === id)?.catalogue_id) await openSet(id);
+      else openManager(id);
+    }
     else if (action === 'add-card') await cardDialog();
     else if (action === 'edit-card' && card) await cardDialog(card);
     else if (action === 'preview-card' && card) { await openModal({ title: 'Card preview', body: html`<div class="flashcards__preview-card">${faces(card, true)}</div>`, onOpen: (dialog) => { dialog.classList.add('flashcards-dialog'); resolveMedia(dialog, Boolean(activeDeck()?.catalogue_id)); } }); }
@@ -1087,7 +1333,6 @@ export function mount(element, context) {
         toast(`${plural(result?.changed || 0, 'card')} ${suspended ? 'suspended' : 'unsuspended'}.${result?.excluded ? ` ${plural(result.excluded, 'archived or optional card')} left unchanged.` : ''}`, { type: 'success' });
       }
     }
-    else if (action === 'example') { exampleShown = !exampleShown; const details = button.closest('details'); const wasOpen = details?.open; draw(); if (wasOpen) $('details.flashcards__example', element).open = true; }
     else if (action === 'add-catalogue') {
       addingCatalogue = id;
       draw();
@@ -1101,8 +1346,8 @@ export function mount(element, context) {
           decks = [...decks, { id: deckId, catalogue_id: id, title: entry.title, card_count: entry.card_count }];
           decksStatus = 'ready';
         }
-        toast('Deck added to My decks.', { type: 'success' });
-        void loadDecks();
+        toast(`${[subjectById(entry?.subject_id)?.name, entry?.deck_type].filter(Boolean).join(' ') || 'Set'} added to your sets. It starts with only what you’ve learnt.`, { type: 'success' });
+        await loadDecks();
       } finally {
         addingCatalogue = null;
         draw();
@@ -1173,7 +1418,34 @@ export function mount(element, context) {
     }
 
   }
-  const offChange = on(element, 'change', '[data-import-source], [data-catalogue-subject], [data-catalogue-level], [data-topic], [data-spec-point], [data-card-status], [data-card-availability], [data-card-sort]', (event, control) => {
+  const offChoice = on(element, 'change', '[data-choice-mode], [data-choice-general], [data-choice-topic], [data-choice-point]', (event, control) => {
+    const deck = activeDeck();
+    if (view !== 'set' || !deck) return;
+    const choice = choiceFor(deck);
+    if (control.matches('[data-choice-mode]')) {
+      choice.mode = control.value;
+      if (choice.mode === 'choose' && !choice.points.length) {
+        const learned = learnedSet();
+        choice.points = specIndex.subjectLeaves(deckSubjectId(deck)).filter((leaf) => learned.has(leaf));
+      }
+    } else if (control.matches('[data-choice-general]')) choice.general = control.checked;
+    else {
+      const ids = control.matches('[data-choice-topic]')
+        ? [...element.querySelectorAll(`[data-topic-id="${CSS.escape(control.dataset.choiceTopic)}"] [data-choice-point]`)].map((box) => box.dataset.choicePoint)
+        : [control.dataset.choicePoint];
+      const chosen = new Set(choice.points);
+      for (const leaf of ids) { if (control.checked) chosen.add(leaf); else chosen.delete(leaf); }
+      choice.points = [...chosen];
+      const topic = control.closest('[data-topic-id]')?.dataset.topicId;
+      if (topic) openTopics.add(topic);
+    }
+    void changeChoice(deck, choice);
+  });
+  const offToggle = on(element, 'toggle', 'details.fc-topic', (event, details) => {
+    if (details.open) openTopics.add(details.dataset.topicId);
+    else openTopics.delete(details.dataset.topicId);
+  }, { capture: true });
+  const offChange = on(element, 'change', '[data-import-source], [data-topic], [data-spec-point], [data-card-status], [data-card-availability], [data-card-sort]', (event, control) => {
     if (control.matches('[data-import-source]')) setHtml($('[data-import-fields]', element), importFields(control.value));
     else if (control.matches('[data-topic]')) {
       clearTimeout(searchTimer);
@@ -1190,12 +1462,6 @@ export function mount(element, context) {
       else cardSort = control.value;
       page = 1;
       void refreshCards();
-    } else {
-      catalogueSubject = $('[data-catalogue-subject]', element).value;
-      catalogueLevel = $('[data-catalogue-level]', element).value;
-      const selector = control.matches('[data-catalogue-subject]') ? '[data-catalogue-subject]' : '[data-catalogue-level]';
-      draw();
-      $(selector, element)?.focus({ preventScroll: true });
     }
   });
   const offInput = on(element, 'input', '[data-search]', (event, control) => {
@@ -1228,7 +1494,10 @@ export function mount(element, context) {
     for (const url of mediaUrls) URL.revokeObjectURL(url);
     releaseDetachedMedia();
     mediaCache.clear();
+    clearTimeout(applyTimer);
     offClick();
+    offChoice();
+    offToggle();
     offChange();
     offInput();
     offImportInput();

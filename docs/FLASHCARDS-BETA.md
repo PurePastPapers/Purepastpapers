@@ -21,6 +21,7 @@ References for the [Anki export formats](https://docs.ankiweb.net/manual/exporti
 ## Release and verification
 
 1. Apply the five `20261122*_flashcard*.sql` migrations in order to the existing Supabase project. Keep the existing account and progress migrations in place. If applying through the management API, record its migration history since it assigns timestamps at application time.
+   Then apply `20261124150000_flashcard_spec_selection.sql` (24 Nov 2026). It adds `flashcard_deck_spec_sets` and `flashcard_apply_spec_selection`, which the PurePastPapers set page needs for “Which cards do you want?”. It must be live before the matching site change is merged.
 2. Deploy the authenticated `flashcard-review` Edge Function, keeping JWT verification on. Its source imports the same scheduler module used in tests. If deploying via an API file bundle, include `index.ts`, `scheduler.js` and the intact `vendor/ts-fsrs-5.2.3.mjs`, and use the relative import `./scheduler.js` in that bundle. No browser or GitHub secret is used.
 3. Run `npm test`, `npm run validate` and the regression SQL files under `supabase/tests/` against a disposable Supabase database. Exercise signed-in desktop and phone-view Chromium using `tools/flashcards/check-browser.mjs`, a local Playwright install and separate disposable test accounts. Point `PPP_FLASHCARD_QA_ACCOUNTS` at a private JSON array with `role`, `email` and `password`; use roles `main`, `school` and `lookalike`. Set `PPP_FLASHCARD_QA_APKG` to the current Anki fixture. Delete disposable accounts and their content after checking the flow.
 4. Merge the verified branch into `main` and confirm that the deployed static site serves the new route. Repeat the signed-out deep-link smoke check and the signed-in study check. The UI and import bundles load on demand.
@@ -61,3 +62,16 @@ A trusted marking service can propose a draft using this minimal contract.
 | `front`, `back`, `tags` | Proposed editable text for a short retrieval card. |
 
 Deduplicate on user, attempt and missed criterion. Confirm that scoring considered acceptable alternatives before producing a draft. For a 2/3 Biology response, the draft can ask for the missing criterion. For Physics, use a unit, method or misconception. For Maths, use a missing justification, an invalid step or the technique the question assessed. If the evidence or marking is uncertain, wait for a reviewed result. A student can edit, save or dismiss each draft before it enters FSRS. Store attempt evidence privately and perform future marking calls with server-side credentials.
+
+## PurePastPapers sets and “Which cards do you want?” (24 Nov 2026)
+
+The Flashcards home has an All tab and one tab per enrolled subject. PurePastPapers sets are printed tiles with a subject-colour band and a P stamp; the student’s own sets are handwritten, taped index cards and can be linked to a subject (stored in the progress preference `flashcardDeckSubjects`). The PurePastPapers sets screen only lists sets whose `subject_id` is one of the student’s subjects.
+
+Each PurePastPapers set starts with **Only what I’ve learnt**. `js/flashcards/spec-map.js` maps card spec tags to the site’s spec ids:
+
+- AQA: `PPP::Spec::AQA_PSYCH_4.1.1_b01` becomes `AQA_PSYCH_4.1.1_b1`.
+- Biology: `spec::1.4::ii` becomes `EDX_BIOL_OFF_T1_1.4`.
+- Physics: `spec::002` becomes `EDX_PHYS_S002`.
+- AS Maths: `spec::2.3` becomes the Pure point that ends in `_2.3`.
+
+Tags that match no spec point are counted as exam skills cards, which are included unless the student unticks them. The choice (`learnt`, `all` or `choose` with spec points) is saved in the progress preference `flashcardChoices`, keyed by catalogue id. `flashcard_apply_spec_selection` applies it by suspending the cards outside it, so review history is kept. Archived and optional cards stay out unless the student picks Everything. Removing a set calls `flashcard_unsubscribe_catalogue`; adding it again restores its progress.
