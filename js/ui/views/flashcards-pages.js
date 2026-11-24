@@ -10,6 +10,27 @@ const n = (value) => Number(value || 0).toLocaleString('en-GB');
 const plural = (count, word, many = `${word}s`) => `${n(count)} ${count === 1 ? word : many}`;
 const TILTS = [1, 3, 2, 4];
 const stamp = html`<span class="fc-stamp" aria-hidden="true">P</span>`;
+const TONES = ['leaf', 'orbit', 'grid', 'wave'];
+
+/** Each subject's line pattern, from the original flashcard covers. */
+export function toneFor(subject) {
+  const text = `${subject?.id || ''} ${subject?.name || ''}`.toLowerCase();
+  if (/biol/.test(text)) return 'leaf';
+  if (/phys/.test(text)) return 'orbit';
+  if (/math/.test(text)) return 'grid';
+  if (/chem/.test(text)) return 'wave';
+  return TONES[[...text].reduce((sum, ch) => sum + ch.codePointAt(0), 0) % TONES.length];
+}
+const pattern = (subject) => html`<i class="fc-pat" data-tone="${toneFor(subject)}" aria-hidden="true"></i>`;
+
+/** A small fan of patterned cards in the subjects' colours. */
+function fan(subjects, size = '') {
+  const pool = subjects.length ? subjects : [{ colour: '#f1cf63', id: 'biol' }, { colour: '#f2a37e', id: 'phys' }, { colour: '#9cc2e6', id: 'math' }];
+  const cards = subjects.length === 1
+    ? TONES.filter((tone) => tone !== toneFor(pool[0])).slice(0, 2).map((tone) => ({ colour: pool[0].colour, tone })).concat({ colour: pool[0].colour, tone: toneFor(pool[0]) })
+    : [0, 1, 2].map((index) => ({ colour: pool[index % pool.length].colour, tone: toneFor(pool[index % pool.length]) }));
+  return html`<span class="fc-fan ${size}" aria-hidden="true">${cards.map((card) => html`<i style="--sc:${card.colour}"><b class="fc-pat" data-tone="${card.tone}"></b></i>`)}</span>`;
+}
 
 function counts(deck) {
   return html`<div class="fc-counts" aria-label="Study counts">
@@ -33,7 +54,7 @@ export function pppTile(model, deck, { index = 0, showSubject = false } = {}) {
   const kind = entry?.deck_type || 'Set';
   const title = showSubject ? subject?.name || entry?.subject || deck.title : kind;
   return html`<article class="card fc-ppp tilt-${TILTS[index % 4]}" style="--sc:${subject?.colour || 'var(--line-strong)'}">
-    <header class="fc-ppp__band"><h3>${title}</h3>${stamp}</header>
+    <header class="fc-ppp__band">${pattern(subject)}<h3>${title}</h3>${stamp}</header>
     <div class="fc-ppp__body">
       ${showSubject ? html`<p class="fc-ppp__kind">${kind}</p>` : ''}
       <p class="small muted">PurePastPapers set${entry?.description ? ` · ${entry.description.replace(/\.$/, '').toLowerCase()}` : ''}</p>
@@ -59,8 +80,8 @@ export function ownTile(model, deck, { index = 0, showSubject = false } = {}) {
   </article>`;
 }
 
-const addPppTile = (index, note) => html`<button type="button" class="fc-add fc-add--ppp tilt-${TILTS[index % 4]}" data-action="catalogue">
-  ${stamp}<span class="fc-add__plus" aria-hidden="true">+</span><span class="fc-add__title">Add a PurePastPapers set</span><span class="small muted">${note}</span></button>`;
+const addPppTile = (index, note, subjects) => html`<button type="button" class="fc-add fc-add--ppp tilt-${TILTS[index % 4]}" data-action="catalogue">
+  ${fan(subjects, 'fc-fan--add')}<span class="fc-add__title">Add a PurePastPapers set</span><span class="small muted">${note}</span></button>`;
 
 const makeOwnTile = (index, note, cloud) => html`<button type="button" class="card ruled fc-add fc-add--own tilt-${TILTS[index % 4]}" data-action="create-deck" ${cloud ? '' : raw('disabled')}>
   <span class="fc-add__plus" aria-hidden="true">+</span><span class="fc-own__title">Make your own set</span><span class="fc-own__by">${note}</span></button>`;
@@ -109,9 +130,9 @@ export function homePage(model) {
     <section class="fc-panel" style="--sc:${subject?.colour || 'var(--plane)'}">
       <div class="fc-panel__main">
         <section class="fc-block" aria-labelledby="fc-ppp-title">
-          <div class="fc-sec">${stamp}<div><h2 id="fc-ppp-title">PurePastPapers sets${subject ? ` for ${subject.name}` : ''}</h2>
+          <div class="fc-sec">${fan(subject ? [subject] : subjects, 'fc-fan--sm')}<div><h2 id="fc-ppp-title">PurePastPapers sets${subject ? ` for ${subject.name}` : ''}</h2>
             <p class="small muted">Made by us from the ${subject ? `${subject.board} ${subject.code} ` : ''}specification. You only get cards from the spec points you’ve learnt.</p></div></div>
-          <div class="fc-grid">${ppp.map((deck, index) => pppTile(model, deck, { index, showSubject: !subject }))}${addPppTile(ppp.length, subject ? `Sets made for ${subject.name}` : 'Sets for your subjects')}</div>
+          <div class="fc-grid">${ppp.map((deck, index) => pppTile(model, deck, { index, showSubject: !subject }))}${addPppTile(ppp.length, subject ? `Sets made for ${subject.name}` : 'Sets for your subjects', subject ? [subject] : subjects)}</div>
         </section>
         <section class="fc-block" aria-labelledby="fc-own-title">
           <div class="fc-sec"><span class="fc-pen" aria-hidden="true">${icon('pencil', { size: 18 })}</span><div><h2 class="fc-own-heading" id="fc-own-title">Your own sets${subject ? ` for ${subject.name}` : ''}</h2>
@@ -142,13 +163,13 @@ export function catalogueScreen(model) {
       : soon ? html`<span class="tag">Coming soon</span>`
       : html`<button class="btn btn--primary btn--sm" data-action="add-catalogue" data-id="${entry.id}" ${!canAdd || model.adding ? raw('disabled') : ''}>${model.adding === entry.id ? 'Adding…' : canAdd ? '+ Add to my sets' : 'Access required'}</button>`;
     return html`<article class="card fc-ppp tilt-${TILTS[index++ % 4]} ${deck ? '' : 'fc-ppp--new'} ${soon ? 'fc-ppp--soon' : ''}" style="--sc:${subject.colour}">
-      <header class="fc-ppp__band"><h3>${entry.deck_type || entry.title}</h3>${stamp}</header>
+      <header class="fc-ppp__band">${pattern(subject)}<h3>${entry.deck_type || entry.title}</h3>${stamp}</header>
       <div class="fc-ppp__body"><p class="small muted">${[entry.description?.replace(/\.$/, ''), entry.card_count ? plural(entry.card_count, 'card') : '', entry.qualification].filter(Boolean).join(' · ')}</p>
         ${deck ? inPlayLine(model.inPlayFor(deck)) : ''}
         <footer class="fc-actions">${action}</footer></div></article>`;
   };
   return html`<button class="linkbtn" data-action="back-decks">← Flashcards</button>
-    <header class="fc-head"><div><h1>PurePastPapers sets</h1><p class="hand">made by us for your ${plural(subjects.length, 'subject')}</p></div></header>
+    <header class="fc-head"><div><h1>PurePastPapers sets</h1><p class="hand">made by us for your ${plural(subjects.length, 'subject')}</p></div>${fan(subjects, 'fc-fan--lg')}</header>
     ${!subjects.length ? html`<section class="card ruled fc-note tilt-2"><i class="tape tape--l" aria-hidden="true"></i><h2 class="h3">Add your subjects first</h2>
         <p class="small muted">Sets appear here for the subjects you study.</p><a class="btn btn--primary btn--sm" href="${links.subjects({ add: 1 })}">Add a subject</a></section>` : ''}
     ${withSets.map(({ subject, entries }) => html`<section class="fc-block">
@@ -171,7 +192,7 @@ export function setPage(model, deck) {
     <span><b>${title}</b><span class="small muted">${note}</span></span><span class="fc-opt__n">${count == null ? '' : n(count)}</span></label>`;
   return html`<button class="linkbtn" data-action="back-decks">← Flashcards${subject ? ` · ${subject.name}` : ''}</button>
     <header class="card fc-sethead" style="--sc:${subject?.colour || 'var(--line-strong)'}">
-      <div class="fc-sethead__band">${stamp}<span>PurePastPapers · ${subject ? `${subject.name} · ${subject.board} ${subject.code}` : entry?.qualification || ''}</span>
+      <div class="fc-sethead__band">${pattern(subject)}${stamp}<span>PurePastPapers · ${subject ? `${subject.name} · ${subject.board} ${subject.code}` : entry?.qualification || ''}</span>
         <button class="fc-more" data-action="set-menu" data-id="${deck.id}" aria-label="More options for ${deck.title}">⋯</button></div>
       <div class="fc-sethead__body">
         <div><h2 class="fc-sethead__title" tabindex="-1">${entry?.deck_type || deck.title}</h2>
