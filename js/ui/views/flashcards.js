@@ -18,6 +18,15 @@ const safeAnkiUrl = (value) => {
   } catch { return null; }
 };
 
+function newReviewRequestId() {
+  if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('');
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
 // Flashcard HTML is untrusted. Remote URLs and embedded code are never loaded here.
 // Media is resolved separately to account-scoped blob URLs by the adapter.
 function cardMarkup(content, variant = '', revealed = true, { previewMedia = null, previewUrls = null, showMedia = true } = {}) {
@@ -793,7 +802,7 @@ export function mount(element, context) {
     if (!isCurrentStudy(session) || !session?.card || !session.shown || session.loading || session.saving || ![1, 2, 3, 4].includes(grade)) return;
     const replaying = Boolean(session.pending);
     if (!session.pending) {
-      session.pending = { grade, requestId: crypto.randomUUID(), card: session.card };
+      session.pending = { grade, requestId: newReviewRequestId(), card: session.card };
       writePending(session.deckId, { cardId: session.card.id, revision: session.card.revision, grade, requestId: session.pending.requestId, subdeckPath: session.topic });
     }
     if (session.pending.grade !== grade) return;

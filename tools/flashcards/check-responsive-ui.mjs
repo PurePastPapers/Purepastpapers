@@ -77,6 +77,9 @@ const fixtureApi = `
     return { cards: cards.filter((card) => !rated.has(card.id)), nextDue: null };
   }
   export async function reviewCard(card, grade, requestId) {
+    if (!/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(requestId)) {
+      throw new Error('Review request ID must be a UUID v4');
+    }
     window.flashcardFixture.reviewRequests.push({ cardId: card.id, grade, requestId });
     await call('review');
     if (!savedRequests.has(requestId)) {
@@ -130,6 +133,9 @@ try {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.addInitScript(installGates);
+  if (!desktop) {
+    await page.addInitScript(() => Object.defineProperty(Crypto.prototype, 'randomUUID', { value: undefined }));
+  }
   await page.route(fixture, (route) => route.fulfill({ contentType: 'text/html', body: fixturePage }));
   await page.route('**/js/flashcards/api.js*', (route) => route.fulfill({ contentType: 'text/javascript', body: fixtureApi }));
   await page.goto(fixture, { waitUntil: 'domcontentloaded' });
