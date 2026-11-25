@@ -73,6 +73,9 @@ test('signed-in Psychology handwriting opens on a slow connection', { skip }, as
         }`,
     }));
     await page.goto(`${BASE}#/practice?subject=AQA_ALEVEL_PSYCH_7182&mode=individual`);
+    // Authentication bootstraps asynchronously; navigation alone does not mean
+    // the mocked signed-in session has been loaded yet.
+    await page.waitForFunction(async () => (await import('/js/data/api.js')).isSignedIn());
     assert.equal(await page.evaluate(async () => (await import('/js/data/api.js')).isSignedIn()), true);
     const answer = page.locator('.ink-answer').first();
     await answer.getByRole('button', { name: 'Write with Pencil' }).click();

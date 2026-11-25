@@ -1,0 +1,161 @@
+{
+  "subject_id": "OCR_L3_APPSCI_AAQ",
+  "qualification": {
+    "title": "Cambridge OCR Level 3 Alternative Academic Qualification Cambridge Advanced National in Applied Science (Extended Certificate)",
+    "code": "H151",
+    "specification_version": "8.0",
+    "specification_date": "October 2026",
+    "specification_url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+    "specification_sha256": "9f5c74465ae0fc2924df1755d23530d13d1dc4abcd916c18f86598eb04e6c481",
+    "source_pages": {
+      "revision_log": [
+        3,
+        4
+      ],
+      "qualification_structure": [
+        8,
+        9,
+        19,
+        20
+      ],
+      "F180": [
+        33,
+        60
+      ],
+      "F181": [
+        62,
+        69
+      ],
+      "NEA_units": [
+        72,
+        133
+      ]
+    }
+  },
+  "qualifications": {
+    "H051": {
+      "title": "Certificate in Applied Science",
+      "units": [
+        "F180",
+        "F182"
+      ],
+      "F180_eligibility": true,
+      "F181_eligibility": false
+    },
+    "H151": {
+      "title": "Extended Certificate in Applied Science",
+      "mandatory_external": [
+        "F180",
+        "F181"
+      ],
+      "mandatory_nea": [
+        "F182"
+      ],
+      "optional_nea_count": 2,
+      "optional_nea_from": [
+        "F183",
+        "F184",
+        "F185",
+        "F186"
+      ]
+    }
+  },
+  "school_route": {
+    "qualification_code": "H151",
+    "selected_optional_units": [
+      "F183",
+      "F185"
+    ],
+    "source_note": "School prospectus 2026/27 Applied Science course checked on 25 November 2026; lists F180/F181 exams and F182/F185/F183 coursework.",
+    "excluded_optional_units": [
+      "F184",
+      "F186"
+    ],
+    "source_url": "https://www.reachfreeschool.co.uk/sixth-form-prospectus",
+    "checked_on": "2026-11-25",
+    "school_display_order": [
+      "F180",
+      "F181",
+      "F182",
+      "F185",
+      "F183"
+    ]
+  },
+  "external_units": {
+    "F180": {
+      "title": "Fundamentals of science",
+      "assessment": "mandatory external exam for H051 and H151",
+      "duration_minutes": 90,
+      "marks": 70,
+      "section_marks": {
+        "A_Biology": 20,
+        "B_Chemistry": 20,
+        "C_Physics": 20,
+        "D_Practicals_1_to_6": 10
+      },
+      "spec_points": "B1-B4, C1-C4, P1-P3; practical teaching references 1-6 are included in the relevant discipline topic areas",
+      "sections_ABC_use_practical_knowledge_explicitly": false,
+      "data_formula_booklet": "Use the matching official F180 Data, Formulae and Relationships Booklet. Version 8.0 updated the mass-attenuation density unit to g cm-3 (specification section 5.2.1, page 55; update recorded on page 4)."
+    },
+    "F181": {
+      "title": "Science in society",
+      "assessment": "mandatory external exam for H151 only",
+      "duration_minutes": 75,
+      "marks": 50,
+      "sections": {
+        "A": {
+          "marks_range": [
+            23,
+            27
+          ],
+          "pre_release_linked": true
+        },
+        "B": {
+          "marks_range": [
+            23,
+            27
+          ],
+          "pre_release_linked": false
+        }
+      },
+      "content_scope": "All four topic areas; at least one question or part from each topic area. Scientific literacy, data interpretation, How Science Works and mathematical skills are cross-linked."
+    }
+  },
+  "nea_reference_units": [
+    {
+      "code": "F182",
+      "title": "Investigating science",
+      "qualification_role": "mandatory NEA for H051 and H151",
+      "scored_written_bank": false
+    },
+    {
+      "code": "F183",
+      "title": "Analytical techniques in chemistry",
+      "qualification_role": "optional NEA; selected in supplied H151 school route",
+      "scored_written_bank": false
+    },
+    {
+      "code": "F184",
+      "title": "Environmental studies",
+      "qualification_role": "optional OCR NEA; not selected in supplied school route",
+      "scored_written_bank": false
+    },
+    {
+      "code": "F185",
+      "title": "Forensic biology",
+      "qualification_role": "optional NEA; selected in supplied H151 school route",
+      "scored_written_bank": false
+    },
+    {
+      "code": "F186",
+      "title": "Medical physics",
+      "qualification_role": "optional OCR NEA; not selected in supplied school route",
+      "scored_written_bank": false
+    }
+  ],
+  "content_treatment": {
+    "F180": "Official unit learning points are maintained by discipline (Biology, Chemistry, Physics); written practical questions remain eligible for F180 scored practice and retain their official practical point under its discipline topic area.",
+    "F181": "Distinct scientific-literacy and data-handling point codes; no generic A-level science tags.",
+    "F182_to_F186": "Qualification and unit references only. Assignment samples are not attemptable scored questions."
+  }
+}

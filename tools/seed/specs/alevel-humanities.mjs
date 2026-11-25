@@ -525,14 +525,119 @@ export default {
   ],
 
   OCR_L3_APPSCI_AAQ: [
-    { key: 'F180', title: 'Unit F180: Fundamentals of science', note: 'Externally examined', topics: [
-      ['F180', 'F180', 'Fundamentals of science', [
-        'F180.1|All unit content (add topic areas from the OCR specification)',
-      ]],
+    { key: 'F180_BIO', title: 'Unit F180: Fundamentals of science — Biology', note: 'External exam · Section A · 20 marks', topics: [
+        ['B1', 'B1', 'Topic Area B1: Cell structure and microscopy', [
+          'B1.1.1|1.1.1 Ultrastructure and function of cells and their components',
+          'B1.1.2|1.1.2 Cell specialisation',
+          'B1.1.3|1.1.3 Tissue structure and function',
+          'B1.2.1|1.2.1 Light and electron microscopy',
+          'B1.2.2|1.2.2 Practical 1: Light microscopy',
+        ]],
+        ['B2', 'B2', 'Topic Area B2: Bioenergetics', [
+          'B2.1.1|2.1.1 Site of photosynthesis',
+          'B2.1.2|2.1.2 Biochemistry of photosynthesis',
+          'B2.2.1|2.2.1 Site of cellular respiration',
+          'B2.2.2|2.2.2 Biochemistry of cellular respiration',
+        ]],
+        ['B3', 'B3', 'Topic Area B3: Structure and function of biological molecules', [
+          'B3.1.1|3.1.1 Structure and function of carbohydrates',
+          'B3.1.2|3.1.2 Structure and function of lipids',
+          'B3.1.3|3.1.3 Structure and function of proteins',
+          'B3.1.4|3.1.4 Structure and function of nucleic acids',
+        ]],
+        ['B4', 'B4', 'Topic Area B4: Biodiversity and ecosystems', [
+          'B4.1.1|4.1.1 Distribution of organisms',
+          'B4.2.1|4.2.1 Sampling techniques',
+          'B4.2.2|4.2.2 Practical 2: Sampling',
+        ]],
     ] },
-    { key: 'F181', title: 'Unit F181: Science in society', note: 'Externally examined', topics: [
-      ['F181', 'F181', 'Science in society', [
-        'F181.1|All unit content (add topic areas from the OCR specification)',
+    { key: 'F180_CHEM', title: 'Unit F180: Fundamentals of science — Chemistry', note: 'External exam · Section B · 20 marks', topics: [
+        ['C1', 'C1', 'Topic Area C1: Atomic structure and the Periodic Table', [
+          'C1.1.1|1.1.1 Atomic structure',
+          'C1.2|1.2 The Periodic Table',
+        ]],
+        ['C2', 'C2', 'Topic Area C2: Quantitative chemistry', [
+          'C2.1.1|2.1.1 The mole and molar mass',
+          'C2.1.2|2.1.2 Balancing equations and reacting masses',
+          'C2.1.3|2.1.3 Number of moles in aqueous solutions and preparation of a standard solution',
+          'C2.1.4|2.1.4 Neutralisation',
+          'C2.1.5|2.1.5 Practical 3: Volumetric analysis',
+          'C2.1.6|2.1.6 Moles and volumes of gases',
+        ]],
+        ['C3', 'C3', 'Topic Area C3: Structure and bonding', [
+          'C3.1.1|3.1.1 Bonding',
+          'C3.1.2|3.1.2 Formulae of ions and compounds',
+          'C3.2.1|3.2.1 Physical properties of metals, ionic compounds and covalent substances',
+          'C3.3.1|3.3.1 Core concepts of organic chemistry',
+        ]],
+        ['C4', 'C4', 'Topic Area C4: Rates of reaction and enthalpy changes', [
+          'C4.1.1|4.1.1 Factors which affect reaction rate',
+          'C4.1.2|4.1.2 Practical 4: Investigating reaction rates',
+          'C4.2.1|4.2.1 Exothermic and endothermic reactions',
+          'C4.2.2|4.2.2 Enthalpy change of combustion of alcohols',
+        ]],
+    ] },
+    { key: 'F180_PHYS', title: 'Unit F180: Fundamentals of science — Physics', note: 'External exam · Section C · 20 marks', topics: [
+        ['P1', 'P1', 'Topic Area P1: Electricity', [
+          'P1.1.1|1.1.1 Charge and current',
+          'P1.1.2|1.1.2 Potential difference and resistance',
+          'P1.1.3|1.1.3 Power and energy in circuits',
+          'P1.1.4|1.1.4 Series and parallel circuits',
+          'P1.1.5|1.1.5 Potential dividers',
+          'P1.1.6|1.1.6 Practical 5: Potential divider circuits',
+        ]],
+        ['P2', 'P2', 'Topic Area P2: Motion', [
+          'P2.1.1|2.1.1 Energy stores and energy transfers',
+          'P2.1.2|2.1.2 Work and energy',
+          'P2.1.3|2.1.3 Kinetic and potential energy',
+          'P2.1.4|2.1.4 Power and Efficiency',
+          'P2.1.5|2.1.5 Force',
+          'P2.1.6|2.1.6 Practical 6: Investigating motion',
+        ]],
+        ['P3', 'P3', 'Topic Area P3: Medical physics', [
+          'P3.1.1|3.1.1 The atom',
+          'P3.1.2|3.1.2 Electromagnetic radiation',
+          'P3.1.3|3.1.3 X-rays',
+          'P3.1.4|3.1.4 Wave motion',
+          'P3.1.5|3.1.5 Ultrasound',
+          'P3.2.1|3.2.1 Fundamentals of radioactivity',
+          'P3.2.2|3.2.2 Mathematical analysis of radioactivity',
+          'P3.2.3|3.2.3 Radiation hazards',
+          'P3.2.4|3.2.4 Using radionuclides',
+        ]],
+    ] },
+    { key: 'F181', title: 'Unit F181: Science in society', note: 'Externally examined · 75 minutes · 50 marks', topics: [
+      ['F181_BIO', 'F181.1', 'Topic Area 1: What scientists do', [
+        '1.1.1|1.1.1 The skills scientists use to carry out research into the natural world and developing new technologies',
+        '1.2.1|1.2.1 Steps in the Scientific Method',
+        '1.2.2|1.2.2 The scientific method is a non-linear process',
+        '1.3.1|1.3.1 Scientists can work alone, in a team or collaboratively in an international community',
+        '1.3.2|1.3.2 Successful collaborations in science',
+        '1.3.3|1.3.3 International Scientific Organisations',
+        '1.4|1.4 The role of scientists',
+      ]],
+      ['F181_DATA', 'F181.2', 'Topic Area 2: Handling scientific data', [
+        '2.1|2.1 Types of scientific data',
+        '2.2|2.2 Collecting scientific data',
+        '2.3.1|2.3.1 Scientific data can be stored on a personal, national or international database',
+        '2.3.2|2.3.2 Scientific data can be represented in different graphical forms',
+        '2.4.1|2.4.1 Identifying patterns and relationships to draw conclusions, evaluate hypotheses and inform further investigation',
+      ]],
+      ['F181_DEV', 'F181.3', 'Topic Area 3: Scientific developments', [
+        '3.1.1|3.1.1 Scientific use of terms: hypothesis, prediction, theory and law',
+        '3.1.2|3.1.2 Scientific theory vs scientific law',
+        '3.2.1|3.2.1 New technologies play an important part in continuing scientific development',
+        '3.2.2|3.2.2 Limitations and risks of new technologies in society',
+        '3.3.1|3.3.1 Considerations for scientific developments',
+        '3.3.2|3.3.2 Contemporary issues that science will need to solve in the future',
+      ]],
+      ['F181_COMMS', 'F181.4', 'Topic Area 4: Communicating science', [
+        '4.1.1|4.1.1 Communicating science to the public using the media',
+        '4.1.2|4.1.2 Communicating science between experts',
+        '4.2|4.2 Plagiarism',
+        '4.3|4.3 Using science to inform decision making',
+        '4.4.1|4.4.1 Public trust in the scientific community and developments',
+        '4.4.2|4.4.2 Bias in science communication',
       ]],
     ] },
   ],

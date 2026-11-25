@@ -183,6 +183,11 @@ export async function mount(element, context) {
   }
 
   function targetCard() {
+    if (subject.grade_policy === 'raw_marks_only') return html`<section class="card ruled tilt-2">
+      <i class="tape tape--r" aria-hidden="true"></i>
+      <h2 class="card__title">Raw mark tracking</h2>
+      <p class="muted">Available sample papers are tracked by marks and percentage. Grade boundaries are not available for these samples.</p>
+    </section>`;
     const target = targetGrade(subject);
     const grades = gradesIn(subject.grade_scheme).filter((grade) => grade !== 'U');
     const at = grades.indexOf(target);

@@ -106,12 +106,12 @@ export async function mount(element, context) {
       <p class="paper-card__code">${codeLine(paper)}</p>
       <h3><a href="${paperHref(paper)}">${shortTitle(paper)}</a></h3>
       <p class="paper-card__meta">
-        ${paper.total_marks} marks · ${paper.duration_label || fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}${questionCount ? html` · ${plural(questionCount, 'question')}` : ''}
+        ${paper.total_marks} marks${paper.coverage_status === 'partial' || (Number.isFinite(paper.available_marks) && paper.available_marks < paper.total_marks) ? html` · ${Number.isFinite(paper.available_marks) ? `${paper.available_marks} available` : 'partial coverage'}` : ''} · ${paper.duration_label || fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}${questionCount ? html` · ${plural(questionCount, 'question')}` : ''}
       </p>
       ${paper.is_sample ? html`<p style="margin-top:8px">${sourceBadge(paper)}</p>` : ''}
       <div class="paper-card__foot">
         ${status === 'done'
-          ? html`<span class="paper-card__score"><b>${Math.round(summary.best.percentage)}%</b>${summary.best.grade
+          ? html`<span class="paper-card__score"><b>${Math.round(summary.best.percentage)}%</b>${summary.best.grade && subject.grade_policy !== 'raw_marks_only'
                 ? html`<span class="grade-stamp" data-rag="${ragFor(summary.best.percentage)}" title="Indicative grade">${summary.best.grade}</span>`
                 : ragBadge(ragFor(summary.best.percentage), null, { label: false })}</span>
               <a class="btn btn--sm" href="${paperHref(paper)}">Review</a>`

@@ -2,17 +2,375 @@
   "subject_id": "OCR_L3_APPSCI_AAQ",
   "sections": [
     {
-      "id": "OCR_L3SCI_SEC_F180",
-      "title": "Unit F180: Fundamentals of science",
-      "note": "Externally examined",
+      "id": "OCR_L3SCI_SEC_F180_BIO",
+      "title": "Unit F180: Fundamentals of science — Biology",
+      "note": "External exam · Section A · 20 marks",
       "topics": [
         {
-          "id": "OCR_L3SCI_F180",
-          "code": "F180",
-          "title": "Fundamentals of science",
+          "id": "OCR_L3SCI_B1",
+          "code": "B1",
+          "title": "Topic Area B1: Cell structure and microscopy",
           "kind": "topic",
           "points": [
-            {"id":"OCR_L3SCI_F180.1","code":"F180.1","title":"All unit content (add topic areas from the OCR specification)"}
+            {
+              "id": "OCR_L3SCI_B1.1.1",
+              "code": "B1.1.1",
+              "title": "1.1.1 Ultrastructure and function of cells and their components"
+            },
+            {
+              "id": "OCR_L3SCI_B1.1.2",
+              "code": "B1.1.2",
+              "title": "1.1.2 Cell specialisation"
+            },
+            {
+              "id": "OCR_L3SCI_B1.1.3",
+              "code": "B1.1.3",
+              "title": "1.1.3 Tissue structure and function"
+            },
+            {
+              "id": "OCR_L3SCI_B1.2.1",
+              "code": "B1.2.1",
+              "title": "1.2.1 Light and electron microscopy"
+            },
+            {
+              "id": "OCR_L3SCI_B1.2.2",
+              "code": "B1.2.2",
+              "title": "1.2.2 Practical 1: Light microscopy"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_B2",
+          "code": "B2",
+          "title": "Topic Area B2: Bioenergetics",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_B2.1.1",
+              "code": "B2.1.1",
+              "title": "2.1.1 Site of photosynthesis"
+            },
+            {
+              "id": "OCR_L3SCI_B2.1.2",
+              "code": "B2.1.2",
+              "title": "2.1.2 Biochemistry of photosynthesis"
+            },
+            {
+              "id": "OCR_L3SCI_B2.2.1",
+              "code": "B2.2.1",
+              "title": "2.2.1 Site of cellular respiration"
+            },
+            {
+              "id": "OCR_L3SCI_B2.2.2",
+              "code": "B2.2.2",
+              "title": "2.2.2 Biochemistry of cellular respiration"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_B3",
+          "code": "B3",
+          "title": "Topic Area B3: Structure and function of biological molecules",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_B3.1.1",
+              "code": "B3.1.1",
+              "title": "3.1.1 Structure and function of carbohydrates"
+            },
+            {
+              "id": "OCR_L3SCI_B3.1.2",
+              "code": "B3.1.2",
+              "title": "3.1.2 Structure and function of lipids"
+            },
+            {
+              "id": "OCR_L3SCI_B3.1.3",
+              "code": "B3.1.3",
+              "title": "3.1.3 Structure and function of proteins"
+            },
+            {
+              "id": "OCR_L3SCI_B3.1.4",
+              "code": "B3.1.4",
+              "title": "3.1.4 Structure and function of nucleic acids"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_B4",
+          "code": "B4",
+          "title": "Topic Area B4: Biodiversity and ecosystems",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_B4.1.1",
+              "code": "B4.1.1",
+              "title": "4.1.1 Distribution of organisms"
+            },
+            {
+              "id": "OCR_L3SCI_B4.2.1",
+              "code": "B4.2.1",
+              "title": "4.2.1 Sampling techniques"
+            },
+            {
+              "id": "OCR_L3SCI_B4.2.2",
+              "code": "B4.2.2",
+              "title": "4.2.2 Practical 2: Sampling"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_L3SCI_SEC_F180_CHEM",
+      "title": "Unit F180: Fundamentals of science — Chemistry",
+      "note": "External exam · Section B · 20 marks",
+      "topics": [
+        {
+          "id": "OCR_L3SCI_C1",
+          "code": "C1",
+          "title": "Topic Area C1: Atomic structure and the Periodic Table",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_C1.1.1",
+              "code": "C1.1.1",
+              "title": "1.1.1 Atomic structure"
+            },
+            {
+              "id": "OCR_L3SCI_C1.2",
+              "code": "C1.2",
+              "title": "1.2 The Periodic Table"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_C2",
+          "code": "C2",
+          "title": "Topic Area C2: Quantitative chemistry",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_C2.1.1",
+              "code": "C2.1.1",
+              "title": "2.1.1 The mole and molar mass"
+            },
+            {
+              "id": "OCR_L3SCI_C2.1.2",
+              "code": "C2.1.2",
+              "title": "2.1.2 Balancing equations and reacting masses"
+            },
+            {
+              "id": "OCR_L3SCI_C2.1.3",
+              "code": "C2.1.3",
+              "title": "2.1.3 Number of moles in aqueous solutions and preparation of a standard solution"
+            },
+            {
+              "id": "OCR_L3SCI_C2.1.4",
+              "code": "C2.1.4",
+              "title": "2.1.4 Neutralisation"
+            },
+            {
+              "id": "OCR_L3SCI_C2.1.5",
+              "code": "C2.1.5",
+              "title": "2.1.5 Practical 3: Volumetric analysis"
+            },
+            {
+              "id": "OCR_L3SCI_C2.1.6",
+              "code": "C2.1.6",
+              "title": "2.1.6 Moles and volumes of gases"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_C3",
+          "code": "C3",
+          "title": "Topic Area C3: Structure and bonding",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_C3.1.1",
+              "code": "C3.1.1",
+              "title": "3.1.1 Bonding"
+            },
+            {
+              "id": "OCR_L3SCI_C3.1.2",
+              "code": "C3.1.2",
+              "title": "3.1.2 Formulae of ions and compounds"
+            },
+            {
+              "id": "OCR_L3SCI_C3.2.1",
+              "code": "C3.2.1",
+              "title": "3.2.1 Physical properties of metals, ionic compounds and covalent substances"
+            },
+            {
+              "id": "OCR_L3SCI_C3.3.1",
+              "code": "C3.3.1",
+              "title": "3.3.1 Core concepts of organic chemistry"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_C4",
+          "code": "C4",
+          "title": "Topic Area C4: Rates of reaction and enthalpy changes",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_C4.1.1",
+              "code": "C4.1.1",
+              "title": "4.1.1 Factors which affect reaction rate"
+            },
+            {
+              "id": "OCR_L3SCI_C4.1.2",
+              "code": "C4.1.2",
+              "title": "4.1.2 Practical 4: Investigating reaction rates"
+            },
+            {
+              "id": "OCR_L3SCI_C4.2.1",
+              "code": "C4.2.1",
+              "title": "4.2.1 Exothermic and endothermic reactions"
+            },
+            {
+              "id": "OCR_L3SCI_C4.2.2",
+              "code": "C4.2.2",
+              "title": "4.2.2 Enthalpy change of combustion of alcohols"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_L3SCI_SEC_F180_PHYS",
+      "title": "Unit F180: Fundamentals of science — Physics",
+      "note": "External exam · Section C · 20 marks",
+      "topics": [
+        {
+          "id": "OCR_L3SCI_P1",
+          "code": "P1",
+          "title": "Topic Area P1: Electricity",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_P1.1.1",
+              "code": "P1.1.1",
+              "title": "1.1.1 Charge and current"
+            },
+            {
+              "id": "OCR_L3SCI_P1.1.2",
+              "code": "P1.1.2",
+              "title": "1.1.2 Potential difference and resistance"
+            },
+            {
+              "id": "OCR_L3SCI_P1.1.3",
+              "code": "P1.1.3",
+              "title": "1.1.3 Power and energy in circuits"
+            },
+            {
+              "id": "OCR_L3SCI_P1.1.4",
+              "code": "P1.1.4",
+              "title": "1.1.4 Series and parallel circuits"
+            },
+            {
+              "id": "OCR_L3SCI_P1.1.5",
+              "code": "P1.1.5",
+              "title": "1.1.5 Potential dividers"
+            },
+            {
+              "id": "OCR_L3SCI_P1.1.6",
+              "code": "P1.1.6",
+              "title": "1.1.6 Practical 5: Potential divider circuits"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_P2",
+          "code": "P2",
+          "title": "Topic Area P2: Motion",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_P2.1.1",
+              "code": "P2.1.1",
+              "title": "2.1.1 Energy stores and energy transfers"
+            },
+            {
+              "id": "OCR_L3SCI_P2.1.2",
+              "code": "P2.1.2",
+              "title": "2.1.2 Work and energy"
+            },
+            {
+              "id": "OCR_L3SCI_P2.1.3",
+              "code": "P2.1.3",
+              "title": "2.1.3 Kinetic and potential energy"
+            },
+            {
+              "id": "OCR_L3SCI_P2.1.4",
+              "code": "P2.1.4",
+              "title": "2.1.4 Power and Efficiency"
+            },
+            {
+              "id": "OCR_L3SCI_P2.1.5",
+              "code": "P2.1.5",
+              "title": "2.1.5 Force"
+            },
+            {
+              "id": "OCR_L3SCI_P2.1.6",
+              "code": "P2.1.6",
+              "title": "2.1.6 Practical 6: Investigating motion"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_P3",
+          "code": "P3",
+          "title": "Topic Area P3: Medical physics",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_P3.1.1",
+              "code": "P3.1.1",
+              "title": "3.1.1 The atom"
+            },
+            {
+              "id": "OCR_L3SCI_P3.1.2",
+              "code": "P3.1.2",
+              "title": "3.1.2 Electromagnetic radiation"
+            },
+            {
+              "id": "OCR_L3SCI_P3.1.3",
+              "code": "P3.1.3",
+              "title": "3.1.3 X-rays"
+            },
+            {
+              "id": "OCR_L3SCI_P3.1.4",
+              "code": "P3.1.4",
+              "title": "3.1.4 Wave motion"
+            },
+            {
+              "id": "OCR_L3SCI_P3.1.5",
+              "code": "P3.1.5",
+              "title": "3.1.5 Ultrasound"
+            },
+            {
+              "id": "OCR_L3SCI_P3.2.1",
+              "code": "P3.2.1",
+              "title": "3.2.1 Fundamentals of radioactivity"
+            },
+            {
+              "id": "OCR_L3SCI_P3.2.2",
+              "code": "P3.2.2",
+              "title": "3.2.2 Mathematical analysis of radioactivity"
+            },
+            {
+              "id": "OCR_L3SCI_P3.2.3",
+              "code": "P3.2.3",
+              "title": "3.2.3 Radiation hazards"
+            },
+            {
+              "id": "OCR_L3SCI_P3.2.4",
+              "code": "P3.2.4",
+              "title": "3.2.4 Using radionuclides"
+            }
           ]
         }
       ]
@@ -20,18 +378,355 @@
     {
       "id": "OCR_L3SCI_SEC_F181",
       "title": "Unit F181: Science in society",
-      "note": "Externally examined",
+      "note": "Externally examined · 75 minutes · 50 marks",
       "topics": [
         {
-          "id": "OCR_L3SCI_F181",
-          "code": "F181",
-          "title": "Science in society",
+          "id": "OCR_L3SCI_F181_BIO",
+          "code": "F181.1",
+          "title": "Topic Area 1: What scientists do",
           "kind": "topic",
           "points": [
-            {"id":"OCR_L3SCI_F181.1","code":"F181.1","title":"All unit content (add topic areas from the OCR specification)"}
+            {
+              "id": "OCR_L3SCI_F181_BIO_1.1.1",
+              "code": "1.1.1",
+              "title": "1.1.1 The skills scientists use to carry out research into the natural world and developing new technologies"
+            },
+            {
+              "id": "OCR_L3SCI_F181_BIO_1.2.1",
+              "code": "1.2.1",
+              "title": "1.2.1 Steps in the Scientific Method"
+            },
+            {
+              "id": "OCR_L3SCI_F181_BIO_1.2.2",
+              "code": "1.2.2",
+              "title": "1.2.2 The scientific method is a non-linear process"
+            },
+            {
+              "id": "OCR_L3SCI_F181_BIO_1.3.1",
+              "code": "1.3.1",
+              "title": "1.3.1 Scientists can work alone, in a team or collaboratively in an international community"
+            },
+            {
+              "id": "OCR_L3SCI_F181_BIO_1.3.2",
+              "code": "1.3.2",
+              "title": "1.3.2 Successful collaborations in science"
+            },
+            {
+              "id": "OCR_L3SCI_F181_BIO_1.3.3",
+              "code": "1.3.3",
+              "title": "1.3.3 International Scientific Organisations"
+            },
+            {
+              "id": "OCR_L3SCI_F181_BIO_1.4",
+              "code": "1.4",
+              "title": "1.4 The role of scientists"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_F181_DATA",
+          "code": "F181.2",
+          "title": "Topic Area 2: Handling scientific data",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_F181_DATA_2.1",
+              "code": "2.1",
+              "title": "2.1 Types of scientific data"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DATA_2.2",
+              "code": "2.2",
+              "title": "2.2 Collecting scientific data"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DATA_2.3.1",
+              "code": "2.3.1",
+              "title": "2.3.1 Scientific data can be stored on a personal, national or international database"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DATA_2.3.2",
+              "code": "2.3.2",
+              "title": "2.3.2 Scientific data can be represented in different graphical forms"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DATA_2.4.1",
+              "code": "2.4.1",
+              "title": "2.4.1 Identifying patterns and relationships to draw conclusions, evaluate hypotheses and inform further investigation"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_F181_DEV",
+          "code": "F181.3",
+          "title": "Topic Area 3: Scientific developments",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_F181_DEV_3.1.1",
+              "code": "3.1.1",
+              "title": "3.1.1 Scientific use of terms: hypothesis, prediction, theory and law"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DEV_3.1.2",
+              "code": "3.1.2",
+              "title": "3.1.2 Scientific theory vs scientific law"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DEV_3.2.1",
+              "code": "3.2.1",
+              "title": "3.2.1 New technologies play an important part in continuing scientific development"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DEV_3.2.2",
+              "code": "3.2.2",
+              "title": "3.2.2 Limitations and risks of new technologies in society"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DEV_3.3.1",
+              "code": "3.3.1",
+              "title": "3.3.1 Considerations for scientific developments"
+            },
+            {
+              "id": "OCR_L3SCI_F181_DEV_3.3.2",
+              "code": "3.3.2",
+              "title": "3.3.2 Contemporary issues that science will need to solve in the future"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3SCI_F181_COMMS",
+          "code": "F181.4",
+          "title": "Topic Area 4: Communicating science",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3SCI_F181_COMMS_4.1.1",
+              "code": "4.1.1",
+              "title": "4.1.1 Communicating science to the public using the media"
+            },
+            {
+              "id": "OCR_L3SCI_F181_COMMS_4.1.2",
+              "code": "4.1.2",
+              "title": "4.1.2 Communicating science between experts"
+            },
+            {
+              "id": "OCR_L3SCI_F181_COMMS_4.2",
+              "code": "4.2",
+              "title": "4.2 Plagiarism"
+            },
+            {
+              "id": "OCR_L3SCI_F181_COMMS_4.3",
+              "code": "4.3",
+              "title": "4.3 Using science to inform decision making"
+            },
+            {
+              "id": "OCR_L3SCI_F181_COMMS_4.4.1",
+              "code": "4.4.1",
+              "title": "4.4.1 Public trust in the scientific community and developments"
+            },
+            {
+              "id": "OCR_L3SCI_F181_COMMS_4.4.2",
+              "code": "4.4.2",
+              "title": "4.4.2 Bias in science communication"
+            }
           ]
         }
       ]
     }
+  ],
+  "practical_crosswalk": [
+    {
+      "practical": "1",
+      "title": "Light microscopy",
+      "point_id": "OCR_L3SCI_B1.2.2"
+    },
+    {
+      "practical": "2",
+      "title": "Sampling",
+      "point_id": "OCR_L3SCI_B4.2.2"
+    },
+    {
+      "practical": "3",
+      "title": "Volumetric analysis",
+      "point_id": "OCR_L3SCI_C2.1.5"
+    },
+    {
+      "practical": "4",
+      "title": "Investigating reaction rates",
+      "point_id": "OCR_L3SCI_C4.1.2"
+    },
+    {
+      "practical": "5",
+      "title": "Potential divider circuits",
+      "point_id": "OCR_L3SCI_P1.1.6"
+    },
+    {
+      "practical": "6",
+      "title": "Investigating motion",
+      "point_id": "OCR_L3SCI_P2.1.6"
+    }
+  ],
+  "legacy_ids": {
+    "OCR_L3SCI_F180.1": [
+      "OCR_L3SCI_B1.1.1",
+      "OCR_L3SCI_B1.1.2",
+      "OCR_L3SCI_B1.1.3",
+      "OCR_L3SCI_B1.2.1",
+      "OCR_L3SCI_B1.2.2",
+      "OCR_L3SCI_B2.1.1",
+      "OCR_L3SCI_B2.1.2",
+      "OCR_L3SCI_B2.2.1",
+      "OCR_L3SCI_B2.2.2",
+      "OCR_L3SCI_B3.1.1",
+      "OCR_L3SCI_B3.1.2",
+      "OCR_L3SCI_B3.1.3",
+      "OCR_L3SCI_B3.1.4",
+      "OCR_L3SCI_B4.1.1",
+      "OCR_L3SCI_B4.2.1",
+      "OCR_L3SCI_B4.2.2",
+      "OCR_L3SCI_C1.1.1",
+      "OCR_L3SCI_C1.2",
+      "OCR_L3SCI_C2.1.1",
+      "OCR_L3SCI_C2.1.2",
+      "OCR_L3SCI_C2.1.3",
+      "OCR_L3SCI_C2.1.4",
+      "OCR_L3SCI_C2.1.5",
+      "OCR_L3SCI_C2.1.6",
+      "OCR_L3SCI_C3.1.1",
+      "OCR_L3SCI_C3.1.2",
+      "OCR_L3SCI_C3.2.1",
+      "OCR_L3SCI_C3.3.1",
+      "OCR_L3SCI_C4.1.1",
+      "OCR_L3SCI_C4.1.2",
+      "OCR_L3SCI_C4.2.1",
+      "OCR_L3SCI_C4.2.2",
+      "OCR_L3SCI_P1.1.1",
+      "OCR_L3SCI_P1.1.2",
+      "OCR_L3SCI_P1.1.3",
+      "OCR_L3SCI_P1.1.4",
+      "OCR_L3SCI_P1.1.5",
+      "OCR_L3SCI_P1.1.6",
+      "OCR_L3SCI_P2.1.1",
+      "OCR_L3SCI_P2.1.2",
+      "OCR_L3SCI_P2.1.3",
+      "OCR_L3SCI_P2.1.4",
+      "OCR_L3SCI_P2.1.5",
+      "OCR_L3SCI_P2.1.6",
+      "OCR_L3SCI_P3.1.1",
+      "OCR_L3SCI_P3.1.2",
+      "OCR_L3SCI_P3.1.3",
+      "OCR_L3SCI_P3.1.4",
+      "OCR_L3SCI_P3.1.5",
+      "OCR_L3SCI_P3.2.1",
+      "OCR_L3SCI_P3.2.2",
+      "OCR_L3SCI_P3.2.3",
+      "OCR_L3SCI_P3.2.4"
+    ],
+    "OCR_L3SCI_F181.1": [
+      "OCR_L3SCI_F181_BIO_1.1.1",
+      "OCR_L3SCI_F181_BIO_1.2.1",
+      "OCR_L3SCI_F181_BIO_1.2.2",
+      "OCR_L3SCI_F181_BIO_1.3.1",
+      "OCR_L3SCI_F181_BIO_1.3.2",
+      "OCR_L3SCI_F181_BIO_1.3.3",
+      "OCR_L3SCI_F181_BIO_1.4",
+      "OCR_L3SCI_F181_DATA_2.1",
+      "OCR_L3SCI_F181_DATA_2.2",
+      "OCR_L3SCI_F181_DATA_2.3.1",
+      "OCR_L3SCI_F181_DATA_2.3.2",
+      "OCR_L3SCI_F181_DATA_2.4.1",
+      "OCR_L3SCI_F181_DEV_3.1.1",
+      "OCR_L3SCI_F181_DEV_3.1.2",
+      "OCR_L3SCI_F181_DEV_3.2.1",
+      "OCR_L3SCI_F181_DEV_3.2.2",
+      "OCR_L3SCI_F181_DEV_3.3.1",
+      "OCR_L3SCI_F181_DEV_3.3.2",
+      "OCR_L3SCI_F181_COMMS_4.1.1",
+      "OCR_L3SCI_F181_COMMS_4.1.2",
+      "OCR_L3SCI_F181_COMMS_4.2",
+      "OCR_L3SCI_F181_COMMS_4.3",
+      "OCR_L3SCI_F181_COMMS_4.4.1",
+      "OCR_L3SCI_F181_COMMS_4.4.2"
+    ]
+  },
+  "point_order": [
+    "OCR_L3SCI_B1.1.1",
+    "OCR_L3SCI_B1.1.2",
+    "OCR_L3SCI_B1.1.3",
+    "OCR_L3SCI_B1.2.1",
+    "OCR_L3SCI_B1.2.2",
+    "OCR_L3SCI_B2.1.1",
+    "OCR_L3SCI_B2.1.2",
+    "OCR_L3SCI_B2.2.1",
+    "OCR_L3SCI_B2.2.2",
+    "OCR_L3SCI_B3.1.1",
+    "OCR_L3SCI_B3.1.2",
+    "OCR_L3SCI_B3.1.3",
+    "OCR_L3SCI_B3.1.4",
+    "OCR_L3SCI_B4.1.1",
+    "OCR_L3SCI_B4.2.1",
+    "OCR_L3SCI_B4.2.2",
+    "OCR_L3SCI_C1.1.1",
+    "OCR_L3SCI_C1.2",
+    "OCR_L3SCI_C2.1.1",
+    "OCR_L3SCI_C2.1.2",
+    "OCR_L3SCI_C2.1.3",
+    "OCR_L3SCI_C2.1.4",
+    "OCR_L3SCI_C2.1.5",
+    "OCR_L3SCI_C2.1.6",
+    "OCR_L3SCI_C3.1.1",
+    "OCR_L3SCI_C3.1.2",
+    "OCR_L3SCI_C3.2.1",
+    "OCR_L3SCI_C3.3.1",
+    "OCR_L3SCI_C4.1.1",
+    "OCR_L3SCI_C4.1.2",
+    "OCR_L3SCI_C4.2.1",
+    "OCR_L3SCI_C4.2.2",
+    "OCR_L3SCI_P1.1.1",
+    "OCR_L3SCI_P1.1.2",
+    "OCR_L3SCI_P1.1.3",
+    "OCR_L3SCI_P1.1.4",
+    "OCR_L3SCI_P1.1.5",
+    "OCR_L3SCI_P1.1.6",
+    "OCR_L3SCI_P2.1.1",
+    "OCR_L3SCI_P2.1.2",
+    "OCR_L3SCI_P2.1.3",
+    "OCR_L3SCI_P2.1.4",
+    "OCR_L3SCI_P2.1.5",
+    "OCR_L3SCI_P2.1.6",
+    "OCR_L3SCI_P3.1.1",
+    "OCR_L3SCI_P3.1.2",
+    "OCR_L3SCI_P3.1.3",
+    "OCR_L3SCI_P3.1.4",
+    "OCR_L3SCI_P3.1.5",
+    "OCR_L3SCI_P3.2.1",
+    "OCR_L3SCI_P3.2.2",
+    "OCR_L3SCI_P3.2.3",
+    "OCR_L3SCI_P3.2.4",
+    "OCR_L3SCI_F181_BIO_1.1.1",
+    "OCR_L3SCI_F181_BIO_1.2.1",
+    "OCR_L3SCI_F181_BIO_1.2.2",
+    "OCR_L3SCI_F181_BIO_1.3.1",
+    "OCR_L3SCI_F181_BIO_1.3.2",
+    "OCR_L3SCI_F181_BIO_1.3.3",
+    "OCR_L3SCI_F181_BIO_1.4",
+    "OCR_L3SCI_F181_DATA_2.1",
+    "OCR_L3SCI_F181_DATA_2.2",
+    "OCR_L3SCI_F181_DATA_2.3.1",
+    "OCR_L3SCI_F181_DATA_2.3.2",
+    "OCR_L3SCI_F181_DATA_2.4.1",
+    "OCR_L3SCI_F181_DEV_3.1.1",
+    "OCR_L3SCI_F181_DEV_3.1.2",
+    "OCR_L3SCI_F181_DEV_3.2.1",
+    "OCR_L3SCI_F181_DEV_3.2.2",
+    "OCR_L3SCI_F181_DEV_3.3.1",
+    "OCR_L3SCI_F181_DEV_3.3.2",
+    "OCR_L3SCI_F181_COMMS_4.1.1",
+    "OCR_L3SCI_F181_COMMS_4.1.2",
+    "OCR_L3SCI_F181_COMMS_4.2",
+    "OCR_L3SCI_F181_COMMS_4.3",
+    "OCR_L3SCI_F181_COMMS_4.4.1",
+    "OCR_L3SCI_F181_COMMS_4.4.2"
   ]
 }

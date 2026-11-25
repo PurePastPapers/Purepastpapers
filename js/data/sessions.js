@@ -162,7 +162,7 @@ async function recordResult(session, { questions, subject, paper = null, totalAw
   }
   const percentage = max > 0 ? round1(percent(awarded, max)) : 0;
   const graded = LOGS_PAPER.has(session.kind) && max > 0 && unmarked === 0;
-  const grade = graded ? gradeFor(percentage, subject.grade_scheme, paper?.grade_boundaries) : null;
+  const grade = graded ? gradeFor(percentage, subject.grade_scheme, paper?.grade_boundaries, subject.grade_policy) : null;
 
   session.status = 'completed';
   session.completed_at = now;

@@ -983,6 +983,10 @@
 .paper-layout [data-attempts] > .card {
   padding: 30px 30px 28px;
 }
+.paper-layout .btn--block {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
 .paper-qs .section-title {
   align-items: baseline;
   margin-bottom: 14px;
@@ -1110,6 +1114,12 @@
 @media (max-width: 900px) {
   .paper-layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  /* A long rotated question list extends beyond the phone's page gutters. */
+  .paper-layout > .paper-qs {
+    transform: none;
   }
 }
 .paper-facts + .banner {

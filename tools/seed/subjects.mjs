@@ -234,11 +234,13 @@ export const subjects = [
     catalogue_note: 'Examined units are sat in January and June series. The catalogue for this qualification has not been generated yet — use the OCR page.',
   },
   {
-    subject_id: 'OCR_L3_APPSCI_AAQ', level: 'Level 3', subject: 'Applied Science', board: 'OCR', spec_code: 'Cambridge Advanced National',
-    spec_notes: 'Cambridge Advanced National (F180, F181, etc.)', subject_category: 'Applied / STEM',
+    subject_id: 'OCR_L3_APPSCI_AAQ', level: 'Level 3', subject: 'Applied Science', board: 'OCR', spec_code: 'H151',
+    spec_notes: 'Cambridge Advanced National Extended Certificate: F180, F181, F182; school options F183 and F185.', subject_category: 'Applied / STEM',
     sp_prefix: 'OCR_L3SCI', id_stem: 'OCR_AAQSCI',
-    official_url: `${OCR}/cambridge-advanced-nationals/`,
-    catalogue_note: 'New qualification (first teaching September 2025): only sample assessment materials exist so far.',
+    official_url: `${OCR}/alternative-academic-qualifications/applied-science-level-3-h051-h151/assessment/`,
+    grade_policy: 'raw_marks_only',
+    qualifications: [{code: 'H151', label: 'Cambridge Advanced National Extended Certificate', is_as: false}],
+    catalogue_note: 'Official F180 and F181 samples. Public source restrictions leave some questions unavailable; coverage is shown on each paper. NEA assignments are reference resources, not scored practice. No matching public live papers were found on 25 November 2026.',
   },
 
   // ─────────────────────────────────── GCSE ───────────────────────────────────
