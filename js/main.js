@@ -28,7 +28,7 @@ function flashcardsView() {
   flashcardsStyles ??= new Promise((resolve, reject) => {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = new URL('../css/flashcards.css?v=flashcards-sets-3', import.meta.url);
+    stylesheet.href = new URL('../css/flashcards.css?v=flashcard-progress-1', import.meta.url);
     stylesheet.addEventListener('load', resolve, { once: true });
     stylesheet.addEventListener('error', () => {
       stylesheet.remove();
@@ -37,7 +37,7 @@ function flashcardsView() {
     }, { once: true });
     document.head.append(stylesheet);
   });
-  return Promise.all([import('./ui/views/flashcards.js?v=flashcards-sets-3'), flashcardsStyles]).then(([view]) => view);
+  return Promise.all([import('./ui/views/flashcards.js?v=flashcard-progress-1'), flashcardsStyles]).then(([view]) => view);
 }
 
 /**

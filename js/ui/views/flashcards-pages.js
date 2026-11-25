@@ -5,6 +5,7 @@
 import { html, raw } from '../../core/dom.js';
 import { icon } from '../icons.js';
 import { links } from '../../core/links.js';
+import { fmtDayMonth, fmtRelative } from '../../core/utils.js';
 
 const n = (value) => Number(value || 0).toLocaleString('en-GB');
 const plural = (count, word, many = `${word}s`) => `${n(count)} ${count === 1 ? word : many}`;
@@ -47,6 +48,68 @@ function inPlayLine(info) {
     <p class="small"><b>${n(info.inPlay)}</b> of ${n(info.total)} cards ${label}</p></div>`;
 }
 
+/** Cards studied in a set: known (graduated to review) and still learning. */
+function progressParts(deck) {
+  const total = Number(deck.card_count) || 0;
+  const studied = Math.min(total, Number(deck.studied_count) || 0);
+  const known = Math.min(studied, Number(deck.known_count) || 0);
+  const share = (value) => (total ? (100 * value) / total : 0);
+  return { total, studied, known, learning: studied - known, left: total - studied, share };
+}
+
+function progressBar(parts) {
+  return html`<span class="fc-prog__bar" role="img" aria-label="${n(parts.known)} known, ${n(parts.learning)} learning, ${n(parts.left)} to go">
+    <i class="is-known" style="width:${parts.share(parts.known).toFixed(2)}%"></i><i class="is-learning" style="width:${parts.share(parts.learning).toFixed(2)}%"></i></span>`;
+}
+
+const progressKey = (parts) => html`<p class="fc-prog__key"><span><i class="is-known"></i>${n(parts.known)} known</span>
+  <span><i class="is-learning"></i>${n(parts.learning)} learning</span><span><i></i>${n(parts.left)} to go</span></p>`;
+
+/** "412 of 966 cards done" with a known / learning / to go bar. */
+function progressLine(deck, { key = true } = {}) {
+  const parts = progressParts(deck);
+  return html`<div class="fc-prog"><p class="small"><b>${n(parts.studied)}</b> of ${plural(parts.total, 'card')} done · ${Math.round(parts.share(parts.studied))}%</p>
+    ${progressBar(parts)}${key ? progressKey(parts) : ''}</div>`;
+}
+
+/** The set page's "Your progress on this set" panel. */
+function progressPanel(model, deck, info) {
+  const parts = progressParts(deck);
+  const history = model.progressFor(deck);
+  const weeks = history?.weeks || [];
+  const most = Math.max(1, ...weeks.map((week) => Number(week.reviews) || 0));
+  const reviews = Number(history?.reviews) || 0;
+  const remembered = reviews ? Math.round((100 * (Number(history.remembered) || 0)) / reviews) : null;
+  const topics = (info?.topics || []).map((topic) => {
+    const sum = (key) => topic.points.reduce((total, point) => total + (point[key] || 0), 0);
+    return { title: topic.title, cards: sum('cards'), studied: Math.min(sum('cards'), sum('studied')), known: Math.min(sum('studied'), sum('known')) };
+  }).filter((topic) => topic.cards);
+  const row = (label, value) => html`<span class="muted">${label}</span><b>${value}</b>`;
+  return html`<section class="card ruled fc-progress tilt-2" aria-labelledby="fc-progress-title"><i class="tape tape--l" aria-hidden="true"></i>
+    <div class="card__head"><h2 class="card__title" id="fc-progress-title">Your progress on this set</h2>
+      ${history?.added_at ? html`<span class="small muted">since you added it on ${fmtDayMonth(history.added_at)}</span>` : ''}</div>
+    <div class="fc-progress__cols">
+      <div><p class="fc-progress__big"><b>${n(parts.studied)}</b> <span class="muted">of ${plural(parts.total, 'card')} done</span></p>
+        ${progressBar(parts)}${progressKey(parts)}
+        <div class="fc-progress__rows">
+          ${row('Reviews', history ? n(reviews) : '…')}
+          ${row('Remembered', history ? (remembered == null ? '–' : html`${remembered}% <span class="small muted">rated Good or Easy</span>`) : '…')}
+          ${row('Due now', n((deck.due_count || 0) + (deck.learning_count || 0)))}
+          ${row('Last studied', history ? (history.last_review ? fmtRelative(history.last_review) : 'Not yet') : '…')}
+        </div></div>
+      <div><p class="small muted fc-progress__label">Reviews each week</p>
+        ${weeks.length ? html`<div class="fc-spark" role="img" aria-label="${weeks.map((week) => `${fmtDayMonth(week.start)}: ${week.reviews}`).join(', ')}">
+          ${weeks.map((week) => html`<i style="height:${((100 * (Number(week.reviews) || 0)) / most).toFixed(1)}%" title="Week of ${fmtDayMonth(week.start)}: ${plural(week.reviews, 'review')}"></i>`)}</div>
+          <p class="fc-prog__key fc-spark__ends"><span>${fmtDayMonth(weeks[0].start)}</span><span>${fmtDayMonth(weeks[weeks.length - 1].start)}</span></p>`
+          : html`<p class="small muted" role="status">${history?.failed ? 'Could not load your reviews.' : 'Loading…'}</p>`}</div>
+      <div><p class="small muted fc-progress__label">Cards done by topic</p>
+        ${topics.length ? html`<div class="fc-progress__topics">${topics.map((topic) => html`<span class="fc-progress__topic">${topic.title}</span>
+          ${progressBar({ ...topic, learning: topic.studied - topic.known, left: topic.cards - topic.studied, share: (value) => (100 * value) / topic.cards })}
+          <span class="small muted">${n(topic.studied)}/${n(topic.cards)}</span>`)}</div>`
+          : html`<p class="small muted">${info ? 'This set’s cards are not tied to spec points.' : 'Loading…'}</p>`}</div>
+    </div></section>`;
+}
+
 /** A PurePastPapers set the student has added. */
 export function pppTile(model, deck, { index = 0, showSubject = false } = {}) {
   const subject = model.subjectFor(deck);
@@ -58,7 +121,7 @@ export function pppTile(model, deck, { index = 0, showSubject = false } = {}) {
     <div class="fc-ppp__body">
       ${showSubject ? html`<p class="fc-ppp__kind">${kind}</p>` : ''}
       <p class="small muted">PurePastPapers set${entry?.description ? ` · ${entry.description.replace(/\.$/, '').toLowerCase()}` : ''}</p>
-      ${inPlayLine(model.inPlayFor(deck))}
+      ${progressLine(deck)}
       ${counts(deck)}
       <footer class="fc-actions"><button class="btn btn--primary btn--sm" data-action="study" data-id="${deck.id}">${icon('play', { size: 14 })} Study</button>
         <button class="btn btn--sm" data-action="open-deck" data-id="${deck.id}">Choose cards</button>
@@ -74,6 +137,7 @@ export function ownTile(model, deck, { index = 0, showSubject = false } = {}) {
   return html`<article class="card ruled fc-own tilt-${TILTS[(index + 1) % 4]}"><i class="tape tape--c" aria-hidden="true"></i>
     <h3 class="fc-own__title">${deck.title}</h3>
     <p class="fc-own__by">made by you${showSubject && subject ? ` · ${subject.name}` : ''}${parent ? ` · inside ${parent.title}` : ''} · ${plural(deck.card_count || 0, 'card')}</p>
+    ${progressLine(deck)}
     ${counts(deck)}
     <footer class="fc-actions"><button class="btn btn--primary btn--sm" data-action="study" data-id="${deck.id}">${icon('play', { size: 14 })} Study</button>
       <button class="btn btn--sm" data-action="open-deck" data-id="${deck.id}">Edit cards</button></footer>
@@ -197,11 +261,13 @@ export function setPage(model, deck) {
       <div class="fc-sethead__body">
         <div><h2 class="fc-sethead__title" tabindex="-1">${entry?.deck_type || deck.title}</h2>
           <p class="small muted">${entry?.description || ''} ${plural(deck.card_count || 0, 'card')} in the set.</p>
+          <div class="fc-sethead__prog">${progressLine(deck, { key: false })}</div>
           <div class="fc-stats"><span><b>${n(deck.due_count)}</b>due</span><span><b>${n(deck.new_count)}</b>new</span><span><b>${n(deck.learning_count)}</b>learning</span><span><b data-in-play>${info ? n(info.inPlay) : '…'}</b>cards in play</span></div></div>
         <div class="fc-sethead__go"><button class="btn btn--primary fc-big" data-action="study" data-id="${deck.id}">${icon('play', { size: 16 })} Study now</button>
           <p class="small muted" data-apply-status role="status">${model.applyStatus || ''}</p></div>
       </div>
     </header>
+    ${progressPanel(model, deck, info)}
     <div class="fc-setcols">
       <div class="fc-panel__main">
         <section class="card ruled fc-which" aria-labelledby="fc-which-title"><h2 class="h3" id="fc-which-title">Which cards do you want?</h2>
