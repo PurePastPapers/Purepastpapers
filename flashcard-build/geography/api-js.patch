@@ -1,0 +1,20 @@
+diff --git a/js/flashcards/api.js b/js/flashcards/api.js
+index 53d789b..a848352 100644
+--- a/js/flashcards/api.js
++++ b/js/flashcards/api.js
+@@ -497,6 +497,7 @@ const subjectLabels = {
+   AQA_ALEVEL_SOC_7192: 'Sociology',
+   EDX_ALEVEL_HIST_9HI0: 'History',
+   AQA_ALEVEL_POL_7152: 'Politics',
++  AQA_ALEVEL_GEOG_7037: 'Geography',
+ };
+ 
+ // Some subjects offer more than one atomic set. The catalogue id suffix names
+@@ -507,6 +508,7 @@ const setVariants = {
+   _FULL: ['Full set', 'Every exam knowledge card plus background knowledge.'],
+   _CONTENT: ['Key content', 'Definitions, concepts, institutions and thinkers\' ideas from the specification.'],
+   _EXAMPLES: ['Exam examples', 'Acts, cases, events and figures you can use as evidence. Updated every week.'],
++  _EVIDENCE: ['Case studies and evidence', 'Named places, events, case studies and figures you can use as evidence. No card is also in Key content.'],
+   _BACKGROUND: ['Background knowledge', 'Useful context, such as election winners and book titles. No card is also in Key content or Exam examples.'],
+ };
+ const setVariant = (id) => Object.entries(setVariants).find(([suffix]) => String(id).endsWith(suffix))?.[1] || null;
