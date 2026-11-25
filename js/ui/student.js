@@ -13,6 +13,7 @@ import { practiceAvailability, testEntries, testPool } from '../engine/practice-
 import { textbookMasteryByNode } from '../engine/textbook-index.js';
 import { isTiered, questionsForTier, savedTier, tierLeaves, tierRequired } from '../engine/tiers.js';
 import { icon } from './icons.js';
+import { patternMark } from './patterns.js';
 import { SUBJECT_SWATCHES, scStyle, setSubjectColour, subjectColour, subjectSwatchId, targetGrade } from './subject-colours.js';
 import { fmtPercent, groupDot } from './ui.js';
 import { links, routeOf } from '../core/links.js';
@@ -146,6 +147,7 @@ export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) 
   const id = subject.subject_id;
   return html`<article class="card subject-card ${tilt ? `tilt-${tilt}` : ''}" style="${scStyle(subject)}" data-subject-card="${id}">
     <header class="subject-card__band">
+      ${patternMark(subject)}
       <h3><a href="${links.subject(id)}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
       <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
     </header>
@@ -189,6 +191,7 @@ export function manageCard(bundle, summary, progress, { tilt = 0 } = {}) {
   const id = subject.subject_id;
   return html`<article class="card subject-card ${tilt ? `tilt-${tilt}` : ''}" style="${scStyle(subject)}" data-subject-card="${id}">
     <header class="subject-card__band">
+      ${patternMark(subject)}
       <h3><a href="${links.subject(id)}">${subject.level === 'GCSE' ? 'GCSE ' : ''}${subject.subject}</a></h3>
       <button type="button" class="cdot" data-colour-for="${id}" aria-label="Change the colour for ${subject.subject}" aria-haspopup="dialog"></button>
     </header>

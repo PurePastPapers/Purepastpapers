@@ -5,32 +5,20 @@
 import { html, raw } from '../../core/dom.js';
 import { icon } from '../icons.js';
 import { links } from '../../core/links.js';
+import { patternMark } from '../patterns.js';
 import { fmtDayMonth, fmtRelative } from '../../core/utils.js';
 
 const n = (value) => Number(value || 0).toLocaleString('en-GB');
 const plural = (count, word, many = `${word}s`) => `${n(count)} ${count === 1 ? word : many}`;
 const TILTS = [1, 3, 2, 4];
 const stamp = html`<span class="fc-stamp" aria-hidden="true">P</span>`;
-const TONES = ['leaf', 'orbit', 'grid', 'wave'];
-
-/** Each subject's line pattern, from the original flashcard covers. */
-export function toneFor(subject) {
-  const text = `${subject?.id || ''} ${subject?.name || ''}`.toLowerCase();
-  if (/biol/.test(text)) return 'leaf';
-  if (/phys/.test(text)) return 'orbit';
-  if (/math/.test(text)) return 'grid';
-  if (/chem/.test(text)) return 'wave';
-  return TONES[[...text].reduce((sum, ch) => sum + ch.codePointAt(0), 0) % TONES.length];
-}
-const pattern = (subject) => html`<i class="fc-pat" data-tone="${toneFor(subject)}" aria-hidden="true"></i>`;
+const pattern = (subject) => patternMark(subject, 'fc-pat');
 
 /** A small fan of patterned cards in the subjects' colours. */
 function fan(subjects, size = '') {
   const pool = subjects.length ? subjects : [{ colour: '#f1cf63', id: 'biol' }, { colour: '#f2a37e', id: 'phys' }, { colour: '#9cc2e6', id: 'math' }];
-  const cards = subjects.length === 1
-    ? TONES.filter((tone) => tone !== toneFor(pool[0])).slice(0, 2).map((tone) => ({ colour: pool[0].colour, tone })).concat({ colour: pool[0].colour, tone: toneFor(pool[0]) })
-    : [0, 1, 2].map((index) => ({ colour: pool[index % pool.length].colour, tone: toneFor(pool[index % pool.length]) }));
-  return html`<span class="fc-fan ${size}" aria-hidden="true">${cards.map((card) => html`<i style="--sc:${card.colour}"><b class="fc-pat" data-tone="${card.tone}"></b></i>`)}</span>`;
+  const cards = [0, 1, 2].map((index) => pool[index % pool.length]);
+  return html`<span class="fc-fan ${size}" aria-hidden="true">${cards.map((subject) => html`<i style="--sc:${subject.colour}">${patternMark(subject, 'fc-pat')}</i>`)}</span>`;
 }
 
 function counts(deck) {

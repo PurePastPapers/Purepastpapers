@@ -397,14 +397,9 @@
 .fc-sample__tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .fc .flashcards__guide-link { text-align: center; }
 
-/* line patterns from the original flashcard covers, one per subject */
-.fc-pat { position: absolute; z-index: 0; pointer-events: none; color: color-mix(in srgb, var(--sc) 45%, var(--ink)); opacity: .38; }
-.fc-pat[data-tone='leaf'], .fc-pat[data-tone='wave'] { border-radius: 50% 0 50% 0; background: repeating-radial-gradient(ellipse at bottom left, transparent 0 6px, currentColor 7px 8px, transparent 9px 13px); }
-.fc-pat[data-tone='wave'] { transform: rotate(-24deg); }
-.fc-pat[data-tone='orbit'] { border-radius: 50%; background: repeating-radial-gradient(ellipse at center, transparent 0 7px, currentColor 8px 9px, transparent 10px 14px); }
-.fc-pat[data-tone='grid'] { transform: rotate(20deg); border-radius: 5%; background: repeating-linear-gradient(0deg, transparent 0 12px, currentColor 12px 13px), repeating-linear-gradient(90deg, transparent 0 12px, currentColor 12px 13px); }
+/* subject line patterns: css/patterns.css (.ppp-pat); here only where they sit */
 .fc-ppp__band, .fc-sethead__band { position: relative; overflow: hidden; isolation: isolate; }
-.fc-ppp__band > :not(.fc-pat), .fc-sethead__band > :not(.fc-pat) { position: relative; z-index: 1; }
+.fc-ppp__band > :not(.ppp-pat), .fc-sethead__band > :not(.ppp-pat) { position: relative; z-index: 1; }
 .fc-ppp__band > .fc-pat { width: 46%; height: 220%; right: -6%; top: -40%; }
 .fc-sethead__band > .fc-pat { width: 30%; height: 500%; right: -6%; top: -150%; }
 .fc-fan { position: relative; width: 110px; height: 120px; flex: none; display: block; }
@@ -412,7 +407,7 @@
 .fc-fan i:nth-child(1) { transform: rotate(-24deg); }
 .fc-fan i:nth-child(2) { transform: rotate(-8deg); }
 .fc-fan i:nth-child(3) { transform: rotate(10deg); }
-.fc-fan .fc-pat { inset: 8%; opacity: .5; transform: none; border-radius: 4px; }
+.fc-fan .fc-pat { inset: 8%; width: auto; height: auto; opacity: .5; transform: none; border-radius: 4px; -webkit-mask-image: var(--tile, none); mask-image: var(--tile, none); }
 .fc-fan--sm { width: 70px; height: 64px; }
 .fc-fan--sm i { width: 38px; height: 50px; left: 16px; top: 4px; border-width: 1.5px; box-shadow: 1px 1px 0 var(--ink); }
 .fc-fan--lg { width: 150px; height: 130px; }

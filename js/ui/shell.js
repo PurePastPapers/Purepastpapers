@@ -76,6 +76,7 @@ function frame() {
     </header>
     <main id="outlet"></main>
     <footer class="site-foot">
+      <p class="site-foot__sign">good luck with your revision ✎</p>
       <p>
         PurePastPapers is an independent revision project. It is not affiliated with AQA, Pearson Edexcel, OCR or WJEC Eduqas. Past papers and mark
         schemes remain the copyright of their exam boards.
