@@ -1,0 +1,7 @@
+# Independent MARK review
+
+Verdict recorded for all 92 original cards. Sixteen are retained in mark-reviewed.json and 76 are quarantined in quarantined.json because the sources reviewed did not establish their full model answers and marking points. This is a conservative partial deck, not a replacement for the full 92-card catalogue; do not publish it. The unverified cards are preserved for further checking, not asserted to be wrong. The forensic hostile-attribution card is specifically flawed because the scenario does not establish perceived hostility. Two sociology cards cite specific past papers contrary to the brief.
+
+The ledger gives the opened sources and a yes/no verdict by original stable key. AQA's 2023 and 2024 mark schemes predate the v1.4 Psychology specification; each retained topic also remains on the current specification. The worked calculations were checked independently: population SD sqrt(8/3)=1.63; 18/60=3/10=30%; mean 5, median 4, mode 4, range 7; 5/10=50%; sign test: six plus, two minus, two ties, s=2 and effective N=8. The candidate changes only the sign-test back relative to the original.
+
+All retained original fronts, stable keys, catalogue card IDs and catalogue IDs remain unchanged. Spec tags and direct/support class tags were removed from the working output. Question-specific traps replace missing ones on retained cards; the previous provisional generic traps are absent. Quarantined cards retain their original backs.
