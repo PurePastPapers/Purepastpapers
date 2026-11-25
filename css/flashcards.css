@@ -429,6 +429,7 @@
 .flashcards.flashcards--site .fc-studycard { position: relative; overflow: visible; padding: 44px 48px 36px; min-height: 300px; border: 2px solid var(--ink); border-radius: 4px; box-shadow: var(--card-shadow); background-color: var(--surface); scrollbar-gutter: auto;
   background-image: linear-gradient(transparent 39px, var(--rule-red) 39px, var(--rule-red) 41px, transparent 41px), repeating-linear-gradient(transparent 0 27px, var(--rule-blue) 27px 28px);
   background-position: 0 0, 0 13px; background-attachment: local; }
+.fc-studycard--tap { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .fc-studyspec { position: absolute; top: 16px; right: 18px; display: flex; gap: 6px; }
 .flashcards--site .flashcards__face-label { font: 400 22px/1.2 var(--font-hand); color: var(--pen); letter-spacing: 0; text-transform: none; margin-bottom: 4px; }
 .flashcards--site [data-study-question] .flashcards__content { font: 400 clamp(1.5rem, 3.2vw, 2rem)/1.25 var(--font-display); }

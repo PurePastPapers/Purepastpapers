@@ -807,7 +807,7 @@ export function mount(element, context) {
       panel.dataset.cardId = nextCard.id;
       panel.dataset.cardRevision = nextCard.revision;
       const points = tagList(nextCard.tags).filter((tag) => /^(?:PPP::)?Spec::/i.test(tag)).slice(0, 2);
-      setHtml(panel, html`<div class="card ruled flashcards__faces fc-studycard"><i class="tape tape--c" aria-hidden="true"></i>
+      setHtml(panel, html`<div class="card ruled flashcards__faces fc-studycard" data-study-face-card><i class="tape tape--c" aria-hidden="true"></i>
         ${points.length ? html`<span class="fc-studyspec">${points.map((tag) => html`<span class="tag">Spec ${specLabel(tag)}</span>`)}</span>` : ''}
         <div role="group" aria-labelledby="flashcard-question-label" aria-describedby="flashcard-question" tabindex="-1" data-study-question>
           <p class="flashcards__face-label hand" id="flashcard-question-label">question</p>
@@ -833,6 +833,7 @@ export function mount(element, context) {
         </div>`);
       resolveMedia(answer, Boolean(activeDeck()?.catalogue_id));
     }
+    $('[data-study-face-card]', panel)?.classList.toggle('fc-studycard--tap', !study.shown);
     if (cardChanged || revealed) setHtml($('[data-study-controls]', panel), studyControls(study));
     updateStudyFeedback(study);
     if (!restoreFocus || previousFocus?.matches('[data-action="exit-study"]')) return;
@@ -1250,7 +1251,7 @@ export function mount(element, context) {
         body: html`<ol class="flashcards__guide">
           <li><strong>Choose a set.</strong> Add a PurePastPapers set for one of your subjects, make your own, or import cards.</li>
           <li><strong>Choose which cards.</strong> PurePastPapers sets start with only what you’ve learnt: the spec points you’ve ticked in My subjects. Open a set to choose Everything or pick spec points instead. Your progress is kept whatever you choose.</li>
-          <li><strong>Review.</strong> Try the question, then show the answer. Pick Again if you forgot, Hard if recall took effort, Good if you remembered, or Easy if it felt effortless.</li>
+          <li><strong>Review.</strong> Try the question, then tap the card or Show answer to turn it over. Pick Again if you forgot, Hard if recall took effort, Good if you remembered, or Easy if it felt effortless.</li>
         </ol><p class="small muted">On a keyboard, press Space to reveal and 1–4 to rate.</p>`,
         actions: [{ label: 'Got it', cancel: true }],
       });
@@ -1488,6 +1489,16 @@ export function mount(element, context) {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => { if (view === 'deck') void refreshCards(); }, 220);
   });
+  // Tapping the card itself turns it over, like the Show answer button. Taps on links, buttons,
+  // form fields or media inside the card keep their own job, and finishing a text selection
+  // does not count as a tap. Once the answer shows, further taps do nothing.
+  const offCardTap = on(element, 'click', '[data-study-face-card]', (event, card) => {
+    if (view !== 'study' || !study?.card || study.shown || event.button !== 0) return;
+    if (event.target.closest?.('a, button, input, textarea, select, label, summary, audio, video, [contenteditable], [data-action]')) return;
+    const selection = window.getSelection?.();
+    if (selection && !selection.isCollapsed && card.contains(selection.anchorNode)) return;
+    showAnswer();
+  });
   const offImportInput = on(element, 'input', '[data-import-form] input, [data-import-form] textarea, [data-import-form] select', clearImportPreview);
   const offImportChange = on(element, 'change', '[data-import-form] input, [data-import-form] textarea, [data-import-form] select', clearImportPreview);
   const offSubmit = on(element, 'submit', '[data-import-form]', (event, form) => { event.preventDefault(); void previewImport(form); });
@@ -1519,5 +1530,6 @@ export function mount(element, context) {
     offImportChange();
     offSubmit();
     document.removeEventListener('keydown', onKey);
+    offCardTap();
   };
 }
