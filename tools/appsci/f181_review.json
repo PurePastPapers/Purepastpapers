@@ -1,0 +1,140 @@
+{
+  "reviewer_type": "model",
+  "review_status": "model_reviewed",
+  "source": {
+    "official_url": "https://www.ocr.org.uk/Images/697860-science-in-society.pdf",
+    "sha256": "3842719f3e1c6b9128186876fbec4c986f57cf5cfc289ede58d543f8e5415826",
+    "revision": "Version 3.0 (September 2025)",
+    "identity": "H151 F181 Science in society Sample Assessment Material",
+    "pages": 27,
+    "bundled_documents": {
+      "question_booklet": {
+        "pages": [
+          1,
+          12
+        ],
+        "last_scored_question_page": 11,
+        "page_12": "sample notice, no scored question"
+      },
+      "mark_scheme": {
+        "pages": [
+          13,
+          22
+        ],
+        "marking_instructions_page": 14,
+        "scored_rows_pages": [
+          15,
+          22
+        ]
+      },
+      "sample_pre_release": {
+        "pages": [
+          23,
+          27
+        ],
+        "source_a_pages": [
+          24,
+          25
+        ],
+        "source_b_page": 26,
+        "source_b_status": "withheld in public PDF, restricted to Teach Cambridge"
+      }
+    }
+  },
+  "independent_section_a": [
+    "1(a)(i)",
+    "1(b)(ii)",
+    "2(a)",
+    "2(b)",
+    "3(b)"
+  ],
+  "blocked": [
+    {
+      "part": "1(a)(ii)",
+      "marks": 2,
+      "source": "A",
+      "reason": "The exact adapted Source A text is present in the public OCR bundle, but third-party reuse permission is unconfirmed. The current original Science News article differs and is not substituted."
+    },
+    {
+      "part": "1(b)(i)",
+      "marks": 1,
+      "source": "A",
+      "reason": "The matching adapted Source A text is public in the OCR bundle; separate third-party reuse permission is unconfirmed."
+    },
+    {
+      "part": "1(c)",
+      "marks": 1,
+      "source": "A",
+      "reason": "The matching adapted Source A text is public in the OCR bundle; separate third-party reuse permission is unconfirmed."
+    },
+    {
+      "part": "2(c)",
+      "marks": 1,
+      "source": "B",
+      "reason": "Public insert withholds Source B for copyright reasons."
+    },
+    {
+      "part": "2(d)",
+      "marks": 2,
+      "source": "B",
+      "reason": "Public insert withholds Source B for copyright reasons."
+    },
+    {
+      "part": "3(a)",
+      "marks": 1,
+      "source": "B",
+      "reason": "Public insert withholds Source B for copyright reasons."
+    },
+    {
+      "part": "4",
+      "marks": 9,
+      "source": "A and B",
+      "reason": "Requires both sources, including withheld Source B."
+    }
+  ],
+  "blocked_q4_full_scheme_fixture": {
+    "note": "Complete levels descriptors, indicative content and guidance; recorded for reproducible private review, not an attemptable question while Source B is unavailable.",
+    "coordinate_system": "PDF points, CropBox top-left origin, 1-indexed pages, unrotated",
+    "regions": [
+      {
+        "page": 17,
+        "bbox": [
+          34,
+          305,
+          550,
+          744
+        ]
+      },
+      {
+        "page": 18,
+        "bbox": [
+          34,
+          69,
+          550,
+          717
+        ]
+      }
+    ]
+  },
+  "source_anomalies_preserved": [
+    "Q6's 2018 and 2019 percentages appear inconsistent with the stated car counts; original source pixels retained.",
+    "Q5(c) scheme guidance refers to both definitions, wording apparently carried over from 5(b); original source pixels retained."
+  ],
+  "independent_control": {
+    "official_url": "https://www.ocr.org.uk/Images/746226-science-in-society-pre-release-january-2026.pdf",
+    "sha256": "47ed28256e7f6c42c127d4356c9cc8abab4913c126948d172a255eca72e4a481",
+    "identity": "H151 F181 January 2026 pre-release, examination 14 January 2026",
+    "pages": 8,
+    "status": "pre-release only; matching live question paper and mark scheme not verified public; never pair with specimen"
+  },
+  "build": "python3 tools/appsci/f181_build.py /private/path/697860-science-in-society.pdf",
+  "render": "2x RGB, lossless WebP; original source page regions recorded in build and question provenance",
+  "marks": {
+    "printed": 50,
+    "independent_section_a": 10,
+    "section_b": 23,
+    "available": 33,
+    "blocked": 17
+  },
+  "rights": "Subject-specific permission to republish OCR Applied Science paper and scheme material remains unconfirmed. Science News and BBC extracts have separate third-party rights."
+}

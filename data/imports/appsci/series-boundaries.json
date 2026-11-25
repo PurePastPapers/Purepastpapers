@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "qualification_code": "H151",
+  "qualification": "L3 Cambridge Advanced National in Applied Science",
+  "series": "January 2026",
+  "source_id": "H151-GRADE-BOUNDARIES-JAN2026",
+  "source_url": "https://www.ocr.org.uk/Images/754970-cambridge-advanced-nationals-grade-boundaries-january-2026.pdf",
+  "source_sha256": "bfd100cb44b27e5ba992129d8bcefcd3c3652597cc5e61fcf9cd8f0ffe37a3b5",
+  "source_pdf_pages": 2,
+  "source_printed_title": "Level 3 Cambridge Advanced Nationals grade boundaries – January 2026 series",
+  "source_scope": "unit level raw mark and UMS grade boundaries",
+  "grade_order": ["D", "M", "P", "U"],
+  "units": {
+    "F180": {
+      "title": "Fundamentals of science",
+      "paper_component": "01",
+      "maximum_marks": 70,
+      "raw_boundaries": {"D": 56, "M": 41, "P": 27, "U": 0},
+      "ums_boundaries": {"D": 56, "M": 42, "P": 28, "U": 0}
+    },
+    "F181": {
+      "title": "Science in society",
+      "paper_component": "01",
+      "maximum_marks": 50,
+      "raw_boundaries": {"D": 40, "M": 30, "P": 20, "U": 0},
+      "ums_boundaries": {"D": 40, "M": 30, "P": 20, "U": 0}
+    }
+  },
+  "use_guard": "These are January 2026 unit-level boundaries only. Keep raw and UMS scales distinct. Do not apply them to the official sample papers, other series, a total H151 qualification result, NEA sample assignments, or incomplete practice sets; do not infer an official grade from sample marks.",
+  "separation": "Series-specific result data; not attached to the F180/F181 sample paper records."
+}

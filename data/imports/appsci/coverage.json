@@ -1,0 +1,145 @@
+{
+  "subject_id": "OCR_L3_APPSCI_AAQ",
+  "qualification_code": "H151",
+  "checked_on": "2026-11-25",
+  "status": "partial_source_coverage",
+  "reviewer_type": "model",
+  "rights_basis": {
+    "subject_id": "OCR_L3_APPSCI_AAQ",
+    "status": "owner_confirmed",
+    "existing_records_checked": [
+      "docs/CHEMISTRY-HANDOVER.md",
+      "docs/COMPUTER-SCIENCE-HANDOVER.md"
+    ],
+    "existing_scope": "The owner extended the earlier recorded OCR scope to Applied Science on 25 November 2026.",
+    "policy_urls": [
+      "https://www.ocr.org.uk/about/our-policies/copyright/",
+      "https://www.ocr.org.uk/qualifications/past-paper-finder/past-paper-policy/"
+    ],
+    "third_party_material": "Separate third-party grants are not inferred. Required unprovided or unconfirmed extracts remain excluded even after OCR permission is confirmed.",
+    "publication": "OCR-authored sample material may be activated. Withheld or separately credited third-party context stays excluded.",
+    "confirmed_on": "2026-11-25",
+    "confirmation": "Owner explicitly confirmed: Yes, Applied Science is covered.",
+    "scope_confirmed": "OCR H151/H051 Applied Science sample question papers and mark schemes for public PurePastPapers practice"
+  },
+  "source_inventory": "data/imports/appsci/source-inventory.json",
+  "papers": [
+    {
+      "paper_id": "OCR_F180_SAMPLE",
+      "unit": "F180",
+      "series": "Official sample",
+      "printed_marks": 70,
+      "available_marks": 65,
+      "scored_parts": 34,
+      "indexed": true,
+      "coverage_status": "partial",
+      "pack": "data/packs/appsci/OCR_F180_SAMPLE.json",
+      "blocked": [
+        {
+          "question_number": "11",
+          "part_label": "(a)(i)",
+          "marks": 2,
+          "reason_type": "third_party_rights_unconfirmed",
+          "reason": "The question requires a Getty Images photomicrograph; separate rights are unconfirmed."
+        },
+        {
+          "question_number": "11",
+          "part_label": "(a)(ii)",
+          "marks": 3,
+          "reason_type": "third_party_rights_unconfirmed",
+          "reason": "The question requires the credited photomicrograph and faithful physical print size."
+        }
+      ],
+      "image_assets": 80,
+      "catalogue_sha256": "646223e789cfc6c269847bcd7dea89ad47b8adf9b8fee4e9397e8859f8b8a84a"
+    },
+    {
+      "paper_id": "OCR_F181_SAMPLE",
+      "unit": "F181",
+      "series": "Official sample",
+      "printed_marks": 50,
+      "available_marks": 33,
+      "scored_parts": 15,
+      "indexed": true,
+      "coverage_status": "partial",
+      "pack": "data/packs/appsci/OCR_F181_SAMPLE.json",
+      "blocked": [
+        {
+          "question_number": "1(a)(ii)",
+          "marks": 2,
+          "reason": "Matching Source A extract: original site differs and reuse rights unconfirmed."
+        },
+        {
+          "question_number": "1(b)(i)",
+          "marks": 1,
+          "reason": "Matching Source A extract: original site differs and reuse rights unconfirmed."
+        },
+        {
+          "question_number": "1(c)",
+          "marks": 1,
+          "reason": "Matching Source A extract: original site differs and reuse rights unconfirmed."
+        },
+        {
+          "question_number": "2(c)",
+          "marks": 1,
+          "reason": "Source B withheld from public insert."
+        },
+        {
+          "question_number": "2(d)",
+          "marks": 2,
+          "reason": "Source B withheld from public insert."
+        },
+        {
+          "question_number": "3(a)",
+          "marks": 1,
+          "reason": "Source B withheld from public insert."
+        },
+        {
+          "question_number": "4",
+          "marks": 9,
+          "reason": "Requires both Source A and withheld Source B."
+        }
+      ],
+      "image_assets": 36,
+      "catalogue_sha256": "70db9a525b59a7fabbf6a42fbf848dfc717597b0d72414bad5103ef51d882a4e"
+    }
+  ],
+  "totals": {
+    "verified_source_files": 13,
+    "prepared_sample_packs": 2,
+    "indexed_papers": 2,
+    "scored_parts": 49,
+    "marks_available": 98,
+    "printed_marks": 120,
+    "blocked_marks": 22,
+    "image_assets": 116,
+    "live_past_papers": 0,
+    "paper_only": 0,
+    "nea_references": 5
+  },
+  "queued_verified_public_material": [],
+  "missing_source_controls": [
+    {
+      "unit": "F181",
+      "series": "January 2026",
+      "status": "pre_release_only",
+      "is_complete_paper": false,
+      "matching_question_paper": "not_found_on_public_assessment_page",
+      "matching_mark_scheme": "not_found_on_public_assessment_page",
+      "may_pair_with_specimen": false
+    }
+  ],
+  "nea_reference_units": [
+    "F182",
+    "F183",
+    "F184",
+    "F185",
+    "F186"
+  ],
+  "school_nea_route": [
+    "F182",
+    "F183",
+    "F185"
+  ],
+  "grading": "raw_marks_only; no sample grade or UMS conversion inferred"
+}

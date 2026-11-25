@@ -412,19 +412,59 @@
     "level": "Level 3",
     "subject": "Applied Science",
     "board": "OCR",
-    "spec_code": "Cambridge Advanced National",
-    "spec_notes": "Cambridge Advanced National (F180, F181, etc.)",
+    "spec_code": "H151",
+    "spec_notes": "Cambridge Advanced National Extended Certificate: F180, F181, F182; school options F183 and F185.",
     "subject_category": "Applied / STEM",
     "sp_prefix": "OCR_L3SCI",
     "id_stem": "OCR_AAQSCI",
-    "official_url": "https://www.ocr.org.uk/qualifications/cambridge-advanced-nationals/",
-    "catalogue_note": "New qualification (first teaching September 2025): only sample assessment materials exist so far.",
+    "official_url": "https://www.ocr.org.uk/qualifications/alternative-academic-qualifications/applied-science-level-3-h051-h151/assessment/",
+    "catalogue_note": "Official F180 and F181 samples. Public source restrictions leave some questions unavailable; coverage is shown on each paper. NEA assignments are reference resources, not scored practice. No matching public live papers were found on 25 November 2026.",
     "category_group": "applied",
-    "practice_modes": ["timed_test","individual"],
+    "practice_modes": [
+      "timed_test",
+      "individual"
+    ],
     "grade_scheme": "level3",
     "has_written_exam": true,
     "extra_hard": false,
-    "has_catalogue": false
+    "has_catalogue": true,
+    "grade_policy": "raw_marks_only",
+    "qualifications": [
+      {
+        "code": "H151",
+        "label": "Level 3",
+        "is_as": false
+      }
+    ],
+    "qualification_structure": {
+      "school_route": {
+        "qualification_code": "H151",
+        "mandatory_external_units": [
+          "F180",
+          "F181"
+        ],
+        "mandatory_nea_units": [
+          "F182"
+        ],
+        "selected_nea_options": [
+          "F183",
+          "F185"
+        ]
+      },
+      "other_nea_options": [
+        "F184",
+        "F186"
+      ],
+      "shared_certificate": {
+        "qualification_code": "H051",
+        "mandatory_units": [
+          "F180",
+          "F182"
+        ],
+        "note": "F180 is shared; F181 is not part of H051."
+      },
+      "grading_note": "Practice records raw marks only. Official unit outcomes require the correct series-specific raw-mark-to-UMS conversion and qualification aggregation."
+    }
   },
   {
     "subject_id": "EDX_GCSE_MATH_1MA1",

@@ -127,16 +127,28 @@ export function currentStreak(attempts, now = new Date()) {
 /**
  * Indicative grade for a percentage. `boundaries` ([{ grade, min_percentage }]) come from a
  * paper record when real boundaries have been entered; otherwise the generic scheme is used.
+ * `raw_marks_only` suppresses that generic fallback when the available source only supports raw marks.
  */
-export function gradeFor(percentage, schemeKey, boundaries = null) {
+export function gradeFor(percentage, schemeKey, boundaries = null, gradePolicy = null) {
   if (percentage == null) return null;
   const scheme = GRADE_SCHEMES[schemeKey];
-  const bands = boundaries?.length
+  const hasSourceBoundaries = Boolean(boundaries?.length);
+  // Some qualifications only publish raw marks for their available sample papers.
+  // Do not turn those into indicative site grades; a later paper may opt in by
+  // supplying its own verified, series-specific boundaries.
+  if (gradePolicy === 'raw_marks_only' && !hasSourceBoundaries) return null;
+  const bands = hasSourceBoundaries
     ? [...boundaries].sort((a, b) => b.min_percentage - a.min_percentage).map((b) => [b.grade, b.min_percentage])
     : scheme?.bands;
   if (!bands) return null;
   for (const [grade, minimum] of bands) if (percentage >= minimum) return grade;
   return scheme?.fail || 'U';
+}
+
+/** Whether the indexed questions cover the complete printed mark total. */
+export function isCompletePaper(paper) {
+  if (!paper || paper.coverage_status === 'partial') return false;
+  return !(Number.isFinite(paper.available_marks) && Number.isFinite(paper.total_marks) && paper.available_marks < paper.total_marks);
 }
 
 /** Grades in a scheme, best first (the fail grade last). */

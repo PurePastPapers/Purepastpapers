@@ -9,7 +9,7 @@ import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
 import { loadReportIndex, reportSourceUrl } from '../../data/examiner-reports.js';
 import { createSession } from '../../data/sessions.js';
-import { gradeFor, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
+import { gradeFor, isCompletePaper, latestByQuestion, paperHistory, ragFor, TARGET_BANDS, targetBand } from '../../engine/analytics.js';
 import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js';
 import { collapseLinked, expandLinkedIds } from '../../engine/linked-parts.js';
 import { levelLabel, qualificationCode } from '../../engine/paper-identity.js';
@@ -44,7 +44,7 @@ export async function mount(element, context) {
   const sourceLinks = assessmentResourceLinks(paper, { className: 'btn btn--block btn--left' });
 
   const target = targetGrade(subject);
-  const schemeBands = GRADE_SCHEMES[subject.grade_scheme]?.bands || [];
+  const schemeBands = subject.grade_policy === 'raw_marks_only' ? [] : GRADE_SCHEMES[subject.grade_scheme]?.bands || [];
   const bounds = paper.grade_boundaries?.length
     ? [...paper.grade_boundaries].sort((a, b) => b.min_percentage - a.min_percentage).map((b) => [b.grade, b.min_percentage])
     : schemeBands;
@@ -60,13 +60,14 @@ export async function mount(element, context) {
       ${attempts.length
         ? html`<ul class="attempt-list">
               ${attempts.map((attempt, index) => {
-                const band = target && attempt.grade ? targetBand(attempt.grade, target, subject.grade_scheme) : null;
+                const showGrade = attempt.grade && (subject.grade_policy !== 'raw_marks_only' || paper.grade_boundaries?.length);
+                const band = target && showGrade ? targetBand(attempt.grade, target, subject.grade_scheme) : null;
                 const session = attempt.session_id && api.getSession(attempt.session_id);
                 return html`<li>
                   <span>${fmtDate(attempt.timestamp)}</span>
                   <b class="attempt-list__score">${attempt.marks_awarded}/${attempt.max_marks}</b>
                   <span class="rag-dot" data-rag="${ragFor(attempt.percentage)}" title="${fmtPercent(attempt.percentage)}"></span>
-                  ${attempt.grade ? html`<span class="grade-stamp grade-stamp--sm" data-band="${band || ''}" title="${band ? TARGET_BANDS[band].label : `Grade ${attempt.grade}`}">${attempt.grade}</span>` : html`<span></span>`}
+                  ${showGrade ? html`<span class="grade-stamp grade-stamp--sm" data-band="${band || ''}" title="${band ? TARGET_BANDS[band].label : `Grade ${attempt.grade}`}">${attempt.grade}</span>` : html`<span></span>`}
                   <span class="attempt-list__act">
                     ${session ? html`<a class="btn btn--sm" href="${links.session(attempt.session_id)}">Review</a>` : html`<span class="muted small">${attempt.session_kind === 'logged' ? 'logged' : ''}</span>`}
                     <button type="button" class="btn btn--sm btn--ghost btn--icon" data-delete-attempt="${index}" aria-label="Delete the attempt from ${fmtDate(attempt.timestamp)}">${icon('trash', { size: 15 })}</button>
@@ -74,7 +75,7 @@ export async function mount(element, context) {
                 </li>`;
               })}
             </ul>
-            <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
+            <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : subject.grade_policy === 'raw_marks_only' ? 'This qualification’s available sample papers are tracked by raw marks; grade boundaries are not available.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
         : html`<div class="empty-doodle">${doodle('blankPaper')}<div>
               <p class="muted small">No attempts yet. Sit the paper here, or log a score if you have already done it on paper.</p>
               <p class="hand empty-doodle__note">your first go will show up here</p>
@@ -112,6 +113,8 @@ export async function mount(element, context) {
   }
 
   const time = `${paper.duration_label || fmtMinutes(paper.duration_minutes)}${paper.component_of ? ' practice' : ''}`;
+  const availableMarks = Number.isFinite(paper.available_marks) ? paper.available_marks : null;
+  const incomplete = !isCompletePaper(paper);
   const facts = [levelLabel(paper, subject, bundle.papers), subject.board, paper.official_paper_code || `${qualificationCode(paper, subject)}${paper.paper_code ? `/${paper.paper_code}` : ''}`, paper.pearson_series || (paper.year ? `${paper.series} ${paper.year}` : null), `${paper.total_marks} marks`, time, paper.tier ? `${paper.tier} tier` : null]
     .filter(Boolean)
     .join(' · ');
@@ -129,8 +132,8 @@ export async function mount(element, context) {
         actions: openSession
           ? html`<a class="btn btn--primary" href="${links.session(openSession.session_id)}">${icon('play', { size: 16 })} Resume paper</a>
               <button type="button" class="btn" data-discard-open>${icon('x', { size: 16 })} Discard attempt</button>`
-          : paper.resources_only ? '' : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${time})</button>
-              <button type="button" class="btn" data-start="untimed">Sit untimed</button>
+          : paper.resources_only ? '' : html`${incomplete ? '' : html`<button type="button" class="btn btn--primary" data-start="timed">${icon('clock')} Sit timed (${time})</button>
+              <button type="button" class="btn" data-start="untimed">Sit untimed</button>`}
               <button type="button" class="btn" data-log>Log a score</button>`,
       })}
       <p class="row row--tight paper-facts">
@@ -145,8 +148,9 @@ export async function mount(element, context) {
           <i class="tape tape--c" aria-hidden="true"></i>
           <div class="section-title">
             <h2 class="card__title">${paper.resources_only ? 'Assessment resources' : 'Questions'}</h2>
-            ${practiceQuestions.length ? html`<span class="hand">choose a question to practise</span><span class="small muted paper-qs__count">${plural(practiceQuestions.length, 'question')} · ${paper.total_marks} marks</span>` : ''}
+            ${practiceQuestions.length ? html`<span class="hand">choose a question to practise</span><span class="small muted paper-qs__count">${plural(practiceQuestions.length, 'question')} · ${availableMarks != null ? `${availableMarks} of ${paper.total_marks}` : incomplete ? `partial of ${paper.total_marks}` : paper.total_marks} marks</span>` : ''}
           </div>
+          ${incomplete ? banner(`This source paper is only partly available here${availableMarks != null ? ` (${availableMarks} of ${paper.total_marks} marks)` : ''}. Practise the listed questions or log a score from the complete source; a timed sitting is unavailable.`, { type: 'warn' }) : ''}
           ${paper.choice_note ? html`<p class="small muted">${paper.choice_note}</p>` : ''}
           ${paper.practice_coverage_note ? html`<p class="small muted">${paper.practice_coverage_note}</p>` : ''}
           ${questions.length
@@ -183,7 +187,7 @@ export async function mount(element, context) {
                     ${paper.official_source_url
                       ? html`<p style="margin-top:12px"><a class="btn btn--block" href="${paper.official_source_url}" target="_blank" rel="noopener">Open ${subject.board} past papers ${icon('external', { size: 15 })}</a></p>`
                       : ''}`}
-            ${bounds.length && !paper.resources_only
+          ${bounds.length && !paper.resources_only
               ? html`<p class="field__label" style="margin-top:20px">${officialBounds ? `Grade boundaries${paper.year ? ` · ${paper.series} ${paper.year}` : ''}` : 'Indicative grade boundaries'}</p>
                   <div class="boundaries">
                     ${bounds.map(([grade, minimum]) => html`<span>${grade}<b>${Math.ceil((minimum / 100) * paper.total_marks)}</b></span>`)}
@@ -255,6 +259,7 @@ export async function mount(element, context) {
   }
 
   async function start(timed) {
+    if (!isCompletePaper(paper)) return;
     const selection = await chooseQuestions();
     if (!selection) return;
     const questionIds = paperSessionQuestionIds(paper, selection, bundle.questionsById);
@@ -358,7 +363,7 @@ export async function mount(element, context) {
       subject_id: subject.subject_id,
       title: paper.title,
       session_kind: 'logged',
-      grade: gradeFor(percentage, subject.grade_scheme, paper.grade_boundaries),
+      grade: gradeFor(percentage, subject.grade_scheme, paper.grade_boundaries, subject.grade_policy),
     });
     setHtml($('[data-attempts]', element), attemptsCard());
     toast(`${api.isSignedIn() ? 'Saved' : 'Recorded temporarily'}: ${entry.marks}/${paper.total_marks} (${fmtPercent(percentage)}).`, { type: 'success' });

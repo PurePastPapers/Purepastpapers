@@ -20,7 +20,7 @@ const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount,
       <header class="subject-card__band">${patternMark(subject)}<h3>${subject.subject}</h3><span class="cdot" aria-hidden="true"></span></header>
       <div class="subject-card__body">
         <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}${Array.isArray(subject.tiers) ? html` · <span data-preview-tier>${tier ? `${tier} tier` : 'Tier not chosen'}</span>` : ''}</p>
-        <div class="target"><span class="target__grade" data-preview-grade>${target || '–'}</span><span><span class="target__label">Target grade</span>Last paper: <b>none yet</b></span></div>
+        <div class="target"><span class="target__grade" data-preview-grade>${subject.grade_policy === 'raw_marks_only' ? 'Marks' : target || '–'}</span><span><span class="target__label">${subject.grade_policy === 'raw_marks_only' ? 'Score tracking' : 'Target grade'}</span>Last paper: <b>none yet</b></span></div>
         <span class="segbar" aria-hidden="true">${Array.from({ length: 8 }, () => html`<i></i>`)}</span>
         ${subject.has_written_exam && leaves ? html`<p class="subject-card__meta"><span data-preview-covered>${coveredCount}</span>/<span data-preview-leaves>${leaves}</span> ${learningUnit} learned</p>` : ''}
       </div>
@@ -103,7 +103,7 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
             ${routeFields(subject, startModules)}
           </fieldset>`
         : ''}
-      <fieldset class="step">
+      ${subject.grade_policy === 'raw_marks_only' ? '' : html`<fieldset class="step">
         <legend><i>${step++}</i>Set your target grade</legend>
         <p class="step__hint">${combined
           ? 'Combined Science is one double award, so set one grade for all three sciences, from 9-9 down to 1-1. Your papers are rated against it.'
@@ -113,7 +113,7 @@ export function subjectDialog({ subject, mode, leaves = 0, learningUnit = 'spec 
           <label class="grade-pick grade-pick--unsure"><input type="radio" name="target" value="" ${target ? '' : 'checked'} /><span>Not sure yet</span></label>
         </div>
         <div data-key>${key(target)}</div>
-      </fieldset>
+      </fieldset>`}
       ${mode === 'add' && subject.has_written_exam
         ? html`<fieldset class="step">
             <legend><i>${step++}</i>What have you learned so far?</legend>

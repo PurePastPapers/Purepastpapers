@@ -172,6 +172,10 @@ export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) 
 
 /** Target grade box with the last paper's grade judged against it. */
 export function targetLine(subject, progress) {
+  if (subject.grade_policy === 'raw_marks_only') return html`<div class="target">
+    <span class="target__grade" title="Raw marks">Marks</span>
+    <span><span class="target__label">Score tracking</span>Paper results use raw marks until official grade boundaries are available.</span>
+  </div>`;
   const target = targetGrade(subject);
   const last = paperHistory(progress.paper_attempts, { subjectId: subject.subject_id }).find((attempt) => attempt.grade);
   const band = last && target ? targetBand(last.grade, target, subject.grade_scheme) : null;

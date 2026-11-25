@@ -50,6 +50,23 @@ test('timed sessions never invent zero marks; manual paper totals remain support
   assert.equal(api.getProgress().paper_attempts.length, 1);
 });
 
+test('raw-mark qualifications keep session results as marks and percentages without generic grades', async () => {
+  globalThis.localStorage = makeStorage();
+  await api.init();
+  const question = { ...q, question_id: 'h151-q1' };
+  const session = createSession({ kind: 'full_paper', subject_id: 'OCR_L3_APPSCI_AAQ', title: 'F180 Sample', question_ids: [question.question_id] });
+  session.marks[question.question_id] = 5;
+  const result = await finishSession(session, {
+    questions: [question],
+    subject: { grade_scheme: 'level3', grade_policy: 'raw_marks_only' },
+    paper: { total_marks: 5 },
+  });
+  assert.equal(result.marks_awarded, 5);
+  assert.equal(result.percentage, 100);
+  assert.equal(result.grade, null);
+  assert.equal(api.getProgress().paper_attempts[0].grade, null);
+});
+
 test('concurrent and repeated saves record a completed result only once', async () => {
   globalThis.localStorage = makeStorage();
   await api.init();

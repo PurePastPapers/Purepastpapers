@@ -97,7 +97,7 @@ async function buildDemoProgress() {
       subject_id: subjectId,
       title: paper.title,
       session_kind: 'logged',
-      grade: gradeFor(actual, bundle.subject.grade_scheme),
+      grade: gradeFor(actual, bundle.subject.grade_scheme, paper.grade_boundaries, bundle.subject.grade_policy),
     });
   }
   for (const [subjectId, title, awarded, max, daysAgo] of [
@@ -117,7 +117,7 @@ async function buildDemoProgress() {
       subject_id: subjectId,
       title,
       session_kind: 'custom_test',
-      grade: gradeFor(percentage, bundle.subject.grade_scheme),
+      grade: gradeFor(percentage, bundle.subject.grade_scheme, null, bundle.subject.grade_policy),
     });
   }
   paperAttempts.sort((a, b) => (a.timestamp < b.timestamp ? -1 : 1));
