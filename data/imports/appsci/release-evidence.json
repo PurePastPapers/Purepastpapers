@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "subject_id": "OCR_L3_APPSCI_AAQ",
+  "verified_at": "2026-11-25T20:09:55.795841+00:00",
+  "pull_request": "https://github.com/PurePastPapers/Purepastpapers/pull/65",
+  "source_head_sha": "0eba212cf3e23dd8706bf3750a9fe7002954b899",
+  "code_release_merge_sha": "72be554347841afb4455b7301c48bd8b50632cdb",
+  "production_url": "https://purepastpapers.com",
+  "ci_and_deployment_checks": [
+    {
+      "name": "Workers Builds: purepastpapers",
+      "head_sha": "72be554347841afb4455b7301c48bd8b50632cdb",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-11-25T20:04:55Z",
+      "details_url": "https://dash.cloudflare.com/744e141b1e36314dce420ed6d18349d5/workers/services/view/purepastpapers/production/builds/67ffbc7b-5db2-4ac3-99ee-a88cc61a71af"
+    },
+    {
+      "name": "deploy",
+      "head_sha": "72be554347841afb4455b7301c48bd8b50632cdb",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-11-25T20:05:25Z",
+      "details_url": "https://github.com/PurePastPapers/Purepastpapers/actions/runs/45691110188/job/139477528680"
+    },
+    {
+      "name": "report-build-status",
+      "head_sha": "72be554347841afb4455b7301c48bd8b50632cdb",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-11-25T20:04:42Z",
+      "details_url": "https://github.com/PurePastPapers/Purepastpapers/actions/runs/45691110188/job/139477528555"
+    },
+    {
+      "name": "build",
+      "head_sha": "72be554347841afb4455b7301c48bd8b50632cdb",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-11-25T20:04:35Z",
+      "details_url": "https://github.com/PurePastPapers/Purepastpapers/actions/runs/45691110188/job/139476494309"
+    }
+  ],
+  "verified_production_files": [
+    {
+      "path": "data/packs/index.json",
+      "http_status": 200,
+      "sha256": "3a320b52b79d6560cacaab614dca8083268bbc604fb83f37ba619dab85ed6f02",
+      "matches_merged_source": true
+    },
+    {
+      "path": "data/specs/OCR_L3_APPSCI_AAQ.json",
+      "http_status": 200,
+      "sha256": "ddb56e99deccd5e475a984007af85dc55ca4775462b0a3a75b78c743395be32d",
+      "matches_merged_source": true
+    },
+    {
+      "path": "data/subjects.json",
+      "http_status": 200,
+      "sha256": "467955799f68cfd991282485a4f8356278704d6ee96615a7594dbcb1624f6ade",
+      "matches_merged_source": true
+    },
+    {
+      "path": "data/packs/appsci/OCR_F180_SAMPLE.json",
+      "http_status": 200,
+      "sha256": "e26b647646800a13570f190657ff5a0172880649cfc5cdd94258431ff369729e",
+      "matches_merged_source": true
+    },
+    {
+      "path": "data/packs/appsci/OCR_F181_SAMPLE.json",
+      "http_status": 200,
+      "sha256": "1d2f34e194e05a38a63e2c8d7a086023c2bc956eb138067e40d0e90af94e4281",
+      "matches_merged_source": true
+    },
+    {
+      "path": "data/appsci-assets/OCR_F180_SAMPLE.json",
+      "http_status": 200,
+      "sha256": "646223e789cfc6c269847bcd7dea89ad47b8adf9b8fee4e9397e8859f8b8a84a",
+      "matches_merged_source": true
+    },
+    {
+      "path": "data/appsci-assets/OCR_F181_SAMPLE.json",
+      "http_status": 200,
+      "sha256": "70db9a525b59a7fabbf6a42fbf848dfc717597b0d72414bad5103ef51d882a4e",
+      "matches_merged_source": true
+    },
+    {
+      "path": "js/engine/analytics.js",
+      "http_status": 200,
+      "sha256": "124f21d8a0f03940d4306b584ff8616d19e2c932480df53a63f4e5d21434301d",
+      "matches_merged_source": true
+    },
+    {
+      "path": "js/ui/views/paper.js",
+      "http_status": 200,
+      "sha256": "f2479e9ea3365c339295c08ea555c7ad88c12f28e3874941c4291a788ccb8ae6",
+      "matches_merged_source": true
+    },
+    {
+      "path": "css/pages.css",
+      "http_status": 200,
+      "sha256": "aff02ef89fb6d084eb81346e26285b525eb4c02a16ae321e01dbf324eff8523f",
+      "matches_merged_source": true
+    }
+  ],
+  "browser": {
+    "target": "https://purepastpapers.com",
+    "engine": "Chromium",
+    "viewports": [
+      320,
+      390,
+      1440
+    ],
+    "result": "pass",
+    "summary": "Active bank: 2 official sample papers / 49 scored units; grouping, learned gate, exact point and crossover filters, marking and review, question-only export, 15-minute custom test, raw marks, timed scheme gate, other Level 3 route, paper/practice/builder/review at 320/390/1440 px: PASS",
+    "account_scope": "isolated local demo profile; no real student records modified",
+    "network_route": "execution environment HTTPS proxy"
+  },
+  "tests": {
+    "total": 476,
+    "passed": 475,
+    "skipped": 1,
+    "failed": 0,
+    "validation_errors": 0,
+    "validation_warnings": 69,
+    "expected_partial_bank_warnings": 2,
+    "existing_warnings": 67
+  },
+  "papers": [
+    {
+      "paper_id": "OCR_F180_SAMPLE",
+      "unit": "F180",
+      "scored_units": 34,
+      "practice_cards": 34,
+      "available_marks": 65,
+      "printed_marks": 70
+    },
+    {
+      "paper_id": "OCR_F181_SAMPLE",
+      "unit": "F181",
+      "scored_units": 15,
+      "practice_cards": 14,
+      "available_marks": 33,
+      "printed_marks": 50
+    }
+  ],
+  "known_exclusions": {
+    "source_dependent_printed_parts": 9,
+    "blocked_marks": 22,
+    "notes": "Getty-dependent F180 Q11(a) and source-dependent F181 parts remain excluded. NEA samples and the January 2026 insert are not scored papers."
+  },
+  "grade_policy": "raw_marks_only",
+  "representative_routes": [
+    "https://purepastpapers.com/#/papers?subject=OCR_L3_APPSCI_AAQ",
+    "https://purepastpapers.com/#/paper/OCR_L3_APPSCI_AAQ/OCR_F180_SAMPLE",
+    "https://purepastpapers.com/#/paper/OCR_L3_APPSCI_AAQ/OCR_F181_SAMPLE",
+    "https://purepastpapers.com/#/practice?subject=OCR_L3_APPSCI_AAQ&mode=individual"
+  ]
+}
