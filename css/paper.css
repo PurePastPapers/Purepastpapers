@@ -915,6 +915,14 @@ input[type='radio'] {
 .subject-card footer {
   margin-top: auto;
 }
+.subject-card__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.subject-card__actions .btn {
+  justify-content: center;
+}
 .segbar {
   display: flex;
   gap: 4px;

@@ -157,10 +157,11 @@ export function subjectCard(bundle, summary, { actions = true, tilt = 0 } = {}) 
               : ''}
             <p class="subject-card__score"><span>${summary.answered ? 'average' : 'no answers yet'}</span><b>${summary.answered ? fmtPercent(summary.percentage) : ''}</b></p>
             ${actions
-              ? html`<footer class="row row--tight">
+              ? html`<footer class="subject-card__actions">
                   <a class="btn btn--sm" href="${links.papers(id)}">Papers</a>
                   <a class="btn btn--sm" href="${links.practice({ subject: id })}">Practice</a>
                   <a class="btn btn--sm" href="${links.subject(id)}">Topics</a>
+                  <a class="btn btn--sm" href="${links.flashcards({ subject: id })}">Flashcards</a>
                 </footer>`
               : ''}`
         : html`<p class="small muted">${subject.no_written_exam}</p>`}

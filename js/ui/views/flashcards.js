@@ -148,7 +148,9 @@ export function mount(element, context) {
   const mountOwner = cloudAccountId();
   const mediaCache = new Map();
   // Subject tabs and "which cards" choices for PurePastPapers sets.
-  let homeTab = sessionStorage.getItem('ppp.flashcards.tab') || 'all';
+  // A subject card's Flashcards button opens that subject's tab.
+  let homeTab = context?.query?.subject || sessionStorage.getItem('ppp.flashcards.tab') || 'all';
+  if (context?.query?.subject) { try { sessionStorage.setItem('ppp.flashcards.tab', homeTab); } catch { /* private mode */ } }
   let subjects = [];
   let subjectsStatus = 'loading';
   const specSets = new Map(); // deck id → described spec-tag groups
