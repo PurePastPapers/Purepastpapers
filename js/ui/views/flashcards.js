@@ -1,15 +1,15 @@
 // Private flashcards. The data adapter keeps content and scheduling in the account backend.
 import { $, html, on, raw, setHtml } from '../../core/dom.js';
 import { confirmDialog, openModal, toast } from '../ui.js';
-import * as flashcards from '../../flashcards/api.js?v=flashcards-sets-3';
+import * as flashcards from '../../flashcards/api.js?v=flashcard-progress-1';
 import { icon } from '../icons.js';
 import { cloudAccountId, getProgress, learnedSet, setPreference } from '../../data/api.js';
 import { ensureSpec, getSubject, specIndex } from '../../data/content-repository.js';
 import { subjectColour } from '../subject-colours.js';
-import { catalogueScreen, homePage, setPage } from './flashcards-pages.js?v=flashcards-sets-3';
+import { catalogueScreen, homePage, setPage } from './flashcards-pages.js?v=flashcard-progress-1';
 import {
-  cardsPerPoint, countInPlay, createTagMapper, describeSets, generalCount, inPlay, requestSignature, selectionRequest,
-} from '../../flashcards/spec-map.js';
+  cardsPerPoint, countInPlay, createTagMapper, describeSets, generalCount, inPlay, progressPerPoint, requestSignature, selectionRequest,
+} from '../../flashcards/spec-map.js?v=flashcard-progress-1';
 
 const plural = (n, singular, pluralForm = `${singular}s`) => `${n} ${n === 1 ? singular : pluralForm}`;
 const dateLabel = (value) => value ? new Date(value).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '';
@@ -159,6 +159,7 @@ export function mount(element, context) {
   let applyTimer = null;
   let sampleCards = null;
   let sampleDeck = null;
+  let deckProgress = { deck: null, data: null };
 
   const displayedMedia = new Map();
   function releaseDetachedMedia() {
@@ -304,6 +305,7 @@ export function mount(element, context) {
     };
     if (view === 'set' && deck.id === selectedDeck) {
       const perPoint = cardsPerPoint(sets);
+      const progressByPoint = progressPerPoint(sets);
       const subjectId = deckSubjectId(deck);
       const leaves = specIndex.subjectLeaves(subjectId);
       const groups = new Map();
@@ -316,7 +318,8 @@ export function mount(element, context) {
         if (!groups.has(topic.id)) {
           groups.set(topic.id, { id: topic.id, title: /^\d+$/.test(topic.code || '') ? `Topic ${topic.code}: ${topic.title.replace(/^Topic \d+:\s*/, '')}` : (topic.code && !/^Topic/.test(topic.title) && /^Topic/.test(topic.code) ? `${topic.code}: ${topic.title}` : topic.title), points: [] });
         }
-        groups.get(topic.id).points.push({ id, code: point.code || '', title: point.title, cards: perPoint.get(id), on: picked(id) });
+        const done = progressByPoint.get(id) || { studied: 0, known: 0 };
+        groups.get(topic.id).points.push({ id, code: point.code || '', title: point.title, cards: perPoint.get(id), on: picked(id), studied: done.studied, known: done.known });
       }
       result.topics = [...groups.values()];
     }
@@ -363,6 +366,7 @@ export function mount(element, context) {
     return {
       tab: homeTab, subjects, decks, catalogue, cloud: cloudReady(), adding: addingCatalogue, openTopics, applyStatus,
       subjectFor, entryFor, choiceFor, inPlayFor, safeUrl: safeAnkiUrl,
+      progressFor: (deck) => (deckProgress.deck === deck?.id ? deckProgress.data : null),
       hasSets: (id) => id === 'all' || decks.some((deck) => subjectFor(deck)?.id === id) || catalogue.entries.some((entry) => entry.subject_id === id),
       topicSummary: (subjectId) => {
         const learned = learnedSet();
@@ -392,6 +396,16 @@ export function mount(element, context) {
     if (target && view === 'set') setHtml(target, pagesModel().samples());
   }
 
+  /** Review history for the open set, shown in "Your progress on this set". */
+  async function loadDeckProgress(deck) {
+    deckProgress = { deck: deck.id, data: null };
+    let data;
+    try { data = await flashcards.deckProgress(deck.id); } catch { data = { failed: true }; }
+    if (disposed || selectedDeck !== deck.id) return;
+    deckProgress = { deck: deck.id, data: data || { failed: true } };
+    if (view === 'set') drawSetKeepingScroll();
+  }
+
   async function openSet(deckId) {
     clearTimeout(applyTimer);
     selectedDeck = deckId;
@@ -402,6 +416,7 @@ export function mount(element, context) {
     $('.fc-sethead__title', element)?.focus({ preventScroll: true });
     const deck = activeDeck();
     void loadSamples(deck);
+    void loadDeckProgress(deck);
     try { await loadSpecSets(deck); } catch { applyStatus = 'Could not load this set’s spec points.'; }
     if (!disposed && view === 'set' && selectedDeck === deckId) draw();
   }

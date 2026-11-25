@@ -69,6 +69,8 @@ export function describeSets(specSets, mapTag) {
     cards: Number(set.cards) || 0,
     active: Number(set.active) || 0,
     optional: Boolean(set.optional),
+    studied: Number(set.studied) || 0,
+    known: Number(set.known) || 0,
     points: cardPoints(set.tags, mapTag),
   }));
 }
@@ -105,6 +107,21 @@ export function cardsPerPoint(sets) {
   for (const set of sets) {
     if (set.optional) continue;
     for (const id of set.points) counts.set(id, (counts.get(id) || 0) + set.cards);
+  }
+  return counts;
+}
+
+/** Studied and known cards per leaf spec point, counted the same way as cardsPerPoint. */
+export function progressPerPoint(sets) {
+  const counts = new Map();
+  for (const set of sets) {
+    if (set.optional) continue;
+    for (const id of set.points) {
+      const row = counts.get(id) || { studied: 0, known: 0 };
+      row.studied += set.studied || 0;
+      row.known += set.known || 0;
+      counts.set(id, row);
+    }
   }
   return counts;
 }

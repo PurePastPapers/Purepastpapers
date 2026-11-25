@@ -478,3 +478,26 @@
   .fc-topic summary { grid-template-columns: 18px 24px minmax(0, 1fr); }
   .fc-topic summary > .small { grid-column: 3; }
 }
+
+/* Progress: cards done in a set (known / learning / to go). */
+.fc-prog { margin: 8px 0 2px; }
+.fc-prog p { margin: 0 0 5px; }
+.fc-prog__bar { display: flex; width: 100%; height: 12px; border: 1.5px solid var(--ink); border-radius: 99px; overflow: hidden; background: var(--surface); }
+.fc-prog__bar i { display: block; height: 100%; }
+.fc-prog__bar .is-known, .fc-prog__key .is-known { background: #6aa77c; }
+.fc-prog__bar .is-learning, .fc-prog__key .is-learning { background: #e4b54a; }
+.fc-prog__key { display: flex; flex-wrap: wrap; gap: 2px 12px; margin: 5px 0 0; font-size: 12.5px; color: var(--ink-muted, #7d7468); white-space: nowrap; }
+.fc-prog__key i { display: inline-block; width: 9px; height: 9px; margin-right: 4px; border: 1px solid var(--ink); border-radius: 2px; background: var(--surface); }
+.fc-sethead__prog { max-width: 420px; }
+.fc-progress { margin: 22px 0; }
+.fc-progress__cols { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 28px; align-items: start; }
+.fc-progress__big { margin: 0 0 6px; }
+.fc-progress__big b { font: 400 44px/1 var(--font-display); }
+.fc-progress__rows { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin-top: 16px; font-size: 14.5px; }
+.fc-progress__rows b { font-variant-numeric: tabular-nums; }
+.fc-progress__label { margin: 0 0 8px; }
+.fc-progress__topics { display: grid; grid-template-columns: 1fr 110px auto; gap: 8px 10px; align-items: center; font-size: 13.5px; max-height: 260px; overflow: auto; }
+.fc-spark { display: flex; align-items: flex-end; gap: 6px; height: 70px; border-bottom: 1.5px solid var(--ink); }
+.fc-spark i { flex: 1; min-height: 1px; background: #6fa1d6; border: 1.2px solid var(--ink); border-bottom: 0; border-radius: 3px 3px 0 0; }
+.fc-spark__ends { justify-content: space-between; }
+@media (max-width: 760px) { .fc-progress__cols { grid-template-columns: 1fr; gap: 20px; } }

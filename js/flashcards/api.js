@@ -162,6 +162,11 @@ export async function listDeckSpecSets(deckId) {
   return (await connection()).rpc('flashcard_deck_spec_sets', { p_deck_id: deckId });
 }
 
+/** Review history for one set: totals, cards remembered and reviews each week. */
+export async function deckProgress(deckId, weeks = 8) {
+  return (await connection()).rpc('flashcard_deck_progress', { p_deck_id: deckId, p_weeks: weeks });
+}
+
 /** Keep only the chosen cards in study. Cards left out keep their review history. */
 export async function applySpecSelection(deckId, { mapped, allowed, general }) {
   return (await connection()).rpc('flashcard_apply_spec_selection', {
