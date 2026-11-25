@@ -239,7 +239,7 @@ export const subjects = [
     sp_prefix: 'OCR_L3SCI', id_stem: 'OCR_AAQSCI',
     official_url: `${OCR}/alternative-academic-qualifications/applied-science-level-3-h051-h151/assessment/`,
     grade_policy: 'raw_marks_only',
-    qualifications: [{code: 'H151', label: 'Cambridge Advanced National Extended Certificate', is_as: false}],
+    qualifications: [{code: 'H151', label: 'Level 3', is_as: false}],
     catalogue_note: 'Official F180 and F181 samples. Public source restrictions leave some questions unavailable; coverage is shown on each paper. NEA assignments are reference resources, not scored practice. No matching public live papers were found on 25 November 2026.',
   },
 
