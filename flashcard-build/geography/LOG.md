@@ -12,3 +12,4 @@
 - Changing places: writer 278 cards (178 content, 100 evidence). Writer hit the web-search limit; gov.uk hosts blocked. Checker running.
 - Water and carbon: writer 382 cards (310 content, 72 evidence). Checker running.
 - Global systems: writer 397 cards; 78 source rows not web-verified (search limit). Checker running.
+- Coasts: writer 401 cards. Checker running.
