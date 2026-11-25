@@ -132,6 +132,29 @@ function transactionDone(transaction) {
   });
 }
 
+// Safari may deactivate an IndexedDB transaction between a request's success
+// event and an awaited continuation. Queue writes inside the success event.
+function writeAfterReads(transaction, requests, write) {
+  const done = transactionDone(transaction);
+  let result;
+  let writeError;
+  const values = [];
+  let remaining = requests.length;
+  requests.forEach((request, index) => {
+    request.onsuccess = () => {
+      values[index] = request.result;
+      remaining -= 1;
+      if (remaining) return;
+      try { result = write(...values); }
+      catch (error) {
+        writeError = error;
+        transaction.abort();
+      }
+    };
+  });
+  return done.then(() => result, error => { throw writeError || error; });
+}
+
 export function createInkRepository(owner) {
   const ownerId = validId(typeof owner === 'string' ? owner : owner?.ownerId, 'ownerId');
 
@@ -154,27 +177,23 @@ export function createInkRepository(owner) {
       const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
       const records = transaction.objectStore(RECORDS_STORE);
       const outbox = transaction.objectStore(OUTBOX_STORE);
-      const previous = await requestResult(records.get(key));
-      if (previous && sameAnswer(record, previous.record)) {
-        await transactionDone(transaction);
-        return storedRecord(previous);
-      }
-      const candidate = {
-        ...record,
-        revision: Math.max(record.revision, (previous?.record.revision || 0) + 1),
-        cloudRevision: previous?.record.cloudRevision ?? record.cloudRevision,
-        updatedAt: new Date().toISOString(),
-      };
-      if (previous && record.revision < previous.record.revision) {
-        const conflict = { ...candidate, conflictOfRevision: previous.record.revision, conflict: true };
-        storeConflict(records, key, conflict);
-        await transactionDone(transaction);
-        return conflict;
-      }
-      records.put({ key, record: candidate });
-      if (ownerId !== 'guest') outbox.put({ key, record: candidate, queuedAt: candidate.updatedAt });
-      await transactionDone(transaction);
-      return candidate;
+      return await writeAfterReads(transaction, [records.get(key)], (previous) => {
+        if (previous && sameAnswer(record, previous.record)) return storedRecord(previous);
+        const candidate = {
+          ...record,
+          revision: Math.max(record.revision, (previous?.record.revision || 0) + 1),
+          cloudRevision: previous?.record.cloudRevision ?? record.cloudRevision,
+          updatedAt: new Date().toISOString(),
+        };
+        if (previous && record.revision < previous.record.revision) {
+          const conflict = { ...candidate, conflictOfRevision: previous.record.revision, conflict: true };
+          storeConflict(records, key, conflict);
+          return conflict;
+        }
+        records.put({ key, record: candidate });
+        if (ownerId !== 'guest') outbox.put({ key, record: candidate, queuedAt: candidate.updatedAt });
+        return candidate;
+      });
     } finally { db.close(); }
   }
 
@@ -183,10 +202,11 @@ export function createInkRepository(owner) {
     const db = await openDatabase();
     try {
       const transaction = db.transaction(RECORDS_STORE, 'readonly');
-      const stored = await requestResult(transaction.objectStore(RECORDS_STORE).getAll());
+      const prefix = ownerId + '\u0000' + safeResponseId + '\u0000';
+      const range = IDBKeyRange.bound(prefix, prefix.slice(0, -1) + '\u0001', false, true);
+      const stored = await requestResult(transaction.objectStore(RECORDS_STORE).getAll(range));
       await transactionDone(transaction);
-      return stored.filter((entry) => entry.record.ownerId === ownerId && entry.record.responseId === safeResponseId)
-        .map(storedRecord);
+      return stored.map(storedRecord);
     } finally { db.close(); }
   }
 
@@ -196,15 +216,15 @@ export function createInkRepository(owner) {
     const db = await openDatabase();
     try {
       const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
-      for (const storeName of [RECORDS_STORE, OUTBOX_STORE]) {
-        const store = transaction.objectStore(storeName);
-        const entries = await requestResult(store.getAll());
-        for (const entry of entries) {
-          if (entry.record.ownerId === ownerId && entry.record.responseId === safeResponseId && entry.record.partId === safePartId) store.delete(entry.key);
-        }
-      }
-      await transactionDone(transaction);
-      return true;
+      const stores = [RECORDS_STORE, OUTBOX_STORE].map(name => transaction.objectStore(name));
+      return await writeAfterReads(transaction, stores.map(store => store.getAll()), (...entriesByStore) => {
+        entriesByStore.forEach((entries, index) => {
+          for (const { key, record } of entries) {
+            if (record.ownerId === ownerId && record.responseId === safeResponseId && record.partId === safePartId) stores[index].delete(key);
+          }
+        });
+        return true;
+      });
     } finally { db.close(); }
   }
 
@@ -225,19 +245,18 @@ export function createInkRepository(owner) {
       const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
       const outbox = transaction.objectStore(OUTBOX_STORE);
       const records = transaction.objectStore(RECORDS_STORE);
-      const queued = await requestResult(outbox.get(key));
-      if (!queued || localRevision == null || queued.record.revision === localRevision) {
-        outbox.delete(key);
-      } else {
-        const latest = { ...queued.record, cloudRevision: Math.max(queued.record.cloudRevision || 0, cloudRevision || 0) || undefined };
-        outbox.put({ ...queued, record: latest, queuedAt: new Date().toISOString() });
-      }
-      const stored = await requestResult(records.get(key));
-      if (stored && (localRevision == null || stored.record.revision >= localRevision)) {
-        const latest = { ...storedRecord(stored), cloudRevision: Math.max(stored.record.cloudRevision || 0, cloudRevision || 0) || undefined };
-        records.put({ ...stored, record: latest });
-      }
-      await transactionDone(transaction);
+      await writeAfterReads(transaction, [outbox.get(key), records.get(key)], (queued, stored) => {
+        if (!queued || localRevision == null || queued.record.revision === localRevision) {
+          outbox.delete(key);
+        } else {
+          const latest = { ...queued.record, cloudRevision: Math.max(queued.record.cloudRevision || 0, cloudRevision || 0) || undefined };
+          outbox.put({ ...queued, record: latest, queuedAt: new Date().toISOString() });
+        }
+        if (stored && (localRevision == null || stored.record.revision >= localRevision)) {
+          const latest = { ...storedRecord(stored), cloudRevision: Math.max(stored.record.cloudRevision || 0, cloudRevision || 0) || undefined };
+          records.put({ ...stored, record: latest });
+        }
+      });
     } finally { db.close(); }
   }
 
@@ -250,10 +269,10 @@ export function createInkRepository(owner) {
       const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
       const records = transaction.objectStore(RECORDS_STORE);
       const outbox = transaction.objectStore(OUTBOX_STORE);
-      const queued = await requestResult(outbox.get(key));
-      if (queued?.record.revision === sent.revision) outbox.delete(key);
-      storeConflict(records, key, sent, conflictId);
-      await transactionDone(transaction);
+      await writeAfterReads(transaction, [outbox.get(key)], (queued) => {
+        if (queued?.record.revision === sent.revision) outbox.delete(key);
+        storeConflict(records, key, sent, conflictId);
+      });
     } finally { db.close(); }
   }
 
@@ -266,40 +285,39 @@ export function createInkRepository(owner) {
       const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
       const records = transaction.objectStore(RECORDS_STORE);
       const outbox = transaction.objectStore(OUTBOX_STORE);
-      const all = await requestResult(records.getAll());
-      const selectedEntries = all.filter((entry) => entry.record.ownerId === ownerId
-        && entry.record.responseId === safeResponseId && entry.record.partId === safePartId
-        && entry.key !== canonicalKey && entry.record.conflict
-        && ((selected?.conflictId && entry.record.conflictId === selected.conflictId)
-          || (selected?.conflictKey && entry.key === selected.conflictKey)
-          || (selected && sameAnswer(entry.record, selected))));
-      const currentEntry = await requestResult(records.get(canonicalKey));
-      const selectedRecord = selectedEntries[0]?.record || (selected?.responseId === safeResponseId && selected?.partId === safePartId ? selected : null);
-      if (useConflict && !selectedRecord) throw new Error('That handwriting conflict is no longer available. Reload and choose again.');
-      let chosen = useConflict ? selectedRecord : storedRecord(currentEntry);
-      if (!chosen) throw new Error('The current handwritten answer is unavailable.');
+      return await writeAfterReads(transaction, [records.getAll(), records.get(canonicalKey)], (all, currentEntry) => {
+        const selectedEntries = all.filter((entry) => entry.record.ownerId === ownerId
+          && entry.record.responseId === safeResponseId && entry.record.partId === safePartId
+          && entry.key !== canonicalKey && entry.record.conflict
+          && ((selected?.conflictId && entry.record.conflictId === selected.conflictId)
+            || (selected?.conflictKey && entry.key === selected.conflictKey)
+            || (selected && sameAnswer(entry.record, selected))));
+        const selectedRecord = selectedEntries[0]?.record || (selected?.responseId === safeResponseId && selected?.partId === safePartId ? selected : null);
+        if (useConflict && !selectedRecord) throw new Error('That handwriting conflict is no longer available. Reload and choose again.');
+        let chosen = useConflict ? selectedRecord : storedRecord(currentEntry);
+        if (!chosen) throw new Error('The current handwritten answer is unavailable.');
 
-      for (const entry of selectedEntries) records.delete(entry.key);
-      if (useConflict) {
-        const canonicalInput = {
-          ...chosen,
-          ownerId,
-          responseId: safeResponseId,
-          partId: safePartId,
-          revision: (currentEntry?.record.revision || 0) + 1,
-          cloudRevision: cloudRevision ?? chosen.cloudRevision,
-        };
-        delete canonicalInput.conflict;
-        delete canonicalInput.conflictId;
-        delete canonicalInput.conflictKey;
-        delete canonicalInput.conflictOfRevision;
-        chosen = validateRecord(canonicalInput, ownerId);
-        records.put({ key: canonicalKey, record: chosen });
-        if (alreadySynced) outbox.delete(canonicalKey);
-        else if (ownerId !== 'guest') outbox.put({ key: canonicalKey, record: chosen, queuedAt: new Date().toISOString() });
-      }
-      await transactionDone(transaction);
-      return { record: chosen, conflictRemoved: selectedEntries.length > 0 };
+        for (const entry of selectedEntries) records.delete(entry.key);
+        if (useConflict) {
+          const canonicalInput = {
+            ...chosen,
+            ownerId,
+            responseId: safeResponseId,
+            partId: safePartId,
+            revision: (currentEntry?.record.revision || 0) + 1,
+            cloudRevision: cloudRevision ?? chosen.cloudRevision,
+          };
+          delete canonicalInput.conflict;
+          delete canonicalInput.conflictId;
+          delete canonicalInput.conflictKey;
+          delete canonicalInput.conflictOfRevision;
+          chosen = validateRecord(canonicalInput, ownerId);
+          records.put({ key: canonicalKey, record: chosen });
+          if (alreadySynced) outbox.delete(canonicalKey);
+          else if (ownerId !== 'guest') outbox.put({ key: canonicalKey, record: chosen, queuedAt: new Date().toISOString() });
+        }
+        return { record: chosen, conflictRemoved: selectedEntries.length > 0 };
+      });
     } finally { db.close(); }
   }
 
@@ -315,33 +333,32 @@ async function mergeCloudRecord(ownerId, input) {
     const transaction = db.transaction([RECORDS_STORE, OUTBOX_STORE], 'readwrite');
     const records = transaction.objectStore(RECORDS_STORE);
     const outbox = transaction.objectStore(OUTBOX_STORE);
-    const existing = await requestResult(records.get(key));
-    const queued = await requestResult(outbox.get(key));
-    if (record.conflict) {
-      storeConflict(records, key, record, record.conflictId);
-    } else if (!existing) {
-      records.put({ key, record });
-    } else if ((record.cloudRevision ?? record.revision) >= (existing.record.cloudRevision ?? 0)) {
-      const cloudRevision = record.cloudRevision ?? record.revision;
-      const identical = sameAnswer(record, existing.record);
-      if (identical) {
-        records.put({ key, record: { ...storedRecord(existing), cloudRevision } });
-        if (queued) outbox.delete(key);
-      } else if (queued && cloudRevision > (queued.record.cloudRevision ?? 0)) {
-        // A concurrent cloud edit diverged from this draft's base. Keep both copies.
-        storeConflict(records, key, existing.record);
-        outbox.delete(key);
-        records.put({ key, record: { ...record, cloudRevision, revision: existing.record.revision + 1 } });
-      } else if (!queued && cloudRevision > (existing.record.cloudRevision ?? 0)) {
-        records.put({ key, record: { ...record, cloudRevision, revision: existing.record.revision + 1 } });
+    await writeAfterReads(transaction, [records.get(key), outbox.get(key)], (existing, queued) => {
+      if (record.conflict) {
+        storeConflict(records, key, record, record.conflictId);
+      } else if (!existing) {
+        records.put({ key, record });
+      } else if ((record.cloudRevision ?? record.revision) >= (existing.record.cloudRevision ?? 0)) {
+        const cloudRevision = record.cloudRevision ?? record.revision;
+        const identical = sameAnswer(record, existing.record);
+        if (identical) {
+          records.put({ key, record: { ...storedRecord(existing), cloudRevision } });
+          if (queued) outbox.delete(key);
+        } else if (queued && cloudRevision > (queued.record.cloudRevision ?? 0)) {
+          // A concurrent cloud edit diverged from this draft's base. Keep both copies.
+          storeConflict(records, key, existing.record);
+          outbox.delete(key);
+          records.put({ key, record: { ...record, cloudRevision, revision: existing.record.revision + 1 } });
+        } else if (!queued && cloudRevision > (existing.record.cloudRevision ?? 0)) {
+          records.put({ key, record: { ...record, cloudRevision, revision: existing.record.revision + 1 } });
+        }
       }
-    }
-    await transactionDone(transaction);
+    });
   } finally { db.close(); }
 }
 
 /** Uploads queued answers one at a time and preserves newer strokes written during an upload. */
-export async function syncInkOutbox(owner, adapter) {
+export async function syncInkOutbox(owner, adapter, response = null) {
   const ownerId = validId(typeof owner === 'string' ? owner : owner?.ownerId, 'ownerId');
   if (ownerId === 'guest') return { synced: 0, conflicts: 0, failed: 0 };
   if (!adapter?.saveInkResponse) throw new TypeError('A cloud adapter with saveInkResponse is required.');
@@ -349,6 +366,7 @@ export async function syncInkOutbox(owner, adapter) {
   const queued = await repository.listOutbox();
   const result = { synced: 0, conflicts: 0, failed: 0 };
   for (const entry of queued) {
+    if (response && (entry.record.responseId !== response.responseId || entry.record.partId !== response.partId)) continue;
     const expectedRevision = entry.record.cloudRevision ?? null;
     const cloudRecord = {
       ...entry.record,

@@ -173,18 +173,21 @@ export async function loadInkState(responseId, partId, { waitForCloudMs } = {}) 
   return { record: records.find(record => !record.conflict) || null, conflicts: records.filter(record => record.conflict) };
 }
 globalThis.addEventListener?.('online', () => syncInk().catch(() => {}));
+globalThis.document?.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') syncInk().catch(() => {});
+});
 export const loadInk = async (responseId, partId) => (await loadInkState(responseId, partId)).record;
 export async function listInkForPart(partId) {
   if (!inkAdapter() || globalThis.navigator?.onLine === false) return [];
   return listInkDraftsForPart(inkOwner(), partId);
 }
 const syncingInk = new Map();
-export async function syncInk() {
+export async function syncInk(response = null) {
   const adapter = inkAdapter();
-  if (!adapter || !globalThis.indexedDB) return false;
+  if (!adapter || !globalThis.indexedDB || globalThis.navigator?.onLine === false) return false;
   const owner = inkOwner();
   const done = (syncingInk.get(owner) || Promise.resolve()).catch(() => {}).then(() =>
-    inkOwner() === owner ? ink.syncInkOutbox(owner, adapter) : { failed: 0, conflicts: 0 });
+    inkOwner() === owner ? ink.syncInkOutbox(owner, adapter, response) : { failed: 0, conflicts: 0 });
   syncingInk.set(owner, done);
   try {
     const { failed, conflicts } = await done;
@@ -616,29 +619,58 @@ export function answerFor(questionId) {
  * Save an answer without a mark. With an attemptId it changes that go's answer (a marked
  * go keeps its mark); without one it starts a new go that waits to be marked.
  */
+// Apply one answer's change to the current account document. An old Practice
+// tab may otherwise overwrite answers saved on another device.
 export async function saveAnswerUnmarked(question, answer = '', { attemptId = null, groupAttemptId = null, hasInk = undefined } = {}) {
   const doc = requireProgress();
   const text = String(answer || '');
-  const marked = markedAttempt(doc, attemptId);
-  if (marked) {
-    if (marked.question_id !== question.question_id) throw new Error('This answer belongs to another question.');
-    marked.answer = text;
-    if (hasInk !== undefined) marked.has_ink = hasInk;
-    marked.answer_edited_at = new Date().toISOString();
-    await persist();
-    return { ...marked, waiting: false };
-  }
-  if (hasInk === false && !hasText(text)) {
-    const index = waitingIndex(doc, attemptId);
-    if (index >= 0 && doc.saved_answers[index].question_id === question.question_id) {
-      doc.saved_answers.splice(index, 1);
-      await persist();
+  const id = attemptId || uid('att');
+  const now = new Date().toISOString();
+  const change = (target) => {
+    const marked = markedAttempt(target, id);
+    if (marked) {
+      if (marked.question_id !== question.question_id) throw new Error('This answer belongs to another question.');
+      marked.answer = text;
+      if (hasInk !== undefined) marked.has_ink = hasInk;
+      marked.answer_edited_at = now;
+      return { ...marked, waiting: false };
     }
-    return null;
+    if (hasInk === false && !hasText(text)) {
+      const index = waitingIndex(target, id);
+      if (index >= 0 && target.saved_answers[index].question_id === question.question_id) target.saved_answers.splice(index, 1);
+      return null;
+    }
+    const entry = keepWaiting(target, { attempt_id: id, question_id: question.question_id, subject_id: question.subject_id,
+      answer: text, group_attempt_id: groupAttemptId, has_ink: hasInk }, now);
+    return { ...entry, waiting: true };
+  };
+  if (user && activeAdapter === supabaseAdapter && hasInk !== undefined) {
+    const owner = user.user_id;
+    const updated = await supabaseAdapter.updateProgress(owner, (remote) => {
+      const target = normalise(remote, owner);
+      change(target);
+      return target;
+    });
+    // A concurrent mark may have moved this answer out of the waiting list.
+    const marked = markedAttempt(updated, id);
+    const index = waitingIndex(updated, id);
+    const result = marked ? { ...marked, waiting: false } : index >= 0 ? { ...updated.saved_answers[index], waiting: true } : null;
+    if (progress === doc && cloudAccountId() === owner) {
+      const localIndex = waitingIndex(doc, id);
+      if (localIndex >= 0) doc.saved_answers.splice(localIndex, 1);
+      if (marked) {
+        const localMarked = markedAttempt(doc, id);
+        if (localMarked) Object.assign(localMarked, marked);
+        else doc.question_attempts.push(marked);
+      } else if (index >= 0) doc.saved_answers.push(updated.saved_answers[index]);
+      events.emit('progress', doc);
+    }
+    return result;
   }
-  const entry = keepWaiting(doc, { attempt_id: attemptId, question_id: question.question_id, subject_id: question.subject_id, answer: text, group_attempt_id: groupAttemptId, has_ink: hasInk });
-  await persist();
-  return { ...entry, waiting: true };
+  const hadWaiting = waitingIndex(doc, id) >= 0;
+  const result = change(doc);
+  if (result || hadWaiting) await persist();
+  return result;
 }
 
 /**

@@ -108,7 +108,7 @@ test('tablet Practice switches an answer to ink on the first Pencil stroke and k
     await keyboard.waitFor();
     await canvas.waitFor();
     assert.equal(await input.isVisible(), false);
-    assert.equal(await canvas.evaluate(node => getComputedStyle(node).touchAction), 'none');
+    assert.equal(await canvas.evaluate(node => getComputedStyle(node.closest('.ink-editor__canvas')).touchAction), 'none');
     assert.ok(await canvas.evaluate(node => getComputedStyle(node.closest('.qsplit')).gridTemplateColumns.split(' ').length === 1));
     await page.waitForFunction(() => {
       const canvas = window.testQuestionLayout.querySelector('canvas');
@@ -465,4 +465,109 @@ test('Marks: a coloured slider for questions over 1 mark', { skip }, async () =>
   assert.match(await slider.locator('[data-pick-value]').textContent(), new RegExp(`6 / ${max}`));
   assert.deepEqual(errors, []);
   await page.close();
+});
+
+test('Practice saves ink locally during a slow account write and reopens it on another device', { skip }, async () => {
+  const subject = 'AQA_ALEVEL_PSYCH_7182';
+  let progress = { enrolled_subjects: [subject] };
+  let stamp = '2026-11-25T00:00:00.000Z';
+  let ink;
+  let finishProgress;
+  const uploadGate = new Promise(resolve => { finishProgress = resolve; });
+  const first = await browser.newPage({ viewport: { width: 1194, height: 834 }, hasTouch: true });
+  const second = await browser.newPage();
+  try {
+    for (const page of [first, second]) {
+      await page.addInitScript(() => localStorage.setItem('ppp:welcome-seen', '1'));
+      await page.route('**/__practice_ink_qa', async route => {
+        const { action, args } = route.request().postDataJSON();
+        let data;
+        if (action === 'loadProgress') data = { progress, updated_at: stamp };
+        if (action === 'saveProgress') {
+          await uploadGate;
+          ({ progress, updated_at: stamp } = args);
+          data = [{ user_id: 'ink-sync-test' }];
+        }
+        if (action === 'saveInk') {
+          ink = args.p_record;
+          data = { status: 'saved', revision: ink.revision };
+        }
+        if (action === 'loadInk') data = ink && (!args.response_id || args.response_id === ink.responseId)
+          ? [{ record: ink, revision: ink.revision, updated_at: stamp }] : [];
+        await route.fulfill({ json: { data } });
+      });
+      await page.route('https://esm.sh/**', route => route.fulfill({
+        contentType: 'application/javascript',
+        body: `
+          const user = { id: 'ink-sync-test', email: 'ink-sync@example.com', user_metadata: {} };
+          const call = (action, args) => fetch('/__practice_ink_qa', {
+            method: 'POST', body: JSON.stringify({ action, args }),
+          }).then(response => response.json());
+          export function createClient() {
+            return {
+              auth: {
+                async getSession() { return { data: { session: { user } } }; },
+                async getUser() { return { data: { user } }; },
+                onAuthStateChange() { return { data: { subscription: { unsubscribe() {} } } }; },
+              },
+              from(table) {
+                const filters = {};
+                let update;
+                const query = {
+                  select() { return query; },
+                  eq(key, value) { filters[key] = value; return query; },
+                  order() { return query; },
+                  limit() { return query; },
+                  abortSignal() { return query; },
+                  update(value) { update = value; return query; },
+                  maybeSingle() { return call('loadProgress'); },
+                  then(resolve, reject) {
+                    const result = update ? call('saveProgress', update)
+                      : table === 'ink_responses' ? call('loadInk', filters) : Promise.resolve({ data: [] });
+                    return result.then(resolve, reject);
+                  },
+                };
+                return query;
+              },
+              rpc(name, args) {
+                return { abortSignal() { return call('saveInk', args); } };
+              },
+            };
+          }`,
+      }));
+    }
+
+    const url = `${BASE}#/practice?subject=${subject}&mode=individual`;
+    await first.goto(url);
+    const answer = first.locator('.ink-answer').first();
+    await answer.getByRole('button', { name: 'Write with Pencil' }).click();
+    const surface = answer.locator('.ink-editor__canvas');
+    await surface.evaluate(area => {
+      const { left, top } = area.getBoundingClientRect();
+      for (const [type, offset] of [['pointerdown', 0], ['pointermove', 30], ['pointerup', 60]]) {
+        area.dispatchEvent(new PointerEvent(type, {
+          pointerId: 5, pointerType: 'pen', button: 0, clientX: left + 20 + offset, clientY: top + 20 + offset,
+        }));
+      }
+    });
+    await answer.getByRole('button', { name: 'Save handwritten answer' }).click();
+    await answer.getByRole('button', { name: 'Answer saved' }).waitFor();
+    assert.equal(await answer.getByRole('button', { name: 'Answer saved' }).isEnabled(), true);
+    await answer.getByRole('status').getByText('Saved on this device · Syncing…').waitFor();
+    finishProgress();
+    await answer.getByRole('status').getByText('Saved and synced').waitFor();
+
+    await second.goto(url);
+    const reopened = second.locator('.ink-answer').first();
+    await reopened.getByRole('button', { name: 'Write with Pencil' }).click();
+    await reopened.getByRole('button', { name: 'Saved answer' }).waitFor();
+    const restored = await second.evaluate(async ({ responseId, partId }) => {
+      const { createInkRepository } = await import('/js/data/ink.js');
+      return createInkRepository('ink-sync-test').load(responseId, partId);
+    }, { responseId: ink.responseId, partId: ink.partId });
+    assert.deepEqual(restored.sections, ink.sections);
+  } finally {
+    finishProgress();
+    await Promise.all([first.close(), second.close()]);
+  }
 });
