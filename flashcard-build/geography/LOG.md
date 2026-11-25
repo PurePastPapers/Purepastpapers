@@ -10,3 +10,4 @@
   public CDN and converted to text for writers and checkers.
 - Skills/NEA: writer 268 cards; checker cut 6, fixed 37 (34 leaf moves 3.3.1->3.4.1), 262 left; 10% audit 0/26 errors. The 4 generic data-type cards stay in places.txt under 3.2.2.3.
 - Changing places: writer 278 cards (178 content, 100 evidence). Writer hit the web-search limit; gov.uk hosts blocked. Checker running.
+- Water and carbon: writer 382 cards (310 content, 72 evidence). Checker running.
