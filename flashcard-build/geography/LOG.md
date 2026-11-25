@@ -8,4 +8,5 @@
 - Branch: claude/keen-hamilton-463t9p (the session's required branch, not codex/...).
 - Sources: AQA 7037 spec, mark schemes, examiner reports and QPs (Nov 2020 to Jun 2025) downloaded from AQA's
   public CDN and converted to text for writers and checkers.
-- Skills/NEA: writer 268 cards; checker cut 6, fixed 37 (34 leaf moves 3.3.1->3.4.1), 262 left; 10% audit 0/26 errors. TODO: 4 generic data-type cards (quantitative/qualitative data, Likert scale, questionnaire) were cut from skills as duplicates of places.txt; move them to 3.4.1 after the places check.
+- Skills/NEA: writer 268 cards; checker cut 6, fixed 37 (34 leaf moves 3.3.1->3.4.1), 262 left; 10% audit 0/26 errors. The 4 generic data-type cards stay in places.txt under 3.2.2.3.
+- Changing places: writer 278 cards (178 content, 100 evidence). Writer hit the web-search limit; gov.uk hosts blocked. Checker running.
