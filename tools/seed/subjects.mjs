@@ -213,11 +213,12 @@ export const subjects = [
     no_written_exam: 'Assessed by portfolio and an externally set assignment, so there are no written papers or question bank for this subject.',
   },
   {
-    subject_id: 'OCR_L3_BUS_CTEC', level: 'Level 3', subject: 'Applied Business', board: 'OCR', spec_code: 'Cambridge Technical',
-    spec_notes: 'Cambridge Technical Extended Certificate', subject_category: 'Applied / Vocational',
+    subject_id: 'OCR_L3_BUS_CTEC', level: 'Level 3', subject: 'Applied Business', board: 'OCR', spec_code: '05835',
+    spec_notes: 'Cambridge Technical Extended Certificate · Mandatory exams: Units 1 and 2. Unit 3 is optional; Unit 4 is coursework.', subject_category: 'Applied / Vocational',
+    qualification_number: '601/7699/4', grade_scheme: 'ocr_ctec_unit',
     sp_prefix: 'OCR_L3BUS', id_stem: 'OCR_CTECBUS',
     official_url: `${OCR}/cambridge-technicals/business/assessment/`,
-    catalogue_note: 'Examined units are sat in January and June series. The catalogue for this qualification has not been generated yet — use the OCR page.',
+    catalogue_note: '05835: mandatory written Units 1 and 2; optional written Unit 3. Select a unit using the Paper filter. Unit 4 and the other internal options are coursework. Unit marks do not determine an overall qualification award.',
   },
   {
     subject_id: 'OCR_L3_IT_AAQ', level: 'Level 3', subject: 'Information Technology', board: 'OCR', spec_code: 'Cambridge Advanced National',

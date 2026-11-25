@@ -1,24 +1,867 @@
 {
   "subject_id": "OCR_L3_BUS_CTEC",
+  "specification_version": "ocr-cambridge-technicals-business-v3-unit1-3-2026-11-25",
+  "official_source_url": "https://www.ocr.org.uk/qualifications/cambridge-technicals/business/units/",
+  "order_status": "verified",
+  "official_source": {
+    "title": "OCR Cambridge Technicals Level 3 Business Units 1, 2 and 3",
+    "version": "2016 Suite, unit specification Version 3 (Unit 1); first teaching September 2016",
+    "issue_date": "August 2016",
+    "first_teaching": 2016,
+    "url": "https://www.ocr.org.uk/qualifications/cambridge-technicals/business/units/",
+    "verified_at": "2026-11-25",
+    "source_pdfs": [
+      {
+        "unit": "Unit 1",
+        "url": "https://www.ocr.org.uk/Images/294523-the-business-environment.pdf",
+        "sha256": "27461b8821ab70afa639932f8390ec67edc0e60df05cda8a992e06818946b147"
+      },
+      {
+        "unit": "Unit 2",
+        "url": "https://www.ocr.org.uk/Images/294526-working-in-business.pdf",
+        "sha256": "78a201c93fcb0a87ff2c457b3bbbf7a7f6677c5feee6cdf893447f95524c5bdc"
+      },
+      {
+        "unit": "Unit 3",
+        "url": "https://www.ocr.org.uk/Images/505660-business-decisions.pdf",
+        "sha256": "31ed81ee4625e3886aa7caad087b70a282327f8b8aa8cbae6dcf4c18a00acd4a"
+      }
+    ]
+  },
+  "approach": "Official OCR teaching-content table order. Printed teaching-content codes are preserved independently within each unit; each point retains the learning outcome, complete teaching content and separate exemplification.",
+  "notes": "Learning outcome titles are official OCR wording. Unit 1 and Unit 2 are mandatory externally assessed units in the Extended Certificate. Unit 4 is also mandatory but internally assessed. Unit 3 is an optional externally assessed reference because this qualification chooses two 60 GLH units from its published optional set. Unit 4 and other internal optional units are not included as examination leaves. Legacy U1_1.1 maps by meaning to LO1 (actual teaching codes 1.1–1.5), not directly to OCR teaching code 1.1.",
+  "legacy_ids": {
+    "OCR_L3BUS_U1_1.1": [
+      "OCR_L3BUS_U1_TC1.1",
+      "OCR_L3BUS_U1_TC1.2",
+      "OCR_L3BUS_U1_TC1.3",
+      "OCR_L3BUS_U1_TC1.4",
+      "OCR_L3BUS_U1_TC1.5"
+    ],
+    "OCR_L3BUS_U1_1.2": [
+      "OCR_L3BUS_U1_TC2.1",
+      "OCR_L3BUS_U1_TC2.2"
+    ],
+    "OCR_L3BUS_U1_1.3": [
+      "OCR_L3BUS_U1_TC3.1",
+      "OCR_L3BUS_U1_TC3.2",
+      "OCR_L3BUS_U1_TC3.3",
+      "OCR_L3BUS_U1_TC3.4"
+    ],
+    "OCR_L3BUS_U1_1.4": [
+      "OCR_L3BUS_U1_TC4.1",
+      "OCR_L3BUS_U1_TC4.2",
+      "OCR_L3BUS_U1_TC4.3"
+    ],
+    "OCR_L3BUS_U1_1.5": [
+      "OCR_L3BUS_U1_TC5.1",
+      "OCR_L3BUS_U1_TC5.2",
+      "OCR_L3BUS_U1_TC5.3",
+      "OCR_L3BUS_U1_TC5.4"
+    ],
+    "OCR_L3BUS_U1_1.6": [
+      "OCR_L3BUS_U1_TC6.1",
+      "OCR_L3BUS_U1_TC6.2",
+      "OCR_L3BUS_U1_TC6.3"
+    ],
+    "OCR_L3BUS_U1_1.7": [
+      "OCR_L3BUS_U1_TC8.1",
+      "OCR_L3BUS_U1_TC8.2",
+      "OCR_L3BUS_U1_TC8.3"
+    ],
+    "OCR_L3BUS_U2_2.1": [
+      "OCR_L3BUS_U2_TC1.1",
+      "OCR_L3BUS_U2_TC1.2",
+      "OCR_L3BUS_U2_TC1.3",
+      "OCR_L3BUS_U2_TC1.4",
+      "OCR_L3BUS_U2_TC1.5",
+      "OCR_L3BUS_U2_TC1.6"
+    ],
+    "OCR_L3BUS_U2_2.2": [
+      "OCR_L3BUS_U2_TC2.1",
+      "OCR_L3BUS_U2_TC2.2",
+      "OCR_L3BUS_U2_TC2.3"
+    ],
+    "OCR_L3BUS_U2_2.3": [
+      "OCR_L3BUS_U2_TC3.1",
+      "OCR_L3BUS_U2_TC3.2",
+      "OCR_L3BUS_U2_TC3.3",
+      "OCR_L3BUS_U2_TC3.4"
+    ],
+    "OCR_L3BUS_U2_2.4": [
+      "OCR_L3BUS_U2_TC4.1",
+      "OCR_L3BUS_U2_TC4.2",
+      "OCR_L3BUS_U2_TC4.3",
+      "OCR_L3BUS_U2_TC4.4",
+      "OCR_L3BUS_U2_TC4.5"
+    ],
+    "OCR_L3BUS_U2_2.5": [
+      "OCR_L3BUS_U2_TC5.1",
+      "OCR_L3BUS_U2_TC5.2",
+      "OCR_L3BUS_U2_TC5.3",
+      "OCR_L3BUS_U2_TC5.4"
+    ]
+  },
+  "point_order": [
+    "OCR_L3BUS_U1_TC1.1",
+    "OCR_L3BUS_U1_TC1.2",
+    "OCR_L3BUS_U1_TC1.3",
+    "OCR_L3BUS_U1_TC1.4",
+    "OCR_L3BUS_U1_TC1.5",
+    "OCR_L3BUS_U1_TC2.1",
+    "OCR_L3BUS_U1_TC2.2",
+    "OCR_L3BUS_U1_TC3.1",
+    "OCR_L3BUS_U1_TC3.2",
+    "OCR_L3BUS_U1_TC3.3",
+    "OCR_L3BUS_U1_TC3.4",
+    "OCR_L3BUS_U1_TC4.1",
+    "OCR_L3BUS_U1_TC4.2",
+    "OCR_L3BUS_U1_TC4.3",
+    "OCR_L3BUS_U1_TC5.1",
+    "OCR_L3BUS_U1_TC5.2",
+    "OCR_L3BUS_U1_TC5.3",
+    "OCR_L3BUS_U1_TC5.4",
+    "OCR_L3BUS_U1_TC6.1",
+    "OCR_L3BUS_U1_TC6.2",
+    "OCR_L3BUS_U1_TC6.3",
+    "OCR_L3BUS_U1_TC7.1",
+    "OCR_L3BUS_U1_TC7.2",
+    "OCR_L3BUS_U1_TC7.3",
+    "OCR_L3BUS_U1_TC8.1",
+    "OCR_L3BUS_U1_TC8.2",
+    "OCR_L3BUS_U1_TC8.3",
+    "OCR_L3BUS_U2_TC1.1",
+    "OCR_L3BUS_U2_TC1.2",
+    "OCR_L3BUS_U2_TC1.3",
+    "OCR_L3BUS_U2_TC1.4",
+    "OCR_L3BUS_U2_TC1.5",
+    "OCR_L3BUS_U2_TC1.6",
+    "OCR_L3BUS_U2_TC2.1",
+    "OCR_L3BUS_U2_TC2.2",
+    "OCR_L3BUS_U2_TC2.3",
+    "OCR_L3BUS_U2_TC3.1",
+    "OCR_L3BUS_U2_TC3.2",
+    "OCR_L3BUS_U2_TC3.3",
+    "OCR_L3BUS_U2_TC3.4",
+    "OCR_L3BUS_U2_TC4.1",
+    "OCR_L3BUS_U2_TC4.2",
+    "OCR_L3BUS_U2_TC4.3",
+    "OCR_L3BUS_U2_TC4.4",
+    "OCR_L3BUS_U2_TC4.5",
+    "OCR_L3BUS_U2_TC5.1",
+    "OCR_L3BUS_U2_TC5.2",
+    "OCR_L3BUS_U2_TC5.3",
+    "OCR_L3BUS_U2_TC5.4",
+    "OCR_L3BUS_U3_TC1.1",
+    "OCR_L3BUS_U3_TC1.2",
+    "OCR_L3BUS_U3_TC1.3",
+    "OCR_L3BUS_U3_TC1.4",
+    "OCR_L3BUS_U3_TC1.5",
+    "OCR_L3BUS_U3_TC1.6",
+    "OCR_L3BUS_U3_TC2.1",
+    "OCR_L3BUS_U3_TC2.2",
+    "OCR_L3BUS_U3_TC2.3",
+    "OCR_L3BUS_U3_TC2.4",
+    "OCR_L3BUS_U3_TC2.5",
+    "OCR_L3BUS_U3_TC3.1",
+    "OCR_L3BUS_U3_TC3.2",
+    "OCR_L3BUS_U3_TC4.1",
+    "OCR_L3BUS_U3_TC4.2",
+    "OCR_L3BUS_U3_TC4.3",
+    "OCR_L3BUS_U3_TC4.4",
+    "OCR_L3BUS_U3_TC5.1",
+    "OCR_L3BUS_U3_TC5.2",
+    "OCR_L3BUS_U3_TC5.3",
+    "OCR_L3BUS_U3_TC5.4",
+    "OCR_L3BUS_U3_TC5.5",
+    "OCR_L3BUS_U3_TC6.1",
+    "OCR_L3BUS_U3_TC6.2",
+    "OCR_L3BUS_U3_TC6.3"
+  ],
   "sections": [
     {
       "id": "OCR_L3BUS_SEC_U1",
       "title": "Unit 1: The business environment",
-      "note": "Externally examined",
+      "note": "Mandatory externally examined unit (120 GLH).",
+      "assessment_method": "external",
+      "glh": 120,
       "topics": [
         {
           "id": "OCR_L3BUS_U1",
           "code": "1",
           "title": "The business environment",
-          "kind": "topic",
+          "kind": "unit",
+          "learning_outcomes": [
+            {
+              "code": "LO1",
+              "title": "Understand different types of businesses and their objectives"
+            },
+            {
+              "code": "LO2",
+              "title": "Understand how the functional areas of businesses work together to support the activities of businesses"
+            },
+            {
+              "code": "LO3",
+              "title": "Understand the effect of different organisational structures on how businesses operate"
+            },
+            {
+              "code": "LO4",
+              "title": "Be able to use financial information to check the financial health of businesses"
+            },
+            {
+              "code": "LO5",
+              "title": "Understand the relationship between businesses and stakeholders"
+            },
+            {
+              "code": "LO6",
+              "title": "Understand the external influences and constraints on businesses and how businesses could respond"
+            },
+            {
+              "code": "LO7",
+              "title": "Understand why businesses plan"
+            },
+            {
+              "code": "LO8",
+              "title": "Be able to assess the performance of businesses to inform future business activities"
+            }
+          ],
           "points": [
-            {"id":"OCR_L3BUS_U1_1.1","code":"1.1","title":"Types of business and their objectives"},
-            {"id":"OCR_L3BUS_U1_1.2","code":"1.2","title":"Functional areas of business and how they work together"},
-            {"id":"OCR_L3BUS_U1_1.3","code":"1.3","title":"Organisational structures"},
-            {"id":"OCR_L3BUS_U1_1.4","code":"1.4","title":"Financial information: costs, revenue, break-even, cash flow and accounts"},
-            {"id":"OCR_L3BUS_U1_1.5","code":"1.5","title":"Businesses and their stakeholders"},
-            {"id":"OCR_L3BUS_U1_1.6","code":"1.6","title":"External influences and constraints on business"},
-            {"id":"OCR_L3BUS_U1_1.7","code":"1.7","title":"Assessing business performance to inform future activities"}
+            {
+              "id": "OCR_L3BUS_U1_TC1.1",
+              "code": "1.1",
+              "title": "different types of business activity",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.1",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "primary",
+                "secondary",
+                "tertiary"
+              ],
+              "exemplification": "To include purposes, key features and examples of each type."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC1.2",
+              "code": "1.2",
+              "title": "different sectors of operation",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.2",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "private",
+                "public",
+                "third sector"
+              ],
+              "exemplification": "To include key features and examples for each sector."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC1.3",
+              "code": "1.3",
+              "title": "different forms of legal business ownership",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.3",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "sole trader",
+                "partnership",
+                "private limited company",
+                "public limited company",
+                "state/government owned",
+                "charity/not-for-profit",
+                "community interest companies (CIC)"
+              ],
+              "exemplification": "To include advantages and disadvantages of each form of legal ownership and the most appropriate form of ownership for a particular business."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC1.4",
+              "code": "1.4",
+              "title": "factors which inform business ownership",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.4",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "legal status",
+                "liability",
+                "funding",
+                "control/decision making",
+                "legal/administrative requirements"
+              ],
+              "exemplification": "To include the most appropriate form of legal ownership for a particular business."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC1.5",
+              "code": "1.5",
+              "title": "differing business aims and objectives",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.5",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "survival",
+                "financial: break-even; increase revenue; reduce cost; make profit",
+                "growth: physical expansion; increase in market share; increase provision",
+                "reputation (e.g. quality, offering value for money, being ethical, social responsibility, being environmentally friendly)",
+                "being enterprising (e.g. own boss, pursue own interests, being competitive)"
+              ],
+              "exemplification": "To include the appropriateness of the objectives of a business."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC2.1",
+              "code": "2.1",
+              "title": "key tasks of functional areas of businesses",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.1",
+                "source_pages": [
+                  5
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "finance",
+                "marketing",
+                "sales",
+                "human resources (HR)",
+                "operations management",
+                "customer services",
+                "business support services",
+                "research and development",
+                "purchasing/procurement"
+              ],
+              "exemplification": "Different businesses may use other names: Finance may be Accounting; Business Support Services may be IT or Administration; HR may be Personnel; Operations Management may be Production. Tasks are limited to key activities: finance—financial control and record keeping; marketing—promoting the business using different relevant media, including social media; sales—selling products/services; HR—planning recruitment, redundancies, remuneration and reward systems; operations management—converting inputs to outputs; customer services—liaising with customers, managing expectations and resolving queries; business support service—managing resources, maintaining equipment, providing IT and administrative support; research and development—developing new products/services in response to research findings; purchasing/procurement—sourcing and providing materials or services."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC2.2",
+              "code": "2.2",
+              "title": "how business functions interrelate with other business functions",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.2",
+                "source_pages": [
+                  5
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [],
+              "exemplification": "To include consequences of poor interrelationships. For example, sales activity may affect operations if output must increase; failure to tell operations about likely sales growth may leave insufficient products."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC3.1",
+              "code": "3.1",
+              "title": "different organisational structures",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.1",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "flat structures",
+                "hierarchical/tall structures",
+                "centralised",
+                "decentralised",
+                "matrix"
+              ],
+              "exemplification": "To include organisation by function, product/service, geographic location."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC3.2",
+              "code": "3.2",
+              "title": "elements of organisational structures",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.2",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "division of work",
+                "span of control",
+                "chain of command"
+              ],
+              "exemplification": "In large organisations, subtasks are often distributed to functional areas such as operations management, finance or marketing."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC3.3",
+              "code": "3.3",
+              "title": "how the elements of organisational structures impact on business operations",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.3",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "communication paths",
+                "accountability, authority and responsibility",
+                "delegation",
+                "empowerment"
+              ],
+              "exemplification": "Implications include: authority can be delegated; responsibility cannot. Span of control may increase if chain of command is shorter or a flat structure is adopted. Include advantages and disadvantages of different structures and appropriateness of a structure for a business."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC3.4",
+              "code": "3.4",
+              "title": "the use of organisation charts to show",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.4",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "elements of the organisational structure",
+                "status of different levels of job role: chief executive; directors; managers; supervisors; assistants/operatives"
+              ],
+              "exemplification": "Include reporting status (upwards) and command status (downwards), and awareness of key tasks associated with each job role."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC4.1",
+              "code": "4.1",
+              "title": "what is meant by the terms",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.1",
+                "source_pages": [
+                  6,
+                  7
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "cost (including fixed and variable costs)",
+                "revenue",
+                "cash flow",
+                "net cash flow",
+                "profit",
+                "break-even",
+                "margin of safety"
+              ],
+              "exemplification": "Include definitions and examples. Learners should understand the difference between revenue, profit and cash flow."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC4.2",
+              "code": "4.2",
+              "title": "how to calculate",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.2",
+                "source_pages": [
+                  6,
+                  7
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "profit/loss",
+                "break-even point/output"
+              ],
+              "exemplification": "Profit = revenue − cost. Break-even output = fixed costs/(selling price − variable cost). Graphical analysis is not required."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC4.3",
+              "code": "4.3",
+              "title": "how to interpret financial statements",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.3",
+                "source_pages": [
+                  6,
+                  7
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "income statement",
+                "statement of financial position",
+                "cash flow statement",
+                "cash flow forecast"
+              ],
+              "exemplification": "Include description of components and data analysis. A cash flow statement records actual cash inflows and outflows; a cash flow forecast is a prediction. Statement of financial position interpretation is limited to comparisons between different time periods. Include recommendations for future success."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC5.1",
+              "code": "5.1",
+              "title": "who the main stakeholders are and their objectives",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.1",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "internal stakeholders",
+                "external stakeholders"
+              ],
+              "exemplification": "A stakeholder is a person, group or organisation with an interest in a business because they are affected, or may be affected, by its activities. Internal stakeholders include owners (sole trader, partners), employees (e.g. chief executive, directors, managers, supervisors, assistants) and trade unions. External groups include shareholders, customers, suppliers, potential investors, lenders, local community, pressure groups, and central/local government (e.g. HMRC, environmental health, planning department). Include internal and external objectives; employee objectives may include job security, pay and benefits, rewards and recognition."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC5.2",
+              "code": "5.2",
+              "title": "the ways in which different stakeholder groups attempt to alter business behaviour",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.2",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [],
+              "exemplification": "Consider practical examples from real businesses (e.g. an environmental pressure group may protest about expansion plans, causing negative publicity and a customer boycott or denial of planning permission)."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC5.3",
+              "code": "5.3",
+              "title": "how businesses respond to different and sometimes conflicting stakeholder objectives",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.3",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [],
+              "exemplification": "Include how degree of stakeholder influence may determine the response; conflict resolution/management; and benefits and drawbacks of meeting stakeholder needs."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC5.4",
+              "code": "5.4",
+              "title": "the consequences to a business of not listening to its stakeholders",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.4",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [],
+              "exemplification": "Include not listening to specific stakeholder groups or an individual stakeholder (e.g. local residents or the business owner)."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC6.1",
+              "code": "6.1",
+              "title": "the factors which comprise the external business environment",
+              "kind": "topic",
+              "learning_outcome": "LO6",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO6",
+                "teaching_content_code": "6.1",
+                "source_pages": [
+                  8,
+                  9,
+                  10
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "social factors",
+                "technological factors",
+                "economic factors: interest rates; exchange rates; inflation; unemployment; taxation",
+                "environmental factors",
+                "political factors",
+                "legal factors: impact of current legislation on business operations; business framework (Companies Act, Partnership Act); consumer protection (Sale and Supply of Goods Act, Supply of Goods and Services Act, Consumer Protection Act); employee protection (Equality Act, Health and Safety at Work Act, Working Time Directive, National Minimum Wage Act); Data Protection Act; Copyright, Designs and Patents Act; planning permission; implications of failing to meet legal requirements",
+                "ethical factors: ethical conduct as an employer (e.g. not exploiting workforce, no child labour, pay above minimum wage/living wage, fair working practices); as a trader (e.g. fair trade, fair prices); environmentally friendly (e.g. waste management, recycling, carbon emissions, transport miles, energy use); sustainability (e.g. fossil fuels, land management, green energy); CSR activities (e.g. charity donations, humanitarian aid, health/welfare schemes, sponsorship of sport/educational/cultural events); impact of operating ethically and consequences of not operating ethically",
+                "competitor factors"
+              ],
+              "exemplification": "Include social factors such as demographic issues, attitudes to work, disposable income, social trends and cultural beliefs; technology such as automation, communication, purchasing/sales and mobile; environmental issues such as energy management, carbon emissions, waste reduction, recycling and pollution; political instability, change of government and government initiatives. For legal factors include the purpose and main provisions of itemised legislation; current legislation means the specified legislation or its revised/equivalent version during the qualification. Failure to comply has legal (e.g. fine) and non-legal (e.g. reputational) implications. Ethical means doing what is morally right above what law requires. Include ways a specific business can improve its ethical profile (e.g. a restaurant buying fair trade products), and positive and negative impacts of operating and not operating ethically. Competitive factors include strength of competition, market shares of business and competitors, competitor behaviour and market position."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC6.2",
+              "code": "6.2",
+              "title": "to identify how the external environment can impact on a business and its stakeholders",
+              "kind": "topic",
+              "learning_outcome": "LO6",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO6",
+                "teaching_content_code": "6.2",
+                "source_pages": [
+                  8,
+                  9,
+                  10
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [],
+              "exemplification": "Include positive and negative impacts on a business and its stakeholders."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC6.3",
+              "code": "6.3",
+              "title": "how businesses can respond to changes in their external environment",
+              "kind": "topic",
+              "learning_outcome": "LO6",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO6",
+                "teaching_content_code": "6.3",
+                "source_pages": [
+                  8,
+                  9,
+                  10
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [],
+              "exemplification": "Include advantages and disadvantages of responses, including seizing opportunities and dealing with threats."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC7.1",
+              "code": "7.1",
+              "title": "why businesses plan",
+              "kind": "topic",
+              "learning_outcome": "LO7",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO7",
+                "teaching_content_code": "7.1",
+                "source_pages": [
+                  10,
+                  11
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "survive/avoid business failure",
+                "develop business ideas and where ideas come from (e.g. problem solving, innovation, accidental discovery, employees, inventors, entrepreneurs)",
+                "avoid unnecessary risk; attitude to risk and uncertainty",
+                "meet objectives"
+              ],
+              "exemplification": "Survival includes why businesses fail (e.g. flawed plans, poor financial control, lack of market/competition knowledge, no clear USP, concentration risk such as reliance on one major customer). Attitude to risk may include willingness to take risk or being risk averse."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC7.2",
+              "code": "7.2",
+              "title": "to determine appropriate sources of finance for businesses",
+              "kind": "topic",
+              "learning_outcome": "LO7",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO7",
+                "teaching_content_code": "7.2",
+                "source_pages": [
+                  10,
+                  11
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "savings",
+                "reserves",
+                "overdraft",
+                "loan",
+                "mortgage",
+                "credit card",
+                "hire purchase",
+                "trade credit",
+                "venture capitalist",
+                "share issue",
+                "crowd-funding"
+              ],
+              "exemplification": "Include internal/external and short/long-term sources, advantages and disadvantages, and appropriateness to a specific business."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC7.3",
+              "code": "7.3",
+              "title": "what may be included in a business plan",
+              "kind": "topic",
+              "learning_outcome": "LO7",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO7",
+                "teaching_content_code": "7.3",
+                "source_pages": [
+                  10,
+                  11
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "identification of a product or service",
+                "unique selling point",
+                "how to protect a product/service",
+                "prioritisation of business objectives",
+                "market research results, including competitor analysis",
+                "financial requirements (e.g. cash flow forecast, sources of finance to approach)",
+                "resource requirements (e.g. finance, number and skills of employees, premises and location)"
+              ],
+              "exemplification": "Include what a business plan can be used for and who may wish to see one."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC8.1",
+              "code": "8.1",
+              "title": "factors affecting the success/failure of a business",
+              "kind": "topic",
+              "learning_outcome": "LO8",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO8",
+                "teaching_content_code": "8.1",
+                "source_pages": [
+                  12,
+                  13
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "financial",
+                "non-financial",
+                "short-term",
+                "long-term"
+              ],
+              "exemplification": "Include past and present success/failure."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC8.2",
+              "code": "8.2",
+              "title": "how to conduct a SWOT (Strengths, Weaknesses, Opportunities and Threats) analysis",
+              "kind": "topic",
+              "learning_outcome": "LO8",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO8",
+                "teaching_content_code": "8.2",
+                "source_pages": [
+                  12,
+                  13
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [],
+              "exemplification": "SWOT assesses a business’ current position. Strengths and weaknesses are internal and within control; opportunities and threats are external and must be managed."
+            },
+            {
+              "id": "OCR_L3BUS_U1_TC8.3",
+              "code": "8.3",
+              "title": "how to interpret business performance",
+              "kind": "topic",
+              "learning_outcome": "LO8",
+              "official_reference": {
+                "unit": "Unit 1",
+                "learning_outcome": "LO8",
+                "teaching_content_code": "8.3",
+                "source_pages": [
+                  12,
+                  13
+                ],
+                "source_file": "294523.pdf"
+              },
+              "content": [
+                "financial analysis",
+                "assessment of non-financial data",
+                "comparison with organisational objectives",
+                "comparison with industrial averages",
+                "comparison with similar businesses",
+                "trends over time",
+                "methods to improve performance"
+              ],
+              "exemplification": "Include assessing current performance against past performance and assessing different measurements of current performance. Industrial averages may include benchmarking. Methods should include specific recommendations for future objectives."
+            }
           ]
         }
       ]
@@ -26,19 +869,1319 @@
     {
       "id": "OCR_L3BUS_SEC_U2",
       "title": "Unit 2: Working in business",
-      "note": "Externally examined",
+      "note": "Mandatory externally examined unit (60 GLH).",
+      "assessment_method": "external",
+      "glh": 60,
       "topics": [
         {
           "id": "OCR_L3BUS_U2",
           "code": "2",
           "title": "Working in business",
-          "kind": "topic",
+          "kind": "unit",
+          "learning_outcomes": [
+            {
+              "code": "LO1",
+              "title": "Understand protocols to be followed when working in business"
+            },
+            {
+              "code": "LO2",
+              "title": "Understand factors that influence the arrangement of business meetings"
+            },
+            {
+              "code": "LO3",
+              "title": "Be able to use business documents"
+            },
+            {
+              "code": "LO4",
+              "title": "Be able to prioritise business tasks"
+            },
+            {
+              "code": "LO5",
+              "title": "Understand how to communicate effectively with stakeholders"
+            }
+          ],
           "points": [
-            {"id":"OCR_L3BUS_U2_2.1","code":"2.1","title":"Protocols to be followed when working in business"},
-            {"id":"OCR_L3BUS_U2_2.2","code":"2.2","title":"Organising and arranging meetings"},
-            {"id":"OCR_L3BUS_U2_2.3","code":"2.3","title":"Using business documents"},
-            {"id":"OCR_L3BUS_U2_2.4","code":"2.4","title":"Prioritising business activities"},
-            {"id":"OCR_L3BUS_U2_2.5","code":"2.5","title":"Communicating effectively with stakeholders"}
+            {
+              "id": "OCR_L3BUS_U2_TC1.1",
+              "code": "1.1",
+              "title": "the authority protocols",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.1",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "authority in the workplace for decision making (e.g. when to escalate a complaint)",
+                "authority in the workplace for authorisation (e.g. signing letters, payment authorisation)",
+                "reasons for authority protocols"
+              ],
+              "exemplification": "Link to job roles and organisation charts; explain chain of command and levels of authority."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC1.2",
+              "code": "1.2",
+              "title": "the confidentiality protocols",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.2",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "organisational procedures to maintain confidentiality",
+                "storage of data and documentation: manual; electronic",
+                "implications of breaching confidentiality",
+                "reasons why confidentiality may need to be breached"
+              ],
+              "exemplification": "Include how and why confidentiality is maintained, benefits/drawbacks and importance to individual and organisation. Practical procedures include limiting access, need-to-know basis, IT systems and bcc."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC1.3",
+              "code": "1.3",
+              "title": "the constraints on document content",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.3",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "voluntary: organisational; ethical; codes of practice",
+                "legislation: copyright; data protection; consumer protection; equal opportunities"
+              ],
+              "exemplification": "Include avoidance of plagiarism and need to quote sources."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC1.4",
+              "code": "1.4",
+              "title": "the checking protocols",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.4",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "checking documents",
+                "checking arrangements",
+                "implications of poor checking"
+              ],
+              "exemplification": "Include self/other checks for accuracy, omissions and confusion. Communications about meetings, travel and accommodation must reach all necessary parties. Include how/why checks are done and benefits, drawbacks and importance."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC1.5",
+              "code": "1.5",
+              "title": "the IT security protocols",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.5",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "protection of information against unauthorised access",
+                "inappropriate use of IT equipment and software"
+              ],
+              "exemplification": "Include why/how data is protected (e.g. passwords, screen savers, locked files) and consequences of inappropriate use."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC1.6",
+              "code": "1.6",
+              "title": "the employment protocols",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.6",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "health and safety legislation",
+                "equal opportunities legislation",
+                "contractual obligations in contract of employment (e.g. hours, leave, paternity/maternity leave)",
+                "minimum professional behaviour: punctuality; appearance and dress code; appropriate language"
+              ],
+              "exemplification": "Minimum professional behaviour includes open and honest dealings with stakeholders/third parties (e.g. anti-bribery and corruption policy), reporting sick and staying in contact under sickness/absence policy, and suitable dress."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC2.1",
+              "code": "2.1",
+              "title": "the factors that influence meeting arrangements",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.1",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "meeting criteria (e.g. internal/external, urgency, priority, purpose, personnel)",
+                "personnel availability (e.g. diary, electronic diary, calendars, scheduling software)",
+                "venue/room (e.g. availability, location, resources, refreshments, catering, shared office space)",
+                "resource packs (e.g. documentation, visitor badges)",
+                "business costs (e.g. cost-effective/timely method, face-to-face or virtual, attendees)"
+              ],
+              "exemplification": "Include choosing a suitable date/time from diary/calendar entries and costs. Consider telephone, video or web conference and serviced offices."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC2.2",
+              "code": "2.2",
+              "title": "the factors that influence business travel arrangements",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.2",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "travel criteria: destination; dates/times; personnel; special requirements",
+                "transport timetables and schedules",
+                "calculation and comparison of costs"
+              ],
+              "exemplification": "Interpret timetables/schedules to determine whether a mode of transport (e.g. train/plane/bus) is available and suitable."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC2.3",
+              "code": "2.3",
+              "title": "the factors that influence business accommodation arrangements",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.3",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "accommodation criteria (e.g. location, grade, cost, meal arrangements)",
+                "personnel requirements (e.g. room type, access, dietary requirements)",
+                "calculation and comparison of costs"
+              ],
+              "exemplification": "Include payment arrangements, car parking and transport links."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC3.1",
+              "code": "3.1",
+              "title": "the purpose, interpretation and completion of business documents",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.1",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "transaction documents: purchase order; invoice; credit note; statement of account",
+                "employee documents: travel expense claim form",
+                "other internal documents: petty cash voucher; stock requisition form; IT requisition form; reprographics requisition form"
+              ],
+              "exemplification": "Documents may be paper-based or electronic. Interpret and use contents (e.g. complete a credit note in response to a complaint). Understand E&OE, T&C, COD and Terms 30 Days. Travel claims include mileage and cost calculations."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC3.2",
+              "code": "3.2",
+              "title": "the purpose and interpretation of other business documents",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.2",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "bank statement",
+                "budget variance report",
+                "delivery note",
+                "goods received note",
+                "payslip (including deductions, gross and net pay)",
+                "receipt",
+                "remittance advice",
+                "request for repair form"
+              ],
+              "exemplification": "Calculate absolute and percentage budget variance; use favourable/adverse. Tax and National Insurance calculations on payslips are not required."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC3.3",
+              "code": "3.3",
+              "title": "how to make payments and advantages/disadvantages of each method",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.3",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "cheque",
+                "credit card",
+                "debit card",
+                "online/digital payment methods",
+                "bank payments: paying-in slip; electronic transfer"
+              ],
+              "exemplification": "Include key features, advantages and disadvantages to payer and payee (e.g. employees, suppliers, utility companies, hotels, travel companies and transport providers)."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC3.4",
+              "code": "3.4",
+              "title": "the purpose, completion and checking of meeting documentation",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.4",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "notice of meeting",
+                "agenda",
+                "minutes",
+                "conference documentation for delegates (e.g. publicity, invitations, joining instructions, evaluation forms); staff (e.g. help sheets, attendance register); presenters (e.g. prompt cards, slides)"
+              ],
+              "exemplification": "Include benefits of meeting documentation and importance of checking."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC4.1",
+              "code": "4.1",
+              "title": "the reasons for prioritising business tasks",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.1",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "workload",
+                "conflicting demands on time",
+                "importance of meeting internal/external and interim/final deadlines",
+                "impacts of missing deadlines"
+              ],
+              "exemplification": "Some deadlines are more important than others. Include impacts of missed deadlines on other business areas and reputation."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC4.2",
+              "code": "4.2",
+              "title": "the factors that influence task prioritisation",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.2",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "urgency",
+                "importance",
+                "significance of originator (e.g. line manager, customer, third party)",
+                "interactivity of tasks",
+                "time required",
+                "complexity",
+                "time commitments",
+                "resource constraints",
+                "diary clashes",
+                "proximity of appointments (time/location)",
+                "suitability for delegation"
+              ],
+              "exemplification": "Encourage practical prioritisation: whether correspondence needs an urgent response, whether event locations make same-day attendance possible, whether a task can be delegated, and whether a manager should wait for requested figures."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC4.3",
+              "code": "4.3",
+              "title": "how to use information to inform prioritisation",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.3",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "internal sources: business objectives; stakeholder resources and budget",
+                "external sources: changes in economy; external stakeholder requirements, feedback and availability",
+                "data sources: numerical; graphical; tabular"
+              ],
+              "exemplification": "Economic changes include exchange/interest rates. Data may include pie charts, spreadsheets, charts, tables and graphs, e.g. customer satisfaction results, sales trends and costings."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC4.4",
+              "code": "4.4",
+              "title": "how to assign priorities and identify appropriate actions",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.4",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "high priority",
+                "medium priority",
+                "low priority"
+              ],
+              "exemplification": "Assign or comment on high/medium/low priority. Explain reasons to persuade others to accept the priority and agree actions."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC4.5",
+              "code": "4.5",
+              "title": "the need to change priorities when necessary",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.5",
+                "source_pages": [
+                  7,
+                  8
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "change deadlines",
+                "delegate tasks"
+              ],
+              "exemplification": "Understand that priorities sometimes must change."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC5.1",
+              "code": "5.1",
+              "title": "the characteristics which inform the design of business communications",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.1",
+                "source_pages": [
+                  8,
+                  9,
+                  10
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "audience (e.g. internal/external; specialist)",
+                "purpose (e.g. inform, persuade, thank, handle complaint)",
+                "content (e.g. complexity, numerical, graphical)",
+                "business function (e.g. Marketing, HR)",
+                "available resources"
+              ],
+              "exemplification": "Consider design of business documentation."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC5.2",
+              "code": "5.2",
+              "title": "how communication design characteristics impact resource use",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.2",
+                "source_pages": [
+                  8,
+                  9,
+                  10
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "quality of paper/card",
+                "colour or black and white",
+                "hardcopy/electronic copy",
+                "cost of consumables",
+                "ease/cost of distribution",
+                "timescales"
+              ],
+              "exemplification": "Consider costs, IT, reprographics, printing, waste and environmental issues. Decide if colour printing is needed; quality may differ for internal drafts and external communications. Consumables include paper, ink, postage and typesetting."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC5.3",
+              "code": "5.3",
+              "title": "how and when to use different types of communication",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.3",
+                "source_pages": [
+                  8,
+                  9,
+                  10
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "formal: letter; report; notice",
+                "verbal: telephone; message; face to face",
+                "electronic: email; SMS/text; MMS/picture message; social media; web page; presentation slides",
+                "marketing documents: business card; press release; promotional literature; questionnaire; data collection sheet",
+                "recruitment documents: job description; person specification; job advertisement; application form"
+              ],
+              "exemplification": "Include suitability for situation, audience, content, resource efficiency, speed, clarity and effectiveness. Standard written report elements: title, introduction, body, conclusions, recommendations, appendix and references if required."
+            },
+            {
+              "id": "OCR_L3BUS_U2_TC5.4",
+              "code": "5.4",
+              "title": "how to review business communications to ensure they are fit for purpose",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 2",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.4",
+                "source_pages": [
+                  8,
+                  9,
+                  10
+                ],
+                "source_file": "294526.pdf"
+              },
+              "content": [
+                "type appropriate for audience",
+                "tone",
+                "layout/design: logo; letterhead; font; corporate colours; images",
+                "relevance of information"
+              ],
+              "exemplification": "Communications should suit purpose and audience. Review for errors and possible improvements."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_L3BUS_SEC_U3",
+      "title": "Unit 3: Business decisions",
+      "note": "Optional externally examined unit (60 GLH); included as a reference in this qualification scope.",
+      "assessment_method": "external",
+      "glh": 60,
+      "topics": [
+        {
+          "id": "OCR_L3BUS_U3",
+          "code": "3",
+          "title": "Business decisions",
+          "kind": "unit",
+          "learning_outcomes": [
+            {
+              "code": "LO1",
+              "title": "Understand factors to be taken into account when making business decisions"
+            },
+            {
+              "code": "LO2",
+              "title": "Be able to use financial data to inform business decisions"
+            },
+            {
+              "code": "LO3",
+              "title": "Understand how human resource information informs business decisions"
+            },
+            {
+              "code": "LO4",
+              "title": "Understand how marketing information informs business decisions"
+            },
+            {
+              "code": "LO5",
+              "title": "Be able to use resource, project and change management information to inform business decisions"
+            },
+            {
+              "code": "LO6",
+              "title": "Be able to use information to make and justify business decisions"
+            }
+          ],
+          "points": [
+            {
+              "id": "OCR_L3BUS_U3_TC1.1",
+              "code": "1.1",
+              "title": "different types of business decision",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.1",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "strategic",
+                "tactical",
+                "operational"
+              ],
+              "exemplification": "Include meaning, key features and examples of each type."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC1.2",
+              "code": "1.2",
+              "title": "different criteria used when making business decisions",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.2",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "internal: attitude to risk; organisational objectives; core competencies; internal stakeholder impact; business ethics; financial considerations; time; opportunity cost (e.g. consequences of decisions and alternatives)",
+                "external: level and nature of risk; external stakeholder impacts; uncertainty; market changes; external environment changes"
+              ],
+              "exemplification": "Different decisions give different priority to each criterion. Risk includes financial, reputation, likelihood of success, familiarity and competence (Ansoff’s Matrix). Core competencies include an overview of Hamel and Prahalad. Ethics includes business/stakeholder ethical objectives and, where appropriate, CSR. Financial considerations include availability of finance."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC1.3",
+              "code": "1.3",
+              "title": "the use of different types of information when making business decisions",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.3",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "internal and external",
+                "qualitative and quantitative",
+                "historic and forecasted",
+                "primary and secondary research"
+              ],
+              "exemplification": "Include meaning, strengths, weaknesses and examples of each information type."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC1.4",
+              "code": "1.4",
+              "title": "how to judge the validity of information used to make decisions",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.4",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "reliability",
+                "bias",
+                "relevance",
+                "complexity",
+                "degree of detail",
+                "currency (up to date)",
+                "intended use",
+                "quality"
+              ],
+              "exemplification": "Include numerical and non-numerical information."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC1.5",
+              "code": "1.5",
+              "title": "the purposes, benefits and importance of communication",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.5",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "communication with internal stakeholders, external stakeholders and the media",
+                "communication before, during and after decisions are made"
+              ],
+              "exemplification": "Especially communication with employees, local community, lenders and media."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC1.6",
+              "code": "1.6",
+              "title": "factors affecting the quality of decision-making",
+              "kind": "topic",
+              "learning_outcome": "LO1",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO1",
+                "teaching_content_code": "1.6",
+                "source_pages": [
+                  3,
+                  4
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "access to relevant information",
+                "access to decision-making tools",
+                "availability of finance",
+                "key personnel (knowledge, skills, experience, analytical/problem-solving skills, solution focus)",
+                "manager training in decision-making skills",
+                "power differentials and potential bias",
+                "consultation"
+              ],
+              "exemplification": "Include seeking advice and expertise from consultancies."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC2.1",
+              "code": "2.1",
+              "title": "how to use profitability data",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.1",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "costs and revenues",
+                "gross and net profit/loss",
+                "profitability ratios: net profit ratio; gross profit ratio",
+                "business performance data",
+                "importance of profit/profitability"
+              ],
+              "exemplification": "Include calculations and/or interpretation in context."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC2.2",
+              "code": "2.2",
+              "title": "how to use break-even analysis",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.2",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "draw, label and interpret a break-even graph",
+                "calculate profit/loss at given output by graph and formula, including margin of safety",
+                "factors affecting break-even output",
+                "ways to lower break-even output"
+              ],
+              "exemplification": "Include calculation/interpretation in context and usefulness of break-even analysis."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC2.3",
+              "code": "2.3",
+              "title": "how to use contribution data",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.3",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "calculate unit contribution",
+                "significance of contribution",
+                "special order decisions"
+              ],
+              "exemplification": "Include calculation and/or interpretation in context."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC2.4",
+              "code": "2.4",
+              "title": "how to use cash-flow data",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.4",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "interpret cash-flow position",
+                "ways to improve cash-flow"
+              ],
+              "exemplification": "Include calculations/interpretation in context and benefits of cash-flow management."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC2.5",
+              "code": "2.5",
+              "title": "how to use investment appraisal",
+              "kind": "topic",
+              "learning_outcome": "LO2",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO2",
+                "teaching_content_code": "2.5",
+                "source_pages": [
+                  4,
+                  5
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "calculate and interpret payback period",
+                "average rate of return (ARR)",
+                "net present value (NPV)"
+              ],
+              "exemplification": "Include interpretation, advantages/disadvantages and usefulness of each appraisal method and its data."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC3.1",
+              "code": "3.1",
+              "title": "factors involved in workforce planning",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.1",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "size of workforce",
+                "skills of workforce",
+                "availability of workforce",
+                "training requirements: induction; on-the-job; off-the-job; internal; external"
+              ],
+              "exemplification": "Include purpose and importance of workforce planning and the importance of a skills audit."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC3.2",
+              "code": "3.2",
+              "title": "how to use workforce performance data",
+              "kind": "topic",
+              "learning_outcome": "LO3",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO3",
+                "teaching_content_code": "3.2",
+                "source_pages": [
+                  5,
+                  6
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "calculate and interpret absenteeism, labour turnover, productivity and wastage",
+                "interpret trends over time",
+                "use industrial averages for comparison",
+                "causes, effects and solutions for poor workforce performance"
+              ],
+              "exemplification": "Explain terms and use formulae. Include benefits of calculating measures and the impact a decision would have on them."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC4.1",
+              "code": "4.1",
+              "title": "how to use market research information",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.1",
+                "source_pages": [
+                  6,
+                  7
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "types: text; data; charts and tables; graphs and pie charts",
+                "identify data correlations",
+                "make estimations: line of best fit; graphical extrapolation; data patterns",
+                "use Time Series Analysis to calculate and interpret moving averages"
+              ],
+              "exemplification": "Include strengths/weaknesses of information types, validity/usefulness, and information about customers, competitors and the wider business environment. Interpret in context."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC4.2",
+              "code": "4.2",
+              "title": "how to use marketing decision-making tools",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.2",
+                "source_pages": [
+                  6,
+                  7
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "Boston Matrix",
+                "Porter’s Five Forces model",
+                "Porter’s Generic Competitive Strategies"
+              ],
+              "exemplification": "Include practical application, meaning, benefits and weaknesses of each tool."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC4.3",
+              "code": "4.3",
+              "title": "considerations when making marketing decisions",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.3",
+                "source_pages": [
+                  6,
+                  7
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "target market",
+                "product/service features",
+                "place/channels of distribution",
+                "pricing",
+                "promotion",
+                "corporate image"
+              ],
+              "exemplification": "Include product/service perception and intended audience, and how businesses create market identity."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC4.4",
+              "code": "4.4",
+              "title": "how constraints on marketing impact business decisions",
+              "kind": "topic",
+              "learning_outcome": "LO4",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO4",
+                "teaching_content_code": "4.4",
+                "source_pages": [
+                  6,
+                  7
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "legal",
+                "ethical",
+                "social",
+                "financial",
+                "time available",
+                "corporate policy"
+              ],
+              "exemplification": "Include internal and external constraints."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC5.1",
+              "code": "5.1",
+              "title": "issues and key tasks involved in resource management",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.1",
+                "source_pages": [
+                  7,
+                  8,
+                  9
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "physical resources (e.g. rooms, furniture, equipment)",
+                "IT resources (e.g. computers, projectors, printers)",
+                "inventory management: stock control charts; EPOS data; RFID"
+              ],
+              "exemplification": "Include interpretation of data in context."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC5.2",
+              "code": "5.2",
+              "title": "how to use project management tools",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.2",
+                "source_pages": [
+                  7,
+                  8,
+                  9
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "Gantt charts",
+                "project plan",
+                "risk register"
+              ],
+              "exemplification": "Include interpretation of data in context."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC5.3",
+              "code": "5.3",
+              "title": "how to use and interpret critical path analysis (CPA)",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.3",
+                "source_pages": [
+                  7,
+                  8,
+                  9
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "critical path network diagrams",
+                "earliest start times (EST)",
+                "latest finish times (LFT)",
+                "float time for an activity",
+                "identify a project’s critical path"
+              ],
+              "exemplification": "Include why CPA is useful."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC5.4",
+              "code": "5.4",
+              "title": "how change is managed",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.4",
+                "source_pages": [
+                  7,
+                  8,
+                  9
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "causes of change: internal; external",
+                "resistors to change",
+                "importance of encouraging a positive workforce response",
+                "importance and impact of change"
+              ],
+              "exemplification": "Include examples of causes, resistors and responses to change."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC5.5",
+              "code": "5.5",
+              "title": "factors involved in contingency planning",
+              "kind": "topic",
+              "learning_outcome": "LO5",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO5",
+                "teaching_content_code": "5.5",
+                "source_pages": [
+                  7,
+                  8,
+                  9
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "purpose, importance, benefits and drawbacks of contingency planning",
+                "how to create contingency plans"
+              ],
+              "exemplification": "Suggest suitable contingencies a business could make."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC6.1",
+              "code": "6.1",
+              "title": "how to use business decision-making tools",
+              "kind": "topic",
+              "learning_outcome": "LO6",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO6",
+                "teaching_content_code": "6.1",
+                "source_pages": [
+                  9,
+                  10
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "internal organisational audit",
+                "external business environmental audit",
+                "competitor analysis",
+                "stakeholder analysis",
+                "Ansoff’s matrix"
+              ],
+              "exemplification": "Use in context. Internal audit includes relevant internal factors, including attitude to risk, core competencies, portfolio analysis, market research and SWOT. Include tool strengths/limitations. External audit includes relevant financial, legal, ethical, economic, political, social, environmental and technological factors."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC6.2",
+              "code": "6.2",
+              "title": "how different strategies help a business achieve competitive advantage in different circumstances",
+              "kind": "topic",
+              "learning_outcome": "LO6",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO6",
+                "teaching_content_code": "6.2",
+                "source_pages": [
+                  9,
+                  10
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "diversification",
+                "horizontal and vertical integration",
+                "retrenchment",
+                "change of strategic direction",
+                "market entry",
+                "change product/service provision",
+                "change market positioning",
+                "market growth",
+                "mergers",
+                "rebranding"
+              ],
+              "exemplification": "Consider different circumstances, e.g. emerging, maturing and declining positions."
+            },
+            {
+              "id": "OCR_L3BUS_U3_TC6.3",
+              "code": "6.3",
+              "title": "how to make business decisions",
+              "kind": "topic",
+              "learning_outcome": "LO6",
+              "official_reference": {
+                "unit": "Unit 3",
+                "learning_outcome": "LO6",
+                "teaching_content_code": "6.3",
+                "source_pages": [
+                  9,
+                  10
+                ],
+                "source_file": "505660.pdf"
+              },
+              "content": [
+                "identify issues/causes",
+                "identify and prioritise decision-making criteria",
+                "analyse and synthesise supporting information"
+              ],
+              "exemplification": "Encourage a structured approach to making decisions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_L3BUS_SEC_U1_LEGACY",
+      "title": "Unit 1: The business environment",
+      "note": "Externally examined",
+      "legacy": true,
+      "topics": [
+        {
+          "id": "OCR_L3BUS_U1_LEGACY",
+          "code": "1",
+          "title": "The business environment",
+          "kind": "legacy",
+          "points": [
+            {
+              "id": "OCR_L3BUS_U1_1.1",
+              "code": "1.1",
+              "title": "Types of business and their objectives"
+            },
+            {
+              "id": "OCR_L3BUS_U1_1.2",
+              "code": "1.2",
+              "title": "Functional areas of business and how they work together"
+            },
+            {
+              "id": "OCR_L3BUS_U1_1.3",
+              "code": "1.3",
+              "title": "Organisational structures"
+            },
+            {
+              "id": "OCR_L3BUS_U1_1.4",
+              "code": "1.4",
+              "title": "Financial information: costs, revenue, break-even, cash flow and accounts"
+            },
+            {
+              "id": "OCR_L3BUS_U1_1.5",
+              "code": "1.5",
+              "title": "Businesses and their stakeholders"
+            },
+            {
+              "id": "OCR_L3BUS_U1_1.6",
+              "code": "1.6",
+              "title": "External influences and constraints on business"
+            },
+            {
+              "id": "OCR_L3BUS_U1_1.7",
+              "code": "1.7",
+              "title": "Assessing business performance to inform future activities"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OCR_L3BUS_SEC_U2_LEGACY",
+      "title": "Unit 2: Working in business",
+      "note": "Externally examined",
+      "legacy": true,
+      "topics": [
+        {
+          "id": "OCR_L3BUS_U2_LEGACY",
+          "code": "2",
+          "title": "Working in business",
+          "kind": "legacy",
+          "points": [
+            {
+              "id": "OCR_L3BUS_U2_2.1",
+              "code": "2.1",
+              "title": "Protocols to be followed when working in business"
+            },
+            {
+              "id": "OCR_L3BUS_U2_2.2",
+              "code": "2.2",
+              "title": "Organising and arranging meetings"
+            },
+            {
+              "id": "OCR_L3BUS_U2_2.3",
+              "code": "2.3",
+              "title": "Using business documents"
+            },
+            {
+              "id": "OCR_L3BUS_U2_2.4",
+              "code": "2.4",
+              "title": "Prioritising business activities"
+            },
+            {
+              "id": "OCR_L3BUS_U2_2.5",
+              "code": "2.5",
+              "title": "Communicating effectively with stakeholders"
+            }
           ]
         }
       ]

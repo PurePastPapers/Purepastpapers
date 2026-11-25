@@ -54,6 +54,10 @@ export const GRADE_SCHEMES = {
       ['5-4', 40], ['4-4', 35], ['4-3', 30], ['3-3', 25], ['3-2', 20], ['2-2', 15], ['2-1', 11], ['1-1', 8]],
   },
   level3: { label: 'Level 3 D*–P', fail: 'U', bands: [['D*', 85], ['D', 70], ['M', 55], ['P', 40]] },
+  // OCR Cambridge Technical unit results need the exact unit/series boundaries.
+  // Keep the grade labels available for targets, but never infer a unit grade from a
+  // generic percentage threshold.
+  ocr_ctec_unit: { label: 'OCR Cambridge Technical unit grade', fail: 'U', grades: ['D', 'M', 'P'], bands: [] },
 };
 
 /** PRD 8.2 — where a question came from. `feature` links to a flag in phases.js. */

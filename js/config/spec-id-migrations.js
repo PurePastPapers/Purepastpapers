@@ -3573,5 +3573,75 @@ export const LEGACY_SPEC_IDS = Object.freeze({
     "OCR_CS_2.3.1d",
     "OCR_CS_2.3.1e",
     "OCR_CS_2.3.1f"
+  ],
+  "OCR_L3BUS_U1_1.1": [
+    "OCR_L3BUS_U1_TC1.1",
+    "OCR_L3BUS_U1_TC1.2",
+    "OCR_L3BUS_U1_TC1.3",
+    "OCR_L3BUS_U1_TC1.4",
+    "OCR_L3BUS_U1_TC1.5"
+  ],
+  "OCR_L3BUS_U1_1.2": [
+    "OCR_L3BUS_U1_TC2.1",
+    "OCR_L3BUS_U1_TC2.2"
+  ],
+  "OCR_L3BUS_U1_1.3": [
+    "OCR_L3BUS_U1_TC3.1",
+    "OCR_L3BUS_U1_TC3.2",
+    "OCR_L3BUS_U1_TC3.3",
+    "OCR_L3BUS_U1_TC3.4"
+  ],
+  "OCR_L3BUS_U1_1.4": [
+    "OCR_L3BUS_U1_TC4.1",
+    "OCR_L3BUS_U1_TC4.2",
+    "OCR_L3BUS_U1_TC4.3"
+  ],
+  "OCR_L3BUS_U1_1.5": [
+    "OCR_L3BUS_U1_TC5.1",
+    "OCR_L3BUS_U1_TC5.2",
+    "OCR_L3BUS_U1_TC5.3",
+    "OCR_L3BUS_U1_TC5.4"
+  ],
+  "OCR_L3BUS_U1_1.6": [
+    "OCR_L3BUS_U1_TC6.1",
+    "OCR_L3BUS_U1_TC6.2",
+    "OCR_L3BUS_U1_TC6.3"
+  ],
+  "OCR_L3BUS_U1_1.7": [
+    "OCR_L3BUS_U1_TC8.1",
+    "OCR_L3BUS_U1_TC8.2",
+    "OCR_L3BUS_U1_TC8.3"
+  ],
+  "OCR_L3BUS_U2_2.1": [
+    "OCR_L3BUS_U2_TC1.1",
+    "OCR_L3BUS_U2_TC1.2",
+    "OCR_L3BUS_U2_TC1.3",
+    "OCR_L3BUS_U2_TC1.4",
+    "OCR_L3BUS_U2_TC1.5",
+    "OCR_L3BUS_U2_TC1.6"
+  ],
+  "OCR_L3BUS_U2_2.2": [
+    "OCR_L3BUS_U2_TC2.1",
+    "OCR_L3BUS_U2_TC2.2",
+    "OCR_L3BUS_U2_TC2.3"
+  ],
+  "OCR_L3BUS_U2_2.3": [
+    "OCR_L3BUS_U2_TC3.1",
+    "OCR_L3BUS_U2_TC3.2",
+    "OCR_L3BUS_U2_TC3.3",
+    "OCR_L3BUS_U2_TC3.4"
+  ],
+  "OCR_L3BUS_U2_2.4": [
+    "OCR_L3BUS_U2_TC4.1",
+    "OCR_L3BUS_U2_TC4.2",
+    "OCR_L3BUS_U2_TC4.3",
+    "OCR_L3BUS_U2_TC4.4",
+    "OCR_L3BUS_U2_TC4.5"
+  ],
+  "OCR_L3BUS_U2_2.5": [
+    "OCR_L3BUS_U2_TC5.1",
+    "OCR_L3BUS_U2_TC5.2",
+    "OCR_L3BUS_U2_TC5.3",
+    "OCR_L3BUS_U2_TC5.4"
   ]
 });

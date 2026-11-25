@@ -45,6 +45,7 @@ export async function mount(element, context) {
 
   const target = targetGrade(subject);
   const schemeBands = GRADE_SCHEMES[subject.grade_scheme]?.bands || [];
+  const unitGradeUnavailable = subject.grade_scheme === 'ocr_ctec_unit' && !schemeBands.length;
   const bounds = paper.grade_boundaries?.length
     ? [...paper.grade_boundaries].sort((a, b) => b.min_percentage - a.min_percentage).map((b) => [b.grade, b.min_percentage])
     : schemeBands;
@@ -60,13 +61,16 @@ export async function mount(element, context) {
       ${attempts.length
         ? html`<ul class="attempt-list">
               ${attempts.map((attempt, index) => {
-                const band = target && attempt.grade ? targetBand(attempt.grade, target, subject.grade_scheme) : null;
+                const attemptGrade = subject.grade_scheme === 'ocr_ctec_unit'
+                  ? gradeFor(attempt.percentage, subject.grade_scheme, paper.grade_boundaries)
+                  : attempt.grade;
+                const band = target && attemptGrade ? targetBand(attemptGrade, target, subject.grade_scheme) : null;
                 const session = attempt.session_id && api.getSession(attempt.session_id);
                 return html`<li>
                   <span>${fmtDate(attempt.timestamp)}</span>
-                  <b class="attempt-list__score">${attempt.marks_awarded}/${attempt.max_marks}</b>
+                  <b class="attempt-list__score">${attempt.marks_awarded}/${attempt.max_marks}${unitGradeUnavailable ? ` · ${fmtPercent(attempt.percentage)}` : ''}</b>
                   <span class="rag-dot" data-rag="${ragFor(attempt.percentage)}" title="${fmtPercent(attempt.percentage)}"></span>
-                  ${attempt.grade ? html`<span class="grade-stamp grade-stamp--sm" data-band="${band || ''}" title="${band ? TARGET_BANDS[band].label : `Grade ${attempt.grade}`}">${attempt.grade}</span>` : html`<span></span>`}
+                  ${attemptGrade ? html`<span class="grade-stamp grade-stamp--sm" data-band="${band || ''}" title="${band ? TARGET_BANDS[band].label : `Grade ${attemptGrade}`}">${attemptGrade}</span>` : html`<span></span>`}
                   <span class="attempt-list__act">
                     ${session ? html`<a class="btn btn--sm" href="${links.session(attempt.session_id)}">Review</a>` : html`<span class="muted small">${attempt.session_kind === 'logged' ? 'logged' : ''}</span>`}
                     <button type="button" class="btn btn--sm btn--ghost btn--icon" data-delete-attempt="${index}" aria-label="Delete the attempt from ${fmtDate(attempt.timestamp)}">${icon('trash', { size: 15 })}</button>
@@ -74,7 +78,7 @@ export async function mount(element, context) {
                 </li>`;
               })}
             </ul>
-            <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
+            <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : unitGradeUnavailable ? 'Official unit grade boundaries are unavailable. This result shows marks and percentage only.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
         : html`<div class="empty-doodle">${doodle('blankPaper')}<div>
               <p class="muted small">No attempts yet. Sit the paper here, or log a score if you have already done it on paper.</p>
               <p class="hand empty-doodle__note">your first go will show up here</p>
@@ -139,6 +143,7 @@ export async function mount(element, context) {
         <span class="muted">${facts}</span>
       </p>
       ${paper.duration_note ? html`<p class="small muted">${paper.duration_note}</p>` : ''}
+      ${unitGradeUnavailable ? html`<p class="small muted">Unit grades depend on the official boundaries for this unit and series. Until those are available, results show marks and percentage only.</p>` : ''}
       ${paper.is_sample ? banner(paper.sample_note || 'Demo content.', { type: 'demo' }) : ''}
       <div class="split paper-layout">
         <section class="card ruled tilt-1 paper-qs">
@@ -321,6 +326,7 @@ export async function mount(element, context) {
       title: 'Log a score',
       body: html`<div class="stack">
         <p class="muted">${api.isSignedIn() ? 'Already sat this paper on paper? Record your mark to add it to your Data Hub.' : 'Already sat this paper on paper? Record your mark temporarily, then create a free account to save it in this browser.'}</p>
+        ${unitGradeUnavailable ? html`<p class="small muted">Official unit grade boundaries are unavailable. This score will show marks and percentage only.</p>` : ''}
         <label class="field">
           <span class="field__label">Marks out of ${paper.total_marks}</span>
           <input class="input" type="number" name="marks" min="0" max="${paper.total_marks}" step="1" inputmode="numeric" required />

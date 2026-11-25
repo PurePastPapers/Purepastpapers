@@ -7,7 +7,7 @@ import { PAPER_TYPES } from '../../config/app.config.js';
 import { $, html, on, setHtml } from '../../core/dom.js';
 import { fmtMinutes, groupBy, naturalCompare, plural } from '../../core/utils.js';
 import * as api from '../../data/api.js';
-import { paperSummaries, ragFor } from '../../engine/analytics.js';
+import { gradeFor, paperSummaries, ragFor } from '../../engine/analytics.js';
 import { icon } from '../icons.js';
 import { loadStudent, subjectPills } from '../student.js';
 import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
@@ -98,6 +98,10 @@ export async function mount(element, context) {
 
   function card(paper, index) {
     const summary = summaries.get(paper.paper_id);
+    const unitGradeUnavailable = subject.grade_scheme === 'ocr_ctec_unit' && !paper.grade_boundaries?.length;
+    const bestGrade = subject.grade_scheme === 'ocr_ctec_unit'
+      ? gradeFor(summary?.best.percentage, subject.grade_scheme, paper.grade_boundaries)
+      : summary?.best.grade;
     const status = statusOf(paper);
     const session = resumeFor.get(paper.paper_id);
     const questionCount = new Set(paper.question_ids.map((id) => bundle.questionsById.get(id)?.linked_group?.id || id)).size;
@@ -111,9 +115,10 @@ export async function mount(element, context) {
       ${paper.is_sample ? html`<p style="margin-top:8px">${sourceBadge(paper)}</p>` : ''}
       <div class="paper-card__foot">
         ${status === 'done'
-          ? html`<span class="paper-card__score"><b>${Math.round(summary.best.percentage)}%</b>${summary.best.grade
-                ? html`<span class="grade-stamp" data-rag="${ragFor(summary.best.percentage)}" title="Indicative grade">${summary.best.grade}</span>`
+          ? html`<span class="paper-card__score"><b>${Math.round(summary.best.percentage)}%</b>${bestGrade
+                ? html`<span class="grade-stamp" data-rag="${ragFor(summary.best.percentage)}" title="${unitGradeUnavailable ? 'Official paper boundary grade' : 'Indicative grade'}">${bestGrade}</span>`
                 : ragBadge(ragFor(summary.best.percentage), null, { label: false })}</span>
+              ${unitGradeUnavailable ? html`<span class="small muted">Unit grade unavailable</span>` : ''}
               <a class="btn btn--sm" href="${paperHref(paper)}">Review</a>`
           : status === 'progress'
             ? html`<span class="paper-card__status is-progress">In progress</span>
