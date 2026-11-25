@@ -2,7 +2,14 @@ const LOGICAL_WIDTH = 1000;
 const ADDED_HEIGHT = 360;
 const STARTING_HEIGHT = 900;
 const MAX_WRITING_HEIGHT = ADDED_HEIGHT * 12;
-const MAX_CANVAS_EDGE = 4096;
+// Use bounded backing canvases so adding writing space never reduces the
+// resolution of the ink above it on high-density displays.
+const MAX_CANVAS_EDGE = 3072;
+const MAX_CANVAS_AREA = 4_000_000;
+const PEN_THICKNESS_KEY = 'ppp:practice:pen-thickness';
+let penThickness;
+try { penThickness = localStorage.getItem(PEN_THICKNESS_KEY); } catch { /* private storage may be unavailable */ }
+if (!Number.isInteger(Number(penThickness)) || Number(penThickness) < 1 || Number(penThickness) > 12) penThickness = '3';
 const MAX_POINTS_PER_STROKE = 5000;
 
 function newSection() {
@@ -38,48 +45,89 @@ function normalizeInk(value, readOnly) {
   return { ...value, schemaVersion: 1, sections: sections.length ? sections : [newSection()] };
 }
 
-function drawStroke(context, stroke, start = 0) {
-  if (stroke.points.length <= start) return;
-  context.save();
-  context.globalCompositeOperation = stroke.tool === 'eraser' ? 'destination-out' : 'source-over';
-  context.strokeStyle = stroke.color;
-  context.fillStyle = stroke.color;
-  context.lineCap = 'round';
-  context.lineJoin = 'round';
-  if (start === 0) {
-    const point = stroke.points[0];
-    const radius = stroke.width * (0.45 + point.pressure * 0.55) / 2;
-    context.beginPath();
-    context.arc(point.x, point.y, radius, 0, Math.PI * 2);
-    context.fill();
+const midpoint = (first, second) => ({ x: (first.x + second.x) / 2, y: (first.y + second.y) / 2 });
+
+function drawStroke(tiles, stroke, start = 0, finished = true) {
+  const { points } = stroke;
+  if (!points.length) return;
+  for (const { context, top, bottom } of tiles) {
+    if (!context) continue;
+    const inTile = (first, second = first, third = second) =>
+      Math.min(first.y, second.y, third.y) - stroke.width <= bottom &&
+      Math.max(first.y, second.y, third.y) + stroke.width >= top;
+    context.save();
+    context.globalCompositeOperation = stroke.tool === 'eraser' ? 'destination-out' : 'source-over';
+    context.strokeStyle = stroke.color;
+    context.fillStyle = stroke.color;
+    context.lineCap = 'round';
+    context.lineJoin = 'round';
+    const widthAt = point => stroke.width * (0.45 + point.pressure * 0.55);
+    if (start === 0 && inTile(points[0])) {
+      context.beginPath();
+      context.arc(points[0].x, points[0].y, widthAt(points[0]) / 2, 0, Math.PI * 2);
+      context.fill();
+    }
+    for (let index = Math.max(1, start); index < points.length; index += 1) {
+      const previous = points[index - 1];
+      const point = points[index];
+      const from = index === 1 ? previous : midpoint(points[index - 2], previous);
+      const to = midpoint(previous, point);
+      if (!inTile(from, previous, to)) continue;
+      context.lineWidth = widthAt(previous);
+      context.beginPath();
+      context.moveTo(from.x, from.y);
+      context.quadraticCurveTo(previous.x, previous.y, to.x, to.y);
+      context.stroke();
+    }
+    if (finished && points.length > 1) {
+      const last = points.at(-1);
+      const from = midpoint(points.at(-2), last);
+      if (inTile(from, last)) {
+        context.lineWidth = widthAt(last);
+        context.beginPath();
+        context.moveTo(from.x, from.y);
+        context.lineTo(last.x, last.y);
+        context.stroke();
+      }
+    }
+    context.restore();
   }
-  for (let index = Math.max(1, start); index < stroke.points.length; index += 1) {
-    const previous = stroke.points[index - 1];
-    const point = stroke.points[index];
-    context.lineWidth = stroke.width * (0.45 + point.pressure * 0.55);
-    context.beginPath();
-    context.moveTo(previous.x, previous.y);
-    context.lineTo(point.x, point.y);
-    context.stroke();
-  }
-  context.restore();
 }
 
-function drawSection(canvas, section) {
-  const rect = canvas.getBoundingClientRect();
-  if (!rect.width || !rect.height) return;
-  // Keep tall answers within Safari’s canvas size limits.
-  const dpr = Math.min(3, window.devicePixelRatio || 1, MAX_CANVAS_EDGE / Math.max(rect.width, rect.height));
-  const pixelWidth = Math.max(1, Math.floor(rect.width * dpr));
-  const pixelHeight = Math.max(1, Math.floor(rect.height * dpr));
-  if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
-    canvas.width = pixelWidth;
-    canvas.height = pixelHeight;
+function drawSection(surface, activeStroke) {
+  const { area, section, tiles } = surface;
+  const { width, height } = area.getBoundingClientRect();
+  if (!width || !height) return;
+  const dpr = Math.min(window.devicePixelRatio || 1, MAX_CANVAS_EDGE / width);
+  const pixelWidth = Math.max(1, Math.round(width * dpr));
+  const pixelHeight = Math.max(1, Math.round(height * dpr));
+  const tileLimit = Math.min(MAX_CANVAS_EDGE, Math.floor(MAX_CANVAS_AREA / pixelWidth));
+  const count = Math.ceil(pixelHeight / tileLimit);
+  while (tiles.length > count) tiles.pop().canvas.remove();
+  for (let index = 0; index < count; index += 1) {
+    if (!tiles[index]) {
+      const canvas = document.createElement('canvas');
+      canvas.setAttribute('aria-hidden', 'true');
+      area.append(canvas);
+      tiles.push({ canvas });
+    }
+    const tile = tiles[index];
+    const offset = index * tileLimit;
+    const rows = Math.min(tileLimit, pixelHeight - offset);
+    const { canvas } = tile;
+    canvas.style.top = `${offset / pixelHeight * 100}%`;
+    canvas.style.height = `${rows / pixelHeight * 100}%`;
+    if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+    if (canvas.height !== rows) canvas.height = rows;
+    tile.top = offset * section.height / pixelHeight;
+    tile.bottom = (offset + rows) * section.height / pixelHeight;
+    const context = canvas.getContext('2d');
+    tile.context = context;
+    if (!context) continue;
+    context.setTransform(pixelWidth / section.width, 0, 0, pixelHeight / section.height, 0, -offset);
+    context.clearRect(0, tile.top, section.width, tile.bottom - tile.top);
   }
-  const context = canvas.getContext('2d');
-  context.setTransform(pixelWidth / section.width, 0, 0, pixelHeight / section.height, 0, 0);
-  context.clearRect(0, 0, section.width, section.height);
-  for (const stroke of section.strokes) drawStroke(context, stroke);
+  for (const stroke of section.strokes) drawStroke(tiles, stroke, 0, stroke !== activeStroke);
 }
 
 function addControl(parent, label, control) {
@@ -96,9 +144,11 @@ function addControl(parent, label, control) {
 export function createInkEditor(container, { value, onChange = () => {}, readOnly = false, controlsBelow = false } = {}) {
   let ink = normalizeInk(value, readOnly);
   let active = null;
-  let saveState = 'Saved on this device';
+  let saveState = 'Ready to write';
   let drawingMode = 'pen';
   let allowTouchDrawing = false;
+  let colorInput;
+  let widthInput;
   const history = [structuredClone(ink)];
   let historyIndex = 0;
 
@@ -116,9 +166,7 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
   status.setAttribute('role', 'status');
   const surfaces = [];
 
-  const emit = (state = 'Saved on this device') => {
-    saveState = state;
-    status.textContent = saveState;
+  const emit = () => {
     const snapshot = structuredClone(ink);
     onChange(snapshot);
     history.splice(historyIndex + 1);
@@ -134,94 +182,105 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     if (undoButton) undoButton.disabled = readOnly || historyIndex <= 0;
     if (redoButton) redoButton.disabled = readOnly || historyIndex >= history.length - 1;
   };
-  const redraw = () => surfaces.forEach(({ canvas, section }) => drawSection(canvas, section));
+  const redraw = () => surfaces.forEach(surface => drawSection(surface, active?.stroke));
   const renderSections = () => {
     sectionsHost.replaceChildren();
     surfaces.length = 0;
     for (let index = 0; index < ink.sections.length; index += 1) {
       const section = ink.sections[index];
-      const canvas = document.createElement('canvas');
-      canvas.className = 'ink-editor__canvas';
-      canvas.style.aspectRatio = `${section.width} / ${section.height}`;
-      canvas.setAttribute('role', 'img');
-      canvas.setAttribute('aria-label', `Handwriting area ${index + 1}`);
-      canvas.dataset.sectionId = section.id;
-      if (!readOnly) attachPointerHandlers(canvas, section);
-      sectionsHost.append(canvas);
-      surfaces.push({ canvas, section });
+      const area = document.createElement('div');
+      area.className = 'ink-editor__canvas';
+      area.style.aspectRatio = `${section.width} / ${section.height}`;
+      area.setAttribute('role', 'img');
+      area.setAttribute('aria-label', `Handwriting area ${index + 1}`);
+      area.dataset.sectionId = section.id;
+      const surface = { area, section, tiles: [] };
+      if (!readOnly) attachPointerHandlers(surface);
+      sectionsHost.append(area);
+      surfaces.push(surface);
     }
     redraw();
   };
 
   const pointFromEvent = (event, rect, section) => {
     return {
-      x: Math.max(0, Math.min(section.width, ((event.clientX - rect.left) / rect.width) * section.width)),
-      y: Math.max(0, Math.min(section.height, ((event.clientY - rect.top) / rect.height) * section.height)),
+      x: Math.max(0, Math.min(section.width, Math.round((event.clientX - rect.left) / rect.width * section.width * 10) / 10)),
+      y: Math.max(0, Math.min(section.height, Math.round((event.clientY - rect.top) / rect.height * section.height * 10) / 10)),
       pressure: event.pointerType === 'pen' && Number.isFinite(event.pressure) && event.pressure > 0
-        ? Math.max(0.1, Math.min(1, event.pressure)) : 0.5,
+        ? Math.max(0.1, Math.min(1, Math.round(event.pressure * 100) / 100)) : 0.5,
     };
   };
-  const startStroke = (canvas, section, event) => {
+  const startStroke = ({ area, section, tiles }, event) => {
     if (active) return null;
-    const rect = canvas.getBoundingClientRect();
+    const rect = area.getBoundingClientRect();
+    if (!rect.width || !rect.height) return null;
     const stroke = {
       id: crypto.randomUUID(),
       tool: drawingMode,
       color: drawingMode === 'eraser' ? '#ffffff' : colorInput.value,
-      width: Number(widthInput.value),
+      width: Number(penThickness),
       points: [pointFromEvent(event, rect, section)],
     };
-    const current = { pointerId: event.pointerId, canvas };
+    const current = { pointerId: event.pointerId, area, stroke };
     active = current;
     section.strokes.push(stroke);
-    drawStroke(canvas.getContext('2d'), stroke);
+    drawStroke(tiles, stroke, 0, false);
     current.move = (samples) => {
       if (active !== current) return;
       const start = stroke.points.length;
       for (const sample of samples) {
         if (stroke.points.length >= MAX_POINTS_PER_STROKE) break;
-        stroke.points.push(pointFromEvent(sample, rect, section));
+        const point = pointFromEvent(sample, rect, section);
+        const last = stroke.points.at(-1);
+        if (last.x !== point.x || last.y !== point.y) stroke.points.push(point);
       }
-      drawStroke(canvas.getContext('2d'), stroke, start);
+      drawStroke(tiles, stroke, start, false);
     };
     current.finish = (cancelled) => {
       if (active !== current) return;
       active = null;
-      if (cancelled) {
+      if (cancelled && stroke.points.length === 1) {
         section.strokes.pop();
-        drawSection(canvas, section);
-      } else emit();
+        drawSection({ area, section, tiles });
+        return;
+      }
+      drawStroke(tiles, stroke, stroke.points.length);
+      emit();
     };
     return current;
   };
-  const attachPointerHandlers = (canvas, section) => {
+  const attachPointerHandlers = (surface) => {
+    const { area } = surface;
     // iPad can deliver a native touch gesture alongside Pencil pointer events.
     // Cancel it at the writing surface on every contact, including after pen-up.
-    canvas.style.touchAction = 'none';
+    area.style.touchAction = 'none';
     const preventCanvasPan = (event) => {
       if (event.cancelable) event.preventDefault();
     };
-    canvas.addEventListener('touchstart', preventCanvasPan, { passive: false });
-    canvas.addEventListener('touchmove', preventCanvasPan, { passive: false });
-    canvas.addEventListener('pointerdown', (event) => {
+    area.addEventListener('touchstart', preventCanvasPan, { passive: false });
+    area.addEventListener('touchmove', preventCanvasPan, { passive: false });
+    area.addEventListener('pointerdown', (event) => {
       if (active || (event.pointerType === 'touch' && !allowTouchDrawing) || event.button !== 0) return;
       event.preventDefault();
-      try { canvas.setPointerCapture(event.pointerId); } catch { /* synthetic events have no native capture */ }
-      startStroke(canvas, section, event);
+      try { area.setPointerCapture(event.pointerId); } catch { /* synthetic events have no native capture */ }
+      startStroke(surface, event);
     });
-    canvas.addEventListener('pointermove', (event) => {
-      if (active?.pointerId !== event.pointerId || active.canvas !== canvas) return;
+    area.addEventListener('pointermove', (event) => {
+      if (active?.pointerId !== event.pointerId || active.area !== area) return;
       event.preventDefault();
       active.move(pencilSamples(event));
     });
     const finish = (event, cancelled = false) => {
-      if (active?.pointerId !== event.pointerId || active.canvas !== canvas) return;
+      if (active?.pointerId !== event.pointerId || active.area !== area) return;
       active.finish(cancelled);
-      if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+      if (area.hasPointerCapture(event.pointerId)) area.releasePointerCapture(event.pointerId);
     };
-    canvas.addEventListener('pointerup', (event) => finish(event));
-    canvas.addEventListener('pointercancel', (event) => finish(event, true));
-    canvas.addEventListener('lostpointercapture', (event) => finish(event, true));
+    area.addEventListener('pointerup', (event) => {
+      if (active?.pointerId === event.pointerId && active.area === area) active.move([event]);
+      finish(event);
+    });
+    area.addEventListener('pointercancel', (event) => finish(event, true));
+    area.addEventListener('lostpointercapture', (event) => finish(event, true));
   };
 
   const undo = () => {
@@ -251,7 +310,13 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     widthInput.type = 'range';
     widthInput.min = '1';
     widthInput.max = '12';
-    widthInput.value = '3';
+    widthInput.value = penThickness;
+    widthInput.addEventListener('input', () => {
+      penThickness = widthInput.value;
+      for (const control of document.querySelectorAll('.ink-editor__thickness')) control.value = penThickness;
+      try { localStorage.setItem(PEN_THICKNESS_KEY, penThickness); } catch { /* remember until reload */ }
+    });
+    widthInput.className = 'ink-editor__thickness';
     widthInput.setAttribute('aria-label', 'Pen thickness');
     addControl(toolbar, 'Thickness', widthInput);
     const button = (label, action, parent = toolbar) => {
@@ -298,7 +363,6 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
     addSpaceButton.className = 'btn btn--sm ink-editor__add-space';
   }
 
-  if (typeof colorInput === 'undefined') { var colorInput; var widthInput; }
   toolbar.append(status);
   container.append(root);
   status.textContent = readOnly ? 'Handwritten answer' : saveState;
@@ -311,9 +375,17 @@ export function createInkEditor(container, { value, onChange = () => {}, readOnl
   window.addEventListener('resize', onResize, { passive: true });
 
   return {
+    finishStroke() { active?.finish(false); },
+    restoreValue(value) {
+      if (active || history.length !== 1 || ink.sections.some(section => section.strokes.length)) return false;
+      ink = normalizeInk(value, readOnly);
+      history[0] = structuredClone(ink);
+      renderSections();
+      return true;
+    },
     startPencilStroke(event) {
       const first = surfaces[0];
-      return !readOnly && first ? startStroke(first.canvas, first.section, event) : null;
+      return !readOnly && first ? startStroke(first, event) : null;
     },
     getValue: () => structuredClone(ink),
     setSaveState(state) { saveState = state; status.textContent = state; },
@@ -352,6 +424,10 @@ export function transferPencilStroke(event, captureTarget) {
   const finish = (next) => {
     ended = true;
     cancelled = next.type !== 'pointerup';
+    if (!cancelled) {
+      if (stroke) stroke.move([next]);
+      else if (samples.length < MAX_POINTS_PER_STROKE) samples.push(next);
+    }
     stroke?.finish(cancelled);
     lifetime.abort();
   };
@@ -360,10 +436,10 @@ export function transferPencilStroke(event, captureTarget) {
   listen('lostpointercapture', (next) => { if (next.target === captureTarget) finish(next); });
   return {
     attach(editor) {
-      if (cancelled) return;
+      if (cancelled && !samples.length) return;
       stroke = editor.startPencilStroke(event);
       stroke?.move(samples);
-      if (ended) stroke?.finish(false);
+      if (ended) stroke?.finish(cancelled);
     },
     cancel() { lifetime.abort(); stroke?.finish(true); },
   };

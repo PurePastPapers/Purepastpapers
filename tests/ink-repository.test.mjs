@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 let chromium;
 try { ({ chromium } = createRequire(import.meta.url)('playwright')); } catch {}
 
-async function withInkBrowser(run) {
+async function withInkBrowser(run, contextOptions = {}) {
   const port = 6300 + Math.floor(Math.random() * 500);
   const base = `http://127.0.0.1:${port}`;
   const server = spawn(process.execPath, [
@@ -23,7 +23,7 @@ async function withInkBrowser(run) {
       executablePath: process.env.PPP_CHROMIUM_EXECUTABLE,
       args: ['--no-sandbox', '--no-zygote', '--disable-dev-shm-usage'],
     } : {});
-    const context = await browser.newContext();
+    const context = await browser.newContext(contextOptions);
     await context.route(`${base}/fixture`, route => route.fulfill({
       contentType: 'text/html', body: '<title>Handwriting fixture</title><link rel="stylesheet" href="/css/ink-editor.css">',
     }));
@@ -140,7 +140,7 @@ test('only the active Pencil pointer can finish a stroke', browserOptions, async
       document.body.append(host);
       const changes = [];
       const editor = createInkEditor(host, { onChange: record => changes.push(record) });
-      const canvas = host.querySelector('canvas');
+      const canvas = host.querySelector('.ink-editor__canvas');
       const bounds = canvas.getBoundingClientRect();
       const captured = new Set();
       canvas.setPointerCapture = id => captured.add(id);
@@ -162,12 +162,12 @@ test('only the active Pencil pointer can finish a stroke', browserOptions, async
       const add = host.querySelector('.ink-editor__add-space');
       const belowCanvas = add.getBoundingClientRect().top >= bounds.bottom;
       add.click();
-      const expanded = host.querySelector('canvas').getBoundingClientRect();
+      const expanded = host.querySelector('.ink-editor__canvas').getBoundingClientRect();
       const legacyValue = createInkEditor(document.createElement('div'), {
         value: { ...value, sections: [{ ...value.sections[0], height: 360 }] },
       }).getValue();
       return {
-        beforePenUp, changes, value, belowCanvas, touchAction: getComputedStyle(host.querySelector('canvas')).touchAction,
+        beforePenUp, changes, value, belowCanvas, touchAction: getComputedStyle(host.querySelector('.ink-editor__canvas')).touchAction,
         ratio: bounds.width / bounds.height, expandedHeightFactor: expanded.height / bounds.height,
         expandedValue: editor.getValue(), canvasCount: host.querySelectorAll('canvas').length, legacyValue,
       };
@@ -210,7 +210,7 @@ test('the Pencil keeps a vertical first stroke when the answer switches from tex
       send(host, 'pointerup', 70, 8);
       send(host, 'pointermove', 100);
       send(host, 'pointerup', 100);
-      const canvas = surface.querySelector('canvas');
+      const canvas = surface.querySelector('.ink-editor__canvas');
       const [stroke] = saved[0].sections[0].strokes;
       return { typingCancelled, saves: saved.length, points: stroke.points, touchAction: getComputedStyle(canvas).touchAction };
     });
@@ -229,7 +229,7 @@ test('each Pencil contact blocks native panning on the canvas and leaves surroun
       const host = document.createElement('div');
       document.body.append(host);
       const editor = createInkEditor(host);
-      const canvas = host.querySelector('canvas');
+      const canvas = host.querySelector('.ink-editor__canvas');
       const bounds = canvas.getBoundingClientRect();
       const blocked = (target, type) => !target.dispatchEvent(new Event(type, { bubbles: true, cancelable: true }));
       const gestures = [];
@@ -252,4 +252,55 @@ test('each Pencil contact blocks native panning on the canvas and leaves surroun
     assert.equal(result.outside, false);
     assert.equal(result.touchAction, 'none');
   });
+});
+
+
+test('an interrupted Pencil stroke survives reopening and tall answers retain high-density ink', browserOptions, async () => {
+  await withInkBrowser(async (first, second) => {
+    const saved = await first.evaluate(async () => {
+      const { createInkEditor } = await import('/js/ui/ink-editor.js');
+      const { createInkRepository } = await import('/js/data/ink.js');
+      const host = document.body.appendChild(document.createElement('div'));
+      host.style.width = '800px';
+      let value;
+      const editor = createInkEditor(host, { onChange: changed => { value = changed; } });
+      const thickness = host.querySelector('[aria-label="Pen thickness"]');
+      thickness.value = '7';
+      thickness.dispatchEvent(new Event('input'));
+      for (let index = 0; index < 4; index += 1) host.querySelector('.ink-editor__add-space').click();
+      const surface = host.querySelector('.ink-editor__canvas');
+      const bounds = surface.getBoundingClientRect();
+      const send = (type, x, y) => surface.dispatchEvent(new PointerEvent(type, {
+        pointerId: 1, pointerType: 'pen', button: 0,
+        clientX: bounds.left + x, clientY: bounds.top + y, pressure: 0.52,
+      }));
+      send('pointerdown', 45, 25);
+      send('pointermove', 65, 50);
+      send('pointermove', 80, 60);
+      send('pointercancel', 80, 60);
+      const repository = createInkRepository('pencil-qa');
+      await repository.save({ ...value, responseId: 'r', partId: 'q', status: 'saved' });
+      const tiles = [...surface.querySelectorAll('canvas')];
+      editor.destroy();
+      return { tiles: tiles.length, pixelWidth: tiles[0].width, cssWidth: bounds.width };
+    });
+    assert.ok(saved.tiles > 1);
+    assert.equal(saved.pixelWidth, saved.cssWidth * 3);
+    const reopened = await second.evaluate(async () => {
+      const { createInkEditor } = await import('/js/ui/ink-editor.js');
+      const { createInkRepository } = await import('/js/data/ink.js');
+      const host = document.body.appendChild(document.createElement('div'));
+      const record = await createInkRepository('pencil-qa').load('r', 'q');
+      const editor = createInkEditor(host, { value: record });
+      const newQuestion = document.body.appendChild(document.createElement('div'));
+      createInkEditor(newQuestion);
+      return {
+        thickness: newQuestion.querySelector('[aria-label="Pen thickness"]').value,
+        stroke: editor.getValue().sections[0].strokes[0],
+      };
+    });
+    assert.equal(reopened.thickness, '7');
+    assert.equal(reopened.stroke.width, 7);
+    assert.equal(reopened.stroke.points.length, 3);
+  }, { deviceScaleFactor: 3, hasTouch: true, viewport: { width: 1024, height: 768 } });
 });

@@ -122,13 +122,19 @@
 }
 
 .ink-editor__canvas {
-  display: block;
+  position: relative;
   width: 100%;
-  height: auto;
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
   cursor: crosshair;
+}
+
+.ink-editor__canvas > canvas {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
 }
 
 .ink-editor--readonly .ink-editor__toolbar {

@@ -36,7 +36,7 @@ import { links, routeOf } from '../../core/links.js?v=exported-tests-1';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
 import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js?v=20261122-pdf2';
-import { createInkEditor, renderInkPreview, transferPencilStroke } from '../ink-editor.js?v=pencil-3';
+import { createInkEditor, renderInkPreview, transferPencilStroke } from '../ink-editor.js?v=practice-ink-3';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
 const SOURCE_CHOICES = [
@@ -475,6 +475,27 @@ export async function mount(element, context) {
   const inkRevisions = new Map();
   const inkSyncTimers = new Map();
   const inkConflictPreviews = new Map();
+  function queueInkSync(valueKey, response, editor, { cleared = false } = {}) {
+    clearTimeout(inkSyncTimers.get(valueKey));
+    if (!api.cloudAccountId()) return;
+    inkSyncTimers.set(valueKey, setTimeout(async () => {
+      inkSyncTimers.delete(valueKey);
+      const chain = inkSaveChains.get(valueKey);
+      const current = () => chain === inkSaveChains.get(valueKey);
+      try {
+        const synced = await api.syncInk(response);
+        if (!current()) return;
+        const local = cleared ? 'Cleared on this device' : 'Saved on this device';
+        editor.setSaveState(synced ? (cleared ? 'Cleared and synced' : 'Saved and synced') : `${local} · Sync pending`);
+        if (!synced && navigator.onLine) {
+          const latest = await api.loadInkState(response.responseId, response.partId, { waitForCloudMs: 1200 });
+          if (current() && latest.conflicts?.length) editor.setSaveState('Another version is saved. Switch to keyboard and reopen writing to review both.');
+        }
+      } catch {
+        if (current()) editor.setSaveState('Saved on this device · Sync pending');
+      }
+    }, cleared ? 0 : 1200));
+  }
   const inkKey = (responseId, partId) => `${responseId}\u0000${partId}`;
   function ensureInkAttemptId(cardId, partId) {
     const existing = partAttempt(cardId, partId)?.attempt_id;
@@ -518,6 +539,7 @@ export async function mount(element, context) {
       pendingInkTargets.add(target);
       const responseId = activeInkResponseId(cardId, partId);
       const valueKey = inkKey(responseId, partId);
+      const knownSavedInk = partAttempt(cardId, partId)?.has_ink || state.inkSaved[valueKey];
       target.hidden = false;
       button?.setAttribute('aria-expanded', 'true');
       button.textContent = 'Use keyboard';
@@ -542,6 +564,7 @@ export async function mount(element, context) {
         value,
         controlsBelow: true,
         onChange: (changed) => {
+          clearTimeout(inkSyncTimers.get(valueKey));
           const hadSavedInk = Boolean(state.inkSaved[valueKey]);
           const hasStrokes = changed.sections.some((section) => section.strokes.length > 0);
           const previousValue = inkValues.get(valueKey);
@@ -560,7 +583,6 @@ export async function mount(element, context) {
             updatedAt: new Date().toISOString(),
           };
           inkValues.set(valueKey, record);
-          state.inkOpen[key] = true;
           save();
           editor?.setSaveState('Saving on this device…');
           const repository = api.inkRepository();
@@ -570,7 +592,7 @@ export async function mount(element, context) {
             const persisted = await repository.save({ ...record, revision: latestRevision });
             if (!persisted.conflict) {
               inkRevisions.set(valueKey, persisted.revision);
-              if (inkValues.get(valueKey)?.updatedAt === record.updatedAt) inkValues.set(valueKey, persisted);
+              if (inkValues.get(valueKey) === record) inkValues.set(valueKey, persisted);
             }
             return persisted;
           });
@@ -582,7 +604,8 @@ export async function mount(element, context) {
               editor.setSaveState('Another version is saved. Switch to keyboard and reopen writing to review both.');
               return;
             }
-            editor?.setSaveState('Saved on this device');
+            if (inkSaveChains.get(valueKey) !== pendingSave) return;
+            editor.setSaveState(hasStrokes ? 'Saved on this device' : 'Cleared on this device');
             if (!hasStrokes) {
               const saveButton = target.querySelector('[data-ink-save]');
               if (saveButton) saveButton.textContent = 'Save handwritten answer';
@@ -593,23 +616,11 @@ export async function mount(element, context) {
                   hasInk: false,
                 }).catch(() => {});
               }
-              void api.syncInk().then((synced) => {
-                editor?.setSaveState(synced ? 'Cleared and synced' : 'Cleared on this device');
-              }).catch(() => editor?.setSaveState('Cleared on this device · Sync will retry'));
-              return;
             }
-            clearTimeout(inkSyncTimers.get(key));
-            inkSyncTimers.set(key, setTimeout(async () => {
-              try {
-                const synced = await api.syncInk();
-                editor?.setSaveState(synced ? 'Synced' : 'Saved on this device');
-                if (!synced && api.isSignedIn()) {
-                  const latest = await api.loadInkState(responseId, partId);
-                  if (latest.conflicts?.length) editor.setSaveState('Another version is saved. Switch to keyboard and reopen writing to review both.');
-                }
-              } catch { editor?.setSaveState('Saved on this device · Sync will retry'); }
-            }, 1200));
-          }).catch(() => editor?.setSaveState('Could not save · Try again'));
+            queueInkSync(valueKey, { responseId, partId }, editor, { cleared: !hasStrokes });
+          }).catch(() => {
+            if (inkSaveChains.get(valueKey) === pendingSave) editor.setSaveState('Could not save · Try again');
+          });
         },
       });
       inkEditors.set(key, editor);
@@ -621,9 +632,26 @@ export async function mount(element, context) {
       saveButton.textContent = state.inkSaved[valueKey] ? 'Saved answer' : 'Save handwritten answer';
       target.append(saveButton);
       pencilTransfers.get(target)?.attach(editor);
+      if (!value && knownSavedInk && api.cloudAccountId() && navigator.onLine) {
+        editor.setSaveState('Loading synced handwriting…');
+        void api.loadInkState(responseId, partId, { waitForCloudMs: 8000 }).then(({ record }) => {
+          if (!target.isConnected || inkEditors.get(key) !== editor || inkValues.has(valueKey)) return;
+          if (!record) {
+            editor.setSaveState('Could not load synced handwriting · Reopen to retry');
+            return;
+          }
+          if (!editor.restoreValue(record)) return;
+          inkValues.set(valueKey, record);
+          inkRevisions.set(valueKey, record.revision);
+          state.inkSaved[valueKey] = record.status === 'saved' && record.sections.some(section => section.strokes.length);
+          saveButton.textContent = state.inkSaved[valueKey] ? 'Saved answer' : 'Save handwritten answer';
+          editor.setSaveState('Loaded synced handwriting');
+        }).catch(() => {});
+      }
       if (!value && !conflicts.length) void api.listInkForPart(partId).then((drafts) => {
         if (!target.isConnected || inkEditors.get(key) !== editor) return;
-        const otherDrafts = drafts.filter((record) => record.responseId !== responseId);
+        const knownAttempts = new Set(api.attemptsFor(partId).map(attempt => attempt.attempt_id));
+        const otherDrafts = drafts.filter(record => record.responseId !== responseId && !knownAttempts.has(record.responseId));
         if (!otherDrafts.length) return;
         const section = document.createElement('details');
         section.className = 'ink-answer__drafts';
@@ -1825,7 +1853,14 @@ export async function mount(element, context) {
     button.setAttribute('aria-expanded', String(open));
     button.textContent = open ? 'Use keyboard' : 'Write with Pencil';
     if (open) {
-      autoGo(cardId);
+      if (needsChoice(cardId) && !state.inkAttempts[cardId]?.[partId]) {
+        const waitingInk = goOptions(cardId).find(option => {
+          const attempt = option.parts.get(partId);
+          return attempt?.waiting && attempt.has_ink;
+        });
+        if (waitingInk) state.goes[cardId] = waitingInk.key;
+        else autoGo(cardId);
+      }
       if (pencil) pencilTransfers.set(target, pencil);
       target.textContent = 'Opening handwriting…';
       void mountInkEditors([target]);
@@ -1855,7 +1890,9 @@ export async function mount(element, context) {
     const key = partStateKey(cardId, partId);
     const question = bundle.questionsById.get(partId);
     if (!question || !cardId) return;
-    const sections = inkEditors.get(key)?.getValue().sections || [];
+    const editor = inkEditors.get(key);
+    editor?.finishStroke();
+    const sections = editor?.getValue().sections || [];
     if (!sections.some(section => section.strokes.length)) {
       toast('Write something before saving a handwritten answer.', { type: 'info' });
       return;
@@ -1868,9 +1905,13 @@ export async function mount(element, context) {
     });
     const responseId = activeInkResponseId(cardId, partId);
     const valueKey = inkKey(responseId, partId);
-    const editor = inkEditors.get(key);
+    const groupAttemptId = groupAttemptIdFor(cardId);
+    const answer = answerOf(cardId, partId);
+    const cloud = api.cloudAccountId();
     try {
       await inkSaveChains.get(valueKey)?.catch(() => {});
+      clearTimeout(inkSyncTimers.get(valueKey));
+      editor?.setSaveState('Saving on this device…');
       const record = {
         ...(inkValues.get(valueKey) || editor?.getValue() || {}),
         schemaVersion: 1,
@@ -1890,23 +1931,30 @@ export async function mount(element, context) {
         toast('This answer changed in another tab. Choose which version to keep.', { type: 'info' });
         return;
       }
-      await api.saveAnswerUnmarked(question, answerOf(cardId, partId), {
-        attemptId: responseId,
-        groupAttemptId: groupAttemptIdFor(cardId),
-        hasInk: true,
-      });
       inkValues.set(valueKey, savedRecord);
       inkRevisions.set(valueKey, savedRecord.revision);
       state.inkSaved[valueKey] = true;
       save();
-      const synced = await api.syncInk().catch(() => false);
-      editor?.setSaveState(synced ? 'Saved and synced' : 'Saved on this device');
-      if (!synced && api.isSignedIn()) {
-        const latest = await api.loadInkState(responseId, partId);
-        if (latest.conflicts?.length) update({ keepControls: true, keepPage: true });
-      }
       button.textContent = 'Answer saved';
-      toast('Your handwritten answer is saved and ready to mark.', { type: 'success' });
+      editor?.setSaveState(cloud ? 'Saved on this device · Syncing…' : 'Saved on this device');
+      toast('Handwritten answer saved on this device.', { type: 'success' });
+
+      // Keep the ink outbox moving even if updating the account's attempt fails.
+      void Promise.allSettled([
+        api.saveAnswerUnmarked(question, answer, { attemptId: responseId, groupAttemptId, hasInk: true }),
+        api.syncInk({ responseId, partId }),
+      ]).then(async ([attempt, upload]) => {
+        if (!cloud || inkValues.get(valueKey) !== savedRecord || api.cloudAccountId() !== cloud) return;
+        if (attempt.status === 'fulfilled' && upload.status === 'fulfilled' && upload.value) {
+          editor?.setSaveState('Saved and synced');
+          return;
+        }
+        editor?.setSaveState(attempt.status === 'rejected' ? 'Saved on this device · Tap Save to retry' : 'Saved on this device · Sync pending');
+        if (upload.status === 'fulfilled' && !upload.value && navigator.onLine) {
+          const latest = await api.loadInkState(responseId, partId, { waitForCloudMs: 1200 });
+          if (latest.conflicts?.length && inkValues.get(valueKey) === savedRecord) update({ keepControls: true, keepPage: true });
+        }
+      }).catch(() => {});
     } catch (error) {
       editor?.setSaveState('Could not save · Try again');
       toast(error?.message || 'Could not save this handwritten answer.', { type: 'error' });

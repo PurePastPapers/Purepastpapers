@@ -436,9 +436,11 @@ export const supabaseAdapter = {
 };
 
 async function requireInkOwner(client, userId) {
-  const { data, error } = await client.auth.getUser();
-  if (error) throw new Error(`Could not verify the signed-in account for handwriting sync: ${error.message}`);
-  if (!userId || data.user?.id !== userId) throw new Error('Handwriting can only sync to the signed-in account.');
+  // Prevent a queued request from using a different browser account. The
+  // database independently authorizes every operation with the request token.
+  const { data, error } = await client.auth.getSession();
+  if (error) throw new Error(`Could not read the signed-in session for handwriting sync: ${error.message}`);
+  if (!userId || data.session?.user?.id !== userId) throw new Error('Handwriting can only sync to the signed-in account.');
 }
 
 /** Loads saved handwriting and unresolved concurrent edits for the signed-in owner. */
@@ -469,15 +471,19 @@ export async function saveInkResponse(userId, record, expectedRevision = null) {
   const client = await getClient();
   await requireInkOwner(client, userId);
   const cloudRecord = { ...record, ownerId: userId };
-  const { data, error } = await client.rpc('save_ink_response', {
-    p_response_id: cloudRecord.responseId,
-    p_part_id: cloudRecord.partId,
-    p_expected_revision: expectedRevision,
-    p_revision: cloudRecord.revision,
-    p_record: cloudRecord,
-  });
-  if (error) throw new Error(`Could not sync handwriting: ${error.message}`);
-  return data;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const { data, error } = await client.rpc('save_ink_response', {
+      p_response_id: cloudRecord.responseId,
+      p_part_id: cloudRecord.partId,
+      p_expected_revision: expectedRevision,
+      p_revision: cloudRecord.revision,
+      p_record: cloudRecord,
+    }).abortSignal(controller.signal);
+    if (error) throw new Error(`Could not sync handwriting: ${error.message}`);
+    return data;
+  } finally { clearTimeout(timeout); }
 }
 
 /** Removes the response and its saved divergent edits for the signed-in owner. */
@@ -504,7 +510,7 @@ export async function listInkDraftsForPart(userId, partId) {
   await requireInkOwner(client, userId);
   const { data, error } = await client.from('ink_responses')
     .select('response_id,updated_at')
-    .eq('user_id', userId).eq('part_id', partId).eq('record->>status', 'draft')
+    .eq('user_id', userId).eq('part_id', partId)
     .order('updated_at', { ascending: false }).limit(8);
   if (error) throw new Error(`Could not find synced handwriting drafts: ${error.message}`);
   return (data || []).map(row => ({ responseId: row.response_id, updatedAt: row.updated_at }));
