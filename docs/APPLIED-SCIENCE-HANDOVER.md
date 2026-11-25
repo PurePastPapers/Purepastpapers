@@ -5,10 +5,15 @@ Checked 25 November 2026; reconciled with main `f21bab2`. Subject ID remains
 
 ## Release status
 
-The owner explicitly confirmed on 25 November 2026 that OCR Applied Science
-republication is covered. Both verified packs are enabled on branch
-`codex/ocr-h151-applied-science-bank`. Public PR, CI and production deployment
-verification are in progress; this checkpoint does not yet claim a live release.
+**Published and verified on 25 November 2026.** The owner confirmed OCR
+Applied Science republication. [PR #65](https://github.com/PurePastPapers/Purepastpapers/pull/65)
+merged as `72be554347841afb4455b7301c48bd8b50632cdb`. The matching Cloudflare
+production deployment and GitHub build/deployment checks succeeded. Both
+verified packs are enabled; source restrictions remain explicitly recorded.
+
+The production Chromium audit passed, and ten served data, catalogue and code
+files matched the merged source byte-for-byte. The machine-readable receipt is
+[data/imports/appsci/release-evidence.json](../data/imports/appsci/release-evidence.json).
 
 Even with OCR confirmation, third-party or withheld material stays excluded.
 These are partial sample banks, not complete live papers. Their printed totals
@@ -129,50 +134,51 @@ The finaliser stages disabled entries by default. `--activate` requires
 entries within the isolated browser context to exercise the prepared bank; it
 does not publish the bank.
 
-## Remaining release requirements
+## Release and verification evidence
 
-1. Owner confirmation is recorded; keep third-party blocks.
-2. Complete verification results below, fetch main and reconcile the keyed
-   records with concurrent Applied Business work. Re-test the combined state.
-3. Push the reviewed branch, open and merge the PR through the normal workflow.
-4. Match passing CI and the Cloudflare production deploy to the merged SHA.
-5. Verify representative sample paper, question, booklet and revealed scheme
-   links on `https://purepastpapers.com`. Record evidence before calling it live.
+- Source inventory: 13 official OCR PDF sources, SHA-256 and page boundaries verified.
+- Rebuilds: both sample packs and both image catalogues repeat byte-for-byte.
+- Active full suite: **475 passed / 1 skipped / 0 failed** (476 total).
+- Data validation: **0 errors / 69 warnings**. Of these, 67 predate this bank;
+  two deliberately disclose that its available question marks are below the printed totals.
+- Hosting limits: **4,527 static assets** including the release receipt; largest
+  asset **10,400,789 bytes**, below the 25 MiB limit.
+- Cloudflare preview for source head `0eba212cf3e23dd8706bf3750a9fe7002954b899`: success.
+- Production merge `72be554347841afb4455b7301c48bd8b50632cdb`: Cloudflare success
+  at **20:04:55 UTC**, GitHub build/deployment checks also succeeded.
+- [Production Cloudflare build](https://dash.cloudflare.com/744e141b1e36314dce420ed6d18349d5/workers/services/view/purepastpapers/production/builds/67ffbc7b-5db2-4ac3-99ee-a88cc61a71af).
 
-## Verification results
+The active local bank and the real production site both passed the Chromium
+workflow audit: sample grouping/detail, learned-only gating, exact-point and
+crossover filtering, source/scheme reveal, saved marks, question-only PDF export,
+custom 15-minute tests, timed reveal gates, marking and saved review, raw marks,
+and the other Level 3 Applied Business route. Paper lists, both sample details,
+individual practice, the test builder and review fit 320, 390 and 1440 pixels.
+The live run used an isolated demo profile; no real student's progress changed.
+These are automated Chromium checks, not physical-device or Safari verification.
 
-Review type is **model**, not teacher review. Both sample builders produced
-byte-identical pack and catalogue hashes on repeat runs. Source provenance
-validation passed against the downloaded PDFs. The focused bank regressions
-validate the prepared (disabled) packs directly, including source controls,
-schema, image checksums and designated fixtures.
+The mobile sweep found and fixed two paper-detail overflows: resource-button
+labels now wrap, and long question-list cards do not rotate at phone widths.
+The existing signed-in browser fixture also waits for its mocked authentication
+bootstrap before checking session state. No authentication behavior changed.
 
-Before reconciliation, `npm test` passed 469 tests, skipped one, and failed
-none. `npm run validate` reported zero errors and 67 pre-existing warnings in
-other banks. The paper-label browser audit passed. Hosting limits passed:
-4,522 static assets; largest asset 10,400,789 bytes, below 25 MiB.
+Review type throughout is **model**, not teacher review. The 49 scored units
+appear as **48 practice cards** because the F181 graph-choice pair is linked;
+F180 supplies 34 cards, F181 supplies 14 cards containing 15 scored units.
+The one skipped existing test concerns browser image/HTML conversion in a
+module worker; actual question-only PDF export passed locally and in production.
 
-After reconciliation with `f21bab2`, the final `npm test` run passed **473**,
-skipped **1**, and failed **0** (474 total). An existing signed-in browser
-fixture was made deterministic by waiting for its mocked authentication to
-finish before asserting signed-in state. No authentication behavior changed.
-The focused bank, grading and session regressions passed **21/21**.
-`npm run validate` still reports **0 errors / 67 existing warnings** with the
-prepared bank disabled; the new sample records also pass direct schema checks.
-The updated size check counts **4,526 assets**, with the same largest asset.
-Both packs and both catalogues were rebuilt again by the lead and remained
-byte-identical. The pending-rights activation guard was checked: it rejects
-activation without changing the pack index.
+## Reproducible live links
 
-The Applied Science Chromium audit passed in an isolated preview: sample
-grouping, paper details, learned-only gating, exact-point and crossover
-filtering, question/scheme reveal, saved marks, question-only PDF export,
-custom 15-minute test, timed reveal gate, marking and saved review, raw-mark
-grading, and the other Level 3 Applied Business Practice route. The final
-responsive sweep also checks paper lists, both sample details, individual
-practice, the test builder and saved review at 320, 390 and 1440 pixels.
-These are automated Chromium checks, not a claim of testing physical devices
-or Safari. No production link has been verified for this unpublished branch.
-The expanded mobile sweep found and fixed two real paper-detail overflows:
-long resource-button labels now wrap, and the long question-list card is not
-rotated at phone widths. The complete expanded browser script then passed.
+- [Applied Science papers](https://purepastpapers.com/#/papers?subject=OCR_L3_APPSCI_AAQ)
+- [F180 sample](https://purepastpapers.com/#/paper/OCR_L3_APPSCI_AAQ/OCR_F180_SAMPLE)
+- [F181 sample](https://purepastpapers.com/#/paper/OCR_L3_APPSCI_AAQ/OCR_F181_SAMPLE)
+- [Individual practice](https://purepastpapers.com/#/practice?subject=OCR_L3_APPSCI_AAQ&mode=individual)
+- [F180 official data/formulae booklet](https://www.ocr.org.uk/Images/745348-fundamentals-of-science-data-formulae-and-relationships-booklet.pdf)
+
+```sh
+AUDIT_URL=https://purepastpapers.com node tools/browser-appsci-bank.cjs
+```
+
+Default browser mode verifies the real enabled bank. `APPSCI_PREVIEW=1` is only
+for an isolated inactive-bank preview, never evidence of production activation.
