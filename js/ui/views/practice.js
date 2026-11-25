@@ -17,6 +17,7 @@ import { latestByQuestion } from '../../engine/analytics.js';
 import { resolvePracticeMode, testEntries, testPool } from '../../engine/practice-modes.js';
 import { buildTest, minutesOf } from '../../engine/test-builder.js';
 import { collapseLinked, collapseLocked, expandLinkedIds, groupEntry, linkGroups } from '../../engine/linked-parts.js';
+import { doodle } from '../doodles.js';
 import { icon } from '../icons.js';
 import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody, questionMeta, questionRef, questionSnippet } from '../question-view.js';
 import { mountSpecTree } from '../spec-tree.js';
@@ -1011,7 +1012,7 @@ export async function mount(element, context) {
       </div>`;
     }
     return html`<div class="card testpreview tilt-2">
-      <i class="tape tape--c" aria-hidden="true"></i>
+      ${doodle('paperclip', 'testpreview__clip')}
       <header class="testpreview__band"><h2>Your test</h2><span class="hand">ready when you are</span></header>
       <div class="testpreview__body stack">
         <div class="glance glance--3">
@@ -1050,6 +1051,7 @@ export async function mount(element, context) {
           <button type="button" class="btn btn--lg" data-export-test="built">Export PDF</button>
           <button type="button" class="btn btn--primary btn--lg" data-start-test>Start test</button>
         </div>
+        <p class="hand testpreview__luck">good luck! you’ve got this</p>
         <p class="hand testpreview__note">the clock starts when you press start</p>
         <p class="small muted">
           ${user ? 'At the end you mark your answers against the mark scheme, and the result is saved to your Data Hub.' : 'At the end you mark your answers against the mark scheme. Create a free account to save your result in this browser.'}

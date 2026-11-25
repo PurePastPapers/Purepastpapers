@@ -1,0 +1,36 @@
+/* Small hand-drawn doodles (js/ui/doodles.js). Decorative only. */
+.doodle { display: block; color: var(--ink); pointer-events: none; }
+.doodle svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* Home section tiles and landing feature cards: a doodle in the bottom-right corner */
+.dash-section, .lp-feature--doodle { position: relative; }
+.dash-section p { padding-right: 58px; }
+.dash-section__doodle, .lp-feature__doodle { position: absolute; right: 14px; bottom: 10px; width: 62px; height: 62px; transform: rotate(-6deg); }
+.lp-feature--doodle p { padding-right: 64px; }
+.lp-feature__doodle { width: 56px; height: 56px; right: 16px; bottom: 12px; }
+@media (max-width: 600px) {
+  .dash-section p { padding-right: 0; padding-bottom: 30px; }
+  .dash-section__doodle { width: 40px; height: 40px; right: 10px; bottom: 8px; }
+}
+
+/* day streak flame (Home "At a glance" and the Data Hub) */
+.glance__streak, .stat--streak { position: relative; }
+.glance .streak-flame { position: absolute; right: 8px; bottom: 8px; width: 34px; height: 42px; transform: rotate(6deg); color: var(--ink); }
+.stat--streak .streak-flame { position: absolute; right: 18px; bottom: 14px; width: 46px; height: 56px; transform: rotate(6deg); }
+
+/* log in: papers, pencil and flashcards on the empty side */
+.auth-page__desk { width: min(520px, 100%); aspect-ratio: 520 / 380; margin-top: 30px; }
+@media (max-width: 900px) { .auth-page__desk { display: none; } }
+
+/* footer sign-off */
+.site-foot__sign { font: 400 24px/1 var(--font-hand); color: var(--ink-2); transform: rotate(-2deg); transform-origin: left; margin-bottom: 10px; }
+
+/* Build a test: the "Your test" card is clipped on */
+.testpreview { position: relative; }
+.testpreview__clip { position: absolute; top: -30px; left: 46px; width: 34px; height: 78px; z-index: 4; transform: rotate(8deg); }
+.testpreview__luck { font-size: 24px; margin: 2px 0 -6px 6px; transform: rotate(-2deg); color: var(--ink); }
+
+/* empty "Your attempts" on a paper */
+.empty-doodle { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+.empty-doodle .doodle { width: 70px; height: 62px; flex: none; }
+.empty-doodle__note { font-size: 21px; margin-top: 4px; color: var(--ink-2); }

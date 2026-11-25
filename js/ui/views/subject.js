@@ -231,31 +231,7 @@ export async function mount(element, context) {
 
     setHtml(
       target,
-      html`${enrolled() ? targetCard() : ''}<section class="card ruled tilt-1">
-          <i class="tape tape--c" aria-hidden="true"></i>
-          <h2 class="card__title">More questions match when you cover…</h2>
-          ${pool.length === 0
-            ? html`<p class="muted small" style="margin-top:8px">There are no questions for this subject yet.</p>`
-            : derived.locked.length === 0
-              ? html`<p class="muted small" style="margin-top:8px">All questions in the bank match your covered topics.</p>`
-              : html`<p class="muted small" style="margin:8px 0 12px">
-                    ${plural(derived.locked.length, 'question')} need topics you have not marked as covered. These points match the most additional questions:
-                  </p>
-                  <ul class="unlocklist">
-                    ${derived.suggestions.map(
-                      (entry) =>
-                        html`<li>
-                          <div style="min-width:0">
-                            <p>${labelWithSubject(entry.id)}</p>
-                            <p class="small muted">
-                              ${entry.unlocks ? `Matches ${plural(entry.unlocks, 'question')} on its own` : `Needed by ${plural(entry.needed_by, 'question')}`}
-                            </p>
-                          </div>
-                          ${api.currentUser() ? html`<button type="button" class="btn btn--sm" data-learn="${entry.id}">Mark learned</button>` : ''}
-                        </li>`,
-                    )}
-                  </ul>`}
-        </section>
+      html`${enrolled() ? targetCard() : ''}
         ${foreignGroups.size
           ? html`<section class="card ruled tilt-3">
           <i class="tape tape--c" aria-hidden="true"></i>

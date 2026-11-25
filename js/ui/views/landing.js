@@ -4,6 +4,7 @@
 import { FEATURES, PHASES } from '../../config/phases.js';
 import { html, setHtml } from '../../core/dom.js';
 import { getSubjects } from '../../data/content-repository.js';
+import { doodle } from '../doodles.js';
 import { icon } from '../icons.js';
 import { SUBJECT_SWATCHES } from '../subject-colours.js';
 import { liveBadge } from '../ui.js';
@@ -24,12 +25,12 @@ export function roadmap() {
 }
 
 const FEATURE_CARDS = [
-  { icon: 'file', title: 'Official past papers', text: 'Browse available exam papers and mark schemes for your specification. Time yourself and log your mark.' },
+  { icon: 'file', doodle: 'papers', title: 'Official past papers', text: 'Browse available exam papers and mark schemes for your specification. Time yourself and log your mark.' },
   { icon: 'check', title: 'Filter by spec point', text: 'Choose the exact points you’ve covered, such as 2.1–2.6, and find questions tagged to them.' },
-  { icon: 'clock', title: 'Customisable practice', text: 'Timed mini-papers for STEM, or pick essay questions by set text and marks for humanities.' },
+  { icon: 'clock', doodle: 'practice', title: 'Customisable practice', text: 'Timed mini-papers for STEM, or pick essay questions by set text and marks for humanities.' },
   { icon: 'list', title: 'Difficulty levels', text: 'Easy, medium, hard or mixed, so practice matches where you are.' },
-  { icon: 'chart', title: 'Data Hub', text: 'With a free account, track marks, mistakes and progress in your browser.' },
-  { icon: 'target', title: 'Your subjects, your colours', text: 'Pick your subjects once, set up for your boards and specs, and give each one its own colour.' },
+  { icon: 'chart', doodle: 'hub', title: 'Data Hub', text: 'With a free account, track marks, mistakes and progress in your browser.' },
+  { icon: 'target', doodle: 'subjects', title: 'Your subjects, your colours', text: 'Pick your subjects once, set up for your boards and specs, and give each one its own colour.' },
 ];
 
 const STEPS = [
@@ -121,11 +122,12 @@ export async function mount(element, context) {
         <div class="lp-grid">
           ${FEATURE_CARDS.map(
             (feature, index) =>
-              html`<article class="card ruled lp-feature tilt-${[1, 3, 2, 4, 3, 1][index]}">
+              html`<article class="card ruled lp-feature ${feature.doodle ? 'lp-feature--doodle' : ''} tilt-${[1, 3, 2, 4, 3, 1][index]}">
                 <i class="tape ${['tape--l', 'tape--c', 'tape--r', 'tape--c', 'tape--br', 'tape--r'][index]}" aria-hidden="true"></i>
                 <span class="ic" aria-hidden="true">${icon(feature.icon, { size: 18 })}</span>
                 <h3>${feature.title}</h3>
                 <p>${feature.text}</p>
+                ${feature.doodle ? doodle(feature.doodle, 'lp-feature__doodle') : ''}
               </article>`,
           )}
         </div>

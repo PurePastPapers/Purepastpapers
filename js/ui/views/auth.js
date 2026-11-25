@@ -4,6 +4,7 @@ import { LIMITS } from '../../config/app.config.js';
 import { $, esc, html, raw, setHtml } from '../../core/dom.js';
 import * as api from '../../data/api.js';
 import { getSubjects } from '../../data/content-repository.js';
+import { doodle } from '../doodles.js';
 import { icon } from '../icons.js';
 import { links } from '../../core/links.js';
 import { openVerifyEmail, signupSteps } from '../verify-email.js';
@@ -92,7 +93,7 @@ export async function mount(element, context) {
                 ${names.slice(0, 7).map((name) => html`<span class="tag">${name}</span>`)}
                 ${names.length > 7 ? html`<span class="tag">+ ${names.length - 7} more</span>` : ''}
               </p>`
-          : ''}
+          : doodle('desk', 'auth-page__desk')}
       </div>
       ${formCard}
     </div>`,

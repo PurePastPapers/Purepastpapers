@@ -9,6 +9,7 @@ import { html, setHtml } from '../core/dom.js';
 import { gradesIn } from '../engine/analytics.js';
 import { SUBJECT_SWATCHES, subjectSwatchId, subjectTier, targetGrade } from './subject-colours.js';
 import { openModal } from './ui.js';
+import { patternMark } from './patterns.js';
 import { tierRequired } from '../engine/tiers.js';
 import { hasModuleRoutes } from '../engine/module-routes.js';
 import { readRouteFields, routeFields, savedModuleChoice, wireRouteFields } from './module-scope.js';
@@ -16,7 +17,7 @@ import { readRouteFields, routeFields, savedModuleChoice, wireRouteFields } from
 const preview = (subject, swatchHex, target, leaves, learningUnit, coveredCount, tier) =>
   html`<p class="hand subject-dialog__how">how it will look</p>
     <div class="card subject-card" style="--sc:${swatchHex}" data-preview>
-      <header class="subject-card__band"><h3>${subject.subject}</h3><span class="cdot" aria-hidden="true"></span></header>
+      <header class="subject-card__band">${patternMark(subject)}<h3>${subject.subject}</h3><span class="cdot" aria-hidden="true"></span></header>
       <div class="subject-card__body">
         <p class="subject-card__meta">${subject.level} · ${subject.board} ${subject.spec_code}${Array.isArray(subject.tiers) ? html` · <span data-preview-tier>${tier ? `${tier} tier` : 'Tier not chosen'}</span>` : ''}</p>
         <div class="target"><span class="target__grade" data-preview-grade>${target || '–'}</span><span><span class="target__label">Target grade</span>Last paper: <b>none yet</b></span></div>

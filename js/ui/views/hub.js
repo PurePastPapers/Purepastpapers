@@ -13,6 +13,7 @@ import {
   attemptCounts, byDifficulty, currentStreak, latestByQuestion, masteryByNode, paperHistory, ragFor, scoreOf, totals, weeklyActivity,
 } from '../../engine/analytics.js';
 import { columnChart, lineChart } from '../charts.js';
+import { doodle } from '../doodles.js';
 import { icon } from '../icons.js';
 import { questionRef, questionSnippet } from '../question-view.js';
 import { attemptInSubject, loadStudent, startQuestionSet, startSingle } from '../student.js';
@@ -88,7 +89,7 @@ export async function mount(element, context) {
         </div>
         <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Marks earned</span><span class="stat__value">${score.awarded}<span class="stat__of"> / ${score.max}</span></span></div>
         <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Papers and tests</span><span class="stat__value">${paperAttempts.length}</span></div>
-        <div class="stat ruled"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Day streak</span><span class="stat__value">${currentStreak(attempts)}</span></div>
+        <div class="stat ruled stat--streak"><i class="tape tape--c" aria-hidden="true"></i><span class="stat__label">Day streak</span><span class="stat__value">${currentStreak(attempts)}</span>${doodle('flame', 'streak-flame')}</div>
       </section>
       <div class="grid grid--2">
         <section class="card ruled tilt-2">

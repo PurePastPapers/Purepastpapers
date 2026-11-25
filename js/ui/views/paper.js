@@ -14,6 +14,7 @@ import { missingSpecPoints, questionStatus } from '../../engine/filter-engine.js
 import { collapseLinked, expandLinkedIds } from '../../engine/linked-parts.js';
 import { levelLabel, qualificationCode } from '../../engine/paper-identity.js';
 import { DISTINCT_WORKS, paperChoiceGroups, paperQuestionSelection, paperSessionQuestionIds } from '../../engine/paper-choice.js';
+import { doodle } from '../doodles.js';
 import { icon } from '../icons.js';
 import { assessmentResourceLinks } from '../assessment-resources.js';
 import { linkedRef, marksPill, questionRef, questionSnippet } from '../question-view.js';
@@ -74,7 +75,10 @@ export async function mount(element, context) {
               })}
             </ul>
             <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
-        : html`<p class="muted small">No attempts yet. Sit the paper here, or log a score if you have already done it on paper.</p>`}
+        : html`<div class="empty-doodle">${doodle('blankPaper')}<div>
+              <p class="muted small">No attempts yet. Sit the paper here, or log a score if you have already done it on paper.</p>
+              <p class="hand empty-doodle__note">your first go will show up here</p>
+            </div></div>`}
     </section>`;
   }
 

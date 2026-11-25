@@ -8,6 +8,7 @@ import { fmtDuration, fmtRelative } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { elapsedMs } from '../../data/sessions.js';
 import { currentStreak, totals } from '../../engine/analytics.js';
+import { doodle } from '../doodles.js';
 import { icon } from '../icons.js';
 import { addSubjectButton, addSubjectTile, loadStudent, subjectCard, subjectSummary, wireColourPicker } from '../student.js';
 import { confirmDialog, fmtPercent } from '../ui.js';
@@ -16,11 +17,11 @@ import { links } from '../../core/links.js';
 const SESSION_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Question' };
 
 const SECTIONS = [
-  { href: links.papers(), icon: 'file', title: 'Past papers', text: 'Full official papers by year and series.' },
-  { href: links.practice(), icon: 'clock', title: 'Practice', text: 'Custom tests or single questions from your topics.' },
-  { href: links.flashcards(), icon: 'layers', title: 'Flashcards', text: "Cards for the spec points you've learnt." },
-  { href: links.hub(), icon: 'chart', title: 'Data Hub', text: 'Scores, history and topic mastery.' },
-  { href: links.subjects(), icon: 'target', title: 'My subjects', text: "Subjects and the topics you've learned." },
+  { href: links.papers(), icon: 'file', doodle: 'papers', title: 'Past papers', text: 'Full official papers by year and series.' },
+  { href: links.practice(), icon: 'clock', doodle: 'practice', title: 'Practice', text: 'Custom tests or single questions from your topics.' },
+  { href: links.flashcards(), icon: 'layers', doodle: 'flashcards', title: 'Flashcards', text: "Cards for the spec points you've learnt." },
+  { href: links.hub(), icon: 'chart', doodle: 'hub', title: 'Data Hub', text: 'Scores, history and topic mastery.' },
+  { href: links.subjects(), icon: 'target', doodle: 'subjects', title: 'My subjects', text: "Subjects and the topics you've learned." },
 ];
 
 const SOON = [
@@ -68,6 +69,7 @@ export async function mount(element, context) {
               <span class="dash-section__arrow" aria-hidden="true">→</span>
               <h2>${section.title}</h2>
               <p>${section.text}</p>
+              ${doodle(section.doodle, 'dash-section__doodle')}
             </a>`,
         )}
       </nav>
@@ -118,7 +120,7 @@ export async function mount(element, context) {
             <div><b>${latest.size}</b><span>questions</span></div>
             <div><b>${fmtPercent(overall.percentage)}</b><span>average</span></div>
             <div><b>${progress.paper_attempts.length}</b><span>papers &amp; tests</span></div>
-            <div><b>${currentStreak(progress.question_attempts)}</b><span>day streak</span></div>
+            <div class="glance__streak"><b>${currentStreak(progress.question_attempts)}</b><span>day streak</span>${doodle('flame', 'streak-flame')}</div>
           </div>
         </section>
         <section class="card tilt-2" aria-labelledby="later-title">
