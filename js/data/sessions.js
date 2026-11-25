@@ -162,6 +162,8 @@ async function recordResult(session, { questions, subject, paper = null, totalAw
   }
   const percentage = max > 0 ? round1(percent(awarded, max)) : 0;
   const graded = LOGS_PAPER.has(session.kind) && max > 0 && unmarked === 0;
+  // Unit grades only exist when the exact paper/series boundaries are present; gradeFor
+  // returns null for OCR CTEC units with no such boundaries.
   const grade = graded ? gradeFor(percentage, subject.grade_scheme, paper?.grade_boundaries) : null;
 
   session.status = 'completed';

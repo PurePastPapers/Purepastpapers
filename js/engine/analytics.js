@@ -134,7 +134,7 @@ export function gradeFor(percentage, schemeKey, boundaries = null) {
   const bands = boundaries?.length
     ? [...boundaries].sort((a, b) => b.min_percentage - a.min_percentage).map((b) => [b.grade, b.min_percentage])
     : scheme?.bands;
-  if (!bands) return null;
+  if (!bands?.length) return null;
   for (const [grade, minimum] of bands) if (percentage >= minimum) return grade;
   return scheme?.fail || 'U';
 }
@@ -142,7 +142,7 @@ export function gradeFor(percentage, schemeKey, boundaries = null) {
 /** Grades in a scheme, best first (the fail grade last). */
 export function gradesIn(schemeKey) {
   const scheme = GRADE_SCHEMES[schemeKey];
-  return scheme ? [...scheme.bands.map(([grade]) => grade), scheme.fail] : [];
+  return scheme ? [...(scheme.grades || scheme.bands.map(([grade]) => grade)), scheme.fail] : [];
 }
 
 /**
