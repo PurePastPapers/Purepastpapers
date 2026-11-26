@@ -22,12 +22,14 @@ import { confirmDialog, difficultyBadge, emptyState, fmtPercent, groupDot, meter
 import { bindMarkPickers, markPicker } from '../mark-picker.js';
 import { links } from '../../core/links.js';
 import { bindInkPreviews, inkPreview } from '../ink-preview.js';
+import { flashcardsTab, mountFlashcardsTab } from './hub-flashcards.js?v=hub-flashcards-1';
 
 const TABS = [
   { id: 'overview', label: 'Overview' },
   { id: 'questions', label: 'Questions' },
   { id: 'topics', label: 'Topics' },
   { id: 'papers', label: 'Papers and tests' },
+  { id: 'flashcards', label: 'Flashcards' },
 ];
 
 const HISTORY_TYPES = [
@@ -436,7 +438,9 @@ export async function mount(element, context) {
   // ───────────────────────────────── page ─────────────────────────────────
 
   const hasData = api.exportedTests().length || progress.question_attempts.length > 0 || progress.paper_attempts.length > 0 || (progress.saved_answers || []).length > 0;
-  const body = !hasData
+  const body = tab === 'flashcards'
+    ? flashcardsTab()
+    : !hasData
     ? emptyState({
         iconName: 'chart',
         title: 'Your Data Hub fills up as you practise',
@@ -456,7 +460,7 @@ export async function mount(element, context) {
     element,
     html`${pageHead({
         title: 'Data Hub',
-        sub: 'everything you’ve done, in one place: questions, topics, papers and tests',
+        sub: 'everything you’ve done, in one place: questions, topics, papers, tests and flashcards',
         crumbs: [{ label: 'Home', href: links.home() }, { label: 'Data Hub', href: links.hub() }, ...(subjectId === 'all' ? [] : [{ label: bundles.get(subjectId).subject.subject }])],
       })}
       <div data-study-summary-link hidden></div>
@@ -483,6 +487,10 @@ export async function mount(element, context) {
   }
   if (hasData && tab === 'overview') mountOverviewCharts();
   if (hasData && tab === 'papers') mountTrendChart();
+  if (tab === 'flashcards') {
+    const subjectNames = new Map([...bundles.values()].map((bundle) => [bundle.subject.subject_id, `${bundle.subject.level === 'GCSE' ? 'GCSE ' : ''}${bundle.subject.subject}`]));
+    void mountFlashcardsTab($('[data-hub-flashcards]', element), { subjectId, subjectNames, preferences: progress.preferences });
+  }
 
   on(element, 'click', '[data-qfilter]', (event, button) => {
     questionFilters[button.dataset.qfilter] = button.dataset.value;
