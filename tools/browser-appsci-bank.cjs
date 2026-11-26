@@ -120,6 +120,9 @@ async function exportQuestion(page) {
       const countLabel = await page.locator('.paper-qs__count').innerText();
       const expectedQuestionGroups = results(units, question => question.paper_id === paper.paper_id);
       assert.match(countLabel, new RegExp(`${expectedQuestionGroups} questions?`));
+      assert(countLabel.includes(`${paper.available_marks} of ${paper.total_marks} marks`), 'coverage shows both available and printed marks');
+      assert.equal(await page.locator('[data-start="timed"]').count(), 0, 'partial samples cannot start a full timed paper');
+      await page.getByText(/a timed sitting is unavailable/i).waitFor();
       assert.match(await page.locator('h1').innerText(), new RegExp(paper.paper_code));
     }
 
