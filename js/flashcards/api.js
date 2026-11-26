@@ -167,6 +167,12 @@ export async function deckProgress(deckId, weeks = 8) {
   return (await connection()).rpc('flashcard_deck_progress', { p_deck_id: deckId, p_weeks: weeks });
 }
 
+/** Review history for every set, for the Data Hub: per set totals and reviews per day. */
+export async function hubSummary() {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  return (await connection()).rpc('flashcard_hub_summary', { p_tz: tz });
+}
+
 /** Keep only the chosen cards in study. Cards left out keep their review history. */
 export async function applySpecSelection(deckId, { mapped, allowed, general }) {
   return (await connection()).rpc('flashcard_apply_spec_selection', {

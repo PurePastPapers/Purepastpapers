@@ -73,7 +73,15 @@ const practice = mode => '/#/practice?subject=' + subject + '&mode=' + mode;
     await page.locator('[data-finish]').first().click();
     await page.getByRole('dialog').getByRole('button', { name: 'Finish', exact: true }).click();
     await page.getByRole('heading', { name: 'Mark your answers', exact: true }).waitFor();
-    await page.getByRole('link', { name: /open the official mark scheme at this question/ }).first().waitFor();
+    await page.getByRole('link', { name: /open the official mark scheme at this question/i }).first().waitFor();
+    for (const picker of await page.locator('.markcard [data-markpick]').all()) {
+      const zero = picker.locator('[data-pick="0"]');
+      if (await zero.count()) await zero.click();
+      else await picker.locator('[data-pick-range]').fill('0');
+    }
+    await page.locator('[data-save-results]').click();
+    await page.getByRole('heading', { name: 'Review', exact: true }).waitFor();
+    assert.equal(await page.locator('.grade-stamp').count(), 0);
     for (const width of [390, 1280]) {
       await page.setViewportSize({ width, height: 850 });
       await page.waitForFunction(limit => document.documentElement.scrollWidth <= limit, width);

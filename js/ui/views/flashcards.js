@@ -1,7 +1,7 @@
 // Private flashcards. The data adapter keeps content and scheduling in the account backend.
 import { $, html, on, raw, setHtml } from '../../core/dom.js';
 import { confirmDialog, openModal, toast } from '../ui.js';
-import * as flashcards from '../../flashcards/api.js?v=flashcard-progress-1';
+import * as flashcards from '../../flashcards/api.js?v=hub-flashcards-1';
 import { icon } from '../icons.js';
 import { cloudAccountId, getProgress, learnedSet, setPreference } from '../../data/api.js';
 import { ensureSpec, getSubject, specIndex } from '../../data/content-repository.js';
@@ -1669,7 +1669,13 @@ export function mount(element, context) {
   };
   document.addEventListener('keydown', onKey);
   draw();
-  void loadDecks();
+  // #/flashcards?study=<set id> (the Data Hub's Study buttons) opens that set's study screen.
+  const studyFirst = context.query?.study;
+  void loadDecks().then(() => {
+    if (!studyFirst || disposed || !decks.some((deck) => deck.id === studyFirst)) return;
+    resetManagerFilters();
+    beginStudy(studyFirst);
+  });
   return () => {
     disposed = true;
     importPreviewRequest?.abort();

@@ -109,6 +109,13 @@ def unit(cache_sources, paper, record, index, review):
             raise ValueError(f"Q{index}: missing Source {item['source_label']} on insert pages {pages}")
         if item.get("printed_line_range") and item["printed_line_range"] not in re.sub(r"\s+", " ", prompt):
             raise ValueError(f"Q{index}: unexpected line range")
+        if re.search(r"(?:not been|not|cannot be) reproduced here", text, re.I):
+            raise ValueError(f"Q{index}: release removes the required source")
+        if match := re.fullmatch(r"lines? (\d+) to (\d+|the end)", item.get("printed_line_range") or ""):
+            labels = {int(word) for page in pages for x, _, _, _, word, *_ in cache_sources["insert"][page - 1].get_text("words")
+                      if x < 71 and word.isdecimal()}
+            if not labels or not all(min(labels) <= int(marker) <= max(labels) for marker in match.groups() if marker.isdecimal()):
+                raise ValueError(f"Q{index}: required line marker absent from the verified pages")
         resources.append({
             "kind": "insert_pdf",
             "label": f"Source {item['source_label']} · {item['description']}",
