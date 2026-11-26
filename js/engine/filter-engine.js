@@ -7,6 +7,7 @@
 // counts as learned only when all of that topic's spec points are learned.
 
 import { RAG } from '../config/app.config.js';
+import { eligibleQualificationCodes } from './paper-identity.js';
 import { hasValidMark } from './analytics.js';
 import { matchesTextbookSelection } from './textbook-index.js';
 
@@ -207,7 +208,7 @@ export function filterQuestions(questions, criteria = {}, context) {
     if (poolOnly && question.include_in_custom_pool === false) continue;
     if (criteria.sampleMode === 'hide' && question.is_sample === true) continue;
     if (criteria.sampleMode === 'only' && question.is_sample !== true) continue;
-    if (qualificationCodes && !qualificationCodes.has(question.qualification_code || question.spec_code)) continue;
+    if (qualificationCodes && !eligibleQualificationCodes(question).some(code => qualificationCodes.has(code))) continue;
     if (criteria.contentYear && Number(question.introduced_year) !== Number(criteria.contentYear)) continue;
     if (sourceTypes && !sourceTypes.has(question.source_type)) continue;
     if (paperIds && !paperIds.has(question.paper_id)) continue;
