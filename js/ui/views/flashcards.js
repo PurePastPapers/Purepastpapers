@@ -1,13 +1,14 @@
 // Private flashcards. The data adapter keeps content and scheduling in the account backend.
 import { $, html, on, raw, setHtml } from '../../core/dom.js';
 import { confirmDialog, openModal, toast } from '../ui.js';
-import * as flashcards from '../../flashcards/api.js?v=flashcard-progress-1';
+import * as flashcards from '../../flashcards/api.js?v=hub-flashcards-1';
 import { icon } from '../icons.js';
 import { pppMark } from '../logo.js';
 import { cloudAccountId, getProgress, learnedSet, setPreference } from '../../data/api.js';
 import { ensureSpec, getSubject, specIndex } from '../../data/content-repository.js';
 import { subjectColour } from '../subject-colours.js';
-import { catalogueScreen, homePage, setPage } from './flashcards-pages.js?v=ppp-logo-1';
+import { catalogueScreen, homePage, setPage } from './flashcards-pages.js?v=own-sets-ppp-1';
+import * as own from './flashcards-own.js?v=own-sets-ppp-1';
 import {
   cardsPerPoint, countInPlay, createTagMapper, describeSets, generalCount, inPlay, progressPerPoint, requestSignature, selectionRequest,
 } from '../../flashcards/spec-map.js?v=flashcard-progress-1';
@@ -142,6 +143,7 @@ export function mount(element, context) {
   let study = null;
   const activeReviews = new Map();
   let importState = null;
+  let importSource = 'anki';
   let importPreviewRequest = null;
   let busy = false;
   let disposed = false;
@@ -626,7 +628,7 @@ export function mount(element, context) {
     specPointsStatus = 'loading';
     view = 'deck';
     draw();
-    $('.flashcards__toolbar h2', element)?.focus({ preventScroll: true });
+    $('.page-head__title', element)?.focus({ preventScroll: true });
     void refreshCards();
     void refreshTopics();
     void refreshSpecPoints();
@@ -659,9 +661,7 @@ export function mount(element, context) {
     if (specPointsStatus === 'loading') return html`<p class="small muted" role="status">Loading specification points…</p>`;
     if (specPointsStatus === 'error') return status('Could not load specification points.', 'retry-spec-points');
     if (!specPoints.length) return '';
-    return html`<label class="field"><span class="field__label">Specification point</span>
-      <select class="input" data-spec-point>${selectOptions([['', 'All specification points'], ...specPoints.map((point) => [point, specLabel(point)])], specPoint)}</select>
-    </label>`;
+    return html`<select class="input fc-os__point" data-spec-point aria-label="Specification point">${selectOptions([['', 'All spec points'], ...specPoints.map((point) => [point, specLabel(point)])], specPoint)}</select>`;
   }
 
   function bulkScope() {
@@ -669,62 +669,48 @@ export function mount(element, context) {
     return subdeckPath ? 'topic' : 'all cards';
   }
 
-  function bulkActions() {
-    const scope = bulkScope();
-    return html`<div class="flashcards__manager-summary">
-      <p class="small muted flashcards__result-count" role="status">${plural(totalCards, 'matching card')} · ${matchingActive} active · ${totalCards - matchingActive} suspended</p>
-      <div class="flashcards__bulk-actions flashcards__actions">
-        <button class="btn btn--sm btn--primary" data-action="topic-unsuspend" ${matchingUnsuspendable ? '' : raw('disabled')}>Unsuspend ${scope}</button>
-        <button class="btn btn--sm" data-action="topic-suspend" ${matchingActive ? '' : raw('disabled')}>Suspend ${scope}</button>
-        ${scope !== 'all cards' ? html`<button class="linkbtn" data-action="clear-card-filters">Clear filters</button>` : ''}
-      </div>
-      <p class="small muted">Applies to matches across all pages.${matchingProtected ? ' Archived and optional cards are skipped when unsuspending.' : ''}</p>
-    </div>`;
+  function cardFilter() {
+    return availability === 'suspended' ? 'paused' : cardStatus;
   }
 
-  function cardMetadata(card) {
-    const tags = tagList(card.tags);
-    const points = tags.filter((tag) => /^(?:PPP::)?Spec::/i.test(tag));
-    const schedule = card.revision > 0 ? card.state?.state || 'Reviewed' : 'New';
-    return html`<div class="flashcards__card-meta">
-      <span>${schedule}</span>${card.suspended ? html`<span>Suspended</span>` : ''}
-      ${points.map((point) => html`<span class="flashcards__point-chip">Spec ${specLabel(point)}</span>`)}
-    </div>
-    ${card.revision > 0 && card.due_at ? html`<p class="small muted">Due ${dateLabel(card.due_at)}</p>` : ''}
-    ${card.subdeck_path ? html`<p class="small muted">${card.subdeck_path.split('::').join(' › ')}</p>` : ''}
-    ${tags.length > points.length ? html`<details class="flashcards__tags"><summary>All tags</summary><p>${tags.join(', ')}</p></details>` : ''}`;
+  function rowFaces(card) {
+    const snippet = (content, revealed) => html`<div class="flashcards__snippet">${cardMarkup(content, card.variant, revealed, { showMedia: false })}</div>`;
+    const cloze = card.variant?.startsWith('cloze:');
+    const front = snippet(card.variant === 'reverse' ? card.back : card.front, false);
+    const back = cloze ? snippet(card.front, true) : snippet(card.variant === 'reverse' ? card.front : card.back, true);
+    return { front, back };
   }
 
   function managerResults() {
     if (managerStatus === 'loading') return status('Loading cards…');
     if (managerStatus === 'error') return status('Could not load cards.', 'retry-cards');
+    const readOnly = Boolean(activeDeck()?.catalogue_id);
     if (!cards.length) {
-      if (bulkScope() === 'all cards') return status('This deck has no cards yet.');
+      if (bulkScope() === 'all cards') {
+        return readOnly ? status('This set has no cards yet.') : html`<div class="fc-os__empty"><p>No cards yet.</p>
+          <div class="fc-os__formfoot"><button class="btn btn--primary" data-action="add-card">${icon('plus', { size: 16 })} Add a card</button><button class="btn" data-action="import-into" data-id="${selectedDeck}">${icon('upload', { size: 16 })} Import cards</button></div></div>`;
+      }
       return html`${status('No cards match these filters.')}<button class="linkbtn" data-action="clear-card-filters">Clear filters</button>`;
     }
-    const readOnly = Boolean(activeDeck()?.catalogue_id);
-    return html`${readOnly ? html`<p class="small muted flashcards__result-count" role="status">${plural(totalCards, 'matching card')} · ${matchingActive} in play</p>` : bulkActions()}
-      <div class="flashcards__card-list">${cards.map((card) => html`<article class="card flashcards__row"><div class="flashcards__row-content"><div class="flashcards__snippet">${cardMarkup(card.variant === 'reverse' ? card.back : card.front, card.variant, false, { showMedia: false })}</div>
-        ${cardMetadata(card)}</div>
-        <div class="flashcards__actions"><button class="btn btn--sm" data-action="preview-card" data-id="${card.id}">Preview</button>${readOnly ? '' : html`<button class="btn btn--sm" data-action="edit-card" data-id="${card.id}">Edit</button><button class="btn btn--sm" data-action="move-card" data-id="${card.id}">Move</button>`}${readOnly ? '' : html`<button class="btn btn--sm" data-action="suspend-card" data-id="${card.id}">${card.suspended ? 'Unsuspend' : 'Suspend'}</button><button class="btn btn--sm" data-action="delete-card" data-id="${card.id}">Delete</button>`}</div></article>`)}</div>
-      ${totalCards > pageSize ? html`<nav class="flashcards__pagination" aria-label="Card pages"><button class="btn btn--sm" data-action="prev-page" ${page <= 1 ? raw('disabled') : ''}>Previous</button><span>Page ${page} of ${Math.ceil(totalCards / pageSize)}</span><button class="btn btn--sm" data-action="next-page" ${page * pageSize >= totalCards ? raw('disabled') : ''}>Next</button></nav>` : ''}`;
+    const scope = bulkScope();
+    return html`${own.resultsSummary({ total: totalCards, active: matchingActive, unsuspendable: matchingUnsuspendable, readOnly, scope: scope === 'all cards' ? 'all' : scope === 'topic' ? 'this topic' : 'these', filtered: scope !== 'all cards', protectedCount: matchingProtected })}
+      <ul class="fc-rows">${cards.map((card) => {
+        const tags = tagList(card.tags);
+        const points = tags.filter((tag) => /^(?:PPP::)?Spec::/i.test(tag));
+        return own.cardRow(card, { ...rowFaces(card), readOnly, points: points.map(specLabel), otherTags: readOnly ? [] : tags.filter((tag) => !points.includes(tag)).slice(0, 4) });
+      })}</ul>
+      ${totalCards > pageSize ? html`<nav class="fc-os__pages" aria-label="Card pages"><button class="btn btn--sm" data-action="prev-page" ${page <= 1 ? raw('disabled') : ''}>Previous</button><span class="small">Page ${page} of ${Math.ceil(totalCards / pageSize)}</span><button class="btn btn--sm" data-action="next-page" ${page * pageSize >= totalCards ? raw('disabled') : ''}>Next</button></nav>` : ''}`;
   }
 
   function deckPage() {
     const deck = activeDeck();
-    if (!deck) return status('Deck unavailable.');
+    if (!deck) return html`${status('This set is no longer in your sets.')}<button class="btn" data-action="back-decks">Back to Flashcards</button>`;
     const readOnly = Boolean(deck.catalogue_id);
-    return html`${readOnly ? html`<button class="linkbtn" data-action="back-set">← Back to the set</button>` : html`<button class="linkbtn" data-action="back-decks">← My sets</button>`}<div class="flashcards__toolbar"><div><h2 tabindex="-1">${deck.title}</h2><p class="muted"><span data-manager-card-count>${plural(deck.card_count || 0, 'card')}</span> · ${deck.target_retention || 90}% target retention${readOnly ? ' · PurePastPapers set' : ''}</p></div>
-      <div class="flashcards__actions"><button class="btn btn--primary" data-action="study" data-id="${deck.id}">Start studying</button>${readOnly ? '' : html`<button class="btn" data-action="add-card">Add card</button>`}<button class="btn" data-action="settings">Deck settings</button></div></div>
-      <div data-manager-topics>${readOnly ? topicPanel() : ''}</div>
-      <div class="flashcards__manager-filters">
-        <label class="field flashcards__search"><span class="field__label">Search cards and tags</span><input class="input" type="search" data-search value="${query}" placeholder="Search this deck"></label>
-        <div data-manager-spec-points>${specPointFilter()}</div>
-        <label class="field"><span class="field__label">Card status</span><select class="input" data-card-status>${selectOptions([['all', 'Any status'], ['new', 'New'], ['learning', 'Learning'], ['due', 'Due now'], ['reviewed', 'Reviewed']], cardStatus)}</select></label>
-        <label class="field"><span class="field__label">${readOnly ? 'In play' : 'Study availability'}</span><select class="input" data-card-availability>${selectOptions(readOnly ? [['all', 'All cards'], ['active', 'In play'], ['suspended', 'Not in play']] : [['all', 'Active and suspended'], ['active', 'Active only'], ['suspended', 'Suspended only']], availability)}</select></label>
-        <label class="field"><span class="field__label">Sort cards</span><select class="input" data-card-sort>${selectOptions([['oldest', 'Oldest added'], ['newest', 'Newest added'], ['new-first', 'New cards first'], ['due', 'Due date']], cardSort)}</select></label>
-      </div>
-      <div data-manager-results>${managerResults()}</div>`;
+    return own.setPage({
+      deck, subject: subjectFor(deck), readOnly, query, filter: cardFilter(),
+      sortOptions: selectOptions([['oldest', 'Oldest first'], ['newest', 'Newest first'], ['new-first', 'New cards first'], ['due', 'Due soonest']], cardSort),
+      results: managerResults(), specPoints: specPointFilter(), topics: readOnly ? topicPanel() : '',
+    });
   }
 
   function ratingStatus(session) {
@@ -859,19 +845,9 @@ export function mount(element, context) {
   }
 
   function importPage() {
-    return html`<button class="linkbtn" data-action="back-decks">← My decks</button>
-      <h2 tabindex="-1">Import cards</h2><p>Choose a private deck and an import source. You can review the cards before adding them.</p>
-      <details class="card flashcards__import" data-import-settings open>
-      <summary>Import settings</summary>
-      <form data-import-form>
-        <label class="field"><span class="field__label">Import into</span><select class="input" name="deck" required>${decks.filter((deck) => !deck.catalogue_id).map((deck) => html`<option value="${deck.id}" ${deck.id === selectedDeck ? raw('selected') : ''}>${deck.title}</option>`)}</select></label>
-        <label class="field"><span class="field__label">Source</span><select class="input" name="source" data-import-source><option value="anki">Anki package (.apkg)</option><option value="quizlet">Quizlet export text</option><option value="csv">CSV file</option></select></label>
-        <div data-import-fields>${importFields('anki')}</div>
-        <div class="flashcards__actions"><button class="btn btn--primary" type="submit">Preview import</button></div>
-      </form>
-      </details>
-      <div data-import-preview></div>
-      <button class="btn btn--sm" data-action="cancel-import">Cancel an unfinished import</button>`;
+    const ownDecks = decks.filter((deck) => !deck.catalogue_id);
+    const selected = ownDecks.some((deck) => deck.id === selectedDeck) ? selectedDeck : ownDecks[0]?.id;
+    return own.importPage({ ownDecks, selected, source: importSource, subjectFor });
   }
 
   function scheduleStudyWake() {
@@ -908,20 +884,80 @@ export function mount(element, context) {
     const page = view === 'study' ? studyPage() : view === 'import' ? importPage() : view === 'deck' ? deckPage()
       : view === 'set' ? (activeDeck() ? setPage(pagesModel(), activeDeck()) : status('This set is no longer in your sets.'))
       : overviewPage();
-    const siteLook = view === 'decks' || view === 'catalogue' || view === 'set';
+    const siteLook = ['decks', 'catalogue', 'set', 'deck', 'import'].includes(view);
     setHtml(element, html`<div class="${siteLook ? 'fc' : view === 'study' ? 'flashcards flashcards--site' : 'flashcards'}" data-view="${view}">${page}</div>`);
     for (const box of element.querySelectorAll('[data-part]')) box.indeterminate = true;
     releaseDetachedMedia();
   }
 
-  async function deckDialog(deck = null) {
-    const own = !deck?.catalogue_id;
-    const currentSubject = deck ? deckSubjectId(deck) : (homeTab !== 'all' ? homeTab : '');
-    const subjectField = own && subjects.length ? html`<label class="field"><span class="field__label">Subject (optional)</span><select class="input" name="subject"><option value="">No subject</option>${subjects.map((item) => html`<option value="${item.id}" ${item.id === currentSubject ? raw('selected') : ''}>${item.name}</option>`)}</select><span class="field__hint">The set shows on this subject’s tab.</span></label>` : '';
+  /** Make your own set. Resolves with the new set and how the student wants to add cards. */
+  async function makeSetDialog({ way = 'write' } = {}) {
+    const currentSubject = homeTab !== 'all' ? homeTab : '';
     const result = await openModal({
-      onOpen: (dialog) => dialog.classList.add('flashcards-dialog'),
-      title: deck ? (own ? 'Set settings' : 'Study settings') : 'Make your own set',
-      body: html`<label class="field"><span class="field__label">Set name</span><input class="input" name="title" maxlength="100" required value="${deck?.title || ''}" ${deck?.catalogue_id ? raw('readonly') : ''}></label>${subjectField}${!deck?.catalogue_id ? html`<label class="field"><span class="field__label">Inside another set (optional)</span><select class="input" name="parent"><option value="">Not inside another set</option>${decks.filter((item) => item.id !== deck?.id && !item.catalogue_id).map((item) => html`<option value="${item.id}" ${deck?.parent_id === item.id ? raw('selected') : ''}>${item.title}</option>`)}</select></label>` : ''}${deck ? html`<label class="field"><span class="field__label">Target retention</span><input class="input" name="retention" type="number" min="80" max="92" step="1" value="${deck.target_retention || 90}"><span class="field__hint">A higher target usually means more reviews. Changes apply to future reviews.</span></label><label class="field"><span class="field__label">New cards per day</span><input class="input" name="newLimit" type="number" min="0" max="999" step="1" value="${deck.new_limit ?? 20}"></label>` : ''}`,
+      title: 'Make your own set',
+      wide: true,
+      onOpen: (dialog) => {
+        dialog.classList.add('fc-dialog', 'fc-dialog--make');
+        const title = $('[data-make-title]', dialog);
+        const previewTitle = $('[data-make-preview-title]', dialog);
+        const previewSubject = $('[data-make-preview-subject]', dialog);
+        title.addEventListener('input', () => { previewTitle.textContent = title.value.trim() || 'Your new set'; });
+        dialog.addEventListener('change', (event) => {
+          if (event.target.name !== 'subject') return;
+          const subject = subjectById(event.target.value);
+          previewSubject.textContent = subject ? ` · ${subject.name}` : '';
+        });
+        queueMicrotask(() => title.focus());
+      },
+      body: own.makeSetBody({ subjects, currentSubject, parents: decks.filter((item) => !item.catalogue_id), way }),
+      actions: [{ label: 'Cancel', cancel: true }, { label: 'Make set and add cards', variant: 'primary',
+        validate: (dialog) => (dialog.querySelector('[name=title]').value.trim() ? null : 'Enter a set name.'),
+        collect: (dialog) => ({
+          title: dialog.querySelector('[name=title]').value.trim(),
+          parent_id: dialog.querySelector('[name=parent]')?.value || null,
+          subject: dialog.querySelector('[name=subject]:checked')?.value || '',
+          way: dialog.querySelector('[name=way]:checked')?.value || 'write',
+        }) }],
+    });
+    if (!result) return null;
+    const { subject, way: chosen, ...fields } = result;
+    const saved = await flashcards.createDeck(fields);
+    if (subject && saved?.id) {
+      const subjectLinks = { ...(preferences().flashcardDeckSubjects || {}), [saved.id]: subject };
+      try { await setPreference('flashcardDeckSubjects', subjectLinks); } catch { toast('The set was made, but its subject could not be saved.', { type: 'error' }); }
+    }
+    await refreshDecks();
+    return saved?.id ? { deck: saved, way: chosen } : null;
+  }
+
+  /** After making a set, go straight to adding cards the way the student picked. */
+  async function startAddingCards(made) {
+    if (!made || disposed) { draw(); return; }
+    if (made.way === 'write') {
+      openManager(made.deck.id);
+      await cardDialog();
+    } else {
+      importSource = made.way === 'anki' ? 'anki' : 'quizlet';
+      selectedDeck = made.deck.id;
+      clearImportPreview();
+      view = 'import';
+      draw();
+      $('.page-head__title', element)?.focus({ preventScroll: true });
+    }
+  }
+
+  async function deckDialog(deck = null, { focusLimit = false } = {}) {
+    if (!deck) return (await makeSetDialog())?.deck || null;
+    const isOwn = !deck?.catalogue_id;
+    const currentSubject = deck ? deckSubjectId(deck) : (homeTab !== 'all' ? homeTab : '');
+    const subjectField = isOwn && subjects.length ? html`<label class="field"><span class="field__label">Subject (optional)</span><select class="input" name="subject"><option value="">No subject</option>${subjects.map((item) => html`<option value="${item.id}" ${item.id === currentSubject ? raw('selected') : ''}>${item.name}</option>`)}</select><span class="field__hint">The set shows on this subject’s tab.</span></label>` : '';
+    const result = await openModal({
+      onOpen: (dialog) => {
+        dialog.classList.add('flashcards-dialog');
+        if (focusLimit) setTimeout(() => { const field = dialog.querySelector('[name=newLimit]'); field?.focus(); field?.select(); field?.closest('label')?.scrollIntoView({ block: 'center' }); });
+      },
+      title: deck ? (isOwn ? 'Set settings' : 'Study settings') : 'Make your own set',
+      body: html`<label class="field"><span class="field__label">Set name</span><input class="input" name="title" maxlength="100" required value="${deck?.title || ''}" ${deck?.catalogue_id ? raw('readonly') : ''}></label>${subjectField}${!deck?.catalogue_id ? html`<label class="field"><span class="field__label">Inside another set (optional)</span><select class="input" name="parent"><option value="">Not inside another set</option>${decks.filter((item) => item.id !== deck?.id && !item.catalogue_id).map((item) => html`<option value="${item.id}" ${deck?.parent_id === item.id ? raw('selected') : ''}>${item.title}</option>`)}</select></label>` : ''}${deck ? html`<label class="field"><span class="field__label">Target retention</span><input class="input" name="retention" type="number" min="80" max="92" step="1" value="${deck.target_retention || 90}"><span class="field__hint">A higher target usually means more reviews. Changes apply to future reviews.</span></label><label class="field"><span class="field__label">New cards per day</span><input class="input" name="newLimit" type="number" min="0" max="999" step="1" value="${deck.new_limit ?? 20}"><span class="field__hint">You can have up to 999 a day.</span></label>` : ''}`,
       actions: [{ label: 'Cancel', cancel: true }, { label: deck ? 'Save changes' : 'Make set', variant: 'primary', validate: (dialog) => {
         const title = dialog.querySelector('[name=title]').value.trim();
         const retention = Number(dialog.querySelector('[name=retention]')?.value || 90);
@@ -929,7 +965,7 @@ export function mount(element, context) {
         return !title ? 'Enter a set name.' : !Number.isInteger(retention) || retention < 80 || retention > 92 ? 'Choose a whole percentage from 80 to 92.' : !Number.isInteger(limit) || limit < 0 || limit > 999 ? 'Choose a daily limit from 0 to 999.' : null;
       }, collect: (dialog) => ({ title: dialog.querySelector('[name=title]').value.trim(), target_retention: Number(dialog.querySelector('[name=retention]')?.value || 90), new_limit: Number(dialog.querySelector('[name=newLimit]')?.value ?? 20), parent_id: dialog.querySelector('[name=parent]') ? dialog.querySelector('[name=parent]').value || null : undefined, subject: dialog.querySelector('[name=subject]')?.value }) }],
     });
-    if (!result) return;
+    if (!result) return null;
     const { subject, ...fields } = result;
     const saved = deck ? await flashcards.updateDeck(deck.id, fields) : await flashcards.createDeck(fields);
     const savedId = deck?.id || saved?.id;
@@ -942,30 +978,91 @@ export function mount(element, context) {
     return saved;
   }
 
-  async function cardDialog(card = null) {
-    const result = await openModal({
-      onOpen: (dialog) => dialog.classList.add('flashcards-dialog', 'flashcards-editor'),
-      title: card ? 'Edit card' : 'Add a card',
-      body: html`<label class="field"><span class="field__label">Card type</span><select class="input" name="type" ${card ? raw('disabled') : ''}><option value="basic" ${card?.type === 'basic' ? raw('selected') : ''}>Basic</option><option value="reverse" ${card?.type === 'reverse' ? raw('selected') : ''}>Basic and reverse</option><option value="cloze" ${card?.type === 'cloze' ? raw('selected') : ''}>Cloze deletion</option></select><span class="field__hint flashcards__cloze-hint">For cloze, write {{c1::the answer}} in the front. Use c2, c3 and so on for separate cards.</span></label><div class="flashcards__editor-faces"><label class="field"><span class="field__label">Front</span><textarea class="textarea" name="front" rows="5" required>${card?.front || ''}</textarea></label><label class="field"><span class="field__label">Back or extra information</span><textarea class="textarea" name="back" rows="5">${card?.back || ''}</textarea></label></div><label class="field"><span class="field__label">Tags</span><input class="input" name="tags" value="${tagList(card?.tags).join(', ')}"><span class="field__hint">Separate tags with commas.</span></label>${card ? html`<p class="small muted">Editing the note preserves its cards and their review history. The card type cannot be changed here.</p>` : ''}`,
-      wide: true,
-      actions: [{ label: 'Cancel', cancel: true }, { label: 'Save card', variant: 'primary', validate: (dialog) => {
-        const front = dialog.querySelector('[name=front]').value.trim();
-        const back = dialog.querySelector('[name=back]').value.trim();
-        const type = dialog.querySelector('[name=type]').value;
-        if (!front) return 'Enter the front of the card.';
-        if (type === 'cloze' && !/\{\{c\d+::.+?\}\}/s.test(front)) return 'Add a cloze deletion such as {{c1::answer}} to the front.';
-        if (type !== 'cloze' && !back) return 'Enter the back of the card.';
-        return null;
-      }, collect: (dialog) => ({ id: card?.note_id, deck_id: selectedDeck, type: dialog.querySelector('[name=type]').value, front: dialog.querySelector('[name=front]').value, back: dialog.querySelector('[name=back]').value, tags: dialog.querySelector('[name=tags]').value.split(',').map((tag) => tag.trim()).filter(Boolean) }) }],
+  /** Tag chips in the card editor: Enter or comma adds a tag, × removes one. */
+  function wireTagRow(dialog) {
+    const row = $('[data-tag-row]', dialog);
+    const input = $('[data-tag-input]', dialog);
+    const hidden = $('[name=tags]', dialog);
+    const current = () => [...row.querySelectorAll('[data-tag]')].map((chip) => chip.dataset.tag);
+    const sync = () => { hidden.value = current().join(', '); };
+    const add = (value) => {
+      for (const tag of value.split(',').map((item) => item.trim()).filter(Boolean)) {
+        if (current().includes(tag)) continue;
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.dataset.tag = tag;
+        setHtml(chip, html`${tag}<button type="button" class="fc-tag-x" data-remove-tag aria-label="Remove tag ${tag}">×</button>`);
+        input.before(chip);
+      }
+      input.value = '';
+      sync();
+    };
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ',') { event.preventDefault(); add(input.value); }
+      else if (event.key === 'Backspace' && !input.value) { row.querySelector('[data-tag]:last-of-type')?.remove(); sync(); }
     });
-    if (!result) return;
-    const saved = await flashcards.saveNote(result);
-    if (saved?.status === 'confirm_remove') {
-      const count = Number(saved.removed_cards) || 0;
-      if (!await confirmDialog({ title: 'Remove cards?', message: `This edit removes ${plural(count, 'card')} from study. Their review logs are retained.`, confirmLabel: 'Save changes', danger: true })) return;
-      await flashcards.saveNote({ ...result, confirm_remove: true });
+    input.addEventListener('blur', () => add(input.value));
+    row.addEventListener('click', (event) => {
+      const remove = event.target.closest('[data-remove-tag]');
+      if (remove) { remove.closest('[data-tag]').remove(); sync(); input.focus(); }
+    });
+    // A tag still being typed counts when the card is saved.
+    $('form', dialog).addEventListener('submit', () => add(input.value), { capture: true });
+  }
+
+  /** Add or edit a card. New cards can be saved one after another. */
+  async function cardDialog(card = null) {
+    const deckTitle = activeDeck()?.title || 'this set';
+    let added = 0;
+    let type = card?.type || 'basic';
+    let tags = card ? tagList(card.tags) : [];
+    for (;;) {
+      const result = await openModal({
+        title: card ? 'Edit card' : 'Add a card',
+        wide: true,
+        onOpen: (dialog) => {
+          dialog.classList.add('fc-dialog', 'fc-dialog--card');
+          dialog.dataset.cardType = type;
+          dialog.addEventListener('change', (event) => { if (event.target.name === 'type') dialog.dataset.cardType = event.target.value; });
+          wireTagRow(dialog);
+          queueMicrotask(() => $('[name=front]', dialog).focus());
+        },
+        body: own.cardEditorBody({ card: card || { type, tags }, deckTitle, added, editing: Boolean(card) }),
+        actions: [
+          { label: card ? 'Cancel' : added ? 'Done' : 'Cancel', cancel: true },
+          { label: card ? 'Save card' : 'Save and add another', variant: 'primary', validate: (dialog) => {
+            const front = dialog.querySelector('[name=front]').value.trim();
+            const back = dialog.querySelector('[name=back]').value.trim();
+            const kind = dialog.querySelector('[name=type]:checked')?.value || 'basic';
+            if (!front) return 'Write the front of the card.';
+            if (kind === 'cloze' && !/\{\{c\d+::.+?\}\}/s.test(front)) return 'Put the hidden words in double braces, like {{c1::answer}}.';
+            if (kind !== 'cloze' && !back) return 'Write the back of the card.';
+            return null;
+          }, collect: (dialog) => ({ id: card?.note_id, deck_id: selectedDeck, type: card?.type || dialog.querySelector('[name=type]:checked')?.value || 'basic', front: dialog.querySelector('[name=front]').value, back: dialog.querySelector('[name=back]').value, tags: dialog.querySelector('[name=tags]').value.split(',').map((tag) => tag.trim()).filter(Boolean) }) },
+        ],
+      });
+      if (!result) break;
+      const saved = await flashcards.saveNote(result);
+      if (saved?.status === 'confirm_remove') {
+        const count = Number(saved.removed_cards) || 0;
+        if (!await confirmDialog({ title: 'Remove cards?', message: `This edit removes ${plural(count, 'card')} from study. Their review logs are retained.`, confirmLabel: 'Save changes', danger: true })) break;
+        await flashcards.saveNote({ ...result, confirm_remove: true });
+      }
+      deckCountsDirty = true;
+      if (card || disposed) break;
+      // Keep the card type and tags for the next card: students usually add a run of similar ones.
+      added++;
+      type = result.type;
+      tags = result.tags;
+      void refreshCards();
     }
     deckCountsDirty = true;
+    await refreshDecks().catch(() => {});
+    if (!disposed && view === 'deck') {
+      const count = $('[data-manager-card-count]', element);
+      const deck = activeDeck();
+      if (count && deck) count.textContent = plural(deck.card_count || 0, 'card');
+    }
     await Promise.all([refreshCards(), refreshSpecPoints()]);
   }
 
@@ -998,6 +1095,7 @@ export function mount(element, context) {
         session.buffer = queue.cards.slice(1);
         const untilDue = Date.parse(queue.nextDue) - Date.parse(queue.serverNow);
         session.refreshAt = Number.isFinite(untilDue) ? requestedAt + Math.max(0, untilDue) : Infinity;
+        session.limit = queue;
       }
       session.failed = false;
     } catch {
@@ -1008,6 +1106,30 @@ export function mount(element, context) {
     session.loading = false;
     drawStudy();
     preloadNextQuestion(session);
+    void offerLimitChange(session);
+  }
+
+  // Pop-up once per set per day when the daily new-card limit is reached and
+  // unseen cards are still waiting. Reviews keep coming either way.
+  async function offerLimitChange(session) {
+    const info = session.limit;
+    if (!info?.newLimitReached || session.limitOffered) return;
+    session.limitOffered = true;
+    const key = `ppp:flashcard-limit-popup:${session.deckId}:${String(info.serverNow || '').slice(0, 10)}`;
+    try { if (localStorage.getItem(key)) return; localStorage.setItem(key, '1'); } catch { /* private mode */ }
+    const deck = activeDeck();
+    if (!deck) return;
+    const waiting = Number(info.newWaiting) || 0;
+    const choice = await openModal({
+      title: `That’s your ${plural(info.newLimit, 'new card')} for today`,
+      body: html`<p>You’ve learnt ${plural(info.newLimit, 'new card')} in <strong>${deck.title}</strong> today, which is this set’s daily limit.${waiting ? ` ${plural(waiting, 'new card')} ${waiting === 1 ? 'is' : 'are'} still waiting.` : ''}</p><p>Stop here and they’ll come in tomorrow, or raise the limit to keep learning new cards now. Cards due for review still show up either way.</p>`,
+      actions: [{ label: 'Stop for today', cancel: true }, { label: 'Change daily limit', value: 'limit', variant: 'primary' }],
+    });
+    if (choice !== 'limit' || !isCurrentStudy(session)) return;
+    const saved = await deckDialog(activeDeck(), { focusLimit: true });
+    if (!isCurrentStudy(session)) return;
+    drawStudy();
+    if (saved !== null && !session.card) void refillStudy(session);
   }
 
   function preloadNextQuestion(session) {
@@ -1114,12 +1236,6 @@ export function mount(element, context) {
     activeReviews.set(session.deckId, request);
   }
 
-  function importFields(source) {
-    if (source === 'quizlet') return html`<p class="small muted">In Quizlet, open your set and choose Export. Choose a tab between term and definition, and a new line between cards, then paste the text below.</p><label class="field"><span class="field__label">Exported text</span><textarea class="textarea" name="text" rows="8" required></textarea></label><label class="field"><span class="field__label">Card front</span><select class="input" name="quizletFront"><option value="term">Term (definition on the back)</option><option value="definition">Definition (term on the back)</option></select></label>`;
-    if (source === 'csv') return html`<label class="field"><span class="field__label">CSV file</span><input class="input" name="file" type="file" accept=".csv,.txt,text/csv" required></label><label class="field"><span class="field__label">Delimiter</span><select class="input" name="delimiter"><option value=",">Comma</option><option value="tab">Tab</option><option value=";">Semicolon</option></select></label><p class="small muted">Choose the column numbers from your file, starting at 1.</p><div class="flashcards__mapping"><label class="field"><span class="field__label">Front column</span><input class="input" type="number" name="front" min="1" value="1" required></label><label class="field"><span class="field__label">Back column</span><input class="input" type="number" name="back" min="1" value="2" required></label><label class="field"><span class="field__label">Tags column (optional)</span><input class="input" type="number" name="tags" min="1"></label><label class="field"><span class="field__label">Deck column (optional)</span><input class="input" type="number" name="deckColumn" min="1"></label></div><label><input type="checkbox" name="header"> First row contains headers</label>`;
-    return html`<label class="field"><span class="field__label">Anki package</span><input class="input" name="file" type="file" accept=".apkg" required></label><p class="small muted">Cards start fresh with FSRS. Existing Anki study progress is not imported.</p>`;
-  }
-
   function clearImportPreview() {
     importPreviewRequest?.abort();
     importPreviewRequest = null;
@@ -1128,8 +1244,6 @@ export function mount(element, context) {
     mediaUrls.clear();
     const preview = $('[data-import-preview]', element);
     if (preview) setHtml(preview, '');
-    const settings = $('[data-import-settings]', element);
-    if (settings) $('summary', settings).textContent = 'Import settings';
     const submit = $('[data-import-form] button[type="submit"]', element);
     if (submit) submit.disabled = false;
   }
@@ -1144,8 +1258,8 @@ export function mount(element, context) {
   async function previewImport(form) {
     clearImportPreview();
     const preview = $('[data-import-preview]', element);
-    const source = form.elements.source.value;
-    const deckId = form.elements.deck.value;
+    const source = form.querySelector('[name=source]:checked')?.value || 'anki';
+    const deckId = form.querySelector('[name=deck]:checked')?.value || '';
     const submit = $('button[type="submit"]', form);
     const request = new AbortController();
     importPreviewRequest = request;
@@ -1159,7 +1273,7 @@ export function mount(element, context) {
       else setImportProgress(output, meter, stage === 'media' ? 'Checking package media…' : 'Reading the Anki cards…');
     };
     try {
-      if (!deckId) throw new Error('Create a deck before importing.');
+      if (!deckId) throw new Error('Choose a set to put the cards in, or make a new one.');
       const input = { source };
       if (source === 'quizlet') {
         input.text = form.elements.text.value;
@@ -1184,13 +1298,11 @@ export function mount(element, context) {
       request.signal.throwIfAborted();
       importState = { deckId, parsed };
       drawImportPreview(preview, { source, deckId, parsed, info, options: input.options });
-      const settings = $('[data-import-settings]', element);
-      settings.open = !info.accepted && Boolean(parsed.errors?.length);
-      $('summary', settings).textContent = 'Edit import settings';
       $('h3', preview).focus();
+      preview.scrollIntoView?.({ block: 'start', behavior: 'smooth' });
     } catch (error) {
       if (!request.signal.aborted) {
-        setHtml(preview, html`<section class="card flashcards__preview"><h3 tabindex="-1">Could not preview this import</h3><p role="alert">${error.message}</p></section>`);
+        setHtml(preview, html`<section class="card ruled fc-os__card fc-preview"><h3 class="card__title" tabindex="-1">Could not preview these cards</h3><p role="alert">${error.message}</p></section>`);
         $('h3', preview).focus();
       }
     } finally {
@@ -1213,23 +1325,24 @@ export function mount(element, context) {
     const sourceDecks = parsed.decks?.map((deck) => typeof deck === 'string' ? deck : deck.name) || [];
     const errors = parsed.errors || [];
     const warnings = parsed.warnings || [];
-    setHtml(preview, html`<section class="card flashcards__preview">
-      <h3 tabindex="-1">Import preview</h3>
-      <p>Target deck: <strong>${decks.find((deck) => deck.id === deckId)?.title || 'Selected deck'}</strong></p>
-      <p>${plural(info.accepted, 'card')} ready · ${plural(info.duplicates, 'duplicate')} skipped · ${plural(errors.length, 'invalid row')}</p>
+    setHtml(preview, html`<section class="card ruled tilt-2 fc-os__card fc-preview"><i class="tape tape--c" aria-hidden="true"></i>
+      <h3 class="card__title" tabindex="-1">Check your cards</h3>
+      <p>Going into <strong>${decks.find((deck) => deck.id === deckId)?.title || 'your set'}</strong></p>
+      <div class="fc-os__stats fc-preview__stats"><div><b>${info.accepted}</b><span>ready</span></div><div><b>${info.duplicates}</b><span>already there</span></div><div><b>${errors.length}</b><span>can’t be read</span></div></div>
       ${sourceDecks.length ? html`<details><summary>${plural(sourceDecks.length, 'source deck')}</summary><ul>${sourceDecks.map((name) => html`<li>${name}</li>`)}</ul></details>` : ''}
       ${warnings.length ? html`<ul>${warnings.map((warning) => html`<li>${warning}</li>`)}</ul>` : ''}
       ${source === 'anki' ? html`<p class="small muted">Suspended cards stay suspended. Anki subdecks will appear inside the target deck.</p>` : ''}
       ${errors.length ? html`<details ${!info.accepted ? raw('open') : ''}><summary>Invalid rows${errors.length > 100 ? ' (first 100 shown)' : ''}</summary><ul>${errors.slice(0, 100).map((error) => html`<li>Row ${error.row}: ${error.reason}</li>`)}</ul></details>` : ''}
-      ${firstCards.length ? html`<div class="flashcards__preview-cards">${firstCards.map((note) => html`<article class="flashcards__example-card"><div>${cardMarkup(note.front, '', true, { previewMedia: parsed.media, previewUrls: mediaUrls })}</div><hr><div>${cardMarkup(note.back, '', true, { previewMedia: parsed.media, previewUrls: mediaUrls })}</div></article>`)}</div>` : ''}
+      ${firstCards.length ? html`<p class="fc-hand">the first few cards</p><div class="fc-preview__cards">${firstCards.map((note, index) => html`<article class="card ruled fc-preview__card tilt-${(index % 4) + 1}"><div class="fc-preview__front">${cardMarkup(note.front, '', true, { previewMedia: parsed.media, previewUrls: mediaUrls })}</div><div class="fc-preview__back">${cardMarkup(note.back, '', true, { previewMedia: parsed.media, previewUrls: mediaUrls })}</div></article>`)}</div>` : ''}
       ${source !== 'anki' ? html`<p class="small muted">Front shows ${source === 'quizlet' ? (parsed.front === 'definition' ? 'the definition' : 'the term') : `column ${options.front + 1}`}. <button type="button" class="btn btn--sm" data-action="swap-import-sides">Swap front and back</button></p>` : ''}
-      <button class="btn btn--primary" data-action="commit-import" ${info.accepted ? '' : raw('disabled')}>Import cards</button>
+      <div class="fc-os__formfoot"><button class="btn btn--primary" data-action="commit-import" ${info.accepted ? '' : raw('disabled')}>Add ${plural(info.accepted, 'card')}</button></div>
       <p role="status" data-import-progress></p><progress aria-label="Import progress" data-import-meter hidden></progress><p data-import-error role="alert"></p>
     </section>`);
   }
 
   const offClick = on(element, 'click', '[data-action]', (event, button) => {
     const action = button.dataset.action;
+    for (const menu of element.querySelectorAll('details.fc-menu[open]')) menu.open = false;
     if (action === 'show-answer') { showAnswer(); return; }
     if (action === 'grade') { rateStudy(Number(button.dataset.grade)); return; }
     if (action === 'exit-study') {
@@ -1291,14 +1404,9 @@ export function mount(element, context) {
       resetManagerFilters();
       cardSort = previousSort;
       page = 1;
-      if (activeDeck()?.catalogue_id) setHtml($('[data-manager-topics]', element), topicPanel());
-      const point = $('[data-spec-point]', element);
-      if (point) point.value = '';
-      $('[data-card-status]', element).value = cardStatus;
-      $('[data-card-availability]', element).value = availability;
-      const search = $('[data-search]', element);
-      search.value = '';
-      search.focus({ preventScroll: true });
+      managerStatus = 'loading';
+      draw();
+      $('[data-search]', element)?.focus({ preventScroll: true });
       void refreshCards();
     }
     else if (action === 'retry-study' && study) {
@@ -1306,7 +1414,41 @@ export function mount(element, context) {
       drawStudy();
       void loadStudyQueue(study, readPending(study.deckId));
     }
-    else if (action === 'create-deck') await deckDialog();
+    else if (action === 'create-deck') await startAddingCards(await makeSetDialog());
+    else if (action === 'card-filter') {
+      clearTimeout(searchTimer);
+      availability = id === 'paused' ? 'suspended' : 'all';
+      cardStatus = id === 'paused' ? 'all' : id;
+      page = 1;
+      for (const chip of element.querySelectorAll('[data-action="card-filter"]')) {
+        const on = chip.dataset.id === id;
+        chip.classList.toggle('is-on', on);
+        chip.setAttribute('aria-pressed', String(on));
+      }
+      void refreshCards();
+    }
+    else if (action === 'edit-settings' && activeDeck()) { await deckDialog(activeDeck()); if (view === 'deck') { draw(); void refreshCards(); void refreshSpecPoints(); void refreshTopics(); } }
+    else if (action === 'delete-deck' && activeDeck() && !activeDeck().catalogue_id) {
+      const deck = activeDeck();
+      if (await confirmDialog({ title: `Delete ${deck.title}?`, message: `This removes the set and its ${plural(deck.card_count || cards.length, 'card')} from study. ${decks.some((item) => item.parent_id === deck.id) ? 'Sets inside it move up a level. ' : ''}Your review history is kept.`, confirmLabel: 'Delete set', danger: true })) {
+        await flashcards.deleteDeck(deck.id); selectedDeck = null; view = 'decks'; await refreshDecks(); draw();
+      }
+    }
+    else if (action === 'import-into') {
+      selectedDeck = id || selectedDeck;
+      clearImportPreview();
+      view = 'import';
+      draw();
+      $('.page-head__title', element)?.focus({ preventScroll: true });
+    }
+    else if (action === 'import-new-set') {
+      const made = await makeSetDialog({ way: importSource === 'anki' ? 'anki' : 'file' });
+      if (made && !disposed) {
+        selectedDeck = made.deck.id;
+        if (made.way === 'write') await startAddingCards(made);
+        else { importSource = made.way === 'anki' ? 'anki' : importSource === 'anki' ? 'quizlet' : importSource; clearImportPreview(); draw(); }
+      }
+    }
     else if (action === 'settings') {
       const choice = await openModal({ title: activeDeck().title, body: html`<p>Change this deck’s study settings${activeDeck().catalogue_id ? '.' : ', rename it, or remove it and its cards from study.'}</p>`, actions: [{ label: 'Cancel', cancel: true }, { label: 'Edit settings', value: 'edit', variant: 'primary' }, ...(!activeDeck().catalogue_id ? [{ label: 'Delete deck', value: 'delete', variant: 'danger' }] : [])] });
       if (choice === 'edit') await deckDialog(activeDeck());
@@ -1372,13 +1514,14 @@ export function mount(element, context) {
     }
     else if (action === 'import') {
       if (!decks.some((deck) => !deck.catalogue_id)) {
-        const created = await deckDialog();
-        if (!created || disposed) return;
-        selectedDeck = created.id;
+        const made = await makeSetDialog({ way: 'anki' });
+        if (!made || disposed) return;
+        return startAddingCards(made);
       }
+      clearImportPreview();
       view = 'import';
       draw();
-      $('h2', element)?.focus({ preventScroll: true });
+      $('.page-head__title', element)?.focus({ preventScroll: true });
     }
     else if (action === 'cancel-import') {
       if (await confirmDialog({ title: 'Cancel unfinished import?', message: 'Remove the staged cards and media from your unfinished import?', confirmLabel: 'Cancel import', danger: true })) { await flashcards.cancelImport(); clearImportPreview(); toast('Unfinished import cancelled.', { type: 'success' }); }
@@ -1395,7 +1538,7 @@ export function mount(element, context) {
       const errorOutput = $('[data-import-error]', element);
       const importForm = $('[data-import-form]', element);
       const swap = $('[data-action="swap-import-sides"]', element);
-      const cancel = $('[data-action="cancel-import"]', element);
+      const cancel = $('[data-action="cancel-import"]', element) || {};
       button.disabled = true;
       importForm.inert = true;
       cancel.disabled = true;
@@ -1416,10 +1559,10 @@ export function mount(element, context) {
         deckCountsDirty = true;
         const preview = $('[data-import-preview]', element);
         if (preview) {
-          setHtml(preview, html`<section class="card flashcards__preview">
-            <h3 tabindex="-1">Import complete</h3>
-            <p role="status" data-import-progress>Imported ${plural(result.imported, 'card')}. ${plural(result.duplicates, 'duplicate')} skipped.</p>
-            <button class="btn btn--primary" data-action="open-deck" data-id="${targetId}">Open deck</button>
+          setHtml(preview, html`<section class="card ruled tilt-2 fc-os__card fc-preview"><i class="tape tape--c" aria-hidden="true"></i>
+            <h3 class="card__title" tabindex="-1">Cards added</h3>
+            <p role="status" data-import-progress>Added ${plural(result.imported, 'card')}. ${plural(result.duplicates, 'card')} were already there.</p>
+            <div class="fc-os__formfoot"><button class="btn btn--primary" data-action="open-deck" data-id="${targetId}">Open the set</button></div>
           </section>`);
           $('h3', preview).focus({ preventScroll: true });
         }
@@ -1463,7 +1606,12 @@ export function mount(element, context) {
     else openTopics.delete(details.dataset.topicId);
   }, { capture: true });
   const offChange = on(element, 'change', '[data-import-source], [data-topic], [data-spec-point], [data-card-status], [data-card-availability], [data-card-sort]', (event, control) => {
-    if (control.matches('[data-import-source]')) setHtml($('[data-import-fields]', element), importFields(control.value));
+    if (control.matches('[data-import-source]')) {
+      importSource = control.value;
+      setHtml($('[data-import-fields]', element), own.importFields(control.value));
+      const title = $('[data-import-step3]', element);
+      if (title) title.textContent = control.value === 'quizlet' ? 'Paste the cards' : 'Choose the file';
+    }
     else if (control.matches('[data-topic]')) {
       clearTimeout(searchTimer);
       subdeckPath = control.value;
@@ -1500,6 +1648,16 @@ export function mount(element, context) {
     if (selection && !selection.isCollapsed && card.contains(selection.anchorNode)) return;
     showAnswer();
   });
+  // Show the chosen file's name in the drop zone.
+  const offFileName = on(element, 'change', '.fc-drop__input', (event, input) => {
+    const label = $('[data-file-name]', input.closest('.fc-drop'));
+    if (label && input.files?.[0]) label.textContent = input.files[0].name;
+  });
+  // Only one card menu open at a time; a click elsewhere closes it.
+  const closeMenus = (event) => {
+    for (const menu of element.querySelectorAll('details.fc-menu[open]')) if (!menu.contains(event.target)) menu.open = false;
+  };
+  document.addEventListener('click', closeMenus);
   const offImportInput = on(element, 'input', '[data-import-form] input, [data-import-form] textarea, [data-import-form] select', clearImportPreview);
   const offImportChange = on(element, 'change', '[data-import-form] input, [data-import-form] textarea, [data-import-form] select', clearImportPreview);
   const offSubmit = on(element, 'submit', '[data-import-form]', (event, form) => { event.preventDefault(); void previewImport(form); });
@@ -1512,7 +1670,13 @@ export function mount(element, context) {
   };
   document.addEventListener('keydown', onKey);
   draw();
-  void loadDecks();
+  // #/flashcards?study=<set id> (the Data Hub's Study buttons) opens that set's study screen.
+  const studyFirst = context.query?.study;
+  void loadDecks().then(() => {
+    if (!studyFirst || disposed || !decks.some((deck) => deck.id === studyFirst)) return;
+    resetManagerFilters();
+    beginStudy(studyFirst);
+  });
   return () => {
     disposed = true;
     importPreviewRequest?.abort();
@@ -1530,6 +1694,8 @@ export function mount(element, context) {
     offImportInput();
     offImportChange();
     offSubmit();
+    offFileName();
+    document.removeEventListener('click', closeMenus);
     document.removeEventListener('keydown', onKey);
     offCardTap();
   };

@@ -1,6 +1,6 @@
 # OCR H151 Applied Science
 
-Checked 25 November 2026; reconciled with main `f21bab2`. Subject ID remains
+Sources rechecked 26 November 2026 against main `d3a6f71`. Subject ID remains
 `OCR_L3_APPSCI_AAQ`, prefix `OCR_L3SCI`, ID stem `OCR_AAQSCI`.
 
 ## Release status
@@ -38,17 +38,22 @@ school route. H051 Certificate comprises F180 and F182 only. F180 is shared
 once, with both eligibility codes; F181 is H151 only. NEA samples do not enter
 the scored question pool.
 
-The public OCR assessment page listed two official samples, annotated teacher
+The public OCR assessment page lists the two official samples, annotated teacher
 resources, an F180 data/formulae booklet, NEA samples and the F181 January 2026
-pre-release. No live question papers, matching live schemes or examiner reports
-were listed. Absence from the public page is recorded as missing, not evidence
-that an assessment did not take place or that secure files were accessed.
+pre-release. OCR's January and June 2026 grade-boundary publications confirm that
+both series included F180/01 and F181/01. No matching live question paper and
+scheme pair, live examiner report, or additional series booklet or insert was
+verified publicly. OCR's [past paper schedule](https://www.ocr.org.uk/qualifications/past-paper-finder/past-paper-schedule/)
+points to early March 2027 for the January series and early August 2027 for the
+June series. Both entries and their source evidence are in the inventory.
 
 | Unit / source | Printed marks | Available marks | Blocking material |
 | --- | ---: | ---: | --- |
 | F180 official sample | 70 | 65 | Q11(a)(i–ii), 5 marks: separately credited Getty image; magnification also depends on original print size |
 | F181 official sample | 50 | 33 | Seven source-dependent parts, 17 marks: exact Source A extract rights unconfirmed and Source B withheld |
-| F181 January 2026 | — | 0 | Pre-release alone; matching paper and scheme not found publicly |
+| F180 January and June 2026 | 70 per sitting | 0 | Matching live paper, scheme and booklet not verified publicly |
+| F181 January 2026 | 50 | 0 | Public pre-release only; matching paper and scheme not verified publicly |
+| F181 June 2026 | 50 | 0 | Matching live paper, scheme and pre-release not verified publicly |
 | F182–F186 | NEA | 0 | Reference assignments; excluded from scored exams |
 
 | Series / unit | Verified PDF sources | Prepared packs | Indexed papers | Scored units |
@@ -57,8 +62,8 @@ that an assessment did not take place or that secure files were accessed.
 | Official sample F181 (including annotated reference) | 2 | 1 | 1 | 15 |
 | January 2026 F181 pre-release control | 1 | 0 | 0 | 0 |
 | F182–F186 NEA references | 5 | 0 | 0 | 0 |
-| Shared specification and separate January boundaries | 2 | 0 | 0 | 0 |
-| Total | 13 | 2 | 2 | 49 |
+| Shared specification and separate January and June boundaries | 3 | 0 | 0 | 0 |
+| Total | 14 | 2 | 2 | 49 |
 
 There are zero paper-only records and no verified public material queued for
 extraction. Nine original parts, worth 22 marks, remain blocked. F180 has 39
@@ -134,7 +139,7 @@ The finaliser stages disabled entries by default. `--activate` requires
 entries within the isolated browser context to exercise the prepared bank; it
 does not publish the bank.
 
-## Release and verification evidence
+## 25 November release verification evidence
 
 - Source inventory: 13 official OCR PDF sources, SHA-256 and page boundaries verified.
 - Rebuilds: both sample packs and both image catalogues repeat byte-for-byte.

@@ -28,7 +28,7 @@ function flashcardsView() {
   flashcardsStyles ??= new Promise((resolve, reject) => {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = new URL('../css/flashcards.css?v=ppp-logo-1', import.meta.url);
+    stylesheet.href = new URL('../css/flashcards.css?v=own-sets-ppp-1', import.meta.url);
     stylesheet.addEventListener('load', resolve, { once: true });
     stylesheet.addEventListener('error', () => {
       stylesheet.remove();
@@ -37,7 +37,7 @@ function flashcardsView() {
     }, { once: true });
     document.head.append(stylesheet);
   });
-  return Promise.all([import('./ui/views/flashcards.js?v=ppp-logo-1'), flashcardsStyles]).then(([view]) => view);
+  return Promise.all([import('./ui/views/flashcards.js?v=hub-flashcards-ppp-1'), flashcardsStyles]).then(([view]) => view);
 }
 
 /**
@@ -62,7 +62,7 @@ const ROUTES = [
   { path: '/practice/exported/:paperId', load: exportedTestsView },
   { path: '/session/:sessionId', load: () => import('./ui/views/session.js'), layout: 'focus' },
   { path: '/flashcards', load: flashcardsView, auth: true },
-  { path: '/hub', load: () => import('./ui/views/hub.js?v=study-summary-1'), auth: true },
+  { path: '/hub', load: () => import('./ui/views/hub.js?v=hub-flashcards-1'), auth: true },
   { path: '/hub/study-summary', load: async () => ({ mount: () => location.replace(links.studySummary()) }), auth: true },
   { path: '/ai-papers', load: papersView, feature: 'aiPastPapers', options: { paperType: 'ai_past_paper' } },
   { path: '/predicted', load: papersView, feature: 'predictedPapers', options: { paperType: 'predicted_paper' } },

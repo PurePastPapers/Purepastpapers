@@ -4,7 +4,7 @@
 //   /predicted  → AI predicted papers (Phase 3, when its feature flag is enabled)
 
 import { PAPER_TYPES } from '../../config/app.config.js';
-import { $, html, on, setHtml } from '../../core/dom.js';
+import { $, html, isSafeUrl, on, setHtml } from '../../core/dom.js';
 import { fmtMinutes, groupBy, naturalCompare, plural } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { paperSummaries, ragFor } from '../../engine/analytics.js';
@@ -14,7 +14,7 @@ import { saveSubjectSettings, scStyle, tintPage } from '../subject-colours.js';
 import { isTiered, savedTier, tierRequired, validTier } from '../../engine/tiers.js';
 import { banner, emptyState, meter, pageHead, ragBadge, sourceBadge } from '../ui.js';
 import { links, routeOf } from '../../core/links.js';
-import { isMultiLevel, levelOf, paperCode } from '../../engine/paper-identity.js';
+import { eligibleQualificationCodes, isMultiLevel, levelOf, paperCode } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
 
 const INTRO = {
@@ -72,7 +72,11 @@ export async function mount(element, context) {
   const linkTier = context.query.tier === 'all' ? 'all' : requestedTier;
   const needsTier = tieredSubject && tierRequired(subject) && !(linkTier || chosenTier);
   const levels = [...new Set(papers.filter((paper) => !paper.is_sample).map((paper) => levelOf(paper, subject)).filter(Boolean))];
-  const filters = { year: 'all', code: 'all', status: 'all', level: 'all', tier: linkTier || (tiers.includes(chosenTier) ? chosenTier : 'all') };
+  const qualifications = papers.some(paper => paper.eligible_qualification_codes?.length > 1)
+    ? subject.qualifications || [] : [];
+  const references = paperType === 'real_past_paper'
+    ? (subject.assessment_references || []).filter(reference => isSafeUrl(reference.url)) : [];
+  const filters = { qualification: 'all', year: 'all', code: 'all', status: 'all', level: 'all', tier: linkTier || (tiers.includes(chosenTier) ? chosenTier : 'all') };
   const codesFor = (tier) => [...new Set(papers.filter((paper) => !paper.is_sample && (tier === 'all' || paper.tier === tier)).map((paper) => paper.paper_code))].sort(naturalCompare);
   let codes = codesFor(filters.tier);
 
@@ -129,7 +133,7 @@ export async function mount(element, context) {
     const visible = papers.filter(
       (paper) =>
         (filters.status === 'all' || statusOf(paper) === filters.status) &&
-        (paper.is_sample || ((filters.level === 'all' || levelOf(paper, subject) === filters.level) && (filters.year === 'all' || String(paper.year) === filters.year) && (filters.code === 'all' || paper.paper_code === filters.code) && (filters.tier === 'all' || paper.tier === filters.tier))),
+        (paper.is_sample || ((filters.level === 'all' || levelOf(paper, subject) === filters.level) && (filters.qualification === 'all' || eligibleQualificationCodes(paper).includes(filters.qualification)) && (filters.year === 'all' || String(paper.year) === filters.year) && (filters.code === 'all' || paper.paper_code === filters.code) && (filters.tier === 'all' || paper.tier === filters.tier))),
     );
     const demo = visible.filter((paper) => paper.is_sample);
     const bySeries = groupBy(visible.filter((paper) => !paper.is_sample), (paper) => `${paper.year}|${paper.series || ''}`);
@@ -192,6 +196,7 @@ export async function mount(element, context) {
     <div class="card tilt-2 side-filters">
       <i class="tape tape--l" aria-hidden="true"></i>
       <h2 class="h3">Find a paper</h2>
+      ${qualifications.length > 1 ? filterGroup('qualification', 'Qualification', [['all', 'Both'], ...qualifications.map(({code, label}) => [code, label])]) : ''}
       ${levels.length > 1 ? filterGroup('level', 'Level', [['all', 'Both'], ...levels.map((level) => [level, level])]) : ''}
       ${tiers.length > 1 && !tieredSubject ? filterGroup('tier', 'Tier', [['all', 'Both'], ...tiers.map((tier) => [tier, tier])]) : ''}
       ${filterGroup('year', 'Year', [['all', 'All'], ...years.map((year) => [String(year), String(year)])])}
@@ -238,7 +243,12 @@ export async function mount(element, context) {
         ${moduleScopeBanner(bundle)}
         <div class="with-side">
           <aside class="with-side__side" data-side>${sidebar()}</aside>
-          <div class="stack" style="min-width:0">${tierBar() ? html`<div data-tier-holder>${tierBar()}</div>` : ''}<div data-list>${needsTier ? tierPrompt() : list()}</div></div>
+          <div class="stack" style="min-width:0">${tierBar() ? html`<div data-tier-holder>${tierBar()}</div>` : ''}<div data-list>${needsTier ? tierPrompt() : list()}</div>
+            ${references.length ? html`<section class="card ruled stack stack--sm" aria-label="Coursework and teacher references">
+              <h2 class="card__title">Coursework and teacher references</h2>
+              ${references.map(({label, url}) => html`<a href="${url}" target="_blank" rel="noopener">${label}</a>`)}
+            </section>` : ''}
+          </div>
         </div>
       </div>`,
   );

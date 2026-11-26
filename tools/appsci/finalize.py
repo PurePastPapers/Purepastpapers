@@ -68,7 +68,7 @@ def main():
                               'enabled': args.activate} for pid in PAPERS]
     write('data/packs/index.json', index)
     coverage = {
-        'subject_id': SUBJECT, 'qualification_code': 'H151', 'checked_on': '2026-11-25',
+        'subject_id': SUBJECT, 'qualification_code': 'H151', 'checked_on': inventory['checked_at'],
         'status': 'partial_source_coverage' if args.activate else 'built_awaiting_rights_confirmation',
         'reviewer_type': 'model', 'rights_basis': rights,
         'source_inventory': 'data/imports/appsci/source-inventory.json',

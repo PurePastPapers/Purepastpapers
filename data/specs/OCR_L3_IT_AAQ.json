@@ -4,15 +4,186 @@
     {
       "id": "OCR_L3IT_SEC_F200",
       "title": "Unit F200: Fundamentals of data analytics",
-      "note": "Externally examined",
+      "note": "Externally examined · H019 and H119",
       "topics": [
         {
-          "id": "OCR_L3IT_F200",
-          "code": "F200",
-          "title": "Fundamentals of data analytics",
+          "id": "OCR_L3IT_F200_T1",
+          "code": "1",
+          "title": "Understanding data",
           "kind": "topic",
           "points": [
-            {"id":"OCR_L3IT_F200.1","code":"F200.1","title":"All unit content (add topic areas from the OCR specification)"}
+            {
+              "id": "OCR_L3IT_F200_T1_F200.1.1",
+              "code": "F200.1.1",
+              "title": "Data, information and knowledge"
+            },
+            {
+              "id": "OCR_L3IT_F200_T1_F200.1.2",
+              "code": "F200.1.2",
+              "title": "Big data"
+            },
+            {
+              "id": "OCR_L3IT_F200_T1_F200.1.3",
+              "code": "F200.1.3",
+              "title": "Data and file formats"
+            },
+            {
+              "id": "OCR_L3IT_F200_T1_F200.1.4",
+              "code": "F200.1.4",
+              "title": "Data types and classifications"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F200_T2",
+          "code": "2",
+          "title": "Managing data",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.1.1",
+              "code": "F200.2.1.1",
+              "title": "Data lifecycle management (DLM)"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.1.2",
+              "code": "F200.2.1.2",
+              "title": "Data analytics pipeline"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.2.1",
+              "code": "F200.2.2.1",
+              "title": "Data assurance considerations"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.2.2",
+              "code": "F200.2.2.2",
+              "title": "Data gathering"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.3.1",
+              "code": "F200.2.3.1",
+              "title": "Data states"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.3.2",
+              "code": "F200.2.3.2",
+              "title": "Data stores"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.3.3",
+              "code": "F200.2.3.3",
+              "title": "Data storage"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.3.4",
+              "code": "F200.2.3.4",
+              "title": "On-site storage"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.3.5",
+              "code": "F200.2.3.5",
+              "title": "Cloud storage"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.4.1",
+              "code": "F200.2.4.1",
+              "title": "Data Wrangling"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.4.2",
+              "code": "F200.2.4.2",
+              "title": "Data maintenance"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.5.1",
+              "code": "F200.2.5.1",
+              "title": "Data analytics"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.5.2",
+              "code": "F200.2.5.2",
+              "title": "Types of data analytics"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.6.1",
+              "code": "F200.2.6.1",
+              "title": "Presenting data"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.6.2",
+              "code": "F200.2.6.2",
+              "title": "Visualising data"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.7",
+              "code": "F200.2.7",
+              "title": "Archival"
+            },
+            {
+              "id": "OCR_L3IT_F200_T2_F200.2.8",
+              "code": "F200.2.8",
+              "title": "Destruction"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F200_T3",
+          "code": "3",
+          "title": "How data can be accessed and managed across platforms",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F200_T3_F200.3.1",
+              "code": "F200.3.1",
+              "title": "Application Programming Interfaces (API)"
+            },
+            {
+              "id": "OCR_L3IT_F200_T3_F200.3.2",
+              "code": "F200.3.2",
+              "title": "User access controls"
+            },
+            {
+              "id": "OCR_L3IT_F200_T3_F200.3.3",
+              "code": "F200.3.3",
+              "title": "Permissions"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F200_T4",
+          "code": "4",
+          "title": "Legal considerations",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F200_T4_F200.4.1",
+              "code": "F200.4.1",
+              "title": "Legislation and the role of the ICO when using data"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F200_T5",
+          "code": "5",
+          "title": "Job roles, skills and attributes in data analytics",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F200_T5_F200.5.1",
+              "code": "F200.5.1",
+              "title": "Job roles related to data analytics"
+            },
+            {
+              "id": "OCR_L3IT_F200_T5_F200.5.2",
+              "code": "F200.5.2",
+              "title": "Personal attributes"
+            },
+            {
+              "id": "OCR_L3IT_F200_T5_F200.5.3",
+              "code": "F200.5.3",
+              "title": "Communication Skills"
+            }
           ]
         }
       ]
@@ -20,18 +191,218 @@
     {
       "id": "OCR_L3IT_SEC_F201",
       "title": "Unit F201: Big data and machine learning",
-      "note": "Externally examined",
+      "note": "Externally examined · H119",
       "topics": [
         {
-          "id": "OCR_L3IT_F201",
-          "code": "F201",
-          "title": "Big data and machine learning",
+          "id": "OCR_L3IT_F201_T1",
+          "code": "1",
+          "title": "The scope of managing big data",
           "kind": "topic",
           "points": [
-            {"id":"OCR_L3IT_F201.1","code":"F201.1","title":"All unit content (add topic areas from the OCR specification)"}
+            {
+              "id": "OCR_L3IT_F201_T1_F201.1.1",
+              "code": "F201.1.1",
+              "title": "The six characteristics (6Vs)"
+            },
+            {
+              "id": "OCR_L3IT_F201_T1_F201.1.2",
+              "code": "F201.1.2",
+              "title": "The evolution of big data"
+            },
+            {
+              "id": "OCR_L3IT_F201_T1_F201.1.3",
+              "code": "F201.1.3",
+              "title": "How big data is captured"
+            },
+            {
+              "id": "OCR_L3IT_F201_T1_F201.1.4",
+              "code": "F201.1.4",
+              "title": "The purpose, importance and use of big data analytics"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F201_T2",
+          "code": "2",
+          "title": "The infrastructure challenges of big data",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F201_T2_F201.2.1",
+              "code": "F201.2.1",
+              "title": "Types of big data"
+            },
+            {
+              "id": "OCR_L3IT_F201_T2_F201.2.2",
+              "code": "F201.2.2",
+              "title": "Data preparation and cleaning techniques for data mining"
+            },
+            {
+              "id": "OCR_L3IT_F201_T2_F201.2.3",
+              "code": "F201.2.3",
+              "title": "Data mining techniques"
+            },
+            {
+              "id": "OCR_L3IT_F201_T2_F201.2.4",
+              "code": "F201.2.4",
+              "title": "Big data infrastructure"
+            },
+            {
+              "id": "OCR_L3IT_F201_T2_F201.2.5",
+              "code": "F201.2.5",
+              "title": "Data science and data analytics"
+            },
+            {
+              "id": "OCR_L3IT_F201_T2_F201.2.6",
+              "code": "F201.2.6",
+              "title": "Data analytic techniques"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F201_T3",
+          "code": "3",
+          "title": "Big data, machine learning and artificial intelligence",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F201_T3_F201.3.1",
+              "code": "F201.3.1",
+              "title": "Artificial Intelligence and machine learning"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F201_T4",
+          "code": "4",
+          "title": "Legal and ethical issues in data management",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F201_T4_F201.4.1",
+              "code": "F201.4.1",
+              "title": "Legal issues"
+            },
+            {
+              "id": "OCR_L3IT_F201_T4_F201.4.2",
+              "code": "F201.4.2",
+              "title": "Ethical issues"
+            }
+          ]
+        },
+        {
+          "id": "OCR_L3IT_F201_T5",
+          "code": "5",
+          "title": "Environment and society",
+          "kind": "topic",
+          "points": [
+            {
+              "id": "OCR_L3IT_F201_T5_F201.5.1",
+              "code": "F201.5.1",
+              "title": "Environment"
+            },
+            {
+              "id": "OCR_L3IT_F201_T5_F201.5.2",
+              "code": "F201.5.2",
+              "title": "Society"
+            }
           ]
         }
       ]
     }
+  ],
+  "legacy_ids": {
+    "OCR_L3IT_F200.1": [
+      "OCR_L3IT_F200_T1_F200.1.1",
+      "OCR_L3IT_F200_T1_F200.1.2",
+      "OCR_L3IT_F200_T1_F200.1.3",
+      "OCR_L3IT_F200_T1_F200.1.4",
+      "OCR_L3IT_F200_T2_F200.2.1.1",
+      "OCR_L3IT_F200_T2_F200.2.1.2",
+      "OCR_L3IT_F200_T2_F200.2.2.1",
+      "OCR_L3IT_F200_T2_F200.2.2.2",
+      "OCR_L3IT_F200_T2_F200.2.3.1",
+      "OCR_L3IT_F200_T2_F200.2.3.2",
+      "OCR_L3IT_F200_T2_F200.2.3.3",
+      "OCR_L3IT_F200_T2_F200.2.3.4",
+      "OCR_L3IT_F200_T2_F200.2.3.5",
+      "OCR_L3IT_F200_T2_F200.2.4.1",
+      "OCR_L3IT_F200_T2_F200.2.4.2",
+      "OCR_L3IT_F200_T2_F200.2.5.1",
+      "OCR_L3IT_F200_T2_F200.2.5.2",
+      "OCR_L3IT_F200_T2_F200.2.6.1",
+      "OCR_L3IT_F200_T2_F200.2.6.2",
+      "OCR_L3IT_F200_T2_F200.2.7",
+      "OCR_L3IT_F200_T2_F200.2.8",
+      "OCR_L3IT_F200_T3_F200.3.1",
+      "OCR_L3IT_F200_T3_F200.3.2",
+      "OCR_L3IT_F200_T3_F200.3.3",
+      "OCR_L3IT_F200_T4_F200.4.1",
+      "OCR_L3IT_F200_T5_F200.5.1",
+      "OCR_L3IT_F200_T5_F200.5.2",
+      "OCR_L3IT_F200_T5_F200.5.3"
+    ],
+    "OCR_L3IT_F201.1": [
+      "OCR_L3IT_F201_T1_F201.1.1",
+      "OCR_L3IT_F201_T1_F201.1.2",
+      "OCR_L3IT_F201_T1_F201.1.3",
+      "OCR_L3IT_F201_T1_F201.1.4",
+      "OCR_L3IT_F201_T2_F201.2.1",
+      "OCR_L3IT_F201_T2_F201.2.2",
+      "OCR_L3IT_F201_T2_F201.2.3",
+      "OCR_L3IT_F201_T2_F201.2.4",
+      "OCR_L3IT_F201_T2_F201.2.5",
+      "OCR_L3IT_F201_T2_F201.2.6",
+      "OCR_L3IT_F201_T3_F201.3.1",
+      "OCR_L3IT_F201_T4_F201.4.1",
+      "OCR_L3IT_F201_T4_F201.4.2",
+      "OCR_L3IT_F201_T5_F201.5.1",
+      "OCR_L3IT_F201_T5_F201.5.2"
+    ]
+  },
+  "point_order": [
+    "OCR_L3IT_F200_T1_F200.1.1",
+    "OCR_L3IT_F200_T1_F200.1.2",
+    "OCR_L3IT_F200_T1_F200.1.3",
+    "OCR_L3IT_F200_T1_F200.1.4",
+    "OCR_L3IT_F200_T2_F200.2.1.1",
+    "OCR_L3IT_F200_T2_F200.2.1.2",
+    "OCR_L3IT_F200_T2_F200.2.2.1",
+    "OCR_L3IT_F200_T2_F200.2.2.2",
+    "OCR_L3IT_F200_T2_F200.2.3.1",
+    "OCR_L3IT_F200_T2_F200.2.3.2",
+    "OCR_L3IT_F200_T2_F200.2.3.3",
+    "OCR_L3IT_F200_T2_F200.2.3.4",
+    "OCR_L3IT_F200_T2_F200.2.3.5",
+    "OCR_L3IT_F200_T2_F200.2.4.1",
+    "OCR_L3IT_F200_T2_F200.2.4.2",
+    "OCR_L3IT_F200_T2_F200.2.5.1",
+    "OCR_L3IT_F200_T2_F200.2.5.2",
+    "OCR_L3IT_F200_T2_F200.2.6.1",
+    "OCR_L3IT_F200_T2_F200.2.6.2",
+    "OCR_L3IT_F200_T2_F200.2.7",
+    "OCR_L3IT_F200_T2_F200.2.8",
+    "OCR_L3IT_F200_T3_F200.3.1",
+    "OCR_L3IT_F200_T3_F200.3.2",
+    "OCR_L3IT_F200_T3_F200.3.3",
+    "OCR_L3IT_F200_T4_F200.4.1",
+    "OCR_L3IT_F200_T5_F200.5.1",
+    "OCR_L3IT_F200_T5_F200.5.2",
+    "OCR_L3IT_F200_T5_F200.5.3",
+    "OCR_L3IT_F201_T1_F201.1.1",
+    "OCR_L3IT_F201_T1_F201.1.2",
+    "OCR_L3IT_F201_T1_F201.1.3",
+    "OCR_L3IT_F201_T1_F201.1.4",
+    "OCR_L3IT_F201_T2_F201.2.1",
+    "OCR_L3IT_F201_T2_F201.2.2",
+    "OCR_L3IT_F201_T2_F201.2.3",
+    "OCR_L3IT_F201_T2_F201.2.4",
+    "OCR_L3IT_F201_T2_F201.2.5",
+    "OCR_L3IT_F201_T2_F201.2.6",
+    "OCR_L3IT_F201_T3_F201.3.1",
+    "OCR_L3IT_F201_T4_F201.4.1",
+    "OCR_L3IT_F201_T4_F201.4.2",
+    "OCR_L3IT_F201_T5_F201.5.1",
+    "OCR_L3IT_F201_T5_F201.5.2"
   ]
 }

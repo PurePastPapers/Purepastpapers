@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-26",
   "subject_id": "OCR_L3_APPSCI_AAQ",
   "qualification": "OCR Level 3 Cambridge Advanced National in Applied Science Extended Certificate",
   "qualification_code": "H151",
   "official_assessment_page": "https://www.ocr.org.uk/qualifications/alternative-academic-qualifications/applied-science-level-3-h051-h151/assessment/",
   "assessment_page_observation": {
-    "checked_at": "2026-11-25",
-    "finding": "The current public assessment page lists the official sample materials, the F180 data booklet, and NEA sample assignments. It does not publicly list live external question papers, live mark schemes, or examiner reports for any series.",
+    "checked_at": "2026-11-26",
+    "finding": "The current public assessment page lists the official sample materials, the F180 data booklet, NEA sample assignments, and the F181 January 2026 pre-release. It does not publicly list live external question papers, live mark schemes, or examiner reports for any series.",
     "availability_interpretation": "not_publicly_listed",
     "not_a_claim": "This records the public page state only; it does not claim that restricted centre materials do not exist.",
     "public_scoreable_exam_sources": ["F180-SAM", "F181-SAM"]
+  },
+  "live_series_recheck": {
+    "public_release_schedule": "https://www.ocr.org.uk/qualifications/past-paper-finder/past-paper-schedule/",
+    "series": [
+      {
+        "series": "January 2026",
+        "grade_boundary_source_id": "H151-GRADE-BOUNDARIES-JAN2026",
+        "expected_public_release": "Early March 2027",
+        "F180": {"component": "01", "question_paper": null, "mark_scheme": null, "matching_booklet": null},
+        "F181": {"component": "01", "question_paper": null, "mark_scheme": null, "pre_release_source_id": "F181-PRERELEASE-JAN2026"}
+      },
+      {
+        "series": "June 2026",
+        "grade_boundary_source_id": "H151-GRADE-BOUNDARIES-JUN2026",
+        "expected_public_release": "Early August 2027",
+        "F180": {"component": "01", "question_paper": null, "mark_scheme": null, "matching_booklet": null},
+        "F181": {"component": "01", "question_paper": null, "mark_scheme": null, "matching_pre_release": null}
+      }
+    ],
+    "status": "live_assessment_pairs_not_found_publicly",
+    "notes": "OCR published results boundaries for both units in both series. Public release windows follow OCR's general schedule. No matching public paper and scheme pair, live examiner report, or additional series booklet or insert was verified."
   },
   "sources": [
     {
@@ -40,6 +61,24 @@
       "coverage_kind": "series_boundary_data",
       "scoreable": false,
       "notes": ["Separate source from specimen assessment materials. Raw mark and UMS boundaries are recorded separately for F180 and F181 in series-boundaries.json; do not infer sample-paper grades or reuse these boundaries for another series."]
+    },
+    {
+      "id": "H151-GRADE-BOUNDARIES-JUN2026",
+      "title": "Level 3 Cambridge Advanced Nationals grade boundaries – June 2026 series",
+      "role": "series_specific_unit_raw_and_ums_grade_boundaries",
+      "url": "https://www.ocr.org.uk/Images/760872-cambridge-advanced-nationals-grade-boundaries-june-2026.pdf",
+      "sha256": "e506d020ca71edb212e9c95776ab8689f8ffc21862d74335ea245f819956acb1",
+      "pdf_pages": 4,
+      "revision": "Version 1.0, 13 August 2026",
+      "printed_identity": "Level 3 Cambridge Advanced Nationals grade boundaries – June 2026 series",
+      "pages": [
+        {"from": 1, "to": 1, "document": "Applied Science qualification UMS and unit-level raw and UMS grade boundaries for H051/H151"},
+        {"from": 2, "to": 4, "document": "boundaries for other Cambridge Advanced Nationals"}
+      ],
+      "status": "released",
+      "coverage_kind": "series_boundary_data",
+      "scoreable": false,
+      "notes": ["The June F180 and F181 component 01 rows establish the series identity only for this bank. Neither specimen uses this PDF for grading."]
     },
     {
       "id": "F180-SAM",
@@ -225,9 +264,9 @@
     }
   ],
   "missing_public_material": [
-    {"id": "H151-LIVE-EXTERNAL-PAPERS", "units": ["F180", "F181"], "role": "live_question_papers", "status": "not_publicly_listed", "checked_at": "2026-11-25", "coverage": "no public series papers located on current OCR assessment page"},
-    {"id": "H151-LIVE-MARK-SCHEMES", "units": ["F180", "F181"], "role": "live_mark_schemes", "status": "not_publicly_listed", "checked_at": "2026-11-25", "coverage": "no public series schemes located on current OCR assessment page"},
-    {"id": "H151-EXAMINER-REPORTS", "units": ["F180", "F181"], "role": "examiner_reports", "status": "not_publicly_listed", "checked_at": "2026-11-25", "coverage": "no public reports located on current OCR assessment page"}
+    {"id": "H151-LIVE-EXTERNAL-PAPERS", "units": ["F180", "F181"], "role": "live_question_papers", "status": "not_publicly_listed", "checked_at": "2026-11-26", "coverage": "no public series papers located on current OCR assessment page"},
+    {"id": "H151-LIVE-MARK-SCHEMES", "units": ["F180", "F181"], "role": "live_mark_schemes", "status": "not_publicly_listed", "checked_at": "2026-11-26", "coverage": "no public series schemes located on current OCR assessment page"},
+    {"id": "H151-EXAMINER-REPORTS", "units": ["F180", "F181"], "role": "examiner_reports", "status": "not_publicly_listed", "checked_at": "2026-11-26", "coverage": "no public reports located on current OCR assessment page"}
   ],
   "separate_rights_review": [
     {"id": "F181-SAM-THIRD-PARTY-EXTRACTS", "source_id": "F181-SAM", "issue": "Paper/insertion content contains third-party extracts and figures; the sample itself credits Science News as reproduced with permission and cites BBC Newsround. Verify allowed republication scope for extract text and figures separately."},

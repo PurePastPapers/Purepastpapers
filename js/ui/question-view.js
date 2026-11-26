@@ -5,7 +5,7 @@ import { html, isSafeUrl, sanitizeHtml } from '../core/dom.js';
 import { sourceImage } from '../data/source-images.js';
 import { fmtMinutes } from '../core/utils.js';
 import { officialResourceUrl, questionResourceUrl } from '../engine/question-resources.js';
-import { printedQuestionNumber } from '../engine/paper-identity.js';
+import { eligibleQualificationCodes, printedQuestionNumber } from '../engine/paper-identity.js';
 import { difficultyBadge, sourceBadge } from './ui.js';
 import { icon } from './icons.js';
 
@@ -162,7 +162,7 @@ export function questionMeta(question, { specIndex = null, topics = true, organi
   const bookTags = [...new Set(textbook.filter(ref => ref.role === 'Assessed').map(ref => `${ref.book} · ${ref.chapter}`))];
   return html`<div class="qcard__meta">
     ${difficultyBadge(question.difficulty)}${level
-      ? html`<span class="tag" data-level="${level}">${level} · ${question.qualification_code || question.spec_code || ''}</span>`
+      ? html`<span class="tag" data-level="${level}">${level} · ${eligibleQualificationCodes(question).join('/')}</span>`
       : question.is_as ? html`<span class="tag">AS · ${question.qualification_code || 'AS'}</span>` : ''}
     <span class="small muted">about ${fmtMinutes(question.estimated_minutes || 1)}</span>
     ${sourceBadge(question)} ${organisation === 'textbook' && bookTags.length
