@@ -147,7 +147,7 @@ sup { font-size: 0.6em; line-height: 0; }
 .logo { display: flex; align-items: center; gap: 14px; }
 .logo__mark {
   width: 58px; height: 58px; border: 3px solid var(--ink); border-radius: 9px; background: var(--surface);
-  box-shadow: 4px 4px 0 var(--ink); display: grid; place-items: center; font: 400 34px/1 var(--font-display);
+  box-shadow: 4px 4px 0 var(--ink); display: grid; place-items: center; color: var(--ink);
 }
 .logo__word { font: 400 40px/1 var(--font-display); letter-spacing: -0.5px; }
 

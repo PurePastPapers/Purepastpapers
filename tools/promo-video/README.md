@@ -5,6 +5,9 @@ testing yourself beats re-reading, then shows what makes the site different: que
 filtered to the exact spec point, real mark schemes, the Data Hub by spec point, and the
 planned teacher terminal (shown as "Coming soon").
 
+The finished video is committed as `purepastpapers-promo.mp4` in this folder. The logo
+mark in it is loaded from `js/ui/logo.js`, the same file the site uses.
+
 It uses the site's own design language: cream squared paper, tilted ruled index cards,
 masking tape, ink outlines with offset shadows, Young Serif, Nunito and Caveat (loaded
 from `/fonts`), and the subject swatch colours. Not part of the published site: `tools/`
@@ -26,7 +29,7 @@ lifts into the teacher terminal, and the logo stamp lands on the tonic chord.
 | 42.9 | 05 Data Hub | Results by spec point, then practise the weak one | |
 | 48.6 | 06 Teacher terminal | Coming soon, for teachers: pupils who join a class get the taught spec points ticked | |
 | 57.1 | 06 Teacher terminal | Whole class by spec point; set work, class results, printable tests, track each student | |
-| 65.7 | | 38 subjects, 838 past papers, 1,097 spec points (`data/stats.json`), logo | |
+| 65.7 | | 38 subjects, 838 past papers, 1,097 spec points (`data/stats.json`), then the triple-P logo stamp | |
 | 74.3 | | Sources | |
 
 Screens marked "Example" use sample data. The teacher terminal is planned and not live;
@@ -55,7 +58,7 @@ Needs Node 18+, Playwright with Chromium, ffmpeg, and Python 3 with numpy and sc
 cd tools/promo-video
 node render.mjs --cues-only     # writes out/cues.json from the timeline
 python3 music.py                # writes out/promo-audio.wav
-node render.mjs                 # frames + out/purepastpapers-promo.mp4
+node render.mjs                 # frames + out/purepastpapers-promo.mp4 (copy it up a folder to commit it)
 ```
 
 `node render.mjs --fps=30 --scale=0.5 --out=preview.mp4` makes a quick low-resolution

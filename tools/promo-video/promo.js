@@ -516,6 +516,12 @@
       document.fonts.load('800 40px "Nunito"'),
       document.fonts.load('700 40px "Caveat"'),
     ]);
+    // the triple-P mark comes from the site itself (js/ui/logo.js), so the video can't drift from it
+    const { PPP_PATH, PPP_VIEWBOX } = await import('../../js/ui/logo.js');
+    $$('.ppp-slot').forEach((slot) => {
+      slot.style.cssText = `display:block;width:${slot.dataset.w}px`;
+      slot.innerHTML = `<svg viewBox="${PPP_VIEWBOX}" style="display:block;width:100%;height:auto" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="${PPP_PATH}"/></svg>`;
+    });
     ringAround('#s2-circle', '#s2-b', 70, 70);
     ringAround('#s5-ring', '#s5-score', 20, 6);
     timeline();
