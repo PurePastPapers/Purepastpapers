@@ -18,6 +18,7 @@ async function decode(image) {
 }
 
 async function findCard(page, paperId, label) {
+  await page.locator('[data-filter="paper"]').first().waitFor({state: 'attached'});
   await (await reveal(page, '[data-filter="paper"]')).selectOption(paperId);
   const card = page.locator(`[data-card="${paperId}_${label}"]`);
   const next = page.getByRole('navigation', {name: 'Question results pages'}).getByRole('button', {name: 'Next', exact: true});
@@ -28,7 +29,7 @@ async function findCard(page, paperId, label) {
 }
 
 (async () => {
-  const browser = await chromium.launch({executablePath: process.env.CHROME_PATH});
+  const browser = await chromium.launch({executablePath: process.env.CHROME_PATH, args: ['--disable-gpu']});
   try {
     const context = await browser.newContext({viewport: {width: 1440, height: 1000}});
     await context.route(/https:\/\/esm\.sh\/@supabase\/supabase-js@2\?bundle/, route => route.fulfill({
@@ -37,7 +38,7 @@ async function findCard(page, paperId, label) {
       headers: {'access-control-allow-origin': '*'},
       body: 'export function createClient(){return {auth:{getSession:async()=>({data:{session:null},error:null})}}}',
     }));
-    const page = await context.newPage();
+    let page = await context.newPage();
     page.setDefaultTimeout(15000);
     await page.goto(base);
     await page.evaluate(async id => {
@@ -82,7 +83,9 @@ async function findCard(page, paperId, label) {
       const text = new TextDecoder('latin1').decode(await fetch(a.href).then(r => r.arrayBuffer()));
       return text.startsWith('%PDF-') && !/Mark scheme/i.test(text);
     }));
-    await page.reload();
+    await page.close();
+    page = await context.newPage();
+    page.setDefaultTimeout(15000);
     await page.goto(base + practice('picker'));
     const rubric = await findCard(page, unit03, 'Q02_c');
     assert(await decode(rubric.locator('.question-selected-part img').first()) > 0);

@@ -30,7 +30,7 @@ Catalogue audited on 23 November 2026. Counts are scored units from the enabled 
 | GCSE | Edexcel | Chemistry (Triple / Separate Science) | 1CH0 | 1253 | 0 | Individual questions, **Build a Test** |
 | GCSE | Edexcel | Physics (Triple / Separate Science) | 1PH0 | 1185 | 0 | Individual questions, **Build a Test** |
 | GCSE | OCR | Computer Science | J277 | 282 | 0 | Individual questions, **Build a Test** |
-| GCSE | AQA | English Language | 8700 | 0 | 0 | **Picker** |
+| GCSE | AQA | English Language | 8700 | 85 | 0 | **Picker**, Build a Test |
 | GCSE | WJEC Eduqas | English Literature | C720QS | 48 | 0 | **Picker**, Build a Test |
 | GCSE | AQA | Geography | 8035 | 676 | 0 | Picker, **Build a Test** |
 | GCSE | OCR | History | J411 | 0 | 0 | **Picker** |
