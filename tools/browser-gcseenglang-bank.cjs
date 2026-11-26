@@ -61,6 +61,8 @@ const practice = mode => '/#/practice?subject=' + subject + '&mode=' + mode;
     await dialog.locator('[name="kind"]').selectOption('question');
     await dialog.getByRole('button', { name: 'Prepare PDF' }).click();
     await dialog.locator('a[data-pdf-handoff][download]').first().waitFor({ timeout: 30000 });
+    await page.keyboard.press('Escape');
+    await page.locator('dialog[open]').waitFor({ state: 'hidden' });
 
     const point = 'AQA_GCSE_ENGLANG_P2READ_A.1';
     await page.evaluate(async id => (await import('/js/data/api.js')).setLearned([id], true), point);
