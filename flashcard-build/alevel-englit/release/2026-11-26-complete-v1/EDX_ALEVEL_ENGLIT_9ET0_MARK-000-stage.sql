@@ -1,0 +1,4 @@
+-- Stop unless exactly one row is returned and id equals 5d1a7759-32e0-42d8-a4d9-23206cddf8a3.
+insert into public.flashcard_catalogue (id,title,subject_id,exam_board,qualification,topic,deck_type,status) values ('EDX_ALEVEL_ENGLIT_9ET0_MARK','Edexcel A-level English Literature 9ET0 – Exam technique','EDX_ALEVEL_ENGLIT_9ET0','Edexcel','A-level 9ET0','Approved specification route','mark_scheme','coming_soon') on conflict (id) do nothing;
+insert into public.flashcard_catalogue_versions (id,catalogue_id,version) values ('5d1a7759-32e0-42d8-a4d9-23206cddf8a3'::uuid,'EDX_ALEVEL_ENGLIT_9ET0_MARK','2026-11-26-complete-v1') on conflict (catalogue_id,version) do nothing;
+select id,catalogue_id,version from public.flashcard_catalogue_versions where catalogue_id='EDX_ALEVEL_ENGLIT_9ET0_MARK' and version='2026-11-26-complete-v1';

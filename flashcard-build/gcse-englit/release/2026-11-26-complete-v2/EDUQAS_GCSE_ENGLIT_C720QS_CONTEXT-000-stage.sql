@@ -1,0 +1,4 @@
+-- Stop unless exactly one row is returned and id equals 38fce621-3dfd-4c37-9131-970e296a5d6f.
+insert into public.flashcard_catalogue (id,title,subject_id,exam_board,qualification,topic,deck_type,status) values ('EDUQAS_GCSE_ENGLIT_C720QS_CONTEXT','Eduqas GCSE English Literature C720QS – Context','EDUQAS_GCSE_ENGLIT_C720QS','Eduqas','GCSE C720QS','Approved specification route','atomic','coming_soon') on conflict (id) do nothing;
+insert into public.flashcard_catalogue_versions (id,catalogue_id,version) values ('38fce621-3dfd-4c37-9131-970e296a5d6f'::uuid,'EDUQAS_GCSE_ENGLIT_C720QS_CONTEXT','2026-11-26-complete-v2') on conflict (catalogue_id,version) do nothing;
+select id,catalogue_id,version from public.flashcard_catalogue_versions where catalogue_id='EDUQAS_GCSE_ENGLIT_C720QS_CONTEXT' and version='2026-11-26-complete-v2';
