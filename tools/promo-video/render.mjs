@@ -48,12 +48,12 @@ async function openPage(browser) {
 function encode(duration) {
   const hasAudio = fs.existsSync(AUDIO);
   const ff = [
-    '-y', '-loglevel', 'error', '-stats',
+    '-y', '-loglevel', 'error',
     '-framerate', String(FPS), '-i', path.join(FRAMES, '%05d.jpg'),
     ...(hasAudio ? ['-i', AUDIO] : []),
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', SCALE < 1 ? '23' : '17', '-pix_fmt', 'yuv420p', '-profile:v', 'high',
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', SCALE < 1 ? '23' : '19', '-pix_fmt', 'yuv420p', '-profile:v', 'high',
     '-tune', 'animation', '-movflags', '+faststart', '-t', String(duration),
-    ...(hasAudio ? ['-c:a', 'aac', '-b:a', '192k', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11'] : []),
+    ...(hasAudio ? ['-c:a', 'aac', '-b:a', '192k', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11', '-ar', '48000'] : []),
     VIDEO,
   ];
   console.log(`encoding ${hasAudio ? 'with' : 'WITHOUT'} audio -> ${VIDEO}`);
