@@ -1,0 +1,260 @@
+{
+  "subject_id": "AQA_GCSE_ENGLANG_8700",
+  "base_sha": "aeab12951c58b6a6492fc45ba2d9b44c6e56d271",
+  "observed_on": "2026-11-26",
+  "release_status": "checkpoint_only",
+  "sources": [
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/1",
+      "role": "question_paper",
+      "url": "https://www.aqa.org.uk/files/77efe2f7-9b78-4dc9-b563-3ce2c17e15ff/d61b58edb75fbdf468d30fb455b51be6f033b2e9.pdf",
+      "sha256": "06071bd0c32d9dd8133105f941a8cd0ff5d444342c3890cd67e5e483b3386e32",
+      "pdf_pages": 24,
+      "revision": null,
+      "verification": "local_pdf_identity_and_sha256"
+    },
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/1",
+      "role": "mark_scheme",
+      "url": "https://www.aqa.org.uk/files/1150125c-1390-4597-9b90-a054521364c8/affa85093de725ae8803d9ec5fda72d4c892fa77.pdf",
+      "sha256": "041bb2c8e369a403597774b68abff6522cc9357b77bff8249383339f23b8cc7a",
+      "pdf_pages": 21,
+      "revision": "1.1",
+      "verification": "local_pdf_identity_and_sha256"
+    },
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/1",
+      "role": "insert",
+      "url": "https://www.aqa.org.uk/files/3ad866b5-1150-4b68-8a00-5fd9c0422bc6/d389749c44fc94820ebd17f1804fd51de1830327.pdf",
+      "sha256": "b25b013e184d33c160f73882a82ca9cb30d2f997e844bd2fe5648e56894df2cd",
+      "pdf_pages": 4,
+      "revision": null,
+      "verification": "local_pdf_identity_and_sha256"
+    },
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/2",
+      "role": "question_paper",
+      "url": "https://www.aqa.org.uk/files/c466fbd0-cb1a-42b7-b140-71b23b18df81/2e6b4c6fe9c3819a911aa944c62d8109ea8b61c3.pdf",
+      "sha256": "ff9a2af5e962a1ae87875369fc92f87aab9b43f4921067f1f6f07948d5fa25bb",
+      "pdf_pages": 24,
+      "revision": null,
+      "verification": "local_pdf_identity_and_sha256"
+    },
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/2",
+      "role": "mark_scheme",
+      "url": "https://www.aqa.org.uk/files/14a75f30-f517-4371-befe-969d2ec0f800/f55d9f498261132baf0bcbd55fd4b2cedcd90a5c.pdf",
+      "sha256": "498ca031357571129c85731b6b902fd171cdd96f4ba3a6da8ab09417b27e1d8e",
+      "pdf_pages": 21,
+      "revision": "1.0",
+      "verification": "local_pdf_identity_and_sha256"
+    },
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/2",
+      "role": "insert",
+      "url": "https://www.aqa.org.uk/files/b8647b5c-9711-4735-abb0-4bcfecffdad9",
+      "sha256": null,
+      "pdf_pages": null,
+      "revision": null,
+      "verification": "official_pdf_view_identity_only"
+    },
+    {
+      "series": "November 2025",
+      "component": "8700/1",
+      "role": "mark_scheme",
+      "url": "https://www.aqa.org.uk/files/yEaOp7oZpygQdC2nzw9eh2/f7ca74e7ef42ede40421907835391b57f7b65c30.pdf",
+      "sha256": "d28aeff385a8bb6eb1bef2f16cc8da46cba7ae4ac24e05ae78cd600d5d595a55",
+      "pdf_pages": 20,
+      "verification": "local_pdf_identity_and_sha256"
+    },
+    {
+      "series": "November 2025",
+      "component": "8700/1",
+      "role": "examiner_report",
+      "url": "https://dynamicpapers.com/wp-content/uploads/2026/11/AQA-8700-Paper-1-Explorations-in-creative-reading-and-writing-ER-NOV25.pdf",
+      "sha256": "2615eb1b44eb56c156c5a858ea86b75da34e0430299228911d569886999ce18f",
+      "pdf_pages": 12,
+      "verification": "local_pdf_identity_and_sha256"
+    },
+    {
+      "series": "November 2025",
+      "component": "8700/2",
+      "role": "mark_scheme",
+      "url": "https://www.aqa.org.uk/files/yEaOp7oZpygQdC2nzwA7Cm/5056f00d0f4ff7b52c939b820ada794fb78caf63.pdf",
+      "sha256": "3bf5fc5fe980eba4442912409feea56cd0e4c5ca3a940d1f52c32548a940c4a9",
+      "pdf_pages": 18,
+      "verification": "local_pdf_identity_and_sha256"
+    }
+  ],
+  "formats": {
+    "standard_duration_minutes": 105,
+    "paper_1_marks": [
+      4,
+      8,
+      8,
+      20,
+      40
+    ],
+    "paper_2_marks": [
+      4,
+      8,
+      12,
+      16,
+      40
+    ],
+    "writing_marks": {
+      "AO5": 24,
+      "AO6": 16
+    }
+  },
+  "candidate": {
+    "series": "Sample set 1 (first exam 2026)",
+    "component": "8700/2",
+    "question_number": "5",
+    "tariff": 40,
+    "available_paper_marks_if_added": 40,
+    "question_pdf_page": 13,
+    "scheme_pdf_pages": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "ao5_pdf_pages": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "ao6_pdf_pages": [
+      21
+    ],
+    "spec_point": "AQA_GCSE_ENGLANG_P2WRITE_B.1",
+    "subject_pack_indexed": false,
+    "notes": "One self-contained speech task. Checked the prompt against the matching version 1.0 scheme. Treat the page references as 1-based physical PDF pages."
+  },
+  "source_leads": [
+    {
+      "url": "https://freepastpapers.com/aqa/gcse/english-language-8700",
+      "series": [
+        "November 2020",
+        "November 2021",
+        "June 2022",
+        "November 2022",
+        "June 2023",
+        "November 2023",
+        "June 2024",
+        "November 2024",
+        "June 2025"
+      ],
+      "status": "catalogue_lead_partial_roles"
+    },
+    {
+      "url": "https://mathsgenie.co.uk/gcse/english-language/aqa/papers?view=papers",
+      "series": [
+        "June 2017",
+        "November 2017",
+        "June 2018",
+        "November 2018",
+        "June 2019",
+        "November 2019"
+      ],
+      "status": "mirror_leads_individual_editions_unverified"
+    },
+    {
+      "url": "https://www.aqa.org.uk/files/sample-papers-and-mark-schemes.2024.November.AQA-87002-QP-NOV24_PDF/d0711222723b6f25babafc1e7883ff478b931a84.pdf",
+      "series": [
+        "November 2024"
+      ],
+      "component": "8700/2",
+      "role": "question_paper",
+      "status": "source_lead"
+    },
+    {
+      "url": "https://www.aqa.org.uk/files/sample-papers-and-mark-schemes.2023.june.AQA-87002-QP-JUN23_PDF/aeaafff5bd36defd716aac19f1516c41ac3e77b7.pdf",
+      "series": [
+        "June 2023"
+      ],
+      "component": "8700/2",
+      "role": "question_paper",
+      "status": "source_lead"
+    },
+    {
+      "url": "https://filestore.aqa.org.uk/sample-papers-and-mark-schemes/2023/june/AQA-87002-MS-JUN23.PDF",
+      "series": [
+        "June 2023"
+      ],
+      "component": "8700/2",
+      "role": "mark_scheme",
+      "status": "source_lead"
+    }
+  ],
+  "deferred": [
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/1",
+      "units": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "reason": "Life of Pi extract credits Yann Martel/Canongate. Test exact public insert integration and check embedded Question 2 extract rights before creating crops."
+    },
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/1",
+      "units": [
+        "5"
+      ],
+      "reason": "The question offers optional picture inspiration. Photo is credited to Tony Arruza/Getty Images. Preserve both writing alternatives and a verified route to the image."
+    },
+    {
+      "series": "Sample set 1 (first exam 2026)",
+      "component": "8700/2",
+      "units": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "reason": "Public official two-source insert located after the executor disconnected. Verify PDF bytes, physical pages, line-range binding and external resource integration. Source A is credited to Peter Fleming, Source B to Fanny Kemble."
+    },
+    {
+      "series": "June 2023",
+      "component": "8700/1",
+      "units": [
+        "5"
+      ],
+      "reason": "The official copyright-redacted question paper removes the stimulus image. Preserve the original choice and leave the removed option out of scored practice unless the precise complete edition and relevant rights can be verified."
+    },
+    {
+      "series": "November 2022",
+      "component": "8700/1",
+      "units": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "reason": "The publicly redacted reading insert removes Hemingway. Q5 photograph separately credits Matt Cardy/Getty Images."
+    },
+    {
+      "series": "June 2026",
+      "reason": "AQA has scheduled public release for 9 July 2027."
+    },
+    {
+      "series": "Sample sets 2 and 3 (first exam 2026)",
+      "reason": "AQA supplies these in Centre Services."
+    }
+  ]
+}
