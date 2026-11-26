@@ -6,6 +6,7 @@ import { isEnabled, navGroups } from '../config/phases.js';
 import { $, $$, html, on, setHtml } from '../core/dom.js';
 import * as api from '../data/api.js';
 import { icon } from './icons.js';
+import { pppMark } from './logo.js';
 import { SUBJECT_SWATCHES } from './subject-colours.js';
 import { activeTheme, toggleTheme } from './theme.js';
 import { links } from '../core/links.js';
@@ -13,7 +14,7 @@ import { links } from '../core/links.js';
 let root = null;
 
 export const brand = () =>
-  html`<a class="brand" href="${links.home()}" aria-label="PurePastPapers home"><span class="brand__mark" aria-hidden="true">P</span><span class="brand__name">PurePastPapers</span></a>`;
+  html`<a class="brand" href="${links.home()}" aria-label="PurePastPapers home"><span class="brand__mark" aria-hidden="true">${pppMark()}</span><span class="brand__name">Pure Past Papers</span></a>`;
 
 const navLink = (item, className) =>
   html`<a class="${className}" href="#${item.path}" data-nav="${item.path}" data-match="${(item.match || []).join(' ')}">${item.label}${item.feature && !isEnabled(item.feature) ? html`<span class="badge badge--soon">Soon</span>` : ''}</a>`;

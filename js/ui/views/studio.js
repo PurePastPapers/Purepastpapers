@@ -10,6 +10,7 @@ import { plural } from '../../core/utils.js';
 import { getBundles, getSubjects, invalidateContent, readLocalPack, specIndex, writeLocalPack } from '../../data/content-repository.js';
 import { validateBundle, validateQuestion } from '../../data/schema.js';
 import { icon } from '../icons.js';
+import { pppMark } from '../logo.js';
 import { banner, confirmDialog, loadingBlock, pageHead, subjectName, toast } from '../ui.js';
 import { links } from '../../core/links.js';
 import * as api from '../../data/api.js';
@@ -21,7 +22,7 @@ function showNotOwner(element) {
     html`<nav class="crumbs" aria-label="Breadcrumb"><a href="${links.home()}">Home</a><span aria-hidden="true">/</span><span>Content Studio</span></nav>
       <section class="card ruled tilt-3 studio-lock">
         <i class="tape tape--l" aria-hidden="true"></i><i class="tape tape--r" aria-hidden="true"></i>
-        <div class="studio-lock__mark" aria-hidden="true">P</div>
+        <div class="studio-lock__mark" aria-hidden="true">${pppMark()}</div>
         <h1 class="studio-lock__title" tabindex="-1">This page is for the site owner</h1>
         <p class="muted">The Content Studio is where questions and papers are added to PurePastPapers. Your account can't open it, but everything it adds shows up for you in Past papers and Practice.</p>
         <div class="row studio-lock__actions"><a class="btn btn--primary" href="${links.home()}">Back to home</a><a class="btn" href="${links.papers()}">Past papers</a></div>

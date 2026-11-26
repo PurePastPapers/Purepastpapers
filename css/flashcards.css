@@ -306,6 +306,8 @@
 .fc-sec h2 { font-size: 26px; }
 .fc-sec p { margin-top: 2px; }
 .fc-sec .fc-stamp { width: 38px; height: 38px; font-size: 22px; box-shadow: 3px 3px 0 var(--ink); }
+.fc-stamp .ppp-mark { width: 15px; }
+.fc-sec .fc-stamp .ppp-mark { width: 24px; }
 .fc-pen { width: 38px; height: 38px; display: grid; place-items: center; color: var(--pen); border: 2px dashed var(--pen); border-radius: 50%; flex: none; transform: rotate(-8deg); }
 .fc-own-heading { font: 400 34px/1 var(--font-hand) !important; color: var(--pen); }
 .fc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 26px; }

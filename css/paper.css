@@ -122,6 +122,19 @@ a {
   background: var(--surface);
   font-size: 18px;
 }
+/* The PPP triple-P mark (js/ui/logo.js) takes the ink colour of whatever holds it. */
+.ppp-mark {
+  display: inline-block;
+  line-height: 0;
+}
+.ppp-mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.brand__mark .ppp-mark {
+  width: 25px;
+}
 .topnav__tabs {
   display: flex;
   gap: 4px;

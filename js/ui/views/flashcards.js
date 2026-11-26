@@ -3,10 +3,11 @@ import { $, html, on, raw, setHtml } from '../../core/dom.js';
 import { confirmDialog, openModal, toast } from '../ui.js';
 import * as flashcards from '../../flashcards/api.js?v=flashcard-progress-1';
 import { icon } from '../icons.js';
+import { pppMark } from '../logo.js';
 import { cloudAccountId, getProgress, learnedSet, setPreference } from '../../data/api.js';
 import { ensureSpec, getSubject, specIndex } from '../../data/content-repository.js';
 import { subjectColour } from '../subject-colours.js';
-import { catalogueScreen, homePage, setPage } from './flashcards-pages.js?v=flashcard-progress-1';
+import { catalogueScreen, homePage, setPage } from './flashcards-pages.js?v=ppp-logo-1';
 import {
   cardsPerPoint, countInPlay, createTagMapper, describeSets, generalCount, inPlay, progressPerPoint, requestSignature, selectionRequest,
 } from '../../flashcards/spec-map.js?v=flashcard-progress-1';
@@ -737,7 +738,7 @@ export function mount(element, context) {
     const deck = activeDeck();
     const subject = subjectFor(deck);
     const label = deck?.catalogue_id
-      ? html`<span class="fc-stamp" aria-hidden="true">P</span><span><b>${subject?.name || 'PurePastPapers'}</b> · ${entryFor(deck)?.deck_type || study.deckTitle}</span>`
+      ? html`<span class="fc-stamp" aria-hidden="true">${pppMark()}</span><span><b>${subject?.name || 'PurePastPapers'}</b> · ${entryFor(deck)?.deck_type || study.deckTitle}</span>`
       : html`${subject ? html`<span class="fc-dot" aria-hidden="true"></span>` : ''}<span><b>${study.deckTitle}</b>${subject ? ` · ${subject.name}` : ''}</span>`;
     return html`<div class="fc-studytop"><button class="linkbtn" data-action="exit-study">← Back to the set</button>
         <div class="fc-studyset ${deck?.catalogue_id ? '' : 'fc-studyset--own'}" style="--sc:${subject?.colour || 'var(--surface)'}">${label}${study.topic ? html`<span class="small"> · ${study.topic.split('::').join(' › ')}</span>` : ''}</div>
