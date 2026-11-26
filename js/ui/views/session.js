@@ -11,7 +11,7 @@ import { backLabel, links, routeOf } from '../../core/links.js';
 import { clamp, debounce, fmtClock, fmtDate, fmtDuration, fmtMinutes, percent, plural, sum } from '../../core/utils.js';
 import * as api from '../../data/api.js';
 import { getBundle, specIndex } from '../../data/content-repository.js';
-import { isMultiLevel, levelOf, qualificationCode } from '../../engine/paper-identity.js';
+import { eligibleQualificationCodes, isMultiLevel, levelOf } from '../../engine/paper-identity.js';
 import { assessmentResourceLinks } from '../assessment-resources.js';
 import { loadReportIndex, reportFold, reportSourceUrl } from '../../data/examiner-reports.js';
 import { zoomButton } from '../zoom.js';
@@ -149,7 +149,7 @@ export async function mount(element, context) {
   // A paper session names the paper's own qualification (AS 8BN0, A-Level 9BN0), not the subject's.
   const sessionPaper = session.paper_id ? bundle.papersById.get(session.paper_id) : null;
   const sessionLevel = sessionPaper ? levelOf(sessionPaper, subject) || subject.level : subject.level;
-  const sessionCode = sessionPaper && isMultiLevel(subject, bundle.papers) ? qualificationCode(sessionPaper, subject) : '';
+  const sessionCode = sessionPaper && isMultiLevel(subject, bundle.papers) ? eligibleQualificationCodes(sessionPaper, subject).join('/') : '';
   function bar({ stage, question = null, position = 0 }) {
     const running = isRunning(session);
     const timed = session.timer.mode !== 'off';

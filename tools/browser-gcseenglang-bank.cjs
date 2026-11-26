@@ -40,8 +40,9 @@ const practice = mode => '/#/practice?subject=' + subject + '&mode=' + mode;
     await writing.getByRole('link', { name: /both writing options and the picture/ }).waitFor();
     assert.equal(await writing.getByRole('link', { name: /official mark scheme/ }).count(), 0);
     await writing.locator('[data-scheme]').click();
-    await writing.getByRole('link', { name: /AO5.*24 marks/ }).waitFor();
-    await writing.getByRole('link', { name: /AO6.*16 marks/ }).waitFor();
+    await writing.getByText(/AO5.*24 marks/).waitFor();
+    await writing.getByText(/AO6.*16 marks/).waitFor();
+    await writing.getByRole('link', { name: /official mark scheme/ }).waitFor();
 
     // Printed question, insert and scheme come from distinct URLs.
     await page.goto(origin + practice('picker'));

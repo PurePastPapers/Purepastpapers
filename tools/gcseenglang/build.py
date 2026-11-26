@@ -116,6 +116,7 @@ def unit(cache_sources, paper, record, index, review):
         })
     if index < 5 and not review.get("sources"):
         raise ValueError("Reading questions require a verified insert")
+    prompt_html = ""
     scheme_html = ""
     if index == 5:
         ao5, ao6 = review["ao5_pdf_pages"], review["ao6_pdf_pages"]
@@ -124,11 +125,23 @@ def unit(cache_sources, paper, record, index, review):
         for pages, objective in ((ao5, "AO5"), (ao6, "AO6")):
             if objective not in checked_pages(ms, pages) or not set(pages) <= set(scheme_pages):
                 raise ValueError(f"Unmatched {objective} marking pages")
-        scheme_source = source_records["mark_scheme"]
+        if number == 2:
+            # The Paper 2 writing statement and instruction are self-contained
+            # AQA material. Preserve those paragraphs in Practice and exports.
+            normalized = re.sub(r"\s+", " ", prompt)
+            writing = re.search(
+                r"\b0\s+5\s+(.+?)\s+(Write .+?)\s*\(24 marks for content and organisation\s+"
+                r"16 marks for technical accuracy\)\s*\[40 marks\]", normalized)
+            if writing is None:
+                raise ValueError(f"{paper['paper_id']}: could not isolate the exact writing statement and task")
+            prompt_html = "".join(f"<p>{escape(paragraph)}</p>" for paragraph in writing.groups())
+            prompt_html += "<p>24 marks for content and organisation. 16 marks for technical accuracy.</p>"
+        content_pages = str(ao5[0]) if len(ao5) == 1 else f"{ao5[0]}–{ao5[-1]}"
+        accuracy_pages = str(ao6[0]) if len(ao6) == 1 else f"{ao6[0]}–{ao6[-1]}"
         scheme_html = (
-            '<p>Use the two official levels grids to mark this 40-mark answer.</p><ul>'
-            f'<li><a href="{escape(page_url(scheme_source, ao5[0]))}">AO5 content and organisation (24 marks)</a></li>'
-            f'<li><a href="{escape(page_url(scheme_source, ao6[0]))}">AO6 technical accuracy (16 marks)</a></li></ul>'
+            '<p>Use the two levels grids in the official PDF to mark this 40-mark answer.</p><ul>'
+            f'<li>AO5 content and organisation (24 marks) · PDF {content_pages}</li>'
+            f'<li>AO6 technical accuracy (16 marks) · PDF {accuracy_pages}</li></ul>'
         )
         # The revised specimen uses a publisher-hosted photo. Keep the exact two
         # alternatives and their photo on the original page.
@@ -162,7 +175,7 @@ def unit(cache_sources, paper, record, index, review):
         "scheme_scope": "whole_question",
         "scheme_question_number": str(index),
         "context": {"official_resources": resources, "official_scheme_required": True},
-        "content": {"question_html": "", "mark_scheme_html": scheme_html},
+        "content": {"question_html": prompt_html, "mark_scheme_html": scheme_html},
         "provenance": {
             "review_status": "source_matched",
             "question_source_url": source_records["question_paper"]["url"],
