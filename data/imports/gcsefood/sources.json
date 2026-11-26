@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-11-26",
+  "status": "source_discovery_checkpoint",
+  "subject_id": "EDUQAS_GCSE_FOOD_C560P1",
+  "qualification_code": "C560P1",
+  "reviewed_main_sha": "aeab12951c58b6a6492fc45ba2d9b44c6e56d271",
+  "component": {
+    "key": "C1",
+    "title": "Principles of Food Preparation and Nutrition",
+    "mode": "written",
+    "tier": null,
+    "duration_minutes": 105,
+    "raw_marks": 100,
+    "sections": [
+      "A",
+      "B"
+    ]
+  },
+  "official_qualification_url": "https://www.eduqas.co.uk/qualifications/food-preparation-and-nutrition-gcse/",
+  "specification_url": "https://www.eduqas.co.uk/media/4zjdq104/eduqas-gcse-food-preparation-nutrition-spec-from-2016.pdf",
+  "specification_seed": {
+    "path": "tools/seed/specs/gcse-humanities.mjs",
+    "prefix": "EDUQAS_GCSE_FOOD",
+    "topics": [
+      {
+        "seed_topic_key": "A1",
+        "title": "Food commodities"
+      },
+      {
+        "seed_topic_key": "A2",
+        "title": "Principles of nutrition"
+      },
+      {
+        "seed_topic_key": "A3",
+        "title": "Diet and good health"
+      },
+      {
+        "seed_topic_key": "A4",
+        "title": "The science of food"
+      },
+      {
+        "seed_topic_key": "A5",
+        "title": "Where food comes from"
+      },
+      {
+        "seed_topic_key": "A6",
+        "title": "Cooking and food preparation"
+      }
+    ]
+  },
+  "verification": {
+    "method": "Public PDF reader for document identity and page totals. SHA-256, full page rendering and asset credit review are pending.",
+    "enabled_packs_at_reviewed_sha": 0,
+    "scored_parts": 0,
+    "available_practice_marks": 0,
+    "build_a_test_coverage_at_reviewed_sha": "picker only",
+    "release_status": "Unpublished. No student-facing files changed."
+  },
+  "papers": [
+    {
+      "series": "2018-june",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/s18-5560-01.pdf",
+          "pdf_pages": 16,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/s18-C560ua0-1-eduqas-foodprep-comp1-ms.pdf",
+          "pdf_pages": 27,
+          "sha256": null
+        },
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/ulahfy5h/eduqas-gcse-food-preparation-and-nutrition-report-summer-2018-e.pdf",
+          "pdf_pages": 12,
+          "sha256": null
+        },
+        {
+          "role": "question_paper_alias",
+          "url": "https://pastpapers.download.wjec.co.uk/s18-c560ua0-1-gcse-fprepn-component1.pdf",
+          "pdf_pages": 16,
+          "sha256": null,
+          "note": "Same printed identity and page count as the primary source. Confirm byte equality or compare rendered pages before deduplication."
+        }
+      ]
+    },
+    {
+      "series": "2019-june",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/s19-5560-01.pdf",
+          "pdf_pages": 20,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/s19-C560UA0-1%20EDUQAS%20GCSE%20FPN%20Comp%201%20MS%20S19.pdf",
+          "pdf_pages": 31,
+          "sha256": null
+        },
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/iq1bsgsl/eduqas-gcse-food-preparation-and-nutrition-examiners-report-summer-2019-e.pdf",
+          "pdf_pages": 14,
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "series": "2020-november",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/O20/o20-5560-01.pdf",
+          "pdf_pages": 20,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/A20/a20-C560UA0-1-ms.pdf",
+          "pdf_pages": 25,
+          "sha256": null
+        },
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/nfdltr0n/eduqas-gcse-fpn-examiners-report-nov-2020.pdf",
+          "pdf_pages": 6,
+          "sha256": null
+        }
+      ],
+      "identity_note": "Some public catalogue labels group the same file under written and on-screen. The official PDF prints C560UA0-1 and instructs candidates to write in the booklet. Use the printed series date and code."
+    },
+    {
+      "series": "2021-november",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/O21/o21-5560-01.pdf",
+          "pdf_pages": 20,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/A21/a21-C560UA0-1-ms.pdf",
+          "pdf_pages": 33,
+          "sha256": null
+        }
+      ],
+      "identity_note": "Some public catalogue labels group the same file under written and on-screen. The official PDF prints C560UA0-1 and instructs candidates to write in the booklet. Use the printed series date and code."
+    },
+    {
+      "series": "2022-june",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/Z22/z22-5560-01.pdf",
+          "pdf_pages": 20,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/S22/s22-C560UA0-1-ms.pdf",
+          "pdf_pages": 31,
+          "sha256": null
+        },
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/5yzfh1g2/eduqas-gcse-fpn-report-s22.pdf",
+          "pdf_pages": 12,
+          "sha256": null
+        }
+      ],
+      "identity_note": "Some public catalogue labels group the same file under written and on-screen. The official PDF prints C560UA0-1 and instructs candidates to write in the booklet. Use the printed series date and code."
+    },
+    {
+      "series": "2023-june",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/S23/s23-c560ua0-1.pdf",
+          "pdf_pages": 20,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/S23/s23-C560UA0-1-ms.pdf",
+          "pdf_pages": 34,
+          "sha256": null
+        },
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/t05pexzu/eduqas-gcse-fpn-report-s23-e.pdf",
+          "pdf_pages": 14,
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "series": "2024-june",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/S24/S24-C560UA0-1.pdf",
+          "pdf_pages": 24,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/S24/S24-C560UA0-1-ms.pdf",
+          "pdf_pages": 33,
+          "sha256": null
+        },
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/c3pllhmo/eduqas-gcse-food-preparation-and-nutrition-final-report-s24.pdf",
+          "pdf_pages": 24,
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "series": "2025-june",
+      "kind": "live",
+      "status": "official_sources_located",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://pastpapers.download.wjec.co.uk/S25/S25-C560UA0-1.pdf",
+          "pdf_pages": 24,
+          "sha256": null
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://pastpapers.download.wjec.co.uk/S25/S25-C560UA0-1-ms.pdf",
+          "pdf_pages": 33,
+          "sha256": null
+        },
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/knnburll/eduqas-gcse-food-preparation-and-nutrition-report-s25-e.pdf",
+          "pdf_pages": 20,
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "series": "specimen",
+      "kind": "sample",
+      "status": "official_sources_located",
+      "printed_paper_code": null,
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "question_paper",
+          "url": "https://www.eduqas.co.uk/media/tewf5fmf/eduqas-gcse-food-prep-nutrition-sams-from-2016-v2.pdf",
+          "pdf_pages": 62,
+          "sha256": null,
+          "pdf_page_range_1_based": [
+            7,
+            22
+          ]
+        },
+        {
+          "role": "mark_scheme",
+          "url": "https://www.eduqas.co.uk/media/tewf5fmf/eduqas-gcse-food-prep-nutrition-sams-from-2016-v2.pdf",
+          "pdf_pages": 62,
+          "sha256": null,
+          "pdf_page_range_1_based": [
+            23,
+            43
+          ]
+        }
+      ],
+      "note": "Combined source includes Component 2 from PDF page 44. Keep each role bounded in both exports and fallbacks."
+    },
+    {
+      "series": "2026-june",
+      "kind": "live",
+      "status": "public_question_paper_and_scheme_unverified",
+      "printed_paper_code": "C560UA0-1",
+      "raw_marks": 100,
+      "available_practice_marks": 0,
+      "sources": [
+        {
+          "role": "examiner_report",
+          "url": "https://www.eduqas.co.uk/media/uakfm1y5/eduqas-gcse-food-preparation-and-nutrition-report-s26-e.pdf",
+          "pdf_pages": 25,
+          "sha256": null
+        }
+      ],
+      "note": "The official timetable and report confirm the sitting. Public question paper and scheme URLs were not verified."
+    }
+  ],
+  "exclusions": [
+    "C560P2 on-screen component C560UB0 and on-screen interaction assets.",
+    "Component 2 C560U20 Food Preparation and Nutrition in Action, including NEA tasks and practical marking rubrics.",
+    "WJEC Wales 3560/legacy variants and any separately credited visual asset whose permission is unresolved."
+  ],
+  "representative_paper": {
+    "series": "2025-june",
+    "section_a": {
+      "questions": [
+        "1"
+      ],
+      "pdf_stimulus_page_1_based": 2,
+      "pdf_section_b_start_1_based": 5,
+      "checks": [
+        "Keep the complete visual sequence in colour with Q1 context.",
+        "Hide dependent units if the source image is unavailable and check the available marks independently of the printed 100."
+      ]
+    },
+    "section_b": {
+      "questions": [
+        "2",
+        "9"
+      ],
+      "checks": [
+        "Q2 is a multi-part fixture. Check score ownership of nested labels and the exact scheme rows.",
+        "Q9 uses an extended banded scheme. Include the full final rubric through the last scheme page and cut the question before the additional writing pages."
+      ]
+    },
+    "section_totals_from_cover": {
+      "A": 15,
+      "B": 85
+    },
+    "component_total_marks_by_question": [
+      15,
+      6,
+      6,
+      10,
+      18,
+      15,
+      11,
+      9,
+      10
+    ]
+  },
+  "resume": [
+    "Fetch the current origin/main and reconcile catalogue, specification and pack index keys. Preserve existing IDs and concurrent changes.",
+    "Download original PDFs to a private cache and record SHA-256, printed identity, actual page boxes and asset credit decisions. Resolve the 2018 alias and check the November 2021 examiner report if available.",
+    "Prove the 2025 import through Practice and marking, then implement the remaining confirmed pairs and the bounded specimen. Review own crops, unscored shared context, exact scheme rows and genuine scoring dependencies.",
+    "Run all automated, visual and browser release gates in the brief. No pack enablement, crop/scheme audit, test run or deployment was performed in this checkpoint."
+  ]
+}
