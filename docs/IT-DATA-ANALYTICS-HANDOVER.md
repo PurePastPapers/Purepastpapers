@@ -36,3 +36,9 @@ npm test
 Run `AUDIT_URL=http://localhost:5173 node tools/browser-it-bank.cjs` against `npm start` with Playwright and Chromium installed. The automated package checks cover marks, qualification eligibility, asset references and checksums across all scored parts. Representative model visual comparisons cover the two specimen tables, the data lifecycle graphic, multipart questions, multi-page schemes, and final-question boundaries.
 
 [Paper catalogue](https://purepastpapers.com/#/papers?subject=OCR_L3_IT_AAQ) · [F200](https://purepastpapers.com/#/paper/OCR_L3_IT_AAQ/OCR_F200_SAMPLE) · [F201](https://purepastpapers.com/#/paper/OCR_L3_IT_AAQ/OCR_F201_SAMPLE)
+
+## Release checks
+
+- Both specimen packs, both image catalogues, the split PDFs and the registry entries rebuilt byte-for-byte.
+- The suite passed 482 tests with one skip. Data validation returned 0 errors and 69 warnings for other banks. The static asset check measured 4,538 deployable files with a largest asset of 10,400,789 bytes.
+- Chromium passed at 1440 and 390 pixels. The run exercised both specimen tables, the linked F200 transport-chart question, practice mode switching, H019 eligibility, scheme reveal, saved marks, question-only PDF export, custom test marking and review, and the full 90-minute F201 specimen. The demo profile used isolated browser storage.

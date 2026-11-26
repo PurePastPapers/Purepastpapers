@@ -109,6 +109,18 @@ async function run(browser, width) {
       await checkWidth(page, width);
     }
 
+    await page.goto(paperUrl('F200'));
+    await page.locator('[data-more]').click();
+    await page.locator('[data-open="LINKED_OCR_F200_SAMPLE_Q15_a"]').click();
+    await page.waitForURL('**/#/session/**');
+    const chartType = page.locator('[data-answer="OCR_F200_SAMPLE_Q15_a"]');
+    const reason = page.locator('[data-answer="OCR_F200_SAMPLE_Q15_b"]');
+    await chartType.fill('Pie chart.');
+    await reason.fill('The data show proportions of a total.');
+    const linkedGroup = chartType.locator('xpath=ancestor::*[contains(concat(" ", normalize-space(@class), " "), " qgroup ")][1]');
+    assert.equal(await linkedGroup.locator('img[data-math-image*="/context_"]').count(), 1);
+    await checkWidth(page, width);
+
     await page.goto(practiceUrl('individual'));
     await page.locator('[data-reset-filters]').waitFor();
     await allTopics(page);
@@ -128,7 +140,11 @@ async function run(browser, width) {
     await card.getByText(/Saved 1\/1/).waitFor();
     await checkExport(page, card);
 
-    await page.goto(practiceUrl('timed_test'));
+    await page.locator('[data-mode="timed_test"]').click();
+    await page.locator('[data-start-test]').waitFor();
+    await page.locator('[data-mode="individual"]').click();
+    await page.locator('[data-reset-filters]').waitFor();
+    await page.locator('[data-mode="timed_test"]').click();
     await page.locator('[data-start-test]').waitFor();
     const qualification = await reveal(page, routeFilter);
     if (await qualification.getAttribute('aria-pressed') !== 'true') await qualification.click();
