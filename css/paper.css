@@ -122,6 +122,19 @@ a {
   background: var(--surface);
   font-size: 18px;
 }
+/* The PPP triple-P mark (js/ui/logo.js) takes the ink colour of whatever holds it. */
+.ppp-mark {
+  display: inline-block;
+  line-height: 0;
+}
+.ppp-mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.brand__mark .ppp-mark {
+  width: 25px;
+}
 .topnav__tabs {
   display: flex;
   gap: 4px;
@@ -1212,6 +1225,24 @@ input[type='radio'] {
 .lp-section > .hand {
   font-size: 25px;
   margin: 6px 0 40px;
+}
+/* promo video: a taped index card around a 16:9 player */
+.lp-video__card {
+  position: relative;
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 12px;
+}
+.lp-video__player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  background: var(--surface-2);
+}
+.lp-video__desc {
+  max-width: 62ch;
+  margin: 26px auto 0;
 }
 .lp-grid {
   display: grid;

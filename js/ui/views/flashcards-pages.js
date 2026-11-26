@@ -4,6 +4,7 @@
 // handwritten, taped index cards, so the two never look alike.
 import { html, raw } from '../../core/dom.js';
 import { icon } from '../icons.js';
+import { pppMark } from '../logo.js';
 import { links } from '../../core/links.js';
 import { patternMark } from '../patterns.js';
 import { fmtDayMonth, fmtRelative } from '../../core/utils.js';
@@ -11,7 +12,7 @@ import { fmtDayMonth, fmtRelative } from '../../core/utils.js';
 const n = (value) => Number(value || 0).toLocaleString('en-GB');
 const plural = (count, word, many = `${word}s`) => `${n(count)} ${count === 1 ? word : many}`;
 const TILTS = [1, 3, 2, 4];
-const stamp = html`<span class="fc-stamp" aria-hidden="true">P</span>`;
+const stamp = html`<span class="fc-stamp" aria-hidden="true">${pppMark()}</span>`;
 const pattern = (subject) => patternMark(subject, 'fc-pat');
 
 /** A small fan of patterned cards in the subjects' colours. */

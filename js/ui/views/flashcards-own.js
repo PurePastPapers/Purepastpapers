@@ -3,7 +3,7 @@
 // flashcards.js owns the state and the actions; everything here is plain markup.
 import { html, raw } from '../../core/dom.js';
 import { icon } from '../icons.js';
-import { progressLine } from './flashcards-pages.js?v=own-sets-1';
+import { progressLine } from './flashcards-pages.js?v=own-sets-ppp-1';
 
 const n = (value) => Number(value || 0).toLocaleString('en-GB');
 const plural = (count, word, many = `${word}s`) => `${n(count)} ${count === 1 ? word : many}`;
