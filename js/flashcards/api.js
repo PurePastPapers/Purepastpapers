@@ -497,11 +497,19 @@ const subjectLabels = {
   AQA_ALEVEL_SOC_7192: 'Sociology',
   EDX_ALEVEL_HIST_9HI0: 'History',
   AQA_ALEVEL_POL_7152: 'Politics',
+  EDX_ALEVEL_ENGLIT_9ET0: 'English Literature',
+  OCR_GCSE_HIST_J411: 'History',
+  EDUQAS_GCSE_ENGLIT_C720QS: 'English Literature',
 };
 
 // Some subjects offer more than one atomic set. The catalogue id suffix names
 // the set so students can tell them apart.
 const setVariants = {
+  _EVIDENCE: ['Exam evidence', 'Studies, findings and evidence for exam answers.'],
+  _QUOTES: ['Key quotations', 'Short quotations and what they show.'],
+  _CONTEXT: ['Context', 'Context and themes linked to the set texts.'],
+  _CRITICS: ['Critics and interpretations', 'Critical views and ways to read the texts.'],
+  _MARK: ['Exam technique', 'Model answers, marking points and common traps.'],
   _EXAM: ['Exam knowledge', 'One fact per card that you can use as evidence in an exam answer.'],
   _BACK: ['Background knowledge', 'Context and detail that is not needed as exam evidence. No card is also in Exam knowledge.'],
   _FULL: ['Full set', 'Every exam knowledge card plus background knowledge.'],
