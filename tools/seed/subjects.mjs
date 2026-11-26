@@ -318,6 +318,7 @@ export const subjects = [
   {
     subject_id: 'AQA_GCSE_ENGLANG_8700', level: 'GCSE', subject: 'English Language', board: 'AQA', spec_code: '8700',
     spec_notes: "Paper 1 (Creative Reading & Writing), Paper 2 (Writers' Viewpoints)", subject_category: 'Humanities (Essay)',
+    grade_policy: 'raw_marks_only',
     sp_prefix: 'AQA_GCSE_ENGLANG', id_stem: 'AQA_8700',
     official_url: `${AQA}/english/gcse/english-8700/assessment-resources`,
     catalogue: { first: 2017, pattern: 'summer+november', papers: [
