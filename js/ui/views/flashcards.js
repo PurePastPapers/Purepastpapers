@@ -913,22 +913,25 @@ export function mount(element, context) {
     releaseDetachedMedia();
   }
 
-  async function deckDialog(deck = null) {
+  async function deckDialog(deck = null, { focusLimit = false } = {}) {
     const own = !deck?.catalogue_id;
     const currentSubject = deck ? deckSubjectId(deck) : (homeTab !== 'all' ? homeTab : '');
     const subjectField = own && subjects.length ? html`<label class="field"><span class="field__label">Subject (optional)</span><select class="input" name="subject"><option value="">No subject</option>${subjects.map((item) => html`<option value="${item.id}" ${item.id === currentSubject ? raw('selected') : ''}>${item.name}</option>`)}</select><span class="field__hint">The set shows on this subject’s tab.</span></label>` : '';
     const result = await openModal({
-      onOpen: (dialog) => dialog.classList.add('flashcards-dialog'),
+      onOpen: (dialog) => {
+        dialog.classList.add('flashcards-dialog');
+        if (focusLimit) setTimeout(() => { const field = dialog.querySelector('[name=newLimit]'); field?.focus(); field?.select(); field?.closest('label')?.scrollIntoView({ block: 'center' }); });
+      },
       title: deck ? (own ? 'Set settings' : 'Study settings') : 'Make your own set',
-      body: html`<label class="field"><span class="field__label">Set name</span><input class="input" name="title" maxlength="100" required value="${deck?.title || ''}" ${deck?.catalogue_id ? raw('readonly') : ''}></label>${subjectField}${!deck?.catalogue_id ? html`<label class="field"><span class="field__label">Inside another set (optional)</span><select class="input" name="parent"><option value="">Not inside another set</option>${decks.filter((item) => item.id !== deck?.id && !item.catalogue_id).map((item) => html`<option value="${item.id}" ${deck?.parent_id === item.id ? raw('selected') : ''}>${item.title}</option>`)}</select></label>` : ''}${deck ? html`<label class="field"><span class="field__label">Target retention</span><input class="input" name="retention" type="number" min="80" max="92" step="1" value="${deck.target_retention || 90}"><span class="field__hint">A higher target usually means more reviews. Changes apply to future reviews.</span></label><label class="field"><span class="field__label">New cards per day</span><input class="input" name="newLimit" type="number" min="0" max="999" step="1" value="${deck.new_limit ?? 999}"></label>` : ''}`,
+      body: html`<label class="field"><span class="field__label">Set name</span><input class="input" name="title" maxlength="100" required value="${deck?.title || ''}" ${deck?.catalogue_id ? raw('readonly') : ''}></label>${subjectField}${!deck?.catalogue_id ? html`<label class="field"><span class="field__label">Inside another set (optional)</span><select class="input" name="parent"><option value="">Not inside another set</option>${decks.filter((item) => item.id !== deck?.id && !item.catalogue_id).map((item) => html`<option value="${item.id}" ${deck?.parent_id === item.id ? raw('selected') : ''}>${item.title}</option>`)}</select></label>` : ''}${deck ? html`<label class="field"><span class="field__label">Target retention</span><input class="input" name="retention" type="number" min="80" max="92" step="1" value="${deck.target_retention || 90}"><span class="field__hint">A higher target usually means more reviews. Changes apply to future reviews.</span></label><label class="field"><span class="field__label">New cards per day</span><input class="input" name="newLimit" type="number" min="0" max="999" step="1" value="${deck.new_limit ?? 20}"><span class="field__hint">You can have up to 999 a day.</span></label>` : ''}`,
       actions: [{ label: 'Cancel', cancel: true }, { label: deck ? 'Save changes' : 'Make set', variant: 'primary', validate: (dialog) => {
         const title = dialog.querySelector('[name=title]').value.trim();
         const retention = Number(dialog.querySelector('[name=retention]')?.value || 90);
-        const limit = Number(dialog.querySelector('[name=newLimit]')?.value ?? 999);
+        const limit = Number(dialog.querySelector('[name=newLimit]')?.value ?? 20);
         return !title ? 'Enter a set name.' : !Number.isInteger(retention) || retention < 80 || retention > 92 ? 'Choose a whole percentage from 80 to 92.' : !Number.isInteger(limit) || limit < 0 || limit > 999 ? 'Choose a daily limit from 0 to 999.' : null;
-      }, collect: (dialog) => ({ title: dialog.querySelector('[name=title]').value.trim(), target_retention: Number(dialog.querySelector('[name=retention]')?.value || 90), new_limit: Number(dialog.querySelector('[name=newLimit]')?.value ?? 999), parent_id: dialog.querySelector('[name=parent]') ? dialog.querySelector('[name=parent]').value || null : undefined, subject: dialog.querySelector('[name=subject]')?.value }) }],
+      }, collect: (dialog) => ({ title: dialog.querySelector('[name=title]').value.trim(), target_retention: Number(dialog.querySelector('[name=retention]')?.value || 90), new_limit: Number(dialog.querySelector('[name=newLimit]')?.value ?? 20), parent_id: dialog.querySelector('[name=parent]') ? dialog.querySelector('[name=parent]').value || null : undefined, subject: dialog.querySelector('[name=subject]')?.value }) }],
     });
-    if (!result) return;
+    if (!result) return null;
     const { subject, ...fields } = result;
     const saved = deck ? await flashcards.updateDeck(deck.id, fields) : await flashcards.createDeck(fields);
     const savedId = deck?.id || saved?.id;
@@ -997,6 +1000,7 @@ export function mount(element, context) {
         session.buffer = queue.cards.slice(1);
         const untilDue = Date.parse(queue.nextDue) - Date.parse(queue.serverNow);
         session.refreshAt = Number.isFinite(untilDue) ? requestedAt + Math.max(0, untilDue) : Infinity;
+        session.limit = queue;
       }
       session.failed = false;
     } catch {
@@ -1007,6 +1011,30 @@ export function mount(element, context) {
     session.loading = false;
     drawStudy();
     preloadNextQuestion(session);
+    void offerLimitChange(session);
+  }
+
+  // Pop-up once per set per day when the daily new-card limit is reached and
+  // unseen cards are still waiting. Reviews keep coming either way.
+  async function offerLimitChange(session) {
+    const info = session.limit;
+    if (!info?.newLimitReached || session.limitOffered) return;
+    session.limitOffered = true;
+    const key = `ppp:flashcard-limit-popup:${session.deckId}:${String(info.serverNow || '').slice(0, 10)}`;
+    try { if (localStorage.getItem(key)) return; localStorage.setItem(key, '1'); } catch { /* private mode */ }
+    const deck = activeDeck();
+    if (!deck) return;
+    const waiting = Number(info.newWaiting) || 0;
+    const choice = await openModal({
+      title: `That’s your ${plural(info.newLimit, 'new card')} for today`,
+      body: html`<p>You’ve learnt ${plural(info.newLimit, 'new card')} in <strong>${deck.title}</strong> today, which is this set’s daily limit.${waiting ? ` ${plural(waiting, 'new card')} ${waiting === 1 ? 'is' : 'are'} still waiting.` : ''}</p><p>Stop here and they’ll come in tomorrow, or raise the limit to keep learning new cards now. Cards due for review still show up either way.</p>`,
+      actions: [{ label: 'Stop for today', cancel: true }, { label: 'Change daily limit', value: 'limit', variant: 'primary' }],
+    });
+    if (choice !== 'limit' || !isCurrentStudy(session)) return;
+    const saved = await deckDialog(activeDeck(), { focusLimit: true });
+    if (!isCurrentStudy(session)) return;
+    drawStudy();
+    if (saved !== null && !session.card) void refillStudy(session);
   }
 
   function preloadNextQuestion(session) {

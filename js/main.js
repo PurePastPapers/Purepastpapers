@@ -37,7 +37,7 @@ function flashcardsView() {
     }, { once: true });
     document.head.append(stylesheet);
   });
-  return Promise.all([import('./ui/views/flashcards.js?v=card-tap-1'), flashcardsStyles]).then(([view]) => view);
+  return Promise.all([import('./ui/views/flashcards.js?v=daily-limit-1'), flashcardsStyles]).then(([view]) => view);
 }
 
 /**
