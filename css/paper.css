@@ -1226,6 +1226,24 @@ input[type='radio'] {
   font-size: 25px;
   margin: 6px 0 40px;
 }
+/* promo video: a taped index card around a 16:9 player */
+.lp-video__card {
+  position: relative;
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 12px;
+}
+.lp-video__player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  background: var(--surface-2);
+}
+.lp-video__desc {
+  max-width: 62ch;
+  margin: 26px auto 0;
+}
 .lp-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

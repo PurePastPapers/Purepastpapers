@@ -116,6 +116,22 @@ export async function mount(element, context) {
         </div>
       </section>
 
+      <section class="lp-section lp-video" id="video" aria-labelledby="video-title">
+        <h2 id="video-title">See why it works</h2>
+        <p class="hand">80 seconds. Sound on.</p>
+        <figure class="card lp-video__card tilt-3">
+          <i class="tape tape--l" aria-hidden="true"></i><i class="tape tape--r" aria-hidden="true"></i>
+          <video class="lp-video__player" controls preload="none" playsinline poster="assets/promo/purepastpapers-promo-poster.jpg" aria-describedby="video-desc">
+            <source src="assets/promo/purepastpapers-promo.mp4" type="video/mp4" />
+            Your browser can’t play this video. <a href="assets/promo/purepastpapers-promo.mp4">Download it (8 MB)</a>.
+          </video>
+        </figure>
+        <p class="small muted lp-video__desc" id="video-desc">
+          Why re-reading your notes doesn’t work, why testing yourself does, and how PurePastPapers filters questions to the exact spec points you’ve learned.
+          It also previews the teacher terminal, which is coming soon. There is no speech: it is music and on-screen text, with the research sources listed at the end.
+        </p>
+      </section>
+
       <section class="lp-section" id="features" aria-labelledby="features-title">
         <h2 id="features-title">What’s inside</h2>
         <p class="hand">Find the right questions and practise your way.</p>
