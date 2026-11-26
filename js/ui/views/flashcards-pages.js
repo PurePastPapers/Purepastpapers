@@ -54,7 +54,7 @@ const progressKey = (parts) => html`<p class="fc-prog__key"><span><i class="is-k
   <span><i class="is-learning"></i>${n(parts.learning)} learning</span><span><i></i>${n(parts.left)} to go</span></p>`;
 
 /** "412 of 966 cards done" with a known / learning / to go bar. */
-function progressLine(deck, { key = true } = {}) {
+export function progressLine(deck, { key = true } = {}) {
   const parts = progressParts(deck);
   return html`<div class="fc-prog"><p class="small"><b>${n(parts.studied)}</b> of ${plural(parts.total, 'card')} done · ${Math.round(parts.share(parts.studied))}%</p>
     ${progressBar(parts)}${key ? progressKey(parts) : ''}</div>`;
