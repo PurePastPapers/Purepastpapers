@@ -227,11 +227,21 @@ export const subjects = [
     catalogue_note: 'New qualification (first teaching September 2025): only sample assessment materials exist so far.',
   },
   {
-    subject_id: 'OCR_L3_SPORT_CTEC', level: 'Level 3', subject: 'Sport', board: 'OCR', spec_code: 'Cambridge Technical',
-    spec_notes: 'Cambridge Technical Extended Certificate', subject_category: 'Applied / Vocational',
+    subject_id: 'OCR_L3_SPORT_CTEC', level: 'Level 3', subject: 'Sport', board: 'OCR', spec_code: '05827',
+    spec_notes: 'Cambridge Technical Extended Certificate in Sport and Physical Activity', subject_category: 'Applied / Vocational',
     sp_prefix: 'OCR_L3SPORT', id_stem: 'OCR_CTECSPORT',
     official_url: `${OCR}/cambridge-technicals/sport-and-physical-activity/assessment/`,
-    catalogue_note: 'Examined units are sat in January and June series. The catalogue for this qualification has not been generated yet — use the OCR page.',
+    catalogue_note: 'Written exams for Units 01 and 03, including official specimens. The school’s Units 02, 08 and 17 are coursework.',
+    grade_policy: 'raw_marks_only',
+    qualifications: [{code: '05827', label: 'Level 3', is_as: false}],
+    qualification_structure: {
+      school_route: {
+        qualification_code: '05827', qualification_number: '601/7094/3', guided_learning_hours: 360,
+        mandatory_external_units: ['01', '03'], mandatory_nea_units: ['02'], selected_nea_options: ['08', '17'],
+      },
+      unit_table: `${OCR}/cambridge-technicals/sport-and-physical-activity/units/`,
+      school_prospectus: 'https://www.reachfreeschool.co.uk/sixth-form-prospectus',
+    },
   },
   {
     subject_id: 'OCR_L3_APPSCI_AAQ', level: 'Level 3', subject: 'Applied Science', board: 'OCR', spec_code: 'H151',
