@@ -61,3 +61,11 @@ Thirty PDF files downloaded before the workspace disconnected. This checklist re
 ## Work pending
 
 There are no generated packs or crop and scheme reviews at this checkpoint. Establish matching question and scheme anchors on one component first, verify the cross-page context and final scheme boundaries, and reconcile 100 printed marks. Apply the same verification to the other component and the other available sittings. Review exact specification tagging and explicit previous-answer dependencies separately. Integrate packs by subject key using the latest base, then run data, site-size and student-flow checks before deployment. The execution environment went offline before any bank, browser or production checks could run.
+
+## Build and release checkpoint
+
+The workspace returned and generation finished for all 16 booklets. The local commit `b2add0d82233634b8bf97948831a59786ad142c3` contains the complete change rebased onto `666622f9461a5a1d4b65db2403feb09eade0a1f0`. It lives in the task worktree `/workspace/scratch/c718b92e7251/bank`. Reuse that worktree if it returns. The scratch `sources/` directory has the original PDFs and extraction candidates. The verified source inventory and rights notes are in the local commit.
+
+The 16 generated image catalogues are backed up by this commit. On the branch they are still inactive. The remaining files include 16 packs, source and review files, builder, data registrations and browser tests. Do not merge this asset checkpoint by itself. Resume upload from the local commit and test after merging the registry by key with the current main. Deployment and browser checks were interrupted when the execution environment went unavailable again.
+
+The full import represents 503 scored parts and 1,593 available marks out of 1,600 printed. November 2021 Paper 1 has 97 available marks. Question 11 needs a separately credited stimulus. The released specimen Paper 1 has 96 available marks. AQA removed the image needed by question 8. All other papers reconcile to 100 available marks. The source and scheme crop checks were run against each indexed part and representative images were compared visually. Individual browser checks, the full suite and production verification still need a confirmed run.
