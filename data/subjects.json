@@ -372,21 +372,67 @@
   {
     "subject_id": "OCR_L3_IT_AAQ",
     "level": "Level 3",
-    "subject": "Information Technology",
+    "subject": "IT: Data Analytics",
     "board": "OCR",
-    "spec_code": "Cambridge Advanced National",
-    "spec_notes": "Cambridge Advanced National (F200, F201, etc.)",
+    "spec_code": "H119",
+    "spec_notes": "Cambridge Advanced National Extended Certificate (H119) and Certificate (H019).",
     "subject_category": "Applied / STEM",
     "sp_prefix": "OCR_L3IT",
     "id_stem": "OCR_AAQIT",
-    "official_url": "https://www.ocr.org.uk/qualifications/cambridge-advanced-nationals/",
-    "catalogue_note": "New qualification (first teaching September 2025): only sample assessment materials exist so far.",
+    "official_url": "https://www.ocr.org.uk/qualifications/alternative-academic-qualifications/it-data-analytics-level-3-h019-h119/assessment/",
+    "catalogue_note": "Official OCR specimens. F200 is shared by H019 and H119. F201 is part of H119 only. The Reach Free School prospectus lists Pearson V Level Digital Systems and Data as a separate qualification.",
     "category_group": "applied",
-    "practice_modes": ["timed_test","individual"],
+    "practice_modes": [
+      "timed_test",
+      "individual"
+    ],
     "grade_scheme": "level3",
     "has_written_exam": true,
     "extra_hard": false,
-    "has_catalogue": false
+    "has_catalogue": true,
+    "grade_policy": "raw_marks_only",
+    "qualifications": [
+      {
+        "code": "H119",
+        "label": "H119 Extended Certificate",
+        "is_as": false
+      },
+      {
+        "code": "H019",
+        "label": "H019 Certificate",
+        "is_as": false
+      }
+    ],
+    "assessment_references": [
+      {
+        "label": "F202 Spreadsheet data modelling (mandatory NEA · H019 and H119 · ZIP)",
+        "url": "https://www.ocr.org.uk/Images/721270-spreadsheet-data-modelling.zip"
+      },
+      {
+        "label": "F203 Relational database design (optional NEA · H119 · PDF)",
+        "url": "https://www.ocr.org.uk/Images/697753-relational-database-design.pdf"
+      },
+      {
+        "label": "F204 Data and the Internet of Everything (optional NEA · H119 · PDF)",
+        "url": "https://www.ocr.org.uk/Images/697759-data-and-the-internet-of-everything-ioe-.pdf"
+      },
+      {
+        "label": "F205 Data visualisation (optional NEA · H119 · ZIP)",
+        "url": "https://www.ocr.org.uk/Images/721271-data-visualisation.zip"
+      },
+      {
+        "label": "F206 Data and digital marketing (optional NEA · H119 · ZIP)",
+        "url": "https://www.ocr.org.uk/Images/721970-data-and-digital-marketing.zip"
+      },
+      {
+        "label": "F200 annotated teacher specimen (PDF)",
+        "url": "https://www.ocr.org.uk/Images/722886-fundamentals-of-data-analytics-annotated-.pdf"
+      },
+      {
+        "label": "F201 annotated teacher specimen (PDF)",
+        "url": "https://www.ocr.org.uk/Images/722887-big-data-and-machine-learning-annotated-.pdf"
+      }
+    ]
   },
   {
     "subject_id": "OCR_L3_SPORT_CTEC",

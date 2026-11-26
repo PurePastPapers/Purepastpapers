@@ -19,6 +19,13 @@ export function qualificationCode(item, subject = null) {
   return item?.qualification_code || item?.spec_code || subject?.spec_code || null;
 }
 
+/** A shared assessment can be used on multiple qualification routes. */
+export function eligibleQualificationCodes(item, subject = null) {
+  if (item?.eligible_qualification_codes) return item.eligible_qualification_codes;
+  const code = qualificationCode(item, subject);
+  return code ? [code] : [];
+}
+
 /**
  * "AS", "A-Level", … for a paper or question. Order of authority:
  * its own `level`, then its code looked up in the subject's qualifications,

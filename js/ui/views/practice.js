@@ -179,6 +179,7 @@ export async function mount(element, context) {
   // Year 12 / Year 13-only filters, and treat Year 13 as cumulative.
   const unitContentYears = subject.content_year_source === 'introduced_year';
   const qualificationOptions = (subject.qualifications || []).filter(({ code }) => !bundle.scope || bundle.scope.levels.includes(code));
+  const showTestQualifications = bundle.scope || bundle.papers.some(paper => paper.eligible_qualification_codes?.length > 1);
   const qualificationLabel = (code) => {
     const option = qualificationOptions.find((item) => item.code === code);
     return option ? `${option.label} papers` : `${code} papers`;
@@ -834,7 +835,7 @@ export async function mount(element, context) {
     const qualifications = qualificationOptions.length > 1 ? html`<fieldset class="field"><legend class="field__label">Qualification</legend><div class="chips">${qualificationOptions.map(({code: value, label}) => html`<button type="button" class="chip" data-multi="qualifications" data-value="${value}" aria-pressed="${state.qualifications.includes(value)}">${label}</button>`)}</div><p class="field__hint">Both are included when neither is selected.</p></fieldset>` : '';
     return browser ? html`${qualifications}<div class="browser-paper-filters">${papersAndYears}
     </div>${sourceControl()}`
-      : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper || (bundle.scope && state.qualifications.length) ? 'open' : ''}><summary>Paper filters</summary><div class="stack">${bundle.scope ? qualifications : ''}${papersAndYears}</div></details>`;
+      : html`<details class="filter-details" ${state.years.length || state.series || state.tier || state.paper || (showTestQualifications && state.qualifications.length) ? 'open' : ''}><summary>Paper filters</summary><div class="stack">${showTestQualifications ? qualifications : ''}${papersAndYears}</div></details>`;
   }
 
   function focusSummary(browser = false) {
