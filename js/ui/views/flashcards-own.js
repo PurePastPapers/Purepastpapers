@@ -148,7 +148,7 @@ export function setPage({ deck, subject, readOnly, query, filter, sortOptions, r
           <button class="btn btn--primary fc-os__wide" data-action="study" data-id="${deck.id}">${icon('play', { size: 14 })} ${studyCount ? `Study ${plural(studyCount, 'card')}` : 'Study'}</button>
         </section>
         <section class="card ruled tilt-1 fc-os__card"><i class="tape tape--l" aria-hidden="true"></i><h2 class="card__title">Study settings</h2>
-          <dl class="fc-os__kv"><div><dt>Remember</dt><dd>${deck.target_retention || 90}% of cards</dd></div><div><dt>New cards a day</dt><dd>${deck.new_limit ?? 20}</dd></div>
+          <dl class="fc-os__kv"><div><dt>Remember</dt><dd>${deck.target_retention || 90}% of cards</dd></div><div><dt>New cards a day</dt><dd>${deck.new_limit ?? 999}</dd></div>
             ${readOnly ? '' : html`<div><dt>Subject</dt><dd>${subject ? html`<span class="dot" style="background:${subject.colour}" aria-hidden="true"></span> ${subject.name}` : 'None'}</dd></div>`}</dl>
           <div class="fc-os__kvfoot"><button class="btn btn--sm" data-action="edit-settings">Change</button>${readOnly ? '' : html`<button class="fc-os__danger" data-action="delete-deck">Delete set</button>`}</div>
         </section>
