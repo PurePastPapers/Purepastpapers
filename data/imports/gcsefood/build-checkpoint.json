@@ -1,0 +1,106 @@
+{
+  "checked_on": "2026-11-26",
+  "subject_id": "EDUQAS_GCSE_FOOD_C560P1",
+  "status": "generated_locally_release_checks_pending",
+  "workspace": {
+    "checkout": "/workspace/scratch/11becd14abe9/c560",
+    "source_cache": "/workspace/scratch/11becd14abe9/sources",
+    "branch": "codex/c560p1-gcse-food-bank",
+    "local_merge_commit_prefix": "e5d366a",
+    "main_in_local_merge": "1bf9b62b488d29081e8a3da095aa485910998fbe",
+    "local_import_commit_prefix": "175dd01",
+    "note": "The local import commit contains the generator and index changes. Generated JSON and bounded specimen PDFs were outside the sparse index at commit time. They were present as working-tree files and need to be regenerated and staged on resume."
+  },
+  "generation": {
+    "local_papers": 9,
+    "grouped_practice_units": 225,
+    "raw_marks": 900,
+    "available_marks": 886,
+    "counting": "Lettered tasks remain grouped with their printed nested subparts. Unlettered questions are single practice units.",
+    "papers": [
+      {
+        "series": "2018-june",
+        "units": 28,
+        "available_marks": 100
+      },
+      {
+        "series": "2019-june",
+        "units": 23,
+        "available_marks": 99,
+        "source_only": {
+          "2(a)": "Separately sourced Eatwell Guide graphic"
+        }
+      },
+      {
+        "series": "2020-november",
+        "units": 28,
+        "available_marks": 100
+      },
+      {
+        "series": "2021-november",
+        "units": 31,
+        "available_marks": 98,
+        "source_only": {
+          "1(e)": "British Lion quality mark"
+        }
+      },
+      {
+        "series": "2022-june",
+        "units": 23,
+        "available_marks": 100
+      },
+      {
+        "series": "2023-june",
+        "units": 29,
+        "available_marks": 100
+      },
+      {
+        "series": "2024-june",
+        "units": 19,
+        "available_marks": 100
+      },
+      {
+        "series": "2025-june",
+        "units": 25,
+        "available_marks": 95,
+        "source_only": {
+          "4(a)": "Egg stamp with separately owned quality mark",
+          "6(d)": "Red Tractor logo"
+        }
+      },
+      {
+        "series": "specimen",
+        "units": 19,
+        "available_marks": 94,
+        "source_only": {
+          "4(b)": "British Nutrition Foundation extract"
+        }
+      }
+    ],
+    "first_uploaded_catalogue_blob": "89dcc21358de9b67aa307804e5d0952dd97df6e7",
+    "uploaded_catalogue_note": "June 2025 first-pass catalogue blob for recovery only. Regenerate it to include the later scheme heading boundary fix before use."
+  },
+  "verification": {
+    "performed": [
+      "Downloaded original PDFs from the official URLs and checked PDF type and page counts against the inventory. The local source manifest pins SHA-256 hashes.",
+      "Built all nine packs using exact geometry, source code and series matches, nonblank renders, and a 100-mark reconciliation per paper.",
+      "Visually compared selected original visual resources and rendered fixtures, including 2025 Q1, Q2(b) and Q9, 2022 Q2(a), and 2024 Q6(a).",
+      "Separated the written specimen question and scheme PDF ranges from the combined specimen locally."
+    ],
+    "pending": [
+      "Rebuild all packs after the final scheme-heading boundary fix, and compare the last crop and first crop on each page boundary. Review each nested subpart and decide whether distinct practice answers are needed.",
+      "Check remaining crop boundaries and visual credits. Compare the two 2018 paper URLs to confirm the alias.",
+      "Complete npm test, full npm run validate, and the real site-size check. The sparse checkout was missing inputs for the first full validation attempt.",
+      "Complete desktop and phone browser checks for Practice, PDF export, raw-mark entry, full and partial paper behavior, Build a Test, live session and marking.",
+      "Upload and commit the rebuilt assets using the GitHub connector if CLI Git remains unauthenticated. Its create_blob accepted the first 1.9 MB catalogue. Use the current main tree and merge the pack index by key.",
+      "Open and merge a PR after validation, then verify Cloudflare and production for the exact merged SHA."
+    ],
+    "production": "No new pack published."
+  },
+  "reproduce": [
+    "Resume the local branch and inspect the working tree before fetching current main. Keep sparse-checkout patterns limited to metadata and this subject while the workspace is low on disk.",
+    "From the checkout, run python tools/gcsefood/build.py --sources ../sources, then python tools/assets/compact.py --slug gcsefood.",
+    "Add assets/gcsefood, data/gcsefood-assets and data/packs/gcsefood to sparse checkout or use git add --sparse for the exact generated files.",
+    "Keep June 2026 as a source availability gap since its public written question paper and scheme are unverified."
+  ]
+}
