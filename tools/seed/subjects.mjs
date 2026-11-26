@@ -358,7 +358,8 @@ export const subjects = [
     spec_notes: 'Listening, Speaking, Reading & Writing across six thematic contexts (2024 specification, first exams June 2026)', subject_category: 'Languages',
     sp_prefix: 'EDX_GCSE_SPAN', id_stem: 'EDX_1SP1',
     official_url: `${PEARSON}/edexcel-gcses/spanish-2024${EXAM_MATERIALS}`,
-    catalogue_note: 'New specification (first exams June 2026): the papers will be added once Pearson publishes them. Sample assessments are on the Pearson page.',
+    tiers: ['Foundation', 'Higher'],
+    catalogue_note: 'Official Pearson sample papers are available for both tiers. Listening requires a recording. Speaking is for partner or teacher practice.',
     catalogue: { first: 2026, pattern: 'summer', papers: [
       ['2F', 'Paper 2: Listening and understanding (Foundation)', 50, 45, { tier: 'Foundation' }],
       ['2H', 'Paper 2: Listening and understanding (Higher)', 50, 60, { tier: 'Higher' }],
