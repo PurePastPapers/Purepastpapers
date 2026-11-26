@@ -4,8 +4,10 @@ Everything is synthesised here (no samples), so the audio is free to use.
 Reads out/cues.json (written by `node render.mjs --cues-only`) and writes
 out/promo-audio.wav (48 kHz stereo). Deterministic: fixed random seed.
 
-Music: 96 BPM, swung 8ths, Dm9 | G13 | Cmaj9 | A7b9 loop, so the drop at
-12.5 s and the logo stamp at 62.5 s both land on Cmaj9.
+Tempo and structure come from PROMO.music in the timeline (84 BPM in v2):
+swung 8ths over a Dm9 | G13 | Cmaj9 | A7b9 loop, a drop on Cmaj9 when the
+active-recall title lands, a break and riser into the teacher terminal with
+a pad lifting that section, then ii-V (Dm9 to G13) into the logo stamp on Cmaj9.
 """
 import json
 import os
@@ -20,14 +22,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 meta = json.load(open(os.path.join(OUT, "cues.json")))
 DUR = float(meta["duration"])
-BPM = 96
+SONG = meta["music"]
+BPM = float(SONG["bpm"])
 BEAT = 60 / BPM
 BAR = 4 * BEAT
 N = int(DUR * SR)
 rng = np.random.default_rng(20261126)
 
-DROP_BAR = 5  # 12.5 s, "Pulling it out beats putting it in."
-STAMP_BAR = 25  # 62.5 s, logo stamp
+DROP_BAR = SONG["dropBar"]  # "Pulling it out beats putting it in."
+BREAK_BAR = SONG["breakBar"]  # half a bar of silence before the teacher terminal
+LIFT_BAR, LIFT_END = SONG["liftBar"], SONG["liftEndBar"]  # teacher terminal section
+STAMP_BAR = SONG["stampBar"]  # logo stamp
+HOOK_BARS = SONG["hookBars"]
 SWING = 0.6  # off-beat 8ths land at 60% of the beat
 
 
@@ -157,7 +163,9 @@ LOOP = ["Dm9", "G13", "Cmaj9", "A7b9"]
 TOTAL_BARS = int(round(DUR / BAR))
 
 
-def chord_for(bar):
+def chord_for(bar, pos=0.0):
+    if bar == STAMP_BAR - 1:  # ii-V turnaround into the stamp
+        return "Dm9" if pos < 2 else "G13"
     if bar == STAMP_BAR:
         return "Cmaj9"
     if bar == STAMP_BAR + 1:
@@ -179,6 +187,7 @@ for bar in range(TOTAL_BARS):
     t0 = bar * BAR
     name = chord_for(bar)
     root, voicing = CHORDS[name]
+    breath = bar in (STAMP_BAR - 1, BREAK_BAR)
     ending = bar >= STAMP_BAR
     groove = DROP_BAR <= bar < STAMP_BAR
 
@@ -187,7 +196,7 @@ for bar in range(TOTAL_BARS):
     if not ending:
         hits.append((2.5, 1.3, 0.55))
     for pos, length, vel in hits:
-        for k, m in enumerate(voicing):
+        for k, m in enumerate(CHORDS[chord_for(bar, pos)][1]):
             jitter = rng.uniform(0, 0.012)
             note = epiano(mtof(m), length * BEAT, vel * rng.uniform(0.85, 1.0))
             add(keys, t0 + swung(pos) + k * 0.018 + jitter, note, 0.24, pan=-0.35 + 0.23 * k)
@@ -196,39 +205,60 @@ for bar in range(TOTAL_BARS):
     if bar >= 3:
         pattern = [(0, 1.6, 1.0), (2.5, 0.7, 0.75), (3.5, 0.4, 0.6)] if groove else [(0, 3.6, 0.9)]
         for i, (pos, length, vel) in enumerate(pattern):
-            m = root + (7 if i == 2 else 0)
+            r = CHORDS[chord_for(bar, pos)][0]
+            m = r + (7 if i == 2 else 0)
             add(bass, t0 + swung(pos), bass_note(mtof(m), length * BEAT, vel), 0.26)
 
     # drums
-    if groove and bar != STAMP_BAR - 1:
+    if groove and not breath:
         kicks = [0, 2.5] if bar % 2 == 0 else [0, 1.5, 2.5]
         for pos in kicks:
             add(drums, t0 + swung(pos), kick(1.0 if pos == 0 else 0.75), 0.34)
         for pos in (1, 3):
             add(drums, t0 + pos * BEAT + 0.012, snare(0.9), 0.42, pan=0.05)
-    if bar >= 3 and bar < STAMP_BAR and bar != STAMP_BAR - 1:
+    if bar >= 3 and bar < STAMP_BAR and not breath:
         for i in range(8):
             pos = i / 2
             vel = (0.7 if i % 2 == 0 else 0.45) * rng.uniform(0.8, 1.1) * (0.6 if not groove else 1.0)
             add(drums, t0 + swung(pos), hat(vel, open_=(i == 7 and bar % 4 == 3)), 0.3, pan=0.3)
-    if bar == STAMP_BAR - 1:  # a breath before the stamp: half a bar of groove, then silence
+    if breath:  # half a bar of groove, then silence before the next section
         add(drums, t0, kick(1.0), 0.34)
         add(drums, t0 + BEAT + 0.012, snare(0.9), 0.42)
         for i in range(4):
             add(drums, t0 + swung(i / 2), hat(0.6), 0.3, pan=0.3)
 
-# riser into the drop and a sub hit on it
-rise_len = 1.9
-n = int(rise_len * SR)
-tt = t_of(n)
-riser = rng.standard_normal(n)
-riser = filt(riser, "bandpass", [400, 6000]) * (tt / rise_len) ** 2.2
-add(pre, DROP_BAR * BAR - rise_len, riser, 0.12)
-add(drums, DROP_BAR * BAR, kick(1.2), 0.42)
+# risers into the drop and the teacher terminal, with a sub hit on each downbeat
+def riser_into(bar, rise_len, gain):
+    n = int(rise_len * SR)
+    tt = t_of(n)
+    sig = filt(rng.standard_normal(n), "bandpass", [400, 6000]) * (tt / rise_len) ** 2.2
+    add(pre, bar * BAR - rise_len, sig, gain)
+    add(drums, bar * BAR, kick(1.2), 0.42)
+
+
+riser_into(DROP_BAR, 1.9, 0.12)
+riser_into(LIFT_BAR, 2 * BEAT, 0.14)
+
+# a soft pad lifts the teacher terminal section
+def pad(freqs, dur):
+    n = int((dur + 0.6) * SR)
+    t = t_of(n)
+    sig = np.zeros(n)
+    for f in freqs:
+        for det in (-0.004, 0.0, 0.004):
+            ph = 2 * np.pi * f * (1 + det) * t
+            sig += 2 * (ph / (2 * np.pi) % 1) - 1  # saw
+    sig = filt(sig, "lowpass", 1600)
+    return sig * env_adr(n, 0.5, dur, 0.5) / (3 * len(freqs))
+
+
+for bar in range(LIFT_BAR, LIFT_END):
+    voicing = CHORDS[chord_for(bar)][1]
+    add(keys, bar * BAR, pad([mtof(m + 12) for m in voicing], BAR), 0.22, pan=0.0)
 
 # melody: a little pentatonic hook, twice
 HOOK = [(0, 76), (0.5, 79), (1.0, 81), (2.0, 79), (2.5, 76), (3.5, 74), (4.0, 76), (6.0, 72), (6.5, 74), (7.0, 76)]
-for start_bar in (9, 17):
+for start_bar in HOOK_BARS:
     for rep in range(2):
         for pos, m in HOOK:
             at = (start_bar + rep * 2) * BAR + swung(pos % 4) + (pos // 4) * BAR
@@ -409,12 +439,12 @@ def sfx_flick(k):
     return filt(noise(n), "bandpass", [lo, hi]) * np.exp(-t / 0.014), 0.14
 
 
-def sfx_stamp():
+def sfx_stamp(soft=False):
     n = int(1.2 * SR)
     t = t_of(n)
     boom = np.sin(2 * np.pi * (52 + 60 * np.exp(-t / 0.03)) * t) * np.exp(-t / 0.35)
     thwack = filt(noise(n), "lowpass", 2500) * np.exp(-t / 0.05)
-    return np.tanh(1.5 * (boom + thwack * 0.6)), 0.5
+    return np.tanh(1.5 * (boom + thwack * 0.6)), (0.22 if soft else 0.5)
 
 
 for i, c in enumerate(meta["cues"]):
@@ -452,7 +482,7 @@ for i, c in enumerate(meta["cues"]):
     elif kind == "flick":
         sig, g = sfx_flick(c.get("k", 0))
     elif kind == "stamp":
-        sig, g = sfx_stamp()
+        sig, g = sfx_stamp(bool(c.get("soft")))
     else:
         print("unknown cue", kind, file=sys.stderr)
         continue

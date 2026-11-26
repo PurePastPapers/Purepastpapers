@@ -23,7 +23,7 @@ const SCALE = Number(args.scale || 1);
 const WORKERS = Number(args.workers || 4);
 const PORT = Number(args.port || 5199);
 const FRAMES = path.join(OUT, `frames-${FPS}-${SCALE}`);
-const VIDEO = path.join(OUT, args.out || 'purepastpapers-the-science-bit.mp4');
+const VIDEO = path.join(OUT, args.out || 'purepastpapers-promo.mp4');
 const AUDIO = path.join(OUT, 'promo-audio.wav');
 
 fs.mkdirSync(OUT, { recursive: true });
@@ -65,7 +65,7 @@ const server = await startServer();
 const browser = await chromium.launch();
 try {
   const first = await openPage(browser);
-  const meta = await first.evaluate(() => ({ duration: window.PROMO.duration, bpm: window.PROMO.bpm, sceneStarts: window.PROMO.sceneStarts, cues: window.PROMO.cues }));
+  const meta = await first.evaluate(() => ({ duration: window.PROMO.duration, bpm: window.PROMO.bpm, sceneStarts: window.PROMO.sceneStarts, music: window.PROMO.music, cues: window.PROMO.cues }));
   fs.writeFileSync(path.join(OUT, 'cues.json'), JSON.stringify(meta, null, 1));
   console.log(`cues.json: ${meta.cues.length} cues, ${meta.duration}s`);
 
