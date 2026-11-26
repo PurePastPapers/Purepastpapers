@@ -53,7 +53,7 @@ for (const subject of subjects) {
       if (declared.size) {
         const entry = declared.get(code);
         assert(entry, `${paper.paper_id}: ${code} is not a declared qualification`);
-        assert.equal(level, entry.is_as ? 'AS' : entry.label, paper.paper_id);
+        assert.equal(level, entry.is_as ? 'AS' : (entry.level || entry.label), paper.paper_id);
       }
       if (paper.is_as === true) assert.equal(level, 'AS', paper.paper_id);
       if (level === 'AS' && code !== subject.spec_code) {

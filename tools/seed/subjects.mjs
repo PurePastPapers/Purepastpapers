@@ -226,8 +226,8 @@ export const subjects = [
     official_url: `${OCR}/alternative-academic-qualifications/it-data-analytics-level-3-h019-h119/assessment/`,
     grade_policy: 'raw_marks_only',
     qualifications: [
-      {code: 'H119', label: 'H119 Extended Certificate', is_as: false},
-      {code: 'H019', label: 'H019 Certificate', is_as: false},
+      {code: 'H119', label: 'H119 Extended Certificate', level: 'Level 3', is_as: false},
+      {code: 'H019', label: 'H019 Certificate', level: 'Level 3', is_as: false},
     ],
     catalogue_note: 'Official OCR specimens. F200 is shared by H019 and H119. F201 is part of H119 only. The Reach Free School prospectus lists Pearson V Level Digital Systems and Data as a separate qualification.',
     assessment_references: [

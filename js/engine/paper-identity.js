@@ -35,7 +35,7 @@ export function levelOf(item, subject = null) {
   if (LEVELS.has(item?.level)) return item.level;
   const code = item?.qualification_code || item?.spec_code;
   const declared = code && (subject?.qualifications || []).find((entry) => entry.code === code);
-  if (declared) return declared.is_as ? 'AS' : declared.label;
+  if (declared) return declared.is_as ? 'AS' : (declared.level || declared.label);
   if (item?.is_as === true) return 'AS';
   return subject?.level || null;
 }
