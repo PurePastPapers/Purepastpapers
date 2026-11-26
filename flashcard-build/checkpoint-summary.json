@@ -1,87 +1,19 @@
 {
-  "psychology": {
-    "subject_id": "AQA_ALEVEL_PSYCH_7182",
-    "status": "DRAFT - NOT APPROVED",
-    "source_digest": "d22344240b97c11210f1d95abb2da08f929d808b2c3b4a11104efa3b2c02884d",
-    "cards": 218,
-    "leaves": 84,
-    "covered": 82,
-    "missing": [
-      "AQA_PSYCH_4.1.1_b3",
-      "AQA_PSYCH_4.1.2_b1"
-    ],
-    "counts": {
-      "content": 189,
-      "evidence": 29
-    },
-    "errors": [],
-    "independently_supported": 46
+  "date": "2026-11-26",
+  "state": "COMPLETE - ALL FIVE SUBJECTS PUBLISHED",
+  "published": {
+    "gcse-englit": 349,
+    "psychology": 806,
+    "alevel-englit": 435,
+    "gcse-history": 482,
+    "sociology": 567
   },
-  "sociology": {
-    "subject_id": "AQA_ALEVEL_SOC_7192",
-    "status": "DRAFT - NOT APPROVED",
-    "source_digest": "1270b3fa5cf8f2b909087a6b6009105a7fa9b69c1f8d4574c4efc06f12145436",
-    "cards": 154,
-    "leaves": 30,
-    "covered": 30,
-    "missing": [],
-    "counts": {
-      "content": 95,
-      "evidence": 25,
-      "background": 34
-    },
-    "errors": [],
-    "independently_supported": 65
-  },
-  "alevel-englit": {
-    "subject_id": "EDX_ALEVEL_ENGLIT_9ET0",
-    "status": "DRAFT - NOT APPROVED",
-    "source_digest": "79ebddd7281056c8165b69c131f0161e05198522b5d3fe3eccdda2638bfbd577",
-    "cards": 202,
-    "leaves": 45,
-    "covered": 44,
-    "missing": [
-      "EDX_ENGLIT_MODERN_UNSEEN"
-    ],
-    "counts": {
-      "quotes": 181,
-      "context": 4,
-      "critics": 3,
-      "mark_scheme": 14
-    },
-    "errors": [],
-    "independently_supported": 131
-  },
-  "gcse-history": {
-    "subject_id": "OCR_GCSE_HIST_J411",
-    "status": "DRAFT - NOT APPROVED",
-    "source_digest": "635a462a8c36440387747894629981ed43faae6770c4c964b68ea681af00cc49",
-    "cards": 116,
-    "leaves": 23,
-    "covered": 23,
-    "missing": [],
-    "counts": {
-      "back": 31,
-      "exam": 80,
-      "mark_scheme": 5
-    },
-    "errors": [],
-    "independently_supported": 31
-  },
-  "gcse-englit": {
-    "subject_id": "EDUQAS_GCSE_ENGLIT_C720QS",
-    "status": "DRAFT - NOT APPROVED",
-    "source_digest": "e730990809c1b84eaa6e8aa79205f9bcae99ae8272fe4d4f74ea23d22c89aa5e",
-    "cards": 112,
-    "leaves": 20,
-    "covered": 20,
-    "missing": [],
-    "counts": {
-      "quotes": 45,
-      "context": 54,
-      "mark_scheme": 13
-    },
-    "errors": [],
-    "independently_supported": 112
+  "total_cards": 2639,
+  "remaining": {},
+  "excluded": "Verulamium: Will handles this option",
+  "handover": "give this to will.md",
+  "label_pr": {
+    "number": 69,
+    "merged_commit": "d3a6f7137fdb4bd8ba793c67f743f393e77d155d"
   }
 }

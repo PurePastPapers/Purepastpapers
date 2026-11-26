@@ -1,7 +1,7 @@
-# Psychology draft limitations
+# psychology current status
 
-This is an incomplete draft: it does not cover all 84 route leaves and is not ready to build, approve, publish or use as a complete revision set. The source ledger records author checks only; no independent review has taken place. Add evidence and background decks only after sourcing their facts. The existing MARK deck and its sign test fix are handled separately.
+The checked version `2026-11-26-complete-v3` is published with 806 cards, as recorded in `../publication-results.json`. AQA 7182 v1.4, first A-level examination 2027; removed content excluded.
 
-AQA v1.4, dated 1 September 2025, applies to first A-level exams in 2027. Its removed topics including Zimbardo, biological rhythms and Schaffer are excluded. Older mark schemes are used only where the material remains in v1.4.
+Independent source review and a lead audit are recorded in `review-complete.json`, `sources.tsv` and the subject review records. Historical draft notes are preserved in `NOTES-draft-historical.md`; their old counts and warnings do not describe the published version. The final five-subject stratified sample is in `../give this to will.md`.
 
-Source citations identify the official mark scheme document; precise page numbers and all substantive claims still require independent verification. Expand each route leaf, its named studies and evaluation, and research methods before treating coverage as complete.
+The published MARK deck retains the original card identities and fronts. The sign-test table and scattergram were checked during the release.

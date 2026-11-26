@@ -1,38 +1,92 @@
 {
-  "psychology": {
-    "strict_exit_code": 1,
-    "errors": [
-      "missing leaves: ['AQA_PSYCH_4.1.1_b3', 'AQA_PSYCH_4.1.2_b1']",
-      "172 cards lack independent verification",
-      "content completeness review is outstanding"
-    ]
+  "date": "2026-11-26",
+  "strict_builds": {
+    "gcse-englit": {
+      "subject_id": "EDUQAS_GCSE_ENGLIT_C720QS",
+      "status": "CHECKED - PUBLICATION AUTHORISED",
+      "source_digest": "137849c716096bf558d1466d8afb3106bd8085913056653c463ceb56b610fb0c",
+      "cards": 349,
+      "leaves": 20,
+      "excluded_leaves": [],
+      "covered": 20,
+      "missing": [],
+      "counts": {
+        "quotes": 99,
+        "context": 226,
+        "mark_scheme": 24
+      },
+      "errors": []
+    },
+    "psychology": {
+      "subject_id": "AQA_ALEVEL_PSYCH_7182",
+      "status": "CHECKED - PUBLICATION AUTHORISED",
+      "source_digest": "5c272f5e0a066cd6ab12b163c826e378be3803c654c1c3282866699b4cc96610",
+      "cards": 806,
+      "leaves": 84,
+      "excluded_leaves": [],
+      "covered": 84,
+      "missing": [],
+      "counts": {
+        "content": 606,
+        "evidence": 136,
+        "mark_scheme": 64
+      },
+      "errors": []
+    },
+    "alevel-englit": {
+      "subject_id": "EDX_ALEVEL_ENGLIT_9ET0",
+      "status": "CHECKED - PUBLICATION AUTHORISED",
+      "source_digest": "be9589987226cdcbb06e348a23777815cb6861ea3f5c7815d7426715e1572b83",
+      "cards": 435,
+      "leaves": 45,
+      "excluded_leaves": [],
+      "covered": 45,
+      "missing": [],
+      "counts": {
+        "quotes": 179,
+        "critics": 13,
+        "context": 229,
+        "mark_scheme": 14
+      },
+      "errors": []
+    },
+    "gcse-history": {
+      "subject_id": "OCR_GCSE_HIST_J411",
+      "status": "CHECKED - PUBLICATION AUTHORISED",
+      "source_digest": "9750b45314941ab67b72902a715eb40b11e3c1e36d183cc8cf7f476d870cf438",
+      "cards": 482,
+      "leaves": 21,
+      "excluded_leaves": [
+        "OCR_GCSE_HIST_HAU_3.1",
+        "OCR_GCSE_HIST_HAU_3.2"
+      ],
+      "covered": 21,
+      "missing": [],
+      "counts": {
+        "back": 65,
+        "exam": 394,
+        "mark_scheme": 23
+      },
+      "errors": []
+    },
+    "sociology": {
+      "subject_id": "AQA_ALEVEL_SOC_7192",
+      "status": "CHECKED - PUBLICATION AUTHORISED",
+      "source_digest": "e0c471151b0abf89f507cc361443e9d6833e309d4fc2596fede79778d5c1fa1d",
+      "cards": 567,
+      "leaves": 30,
+      "excluded_leaves": [],
+      "covered": 30,
+      "missing": [],
+      "counts": {
+        "evidence": 162,
+        "content": 343,
+        "background": 34,
+        "mark_scheme": 28
+      },
+      "errors": []
+    }
   },
-  "sociology": {
-    "strict_exit_code": 1,
-    "errors": [
-      "89 cards lack independent verification",
-      "content completeness review is outstanding"
-    ]
-  },
-  "alevel-englit": {
-    "strict_exit_code": 1,
-    "errors": [
-      "missing leaves: ['EDX_ENGLIT_MODERN_UNSEEN']",
-      "202 cards lack independent verification",
-      "content completeness review is outstanding"
-    ]
-  },
-  "gcse-history": {
-    "strict_exit_code": 1,
-    "errors": [
-      "116 cards lack independent verification",
-      "content completeness review is outstanding"
-    ]
-  },
-  "gcse-englit": {
-    "strict_exit_code": 1,
-    "errors": [
-      "content completeness review is outstanding"
-    ]
-  }
+  "tag_checks": "All five passed using site spec-map; every atomic card mapped to its exact leaf.",
+  "final_report_fixture": "Passed including preserved scattergram alt data"
 }

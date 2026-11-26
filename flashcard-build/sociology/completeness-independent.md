@@ -1,0 +1,72 @@
+# Independent Sociology completeness reconciliation
+
+Snapshot: 2026-11-26 16:45 UTC; based on `draft/all-cards.json`, which may change during concurrent corrections. This is a scope review, not a re-verification of every source. “Covered at outline level” does not certify exhaustive teaching, study evidence, or independent accuracy. The current AQA specification requires sociological explanations and evidence for its topic bullets. Checked against:
+
+- https://www.aqa.org.uk/subjects/sociology/a-level/sociology-7192/specification/subject-content/education-with-theory-and-methods
+- https://www.aqa.org.uk/subjects/sociology/a-level/sociology-7192/specification/subject-content/topics-in-sociology
+- https://www.aqa.org.uk/subjects/sociology/a-level/sociology-7192/specification/subject-content/crime-and-deviance-with-theory-and-methods
+
+| Official leaf | Current cards | Assessment | Present coverage and specific gaps |
+|---|---:|---|---|
+| AQA_SOC_4.1.1_b1: The role and functions of the education system, including its relationship to the economy and to class structure | 21 | Covered at outline level | Functionalism, role allocation, Marxist economy/class reproduction and feminist critique are represented. |
+| AQA_SOC_4.1.1_b2: Differential educational achievement of social groups by social class, gender and ethnicity in contemporary society | 28 | Partial | Class and gender attainment data, cultural/material explanations and teacher racialisation appear; no specific comparative ethnic attainment pattern is evident. |
+| AQA_SOC_4.1.1_b3: Relationships and processes within schools, with particular reference to teacher/pupil relationships, pupil identities and subcultures, the hidden curriculum, and the organisation of teaching and learning | 25 | Covered at outline level | Labelling, teacher expectations, hidden curriculum, streaming, pupil identities and Willis/Lacey subcultures are represented. |
+| AQA_SOC_4.1.1_b4: The significance of educational policies, including policies of selection, marketisation and privatisation, and policies to achieve greater equality of opportunity or outcome, for an understanding of the structure, role, impact and experience of and access to education; the impact of globalisation on educational policy | 21 | Partial | Marketisation, privatisation, global policy borrowing and pupil premium appear; selective admissions and equality of outcome versus opportunity lack direct explanation. |
+| AQA_SOC_4.1.2_b1: Students must be able to apply sociological research methods to the study of education | 24 | Covered at outline level | School interviews, questionnaires, observation, documents, gatekeepers, consent and teacher effects are applied to educational settings. |
+| AQA_SOC_4.1.3_b1: Quantitative and qualitative methods of research; research design | 9 | Covered at outline level | Longitudinal/cross-sectional design, piloting and triangulation appear; quantitative and qualitative definitions are in adjacent b3. |
+| AQA_SOC_4.1.3_b2: Sources of data, including questionnaires, interviews, participant and non-participant observation, experiments, documents and official statistics | 24 | Covered at outline level | Questionnaires, interviews, both observational designs, experiments, documents and official statistics have method and evaluation cards. |
+| AQA_SOC_4.1.3_b3: The distinction between primary and secondary data, and between quantitative and qualitative data | 4 | Covered at outline level | The four named primary/secondary and quantitative/qualitative distinctions are defined. |
+| AQA_SOC_4.1.3_b4: The relationship between positivism, interpretivism and sociological methods; the nature of ‘social facts’ | 12 | Covered at outline level | Positivist and interpretivist method preferences and Durkheimian social facts are included. |
+| AQA_SOC_4.1.3_b5: The theoretical, practical and ethical considerations influencing choice of topic, choice of method(s) and the conduct of research | 5 | Partial | Consent, harm, validity and representativeness are defined; explicit practical factors such as time, access and cost and their effect on topic/method choice are absent from this leaf. |
+| AQA_SOC_4.1.3_b6: Consensus, conflict, structural and social action theories | 13 | Covered at outline level | Consensus, class and gender conflict, structural and social action perspectives are named and contrasted. |
+| AQA_SOC_4.1.3_b7: The concepts of modernity and post-modernity in relation to sociological theory | 8 | Covered at outline level | Modernity, postmodernity, risk society and metanarratives are represented. |
+| AQA_SOC_4.1.3_b8: The nature of science and the extent to which Sociology can be regarded as scientific | 9 | Covered at outline level | Popper, falsification, Kuhn, paradigms and interpretivist objections to scientific sociology are represented. |
+| AQA_SOC_4.1.3_b9: The relationship between theory and methods | 9 | Covered at outline level | Induction, deduction, grounded theory and links between method and theoretical approach are included. |
+| AQA_SOC_4.1.3_b10: Debates about subjectivity, objectivity and value freedom | 11 | Covered at outline level | Objectivity, subjectivity, value relevance, value freedom and feminist/Becker challenges are present. |
+| AQA_SOC_4.1.3_b11: The relationship between Sociology and social policy | 8 | Partial | Policy is defined and views are attributed; a concrete example explaining how sociological evidence informed a specific social policy is not evident. |
+| AQA_SOC_4.2.2_b1: The relationship of the family to the social structure and social change, with particular reference to the economy and to state policies | 16 | Partial | Parsons, Marxism and New Right family/economy links appear; a specific state family policy and its impact on family life are not explained. |
+| AQA_SOC_4.2.2_b2: Changing patterns of marriage, cohabitation, separation, divorce, childbearing and the life course, including the sociology of personal life, and the diversity of contemporary family and household structures | 26 | Partial | Marriage/divorce rates, cohabitation, kinship diversity and personal life are present; explanations of separation and changing childbearing patterns are thin. |
+| AQA_SOC_4.2.2_b3: Gender roles, domestic labour and power relationships within the family in contemporary society | 20 | Covered at outline level | Conjugal roles, domestic labour, decision-making and the second/triple shift have named research and findings. |
+| AQA_SOC_4.2.2_b4: The nature of childhood, and changes in the status of children in the family and society | 12 | Covered at outline level | Ariès, construction, child status, conflict and the work of Zelizer are represented. |
+| AQA_SOC_4.2.2_b5: Demographic trends in the United Kingdom since 1900: birth rates, death rates, family size, life expectancy, ageing population, and migration and globalisation | 18 | Partial | Recent fertility, mortality, lifespan, migration and family-size statistics appear; historical trends since 1900 and causes of those changes are not explicitly developed. |
+| AQA_SOC_4.2.5_b1: Ideology, science and religion, including both Christian and non-Christian religious traditions | 16 | Partial | Christian Protestantism, Islamic tawhid, Marx and Durkheim appear; explicit comparison of scientific and religious belief systems and ideology is thin. |
+| AQA_SOC_4.2.5_b2: The relationship between social change and social stability, and religious beliefs, practices and organisations | 15 | Covered at outline level | Durkheim, Weber, Marx, Bloch and liberation theology address social stability and change. |
+| AQA_SOC_4.2.5_b3: Religious organisations, including cults, sects, denominations, churches and New Age movements, and their relationship to religious and spiritual belief and practice | 13 | Covered at outline level | Church, sect, denomination, cult and New Age movements are named; Wallis movement types connect organisations to belief and practice. |
+| AQA_SOC_4.2.5_b4: The relationship between different social groups and religious/spiritual organisations and movements, beliefs and practices | 10 | Partial | Gender, ethnicity and a class attendance statistic appear; age differences and explanations of class variation in affiliation/practice are not explicit. |
+| AQA_SOC_4.2.5_b5: The significance of religion and religiosity in the contemporary world, including the nature and extent of secularisation in a global context, and globalisation and the spread of religions | 18 | Partial | British secularisation, attendance, affiliation and global spread are covered; comparative global secularisation and counterexamples are thin. |
+| AQA_SOC_4.3.1_b1: Crime, deviance, social order and social control | 32 | Covered at outline level | Crime/deviance, anomie, functionalism, subcultures, labelling, bonds and Marxism are represented. |
+| AQA_SOC_4.3.1_b2: The social distribution of crime and deviance by ethnicity, gender and social class, including recent patterns and trends in crime | 24 | Partial | Feminist and ethnic explanations, victimisation totals and general recording issues appear; specific class and ethnicity crime-pattern evidence and its interpretation are not explicit. |
+| AQA_SOC_4.3.1_b3: Globalisation and crime in contemporary society; the media and crime; green crime; human rights and state crimes | 25 | Partial | Global crime, media, green crime and state-corporate harms are represented; a specific human-rights violation and its use in defining state crime are absent. |
+| AQA_SOC_4.3.1_b4: Crime control, surveillance, prevention and punishment, victims, and the role of the criminal justice system and other agencies | 20 | Partial | Prevention, surveillance, punishment and victimology appear; the distinct roles of courts and other criminal-justice agencies are not directly explained. |
+
+## Verification targets
+
+The following examples are exact current fronts in the affected leaves. They make the distinction between present material and the missing named requirement visible.
+
+- **AQA_SOC_4.1.1_b2**: `ppp-soc-7192-content:9ffdecccd7d6ce2d5198` What term did Bourdieu use for valued knowledge and skills passed through families?; `ppp-soc-7192-content:d87079fbb6ee51909fd3` Which sociologist linked language codes to class differences in school?; `ppp-soc-7192-content:51296690840e5d978129` What did Gillborn and Youdell call the targeting of resources towards borderline pupils?
+
+- **AQA_SOC_4.1.1_b4**: `ppp-soc-7192-content:7102b5e77bdcb6eac623` What is marketisation in education?; `ppp-soc-7192-content:1a1a136e2d29bc977c41` What is the pupil premium intended to support?; `ppp-soc-7192-evidence:403972559651f8c2ae20` In what year did England’s academies programme begin?
+
+- **AQA_SOC_4.1.3_b5**: `ppp-soc-7192-content:be8e77a396077dc747b8` What is informed consent?; `ppp-soc-7192-content:4f97520cd8fb81dfb6eb` What is covert research?; `ppp-soc-7192-content:ff1180f7aeca31b698ce` What is validity in social research?
+
+- **AQA_SOC_4.1.3_b11**: `ppp-soc-7192-content:6a4a9773602b15efe87e` What is one Marxist criticism of social policy?; `ppp-soc-7192-content:6220ac4b17fcc56e6baf` What is one feminist view of social policy?; `ppp-soc-7192-content:ca8e441bf9a13298430e` What does evidence-based policy aim to use?
+
+- **AQA_SOC_4.2.2_b1**: `ppp-soc-7192-content:e99cbc9fd1a2764f144c` Which functionalist saw the nuclear family as fitting industrial society?; `ppp-soc-7192-content:f789fc182280f9714b27` Which Marxist argued the family reproduces labour power?; `ppp-soc-7192-content:b2416c994a05d262920a` What did the New Right identify as the ideal family form?
+
+- **AQA_SOC_4.2.2_b2**: `ppp-soc-7192-evidence:438e5f5c8d382bf191bf` What long-term trend did ONS report in its 2023 marriage data for opposite-sex marriage rates in England and Wales?; `ppp-soc-7192-evidence:ad454afb0fb1aeed3d35` What long-term pattern did ONS report in its 2023 divorces data for opposite-sex divorces in England and Wales?; `ppp-soc-7192-content:762836d4a8eadcb30fcc` Which anthropologist studied lesbian and gay kinship in Families We Choose?
+
+- **AQA_SOC_4.2.2_b5**: `ppp-soc-7192-content:0b5976455e49f2e7b1af` What does the total fertility rate estimate?; `ppp-soc-7192-content:de121dc757ea1ddf6b8e` What is a death rate?; `ppp-soc-7192-content:45b86e80abb0ad228589` What is the dependency ratio?
+
+- **AQA_SOC_4.2.5_b1**: `ppp-soc-7192-content:ab72d5640340bbd37cc6` What core belief does tawhid express in Islam?; `ppp-soc-7192-evidence:d3d7f98375afc8193ba7` What share of England and Wales identified as Muslim in Census 2021?; `ppp-soc-7192-content:363604d5f8b2ed41b7c7` What did Durkheim define religion as?
+
+- **AQA_SOC_4.2.5_b4**: `ppp-soc-7192-evidence:3a494337529371efef2a` In BSA 2012 data, which social class most often reported never attending religious services?; `ppp-soc-7192-content:615e73bc049230b38cf5` Which feminist argued religion supports patriarchy?; `ppp-soc-7192-content:eaa7b5a29703cc438a05` What did Davie call the continued belief without regular attendance?
+
+- **AQA_SOC_4.2.5_b5**: `ppp-soc-7192-content:915fa6d38981d8c59b6f` What is secularisation?; `ppp-soc-7192-content:f36c5edab5844e365552` Which sociologist argued religion is becoming a private choice?; `ppp-soc-7192-content:ba7623051ef6ccd1b2ba` What does religious globalisation describe?
+
+- **AQA_SOC_4.3.1_b2**: `ppp-soc-7192-content:836349cda15658b8f0fe` Which sociologist linked working-class delinquency to status frustration?; `ppp-soc-7192-content:c57e7d2e6105cbcd1e61` Which feminist argued male power shapes women’s offending and victimisation?; `ppp-soc-7192-content:bee0bf86a6e7e38b95da` What is the dark figure of crime?
+
+- **AQA_SOC_4.3.1_b3**: `ppp-soc-7192-content:fabfdc866b6929bd3e7d` What is green crime?; `ppp-soc-7192-content:42a07c9121e75655a336` What is state crime?; `ppp-soc-7192-content:7d8fb94bc7cab8d124ca` What does the concept of environmental crime include?
+
+- **AQA_SOC_4.3.1_b4**: `ppp-soc-7192-content:51a6eb7756222d51048d` What is a victim survey?; `ppp-soc-7192-evidence:0f07c8ceb7edbac88c0a` Which theory did Cohen and Felson develop to explain how routine activities create crime opportunities?; `ppp-soc-7192-background:f6093464d1db9e29b553` What is surveillance?
+
+The original source has no named compulsory theorist list for these bullets; adding named studies should be evidence-led, not mistaken for an AQA requirement. Any replacement cards need independent source verification.

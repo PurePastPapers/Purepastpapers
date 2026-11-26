@@ -32,8 +32,14 @@ def compile_subject(name, draft=False):
     folder = ROOT / 'flashcard-build' / name
     spec = json.loads((ROOT / 'data/specs' / (sid + '.json')).read_text())
     points = {p['id']: (s,t,p) for s in spec['sections'] for t in s['topics'] for p in t['points']}
+    excluded = []
+    if name == 'gcse-history':
+        excluded = [pid for pid in points if '_HAU_' in pid]
+        points = {pid: value for pid,value in points.items() if pid not in excluded}
     errors, cards, seen = [], [], set()
     source_files=sorted((folder/'source').glob('*.txt'))
+    retained_mark=folder/'retained-mark.json'
+    if retained_mark.exists(): source_files.append(retained_mark)
     source_digest=hashlib.sha256(b''.join(f.name.encode()+b'\0'+f.read_bytes()+b'\0' for f in source_files)).hexdigest()
     out = folder/('draft' if draft else 'build')
     # Remove only generated set files, so failed builds cannot leave stale cards.
@@ -87,6 +93,20 @@ def compile_subject(name, draft=False):
                 question = None
             else: errors.append(f'{where}: unexpected line')
         if question: errors.append(f'{file.name}: unanswered final front')
+    if retained_mark.exists():
+        originals=json.loads((ROOT/'flashcard-build/mark-original.json').read_text())
+        expected={c['stable_key']:c for c in originals if c['catalogue_id']==sid+'_MARK'}
+        material=json.loads(retained_mark.read_text())
+        if {c['stable_key'] for c in material} != set(expected): errors.append('Retained MARK identities differ from the original full catalogue')
+        for c in material:
+            old=expected.get(c['stable_key'])
+            if not old or old['front']!=c['front'] or old['catalogue_card_id']!=c['catalogue_card_id']:
+                errors.append('Retained MARK front or identity changed: '+c['stable_key'])
+            if c['front'] in seen: errors.append('Duplicate retained MARK front: '+c['front'])
+            seen.add(c['front'])
+            if any(tag.lower().startswith(('ppp::spec::','spec::')) or tag.startswith(('AQA_PSYCH_','AQA_SOC_')) for tag in c['tags']):
+                errors.append('Retained MARK has a spec tag: '+c['stable_key'])
+            cards.append(dict(c,deck='mark_scheme',spec_id=None,paper='Assessment skills',topic='Exam technique',point={'code':'','title':'Exam technique'},set='mark_scheme',catalogue=sid+'_MARK'))
     coverage = collections.Counter(c['spec_id'] for c in cards if c['deck']=='atomic')
     missing = [pid for pid in points if not coverage[pid]]
     if missing and not draft: errors.append(f'missing leaves: {missing}')
@@ -104,7 +124,9 @@ def compile_subject(name, draft=False):
             review=json.loads(review_file.read_text())
             if review.get('content_complete') is not True or not review.get('reviewer') or review.get('source_digest') != source_digest:
                 errors.append('content completeness review is incomplete or stale')
-    report = dict(subject_id=sid,status='DRAFT - NOT APPROVED' if draft else 'CHECKED - AWAITING OWNER APPROVAL',source_digest=source_digest,cards=len(cards),leaves=len(points),covered=len(coverage),missing=missing,counts=dict(collections.Counter(c['set'] for c in cards)),errors=errors)
+    approval_file = ROOT / 'flashcard-build' / 'approved-subjects.json'
+    approved = name in json.loads(approval_file.read_text()).get('subjects', []) if approval_file.exists() else False
+    report = dict(subject_id=sid,status='DRAFT - NOT APPROVED' if draft else ('CHECKED - PUBLICATION AUTHORISED' if approved else 'CHECKED - AWAITING OWNER APPROVAL'),source_digest=source_digest,cards=len(cards),leaves=len(points),excluded_leaves=excluded,covered=len(coverage),missing=missing,counts=dict(collections.Counter(c['set'] for c in cards)),errors=errors)
     folder.mkdir(parents=True,exist_ok=True)
     (folder/'build-report.json').write_text(json.dumps(report,indent=2)+'\n')
     if errors:

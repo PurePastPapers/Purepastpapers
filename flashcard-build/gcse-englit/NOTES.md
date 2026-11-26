@@ -1,9 +1,7 @@
-# GCSE Eduqas English Literature draft
+# gcse-englit current status
 
-Official 2027 anthology: https://www.eduqas.co.uk/media/zd1b4ii5/new-poetry-anthology-for-first-examination.pdf. The set covers the 15 new poems, not the anthology last examined in 2026. Source pages in the specification metadata differ in order from the anthology contents, so pages here follow the anthology itself.
+The checked version `2026-11-26-complete-v2` is published with 349 cards, as recorded in `../publication-results.json`. Macbeth, An Inspector Calls, A Christmas Carol, the 2027 15-poem anthology and unseen poetry.
 
-The official specification now resolves to Version 5 (November 2026): https://www.eduqas.co.uk/media/x2zpzwgt/eduqas-gcse-english-lit-spec.pdf. The route's anthology remains as listed. The repository spec records version 4; flag the update to the owner.
+Independent source review and a lead audit are recorded in `review-complete.json`, `sources.tsv` and the subject review records. Historical draft notes are preserved in `NOTES-draft-historical.md`; their old counts and warnings do not describe the published version. The final five-subject stratified sample is in `../give this to will.md`.
 
-Draft only: 140 cards, of which 15 are technique cards. Source associations are leads, not claims of independent verification. No in-copyright verse or Inspector quotation was copied; all quotation cards are from works identified as public domain in the anthology or the older plays and prose. The quotation deck therefore does not cover the copyrighted poems or Inspector. The 15 poem cards about voice, events and themes need independent checking against the anthology before use. The Inspector source is a placeholder; an accessible authoritative text or board resource must verify every card. Literary method cards need a reliable definitions source. Existing source material is not comprehensive, especially for the three long set texts and analytical methods. The technique model answers are provisional and must be checked against the official specimen mark schemes and examiner reports. No independent audit has been done. Do not publish or call this a complete build.
-
-No in-copyright quotations are included; quotes-to-check list is empty. No outputs, stable keys, tag checker, sample, or upload batches have been produced. A separate checker and additional coverage are needed before building.
+The quotation deck includes recall cards. Copyright quotation review lists and edition limitations remain in the subject’s quotation and review records.

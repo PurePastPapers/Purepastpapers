@@ -18,4 +18,14 @@ Technical verification: shared compiler and tag checker received an independent 
 
 A Git push was automatically rejected. The reviewer interpreted the public branch as publication without approval, despite section 9's requested branch push. No bypass or indirect push was attempted. Read-only remote-ref check found no content branch. The code and review results remain local and in the private checkpoint archive.
 
-Current counts, missing/thin leaves and source-support totals are generated in checkpoint-summary.json and give-this-to-Will.md. All five subjects remain incomplete in substantive coverage. A leaf count is never a completeness claim.
+At the 25 November checkpoint, checkpoint-summary.json and give-this-to-Will.md recorded draft coverage. Those files are historical and do not establish current completeness or publication. A leaf count is never a completeness claim.
+
+## 26 November release progress
+User authorised completing and publishing the five subjects, with quotations in English and Verulamium excluded. PR69 labels merged as d3a6f713. Earlier versions of GCSE English and Psychology were published; later verified versions supersede their initial checkpoint counts. Psychology original MARK fronts, stable keys and card IDs were kept, and the scattergram media was checked. Every batch was checked against exact expected material plus sortedkey count/checksum. Old Psychology atomic catalogue remains unchanged. See publication-results.json for UUIDs and exact verification. Final samples remain gated on all5complete.
+
+## 26 November report and documentation checkpoint
+The verified release record now lists Psychology 806, A-level English Literature 435, and GCSE English Literature 349 cards published. Sociology and GCSE History continue through review and release; no final count or publication is asserted here. The final-report fixture now checks that the original Psychology scattergram’s alt text, including its eight data pairs, survives HTML-to-text rendering. The fixture passed. Fresh final samples remain gated on all five strict builds and lead confirmation.
+
+## Final release — 26 November 2026
+
+All five subjects were completed, reviewed, strict-built and published: Psychology 806; Sociology 567; A-level English Literature 435; GCSE History 482, excluding Verulamium; GCSE English Literature 349. Total: 2,639 cards. Exact material comparisons, counts and stable-key checks passed for every catalogue. Lead audits and corrective whole-set reviews are recorded in each subject’s lead-audit.json. The final seeded 222-card stratified handover includes four MARK cards per subject and quotation recall in both English samples. Earlier checkpoint notes are historical; publication-results.json and give this to will.md are current.
