@@ -1,0 +1,881 @@
+{
+  "subject_id": "OCR_GCSE_HIST_J411",
+  "qualification_code": "J411",
+  "school_entry_option": "J411 DB",
+  "specification_url": "https://www.ocr.org.uk/Images/207164-specification-accredited-gcse-history-b-.pdf",
+  "official_assessment_url": "https://www.ocr.org.uk/qualifications/gcse/history-b-schools-history-project-j411-from-2016/assessment/",
+  "starting_commit": "d3a6f7137fdb4bd8ba793c67f743f393e77d155d",
+  "board_switch_commit": "67f48e9103b47a02be7f89939561525fc2a6406f",
+  "status": "preflight_checkpoint",
+  "indexed_papers": 0,
+  "indexed_scored_units": 0,
+  "evidence_note": "Standard OCR files were downloaded and their layouts inspected. This manifest records one-based PDF pages. Candidate scheme ranges still need rendered crop and end-boundary verification. SHA-256 values were not retained before workspace loss and must be captured from a fresh download.",
+  "component_fixtures": {
+    "14": {
+      "marks": [
+        1,
+        1,
+        1,
+        9,
+        10,
+        18,
+        18,
+        3,
+        5,
+        12,
+        20,
+        20
+      ],
+      "printed_units": [
+        "1(a)",
+        "1(b)",
+        "1(c)",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6(a)",
+        "6(b)",
+        "7",
+        "8",
+        "9"
+      ],
+      "choice_groups": [
+        [
+          "4",
+          "5"
+        ],
+        [
+          "8",
+          "9"
+        ]
+      ],
+      "choice_choose": [
+        1,
+        1
+      ],
+      "total_marks": 80,
+      "duration_minutes": 105
+    },
+    "21": {
+      "marks": [
+        25,
+        25,
+        25
+      ],
+      "printed_units": [
+        "1",
+        "2",
+        "3"
+      ],
+      "choice_groups": [
+        [
+          "1",
+          "2",
+          "3"
+        ]
+      ],
+      "choice_choose": [
+        2
+      ],
+      "total_marks": 50,
+      "duration_minutes": 60,
+      "each_response": {
+        "content_marks": 20,
+        "spag_marks": 5
+      }
+    },
+    "33": {
+      "marks": [
+        1,
+        1,
+        1,
+        9,
+        10,
+        18,
+        18,
+        7,
+        15,
+        18,
+        18
+      ],
+      "printed_units": [
+        "1(a)",
+        "1(b)",
+        "1(c)",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "choice_groups": [
+        [
+          "4",
+          "5"
+        ],
+        [
+          "8",
+          "9"
+        ]
+      ],
+      "choice_choose": [
+        1,
+        1
+      ],
+      "total_marks": 80,
+      "duration_minutes": 105
+    }
+  },
+  "papers": [
+    {
+      "paper_id": "OCR_J411_2023_JUNE_14",
+      "printed_code": "J411/14",
+      "year": 2023,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/704823-question-paper-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–5"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/704914-mark-scheme-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+        "pdf_page_count": 34,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            8,
+            8
+          ],
+          "2": [
+            9,
+            10
+          ],
+          "3": [
+            11,
+            13
+          ],
+          "4": [
+            14,
+            16
+          ],
+          "5": [
+            17,
+            19
+          ],
+          "7": [
+            23,
+            25
+          ],
+          "8": [
+            26,
+            29
+          ],
+          "9": [
+            30,
+            33
+          ],
+          "6(a)": [
+            20,
+            20
+          ],
+          "6(b)": [
+            21,
+            22
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/704659-examiners-report-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+          "scope": "J411/14"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2023_JUNE_21",
+      "printed_code": "J411/21",
+      "year": 2023,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/704828-question-paper-history-around-us.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/704919-mark-scheme-history-around-us.pdf",
+        "pdf_page_count": 25,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            11,
+            15
+          ],
+          "2": [
+            16,
+            20
+          ],
+          "3": [
+            21,
+            24
+          ]
+        },
+        "shared_spag_grid_pdf_page": 9
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/704657-examiners-report-history-around-us.pdf",
+          "scope": "J411/21"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2023_JUNE_33",
+      "printed_code": "J411/33",
+      "year": 2023,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/704831-question-paper-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–6"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/704922-mark-scheme-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+        "pdf_page_count": 34,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            8,
+            8
+          ],
+          "2": [
+            9,
+            10
+          ],
+          "3": [
+            11,
+            13
+          ],
+          "4": [
+            14,
+            16
+          ],
+          "5": [
+            17,
+            20
+          ],
+          "6": [
+            21,
+            23
+          ],
+          "7": [
+            24,
+            27
+          ],
+          "8": [
+            28,
+            30
+          ],
+          "9": [
+            31,
+            33
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/704656-examiners-report-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+          "scope": "J411/33"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2024_JUNE_14",
+      "printed_code": "J411/14",
+      "year": 2024,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/727594-question-paper-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–5"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/727682-mark-scheme-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+        "pdf_page_count": 33,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            8,
+            8
+          ],
+          "2": [
+            9,
+            10
+          ],
+          "3": [
+            11,
+            13
+          ],
+          "4": [
+            14,
+            16
+          ],
+          "5": [
+            17,
+            19
+          ],
+          "7": [
+            23,
+            24
+          ],
+          "8": [
+            25,
+            28
+          ],
+          "9": [
+            29,
+            32
+          ],
+          "6(a)": [
+            20,
+            20
+          ],
+          "6(b)": [
+            21,
+            22
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/727436-examiners-report-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+          "scope": "J411/14"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2024_JUNE_21",
+      "printed_code": "J411/21",
+      "year": 2024,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/727599-question-paper-history-around-us.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/727687-mark-scheme-history-around-us.pdf",
+        "pdf_page_count": 23,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            10,
+            13
+          ],
+          "2": [
+            14,
+            17
+          ],
+          "3": [
+            18,
+            22
+          ]
+        },
+        "shared_spag_grid_pdf_page": 8
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/727434-examiners-report-history-around-us.pdf",
+          "scope": "J411/21"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2024_JUNE_33",
+      "printed_code": "J411/33",
+      "year": 2024,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/727602-question-paper-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–6"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/727690-mark-scheme-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+        "pdf_page_count": 38,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            8,
+            8
+          ],
+          "2": [
+            9,
+            10
+          ],
+          "3": [
+            11,
+            12
+          ],
+          "4": [
+            13,
+            16
+          ],
+          "5": [
+            17,
+            20
+          ],
+          "6": [
+            21,
+            23
+          ],
+          "7": [
+            24,
+            28
+          ],
+          "8": [
+            29,
+            32
+          ],
+          "9": [
+            33,
+            37
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/727433-examiners-report-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+          "scope": "J411/33"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2025_JUNE_14",
+      "printed_code": "J411/14",
+      "year": 2025,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/753339-question-paper-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–5"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/753424-mark-scheme-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+        "pdf_page_count": 39,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            9,
+            9
+          ],
+          "2": [
+            10,
+            11
+          ],
+          "3": [
+            12,
+            14
+          ],
+          "4": [
+            15,
+            19
+          ],
+          "5": [
+            20,
+            23
+          ],
+          "7": [
+            28,
+            30
+          ],
+          "8": [
+            31,
+            34
+          ],
+          "9": [
+            35,
+            38
+          ],
+          "6(a)": [
+            24,
+            24
+          ],
+          "6(b)": [
+            25,
+            27
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "examiner_reports": [
+        {
+          "scope": "Crime and Punishment across /14/15/16",
+          "url": "https://www.ocr.org.uk/Images/758826-examiners-report-crime-and-punishment-c.1250-to-present.pdf"
+        },
+        {
+          "scope": "The Norman Conquest across /11/14/17",
+          "status": "resolve exact URL from assessment catalogue"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2025_JUNE_21",
+      "printed_code": "J411/21",
+      "year": 2025,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/753343-question-paper-history-around-us.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/753428-mark-scheme-history-around-us.pdf",
+        "pdf_page_count": 24,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            10,
+            13
+          ],
+          "2": [
+            14,
+            18
+          ],
+          "3": [
+            19,
+            23
+          ]
+        },
+        "shared_spag_grid_pdf_page": 8
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/753176-examiners-report-history-around-us.pdf",
+          "scope": "J411/21"
+        }
+      ]
+    },
+    {
+      "paper_id": "OCR_J411_2025_JUNE_33",
+      "printed_code": "J411/33",
+      "year": 2025,
+      "series": "June",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/753344-question-paper-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–5"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/753429-mark-scheme-viking-expansion-c.750-c.1050-with-living-under-nazi-rule-1933-1945.pdf",
+        "pdf_page_count": 40,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            8,
+            9
+          ],
+          "2": [
+            10,
+            11
+          ],
+          "3": [
+            12,
+            14
+          ],
+          "4": [
+            15,
+            18
+          ],
+          "5": [
+            19,
+            22
+          ],
+          "6": [
+            23,
+            25
+          ],
+          "7": [
+            26,
+            30
+          ],
+          "8": [
+            31,
+            35
+          ],
+          "9": [
+            36,
+            39
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "examiner_reports": [
+        {
+          "url": "https://www.ocr.org.uk/Images/758861-examiners-report-viking-expansion-c.750-c.1050.pdf",
+          "scope": "Viking Expansion across /31/32/33"
+        },
+        {
+          "url": "https://www.ocr.org.uk/Images/758863-examiners-report-living-under-nazi-rule-1933-1945.pdf",
+          "scope": "Living under Nazi Rule across /33/36/39"
+        }
+      ],
+      "source_exceptions": [
+        {
+          "printed_units": [
+            "6"
+          ],
+          "marks": 7,
+          "pdf_pages": [
+            3
+          ],
+          "required": [
+            "A"
+          ],
+          "status": "Source A removed from OCR public PDF."
+        },
+        {
+          "printed_units": [
+            "7"
+          ],
+          "marks": 15,
+          "pdf_pages": [
+            4,
+            5
+          ],
+          "required": [
+            "B",
+            "C",
+            "D"
+          ],
+          "status": "Source B and Interpretation D removed from OCR public PDF."
+        }
+      ],
+      "max_supported_selection_without_removed_sources": 58
+    },
+    {
+      "paper_id": "OCR_J411_SAMPLE_14",
+      "printed_code": "J411/14",
+      "year": null,
+      "series": "Sample",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/207083-unit-j411-14-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087-sample-assessment-material.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–5"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/207083-unit-j411-14-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087-sample-assessment-material.pdf",
+        "pdf_page_count": 32,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            16,
+            16
+          ],
+          "2": [
+            17,
+            17
+          ],
+          "3": [
+            18,
+            18
+          ],
+          "4": [
+            19,
+            20
+          ],
+          "5": [
+            21,
+            22
+          ],
+          "7": [
+            25,
+            25
+          ],
+          "8": [
+            26,
+            27
+          ],
+          "9": [
+            28,
+            29
+          ],
+          "6(a)": [
+            23,
+            23
+          ],
+          "6(b)": [
+            24,
+            24
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "bundled_sample": true,
+      "release_note": "Do not give students a pre-reveal scheme link through a combined question-and-scheme specimen PDF. Extract question-side resources only where publication rights are established."
+    },
+    {
+      "paper_id": "OCR_J411_SAMPLE_21",
+      "printed_code": "J411/21",
+      "year": null,
+      "series": "Sample",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/207089-unit-j411-21-history-around-us-sample-assessment-material.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/207089-unit-j411-21-history-around-us-sample-assessment-material.pdf",
+        "pdf_page_count": 24,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            16,
+            17
+          ],
+          "2": [
+            18,
+            19
+          ],
+          "3": [
+            20,
+            21
+          ]
+        },
+        "shared_spag_grid_pdf_page": 22
+      },
+      "bundled_sample": true,
+      "release_note": "Do not give students a pre-reveal scheme link through a combined question-and-scheme specimen PDF. Extract question-side resources only where publication rights are established."
+    },
+    {
+      "paper_id": "OCR_J411_SAMPLE_33",
+      "printed_code": "J411/33",
+      "year": null,
+      "series": "Sample",
+      "status": "source layout inspected; candidate, not indexed",
+      "question_paper": {
+        "url": "https://www.ocr.org.uk/Images/207092-unit-j411-33-viking-expansion-c.-750-c.1050-with-living-under-nazi-rule-1933-1945-sample-assessment-material.pdf",
+        "pdf_page_count": 8,
+        "question_pages_pdf": "2–6"
+      },
+      "mark_scheme": {
+        "url": "https://www.ocr.org.uk/Images/207092-unit-j411-33-viking-expansion-c.-750-c.1050-with-living-under-nazi-rule-1933-1945-sample-assessment-material.pdf",
+        "pdf_page_count": 32,
+        "candidate_pdf_page_ranges": {
+          "1": [
+            16,
+            16
+          ],
+          "2": [
+            17,
+            17
+          ],
+          "3": [
+            18,
+            18
+          ],
+          "4": [
+            19,
+            20
+          ],
+          "5": [
+            21,
+            22
+          ],
+          "6": [
+            23,
+            23
+          ],
+          "7": [
+            24,
+            25
+          ],
+          "8": [
+            26,
+            27
+          ],
+          "9": [
+            28,
+            29
+          ]
+        },
+        "q1_layout": "Split the shared page range by table row; Q1(a), (b), (c) each award 1 mark."
+      },
+      "bundled_sample": true,
+      "release_note": "Do not give students a pre-reveal scheme link through a combined question-and-scheme specimen PDF. Extract question-side resources only where publication rights are established."
+    }
+  ],
+  "outstanding": [
+    {
+      "series": "June 2018",
+      "components": [
+        "14",
+        "20",
+        "33"
+      ],
+      "status": "Public leads. Check printed codes and both PDF roles. The /20 lead may be the older History Around Us code and must keep its own identity.",
+      "question_paper_14": "https://revisionworld.com/sites/revisionworld.com/files/imce/536957-question-paper-crime-and-punishment-c.1250-to-present-with-the-norman-conquest-1065-1087.pdf",
+      "comparators": [
+        "https://www.physicsandmathstutor.com/past-papers/gcse-history/ocr-b/",
+        "https://www.savemyexams.com/gcse/history/ocr/b-schools-history-project/past-papers/paper-21/"
+      ]
+    },
+    {
+      "series": "June 2019",
+      "components": [
+        "14",
+        "21",
+        "33"
+      ],
+      "status": "Public OCR document mirrors. Verify bytes and covers for each pair, and check any removed or separately credited stimulus.",
+      "component_21_question_paper": "https://cdn.savemyexams.com/uploads/2022/02/j411-june-2019-paper-21-qp-ocr-gcse--history-b.pdf",
+      "component_21_mark_scheme": "https://mmerevise.co.uk/app/uploads/2022/01/2019-History-B-Paper-10-MS.pdf",
+      "component_33_document_ids": [
+        619771,
+        620063
+      ],
+      "component_14_mark_scheme_document_id": 620054,
+      "comparators": [
+        "https://www.physicsandmathstutor.com/past-papers/gcse-history/ocr-b/"
+      ]
+    },
+    {
+      "series": "2020",
+      "components": [
+        "14",
+        "21",
+        "33"
+      ],
+      "status": "Not verified. Check printed sitting on PDFs catalogued as June 2020 before pairing with PPP Autumn catalogue rows."
+    },
+    {
+      "series": "November 2021 and June 2022",
+      "components": [
+        "14",
+        "21",
+        "33"
+      ],
+      "status": "OCR public archive lists split/adapted assessment components. Confirm exact route and sitting before any separate import. Never alias to these standard component IDs."
+    },
+    {
+      "series": "June 2026",
+      "components": [
+        "14",
+        "21",
+        "33"
+      ],
+      "status": "No exact matching release found on checked public OCR assessment page."
+    },
+    {
+      "series": "Modified papers",
+      "status": "OCR assessment page lists modified ZIPs. Pair by printed identity and hash, check accessibility-only duplicates, and preserve genuine content variants."
+    }
+  ]
+}
