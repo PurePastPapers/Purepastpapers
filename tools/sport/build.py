@@ -107,6 +107,7 @@ def paper_record(row):
     }
     if row.get('report'):
         paper['source_documents']['examiner_report'] = row['report']
+        paper['examiner_report_url'] = row['report']['url']
     return paper
 
 
@@ -130,7 +131,7 @@ def build(row, reviewed, cache, spec):
             seen.add(label)
             number, part = re.fullmatch(r'(\d+)(.*)', label).groups()
             if item.get('exclusion'):
-                excluded.append({'question_number': number, 'part_label': part, 'marks': marks,
+                excluded.append({'question_number': number, 'marks': marks,
                                  **item['exclusion']})
                 continue
             question_id = part_id(pid, label)
@@ -148,9 +149,10 @@ def build(row, reviewed, cache, spec):
             assert set(dependencies) <= {q['question_id'] for q in questions}, (pid, label, dependencies)
             assert item['difficulty'] in ('easy', 'medium', 'hard'), (pid, label)
             questions.append({
-                **identity, 'question_id': question_id, 'parent_question_id': part_id(pid, number),
+                **identity, 'question_id': question_id,
+                **({'parent_question_id': part_id(pid, number), 'part_label': part} if part else {}),
                 'source_type': 'real_past_paper', 'paper_id': pid, 'component': f'U{unit}',
-                'subject_category': 'Applied / Vocational', 'question_number': number, 'part_label': part,
+                'subject_category': 'Applied / Vocational', 'question_number': number,
                 'marks': marks, 'estimated_minutes': max(1, math.ceil(marks * row['duration_minutes'] / row['total_marks'])),
                 'difficulty': item['difficulty'], 'introduced_year': 12,
                 'primary_spec_points': tags[:1], 'crossover_spec_points': tags[1:],
@@ -217,14 +219,18 @@ def main():
             resources.append(paper)
         rows.append(status)
     relative = 'sport/catalogue.json'
-    write(ROOT / 'data/packs' / relative, {'pack_id': 'ocr_05827_catalogue', 'papers': resources, 'questions': []})
-    entries.append({'file': relative, 'subject_id': SUBJECT})
+    catalogue_path = ROOT / 'data/packs' / relative
+    if resources:
+        write(catalogue_path, {'pack_id': 'ocr_05827_catalogue', 'papers': resources, 'questions': []})
+        entries.append({'file': relative, 'subject_id': SUBJECT})
+    else:
+        catalogue_path.unlink(missing_ok=True)
     index_path = ROOT / 'data/packs/index.json'
     index = load(index_path)
     index['packs'] = [entry for entry in index['packs'] if entry.get('subject_id') != SUBJECT] + entries
     write(index_path, index)
     write(IMPORT / 'coverage.json', {'subject_id': SUBJECT, 'papers': rows, 'grading': 'raw_marks_only'})
-    print(f'{len(entries) - 1} reviewed packs, {sum(r.get("scored_parts", 0) for r in rows)} scored parts')
+    print(f'{len(entries) - bool(resources)} reviewed packs, {sum(r.get("scored_parts", 0) for r in rows)} scored parts')
 
 
 if __name__ == '__main__':

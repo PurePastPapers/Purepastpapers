@@ -492,14 +492,71 @@ export default {
   ],
 
   OCR_L3_IT_AAQ: [
-    { key: 'F200', title: 'Unit F200: Fundamentals of data analytics', note: 'Externally examined', topics: [
-      ['F200', 'F200', 'Fundamentals of data analytics', [
-        'F200.1|All unit content (add topic areas from the OCR specification)',
+    { key: "F200", title: "Unit F200: Fundamentals of data analytics", note: "Externally examined · H019 and H119", topics: [
+      ["F200_T1", "1", "Understanding data", [
+        "F200.1.1|Data, information and knowledge",
+        "F200.1.2|Big data",
+        "F200.1.3|Data and file formats",
+        "F200.1.4|Data types and classifications",
+      ]],
+      ["F200_T2", "2", "Managing data", [
+        "F200.2.1.1|Data lifecycle management (DLM)",
+        "F200.2.1.2|Data analytics pipeline",
+        "F200.2.2.1|Data assurance considerations",
+        "F200.2.2.2|Data gathering",
+        "F200.2.3.1|Data states",
+        "F200.2.3.2|Data stores",
+        "F200.2.3.3|Data storage",
+        "F200.2.3.4|On-site storage",
+        "F200.2.3.5|Cloud storage",
+        "F200.2.4.1|Data Wrangling",
+        "F200.2.4.2|Data maintenance",
+        "F200.2.5.1|Data analytics",
+        "F200.2.5.2|Types of data analytics",
+        "F200.2.6.1|Presenting data",
+        "F200.2.6.2|Visualising data",
+        "F200.2.7|Archival",
+        "F200.2.8|Destruction",
+      ]],
+      ["F200_T3", "3", "How data can be accessed and managed across platforms", [
+        "F200.3.1|Application Programming Interfaces (API)",
+        "F200.3.2|User access controls",
+        "F200.3.3|Permissions",
+      ]],
+      ["F200_T4", "4", "Legal considerations", [
+        "F200.4.1|Legislation and the role of the ICO when using data",
+      ]],
+      ["F200_T5", "5", "Job roles, skills and attributes in data analytics", [
+        "F200.5.1|Job roles related to data analytics",
+        "F200.5.2|Personal attributes",
+        "F200.5.3|Communication Skills",
       ]],
     ] },
-    { key: 'F201', title: 'Unit F201: Big data and machine learning', note: 'Externally examined', topics: [
-      ['F201', 'F201', 'Big data and machine learning', [
-        'F201.1|All unit content (add topic areas from the OCR specification)',
+    { key: "F201", title: "Unit F201: Big data and machine learning", note: "Externally examined · H119", topics: [
+      ["F201_T1", "1", "The scope of managing big data", [
+        "F201.1.1|The six characteristics (6Vs)",
+        "F201.1.2|The evolution of big data",
+        "F201.1.3|How big data is captured",
+        "F201.1.4|The purpose, importance and use of big data analytics",
+      ]],
+      ["F201_T2", "2", "The infrastructure challenges of big data", [
+        "F201.2.1|Types of big data",
+        "F201.2.2|Data preparation and cleaning techniques for data mining",
+        "F201.2.3|Data mining techniques",
+        "F201.2.4|Big data infrastructure",
+        "F201.2.5|Data science and data analytics",
+        "F201.2.6|Data analytic techniques",
+      ]],
+      ["F201_T3", "3", "Big data, machine learning and artificial intelligence", [
+        "F201.3.1|Artificial Intelligence and machine learning",
+      ]],
+      ["F201_T4", "4", "Legal and ethical issues in data management", [
+        "F201.4.1|Legal issues",
+        "F201.4.2|Ethical issues",
+      ]],
+      ["F201_T5", "5", "Environment and society", [
+        "F201.5.1|Environment",
+        "F201.5.2|Society",
       ]],
     ] },
   ],

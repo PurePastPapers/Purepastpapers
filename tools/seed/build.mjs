@@ -284,7 +284,7 @@ for (const subject of subjects) {
       grade_scheme: subject.grade_scheme || GRADE_SCHEME[subject.level],
       has_written_exam: hasExam,
       extra_hard: Boolean(subject.extra_hard),
-      has_catalogue: Boolean(catalogue),
+      has_catalogue: Boolean(catalogue || subject.has_catalogue),
     },
     spec,
     papers,

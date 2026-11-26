@@ -2,6 +2,53 @@
 // Earlier runtime skill ids whose meaning is now an exact set of official leaves.
 // Saved learned ticks expand once on load.
 export const LEGACY_SPEC_IDS = Object.freeze({
+  "OCR_L3IT_F201.1": [
+    "OCR_L3IT_F201_T1_F201.1.1",
+    "OCR_L3IT_F201_T1_F201.1.2",
+    "OCR_L3IT_F201_T1_F201.1.3",
+    "OCR_L3IT_F201_T1_F201.1.4",
+    "OCR_L3IT_F201_T2_F201.2.1",
+    "OCR_L3IT_F201_T2_F201.2.2",
+    "OCR_L3IT_F201_T2_F201.2.3",
+    "OCR_L3IT_F201_T2_F201.2.4",
+    "OCR_L3IT_F201_T2_F201.2.5",
+    "OCR_L3IT_F201_T2_F201.2.6",
+    "OCR_L3IT_F201_T3_F201.3.1",
+    "OCR_L3IT_F201_T4_F201.4.1",
+    "OCR_L3IT_F201_T4_F201.4.2",
+    "OCR_L3IT_F201_T5_F201.5.1",
+    "OCR_L3IT_F201_T5_F201.5.2"
+  ],
+  "OCR_L3IT_F200.1": [
+    "OCR_L3IT_F200_T1_F200.1.1",
+    "OCR_L3IT_F200_T1_F200.1.2",
+    "OCR_L3IT_F200_T1_F200.1.3",
+    "OCR_L3IT_F200_T1_F200.1.4",
+    "OCR_L3IT_F200_T2_F200.2.1.1",
+    "OCR_L3IT_F200_T2_F200.2.1.2",
+    "OCR_L3IT_F200_T2_F200.2.2.1",
+    "OCR_L3IT_F200_T2_F200.2.2.2",
+    "OCR_L3IT_F200_T2_F200.2.3.1",
+    "OCR_L3IT_F200_T2_F200.2.3.2",
+    "OCR_L3IT_F200_T2_F200.2.3.3",
+    "OCR_L3IT_F200_T2_F200.2.3.4",
+    "OCR_L3IT_F200_T2_F200.2.3.5",
+    "OCR_L3IT_F200_T2_F200.2.4.1",
+    "OCR_L3IT_F200_T2_F200.2.4.2",
+    "OCR_L3IT_F200_T2_F200.2.5.1",
+    "OCR_L3IT_F200_T2_F200.2.5.2",
+    "OCR_L3IT_F200_T2_F200.2.6.1",
+    "OCR_L3IT_F200_T2_F200.2.6.2",
+    "OCR_L3IT_F200_T2_F200.2.7",
+    "OCR_L3IT_F200_T2_F200.2.8",
+    "OCR_L3IT_F200_T3_F200.3.1",
+    "OCR_L3IT_F200_T3_F200.3.2",
+    "OCR_L3IT_F200_T3_F200.3.3",
+    "OCR_L3IT_F200_T4_F200.4.1",
+    "OCR_L3IT_F200_T5_F200.5.1",
+    "OCR_L3IT_F200_T5_F200.5.2",
+    "OCR_L3IT_F200_T5_F200.5.3"
+  ],
   "AQA_GEOG_WC_1.1": [
     "AQA_GEOG_3.1.1.1"
   ],

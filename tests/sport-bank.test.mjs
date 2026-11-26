@@ -63,7 +63,7 @@ test('Sport packs reconcile their printed, available and excluded tariffs with e
       assert.equal(question.component, paper.paper_code);
       assert.equal(question.paper_id, paper.paper_id);
       assert.equal(question.qualification_code, paper.qualification_code);
-      assert.equal(question.scheme_question_number, question.question_number + question.part_label);
+      assert.equal(question.scheme_question_number, question.question_number + (question.part_label || ''));
       assert(question.primary_spec_points.length);
       assert([...question.primary_spec_points, ...question.crossover_spec_points].every(point => outcomes.has(point)));
       assert.equal(question.include_in_custom_pool, true);
@@ -88,4 +88,18 @@ test('June 2025 practice preserves the cardiovascular flowchart and the complete
   const last = byId.get('OCR_05827_2025_JUNE_U03_Q04_e_ii');
   assert.deepEqual(last.provenance.scheme_regions.map(region => region.page), [21]);
   assert.equal(last.marks, 2);
+});
+
+test('OCR split schemes and real prior-answer dependencies preserve their exact scopes', () => {
+  const june23 = 'OCR_05827_2023_JUNE_U03';
+  const cv = byId.get(june23 + '_Q02_c_i');
+  const ms = byId.get(june23 + '_Q02_c_ii');
+  assert.equal(cv.marks, 3);
+  assert.equal(ms.marks, 3);
+  assert(cv.provenance.scheme_regions[0].bbox[3] <= ms.provenance.scheme_regions[0].bbox[1]);
+  assert(ms.provenance.scheme_regions[1].bbox[0] > 0.6, 'retain the separately scoped shared marking cap');
+  assert.deepEqual(byId.get(june23 + '_Q02_d').provenance.scheme_regions.map(region => region.page), [15, 16, 17]);
+  const june24 = 'OCR_05827_2024_JUNE_U03';
+  assert.deepEqual(byId.get(june24 + '_Q01_d_ii').depends_on_question_ids, [june24 + '_Q01_d_i']);
+  assert.deepEqual(byId.get('OCR_05827_SAMPLE_U01_Q18_b').depends_on_question_ids, ['OCR_05827_SAMPLE_U01_Q18_a']);
 });
