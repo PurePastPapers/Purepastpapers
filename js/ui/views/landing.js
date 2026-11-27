@@ -118,17 +118,17 @@ export async function mount(element, context) {
 
       <section class="lp-section lp-video" id="video" aria-labelledby="video-title">
         <h2 id="video-title">See why it works</h2>
-        <p class="hand">80 seconds. Sound on.</p>
+        <p class="hand">80 seconds, on repeat.</p>
         <figure class="card lp-video__card tilt-3">
           <i class="tape tape--l" aria-hidden="true"></i><i class="tape tape--r" aria-hidden="true"></i>
-          <video class="lp-video__player" controls preload="none" playsinline poster="assets/promo/purepastpapers-promo-poster.jpg" aria-describedby="video-desc">
+          <video class="lp-video__player" muted loop playsinline preload="metadata" poster="assets/promo/purepastpapers-promo-poster.jpg" aria-describedby="video-desc">
             <source src="assets/promo/purepastpapers-promo.mp4" type="video/mp4" />
             Your browser can’t play this video. <a href="assets/promo/purepastpapers-promo.mp4">Download it (8 MB)</a>.
           </video>
         </figure>
         <p class="small muted lp-video__desc" id="video-desc">
           Why re-reading your notes doesn’t work, why testing yourself does, and how PurePastPapers filters questions to the exact spec points you’ve learned.
-          It also previews the teacher terminal, which is coming soon. There is no speech: it is music and on-screen text, with the research sources listed at the end.
+          It also previews the teacher terminal, which is coming soon. The video plays silently on a loop, with on-screen text and the research sources listed at the end.
         </p>
       </section>
 
@@ -219,4 +219,31 @@ export async function mount(element, context) {
   if (section) requestAnimationFrame(() => section.scrollIntoView({ block: 'start' }));
   element.querySelector('[data-open-welcome]')?.addEventListener('click', () => openWelcome({ navigate: context.navigate }));
 
+  // The promo video plays muted on a loop, with no controls, while it is on screen (it only starts
+  // downloading when the visitor scrolls to it). Browsers only allow autoplay when muted. People who
+  // ask for reduced motion, and browsers that block autoplay anyway, get normal controls instead.
+  const player = element.querySelector('.lp-video__player');
+  let watcher = null;
+  if (player) {
+    player.muted = true;
+    const withControls = () => {
+      player.controls = true;
+      player.loop = false;
+    };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      withControls();
+    } else if ('IntersectionObserver' in window) {
+      watcher = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) player.play().catch(withControls);
+        else player.pause();
+      }, { threshold: 0.35 });
+      watcher.observe(player);
+    } else {
+      player.play().catch(withControls);
+    }
+  }
+  return () => {
+    watcher?.disconnect();
+    player?.pause();
+  };
 }
