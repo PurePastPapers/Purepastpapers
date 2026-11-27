@@ -1,0 +1,77 @@
+[
+  {
+    "stable_key": "ppp-soc-7192-content:b2f391015538ec1a3a12",
+    "before": {
+      "front": "Which sociologist argued kinship ties retain significance beyond households?",
+      "back": "Carol Smart"
+    },
+    "disposition": "cut",
+    "after": null,
+    "source": "https://doi.org/10.1111/j.1468-4446.2004.00034.x",
+    "reason": "Many sociologists discuss ties outside households, so the prompt cannot identify Carol Smart uniquely.",
+    "replacement_needs_independent_verification": false
+  },
+  {
+    "stable_key": "ppp-soc-7192-content:e89f8c8aa03c83199366",
+    "before": {
+      "front": "What is a fertility rate?",
+      "back": "Average number of live births per woman"
+    },
+    "disposition": "rewrite",
+    "after": {
+      "front": "What does the total fertility rate estimate?",
+      "back": "Average births per woman at current age-specific fertility rates"
+    },
+    "source": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/birthsummarytablesenglandandwales/2025finalrates",
+    "reason": "A fertility rate is not uniquely the total fertility rate; the latter is a hypothetical age-specific-rate estimate.",
+    "replacement_needs_independent_verification": true
+  },
+  {
+    "stable_key": "ppp-soc-7192-content:8c650de79007b3af5f96",
+    "before": {
+      "front": "What is a feminist criticism of the symmetrical-family thesis?",
+      "back": "Shared tasks do not establish equal responsibility"
+    },
+    "disposition": "cut",
+    "after": null,
+    "source": "",
+    "reason": "The prompt asks for one of many possible feminist criticisms and has no unique answer.",
+    "replacement_needs_independent_verification": false
+  },
+  {
+    "stable_key": "ppp-soc-7192-content:55b302eace8436e0ba69",
+    "before": {
+      "front": "What does the march-of-progress view say about children’s status?",
+      "back": "Children have gained protection and rights over time"
+    },
+    "disposition": "cut",
+    "after": null,
+    "source": "",
+    "reason": "Duplicates the march-of-progress childhood card at index 3.",
+    "replacement_needs_independent_verification": false
+  },
+  {
+    "stable_key": "ppp-soc-7192-content:c5cc5ba7eaa50a7ac79b",
+    "before": {
+      "front": "Which historian argued that childhood experiences varied by class and gender?",
+      "back": "Linda Pollock"
+    },
+    "disposition": "cut",
+    "after": null,
+    "source": "https://api.pageplace.de/preview/DT0400.9781317374749_A29527756/preview-9781317374749_A29527756.pdf chapter by Pollock, pp. 1–2",
+    "reason": "Pollock makes this argument but many other historians also do; the attribution prompt is not unique.",
+    "replacement_needs_independent_verification": false
+  },
+  {
+    "stable_key": "ppp-soc-7192-content:a362c658428ddfbe13bf",
+    "before": {
+      "front": "How can migration affect family structures across borders?",
+      "back": "It creates transnational families"
+    },
+    "disposition": "cut",
+    "after": null,
+    "source": "https://sk.sagepub.com/dict/mono/embed/key-concepts-in-family-studies/chpt/transnational-families",
+    "reason": "The prompt is generic and admits many effects of migration; its answer is close to a restatement.",
+    "replacement_needs_independent_verification": false
+  }
+]

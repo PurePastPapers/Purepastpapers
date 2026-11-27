@@ -1,0 +1,4 @@
+-- Stop unless exactly one row is returned and id equals 15e5d178-67ef-41ca-9b0c-5708cbccc478.
+insert into public.flashcard_catalogue (id,title,subject_id,exam_board,qualification,topic,deck_type,status) values ('AQA_ALEVEL_PSYCH_7182_EVIDENCE','AQA A-level Psychology 7182 – Exam evidence','AQA_ALEVEL_PSYCH_7182','AQA','A-level 7182','Approved specification route','atomic','coming_soon') on conflict (id) do nothing;
+insert into public.flashcard_catalogue_versions (id,catalogue_id,version) values ('15e5d178-67ef-41ca-9b0c-5708cbccc478'::uuid,'AQA_ALEVEL_PSYCH_7182_EVIDENCE','2026-11-26-complete-v1') on conflict (catalogue_id,version) do nothing;
+select id,catalogue_id,version from public.flashcard_catalogue_versions where catalogue_id='AQA_ALEVEL_PSYCH_7182_EVIDENCE' and version='2026-11-26-complete-v1';

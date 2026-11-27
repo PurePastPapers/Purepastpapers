@@ -1,0 +1,124 @@
+[
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:1ab19f8b6a94c08987c8",
+    "action": "replace",
+    "before": {
+      "front": "In The Handmaid's Tale, which category of women illustrates a subservient social role?",
+      "back": "Econowives"
+    },
+    "after": {
+      "front": "In The Handmaid\u2019s Tale, which category of women combines domestic and reproductive roles in poorer households?",
+      "back": "Econowives"
+    },
+    "reason": "The existing prompt has multiple plausible answers: many categories of women are subservient.",
+    "source": "https://www.sparknotes.com/lit/handmaid/summary/"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:9d61460a492026e98fa3",
+    "action": "replace",
+    "before": {
+      "front": "In The Handmaid\u2019s Tale, which friend of Offred attempts to escape her assignment as a Handmaid?",
+      "back": "Moira"
+    },
+    "after": {
+      "front": "In The Handmaid\u2019s Tale, which friend of Offred escapes the Handmaid training centre?",
+      "back": "Moira"
+    },
+    "reason": "Moira escapes the Red Centre; the old prompt implies she escaped after a household assignment.",
+    "source": "https://www.sparknotes.com/lit/handmaid/summary/"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:06e25c8069a816e558ee",
+    "action": "replace",
+    "before": {
+      "front": "In Frankenstein, where does the creature tell Victor his story?",
+      "back": "On an Alpine glacier"
+    },
+    "after": {
+      "front": "In Frankenstein, where does the creature tell Victor his story?",
+      "back": "In a mountain hut"
+    },
+    "reason": "They meet on a glacier but enter a mountain hut before the tale begins.",
+    "source": "https://en.wikisource.org/wiki/Frankenstein,_or_the_Modern_Prometheus_(First_Edition,_1818)/Volume_2/Chapter_2"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:370e10c6a5dffec8e6d8",
+    "action": "replace",
+    "before": {
+      "front": "In Frankenstein, what object is found on Justine and used against her?",
+      "back": "William\u2019s locket"
+    },
+    "after": {
+      "front": "In Frankenstein, what object is found on Justine and used against her?",
+      "back": "The miniature of Victor\u2019s mother"
+    },
+    "reason": "The text identifies a miniature of Victor\u2019s mother, owned by Elizabeth and borrowed by William; locket is unsupported.",
+    "source": "https://englishfolio.com/classics/frankenstein/volume-1-chapter-6"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:b32daeaa677a7e8b4ea1",
+    "action": "remove",
+    "before": {
+      "front": "In Streetcar, whose need for marriage\u2019s security influences her response to Blanche\u2019s allegation?",
+      "back": "Stella\u2019s"
+    },
+    "reason": "The cited scene shows Stella says she could not believe Blanche and continue living with Stanley; it does not establish the broader asserted motive of needing marriage security. Duplicates the more direct Stella card.",
+    "source": "https://bpb-ap-se2.wpmucdn.com/learn.stleonards.vic.edu.au/dist/6/207/files/2012/12/tennessee-williams-a-streetcar-named-desire.pdf"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:8b870fa2556bd19ff62e",
+    "action": "replace",
+    "before": {
+      "front": "In The Handmaid's Tale, what strategy does Gilead use to maintain control over groups?",
+      "back": "Segregation and isolation"
+    },
+    "after": {
+      "front": "In The Handmaid\u2019s Tale, what social separation limits solidarity between Handmaids and Marthas?",
+      "back": "They are forbidden to fraternise"
+    },
+    "reason": "The original question admits many strategies besides segregation and isolation.",
+    "source": "https://esl-bits.eu/ESL.English.Learning.Audiobooks/Handmaid/02/text.html"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:fd81f8d38de960cc284c",
+    "action": "replace",
+    "before": {
+      "front": "In The Handmaid\u2019s Tale, who secretly meets Offred despite Gilead\u2019s rules?",
+      "back": "The Commander"
+    },
+    "after": {
+      "front": "In The Handmaid\u2019s Tale, who secretly invites Offred to play Scrabble?",
+      "back": "The Commander"
+    },
+    "reason": "The existing question also fits Nick, who has clandestine meetings with Offred.",
+    "source": "https://esl-bits.eu/ESL.English.Learning.Audiobooks/Handmaid/23/text.html"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:61d2db09dcf65eaac2b9",
+    "action": "replace",
+    "before": {
+      "front": "In The Handmaid\u2019s Tale, which Aunt directs the Handmaid training centre?",
+      "back": "Aunt Lydia"
+    },
+    "after": {
+      "front": "In The Handmaid\u2019s Tale, which Aunt teaches the Handmaids at the Red Centre?",
+      "back": "Aunt Lydia"
+    },
+    "reason": "The novel establishes that Aunt Lydia teaches there; directorship is not established.",
+    "source": "https://esl-bits.eu/ESL.English.Learning.Audiobooks/Handmaid/22/text.html"
+  },
+  {
+    "stable_key": "ppp-englit-9ET0-quotes:c97ca8b47f61f532f05a",
+    "action": "replace",
+    "before": {
+      "front": "In The Handmaid\u2019s Tale, why is Offred\u2019s Scrabble game with the Commander illicit?",
+      "back": "Women are forbidden to read"
+    },
+    "after": {
+      "front": "In The Handmaid\u2019s Tale, why is Offred\u2019s Scrabble game with the Commander illicit?",
+      "back": "Handmaids are forbidden to read"
+    },
+    "reason": "Specify Handmaids: the original answer overgeneralises the restriction to all women, including Aunts.",
+    "source": "https://esl-bits.eu/ESL.English.Learning.Audiobooks/Handmaid/23/text.html"
+  }
+]

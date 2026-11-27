@@ -1,0 +1,7 @@
+# Compiler review
+
+Reviewed the shared Python compiler and tag checker independently. Two bugs were fixed: the tag checker now rejects any raw spec tag on a technique card and multiple raw spec tags on an atomic card, even when the site mapper silently ignores or deduplicates them; the compiler now requires a non-empty source as well as `verified=yes` in its non-draft ledger gate.
+
+Isolated temporary fixtures checked that an unknown leaf, duplicate front, 121-character atomic answer, em dash, and a “name two” prompt fail compilation. A valid atomic card produced the expected SHA-256 stable key; a valid technique card had no spec tag and null spec_id. A non-draft build with no ledger failed. Mutated real-card fixtures with an unknown spec tag on a technique card and duplicate spec tags on an atomic card both failed the revised tag checker. These fixtures did not alter subject source files.
+
+Limits: syntactic list detection catches several patterns, not every semantically bundled answer; human review is still required. The compiler checks coverage across all atomic decks, not whether each applicable deck has sufficient coverage for every leaf. A `review-complete.json` file is only an existence gate, not proof of a substantive review. A successful draft build is not evidence of source accuracy or owner approval. A failed rebuild leaves earlier generated files in place: consult the build report and exit status before using outputs.

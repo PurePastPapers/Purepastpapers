@@ -1,0 +1,9 @@
+# Psychology targeted content and source review
+
+Read all 741 atomic-card fronts and backs for the failure patterns identified in the 75-card sample: vague/circular wording, findings presented without qualifications, confusion between measured and inferred variables, and conspicuous duplicate facts. This was a targeted content scan, not a new full source-by-source audit of all 741 cards. The earlier four peer ledgers are the underlying source reviews; their citations have not all been independently reopened in this pass.
+
+Five pending corrections are recorded in `corrections-lead-source.json`: remove the vague quantitative-data answer; replace the Lundrigan and Canter wording with their actual body-disposal domain finding; remove an unqualified Holland author-trivia prompt while retaining the condition-specific result; and remove duplicate prompts on scientific report introduction and discussion. The two report-section duplicates were overlooked in my previous review, because their wording differs from the retained prompts. Their ledger rows are set to `no` pending the corrections.
+
+Replaced source references with directly opened supporting passages for a zero sign-test difference, comorbidity, sensory-register capacity, fMRI blood-flow timing, minimisation and the effect of extreme observations on range. The minimisation interpretation is a possible post-offence rationalisation, not evidence that this always occurs. The social-learning card's AQA mark scheme explicitly mentions both genetic and hormonal influences. The report-introduction nursing glossary also explicitly provides background and rationale, so that citation remains supported.
+
+The previous `source-reconciliation.md` reports the status before these pending corrections. No publication or independent-review approval marker was added.

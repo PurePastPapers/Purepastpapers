@@ -1,0 +1,19 @@
+# Independent follow-up: previously partial specification leaves
+
+Review of the original 13 partial rows, 26 November 2026. Coverage refers to identifiable taught material, not a claim of exhaustive treatment. Review of new additions is recorded by stable key in review-completeness-extra.tsv. All 29 final additions and all nine subsequent explanatory additions have been independently checked.
+
+| Leaf | Follow-up assessment and specific evidence |
+|---|---|
+| 4.1.1_b2 | Outline gap addressed: the 2022–23 Chinese versus White Gypsy or Roma Attainment 8 gap gives a concrete ethnicity comparison (b4f795b17ad3c284e9ea). |
+| 4.1.1_b4 | Outline gap addressed: the 11-plus, equality of opportunity, equality of outcome and selective-entry gap cards distinguish the named matters (3d04819bd60e1f027d0c; b28a6e8721323be19ad5; 5ccd8c313d70a1db1779; 0a9fb31dc654f3e1243d). |
+| 4.1.3_b5 | Access constraint illustrated through a school gatekeeper (239e53304cb20674f861); this directly addresses one practical influence but is not an exhaustive account of time and cost. |
+| 4.1.3_b11 | Concrete example addressed: research linking poverty to child outcomes informed Sure Start (fdc24e66bfaad8b3f3c8). |
+| 4.2.2_b1 | State policy example addressed: same-sex marriage legislation (512bf0ae46210dea7590). Its specific effect is legal permission for same-sex couples to marry. |
+| 4.2.2_b2 | Evidence on cohabitation, first-birth age and separated legal partners added (af408c52a554df28f7fe; 04e072ae594dc01ca252; fad6c06f74f9664770c3). The later cards add specific explanations: ONS associates the Divorce Reform Act 1969 with the 1972 divorce-rate rise (00258812a63441ba51b5); contraception, higher education and lower child mortality provide childbearing explanations. |
+| 4.2.2_b5 | Historical comparisons added for population, ageing, births and life expectancy (84a151e63e7cd0cb73e0; 232bf1c3135fce6a57d6; c773aaf5e181e606c0c7; 9847fe6b9a34136e695b). The corrected time/geography comparisons and explanatory cards covering contraception, education, vaccination, sanitation and EU expansion are independently checked (7d9abf4e4eccc938347c; dde71fffd7d113f4b704; 5c1b113f1bca53d68f43; ba162fef47722706b3fc; 75ba5f1870884b66a340). |
+| 4.2.5_b1 | Weber's rationalisation card explains displacement of religious explanations (e95d90c73bdb801d9d68); other existing cards discuss religion and ideology. Outline comparison addressed, not a full epistemological treatment. |
+| 4.2.5_b4 | Age comparison (1ebfa4efba3e080efe97) and Weber on artisans in early Christianity (3565d189ed26d02b99fa) add examples of age/class variation; the latter identifies a historical social base, rather than explaining contemporary class variation. |
+| 4.2.5_b5 | Global evidence now contrasts rising unaffiliated share and rising Muslim population share (2a309e32b69bc8b95060; d95fbc56c8cee37ada13). |
+| 4.3.1_b2 | The England and Wales stop-search comparison provides an ethnicity policing pattern; the ONS class-disaggregation limitation is useful qualification but does not itself provide a comparative class crime pattern. Chambliss’s 1973 study compares the delinquency and differential police treatment of two groups (236b5a55bbf38e751038; bd2339a9a98554c8f9dc), with an explicit small-sample generalisation limitation (c7cfff7544ebd5ce8745). This is historical US study evidence, not a recent UK class-distribution statistic. |
+| 4.3.1_b3 | HRW evidence of Abu Ghraib torture provides a concrete human-rights violation alongside existing state crime definition; review key is in review-completeness-extra.tsv. |
+| 4.3.1_b4 | Police, CPS, court and probation roles added (3834f98f685522236f7a; 1a78b17aa473b6b86ab7; b804fa229f52b649b0cb; 451e4122824b6d9ed939); the corrected public-sector prison role is independently checked (2e59ddc81f9bbb4f01df). |
