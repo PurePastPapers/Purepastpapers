@@ -13,6 +13,7 @@ import { icon } from '../icons.js';
 import { addSubjectButton, addSubjectTile, loadStudent, subjectCard, subjectSummary, wireColourPicker } from '../student.js';
 import { confirmDialog, fmtPercent } from '../ui.js';
 import { links } from '../../core/links.js';
+import { boardWaitlist, wireBoardWaitlist } from '../board-waitlist.js';
 
 const SESSION_LABELS = { full_paper: 'Past paper', custom_test: 'Timed test', question_set: 'Question set', single: 'Question' };
 
@@ -131,7 +132,9 @@ export async function mount(element, context) {
             <a class="tag" href="${links.subjects()}">+ Add a subject</a>
           </div>
         </section>
-      </div>`,
+      </div>
+
+      ${boardWaitlist({ source: 'dashboard', title: 'Need another exam board?', email: user.is_demo ? '' : user.email, compact: true })}`,
   );
 
   on(element, 'click', '[data-hide-notice]', async () => {
@@ -149,5 +152,10 @@ export async function mount(element, context) {
     await api.deleteSession(button.dataset.discard);
     context.refresh();
   });
-  return wireColourPicker(element);
+  const stopWaitlist = wireBoardWaitlist(element);
+  const stopPicker = wireColourPicker(element);
+  return () => {
+    stopWaitlist();
+    stopPicker?.();
+  };
 }

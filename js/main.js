@@ -47,12 +47,12 @@ function flashcardsView() {
  * layout: 'focus'  → hides the navigation (used while sitting a paper or test)
  */
 const ROUTES = [
-  { path: '/', load: () => (api.isSignedIn() ? import('./ui/views/dashboard.js') : import('./ui/views/landing.js')) },
+  { path: '/', load: () => (api.isSignedIn() ? import('./ui/views/dashboard.js?v=board-waitlist-1') : import('./ui/views/landing.js?v=board-waitlist-1')) },
   { path: '/login', load: () => import('./ui/views/auth.js'), guestOnly: true, options: { mode: 'login' } },
   { path: '/signup', load: () => import('./ui/views/auth.js'), guestOnly: true, options: { mode: 'signup' } },
   { path: '/forgot-password', load: () => import('./ui/views/recovery.js'), guestOnly: true, options: { mode: 'forgot' } },
   { path: '/reset-password', load: () => import('./ui/views/recovery.js'), options: { mode: 'reset' } },
-  { path: '/subjects', load: () => import('./ui/views/subjects.js?v=practice-modes-1') },
+  { path: '/subjects', load: () => import('./ui/views/subjects.js?v=board-waitlist-1') },
   { path: '/subject/:subjectId', load: () => import('./ui/views/subject.js') },
   { path: '/papers', load: papersView, options: { paperType: 'real_past_paper' } },
   { path: '/paper/:subjectId/:paperId', load: () => import('./ui/views/paper.js') },
