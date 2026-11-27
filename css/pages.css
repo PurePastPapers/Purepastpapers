@@ -933,6 +933,10 @@
   font-size: 34px;
   line-height: 1.1;
 }
+.gbtn { gap: 12px; }
+.gbtn:disabled { opacity: .7; cursor: progress; }
+.auth__or { display: flex; align-items: center; gap: 12px; margin: 14px 0 6px; color: var(--ink-2); font-size: 13px; }
+.auth__or::before, .auth__or::after { content: ''; flex: 1; border-top: 2px dashed var(--line-strong); }
 .auth__note {
   text-align: center;
   font-size: 19px;

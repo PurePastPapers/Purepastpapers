@@ -34,7 +34,19 @@ function showUsedLink() {
   actions.innerHTML = resetLink;
 }
 
-if (linkError) {
+function showGoogleFailed() {
+  const cancelled = linkParams.get('error') === 'access_denied';
+  console.warn('Google sign-in did not finish:', linkParams.get('error_description') || linkError);
+  status.textContent = cancelled ? 'Google sign-in was cancelled' : 'Google sign-in didn’t finish';
+  detail.textContent = cancelled ? 'No problem. You can try again, or log in with your email and password.' : 'Try again, or log in with your email and password.';
+  returnLink.href = new URL('./#/login', location.href).href;
+  returnLink.textContent = 'Back to log in';
+}
+
+if (linkError && supabaseAdapter.isOAuthReturn()) {
+  supabaseAdapter.discardOAuthReturn();
+  showGoogleFailed();
+} else if (linkError) {
   showUsedLink();
 } else {
   try {

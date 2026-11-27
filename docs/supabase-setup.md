@@ -82,3 +82,35 @@ git switch codex/supabase-account-sync-2026-11-16
 Run `npm start` and use `http://localhost:5173`. The project has no bundler, so the
 browser loads `supabase-js` from esm.sh when a Supabase operation is first used. No
 `npm install` is needed for the site itself.
+
+## Google sign-in
+
+The login and sign-up pages have a "Continue with Google" button (cloud accounts only). The
+site calls `supabase.auth.signInWithOAuth({ provider: 'google' })` with the existing
+`auth-callback.html` as `redirectTo`, so the redirect URLs listed above are all it needs.
+
+Setup, done once in two dashboards:
+
+1. **Google Cloud Console → Google Auth Platform.** Create a "Web application" OAuth client.
+   - Authorized JavaScript origins: `https://purepastpapers.com`, `https://www.purepastpapers.com`,
+     `http://localhost:5173`.
+   - Authorized redirect URI: exactly the callback shown in Supabase (Authentication → Sign In /
+     Providers → Google), which is `https://spjlnvjdstxdajcsljvq.supabase.co/auth/v1/callback`.
+   - Scopes: only `email`, `profile`, `openid`. Authorized domains: `purepastpapers.com` and the
+     project domain `spjlnvjdstxdajcsljvq.supabase.co` (Google rejects the bare `supabase.co`).
+   - While the app's publishing status is Testing, only listed test users can sign in. Publish it
+     to production before announcing the button. Google may ask for a privacy policy and terms page.
+2. **Supabase → Authentication → Sign In / Providers → Google.** Switch it on and paste the Client ID
+   and Client Secret. The secret lives only here, never in the repo.
+
+How it behaves:
+
+- A first Google sign-in opens the welcome tour; a returning one opens the dashboard. A `next`
+  route given on the login page is kept across the trip to Google.
+- The name comes from Google (`full_name`) unless the student has set one in Account.
+- Supabase links a Google sign-in to an existing password account with the same email
+  (see Supabase's identity-linking docs). A Google-only account has no password; Account explains
+  how to add one with "Forgot your password?".
+- A cancelled or failed Google sign-in lands on `auth-callback.html` with a Google-specific message.
+- Guest progress made before signing in is not carried over by a Google sign-in (the email sign-up
+  flow stages it; this one does not).

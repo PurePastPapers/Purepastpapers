@@ -9,6 +9,9 @@ import { icon } from '../icons.js';
 import { links } from '../../core/links.js';
 import { openVerifyEmail, signupSteps } from '../verify-email.js';
 
+// Google's multicolour "G", unmodified, as their sign-in branding rules require.
+const GOOGLE_G = `<svg class="gbtn__g" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.33-1.58-5.04-3.7H.96v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.96 10.72A5.41 5.41 0 0 1 3.68 9c0-.6.1-1.18.28-1.72V4.95H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.05l3-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.95l3 2.33C4.67 5.16 6.66 3.58 9 3.58z"/></svg>`;
+
 export async function mount(element, context) {
   const signup = context.options.mode === 'signup';
   const next = context.query.next?.startsWith('/') ? context.query.next : null;
@@ -24,6 +27,8 @@ export async function mount(element, context) {
       ${signup ? raw(`<div data-steps>${signupSteps(1)}</div>`) : html`<p class="muted small">Pick up where you left off.</p>`}
       ${!signup && context.query.linkused ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>That email link has already been used</b>If you’ve confirmed your email, just log in. If not, log in anyway and we’ll offer to send a new code.</span></p>` : ''}
       ${!signup && context.query.newcode ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>Need a new code?</b>Log in with your email and password. If your email isn’t confirmed yet, we’ll offer to send a new code.</span></p>` : ''}
+      ${backend.cloudConfigured ? html`<button type="button" class="btn btn--lg btn--block gbtn" data-google>${raw(GOOGLE_G)}<span>Continue with Google</span></button>
+        <p class="auth__or" aria-hidden="true"><span>or use your email</span></p>` : ''}
       ${signup ? html`<div data-waiting hidden></div>` : ''}
       <form class="stack" data-form novalidate>
         ${signup
@@ -94,7 +99,22 @@ export async function mount(element, context) {
     </div>`,
   );
 
-  element.addEventListener('click', (event) => {
+  element.addEventListener('click', async (event) => {
+    const google = event.target.closest('[data-google]');
+    if (google) {
+      google.disabled = true;
+      google.querySelector('span').textContent = 'Opening Google…';
+      try {
+        await api.signInWithGoogle({ next });
+      } catch (error) {
+        google.disabled = false;
+        google.querySelector('span').textContent = 'Continue with Google';
+        const line = $('[data-error]', element);
+        line.textContent = error.message || 'Google sign-in could not start. Try again.';
+        line.hidden = false;
+      }
+      return;
+    }
     const show = event.target.closest('[data-show]');
     if (show) {
       const input = $('[data-password]', element);

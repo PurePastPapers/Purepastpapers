@@ -230,6 +230,12 @@ async function deleteAttemptInk(attempt) {
 }
 export const backendInfo = () => ({ id: activeAdapter.id, label: activeAdapter.label, syncsAcrossDevices: activeAdapter.syncsAcrossDevices, cloudConfigured: SUPABASE_CONFIGURED });
 
+/** Starts "Continue with Google" (cloud accounts only). The browser leaves for Google and returns to auth-callback.html. */
+export async function signInWithGoogle(options = {}) {
+  if (!SUPABASE_CONFIGURED) throw new Error('Google sign-in needs cloud accounts, which are not configured.');
+  return supabaseAdapter.signInWithGoogle(options);
+}
+
 /** `initialProgress` (optional) pre-fills the new account — used by the demo account. */
 export async function signUp({ initialProgress = null, redirectTo = null, ...details }) {
   const chosenAdapter = details.isDemo ? localAdapter : backendAdapter;
