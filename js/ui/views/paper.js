@@ -75,7 +75,7 @@ export async function mount(element, context) {
                 </li>`;
               })}
             </ul>
-            <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : subject.grade_policy === 'raw_marks_only' ? 'This qualification’s available sample papers are tracked by raw marks; grade boundaries are not available.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
+            <p class="small muted">${officialBounds ? 'Grades use this paper’s official grade boundaries.' : subject.grade_policy === 'raw_marks_only' ? 'This paper is tracked by raw marks.' : `Grades are indicative (${GRADE_SCHEMES[subject.grade_scheme]?.label}). Real boundaries change with every paper.`}</p>`
         : html`<div class="empty-doodle">${doodle('blankPaper')}<div>
               <p class="muted small">No attempts yet. Sit the paper here, or log a score if you have already done it on paper.</p>
               <p class="hand empty-doodle__note">your first go will show up here</p>

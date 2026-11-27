@@ -186,7 +186,7 @@ export async function mount(element, context) {
     if (subject.grade_policy === 'raw_marks_only') return html`<section class="card ruled tilt-2">
       <i class="tape tape--r" aria-hidden="true"></i>
       <h2 class="card__title">Raw mark tracking</h2>
-      <p class="muted">Available sample papers are tracked by marks and percentage. Grade boundaries are not available for these samples.</p>
+      <p class="muted">Paper results are recorded as marks and percentages.</p>
     </section>`;
     const target = targetGrade(subject);
     const grades = gradesIn(subject.grade_scheme).filter((grade) => grade !== 'U');
