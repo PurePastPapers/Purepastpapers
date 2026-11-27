@@ -59,7 +59,7 @@ const ROUTES = [
   { path: '/practice', load: () => import('./ui/views/practice.js?v=practice-ink-3') },
   { path: '/practice/exported', load: exportedTestsView },
   { path: '/practice/exported/:paperId', load: exportedTestsView },
-  { path: '/session/:sessionId', load: () => import('./ui/views/session.js'), layout: 'focus' },
+  { path: '/session/:sessionId', load: () => import('./ui/views/session.js?v=session-ink-1'), layout: 'focus' },
   { path: '/flashcards', load: flashcardsView, auth: true },
   { path: '/hub', load: () => import('./ui/views/hub.js?v=hub-flashcards-1'), auth: true },
   { path: '/hub/study-summary', load: async () => ({ mount: () => location.replace(links.studySummary()) }), auth: true },

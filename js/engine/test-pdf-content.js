@@ -1,8 +1,8 @@
 import { sanitizeHtml } from '../core/dom.js';
 import { questionResourceUrl } from './question-resources.js';
-import { invalidateSourceImageBytes, sourceImageBytes } from '../data/source-images.js?v=20261122-pdf2';
-import { displayedPartLabel } from './test-snapshot.js?v=20261122-pdf2';
-import { decodePdfImage } from './test-pdf-render.js?v=20261122-pdf2';
+import { invalidateSourceImageBytes, sourceImageBytes } from '../data/source-images.js?v=20261127-pdf3';
+import { displayedPartLabel } from './test-snapshot.js?v=20261127-pdf3';
+import { decodePdfImage } from './test-pdf-render.js?v=20261127-pdf3';
 
 const PARAGRAPH_TAGS = new Set(['P', 'DIV', 'LI', 'TR', 'CAPTION', 'FIGCAPTION', 'BLOCKQUOTE', 'H3', 'H4', 'H5']);
 const SOURCE_LABELS = {real_past_paper: 'Official past paper', ai_past_paper: 'AI past paper', ai_spec_question: 'AI specification question', predicted_paper: 'AI predicted paper'};

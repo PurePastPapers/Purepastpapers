@@ -7,7 +7,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { prepareTestPdf } from '../js/engine/test-pdf-content.js';
-import { createQuestionPdf, createMarkSchemePdf, createCombinedPdf } from '../js/engine/test-pdf-render.js';
+import { answerLineCount, createQuestionPdf, createMarkSchemePdf, createCombinedPdf } from '../js/engine/test-pdf-render.js';
 
 let chromium = null;
 try { ({ chromium } = createRequire(import.meta.url)('playwright')); } catch { /* browser dependency is optional in CI */ }
@@ -137,8 +137,26 @@ test('explicit answer blocks keep separate spaces for linked scored parts', asyn
     ],
   }] });
   const source = new TextDecoder().decode(await pdf.arrayBuffer());
-  const rules = source.match(/\d+(?:\.\d+)? \d+(?:\.\d+)? m [\d.]+ [\d.]+ l S/g) || [];
-  assert.equal(rules.length, 5); // one cover separator and two answer lines per part
+  // Answer lines are drawn in the light rule grey; they scale with marks (2 for 1 mark, 4 for 2).
+  const answerLines = source.match(/0\.74 0\.74 0\.74 RG 0\.6 w\s+[\d.]+ [\d.]+ m [\d.]+ [\d.]+ l S/g) || [];
+  assert.equal(answerLines.length, answerLineCount(1) + answerLineCount(2));
+  assert.equal(answerLines.length, 6);
+  assert.match(extractHexText(new TextEncoder().encode(source)), /\(1 mark\)[\s\S]*\(2 marks\)/);
+});
+
+test('answer lines grow with the marks available', () => {
+  assert.deepEqual([1, 2, 3, 4, 5, 6, 12].map(answerLineCount), [2, 4, 5, 7, 8, 10, 20]);
+  assert.equal(answerLineCount(40), 45);
+});
+
+test('every page carries the logo and page number in its footer', async () => {
+  const pdf = await createQuestionPdf({ title: 'Footer test', groups: Array.from({ length: 12 }, (_, index) => group(String(index + 1), 'Item', 6)) });
+  const source = new TextDecoder().decode(await pdf.arrayBuffer());
+  const pages = Number(/\/Count (\d+)/.exec(source)[1]);
+  assert.ok(pages > 1);
+  assert.equal((source.match(/ f\* Q/g) || []).length, pages + 1); // footer mark on each page, plus the cover lockup
+  const text = extractHexText(new TextEncoder().encode(source));
+  assert.match(text, new RegExp(`Page ${pages} of ${pages}`));
 });
 
 test('export cancellation rejects with AbortError', async () => {

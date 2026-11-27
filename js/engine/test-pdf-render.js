@@ -1,10 +1,21 @@
 // Small browser-only PDF writer for custom test exports. Text remains selectable.
-// It writes standard PDF 1.4 and embeds source images as JPEG XObjects.
+// It writes standard PDF 1.4, embeds source images as JPEG XObjects and draws the PPP logo
+// as vector artwork. Layout: a cover block (brand, title, name/date/score boxes and
+// instructions), then each question with a numbered badge, its source as small tags, the
+// question material and ruled answer lines sized by its marks. Every page carries the logo
+// in its footer; pages after the first repeat the test title in a running header.
+
+import { PPP_PATH, PPP_VIEWBOX } from '../core/brand-mark.js';
 
 const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
-const MARGIN = 48;
+const MARGIN = 50;
 const TEXT_WIDTH = PAGE_WIDTH - MARGIN * 2;
+const FIRST_TOP = PAGE_HEIGHT - 46;
+const PAGE_TOP = PAGE_HEIGHT - 70; // below the running header
+const CONTENT_BOTTOM = 66; // above the footer
+const USABLE_HEIGHT = PAGE_TOP - CONTENT_BOTTOM;
+const ANSWER_LINE_GAP = 23; // about 8 mm, like an exam paper's ruled lines
 const FONT = 'F1';
 const BOLD_FONT = 'F2';
 const SYMBOL_FONT = 'F3';
@@ -17,7 +28,23 @@ const SYMBOLS = Object.freeze({
   '√': 0xd6, '∫': 0xf2, '∴': 0x5c, '∠': 0xd0, '∝': 0xb5, '′': 0xa2, '″': 0xb2,
   '∧': 0xd9, '∨': 0xda, '∩': 0xc7, '∪': 0xc8, '→': 0xae, '←': 0xac, '↔': 0xab,
 });
-const USABLE_HEIGHT = PAGE_HEIGHT - 2 * MARGIN - 24;
+
+// The site's palette (css/base.css): warm ink on paper, with a soft wash for panels.
+const INK = [0.165, 0.153, 0.137];
+const MUTED = [0.42, 0.40, 0.37];
+const SOFT = [0.58, 0.56, 0.52];
+const WASH = [0.953, 0.933, 0.894];
+const EDGE = [0.80, 0.78, 0.74];
+const LINE = [0.74, 0.74, 0.74];
+const LINK = [0.05, 0.28, 0.55];
+const WHITE = [1, 1, 1];
+
+/** Ruled answer lines for a question worth `marks` (2 for 1 mark, 4 for 2, 5 for 3, 7 for 4…). */
+export function answerLineCount(marks) {
+  const value = Number(marks);
+  if (!Number.isFinite(value) || value <= 0) return 3;
+  return Math.max(2, Math.min(45, Math.ceil(value * 1.6)));
+}
 
 export async function createQuestionPdf(options, controls = {}) {
   return createPdfDocument(options, options.groups || [], 'questions', [], controls);
@@ -33,12 +60,12 @@ export async function createCombinedPdf(options, controls = {}) {
 
 async function createPdfDocument(options, questionGroups, mode, schemeGroups = [], controls = {}) {
   checkAbort(controls.signal);
-  const doc = new PdfLayout(options, mode);
-  await doc.addCover();
+  const doc = new PdfLayout(options, mode, [...questionGroups, ...schemeGroups]);
+  await doc.addCover(questionGroups.length);
   await doc.addGroups(questionGroups, mode === 'scheme' ? 'scheme' : 'questions', controls);
   if (mode === 'combined' && schemeGroups.length) {
     checkAbort(controls.signal);
-    doc.newPage();
+    doc.newPage('Mark scheme');
     doc.sectionHeading('Mark scheme');
     await doc.addGroups(schemeGroups, 'scheme', controls);
   }
@@ -46,108 +73,345 @@ async function createPdfDocument(options, questionGroups, mode, schemeGroups = [
   return doc.toBlob();
 }
 
+const rgb = (color, stroke = false) => `${color.map(num).join(' ')} ${stroke ? 'RG' : 'rg'}`;
+const splitReference = (value) => String(value || '').split(' · ').map(piece => piece.trim()).filter(Boolean);
+
+/** Reference pieces shared by every question (usually the board and specification code). */
+function commonPrefix(groups) {
+  const lists = groups.map(group => splitReference(group.sourceReference)).filter(list => list.length);
+  if (!lists.length) return [];
+  const prefix = [];
+  for (let index = 0; index < lists[0].length - 1; index += 1) {
+    const piece = lists[0][index];
+    if (lists.every(list => list.length - 1 > index && list[index] === piece)) prefix.push(piece);
+    else break;
+  }
+  return prefix;
+}
+
 class PdfLayout {
-  constructor(options, mode) {
+  constructor(options, mode, allGroups = []) {
     this.options = options;
     this.mode = mode;
     this.compact = Boolean(options.compact);
     this.pages = [];
     this.images = [];
     this.preparedImages = new WeakMap();
-    this.newPage();
+    this.prefix = commonPrefix(allGroups);
+    this.newPage(mode === 'scheme' ? 'Mark scheme' : 'Question paper');
   }
 
-  newPage() {
-    this.page = { commands: [], images: new Set(), links: [] };
+  newPage(label = this.page?.label) {
+    this.page = { commands: [], images: new Set(), links: [], label };
     this.pages.push(this.page);
-    this.y = PAGE_HEIGHT - MARGIN;
+    this.y = this.pages.length === 1 ? FIRST_TOP : PAGE_TOP;
   }
 
-  async addCover() {
-    const title = cleanText(this.options.title || 'Custom test');
-    for (const line of wrapText(title, TEXT_WIDTH, 19)) this.text(line, 19, true, 25);
-    this.text(this.mode === 'scheme' ? 'Mark scheme' : 'Question paper', 11, true, 15);
-    if (this.options.totalMarks != null) this.text(`Total marks: ${this.options.totalMarks}`, 10, false, 18);
-    if (this.options.instructions) {
-      for (const line of wrapText(cleanText(this.options.instructions), TEXT_WIDTH, 10)) this.text(line, 10, false, 13);
+  // ── drawing primitives (PDF space: origin bottom left) ──
+
+  draw(command) { this.page.commands.push(command); }
+
+  textAt(value, x, baseline, { size = 10, bold = false, color = INK, font = bold ? BOLD_FONT : FONT } = {}) {
+    if (!String(value)) return;
+    this.draw(`${rgb(color)} BT 1 0 0 1 ${num(x)} ${num(baseline)} Tm ${pdfText(value, font, size)} ET`);
+  }
+
+  roundedRect(x, y, width, height, radius, { fill = null, stroke = null, lineWidth = 0.8 } = {}) {
+    const r = Math.max(0, Math.min(radius, width / 2, height / 2));
+    const k = r * 0.5523;
+    const right = x + width;
+    const top = y + height;
+    const path = [
+      `${num(x + r)} ${num(y)} m`, `${num(right - r)} ${num(y)} l`,
+      `${num(right - r + k)} ${num(y)} ${num(right)} ${num(y + r - k)} ${num(right)} ${num(y + r)} c`,
+      `${num(right)} ${num(top - r)} l`,
+      `${num(right)} ${num(top - r + k)} ${num(right - r + k)} ${num(top)} ${num(right - r)} ${num(top)} c`,
+      `${num(x + r)} ${num(top)} l`,
+      `${num(x + r - k)} ${num(top)} ${num(x)} ${num(top - r + k)} ${num(x)} ${num(top - r)} c`,
+      `${num(x)} ${num(y + r)} l`,
+      `${num(x)} ${num(y + r - k)} ${num(x + r - k)} ${num(y)} ${num(x + r)} ${num(y)} c h`,
+    ].join(' ');
+    const paint = fill && stroke ? 'B' : fill ? 'f' : 'S';
+    this.draw(`q ${fill ? rgb(fill) : ''} ${stroke ? `${rgb(stroke, true)} ${num(lineWidth)} w` : ''} ${path} ${paint} Q`);
+  }
+
+  lineAt(x1, y1, x2, y2, { color = EDGE, width = 0.6, dash = null } = {}) {
+    this.draw(`q ${rgb(color, true)} ${num(width)} w ${dash ? `[${dash.join(' ')}] 0 d` : ''} ${num(x1)} ${num(y1)} m ${num(x2)} ${num(y2)} l S Q`);
+  }
+
+  /** The PPP mark, `height` points tall, with its bottom left corner at (x, y). */
+  logo(x, y, height, color = INK) {
+    const [, , viewWidth, viewHeight] = PPP_VIEWBOX.split(/\s+/).map(Number);
+    const scale = height / viewHeight;
+    this.draw(`q ${rgb(color)} ${num(scale)} 0 0 ${num(-scale)} ${num(x)} ${num(y + height)} cm ${LOGO_OPS} f* Q`);
+    return viewWidth * scale;
+  }
+
+  // ── flowing content (this.y is the top of the free space) ──
+
+  ensure(space) {
+    if (this.y - Math.min(space, USABLE_HEIGHT) < CONTENT_BOTTOM) this.newPage();
+  }
+
+  /** Flows wrapped lines; each line is `lead` points tall. */
+  lines(rows, { size = 10, bold = false, color = INK, lead = size * 1.38, font, x = MARGIN, keep = 1 } = {}) {
+    rows.forEach((row, index) => {
+      this.ensure(index === 0 ? lead * Math.min(keep, rows.length) : lead);
+      this.textAt(row, x, this.y - size * 0.86, { size, bold, color, font });
+      this.y -= lead;
+    });
+  }
+
+  async addCover(questionCount) {
+    const scheme = this.mode === 'scheme';
+    const top = this.y;
+    // Brand lockup and the document type.
+    const markWidth = this.logo(MARGIN, top - 26, 26);
+    this.textAt('Pure Past Papers', MARGIN + markWidth + 8, top - 12, { size: 12.5, bold: true });
+    this.textAt('purepastpapers.com', MARGIN + markWidth + 8, top - 23.5, { size: 8, color: MUTED });
+    const label = (scheme ? 'MARK SCHEME' : this.mode === 'combined' ? 'QUESTION PAPER AND MARK SCHEME' : 'QUESTION PAPER');
+    const labelWidth = textWidth(label, 7.5, true) + 18;
+    this.roundedRect(PAGE_WIDTH - MARGIN - labelWidth, top - 21, labelWidth, 17, 8.5, { fill: INK });
+    this.textAt(label, PAGE_WIDTH - MARGIN - labelWidth + 9, top - 15.2, { size: 7.5, bold: true, color: WHITE });
+    this.y = top - 38;
+    this.lineAt(MARGIN, this.y, PAGE_WIDTH - MARGIN, this.y, { color: INK, width: 1.4 });
+    this.y -= 22;
+
+    const title = cleanText(this.options.title || 'Practice test');
+    this.lines(wrapText(title, TEXT_WIDTH, 22, true), { size: 22, bold: true, lead: 27 });
+    const subtitle = [this.prefix.join(' · '), plural(questionCount, 'question'), this.options.totalMarks != null ? plural(this.options.totalMarks, 'mark') : '']
+      .filter(Boolean).join('  ·  ');
+    this.y -= 2;
+    this.lines(wrapText(subtitle, TEXT_WIDTH, 10.5), { size: 10.5, color: MUTED, lead: 15 });
+    this.y -= 14;
+
+    // Name, date and score boxes (the question paper), or the totals (the mark scheme).
+    const boxHeight = 40;
+    const boxes = scheme
+      ? [{ label: 'Total marks', value: this.options.totalMarks != null ? String(this.options.totalMarks) : '–', share: 0.5 },
+        { label: 'Questions', value: String(questionCount), share: 0.5 }]
+      : [{ label: 'Name', share: 0.5 }, { label: 'Date', share: 0.22 },
+        { label: 'Score', value: this.options.totalMarks != null ? `/ ${this.options.totalMarks}` : '', share: 0.28 }];
+    const gap = 10;
+    let x = MARGIN;
+    const available = TEXT_WIDTH - gap * (boxes.length - 1);
+    for (const box of boxes) {
+      const width = available * box.share;
+      this.roundedRect(x, this.y - boxHeight, width, boxHeight, 6, { stroke: EDGE, lineWidth: 0.8 });
+      this.textAt(box.label.toUpperCase(), x + 10, this.y - 13, { size: 6.8, bold: true, color: MUTED });
+      if (box.value) {
+        const size = scheme ? 15 : 13;
+        this.textAt(box.value, x + width - 12 - textWidth(box.value, size, true), this.y - 31, { size, bold: true });
+      }
+      x += width + gap;
     }
-    this.rule(12);
+    this.y -= boxHeight + 16;
+
+    if (!scheme) {
+      const notes = cleanText(this.options.instructions || 'Answer all questions.').split('\n').filter(Boolean);
+      notes.push('Write your answers in the spaces provided. Use extra paper if you need more room.');
+      notes.push('The marks for each question are shown beside it. Use them as a guide to how much to write.');
+      if (this.compact) notes.push('This is a compact copy with no answer lines. Answer on separate paper.');
+      const rows = notes.flatMap(note => wrapText(note, TEXT_WIDTH - 40, 9.5).map((row, index) => ({ row, bullet: index === 0 })));
+      const height = 30 + rows.length * 13.5 + 10;
+      this.roundedRect(MARGIN, this.y - height, TEXT_WIDTH, height, 8, { fill: WASH });
+      this.textAt('Instructions', MARGIN + 14, this.y - 19, { size: 10, bold: true });
+      let rowTop = this.y - 30;
+      for (const { row, bullet } of rows) {
+        if (bullet) this.roundedRect(MARGIN + 16, rowTop - 7.6, 3.4, 3.4, 1.7, { fill: INK });
+        this.textAt(row, MARGIN + 28, rowTop - 9.5, { size: 9.5 });
+        rowTop -= 13.5;
+      }
+      this.y -= height + 24;
+    } else this.y -= 8;
   }
 
   sectionHeading(label) {
-    this.ensure(32);
-    this.text(label, 15, true, 20);
-    this.rule(9);
+    this.ensure(60);
+    this.roundedRect(MARGIN, this.y - 34, TEXT_WIDTH, 34, 8, { fill: INK });
+    this.textAt(label, MARGIN + 14, this.y - 22, { size: 14, bold: true, color: WHITE });
+    this.y -= 34 + 22;
+  }
+
+  /** Tags for a question's source: the kind of material, then where it comes from. */
+  groupTags(group, blocks) {
+    const tags = [];
+    for (const block of blocks) {
+      if (block.role === 'meta') tags.push(cleanText(block.text || '').replace(/^Source:\s*/i, ''));
+    }
+    let pieces = splitReference(group.sourceReference);
+    pieces = pieces.slice(Math.min(this.prefix.length, Math.max(0, pieces.length - 1)));
+    const multiPart = blocks.filter(block => block.role === 'subheading').length > 1;
+    if (multiPart && pieces.length > 1 && /^Q\S/.test(pieces.at(-1))) pieces = pieces.slice(0, -1);
+    return [...tags, ...pieces].filter(Boolean);
+  }
+
+  tagRowsHeight(tags) {
+    return this.layoutTags(tags).length * 19;
+  }
+
+  layoutTags(tags) {
+    const rows = [[]];
+    let x = 0;
+    for (const tag of tags) {
+      const label = tag.length > 70 ? `${tag.slice(0, 68)}…` : tag;
+      const width = textWidth(label, 7.6) + 14;
+      if (x && x + width > TEXT_WIDTH) { rows.push([]); x = 0; }
+      rows.at(-1).push({ label, width, x });
+      x += width + 5;
+    }
+    return rows.filter(row => row.length);
+  }
+
+  drawTags(tags, firstTag) {
+    for (const row of this.layoutTags(tags)) {
+      for (const tag of row) {
+        const primary = tag.label === firstTag;
+        this.roundedRect(MARGIN + tag.x, this.y - 15, tag.width, 15, 7.5, primary ? { stroke: INK, lineWidth: 0.7 } : { fill: WASH });
+        this.textAt(tag.label, MARGIN + tag.x + 7, this.y - 10.4, { size: 7.6, bold: primary, color: primary ? INK : MUTED });
+      }
+      this.y -= 19;
+    }
   }
 
   async addGroups(groups, role, controls) {
     for (const [index, group] of groups.entries()) {
       checkAbort(controls.signal);
       controls.onProgress?.({ completed: index, total: groups.length });
-      const heading = [group.localNumber ? `Question ${group.localNumber}` : '', group.sourceReference || ''].filter(Boolean).join(' · ');
       const blocks = group.blocks || [];
-      const headingLines = wrapText(heading || group.heading || (role === 'scheme' ? 'Mark scheme' : 'Question'), TEXT_WIDTH, 12);
+      const tags = this.groupTags(group, blocks);
       const firstContent = blocks.findIndex(block => !['meta', 'subheading', 'notice'].includes(block.role) && !['rule', 'answer', 'link'].includes(block.type));
-      const leading = firstContent < 0 ? [] : blocks.slice(0, firstContent + 1);
-      let space = headingLines.length * 16 + (group.marks != null ? 12 : 0);
-      for (const [index, block] of leading.entries()) space += await this.blockHeight(block, index === firstContent);
+      const leading = firstContent < 0 ? [] : blocks.slice(0, firstContent + 1).filter(block => block.role !== 'meta');
+      let space = 34 + this.tagRowsHeight(tags) + 8;
+      for (const [position, block] of leading.entries()) space += await this.blockHeight(block, position === leading.length - 1);
       this.ensure(space);
-      for (const line of headingLines) this.text(line, 12, true, 16);
-      if (group.marks != null) this.text(`${group.marks} ${Number(group.marks) === 1 ? 'mark' : 'marks'}`, 9, false, 12);
+
+      // Number badge, title and marks.
+      const top = this.y;
+      const number = String(group.localNumber ?? index + 1);
+      const badge = Math.max(22, textWidth(number, 11, true) + 12);
+      this.roundedRect(MARGIN, top - 22, badge, 22, 5, { fill: INK });
+      this.textAt(number, MARGIN + (badge - textWidth(number, 11, true)) / 2, top - 15.2, { size: 11, bold: true, color: WHITE });
+      const heading = group.localNumber != null ? `Question ${group.localNumber}` : group.heading || (role === 'scheme' ? 'Mark scheme' : 'Question');
+      this.textAt(role === 'scheme' ? `${heading} · mark scheme` : heading, MARGIN + badge + 9, top - 15.6, { size: 12.5, bold: true });
+      if (group.marks != null) {
+        const marks = plural(group.marks, 'mark');
+        const width = textWidth(marks, 8.5, true) + 16;
+        this.roundedRect(PAGE_WIDTH - MARGIN - width, top - 19, width, 16, 8, { stroke: INK, lineWidth: 0.8 });
+        this.textAt(marks, PAGE_WIDTH - MARGIN - width + 8, top - 13.8, { size: 8.5, bold: true });
+      }
+      this.y = top - 30;
+      this.drawTags(tags, tags[0]);
+      this.y -= 6;
+
       const explicitAnswerAreas = blocks.some((block) => block.type === 'answer');
-      for (const [index, block] of blocks.entries()) {
+      const answerBlocks = blocks.filter(block => block.type === 'answer').length;
+      for (const [position, block] of blocks.entries()) {
         checkAbort(controls.signal);
+        if (block.role === 'meta') continue;
         if (block.role === 'subheading') {
-          const nextContent = blocks[index + 1];
+          const nextContent = blocks[position + 1];
           this.ensure(await this.blockHeight(block) + (nextContent ? await this.blockHeight(nextContent, true) : 0));
-        }
-        if (block.type === 'rule') {
-          this.rule(8);
+          this.partHeading(block);
+        } else if (block.type === 'rule') {
+          this.y -= 4;
+          this.lineAt(MARGIN, this.y, PAGE_WIDTH - MARGIN, this.y);
+          this.y -= 8;
         } else if (block.type === 'answer') {
-          if (role === 'questions' && !this.compact) this.answerSpace(block.marks);
+          if (role === 'questions' && !this.compact) this.answerLines(block.marks, answerBlocks > 1);
         } else if (block.type === 'image') {
           await this.image(block);
         } else if (block.type === 'link') {
           this.link(block);
         } else if (block.role === 'code') {
-          for (const line of wrapCode(block.text)) this.text(line, 9, false, 12, CODE_FONT);
+          this.lines(wrapCode(block.text), { size: 9, lead: 12, font: CODE_FONT });
+          this.y -= 4;
+        } else if (block.role === 'notice') {
+          this.notice(this.blockLines(block, 8.8));
         } else {
-          const bold = block.role === 'subheading';
-          for (const line of this.blockLines(block)) this.text(line, 10, bold, 13);
-          for (const line of wrapText(block.caption || '', TEXT_WIDTH, 8).filter(Boolean)) this.text(line, 8, false, 11);
+          this.lines(this.blockLines(block), { size: 10, lead: 13.8 });
+          const captions = wrapText(block.caption || '', TEXT_WIDTH, 8).filter(Boolean);
+          if (captions.length) this.lines(captions, { size: 8, color: MUTED, lead: 11 });
+          this.y -= 4;
         }
       }
-      if (role === 'questions' && !this.compact && !explicitAnswerAreas) this.answerSpace(group.marks);
-      this.y -= 12;
+      if (role === 'questions' && !this.compact && !explicitAnswerAreas) this.answerLines(group.marks, false);
+      if (role === 'questions' && answerBlocks > 1 && group.marks != null) {
+        this.ensure(16);
+        const total = `Total for Question ${number}: ${plural(group.marks, 'mark')}`;
+        this.textAt(total, PAGE_WIDTH - MARGIN - textWidth(total, 9, true), this.y - 9, { size: 9, bold: true });
+        this.y -= 16;
+      }
+      // A light divider between questions, unless the page is about to end.
+      this.y -= 10;
+      if (index < groups.length - 1 && this.y - 40 > CONTENT_BOTTOM) {
+        this.lineAt(MARGIN, this.y, PAGE_WIDTH - MARGIN, this.y, { color: EDGE, width: 0.5, dash: [2, 3] });
+      }
+      this.y -= 22;
       controls.onProgress?.({ completed: index + 1, total: groups.length });
     }
   }
 
-  answerSpace(marks) {
-    const lines = Math.max(2, Math.min(12, Number(marks) ? Math.ceil(Number(marks) / 2) : 3));
-    for (let index = 0; index < lines; index += 1) {
-      this.ensure(16);
-      this.rule(14, true);
-    }
+  partHeading(block) {
+    const label = cleanText(block.text || '');
+    const marks = /(\d+)\s+marks?\s*$/.exec(block.caption || '');
+    this.y -= 4;
+    this.ensure(18);
+    this.textAt(label, MARGIN, this.y - 10, { size: 10.5, bold: true });
+    if (marks) this.textAt(plural(Number(marks[1]), 'mark'), MARGIN + textWidth(label, 10.5, true) + 8, this.y - 10, { size: 8.5, color: MUTED });
+    this.y -= 18;
   }
 
-  blockLines(block) {
+  notice(rows) {
+    const height = rows.length * 12 + 10;
+    this.ensure(height);
+    this.roundedRect(MARGIN, this.y - height, TEXT_WIDTH, height, 5, { fill: WASH });
+    this.lineAt(MARGIN + 0.5, this.y - height + 4, MARGIN + 0.5, this.y - 4, { color: SOFT, width: 2 });
+    let rowTop = this.y - 5;
+    for (const row of rows) {
+      this.textAt(row, MARGIN + 10, rowTop - 8.6, { size: 8.8, color: MUTED });
+      rowTop -= 12;
+    }
+    this.y -= height + 8;
+  }
+
+  /** Ruled lines for the answer, sized by marks, ending with the marks in brackets. */
+  answerLines(marks, perPart) {
+    const count = answerLineCount(marks);
+    this.y -= 6;
+    // Keep a short answer's lines together; long answers may run on to the next page.
+    this.ensure(ANSWER_LINE_GAP * Math.min(8, count) + 16);
+    for (let index = 0; index < count; index += 1) {
+      this.ensure(ANSWER_LINE_GAP + (index === count - 1 ? 16 : 0));
+      this.y -= ANSWER_LINE_GAP;
+      this.lineAt(MARGIN, this.y, PAGE_WIDTH - MARGIN, this.y, { color: LINE, width: 0.6 });
+    }
+    if (Number(marks) > 0) {
+      const label = `(${plural(Number(marks), 'mark')})`;
+      this.textAt(label, PAGE_WIDTH - MARGIN - textWidth(label, 8.5, true), this.y - 12, { size: 8.5, bold: true, color: perPart ? MUTED : INK });
+      this.y -= 16;
+    } else this.y -= 6;
+  }
+
+  blockLines(block, size = 10) {
     const text = block.type === 'html' ? htmlToText(block.html) : cleanText(block.text || '');
-    return wrapText(text, TEXT_WIDTH, 10);
+    return wrapText(text, block.role === 'notice' ? TEXT_WIDTH - 20 : TEXT_WIDTH, size);
   }
 
   async blockHeight(block, firstLineOnly = false) {
     if (block.type === 'image') {
       const [first] = await this.preparedImage(block);
-      return first.height + this.imageCaption(block).length * 11 + 10;
+      return first.height + this.imageCaption(block).length * 10.5 + 12;
     }
+    if (block.role === 'subheading') return 22;
+    if (block.role === 'notice') return this.blockLines(block, 8.8).length * 12 + 18;
     const lines = block.role === 'code' ? wrapCode(block.text) : this.blockLines(block);
-    return (firstLineOnly ? Math.min(1, lines.length) : lines.length) * 13
+    return (firstLineOnly ? Math.min(1, lines.length) : lines.length) * 13.8
       + wrapText(block.caption || '', TEXT_WIDTH, 8).filter(Boolean).length * 11;
   }
 
   imageCaption(block) {
-    return block.alt ? wrapText(block.alt, TEXT_WIDTH, 8) : [];
+    return block.alt ? wrapText(block.alt, TEXT_WIDTH, 7.6) : [];
   }
 
   preparedImage(block) {
@@ -162,16 +426,19 @@ class PdfLayout {
     for (const [index, image] of images.entries()) {
       if (index) this.newPage();
       const captions = index
-        ? wrapText(`${block.alt || 'Question'} (continued)`, TEXT_WIDTH, 8)
+        ? wrapText(`${block.alt || 'Question'} (continued)`, TEXT_WIDTH, 7.6)
         : this.imageCaption(block);
-      this.ensure(image.height + captions.length * 11 + 10);
-      for (const line of captions) this.text(line, 8, false, 11);
+      this.ensure(image.height + captions.length * 10.5 + 12);
+      if (captions.length) {
+        this.lines(captions, { size: 7.6, color: SOFT, lead: 10.5 });
+        this.y -= 2;
+      }
       if (!image.id) {
         image.id = this.images.length + 1;
         this.images.push({ bytes: image.bytes, width: image.originalWidth, height: image.originalHeight });
       }
       this.page.images.add(image.id);
-      this.page.commands.push(`q ${num(image.width)} 0 0 ${num(image.height)} ${MARGIN} ${num(this.y - image.height)} cm /Im${image.id} Do Q`);
+      this.draw(`q ${num(image.width)} 0 0 ${num(image.height)} ${MARGIN} ${num(this.y - image.height)} cm /Im${image.id} Do Q`);
       this.y -= image.height + 10;
     }
   }
@@ -180,41 +447,74 @@ class PdfLayout {
     let parsed;
     try { parsed = new URL(url); } catch { return; }
     if (parsed.protocol !== 'https:' || parsed.username || parsed.password) return;
-    for (const line of wrapText(cleanText(text), TEXT_WIDTH, 9)) {
-      this.ensure(12);
-      const x2 = MARGIN + Math.min(TEXT_WIDTH, estimateWidth(line, 9) + 8);
-      this.page.links.push({ rect: [MARGIN, num(this.y - 2), num(x2), num(this.y + 9)], url: parsed.href });
-      this.page.commands.push('0.05 0.28 0.55 rg');
-      this.text(line, 9, false, 12);
-      this.page.commands.push('0 g');
+    for (const line of wrapText(cleanText(text), TEXT_WIDTH - 12, 9)) {
+      this.ensure(14);
+      const baseline = this.y - 9.5;
+      const width = Math.min(TEXT_WIDTH, textWidth(line, 9));
+      this.page.links.push({ rect: [MARGIN, num(baseline - 3), num(MARGIN + width + 12), num(baseline + 9)], url: parsed.href });
+      this.textAt('›', MARGIN, baseline, { size: 9, bold: true, color: LINK });
+      this.textAt(line, MARGIN + 10, baseline, { size: 9, color: LINK });
+      this.lineAt(MARGIN + 10, baseline - 1.6, MARGIN + 10 + width, baseline - 1.6, { color: LINK, width: 0.4 });
+      this.y -= 14;
     }
-  }
-
-  text(value, size = 10, bold = false, gap = 13, font = bold ? BOLD_FONT : FONT) {
-    this.ensure(gap);
-    this.page.commands.push(`BT 1 0 0 1 ${MARGIN} ${num(this.y)} Tm ${pdfText(value, font, size)} ET`);
-    this.y -= gap;
-  }
-
-  rule(gap = 8, answerLine = false) {
-    this.ensure(gap + 3);
-    const y = this.y - 3;
-    this.page.commands.push(`0.72 G 0.5 w ${MARGIN} ${num(y)} m ${num(PAGE_WIDTH - MARGIN)} ${num(y)} l S 0 G`);
-    this.y -= gap;
-    if (answerLine) this.y -= 1;
-  }
-
-  ensure(space) {
-    if (this.y - Math.min(space, USABLE_HEIGHT) < MARGIN + 24) this.newPage();
+    this.y -= 2;
   }
 
   toBlob() {
+    const title = cleanText(this.options.title || 'Practice test');
     this.pages.forEach((page, index) => {
+      this.page = page;
       const pageNumber = index + 1;
-      page.commands.push(`BT /F1 8 Tf 1 0 0 1 ${num(PAGE_WIDTH - MARGIN - 48)} 24 Tm ${pdfHex(`Page ${pageNumber} of ${this.pages.length}`)} Tj ET`);
+      // Footer: the logo and name on the left, the page number on the right.
+      this.lineAt(MARGIN, 48, PAGE_WIDTH - MARGIN, 48, { color: EDGE, width: 0.6 });
+      const markWidth = this.logo(MARGIN, 26, 13);
+      this.textAt('Pure Past Papers', MARGIN + markWidth + 6, 29.5, { size: 8, bold: true });
+      this.textAt('purepastpapers.com', MARGIN + markWidth + 6 + textWidth('Pure Past Papers', 8, true) + 8, 29.5, { size: 7.5, color: MUTED });
+      const pageLabel = `Page ${pageNumber} of ${this.pages.length}`;
+      this.textAt(pageLabel, PAGE_WIDTH - MARGIN - textWidth(pageLabel, 8), 29.5, { size: 8, color: MUTED });
+      if (index > 0) {
+        const right = page.label || '';
+        const room = TEXT_WIDTH - textWidth(right, 8) - 24;
+        let running = title;
+        while (running.length > 4 && textWidth(running, 8, true) > room) running = `${running.slice(0, -2).trimEnd()}…`;
+        this.textAt(running, MARGIN, PAGE_HEIGHT - 42, { size: 8, bold: true, color: MUTED });
+        this.textAt(right, PAGE_WIDTH - MARGIN - textWidth(right, 8), PAGE_HEIGHT - 42, { size: 8, color: MUTED });
+        this.lineAt(MARGIN, PAGE_HEIGHT - 50, PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 50, { color: EDGE, width: 0.6 });
+      }
     });
     return serializePdf(this.pages, this.images);
   }
+}
+
+// The logo path in PDF operators, in its own (y-down) coordinates.
+const LOGO_OPS = (() => {
+  const tokens = PPP_PATH.match(/[MCLZ]|-?\d*\.?\d+/g) || [];
+  const out = [];
+  let command = '';
+  let values = [];
+  const flush = () => {
+    if (!values.length) return;
+    if (command === 'M') out.push(`${values.join(' ')} m`);
+    else if (command === 'L') out.push(`${values.join(' ')} l`);
+    else if (command === 'C') out.push(`${values.join(' ')} c`);
+    values = [];
+  };
+  for (const token of tokens) {
+    if (/[MCLZ]/.test(token)) {
+      flush();
+      command = token;
+      if (token === 'Z') out.push('h');
+    } else {
+      values.push(token);
+      const need = command === 'C' ? 6 : 2;
+      if (values.length === need) flush();
+    }
+  }
+  return out.join(' ');
+})();
+
+function plural(count, word) {
+  return `${count} ${Number(count) === 1 ? word : `${word}s`}`;
 }
 
 function htmlToText(markup) {
@@ -247,20 +547,20 @@ function cleanText(value) {
   return String(value || '').replace(/\u00a0/g, ' ').replace(/[\t ]+/g, ' ').replace(/ *\n */g, '\n').trim();
 }
 
-function wrapText(value, width, fontSize) {
+function wrapText(value, width, fontSize, bold = false) {
   const output = [];
   for (const paragraph of String(value).split('\n')) {
     if (!paragraph.trim()) { output.push(''); continue; }
     let line = '';
     for (const word of paragraph.split(/\s+/)) {
       const candidate = line ? `${line} ${word}` : word;
-      if (line && estimateWidth(candidate, fontSize) > width) {
+      if (line && estimateWidth(candidate, fontSize, bold) > width) {
         output.push(line);
         line = word;
       } else line = candidate;
-      while (estimateWidth(line, fontSize) > width && line.length > 1) {
+      while (estimateWidth(line, fontSize, bold) > width && line.length > 1) {
         let split = 1;
-        while (split < line.length - 1 && estimateWidth(line.slice(0, split + 1), fontSize) <= width) split++;
+        while (split < line.length - 1 && estimateWidth(line.slice(0, split + 1), fontSize, bold) <= width) split++;
         output.push(line.slice(0, split));
         line = line.slice(split);
       }
@@ -270,15 +570,22 @@ function wrapText(value, width, fontSize) {
   return output;
 }
 
-function estimateWidth(value, size) {
+// Helvetica and Helvetica-Bold advance widths (per 1000 units) for printable ASCII.
+const HELVETICA = [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584];
+const HELVETICA_BOLD = [278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,975,722,722,722,722,667,611,778,722,278,556,722,611,833,722,778,667,778,722,667,611,722,667,944,667,667,611,333,278,333,584,556,333,556,611,556,611,556,333,611,611,278,278,556,278,889,611,611,611,611,389,556,333,611,556,778,556,556,500,389,280,389,584];
+
+function textWidth(value, size, bold = false) {
+  const table = bold ? HELVETICA_BOLD : HELVETICA;
   let units = 0;
-  for (const char of value) {
-    if ('MWmw@%&'.includes(char)) units += 0.95;
-    else if ('ijlI!.,:;| '.includes(char)) units += 0.30;
-    else if (/[A-Z]/.test(char)) units += 0.80;
-    else units += 0.60;
+  for (const char of String(value)) {
+    const code = char.codePointAt(0);
+    units += code >= 32 && code <= 126 ? table[code - 32] : 600;
   }
-  return units * size;
+  return units * size / 1000;
+}
+
+function estimateWidth(value, size, bold = false) {
+  return textWidth(value, size, bold);
 }
 
 function wrapCode(value) {
@@ -411,16 +718,119 @@ function splitCrop(bitmap, maxRows) {
   return slices;
 }
 
+/**
+ * Whitens the page-border bars that full-page crops carry at their edges (the printed
+ * paper's margin box), so questions sit cleanly on the PDF page. Only long, thin dark runs
+ * hugging the outer edges are removed; anything inside the crop is left alone.
+ */
+function cleanCropEdges(canvas) {
+  const { width, height } = canvas;
+  if (width < 120 || height < 60) return;
+  const context = canvas.getContext('2d', { willReadFrequently: true });
+  const pixels = context.getImageData(0, 0, width, height).data;
+  const dark = (x, y) => {
+    const index = (y * width + x) * 4;
+    return pixels[index] + pixels[index + 1] + pixels[index + 2] < 600;
+  };
+  const band = Math.max(4, Math.floor(width * 0.06));
+  const columns = [];
+  for (const [from, to] of [[0, band], [width - band, width]]) {
+    for (let x = from; x < to; x += 1) {
+      let run = 0;
+      for (let y = 0; y < height; y += 1) if (dark(x, y)) run += 1;
+      if (run > height * 0.55) columns.push(x);
+    }
+  }
+  const edgeRows = Math.max(3, Math.floor(height * 0.035));
+  const rows = [];
+  for (const [from, to] of [[0, edgeRows], [height - edgeRows, height]]) {
+    for (let y = from; y < to; y += 1) {
+      let run = 0;
+      for (let x = 0; x < width; x += 1) if (dark(x, y)) run += 1;
+      if (run > width * 0.7) rows.push(y);
+    }
+  }
+  context.fillStyle = '#fff';
+  // The very edge of a crop never holds question content, only scan fringes.
+  const fringe = Math.max(3, Math.floor(width * 0.012));
+  context.fillRect(0, 0, fringe, height);
+  context.fillRect(width - fringe, 0, fringe, height);
+  for (const x of columns) context.fillRect(Math.max(0, x - 2), 0, 5, height);
+  for (const y of rows) context.fillRect(0, Math.max(0, y - 2), width, 5);
+}
+
+/**
+ * Shortens long empty bands inside a crop: the printed paper's blank working space. The PDF
+ * gives every question ruled answer lines instead, so that space only pushes lines apart.
+ * Returns the canvas to use (the original when nothing is long enough to shorten).
+ */
+function collapseBlankBands(canvas) {
+  const { width, height } = canvas;
+  if (width < 120 || height < 120) return canvas;
+  const context = canvas.getContext('2d', { willReadFrequently: true });
+  const pixels = context.getImageData(0, 0, width, height).data;
+  const limit = Math.max(1, Math.floor(width * 0.002));
+  const blank = new Uint8Array(height);
+  for (let y = 0; y < height; y += 1) {
+    let ink = 0;
+    for (let x = 0; x < width && ink <= limit; x += 1) {
+      const index = (y * width + x) * 4;
+      if (pixels[index] + pixels[index + 1] + pixels[index + 2] < 600) ink += 1;
+    }
+    blank[y] = ink <= limit ? 1 : 0;
+  }
+  const longest = Math.round(width * 0.08);
+  const keep = Math.round(width * 0.04);
+  const segments = [];
+  let start = 0;
+  let removed = 0;
+  for (let y = 0; y <= height; y += 1) {
+    if (y < height && blank[y]) continue;
+    let runStart = y - 1;
+    while (runStart >= start && blank[runStart]) runStart -= 1;
+    runStart += 1;
+    const run = y - runStart;
+    if (run > longest) {
+      const cut = run - keep;
+      segments.push({ top: start, rows: runStart + Math.floor(keep / 2) - start });
+      start = runStart + Math.floor(keep / 2) + cut;
+      removed += cut;
+    }
+  }
+  if (!removed) return canvas;
+  if (start < height) segments.push({ top: start, rows: height - start });
+  const output = bitmapCanvas(width, height - removed);
+  const out = output.getContext('2d', { willReadFrequently: true });
+  out.fillStyle = '#fff';
+  out.fillRect(0, 0, width, height - removed);
+  let y = 0;
+  for (const { top, rows } of segments) {
+    if (rows <= 0) continue;
+    out.drawImage(canvas, 0, top, width, rows, 0, y, width, rows);
+    y += rows;
+  }
+  return output;
+}
+
 async function prepareImage(data, mimeType) {
   const blob = data instanceof Blob ? data : new Blob([data], { type: mimeType || 'image/webp' });
   const bitmap = await decodePdfImage(blob);
-  const maxHeight = USABLE_HEIGHT - 100;
+  const maxHeight = USABLE_HEIGHT - 90;
   try {
-    let scale = TEXT_WIDTH / bitmap.width;
-    const cuts = bitmap.height * scale > maxHeight / 0.82
-      ? splitCrop(bitmap, Math.floor(maxHeight / scale))
-      : [{ top: 0, rows: bitmap.height }];
-    if (cuts.length === 1) scale = Math.min(scale, maxHeight / bitmap.height);
+    const source = bitmapCanvas(bitmap.width, bitmap.height);
+    const sourceContext = source.getContext('2d', { willReadFrequently: true });
+    sourceContext.fillStyle = '#fff';
+    sourceContext.fillRect(0, 0, bitmap.width, bitmap.height);
+    sourceContext.drawImage(bitmap, 0, 0);
+    cleanCropEdges(source);
+    const cleaned = collapseBlankBands(source);
+    const fullHeight = cleaned.height;
+    // Full-width crops fill the text column; small figures keep roughly their printed size.
+    let scale = Math.min(TEXT_WIDTH / bitmap.width, 0.62);
+    const cuts = fullHeight * scale > maxHeight / 0.82
+      ? splitCrop(cleaned, Math.floor(maxHeight / scale))
+      : [{ top: 0, rows: fullHeight }];
+    if (cuts.length === 1) scale = Math.min(scale, maxHeight / fullHeight);
 
     const prepared = [];
     for (const { top, rows } of cuts) {
@@ -428,7 +838,7 @@ async function prepareImage(data, mimeType) {
       const context = canvas.getContext('2d', { alpha: false });
       context.fillStyle = '#fff';
       context.fillRect(0, 0, bitmap.width, rows);
-      context.drawImage(bitmap, 0, top, bitmap.width, rows, 0, 0, bitmap.width, rows);
+      context.drawImage(cleaned, 0, top, bitmap.width, rows, 0, 0, bitmap.width, rows);
       const bytes = await canvasJpeg(canvas);
       prepared.push({ bytes, width: bitmap.width * scale, height: rows * scale, originalWidth: bitmap.width, originalHeight: rows });
     }

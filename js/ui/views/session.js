@@ -23,6 +23,7 @@ import { targetGrade, tintPage } from '../subject-colours.js';
 import { icon } from '../icons.js';
 import { linkedIntro, linkedNote, linkedPartBody, linkedPartLabel, linkedRef, linkedUses, markSchemeBody, marksPill, questionBody, questionRef } from '../question-view.js';
 import { bindInkPreviews, inkPreview } from '../ink-preview.js';
+import { createSessionInk } from '../session-ink.js';
 import { groupEntry, runnerItems } from '../../engine/linked-parts.js';
 import { banner, confirmDialog, openModal, difficultyBadge, emptyState, fmtPercent, meter, soonBadge, toast } from '../ui.js';
 
@@ -74,6 +75,14 @@ export async function mount(element, context) {
   const persist = debounce(() => {
     if (!removed) api.saveSession(session, { silent: true });
   }, 400);
+  // Handwritten answers (Apple Pencil or any stylus) beside each typed answer box.
+  const answered = (id) => Boolean(session.answers[id] || session.ink_answers?.[id]);
+  const ink = createSessionInk(element, session, {
+    onChange: (id) => {
+      persist();
+      if (scrollMode) paletteFor(id)?.classList.toggle('is-answered', answered(id));
+    },
+  });
   const topicOf = (question) => specIndex.topicOf(question.primary_spec_points[0])?.title || 'Other';
   const markedCount = () => questions.filter((question) => session.marks[question.question_id] != null).length;
   // Linked parts that follow each other are one question in the runner (engine/linked-parts.js):
@@ -279,8 +288,8 @@ export async function mount(element, context) {
             <span class="card__title row row--between">Your answer <span class="muted">(optional)</span> ${zoomButton('answer box')}</span>
             ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
             <textarea class="textarea" data-answer="${id}" placeholder="Type your working here, or answer on paper.">${session.answers[id] || ''}</textarea>
-            ${savedInk(question)}
           </label>
+          ${ink.controls(id)}
         </section>
         </div>
         </div>
@@ -328,7 +337,7 @@ export async function mount(element, context) {
         const ids = item.questions.map((question) => question.question_id);
         const state = [
           position === current ? 'is-current' : '',
-          ids.some((id) => session.answers[id]) ? 'is-answered' : '',
+          ids.some(answered) ? 'is-answered' : '',
           ids.some((id) => session.flagged[id]) ? 'is-flagged' : '',
           ids.every((id) => session.marks[id] != null) ? 'is-marked' : '',
         ].join(' ');
@@ -352,11 +361,12 @@ export async function mount(element, context) {
           return html`<section class="runner__part qgroup__part" aria-label="Part ${label}">
             <div class="qsplit__head"><span class="field__label qgroup__partlabel"><b>${scheme ? 'Mark scheme ' : 'Part '}${label}</b><span class="small muted">${plural(part.marks, 'mark')}</span>${uses.length && !scheme ? html`<span class="qgroup__uses">${icon('chevronLeft', { size: 12 })} uses your answer to ${uses.join(' and ')}</span>` : ''}</span></div>
             ${scheme ? markSchemeBody(part, { wholeQuestion: false }) : linkedPartBody(part)}
-            ${scheme ? answerBlock(part) : savedInk(part)}
+            ${scheme ? answerBlock(part) : ''}
             ${scheme
               ? marksInput(part, `Marks for ${label}, out of ${part.marks}`)
               : html`<label class="field"><span class="field__label">Your answer to ${label}</span>
-                  <textarea class="textarea" data-answer="${part.question_id}" placeholder="${placeholder}">${session.answers[part.question_id] || ''}</textarea></label>`}
+                  <textarea class="textarea" data-answer="${part.question_id}" placeholder="${placeholder}">${session.answers[part.question_id] || ''}</textarea></label>
+                  ${ink.controls(part.question_id)}`}
           </section>`;
         })}
       </div>`;
@@ -430,7 +440,7 @@ export async function mount(element, context) {
     const flagged = ids.some((id) => session.flagged[id]);
     const state = [
       position === current ? 'is-current' : '',
-      ids.some((id) => session.answers[id]) ? 'is-answered' : '',
+      ids.some(answered) ? 'is-answered' : '',
       flagged ? 'is-flagged' : '',
     ].join(' ');
     const label = fullPaper ? paperItemNumber(item) : position + 1;
@@ -496,6 +506,7 @@ export async function mount(element, context) {
                           ${api.isSignedIn() ? '' : html`<span class="hand">guest answers are temporary</span>`}
                           <textarea class="textarea" data-answer="${id}" placeholder="Optional. Type your working here, or answer on paper.">${session.answers[id] || ''}</textarea>
                         </label>
+                        ${ink.controls(id)}
                       </section>
                       ${flagButton(id)}
                     </div>
@@ -855,7 +866,7 @@ export async function mount(element, context) {
                   <summary>
                     <span class="fold__title">${numberOf(question)}</span>
                     <span class="tag">${topicOf(question)}</span>
-                    ${session.answers[question.question_id] ? '' : html`<span class="small muted">not typed</span>`}
+                    ${answered(question.question_id) ? '' : html`<span class="small muted">no answer</span>`}
                     <span class="spacer"></span>
                     ${marks == null ? html`<span class="small muted">Not marked</span>` : html`<span class="rag-dot" data-rag="${ragFor(share)}"></span><span class="review-card__marks">${marks}/${question.marks}</span>`}
                   </summary>
@@ -874,10 +885,12 @@ export async function mount(element, context) {
   }
 
   function draw({ focus = true } = {}) {
+    ink.beforeRender();
     if (session.status === 'completed') drawResults();
     else if (session.status === 'marking') drawMarking();
     else drawRun();
     bindInkPreviews(element);
+    if (session.status === 'in_progress') ink.afterRender();
     if (focus) $('h1', element)?.focus({ preventScroll: true });
   }
 
@@ -892,6 +905,7 @@ export async function mount(element, context) {
     if (savingResults) return;
     savingResults = true;
     try {
+      await ink.flush();
       await finishSession(session, { questions, subject, paper, totalAwarded: session.total_awarded });
       resultSaveFailed = false;
       draw();
@@ -935,7 +949,7 @@ export async function mount(element, context) {
     const remaining = remainingSeconds(session);
     const clockLine = remaining !== null && remaining > 0 ? `The clock stops with ${fmtClock(remaining)} left` : 'The clock stops';
     const numbers = (list) => list.map((question) => numberOf(question).replace('Question ', 'Q').replace(' ', '')).join(', ');
-    const unanswered = questions.filter((question) => !session.answers[question.question_id]);
+    const unanswered = questions.filter((question) => !answered(question.question_id));
     const flagged = questions.filter((question) => session.flagged[question.question_id]);
     const proceed = await confirmDialog({
       title: wholePaper ? 'Finish the paper?' : 'Finish and mark?',
@@ -945,14 +959,15 @@ export async function mount(element, context) {
       extra: wholePaper
         ? ''
         : html`<p class="row row--tight" style="margin-top:14px">
-            <span class="tag">${questions.length - unanswered.length} typed</span>
-            ${unanswered.length ? html`<span class="tag">${unanswered.length} not typed${unanswered.length <= 6 ? `: ${numbers(unanswered)}` : ''}</span>` : ''}
+            <span class="tag">${questions.length - unanswered.length} answered</span>
+            ${unanswered.length ? html`<span class="tag">${unanswered.length} not answered${unanswered.length <= 6 ? `: ${numbers(unanswered)}` : ''}</span>` : ''}
             ${flagged.length ? html`<span class="tag">${flagged.length} flagged: ${numbers(flagged)}</span>` : ''}
           </p>`,
       cancelLabel: 'Keep going',
       confirmLabel: 'Finish',
     });
     if (!proceed) return;
+    await ink.flush();
     pauseTimer(session);
     session.status = 'marking';
     await api.saveSession(session, { silent: true });
@@ -997,7 +1012,7 @@ export async function mount(element, context) {
     if (area.value.trim()) session.answers[area.dataset.answer] = area.value;
     else delete session.answers[area.dataset.answer];
     persist();
-    if (scrollMode) paletteFor(area.dataset.answer)?.classList.toggle('is-answered', Boolean(session.answers[area.dataset.answer]));
+    if (scrollMode) paletteFor(area.dataset.answer)?.classList.toggle('is-answered', answered(area.dataset.answer));
   });
   on(element, 'click', '[data-flag]', (event, button) => {
     const id = button.dataset.flag;
@@ -1151,6 +1166,7 @@ export async function mount(element, context) {
     if (scrollFrame) cancelAnimationFrame(scrollFrame);
     document.removeEventListener('visibilitychange', saveOnHide);
     window.removeEventListener('pagehide', pauseOnLeave);
+    ink.destroy();
     // Skip if it was deleted, or the student signed out (it then belongs to another progress record).
     if (removed || !api.getSession(session.session_id)) return;
     if (session.status === 'in_progress') pauseTimer(session); // the clock only runs while the paper is open
@@ -1160,6 +1176,7 @@ export async function mount(element, context) {
       session.status === 'in_progress' &&
       !Object.keys(session.marks).length &&
       !Object.keys(session.answers).length &&
+      !Object.keys(session.ink_answers || {}).length &&
       !Object.keys(session.flagged).length &&
       (session.kind === 'single' || elapsedMs(session) < 60_000);
     removed = untouched;

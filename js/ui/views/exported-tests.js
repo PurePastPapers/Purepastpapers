@@ -5,11 +5,11 @@ import * as api from '../../data/api.js';
 import { getBundle } from '../../data/content-repository.js';
 import { offlineRetakeId } from '../../data/offline-progress.js';
 import { getMarkingProvider } from '../../engine/marking.js';
-import { resolveTestSnapshot, scoreTestSnapshot, verifyTestCrops } from '../../engine/test-snapshot.js?v=20261122-pdf2';
-import { exportRetention, offerTestPdf, promptForOfflineAttempt } from '../test-pdf.js?v=20261122-pdf2';
+import { resolveTestSnapshot, scoreTestSnapshot, verifyTestCrops } from '../../engine/test-snapshot.js?v=20261127-pdf3';
+import { exportRetention, offerTestPdf, promptForOfflineAttempt } from '../test-pdf.js?v=20261127-pdf3';
 import { icon } from '../icons.js';
 import { confirmDialog, emptyState, pageHead, toast } from '../ui.js';
-import { renderOfflineMarking } from './offline-test.js?v=20261122-pdf2';
+import { renderOfflineMarking } from './offline-test.js?v=20261127-pdf3';
 
 export function savedTestState(attempt) {
   if (!attempt) return 'Ready to complete';

@@ -35,7 +35,7 @@ import { banner, difficultyBadge, emptyState, openModal, pageHead, soonBadge, to
 import { links, routeOf } from '../../core/links.js?v=exported-tests-1';
 import { levelLabel } from '../../engine/paper-identity.js';
 import { moduleScopeBanner } from '../module-scope.js';
-import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js?v=20261122-pdf2';
+import { createTestSnapshot, resolveTestSnapshot } from '../../engine/test-snapshot.js?v=20261127-pdf3';
 import { createInkEditor, renderInkPreview, transferPencilStroke } from '../ink-editor.js?v=practice-ink-3';
 
 /** Question sources. The AI options unlock when Phase 2 is enabled in phases.js. */
@@ -2206,7 +2206,7 @@ export async function mount(element, context) {
     button.disabled = true;
     try {
       const snapshot = createTestSnapshot({ bundle, ids, title });
-      const { offerTestPdf } = await import('../test-pdf.js?v=20261122-pdf2');
+      const { offerTestPdf } = await import('../test-pdf.js?v=20261127-pdf3');
       await offerTestPdf({
         snapshot, questions: resolveTestSnapshot(snapshot, bundle), existing: Boolean(api.getCustomTest(snapshot.id)),
       });

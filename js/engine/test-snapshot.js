@@ -1,5 +1,5 @@
 import { sha256, toHex } from '../core/sha256.js';
-import { sourceImageChecksums } from '../data/source-images.js?v=20261122-pdf2';
+import { sourceImageChecksums } from '../data/source-images.js?v=20261127-pdf3';
 import { expandLinkedIds, runnerItems } from './linked-parts.js';
 import { printedQuestionNumber } from './paper-identity.js';
 

@@ -28,6 +28,11 @@ Never put passwords, SMTP credentials, Supabase secret keys, access tokens, or o
 - Migration `20261122120000_ink_responses.sql` was applied to the production Supabase project. The rollback-only test in `supabase/tests/ink_responses_isolation.sql` passed in local PostgreSQL with synthetic auth identities. Production metadata confirms RLS and an owner read policy on each handwriting table.
 - User deletion cascades handwriting records in Supabase. The Account backup includes handwriting, and deleting an individual attempt removes its associated handwriting. Verification on physical Apple Pencil hardware remains separate from browser pointer tests.
 
+## Handwriting in papers and tests; PDF layout (2026-11-27)
+
+- The session runner (past papers, built tests, question sets) has a "Write with Pencil" switch on each answer box (`js/ui/session-ink.js`). A Pencil touching a typed box switches it to writing and keeps the stroke. Ink is stored with the Practice handwriting repository under the attempt id the result is logged with (`session.attempt_ids[id]` or `${session_id}:${question_id}`), so marking, results and the Data Hub show it.
+- Test-builder PDFs (`js/engine/test-pdf-render.js`) have a branded cover (logo, title, name/date/score boxes, instructions), numbered question headers with source tags, ruled answer lines scaled by marks (`answerLineCount`), and the PPP logo in every page footer. Crops have the original booklet border bars removed and long blank working space shortened. PDF module version: `20261127-pdf3`.
+
 ## 1. Project overview
 
 PurePastPapers is a static vanilla-JavaScript exam-paper and practice-question site published through GitHub Pages at https://purepastpapers.com. PR #6 adds Supabase email/password accounts and cross-device progress snapshots stored as one JSON row per user in an RLS-protected table.

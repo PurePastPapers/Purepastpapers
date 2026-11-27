@@ -2,8 +2,8 @@ import { html } from '../core/dom.js';
 import { links } from '../core/links.js';
 import * as api from '../data/api.js';
 // Keep the lazy PDF modules on the same revision when Practice spans a deploy.
-import { pinTestCrops, verifyTestCrops } from '../engine/test-snapshot.js?v=20261122-pdf2';
-import { askOfflineCompletion } from './views/offline-test.js?v=20261122-pdf2';
+import { pinTestCrops, verifyTestCrops } from '../engine/test-snapshot.js?v=20261127-pdf3';
+import { askOfflineCompletion } from './views/offline-test.js?v=20261127-pdf3';
 import { openModal, toast } from './ui.js';
 
 const labels = { question: 'Question paper', scheme: 'Mark scheme', combined: 'Combined PDF' };
@@ -30,7 +30,7 @@ async function renderPdf(kind, options, signal, onProgress) {
   if ('Worker' in globalThis && 'OffscreenCanvas' in globalThis && 'createImageBitmap' in globalThis) {
     let worker;
     try {
-      worker = new Worker(new URL('../engine/test-pdf-worker.js?v=20261122-pdf2', import.meta.url), { type: 'module' });
+      worker = new Worker(new URL('../engine/test-pdf-worker.js?v=20261127-pdf3', import.meta.url), { type: 'module' });
       return await new Promise((resolve, reject) => {
         if (signal.aborted) { reject(signal.reason); return; }
         const abort = () => reject(signal.reason);
@@ -53,7 +53,7 @@ async function renderPdf(kind, options, signal, onProgress) {
       worker?.terminate();
     }
   }
-  const { createQuestionPdf, createMarkSchemePdf, createCombinedPdf } = await import('../engine/test-pdf-render.js?v=20261122-pdf2');
+  const { createQuestionPdf, createMarkSchemePdf, createCombinedPdf } = await import('../engine/test-pdf-render.js?v=20261127-pdf3');
   const make = { question: createQuestionPdf, scheme: createMarkSchemePdf, combined: createCombinedPdf };
   return make[kind](options, { signal, onProgress });
 }
@@ -91,7 +91,7 @@ export async function offerTestPdf({ snapshot, questions, existing = false }) {
         const progress = dialog.querySelector('progress');
         next.hidden = true;
         const { signal } = controller;
-        import('../engine/test-pdf-content.js?v=20261122-pdf2')
+        import('../engine/test-pdf-content.js?v=20261127-pdf3')
           .then(async content => {
             const frozen = existing || options.kind === 'scheme' ? snapshot : await pinTestCrops(snapshot, questions, { signal });
             const currentQuestions = existing ? await verifyTestCrops(frozen, questions, { signal }) : questions;

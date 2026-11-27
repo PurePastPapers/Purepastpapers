@@ -176,3 +176,19 @@
   }
 
 }
+
+/* Handwritten answers in papers and tests (js/ui/session-ink.js). */
+.session-ink {
+  margin-top: .6rem;
+}
+
+.session-ink__target[hidden],
+.answer-card textarea[hidden],
+.qgroup__part textarea[hidden] {
+  display: none;
+}
+
+.session-ink__bar {
+  align-items: center;
+  flex-wrap: wrap;
+}
