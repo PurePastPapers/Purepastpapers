@@ -229,13 +229,37 @@ async function handleRoute() {
   } catch (error) {
     console.error(error);
     if (ticket !== navigation) return;
+    if (isStaleCodeError(error) && reloadForNewCode()) return;
     setHtml(
       view,
       html`${banner(html`<strong>Something went wrong loading this page.</strong><br /><span class="small">${error.message}</span>`, { type: 'error' })}
         <p style="margin-top:16px"><button type="button" class="btn" data-retry>Try again</button></p>`,
     );
-    $('[data-retry]', view)?.addEventListener('click', handleRoute);
+    $('[data-retry]', view)?.addEventListener('click', isStaleCodeError(error) ? () => location.reload() : handleRoute);
   }
+}
+
+/**
+ * After a new version of the site goes live, a tab that was already open still holds the
+ * old copies of shared modules, so a page loaded afterwards can ask them for something
+ * they do not have ("does not provide an export named …"), or its file can fail to load.
+ * Only a full reload fixes that, so do it once (not again within a minute, to avoid loops).
+ */
+const STALE_CODE = /does not provide an export named|doesn't provide an export named|Importing binding name|dynamically imported module|Importing a module script failed|error loading dynamically imported module/i;
+function isStaleCodeError(error) {
+  return STALE_CODE.test(String(error?.message || error));
+}
+function reloadForNewCode() {
+  const key = 'ppp:reloaded-for-new-code';
+  try {
+    const last = Number(sessionStorage.getItem(key)) || 0;
+    if (Date.now() - last < 60_000) return false;
+    sessionStorage.setItem(key, String(Date.now()));
+  } catch {
+    return false;
+  }
+  location.reload();
+  return true;
 }
 
 async function start() {
