@@ -50,7 +50,6 @@ const ROUTES = [
   { path: '/', load: () => (api.isSignedIn() ? import('./ui/views/dashboard.js') : import('./ui/views/landing.js')) },
   { path: '/login', load: () => import('./ui/views/auth.js'), guestOnly: true, options: { mode: 'login' } },
   { path: '/signup', load: () => import('./ui/views/auth.js'), guestOnly: true, options: { mode: 'signup' } },
-  { path: '/legacy-login', load: () => import('./ui/views/auth.js'), guestOnly: true, options: { mode: 'legacy' } },
   { path: '/forgot-password', load: () => import('./ui/views/recovery.js'), guestOnly: true, options: { mode: 'forgot' } },
   { path: '/reset-password', load: () => import('./ui/views/recovery.js'), options: { mode: 'reset' } },
   { path: '/subjects', load: () => import('./ui/views/subjects.js?v=practice-modes-1') },

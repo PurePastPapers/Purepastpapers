@@ -11,20 +11,19 @@ import { openVerifyEmail, signupSteps } from '../verify-email.js';
 
 export async function mount(element, context) {
   const signup = context.options.mode === 'signup';
-  const legacy = context.options.mode === 'legacy';
   const next = context.query.next?.startsWith('/') ? context.query.next : null;
-  const other = signup ? links.login(next) : legacy ? links.login(next) : links.signup(next);
-  context.setTitle(signup ? 'Create an account' : legacy ? 'Log in to this browser' : 'Log in');
+  const other = signup ? links.login(next) : links.signup(next);
+  context.setTitle(signup ? 'Create an account' : 'Log in');
   const subjects = signup ? await getSubjects() : [];
   const names = [...new Set(subjects.map((subject) => subject.subject.replace(/\s*\(.*\)$/, '')))];
   const backend = api.backendInfo();
 
   const formCard = html`<div class="card ruled auth tilt-2">
       <i class="tape tape--c" aria-hidden="true"></i>
-      <h2 class="auth__title">${signup ? 'Create your account' : legacy ? 'Log in to this browser' : 'Log in'}</h2>
-      ${signup ? raw(`<div data-steps>${signupSteps(1)}</div>`) : html`<p class="muted small">${legacy ? 'Open an older account saved only in this browser.' : 'Pick up where you left off.'}</p>`}
-      ${!signup && !legacy && context.query.linkused ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>That email link has already been used</b>If you’ve confirmed your email, just log in. If not, log in anyway and we’ll offer to send a new code.</span></p>` : ''}
-      ${!signup && !legacy && context.query.newcode ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>Need a new code?</b>Log in with your email and password. If your email isn’t confirmed yet, we’ll offer to send a new code.</span></p>` : ''}
+      <h2 class="auth__title">${signup ? 'Create your account' : 'Log in'}</h2>
+      ${signup ? raw(`<div data-steps>${signupSteps(1)}</div>`) : html`<p class="muted small">Pick up where you left off.</p>`}
+      ${!signup && context.query.linkused ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>That email link has already been used</b>If you’ve confirmed your email, just log in. If not, log in anyway and we’ll offer to send a new code.</span></p>` : ''}
+      ${!signup && context.query.newcode ? html`<p class="auth-notice"><span>${raw(INFO)}</span><span><b>Need a new code?</b>Log in with your email and password. If your email isn’t confirmed yet, we’ll offer to send a new code.</span></p>` : ''}
       ${signup ? html`<div data-waiting hidden></div>` : ''}
       <form class="stack" data-form novalidate>
         ${signup
@@ -55,21 +54,17 @@ export async function mount(element, context) {
         <button type="submit" class="btn btn--primary btn--lg btn--block">${signup ? 'Create account' : 'Log in'}</button>
       </form>
       <p class="muted" style="text-align:center">
-        ${signup ? html`Already have an account? <a href="${other}">Log in</a>` : legacy ? html`Back to <a href="${links.login(next)}">cloud account login</a>` : html`New here? <a href="${other}">Create a free account</a>`}
+        ${signup ? html`Already have an account? <a href="${other}">Log in</a>` : html`New here? <a href="${other}">Create a free account</a>`}
       </p>
-      ${!signup && !legacy && backend.cloudConfigured ? html`<p class="muted small" style="text-align:center"><a href="${links.forgotPassword()}">Forgot your password?</a></p>
-        <p class="muted small" style="text-align:center">Have an older browser-only account? <a href="${links.legacyLogin()}">Log in to it to export your progress</a>.</p>` : ''}
-      ${legacy ? html`<p class="muted small" style="text-align:center">After logging in, download your progress, log out, then import it into your cloud account.</p>` : ''}
+      ${!signup && backend.cloudConfigured ? html`<p class="muted small" style="text-align:center"><a href="${links.forgotPassword()}">Forgot your password?</a></p>` : ''}
       <p class="hand auth__note">
         ${signup
           ? backend.cloudConfigured
             ? 'You can still browse papers and practise without an account. An account saves your progress.'
             : 'Cloud account sync is not configured yet; progress stays in this browser.'
-          : legacy
-            ? 'This older account stays in this browser. Export its progress to move it to a cloud account.'
-            : backend.syncsAcrossDevices
-              ? 'Your account progress syncs across your devices.'
-              : 'This browser-only account does not sync across devices.'}
+          : backend.syncsAcrossDevices
+            ? 'Your account progress syncs across your devices.'
+            : 'This browser-only account does not sync across devices.'}
       </p>
     </div>`;
 
@@ -77,8 +72,8 @@ export async function mount(element, context) {
     element,
     html`<div class="auth-page ${signup ? '' : 'auth-page--login'}">
       <div class="auth-page__intro">
-        <h1 tabindex="-1">${signup ? 'Make your free account' : legacy ? 'Your earlier account' : 'Welcome back'}</h1>
-        <p class="hand">${signup ? 'so everything you practise is saved in one place' : legacy ? 'saved on this device before account sync was added' : 'your papers, practice and Data Hub are where you left them'}</p>
+        <h1 tabindex="-1">${signup ? 'Make your free account' : 'Welcome back'}</h1>
+        <p class="hand">${signup ? 'so everything you practise is saved in one place' : 'your papers, practice and Data Hub are where you left them'}</p>
         ${signup
           ? html`<div class="card ruled tilt-1 auth-page__get">
                 <i class="tape tape--l" aria-hidden="true"></i><i class="tape tape--r" aria-hidden="true"></i>
@@ -256,8 +251,7 @@ export async function mount(element, context) {
         }
       } else {
         if (next) context.afterAuth(next);
-        if (legacy) await api.signInLegacy(data);
-        else await api.signIn(data);
+        await api.signIn(data);
       }
     } catch (error) {
       context.afterAuth(null);
