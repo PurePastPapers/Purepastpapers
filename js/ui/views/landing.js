@@ -118,7 +118,6 @@ export async function mount(element, context) {
 
       <section class="lp-section lp-video" id="video" aria-labelledby="video-title">
         <h2 id="video-title">See why it works</h2>
-        <p class="hand">80 seconds, on repeat.</p>
         <figure class="card lp-video__card tilt-3">
           <i class="tape tape--l" aria-hidden="true"></i><i class="tape tape--r" aria-hidden="true"></i>
           <video class="lp-video__player" muted loop playsinline preload="metadata" poster="assets/promo/purepastpapers-promo-poster.jpg" aria-label="PurePastPapers promo video, playing silently on a loop">
