@@ -121,15 +121,11 @@ export async function mount(element, context) {
         <p class="hand">80 seconds, on repeat.</p>
         <figure class="card lp-video__card tilt-3">
           <i class="tape tape--l" aria-hidden="true"></i><i class="tape tape--r" aria-hidden="true"></i>
-          <video class="lp-video__player" muted loop playsinline preload="metadata" poster="assets/promo/purepastpapers-promo-poster.jpg" aria-describedby="video-desc">
+          <video class="lp-video__player" muted loop playsinline preload="metadata" poster="assets/promo/purepastpapers-promo-poster.jpg" aria-label="PurePastPapers promo video, playing silently on a loop">
             <source src="assets/promo/purepastpapers-promo.mp4" type="video/mp4" />
             Your browser can’t play this video. <a href="assets/promo/purepastpapers-promo.mp4">Download it (8 MB)</a>.
           </video>
         </figure>
-        <p class="small muted lp-video__desc" id="video-desc">
-          Why re-reading your notes doesn’t work, why testing yourself does, and how PurePastPapers filters questions to the exact spec points you’ve learned.
-          It also previews the teacher terminal, which is coming soon. The video plays silently on a loop, with on-screen text and the research sources listed at the end.
-        </p>
       </section>
 
       <section class="lp-section" id="features" aria-labelledby="features-title">
