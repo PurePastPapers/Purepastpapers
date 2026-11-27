@@ -24,7 +24,7 @@ function guestProgress() {
   return normalise(doc, 'guest');
 }
 
-/** The cloud adapter is the default when configured; browser-only accounts use an explicit legacy login. */
+/** The cloud adapter is the default when configured; the disposable demo account runs on the browser-only adapter. */
 const backendAdapter = SUPABASE_CONFIGURED ? supabaseAdapter : localAdapter;
 const legacyModeKey = `${APP.storageNamespace}:legacy-mode`;
 let activeAdapter = backendAdapter;
@@ -371,16 +371,6 @@ export async function signIn(details) {
     learnedCache = previousLearnedCache;
     throw error;
   }
-}
-
-export async function signInLegacy(details) {
-  activeAdapter = localAdapter;
-  user = await localAdapter.signIn(details);
-  setLegacyMode(SUPABASE_CONFIGURED);
-  progress = normalise(await localAdapter.loadProgress(user.user_id), user.user_id);
-  learnedCache = null;
-  events.emit('auth', user);
-  return user;
 }
 
 /**

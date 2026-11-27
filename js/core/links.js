@@ -35,7 +35,6 @@ export const links = {
   /** `email` pre-fills the form; `newcode` explains how to get a new confirmation code. */
   login: (next = null, { email = null, newcode = false } = {}) => `#/login${query({ next, email, newcode: newcode ? 1 : null })}`,
   signup: (next = null) => `#/signup${query({ next })}`,
-  legacyLogin: () => '#/legacy-login',
   forgotPassword: (email = null) => `#/forgot-password${query({ email })}`,
 };
 

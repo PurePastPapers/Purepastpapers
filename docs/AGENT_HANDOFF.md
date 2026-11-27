@@ -130,7 +130,7 @@ User-reported:
 - `js/data/api.js` — app-facing auth and progress API.
 - `js/main.js` — app routing and account/auth lifecycle integration.
 - `js/core/links.js` — login, signup, callback and recovery URLs.
-- `js/ui/views/auth.js` — signup, login and legacy-login forms.
+- `js/ui/views/auth.js` — signup and login forms.
 - `js/ui/views/recovery.js` — password-reset completion.
 - `js/ui/views/account.js` — profile, password, backup import/export and deletion controls.
 - `auth-callback.html`, `js/auth-callback.js` — auth callback page.

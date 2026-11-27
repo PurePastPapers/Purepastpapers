@@ -72,9 +72,8 @@ git switch codex/supabase-account-sync-2026-11-16
   that snapshot when the cloud account has no progress yet. Existing cloud progress is
   never overwritten by the guest snapshot.
 - Students can reset their password from the login page and download/import a JSON backup
-  from Account. Existing browser-only accounts can still be opened from the “older
-  browser account” link on the login page, then exported and imported after signing in to
-  Supabase.
+  from Account. The old “older browser account” login (`/legacy-login`) was removed on
+  2026-11-27 because no one had such an account.
 - Progress sync writes a complete JSON snapshot. If the same account is edited at the same
   time on two devices, the last saved snapshot wins.
 

@@ -129,7 +129,7 @@ navigation, stays separate from official papers, and its questions join the prac
 `js/data/api.js` is the only module the UI uses for user data. It selects an adapter:
 
 - `js/data/adapters/supabase-adapter.js` uses Supabase Auth and syncs one progress document per user through `public.user_progress`. Row-level security limits each account to its own progress.
-- `js/data/adapters/local-adapter.js` remains available for older browser-only accounts and the disposable demo account. Existing local accounts can export their data from Account and import it after signing in to Supabase.
+- `js/data/adapters/local-adapter.js` remains for the disposable demo account. The separate login for older browser-only accounts was removed because no one had one; progress can still be exported and imported from Account.
 - Signup uses email confirmation, with password reset and account deletion supported. Account deletion runs through a Supabase Edge Function; the server secret is never sent to the browser.
 - The Supabase project URL and publishable key are in `js/config/supabase.config.js`. These are public values; do not add a secret key to the site.
 - Setup instructions, SQL migration, redirect URLs, and function deployment are in [docs/supabase-setup.md](docs/supabase-setup.md).
