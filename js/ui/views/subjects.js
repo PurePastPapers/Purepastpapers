@@ -10,6 +10,7 @@ import { addSubject, editSubject } from '../enrol.js';
 import { addSubjectButton, addSubjectTile, loadStudent, manageCard, subjectSummary, wireColourPicker } from '../student.js';
 import { banner, emptyState, pageHead, toast } from '../ui.js';
 import { links } from '../../core/links.js';
+import { boardWaitlist, wireBoardWaitlist } from '../board-waitlist.js';
 
 const LEVELS = [
   { id: 'gcse', label: 'GCSE', level: 'GCSE' },
@@ -62,7 +63,7 @@ export async function mount(element, context) {
         (group === 'all' || subject.category_group === group) &&
         (!words || `${subject.subject} ${subject.board} ${subject.spec_code} ${subject.subject_category}`.toLowerCase().includes(words)),
     );
-    if (!list.length) return emptyState({ iconName: 'search', title: 'No subjects match', text: 'Try another level, group or search.' });
+    if (!list.length) return emptyState({ iconName: 'search', title: 'No subjects match', text: 'Try another level, group or search. If your exam board isn’t here yet, join the list below and we’ll email you when it’s added.' });
     return html`<div class="catalogue">
       ${list.map(
         (subject, index) =>
@@ -149,6 +150,7 @@ export async function mount(element, context) {
             </div>
           </div>
           <div id="catalogue-results" role="tabpanel" aria-labelledby="catalogue-level-${level}" tabindex="0" data-catalogue>${catalogue(enrolledIds)}</div>
+          ${boardWaitlist({ source: browsing ? 'subjects-browse' : 'my-subjects', title: 'Can’t find your exam board?', text: 'Tell us the board and subject you need and we’ll email you when they’re added. Just your email, no account needed.', compact: true })}
         </section>`,
     );
     stopPicker = wireColourPicker(element);
@@ -221,7 +223,11 @@ export async function mount(element, context) {
     toast(`${subject.subject} removed. Your progress in it is kept.`);
   });
 
+  const stopWaitlist = wireBoardWaitlist(element);
   await draw();
   if (context.query.add) requestAnimationFrame(goToAdd);
-  return () => stopPicker?.();
+  return () => {
+    stopWaitlist();
+    stopPicker?.();
+  };
 }

@@ -11,6 +11,7 @@ import { liveBadge } from '../ui.js';
 import { openWelcome } from '../welcome.js';
 import { demoForVisit } from '../demo-subjects.js';
 import { links } from '../../core/links.js';
+import { boardWaitlist, wireBoardWaitlist } from '../board-waitlist.js';
 
 /** The four phases, used on the Account and coming-soon pages. */
 export function roadmap() {
@@ -193,6 +194,7 @@ export async function mount(element, context) {
           ${stats.catalogue_papers ? html`<div class="card tilt-2"><i class="tape tape--c" aria-hidden="true"></i><b>${fmt(stats.catalogue_papers)}</b><span>past papers</span></div>` : ''}
           ${stats.spec_points ? html`<div class="card tilt-4"><i class="tape tape--c" aria-hidden="true"></i><b>${fmt(stats.spec_points)}</b><span>spec points</span></div>` : ''}
         </div>
+        ${boardWaitlist({ source: 'home' })}
       </section>
 
       ${soon.length
@@ -212,6 +214,7 @@ export async function mount(element, context) {
   // Arriving from a top-bar link on another page ("Features", "Subjects", "How it works").
   const section = context.query.section && document.getElementById(context.query.section);
   if (section) requestAnimationFrame(() => section.scrollIntoView({ block: 'start' }));
+  const stopWaitlist = wireBoardWaitlist(element);
   element.querySelector('[data-open-welcome]')?.addEventListener('click', () => openWelcome({ navigate: context.navigate }));
 
   // The promo video plays muted on a loop, with no controls, while it is on screen (it only starts
@@ -238,6 +241,7 @@ export async function mount(element, context) {
     }
   }
   return () => {
+    stopWaitlist();
     watcher?.disconnect();
     player?.pause();
   };
