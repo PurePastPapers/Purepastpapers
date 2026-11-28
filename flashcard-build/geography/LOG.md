@@ -23,3 +23,4 @@
 - Changing places checked: 278 -> 272 (6 cut, 18 fixed). Audit 0/27. Relph 'objective outsideness' card kept from knowledge: flag for Will. IoD2025 release was revised 17 Nov 2025; numbers not re-checked against the revision.
 - Hazards checked: 452 -> 440 (12 cut, 38 fixed; 2 real figure errors fixed: Black Summer homes, Nyiragongo displacement). Audit 1/44 = 2.3% (wording only). Maria 2,975/64, RA 10121, Project NOAH, 40 m zone not re-searched.
 - Main-session spot-check (global, memory-only dates): ICJ whaling 31 Mar 2014 confirmed (ICJ); CRAMRA 2 Jun 1988, never in force confirmed (NZ MFAT); Rana Plaza reworded to ILO 'more than 1,100' (sources give 1,134/1,135).
+- Exam technique checked: 126 -> 120 (6 cut, 12 fixed). Audit 1/12 = 8% (River Quaggy culvert wording, fixed). Main-session re-audit pending.
