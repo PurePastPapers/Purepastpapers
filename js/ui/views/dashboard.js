@@ -134,7 +134,7 @@ export async function mount(element, context) {
         </section>
       </div>
 
-      ${boardWaitlist({ source: 'dashboard', title: 'Need another exam board?', compact: true })}`,
+      ${boardWaitlist({ source: 'dashboard', title: 'Need another exam board?', email: user.is_demo ? '' : user.email, compact: true })}`,
   );
 
   on(element, 'click', '[data-hide-notice]', async () => {
