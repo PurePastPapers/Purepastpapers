@@ -12,23 +12,28 @@ masking tape, ink outlines with offset shadows, Young Serif, Nunito and Caveat (
 from `/fonts`), and the triple-P mark from `js/ui/logo.js`. Not part of the published site:
 `tools/` is listed in `.assetsignore`.
 
-## 30-second overview (for the landing page)
+## 50-second overview (for the landing page)
 
-`overview.html` and `overview.js` are a silent, looping cut of only the core features, meant to autoplay
-muted on the landing page: why testing beats re-reading (61% vs 40%), only what you have learned (spec filter),
-no account and one click, the mark scheme beside your answer, the Data Hub, then the logo. It is timed in
-seconds with no music, uses larger type because it plays at about half size on the page, and the last scene
-fades to blank graph paper with a camera that repeats every 30 s, so the first and last frames match.
+`overview.html` and `overview.js` are a silent, looping cut of the core features, meant to autoplay muted on
+the landing page. In order: why testing beats re-reading (61% vs 40%); why filtering by spec point is better
+(less wasted effort searching papers, and questions that need a spec point you have not learned yet wait until
+you have); the mark scheme beside your answer; the Data Hub; the planned classrooms feature with a large
+"Coming soon" stamp (teacher marks what is taught, pupils who join get it ticked, then the class by spec point
+with "Set 2.4 work"); and the logo with "Free to start. No account needed." It started as a 30-second cut and
+grew to about 50 seconds because each idea needs reading time with no sound; drop scenes in `LENS` to shorten it.
+
+It is timed in seconds with no music, uses larger type because it plays at about half size on the page, and the
+last scene fades to blank graph paper with a camera that repeats over the whole length, so the first and last
+frames match and the loop restarts cleanly. Classrooms is planned and not live; the screens are examples.
 
 ```bash
 PAGE=overview.html node audit.cjs                                   # reading-time check
-node render.mjs --page=overview.html --noaudio --out=overview-30s-master.mp4
-ffmpeg -i out/overview-30s-master.mp4 -vf "scale=1280:720,fps=30" -c:v libx264 -preset slow -crf 25 \
-  -tune animation -pix_fmt yuv420p -movflags +faststart -an out/overview-30s-web.mp4   # about 2 MB
+node render.mjs --page=overview.html --noaudio --out=overview-50s-master.mp4
+ffmpeg -i out/overview-50s-master.mp4 -vf "scale=1280:720,fps=30" -c:v libx264 -preset slow -crf 25 \
+  -tune animation -pix_fmt yuv420p -movflags +faststart -an out/overview-50s-web.mp4   # about 3 MB
 ```
 
-Left out on purpose: the examiner's report, the teacher terminal (not live) and the spacing of cards.
-Its reading margins are small (0.1 to 0.2 s per scene by the audit's conservative model), and it loops.
+Its reading margins are small (0.1 to 0.5 s per scene by the audit's conservative model), and it loops.
 
 ## Pacing
 

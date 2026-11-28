@@ -5,12 +5,12 @@
   'use strict';
 
   const FPS = 60;
-  const LENS = [5.8, 4.6, 5.3, 5.8, 5.3, 3.2]; // seconds per scene; must total 30
+  const LENS = [5.8, 7.4, 7.8, 5.8, 5.3, 6.8, 6.4, 4.6]; // seconds per scene
   const T = LENS.reduce((acc, len, i) => (acc.push(i ? acc[i - 1] + LENS[i - 1] : 0), acc), []);
   const DURATION = LENS.reduce((a, b) => a + b, 0);
   const at = (scene, seconds) => T[scene] + seconds;
   const CUES = []; // the engine records sound cues; this cut is silent, so they are ignored
-  const SCN = [[0, 0], [2356, 266], [4484, 1710], [6840, 1520], [8892, 114], [11172, 494]]; // multiples of the 38 px grid
+  const SCN = [[0, 0], [2356, 266], [4484, 1710], [6840, 1520], [8892, 114], [11172, 494], [13300, 1862], [15656, 1558]]; // multiples of the 38 px grid
 
   // ── easing ──
   const E = {
@@ -276,14 +276,33 @@
     place('#p-sticky2', 13140, 1600, -5);
     place('#p-flame', 17620, 1300, 8);
 
+    // O2: the spec card and the two questions it finds
     $('#o2-chips').innerHTML = ['2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7'].map((l, i) => chip(`o2-c${i}`, l, i < 5, 40 + (i % 5) * 140, 50 + Math.floor(i / 5) * 96)).join('');
-    $('#o2-minis').innerHTML = miniCard('o2-m0', ['2.2'], 4, '', 1100, 450, 5) + miniCard('o2-m1', ['2.4'], 3, '', 1450, 490, 6);
+    $('#o2-minis').innerHTML = miniCard('o2-m0', ['2.2'], 4, '', 990, 600, 5) + miniCard('o2-m1', ['2.4'], 3, '', 1330, 620, 6);
 
+    // O3: a question that needs two spec points waits at the gate
+    $('#o3-chips').innerHTML = ['2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7', '3.4'].map((l, i) => chip(`o3-c${i}`, l, i < 5 || i === 7, 40 + (i % 5) * 140, 50 + Math.floor(i / 5) * 96)).join('');
+    $('#o3-minis').innerHTML = miniCard('o3-m0', ['2.4', '3.4'], 5, stamp('o3-stw', 'wait') + stamp('o3-sty', 'yes'), 1050, 376, 5);
+
+    // O5: Data Hub rows (example data)
     const ROWS = [['2.1', 'Motion', 'g', 'Secure', 82, 'var(--good)'], ['2.3', 'Momentum', 'r', 'Needs work', 31, '#d9776a'], ['2.4', 'Projectiles', 'a', 'Developing', 58, '#e5b84a']];
     $('#o5-rows').innerHTML = ROWS.map(([code, name, rag, label, pct, colour], i) => `<div class="hubrow" id="o5-row${i}" style="top:${110 + i * 130}px">
         <div class="chip">${code}</div><div class="hubrow__name" style="font-size:34px">${name}</div><div class="rag rag--${rag}" id="o5-rag${i}" style="font-size:22px">${label}</div>
         <div class="track"><i id="o5-fill${i}" style="width:${pct}%;background:${colour}"></i></div><div class="hubrow__val" id="o5-val${i}" data-fmt="{}%">${pct}%</div></div>`).join('');
-    Object.assign($('#o3-ripple').style, { left: '480px', top: '680px' });
+
+    // O6: the teacher ticks what has been taught; a pupil who joins gets it ticked
+    $('#o6-tchips').innerHTML = ['2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7'].map((l, i) => chip(`o6-t${i}`, l, i < 5, 40 + (i % 5) * 140, 130 + Math.floor(i / 5) * 96)).join('');
+    $('#o6-pchips').innerHTML = ['2.1', '2.2', '2.3', '2.4', '2.5'].map((l, i) => chip(`o6-p${i}`, l, true, 28 + i * 124, 130)).join('');
+
+    // O7: the class heat map (example data)
+    const HEAT = ['GGARGA', 'GAGRAG', 'AGGRGG', 'GGAAGA', 'GAGRGG'];
+    const COL = { G: 'var(--good)', A: '#e5b84a', R: '#d9776a' };
+    let grid = ['2.1', '2.2', '2.3', '2.4', '2.5', '2.6'].map((l, c) => `<div class="hm-col" id="o7-h${c}" style="left:${220 + c * 125}px;top:86px">${l}</div>`).join('');
+    grid += HEAT.map((row, r) => `<div class="hm-row" id="o7-n${r}" style="left:40px;top:${152 + r * 78}px">Pupil ${r + 1}</div>` +
+      [...row].map((g, c) => `<div class="hm-cell" id="o7-c${r}${c}" style="left:${220 + c * 125}px;top:${136 + r * 78}px;background:${COL[g]}"></div>`).join('')).join('');
+    grid += '<div id="o7-col" style="position:absolute;left:595px;top:80px;width:110px;height:430px"></div>';
+    $('#o7-grid').innerHTML = grid;
+    Object.assign($('#o7-ripple').style, { left: '1400px', top: '580px' });
   }
 
   // ── the timeline (seconds from each scene's start) ──
@@ -291,6 +310,7 @@
     tw('#brand', 0.3, 0.6, { x: [-60, 0] }, 'outBack');
     tw('#brand', 0.3, 0.2, { o: [0, 1] }, 'linear');
     tw('#brand', DURATION - 0.9, 0.5, { o: 0 }, 'linear'); // so the loop restarts on blank paper
+    const slam = (sel, t, S) => { tw(sel, t, 0.5, { s: [2.8, 1], r: [-18, 0] }, 'inCubic'); tw(sel, t, 0.1, { o: [0, 1] }, 'linear'); read(S, sel, t); };
 
     // O1: the evidence
     {
@@ -309,29 +329,43 @@
       rise('#o1-c', a(3.6), 16); // an attribution, not something the viewer has to read
     }
 
-    // O2: filtered to the spec
+    // O2: why filtering by spec point is better
     {
       const S = 1, a = (s) => at(S, s);
       rise('#o2-hl', a(0.2)); read(S, '#o2-hl', a(0.2));
-      cardIn('#o2-spec', a(0.6), { r0: -9, dur: 0.8 });
-      for (let i = 0; i < 5; i++) tickChip(`#o2-c${i}`, a(1.2 + i * 0.22), null);
-      read(S, '#o2-chips', a(1.2), 0.4);
-      draw('#o2-arrow', a(2.3), 0.4, 'inOutSine', null);
-      write('#o2-lab', a(2.0), 0.7); read(S, '#o2-lab', a(2.0));
-      cardIn('#o2-m0', a(2.5), { from: 'right', r0: 6, dist: 700, dur: 0.7, sound: null });
-      cardIn('#o2-m1', a(2.8), { from: 'right', r0: -6, dist: 700, dur: 0.7, sound: null });
+      [0, 1, 2].forEach((k) => {
+        tw(`#o2-p${k}`, a(0.5 + k * 0.3), 0.9, { y: [-700, 0], r: [(k % 2 ? 1 : -1) * 14, (k - 1) * 4] }, 'outBack');
+        tw(`#o2-p${k}`, a(0.5 + k * 0.3), 0.12, { o: [0, 1] }, 'linear');
+      });
+      pop('#o2-q1', a(1.5), 0, 'outBackBig', null); pop('#o2-q2', a(1.75), 0, 'outBackBig', null);
+      cardIn('#o2-sci', a(1.1), { from: 'bottom', r0: 5, dist: 500, dur: 0.8 });
+      rise('#o2-sci p', a(1.7), 20); read(S, '#o2-sci p', a(1.7));
+      rise('#o2-sci .cite', a(2.7), 16); // an attribution, not something the viewer has to read
+      cardIn('#o2-spec', a(2.0), { r0: -9, dur: 0.8 });
+      for (let i = 0; i < 5; i++) tickChip(`#o2-c${i}`, a(2.7 + i * 0.22), null);
+      draw('#o2-arrow', a(3.9), 0.4, 'inOutSine', null);
+      cardIn('#o2-m0', a(4.1), { from: 'right', r0: 6, dist: 700, dur: 0.7, sound: null });
+      cardIn('#o2-m1', a(4.4), { from: 'right', r0: -6, dist: 700, dur: 0.7, sound: null });
+      write('#o2-only', a(4.3), 0.9); read(S, '#o2-only', a(4.3));
     }
 
-    // O3: one click to start
+    // O3: questions wait until you're ready
     {
       const S = 2, a = (s) => at(S, s);
       rise('#o3-hl', a(0.2)); read(S, '#o3-hl', a(0.2));
-      cardIn('#o3-site', a(0.5), { r0: -8, dur: 0.8 });
-      pop('#o3-b1', a(1.2), 0, 'outBack', null); pop('#o3-b2', a(1.4), 0, 'outBack', null); read(S, '#o3-b2', a(1.4), 0.6);
-      tw('#o3-cursor', a(1.8), 0.7, { x: [1000, 450], y: [1150, 680] }, 'outCubic'); tw('#o3-cursor', a(1.8), 0.1, { o: [0, 1] }, 'linear');
-      click('#o3-cursor', '#o3-ripple', a(2.6));
-      cardIn('#o3-q', a(2.7), { from: 'right', r0: 10, dist: 800, dur: 0.8, sound: null }); read(S, '#o3-qt', a(3.1), 0.5);
-      tw('#o3-cursor', a(3.2), 0.6, { x: 900, y: 1200 }, 'inCubic');
+      cardIn('#o3-spec', a(0.5), { r0: -9, dur: 0.8 });
+      for (let i = 0; i < 5; i++) tickChip(`#o3-c${i}`, a(1.0 + i * 0.22), null);
+      pop('#o3-gate', a(2.2), 0, 'outBack', null);
+      tw('#o3-m0', a(2.6), 0.55, { y: [-760, 0], r: [-8, 0] }, 'outBack'); tw('#o3-m0', a(2.6), 0.06, { o: [0, 1] }, 'linear');
+      tw('#o3-sty', a(1), 0.01, { o: 0 }, 'linear');
+      pop('#o3-stw', a(3.2), 0, 'outBackBig', null);
+      write('#o3-wait', a(3.0), 1.1); read(S, '#o3-wait', a(3.0));
+      tickChip('#o3-c7', a(4.3), null);
+      tw('#o3-stw', a(5.0), 0.3, { o: 0 }, 'linear');
+      pop('#o3-sty', a(5.2), 0, 'outBackBig', null);
+      tw('#o3-m0', a(5.7), 0.6, { x: 430 }, 'inOutCubic');
+      write('#o3-now', a(4.9), 1.0); read(S, '#o3-now', a(4.9));
+      rise('#o3-c', a(1.2), 16); // an attribution, not something the viewer has to read
     }
 
     // O4: mark scheme beside the answer
@@ -360,14 +394,49 @@
       draw('#o5-ring', a(2.7), 0.6);
     }
 
-    // O6: logo, then everything fades so the loop restarts on blank paper
+    // O6: classrooms, joining
     {
       const S = 5, a = (s) => at(S, s);
-      tw('#o6-mark', a(0.4) - 0.3, 0.3, { s: [3.2, 1], r: [-28, -4] }, 'inCubic');
-      tw('#o6-mark', a(0.4) - 0.3, 0.06, { o: [0, 1] }, 'linear');
-      tw('#o6-mark', a(0.4), 0.4, { sx: [1.12, 1], sy: [0.88, 1] }, 'outBack');
-      tw('#o6-word', a(0.6), 0.7, { clip: [0, 1] }, 'outCubic'); tw('#o6-word', a(0.6), 0.01, { o: [0, 1] }, 'linear'); read(S, '#o6-word', a(0.6), 0.7);
-      tw('#o6', a(2.5), 0.5, { o: [1, 0] }, 'linear');
+      rise('#o6-hl', a(0.2)); read(S, '#o6-hl', a(0.2));
+      slam('#o6-soon', a(0.8), S);
+      cardIn('#o6-teacher', a(1.4), { from: 'left', r0: -8, dur: 0.8 }); read(S, '#o6-teacher .term__bar', a(1.8), 0.4);
+      for (let i = 0; i < 5; i++) tickChip(`#o6-t${i}`, a(2.2 + i * 0.25), null);
+      write('#o6-note', a(3.0), 1.5); read(S, '#o6-note', a(3.0));
+      draw('#o6-arrow', a(3.5), 0.5, 'inOutSine', null);
+      cardIn('#o6-pupil', a(3.9), { from: 'right', r0: 8, dist: 800, dur: 0.8, sound: null });
+      pop('#o6-joined', a(4.5), 0, 'outBackBig', null);
+      for (let i = 0; i < 5; i++) tickChip(`#o6-p${i}`, a(4.9 + i * 0.22), null);
+    }
+
+    // O7: classrooms, the whole class
+    {
+      const S = 6, a = (s) => at(S, s);
+      rise('#o7-hl', a(0.2)); read(S, '#o7-hl', a(0.2));
+      slam('#o7-soon', a(0.8), S);
+      cardIn('#o7-heat', a(1.0), { from: 'left', r0: -8, dur: 0.8 });
+      for (let c = 0; c < 6; c++) rise(`#o7-h${c}`, a(1.6) + c * 0.05, 20, 0.4);
+      for (let r = 0; r < 5; r++) rise(`#o7-n${r}`, a(1.6) + r * 0.05, 20, 0.4);
+      for (let r = 0; r < 5; r++) for (let c = 0; c < 6; c++) {
+        const t = a(1.9 + (r + c) * 0.17);
+        tw(`#o7-c${r}${c}`, t, 0.45, { s: [0.2, 1] }, 'outBack'); tw(`#o7-c${r}${c}`, t, 0.1, { o: [0, 1] }, 'linear');
+      }
+      ringAround('#o7-ring', '#o7-col', 22, 26);
+      draw('#o7-ring', a(3.3), 0.7);
+      pop('#o7-btn', a(3.8), 0, 'outBackBig', null); read(S, '#o7-btn', a(3.8), 0.6);
+      tw('#o7-cursor', a(4.2), 0.6, { x: [1500, 1360], y: [1150, 600] }, 'outCubic'); tw('#o7-cursor', a(4.2), 0.1, { o: [0, 1] }, 'linear');
+      click('#o7-cursor', '#o7-ripple', a(4.9));
+      tw('#o7-cursor', a(5.1), 0.4, { x: 1700, y: 1200 }, 'inCubic');
+    }
+
+    // O8: logo and "no account", then everything fades so the loop restarts on blank paper
+    {
+      const S = 7, a = (s) => at(S, s);
+      tw('#o8-mark', a(0.4) - 0.3, 0.3, { s: [3.2, 1], r: [-28, -4] }, 'inCubic');
+      tw('#o8-mark', a(0.4) - 0.3, 0.06, { o: [0, 1] }, 'linear');
+      tw('#o8-mark', a(0.4), 0.4, { sx: [1.12, 1], sy: [0.88, 1] }, 'outBack');
+      tw('#o8-word', a(0.6), 0.7, { clip: [0, 1] }, 'outCubic'); tw('#o8-word', a(0.6), 0.01, { o: [0, 1] }, 'linear'); read(S, '#o8-word', a(0.6), 0.7);
+      write('#o8-tag', a(1.3), 1.4); read(S, '#o8-tag', a(1.3));
+      tw('#o8', LENS[S] - 0.5 + T[S], 0.5, { o: [1, 0] }, 'linear');
     }
   }
 
