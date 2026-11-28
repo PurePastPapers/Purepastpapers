@@ -20,3 +20,4 @@
 - Global systems checked: 397 -> 389 (9 cut, 20 fixed). Audit 0/39. Many historical dates confirmed from reference knowledge only (search limit): main-session spot-check pending.
 - Coasts checked: 401 -> 387 (14 cut, 17 fixed). Audit 1/39 = 2.6% (list-answer format error, fixed in 5 cards); re-check pending. IPCC AR6 sea level figures confirmed from memory only.
 - Urban checked: 403 -> 396 (8 cut, 12 fixed, 6 moved to evidence). Audit 0/40.
+- Changing places checked: 278 -> 272 (6 cut, 18 fixed). Audit 0/27. Relph 'objective outsideness' card kept from knowledge: flag for Will. IoD2025 release was revised 17 Nov 2025; numbers not re-checked against the revision.
