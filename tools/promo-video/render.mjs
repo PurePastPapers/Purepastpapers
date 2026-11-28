@@ -22,7 +22,9 @@ const FPS = Number(args.fps || 60);
 const SCALE = Number(args.scale || 1);
 const WORKERS = Number(args.workers || 4);
 const PORT = Number(args.port || 5199);
-const FRAMES = path.join(OUT, `frames-${FPS}-${SCALE}`);
+const PAGE = String(args.page || 'index.html');
+const TAG = PAGE === 'index.html' ? '' : `${PAGE.replace(/\.html$/, '')}-`;
+const FRAMES = path.join(OUT, `frames-${TAG}${FPS}-${SCALE}`);
 const VIDEO = path.join(OUT, args.out || 'purepastpapers-promo.mp4');
 const AUDIO = path.join(OUT, 'promo-audio.wav');
 
@@ -40,13 +42,13 @@ async function startServer() {
 async function openPage(browser) {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: SCALE });
   page.on('pageerror', (e) => console.error('[pageerror]', e.message));
-  await page.goto(`http://localhost:${PORT}/tools/promo-video/index.html?render=1`);
+  await page.goto(`http://localhost:${PORT}/tools/promo-video/${PAGE}?render=1`);
   await page.evaluate(() => window.PROMO.ready);
   return page;
 }
 
 function encode(duration) {
-  const hasAudio = fs.existsSync(AUDIO);
+  const hasAudio = !args.noaudio && fs.existsSync(AUDIO);
   const ff = [
     '-y', '-loglevel', 'error',
     '-framerate', String(FPS), '-i', path.join(FRAMES, '%05d.jpg'),
@@ -66,7 +68,7 @@ const browser = await chromium.launch();
 try {
   const first = await openPage(browser);
   const meta = await first.evaluate(() => ({ duration: window.PROMO.duration, bpm: window.PROMO.bpm, sceneStarts: window.PROMO.sceneStarts, music: window.PROMO.music, cues: window.PROMO.cues }));
-  fs.writeFileSync(path.join(OUT, 'cues.json'), JSON.stringify(meta, null, 1));
+  fs.writeFileSync(path.join(OUT, `${TAG}cues.json`), JSON.stringify(meta, null, 1));
   console.log(`cues.json: ${meta.cues.length} cues, ${meta.duration}s`);
 
   if (!args['cues-only'] && !args['encode-only']) {

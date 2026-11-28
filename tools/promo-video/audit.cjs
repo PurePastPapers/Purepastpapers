@@ -3,7 +3,7 @@ const { chromium } = require('playwright');
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
   const errs = []; p.on('pageerror', (e) => errs.push(e.message)); p.on('console', (m) => { if (m.type() === 'warning' || m.type() === 'error') console.log('[page]', m.text()); });
-  await p.goto(`http://localhost:${process.env.PORT || 5173}/tools/promo-video/index.html?render=1`);
+  await p.goto(`http://localhost:${process.env.PORT || 5173}/tools/promo-video/${process.env.PAGE || 'index.html'}?render=1`);
   await p.evaluate(() => window.PROMO.ready);
   const rows = await p.evaluate(() => window.PROMO.audit());
   const total = await p.evaluate(() => window.PROMO.duration);

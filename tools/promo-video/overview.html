@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1920" />
+<title>PurePastPapers 30-second overview</title>
+<link rel="stylesheet" href="promo.css" />
+</head>
+<body>
+<!--
+  PurePastPapers 30-second overview: a silent, looping cut of the core features for the landing page.
+  Timed in seconds (no music). Large type, because it plays at about half size on the page. The last scene
+  fades to blank graph paper so the loop restarts cleanly. PROMO.audit() checks reading time per scene.
+-->
+<div id="stage">
+  <div id="world">
+    <div id="grid"></div>
+
+    <!-- desk props, seen while the camera moves between scenes -->
+    <div class="prop ring" id="p-ring1"></div>
+    <div class="prop sticky" id="p-sticky1">exam in<br/>43 days!!</div>
+    <svg class="prop" id="p-clip" width="70" height="160" viewBox="0 0 34 78" fill="none"><path d="M12 50V12a6 6 0 0 1 12 0v46a10 10 0 0 1-20 0V18" stroke="#8a95a1" stroke-width="3" stroke-linecap="round"/></svg>
+    <svg class="prop" id="p-pencil" width="420" height="60" viewBox="0 0 420 60" fill="none" stroke="#2a2723" stroke-width="3.5" stroke-linejoin="round"><path d="M40 12h300l50 18-50 18H40z" fill="#f1cf63"/><rect x="6" y="12" width="34" height="36" fill="#f3a3b8"/><path d="M340 12v36"/><path d="M372 24l18 6-18 6z" fill="#2a2723"/></svg>
+    <div class="prop ring" id="p-ring2"></div>
+    <div class="prop sticky" id="p-sticky2" style="background:#cfe8d5">you've<br/>got this</div>
+    <svg class="prop" id="p-flame" width="110" height="134" viewBox="0 0 46 56" fill="none" stroke="#2a2723" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 52c-11 0-17-8-15-18 2-8 9-11 8-21 7 4 10 10 9 16 3-2 4-5 4-8 6 6 8 13 7 18-1 8-6 13-13 13z" fill="#f3a37f"/><path d="M23 48c-5 0-7-4-6-8 1-3 4-5 4-9 4 3 7 7 7 11 0 4-2 6-5 6z" fill="#f1cf63"/></svg>
+
+    <!-- ───────────── O1: the evidence ───────────── -->
+    <section class="scene" id="o1">
+      <div class="hl" id="o1-hl" style="font-size:92px">Testing beats re-reading.</div>
+      <div class="card" id="o1-chart" data-r="1" style="left:450px;top:270px;width:1020px;height:610px">
+        <i class="tape tape--l" data-r="-38"></i><i class="tape tape--r" data-r="38"></i>
+        <div class="abs serif" id="o1-title" style="left:50px;top:32px;font-size:50px">Recalled a week later</div>
+        <div class="bar bar--muted" id="o1-b1" style="left:200px;top:290px;height:197px;width:230px"></div>
+        <div class="bar" id="o1-b2" style="left:600px;top:187px;height:300px;width:230px;background:var(--green)"></div>
+        <div class="val" id="o1-v1" data-fmt="{}%" style="left:200px;top:215px;width:230px;font-size:76px">0%</div>
+        <div class="val" id="o1-v2" data-fmt="{}%" style="left:600px;top:112px;width:230px;font-size:76px">0%</div>
+        <div class="base" id="o1-base" style="left:90px;top:487px;width:850px"></div>
+        <div class="barlab" id="o1-l1" style="left:200px;top:508px;width:230px;margin-left:0;font-size:36px;color:var(--ink)">Re-read</div>
+        <div class="barlab" id="o1-l2" style="left:600px;top:508px;width:230px;margin-left:0;font-size:36px;color:var(--ink)">Tested</div>
+      </div>
+      <span class="cite abs" id="o1-c" style="left:140px;top:960px;font-size:26px;height:52px"><b>Source</b>Roediger &amp; Karpicke, 2006</span>
+    </section>
+
+    <!-- ───────────── O2: filtered to the spec ───────────── -->
+    <section class="scene" id="o2">
+      <div class="hl" id="o2-hl" style="font-size:92px">Only what you’ve learned.</div>
+      <div class="card ruled" id="o2-spec" data-r="-1.5" style="left:140px;top:430px;width:800px;height:270px">
+        <i class="tape tape--l" data-r="-38"></i><i class="tape tape--r" data-r="38"></i>
+        <div id="o2-chips"></div>
+      </div>
+      <svg class="ink"><path id="o2-arrow" class="soft" pathLength="1" d="M960 570 C 1010 570, 1030 570, 1070 570 M1044 546 L1072 570 L1044 594"/></svg>
+      <div class="abs hand" id="o2-lab" data-r="-2" style="left:1100px;top:372px;font-size:66px;color:var(--ink)">Your questions</div>
+      <div id="o2-minis"></div>
+    </section>
+
+    <!-- ───────────── O3: one click to start ───────────── -->
+    <section class="scene" id="o3">
+      <div class="hl" id="o3-hl" style="font-size:92px">No account. One click.</div>
+      <div class="card mock" id="o3-site" data-r="-1.2" style="left:130px;top:330px;width:900px;height:500px">
+        <i class="tape tape--c" data-r="-2"></i>
+        <div class="mock__bar"><i></i><i></i><i></i><span class="mock__url">purepastpapers.com</span></div>
+        <div class="abs" style="left:44px;top:100px;width:620px;height:26px;border-radius:13px;background:var(--line)"></div>
+        <div class="abs" style="left:44px;top:146px;width:520px;height:26px;border-radius:13px;background:var(--line)"></div>
+        <div class="btn btn--primary" id="o3-b1" style="left:44px;top:290px;height:96px;font-size:36px;padding:0 32px;box-shadow:5px 5px 0 rgba(42,39,35,.35)">Browse →</div>
+        <div class="btn" id="o3-b2" style="left:330px;top:290px;height:96px;font-size:36px;padding:0 32px;background:var(--lilac)">Try a demo</div>
+      </div>
+      <svg class="cursor" id="o3-cursor" viewBox="0 0 32 40"><path d="M4 3 L4 31 L11 24.5 L16 36 L21.5 33.5 L16.5 22.5 L26 22 Z" fill="#fffdf8" stroke="#2a2723" stroke-width="2.6" stroke-linejoin="round"/></svg>
+      <div class="ripple" id="o3-ripple"></div>
+      <div class="card" id="o3-q" data-r="1.4" style="left:1090px;top:350px;width:700px;height:400px">
+        <i class="tape tape--r" data-r="40"></i>
+        <span class="abs" style="right:34px;top:34px;font:800 24px/1 var(--font);color:var(--ink-3)">1 mark</span>
+        <div class="abs" id="o3-qt" style="left:34px;top:84px;width:640px;font:700 46px/1.3 var(--font)">Simplify 3x + 2x.</div>
+        <div class="abs" style="left:34px;top:196px;width:560px;height:20px;border-bottom:3px dotted var(--ink-3)"></div>
+        <div class="btn" style="left:34px;top:270px;height:92px;font-size:34px;padding:0 30px;background:var(--ink);color:var(--surface)">Show mark scheme</div>
+      </div>
+    </section>
+
+    <!-- ───────────── O4: mark scheme beside the answer ───────────── -->
+    <section class="scene" id="o4">
+      <div class="hl" id="o4-hl" style="font-size:92px">Mark scheme, right there.</div>
+      <div class="card" id="o4-q" data-r="-1" style="left:130px;top:290px;width:880px;height:480px">
+        <i class="tape tape--c" data-r="-2"></i>
+        <div class="abs" style="left:36px;top:34px;font:700 46px/1.3 var(--font)">Solve 3x − 4 = 11.</div>
+        <div class="abs" style="left:24px;right:24px;top:130px;height:140px;background:repeating-linear-gradient(transparent 0 68px, var(--rule-blue) 68px 70px)"></div>
+        <div class="line hand" id="o4-a" style="left:40px;top:132px;font-size:62px;color:var(--ink)">x = 7/3</div>
+        <div class="btn" id="o4-b1" style="left:36px;top:320px;height:92px;font-size:34px;padding:0 30px;background:var(--ink);color:var(--surface)">Mark scheme</div>
+      </div>
+      <div class="card ruled" id="o4-ms" data-r="1.4" style="left:1060px;top:310px;width:720px;height:420px">
+        <i class="tape tape--r" data-r="40"></i>
+        <div class="abs serif" style="left:40px;top:34px;font-size:52px">Mark scheme</div>
+        <div class="abs" id="o4-r1" style="left:40px;top:150px;width:640px;display:flex;align-items:center;gap:22px;font:700 36px/1.2 var(--font)"><b style="font-weight:800;width:64px">M1</b><span style="flex:1">3x = 15</span></div>
+        <div class="abs" id="o4-r2" style="left:40px;top:250px;width:640px;display:flex;align-items:center;gap:22px;font:700 36px/1.2 var(--font)"><b style="font-weight:800;width:64px">A1</b><span style="flex:1">x = 5</span></div>
+      </div>
+      <svg class="ink">
+        <path id="o4-x1" class="pen" pathLength="1" d="M1700 470 L1740 510 M1740 470 L1700 510"/>
+        <path id="o4-x2" class="pen" pathLength="1" d="M1700 570 L1740 610 M1740 570 L1700 610"/>
+      </svg>
+    </section>
+
+    <!-- ───────────── O5: Data Hub ───────────── -->
+    <section class="scene" id="o5">
+      <div class="hl" id="o5-hl" style="font-size:92px">See what needs work.</div>
+      <div class="card" id="o5-hub" data-r="-1" style="left:330px;top:280px;width:1260px;height:520px">
+        <i class="tape tape--c" data-r="-2"></i>
+        <div class="abs label" id="o5-lab" style="left:44px;top:34px;font-size:22px">Example data</div>
+        <div id="o5-rows"></div>
+      </div>
+      <svg class="ink"><path id="o5-ring" class="pen" pathLength="1" d=""/></svg>
+    </section>
+
+    <!-- ───────────── O6: logo ───────────── -->
+    <section class="scene" id="o6">
+      <div class="abs" id="o6-logo" style="left:0;width:1920px;top:400px;display:flex;justify-content:center;align-items:center;gap:36px">
+        <div id="o6-mark" style="width:170px;height:170px;border:5px solid var(--ink);border-radius:22px;background:var(--surface);box-shadow:9px 9px 0 var(--ink);display:grid;place-items:center"><span class="ppp-slot" data-w="118"></span></div>
+        <div id="o6-word" class="serif" style="font-size:140px;letter-spacing:-2px;line-height:1">Pure Past Papers</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- fixed to the lens -->
+  <div id="brand" class="logo"><div class="logo__mark"><span class="ppp-slot" data-w="36"></span></div><div class="logo__word">Pure Past Papers</div></div>
+  <div id="grain"></div>
+  <div id="vignette"></div>
+</div>
+<div id="controls">
+  <button type="button" id="play">Play</button>
+  <input type="range" id="scrub" min="0" max="30" step="0.01" value="0" />
+  <span id="clock">0.00 s</span>
+</div>
+<script src="overview.js"></script>
+</body>
+</html>

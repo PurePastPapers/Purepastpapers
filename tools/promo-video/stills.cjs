@@ -12,7 +12,7 @@ const path = require('node:path');
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   page.on('console', (m) => { if (['warning', 'error'].includes(m.type())) console.log('[page]', m.text()); });
   page.on('pageerror', (e) => console.log('[pageerror]', e.message));
-  await page.goto(`http://localhost:${port}/tools/promo-video/index.html?render=1`);
+  await page.goto(`http://localhost:${port}/tools/promo-video/${process.env.PAGE || 'index.html'}?render=1`);
   await page.evaluate(() => window.PROMO.ready);
   const starts = await page.evaluate(() => window.PROMO.sceneStarts);
   const total = await page.evaluate(() => window.PROMO.duration);
