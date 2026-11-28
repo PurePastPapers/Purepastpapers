@@ -18,3 +18,4 @@
 - Exam technique: writer 126 cards (66 structure, 60 three-part). Checker running. Duplicate fronts to resolve at the end: 'What is a storm surge?' (coasts/hazards), 'What is studentification?' (places/urban).
 - Water and carbon checked: 382 -> 376 (6 cut, 26 fixed). Checker audit 1/38 = 2.6% (above 2% threshold): re-check needed, plus search-verify the figures the checker confirmed only from memory (PRODES, Lovejoy/Nobre, AR5 stores, permafrost).
 - Global systems checked: 397 -> 389 (9 cut, 20 fixed). Audit 0/39. Many historical dates confirmed from reference knowledge only (search limit): main-session spot-check pending.
+- Coasts checked: 401 -> 387 (14 cut, 17 fixed). Audit 1/39 = 2.6% (list-answer format error, fixed in 5 cards); re-check pending. IPCC AR6 sea level figures confirmed from memory only.
