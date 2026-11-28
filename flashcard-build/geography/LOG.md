@@ -24,3 +24,4 @@
 - Hazards checked: 452 -> 440 (12 cut, 38 fixed; 2 real figure errors fixed: Black Summer homes, Nyiragongo displacement). Audit 1/44 = 2.3% (wording only). Maria 2,975/64, RA 10121, Project NOAH, 40 m zone not re-searched.
 - Main-session spot-check (global, memory-only dates): ICJ whaling 31 Mar 2014 confirmed (ICJ); CRAMRA 2 Jun 1988, never in force confirmed (NZ MFAT); Rana Plaza reworded to ILO 'more than 1,100' (sources give 1,134/1,135).
 - Exam technique checked: 126 -> 120 (6 cut, 12 fixed). Audit 1/12 = 8% (River Quaggy culvert wording, fixed). Main-session re-audit pending.
+- Main-session re-audit of exam technique (seed 3, 12 cards): 0 errors. Checked paper marks/durations, tariff order (QP Jun 2024), 9-mark AO1=4/AO2=5 (MS Jun 2024), NEA Level 4 = 12-15 (spec). Combined mark audit 1/24.
