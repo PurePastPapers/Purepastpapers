@@ -15,3 +15,4 @@
 - Coasts: writer 401 cards. Checker running.
 - Urban: writer 403 cards (247 content, 156 evidence); ~50 rows not web-verified. Checker running.
 - Hazards: writer 452 cards (294 content, 158 evidence). Checker running.
+- Exam technique: writer 126 cards (66 structure, 60 three-part). Checker running. Duplicate fronts to resolve at the end: 'What is a storm surge?' (coasts/hazards), 'What is studentification?' (places/urban).
