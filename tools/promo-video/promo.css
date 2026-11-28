@@ -269,3 +269,43 @@ body.render #controls { display: none; }
 .stat-card { width: 300px; height: 176px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
 .stat-card b { font: 400 86px/1 var(--font-display); }
 .stat-card span { font: 800 26px/1 var(--font); color: var(--ink-2); }
+
+/* ── v3 (explainer): bigger type, more reading time ── */
+.big { font: 400 190px/1 var(--font-display); letter-spacing: -2px; }
+.cap { font: 400 48px/1.1 var(--font-display); }
+.line2 { font: 700 38px/1.35 var(--font); }
+.cite {
+  display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px 0 10px;
+  border: 2.5px solid var(--ink); border-radius: 7px; background: var(--surface-2);
+  font: 700 22px/1 var(--font); white-space: nowrap;
+}
+.cite b { font: 800 14px/1 var(--font); letter-spacing: 1.6px; text-transform: uppercase; background: var(--ink); color: var(--surface); padding: 6px 8px 5px; border-radius: 4px; }
+.meter .label { font-size: 19px; }
+.meter__bar { height: 30px; border: 3px solid var(--ink); border-radius: 6px; background: var(--surface-2); overflow: hidden; margin-top: 10px; }
+.meter__bar i { display: block; height: 100%; transform-origin: left; border-right: 3px solid var(--ink); }
+
+.stone {
+  z-index: 3; position: absolute; width: 300px; height: 150px; border: 3px solid var(--ink); border-radius: 12px;
+  display: grid; place-items: center; text-align: center; padding: 0 20px; background: var(--surface);
+  font: 400 38px/1.15 var(--font-display); box-shadow: var(--shadow);
+}
+.stone--setup { border-style: dashed; background: var(--surface-2); color: var(--ink-2); box-shadow: none; }
+.stone--keep { background: var(--green); }
+.ftag {
+  z-index: 4; position: absolute; padding: 9px 14px 8px; background: #f7e3a6; border: 2.5px solid var(--ink); border-radius: 4px;
+  font: 800 21px/1 var(--font); letter-spacing: .6px; text-transform: uppercase; box-shadow: 3px 3px 0 rgba(42, 39, 35, .2); white-space: nowrap;
+}
+.ftag--keep { background: var(--good-wash); color: var(--good-ink); border-color: var(--good-ink); }
+.sci { padding: 24px 30px; }
+.sci p { margin: 0; font: 700 34px/1.38 var(--font); }
+.sci .cite { margin-top: 16px; }
+
+.paper { position: absolute; width: 360px; height: 230px; border: 3px solid var(--ink); border-radius: 6px; background: var(--surface); box-shadow: 4px 5px 0 rgba(42, 39, 35, .15); padding: 18px 22px; font: 800 24px/1.2 var(--font); }
+.paper i { display: block; height: 10px; border-radius: 5px; background: var(--line); margin-top: 13px; }
+.paper small { font: 700 18px/1 var(--font); color: var(--ink-3); display: block; margin-top: 6px; }
+
+.mock { overflow: hidden; }
+.mock__bar { height: 54px; border-bottom: 3px solid var(--ink); background: var(--surface-2); display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+.mock__bar i { width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid var(--ink); }
+.mock__url { margin-left: 14px; flex: 1; height: 32px; border: 2.5px solid var(--ink); border-radius: 16px; background: var(--surface); font: 700 19px/27px var(--font); padding: 0 16px; color: var(--ink-2); }
+.stamp--wait { color: #7a5a10; border-color: #7a5a10; }

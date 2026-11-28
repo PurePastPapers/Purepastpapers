@@ -3,25 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=1920" />
-<title>PurePastPapers promo</title>
+<title>PurePastPapers explainer</title>
 <link rel="stylesheet" href="promo.css" />
 </head>
 <body>
 <!--
-  PurePastPapers promo. 1920x1080, 84 BPM, 28 bars (80 s).
-  Every scene starts on a bar line so the music, the camera and the animation share one grid.
-  The page is a pure function of time: PROMO.seek(t) draws frame t. render.mjs captures it.
-
-   s1   0.0  The problem: re-reading and highlighting         Dunlosky et al. 2013
-   s2   8.6  84% re-read, 11% self-test                        Karpicke, Butler & Roediger 2009
-   s3  14.3  Active recall, 40% vs 61% (the beat drops)        Roediger & Karpicke 2006
-   s4  22.9  Filtered to the spec, crossover topics wait       Bjork & Bjork 2011
-   s5  34.3  Real exam questions, real mark schemes            Butler & Roediger 2008
-   s6  42.9  Data Hub by spec point
-   s7  48.6  Teacher terminal (coming soon): class sets the spec
-   s8  57.1  Teacher terminal: whole class by spec point
-   s9  65.7  Numbers + logo stamp (68.6 s)
-  s10  74.3  Sources
+  PurePastPapers explainer (v3, draft). 1920x1080, 72 BPM. Every scene starts on a bar line, and the
+  timeline is written in beats so the music, camera and animation share one grid. Slower than v2 on
+  purpose: PROMO.audit() simulates a reader and checks each scene leaves time to read all its text.
+  Thesis: re-reading wins because it needs no setup. Remove the friction around testing yourself,
+  keep the difficulty inside it.
 -->
 <div id="stage">
   <div id="world">
@@ -36,209 +27,257 @@
     <div class="prop sticky" id="p-sticky2" style="background:#cfe8d5">you've<br/>got this</div>
     <svg class="prop" id="p-flame" width="110" height="134" viewBox="0 0 46 56" fill="none" stroke="#2a2723" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 52c-11 0-17-8-15-18 2-8 9-11 8-21 7 4 10 10 9 16 3-2 4-5 4-8 6 6 8 13 7 18-1 8-6 13-13 13z" fill="#f3a37f"/><path d="M23 48c-5 0-7-4-6-8 1-3 4-5 4-9 4 3 7 7 7 11 0 4-2 6-5 6z" fill="#f1cf63"/></svg>
 
-    <!-- ───────────── S1: the problem ───────────── -->
+    <!-- ───────────── S1: why re-read? ───────────── -->
     <section class="scene" id="s1">
-      <div class="card ruled" id="s1-card" data-r="-2" style="left:300px;top:200px;width:1020px;height:600px">
-        <i class="tape tape--l" data-r="-38"></i><i class="tape tape--r" data-r="38"></i>
-        <div class="abs serif" style="left:60px;top:30px;font-size:62px">Revision, the usual way</div>
-        <div class="line" id="s1-l1" style="left:72px;top:142px;font:800 52px/1.2 var(--font)"><i class="hi"></i>Read the notes.</div>
-        <div class="line" id="s1-l2" style="left:72px;top:238px;font:800 52px/1.2 var(--font)"><i class="hi"></i>Read them again.</div>
-        <div class="line" id="s1-l3" style="left:72px;top:334px;font:800 52px/1.2 var(--font)"><i class="hi"></i>Highlight literally everything.</div>
-        <div class="line" id="s1-l4" style="left:72px;top:430px;font:800 52px/1.2 var(--font);color:var(--ink-3)">Feel ready. Forget it all by Friday.</div>
-      </div>
-      <div class="abs hand" id="s1-feels" data-r="-4" style="left:1390px;top:286px;font-size:72px">feels productive...</div>
-      <div class="abs hand hand--pen" id="s1-isnt" data-r="-6" style="left:1380px;top:560px;font-size:124px">mostly isn't.</div>
-      <svg class="ink">
-        <path id="s1-arrow" pathLength="1" d="M1520 392 C 1500 450, 1440 482, 1352 486 M1378 462 L1350 486 L1380 506"/>
-        <path id="s1-strike" class="pen" pathLength="1" d="M372 372 C 600 360, 900 390, 1130 380 C 900 420, 560 440, 380 466 C 640 456, 980 470, 1220 468 C 960 510, 620 540, 386 566 C 700 552, 1000 560, 1250 556"/>
-      </svg>
-      <div class="src" id="s1-src"><b>Source</b>Dunlosky et al., 2013 <i>· re-reading and highlighting rated "low utility"</i></div>
-    </section>
-
-    <!-- ───────────── S2: what students do ───────────── -->
-    <section class="scene" id="s2">
-      <div class="hl" id="s2-hl">What students actually do</div>
-      <div class="card" id="s2-a" data-r="-2" style="left:300px;top:300px;width:560px;height:420px">
+      <div class="hl" id="s1-hl">Why do most students re-read?</div>
+      <div class="card" id="s1-a" data-r="-1.2" style="left:150px;top:270px;width:790px;height:610px">
         <i class="tape tape--c" data-r="-3"></i>
-        <div class="abs serif" style="left:0;right:0;top:30px;text-align:center;font-size:220px;line-height:1"><span id="s2-n1" data-fmt="{}%">0%</span></div>
-        <div class="abs" style="left:0;right:0;bottom:48px;text-align:center;font:800 42px/1 var(--font)">re-read their notes</div>
+        <div class="cap abs" id="s1-a-t" style="left:44px;top:34px">Re-reading notes</div>
+        <div class="big abs" style="left:44px;top:96px"><span id="s1-n1" data-fmt="{}%">0%</span></div>
+        <div class="line2 abs" id="s1-a-l1" style="left:44px;top:300px">of students do it.</div>
+        <div class="line2 abs" id="s1-a-l2" style="left:44px;top:362px;color:var(--ink-2)">Nothing to set up.</div>
+        <div class="meter abs" id="s1-a-m" style="left:44px;top:444px;width:702px"><span class="label">Setup effort</span><div class="meter__bar"><i id="s1-m1" style="width:8%;background:var(--green)"></i></div></div>
+        <span class="cite abs" id="s1-a-c" style="left:44px;top:536px"><b>Source</b>Karpicke et al., 2009</span>
       </div>
-      <div class="card" id="s2-b" data-r="1.5" style="left:1060px;top:318px;width:560px;height:420px">
+      <div class="card" id="s1-b" data-r="1" style="left:980px;top:285px;width:790px;height:610px">
         <i class="tape tape--c" data-r="2"></i>
-        <div class="abs serif" style="left:0;right:0;top:30px;text-align:center;font-size:220px;line-height:1"><span id="s2-n2" data-fmt="{}%">0%</span></div>
-        <div class="abs" style="left:0;right:0;bottom:48px;text-align:center;font:800 42px/1 var(--font)">test themselves</div>
+        <div class="cap abs" id="s1-b-t" style="left:44px;top:34px">Testing yourself</div>
+        <div class="big abs" style="left:44px;top:96px"><span id="s1-n2" data-fmt="{}%">0%</span></div>
+        <div class="line2 abs" id="s1-b-l1" style="left:44px;top:300px;width:700px">recalled a week later. Re-reading: 40%.</div>
+        <div class="line2 abs" id="s1-b-l2" style="left:44px;top:420px;width:700px;color:var(--ink-2)">Needs questions and a mark scheme.</div>
+        <div class="meter abs" id="s1-b-m" style="left:44px;top:500px;width:702px"><div class="meter__bar"><i id="s1-m2" style="width:82%;background:var(--peach)"></i></div></div>
       </div>
-      <div class="abs" id="s2-see" data-r="-3" style="left:322px;top:770px;display:flex;align-items:center;gap:16px">
-        <svg width="96" height="56" viewBox="0 0 96 56" fill="none" stroke="#2a2723" stroke-width="3.5"><ellipse cx="25" cy="28" rx="20" ry="24" fill="#fffdf8"/><ellipse cx="71" cy="28" rx="20" ry="24" fill="#fffdf8"/><circle id="s2-pl" cx="25" cy="32" r="7" fill="#2a2723" stroke="none"/><circle id="s2-pr" cx="71" cy="32" r="7" fill="#2a2723" stroke="none"/></svg>
-        <span class="hand" style="font-size:66px;color:var(--ink)">we see you.</span>
-      </div>
-      <div class="abs hand hand--pen" id="s2-right" data-r="-3" style="left:1210px;top:808px;font-size:60px">the ones doing it right</div>
-      <svg class="ink"><path id="s2-circle" class="pen" pathLength="1" d=""/></svg>
-      <div class="src" id="s2-src"><b>Source</b>Karpicke, Butler &amp; Roediger, 2009 <i>· survey of 177 college students</i></div>
+      <span class="cite abs" id="s1-b-c" style="left:1024px;top:920px"><b>Source</b>Roediger &amp; Karpicke, 2006</span>
+      <span class="cite abs" id="s1-b-c2" style="left:1024px;top:974px"><b>Source</b>Dunlosky et al., 2013</span>
+      <div class="abs hand" id="s1-note" data-r="-2" style="left:160px;top:925px;font-size:60px;color:var(--ink)">The better method has more setup.</div>
     </section>
 
-    <!-- ───────────── S3: active recall ───────────── -->
+    <!-- ───────────── S2: the idea ───────────── -->
+    <section class="scene" id="s2">
+      <div class="hl" id="s2-hl">Remove the friction. Keep the difficulty.</div>
+      <svg class="ink" style="z-index:1"><path id="s2-path" class="dash" pathLength="1" d="M240 420 H 1680"/></svg>
+      <div class="stone stone--setup" id="s2-st0" data-r="-1.5" style="left:90px;top:330px">Find the questions</div>
+      <div class="stone stone--setup" id="s2-st1" data-r="1" style="left:450px;top:340px">Get started</div>
+      <div class="stone stone--keep" id="s2-st2" data-r="-1" style="left:810px;top:326px">Recall it</div>
+      <div class="stone stone--setup" id="s2-st3" data-r="1.5" style="left:1170px;top:338px">Check it</div>
+      <div class="stone stone--setup" id="s2-st4" data-r="-1" style="left:1530px;top:330px">Decide what’s next</div>
+      <div class="ftag" id="s2-ft0" data-r="-5" style="left:110px;top:296px">friction</div>
+      <div class="ftag" id="s2-ft1" data-r="4" style="left:470px;top:306px">friction</div>
+      <div class="ftag ftag--keep" id="s2-ft2" data-r="-3" style="left:824px;top:292px">difficulty: keep</div>
+      <div class="ftag" id="s2-ft3" data-r="5" style="left:1190px;top:304px">friction</div>
+      <div class="ftag" id="s2-ft4" data-r="-4" style="left:1550px;top:296px">friction</div>
+      <div class="card sci" id="s2-fogg" data-r="-1" style="left:110px;top:600px;width:820px;height:215px">
+        <i class="tape tape--l" data-r="-38"></i>
+        <p>Behaviour needs motivation, ability and a prompt. Ability means how easy it is.</p>
+        <span class="cite"><b>Source</b>Fogg, 2009</span>
+      </div>
+      <div class="card sci" id="s2-bjork" data-r="1.2" style="left:990px;top:610px;width:820px;height:215px">
+        <i class="tape tape--r" data-r="38"></i>
+        <p>Effortful recall builds lasting memory, so that part stays hard.</p>
+        <span class="cite"><b>Source</b>Bjork &amp; Bjork, 2011</span>
+      </div>
+      <div class="abs hand" id="s2-note" data-r="-1" style="left:110px;top:900px;font-size:50px">our reading of the research</div>
+    </section>
+
+    <!-- ───────────── S3: friction 1, finding questions ───────────── -->
     <section class="scene" id="s3">
-      <div class="abs" id="s3-title" style="left:0;width:1920px;top:250px;text-align:center">
-        <div class="serif" style="font-size:124px;line-height:1.08">
-          <span class="line" style="position:relative"><i class="hi" id="s3-hi"></i><span class="w" style="display:inline-block">Pulling</span> <span class="w" style="display:inline-block">it</span> <span class="w" style="display:inline-block">out</span></span><br/>
-          <span class="w" style="display:inline-block">beats</span> <span class="w" style="display:inline-block">putting</span> <span class="w" style="display:inline-block">it</span> <span class="w" style="display:inline-block">in.</span>
-        </div>
-        <div class="hand" id="s3-sub" style="font-size:62px;margin-top:22px">that's active recall. past papers are the purest form of it.</div>
+      <div class="hl" id="s3-hl">Friction 1: finding the right questions</div>
+      <div id="s3-pile" class="abs" style="left:120px;top:250px;width:780px;height:440px">
+        <div class="paper" id="s3-p0" style="left:0;top:70px">Paper 1 · 2024<small>Edexcel A-Level Physics</small><i style="width:90%"></i><i style="width:70%"></i><i style="width:80%"></i></div>
+        <div class="paper" id="s3-p1" style="left:170px;top:0">Paper 2 · 2024<small>Edexcel A-Level Physics</small><i style="width:85%"></i><i style="width:75%"></i><i style="width:60%"></i></div>
+        <div class="paper" id="s3-p2" style="left:330px;top:90px">Paper 1 · 2023<small>Edexcel A-Level Physics</small><i style="width:92%"></i><i style="width:66%"></i><i style="width:78%"></i></div>
+        <div class="paper" id="s3-p3" style="left:60px;top:190px">Paper 2 · 2023<small>Edexcel A-Level Physics</small><i style="width:80%"></i><i style="width:72%"></i><i style="width:88%"></i></div>
+        <div class="paper" id="s3-p4" style="left:260px;top:210px">Paper 1 · 2022<small>Edexcel A-Level Physics</small><i style="width:88%"></i><i style="width:64%"></i><i style="width:70%"></i></div>
+        <div class="paper" id="s3-p5" style="left:420px;top:170px">Paper 2 · 2022<small>Edexcel A-Level Physics</small><i style="width:76%"></i><i style="width:84%"></i><i style="width:62%"></i></div>
+        <svg id="s3-lens" class="abs" width="140" height="140" viewBox="0 0 70 70" fill="none" stroke="#2a2723" stroke-width="3.5" stroke-linecap="round" style="left:0;top:0;z-index:6"><circle cx="28" cy="28" r="20" fill="rgba(156,195,230,.35)"/><path d="M43 43 L62 62" stroke-width="6"/></svg>
       </div>
-      <div class="card" id="s3-chart" data-r="1" style="left:510px;top:382px;width:900px;height:550px">
+      <div class="abs hand" id="s3-q" data-r="-2" style="left:130px;top:700px;font-size:56px;color:var(--ink)">Which cover what you’ve learned?</div>
+      <div class="card ruled" id="s3-spec" data-r="-1.2" style="left:1010px;top:270px;width:770px;height:320px">
         <i class="tape tape--l" data-r="-38"></i><i class="tape tape--r" data-r="38"></i>
-        <div class="abs serif" style="left:44px;top:30px;font-size:46px">Remembered one week later</div>
-        <div class="bar bar--muted" id="s3-b1" style="left:190px;top:266px;height:184px"></div>
-        <div class="bar" id="s3-b2" style="left:500px;top:169px;height:281px;background:var(--green)"></div>
-        <div class="val" id="s3-v1" data-fmt="{}%" style="left:190px;top:196px">0%</div>
-        <div class="val" id="s3-v2" data-fmt="{}%" style="left:500px;top:99px">0%</div>
-        <div class="base" id="s3-base" style="left:80px;top:450px;width:740px"></div>
-        <div class="barlab" style="left:190px;top:468px">Read it<br/>4 times</div>
-        <div class="barlab" style="left:500px;top:468px">Read once,<br/>tested 3 times</div>
-        <div class="abs hand hand--good" id="s3-more" data-r="-6" style="left:712px;top:150px;font-size:54px;text-align:center">over 50%<br/>more!</div>
+        <div class="abs serif" style="left:40px;top:30px;font-size:44px">Spec points I’ve learned</div>
+        <div id="s3-chips"></div>
       </div>
-      <div class="src" id="s3-src"><b>Source</b>Roediger &amp; Karpicke, 2006 <i>· recall of a studied passage, one week on</i></div>
+      <div id="s3-minis"></div>
+      <div class="abs hand hand--good" id="s3-only" data-r="-2" style="left:1010px;top:850px;font-size:58px">Only questions on these.</div>
+      <svg class="ink"><path id="s3-arrow" class="soft" pathLength="1" d="M1330 606 C 1334 622, 1334 636, 1330 646 M1308 626 L1330 650 L1352 624"/></svg>
+      <div class="card sci" id="s3-sci" data-r="1" style="left:130px;top:790px;width:820px;height:230px">
+        <i class="tape tape--c" data-r="-2"></i>
+        <p>Hunting through papers is extraneous load: effort that doesn’t help you learn.</p>
+        <span class="cite"><b>Source</b>Sweller et al., 1998</span>
+      </div>
     </section>
 
-    <!-- ───────────── S4: filtered to the spec ───────────── -->
+    <!-- ───────────── S4: friction 1, only what you've learned ───────────── -->
     <section class="scene" id="s4">
-      <div class="hl" id="s4-hl">Filtered to the spec.</div>
-      <div class="abs hand" id="s4-sub" data-r="-1.5" style="left:150px;top:226px;font-size:58px">not "roughly this chapter". the exact spec point.</div>
-      <div class="card ruled" id="s4-spec" data-r="-1.5" style="left:140px;top:340px;width:800px;height:360px">
+      <div class="hl" id="s4-hl">Only what you’ve learned.</div>
+      <div class="card ruled" id="s4-spec" data-r="-1.5" style="left:140px;top:300px;width:780px;height:340px">
         <i class="tape tape--l" data-r="-38"></i><i class="tape tape--r" data-r="38"></i>
-        <div class="abs serif" style="left:40px;top:30px;font-size:44px">Spec points I've learned</div>
+        <div class="abs serif" style="left:40px;top:30px;font-size:44px">Spec points I’ve learned</div>
         <div id="s4-chips"></div>
       </div>
-      <div class="abs" id="s4-gate" style="left:1010px;top:380px;width:380px;height:240px;border:4px dashed var(--ink-3);border-radius:14px"></div>
-      <div class="abs hand" id="s4-gatelab" style="left:1060px;top:312px;font-size:52px">all of it learned?</div>
-      <div class="abs hand" id="s4-stacklab" style="left:1488px;top:318px;font-size:52px">your questions</div>
+      <div class="abs" id="s4-gate" style="left:1010px;top:340px;width:380px;height:240px;border:4px dashed var(--ink-3);border-radius:14px"></div>
+      <div class="abs hand" id="s4-stacklab" style="left:1488px;top:290px;font-size:52px">your questions</div>
       <div id="s4-minis"></div>
-      <div class="abs hand hand--pen" id="s4-not" data-r="-3" style="left:990px;top:648px;font-size:52px">not learnt yet? not shown.</div>
-      <div class="abs hand hand--pen" id="s4-wait" data-r="-2" style="left:990px;top:722px;font-size:52px">also needs 3.4? it waits.</div>
-      <div class="abs hand" id="s4-nosurp" data-r="-2" style="left:1500px;top:812px;font-size:60px;color:var(--ink)">no surprise topics.</div>
-      <div class="src" id="s4-src"><b>Source</b>Bjork &amp; Bjork, 2011 <i>· difficulty helps when you can rise to it</i></div>
+      <div class="abs hand hand--pen" id="s4-not" data-r="-3" style="left:990px;top:640px;font-size:52px">Not learnt yet? Not shown.</div>
+      <div class="abs hand hand--pen" id="s4-wait" data-r="-2" style="left:990px;top:710px;font-size:52px">Needs 2.4 and 3.4? It waits.</div>
+      <div class="abs hand hand--good" id="s4-now" data-r="-2" style="left:1000px;top:780px;font-size:52px">Tick 3.4: it appears.</div>
+      <div class="card sci" id="s4-sci" data-r="1" style="left:140px;top:730px;width:760px;height:250px">
+        <i class="tape tape--c" data-r="-2"></i>
+        <p>Hard enough to need recall. Not so hard you can’t start.</p>
+        <span class="cite"><b>Source</b>Bjork &amp; Bjork, 2011</span>
+      </div>
     </section>
 
-    <!-- ───────────── S5: real past papers, real mark schemes ───────────── -->
+    <!-- ───────────── S5: friction 2, getting started ───────────── -->
     <section class="scene" id="s5">
-      <div class="hl" id="s5-hl">Real exam questions. Real mark schemes.</div>
-      <div class="card" id="s5-q" data-r="-1" style="left:140px;top:276px;width:920px;height:640px">
+      <div class="hl" id="s5-hl">Friction 2: getting started</div>
+      <div class="card mock" id="s5-site" data-r="-1.2" style="left:130px;top:270px;width:900px;height:520px">
         <i class="tape tape--c" data-r="-2"></i>
-        <span class="abs" style="left:40px;top:34px;padding:8px 14px;border:3px solid var(--ink);border-radius:6px;background:var(--blue);font:800 22px/1 var(--font)">A-Level Physics</span>
-        <span class="abs" style="right:40px;top:42px;font:800 24px/1 var(--font);color:var(--ink-3)">Spec 2.4 · 3 marks</span>
-        <div class="abs" style="left:40px;top:104px;width:840px;font:700 33px/1.42 var(--font)">A ball is projected at 18 m s<sup>−1</sup> at 35° above the horizontal from the top of a 25 m cliff. Find the time it takes to hit the sea.</div>
-        <div class="abs label" style="left:40px;top:272px">Your answer</div>
-        <div class="abs" style="left:24px;right:24px;top:308px;height:300px;background:repeating-linear-gradient(transparent 0 68px, var(--rule-blue) 68px 70px)"></div>
-        <div class="line hand" id="s5-a1" style="left:52px;top:310px;font-size:58px;color:var(--ink)">u = 18 sin 35° = 10.3</div>
-        <div class="line hand" id="s5-a2" style="left:52px;top:380px;font-size:58px;color:var(--ink)">−25 = 10.3t − 4.9t²</div>
-        <div class="line hand" id="s5-a3" style="left:52px;top:450px;font-size:58px;color:var(--ink)">t = 2.1 s</div>
-        <div class="abs hand hand--pen" id="s5-redo" data-r="-3" style="left:310px;top:458px;font-size:52px">redo it: t = 3.5 s</div>
+        <div class="mock__bar"><i></i><i></i><i></i><span class="mock__url">purepastpapers.com</span></div>
+        <div class="abs serif" style="left:44px;top:100px;width:800px;font-size:52px;line-height:1.1">Past paper questions, down to the exact spec point.</div>
+        <div class="btn btn--primary" id="s5-b1" style="left:44px;top:300px;height:84px;font-size:34px;padding:0 30px;box-shadow:5px 5px 0 rgba(42,39,35,.35)">Browse questions →</div>
+        <div class="btn" id="s5-b2" style="left:500px;top:300px;height:84px;font-size:34px;padding:0 30px;background:var(--lilac)">Try a Maths demo</div>
+        <div class="abs label" id="s5-nolog" style="left:44px;top:430px;font-size:21px">No account needed</div>
       </div>
-      <div class="card ruled" id="s5-ms" data-r="1.5" style="left:1130px;top:300px;width:650px;height:480px">
+      <svg class="cursor" id="s5-cursor" viewBox="0 0 32 40"><path d="M4 3 L4 31 L11 24.5 L16 36 L21.5 33.5 L16.5 22.5 L26 22 Z" fill="#fffdf8" stroke="#2a2723" stroke-width="2.6" stroke-linejoin="round"/></svg>
+      <div class="ripple" id="s5-ripple"></div>
+      <div class="card" id="s5-q" data-r="1.4" style="left:1080px;top:300px;width:720px;height:420px">
         <i class="tape tape--r" data-r="40"></i>
-        <div class="abs serif" style="left:40px;top:34px;font-size:48px">Mark scheme</div>
-        <div class="abs" id="s5-r1" style="left:40px;top:138px;width:570px;display:flex;align-items:center;gap:22px;font:700 27px/1.2 var(--font)"><b style="font-weight:800;width:52px">M1</b><span style="flex:1">vertical part: 18 sin 35°</span></div>
-        <div class="abs" id="s5-r2" style="left:40px;top:232px;width:570px;display:flex;align-items:center;gap:22px;font:700 27px/1.2 var(--font)"><b style="font-weight:800;width:52px">M1</b><span style="flex:1">s = ut + ½at² with s = −25</span></div>
-        <div class="abs" id="s5-r3" style="left:40px;top:326px;width:570px;display:flex;align-items:center;gap:22px;font:700 27px/1.2 var(--font)"><b style="font-weight:800;width:52px">A1</b><span style="flex:1">t = 3.5 s</span></div>
-        <div class="abs hand hand--pen" id="s5-score" data-r="-8" style="left:470px;top:378px;font-size:96px">2/3</div>
+        <span class="abs" style="left:34px;top:30px;padding:7px 12px;border:3px solid var(--ink);border-radius:6px;background:var(--yellow);font:800 20px/1 var(--font)">GCSE Maths</span>
+        <span class="abs" style="right:34px;top:38px;font:800 22px/1 var(--font);color:var(--ink-3)">1 mark</span>
+        <div class="abs" style="left:34px;top:96px;width:650px;font:700 38px/1.35 var(--font)">Simplify 3x + 2x.</div>
+        <div class="btn" style="left:34px;top:290px;height:80px;font-size:32px;padding:0 28px;background:var(--ink);color:var(--surface)">Show mark scheme</div>
+      </div>
+      <div class="abs hand hand--good" id="s5-one" data-r="-2" style="left:1090px;top:760px;font-size:58px">One click to a real exam question.</div>
+      <div class="card sci" id="s5-sci" data-r="1" style="left:130px;top:830px;width:880px;height:190px;padding:20px 28px">
+        <p style="font-size:32px">A behaviour has to be easy enough to do right now.</p>
+        <span class="cite" style="margin-top:12px"><b>Source</b>Fogg, 2009</span>
+      </div>
+    </section>
+
+    <!-- ───────────── S6: friction 3, checking ───────────── -->
+    <section class="scene" id="s6">
+      <div class="hl" id="s6-hl">Friction 3: checking your answer</div>
+      <div class="card" id="s6-q" data-r="-1" style="left:130px;top:260px;width:930px;height:560px">
+        <i class="tape tape--c" data-r="-2"></i>
+        <span class="abs" style="left:36px;top:30px;padding:7px 12px;border:3px solid var(--ink);border-radius:6px;background:var(--blue);font:800 20px/1 var(--font)">A-Level Maths</span>
+        <span class="abs" style="right:36px;top:38px;font:800 22px/1 var(--font);color:var(--ink-3)">2 marks</span>
+        <div class="abs" style="left:36px;top:92px;font:700 38px/1.3 var(--font)">Solve 3x − 4 = 11.</div>
+        <div class="abs label" style="left:36px;top:170px">Your answer</div>
+        <div class="abs" style="left:24px;right:24px;top:204px;height:150px;background:repeating-linear-gradient(transparent 0 68px, var(--rule-blue) 68px 70px)"></div>
+        <div class="line hand" id="s6-a1" style="left:44px;top:206px;font-size:56px;color:var(--ink)">3x = 11 − 4 = 7</div>
+        <div class="line hand" id="s6-a2" style="left:44px;top:274px;font-size:56px;color:var(--ink)">x = 7/3</div>
+        <div class="btn" id="s6-b1" style="left:36px;top:392px;height:84px;font-size:32px;padding:0 28px;background:var(--ink);color:var(--surface)">Show mark scheme</div>
+        <div class="btn" id="s6-b2" style="left:420px;top:392px;height:84px;font-size:32px;padding:0 28px">Examiner’s report</div>
+        <div class="abs hand hand--pen" id="s6-redo" data-r="-3" style="left:420px;top:274px;font-size:50px">redo: 3x = 15, x = 5</div>
+      </div>
+      <div class="card ruled" id="s6-ms" data-r="1.4" style="left:1110px;top:290px;width:690px;height:430px">
+        <i class="tape tape--r" data-r="40"></i>
+        <div class="abs serif" style="left:40px;top:34px;font-size:46px">Mark scheme</div>
+        <div class="abs" id="s6-r1" style="left:40px;top:150px;width:610px;display:flex;align-items:center;gap:22px;font:700 30px/1.2 var(--font)"><b style="font-weight:800;width:56px">M1</b><span style="flex:1">add 4 to both sides: 3x = 15</span></div>
+        <div class="abs" id="s6-r2" style="left:40px;top:250px;width:610px;display:flex;align-items:center;gap:22px;font:700 30px/1.2 var(--font)"><b style="font-weight:800;width:56px">A1</b><span style="flex:1">x = 5</span></div>
+        <div class="abs hand hand--pen" id="s6-score" data-r="-8" style="left:500px;top:320px;font-size:90px">0/2</div>
       </div>
       <svg class="ink">
-        <path id="s5-t1" class="pen" pathLength="1" d="M1700 452 L1714 468 L1742 432"/>
-        <path id="s5-t2" class="pen" pathLength="1" d="M1700 546 L1714 562 L1742 526"/>
-        <path id="s5-x3" class="pen" pathLength="1" d="M1702 622 L1738 656 M1738 622 L1702 656"/>
-        <path id="s5-under" class="pen-thin" pathLength="1" d="M198 808 C 270 814, 350 804, 408 810"/>
-        <path id="s5-ring" class="pen" pathLength="1" d=""/>
+        <path id="s6-x1" class="pen" pathLength="1" d="M1716 442 L1752 478 M1752 442 L1716 478"/>
+        <path id="s6-x2" class="pen" pathLength="1" d="M1716 542 L1752 578 M1752 542 L1716 578"/>
+        <path id="s6-ring" class="pen" pathLength="1" d=""/>
       </svg>
-      <div class="abs hand" id="s5-gap" data-r="-2" style="left:1190px;top:826px;font-size:64px;color:var(--ink)">spot the gap. fix the gap.</div>
-      <div class="src" id="s5-src"><b>Source</b>Butler &amp; Roediger, 2008 <i>· checking your answer helps recall stick</i></div>
+      <div class="abs hand" id="s6-gap" data-r="-2" style="left:1120px;top:760px;font-size:56px;color:var(--ink)">Spot the gap. Fix it.</div>
+      <div class="abs hand" id="s6-exam" data-r="-1.5" style="left:1120px;top:850px;font-size:50px;color:var(--ink)">Plus: the examiner’s report.</div>
+      <div class="card sci" id="s6-sci" data-r="1" style="left:130px;top:850px;width:930px;height:170px;padding:18px 28px">
+        <p style="font-size:32px">Feedback after a test makes testing work better.</p>
+        <span class="cite" style="margin-top:12px"><b>Source</b>Butler &amp; Roediger, 2008</span>
+      </div>
     </section>
 
-    <!-- ───────────── S6: Data Hub by spec point ───────────── -->
-    <section class="scene" id="s6">
-      <div class="hl" id="s6-hl">Know which spec points need work.</div>
-      <div class="card" id="s6-hub" data-r="-1" style="left:140px;top:300px;width:1040px;height:540px">
+    <!-- ───────────── S7: friction 4, knowing what's next ───────────── -->
+    <section class="scene" id="s7">
+      <div class="hl" id="s7-hl">Friction 4: knowing what’s next</div>
+      <div class="card" id="s7-hub" data-r="-1" style="left:130px;top:260px;width:1060px;height:570px">
         <i class="tape tape--c" data-r="-2"></i>
-        <div class="abs label" style="left:44px;top:40px">Example · Data Hub</div>
+        <div class="abs label" style="left:44px;top:40px">Example · Data Hub · free account</div>
         <span class="abs" style="right:44px;top:30px;padding:8px 14px;border:3px solid var(--ink);border-radius:6px;background:var(--blue);font:800 22px/1 var(--font)">A-Level Physics</span>
-        <div id="s6-rows"></div>
+        <div id="s7-rows"></div>
       </div>
-      <svg class="ink"><path id="s6-ring" class="pen" pathLength="1" d=""/></svg>
-      <div class="btn btn--primary" id="s6-btn" style="left:1260px;top:610px">Practise 2.3
+      <svg class="ink"><path id="s7-ring" class="pen" pathLength="1" d=""/></svg>
+      <div class="abs hand" id="s7-then" data-r="-3" style="left:1250px;top:350px;font-size:58px;color:var(--ink)">One click to practise<br/>exactly that.</div>
+      <div class="btn btn--primary" id="s7-btn" style="left:1260px;top:560px">Practise 2.3
         <svg width="46" height="30" viewBox="0 0 46 30" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="margin-left:18px"><path d="M3 15h38M29 4l12 11-12 11"/></svg>
       </div>
-      <div class="abs hand" id="s6-then" data-r="-3" style="left:1250px;top:430px;font-size:62px;color:var(--ink)">then practise<br/>exactly that.</div>
+      <div class="card sci" id="s7-sci" data-r="1" style="left:130px;top:850px;width:1320px;height:170px;padding:18px 28px">
+        <p style="font-size:32px">Students who re-read predicted they’d remember more. They remembered less.</p>
+        <span class="cite" style="margin-top:12px"><b>Source</b>Roediger &amp; Karpicke, 2006</span>
+      </div>
+      <div class="abs hand hand--good" id="s7-fact" data-r="-2" style="left:1490px;top:884px;font-size:50px">Results, not feelings.</div>
     </section>
 
-    <!-- ───────────── S7: teacher terminal, the class sets the spec ───────────── -->
-    <section class="scene" id="s7">
-      <div class="hl" id="s7-hl">The teacher terminal.</div>
-      <div class="soon" id="s7-soon" data-r="-4" style="left:1010px;top:142px">Coming soon</div>
-      <div class="abs hand" id="s7-sub" data-r="-1.5" style="left:150px;top:228px;font-size:58px">for teachers. pupils just join the class.</div>
-      <div class="card term" id="s7-teacher" data-r="-1.5" style="left:140px;top:340px;width:760px;height:430px">
+    <!-- ───────────── S8: teacher terminal ───────────── -->
+    <section class="scene" id="s8">
+      <div class="hl" id="s8-hl">Coming next: the teacher terminal</div>
+      <div class="soon" id="s8-soon" data-r="-4" style="left:1580px;top:150px">Coming soon</div>
+      <div class="abs hand" id="s8-sub" data-r="-1.5" style="left:150px;top:236px;font-size:56px">Teachers mark what they’ve taught. Pupils just join.</div>
+      <div class="card term" id="s8-teacher" data-r="-1.5" style="left:130px;top:340px;width:760px;height:430px">
         <div class="term__bar"><span>Teacher</span><span>Class 12P · A-Level Physics</span></div>
         <div class="abs serif" style="left:40px;top:96px;font-size:44px">Taught so far</div>
-        <div id="s7-tchips"></div>
+        <div id="s8-tchips"></div>
       </div>
-      <div id="s7-pupils"></div>
+      <div id="s8-pupils"></div>
       <svg class="ink">
-        <path id="s7-a0" class="soft" pathLength="1" d="M912 470 C 1000 430, 1060 400, 1134 392 M1108 376 L1136 392 L1112 412"/>
-        <path id="s7-a1" class="soft" pathLength="1" d="M912 560 C 1000 560, 1060 600, 1134 606 M1108 590 L1136 606 L1110 624"/>
-        <path id="s7-a2" class="soft" pathLength="1" d="M912 650 C 990 700, 1050 790, 1134 820 M1104 812 L1136 822 L1118 846"/>
+        <path id="s8-a0" class="soft" pathLength="1" d="M912 470 C 1000 430, 1060 400, 1134 392 M1108 376 L1136 392 L1112 412"/>
+        <path id="s8-a1" class="soft" pathLength="1" d="M912 560 C 1000 560, 1060 600, 1134 606 M1108 590 L1136 606 L1110 624"/>
+        <path id="s8-a2" class="soft" pathLength="1" d="M912 650 C 990 700, 1050 790, 1134 820 M1104 812 L1136 822 L1118 846"/>
       </svg>
-      <div class="abs hand" id="s7-tick" data-r="-2" style="left:150px;top:800px;font-size:58px;color:var(--ink)">join the class.<br/>your spec points tick themselves.</div>
+      <div class="abs hand" id="s8-tick" data-r="-2" style="left:140px;top:800px;font-size:56px;color:var(--ink)">Join the class.<br/>Your spec points tick themselves.</div>
     </section>
 
-    <!-- ───────────── S8: teacher terminal, the whole class at a glance ───────────── -->
-    <section class="scene" id="s8">
-      <div class="hl" id="s8-hl">Your whole class, by spec point.</div>
-      <div class="card" id="s8-heat" data-r="-1" style="left:140px;top:300px;width:1000px;height:560px">
+    <!-- ───────────── S8b: teacher terminal, the class at a glance ───────────── -->
+    <section class="scene" id="s8b">
+      <div class="hl" id="s8b-hl">Your whole class, by spec point</div>
+      <div class="card" id="s8-heat" data-r="-1" style="left:130px;top:290px;width:1000px;height:560px">
         <i class="tape tape--l" data-r="-38"></i>
         <div class="abs label" style="left:40px;top:34px">Example · Class 12P</div>
         <div id="s8-grid"></div>
       </div>
       <svg class="ink"><path id="s8-ring" class="pen" pathLength="1" d=""/></svg>
-      <div class="abs hand hand--pen" id="s8-stuck" data-r="-2" style="left:400px;top:880px;font-size:60px">the whole class is stuck on 2.4.</div>
-      <div class="card" id="s8-list" data-r="1.5" style="left:1210px;top:300px;width:580px;height:500px">
+      <div class="abs hand hand--pen" id="s8-stuck" data-r="-2" style="left:300px;top:880px;font-size:56px">The whole class is stuck on 2.4.</div>
+      <div class="card" id="s8-list" data-r="1.5" style="left:1190px;top:290px;width:600px;height:560px">
         <i class="tape tape--c" data-r="2"></i>
-        <div class="abs serif" style="left:36px;top:34px;font-size:44px">Teacher terminal</div>
-        <div class="soon soon--sm" style="left:36px;top:100px">Coming soon · for teachers</div>
+        <div class="abs serif" style="left:34px;top:34px;font-size:44px">Teacher terminal</div>
+        <div class="soon soon--sm" style="left:34px;top:100px">Coming soon · for teachers</div>
         <div id="s8-items"></div>
       </div>
     </section>
 
-    <!-- ───────────── S9: numbers + logo ───────────── -->
+    <!-- ───────────── S9: recap + logo ───────────── -->
     <section class="scene" id="s9">
-      <div class="card stat-card" id="s9-st0" data-r="-2" style="left:435px;top:110px"><i class="tape tape--c" data-r="-3"></i><b id="s9-n0" data-comma="1">0</b><span>subjects</span></div>
-      <div class="card stat-card" id="s9-st1" data-r="1.5" style="left:810px;top:120px"><i class="tape tape--c" data-r="2"></i><b id="s9-n1" data-comma="1">0</b><span>past papers</span></div>
-      <div class="card stat-card" id="s9-st2" data-r="-1" style="left:1185px;top:110px"><i class="tape tape--c" data-r="-2"></i><b id="s9-n2" data-comma="1">0</b><span>spec points</span></div>
-      <div class="abs" id="s9-logo" style="left:0;width:1920px;top:410px;display:flex;justify-content:center;align-items:center;gap:36px">
+      <div id="s9-recap"></div>
+      <div class="abs" id="s9-logo" style="left:0;width:1920px;top:430px;display:flex;justify-content:center;align-items:center;gap:36px">
         <div id="s9-mark" style="width:150px;height:150px;border:5px solid var(--ink);border-radius:20px;background:var(--surface);box-shadow:9px 9px 0 var(--ink);display:grid;place-items:center"><span class="ppp-slot" data-w="104"></span></div>
         <div id="s9-word" class="serif" style="font-size:128px;letter-spacing:-2px;line-height:1">Pure Past Papers</div>
       </div>
-      <div class="abs" id="s9-tag" style="left:0;width:1920px;top:620px;text-align:center;font:700 42px/1.2 var(--font);color:var(--ink-2)">Past papers, filtered to what you have actually learned.</div>
-      <div class="btn btn--primary" id="s9-url" style="left:660px;top:712px;width:600px">purepastpapers.com</div>
-      <div class="abs" id="s9-luck" data-r="-2" style="left:0;width:1920px;top:866px;display:flex;justify-content:center;align-items:center;gap:16px">
-        <span class="hand" style="font-size:66px">free to start. no account needed.</span>
-        <svg width="90" height="40" viewBox="0 0 90 40" fill="none" stroke="#6d675d" stroke-width="3" stroke-linejoin="round"><g transform="rotate(-20 45 20)"><path d="M14 12h52l14 8-14 8H14z" fill="#f1cf63"/><rect x="4" y="12" width="10" height="16" fill="#f3a3b8"/></g></svg>
-      </div>
+      <div class="abs" id="s9-tag" style="left:0;width:1920px;top:640px;text-align:center;font:700 42px/1.2 var(--font);color:var(--ink-2)">Past papers, filtered to what you have actually learned.</div>
+      <div class="abs hand" id="s9-last" data-r="-1" style="left:0;width:1920px;top:740px;text-align:center;font-size:64px;color:var(--ink)">Low friction to start. Difficulty where it counts.</div>
+      <div class="btn btn--primary" id="s9-url" style="left:660px;top:880px;width:600px">purepastpapers.com</div>
     </section>
 
     <!-- ───────────── S10: sources ───────────── -->
     <section class="scene" id="s10">
-      <div class="card" id="s10-card" data-r="-0.6" style="left:150px;top:90px;width:1620px;height:900px">
+      <div class="card" id="s10-card" data-r="-0.6" style="left:150px;top:80px;width:1620px;height:920px">
         <i class="tape tape--l" data-r="-38"></i><i class="tape tape--r" data-r="38"></i>
-        <div class="abs" style="left:70px;top:44px;display:flex;align-items:baseline;gap:28px">
-          <span class="serif" style="font-size:64px">Sources</span><span class="hand" style="font-size:56px">the receipts</span>
+        <div class="abs" style="left:70px;top:40px;display:flex;align-items:baseline;gap:28px">
+          <span class="serif" style="font-size:62px">Sources</span><span class="hand" style="font-size:54px">the receipts</span>
         </div>
-        <ol id="s10-list" class="abs" style="left:70px;top:160px;width:1480px;margin:0;padding:0 0 0 40px;font:600 30px/1.38 var(--font)">
-          <li style="margin-bottom:16px">Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J. &amp; Willingham, D. T. (2013). Improving students' learning with effective learning techniques. <i>Psychological Science in the Public Interest</i>, 14(1), 4–58.</li>
-          <li style="margin-bottom:16px">Karpicke, J. D., Butler, A. C. &amp; Roediger, H. L. (2009). Metacognitive strategies in student learning: Do students practise retrieval when they study on their own? <i>Memory</i>, 17(4), 471–479.</li>
-          <li style="margin-bottom:16px">Roediger, H. L. &amp; Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. <i>Psychological Science</i>, 17(3), 249–255.</li>
-          <li style="margin-bottom:16px">Bjork, E. L. &amp; Bjork, R. A. (2011). Making things hard on yourself, but in a good way: Creating desirable difficulties to enhance learning. In <i>Psychology and the Real World</i> (pp. 56–64). Worth.</li>
-          <li style="margin-bottom:16px">Butler, A. C. &amp; Roediger, H. L. (2008). Feedback enhances the positive effects and reduces the negative effects of multiple-choice testing. <i>Memory &amp; Cognition</i>, 36(3), 604–616.</li>
+        <ol id="s10-list" class="abs" style="left:70px;top:140px;width:1480px;margin:0;padding:0 0 0 40px;font:600 26px/1.34 var(--font)">
+          <li style="margin-bottom:9px">Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J. &amp; Willingham, D. T. (2013). Improving students’ learning with effective learning techniques. <i>Psychological Science in the Public Interest</i>, 14(1), 4–58.</li>
+          <li style="margin-bottom:9px">Karpicke, J. D., Butler, A. C. &amp; Roediger, H. L. (2009). Metacognitive strategies in student learning: Do students practise retrieval when they study on their own? <i>Memory</i>, 17(4), 471–479.</li>
+          <li style="margin-bottom:9px">Roediger, H. L. &amp; Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. <i>Psychological Science</i>, 17(3), 249–255.</li>
+          <li style="margin-bottom:9px">Butler, A. C. &amp; Roediger, H. L. (2008). Feedback enhances the positive effects and reduces the negative effects of multiple-choice testing. <i>Memory &amp; Cognition</i>, 36(3), 604–616.</li>
+          <li style="margin-bottom:9px">Bjork, E. L. &amp; Bjork, R. A. (2011). Making things hard on yourself, but in a good way: Creating desirable difficulties to enhance learning. In <i>Psychology and the Real World</i> (pp. 56–64). Worth.</li>
+          <li style="margin-bottom:9px">Sweller, J., van Merriënboer, J. J. G. &amp; Paas, F. G. W. C. (1998). Cognitive architecture and instructional design. <i>Educational Psychology Review</i>, 10(3), 251–296.</li>
+          <li style="margin-bottom:9px">Fogg, B. J. (2009). A behavior model for persuasive design. <i>Proceedings of the 4th International Conference on Persuasive Technology</i>, Article 40.</li>
         </ol>
-        <div class="abs" id="s10-foot" style="left:70px;right:70px;bottom:40px;font:700 23px/1.45 var(--font);color:var(--ink-2)">Charts are redrawn from the results each paper reports. Screens marked "Example" use sample data. The teacher terminal is planned and not live yet.<br/>Music and sound: original, made for this video. PurePastPapers is independent, not affiliated with AQA, Pearson Edexcel, OCR or WJEC Eduqas.</div>
+        <div class="abs" id="s10-foot" style="left:70px;right:70px;bottom:30px;font:700 21px/1.4 var(--font);color:var(--ink-2)">These studies mostly used university students and lab tasks, and none tested this website: how they are applied here is our interpretation. Fogg’s model is a design guide with little direct testing. Charts and screens marked “Example” use sample data. The teacher terminal is planned and not live yet. Music and sound are original, made for this video. PurePastPapers is independent, not affiliated with AQA, Pearson Edexcel, OCR or WJEC Eduqas.</div>
       </div>
     </section>
   </div>
@@ -246,17 +285,18 @@
   <!-- fixed to the lens -->
   <div id="brand" class="logo"><div class="logo__mark"><span class="ppp-slot" data-w="36"></span></div><div class="logo__word">Pure Past Papers</div></div>
   <div class="chap" id="c1"><b style="background:var(--yellow)">01</b>The problem</div>
-  <div class="chap" id="c2"><b style="background:var(--green)">02</b>Active recall</div>
-  <div class="chap" id="c3"><b style="background:var(--lilac)">03</b>Filtered to the spec</div>
-  <div class="chap" id="c4"><b style="background:var(--blue)">04</b>Real mark schemes</div>
-  <div class="chap" id="c5"><b style="background:var(--peach)">05</b>Data Hub</div>
-  <div class="chap" id="c6"><b style="background:var(--teal)">06</b>Teacher terminal</div>
+  <div class="chap" id="c2"><b style="background:var(--green)">02</b>The idea</div>
+  <div class="chap" id="c3"><b style="background:var(--lilac)">03</b>Finding</div>
+  <div class="chap" id="c4"><b style="background:var(--blue)">04</b>Starting</div>
+  <div class="chap" id="c5"><b style="background:var(--peach)">05</b>Checking</div>
+  <div class="chap" id="c6"><b style="background:var(--pink)">06</b>Deciding</div>
+  <div class="chap" id="c7"><b style="background:var(--teal)">07</b>Teachers</div>
   <div id="grain"></div>
   <div id="vignette"></div>
 </div>
 <div id="controls">
   <button type="button" id="play">Play</button>
-  <input type="range" id="scrub" min="0" max="80" step="0.01" value="0" />
+  <input type="range" id="scrub" min="0" max="180" step="0.01" value="0" />
   <span id="clock">0.00 s</span>
 </div>
 <script src="promo.js"></script>
