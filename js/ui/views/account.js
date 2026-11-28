@@ -75,7 +75,9 @@ export async function mount(element, context) {
           <section class="card ruled tilt-2">
             <i class="tape tape--c" aria-hidden="true"></i>
             <h2 class="card__title">Password</h2>
-            <form class="stack" data-password style="margin-top:14px" novalidate>
+            ${user.has_password === false
+              ? html`<p class="muted" style="margin-top:12px">You sign in with Google, so there is no password to change. To add a password as well, use <a href="${links.forgotPassword()}">Forgot your password?</a> and we’ll email you a link.</p>`
+              : html`<form class="stack" data-password style="margin-top:14px" novalidate>
               <label class="field"><span class="field__label">Current password</span><input class="input" type="password" name="current" autocomplete="current-password" placeholder="Your current password" required /></label>
               <label class="field">
                 <span class="field__label">New password</span>
@@ -83,7 +85,7 @@ export async function mount(element, context) {
               </label>
               <p class="form-error" role="alert" data-password-error hidden></p>
               <div><button type="submit" class="btn">Change password</button></div>
-            </form>
+            </form>`}
           </section>
           <section class="card ruled tilt-4">
             <i class="tape tape--r" aria-hidden="true"></i>

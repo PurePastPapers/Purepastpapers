@@ -31,10 +31,27 @@ function publicUser(user) {
   return {
     user_id: user.id,
     email: user.email || '',
-    display_name: String(user.user_metadata?.display_name || user.email?.split('@')[0] || 'Student'),
+    // display_name is what the student chose here; a Google sign-in supplies full_name / name.
+    display_name: String(user.user_metadata?.display_name || user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0] || 'Student'),
     created_at: user.created_at || new Date().toISOString(),
     is_demo: false,
+    // False only for an account that has never had an email + password identity (a Google-only
+    // account). When Supabase omits the identities list, assume a password exists.
+    has_password: Array.isArray(user.identities) ? user.identities.some((identity) => identity.provider === 'email') : true,
   };
+}
+
+// A Google sign-in leaves the site and comes back to auth-callback.html. This marker (same tab,
+// same origin) lets the callback tell it from an email link and remembers where to go next.
+const oauthKey = `${namespace}:oauth-return`;
+function readOAuthReturn() {
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(oauthKey) || 'null');
+    return saved && Date.now() - Number(saved.at) < 15 * 60 * 1000 ? saved : null;
+  } catch { return null; }
+}
+function clearOAuthReturn() {
+  try { sessionStorage.removeItem(oauthKey); } catch {}
 }
 
 /**
@@ -94,6 +111,12 @@ function hasRecoverySession(userId = null) {
 
 function clearRecoverySession() {
   try { sessionStorage.removeItem(recoverySessionKey); } catch {}
+}
+
+function isNewAccount(user) {
+  const created = Date.parse(user.created_at);
+  const last = Date.parse(user.last_sign_in_at);
+  return Number.isFinite(created) && Number.isFinite(last) && Math.abs(last - created) < 60 * 1000;
 }
 
 function callbackUrl() {
@@ -255,6 +278,26 @@ export const supabaseAdapter = {
     const { data, error } = await client.auth.signInWithPassword({ email: validEmail(email), password });
     if (error) throw friendlyAuthError(error);
     return publicUser(data.user);
+  },
+
+  /** Sends the browser to Google. `next` is a local route to open afterwards. Never returns normally. */
+  async signInWithGoogle({ next = null } = {}) {
+    const client = await getClient();
+    try { sessionStorage.setItem(oauthKey, JSON.stringify({ next: next && next.startsWith('/') && !next.startsWith('//') ? next : null, at: Date.now() })); } catch {}
+    const { error } = await client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: callbackUrl() } });
+    if (error) {
+      clearOAuthReturn();
+      throw friendlyAuthError(error);
+    }
+  },
+
+  /** True when this page load is the return from a Google sign-in started in this tab. */
+  isOAuthReturn() {
+    return Boolean(readOAuthReturn());
+  },
+
+  discardOAuthReturn() {
+    clearOAuthReturn();
   },
 
   async signOut() {
@@ -420,6 +463,8 @@ export const supabaseAdapter = {
     const { data, error } = await client.auth.getSession();
     if (error) throw new Error(error.message);
     if (!data.session?.user) throw new Error('This link is invalid or has expired. Return to the site and try again.');
+    const oauth = recovery ? null : readOAuthReturn();
+    clearOAuthReturn();
     const pendingSignup = recovery ? null : await applyPendingSignup(data.session);
     if (recovery) {
       try { sessionStorage.setItem(recoverySessionKey, JSON.stringify({ userId: data.session.user.id, at: Date.now() })); } catch {}
@@ -429,7 +474,8 @@ export const supabaseAdapter = {
     return {
       user: publicUser(data.session.user),
       importedGuestProgress: Boolean(pendingSignup?.imported),
-      nextRoute: pendingSignup?.nextRoute || null,
+      // A first Google sign-in is a new account (welcome tour); a returning one opens the dashboard.
+      nextRoute: pendingSignup?.nextRoute || (oauth ? oauth.next || (isNewAccount(data.session.user) ? '/subjects?welcome=1' : '/') : null),
       recovery,
     };
   },
